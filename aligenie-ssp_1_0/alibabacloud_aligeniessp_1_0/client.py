@@ -273,6 +273,394 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
+    def auth_login_with_aligenie_user_info(
+        self,
+        request: ali_geniessp__1__0_models.AuthLoginWithAligenieUserInfoRequest,
+    ) -> ali_geniessp__1__0_models.AuthLoginWithAligenieUserInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_geniessp__1__0_models.AuthLoginWithAligenieUserInfoHeaders()
+        return self.auth_login_with_aligenie_user_info_with_options(request, headers, runtime)
+
+    async def auth_login_with_aligenie_user_info_async(
+        self,
+        request: ali_geniessp__1__0_models.AuthLoginWithAligenieUserInfoRequest,
+    ) -> ali_geniessp__1__0_models.AuthLoginWithAligenieUserInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_geniessp__1__0_models.AuthLoginWithAligenieUserInfoHeaders()
+        return await self.auth_login_with_aligenie_user_info_with_options_async(request, headers, runtime)
+
+    def auth_login_with_aligenie_user_info_with_options(
+        self,
+        request: ali_geniessp__1__0_models.AuthLoginWithAligenieUserInfoRequest,
+        headers: ali_geniessp__1__0_models.AuthLoginWithAligenieUserInfoHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_geniessp__1__0_models.AuthLoginWithAligenieUserInfoResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.encrypted_aligenie_user_identifier):
+            body['EncryptedAligenieUserIdentifier'] = request.encrypted_aligenie_user_identifier
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AuthLoginWithAligenieUserInfo',
+            version='ssp_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ssp/authLoginWithAligenieUserInfo',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_geniessp__1__0_models.AuthLoginWithAligenieUserInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def auth_login_with_aligenie_user_info_with_options_async(
+        self,
+        request: ali_geniessp__1__0_models.AuthLoginWithAligenieUserInfoRequest,
+        headers: ali_geniessp__1__0_models.AuthLoginWithAligenieUserInfoHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_geniessp__1__0_models.AuthLoginWithAligenieUserInfoResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.encrypted_aligenie_user_identifier):
+            body['EncryptedAligenieUserIdentifier'] = request.encrypted_aligenie_user_identifier
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AuthLoginWithAligenieUserInfo',
+            version='ssp_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ssp/authLoginWithAligenieUserInfo',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_geniessp__1__0_models.AuthLoginWithAligenieUserInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def auth_login_with_aligenie_user_info_generated_by_phone_number(
+        self,
+        request: ali_geniessp__1__0_models.AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberRequest,
+    ) -> ali_geniessp__1__0_models.AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_geniessp__1__0_models.AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberHeaders()
+        return self.auth_login_with_aligenie_user_info_generated_by_phone_number_with_options(request, headers, runtime)
+
+    async def auth_login_with_aligenie_user_info_generated_by_phone_number_async(
+        self,
+        request: ali_geniessp__1__0_models.AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberRequest,
+    ) -> ali_geniessp__1__0_models.AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_geniessp__1__0_models.AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberHeaders()
+        return await self.auth_login_with_aligenie_user_info_generated_by_phone_number_with_options_async(request, headers, runtime)
+
+    def auth_login_with_aligenie_user_info_generated_by_phone_number_with_options(
+        self,
+        request: ali_geniessp__1__0_models.AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberRequest,
+        headers: ali_geniessp__1__0_models.AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_geniessp__1__0_models.AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AuthLoginWithAligenieUserInfoGeneratedByPhoneNumber',
+            version='ssp_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ssp/authLoginWithAligenieUserInfoGeneratedByPhoneNumber',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_geniessp__1__0_models.AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def auth_login_with_aligenie_user_info_generated_by_phone_number_with_options_async(
+        self,
+        request: ali_geniessp__1__0_models.AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberRequest,
+        headers: ali_geniessp__1__0_models.AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_geniessp__1__0_models.AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AuthLoginWithAligenieUserInfoGeneratedByPhoneNumber',
+            version='ssp_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ssp/authLoginWithAligenieUserInfoGeneratedByPhoneNumber',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_geniessp__1__0_models.AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def auth_login_with_taobao_user_info(
+        self,
+        request: ali_geniessp__1__0_models.AuthLoginWithTaobaoUserInfoRequest,
+    ) -> ali_geniessp__1__0_models.AuthLoginWithTaobaoUserInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_geniessp__1__0_models.AuthLoginWithTaobaoUserInfoHeaders()
+        return self.auth_login_with_taobao_user_info_with_options(request, headers, runtime)
+
+    async def auth_login_with_taobao_user_info_async(
+        self,
+        request: ali_geniessp__1__0_models.AuthLoginWithTaobaoUserInfoRequest,
+    ) -> ali_geniessp__1__0_models.AuthLoginWithTaobaoUserInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_geniessp__1__0_models.AuthLoginWithTaobaoUserInfoHeaders()
+        return await self.auth_login_with_taobao_user_info_with_options_async(request, headers, runtime)
+
+    def auth_login_with_taobao_user_info_with_options(
+        self,
+        request: ali_geniessp__1__0_models.AuthLoginWithTaobaoUserInfoRequest,
+        headers: ali_geniessp__1__0_models.AuthLoginWithTaobaoUserInfoHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_geniessp__1__0_models.AuthLoginWithTaobaoUserInfoResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.encrypted_taobao_user_identifier):
+            body['EncryptedTaobaoUserIdentifier'] = request.encrypted_taobao_user_identifier
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AuthLoginWithTaobaoUserInfo',
+            version='ssp_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ssp/authLoginWithTaobaoUserInfo',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_geniessp__1__0_models.AuthLoginWithTaobaoUserInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def auth_login_with_taobao_user_info_with_options_async(
+        self,
+        request: ali_geniessp__1__0_models.AuthLoginWithTaobaoUserInfoRequest,
+        headers: ali_geniessp__1__0_models.AuthLoginWithTaobaoUserInfoHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_geniessp__1__0_models.AuthLoginWithTaobaoUserInfoResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.encrypted_taobao_user_identifier):
+            body['EncryptedTaobaoUserIdentifier'] = request.encrypted_taobao_user_identifier
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AuthLoginWithTaobaoUserInfo',
+            version='ssp_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ssp/authLoginWithTaobaoUserInfo',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_geniessp__1__0_models.AuthLoginWithTaobaoUserInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def auth_login_with_third_user_info(
+        self,
+        request: ali_geniessp__1__0_models.AuthLoginWithThirdUserInfoRequest,
+    ) -> ali_geniessp__1__0_models.AuthLoginWithThirdUserInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_geniessp__1__0_models.AuthLoginWithThirdUserInfoHeaders()
+        return self.auth_login_with_third_user_info_with_options(request, headers, runtime)
+
+    async def auth_login_with_third_user_info_async(
+        self,
+        request: ali_geniessp__1__0_models.AuthLoginWithThirdUserInfoRequest,
+    ) -> ali_geniessp__1__0_models.AuthLoginWithThirdUserInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_geniessp__1__0_models.AuthLoginWithThirdUserInfoHeaders()
+        return await self.auth_login_with_third_user_info_with_options_async(request, headers, runtime)
+
+    def auth_login_with_third_user_info_with_options(
+        self,
+        tmp_req: ali_geniessp__1__0_models.AuthLoginWithThirdUserInfoRequest,
+        headers: ali_geniessp__1__0_models.AuthLoginWithThirdUserInfoHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_geniessp__1__0_models.AuthLoginWithThirdUserInfoResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ali_geniessp__1__0_models.AuthLoginWithThirdUserInfoShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ext_info):
+            request.ext_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ext_info, 'ExtInfo', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.ext_info_shrink):
+            body['ExtInfo'] = request.ext_info_shrink
+        if not UtilClient.is_unset(request.scene_code):
+            body['SceneCode'] = request.scene_code
+        if not UtilClient.is_unset(request.third_user_identifier):
+            body['ThirdUserIdentifier'] = request.third_user_identifier
+        if not UtilClient.is_unset(request.third_user_type):
+            body['ThirdUserType'] = request.third_user_type
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AuthLoginWithThirdUserInfo',
+            version='ssp_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ssp/authLoginWithThirdUserInfo',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_geniessp__1__0_models.AuthLoginWithThirdUserInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def auth_login_with_third_user_info_with_options_async(
+        self,
+        tmp_req: ali_geniessp__1__0_models.AuthLoginWithThirdUserInfoRequest,
+        headers: ali_geniessp__1__0_models.AuthLoginWithThirdUserInfoHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_geniessp__1__0_models.AuthLoginWithThirdUserInfoResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ali_geniessp__1__0_models.AuthLoginWithThirdUserInfoShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ext_info):
+            request.ext_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ext_info, 'ExtInfo', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.ext_info_shrink):
+            body['ExtInfo'] = request.ext_info_shrink
+        if not UtilClient.is_unset(request.scene_code):
+            body['SceneCode'] = request.scene_code
+        if not UtilClient.is_unset(request.third_user_identifier):
+            body['ThirdUserIdentifier'] = request.third_user_identifier
+        if not UtilClient.is_unset(request.third_user_type):
+            body['ThirdUserType'] = request.third_user_type
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AuthLoginWithThirdUserInfo',
+            version='ssp_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ssp/authLoginWithThirdUserInfo',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_geniessp__1__0_models.AuthLoginWithThirdUserInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
     def check_auth_code_bind_for_ext(
         self,
         request: ali_geniessp__1__0_models.CheckAuthCodeBindForExtRequest,
@@ -1154,6 +1542,304 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ali_geniessp__1__0_models.DeviceControlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def ecology_openness_authenticate(
+        self,
+        request: ali_geniessp__1__0_models.EcologyOpennessAuthenticateRequest,
+    ) -> ali_geniessp__1__0_models.EcologyOpennessAuthenticateResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_geniessp__1__0_models.EcologyOpennessAuthenticateHeaders()
+        return self.ecology_openness_authenticate_with_options(request, headers, runtime)
+
+    async def ecology_openness_authenticate_async(
+        self,
+        request: ali_geniessp__1__0_models.EcologyOpennessAuthenticateRequest,
+    ) -> ali_geniessp__1__0_models.EcologyOpennessAuthenticateResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_geniessp__1__0_models.EcologyOpennessAuthenticateHeaders()
+        return await self.ecology_openness_authenticate_with_options_async(request, headers, runtime)
+
+    def ecology_openness_authenticate_with_options(
+        self,
+        request: ali_geniessp__1__0_models.EcologyOpennessAuthenticateRequest,
+        headers: ali_geniessp__1__0_models.EcologyOpennessAuthenticateHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_geniessp__1__0_models.EcologyOpennessAuthenticateResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.encode_key):
+            body['EncodeKey'] = request.encode_key
+        if not UtilClient.is_unset(request.encode_type):
+            body['EncodeType'] = request.encode_type
+        if not UtilClient.is_unset(request.login_state_access_token):
+            body['LoginStateAccessToken'] = request.login_state_access_token
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='EcologyOpennessAuthenticate',
+            version='ssp_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ssp/ecologyOpennessAuthenticate',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_geniessp__1__0_models.EcologyOpennessAuthenticateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def ecology_openness_authenticate_with_options_async(
+        self,
+        request: ali_geniessp__1__0_models.EcologyOpennessAuthenticateRequest,
+        headers: ali_geniessp__1__0_models.EcologyOpennessAuthenticateHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_geniessp__1__0_models.EcologyOpennessAuthenticateResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.encode_key):
+            body['EncodeKey'] = request.encode_key
+        if not UtilClient.is_unset(request.encode_type):
+            body['EncodeType'] = request.encode_type
+        if not UtilClient.is_unset(request.login_state_access_token):
+            body['LoginStateAccessToken'] = request.login_state_access_token
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='EcologyOpennessAuthenticate',
+            version='ssp_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ssp/ecologyOpennessAuthenticate',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_geniessp__1__0_models.EcologyOpennessAuthenticateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def ecology_openness_send_verification_code(
+        self,
+        request: ali_geniessp__1__0_models.EcologyOpennessSendVerificationCodeRequest,
+    ) -> ali_geniessp__1__0_models.EcologyOpennessSendVerificationCodeResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_geniessp__1__0_models.EcologyOpennessSendVerificationCodeHeaders()
+        return self.ecology_openness_send_verification_code_with_options(request, headers, runtime)
+
+    async def ecology_openness_send_verification_code_async(
+        self,
+        request: ali_geniessp__1__0_models.EcologyOpennessSendVerificationCodeRequest,
+    ) -> ali_geniessp__1__0_models.EcologyOpennessSendVerificationCodeResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_geniessp__1__0_models.EcologyOpennessSendVerificationCodeHeaders()
+        return await self.ecology_openness_send_verification_code_with_options_async(request, headers, runtime)
+
+    def ecology_openness_send_verification_code_with_options(
+        self,
+        request: ali_geniessp__1__0_models.EcologyOpennessSendVerificationCodeRequest,
+        headers: ali_geniessp__1__0_models.EcologyOpennessSendVerificationCodeHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_geniessp__1__0_models.EcologyOpennessSendVerificationCodeResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.phone_number):
+            body['PhoneNumber'] = request.phone_number
+        if not UtilClient.is_unset(request.region):
+            body['Region'] = request.region
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='EcologyOpennessSendVerificationCode',
+            version='ssp_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ssp/ecologyOpennessSendVerificationCode',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_geniessp__1__0_models.EcologyOpennessSendVerificationCodeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def ecology_openness_send_verification_code_with_options_async(
+        self,
+        request: ali_geniessp__1__0_models.EcologyOpennessSendVerificationCodeRequest,
+        headers: ali_geniessp__1__0_models.EcologyOpennessSendVerificationCodeHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_geniessp__1__0_models.EcologyOpennessSendVerificationCodeResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.phone_number):
+            body['PhoneNumber'] = request.phone_number
+        if not UtilClient.is_unset(request.region):
+            body['Region'] = request.region
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='EcologyOpennessSendVerificationCode',
+            version='ssp_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ssp/ecologyOpennessSendVerificationCode',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_geniessp__1__0_models.EcologyOpennessSendVerificationCodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def find_userlist_to_auth_login_with_phone_number(
+        self,
+        request: ali_geniessp__1__0_models.FindUserlistToAuthLoginWithPhoneNumberRequest,
+    ) -> ali_geniessp__1__0_models.FindUserlistToAuthLoginWithPhoneNumberResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_geniessp__1__0_models.FindUserlistToAuthLoginWithPhoneNumberHeaders()
+        return self.find_userlist_to_auth_login_with_phone_number_with_options(request, headers, runtime)
+
+    async def find_userlist_to_auth_login_with_phone_number_async(
+        self,
+        request: ali_geniessp__1__0_models.FindUserlistToAuthLoginWithPhoneNumberRequest,
+    ) -> ali_geniessp__1__0_models.FindUserlistToAuthLoginWithPhoneNumberResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_geniessp__1__0_models.FindUserlistToAuthLoginWithPhoneNumberHeaders()
+        return await self.find_userlist_to_auth_login_with_phone_number_with_options_async(request, headers, runtime)
+
+    def find_userlist_to_auth_login_with_phone_number_with_options(
+        self,
+        request: ali_geniessp__1__0_models.FindUserlistToAuthLoginWithPhoneNumberRequest,
+        headers: ali_geniessp__1__0_models.FindUserlistToAuthLoginWithPhoneNumberHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_geniessp__1__0_models.FindUserlistToAuthLoginWithPhoneNumberResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.code):
+            query['Code'] = request.code
+        if not UtilClient.is_unset(request.phone_number):
+            query['PhoneNumber'] = request.phone_number
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.session_id):
+            query['SessionId'] = request.session_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='FindUserlistToAuthLoginWithPhoneNumber',
+            version='ssp_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ssp/findUserlistToAuthLoginWithPhoneNumber',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_geniessp__1__0_models.FindUserlistToAuthLoginWithPhoneNumberResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def find_userlist_to_auth_login_with_phone_number_with_options_async(
+        self,
+        request: ali_geniessp__1__0_models.FindUserlistToAuthLoginWithPhoneNumberRequest,
+        headers: ali_geniessp__1__0_models.FindUserlistToAuthLoginWithPhoneNumberHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_geniessp__1__0_models.FindUserlistToAuthLoginWithPhoneNumberResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.code):
+            query['Code'] = request.code
+        if not UtilClient.is_unset(request.phone_number):
+            query['PhoneNumber'] = request.phone_number
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.session_id):
+            query['SessionId'] = request.session_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='FindUserlistToAuthLoginWithPhoneNumber',
+            version='ssp_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ssp/findUserlistToAuthLoginWithPhoneNumber',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_geniessp__1__0_models.FindUserlistToAuthLoginWithPhoneNumberResponse(),
             await self.call_api_async(params, req, runtime)
         )
 

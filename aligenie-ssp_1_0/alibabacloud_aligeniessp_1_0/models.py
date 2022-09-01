@@ -914,6 +914,901 @@ class AddSubResponse(TeaModel):
         return self
 
 
+class AuthLoginWithAligenieUserInfoHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_aligenie_access_token: str = None,
+        authorization: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_aligenie_access_token = x_acs_aligenie_access_token
+        self.authorization = authorization
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_aligenie_access_token is not None:
+            result['x-acs-aligenie-access-token'] = self.x_acs_aligenie_access_token
+        if self.authorization is not None:
+            result['Authorization'] = self.authorization
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-aligenie-access-token') is not None:
+            self.x_acs_aligenie_access_token = m.get('x-acs-aligenie-access-token')
+        if m.get('Authorization') is not None:
+            self.authorization = m.get('Authorization')
+        return self
+
+
+class AuthLoginWithAligenieUserInfoRequest(TeaModel):
+    def __init__(
+        self,
+        encrypted_aligenie_user_identifier: str = None,
+        session_id: str = None,
+    ):
+        self.encrypted_aligenie_user_identifier = encrypted_aligenie_user_identifier
+        self.session_id = session_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.encrypted_aligenie_user_identifier is not None:
+            result['EncryptedAligenieUserIdentifier'] = self.encrypted_aligenie_user_identifier
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EncryptedAligenieUserIdentifier') is not None:
+            self.encrypted_aligenie_user_identifier = m.get('EncryptedAligenieUserIdentifier')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        return self
+
+
+class AuthLoginWithAligenieUserInfoResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        expired_time_long: int = None,
+        login_state_access_token: str = None,
+    ):
+        self.expired_time_long = expired_time_long
+        self.login_state_access_token = login_state_access_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.expired_time_long is not None:
+            result['ExpiredTimeLong'] = self.expired_time_long
+        if self.login_state_access_token is not None:
+            result['LoginStateAccessToken'] = self.login_state_access_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExpiredTimeLong') is not None:
+            self.expired_time_long = m.get('ExpiredTimeLong')
+        if m.get('LoginStateAccessToken') is not None:
+            self.login_state_access_token = m.get('LoginStateAccessToken')
+        return self
+
+
+class AuthLoginWithAligenieUserInfoResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        message: str = None,
+        request_id: str = None,
+        result: AuthLoginWithAligenieUserInfoResponseBodyResult = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.result = result
+        self.success = success
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            temp_model = AuthLoginWithAligenieUserInfoResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class AuthLoginWithAligenieUserInfoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AuthLoginWithAligenieUserInfoResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AuthLoginWithAligenieUserInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_aligenie_access_token: str = None,
+        authorization: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_aligenie_access_token = x_acs_aligenie_access_token
+        self.authorization = authorization
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_aligenie_access_token is not None:
+            result['x-acs-aligenie-access-token'] = self.x_acs_aligenie_access_token
+        if self.authorization is not None:
+            result['Authorization'] = self.authorization
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-aligenie-access-token') is not None:
+            self.x_acs_aligenie_access_token = m.get('x-acs-aligenie-access-token')
+        if m.get('Authorization') is not None:
+            self.authorization = m.get('Authorization')
+        return self
+
+
+class AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberRequest(TeaModel):
+    def __init__(
+        self,
+        session_id: str = None,
+    ):
+        self.session_id = session_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        return self
+
+
+class AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        expired_time_long: int = None,
+        login_state_access_token: str = None,
+    ):
+        self.expired_time_long = expired_time_long
+        self.login_state_access_token = login_state_access_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.expired_time_long is not None:
+            result['ExpiredTimeLong'] = self.expired_time_long
+        if self.login_state_access_token is not None:
+            result['LoginStateAccessToken'] = self.login_state_access_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExpiredTimeLong') is not None:
+            self.expired_time_long = m.get('ExpiredTimeLong')
+        if m.get('LoginStateAccessToken') is not None:
+            self.login_state_access_token = m.get('LoginStateAccessToken')
+        return self
+
+
+class AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        message: str = None,
+        request_id: str = None,
+        result: AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberResponseBodyResult = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.result = result
+        self.success = success
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            temp_model = AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AuthLoginWithAligenieUserInfoGeneratedByPhoneNumberResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class AuthLoginWithTaobaoUserInfoHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_aligenie_access_token: str = None,
+        authorization: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_aligenie_access_token = x_acs_aligenie_access_token
+        self.authorization = authorization
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_aligenie_access_token is not None:
+            result['x-acs-aligenie-access-token'] = self.x_acs_aligenie_access_token
+        if self.authorization is not None:
+            result['Authorization'] = self.authorization
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-aligenie-access-token') is not None:
+            self.x_acs_aligenie_access_token = m.get('x-acs-aligenie-access-token')
+        if m.get('Authorization') is not None:
+            self.authorization = m.get('Authorization')
+        return self
+
+
+class AuthLoginWithTaobaoUserInfoRequest(TeaModel):
+    def __init__(
+        self,
+        encrypted_taobao_user_identifier: str = None,
+        session_id: str = None,
+    ):
+        self.encrypted_taobao_user_identifier = encrypted_taobao_user_identifier
+        self.session_id = session_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.encrypted_taobao_user_identifier is not None:
+            result['EncryptedTaobaoUserIdentifier'] = self.encrypted_taobao_user_identifier
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EncryptedTaobaoUserIdentifier') is not None:
+            self.encrypted_taobao_user_identifier = m.get('EncryptedTaobaoUserIdentifier')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        return self
+
+
+class AuthLoginWithTaobaoUserInfoResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        expired_time_long: int = None,
+        login_state_access_token: str = None,
+    ):
+        self.expired_time_long = expired_time_long
+        self.login_state_access_token = login_state_access_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.expired_time_long is not None:
+            result['ExpiredTimeLong'] = self.expired_time_long
+        if self.login_state_access_token is not None:
+            result['LoginStateAccessToken'] = self.login_state_access_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExpiredTimeLong') is not None:
+            self.expired_time_long = m.get('ExpiredTimeLong')
+        if m.get('LoginStateAccessToken') is not None:
+            self.login_state_access_token = m.get('LoginStateAccessToken')
+        return self
+
+
+class AuthLoginWithTaobaoUserInfoResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        message: str = None,
+        request_id: str = None,
+        result: AuthLoginWithTaobaoUserInfoResponseBodyResult = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.result = result
+        self.success = success
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            temp_model = AuthLoginWithTaobaoUserInfoResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class AuthLoginWithTaobaoUserInfoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AuthLoginWithTaobaoUserInfoResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AuthLoginWithTaobaoUserInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class AuthLoginWithThirdUserInfoHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_aligenie_access_token: str = None,
+        authorization: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_aligenie_access_token = x_acs_aligenie_access_token
+        self.authorization = authorization
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_aligenie_access_token is not None:
+            result['x-acs-aligenie-access-token'] = self.x_acs_aligenie_access_token
+        if self.authorization is not None:
+            result['Authorization'] = self.authorization
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-aligenie-access-token') is not None:
+            self.x_acs_aligenie_access_token = m.get('x-acs-aligenie-access-token')
+        if m.get('Authorization') is not None:
+            self.authorization = m.get('Authorization')
+        return self
+
+
+class AuthLoginWithThirdUserInfoRequest(TeaModel):
+    def __init__(
+        self,
+        ext_info: Dict[str, Any] = None,
+        scene_code: str = None,
+        third_user_identifier: str = None,
+        third_user_type: str = None,
+    ):
+        self.ext_info = ext_info
+        self.scene_code = scene_code
+        self.third_user_identifier = third_user_identifier
+        self.third_user_type = third_user_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ext_info is not None:
+            result['ExtInfo'] = self.ext_info
+        if self.scene_code is not None:
+            result['SceneCode'] = self.scene_code
+        if self.third_user_identifier is not None:
+            result['ThirdUserIdentifier'] = self.third_user_identifier
+        if self.third_user_type is not None:
+            result['ThirdUserType'] = self.third_user_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExtInfo') is not None:
+            self.ext_info = m.get('ExtInfo')
+        if m.get('SceneCode') is not None:
+            self.scene_code = m.get('SceneCode')
+        if m.get('ThirdUserIdentifier') is not None:
+            self.third_user_identifier = m.get('ThirdUserIdentifier')
+        if m.get('ThirdUserType') is not None:
+            self.third_user_type = m.get('ThirdUserType')
+        return self
+
+
+class AuthLoginWithThirdUserInfoShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        ext_info_shrink: str = None,
+        scene_code: str = None,
+        third_user_identifier: str = None,
+        third_user_type: str = None,
+    ):
+        self.ext_info_shrink = ext_info_shrink
+        self.scene_code = scene_code
+        self.third_user_identifier = third_user_identifier
+        self.third_user_type = third_user_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ext_info_shrink is not None:
+            result['ExtInfo'] = self.ext_info_shrink
+        if self.scene_code is not None:
+            result['SceneCode'] = self.scene_code
+        if self.third_user_identifier is not None:
+            result['ThirdUserIdentifier'] = self.third_user_identifier
+        if self.third_user_type is not None:
+            result['ThirdUserType'] = self.third_user_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExtInfo') is not None:
+            self.ext_info_shrink = m.get('ExtInfo')
+        if m.get('SceneCode') is not None:
+            self.scene_code = m.get('SceneCode')
+        if m.get('ThirdUserIdentifier') is not None:
+            self.third_user_identifier = m.get('ThirdUserIdentifier')
+        if m.get('ThirdUserType') is not None:
+            self.third_user_type = m.get('ThirdUserType')
+        return self
+
+
+class AuthLoginWithThirdUserInfoResponseBodyDataObj(TeaModel):
+    def __init__(
+        self,
+        session_id: str = None,
+    ):
+        self.session_id = session_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        return self
+
+
+class AuthLoginWithThirdUserInfoResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        expired_time_long: int = None,
+        login_state_access_token: str = None,
+    ):
+        self.expired_time_long = expired_time_long
+        self.login_state_access_token = login_state_access_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.expired_time_long is not None:
+            result['ExpiredTimeLong'] = self.expired_time_long
+        if self.login_state_access_token is not None:
+            result['LoginStateAccessToken'] = self.login_state_access_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExpiredTimeLong') is not None:
+            self.expired_time_long = m.get('ExpiredTimeLong')
+        if m.get('LoginStateAccessToken') is not None:
+            self.login_state_access_token = m.get('LoginStateAccessToken')
+        return self
+
+
+class AuthLoginWithThirdUserInfoResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data_obj: AuthLoginWithThirdUserInfoResponseBodyDataObj = None,
+        message: str = None,
+        request_id: str = None,
+        result: AuthLoginWithThirdUserInfoResponseBodyResult = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data_obj = data_obj
+        self.message = message
+        self.request_id = request_id
+        self.result = result
+        self.success = success
+
+    def validate(self):
+        if self.data_obj:
+            self.data_obj.validate()
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data_obj is not None:
+            result['DataObj'] = self.data_obj.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('DataObj') is not None:
+            temp_model = AuthLoginWithThirdUserInfoResponseBodyDataObj()
+            self.data_obj = temp_model.from_map(m['DataObj'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            temp_model = AuthLoginWithThirdUserInfoResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class AuthLoginWithThirdUserInfoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AuthLoginWithThirdUserInfoResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AuthLoginWithThirdUserInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CheckAuthCodeBindForExtHeaders(TeaModel):
     def __init__(
         self,
@@ -4195,6 +5090,749 @@ class DeviceControlResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeviceControlResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class EcologyOpennessAuthenticateHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_aligenie_access_token: str = None,
+        authorization: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_aligenie_access_token = x_acs_aligenie_access_token
+        self.authorization = authorization
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_aligenie_access_token is not None:
+            result['x-acs-aligenie-access-token'] = self.x_acs_aligenie_access_token
+        if self.authorization is not None:
+            result['Authorization'] = self.authorization
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-aligenie-access-token') is not None:
+            self.x_acs_aligenie_access_token = m.get('x-acs-aligenie-access-token')
+        if m.get('Authorization') is not None:
+            self.authorization = m.get('Authorization')
+        return self
+
+
+class EcologyOpennessAuthenticateRequest(TeaModel):
+    def __init__(
+        self,
+        encode_key: str = None,
+        encode_type: str = None,
+        login_state_access_token: str = None,
+    ):
+        self.encode_key = encode_key
+        self.encode_type = encode_type
+        self.login_state_access_token = login_state_access_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.encode_key is not None:
+            result['EncodeKey'] = self.encode_key
+        if self.encode_type is not None:
+            result['EncodeType'] = self.encode_type
+        if self.login_state_access_token is not None:
+            result['LoginStateAccessToken'] = self.login_state_access_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EncodeKey') is not None:
+            self.encode_key = m.get('EncodeKey')
+        if m.get('EncodeType') is not None:
+            self.encode_type = m.get('EncodeType')
+        if m.get('LoginStateAccessToken') is not None:
+            self.login_state_access_token = m.get('LoginStateAccessToken')
+        return self
+
+
+class EcologyOpennessAuthenticateResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        encode_key: str = None,
+        encode_type: str = None,
+        scene_code: str = None,
+        third_user_identifier: str = None,
+        third_user_type: str = None,
+        user_open_id: str = None,
+    ):
+        self.encode_key = encode_key
+        self.encode_type = encode_type
+        self.scene_code = scene_code
+        self.third_user_identifier = third_user_identifier
+        self.third_user_type = third_user_type
+        self.user_open_id = user_open_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.encode_key is not None:
+            result['EncodeKey'] = self.encode_key
+        if self.encode_type is not None:
+            result['EncodeType'] = self.encode_type
+        if self.scene_code is not None:
+            result['SceneCode'] = self.scene_code
+        if self.third_user_identifier is not None:
+            result['ThirdUserIdentifier'] = self.third_user_identifier
+        if self.third_user_type is not None:
+            result['ThirdUserType'] = self.third_user_type
+        if self.user_open_id is not None:
+            result['UserOpenId'] = self.user_open_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EncodeKey') is not None:
+            self.encode_key = m.get('EncodeKey')
+        if m.get('EncodeType') is not None:
+            self.encode_type = m.get('EncodeType')
+        if m.get('SceneCode') is not None:
+            self.scene_code = m.get('SceneCode')
+        if m.get('ThirdUserIdentifier') is not None:
+            self.third_user_identifier = m.get('ThirdUserIdentifier')
+        if m.get('ThirdUserType') is not None:
+            self.third_user_type = m.get('ThirdUserType')
+        if m.get('UserOpenId') is not None:
+            self.user_open_id = m.get('UserOpenId')
+        return self
+
+
+class EcologyOpennessAuthenticateResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        message: str = None,
+        request_id: str = None,
+        result: EcologyOpennessAuthenticateResponseBodyResult = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.result = result
+        self.success = success
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            temp_model = EcologyOpennessAuthenticateResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class EcologyOpennessAuthenticateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: EcologyOpennessAuthenticateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = EcologyOpennessAuthenticateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class EcologyOpennessSendVerificationCodeHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_aligenie_access_token: str = None,
+        authorization: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_aligenie_access_token = x_acs_aligenie_access_token
+        self.authorization = authorization
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_aligenie_access_token is not None:
+            result['x-acs-aligenie-access-token'] = self.x_acs_aligenie_access_token
+        if self.authorization is not None:
+            result['Authorization'] = self.authorization
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-aligenie-access-token') is not None:
+            self.x_acs_aligenie_access_token = m.get('x-acs-aligenie-access-token')
+        if m.get('Authorization') is not None:
+            self.authorization = m.get('Authorization')
+        return self
+
+
+class EcologyOpennessSendVerificationCodeRequest(TeaModel):
+    def __init__(
+        self,
+        phone_number: str = None,
+        region: str = None,
+        session_id: str = None,
+    ):
+        self.phone_number = phone_number
+        self.region = region
+        self.session_id = session_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.phone_number is not None:
+            result['PhoneNumber'] = self.phone_number
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PhoneNumber') is not None:
+            self.phone_number = m.get('PhoneNumber')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        return self
+
+
+class EcologyOpennessSendVerificationCodeResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        expire_in: int = None,
+        repeat_interval: int = None,
+    ):
+        self.expire_in = expire_in
+        self.repeat_interval = repeat_interval
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.expire_in is not None:
+            result['ExpireIn'] = self.expire_in
+        if self.repeat_interval is not None:
+            result['RepeatInterval'] = self.repeat_interval
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExpireIn') is not None:
+            self.expire_in = m.get('ExpireIn')
+        if m.get('RepeatInterval') is not None:
+            self.repeat_interval = m.get('RepeatInterval')
+        return self
+
+
+class EcologyOpennessSendVerificationCodeResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        message: str = None,
+        request_id: str = None,
+        result: EcologyOpennessSendVerificationCodeResponseBodyResult = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.result = result
+        self.success = success
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            temp_model = EcologyOpennessSendVerificationCodeResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class EcologyOpennessSendVerificationCodeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: EcologyOpennessSendVerificationCodeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = EcologyOpennessSendVerificationCodeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class FindUserlistToAuthLoginWithPhoneNumberHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_aligenie_access_token: str = None,
+        authorization: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_aligenie_access_token = x_acs_aligenie_access_token
+        self.authorization = authorization
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_aligenie_access_token is not None:
+            result['x-acs-aligenie-access-token'] = self.x_acs_aligenie_access_token
+        if self.authorization is not None:
+            result['Authorization'] = self.authorization
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-aligenie-access-token') is not None:
+            self.x_acs_aligenie_access_token = m.get('x-acs-aligenie-access-token')
+        if m.get('Authorization') is not None:
+            self.authorization = m.get('Authorization')
+        return self
+
+
+class FindUserlistToAuthLoginWithPhoneNumberRequest(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        phone_number: str = None,
+        region: str = None,
+        session_id: str = None,
+    ):
+        self.code = code
+        self.phone_number = phone_number
+        self.region = region
+        self.session_id = session_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.phone_number is not None:
+            result['PhoneNumber'] = self.phone_number
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('PhoneNumber') is not None:
+            self.phone_number = m.get('PhoneNumber')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        return self
+
+
+class FindUserlistToAuthLoginWithPhoneNumberResponseBodyDataObj(TeaModel):
+    def __init__(
+        self,
+        session_id: str = None,
+    ):
+        self.session_id = session_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        return self
+
+
+class FindUserlistToAuthLoginWithPhoneNumberResponseBodyResultUserListToAuthLogin(TeaModel):
+    def __init__(
+        self,
+        avatar: str = None,
+        encrypted_user_identifier: str = None,
+        finding_type: str = None,
+        nickname: str = None,
+        user_type: str = None,
+    ):
+        self.avatar = avatar
+        self.encrypted_user_identifier = encrypted_user_identifier
+        self.finding_type = finding_type
+        self.nickname = nickname
+        self.user_type = user_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.avatar is not None:
+            result['Avatar'] = self.avatar
+        if self.encrypted_user_identifier is not None:
+            result['EncryptedUserIdentifier'] = self.encrypted_user_identifier
+        if self.finding_type is not None:
+            result['FindingType'] = self.finding_type
+        if self.nickname is not None:
+            result['Nickname'] = self.nickname
+        if self.user_type is not None:
+            result['UserType'] = self.user_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Avatar') is not None:
+            self.avatar = m.get('Avatar')
+        if m.get('EncryptedUserIdentifier') is not None:
+            self.encrypted_user_identifier = m.get('EncryptedUserIdentifier')
+        if m.get('FindingType') is not None:
+            self.finding_type = m.get('FindingType')
+        if m.get('Nickname') is not None:
+            self.nickname = m.get('Nickname')
+        if m.get('UserType') is not None:
+            self.user_type = m.get('UserType')
+        return self
+
+
+class FindUserlistToAuthLoginWithPhoneNumberResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        user_list_to_auth_login: List[FindUserlistToAuthLoginWithPhoneNumberResponseBodyResultUserListToAuthLogin] = None,
+    ):
+        self.user_list_to_auth_login = user_list_to_auth_login
+
+    def validate(self):
+        if self.user_list_to_auth_login:
+            for k in self.user_list_to_auth_login:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['UserListToAuthLogin'] = []
+        if self.user_list_to_auth_login is not None:
+            for k in self.user_list_to_auth_login:
+                result['UserListToAuthLogin'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.user_list_to_auth_login = []
+        if m.get('UserListToAuthLogin') is not None:
+            for k in m.get('UserListToAuthLogin'):
+                temp_model = FindUserlistToAuthLoginWithPhoneNumberResponseBodyResultUserListToAuthLogin()
+                self.user_list_to_auth_login.append(temp_model.from_map(k))
+        return self
+
+
+class FindUserlistToAuthLoginWithPhoneNumberResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data_obj: FindUserlistToAuthLoginWithPhoneNumberResponseBodyDataObj = None,
+        message: str = None,
+        request_id: str = None,
+        result: FindUserlistToAuthLoginWithPhoneNumberResponseBodyResult = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data_obj = data_obj
+        self.message = message
+        self.request_id = request_id
+        self.result = result
+        self.success = success
+
+    def validate(self):
+        if self.data_obj:
+            self.data_obj.validate()
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data_obj is not None:
+            result['DataObj'] = self.data_obj.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('DataObj') is not None:
+            temp_model = FindUserlistToAuthLoginWithPhoneNumberResponseBodyDataObj()
+            self.data_obj = temp_model.from_map(m['DataObj'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            temp_model = FindUserlistToAuthLoginWithPhoneNumberResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class FindUserlistToAuthLoginWithPhoneNumberResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: FindUserlistToAuthLoginWithPhoneNumberResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = FindUserlistToAuthLoginWithPhoneNumberResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
