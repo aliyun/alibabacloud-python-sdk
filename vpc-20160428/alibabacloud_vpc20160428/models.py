@@ -30950,6 +30950,7 @@ class DescribeNatGatewaysResponseBodyNatGatewaysNatGateway(TeaModel):
         deletion_protection: bool = None,
         description: str = None,
         ecs_metric_enabled: bool = None,
+        eip_bind_mode: str = None,
         expired_time: str = None,
         forward_table_ids: DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayForwardTableIds = None,
         full_nat_table_ids: DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayFullNatTableIds = None,
@@ -30979,6 +30980,7 @@ class DescribeNatGatewaysResponseBodyNatGatewaysNatGateway(TeaModel):
         self.deletion_protection = deletion_protection
         self.description = description
         self.ecs_metric_enabled = ecs_metric_enabled
+        self.eip_bind_mode = eip_bind_mode
         self.expired_time = expired_time
         self.forward_table_ids = forward_table_ids
         self.full_nat_table_ids = full_nat_table_ids
@@ -31034,6 +31036,8 @@ class DescribeNatGatewaysResponseBodyNatGatewaysNatGateway(TeaModel):
             result['Description'] = self.description
         if self.ecs_metric_enabled is not None:
             result['EcsMetricEnabled'] = self.ecs_metric_enabled
+        if self.eip_bind_mode is not None:
+            result['EipBindMode'] = self.eip_bind_mode
         if self.expired_time is not None:
             result['ExpiredTime'] = self.expired_time
         if self.forward_table_ids is not None:
@@ -31094,6 +31098,8 @@ class DescribeNatGatewaysResponseBodyNatGatewaysNatGateway(TeaModel):
             self.description = m.get('Description')
         if m.get('EcsMetricEnabled') is not None:
             self.ecs_metric_enabled = m.get('EcsMetricEnabled')
+        if m.get('EipBindMode') is not None:
+            self.eip_bind_mode = m.get('EipBindMode')
         if m.get('ExpiredTime') is not None:
             self.expired_time = m.get('ExpiredTime')
         if m.get('ForwardTableIds') is not None:
