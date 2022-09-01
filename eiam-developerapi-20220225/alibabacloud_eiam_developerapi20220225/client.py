@@ -1362,6 +1362,104 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
+    def get_user_id_by_username(
+        self,
+        instance_id: str,
+        application_id: str,
+        request: eiam_developerapi_20220225_models.GetUserIdByUsernameRequest,
+    ) -> eiam_developerapi_20220225_models.GetUserIdByUsernameResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = eiam_developerapi_20220225_models.GetUserIdByUsernameHeaders()
+        return self.get_user_id_by_username_with_options(instance_id, application_id, request, headers, runtime)
+
+    async def get_user_id_by_username_async(
+        self,
+        instance_id: str,
+        application_id: str,
+        request: eiam_developerapi_20220225_models.GetUserIdByUsernameRequest,
+    ) -> eiam_developerapi_20220225_models.GetUserIdByUsernameResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = eiam_developerapi_20220225_models.GetUserIdByUsernameHeaders()
+        return await self.get_user_id_by_username_with_options_async(instance_id, application_id, request, headers, runtime)
+
+    def get_user_id_by_username_with_options(
+        self,
+        instance_id: str,
+        application_id: str,
+        request: eiam_developerapi_20220225_models.GetUserIdByUsernameRequest,
+        headers: eiam_developerapi_20220225_models.GetUserIdByUsernameHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_developerapi_20220225_models.GetUserIdByUsernameResponse:
+        UtilClient.validate_model(request)
+        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
+        application_id = OpenApiUtilClient.get_encode_param(application_id)
+        body = {}
+        if not UtilClient.is_unset(request.username):
+            body['username'] = request.username
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetUserIdByUsername',
+            version='2022-02-25',
+            protocol='HTTPS',
+            pathname=f'/v2/{instance_id}/{application_id}/users/_/actions/getUserIdByUsername',
+            method='POST',
+            auth_type='Anonymous',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_developerapi_20220225_models.GetUserIdByUsernameResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_user_id_by_username_with_options_async(
+        self,
+        instance_id: str,
+        application_id: str,
+        request: eiam_developerapi_20220225_models.GetUserIdByUsernameRequest,
+        headers: eiam_developerapi_20220225_models.GetUserIdByUsernameHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_developerapi_20220225_models.GetUserIdByUsernameResponse:
+        UtilClient.validate_model(request)
+        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
+        application_id = OpenApiUtilClient.get_encode_param(application_id)
+        body = {}
+        if not UtilClient.is_unset(request.username):
+            body['username'] = request.username
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetUserIdByUsername',
+            version='2022-02-25',
+            protocol='HTTPS',
+            pathname=f'/v2/{instance_id}/{application_id}/users/_/actions/getUserIdByUsername',
+            method='POST',
+            auth_type='Anonymous',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_developerapi_20220225_models.GetUserIdByUsernameResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
     def get_user_info(
         self,
         instance_id: str,
