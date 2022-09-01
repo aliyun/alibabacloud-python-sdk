@@ -8279,6 +8279,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_dcdn_ipa_user_domains_with_options_async(request, runtime)
 
+    def describe_dcdn_l2vips_with_options(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnL2VipsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeDcdnL2VipsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDcdnL2Vips',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnL2VipsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dcdn_l2vips_with_options_async(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnL2VipsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeDcdnL2VipsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDcdnL2Vips',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnL2VipsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dcdn_l2vips(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnL2VipsRequest,
+    ) -> dcdn_20180115_models.DescribeDcdnL2VipsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dcdn_l2vips_with_options(request, runtime)
+
+    async def describe_dcdn_l2vips_async(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnL2VipsRequest,
+    ) -> dcdn_20180115_models.DescribeDcdnL2VipsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dcdn_l2vips_with_options_async(request, runtime)
+
     def describe_dcdn_l2vips_by_domain_with_options(
         self,
         request: dcdn_20180115_models.DescribeDcdnL2VipsByDomainRequest,

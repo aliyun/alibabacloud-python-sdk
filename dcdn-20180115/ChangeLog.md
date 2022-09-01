@@ -1,3 +1,6 @@
+2022-09-01 Version: 1.0.19
+- Add DescribeDcdnL2Vips.
+
 2022-08-31 Version: 1.0.18
 - Support STS.
 
