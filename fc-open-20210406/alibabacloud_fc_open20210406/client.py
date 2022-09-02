@@ -66,6 +66,132 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def claim_gpuinstance(
+        self,
+        request: fc__open_20210406_models.ClaimGPUInstanceRequest,
+    ) -> fc__open_20210406_models.ClaimGPUInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = fc__open_20210406_models.ClaimGPUInstanceHeaders()
+        return self.claim_gpuinstance_with_options(request, headers, runtime)
+
+    async def claim_gpuinstance_async(
+        self,
+        request: fc__open_20210406_models.ClaimGPUInstanceRequest,
+    ) -> fc__open_20210406_models.ClaimGPUInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = fc__open_20210406_models.ClaimGPUInstanceHeaders()
+        return await self.claim_gpuinstance_with_options_async(request, headers, runtime)
+
+    def claim_gpuinstance_with_options(
+        self,
+        request: fc__open_20210406_models.ClaimGPUInstanceRequest,
+        headers: fc__open_20210406_models.ClaimGPUInstanceHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> fc__open_20210406_models.ClaimGPUInstanceResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.disk_performance_level):
+            body['diskPerformanceLevel'] = request.disk_performance_level
+        if not UtilClient.is_unset(request.disk_size_gigabytes):
+            body['diskSizeGigabytes'] = request.disk_size_gigabytes
+        if not UtilClient.is_unset(request.image_id):
+            body['imageId'] = request.image_id
+        if not UtilClient.is_unset(request.instance_type):
+            body['instanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.internet_bandwidth_out):
+            body['internetBandwidthOut'] = request.internet_bandwidth_out
+        if not UtilClient.is_unset(request.password):
+            body['password'] = request.password
+        if not UtilClient.is_unset(request.source_cidr_ip):
+            body['sourceCidrIp'] = request.source_cidr_ip
+        if not UtilClient.is_unset(request.tcp_port_range):
+            body['tcpPortRange'] = request.tcp_port_range
+        if not UtilClient.is_unset(request.udp_port_range):
+            body['udpPortRange'] = request.udp_port_range
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_fc_account_id):
+            real_headers['X-Fc-Account-Id'] = UtilClient.to_jsonstring(headers.x_fc_account_id)
+        if not UtilClient.is_unset(headers.x_fc_date):
+            real_headers['X-Fc-Date'] = UtilClient.to_jsonstring(headers.x_fc_date)
+        if not UtilClient.is_unset(headers.x_fc_trace_id):
+            real_headers['X-Fc-Trace-Id'] = UtilClient.to_jsonstring(headers.x_fc_trace_id)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ClaimGPUInstance',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/gpuInstances',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            fc__open_20210406_models.ClaimGPUInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def claim_gpuinstance_with_options_async(
+        self,
+        request: fc__open_20210406_models.ClaimGPUInstanceRequest,
+        headers: fc__open_20210406_models.ClaimGPUInstanceHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> fc__open_20210406_models.ClaimGPUInstanceResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.disk_performance_level):
+            body['diskPerformanceLevel'] = request.disk_performance_level
+        if not UtilClient.is_unset(request.disk_size_gigabytes):
+            body['diskSizeGigabytes'] = request.disk_size_gigabytes
+        if not UtilClient.is_unset(request.image_id):
+            body['imageId'] = request.image_id
+        if not UtilClient.is_unset(request.instance_type):
+            body['instanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.internet_bandwidth_out):
+            body['internetBandwidthOut'] = request.internet_bandwidth_out
+        if not UtilClient.is_unset(request.password):
+            body['password'] = request.password
+        if not UtilClient.is_unset(request.source_cidr_ip):
+            body['sourceCidrIp'] = request.source_cidr_ip
+        if not UtilClient.is_unset(request.tcp_port_range):
+            body['tcpPortRange'] = request.tcp_port_range
+        if not UtilClient.is_unset(request.udp_port_range):
+            body['udpPortRange'] = request.udp_port_range
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_fc_account_id):
+            real_headers['X-Fc-Account-Id'] = UtilClient.to_jsonstring(headers.x_fc_account_id)
+        if not UtilClient.is_unset(headers.x_fc_date):
+            real_headers['X-Fc-Date'] = UtilClient.to_jsonstring(headers.x_fc_date)
+        if not UtilClient.is_unset(headers.x_fc_trace_id):
+            real_headers['X-Fc-Trace-Id'] = UtilClient.to_jsonstring(headers.x_fc_trace_id)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ClaimGPUInstance',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/gpuInstances',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            fc__open_20210406_models.ClaimGPUInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
     def create_alias(
         self,
         service_name: str,
@@ -332,6 +458,8 @@ class Client(OpenApiClient):
             body['customContainerConfig'] = request.custom_container_config
         if not UtilClient.is_unset(request.custom_dns):
             body['customDNS'] = request.custom_dns
+        if not UtilClient.is_unset(request.custom_health_check_config):
+            body['customHealthCheckConfig'] = request.custom_health_check_config
         if not UtilClient.is_unset(request.custom_runtime_config):
             body['customRuntimeConfig'] = request.custom_runtime_config
         if not UtilClient.is_unset(request.description):
@@ -411,6 +539,8 @@ class Client(OpenApiClient):
             body['customContainerConfig'] = request.custom_container_config
         if not UtilClient.is_unset(request.custom_dns):
             body['customDNS'] = request.custom_dns
+        if not UtilClient.is_unset(request.custom_health_check_config):
+            body['customHealthCheckConfig'] = request.custom_health_check_config
         if not UtilClient.is_unset(request.custom_runtime_config):
             body['customRuntimeConfig'] = request.custom_runtime_config
         if not UtilClient.is_unset(request.description):
@@ -612,6 +742,8 @@ class Client(OpenApiClient):
             body['logConfig'] = request.log_config
         if not UtilClient.is_unset(request.nas_config):
             body['nasConfig'] = request.nas_config
+        if not UtilClient.is_unset(request.oss_mount_config):
+            body['ossMountConfig'] = request.oss_mount_config
         if not UtilClient.is_unset(request.role):
             body['role'] = request.role
         if not UtilClient.is_unset(request.service_name):
@@ -665,6 +797,8 @@ class Client(OpenApiClient):
             body['logConfig'] = request.log_config
         if not UtilClient.is_unset(request.nas_config):
             body['nasConfig'] = request.nas_config
+        if not UtilClient.is_unset(request.oss_mount_config):
+            body['ossMountConfig'] = request.oss_mount_config
         if not UtilClient.is_unset(request.role):
             body['role'] = request.role
         if not UtilClient.is_unset(request.service_name):
@@ -6076,6 +6210,92 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
+    def release_gpuinstance(
+        self,
+        instance_id: str,
+    ) -> fc__open_20210406_models.ReleaseGPUInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = fc__open_20210406_models.ReleaseGPUInstanceHeaders()
+        return self.release_gpuinstance_with_options(instance_id, headers, runtime)
+
+    async def release_gpuinstance_async(
+        self,
+        instance_id: str,
+    ) -> fc__open_20210406_models.ReleaseGPUInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = fc__open_20210406_models.ReleaseGPUInstanceHeaders()
+        return await self.release_gpuinstance_with_options_async(instance_id, headers, runtime)
+
+    def release_gpuinstance_with_options(
+        self,
+        instance_id: str,
+        headers: fc__open_20210406_models.ReleaseGPUInstanceHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> fc__open_20210406_models.ReleaseGPUInstanceResponse:
+        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_fc_account_id):
+            real_headers['X-Fc-Account-Id'] = UtilClient.to_jsonstring(headers.x_fc_account_id)
+        if not UtilClient.is_unset(headers.x_fc_date):
+            real_headers['X-Fc-Date'] = UtilClient.to_jsonstring(headers.x_fc_date)
+        if not UtilClient.is_unset(headers.x_fc_trace_id):
+            real_headers['X-Fc-Trace-Id'] = UtilClient.to_jsonstring(headers.x_fc_trace_id)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers
+        )
+        params = open_api_models.Params(
+            action='ReleaseGPUInstance',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/gpuInstances/{instance_id}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            fc__open_20210406_models.ReleaseGPUInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def release_gpuinstance_with_options_async(
+        self,
+        instance_id: str,
+        headers: fc__open_20210406_models.ReleaseGPUInstanceHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> fc__open_20210406_models.ReleaseGPUInstanceResponse:
+        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_fc_account_id):
+            real_headers['X-Fc-Account-Id'] = UtilClient.to_jsonstring(headers.x_fc_account_id)
+        if not UtilClient.is_unset(headers.x_fc_date):
+            real_headers['X-Fc-Date'] = UtilClient.to_jsonstring(headers.x_fc_date)
+        if not UtilClient.is_unset(headers.x_fc_trace_id):
+            real_headers['X-Fc-Trace-Id'] = UtilClient.to_jsonstring(headers.x_fc_trace_id)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers
+        )
+        params = open_api_models.Params(
+            action='ReleaseGPUInstance',
+            version='2021-04-06',
+            protocol='HTTPS',
+            pathname=f'/2021-04-06/gpuInstances/{instance_id}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            fc__open_20210406_models.ReleaseGPUInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
     def stop_stateful_async_invocation(
         self,
         service_name: str,
@@ -6668,6 +6888,8 @@ class Client(OpenApiClient):
             body['customContainerConfig'] = request.custom_container_config
         if not UtilClient.is_unset(request.custom_dns):
             body['customDNS'] = request.custom_dns
+        if not UtilClient.is_unset(request.custom_health_check_config):
+            body['customHealthCheckConfig'] = request.custom_health_check_config
         if not UtilClient.is_unset(request.custom_runtime_config):
             body['customRuntimeConfig'] = request.custom_runtime_config
         if not UtilClient.is_unset(request.description):
@@ -6749,6 +6971,8 @@ class Client(OpenApiClient):
             body['customContainerConfig'] = request.custom_container_config
         if not UtilClient.is_unset(request.custom_dns):
             body['customDNS'] = request.custom_dns
+        if not UtilClient.is_unset(request.custom_health_check_config):
+            body['customHealthCheckConfig'] = request.custom_health_check_config
         if not UtilClient.is_unset(request.custom_runtime_config):
             body['customRuntimeConfig'] = request.custom_runtime_config
         if not UtilClient.is_unset(request.description):
@@ -6844,6 +7068,8 @@ class Client(OpenApiClient):
             body['logConfig'] = request.log_config
         if not UtilClient.is_unset(request.nas_config):
             body['nasConfig'] = request.nas_config
+        if not UtilClient.is_unset(request.oss_mount_config):
+            body['ossMountConfig'] = request.oss_mount_config
         if not UtilClient.is_unset(request.role):
             body['role'] = request.role
         if not UtilClient.is_unset(request.tracing_config):
@@ -6899,6 +7125,8 @@ class Client(OpenApiClient):
             body['logConfig'] = request.log_config
         if not UtilClient.is_unset(request.nas_config):
             body['nasConfig'] = request.nas_config
+        if not UtilClient.is_unset(request.oss_mount_config):
+            body['ossMountConfig'] = request.oss_mount_config
         if not UtilClient.is_unset(request.role):
             body['role'] = request.role
         if not UtilClient.is_unset(request.tracing_config):
