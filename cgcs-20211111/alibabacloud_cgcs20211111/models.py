@@ -114,128 +114,6 @@ class CancelReserveTaskResponse(TeaModel):
         return self
 
 
-class CancelUploadTaskRequest(TeaModel):
-    def __init__(
-        self,
-        app_id: str = None,
-        version_id: str = None,
-    ):
-        self.app_id = app_id
-        self.version_id = version_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app_id is not None:
-            result['AppId'] = self.app_id
-        if self.version_id is not None:
-            result['VersionId'] = self.version_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AppId') is not None:
-            self.app_id = m.get('AppId')
-        if m.get('VersionId') is not None:
-            self.version_id = m.get('VersionId')
-        return self
-
-
-class CancelUploadTaskResponseBody(TeaModel):
-    def __init__(
-        self,
-        code: str = None,
-        data: bool = None,
-        message: str = None,
-        request_id: str = None,
-    ):
-        self.code = code
-        self.data = data
-        self.message = message
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.data is not None:
-            result['Data'] = self.data
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Data') is not None:
-            self.data = m.get('Data')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class CancelUploadTaskResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: CancelUploadTaskResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = CancelUploadTaskResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class CreateAdaptationRequestAdaptTarget(TeaModel):
     def __init__(
         self,
@@ -795,6 +673,45 @@ class CreateAppSessionResponse(TeaModel):
         return self
 
 
+class CreateAppSessionBatchSyncRequestAppInfosMatchRules(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        type: str = None,
+        values: List[str] = None,
+    ):
+        self.key = key
+        self.type = type
+        self.values = values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.values is not None:
+            result['Values'] = self.values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Values') is not None:
+            self.values = m.get('Values')
+        return self
+
+
 class CreateAppSessionBatchSyncRequestAppInfosStartParameters(TeaModel):
     def __init__(
         self,
@@ -897,29 +814,37 @@ class CreateAppSessionBatchSyncRequestAppInfosTags(TeaModel):
 class CreateAppSessionBatchSyncRequestAppInfos(TeaModel):
     def __init__(
         self,
+        adapter_file_id: str = None,
         app_id: str = None,
         app_version: str = None,
         client_ip: str = None,
         custom_user_id: str = None,
         customer_session_id: str = None,
         district_id: str = None,
+        match_rules: List[CreateAppSessionBatchSyncRequestAppInfosMatchRules] = None,
         project_id: str = None,
         start_parameters: List[CreateAppSessionBatchSyncRequestAppInfosStartParameters] = None,
         system_info: List[CreateAppSessionBatchSyncRequestAppInfosSystemInfo] = None,
         tags: List[CreateAppSessionBatchSyncRequestAppInfosTags] = None,
     ):
+        self.adapter_file_id = adapter_file_id
         self.app_id = app_id
         self.app_version = app_version
         self.client_ip = client_ip
         self.custom_user_id = custom_user_id
         self.customer_session_id = customer_session_id
         self.district_id = district_id
+        self.match_rules = match_rules
         self.project_id = project_id
         self.start_parameters = start_parameters
         self.system_info = system_info
         self.tags = tags
 
     def validate(self):
+        if self.match_rules:
+            for k in self.match_rules:
+                if k:
+                    k.validate()
         if self.start_parameters:
             for k in self.start_parameters:
                 if k:
@@ -939,6 +864,8 @@ class CreateAppSessionBatchSyncRequestAppInfos(TeaModel):
             return _map
 
         result = dict()
+        if self.adapter_file_id is not None:
+            result['AdapterFileId'] = self.adapter_file_id
         if self.app_id is not None:
             result['AppId'] = self.app_id
         if self.app_version is not None:
@@ -951,6 +878,10 @@ class CreateAppSessionBatchSyncRequestAppInfos(TeaModel):
             result['CustomerSessionId'] = self.customer_session_id
         if self.district_id is not None:
             result['DistrictId'] = self.district_id
+        result['MatchRules'] = []
+        if self.match_rules is not None:
+            for k in self.match_rules:
+                result['MatchRules'].append(k.to_map() if k else None)
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
         result['StartParameters'] = []
@@ -969,6 +900,8 @@ class CreateAppSessionBatchSyncRequestAppInfos(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AdapterFileId') is not None:
+            self.adapter_file_id = m.get('AdapterFileId')
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
         if m.get('AppVersion') is not None:
@@ -981,6 +914,11 @@ class CreateAppSessionBatchSyncRequestAppInfos(TeaModel):
             self.customer_session_id = m.get('CustomerSessionId')
         if m.get('DistrictId') is not None:
             self.district_id = m.get('DistrictId')
+        self.match_rules = []
+        if m.get('MatchRules') is not None:
+            for k in m.get('MatchRules'):
+                temp_model = CreateAppSessionBatchSyncRequestAppInfosMatchRules()
+                self.match_rules.append(temp_model.from_map(k))
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
         self.start_parameters = []
@@ -1406,6 +1344,45 @@ class CreateAppSessionBatchSyncResponse(TeaModel):
         return self
 
 
+class CreateAppSessionSyncRequestMatchRules(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        type: str = None,
+        values: List[str] = None,
+    ):
+        self.key = key
+        self.type = type
+        self.values = values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.values is not None:
+            result['Values'] = self.values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Values') is not None:
+            self.values = m.get('Values')
+        return self
+
+
 class CreateAppSessionSyncRequestStartParameters(TeaModel):
     def __init__(
         self,
@@ -1508,29 +1485,37 @@ class CreateAppSessionSyncRequestTags(TeaModel):
 class CreateAppSessionSyncRequest(TeaModel):
     def __init__(
         self,
+        adapter_file_id: str = None,
         app_id: str = None,
         app_version: str = None,
         client_ip: str = None,
         custom_session_id: str = None,
         custom_user_id: str = None,
         district_id: str = None,
+        match_rules: List[CreateAppSessionSyncRequestMatchRules] = None,
         project_id: str = None,
         start_parameters: List[CreateAppSessionSyncRequestStartParameters] = None,
         system_info: List[CreateAppSessionSyncRequestSystemInfo] = None,
         tags: List[CreateAppSessionSyncRequestTags] = None,
     ):
+        self.adapter_file_id = adapter_file_id
         self.app_id = app_id
         self.app_version = app_version
         self.client_ip = client_ip
         self.custom_session_id = custom_session_id
         self.custom_user_id = custom_user_id
         self.district_id = district_id
+        self.match_rules = match_rules
         self.project_id = project_id
         self.start_parameters = start_parameters
         self.system_info = system_info
         self.tags = tags
 
     def validate(self):
+        if self.match_rules:
+            for k in self.match_rules:
+                if k:
+                    k.validate()
         if self.start_parameters:
             for k in self.start_parameters:
                 if k:
@@ -1550,6 +1535,8 @@ class CreateAppSessionSyncRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.adapter_file_id is not None:
+            result['AdapterFileId'] = self.adapter_file_id
         if self.app_id is not None:
             result['AppId'] = self.app_id
         if self.app_version is not None:
@@ -1562,6 +1549,10 @@ class CreateAppSessionSyncRequest(TeaModel):
             result['CustomUserId'] = self.custom_user_id
         if self.district_id is not None:
             result['DistrictId'] = self.district_id
+        result['MatchRules'] = []
+        if self.match_rules is not None:
+            for k in self.match_rules:
+                result['MatchRules'].append(k.to_map() if k else None)
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
         result['StartParameters'] = []
@@ -1580,6 +1571,8 @@ class CreateAppSessionSyncRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AdapterFileId') is not None:
+            self.adapter_file_id = m.get('AdapterFileId')
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
         if m.get('AppVersion') is not None:
@@ -1592,6 +1585,11 @@ class CreateAppSessionSyncRequest(TeaModel):
             self.custom_user_id = m.get('CustomUserId')
         if m.get('DistrictId') is not None:
             self.district_id = m.get('DistrictId')
+        self.match_rules = []
+        if m.get('MatchRules') is not None:
+            for k in m.get('MatchRules'):
+                temp_model = CreateAppSessionSyncRequestMatchRules()
+                self.match_rules.append(temp_model.from_map(k))
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
         self.start_parameters = []
@@ -4538,175 +4536,6 @@ class ModifyAppVersionResponse(TeaModel):
         return self
 
 
-class QueryOfflineTaskProgressRequest(TeaModel):
-    def __init__(
-        self,
-        app_id: str = None,
-        version_id: str = None,
-    ):
-        self.app_id = app_id
-        self.version_id = version_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app_id is not None:
-            result['AppId'] = self.app_id
-        if self.version_id is not None:
-            result['VersionId'] = self.version_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AppId') is not None:
-            self.app_id = m.get('AppId')
-        if m.get('VersionId') is not None:
-            self.version_id = m.get('VersionId')
-        return self
-
-
-class QueryOfflineTaskProgressResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        error_code: str = None,
-        error_message: str = None,
-        progress: float = None,
-        status: str = None,
-    ):
-        self.error_code = error_code
-        self.error_message = error_message
-        self.progress = progress
-        self.status = status
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-        if self.error_message is not None:
-            result['ErrorMessage'] = self.error_message
-        if self.progress is not None:
-            result['Progress'] = self.progress
-        if self.status is not None:
-            result['Status'] = self.status
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('ErrorMessage') is not None:
-            self.error_message = m.get('ErrorMessage')
-        if m.get('Progress') is not None:
-            self.progress = m.get('Progress')
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        return self
-
-
-class QueryOfflineTaskProgressResponseBody(TeaModel):
-    def __init__(
-        self,
-        code: str = None,
-        data: QueryOfflineTaskProgressResponseBodyData = None,
-        message: str = None,
-        request_id: str = None,
-    ):
-        self.code = code
-        self.data = data
-        self.message = message
-        self.request_id = request_id
-
-    def validate(self):
-        if self.data:
-            self.data.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Data') is not None:
-            temp_model = QueryOfflineTaskProgressResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class QueryOfflineTaskProgressResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: QueryOfflineTaskProgressResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = QueryOfflineTaskProgressResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class ReleaseCapacityRequest(TeaModel):
     def __init__(
         self,
@@ -5372,140 +5201,6 @@ class StopAppSessionBatchResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = StopAppSessionBatchResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class SubmitOfflineTaskRequest(TeaModel):
-    def __init__(
-        self,
-        app_id: str = None,
-        app_type: str = None,
-        uri: str = None,
-        version_id: str = None,
-    ):
-        self.app_id = app_id
-        self.app_type = app_type
-        self.uri = uri
-        self.version_id = version_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app_id is not None:
-            result['AppId'] = self.app_id
-        if self.app_type is not None:
-            result['AppType'] = self.app_type
-        if self.uri is not None:
-            result['Uri'] = self.uri
-        if self.version_id is not None:
-            result['VersionId'] = self.version_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AppId') is not None:
-            self.app_id = m.get('AppId')
-        if m.get('AppType') is not None:
-            self.app_type = m.get('AppType')
-        if m.get('Uri') is not None:
-            self.uri = m.get('Uri')
-        if m.get('VersionId') is not None:
-            self.version_id = m.get('VersionId')
-        return self
-
-
-class SubmitOfflineTaskResponseBody(TeaModel):
-    def __init__(
-        self,
-        code: str = None,
-        data: bool = None,
-        message: str = None,
-        request_id: str = None,
-    ):
-        self.code = code
-        self.data = data
-        self.message = message
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.data is not None:
-            result['Data'] = self.data
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Data') is not None:
-            self.data = m.get('Data')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class SubmitOfflineTaskResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: SubmitOfflineTaskResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = SubmitOfflineTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
