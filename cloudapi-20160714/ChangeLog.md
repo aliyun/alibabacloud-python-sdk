@@ -1,3 +1,6 @@
+2022-09-02 Version: 2.2.7
+- Add input parameters of DescribeApps and DescribeDeployedApis.
+
 2022-08-29 Version: 2.2.6
 - Modify  Api Ram-Meta.
 
