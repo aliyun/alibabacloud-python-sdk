@@ -21,10 +21,10 @@ class Client(OpenApiClient):
         config: open_api_models.Config,
     ):
         super().__init__(config)
+        self._signature_algorithm = 'v2'
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
             'ap-northeast-2-pop': 'cs.aliyuncs.com',
-            'cn-beijing-finance-1': 'cs.aliyuncs.com',
             'cn-beijing-finance-pop': 'cs.aliyuncs.com',
             'cn-beijing-gov-1': 'cs.aliyuncs.com',
             'cn-beijing-nu16-b01': 'cs.aliyuncs.com',
@@ -32,21 +32,17 @@ class Client(OpenApiClient):
             'cn-fujian': 'cs.aliyuncs.com',
             'cn-haidian-cm12-c01': 'cs.aliyuncs.com',
             'cn-hangzhou-bj-b01': 'cs.aliyuncs.com',
-            'cn-hangzhou-finance': 'cs-vpc.cn-hangzhou-finance.aliyuncs.com',
             'cn-hangzhou-internal-prod-1': 'cs.aliyuncs.com',
             'cn-hangzhou-internal-test-1': 'cs.aliyuncs.com',
             'cn-hangzhou-internal-test-2': 'cs.aliyuncs.com',
             'cn-hangzhou-internal-test-3': 'cs.aliyuncs.com',
             'cn-hangzhou-test-306': 'cs.aliyuncs.com',
             'cn-hongkong-finance-pop': 'cs.aliyuncs.com',
-            'cn-huhehaote-nebula-1': 'cs.aliyuncs.com',
             'cn-qingdao-nebula': 'cs.aliyuncs.com',
             'cn-shanghai-et15-b01': 'cs.aliyuncs.com',
             'cn-shanghai-et2-b01': 'cs.aliyuncs.com',
-            'cn-shanghai-finance-1': 'cs-vpc.cn-shanghai-finance-1.aliyuncs.com',
             'cn-shanghai-inner': 'cs.aliyuncs.com',
             'cn-shanghai-internal-test-1': 'cs.aliyuncs.com',
-            'cn-shenzhen-finance-1': 'cs-vpc.cn-shenzhen-finance-1.aliyuncs.com',
             'cn-shenzhen-inner': 'cs.aliyuncs.com',
             'cn-shenzhen-st4-d01': 'cs.aliyuncs.com',
             'cn-shenzhen-su18-b01': 'cs.aliyuncs.com',

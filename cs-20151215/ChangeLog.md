@@ -1,3 +1,6 @@
+2022-09-02 Version: 3.0.16
+- Update endpoint.
+
 2022-08-30 Version: 3.0.15
 - Update.
 
