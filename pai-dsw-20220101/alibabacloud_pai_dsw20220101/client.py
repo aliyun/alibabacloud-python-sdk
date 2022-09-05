@@ -79,6 +79,8 @@ class Client(OpenApiClient):
             body['ImageUrl'] = request.image_url
         if not UtilClient.is_unset(request.instance_name):
             body['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.labels):
+            body['Labels'] = request.labels
         if not UtilClient.is_unset(request.priority):
             body['Priority'] = request.priority
         if not UtilClient.is_unset(request.requested_resource):
@@ -131,6 +133,8 @@ class Client(OpenApiClient):
             body['ImageUrl'] = request.image_url
         if not UtilClient.is_unset(request.instance_name):
             body['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.labels):
+            body['Labels'] = request.labels
         if not UtilClient.is_unset(request.priority):
             body['Priority'] = request.priority
         if not UtilClient.is_unset(request.requested_resource):

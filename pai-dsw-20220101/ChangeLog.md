@@ -1,3 +1,6 @@
+2022-09-05 Version: 1.1.22
+- DSW support role chain.
+
 2022-08-30 Version: 1.1.20
 - DSW support query instance metrics .
 

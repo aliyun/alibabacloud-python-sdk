@@ -90,6 +90,39 @@ class CreateInstanceRequestDatasets(TeaModel):
         return self
 
 
+class CreateInstanceRequestLabels(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateInstanceRequestRequestedResource(TeaModel):
     def __init__(
         self,
@@ -190,6 +223,7 @@ class CreateInstanceRequest(TeaModel):
         image_id: str = None,
         image_url: str = None,
         instance_name: str = None,
+        labels: List[CreateInstanceRequestLabels] = None,
         priority: int = None,
         requested_resource: CreateInstanceRequestRequestedResource = None,
         resource_id: str = None,
@@ -203,6 +237,7 @@ class CreateInstanceRequest(TeaModel):
         self.image_id = image_id
         self.image_url = image_url
         self.instance_name = instance_name
+        self.labels = labels
         self.priority = priority
         self.requested_resource = requested_resource
         self.resource_id = resource_id
@@ -212,6 +247,10 @@ class CreateInstanceRequest(TeaModel):
     def validate(self):
         if self.datasets:
             for k in self.datasets:
+                if k:
+                    k.validate()
+        if self.labels:
+            for k in self.labels:
                 if k:
                     k.validate()
         if self.requested_resource:
@@ -241,6 +280,10 @@ class CreateInstanceRequest(TeaModel):
             result['ImageUrl'] = self.image_url
         if self.instance_name is not None:
             result['InstanceName'] = self.instance_name
+        result['Labels'] = []
+        if self.labels is not None:
+            for k in self.labels:
+                result['Labels'].append(k.to_map() if k else None)
         if self.priority is not None:
             result['Priority'] = self.priority
         if self.requested_resource is not None:
@@ -272,6 +315,11 @@ class CreateInstanceRequest(TeaModel):
             self.image_url = m.get('ImageUrl')
         if m.get('InstanceName') is not None:
             self.instance_name = m.get('InstanceName')
+        self.labels = []
+        if m.get('Labels') is not None:
+            for k in m.get('Labels'):
+                temp_model = CreateInstanceRequestLabels()
+                self.labels.append(temp_model.from_map(k))
         if m.get('Priority') is not None:
             self.priority = m.get('Priority')
         if m.get('RequestedResource') is not None:
@@ -3323,6 +3371,39 @@ class ListInstancesResponseBodyInstancesInstanceShutdownTimer(TeaModel):
         return self
 
 
+class ListInstancesResponseBodyInstancesLabels(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class ListInstancesResponseBodyInstancesLatestSnapshot(TeaModel):
     def __init__(
         self,
@@ -3489,6 +3570,7 @@ class ListInstancesResponseBodyInstances(TeaModel):
         instance_shutdown_timer: ListInstancesResponseBodyInstancesInstanceShutdownTimer = None,
         instance_url: str = None,
         jupyterlab_url: str = None,
+        labels: List[ListInstancesResponseBodyInstancesLabels] = None,
         latest_snapshot: ListInstancesResponseBodyInstancesLatestSnapshot = None,
         payment_type: str = None,
         priority: int = None,
@@ -3522,6 +3604,7 @@ class ListInstancesResponseBodyInstances(TeaModel):
         self.instance_shutdown_timer = instance_shutdown_timer
         self.instance_url = instance_url
         self.jupyterlab_url = jupyterlab_url
+        self.labels = labels
         self.latest_snapshot = latest_snapshot
         self.payment_type = payment_type
         self.priority = priority
@@ -3546,6 +3629,10 @@ class ListInstancesResponseBodyInstances(TeaModel):
                     k.validate()
         if self.instance_shutdown_timer:
             self.instance_shutdown_timer.validate()
+        if self.labels:
+            for k in self.labels:
+                if k:
+                    k.validate()
         if self.latest_snapshot:
             self.latest_snapshot.validate()
         if self.requested_resource:
@@ -3593,6 +3680,10 @@ class ListInstancesResponseBodyInstances(TeaModel):
             result['InstanceUrl'] = self.instance_url
         if self.jupyterlab_url is not None:
             result['JupyterlabUrl'] = self.jupyterlab_url
+        result['Labels'] = []
+        if self.labels is not None:
+            for k in self.labels:
+                result['Labels'].append(k.to_map() if k else None)
         if self.latest_snapshot is not None:
             result['LatestSnapshot'] = self.latest_snapshot.to_map()
         if self.payment_type is not None:
@@ -3665,6 +3756,11 @@ class ListInstancesResponseBodyInstances(TeaModel):
             self.instance_url = m.get('InstanceUrl')
         if m.get('JupyterlabUrl') is not None:
             self.jupyterlab_url = m.get('JupyterlabUrl')
+        self.labels = []
+        if m.get('Labels') is not None:
+            for k in m.get('Labels'):
+                temp_model = ListInstancesResponseBodyInstancesLabels()
+                self.labels.append(temp_model.from_map(k))
         if m.get('LatestSnapshot') is not None:
             temp_model = ListInstancesResponseBodyInstancesLatestSnapshot()
             self.latest_snapshot = temp_model.from_map(m['LatestSnapshot'])
