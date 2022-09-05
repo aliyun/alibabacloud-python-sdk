@@ -1,3 +1,6 @@
+2022-09-05 Version: 2.0.8
+- Create and update order support to buy partition.
+
 2022-08-31 Version: 2.0.7
 - Create and update order support to buy partition.
 
