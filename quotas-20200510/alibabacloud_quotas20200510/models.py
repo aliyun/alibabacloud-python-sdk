@@ -480,6 +480,181 @@ class CreateQuotaApplicationResponse(TeaModel):
         return self
 
 
+class CreateTemplateQuotaItemRequestDimensions(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class CreateTemplateQuotaItemRequest(TeaModel):
+    def __init__(
+        self,
+        desire_value: float = None,
+        dimensions: List[CreateTemplateQuotaItemRequestDimensions] = None,
+        env_language: str = None,
+        notice_type: int = None,
+        product_code: str = None,
+        quota_action_code: str = None,
+    ):
+        self.desire_value = desire_value
+        self.dimensions = dimensions
+        self.env_language = env_language
+        self.notice_type = notice_type
+        self.product_code = product_code
+        self.quota_action_code = quota_action_code
+
+    def validate(self):
+        if self.dimensions:
+            for k in self.dimensions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.desire_value is not None:
+            result['DesireValue'] = self.desire_value
+        result['Dimensions'] = []
+        if self.dimensions is not None:
+            for k in self.dimensions:
+                result['Dimensions'].append(k.to_map() if k else None)
+        if self.env_language is not None:
+            result['EnvLanguage'] = self.env_language
+        if self.notice_type is not None:
+            result['NoticeType'] = self.notice_type
+        if self.product_code is not None:
+            result['ProductCode'] = self.product_code
+        if self.quota_action_code is not None:
+            result['QuotaActionCode'] = self.quota_action_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DesireValue') is not None:
+            self.desire_value = m.get('DesireValue')
+        self.dimensions = []
+        if m.get('Dimensions') is not None:
+            for k in m.get('Dimensions'):
+                temp_model = CreateTemplateQuotaItemRequestDimensions()
+                self.dimensions.append(temp_model.from_map(k))
+        if m.get('EnvLanguage') is not None:
+            self.env_language = m.get('EnvLanguage')
+        if m.get('NoticeType') is not None:
+            self.notice_type = m.get('NoticeType')
+        if m.get('ProductCode') is not None:
+            self.product_code = m.get('ProductCode')
+        if m.get('QuotaActionCode') is not None:
+            self.quota_action_code = m.get('QuotaActionCode')
+        return self
+
+
+class CreateTemplateQuotaItemResponseBody(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        request_id: str = None,
+    ):
+        self.id = id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateTemplateQuotaItemResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateTemplateQuotaItemResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateTemplateQuotaItemResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteQuotaAlarmRequest(TeaModel):
     def __init__(
         self,
@@ -574,6 +749,110 @@ class DeleteQuotaAlarmResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteQuotaAlarmResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteTemplateQuotaItemRequest(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+    ):
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        return self
+
+
+class DeleteTemplateQuotaItemResponseBody(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        request_id: str = None,
+    ):
+        self.id = id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteTemplateQuotaItemResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteTemplateQuotaItemResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteTemplateQuotaItemResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -1630,6 +1909,145 @@ class GetQuotaApplicationResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetQuotaApplicationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetQuotaTemplateServiceStatusRequest(TeaModel):
+    def __init__(
+        self,
+        resource_directory_id: str = None,
+    ):
+        self.resource_directory_id = resource_directory_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_directory_id is not None:
+            result['ResourceDirectoryId'] = self.resource_directory_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceDirectoryId') is not None:
+            self.resource_directory_id = m.get('ResourceDirectoryId')
+        return self
+
+
+class GetQuotaTemplateServiceStatusResponseBodyTemplateServiceStatus(TeaModel):
+    def __init__(
+        self,
+        resource_directory_id: str = None,
+        service_status: int = None,
+    ):
+        self.resource_directory_id = resource_directory_id
+        self.service_status = service_status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_directory_id is not None:
+            result['ResourceDirectoryId'] = self.resource_directory_id
+        if self.service_status is not None:
+            result['ServiceStatus'] = self.service_status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceDirectoryId') is not None:
+            self.resource_directory_id = m.get('ResourceDirectoryId')
+        if m.get('ServiceStatus') is not None:
+            self.service_status = m.get('ServiceStatus')
+        return self
+
+
+class GetQuotaTemplateServiceStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        template_service_status: GetQuotaTemplateServiceStatusResponseBodyTemplateServiceStatus = None,
+    ):
+        self.request_id = request_id
+        self.template_service_status = template_service_status
+
+    def validate(self):
+        if self.template_service_status:
+            self.template_service_status.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.template_service_status is not None:
+            result['TemplateServiceStatus'] = self.template_service_status.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TemplateServiceStatus') is not None:
+            temp_model = GetQuotaTemplateServiceStatusResponseBodyTemplateServiceStatus()
+            self.template_service_status = temp_model.from_map(m['TemplateServiceStatus'])
+        return self
+
+
+class GetQuotaTemplateServiceStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetQuotaTemplateServiceStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetQuotaTemplateServiceStatusResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3472,6 +3890,288 @@ class ListQuotaAlarmsResponse(TeaModel):
         return self
 
 
+class ListQuotaApplicationTemplatesRequestDimensions(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListQuotaApplicationTemplatesRequest(TeaModel):
+    def __init__(
+        self,
+        dimensions: List[ListQuotaApplicationTemplatesRequestDimensions] = None,
+        max_results: int = None,
+        next_token: str = None,
+        product_code: str = None,
+        quota_action_code: str = None,
+    ):
+        self.dimensions = dimensions
+        self.max_results = max_results
+        self.next_token = next_token
+        self.product_code = product_code
+        self.quota_action_code = quota_action_code
+
+    def validate(self):
+        if self.dimensions:
+            for k in self.dimensions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Dimensions'] = []
+        if self.dimensions is not None:
+            for k in self.dimensions:
+                result['Dimensions'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.product_code is not None:
+            result['ProductCode'] = self.product_code
+        if self.quota_action_code is not None:
+            result['QuotaActionCode'] = self.quota_action_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.dimensions = []
+        if m.get('Dimensions') is not None:
+            for k in m.get('Dimensions'):
+                temp_model = ListQuotaApplicationTemplatesRequestDimensions()
+                self.dimensions.append(temp_model.from_map(k))
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('ProductCode') is not None:
+            self.product_code = m.get('ProductCode')
+        if m.get('QuotaActionCode') is not None:
+            self.quota_action_code = m.get('QuotaActionCode')
+        return self
+
+
+class ListQuotaApplicationTemplatesResponseBodyQuotaApplicationTemplates(TeaModel):
+    def __init__(
+        self,
+        applicable_range: List[float] = None,
+        applicable_type: str = None,
+        desire_value: float = None,
+        dimensions: Dict[str, Any] = None,
+        env_language: str = None,
+        id: str = None,
+        notice_type: int = None,
+        product_code: str = None,
+        quota_action_code: str = None,
+        quota_description: str = None,
+        quota_name: str = None,
+    ):
+        self.applicable_range = applicable_range
+        self.applicable_type = applicable_type
+        self.desire_value = desire_value
+        self.dimensions = dimensions
+        self.env_language = env_language
+        self.id = id
+        self.notice_type = notice_type
+        self.product_code = product_code
+        self.quota_action_code = quota_action_code
+        self.quota_description = quota_description
+        self.quota_name = quota_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.applicable_range is not None:
+            result['ApplicableRange'] = self.applicable_range
+        if self.applicable_type is not None:
+            result['ApplicableType'] = self.applicable_type
+        if self.desire_value is not None:
+            result['DesireValue'] = self.desire_value
+        if self.dimensions is not None:
+            result['Dimensions'] = self.dimensions
+        if self.env_language is not None:
+            result['EnvLanguage'] = self.env_language
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.notice_type is not None:
+            result['NoticeType'] = self.notice_type
+        if self.product_code is not None:
+            result['ProductCode'] = self.product_code
+        if self.quota_action_code is not None:
+            result['QuotaActionCode'] = self.quota_action_code
+        if self.quota_description is not None:
+            result['QuotaDescription'] = self.quota_description
+        if self.quota_name is not None:
+            result['QuotaName'] = self.quota_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicableRange') is not None:
+            self.applicable_range = m.get('ApplicableRange')
+        if m.get('ApplicableType') is not None:
+            self.applicable_type = m.get('ApplicableType')
+        if m.get('DesireValue') is not None:
+            self.desire_value = m.get('DesireValue')
+        if m.get('Dimensions') is not None:
+            self.dimensions = m.get('Dimensions')
+        if m.get('EnvLanguage') is not None:
+            self.env_language = m.get('EnvLanguage')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('NoticeType') is not None:
+            self.notice_type = m.get('NoticeType')
+        if m.get('ProductCode') is not None:
+            self.product_code = m.get('ProductCode')
+        if m.get('QuotaActionCode') is not None:
+            self.quota_action_code = m.get('QuotaActionCode')
+        if m.get('QuotaDescription') is not None:
+            self.quota_description = m.get('QuotaDescription')
+        if m.get('QuotaName') is not None:
+            self.quota_name = m.get('QuotaName')
+        return self
+
+
+class ListQuotaApplicationTemplatesResponseBody(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        quota_application_templates: List[ListQuotaApplicationTemplatesResponseBodyQuotaApplicationTemplates] = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        self.quota_application_templates = quota_application_templates
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.quota_application_templates:
+            for k in self.quota_application_templates:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        result['QuotaApplicationTemplates'] = []
+        if self.quota_application_templates is not None:
+            for k in self.quota_application_templates:
+                result['QuotaApplicationTemplates'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        self.quota_application_templates = []
+        if m.get('QuotaApplicationTemplates') is not None:
+            for k in m.get('QuotaApplicationTemplates'):
+                temp_model = ListQuotaApplicationTemplatesResponseBodyQuotaApplicationTemplates()
+                self.quota_application_templates.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListQuotaApplicationTemplatesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListQuotaApplicationTemplatesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListQuotaApplicationTemplatesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListQuotaApplicationsRequestDimensions(TeaModel):
     def __init__(
         self,
@@ -3851,6 +4551,326 @@ class ListQuotaApplicationsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListQuotaApplicationsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyQuotaTemplateServiceStatusRequest(TeaModel):
+    def __init__(
+        self,
+        service_status: int = None,
+    ):
+        self.service_status = service_status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.service_status is not None:
+            result['ServiceStatus'] = self.service_status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ServiceStatus') is not None:
+            self.service_status = m.get('ServiceStatus')
+        return self
+
+
+class ModifyQuotaTemplateServiceStatusResponseBodyTemplateServiceStatus(TeaModel):
+    def __init__(
+        self,
+        resource_directory_id: str = None,
+        service_status: int = None,
+    ):
+        self.resource_directory_id = resource_directory_id
+        self.service_status = service_status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_directory_id is not None:
+            result['ResourceDirectoryId'] = self.resource_directory_id
+        if self.service_status is not None:
+            result['ServiceStatus'] = self.service_status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceDirectoryId') is not None:
+            self.resource_directory_id = m.get('ResourceDirectoryId')
+        if m.get('ServiceStatus') is not None:
+            self.service_status = m.get('ServiceStatus')
+        return self
+
+
+class ModifyQuotaTemplateServiceStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        template_service_status: ModifyQuotaTemplateServiceStatusResponseBodyTemplateServiceStatus = None,
+    ):
+        self.request_id = request_id
+        self.template_service_status = template_service_status
+
+    def validate(self):
+        if self.template_service_status:
+            self.template_service_status.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.template_service_status is not None:
+            result['TemplateServiceStatus'] = self.template_service_status.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TemplateServiceStatus') is not None:
+            temp_model = ModifyQuotaTemplateServiceStatusResponseBodyTemplateServiceStatus()
+            self.template_service_status = temp_model.from_map(m['TemplateServiceStatus'])
+        return self
+
+
+class ModifyQuotaTemplateServiceStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyQuotaTemplateServiceStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyQuotaTemplateServiceStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyTemplateQuotaItemRequestDimensions(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ModifyTemplateQuotaItemRequest(TeaModel):
+    def __init__(
+        self,
+        desire_value: float = None,
+        dimensions: List[ModifyTemplateQuotaItemRequestDimensions] = None,
+        env_language: str = None,
+        id: str = None,
+        notice_type: int = None,
+        product_code: str = None,
+        quota_action_code: str = None,
+    ):
+        self.desire_value = desire_value
+        self.dimensions = dimensions
+        self.env_language = env_language
+        self.id = id
+        self.notice_type = notice_type
+        self.product_code = product_code
+        self.quota_action_code = quota_action_code
+
+    def validate(self):
+        if self.dimensions:
+            for k in self.dimensions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.desire_value is not None:
+            result['DesireValue'] = self.desire_value
+        result['Dimensions'] = []
+        if self.dimensions is not None:
+            for k in self.dimensions:
+                result['Dimensions'].append(k.to_map() if k else None)
+        if self.env_language is not None:
+            result['EnvLanguage'] = self.env_language
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.notice_type is not None:
+            result['NoticeType'] = self.notice_type
+        if self.product_code is not None:
+            result['ProductCode'] = self.product_code
+        if self.quota_action_code is not None:
+            result['QuotaActionCode'] = self.quota_action_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DesireValue') is not None:
+            self.desire_value = m.get('DesireValue')
+        self.dimensions = []
+        if m.get('Dimensions') is not None:
+            for k in m.get('Dimensions'):
+                temp_model = ModifyTemplateQuotaItemRequestDimensions()
+                self.dimensions.append(temp_model.from_map(k))
+        if m.get('EnvLanguage') is not None:
+            self.env_language = m.get('EnvLanguage')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('NoticeType') is not None:
+            self.notice_type = m.get('NoticeType')
+        if m.get('ProductCode') is not None:
+            self.product_code = m.get('ProductCode')
+        if m.get('QuotaActionCode') is not None:
+            self.quota_action_code = m.get('QuotaActionCode')
+        return self
+
+
+class ModifyTemplateQuotaItemResponseBody(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        request_id: str = None,
+    ):
+        self.id = id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyTemplateQuotaItemResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyTemplateQuotaItemResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyTemplateQuotaItemResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
