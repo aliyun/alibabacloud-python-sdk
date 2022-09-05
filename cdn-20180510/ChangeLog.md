@@ -1,3 +1,6 @@
+2022-09-05 Version: 1.1.1
+- Support STS.
+
 2022-08-31 Version: 1.1.0
 - Support STS.
 
