@@ -715,6 +715,8 @@ class Client(OpenApiClient):
             query['SrcDbInstanceName'] = request.src_db_instance_name
         if not UtilClient.is_unset(request.storage_size):
             query['StorageSize'] = request.storage_size
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.used_time):
             query['UsedTime'] = request.used_time
         if not UtilClient.is_unset(request.vpcid):
@@ -793,6 +795,8 @@ class Client(OpenApiClient):
             query['SrcDbInstanceName'] = request.src_db_instance_name
         if not UtilClient.is_unset(request.storage_size):
             query['StorageSize'] = request.storage_size
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.used_time):
             query['UsedTime'] = request.used_time
         if not UtilClient.is_unset(request.vpcid):
@@ -921,6 +925,8 @@ class Client(OpenApiClient):
             query['DBInstanceId'] = request.dbinstance_id
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -953,6 +959,8 @@ class Client(OpenApiClient):
             query['DBInstanceId'] = request.dbinstance_id
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1075,6 +1083,8 @@ class Client(OpenApiClient):
             query['DBInstanceId'] = request.dbinstance_id
         if not UtilClient.is_unset(request.dbname):
             query['DBName'] = request.dbname
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1105,6 +1115,8 @@ class Client(OpenApiClient):
             query['DBInstanceId'] = request.dbinstance_id
         if not UtilClient.is_unset(request.dbname):
             query['DBName'] = request.dbname
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1535,6 +1547,8 @@ class Client(OpenApiClient):
             query['DBInstanceId'] = request.dbinstance_id
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1565,6 +1579,8 @@ class Client(OpenApiClient):
             query['DBInstanceId'] = request.dbinstance_id
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1959,6 +1975,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1987,6 +2005,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2255,6 +2275,8 @@ class Client(OpenApiClient):
             query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.key):
             query['Key'] = request.key
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
@@ -2289,6 +2311,8 @@ class Client(OpenApiClient):
             query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.key):
             query['Key'] = request.key
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
@@ -2323,6 +2347,100 @@ class Client(OpenApiClient):
     ) -> gpdb_20160503_models.DescribeDBInstancePerformanceResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbinstance_performance_with_options_async(request, runtime)
+
+    def describe_dbinstance_plans_with_options(
+        self,
+        request: gpdb_20160503_models.DescribeDBInstancePlansRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeDBInstancePlansResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.plan_create_date):
+            query['PlanCreateDate'] = request.plan_create_date
+        if not UtilClient.is_unset(request.plan_desc):
+            query['PlanDesc'] = request.plan_desc
+        if not UtilClient.is_unset(request.plan_id):
+            query['PlanId'] = request.plan_id
+        if not UtilClient.is_unset(request.plan_schedule_type):
+            query['PlanScheduleType'] = request.plan_schedule_type
+        if not UtilClient.is_unset(request.plan_type):
+            query['PlanType'] = request.plan_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBInstancePlans',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeDBInstancePlansResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dbinstance_plans_with_options_async(
+        self,
+        request: gpdb_20160503_models.DescribeDBInstancePlansRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeDBInstancePlansResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.plan_create_date):
+            query['PlanCreateDate'] = request.plan_create_date
+        if not UtilClient.is_unset(request.plan_desc):
+            query['PlanDesc'] = request.plan_desc
+        if not UtilClient.is_unset(request.plan_id):
+            query['PlanId'] = request.plan_id
+        if not UtilClient.is_unset(request.plan_schedule_type):
+            query['PlanScheduleType'] = request.plan_schedule_type
+        if not UtilClient.is_unset(request.plan_type):
+            query['PlanType'] = request.plan_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBInstancePlans',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeDBInstancePlansResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dbinstance_plans(
+        self,
+        request: gpdb_20160503_models.DescribeDBInstancePlansRequest,
+    ) -> gpdb_20160503_models.DescribeDBInstancePlansResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dbinstance_plans_with_options(request, runtime)
+
+    async def describe_dbinstance_plans_async(
+        self,
+        request: gpdb_20160503_models.DescribeDBInstancePlansRequest,
+    ) -> gpdb_20160503_models.DescribeDBInstancePlansResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dbinstance_plans_with_options_async(request, runtime)
 
     def describe_dbinstance_sqlpatterns_with_options(
         self,
@@ -5115,6 +5233,8 @@ class Client(OpenApiClient):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.query_condition):
             query['QueryCondition'] = request.query_condition
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
         if not UtilClient.is_unset(request.user):
@@ -5155,6 +5275,8 @@ class Client(OpenApiClient):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.query_condition):
             query['QueryCondition'] = request.query_condition
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
         if not UtilClient.is_unset(request.user):
@@ -5629,6 +5751,8 @@ class Client(OpenApiClient):
             query['DBInstanceDescription'] = request.dbinstance_description
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5659,6 +5783,8 @@ class Client(OpenApiClient):
             query['DBInstanceDescription'] = request.dbinstance_description
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5703,6 +5829,8 @@ class Client(OpenApiClient):
             query['DBInstanceId'] = request.dbinstance_id
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
@@ -5735,6 +5863,8 @@ class Client(OpenApiClient):
             query['DBInstanceId'] = request.dbinstance_id
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
@@ -5855,6 +5985,100 @@ class Client(OpenApiClient):
     ) -> gpdb_20160503_models.ModifyDBInstanceNetworkTypeResponse:
         runtime = util_models.RuntimeOptions()
         return await self.modify_dbinstance_network_type_with_options_async(request, runtime)
+
+    def modify_dbinstance_resource_group_with_options(
+        self,
+        request: gpdb_20160503_models.ModifyDBInstanceResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.ModifyDBInstanceResourceGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.new_resource_group_id):
+            query['NewResourceGroupId'] = request.new_resource_group_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBInstanceResourceGroup',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.ModifyDBInstanceResourceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_dbinstance_resource_group_with_options_async(
+        self,
+        request: gpdb_20160503_models.ModifyDBInstanceResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.ModifyDBInstanceResourceGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.new_resource_group_id):
+            query['NewResourceGroupId'] = request.new_resource_group_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBInstanceResourceGroup',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.ModifyDBInstanceResourceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_dbinstance_resource_group(
+        self,
+        request: gpdb_20160503_models.ModifyDBInstanceResourceGroupRequest,
+    ) -> gpdb_20160503_models.ModifyDBInstanceResourceGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_dbinstance_resource_group_with_options(request, runtime)
+
+    async def modify_dbinstance_resource_group_async(
+        self,
+        request: gpdb_20160503_models.ModifyDBInstanceResourceGroupRequest,
+    ) -> gpdb_20160503_models.ModifyDBInstanceResourceGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_dbinstance_resource_group_with_options_async(request, runtime)
 
     def modify_dbinstance_sslwith_options(
         self,
@@ -6099,6 +6323,8 @@ class Client(OpenApiClient):
             query['DBInstanceIPArrayName'] = request.dbinstance_iparray_name
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.security_iplist):
             query['SecurityIPList'] = request.security_iplist
         req = open_api_models.OpenApiRequest(
@@ -6133,6 +6359,8 @@ class Client(OpenApiClient):
             query['DBInstanceIPArrayName'] = request.dbinstance_iparray_name
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.security_iplist):
             query['SecurityIPList'] = request.security_iplist
         req = open_api_models.OpenApiRequest(
@@ -7191,6 +7419,8 @@ class Client(OpenApiClient):
             query['PayType'] = request.pay_type
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.seg_node_num):
             query['SegNodeNum'] = request.seg_node_num
         if not UtilClient.is_unset(request.storage_size):
@@ -7239,6 +7469,8 @@ class Client(OpenApiClient):
             query['PayType'] = request.pay_type
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.seg_node_num):
             query['SegNodeNum'] = request.seg_node_num
         if not UtilClient.is_unset(request.storage_size):
