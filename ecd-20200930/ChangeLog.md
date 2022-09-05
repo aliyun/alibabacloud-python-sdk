@@ -1,3 +1,6 @@
+2022-09-05 Version: 2.0.11
+- PolicyGroup support appContentProtection and recordContent.
+
 2022-07-12 Version: 2.0.7
 - Upgrade sdk to same version.
 
