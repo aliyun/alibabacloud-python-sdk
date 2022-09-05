@@ -175,13 +175,16 @@ class AssumeRoleResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: AssumeRoleResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -194,6 +197,8 @@ class AssumeRoleResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -202,6 +207,8 @@ class AssumeRoleResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = AssumeRoleResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -218,17 +225,11 @@ class AssumeRoleWithOIDCRequest(TeaModel):
         role_arn: str = None,
         role_session_name: str = None,
     ):
-        # Session过期时间，单位为秒。
         self.duration_seconds = duration_seconds
-        # OIDC Provider的ARN
         self.oidcprovider_arn = oidcprovider_arn
-        # OIDC的ID Token，需输入原始Token，无需Base64解码
         self.oidctoken = oidctoken
-        # 权限策略。 生成STS Token时可以指定一个额外的权限策略，以进一步限制STS Token的权限。若不指定则返回的Token拥有指定角色的所有权限。
         self.policy = policy
-        # 需要扮演的角色的ARN
         self.role_arn = role_arn
-        # 用户自定义参数。此参数用来区分不同的令牌，可用于用户级别的访问审计。
         self.role_session_name = role_session_name
 
     def validate(self):
@@ -445,13 +446,16 @@ class AssumeRoleWithOIDCResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: AssumeRoleWithOIDCResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -464,6 +468,8 @@ class AssumeRoleWithOIDCResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -472,6 +478,8 @@ class AssumeRoleWithOIDCResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = AssumeRoleWithOIDCResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -709,13 +717,16 @@ class AssumeRoleWithSAMLResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: AssumeRoleWithSAMLResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -728,6 +739,8 @@ class AssumeRoleWithSAMLResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -736,6 +749,8 @@ class AssumeRoleWithSAMLResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = AssumeRoleWithSAMLResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -809,13 +824,16 @@ class GetCallerIdentityResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetCallerIdentityResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -828,6 +846,8 @@ class GetCallerIdentityResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -836,6 +856,8 @@ class GetCallerIdentityResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetCallerIdentityResponseBody()
             self.body = temp_model.from_map(m['body'])
