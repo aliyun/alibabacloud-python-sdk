@@ -1,3 +1,6 @@
+2022-09-05 Version: 3.2.10
+- Ros supports pre config.
+
 2022-08-17 Version: 3.2.9
 - GetFeatureDetail returns supported resource types for terraform risk check.
 
