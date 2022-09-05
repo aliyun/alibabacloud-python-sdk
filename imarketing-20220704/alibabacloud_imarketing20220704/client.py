@@ -171,6 +171,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_device_with_options_async(request, runtime)
 
+    def delete_creative_info_with_options(
+        self,
+        request: imarketing_20220704_models.DeleteCreativeInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imarketing_20220704_models.DeleteCreativeInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_no):
+            query['AccountNo'] = request.account_no
+        if not UtilClient.is_unset(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.main_id):
+            query['MainId'] = request.main_id
+        if not UtilClient.is_unset(request.update_user):
+            query['UpdateUser'] = request.update_user
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteCreativeInfo',
+            version='2022-07-04',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imarketing_20220704_models.DeleteCreativeInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_creative_info_with_options_async(
+        self,
+        request: imarketing_20220704_models.DeleteCreativeInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imarketing_20220704_models.DeleteCreativeInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_no):
+            query['AccountNo'] = request.account_no
+        if not UtilClient.is_unset(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.main_id):
+            query['MainId'] = request.main_id
+        if not UtilClient.is_unset(request.update_user):
+            query['UpdateUser'] = request.update_user
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteCreativeInfo',
+            version='2022-07-04',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imarketing_20220704_models.DeleteCreativeInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_creative_info(
+        self,
+        request: imarketing_20220704_models.DeleteCreativeInfoRequest,
+    ) -> imarketing_20220704_models.DeleteCreativeInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_creative_info_with_options(request, runtime)
+
+    async def delete_creative_info_async(
+        self,
+        request: imarketing_20220704_models.DeleteCreativeInfoRequest,
+    ) -> imarketing_20220704_models.DeleteCreativeInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_creative_info_with_options_async(request, runtime)
+
     def get_brand_page_with_options(
         self,
         request: imarketing_20220704_models.GetBrandPageRequest,
@@ -257,6 +343,310 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_brand_page_with_options_async(request, runtime)
 
+    def get_business_id_with_options(
+        self,
+        request: imarketing_20220704_models.GetBusinessIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imarketing_20220704_models.GetBusinessIdResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.business_id):
+            query['BusinessId'] = request.business_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetBusinessId',
+            version='2022-07-04',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imarketing_20220704_models.GetBusinessIdResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_business_id_with_options_async(
+        self,
+        request: imarketing_20220704_models.GetBusinessIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imarketing_20220704_models.GetBusinessIdResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.business_id):
+            query['BusinessId'] = request.business_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetBusinessId',
+            version='2022-07-04',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imarketing_20220704_models.GetBusinessIdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_business_id(
+        self,
+        request: imarketing_20220704_models.GetBusinessIdRequest,
+    ) -> imarketing_20220704_models.GetBusinessIdResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_business_id_with_options(request, runtime)
+
+    async def get_business_id_async(
+        self,
+        request: imarketing_20220704_models.GetBusinessIdRequest,
+    ) -> imarketing_20220704_models.GetBusinessIdResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_business_id_with_options_async(request, runtime)
+
+    def get_creative_info_with_options(
+        self,
+        request: imarketing_20220704_models.GetCreativeInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imarketing_20220704_models.GetCreativeInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_no):
+            query['AccountNo'] = request.account_no
+        if not UtilClient.is_unset(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.main_id):
+            query['MainId'] = request.main_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCreativeInfo',
+            version='2022-07-04',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imarketing_20220704_models.GetCreativeInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_creative_info_with_options_async(
+        self,
+        request: imarketing_20220704_models.GetCreativeInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imarketing_20220704_models.GetCreativeInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_no):
+            query['AccountNo'] = request.account_no
+        if not UtilClient.is_unset(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.main_id):
+            query['MainId'] = request.main_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCreativeInfo',
+            version='2022-07-04',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imarketing_20220704_models.GetCreativeInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_creative_info(
+        self,
+        request: imarketing_20220704_models.GetCreativeInfoRequest,
+    ) -> imarketing_20220704_models.GetCreativeInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_creative_info_with_options(request, runtime)
+
+    async def get_creative_info_async(
+        self,
+        request: imarketing_20220704_models.GetCreativeInfoRequest,
+    ) -> imarketing_20220704_models.GetCreativeInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_creative_info_with_options_async(request, runtime)
+
+    def get_leads_list_page_with_options(
+        self,
+        request: imarketing_20220704_models.GetLeadsListPageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imarketing_20220704_models.GetLeadsListPageResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.component_id):
+            query['ComponentId'] = request.component_id
+        if not UtilClient.is_unset(request.content_id):
+            query['ContentId'] = request.content_id
+        if not UtilClient.is_unset(request.creative_id):
+            query['CreativeId'] = request.creative_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.main_id):
+            query['MainId'] = request.main_id
+        if not UtilClient.is_unset(request.page_index):
+            query['PageIndex'] = request.page_index
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetLeadsListPage',
+            version='2022-07-04',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imarketing_20220704_models.GetLeadsListPageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_leads_list_page_with_options_async(
+        self,
+        request: imarketing_20220704_models.GetLeadsListPageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imarketing_20220704_models.GetLeadsListPageResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.component_id):
+            query['ComponentId'] = request.component_id
+        if not UtilClient.is_unset(request.content_id):
+            query['ContentId'] = request.content_id
+        if not UtilClient.is_unset(request.creative_id):
+            query['CreativeId'] = request.creative_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.main_id):
+            query['MainId'] = request.main_id
+        if not UtilClient.is_unset(request.page_index):
+            query['PageIndex'] = request.page_index
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetLeadsListPage',
+            version='2022-07-04',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imarketing_20220704_models.GetLeadsListPageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_leads_list_page(
+        self,
+        request: imarketing_20220704_models.GetLeadsListPageRequest,
+    ) -> imarketing_20220704_models.GetLeadsListPageResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_leads_list_page_with_options(request, runtime)
+
+    async def get_leads_list_page_async(
+        self,
+        request: imarketing_20220704_models.GetLeadsListPageRequest,
+    ) -> imarketing_20220704_models.GetLeadsListPageResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_leads_list_page_with_options_async(request, runtime)
+
+    def get_main_part_list_by_user_id_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> imarketing_20220704_models.GetMainPartListByUserIdResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='GetMainPartListByUserId',
+            version='2022-07-04',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imarketing_20220704_models.GetMainPartListByUserIdResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_main_part_list_by_user_id_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> imarketing_20220704_models.GetMainPartListByUserIdResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='GetMainPartListByUserId',
+            version='2022-07-04',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imarketing_20220704_models.GetMainPartListByUserIdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_main_part_list_by_user_id(self) -> imarketing_20220704_models.GetMainPartListByUserIdResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_main_part_list_by_user_id_with_options(runtime)
+
+    async def get_main_part_list_by_user_id_async(self) -> imarketing_20220704_models.GetMainPartListByUserIdResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_main_part_list_by_user_id_with_options_async(runtime)
+
     def get_main_part_page_with_options(
         self,
         request: imarketing_20220704_models.GetMainPartPageRequest,
@@ -338,6 +728,142 @@ class Client(OpenApiClient):
     ) -> imarketing_20220704_models.GetMainPartPageResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_main_part_page_with_options_async(request, runtime)
+
+    def get_oss_upload_signature_with_options(
+        self,
+        request: imarketing_20220704_models.GetOssUploadSignatureRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imarketing_20220704_models.GetOssUploadSignatureResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetOssUploadSignature',
+            version='2022-07-04',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imarketing_20220704_models.GetOssUploadSignatureResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_oss_upload_signature_with_options_async(
+        self,
+        request: imarketing_20220704_models.GetOssUploadSignatureRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imarketing_20220704_models.GetOssUploadSignatureResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetOssUploadSignature',
+            version='2022-07-04',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imarketing_20220704_models.GetOssUploadSignatureResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_oss_upload_signature(
+        self,
+        request: imarketing_20220704_models.GetOssUploadSignatureRequest,
+    ) -> imarketing_20220704_models.GetOssUploadSignatureResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_oss_upload_signature_with_options(request, runtime)
+
+    async def get_oss_upload_signature_async(
+        self,
+        request: imarketing_20220704_models.GetOssUploadSignatureRequest,
+    ) -> imarketing_20220704_models.GetOssUploadSignatureResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_oss_upload_signature_with_options_async(request, runtime)
+
+    def get_related_by_creative_id_with_options(
+        self,
+        request: imarketing_20220704_models.GetRelatedByCreativeIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imarketing_20220704_models.GetRelatedByCreativeIdResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetRelatedByCreativeId',
+            version='2022-07-04',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imarketing_20220704_models.GetRelatedByCreativeIdResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_related_by_creative_id_with_options_async(
+        self,
+        request: imarketing_20220704_models.GetRelatedByCreativeIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imarketing_20220704_models.GetRelatedByCreativeIdResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetRelatedByCreativeId',
+            version='2022-07-04',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imarketing_20220704_models.GetRelatedByCreativeIdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_related_by_creative_id(
+        self,
+        request: imarketing_20220704_models.GetRelatedByCreativeIdRequest,
+    ) -> imarketing_20220704_models.GetRelatedByCreativeIdResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_related_by_creative_id_with_options(request, runtime)
+
+    async def get_related_by_creative_id_async(
+        self,
+        request: imarketing_20220704_models.GetRelatedByCreativeIdRequest,
+    ) -> imarketing_20220704_models.GetRelatedByCreativeIdResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_related_by_creative_id_with_options_async(request, runtime)
 
     def get_user_finished_ad_with_options(
         self,
@@ -495,6 +1021,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_advertising_with_options_async(request, runtime)
 
+    def query_audit_result_with_options(
+        self,
+        request: imarketing_20220704_models.QueryAuditResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imarketing_20220704_models.QueryAuditResultResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dsp_id):
+            query['DspId'] = request.dsp_id
+        if not UtilClient.is_unset(request.ids):
+            query['Ids'] = request.ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryAuditResult',
+            version='2022-07-04',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imarketing_20220704_models.QueryAuditResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_audit_result_with_options_async(
+        self,
+        request: imarketing_20220704_models.QueryAuditResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imarketing_20220704_models.QueryAuditResultResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dsp_id):
+            query['DspId'] = request.dsp_id
+        if not UtilClient.is_unset(request.ids):
+            query['Ids'] = request.ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryAuditResult',
+            version='2022-07-04',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imarketing_20220704_models.QueryAuditResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_audit_result(
+        self,
+        request: imarketing_20220704_models.QueryAuditResultRequest,
+    ) -> imarketing_20220704_models.QueryAuditResultResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_audit_result_with_options(request, runtime)
+
+    async def query_audit_result_async(
+        self,
+        request: imarketing_20220704_models.QueryAuditResultRequest,
+    ) -> imarketing_20220704_models.QueryAuditResultResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_audit_result_with_options_async(request, runtime)
+
     def send_sms_with_options(
         self,
         request: imarketing_20220704_models.SendSmsRequest,
@@ -502,8 +1102,12 @@ class Client(OpenApiClient):
     ) -> imarketing_20220704_models.SendSmsResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.now_stamp):
+            query['NowStamp'] = request.now_stamp
         if not UtilClient.is_unset(request.phone_numbers):
             query['PhoneNumbers'] = request.phone_numbers
+        if not UtilClient.is_unset(request.sign_key):
+            query['SignKey'] = request.sign_key
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -530,8 +1134,12 @@ class Client(OpenApiClient):
     ) -> imarketing_20220704_models.SendSmsResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.now_stamp):
+            query['NowStamp'] = request.now_stamp
         if not UtilClient.is_unset(request.phone_numbers):
             query['PhoneNumbers'] = request.phone_numbers
+        if not UtilClient.is_unset(request.sign_key):
+            query['SignKey'] = request.sign_key
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -564,3 +1172,285 @@ class Client(OpenApiClient):
     ) -> imarketing_20220704_models.SendSmsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.send_sms_with_options_async(request, runtime)
+
+    def sync_info_with_options(
+        self,
+        request: imarketing_20220704_models.SyncInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imarketing_20220704_models.SyncInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_no):
+            query['AccountNo'] = request.account_no
+        if not UtilClient.is_unset(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not UtilClient.is_unset(request.chain_value):
+            query['ChainValue'] = request.chain_value
+        if not UtilClient.is_unset(request.component_id_list):
+            query['ComponentIdList'] = request.component_id_list
+        if not UtilClient.is_unset(request.create_user):
+            query['CreateUser'] = request.create_user
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.main_id):
+            query['MainId'] = request.main_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.next_chain_value):
+            query['NextChainValue'] = request.next_chain_value
+        if not UtilClient.is_unset(request.oss_file_url):
+            query['OssFileUrl'] = request.oss_file_url
+        if not UtilClient.is_unset(request.page_id):
+            query['PageId'] = request.page_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.update_user):
+            query['UpdateUser'] = request.update_user
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
+        if not UtilClient.is_unset(request.url_type):
+            query['UrlType'] = request.url_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SyncInfo',
+            version='2022-07-04',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imarketing_20220704_models.SyncInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def sync_info_with_options_async(
+        self,
+        request: imarketing_20220704_models.SyncInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imarketing_20220704_models.SyncInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_no):
+            query['AccountNo'] = request.account_no
+        if not UtilClient.is_unset(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not UtilClient.is_unset(request.chain_value):
+            query['ChainValue'] = request.chain_value
+        if not UtilClient.is_unset(request.component_id_list):
+            query['ComponentIdList'] = request.component_id_list
+        if not UtilClient.is_unset(request.create_user):
+            query['CreateUser'] = request.create_user
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.main_id):
+            query['MainId'] = request.main_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.next_chain_value):
+            query['NextChainValue'] = request.next_chain_value
+        if not UtilClient.is_unset(request.oss_file_url):
+            query['OssFileUrl'] = request.oss_file_url
+        if not UtilClient.is_unset(request.page_id):
+            query['PageId'] = request.page_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.update_user):
+            query['UpdateUser'] = request.update_user
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
+        if not UtilClient.is_unset(request.url_type):
+            query['UrlType'] = request.url_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SyncInfo',
+            version='2022-07-04',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imarketing_20220704_models.SyncInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def sync_info(
+        self,
+        request: imarketing_20220704_models.SyncInfoRequest,
+    ) -> imarketing_20220704_models.SyncInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.sync_info_with_options(request, runtime)
+
+    async def sync_info_async(
+        self,
+        request: imarketing_20220704_models.SyncInfoRequest,
+    ) -> imarketing_20220704_models.SyncInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.sync_info_with_options_async(request, runtime)
+
+    def update_adx_creative_content_with_options(
+        self,
+        request: imarketing_20220704_models.UpdateAdxCreativeContentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imarketing_20220704_models.UpdateAdxCreativeContentResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ad):
+            query['Ad'] = request.ad
+        if not UtilClient.is_unset(request.dsp_id):
+            query['DspId'] = request.dsp_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateAdxCreativeContent',
+            version='2022-07-04',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imarketing_20220704_models.UpdateAdxCreativeContentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_adx_creative_content_with_options_async(
+        self,
+        request: imarketing_20220704_models.UpdateAdxCreativeContentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imarketing_20220704_models.UpdateAdxCreativeContentResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ad):
+            query['Ad'] = request.ad
+        if not UtilClient.is_unset(request.dsp_id):
+            query['DspId'] = request.dsp_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateAdxCreativeContent',
+            version='2022-07-04',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imarketing_20220704_models.UpdateAdxCreativeContentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_adx_creative_content(
+        self,
+        request: imarketing_20220704_models.UpdateAdxCreativeContentRequest,
+    ) -> imarketing_20220704_models.UpdateAdxCreativeContentResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_adx_creative_content_with_options(request, runtime)
+
+    async def update_adx_creative_content_async(
+        self,
+        request: imarketing_20220704_models.UpdateAdxCreativeContentRequest,
+    ) -> imarketing_20220704_models.UpdateAdxCreativeContentResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_adx_creative_content_with_options_async(request, runtime)
+
+    def verify_sms_code_with_options(
+        self,
+        request: imarketing_20220704_models.VerifySmsCodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imarketing_20220704_models.VerifySmsCodeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.code):
+            query['Code'] = request.code
+        if not UtilClient.is_unset(request.now_stamp):
+            query['NowStamp'] = request.now_stamp
+        if not UtilClient.is_unset(request.phone_numbers):
+            query['PhoneNumbers'] = request.phone_numbers
+        if not UtilClient.is_unset(request.sign_key):
+            query['SignKey'] = request.sign_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='VerifySmsCode',
+            version='2022-07-04',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imarketing_20220704_models.VerifySmsCodeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def verify_sms_code_with_options_async(
+        self,
+        request: imarketing_20220704_models.VerifySmsCodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imarketing_20220704_models.VerifySmsCodeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.code):
+            query['Code'] = request.code
+        if not UtilClient.is_unset(request.now_stamp):
+            query['NowStamp'] = request.now_stamp
+        if not UtilClient.is_unset(request.phone_numbers):
+            query['PhoneNumbers'] = request.phone_numbers
+        if not UtilClient.is_unset(request.sign_key):
+            query['SignKey'] = request.sign_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='VerifySmsCode',
+            version='2022-07-04',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imarketing_20220704_models.VerifySmsCodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def verify_sms_code(
+        self,
+        request: imarketing_20220704_models.VerifySmsCodeRequest,
+    ) -> imarketing_20220704_models.VerifySmsCodeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.verify_sms_code_with_options(request, runtime)
+
+    async def verify_sms_code_async(
+        self,
+        request: imarketing_20220704_models.VerifySmsCodeRequest,
+    ) -> imarketing_20220704_models.VerifySmsCodeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.verify_sms_code_with_options_async(request, runtime)
