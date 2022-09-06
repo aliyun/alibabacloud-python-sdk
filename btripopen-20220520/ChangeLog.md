@@ -1,3 +1,6 @@
+2022-09-06 Version: 1.0.11
+- Update ApplyAdd and ApplyModify.
+
 2022-09-01 Version: 1.0.10
 - Add some api.
 
