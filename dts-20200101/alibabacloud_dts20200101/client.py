@@ -493,6 +493,236 @@ class Client(OpenApiClient):
         configure_dts_job_resp = await self.configure_dts_job_with_options_async(configure_dts_job_req, runtime)
         return configure_dts_job_resp
 
+    def configure_etl_job_with_options(
+        self,
+        request: dts_20200101_models.ConfigureEtlJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.ConfigureEtlJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.checkpoint):
+            query['Checkpoint'] = request.checkpoint
+        if not UtilClient.is_unset(request.data_initialization):
+            query['DataInitialization'] = request.data_initialization
+        if not UtilClient.is_unset(request.data_synchronization):
+            query['DataSynchronization'] = request.data_synchronization
+        if not UtilClient.is_unset(request.db_list):
+            query['DbList'] = request.db_list
+        if not UtilClient.is_unset(request.delay_notice):
+            query['DelayNotice'] = request.delay_notice
+        if not UtilClient.is_unset(request.delay_phone):
+            query['DelayPhone'] = request.delay_phone
+        if not UtilClient.is_unset(request.delay_rule_time):
+            query['DelayRuleTime'] = request.delay_rule_time
+        if not UtilClient.is_unset(request.destination_endpoint_data_base_name):
+            query['DestinationEndpointDataBaseName'] = request.destination_endpoint_data_base_name
+        if not UtilClient.is_unset(request.destination_endpoint_engine_name):
+            query['DestinationEndpointEngineName'] = request.destination_endpoint_engine_name
+        if not UtilClient.is_unset(request.destination_endpoint_ip):
+            query['DestinationEndpointIP'] = request.destination_endpoint_ip
+        if not UtilClient.is_unset(request.destination_endpoint_instance_id):
+            query['DestinationEndpointInstanceID'] = request.destination_endpoint_instance_id
+        if not UtilClient.is_unset(request.destination_endpoint_instance_type):
+            query['DestinationEndpointInstanceType'] = request.destination_endpoint_instance_type
+        if not UtilClient.is_unset(request.destination_endpoint_oracle_sid):
+            query['DestinationEndpointOracleSID'] = request.destination_endpoint_oracle_sid
+        if not UtilClient.is_unset(request.destination_endpoint_password):
+            query['DestinationEndpointPassword'] = request.destination_endpoint_password
+        if not UtilClient.is_unset(request.destination_endpoint_port):
+            query['DestinationEndpointPort'] = request.destination_endpoint_port
+        if not UtilClient.is_unset(request.destination_endpoint_region):
+            query['DestinationEndpointRegion'] = request.destination_endpoint_region
+        if not UtilClient.is_unset(request.destination_endpoint_user_name):
+            query['DestinationEndpointUserName'] = request.destination_endpoint_user_name
+        if not UtilClient.is_unset(request.dts_instance_id):
+            query['DtsInstanceId'] = request.dts_instance_id
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.dts_job_name):
+            query['DtsJobName'] = request.dts_job_name
+        if not UtilClient.is_unset(request.error_notice):
+            query['ErrorNotice'] = request.error_notice
+        if not UtilClient.is_unset(request.error_phone):
+            query['ErrorPhone'] = request.error_phone
+        if not UtilClient.is_unset(request.job_type):
+            query['JobType'] = request.job_type
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.reserve):
+            query['Reserve'] = request.reserve
+        if not UtilClient.is_unset(request.source_endpoint_database_name):
+            query['SourceEndpointDatabaseName'] = request.source_endpoint_database_name
+        if not UtilClient.is_unset(request.source_endpoint_engine_name):
+            query['SourceEndpointEngineName'] = request.source_endpoint_engine_name
+        if not UtilClient.is_unset(request.source_endpoint_ip):
+            query['SourceEndpointIP'] = request.source_endpoint_ip
+        if not UtilClient.is_unset(request.source_endpoint_instance_id):
+            query['SourceEndpointInstanceID'] = request.source_endpoint_instance_id
+        if not UtilClient.is_unset(request.source_endpoint_instance_type):
+            query['SourceEndpointInstanceType'] = request.source_endpoint_instance_type
+        if not UtilClient.is_unset(request.source_endpoint_oracle_sid):
+            query['SourceEndpointOracleSID'] = request.source_endpoint_oracle_sid
+        if not UtilClient.is_unset(request.source_endpoint_owner_id):
+            query['SourceEndpointOwnerID'] = request.source_endpoint_owner_id
+        if not UtilClient.is_unset(request.source_endpoint_password):
+            query['SourceEndpointPassword'] = request.source_endpoint_password
+        if not UtilClient.is_unset(request.source_endpoint_port):
+            query['SourceEndpointPort'] = request.source_endpoint_port
+        if not UtilClient.is_unset(request.source_endpoint_region):
+            query['SourceEndpointRegion'] = request.source_endpoint_region
+        if not UtilClient.is_unset(request.source_endpoint_role):
+            query['SourceEndpointRole'] = request.source_endpoint_role
+        if not UtilClient.is_unset(request.source_endpoint_user_name):
+            query['SourceEndpointUserName'] = request.source_endpoint_user_name
+        if not UtilClient.is_unset(request.structure_initialization):
+            query['StructureInitialization'] = request.structure_initialization
+        body = {}
+        if not UtilClient.is_unset(request.etl_calculator):
+            body['EtlCalculator'] = request.etl_calculator
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ConfigureEtlJob',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.ConfigureEtlJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def configure_etl_job_with_options_async(
+        self,
+        request: dts_20200101_models.ConfigureEtlJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.ConfigureEtlJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.checkpoint):
+            query['Checkpoint'] = request.checkpoint
+        if not UtilClient.is_unset(request.data_initialization):
+            query['DataInitialization'] = request.data_initialization
+        if not UtilClient.is_unset(request.data_synchronization):
+            query['DataSynchronization'] = request.data_synchronization
+        if not UtilClient.is_unset(request.db_list):
+            query['DbList'] = request.db_list
+        if not UtilClient.is_unset(request.delay_notice):
+            query['DelayNotice'] = request.delay_notice
+        if not UtilClient.is_unset(request.delay_phone):
+            query['DelayPhone'] = request.delay_phone
+        if not UtilClient.is_unset(request.delay_rule_time):
+            query['DelayRuleTime'] = request.delay_rule_time
+        if not UtilClient.is_unset(request.destination_endpoint_data_base_name):
+            query['DestinationEndpointDataBaseName'] = request.destination_endpoint_data_base_name
+        if not UtilClient.is_unset(request.destination_endpoint_engine_name):
+            query['DestinationEndpointEngineName'] = request.destination_endpoint_engine_name
+        if not UtilClient.is_unset(request.destination_endpoint_ip):
+            query['DestinationEndpointIP'] = request.destination_endpoint_ip
+        if not UtilClient.is_unset(request.destination_endpoint_instance_id):
+            query['DestinationEndpointInstanceID'] = request.destination_endpoint_instance_id
+        if not UtilClient.is_unset(request.destination_endpoint_instance_type):
+            query['DestinationEndpointInstanceType'] = request.destination_endpoint_instance_type
+        if not UtilClient.is_unset(request.destination_endpoint_oracle_sid):
+            query['DestinationEndpointOracleSID'] = request.destination_endpoint_oracle_sid
+        if not UtilClient.is_unset(request.destination_endpoint_password):
+            query['DestinationEndpointPassword'] = request.destination_endpoint_password
+        if not UtilClient.is_unset(request.destination_endpoint_port):
+            query['DestinationEndpointPort'] = request.destination_endpoint_port
+        if not UtilClient.is_unset(request.destination_endpoint_region):
+            query['DestinationEndpointRegion'] = request.destination_endpoint_region
+        if not UtilClient.is_unset(request.destination_endpoint_user_name):
+            query['DestinationEndpointUserName'] = request.destination_endpoint_user_name
+        if not UtilClient.is_unset(request.dts_instance_id):
+            query['DtsInstanceId'] = request.dts_instance_id
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.dts_job_name):
+            query['DtsJobName'] = request.dts_job_name
+        if not UtilClient.is_unset(request.error_notice):
+            query['ErrorNotice'] = request.error_notice
+        if not UtilClient.is_unset(request.error_phone):
+            query['ErrorPhone'] = request.error_phone
+        if not UtilClient.is_unset(request.job_type):
+            query['JobType'] = request.job_type
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.reserve):
+            query['Reserve'] = request.reserve
+        if not UtilClient.is_unset(request.source_endpoint_database_name):
+            query['SourceEndpointDatabaseName'] = request.source_endpoint_database_name
+        if not UtilClient.is_unset(request.source_endpoint_engine_name):
+            query['SourceEndpointEngineName'] = request.source_endpoint_engine_name
+        if not UtilClient.is_unset(request.source_endpoint_ip):
+            query['SourceEndpointIP'] = request.source_endpoint_ip
+        if not UtilClient.is_unset(request.source_endpoint_instance_id):
+            query['SourceEndpointInstanceID'] = request.source_endpoint_instance_id
+        if not UtilClient.is_unset(request.source_endpoint_instance_type):
+            query['SourceEndpointInstanceType'] = request.source_endpoint_instance_type
+        if not UtilClient.is_unset(request.source_endpoint_oracle_sid):
+            query['SourceEndpointOracleSID'] = request.source_endpoint_oracle_sid
+        if not UtilClient.is_unset(request.source_endpoint_owner_id):
+            query['SourceEndpointOwnerID'] = request.source_endpoint_owner_id
+        if not UtilClient.is_unset(request.source_endpoint_password):
+            query['SourceEndpointPassword'] = request.source_endpoint_password
+        if not UtilClient.is_unset(request.source_endpoint_port):
+            query['SourceEndpointPort'] = request.source_endpoint_port
+        if not UtilClient.is_unset(request.source_endpoint_region):
+            query['SourceEndpointRegion'] = request.source_endpoint_region
+        if not UtilClient.is_unset(request.source_endpoint_role):
+            query['SourceEndpointRole'] = request.source_endpoint_role
+        if not UtilClient.is_unset(request.source_endpoint_user_name):
+            query['SourceEndpointUserName'] = request.source_endpoint_user_name
+        if not UtilClient.is_unset(request.structure_initialization):
+            query['StructureInitialization'] = request.structure_initialization
+        body = {}
+        if not UtilClient.is_unset(request.etl_calculator):
+            body['EtlCalculator'] = request.etl_calculator
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ConfigureEtlJob',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.ConfigureEtlJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def configure_etl_job(
+        self,
+        request: dts_20200101_models.ConfigureEtlJobRequest,
+    ) -> dts_20200101_models.ConfigureEtlJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.configure_etl_job_with_options(request, runtime)
+
+    async def configure_etl_job_async(
+        self,
+        request: dts_20200101_models.ConfigureEtlJobRequest,
+    ) -> dts_20200101_models.ConfigureEtlJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.configure_etl_job_with_options_async(request, runtime)
+
     def configure_migration_job_with_options(
         self,
         request: dts_20200101_models.ConfigureMigrationJobRequest,
@@ -1860,6 +2090,8 @@ class Client(OpenApiClient):
             query['Quantity'] = request.quantity
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.source_endpoint_engine_name):
             query['SourceEndpointEngineName'] = request.source_endpoint_engine_name
         if not UtilClient.is_unset(request.source_region):
@@ -1924,6 +2156,8 @@ class Client(OpenApiClient):
             query['Quantity'] = request.quantity
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.source_endpoint_engine_name):
             query['SourceEndpointEngineName'] = request.source_endpoint_engine_name
         if not UtilClient.is_unset(request.source_region):
@@ -4274,6 +4508,8 @@ class Client(OpenApiClient):
             query['Region'] = request.region
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
         if not UtilClient.is_unset(request.tags):
@@ -4332,6 +4568,8 @@ class Client(OpenApiClient):
             query['Region'] = request.region
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
         if not UtilClient.is_unset(request.tags):
@@ -7964,6 +8202,84 @@ class Client(OpenApiClient):
     ) -> dts_20200101_models.ModifySynchronizationObjectResponse:
         runtime = util_models.RuntimeOptions()
         return await self.modify_synchronization_object_with_options_async(request, runtime)
+
+    def preview_sql_with_options(
+        self,
+        request: dts_20200101_models.PreviewSqlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.PreviewSqlResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.etl_calculator):
+            body['EtlCalculator'] = request.etl_calculator
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PreviewSql',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.PreviewSqlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def preview_sql_with_options_async(
+        self,
+        request: dts_20200101_models.PreviewSqlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.PreviewSqlResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.etl_calculator):
+            body['EtlCalculator'] = request.etl_calculator
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PreviewSql',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.PreviewSqlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def preview_sql(
+        self,
+        request: dts_20200101_models.PreviewSqlRequest,
+    ) -> dts_20200101_models.PreviewSqlResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.preview_sql_with_options(request, runtime)
+
+    async def preview_sql_async(
+        self,
+        request: dts_20200101_models.PreviewSqlRequest,
+    ) -> dts_20200101_models.PreviewSqlResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.preview_sql_with_options_async(request, runtime)
 
     def renew_instance_with_options(
         self,

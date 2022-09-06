@@ -292,7 +292,6 @@ class ConfigureDtsJobRequest(TeaModel):
 class ConfigureDtsJobAdvanceRequest(TeaModel):
     def __init__(
         self,
-        file_oss_url_object: BinaryIO = None,
         checkpoint: str = None,
         data_check_configure: str = None,
         data_initialization: bool = None,
@@ -318,6 +317,7 @@ class ConfigureDtsJobAdvanceRequest(TeaModel):
         dts_job_name: str = None,
         error_notice: bool = None,
         error_phone: str = None,
+        file_oss_url_object: BinaryIO = None,
         job_type: str = None,
         owner_id: str = None,
         region_id: str = None,
@@ -337,7 +337,6 @@ class ConfigureDtsJobAdvanceRequest(TeaModel):
         structure_initialization: bool = None,
         synchronization_direction: str = None,
     ):
-        self.file_oss_url_object = file_oss_url_object
         self.checkpoint = checkpoint
         self.data_check_configure = data_check_configure
         self.data_initialization = data_initialization
@@ -363,6 +362,7 @@ class ConfigureDtsJobAdvanceRequest(TeaModel):
         self.dts_job_name = dts_job_name
         self.error_notice = error_notice
         self.error_phone = error_phone
+        self.file_oss_url_object = file_oss_url_object
         self.job_type = job_type
         self.owner_id = owner_id
         self.region_id = region_id
@@ -383,7 +383,7 @@ class ConfigureDtsJobAdvanceRequest(TeaModel):
         self.synchronization_direction = synchronization_direction
 
     def validate(self):
-        self.validate_required(self.file_oss_url_object, 'file_oss_url_object')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -391,8 +391,6 @@ class ConfigureDtsJobAdvanceRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.file_oss_url_object is not None:
-            result['FileOssUrlObject'] = self.file_oss_url_object
         if self.checkpoint is not None:
             result['Checkpoint'] = self.checkpoint
         if self.data_check_configure is not None:
@@ -443,6 +441,8 @@ class ConfigureDtsJobAdvanceRequest(TeaModel):
             result['ErrorNotice'] = self.error_notice
         if self.error_phone is not None:
             result['ErrorPhone'] = self.error_phone
+        if self.file_oss_url_object is not None:
+            result['FileOssUrl'] = self.file_oss_url_object
         if self.job_type is not None:
             result['JobType'] = self.job_type
         if self.owner_id is not None:
@@ -483,8 +483,6 @@ class ConfigureDtsJobAdvanceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('FileOssUrlObject') is not None:
-            self.file_oss_url_object = m.get('FileOssUrlObject')
         if m.get('Checkpoint') is not None:
             self.checkpoint = m.get('Checkpoint')
         if m.get('DataCheckConfigure') is not None:
@@ -535,6 +533,8 @@ class ConfigureDtsJobAdvanceRequest(TeaModel):
             self.error_notice = m.get('ErrorNotice')
         if m.get('ErrorPhone') is not None:
             self.error_phone = m.get('ErrorPhone')
+        if m.get('FileOssUrl') is not None:
+            self.file_oss_url_object = m.get('FileOssUrl')
         if m.get('JobType') is not None:
             self.job_type = m.get('JobType')
         if m.get('OwnerId') is not None:
@@ -677,6 +677,374 @@ class ConfigureDtsJobResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ConfigureDtsJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ConfigureEtlJobRequest(TeaModel):
+    def __init__(
+        self,
+        checkpoint: str = None,
+        data_initialization: bool = None,
+        data_synchronization: bool = None,
+        db_list: str = None,
+        delay_notice: bool = None,
+        delay_phone: str = None,
+        delay_rule_time: int = None,
+        destination_endpoint_data_base_name: str = None,
+        destination_endpoint_engine_name: str = None,
+        destination_endpoint_ip: str = None,
+        destination_endpoint_instance_id: str = None,
+        destination_endpoint_instance_type: str = None,
+        destination_endpoint_oracle_sid: str = None,
+        destination_endpoint_password: str = None,
+        destination_endpoint_port: str = None,
+        destination_endpoint_region: str = None,
+        destination_endpoint_user_name: str = None,
+        dts_instance_id: str = None,
+        dts_job_id: str = None,
+        dts_job_name: str = None,
+        error_notice: bool = None,
+        error_phone: str = None,
+        etl_calculator: str = None,
+        job_type: str = None,
+        owner_id: str = None,
+        region_id: str = None,
+        reserve: str = None,
+        source_endpoint_database_name: str = None,
+        source_endpoint_engine_name: str = None,
+        source_endpoint_ip: str = None,
+        source_endpoint_instance_id: str = None,
+        source_endpoint_instance_type: str = None,
+        source_endpoint_oracle_sid: str = None,
+        source_endpoint_owner_id: str = None,
+        source_endpoint_password: str = None,
+        source_endpoint_port: str = None,
+        source_endpoint_region: str = None,
+        source_endpoint_role: str = None,
+        source_endpoint_user_name: str = None,
+        structure_initialization: bool = None,
+    ):
+        self.checkpoint = checkpoint
+        self.data_initialization = data_initialization
+        self.data_synchronization = data_synchronization
+        self.db_list = db_list
+        self.delay_notice = delay_notice
+        self.delay_phone = delay_phone
+        self.delay_rule_time = delay_rule_time
+        self.destination_endpoint_data_base_name = destination_endpoint_data_base_name
+        self.destination_endpoint_engine_name = destination_endpoint_engine_name
+        self.destination_endpoint_ip = destination_endpoint_ip
+        self.destination_endpoint_instance_id = destination_endpoint_instance_id
+        self.destination_endpoint_instance_type = destination_endpoint_instance_type
+        self.destination_endpoint_oracle_sid = destination_endpoint_oracle_sid
+        self.destination_endpoint_password = destination_endpoint_password
+        self.destination_endpoint_port = destination_endpoint_port
+        self.destination_endpoint_region = destination_endpoint_region
+        self.destination_endpoint_user_name = destination_endpoint_user_name
+        self.dts_instance_id = dts_instance_id
+        self.dts_job_id = dts_job_id
+        self.dts_job_name = dts_job_name
+        self.error_notice = error_notice
+        self.error_phone = error_phone
+        self.etl_calculator = etl_calculator
+        self.job_type = job_type
+        self.owner_id = owner_id
+        self.region_id = region_id
+        self.reserve = reserve
+        self.source_endpoint_database_name = source_endpoint_database_name
+        self.source_endpoint_engine_name = source_endpoint_engine_name
+        self.source_endpoint_ip = source_endpoint_ip
+        self.source_endpoint_instance_id = source_endpoint_instance_id
+        self.source_endpoint_instance_type = source_endpoint_instance_type
+        self.source_endpoint_oracle_sid = source_endpoint_oracle_sid
+        self.source_endpoint_owner_id = source_endpoint_owner_id
+        self.source_endpoint_password = source_endpoint_password
+        self.source_endpoint_port = source_endpoint_port
+        self.source_endpoint_region = source_endpoint_region
+        self.source_endpoint_role = source_endpoint_role
+        self.source_endpoint_user_name = source_endpoint_user_name
+        self.structure_initialization = structure_initialization
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.checkpoint is not None:
+            result['Checkpoint'] = self.checkpoint
+        if self.data_initialization is not None:
+            result['DataInitialization'] = self.data_initialization
+        if self.data_synchronization is not None:
+            result['DataSynchronization'] = self.data_synchronization
+        if self.db_list is not None:
+            result['DbList'] = self.db_list
+        if self.delay_notice is not None:
+            result['DelayNotice'] = self.delay_notice
+        if self.delay_phone is not None:
+            result['DelayPhone'] = self.delay_phone
+        if self.delay_rule_time is not None:
+            result['DelayRuleTime'] = self.delay_rule_time
+        if self.destination_endpoint_data_base_name is not None:
+            result['DestinationEndpointDataBaseName'] = self.destination_endpoint_data_base_name
+        if self.destination_endpoint_engine_name is not None:
+            result['DestinationEndpointEngineName'] = self.destination_endpoint_engine_name
+        if self.destination_endpoint_ip is not None:
+            result['DestinationEndpointIP'] = self.destination_endpoint_ip
+        if self.destination_endpoint_instance_id is not None:
+            result['DestinationEndpointInstanceID'] = self.destination_endpoint_instance_id
+        if self.destination_endpoint_instance_type is not None:
+            result['DestinationEndpointInstanceType'] = self.destination_endpoint_instance_type
+        if self.destination_endpoint_oracle_sid is not None:
+            result['DestinationEndpointOracleSID'] = self.destination_endpoint_oracle_sid
+        if self.destination_endpoint_password is not None:
+            result['DestinationEndpointPassword'] = self.destination_endpoint_password
+        if self.destination_endpoint_port is not None:
+            result['DestinationEndpointPort'] = self.destination_endpoint_port
+        if self.destination_endpoint_region is not None:
+            result['DestinationEndpointRegion'] = self.destination_endpoint_region
+        if self.destination_endpoint_user_name is not None:
+            result['DestinationEndpointUserName'] = self.destination_endpoint_user_name
+        if self.dts_instance_id is not None:
+            result['DtsInstanceId'] = self.dts_instance_id
+        if self.dts_job_id is not None:
+            result['DtsJobId'] = self.dts_job_id
+        if self.dts_job_name is not None:
+            result['DtsJobName'] = self.dts_job_name
+        if self.error_notice is not None:
+            result['ErrorNotice'] = self.error_notice
+        if self.error_phone is not None:
+            result['ErrorPhone'] = self.error_phone
+        if self.etl_calculator is not None:
+            result['EtlCalculator'] = self.etl_calculator
+        if self.job_type is not None:
+            result['JobType'] = self.job_type
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.reserve is not None:
+            result['Reserve'] = self.reserve
+        if self.source_endpoint_database_name is not None:
+            result['SourceEndpointDatabaseName'] = self.source_endpoint_database_name
+        if self.source_endpoint_engine_name is not None:
+            result['SourceEndpointEngineName'] = self.source_endpoint_engine_name
+        if self.source_endpoint_ip is not None:
+            result['SourceEndpointIP'] = self.source_endpoint_ip
+        if self.source_endpoint_instance_id is not None:
+            result['SourceEndpointInstanceID'] = self.source_endpoint_instance_id
+        if self.source_endpoint_instance_type is not None:
+            result['SourceEndpointInstanceType'] = self.source_endpoint_instance_type
+        if self.source_endpoint_oracle_sid is not None:
+            result['SourceEndpointOracleSID'] = self.source_endpoint_oracle_sid
+        if self.source_endpoint_owner_id is not None:
+            result['SourceEndpointOwnerID'] = self.source_endpoint_owner_id
+        if self.source_endpoint_password is not None:
+            result['SourceEndpointPassword'] = self.source_endpoint_password
+        if self.source_endpoint_port is not None:
+            result['SourceEndpointPort'] = self.source_endpoint_port
+        if self.source_endpoint_region is not None:
+            result['SourceEndpointRegion'] = self.source_endpoint_region
+        if self.source_endpoint_role is not None:
+            result['SourceEndpointRole'] = self.source_endpoint_role
+        if self.source_endpoint_user_name is not None:
+            result['SourceEndpointUserName'] = self.source_endpoint_user_name
+        if self.structure_initialization is not None:
+            result['StructureInitialization'] = self.structure_initialization
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Checkpoint') is not None:
+            self.checkpoint = m.get('Checkpoint')
+        if m.get('DataInitialization') is not None:
+            self.data_initialization = m.get('DataInitialization')
+        if m.get('DataSynchronization') is not None:
+            self.data_synchronization = m.get('DataSynchronization')
+        if m.get('DbList') is not None:
+            self.db_list = m.get('DbList')
+        if m.get('DelayNotice') is not None:
+            self.delay_notice = m.get('DelayNotice')
+        if m.get('DelayPhone') is not None:
+            self.delay_phone = m.get('DelayPhone')
+        if m.get('DelayRuleTime') is not None:
+            self.delay_rule_time = m.get('DelayRuleTime')
+        if m.get('DestinationEndpointDataBaseName') is not None:
+            self.destination_endpoint_data_base_name = m.get('DestinationEndpointDataBaseName')
+        if m.get('DestinationEndpointEngineName') is not None:
+            self.destination_endpoint_engine_name = m.get('DestinationEndpointEngineName')
+        if m.get('DestinationEndpointIP') is not None:
+            self.destination_endpoint_ip = m.get('DestinationEndpointIP')
+        if m.get('DestinationEndpointInstanceID') is not None:
+            self.destination_endpoint_instance_id = m.get('DestinationEndpointInstanceID')
+        if m.get('DestinationEndpointInstanceType') is not None:
+            self.destination_endpoint_instance_type = m.get('DestinationEndpointInstanceType')
+        if m.get('DestinationEndpointOracleSID') is not None:
+            self.destination_endpoint_oracle_sid = m.get('DestinationEndpointOracleSID')
+        if m.get('DestinationEndpointPassword') is not None:
+            self.destination_endpoint_password = m.get('DestinationEndpointPassword')
+        if m.get('DestinationEndpointPort') is not None:
+            self.destination_endpoint_port = m.get('DestinationEndpointPort')
+        if m.get('DestinationEndpointRegion') is not None:
+            self.destination_endpoint_region = m.get('DestinationEndpointRegion')
+        if m.get('DestinationEndpointUserName') is not None:
+            self.destination_endpoint_user_name = m.get('DestinationEndpointUserName')
+        if m.get('DtsInstanceId') is not None:
+            self.dts_instance_id = m.get('DtsInstanceId')
+        if m.get('DtsJobId') is not None:
+            self.dts_job_id = m.get('DtsJobId')
+        if m.get('DtsJobName') is not None:
+            self.dts_job_name = m.get('DtsJobName')
+        if m.get('ErrorNotice') is not None:
+            self.error_notice = m.get('ErrorNotice')
+        if m.get('ErrorPhone') is not None:
+            self.error_phone = m.get('ErrorPhone')
+        if m.get('EtlCalculator') is not None:
+            self.etl_calculator = m.get('EtlCalculator')
+        if m.get('JobType') is not None:
+            self.job_type = m.get('JobType')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Reserve') is not None:
+            self.reserve = m.get('Reserve')
+        if m.get('SourceEndpointDatabaseName') is not None:
+            self.source_endpoint_database_name = m.get('SourceEndpointDatabaseName')
+        if m.get('SourceEndpointEngineName') is not None:
+            self.source_endpoint_engine_name = m.get('SourceEndpointEngineName')
+        if m.get('SourceEndpointIP') is not None:
+            self.source_endpoint_ip = m.get('SourceEndpointIP')
+        if m.get('SourceEndpointInstanceID') is not None:
+            self.source_endpoint_instance_id = m.get('SourceEndpointInstanceID')
+        if m.get('SourceEndpointInstanceType') is not None:
+            self.source_endpoint_instance_type = m.get('SourceEndpointInstanceType')
+        if m.get('SourceEndpointOracleSID') is not None:
+            self.source_endpoint_oracle_sid = m.get('SourceEndpointOracleSID')
+        if m.get('SourceEndpointOwnerID') is not None:
+            self.source_endpoint_owner_id = m.get('SourceEndpointOwnerID')
+        if m.get('SourceEndpointPassword') is not None:
+            self.source_endpoint_password = m.get('SourceEndpointPassword')
+        if m.get('SourceEndpointPort') is not None:
+            self.source_endpoint_port = m.get('SourceEndpointPort')
+        if m.get('SourceEndpointRegion') is not None:
+            self.source_endpoint_region = m.get('SourceEndpointRegion')
+        if m.get('SourceEndpointRole') is not None:
+            self.source_endpoint_role = m.get('SourceEndpointRole')
+        if m.get('SourceEndpointUserName') is not None:
+            self.source_endpoint_user_name = m.get('SourceEndpointUserName')
+        if m.get('StructureInitialization') is not None:
+            self.structure_initialization = m.get('StructureInitialization')
+        return self
+
+
+class ConfigureEtlJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        dts_instance_id: str = None,
+        dts_job_id: str = None,
+        err_code: str = None,
+        err_message: str = None,
+        http_status_code: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.dts_instance_id = dts_instance_id
+        self.dts_job_id = dts_job_id
+        self.err_code = err_code
+        self.err_message = err_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dts_instance_id is not None:
+            result['DtsInstanceId'] = self.dts_instance_id
+        if self.dts_job_id is not None:
+            result['DtsJobId'] = self.dts_job_id
+        if self.err_code is not None:
+            result['ErrCode'] = self.err_code
+        if self.err_message is not None:
+            result['ErrMessage'] = self.err_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DtsInstanceId') is not None:
+            self.dts_instance_id = m.get('DtsInstanceId')
+        if m.get('DtsJobId') is not None:
+            self.dts_job_id = m.get('DtsJobId')
+        if m.get('ErrCode') is not None:
+            self.err_code = m.get('ErrCode')
+        if m.get('ErrMessage') is not None:
+            self.err_message = m.get('ErrMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ConfigureEtlJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ConfigureEtlJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ConfigureEtlJobResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3449,6 +3817,7 @@ class CreateDtsInstanceRequest(TeaModel):
         period: str = None,
         quantity: int = None,
         region_id: str = None,
+        resource_group_id: str = None,
         source_endpoint_engine_name: str = None,
         source_region: str = None,
         sync_architecture: str = None,
@@ -3469,6 +3838,7 @@ class CreateDtsInstanceRequest(TeaModel):
         self.period = period
         self.quantity = quantity
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         self.source_endpoint_engine_name = source_endpoint_engine_name
         self.source_region = source_region
         self.sync_architecture = sync_architecture
@@ -3512,6 +3882,8 @@ class CreateDtsInstanceRequest(TeaModel):
             result['Quantity'] = self.quantity
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.source_endpoint_engine_name is not None:
             result['SourceEndpointEngineName'] = self.source_endpoint_engine_name
         if self.source_region is not None:
@@ -3554,6 +3926,8 @@ class CreateDtsInstanceRequest(TeaModel):
             self.quantity = m.get('Quantity')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SourceEndpointEngineName') is not None:
             self.source_endpoint_engine_name = m.get('SourceEndpointEngineName')
         if m.get('SourceRegion') is not None:
@@ -13504,6 +13878,10 @@ class DescribeDtsJobDetailResponseBody(TeaModel):
         self,
         app_name: str = None,
         begin_timestamp: str = None,
+        binlog: str = None,
+        binlog_site: str = None,
+        binlog_time: str = None,
+        boot_time: str = None,
         checkpoint: int = None,
         code: int = None,
         consumption_checkpoint: str = None,
@@ -13533,6 +13911,7 @@ class DescribeDtsJobDetailResponseBody(TeaModel):
         group_id: str = None,
         http_status_code: int = None,
         job_type: str = None,
+        last_update_time: str = None,
         migration_mode: DescribeDtsJobDetailResponseBodyMigrationMode = None,
         pay_type: str = None,
         request_id: str = None,
@@ -13550,6 +13929,10 @@ class DescribeDtsJobDetailResponseBody(TeaModel):
     ):
         self.app_name = app_name
         self.begin_timestamp = begin_timestamp
+        self.binlog = binlog
+        self.binlog_site = binlog_site
+        self.binlog_time = binlog_time
+        self.boot_time = boot_time
         self.checkpoint = checkpoint
         self.code = code
         self.consumption_checkpoint = consumption_checkpoint
@@ -13579,6 +13962,7 @@ class DescribeDtsJobDetailResponseBody(TeaModel):
         self.group_id = group_id
         self.http_status_code = http_status_code
         self.job_type = job_type
+        self.last_update_time = last_update_time
         self.migration_mode = migration_mode
         self.pay_type = pay_type
         self.request_id = request_id
@@ -13626,6 +14010,14 @@ class DescribeDtsJobDetailResponseBody(TeaModel):
             result['AppName'] = self.app_name
         if self.begin_timestamp is not None:
             result['BeginTimestamp'] = self.begin_timestamp
+        if self.binlog is not None:
+            result['Binlog'] = self.binlog
+        if self.binlog_site is not None:
+            result['BinlogSite'] = self.binlog_site
+        if self.binlog_time is not None:
+            result['BinlogTime'] = self.binlog_time
+        if self.boot_time is not None:
+            result['BootTime'] = self.boot_time
         if self.checkpoint is not None:
             result['Checkpoint'] = self.checkpoint
         if self.code is not None:
@@ -13684,6 +14076,8 @@ class DescribeDtsJobDetailResponseBody(TeaModel):
             result['HttpStatusCode'] = self.http_status_code
         if self.job_type is not None:
             result['JobType'] = self.job_type
+        if self.last_update_time is not None:
+            result['LastUpdateTime'] = self.last_update_time
         if self.migration_mode is not None:
             result['MigrationMode'] = self.migration_mode.to_map()
         if self.pay_type is not None:
@@ -13724,6 +14118,14 @@ class DescribeDtsJobDetailResponseBody(TeaModel):
             self.app_name = m.get('AppName')
         if m.get('BeginTimestamp') is not None:
             self.begin_timestamp = m.get('BeginTimestamp')
+        if m.get('Binlog') is not None:
+            self.binlog = m.get('Binlog')
+        if m.get('BinlogSite') is not None:
+            self.binlog_site = m.get('BinlogSite')
+        if m.get('BinlogTime') is not None:
+            self.binlog_time = m.get('BinlogTime')
+        if m.get('BootTime') is not None:
+            self.boot_time = m.get('BootTime')
         if m.get('Checkpoint') is not None:
             self.checkpoint = m.get('Checkpoint')
         if m.get('Code') is not None:
@@ -13784,6 +14186,8 @@ class DescribeDtsJobDetailResponseBody(TeaModel):
             self.http_status_code = m.get('HttpStatusCode')
         if m.get('JobType') is not None:
             self.job_type = m.get('JobType')
+        if m.get('LastUpdateTime') is not None:
+            self.last_update_time = m.get('LastUpdateTime')
         if m.get('MigrationMode') is not None:
             temp_model = DescribeDtsJobDetailResponseBodyMigrationMode()
             self.migration_mode = temp_model.from_map(m['MigrationMode'])
@@ -13885,6 +14289,7 @@ class DescribeDtsJobsRequest(TeaModel):
         params: str = None,
         region: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         status: str = None,
         tags: str = None,
         type: str = None,
@@ -13902,6 +14307,7 @@ class DescribeDtsJobsRequest(TeaModel):
         self.params = params
         self.region = region
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         self.status = status
         self.tags = tags
         self.type = type
@@ -13941,6 +14347,8 @@ class DescribeDtsJobsRequest(TeaModel):
             result['Region'] = self.region
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.status is not None:
             result['Status'] = self.status
         if self.tags is not None:
@@ -13977,6 +14385,8 @@ class DescribeDtsJobsRequest(TeaModel):
             self.region = m.get('Region')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('Tags') is not None:
@@ -15389,6 +15799,7 @@ class DescribeDtsJobsResponseBodyDtsJobList(TeaModel):
         performance: DescribeDtsJobsResponseBodyDtsJobListPerformance = None,
         precheck_status: DescribeDtsJobsResponseBodyDtsJobListPrecheckStatus = None,
         reserved: str = None,
+        resource_group_id: str = None,
         retry_state: DescribeDtsJobsResponseBodyDtsJobListRetryState = None,
         reverse_job: DescribeDtsJobsResponseBodyDtsJobListReverseJob = None,
         source_endpoint: DescribeDtsJobsResponseBodyDtsJobListSourceEndpoint = None,
@@ -15428,6 +15839,7 @@ class DescribeDtsJobsResponseBodyDtsJobList(TeaModel):
         self.performance = performance
         self.precheck_status = precheck_status
         self.reserved = reserved
+        self.resource_group_id = resource_group_id
         self.retry_state = retry_state
         self.reverse_job = reverse_job
         self.source_endpoint = source_endpoint
@@ -15539,6 +15951,8 @@ class DescribeDtsJobsResponseBodyDtsJobList(TeaModel):
             result['PrecheckStatus'] = self.precheck_status.to_map()
         if self.reserved is not None:
             result['Reserved'] = self.reserved
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.retry_state is not None:
             result['RetryState'] = self.retry_state.to_map()
         if self.reverse_job is not None:
@@ -15631,6 +16045,8 @@ class DescribeDtsJobsResponseBodyDtsJobList(TeaModel):
             self.precheck_status = temp_model.from_map(m['PrecheckStatus'])
         if m.get('Reserved') is not None:
             self.reserved = m.get('Reserved')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('RetryState') is not None:
             temp_model = DescribeDtsJobsResponseBodyDtsJobListRetryState()
             self.retry_state = temp_model.from_map(m['RetryState'])
@@ -16946,6 +17362,7 @@ class DescribeDtsJobsResponseBodyEtlDemoList(TeaModel):
         performance: DescribeDtsJobsResponseBodyEtlDemoListPerformance = None,
         precheck_status: DescribeDtsJobsResponseBodyEtlDemoListPrecheckStatus = None,
         reserved: str = None,
+        resource_group_id: str = None,
         retry_state: DescribeDtsJobsResponseBodyEtlDemoListRetryState = None,
         reverse_job: DescribeDtsJobsResponseBodyEtlDemoListReverseJob = None,
         source_endpoint: DescribeDtsJobsResponseBodyEtlDemoListSourceEndpoint = None,
@@ -16980,6 +17397,7 @@ class DescribeDtsJobsResponseBodyEtlDemoList(TeaModel):
         self.performance = performance
         self.precheck_status = precheck_status
         self.reserved = reserved
+        self.resource_group_id = resource_group_id
         self.retry_state = retry_state
         self.reverse_job = reverse_job
         self.source_endpoint = source_endpoint
@@ -17075,6 +17493,8 @@ class DescribeDtsJobsResponseBodyEtlDemoList(TeaModel):
             result['PrecheckStatus'] = self.precheck_status.to_map()
         if self.reserved is not None:
             result['Reserved'] = self.reserved
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.retry_state is not None:
             result['RetryState'] = self.retry_state.to_map()
         if self.reverse_job is not None:
@@ -17154,6 +17574,8 @@ class DescribeDtsJobsResponseBodyEtlDemoList(TeaModel):
             self.precheck_status = temp_model.from_map(m['PrecheckStatus'])
         if m.get('Reserved') is not None:
             self.reserved = m.get('Reserved')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('RetryState') is not None:
             temp_model = DescribeDtsJobsResponseBodyEtlDemoListRetryState()
             self.retry_state = temp_model.from_map(m['RetryState'])
@@ -28222,22 +28644,22 @@ class ModifyDtsJobRequest(TeaModel):
 class ModifyDtsJobAdvanceRequest(TeaModel):
     def __init__(
         self,
-        file_oss_url_object: BinaryIO = None,
         client_token: str = None,
         db_list: Dict[str, Any] = None,
         dts_instance_id: str = None,
         etl_operator_column_reference: str = None,
+        file_oss_url_object: BinaryIO = None,
         filter_table_name: str = None,
         modify_type_enum: str = None,
         region_id: str = None,
         reserved: str = None,
         synchronization_direction: str = None,
     ):
-        self.file_oss_url_object = file_oss_url_object
         self.client_token = client_token
         self.db_list = db_list
         self.dts_instance_id = dts_instance_id
         self.etl_operator_column_reference = etl_operator_column_reference
+        self.file_oss_url_object = file_oss_url_object
         self.filter_table_name = filter_table_name
         self.modify_type_enum = modify_type_enum
         self.region_id = region_id
@@ -28245,7 +28667,7 @@ class ModifyDtsJobAdvanceRequest(TeaModel):
         self.synchronization_direction = synchronization_direction
 
     def validate(self):
-        self.validate_required(self.file_oss_url_object, 'file_oss_url_object')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -28253,8 +28675,6 @@ class ModifyDtsJobAdvanceRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.file_oss_url_object is not None:
-            result['FileOssUrlObject'] = self.file_oss_url_object
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
         if self.db_list is not None:
@@ -28263,6 +28683,8 @@ class ModifyDtsJobAdvanceRequest(TeaModel):
             result['DtsInstanceId'] = self.dts_instance_id
         if self.etl_operator_column_reference is not None:
             result['EtlOperatorColumnReference'] = self.etl_operator_column_reference
+        if self.file_oss_url_object is not None:
+            result['FileOssUrl'] = self.file_oss_url_object
         if self.filter_table_name is not None:
             result['FilterTableName'] = self.filter_table_name
         if self.modify_type_enum is not None:
@@ -28277,8 +28699,6 @@ class ModifyDtsJobAdvanceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('FileOssUrlObject') is not None:
-            self.file_oss_url_object = m.get('FileOssUrlObject')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
         if m.get('DbList') is not None:
@@ -28287,6 +28707,8 @@ class ModifyDtsJobAdvanceRequest(TeaModel):
             self.dts_instance_id = m.get('DtsInstanceId')
         if m.get('EtlOperatorColumnReference') is not None:
             self.etl_operator_column_reference = m.get('EtlOperatorColumnReference')
+        if m.get('FileOssUrl') is not None:
+            self.file_oss_url_object = m.get('FileOssUrl')
         if m.get('FilterTableName') is not None:
             self.filter_table_name = m.get('FilterTableName')
         if m.get('ModifyTypeEnum') is not None:
@@ -29530,6 +29952,164 @@ class ModifySynchronizationObjectResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifySynchronizationObjectResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class PreviewSqlRequest(TeaModel):
+    def __init__(
+        self,
+        etl_calculator: str = None,
+        region_id: str = None,
+    ):
+        self.etl_calculator = etl_calculator
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.etl_calculator is not None:
+            result['EtlCalculator'] = self.etl_calculator
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EtlCalculator') is not None:
+            self.etl_calculator = m.get('EtlCalculator')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class PreviewSqlResponseBody(TeaModel):
+    def __init__(
+        self,
+        dynamic_code: str = None,
+        dynamic_message: str = None,
+        err_code: str = None,
+        err_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        sql_list: List[str] = None,
+        stream_graph: str = None,
+        success: bool = None,
+        validation_exception: str = None,
+    ):
+        self.dynamic_code = dynamic_code
+        self.dynamic_message = dynamic_message
+        self.err_code = err_code
+        self.err_message = err_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.sql_list = sql_list
+        self.stream_graph = stream_graph
+        self.success = success
+        self.validation_exception = validation_exception
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dynamic_code is not None:
+            result['DynamicCode'] = self.dynamic_code
+        if self.dynamic_message is not None:
+            result['DynamicMessage'] = self.dynamic_message
+        if self.err_code is not None:
+            result['ErrCode'] = self.err_code
+        if self.err_message is not None:
+            result['ErrMessage'] = self.err_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.sql_list is not None:
+            result['SqlList'] = self.sql_list
+        if self.stream_graph is not None:
+            result['StreamGraph'] = self.stream_graph
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.validation_exception is not None:
+            result['ValidationException'] = self.validation_exception
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DynamicCode') is not None:
+            self.dynamic_code = m.get('DynamicCode')
+        if m.get('DynamicMessage') is not None:
+            self.dynamic_message = m.get('DynamicMessage')
+        if m.get('ErrCode') is not None:
+            self.err_code = m.get('ErrCode')
+        if m.get('ErrMessage') is not None:
+            self.err_message = m.get('ErrMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SqlList') is not None:
+            self.sql_list = m.get('SqlList')
+        if m.get('StreamGraph') is not None:
+            self.stream_graph = m.get('StreamGraph')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('ValidationException') is not None:
+            self.validation_exception = m.get('ValidationException')
+        return self
+
+
+class PreviewSqlResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: PreviewSqlResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = PreviewSqlResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
