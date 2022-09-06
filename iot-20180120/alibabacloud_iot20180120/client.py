@@ -168,6 +168,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_data_for_api_source_with_options_async(request, runtime)
 
+    def add_share_task_device_with_options(
+        self,
+        request: iot_20180120_models.AddShareTaskDeviceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.AddShareTaskDeviceResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.iot_id_list):
+            body['IotIdList'] = request.iot_id_list
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            body['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.share_task_id):
+            body['ShareTaskId'] = request.share_task_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AddShareTaskDevice',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.AddShareTaskDeviceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_share_task_device_with_options_async(
+        self,
+        request: iot_20180120_models.AddShareTaskDeviceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.AddShareTaskDeviceResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.iot_id_list):
+            body['IotIdList'] = request.iot_id_list
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            body['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.share_task_id):
+            body['ShareTaskId'] = request.share_task_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AddShareTaskDevice',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.AddShareTaskDeviceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_share_task_device(
+        self,
+        request: iot_20180120_models.AddShareTaskDeviceRequest,
+    ) -> iot_20180120_models.AddShareTaskDeviceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.add_share_task_device_with_options(request, runtime)
+
+    async def add_share_task_device_async(
+        self,
+        request: iot_20180120_models.AddShareTaskDeviceRequest,
+    ) -> iot_20180120_models.AddShareTaskDeviceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.add_share_task_device_with_options_async(request, runtime)
+
     def attach_destination_with_options(
         self,
         request: iot_20180120_models.AttachDestinationRequest,
@@ -3137,16 +3219,20 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.BindLicenseDeviceResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.iot_id_list):
-            query['IotIdList'] = request.iot_id_list
         if not UtilClient.is_unset(request.iot_instance_id):
             query['IotInstanceId'] = request.iot_instance_id
         if not UtilClient.is_unset(request.license_code):
             query['LicenseCode'] = request.license_code
         if not UtilClient.is_unset(request.product_key):
             query['ProductKey'] = request.product_key
+        body = {}
+        if not UtilClient.is_unset(request.device_name_list):
+            body['DeviceNameList'] = request.device_name_list
+        if not UtilClient.is_unset(request.iot_id_list):
+            body['IotIdList'] = request.iot_id_list
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='BindLicenseDevice',
@@ -3171,16 +3257,20 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.BindLicenseDeviceResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.iot_id_list):
-            query['IotIdList'] = request.iot_id_list
         if not UtilClient.is_unset(request.iot_instance_id):
             query['IotInstanceId'] = request.iot_instance_id
         if not UtilClient.is_unset(request.license_code):
             query['LicenseCode'] = request.license_code
         if not UtilClient.is_unset(request.product_key):
             query['ProductKey'] = request.product_key
+        body = {}
+        if not UtilClient.is_unset(request.device_name_list):
+            body['DeviceNameList'] = request.device_name_list
+        if not UtilClient.is_unset(request.iot_id_list):
+            body['IotIdList'] = request.iot_id_list
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='BindLicenseDevice',
@@ -5093,6 +5183,116 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.CreateDeviceTunnelResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_device_tunnel_with_options_async(request, runtime)
+
+    def create_download_data_job_with_options(
+        self,
+        tmp_req: iot_20180120_models.CreateDownloadDataJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.CreateDownloadDataJobResponse:
+        UtilClient.validate_model(tmp_req)
+        request = iot_20180120_models.CreateDownloadDataJobShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.context):
+            request.context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.context, 'Context', 'json')
+        if not UtilClient.is_unset(tmp_req.file_config):
+            request.file_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.file_config, 'FileConfig', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.download_data_type):
+            query['DownloadDataType'] = request.download_data_type
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.file_config_shrink):
+            query['FileConfig'] = request.file_config_shrink
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.table_name):
+            query['TableName'] = request.table_name
+        body = {}
+        if not UtilClient.is_unset(request.context_shrink):
+            body['Context'] = request.context_shrink
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDownloadDataJob',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.CreateDownloadDataJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_download_data_job_with_options_async(
+        self,
+        tmp_req: iot_20180120_models.CreateDownloadDataJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.CreateDownloadDataJobResponse:
+        UtilClient.validate_model(tmp_req)
+        request = iot_20180120_models.CreateDownloadDataJobShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.context):
+            request.context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.context, 'Context', 'json')
+        if not UtilClient.is_unset(tmp_req.file_config):
+            request.file_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.file_config, 'FileConfig', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.download_data_type):
+            query['DownloadDataType'] = request.download_data_type
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.file_config_shrink):
+            query['FileConfig'] = request.file_config_shrink
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.table_name):
+            query['TableName'] = request.table_name
+        body = {}
+        if not UtilClient.is_unset(request.context_shrink):
+            body['Context'] = request.context_shrink
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDownloadDataJob',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.CreateDownloadDataJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_download_data_job(
+        self,
+        request: iot_20180120_models.CreateDownloadDataJobRequest,
+    ) -> iot_20180120_models.CreateDownloadDataJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_download_data_job_with_options(request, runtime)
+
+    async def create_download_data_job_async(
+        self,
+        request: iot_20180120_models.CreateDownloadDataJobRequest,
+    ) -> iot_20180120_models.CreateDownloadDataJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_download_data_job_with_options_async(request, runtime)
 
     def create_edge_driver_with_options(
         self,
@@ -10466,6 +10666,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_schedule_period_with_options_async(request, runtime)
 
+    def delete_share_task_device_with_options(
+        self,
+        request: iot_20180120_models.DeleteShareTaskDeviceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.DeleteShareTaskDeviceResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.iot_id_list):
+            body['IotIdList'] = request.iot_id_list
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.share_task_id):
+            body['ShareTaskId'] = request.share_task_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteShareTaskDevice',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.DeleteShareTaskDeviceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_share_task_device_with_options_async(
+        self,
+        request: iot_20180120_models.DeleteShareTaskDeviceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.DeleteShareTaskDeviceResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.iot_id_list):
+            body['IotIdList'] = request.iot_id_list
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.share_task_id):
+            body['ShareTaskId'] = request.share_task_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteShareTaskDevice',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.DeleteShareTaskDeviceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_share_task_device(
+        self,
+        request: iot_20180120_models.DeleteShareTaskDeviceRequest,
+    ) -> iot_20180120_models.DeleteShareTaskDeviceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_share_task_device_with_options(request, runtime)
+
+    async def delete_share_task_device_async(
+        self,
+        request: iot_20180120_models.DeleteShareTaskDeviceRequest,
+    ) -> iot_20180120_models.DeleteShareTaskDeviceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_share_task_device_with_options_async(request, runtime)
+
     def delete_sound_code_with_options(
         self,
         request: iot_20180120_models.DeleteSoundCodeRequest,
@@ -12564,6 +12842,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_device_tunnel_status_with_options_async(request, runtime)
 
+    def get_download_file_with_options(
+        self,
+        tmp_req: iot_20180120_models.GetDownloadFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.GetDownloadFileResponse:
+        UtilClient.validate_model(tmp_req)
+        request = iot_20180120_models.GetDownloadFileShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.context):
+            request.context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.context, 'Context', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.long_job_id):
+            query['LongJobId'] = request.long_job_id
+        body = {}
+        if not UtilClient.is_unset(request.context_shrink):
+            body['Context'] = request.context_shrink
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetDownloadFile',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.GetDownloadFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_download_file_with_options_async(
+        self,
+        tmp_req: iot_20180120_models.GetDownloadFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.GetDownloadFileResponse:
+        UtilClient.validate_model(tmp_req)
+        request = iot_20180120_models.GetDownloadFileShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.context):
+            request.context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.context, 'Context', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.long_job_id):
+            query['LongJobId'] = request.long_job_id
+        body = {}
+        if not UtilClient.is_unset(request.context_shrink):
+            body['Context'] = request.context_shrink
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetDownloadFile',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.GetDownloadFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_download_file(
+        self,
+        request: iot_20180120_models.GetDownloadFileRequest,
+    ) -> iot_20180120_models.GetDownloadFileResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_download_file_with_options(request, runtime)
+
+    async def get_download_file_async(
+        self,
+        request: iot_20180120_models.GetDownloadFileRequest,
+    ) -> iot_20180120_models.GetDownloadFileResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_download_file_with_options_async(request, runtime)
+
     def get_edge_driver_version_with_options(
         self,
         request: iot_20180120_models.GetEdgeDriverVersionRequest,
@@ -13398,6 +13766,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_scene_rule_with_options_async(request, runtime)
 
+    def get_share_task_by_device_open_with_options(
+        self,
+        request: iot_20180120_models.GetShareTaskByDeviceOpenRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.GetShareTaskByDeviceOpenResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.device_name):
+            body['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            body['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            body['ProductKey'] = request.product_key
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetShareTaskByDeviceOpen',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.GetShareTaskByDeviceOpenResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_share_task_by_device_open_with_options_async(
+        self,
+        request: iot_20180120_models.GetShareTaskByDeviceOpenRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.GetShareTaskByDeviceOpenResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.device_name):
+            body['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            body['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            body['ProductKey'] = request.product_key
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetShareTaskByDeviceOpen',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.GetShareTaskByDeviceOpenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_share_task_by_device_open(
+        self,
+        request: iot_20180120_models.GetShareTaskByDeviceOpenRequest,
+    ) -> iot_20180120_models.GetShareTaskByDeviceOpenResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_share_task_by_device_open_with_options(request, runtime)
+
+    async def get_share_task_by_device_open_async(
+        self,
+        request: iot_20180120_models.GetShareTaskByDeviceOpenRequest,
+    ) -> iot_20180120_models.GetShareTaskByDeviceOpenResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_share_task_by_device_open_with_options_async(request, runtime)
+
     def get_sound_code_audio_with_options(
         self,
         request: iot_20180120_models.GetSoundCodeAudioRequest,
@@ -13619,6 +14069,76 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.GetSpeechDeviceDetailResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_speech_device_detail_with_options_async(request, runtime)
+
+    def get_speech_license_device_statistics_with_options(
+        self,
+        request: iot_20180120_models.GetSpeechLicenseDeviceStatisticsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.GetSpeechLicenseDeviceStatisticsResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetSpeechLicenseDeviceStatistics',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.GetSpeechLicenseDeviceStatisticsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_speech_license_device_statistics_with_options_async(
+        self,
+        request: iot_20180120_models.GetSpeechLicenseDeviceStatisticsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.GetSpeechLicenseDeviceStatisticsResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetSpeechLicenseDeviceStatistics',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.GetSpeechLicenseDeviceStatisticsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_speech_license_device_statistics(
+        self,
+        request: iot_20180120_models.GetSpeechLicenseDeviceStatisticsRequest,
+    ) -> iot_20180120_models.GetSpeechLicenseDeviceStatisticsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_speech_license_device_statistics_with_options(request, runtime)
+
+    async def get_speech_license_device_statistics_async(
+        self,
+        request: iot_20180120_models.GetSpeechLicenseDeviceStatisticsRequest,
+    ) -> iot_20180120_models.GetSpeechLicenseDeviceStatisticsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_speech_license_device_statistics_with_options_async(request, runtime)
 
     def get_speech_voice_with_options(
         self,
@@ -17009,6 +17529,104 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.PackageSoundCodeLabelBatchAudioResponse:
         runtime = util_models.RuntimeOptions()
         return await self.package_sound_code_label_batch_audio_with_options_async(request, runtime)
+
+    def page_query_shared_speech_open_with_options(
+        self,
+        request: iot_20180120_models.PageQuerySharedSpeechOpenRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.PageQuerySharedSpeechOpenResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.device_name):
+            body['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            body['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_id):
+            body['PageId'] = request.page_id
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_key):
+            body['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.share_task_code):
+            body['ShareTaskCode'] = request.share_task_code
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PageQuerySharedSpeechOpen',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.PageQuerySharedSpeechOpenResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def page_query_shared_speech_open_with_options_async(
+        self,
+        request: iot_20180120_models.PageQuerySharedSpeechOpenRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.PageQuerySharedSpeechOpenResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.device_name):
+            body['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            body['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_id):
+            body['PageId'] = request.page_id
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_key):
+            body['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.share_task_code):
+            body['ShareTaskCode'] = request.share_task_code
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PageQuerySharedSpeechOpen',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.PageQuerySharedSpeechOpenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def page_query_shared_speech_open(
+        self,
+        request: iot_20180120_models.PageQuerySharedSpeechOpenRequest,
+    ) -> iot_20180120_models.PageQuerySharedSpeechOpenResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.page_query_shared_speech_open_with_options(request, runtime)
+
+    async def page_query_shared_speech_open_async(
+        self,
+        request: iot_20180120_models.PageQuerySharedSpeechOpenRequest,
+    ) -> iot_20180120_models.PageQuerySharedSpeechOpenResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.page_query_shared_speech_open_with_options_async(request, runtime)
 
     def print_by_template_with_options(
         self,
@@ -20810,6 +21428,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_device_statistics_with_options_async(request, runtime)
 
+    def query_device_sub_topic_with_options(
+        self,
+        request: iot_20180120_models.QueryDeviceSubTopicRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.QueryDeviceSubTopicResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDeviceSubTopic',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.QueryDeviceSubTopicResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_device_sub_topic_with_options_async(
+        self,
+        request: iot_20180120_models.QueryDeviceSubTopicRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.QueryDeviceSubTopicResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDeviceSubTopic',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.QueryDeviceSubTopicResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_device_sub_topic(
+        self,
+        request: iot_20180120_models.QueryDeviceSubTopicRequest,
+    ) -> iot_20180120_models.QueryDeviceSubTopicResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_device_sub_topic_with_options(request, runtime)
+
+    async def query_device_sub_topic_async(
+        self,
+        request: iot_20180120_models.QueryDeviceSubTopicRequest,
+    ) -> iot_20180120_models.QueryDeviceSubTopicResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_device_sub_topic_with_options_async(request, runtime)
+
     def query_device_tunnel_with_options(
         self,
         request: iot_20180120_models.QueryDeviceTunnelRequest,
@@ -22918,6 +23614,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_product_topic_with_options_async(request, runtime)
 
+    def query_project_share_device_list_with_options(
+        self,
+        request: iot_20180120_models.QueryProjectShareDeviceListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.QueryProjectShareDeviceListResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.device_name):
+            body['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_id):
+            body['PageId'] = request.page_id
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_key):
+            body['ProductKey'] = request.product_key
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryProjectShareDeviceList',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.QueryProjectShareDeviceListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_project_share_device_list_with_options_async(
+        self,
+        request: iot_20180120_models.QueryProjectShareDeviceListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.QueryProjectShareDeviceListResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.device_name):
+            body['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_id):
+            body['PageId'] = request.page_id
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_key):
+            body['ProductKey'] = request.product_key
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryProjectShareDeviceList',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.QueryProjectShareDeviceListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_project_share_device_list(
+        self,
+        request: iot_20180120_models.QueryProjectShareDeviceListRequest,
+    ) -> iot_20180120_models.QueryProjectShareDeviceListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_project_share_device_list_with_options(request, runtime)
+
+    async def query_project_share_device_list_async(
+        self,
+        request: iot_20180120_models.QueryProjectShareDeviceListRequest,
+    ) -> iot_20180120_models.QueryProjectShareDeviceListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_project_share_device_list_with_options_async(request, runtime)
+
     def query_scene_rule_with_options(
         self,
         request: iot_20180120_models.QuerySceneRuleRequest,
@@ -23081,6 +23863,92 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.QuerySchedulePeriodListResponse:
         runtime = util_models.RuntimeOptions()
         return await self.query_schedule_period_list_with_options_async(request, runtime)
+
+    def query_share_task_device_list_with_options(
+        self,
+        request: iot_20180120_models.QueryShareTaskDeviceListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.QueryShareTaskDeviceListResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.device_name):
+            body['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_id):
+            body['PageId'] = request.page_id
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.share_task_id):
+            body['ShareTaskId'] = request.share_task_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryShareTaskDeviceList',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.QueryShareTaskDeviceListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_share_task_device_list_with_options_async(
+        self,
+        request: iot_20180120_models.QueryShareTaskDeviceListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.QueryShareTaskDeviceListResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.device_name):
+            body['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_id):
+            body['PageId'] = request.page_id
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.share_task_id):
+            body['ShareTaskId'] = request.share_task_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryShareTaskDeviceList',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.QueryShareTaskDeviceListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_share_task_device_list(
+        self,
+        request: iot_20180120_models.QueryShareTaskDeviceListRequest,
+    ) -> iot_20180120_models.QueryShareTaskDeviceListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_share_task_device_list_with_options(request, runtime)
+
+    async def query_share_task_device_list_async(
+        self,
+        request: iot_20180120_models.QueryShareTaskDeviceListRequest,
+    ) -> iot_20180120_models.QueryShareTaskDeviceListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_share_task_device_list_with_options_async(request, runtime)
 
     def query_solution_device_group_page_with_options(
         self,
@@ -23729,6 +24597,104 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.QuerySpeechDeviceResponse:
         runtime = util_models.RuntimeOptions()
         return await self.query_speech_device_with_options_async(request, runtime)
+
+    def query_speech_license_device_list_with_options(
+        self,
+        request: iot_20180120_models.QuerySpeechLicenseDeviceListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.QuerySpeechLicenseDeviceListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_id):
+            query['PageId'] = request.page_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        body = {}
+        if not UtilClient.is_unset(request.check_group_id):
+            body['CheckGroupId'] = request.check_group_id
+        if not UtilClient.is_unset(request.device_name):
+            body['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.license_status_list):
+            body['LicenseStatusList'] = request.license_status_list
+        if not UtilClient.is_unset(request.product_key):
+            body['ProductKey'] = request.product_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QuerySpeechLicenseDeviceList',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.QuerySpeechLicenseDeviceListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_speech_license_device_list_with_options_async(
+        self,
+        request: iot_20180120_models.QuerySpeechLicenseDeviceListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.QuerySpeechLicenseDeviceListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_id):
+            query['PageId'] = request.page_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        body = {}
+        if not UtilClient.is_unset(request.check_group_id):
+            body['CheckGroupId'] = request.check_group_id
+        if not UtilClient.is_unset(request.device_name):
+            body['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.license_status_list):
+            body['LicenseStatusList'] = request.license_status_list
+        if not UtilClient.is_unset(request.product_key):
+            body['ProductKey'] = request.product_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QuerySpeechLicenseDeviceList',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.QuerySpeechLicenseDeviceListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_speech_license_device_list(
+        self,
+        request: iot_20180120_models.QuerySpeechLicenseDeviceListRequest,
+    ) -> iot_20180120_models.QuerySpeechLicenseDeviceListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_speech_license_device_list_with_options(request, runtime)
+
+    async def query_speech_license_device_list_async(
+        self,
+        request: iot_20180120_models.QuerySpeechLicenseDeviceListRequest,
+    ) -> iot_20180120_models.QuerySpeechLicenseDeviceListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_speech_license_device_list_with_options_async(request, runtime)
 
     def query_speech_list_with_options(
         self,
@@ -25327,6 +26293,92 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.RRpcResponse:
         runtime = util_models.RuntimeOptions()
         return await self.r_rpc_with_options_async(request, runtime)
+
+    def re_bind_license_device_with_options(
+        self,
+        request: iot_20180120_models.ReBindLicenseDeviceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.ReBindLicenseDeviceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.license_code):
+            query['LicenseCode'] = request.license_code
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        body = {}
+        if not UtilClient.is_unset(request.device_name_list):
+            body['DeviceNameList'] = request.device_name_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ReBindLicenseDevice',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.ReBindLicenseDeviceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def re_bind_license_device_with_options_async(
+        self,
+        request: iot_20180120_models.ReBindLicenseDeviceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.ReBindLicenseDeviceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.license_code):
+            query['LicenseCode'] = request.license_code
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        body = {}
+        if not UtilClient.is_unset(request.device_name_list):
+            body['DeviceNameList'] = request.device_name_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ReBindLicenseDevice',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.ReBindLicenseDeviceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def re_bind_license_device(
+        self,
+        request: iot_20180120_models.ReBindLicenseDeviceRequest,
+    ) -> iot_20180120_models.ReBindLicenseDeviceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.re_bind_license_device_with_options(request, runtime)
+
+    async def re_bind_license_device_async(
+        self,
+        request: iot_20180120_models.ReBindLicenseDeviceRequest,
+    ) -> iot_20180120_models.ReBindLicenseDeviceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.re_bind_license_device_with_options_async(request, runtime)
 
     def recognize_car_num_with_options(
         self,
@@ -27244,6 +28296,100 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.setup_studio_app_auth_mode_open_with_options_async(request, runtime)
 
+    def share_speech_by_combination_with_options(
+        self,
+        request: iot_20180120_models.ShareSpeechByCombinationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.ShareSpeechByCombinationResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.audio_format):
+            body['AudioFormat'] = request.audio_format
+        if not UtilClient.is_unset(request.combination_list):
+            body['CombinationList'] = request.combination_list
+        if not UtilClient.is_unset(request.device_name):
+            body['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            body['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            body['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.speech_id):
+            body['SpeechId'] = request.speech_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ShareSpeechByCombination',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.ShareSpeechByCombinationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def share_speech_by_combination_with_options_async(
+        self,
+        request: iot_20180120_models.ShareSpeechByCombinationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.ShareSpeechByCombinationResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.audio_format):
+            body['AudioFormat'] = request.audio_format
+        if not UtilClient.is_unset(request.combination_list):
+            body['CombinationList'] = request.combination_list
+        if not UtilClient.is_unset(request.device_name):
+            body['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            body['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            body['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.speech_id):
+            body['SpeechId'] = request.speech_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ShareSpeechByCombination',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.ShareSpeechByCombinationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def share_speech_by_combination(
+        self,
+        request: iot_20180120_models.ShareSpeechByCombinationRequest,
+    ) -> iot_20180120_models.ShareSpeechByCombinationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.share_speech_by_combination_with_options(request, runtime)
+
+    async def share_speech_by_combination_async(
+        self,
+        request: iot_20180120_models.ShareSpeechByCombinationRequest,
+    ) -> iot_20180120_models.ShareSpeechByCombinationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.share_speech_by_combination_with_options_async(request, runtime)
+
     def speech_by_combination_with_options(
         self,
         request: iot_20180120_models.SpeechByCombinationRequest,
@@ -27257,6 +28403,8 @@ class Client(OpenApiClient):
             body['CombinationList'] = request.combination_list
         if not UtilClient.is_unset(request.device_name):
             body['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.enforce_flag):
+            body['EnforceFlag'] = request.enforce_flag
         if not UtilClient.is_unset(request.iot_id):
             body['IotId'] = request.iot_id
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -27297,6 +28445,8 @@ class Client(OpenApiClient):
             body['CombinationList'] = request.combination_list
         if not UtilClient.is_unset(request.device_name):
             body['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.enforce_flag):
+            body['EnforceFlag'] = request.enforce_flag
         if not UtilClient.is_unset(request.iot_id):
             body['IotId'] = request.iot_id
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -27443,84 +28593,6 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.SpeechBySynthesisResponse:
         runtime = util_models.RuntimeOptions()
         return await self.speech_by_synthesis_with_options_async(request, runtime)
-
-    def start_cpu_with_options(
-        self,
-        request: iot_20180120_models.StartCpuRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> iot_20180120_models.StartCpuResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.iot_id):
-            query['IotId'] = request.iot_id
-        if not UtilClient.is_unset(request.iot_instance_id):
-            query['IotInstanceId'] = request.iot_instance_id
-        if not UtilClient.is_unset(request.target_value):
-            query['TargetValue'] = request.target_value
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='StartCpu',
-            version='2018-01-20',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            iot_20180120_models.StartCpuResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def start_cpu_with_options_async(
-        self,
-        request: iot_20180120_models.StartCpuRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> iot_20180120_models.StartCpuResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.iot_id):
-            query['IotId'] = request.iot_id
-        if not UtilClient.is_unset(request.iot_instance_id):
-            query['IotInstanceId'] = request.iot_instance_id
-        if not UtilClient.is_unset(request.target_value):
-            query['TargetValue'] = request.target_value
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='StartCpu',
-            version='2018-01-20',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            iot_20180120_models.StartCpuResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def start_cpu(
-        self,
-        request: iot_20180120_models.StartCpuRequest,
-    ) -> iot_20180120_models.StartCpuResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.start_cpu_with_options(request, runtime)
-
-    async def start_cpu_async(
-        self,
-        request: iot_20180120_models.StartCpuRequest,
-    ) -> iot_20180120_models.StartCpuResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.start_cpu_with_options_async(request, runtime)
 
     def start_parser_with_options(
         self,
@@ -27913,6 +28985,8 @@ class Client(OpenApiClient):
             body['CombinationList'] = request.combination_list
         if not UtilClient.is_unset(request.device_name):
             body['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.enforce_flag):
+            body['EnforceFlag'] = request.enforce_flag
         if not UtilClient.is_unset(request.iot_id):
             body['IotId'] = request.iot_id
         if not UtilClient.is_unset(request.iot_instance_id):
@@ -27953,6 +29027,8 @@ class Client(OpenApiClient):
             body['CombinationList'] = request.combination_list
         if not UtilClient.is_unset(request.device_name):
             body['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.enforce_flag):
+            body['EnforceFlag'] = request.enforce_flag
         if not UtilClient.is_unset(request.iot_id):
             body['IotId'] = request.iot_id
         if not UtilClient.is_unset(request.iot_instance_id):
