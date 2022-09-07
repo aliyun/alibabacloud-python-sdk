@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_iotcc20210513.
 
-Created on 25/07/2022
+Created on 07/09/2022
 
 @author: Alibaba Cloud SDK
 """

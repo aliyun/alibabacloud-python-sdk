@@ -401,6 +401,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.associate_vswitch_with_io_tcloud_connector_with_options_async(request, runtime)
 
+    def confirm_io_tcloud_connector_with_options(
+        self,
+        request: io_tcc20210513_models.ConfirmIoTCloudConnectorRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> io_tcc20210513_models.ConfirmIoTCloudConnectorResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.confirm_status):
+            query['ConfirmStatus'] = request.confirm_status
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ConfirmIoTCloudConnector',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            io_tcc20210513_models.ConfirmIoTCloudConnectorResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def confirm_io_tcloud_connector_with_options_async(
+        self,
+        request: io_tcc20210513_models.ConfirmIoTCloudConnectorRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> io_tcc20210513_models.ConfirmIoTCloudConnectorResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.confirm_status):
+            query['ConfirmStatus'] = request.confirm_status
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ConfirmIoTCloudConnector',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            io_tcc20210513_models.ConfirmIoTCloudConnectorResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def confirm_io_tcloud_connector(
+        self,
+        request: io_tcc20210513_models.ConfirmIoTCloudConnectorRequest,
+    ) -> io_tcc20210513_models.ConfirmIoTCloudConnectorResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.confirm_io_tcloud_connector_with_options(request, runtime)
+
+    async def confirm_io_tcloud_connector_async(
+        self,
+        request: io_tcc20210513_models.ConfirmIoTCloudConnectorRequest,
+    ) -> io_tcc20210513_models.ConfirmIoTCloudConnectorResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.confirm_io_tcloud_connector_with_options_async(request, runtime)
+
     def create_authorization_rule_with_options(
         self,
         request: io_tcc20210513_models.CreateAuthorizationRuleRequest,
@@ -416,6 +502,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.destination):
             query['Destination'] = request.destination
+        if not UtilClient.is_unset(request.destination_port):
+            query['DestinationPort'] = request.destination_port
         if not UtilClient.is_unset(request.destination_type):
             query['DestinationType'] = request.destination_type
         if not UtilClient.is_unset(request.dry_run):
@@ -424,6 +512,8 @@ class Client(OpenApiClient):
             query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
         if not UtilClient.is_unset(request.policy):
             query['Policy'] = request.policy
+        if not UtilClient.is_unset(request.protocol):
+            query['Protocol'] = request.protocol
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.source_cidrs):
@@ -462,6 +552,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.destination):
             query['Destination'] = request.destination
+        if not UtilClient.is_unset(request.destination_port):
+            query['DestinationPort'] = request.destination_port
         if not UtilClient.is_unset(request.destination_type):
             query['DestinationType'] = request.destination_type
         if not UtilClient.is_unset(request.dry_run):
@@ -470,6 +562,8 @@ class Client(OpenApiClient):
             query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
         if not UtilClient.is_unset(request.policy):
             query['Policy'] = request.policy
+        if not UtilClient.is_unset(request.protocol):
+            query['Protocol'] = request.protocol
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.source_cidrs):
@@ -506,6 +600,92 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.CreateAuthorizationRuleResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_authorization_rule_with_options_async(request, runtime)
+
+    def create_authorization_rules_with_options(
+        self,
+        request: io_tcc20210513_models.CreateAuthorizationRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> io_tcc20210513_models.CreateAuthorizationRulesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.authorization_rules):
+            query['AuthorizationRules'] = request.authorization_rules
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAuthorizationRules',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            io_tcc20210513_models.CreateAuthorizationRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_authorization_rules_with_options_async(
+        self,
+        request: io_tcc20210513_models.CreateAuthorizationRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> io_tcc20210513_models.CreateAuthorizationRulesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.authorization_rules):
+            query['AuthorizationRules'] = request.authorization_rules
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAuthorizationRules',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            io_tcc20210513_models.CreateAuthorizationRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_authorization_rules(
+        self,
+        request: io_tcc20210513_models.CreateAuthorizationRulesRequest,
+    ) -> io_tcc20210513_models.CreateAuthorizationRulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_authorization_rules_with_options(request, runtime)
+
+    async def create_authorization_rules_async(
+        self,
+        request: io_tcc20210513_models.CreateAuthorizationRulesRequest,
+    ) -> io_tcc20210513_models.CreateAuthorizationRulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_authorization_rules_with_options_async(request, runtime)
 
     def create_connection_pool_with_options(
         self,
@@ -722,6 +902,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.destination):
             query['Destination'] = request.destination
+        if not UtilClient.is_unset(request.destination_port):
+            query['DestinationPort'] = request.destination_port
         if not UtilClient.is_unset(request.destination_type):
             query['DestinationType'] = request.destination_type
         if not UtilClient.is_unset(request.dry_run):
@@ -730,6 +912,8 @@ class Client(OpenApiClient):
             query['IoTCloudConnectorGroupId'] = request.io_tcloud_connector_group_id
         if not UtilClient.is_unset(request.policy):
             query['Policy'] = request.policy
+        if not UtilClient.is_unset(request.protocol):
+            query['Protocol'] = request.protocol
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.source_cidrs):
@@ -770,6 +954,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.destination):
             query['Destination'] = request.destination
+        if not UtilClient.is_unset(request.destination_port):
+            query['DestinationPort'] = request.destination_port
         if not UtilClient.is_unset(request.destination_type):
             query['DestinationType'] = request.destination_type
         if not UtilClient.is_unset(request.dry_run):
@@ -778,6 +964,8 @@ class Client(OpenApiClient):
             query['IoTCloudConnectorGroupId'] = request.io_tcloud_connector_group_id
         if not UtilClient.is_unset(request.policy):
             query['Policy'] = request.policy
+        if not UtilClient.is_unset(request.protocol):
+            query['Protocol'] = request.protocol
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.source_cidrs):
@@ -918,6 +1106,104 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.CreateGroupDNSServiceRuleResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_group_dnsservice_rule_with_options_async(request, runtime)
+
+    def create_group_ip_mapping_rule_with_options(
+        self,
+        request: io_tcc20210513_models.CreateGroupIpMappingRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> io_tcc20210513_models.CreateGroupIpMappingRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.destination_ip):
+            query['DestinationIp'] = request.destination_ip
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.io_tcloud_connector_group_id):
+            query['IoTCloudConnectorGroupId'] = request.io_tcloud_connector_group_id
+        if not UtilClient.is_unset(request.ip_mapping_rule_description):
+            query['IpMappingRuleDescription'] = request.ip_mapping_rule_description
+        if not UtilClient.is_unset(request.ip_mapping_rule_name):
+            query['IpMappingRuleName'] = request.ip_mapping_rule_name
+        if not UtilClient.is_unset(request.mapping_ip):
+            query['MappingIp'] = request.mapping_ip
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateGroupIpMappingRule',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            io_tcc20210513_models.CreateGroupIpMappingRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_group_ip_mapping_rule_with_options_async(
+        self,
+        request: io_tcc20210513_models.CreateGroupIpMappingRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> io_tcc20210513_models.CreateGroupIpMappingRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.destination_ip):
+            query['DestinationIp'] = request.destination_ip
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.io_tcloud_connector_group_id):
+            query['IoTCloudConnectorGroupId'] = request.io_tcloud_connector_group_id
+        if not UtilClient.is_unset(request.ip_mapping_rule_description):
+            query['IpMappingRuleDescription'] = request.ip_mapping_rule_description
+        if not UtilClient.is_unset(request.ip_mapping_rule_name):
+            query['IpMappingRuleName'] = request.ip_mapping_rule_name
+        if not UtilClient.is_unset(request.mapping_ip):
+            query['MappingIp'] = request.mapping_ip
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateGroupIpMappingRule',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            io_tcc20210513_models.CreateGroupIpMappingRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_group_ip_mapping_rule(
+        self,
+        request: io_tcc20210513_models.CreateGroupIpMappingRuleRequest,
+    ) -> io_tcc20210513_models.CreateGroupIpMappingRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_group_ip_mapping_rule_with_options(request, runtime)
+
+    async def create_group_ip_mapping_rule_async(
+        self,
+        request: io_tcc20210513_models.CreateGroupIpMappingRuleRequest,
+    ) -> io_tcc20210513_models.CreateGroupIpMappingRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_group_ip_mapping_rule_with_options_async(request, runtime)
 
     def create_io_tcloud_connector_with_options(
         self,
@@ -1196,6 +1482,104 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.CreateIoTCloudConnectorGroupResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_io_tcloud_connector_group_with_options_async(request, runtime)
+
+    def create_ip_mapping_rule_with_options(
+        self,
+        request: io_tcc20210513_models.CreateIpMappingRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> io_tcc20210513_models.CreateIpMappingRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.destination_ip):
+            query['DestinationIp'] = request.destination_ip
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.ip_mapping_rule_description):
+            query['IpMappingRuleDescription'] = request.ip_mapping_rule_description
+        if not UtilClient.is_unset(request.ip_mapping_rule_name):
+            query['IpMappingRuleName'] = request.ip_mapping_rule_name
+        if not UtilClient.is_unset(request.mapping_ip):
+            query['MappingIp'] = request.mapping_ip
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateIpMappingRule',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            io_tcc20210513_models.CreateIpMappingRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_ip_mapping_rule_with_options_async(
+        self,
+        request: io_tcc20210513_models.CreateIpMappingRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> io_tcc20210513_models.CreateIpMappingRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.destination_ip):
+            query['DestinationIp'] = request.destination_ip
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.ip_mapping_rule_description):
+            query['IpMappingRuleDescription'] = request.ip_mapping_rule_description
+        if not UtilClient.is_unset(request.ip_mapping_rule_name):
+            query['IpMappingRuleName'] = request.ip_mapping_rule_name
+        if not UtilClient.is_unset(request.mapping_ip):
+            query['MappingIp'] = request.mapping_ip
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateIpMappingRule',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            io_tcc20210513_models.CreateIpMappingRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_ip_mapping_rule(
+        self,
+        request: io_tcc20210513_models.CreateIpMappingRuleRequest,
+    ) -> io_tcc20210513_models.CreateIpMappingRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_ip_mapping_rule_with_options(request, runtime)
+
+    async def create_ip_mapping_rule_async(
+        self,
+        request: io_tcc20210513_models.CreateIpMappingRuleRequest,
+    ) -> io_tcc20210513_models.CreateIpMappingRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_ip_mapping_rule_with_options_async(request, runtime)
 
     def create_service_with_options(
         self,
@@ -1819,6 +2203,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_group_dnsservice_rule_with_options_async(request, runtime)
 
+    def delete_group_ip_mapping_rule_with_options(
+        self,
+        request: io_tcc20210513_models.DeleteGroupIpMappingRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> io_tcc20210513_models.DeleteGroupIpMappingRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.group_ip_mapping_rule_id):
+            query['GroupIpMappingRuleId'] = request.group_ip_mapping_rule_id
+        if not UtilClient.is_unset(request.io_tcloud_connector_group_id):
+            query['IoTCloudConnectorGroupId'] = request.io_tcloud_connector_group_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteGroupIpMappingRule',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            io_tcc20210513_models.DeleteGroupIpMappingRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_group_ip_mapping_rule_with_options_async(
+        self,
+        request: io_tcc20210513_models.DeleteGroupIpMappingRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> io_tcc20210513_models.DeleteGroupIpMappingRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.group_ip_mapping_rule_id):
+            query['GroupIpMappingRuleId'] = request.group_ip_mapping_rule_id
+        if not UtilClient.is_unset(request.io_tcloud_connector_group_id):
+            query['IoTCloudConnectorGroupId'] = request.io_tcloud_connector_group_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteGroupIpMappingRule',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            io_tcc20210513_models.DeleteGroupIpMappingRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_group_ip_mapping_rule(
+        self,
+        request: io_tcc20210513_models.DeleteGroupIpMappingRuleRequest,
+    ) -> io_tcc20210513_models.DeleteGroupIpMappingRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_group_ip_mapping_rule_with_options(request, runtime)
+
+    async def delete_group_ip_mapping_rule_async(
+        self,
+        request: io_tcc20210513_models.DeleteGroupIpMappingRuleRequest,
+    ) -> io_tcc20210513_models.DeleteGroupIpMappingRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_group_ip_mapping_rule_with_options_async(request, runtime)
+
     def delete_io_tcloud_connector_with_options(
         self,
         request: io_tcc20210513_models.DeleteIoTCloudConnectorRequest,
@@ -2064,6 +2534,92 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.DeleteIoTCloudConnetorBackhaulRouteResponse:
         runtime = util_models.RuntimeOptions()
         return await self.delete_io_tcloud_connetor_backhaul_route_with_options_async(request, runtime)
+
+    def delete_ip_mapping_rule_with_options(
+        self,
+        request: io_tcc20210513_models.DeleteIpMappingRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> io_tcc20210513_models.DeleteIpMappingRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.ip_mapping_rule_id):
+            query['IpMappingRuleId'] = request.ip_mapping_rule_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteIpMappingRule',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            io_tcc20210513_models.DeleteIpMappingRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_ip_mapping_rule_with_options_async(
+        self,
+        request: io_tcc20210513_models.DeleteIpMappingRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> io_tcc20210513_models.DeleteIpMappingRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.ip_mapping_rule_id):
+            query['IpMappingRuleId'] = request.ip_mapping_rule_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteIpMappingRule',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            io_tcc20210513_models.DeleteIpMappingRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_ip_mapping_rule(
+        self,
+        request: io_tcc20210513_models.DeleteIpMappingRuleRequest,
+    ) -> io_tcc20210513_models.DeleteIpMappingRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_ip_mapping_rule_with_options(request, runtime)
+
+    async def delete_ip_mapping_rule_async(
+        self,
+        request: io_tcc20210513_models.DeleteIpMappingRuleRequest,
+    ) -> io_tcc20210513_models.DeleteIpMappingRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_ip_mapping_rule_with_options_async(request, runtime)
 
     def delete_service_with_options(
         self,
@@ -3098,6 +3654,8 @@ class Client(OpenApiClient):
             query['AuthorizationRuleType'] = request.authorization_rule_type
         if not UtilClient.is_unset(request.destination):
             query['Destination'] = request.destination
+        if not UtilClient.is_unset(request.destination_port):
+            query['DestinationPort'] = request.destination_port
         if not UtilClient.is_unset(request.destination_type):
             query['DestinationType'] = request.destination_type
         if not UtilClient.is_unset(request.io_tcloud_connector_id):
@@ -3108,6 +3666,8 @@ class Client(OpenApiClient):
             query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.policy):
             query['Policy'] = request.policy
+        if not UtilClient.is_unset(request.protocol):
+            query['Protocol'] = request.protocol
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
@@ -3146,6 +3706,8 @@ class Client(OpenApiClient):
             query['AuthorizationRuleType'] = request.authorization_rule_type
         if not UtilClient.is_unset(request.destination):
             query['Destination'] = request.destination
+        if not UtilClient.is_unset(request.destination_port):
+            query['DestinationPort'] = request.destination_port
         if not UtilClient.is_unset(request.destination_type):
             query['DestinationType'] = request.destination_type
         if not UtilClient.is_unset(request.io_tcloud_connector_id):
@@ -3156,6 +3718,8 @@ class Client(OpenApiClient):
             query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.policy):
             query['Policy'] = request.policy
+        if not UtilClient.is_unset(request.protocol):
+            query['Protocol'] = request.protocol
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
@@ -3680,6 +4244,8 @@ class Client(OpenApiClient):
             query['AuthorizationRuleStatus'] = request.authorization_rule_status
         if not UtilClient.is_unset(request.destination):
             query['Destination'] = request.destination
+        if not UtilClient.is_unset(request.destination_port):
+            query['DestinationPort'] = request.destination_port
         if not UtilClient.is_unset(request.destination_type):
             query['DestinationType'] = request.destination_type
         if not UtilClient.is_unset(request.io_tcloud_connector_group_id):
@@ -3690,6 +4256,8 @@ class Client(OpenApiClient):
             query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.policy):
             query['Policy'] = request.policy
+        if not UtilClient.is_unset(request.protocol):
+            query['Protocol'] = request.protocol
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.type):
@@ -3728,6 +4296,8 @@ class Client(OpenApiClient):
             query['AuthorizationRuleStatus'] = request.authorization_rule_status
         if not UtilClient.is_unset(request.destination):
             query['Destination'] = request.destination
+        if not UtilClient.is_unset(request.destination_port):
+            query['DestinationPort'] = request.destination_port
         if not UtilClient.is_unset(request.destination_type):
             query['DestinationType'] = request.destination_type
         if not UtilClient.is_unset(request.io_tcloud_connector_group_id):
@@ -3738,6 +4308,8 @@ class Client(OpenApiClient):
             query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.policy):
             query['Policy'] = request.policy
+        if not UtilClient.is_unset(request.protocol):
+            query['Protocol'] = request.protocol
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.type):
@@ -3880,6 +4452,108 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.ListGroupDNSServiceRulesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_group_dnsservice_rules_with_options_async(request, runtime)
+
+    def list_group_ip_mapping_rules_with_options(
+        self,
+        request: io_tcc20210513_models.ListGroupIpMappingRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> io_tcc20210513_models.ListGroupIpMappingRulesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.destination_ips):
+            query['DestinationIps'] = request.destination_ips
+        if not UtilClient.is_unset(request.io_tcloud_connector_group_id):
+            query['IoTCloudConnectorGroupId'] = request.io_tcloud_connector_group_id
+        if not UtilClient.is_unset(request.ip_mapping_rule_ids):
+            query['IpMappingRuleIds'] = request.ip_mapping_rule_ids
+        if not UtilClient.is_unset(request.ip_mapping_rule_names):
+            query['IpMappingRuleNames'] = request.ip_mapping_rule_names
+        if not UtilClient.is_unset(request.ip_mapping_rule_statuses):
+            query['IpMappingRuleStatuses'] = request.ip_mapping_rule_statuses
+        if not UtilClient.is_unset(request.mapping_ips):
+            query['MappingIps'] = request.mapping_ips
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListGroupIpMappingRules',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            io_tcc20210513_models.ListGroupIpMappingRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_group_ip_mapping_rules_with_options_async(
+        self,
+        request: io_tcc20210513_models.ListGroupIpMappingRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> io_tcc20210513_models.ListGroupIpMappingRulesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.destination_ips):
+            query['DestinationIps'] = request.destination_ips
+        if not UtilClient.is_unset(request.io_tcloud_connector_group_id):
+            query['IoTCloudConnectorGroupId'] = request.io_tcloud_connector_group_id
+        if not UtilClient.is_unset(request.ip_mapping_rule_ids):
+            query['IpMappingRuleIds'] = request.ip_mapping_rule_ids
+        if not UtilClient.is_unset(request.ip_mapping_rule_names):
+            query['IpMappingRuleNames'] = request.ip_mapping_rule_names
+        if not UtilClient.is_unset(request.ip_mapping_rule_statuses):
+            query['IpMappingRuleStatuses'] = request.ip_mapping_rule_statuses
+        if not UtilClient.is_unset(request.mapping_ips):
+            query['MappingIps'] = request.mapping_ips
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListGroupIpMappingRules',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            io_tcc20210513_models.ListGroupIpMappingRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_group_ip_mapping_rules(
+        self,
+        request: io_tcc20210513_models.ListGroupIpMappingRulesRequest,
+    ) -> io_tcc20210513_models.ListGroupIpMappingRulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_group_ip_mapping_rules_with_options(request, runtime)
+
+    async def list_group_ip_mapping_rules_async(
+        self,
+        request: io_tcc20210513_models.ListGroupIpMappingRulesRequest,
+    ) -> io_tcc20210513_models.ListGroupIpMappingRulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_group_ip_mapping_rules_with_options_async(request, runtime)
 
     def list_io_tcloud_connector_access_session_logs_with_options(
         self,
@@ -4420,6 +5094,108 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.ListIoTCoudConnectorBackhaulRouteResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_io_tcoud_connector_backhaul_route_with_options_async(request, runtime)
+
+    def list_ip_mapping_rules_with_options(
+        self,
+        request: io_tcc20210513_models.ListIpMappingRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> io_tcc20210513_models.ListIpMappingRulesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.destination_ips):
+            query['DestinationIps'] = request.destination_ips
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.ip_mapping_rule_ids):
+            query['IpMappingRuleIds'] = request.ip_mapping_rule_ids
+        if not UtilClient.is_unset(request.ip_mapping_rule_names):
+            query['IpMappingRuleNames'] = request.ip_mapping_rule_names
+        if not UtilClient.is_unset(request.ip_mapping_rule_statuses):
+            query['IpMappingRuleStatuses'] = request.ip_mapping_rule_statuses
+        if not UtilClient.is_unset(request.mapping_ips):
+            query['MappingIps'] = request.mapping_ips
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListIpMappingRules',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            io_tcc20210513_models.ListIpMappingRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_ip_mapping_rules_with_options_async(
+        self,
+        request: io_tcc20210513_models.ListIpMappingRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> io_tcc20210513_models.ListIpMappingRulesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.destination_ips):
+            query['DestinationIps'] = request.destination_ips
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.ip_mapping_rule_ids):
+            query['IpMappingRuleIds'] = request.ip_mapping_rule_ids
+        if not UtilClient.is_unset(request.ip_mapping_rule_names):
+            query['IpMappingRuleNames'] = request.ip_mapping_rule_names
+        if not UtilClient.is_unset(request.ip_mapping_rule_statuses):
+            query['IpMappingRuleStatuses'] = request.ip_mapping_rule_statuses
+        if not UtilClient.is_unset(request.mapping_ips):
+            query['MappingIps'] = request.mapping_ips
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListIpMappingRules',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            io_tcc20210513_models.ListIpMappingRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_ip_mapping_rules(
+        self,
+        request: io_tcc20210513_models.ListIpMappingRulesRequest,
+    ) -> io_tcc20210513_models.ListIpMappingRulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_ip_mapping_rules_with_options(request, runtime)
+
+    async def list_ip_mapping_rules_async(
+        self,
+        request: io_tcc20210513_models.ListIpMappingRulesRequest,
+    ) -> io_tcc20210513_models.ListIpMappingRulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_ip_mapping_rules_with_options_async(request, runtime)
 
     def list_regions_with_options(
         self,
@@ -5023,6 +5799,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.remove_io_tcloud_connector_from_group_with_options_async(request, runtime)
 
+    def revert_io_tcloud_connector_with_options(
+        self,
+        request: io_tcc20210513_models.RevertIoTCloudConnectorRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> io_tcc20210513_models.RevertIoTCloudConnectorResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RevertIoTCloudConnector',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            io_tcc20210513_models.RevertIoTCloudConnectorResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def revert_io_tcloud_connector_with_options_async(
+        self,
+        request: io_tcc20210513_models.RevertIoTCloudConnectorRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> io_tcc20210513_models.RevertIoTCloudConnectorResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RevertIoTCloudConnector',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            io_tcc20210513_models.RevertIoTCloudConnectorResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def revert_io_tcloud_connector(
+        self,
+        request: io_tcc20210513_models.RevertIoTCloudConnectorRequest,
+    ) -> io_tcc20210513_models.RevertIoTCloudConnectorResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.revert_io_tcloud_connector_with_options(request, runtime)
+
+    async def revert_io_tcloud_connector_async(
+        self,
+        request: io_tcc20210513_models.RevertIoTCloudConnectorRequest,
+    ) -> io_tcc20210513_models.RevertIoTCloudConnectorResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.revert_io_tcloud_connector_with_options_async(request, runtime)
+
     def submit_diagnose_task_for_single_card_with_options(
         self,
         request: io_tcc20210513_models.SubmitDiagnoseTaskForSingleCardRequest,
@@ -5142,6 +6000,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.destination):
             query['Destination'] = request.destination
+        if not UtilClient.is_unset(request.destination_port):
+            query['DestinationPort'] = request.destination_port
         if not UtilClient.is_unset(request.destination_type):
             query['DestinationType'] = request.destination_type
         if not UtilClient.is_unset(request.dry_run):
@@ -5150,6 +6010,8 @@ class Client(OpenApiClient):
             query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
         if not UtilClient.is_unset(request.policy):
             query['Policy'] = request.policy
+        if not UtilClient.is_unset(request.protocol):
+            query['Protocol'] = request.protocol
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.source_cidrs):
@@ -5190,6 +6052,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.destination):
             query['Destination'] = request.destination
+        if not UtilClient.is_unset(request.destination_port):
+            query['DestinationPort'] = request.destination_port
         if not UtilClient.is_unset(request.destination_type):
             query['DestinationType'] = request.destination_type
         if not UtilClient.is_unset(request.dry_run):
@@ -5198,6 +6062,8 @@ class Client(OpenApiClient):
             query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
         if not UtilClient.is_unset(request.policy):
             query['Policy'] = request.policy
+        if not UtilClient.is_unset(request.protocol):
+            query['Protocol'] = request.protocol
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.source_cidrs):
@@ -5460,6 +6326,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.destination):
             query['Destination'] = request.destination
+        if not UtilClient.is_unset(request.destination_port):
+            query['DestinationPort'] = request.destination_port
         if not UtilClient.is_unset(request.destination_type):
             query['DestinationType'] = request.destination_type
         if not UtilClient.is_unset(request.dry_run):
@@ -5468,6 +6336,8 @@ class Client(OpenApiClient):
             query['IoTCloudConnectorGroupId'] = request.io_tcloud_connector_group_id
         if not UtilClient.is_unset(request.policy):
             query['Policy'] = request.policy
+        if not UtilClient.is_unset(request.protocol):
+            query['Protocol'] = request.protocol
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.source_cidrs):
@@ -5508,6 +6378,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.destination):
             query['Destination'] = request.destination
+        if not UtilClient.is_unset(request.destination_port):
+            query['DestinationPort'] = request.destination_port
         if not UtilClient.is_unset(request.destination_type):
             query['DestinationType'] = request.destination_type
         if not UtilClient.is_unset(request.dry_run):
@@ -5516,6 +6388,8 @@ class Client(OpenApiClient):
             query['IoTCloudConnectorGroupId'] = request.io_tcloud_connector_group_id
         if not UtilClient.is_unset(request.policy):
             query['Policy'] = request.policy
+        if not UtilClient.is_unset(request.protocol):
+            query['Protocol'] = request.protocol
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.source_cidrs):
@@ -5659,6 +6533,108 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_group_dnsservice_rule_attribute_with_options_async(request, runtime)
 
+    def update_group_ip_mapping_rule_with_options(
+        self,
+        request: io_tcc20210513_models.UpdateGroupIpMappingRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> io_tcc20210513_models.UpdateGroupIpMappingRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.destination_ip):
+            query['DestinationIp'] = request.destination_ip
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.group_ip_mapping_rule_id):
+            query['GroupIpMappingRuleId'] = request.group_ip_mapping_rule_id
+        if not UtilClient.is_unset(request.io_tcloud_connector_group_id):
+            query['IoTCloudConnectorGroupId'] = request.io_tcloud_connector_group_id
+        if not UtilClient.is_unset(request.ip_mapping_rule_description):
+            query['IpMappingRuleDescription'] = request.ip_mapping_rule_description
+        if not UtilClient.is_unset(request.ip_mapping_rule_name):
+            query['IpMappingRuleName'] = request.ip_mapping_rule_name
+        if not UtilClient.is_unset(request.mapping_ip):
+            query['MappingIp'] = request.mapping_ip
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateGroupIpMappingRule',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            io_tcc20210513_models.UpdateGroupIpMappingRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_group_ip_mapping_rule_with_options_async(
+        self,
+        request: io_tcc20210513_models.UpdateGroupIpMappingRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> io_tcc20210513_models.UpdateGroupIpMappingRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.destination_ip):
+            query['DestinationIp'] = request.destination_ip
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.group_ip_mapping_rule_id):
+            query['GroupIpMappingRuleId'] = request.group_ip_mapping_rule_id
+        if not UtilClient.is_unset(request.io_tcloud_connector_group_id):
+            query['IoTCloudConnectorGroupId'] = request.io_tcloud_connector_group_id
+        if not UtilClient.is_unset(request.ip_mapping_rule_description):
+            query['IpMappingRuleDescription'] = request.ip_mapping_rule_description
+        if not UtilClient.is_unset(request.ip_mapping_rule_name):
+            query['IpMappingRuleName'] = request.ip_mapping_rule_name
+        if not UtilClient.is_unset(request.mapping_ip):
+            query['MappingIp'] = request.mapping_ip
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateGroupIpMappingRule',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            io_tcc20210513_models.UpdateGroupIpMappingRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_group_ip_mapping_rule(
+        self,
+        request: io_tcc20210513_models.UpdateGroupIpMappingRuleRequest,
+    ) -> io_tcc20210513_models.UpdateGroupIpMappingRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_group_ip_mapping_rule_with_options(request, runtime)
+
+    async def update_group_ip_mapping_rule_async(
+        self,
+        request: io_tcc20210513_models.UpdateGroupIpMappingRuleRequest,
+    ) -> io_tcc20210513_models.UpdateGroupIpMappingRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_group_ip_mapping_rule_with_options_async(request, runtime)
+
     def update_io_tcloud_connector_attribute_with_options(
         self,
         request: io_tcc20210513_models.UpdateIoTCloudConnectorAttributeRequest,
@@ -5676,6 +6652,8 @@ class Client(OpenApiClient):
             query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
         if not UtilClient.is_unset(request.io_tcloud_connector_name):
             query['IoTCloudConnectorName'] = request.io_tcloud_connector_name
+        if not UtilClient.is_unset(request.mode):
+            query['Mode'] = request.mode
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.wildcard_domain_enabled):
@@ -5716,6 +6694,8 @@ class Client(OpenApiClient):
             query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
         if not UtilClient.is_unset(request.io_tcloud_connector_name):
             query['IoTCloudConnectorName'] = request.io_tcloud_connector_name
+        if not UtilClient.is_unset(request.mode):
+            query['Mode'] = request.mode
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.wildcard_domain_enabled):
@@ -5842,6 +6822,108 @@ class Client(OpenApiClient):
     ) -> io_tcc20210513_models.UpdateIoTCloudConnectorGroupAttributeResponse:
         runtime = util_models.RuntimeOptions()
         return await self.update_io_tcloud_connector_group_attribute_with_options_async(request, runtime)
+
+    def update_ip_mapping_rule_with_options(
+        self,
+        request: io_tcc20210513_models.UpdateIpMappingRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> io_tcc20210513_models.UpdateIpMappingRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.destination_ip):
+            query['DestinationIp'] = request.destination_ip
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.ip_mapping_rule_description):
+            query['IpMappingRuleDescription'] = request.ip_mapping_rule_description
+        if not UtilClient.is_unset(request.ip_mapping_rule_id):
+            query['IpMappingRuleId'] = request.ip_mapping_rule_id
+        if not UtilClient.is_unset(request.ip_mapping_rule_name):
+            query['IpMappingRuleName'] = request.ip_mapping_rule_name
+        if not UtilClient.is_unset(request.mapping_ip):
+            query['MappingIp'] = request.mapping_ip
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateIpMappingRule',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            io_tcc20210513_models.UpdateIpMappingRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_ip_mapping_rule_with_options_async(
+        self,
+        request: io_tcc20210513_models.UpdateIpMappingRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> io_tcc20210513_models.UpdateIpMappingRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.destination_ip):
+            query['DestinationIp'] = request.destination_ip
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.io_tcloud_connector_id):
+            query['IoTCloudConnectorId'] = request.io_tcloud_connector_id
+        if not UtilClient.is_unset(request.ip_mapping_rule_description):
+            query['IpMappingRuleDescription'] = request.ip_mapping_rule_description
+        if not UtilClient.is_unset(request.ip_mapping_rule_id):
+            query['IpMappingRuleId'] = request.ip_mapping_rule_id
+        if not UtilClient.is_unset(request.ip_mapping_rule_name):
+            query['IpMappingRuleName'] = request.ip_mapping_rule_name
+        if not UtilClient.is_unset(request.mapping_ip):
+            query['MappingIp'] = request.mapping_ip
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateIpMappingRule',
+            version='2021-05-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            io_tcc20210513_models.UpdateIpMappingRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_ip_mapping_rule(
+        self,
+        request: io_tcc20210513_models.UpdateIpMappingRuleRequest,
+    ) -> io_tcc20210513_models.UpdateIpMappingRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_ip_mapping_rule_with_options(request, runtime)
+
+    async def update_ip_mapping_rule_async(
+        self,
+        request: io_tcc20210513_models.UpdateIpMappingRuleRequest,
+    ) -> io_tcc20210513_models.UpdateIpMappingRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_ip_mapping_rule_with_options_async(request, runtime)
 
     def update_service_attribute_with_options(
         self,
