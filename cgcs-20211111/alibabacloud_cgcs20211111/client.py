@@ -1949,6 +1949,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.release_capacity_with_options_async(request, runtime)
 
+    def release_capacity_by_batch_with_options(
+        self,
+        request: cgcs20211111_models.ReleaseCapacityByBatchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cgcs20211111_models.ReleaseCapacityByBatchResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.res_batch_id):
+            body['ResBatchId'] = request.res_batch_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ReleaseCapacityByBatch',
+            version='2021-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cgcs20211111_models.ReleaseCapacityByBatchResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def release_capacity_by_batch_with_options_async(
+        self,
+        request: cgcs20211111_models.ReleaseCapacityByBatchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cgcs20211111_models.ReleaseCapacityByBatchResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.res_batch_id):
+            body['ResBatchId'] = request.res_batch_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ReleaseCapacityByBatch',
+            version='2021-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cgcs20211111_models.ReleaseCapacityByBatchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def release_capacity_by_batch(
+        self,
+        request: cgcs20211111_models.ReleaseCapacityByBatchRequest,
+    ) -> cgcs20211111_models.ReleaseCapacityByBatchResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.release_capacity_by_batch_with_options(request, runtime)
+
+    async def release_capacity_by_batch_async(
+        self,
+        request: cgcs20211111_models.ReleaseCapacityByBatchRequest,
+    ) -> cgcs20211111_models.ReleaseCapacityByBatchResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.release_capacity_by_batch_with_options_async(request, runtime)
+
     def stop_app_session_with_options(
         self,
         tmp_req: cgcs20211111_models.StopAppSessionRequest,
