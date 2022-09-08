@@ -7633,6 +7633,7 @@ class DescribeServiceMeshClustersResponseBodyClusters(TeaModel):
         creation_time: str = None,
         error_message: str = None,
         forbidden_flag: int = None,
+        forbidden_info: str = None,
         name: str = None,
         region_id: str = None,
         service_mesh_id: str = None,
@@ -7648,6 +7649,7 @@ class DescribeServiceMeshClustersResponseBodyClusters(TeaModel):
         self.creation_time = creation_time
         self.error_message = error_message
         self.forbidden_flag = forbidden_flag
+        self.forbidden_info = forbidden_info
         self.name = name
         self.region_id = region_id
         self.service_mesh_id = service_mesh_id
@@ -7678,6 +7680,8 @@ class DescribeServiceMeshClustersResponseBodyClusters(TeaModel):
             result['ErrorMessage'] = self.error_message
         if self.forbidden_flag is not None:
             result['ForbiddenFlag'] = self.forbidden_flag
+        if self.forbidden_info is not None:
+            result['ForbiddenInfo'] = self.forbidden_info
         if self.name is not None:
             result['Name'] = self.name
         if self.region_id is not None:
@@ -7710,6 +7714,8 @@ class DescribeServiceMeshClustersResponseBodyClusters(TeaModel):
             self.error_message = m.get('ErrorMessage')
         if m.get('ForbiddenFlag') is not None:
             self.forbidden_flag = m.get('ForbiddenFlag')
+        if m.get('ForbiddenInfo') is not None:
+            self.forbidden_info = m.get('ForbiddenInfo')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('RegionId') is not None:
@@ -15599,6 +15605,7 @@ class UpdateMeshCRAggregationRequest(TeaModel):
         memory_limit: str = None,
         memory_requirement: str = None,
         service_mesh_id: str = None,
+        use_public_api_server: bool = None,
     ):
         self.cpulimit = cpulimit
         self.cpurequirement = cpurequirement
@@ -15606,6 +15613,7 @@ class UpdateMeshCRAggregationRequest(TeaModel):
         self.memory_limit = memory_limit
         self.memory_requirement = memory_requirement
         self.service_mesh_id = service_mesh_id
+        self.use_public_api_server = use_public_api_server
 
     def validate(self):
         pass
@@ -15628,6 +15636,8 @@ class UpdateMeshCRAggregationRequest(TeaModel):
             result['MemoryRequirement'] = self.memory_requirement
         if self.service_mesh_id is not None:
             result['ServiceMeshId'] = self.service_mesh_id
+        if self.use_public_api_server is not None:
+            result['UsePublicApiServer'] = self.use_public_api_server
         return result
 
     def from_map(self, m: dict = None):
@@ -15644,6 +15654,8 @@ class UpdateMeshCRAggregationRequest(TeaModel):
             self.memory_requirement = m.get('MemoryRequirement')
         if m.get('ServiceMeshId') is not None:
             self.service_mesh_id = m.get('ServiceMeshId')
+        if m.get('UsePublicApiServer') is not None:
+            self.use_public_api_server = m.get('UsePublicApiServer')
         return self
 
 

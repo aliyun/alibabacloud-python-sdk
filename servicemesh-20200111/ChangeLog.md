@@ -1,3 +1,6 @@
+2022-09-08 Version: 2.0.22
+- UpdateCRAggregation support using public API Server endpoint of ASM.
+
 2022-08-31 Version: 2.0.21
 - DescribeServiceMeshDetail support service mesh auto diagnosis feature.
 

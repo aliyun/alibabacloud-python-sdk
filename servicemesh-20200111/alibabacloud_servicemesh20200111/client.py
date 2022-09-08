@@ -5207,6 +5207,8 @@ class Client(OpenApiClient):
             body['MemoryRequirement'] = request.memory_requirement
         if not UtilClient.is_unset(request.service_mesh_id):
             body['ServiceMeshId'] = request.service_mesh_id
+        if not UtilClient.is_unset(request.use_public_api_server):
+            body['UsePublicApiServer'] = request.use_public_api_server
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -5245,6 +5247,8 @@ class Client(OpenApiClient):
             body['MemoryRequirement'] = request.memory_requirement
         if not UtilClient.is_unset(request.service_mesh_id):
             body['ServiceMeshId'] = request.service_mesh_id
+        if not UtilClient.is_unset(request.use_public_api_server):
+            body['UsePublicApiServer'] = request.use_public_api_server
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
