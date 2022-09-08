@@ -731,11 +731,8 @@ class AddUserGroupMembersResponseBody(TeaModel):
         result: bool = None,
         success: bool = None,
     ):
-        # 请求ID。
         self.request_id = request_id
-        # 接口执行结果。取值范围：true：请求成功false：请求失败
         self.result = result
-        # 是否请求成功。取值范围：true：请求成功false：请求失败
         self.success = success
 
     def validate(self):
@@ -10014,7 +10011,6 @@ class QueryWorksRequest(TeaModel):
         self,
         works_id: str = None,
     ):
-        # 报表ID
         self.works_id = works_id
 
     def validate(self):
@@ -10045,13 +10041,9 @@ class QueryWorksResponseBodyResultDirectory(TeaModel):
         path_id: str = None,
         path_name: str = None,
     ):
-        # 目录ID
         self.id = id
-        # 目录名称
         self.name = name
-        # 目录ID的路径，例如：aa/bb/cc/dd
         self.path_id = path_id
-        # 目录ID的路径名称，例如：一层目录/二层目录
         self.path_name = path_name
 
     def validate(self):
@@ -10105,35 +10097,20 @@ class QueryWorksResponseBodyResult(TeaModel):
         workspace_id: str = None,
         workspace_name: str = None,
     ):
-        # 第三方嵌入状态
         self.auth_3rd_flag = auth_3rd_flag
-        # 描述
         self.description = description
-        # 所属空间目录信息
         self.directory = directory
-        # 创建时间d
         self.gmt_create = gmt_create
-        # 修改时间
         self.gmt_modify = gmt_modify
-        # 修改显示名称
         self.modify_name = modify_name
-        # 所有者Id
         self.owner_id = owner_id
-        # 所有者显示名称
         self.owner_name = owner_name
-        # 安全策略：0 私有 1 协同编辑。 （
         self.security_level = security_level
-        # 报表发布状态 @PublishStatusEnum
         self.status = status
-        # 作品名称
         self.work_name = work_name
-        # 作品类型
         self.work_type = work_type
-        # 作品ID
         self.works_id = works_id
-        # 所属工作空间
         self.workspace_id = workspace_id
-        # 所属空间名称
         self.workspace_name = workspace_name
 
     def validate(self):
@@ -10222,7 +10199,6 @@ class QueryWorksResponseBody(TeaModel):
         success: bool = None,
     ):
         self.request_id = request_id
-        # QueryWorksModel
         self.result = result
         self.success = success
 
@@ -10305,7 +10281,6 @@ class QueryWorksBloodRelationshipRequest(TeaModel):
         self,
         works_id: str = None,
     ):
-        # 报表ID
         self.works_id = works_id
 
     def validate(self):
@@ -10339,18 +10314,12 @@ class QueryWorksBloodRelationshipResponseBodyResultQueryParams(TeaModel):
         path_id: str = None,
         uid: str = None,
     ):
-        # 所属位置：
         self.area_id = area_id
         self.area_name = area_name
-        # 字段显示名称
         self.caption = caption
-        # 字段类型
         self.data_type = data_type
-        # 是否是度量
         self.is_measure = is_measure
-        # 全局唯一的PathId。位于cube的level中pathId
         self.path_id = path_id
-        # 字段唯一ID。即cube中的name
         self.uid = uid
 
     def validate(self):
@@ -10407,15 +10376,11 @@ class QueryWorksBloodRelationshipResponseBodyResult(TeaModel):
         dataset_id: str = None,
         query_params: List[QueryWorksBloodRelationshipResponseBodyResultQueryParams] = None,
     ):
-        # 组件ID or  sheetId
         self.component_id = component_id
         self.component_name = component_name
-        # 组件类型
         self.component_type = component_type
         self.component_type_name = component_type_name
-        # 数据集ID
         self.dataset_id = dataset_id
-        # 查询参数引用的列信息
         self.query_params = query_params
 
     def validate(self):

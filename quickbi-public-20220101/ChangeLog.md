@@ -1,3 +1,7 @@
+2022-09-08 Version: 1.1.3
+- Update API Error Code And Some Parameters Checks.
+- Update API CreateTicket QPS.
+
 2022-07-04 Version: 1.1.2
 - Add API QueryEmbeddedStaus.
 
