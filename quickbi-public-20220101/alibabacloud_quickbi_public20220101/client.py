@@ -833,6 +833,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.authorize_menu_with_options_async(request, runtime)
 
+    def batch_add_feishu_users_with_options(
+        self,
+        request: quickbi_public_20220101_models.BatchAddFeishuUsersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.BatchAddFeishuUsersResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.feishu_users):
+            query['FeishuUsers'] = request.feishu_users
+        if not UtilClient.is_unset(request.is_admin):
+            query['IsAdmin'] = request.is_admin
+        if not UtilClient.is_unset(request.is_auth_admin):
+            query['IsAuthAdmin'] = request.is_auth_admin
+        if not UtilClient.is_unset(request.user_group_ids):
+            query['UserGroupIds'] = request.user_group_ids
+        if not UtilClient.is_unset(request.user_type):
+            query['UserType'] = request.user_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchAddFeishuUsers',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.BatchAddFeishuUsersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_add_feishu_users_with_options_async(
+        self,
+        request: quickbi_public_20220101_models.BatchAddFeishuUsersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.BatchAddFeishuUsersResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.feishu_users):
+            query['FeishuUsers'] = request.feishu_users
+        if not UtilClient.is_unset(request.is_admin):
+            query['IsAdmin'] = request.is_admin
+        if not UtilClient.is_unset(request.is_auth_admin):
+            query['IsAuthAdmin'] = request.is_auth_admin
+        if not UtilClient.is_unset(request.user_group_ids):
+            query['UserGroupIds'] = request.user_group_ids
+        if not UtilClient.is_unset(request.user_type):
+            query['UserType'] = request.user_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchAddFeishuUsers',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.BatchAddFeishuUsersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_add_feishu_users(
+        self,
+        request: quickbi_public_20220101_models.BatchAddFeishuUsersRequest,
+    ) -> quickbi_public_20220101_models.BatchAddFeishuUsersResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.batch_add_feishu_users_with_options(request, runtime)
+
+    async def batch_add_feishu_users_async(
+        self,
+        request: quickbi_public_20220101_models.BatchAddFeishuUsersRequest,
+    ) -> quickbi_public_20220101_models.BatchAddFeishuUsersResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.batch_add_feishu_users_with_options_async(request, runtime)
+
     def cancel_authorization_menu_with_options(
         self,
         request: quickbi_public_20220101_models.CancelAuthorizationMenuRequest,
