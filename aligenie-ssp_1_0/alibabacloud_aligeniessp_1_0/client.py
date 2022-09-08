@@ -2141,6 +2141,96 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
+    def get_aligenie_user_info(
+        self,
+        request: ali_geniessp__1__0_models.GetAligenieUserInfoRequest,
+    ) -> ali_geniessp__1__0_models.GetAligenieUserInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_geniessp__1__0_models.GetAligenieUserInfoHeaders()
+        return self.get_aligenie_user_info_with_options(request, headers, runtime)
+
+    async def get_aligenie_user_info_async(
+        self,
+        request: ali_geniessp__1__0_models.GetAligenieUserInfoRequest,
+    ) -> ali_geniessp__1__0_models.GetAligenieUserInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_geniessp__1__0_models.GetAligenieUserInfoHeaders()
+        return await self.get_aligenie_user_info_with_options_async(request, headers, runtime)
+
+    def get_aligenie_user_info_with_options(
+        self,
+        request: ali_geniessp__1__0_models.GetAligenieUserInfoRequest,
+        headers: ali_geniessp__1__0_models.GetAligenieUserInfoHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_geniessp__1__0_models.GetAligenieUserInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.login_state_access_token):
+            query['LoginStateAccessToken'] = request.login_state_access_token
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAligenieUserInfo',
+            version='ssp_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ssp/getAligenieUserInfo',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_geniessp__1__0_models.GetAligenieUserInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_aligenie_user_info_with_options_async(
+        self,
+        request: ali_geniessp__1__0_models.GetAligenieUserInfoRequest,
+        headers: ali_geniessp__1__0_models.GetAligenieUserInfoHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_geniessp__1__0_models.GetAligenieUserInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.login_state_access_token):
+            query['LoginStateAccessToken'] = request.login_state_access_token
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAligenieUserInfo',
+            version='ssp_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ssp/getAligenieUserInfo',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_geniessp__1__0_models.GetAligenieUserInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
     def get_code_enhance(
         self,
         request: ali_geniessp__1__0_models.GetCodeEnhanceRequest,
@@ -6311,6 +6401,112 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
+    def scan_code_bind(
+        self,
+        request: ali_geniessp__1__0_models.ScanCodeBindRequest,
+    ) -> ali_geniessp__1__0_models.ScanCodeBindResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_geniessp__1__0_models.ScanCodeBindHeaders()
+        return self.scan_code_bind_with_options(request, headers, runtime)
+
+    async def scan_code_bind_async(
+        self,
+        request: ali_geniessp__1__0_models.ScanCodeBindRequest,
+    ) -> ali_geniessp__1__0_models.ScanCodeBindResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_geniessp__1__0_models.ScanCodeBindHeaders()
+        return await self.scan_code_bind_with_options_async(request, headers, runtime)
+
+    def scan_code_bind_with_options(
+        self,
+        tmp_req: ali_geniessp__1__0_models.ScanCodeBindRequest,
+        headers: ali_geniessp__1__0_models.ScanCodeBindHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_geniessp__1__0_models.ScanCodeBindResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ali_geniessp__1__0_models.ScanCodeBindShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.bind_req):
+            request.bind_req_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.bind_req), 'BindReq', 'json')
+        if not UtilClient.is_unset(tmp_req.user_info):
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.bind_req_shrink):
+            body['BindReq'] = request.bind_req_shrink
+        if not UtilClient.is_unset(request.user_info_shrink):
+            body['UserInfo'] = request.user_info_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ScanCodeBind',
+            version='ssp_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ssp/scanCode',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_geniessp__1__0_models.ScanCodeBindResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def scan_code_bind_with_options_async(
+        self,
+        tmp_req: ali_geniessp__1__0_models.ScanCodeBindRequest,
+        headers: ali_geniessp__1__0_models.ScanCodeBindHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_geniessp__1__0_models.ScanCodeBindResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ali_geniessp__1__0_models.ScanCodeBindShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.bind_req):
+            request.bind_req_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.bind_req), 'BindReq', 'json')
+        if not UtilClient.is_unset(tmp_req.user_info):
+            request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user_info), 'UserInfo', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.bind_req_shrink):
+            body['BindReq'] = request.bind_req_shrink
+        if not UtilClient.is_unset(request.user_info_shrink):
+            body['UserInfo'] = request.user_info_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ScanCodeBind',
+            version='ssp_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ssp/scanCode',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_geniessp__1__0_models.ScanCodeBindResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
     def scg_search(
         self,
         request: ali_geniessp__1__0_models.ScgSearchRequest,
@@ -6740,6 +6936,96 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ali_geniessp__1__0_models.SetDeviceSettingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def unbind_aligenie_user(
+        self,
+        request: ali_geniessp__1__0_models.UnbindAligenieUserRequest,
+    ) -> ali_geniessp__1__0_models.UnbindAligenieUserResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_geniessp__1__0_models.UnbindAligenieUserHeaders()
+        return self.unbind_aligenie_user_with_options(request, headers, runtime)
+
+    async def unbind_aligenie_user_async(
+        self,
+        request: ali_geniessp__1__0_models.UnbindAligenieUserRequest,
+    ) -> ali_geniessp__1__0_models.UnbindAligenieUserResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_geniessp__1__0_models.UnbindAligenieUserHeaders()
+        return await self.unbind_aligenie_user_with_options_async(request, headers, runtime)
+
+    def unbind_aligenie_user_with_options(
+        self,
+        request: ali_geniessp__1__0_models.UnbindAligenieUserRequest,
+        headers: ali_geniessp__1__0_models.UnbindAligenieUserHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_geniessp__1__0_models.UnbindAligenieUserResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.login_state_access_token):
+            body['LoginStateAccessToken'] = request.login_state_access_token
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UnbindAligenieUser',
+            version='ssp_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ssp/unbindAligenieUser',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_geniessp__1__0_models.UnbindAligenieUserResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def unbind_aligenie_user_with_options_async(
+        self,
+        request: ali_geniessp__1__0_models.UnbindAligenieUserRequest,
+        headers: ali_geniessp__1__0_models.UnbindAligenieUserHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_geniessp__1__0_models.UnbindAligenieUserResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.login_state_access_token):
+            body['LoginStateAccessToken'] = request.login_state_access_token
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UnbindAligenieUser',
+            version='ssp_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ssp/unbindAligenieUser',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_geniessp__1__0_models.UnbindAligenieUserResponse(),
             await self.call_api_async(params, req, runtime)
         )
 

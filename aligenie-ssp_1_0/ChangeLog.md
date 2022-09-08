@@ -1,3 +1,6 @@
+2022-09-08 Version: 1.0.12
+- Add scgsearch api.
+
 2022-09-01 Version: 1.0.11
 - Add scgsearch api.
 
