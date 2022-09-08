@@ -5857,6 +5857,63 @@ class GetStackResponseBodyLog(TeaModel):
         return self
 
 
+class GetStackResponseBodyOperationInfo(TeaModel):
+    def __init__(
+        self,
+        action: str = None,
+        code: str = None,
+        logical_resource_id: str = None,
+        message: str = None,
+        request_id: str = None,
+        resource_type: str = None,
+    ):
+        self.action = action
+        self.code = code
+        self.logical_resource_id = logical_resource_id
+        self.message = message
+        self.request_id = request_id
+        self.resource_type = resource_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action is not None:
+            result['Action'] = self.action
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.logical_resource_id is not None:
+            result['LogicalResourceId'] = self.logical_resource_id
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Action') is not None:
+            self.action = m.get('Action')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('LogicalResourceId') is not None:
+            self.logical_resource_id = m.get('LogicalResourceId')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        return self
+
+
 class GetStackResponseBodyParameters(TeaModel):
     def __init__(
         self,
@@ -6044,6 +6101,7 @@ class GetStackResponseBody(TeaModel):
         interface: str = None,
         log: GetStackResponseBodyLog = None,
         notification_urls: List[str] = None,
+        operation_info: GetStackResponseBodyOperationInfo = None,
         outputs: List[Dict[str, Any]] = None,
         parameters: List[GetStackResponseBodyParameters] = None,
         parent_stack_id: str = None,
@@ -6078,6 +6136,7 @@ class GetStackResponseBody(TeaModel):
         self.interface = interface
         self.log = log
         self.notification_urls = notification_urls
+        self.operation_info = operation_info
         self.outputs = outputs
         self.parameters = parameters
         self.parent_stack_id = parent_stack_id
@@ -6107,6 +6166,8 @@ class GetStackResponseBody(TeaModel):
     def validate(self):
         if self.log:
             self.log.validate()
+        if self.operation_info:
+            self.operation_info.validate()
         if self.parameters:
             for k in self.parameters:
                 if k:
@@ -6140,6 +6201,8 @@ class GetStackResponseBody(TeaModel):
             result['Log'] = self.log.to_map()
         if self.notification_urls is not None:
             result['NotificationURLs'] = self.notification_urls
+        if self.operation_info is not None:
+            result['OperationInfo'] = self.operation_info.to_map()
         if self.outputs is not None:
             result['Outputs'] = self.outputs
         result['Parameters'] = []
@@ -6215,6 +6278,9 @@ class GetStackResponseBody(TeaModel):
             self.log = temp_model.from_map(m['Log'])
         if m.get('NotificationURLs') is not None:
             self.notification_urls = m.get('NotificationURLs')
+        if m.get('OperationInfo') is not None:
+            temp_model = GetStackResponseBodyOperationInfo()
+            self.operation_info = temp_model.from_map(m['OperationInfo'])
         if m.get('Outputs') is not None:
             self.outputs = m.get('Outputs')
         self.parameters = []
@@ -11800,6 +11866,63 @@ class ListStacksRequest(TeaModel):
         return self
 
 
+class ListStacksResponseBodyStacksOperationInfo(TeaModel):
+    def __init__(
+        self,
+        action: str = None,
+        code: str = None,
+        logical_resource_id: str = None,
+        message: str = None,
+        request_id: str = None,
+        resource_type: str = None,
+    ):
+        self.action = action
+        self.code = code
+        self.logical_resource_id = logical_resource_id
+        self.message = message
+        self.request_id = request_id
+        self.resource_type = resource_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action is not None:
+            result['Action'] = self.action
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.logical_resource_id is not None:
+            result['LogicalResourceId'] = self.logical_resource_id
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Action') is not None:
+            self.action = m.get('Action')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('LogicalResourceId') is not None:
+            self.logical_resource_id = m.get('LogicalResourceId')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        return self
+
+
 class ListStacksResponseBodyStacksTags(TeaModel):
     def __init__(
         self,
@@ -11839,6 +11962,7 @@ class ListStacksResponseBodyStacks(TeaModel):
         create_time: str = None,
         disable_rollback: bool = None,
         drift_detection_time: str = None,
+        operation_info: ListStacksResponseBodyStacksOperationInfo = None,
         parent_stack_id: str = None,
         region_id: str = None,
         resource_group_id: str = None,
@@ -11857,6 +11981,7 @@ class ListStacksResponseBodyStacks(TeaModel):
         self.create_time = create_time
         self.disable_rollback = disable_rollback
         self.drift_detection_time = drift_detection_time
+        self.operation_info = operation_info
         self.parent_stack_id = parent_stack_id
         self.region_id = region_id
         self.resource_group_id = resource_group_id
@@ -11873,6 +11998,8 @@ class ListStacksResponseBodyStacks(TeaModel):
         self.update_time = update_time
 
     def validate(self):
+        if self.operation_info:
+            self.operation_info.validate()
         if self.tags:
             for k in self.tags:
                 if k:
@@ -11890,6 +12017,8 @@ class ListStacksResponseBodyStacks(TeaModel):
             result['DisableRollback'] = self.disable_rollback
         if self.drift_detection_time is not None:
             result['DriftDetectionTime'] = self.drift_detection_time
+        if self.operation_info is not None:
+            result['OperationInfo'] = self.operation_info.to_map()
         if self.parent_stack_id is not None:
             result['ParentStackId'] = self.parent_stack_id
         if self.region_id is not None:
@@ -11930,6 +12059,9 @@ class ListStacksResponseBodyStacks(TeaModel):
             self.disable_rollback = m.get('DisableRollback')
         if m.get('DriftDetectionTime') is not None:
             self.drift_detection_time = m.get('DriftDetectionTime')
+        if m.get('OperationInfo') is not None:
+            temp_model = ListStacksResponseBodyStacksOperationInfo()
+            self.operation_info = temp_model.from_map(m['OperationInfo'])
         if m.get('ParentStackId') is not None:
             self.parent_stack_id = m.get('ParentStackId')
         if m.get('RegionId') is not None:

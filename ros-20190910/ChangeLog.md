@@ -1,3 +1,6 @@
+2022-09-08 Version: 3.2.11
+- OperationInfo is added to the return value of GetStack and ListStacks.
+
 2022-09-05 Version: 3.2.10
 - Ros supports pre config.
 
