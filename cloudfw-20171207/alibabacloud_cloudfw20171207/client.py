@@ -2652,6 +2652,8 @@ class Client(OpenApiClient):
             query['RegionNo'] = request.region_no
         if not UtilClient.is_unset(request.route_mode):
             query['RouteMode'] = request.route_mode
+        if not UtilClient.is_unset(request.transit_router_type):
+            query['TransitRouterType'] = request.transit_router_type
         if not UtilClient.is_unset(request.vpc_firewall_id):
             query['VpcFirewallId'] = request.vpc_firewall_id
         if not UtilClient.is_unset(request.vpc_firewall_name):
@@ -2704,6 +2706,8 @@ class Client(OpenApiClient):
             query['RegionNo'] = request.region_no
         if not UtilClient.is_unset(request.route_mode):
             query['RouteMode'] = request.route_mode
+        if not UtilClient.is_unset(request.transit_router_type):
+            query['TransitRouterType'] = request.transit_router_type
         if not UtilClient.is_unset(request.vpc_firewall_id):
             query['VpcFirewallId'] = request.vpc_firewall_id
         if not UtilClient.is_unset(request.vpc_firewall_name):

@@ -592,7 +592,6 @@ class BatchCopyVpcFirewallControlPolicyResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -2525,6 +2524,7 @@ class DescribeControlPolicyResponseBodyPolicys(TeaModel):
         application_id: str = None,
         application_name: str = None,
         application_name_list: List[str] = None,
+        create_time: int = None,
         description: str = None,
         dest_port: str = None,
         dest_port_group: str = None,
@@ -2540,6 +2540,7 @@ class DescribeControlPolicyResponseBodyPolicys(TeaModel):
         hit_last_time: int = None,
         hit_times: int = None,
         ip_version: int = None,
+        modify_time: int = None,
         order: int = None,
         proto: str = None,
         release: str = None,
@@ -2547,12 +2548,14 @@ class DescribeControlPolicyResponseBodyPolicys(TeaModel):
         source_group_cidrs: List[str] = None,
         source_group_type: str = None,
         source_type: str = None,
+        spread_cnt: int = None,
     ):
         self.acl_action = acl_action
         self.acl_uuid = acl_uuid
         self.application_id = application_id
         self.application_name = application_name
         self.application_name_list = application_name_list
+        self.create_time = create_time
         self.description = description
         self.dest_port = dest_port
         self.dest_port_group = dest_port_group
@@ -2568,6 +2571,7 @@ class DescribeControlPolicyResponseBodyPolicys(TeaModel):
         self.hit_last_time = hit_last_time
         self.hit_times = hit_times
         self.ip_version = ip_version
+        self.modify_time = modify_time
         self.order = order
         self.proto = proto
         self.release = release
@@ -2575,6 +2579,7 @@ class DescribeControlPolicyResponseBodyPolicys(TeaModel):
         self.source_group_cidrs = source_group_cidrs
         self.source_group_type = source_group_type
         self.source_type = source_type
+        self.spread_cnt = spread_cnt
 
     def validate(self):
         pass
@@ -2595,6 +2600,8 @@ class DescribeControlPolicyResponseBodyPolicys(TeaModel):
             result['ApplicationName'] = self.application_name
         if self.application_name_list is not None:
             result['ApplicationNameList'] = self.application_name_list
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
         if self.description is not None:
             result['Description'] = self.description
         if self.dest_port is not None:
@@ -2625,6 +2632,8 @@ class DescribeControlPolicyResponseBodyPolicys(TeaModel):
             result['HitTimes'] = self.hit_times
         if self.ip_version is not None:
             result['IpVersion'] = self.ip_version
+        if self.modify_time is not None:
+            result['ModifyTime'] = self.modify_time
         if self.order is not None:
             result['Order'] = self.order
         if self.proto is not None:
@@ -2639,6 +2648,8 @@ class DescribeControlPolicyResponseBodyPolicys(TeaModel):
             result['SourceGroupType'] = self.source_group_type
         if self.source_type is not None:
             result['SourceType'] = self.source_type
+        if self.spread_cnt is not None:
+            result['SpreadCnt'] = self.spread_cnt
         return result
 
     def from_map(self, m: dict = None):
@@ -2653,6 +2664,8 @@ class DescribeControlPolicyResponseBodyPolicys(TeaModel):
             self.application_name = m.get('ApplicationName')
         if m.get('ApplicationNameList') is not None:
             self.application_name_list = m.get('ApplicationNameList')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('DestPort') is not None:
@@ -2683,6 +2696,8 @@ class DescribeControlPolicyResponseBodyPolicys(TeaModel):
             self.hit_times = m.get('HitTimes')
         if m.get('IpVersion') is not None:
             self.ip_version = m.get('IpVersion')
+        if m.get('ModifyTime') is not None:
+            self.modify_time = m.get('ModifyTime')
         if m.get('Order') is not None:
             self.order = m.get('Order')
         if m.get('Proto') is not None:
@@ -2697,6 +2712,8 @@ class DescribeControlPolicyResponseBodyPolicys(TeaModel):
             self.source_group_type = m.get('SourceGroupType')
         if m.get('SourceType') is not None:
             self.source_type = m.get('SourceType')
+        if m.get('SpreadCnt') is not None:
+            self.spread_cnt = m.get('SpreadCnt')
         return self
 
 
@@ -3221,37 +3238,21 @@ class DescribeInvadeEventListRequest(TeaModel):
         source_ip: str = None,
         start_time: str = None,
     ):
-        # 资产IP
         self.assets_ip = assets_ip
-        # 实例ID
         self.assets_instance_id = assets_instance_id
-        # 实例名称
         self.assets_instance_name = assets_instance_name
-        # 当前页
         self.current_page = current_page
-        # 结束时间
         self.end_time = end_time
-        # 事件key
         self.event_key = event_key
-        # 事件名称
         self.event_name = event_name
-        # 事件UUID
         self.event_uuid = event_uuid
-        # 是否忽略
         self.is_ignore = is_ignore
-        # 语言
         self.lang = lang
-        # 成员账号UID
         self.member_uid = member_uid
-        # 每页多少条
         self.page_size = page_size
-        # 处理状态列表
         self.process_status_list = process_status_list
-        # 风险等级
         self.risk_level = risk_level
-        # 源IP
         self.source_ip = source_ip
-        # 开始时间
         self.start_time = start_time
 
     def validate(self):
@@ -3354,37 +3355,21 @@ class DescribeInvadeEventListResponseBodyEventList(TeaModel):
         public_ip_type: str = None,
         risk_level: int = None,
     ):
-        # 资产实例ID
         self.assets_instance_id = assets_instance_id
-        # 资产名称
         self.assets_instance_name = assets_instance_name
-        # 资产类型
         self.assets_type = assets_type
-        # CVE编号
         self.event_key = event_key
-        # 事件名称
         self.event_name = event_name
-        # 事件来源
         self.event_src = event_src
-        # 事件UUID
         self.event_uuid = event_uuid
-        # 首次出现时间
         self.first_time = first_time
-        # 是否忽略
         self.is_ignore = is_ignore
-        # 最近一次时间
         self.last_time = last_time
-        # 成员账号UID
         self.member_uid = member_uid
-        # 私网IP
         self.private_ip = private_ip
-        # 处理状态
         self.process_status = process_status
-        # 公网IP
         self.public_ip = public_ip
-        # 公开类型
         self.public_ip_type = public_ip_type
-        # 风险等级
         self.risk_level = risk_level
 
     def validate(self):
@@ -3474,11 +3459,8 @@ class DescribeInvadeEventListResponseBodyPageInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # 当前页
         self.current_page = current_page
-        # 每页大小
         self.page_size = page_size
-        # 总数
         self.total_count = total_count
 
     def validate(self):
@@ -3519,15 +3501,10 @@ class DescribeInvadeEventListResponseBody(TeaModel):
         page_info: DescribeInvadeEventListResponseBodyPageInfo = None,
         request_id: str = None,
     ):
-        # 事件列表
         self.event_list = event_list
-        # 高风险等级比例
         self.high_level_percent = high_level_percent
-        # 低风险等级比例
         self.low_level_percent = low_level_percent
-        # 中风险等级比例
         self.middle_level_percent = middle_level_percent
-        # 分页信息
         self.page_info = page_info
         self.request_id = request_id
 
@@ -3641,29 +3618,16 @@ class DescribeOutgoingDestinationIPRequest(TeaModel):
         sort: str = None,
         start_time: str = None,
     ):
-        # 当前页
         self.current_page = current_page
-        # 目的IP
         self.dst_ip = dst_ip
-        # 结束时间
         self.end_time = end_time
-        # 语言
         self.lang = lang
-        # 排序字段, 枚举值.
-        # 默认值: SessionCount
-        # 可选值: InBytes, OutBytes,TotalBytes,SessionCount
         self.order = order
-        # 每页大小
         self.page_size = page_size
-        # 端口号
         self.port = port
-        # 私网IP
         self.private_ip = private_ip
-        # 公网IP
         self.public_ip = public_ip
-        # 顺序, 枚举值, 可选:asc, desc
         self.sort = sort
-        # 开始时间,Unix timestamp, 精确到秒
         self.start_time = start_time
 
     def validate(self):
@@ -3732,9 +3696,7 @@ class DescribeOutgoingDestinationIPResponseBodyDstIPListApplicationPortList(TeaM
         application_name: str = None,
         port: int = None,
     ):
-        # 应用名
         self.application_name = application_name
-        # 端口
         self.port = port
 
     def validate(self):
@@ -3769,13 +3731,9 @@ class DescribeOutgoingDestinationIPResponseBodyDstIPListTagList(TeaModel):
         tag_id: str = None,
         tag_name: str = None,
     ):
-        # 风险等级
         self.risk_level = risk_level
-        # 标签描述
         self.tag_describe = tag_describe
-        # 标签ID
         self.tag_id = tag_id
-        # 标签名
         self.tag_name = tag_name
 
     def validate(self):
@@ -3833,42 +3791,24 @@ class DescribeOutgoingDestinationIPResponseBodyDstIPList(TeaModel):
         session_count: int = None,
         tag_list: List[DescribeOutgoingDestinationIPResponseBodyDstIPListTagList] = None,
     ):
-        # ACL覆盖
         self.acl_coverage = acl_coverage
-        # ACL推荐内容
         self.acl_recommend_detail = acl_recommend_detail
-        # ACL状态
         self.acl_status = acl_status
-        # 地址簿名称
         self.address_group_name = address_group_name
-        # 地址簿UUID
         self.address_group_uuid = address_group_uuid
         self.application_port_list = application_port_list
-        # 分类ID
         self.category_id = category_id
-        # 分类名称
         self.category_name = category_name
-        # 目的IP
         self.dst_ip = dst_ip
-        # 规则中的组名称
         self.group_name = group_name
-        # 是否有推荐ACL
         self.has_acl_recommend = has_acl_recommend
-        # 入方向流量
         self.in_bytes = in_bytes
-        # 是否正常
         self.is_mark_normal = is_mark_normal
-        # 出流量
         self.out_bytes = out_bytes
-        # 规则UUID
         self.rule_id = rule_id
-        # 规则名称
         self.rule_name = rule_name
-        # 安全建议
         self.security_suggest = security_suggest
-        # 会话数
         self.session_count = session_count
-        # 标签列表
         self.tag_list = tag_list
 
     def validate(self):
@@ -3987,10 +3927,8 @@ class DescribeOutgoingDestinationIPResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # 外联IP列表
         self.dst_iplist = dst_iplist
         self.request_id = request_id
-        # 总数
         self.total_count = total_count
 
     def validate(self):
@@ -4087,36 +4025,15 @@ class DescribeOutgoingDomainRequest(TeaModel):
         sort: str = None,
         start_time: str = None,
     ):
-        # 分类, 枚举值.
-        # 默认值: 空
-        # 可选值: 
-        # All (全部分类)
-        # RiskDomain (风险域名分类)
-        # RiskIP (风险IP分类)
-        # AliYun (云产品分类)
-        # NotAliYun (非云产品分类)
         self.category_id = category_id
-        # 当前页
         self.current_page = current_page
-        # 域名
         self.domain = domain
-        # 结束时间,Unix timestamp, 精确到秒
         self.end_time = end_time
-        # 语言, 枚举值.
-        # 默认值: zh
-        # 可选值: en
         self.lang = lang
-        # 排序字段, 枚举值.
-        # 默认值: SessionCount
-        # 可选值: InBytes, OutBytes,TotalBytes,SessionCount
         self.order = order
-        # 每页条数, 不得超过100, 超过100会设置为100
         self.page_size = page_size
-        # 公网IP
         self.public_ip = public_ip
-        # 顺序, 枚举值, 可选:asc, desc
         self.sort = sort
-        # 开始时间,Unix timestamp, 精确到秒
         self.start_time = start_time
 
     def validate(self):
@@ -4183,13 +4100,9 @@ class DescribeOutgoingDomainResponseBodyDomainListTagList(TeaModel):
         tag_id: str = None,
         tag_name: str = None,
     ):
-        # 风险等级
         self.risk_level = risk_level
-        # 标签描述
         self.tag_describe = tag_describe
-        # 标签ID
         self.tag_id = tag_id
-        # 标签名称
         self.tag_name = tag_name
 
     def validate(self):
@@ -4246,39 +4159,22 @@ class DescribeOutgoingDomainResponseBodyDomainList(TeaModel):
         session_count: int = None,
         tag_list: List[DescribeOutgoingDomainResponseBodyDomainListTagList] = None,
     ):
-        # ACL覆盖
         self.acl_coverage = acl_coverage
-        # ACL推荐内容
         self.acl_recommend_detail = acl_recommend_detail
-        # ACL状态
         self.acl_status = acl_status
-        # 地址簿名称
         self.address_group_name = address_group_name
-        # 地址簿UUID
         self.address_group_uuid = address_group_uuid
-        # 分类ID
         self.category_id = category_id
-        # 分类名称
         self.category_name = category_name
-        # 域名
         self.domain = domain
-        # 规则中的组名称
         self.group_name = group_name
-        # 是否有ACL推荐规则
         self.has_acl_recommend = has_acl_recommend
-        # 入流量
         self.in_bytes = in_bytes
-        # 是否正常
         self.is_mark_normal = is_mark_normal
-        # 出流量
         self.out_bytes = out_bytes
-        # ACL规则ID
         self.rule_id = rule_id
-        # 规则名称
         self.rule_name = rule_name
-        # 安全建议
         self.security_suggest = security_suggest
-        # 会话数
         self.session_count = session_count
         self.tag_list = tag_list
 
@@ -4387,7 +4283,6 @@ class DescribeOutgoingDomainResponseBody(TeaModel):
     ):
         self.domain_list = domain_list
         self.request_id = request_id
-        # 总数
         self.total_count = total_count
 
     def validate(self):
@@ -5303,11 +5198,8 @@ class DescribeUserAssetIPTrafficInfoRequest(TeaModel):
         lang: str = None,
         traffic_time: str = None,
     ):
-        # 资产IP
         self.asset_ip = asset_ip
-        # 语言
         self.lang = lang
-        # 时间
         self.traffic_time = traffic_time
 
     def validate(self):
@@ -5351,17 +5243,14 @@ class DescribeUserAssetIPTrafficInfoResponseBody(TeaModel):
         session_count: int = None,
         start_time: int = None,
     ):
-        # 结束时间
         self.end_time = end_time
         self.in_bps = in_bps
         self.in_pps = in_pps
         self.new_conn = new_conn
         self.out_bps = out_bps
         self.out_pps = out_pps
-        # Id of the request
         self.request_id = request_id
         self.session_count = session_count
-        # 开始时间
         self.start_time = start_time
 
     def validate(self):
@@ -6037,6 +5926,7 @@ class DescribeVpcFirewallCenListRequest(TeaModel):
         page_size: str = None,
         region_no: str = None,
         route_mode: str = None,
+        transit_router_type: str = None,
         vpc_firewall_id: str = None,
         vpc_firewall_name: str = None,
     ):
@@ -6050,6 +5940,7 @@ class DescribeVpcFirewallCenListRequest(TeaModel):
         self.page_size = page_size
         self.region_no = region_no
         self.route_mode = route_mode
+        self.transit_router_type = transit_router_type
         self.vpc_firewall_id = vpc_firewall_id
         self.vpc_firewall_name = vpc_firewall_name
 
@@ -6082,6 +5973,8 @@ class DescribeVpcFirewallCenListRequest(TeaModel):
             result['RegionNo'] = self.region_no
         if self.route_mode is not None:
             result['RouteMode'] = self.route_mode
+        if self.transit_router_type is not None:
+            result['TransitRouterType'] = self.transit_router_type
         if self.vpc_firewall_id is not None:
             result['VpcFirewallId'] = self.vpc_firewall_id
         if self.vpc_firewall_name is not None:
@@ -6110,6 +6003,8 @@ class DescribeVpcFirewallCenListRequest(TeaModel):
             self.region_no = m.get('RegionNo')
         if m.get('RouteMode') is not None:
             self.route_mode = m.get('RouteMode')
+        if m.get('TransitRouterType') is not None:
+            self.transit_router_type = m.get('TransitRouterType')
         if m.get('VpcFirewallId') is not None:
             self.vpc_firewall_id = m.get('VpcFirewallId')
         if m.get('VpcFirewallName') is not None:
