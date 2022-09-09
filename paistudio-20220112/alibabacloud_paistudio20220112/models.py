@@ -3720,11 +3720,11 @@ class ListAlgorithmsResponseBody(TeaModel):
         self,
         algorithms: List[ListAlgorithmsResponseBodyAlgorithms] = None,
         request_id: str = None,
-        totoal_count: int = None,
+        total_count: int = None,
     ):
         self.algorithms = algorithms
         self.request_id = request_id
-        self.totoal_count = totoal_count
+        self.total_count = total_count
 
     def validate(self):
         if self.algorithms:
@@ -3744,8 +3744,8 @@ class ListAlgorithmsResponseBody(TeaModel):
                 result['Algorithms'].append(k.to_map() if k else None)
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.totoal_count is not None:
-            result['TotoalCount'] = self.totoal_count
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
@@ -3757,8 +3757,8 @@ class ListAlgorithmsResponseBody(TeaModel):
                 self.algorithms.append(temp_model.from_map(k))
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('TotoalCount') is not None:
-            self.totoal_count = m.get('TotoalCount')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         return self
 
 
@@ -4449,6 +4449,243 @@ class ListTrainingJobMetricsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListTrainingJobMetricsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateAlgorithmRequest(TeaModel):
+    def __init__(
+        self,
+        algorithm_description: str = None,
+    ):
+        self.algorithm_description = algorithm_description
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.algorithm_description is not None:
+            result['AlgorithmDescription'] = self.algorithm_description
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AlgorithmDescription') is not None:
+            self.algorithm_description = m.get('AlgorithmDescription')
+        return self
+
+
+class UpdateAlgorithmResponseBody(TeaModel):
+    def __init__(
+        self,
+        algorithm_id: str = None,
+        request_id: str = None,
+    ):
+        self.algorithm_id = algorithm_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.algorithm_id is not None:
+            result['AlgorithmId'] = self.algorithm_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AlgorithmId') is not None:
+            self.algorithm_id = m.get('AlgorithmId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateAlgorithmResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateAlgorithmResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateAlgorithmResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateAlgorithmVersionRequest(TeaModel):
+    def __init__(
+        self,
+        algorithm_spec: AlgorithmSpec = None,
+    ):
+        self.algorithm_spec = algorithm_spec
+
+    def validate(self):
+        if self.algorithm_spec:
+            self.algorithm_spec.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.algorithm_spec is not None:
+            result['AlgorithmSpec'] = self.algorithm_spec.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AlgorithmSpec') is not None:
+            temp_model = AlgorithmSpec()
+            self.algorithm_spec = temp_model.from_map(m['AlgorithmSpec'])
+        return self
+
+
+class UpdateAlgorithmVersionShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        algorithm_spec_shrink: str = None,
+    ):
+        self.algorithm_spec_shrink = algorithm_spec_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.algorithm_spec_shrink is not None:
+            result['AlgorithmSpec'] = self.algorithm_spec_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AlgorithmSpec') is not None:
+            self.algorithm_spec_shrink = m.get('AlgorithmSpec')
+        return self
+
+
+class UpdateAlgorithmVersionResponseBody(TeaModel):
+    def __init__(
+        self,
+        algorithm_id: str = None,
+        algorithm_version: str = None,
+    ):
+        self.algorithm_id = algorithm_id
+        self.algorithm_version = algorithm_version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.algorithm_id is not None:
+            result['AlgorithmId'] = self.algorithm_id
+        if self.algorithm_version is not None:
+            result['AlgorithmVersion'] = self.algorithm_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AlgorithmId') is not None:
+            self.algorithm_id = m.get('AlgorithmId')
+        if m.get('AlgorithmVersion') is not None:
+            self.algorithm_version = m.get('AlgorithmVersion')
+        return self
+
+
+class UpdateAlgorithmVersionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateAlgorithmVersionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateAlgorithmVersionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

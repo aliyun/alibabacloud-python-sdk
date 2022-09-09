@@ -172,8 +172,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.CreateAlgorithmVersionResponse:
         UtilClient.validate_model(tmp_req)
-        algorithm_id = OpenApiUtilClient.get_encode_param(algorithm_id)
-        algorithm_version = OpenApiUtilClient.get_encode_param(algorithm_version)
         request = pai_studio_20220112_models.CreateAlgorithmVersionShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.algorithm_spec):
@@ -189,7 +187,7 @@ class Client(OpenApiClient):
             action='CreateAlgorithmVersion',
             version='2022-01-12',
             protocol='HTTPS',
-            pathname=f'/api/v1/algorithms/{algorithm_id}/versions/{algorithm_version}',
+            pathname=f'/api/v1/algorithms/{OpenApiUtilClient.get_encode_param(algorithm_id)}/versions/{OpenApiUtilClient.get_encode_param(algorithm_version)}',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -210,8 +208,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.CreateAlgorithmVersionResponse:
         UtilClient.validate_model(tmp_req)
-        algorithm_id = OpenApiUtilClient.get_encode_param(algorithm_id)
-        algorithm_version = OpenApiUtilClient.get_encode_param(algorithm_version)
         request = pai_studio_20220112_models.CreateAlgorithmVersionShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.algorithm_spec):
@@ -227,7 +223,7 @@ class Client(OpenApiClient):
             action='CreateAlgorithmVersion',
             version='2022-01-12',
             protocol='HTTPS',
-            pathname=f'/api/v1/algorithms/{algorithm_id}/versions/{algorithm_version}',
+            pathname=f'/api/v1/algorithms/{OpenApiUtilClient.get_encode_param(algorithm_id)}/versions/{OpenApiUtilClient.get_encode_param(algorithm_version)}',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -465,7 +461,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.DeleteMachineGroupResponse:
-        machine_group_id = OpenApiUtilClient.get_encode_param(machine_group_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -473,7 +468,7 @@ class Client(OpenApiClient):
             action='DeleteMachineGroup',
             version='2022-01-12',
             protocol='HTTPS',
-            pathname=f'/api/v1/resources/machinegroups/{machine_group_id}',
+            pathname=f'/api/v1/resources/machinegroups/{OpenApiUtilClient.get_encode_param(machine_group_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -491,7 +486,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.DeleteMachineGroupResponse:
-        machine_group_id = OpenApiUtilClient.get_encode_param(machine_group_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -499,7 +493,7 @@ class Client(OpenApiClient):
             action='DeleteMachineGroup',
             version='2022-01-12',
             protocol='HTTPS',
-            pathname=f'/api/v1/resources/machinegroups/{machine_group_id}',
+            pathname=f'/api/v1/resources/machinegroups/{OpenApiUtilClient.get_encode_param(machine_group_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -533,7 +527,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.DeleteResourceGroupResponse:
-        resource_group_id = OpenApiUtilClient.get_encode_param(resource_group_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -541,7 +534,7 @@ class Client(OpenApiClient):
             action='DeleteResourceGroup',
             version='2022-01-12',
             protocol='HTTPS',
-            pathname=f'/api/v1/resources/{resource_group_id}',
+            pathname=f'/api/v1/resources/{OpenApiUtilClient.get_encode_param(resource_group_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -559,7 +552,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.DeleteResourceGroupResponse:
-        resource_group_id = OpenApiUtilClient.get_encode_param(resource_group_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -567,7 +559,7 @@ class Client(OpenApiClient):
             action='DeleteResourceGroup',
             version='2022-01-12',
             protocol='HTTPS',
-            pathname=f'/api/v1/resources/{resource_group_id}',
+            pathname=f'/api/v1/resources/{OpenApiUtilClient.get_encode_param(resource_group_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -604,8 +596,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.DeleteResourceGroupMachineGroupResponse:
-        machine_group_id = OpenApiUtilClient.get_encode_param(machine_group_id)
-        resource_group_id = OpenApiUtilClient.get_encode_param(resource_group_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -613,7 +603,7 @@ class Client(OpenApiClient):
             action='DeleteResourceGroupMachineGroup',
             version='2022-01-12',
             protocol='HTTPS',
-            pathname=f'/api/v1/resources/{resource_group_id}/machinegroups/{machine_group_id}',
+            pathname=f'/api/v1/resources/{OpenApiUtilClient.get_encode_param(resource_group_id)}/machinegroups/{OpenApiUtilClient.get_encode_param(machine_group_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -632,8 +622,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.DeleteResourceGroupMachineGroupResponse:
-        machine_group_id = OpenApiUtilClient.get_encode_param(machine_group_id)
-        resource_group_id = OpenApiUtilClient.get_encode_param(resource_group_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -641,7 +629,7 @@ class Client(OpenApiClient):
             action='DeleteResourceGroupMachineGroup',
             version='2022-01-12',
             protocol='HTTPS',
-            pathname=f'/api/v1/resources/{resource_group_id}/machinegroups/{machine_group_id}',
+            pathname=f'/api/v1/resources/{OpenApiUtilClient.get_encode_param(resource_group_id)}/machinegroups/{OpenApiUtilClient.get_encode_param(machine_group_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -675,7 +663,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.GetAlgorithmResponse:
-        algorithm_id = OpenApiUtilClient.get_encode_param(algorithm_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -683,7 +670,7 @@ class Client(OpenApiClient):
             action='GetAlgorithm',
             version='2022-01-12',
             protocol='HTTPS',
-            pathname=f'/api/v1/algorithms/{algorithm_id}',
+            pathname=f'/api/v1/algorithms/{OpenApiUtilClient.get_encode_param(algorithm_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -701,7 +688,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.GetAlgorithmResponse:
-        algorithm_id = OpenApiUtilClient.get_encode_param(algorithm_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -709,7 +695,7 @@ class Client(OpenApiClient):
             action='GetAlgorithm',
             version='2022-01-12',
             protocol='HTTPS',
-            pathname=f'/api/v1/algorithms/{algorithm_id}',
+            pathname=f'/api/v1/algorithms/{OpenApiUtilClient.get_encode_param(algorithm_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -746,8 +732,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.GetAlgorithmVersionResponse:
-        algorithm_id = OpenApiUtilClient.get_encode_param(algorithm_id)
-        algorithm_version = OpenApiUtilClient.get_encode_param(algorithm_version)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -755,7 +739,7 @@ class Client(OpenApiClient):
             action='GetAlgorithmVersion',
             version='2022-01-12',
             protocol='HTTPS',
-            pathname=f'/api/v1/algorithms/{algorithm_id}/versions/{algorithm_version}',
+            pathname=f'/api/v1/algorithms/{OpenApiUtilClient.get_encode_param(algorithm_id)}/versions/{OpenApiUtilClient.get_encode_param(algorithm_version)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -774,8 +758,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.GetAlgorithmVersionResponse:
-        algorithm_id = OpenApiUtilClient.get_encode_param(algorithm_id)
-        algorithm_version = OpenApiUtilClient.get_encode_param(algorithm_version)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -783,7 +765,7 @@ class Client(OpenApiClient):
             action='GetAlgorithmVersion',
             version='2022-01-12',
             protocol='HTTPS',
-            pathname=f'/api/v1/algorithms/{algorithm_id}/versions/{algorithm_version}',
+            pathname=f'/api/v1/algorithms/{OpenApiUtilClient.get_encode_param(algorithm_id)}/versions/{OpenApiUtilClient.get_encode_param(algorithm_version)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -817,7 +799,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.GetMachineGroupResponse:
-        machine_group_id = OpenApiUtilClient.get_encode_param(machine_group_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -825,7 +806,7 @@ class Client(OpenApiClient):
             action='GetMachineGroup',
             version='2022-01-12',
             protocol='HTTPS',
-            pathname=f'/api/v1/resources/machinegroups/{machine_group_id}',
+            pathname=f'/api/v1/resources/machinegroups/{OpenApiUtilClient.get_encode_param(machine_group_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -843,7 +824,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.GetMachineGroupResponse:
-        machine_group_id = OpenApiUtilClient.get_encode_param(machine_group_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -851,7 +831,7 @@ class Client(OpenApiClient):
             action='GetMachineGroup',
             version='2022-01-12',
             protocol='HTTPS',
-            pathname=f'/api/v1/resources/machinegroups/{machine_group_id}',
+            pathname=f'/api/v1/resources/machinegroups/{OpenApiUtilClient.get_encode_param(machine_group_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -892,8 +872,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.GetNodeMetricsResponse:
         UtilClient.validate_model(request)
-        resource_group_id = OpenApiUtilClient.get_encode_param(resource_group_id)
-        metric_type = OpenApiUtilClient.get_encode_param(metric_type)
         query = {}
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
@@ -913,7 +891,7 @@ class Client(OpenApiClient):
             action='GetNodeMetrics',
             version='2022-01-12',
             protocol='HTTPS',
-            pathname=f'/api/v1/resources/{resource_group_id}/nodemetrics/{metric_type}',
+            pathname=f'/api/v1/resources/{OpenApiUtilClient.get_encode_param(resource_group_id)}/nodemetrics/{OpenApiUtilClient.get_encode_param(metric_type)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -934,8 +912,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.GetNodeMetricsResponse:
         UtilClient.validate_model(request)
-        resource_group_id = OpenApiUtilClient.get_encode_param(resource_group_id)
-        metric_type = OpenApiUtilClient.get_encode_param(metric_type)
         query = {}
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
@@ -955,7 +931,7 @@ class Client(OpenApiClient):
             action='GetNodeMetrics',
             version='2022-01-12',
             protocol='HTTPS',
-            pathname=f'/api/v1/resources/{resource_group_id}/nodemetrics/{metric_type}',
+            pathname=f'/api/v1/resources/{OpenApiUtilClient.get_encode_param(resource_group_id)}/nodemetrics/{OpenApiUtilClient.get_encode_param(metric_type)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -989,7 +965,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.GetResourceGroupResponse:
-        resource_group_id = OpenApiUtilClient.get_encode_param(resource_group_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -997,7 +972,7 @@ class Client(OpenApiClient):
             action='GetResourceGroup',
             version='2022-01-12',
             protocol='HTTPS',
-            pathname=f'/api/v1/resources/{resource_group_id}',
+            pathname=f'/api/v1/resources/{OpenApiUtilClient.get_encode_param(resource_group_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1015,7 +990,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.GetResourceGroupResponse:
-        resource_group_id = OpenApiUtilClient.get_encode_param(resource_group_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1023,7 +997,7 @@ class Client(OpenApiClient):
             action='GetResourceGroup',
             version='2022-01-12',
             protocol='HTTPS',
-            pathname=f'/api/v1/resources/{resource_group_id}',
+            pathname=f'/api/v1/resources/{OpenApiUtilClient.get_encode_param(resource_group_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1060,8 +1034,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.GetResourceGroupMachineGroupResponse:
-        machine_group_id = OpenApiUtilClient.get_encode_param(machine_group_id)
-        resource_group_id = OpenApiUtilClient.get_encode_param(resource_group_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1069,7 +1041,7 @@ class Client(OpenApiClient):
             action='GetResourceGroupMachineGroup',
             version='2022-01-12',
             protocol='HTTPS',
-            pathname=f'/api/v1/resources/{resource_group_id}/machinegroups/{machine_group_id}',
+            pathname=f'/api/v1/resources/{OpenApiUtilClient.get_encode_param(resource_group_id)}/machinegroups/{OpenApiUtilClient.get_encode_param(machine_group_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1088,8 +1060,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.GetResourceGroupMachineGroupResponse:
-        machine_group_id = OpenApiUtilClient.get_encode_param(machine_group_id)
-        resource_group_id = OpenApiUtilClient.get_encode_param(resource_group_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1097,7 +1067,7 @@ class Client(OpenApiClient):
             action='GetResourceGroupMachineGroup',
             version='2022-01-12',
             protocol='HTTPS',
-            pathname=f'/api/v1/resources/{resource_group_id}/machinegroups/{machine_group_id}',
+            pathname=f'/api/v1/resources/{OpenApiUtilClient.get_encode_param(resource_group_id)}/machinegroups/{OpenApiUtilClient.get_encode_param(machine_group_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1287,7 +1257,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.GetTrainingJobResponse:
-        training_job_id = OpenApiUtilClient.get_encode_param(training_job_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1295,7 +1264,7 @@ class Client(OpenApiClient):
             action='GetTrainingJob',
             version='2022-01-12',
             protocol='HTTPS',
-            pathname=f'/api/v1/trainingjobs/{training_job_id}',
+            pathname=f'/api/v1/trainingjobs/{OpenApiUtilClient.get_encode_param(training_job_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1313,7 +1282,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.GetTrainingJobResponse:
-        training_job_id = OpenApiUtilClient.get_encode_param(training_job_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1321,7 +1289,7 @@ class Client(OpenApiClient):
             action='GetTrainingJob',
             version='2022-01-12',
             protocol='HTTPS',
-            pathname=f'/api/v1/trainingjobs/{training_job_id}',
+            pathname=f'/api/v1/trainingjobs/{OpenApiUtilClient.get_encode_param(training_job_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1359,7 +1327,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.ListAlgorithmVersionsResponse:
         UtilClient.validate_model(request)
-        algorithm_id = OpenApiUtilClient.get_encode_param(algorithm_id)
         query = {}
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
@@ -1373,7 +1340,7 @@ class Client(OpenApiClient):
             action='ListAlgorithmVersions',
             version='2022-01-12',
             protocol='HTTPS',
-            pathname=f'/api/v1/algorithms/{algorithm_id}/versions',
+            pathname=f'/api/v1/algorithms/{OpenApiUtilClient.get_encode_param(algorithm_id)}/versions',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1393,7 +1360,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.ListAlgorithmVersionsResponse:
         UtilClient.validate_model(request)
-        algorithm_id = OpenApiUtilClient.get_encode_param(algorithm_id)
         query = {}
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
@@ -1407,7 +1373,7 @@ class Client(OpenApiClient):
             action='ListAlgorithmVersions',
             version='2022-01-12',
             protocol='HTTPS',
-            pathname=f'/api/v1/algorithms/{algorithm_id}/versions',
+            pathname=f'/api/v1/algorithms/{OpenApiUtilClient.get_encode_param(algorithm_id)}/versions',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1541,7 +1507,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.ListResourceGroupMachineGroupsResponse:
         UtilClient.validate_model(request)
-        resource_group_id = OpenApiUtilClient.get_encode_param(resource_group_id)
         query = {}
         if not UtilClient.is_unset(request.creator_id):
             query['CreatorID'] = request.creator_id
@@ -1573,7 +1538,7 @@ class Client(OpenApiClient):
             action='ListResourceGroupMachineGroups',
             version='2022-01-12',
             protocol='HTTPS',
-            pathname=f'/api/v1/resources/{resource_group_id}/machinegroups',
+            pathname=f'/api/v1/resources/{OpenApiUtilClient.get_encode_param(resource_group_id)}/machinegroups',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1593,7 +1558,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.ListResourceGroupMachineGroupsResponse:
         UtilClient.validate_model(request)
-        resource_group_id = OpenApiUtilClient.get_encode_param(resource_group_id)
         query = {}
         if not UtilClient.is_unset(request.creator_id):
             query['CreatorID'] = request.creator_id
@@ -1625,7 +1589,7 @@ class Client(OpenApiClient):
             action='ListResourceGroupMachineGroups',
             version='2022-01-12',
             protocol='HTTPS',
-            pathname=f'/api/v1/resources/{resource_group_id}/machinegroups',
+            pathname=f'/api/v1/resources/{OpenApiUtilClient.get_encode_param(resource_group_id)}/machinegroups',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1763,7 +1727,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.ListTrainingJobLogsResponse:
         UtilClient.validate_model(request)
-        training_job_id = OpenApiUtilClient.get_encode_param(training_job_id)
         query = {}
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
@@ -1783,7 +1746,7 @@ class Client(OpenApiClient):
             action='ListTrainingJobLogs',
             version='2022-01-12',
             protocol='HTTPS',
-            pathname=f'/api/v1/trainingjobs/{training_job_id}/logs',
+            pathname=f'/api/v1/trainingjobs/{OpenApiUtilClient.get_encode_param(training_job_id)}/logs',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1803,7 +1766,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.ListTrainingJobLogsResponse:
         UtilClient.validate_model(request)
-        training_job_id = OpenApiUtilClient.get_encode_param(training_job_id)
         query = {}
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
@@ -1823,7 +1785,7 @@ class Client(OpenApiClient):
             action='ListTrainingJobLogs',
             version='2022-01-12',
             protocol='HTTPS',
-            pathname=f'/api/v1/trainingjobs/{training_job_id}/logs',
+            pathname=f'/api/v1/trainingjobs/{OpenApiUtilClient.get_encode_param(training_job_id)}/logs',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1861,7 +1823,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.ListTrainingJobMetricsResponse:
         UtilClient.validate_model(request)
-        training_job_id = OpenApiUtilClient.get_encode_param(training_job_id)
         query = {}
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
@@ -1883,7 +1844,7 @@ class Client(OpenApiClient):
             action='ListTrainingJobMetrics',
             version='2022-01-12',
             protocol='HTTPS',
-            pathname=f'/api/v1/trainingjobs/{training_job_id}/metrics',
+            pathname=f'/api/v1/trainingjobs/{OpenApiUtilClient.get_encode_param(training_job_id)}/metrics',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1903,7 +1864,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.ListTrainingJobMetricsResponse:
         UtilClient.validate_model(request)
-        training_job_id = OpenApiUtilClient.get_encode_param(training_job_id)
         query = {}
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
@@ -1925,7 +1885,7 @@ class Client(OpenApiClient):
             action='ListTrainingJobMetrics',
             version='2022-01-12',
             protocol='HTTPS',
-            pathname=f'/api/v1/trainingjobs/{training_job_id}/metrics',
+            pathname=f'/api/v1/trainingjobs/{OpenApiUtilClient.get_encode_param(training_job_id)}/metrics',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1934,6 +1894,178 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             pai_studio_20220112_models.ListTrainingJobMetricsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_algorithm(
+        self,
+        algorithm_id: str,
+        request: pai_studio_20220112_models.UpdateAlgorithmRequest,
+    ) -> pai_studio_20220112_models.UpdateAlgorithmResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_algorithm_with_options(algorithm_id, request, headers, runtime)
+
+    async def update_algorithm_async(
+        self,
+        algorithm_id: str,
+        request: pai_studio_20220112_models.UpdateAlgorithmRequest,
+    ) -> pai_studio_20220112_models.UpdateAlgorithmResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_algorithm_with_options_async(algorithm_id, request, headers, runtime)
+
+    def update_algorithm_with_options(
+        self,
+        algorithm_id: str,
+        request: pai_studio_20220112_models.UpdateAlgorithmRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_studio_20220112_models.UpdateAlgorithmResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.algorithm_description):
+            body['AlgorithmDescription'] = request.algorithm_description
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateAlgorithm',
+            version='2022-01-12',
+            protocol='HTTPS',
+            pathname=f'/api/v1/algorithms/{OpenApiUtilClient.get_encode_param(algorithm_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_studio_20220112_models.UpdateAlgorithmResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_algorithm_with_options_async(
+        self,
+        algorithm_id: str,
+        request: pai_studio_20220112_models.UpdateAlgorithmRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_studio_20220112_models.UpdateAlgorithmResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.algorithm_description):
+            body['AlgorithmDescription'] = request.algorithm_description
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateAlgorithm',
+            version='2022-01-12',
+            protocol='HTTPS',
+            pathname=f'/api/v1/algorithms/{OpenApiUtilClient.get_encode_param(algorithm_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_studio_20220112_models.UpdateAlgorithmResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_algorithm_version(
+        self,
+        algorithm_id: str,
+        algorithm_version: str,
+        request: pai_studio_20220112_models.UpdateAlgorithmVersionRequest,
+    ) -> pai_studio_20220112_models.UpdateAlgorithmVersionResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_algorithm_version_with_options(algorithm_id, algorithm_version, request, headers, runtime)
+
+    async def update_algorithm_version_async(
+        self,
+        algorithm_id: str,
+        algorithm_version: str,
+        request: pai_studio_20220112_models.UpdateAlgorithmVersionRequest,
+    ) -> pai_studio_20220112_models.UpdateAlgorithmVersionResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_algorithm_version_with_options_async(algorithm_id, algorithm_version, request, headers, runtime)
+
+    def update_algorithm_version_with_options(
+        self,
+        algorithm_id: str,
+        algorithm_version: str,
+        tmp_req: pai_studio_20220112_models.UpdateAlgorithmVersionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_studio_20220112_models.UpdateAlgorithmVersionResponse:
+        UtilClient.validate_model(tmp_req)
+        request = pai_studio_20220112_models.UpdateAlgorithmVersionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.algorithm_spec):
+            request.algorithm_spec_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.algorithm_spec), 'AlgorithmSpec', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.algorithm_spec_shrink):
+            body['AlgorithmSpec'] = request.algorithm_spec_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateAlgorithmVersion',
+            version='2022-01-12',
+            protocol='HTTPS',
+            pathname=f'/api/v1/algorithms/{OpenApiUtilClient.get_encode_param(algorithm_id)}/versions/{OpenApiUtilClient.get_encode_param(algorithm_version)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_studio_20220112_models.UpdateAlgorithmVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_algorithm_version_with_options_async(
+        self,
+        algorithm_id: str,
+        algorithm_version: str,
+        tmp_req: pai_studio_20220112_models.UpdateAlgorithmVersionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_studio_20220112_models.UpdateAlgorithmVersionResponse:
+        UtilClient.validate_model(tmp_req)
+        request = pai_studio_20220112_models.UpdateAlgorithmVersionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.algorithm_spec):
+            request.algorithm_spec_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.algorithm_spec), 'AlgorithmSpec', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.algorithm_spec_shrink):
+            body['AlgorithmSpec'] = request.algorithm_spec_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateAlgorithmVersion',
+            version='2022-01-12',
+            protocol='HTTPS',
+            pathname=f'/api/v1/algorithms/{OpenApiUtilClient.get_encode_param(algorithm_id)}/versions/{OpenApiUtilClient.get_encode_param(algorithm_version)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_studio_20220112_models.UpdateAlgorithmVersionResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
@@ -1963,7 +2095,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.UpdateResourceGroupResponse:
         UtilClient.validate_model(request)
-        resource_group_id = OpenApiUtilClient.get_encode_param(resource_group_id)
         body = {}
         if not UtilClient.is_unset(request.unbind):
             body['Unbind'] = request.unbind
@@ -1977,7 +2108,7 @@ class Client(OpenApiClient):
             action='UpdateResourceGroup',
             version='2022-01-12',
             protocol='HTTPS',
-            pathname=f'/api/v1/resources/{resource_group_id}',
+            pathname=f'/api/v1/resources/{OpenApiUtilClient.get_encode_param(resource_group_id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -1997,7 +2128,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.UpdateResourceGroupResponse:
         UtilClient.validate_model(request)
-        resource_group_id = OpenApiUtilClient.get_encode_param(resource_group_id)
         body = {}
         if not UtilClient.is_unset(request.unbind):
             body['Unbind'] = request.unbind
@@ -2011,7 +2141,7 @@ class Client(OpenApiClient):
             action='UpdateResourceGroup',
             version='2022-01-12',
             protocol='HTTPS',
-            pathname=f'/api/v1/resources/{resource_group_id}',
+            pathname=f'/api/v1/resources/{OpenApiUtilClient.get_encode_param(resource_group_id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
