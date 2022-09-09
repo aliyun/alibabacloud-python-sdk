@@ -19912,6 +19912,7 @@ class DescribeInstancesResponseBodyInstancesInstanceAttribute(TeaModel):
         instance_spec_attributes: DescribeInstancesResponseBodyInstancesInstanceAttributeInstanceSpecAttributes = None,
         instance_type: str = None,
         internet_egress_address: str = None,
+        intranet_segments: str = None,
         region_id: str = None,
         status: str = None,
         support_ipv_6: bool = None,
@@ -19942,6 +19943,7 @@ class DescribeInstancesResponseBodyInstancesInstanceAttribute(TeaModel):
         self.instance_spec_attributes = instance_spec_attributes
         self.instance_type = instance_type
         self.internet_egress_address = internet_egress_address
+        self.intranet_segments = intranet_segments
         self.region_id = region_id
         self.status = status
         self.support_ipv_6 = support_ipv_6
@@ -19999,6 +20001,8 @@ class DescribeInstancesResponseBodyInstancesInstanceAttribute(TeaModel):
             result['InstanceType'] = self.instance_type
         if self.internet_egress_address is not None:
             result['InternetEgressAddress'] = self.internet_egress_address
+        if self.intranet_segments is not None:
+            result['IntranetSegments'] = self.intranet_segments
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.status is not None:
@@ -20062,6 +20066,8 @@ class DescribeInstancesResponseBodyInstancesInstanceAttribute(TeaModel):
             self.instance_type = m.get('InstanceType')
         if m.get('InternetEgressAddress') is not None:
             self.internet_egress_address = m.get('InternetEgressAddress')
+        if m.get('IntranetSegments') is not None:
+            self.intranet_segments = m.get('IntranetSegments')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('Status') is not None:
@@ -32210,11 +32216,13 @@ class SetDomainWebSocketStatusRequest(TeaModel):
         domain_name: str = None,
         group_id: str = None,
         security_token: str = None,
+        wssenable: str = None,
     ):
         self.action_value = action_value
         self.domain_name = domain_name
         self.group_id = group_id
         self.security_token = security_token
+        self.wssenable = wssenable
 
     def validate(self):
         pass
@@ -32233,6 +32241,8 @@ class SetDomainWebSocketStatusRequest(TeaModel):
             result['GroupId'] = self.group_id
         if self.security_token is not None:
             result['SecurityToken'] = self.security_token
+        if self.wssenable is not None:
+            result['WSSEnable'] = self.wssenable
         return result
 
     def from_map(self, m: dict = None):
@@ -32245,6 +32255,8 @@ class SetDomainWebSocketStatusRequest(TeaModel):
             self.group_id = m.get('GroupId')
         if m.get('SecurityToken') is not None:
             self.security_token = m.get('SecurityToken')
+        if m.get('WSSEnable') is not None:
+            self.wssenable = m.get('WSSEnable')
         return self
 
 

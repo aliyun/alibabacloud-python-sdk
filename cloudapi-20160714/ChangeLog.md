@@ -1,3 +1,6 @@
+2022-09-09 Version: 2.2.8
+- Update SetDomainWebSocketStatus.
+
 2022-09-02 Version: 2.2.7
 - Add input parameters of DescribeApps and DescribeDeployedApis.
 

@@ -12612,6 +12612,8 @@ class Client(OpenApiClient):
             query['GroupId'] = request.group_id
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.wssenable):
+            query['WSSEnable'] = request.wssenable
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -12646,6 +12648,8 @@ class Client(OpenApiClient):
             query['GroupId'] = request.group_id
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.wssenable):
+            query['WSSEnable'] = request.wssenable
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
