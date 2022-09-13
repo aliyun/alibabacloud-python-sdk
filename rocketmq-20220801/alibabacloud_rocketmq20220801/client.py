@@ -70,8 +70,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.CreateConsumerGroupResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        consumer_group_id = OpenApiUtilClient.get_encode_param(consumer_group_id)
         body = {}
         if not UtilClient.is_unset(request.consume_retry_policy):
             body['consumeRetryPolicy'] = request.consume_retry_policy
@@ -79,8 +77,6 @@ class Client(OpenApiClient):
             body['deliveryOrderType'] = request.delivery_order_type
         if not UtilClient.is_unset(request.remark):
             body['remark'] = request.remark
-        if not UtilClient.is_unset(request.resource_group_id):
-            body['resourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -89,7 +85,7 @@ class Client(OpenApiClient):
             action='CreateConsumerGroup',
             version='2022-08-01',
             protocol='HTTPS',
-            pathname=f'/instances/{instance_id}/consumerGroups/{consumer_group_id}',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/consumerGroups/{OpenApiUtilClient.get_encode_param(consumer_group_id)}',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -110,8 +106,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.CreateConsumerGroupResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        consumer_group_id = OpenApiUtilClient.get_encode_param(consumer_group_id)
         body = {}
         if not UtilClient.is_unset(request.consume_retry_policy):
             body['consumeRetryPolicy'] = request.consume_retry_policy
@@ -119,8 +113,6 @@ class Client(OpenApiClient):
             body['deliveryOrderType'] = request.delivery_order_type
         if not UtilClient.is_unset(request.remark):
             body['remark'] = request.remark
-        if not UtilClient.is_unset(request.resource_group_id):
-            body['resourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -129,7 +121,7 @@ class Client(OpenApiClient):
             action='CreateConsumerGroup',
             version='2022-08-01',
             protocol='HTTPS',
-            pathname=f'/instances/{instance_id}/consumerGroups/{consumer_group_id}',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/consumerGroups/{OpenApiUtilClient.get_encode_param(consumer_group_id)}',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -170,15 +162,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.CreateTopicResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        topic_name = OpenApiUtilClient.get_encode_param(topic_name)
         body = {}
         if not UtilClient.is_unset(request.message_type):
             body['messageType'] = request.message_type
         if not UtilClient.is_unset(request.remark):
             body['remark'] = request.remark
-        if not UtilClient.is_unset(request.resource_group_id):
-            body['resourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -187,7 +175,7 @@ class Client(OpenApiClient):
             action='CreateTopic',
             version='2022-08-01',
             protocol='HTTPS',
-            pathname=f'/instances/{instance_id}/topics/{topic_name}',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/topics/{OpenApiUtilClient.get_encode_param(topic_name)}',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -208,15 +196,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.CreateTopicResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        topic_name = OpenApiUtilClient.get_encode_param(topic_name)
         body = {}
         if not UtilClient.is_unset(request.message_type):
             body['messageType'] = request.message_type
         if not UtilClient.is_unset(request.remark):
             body['remark'] = request.remark
-        if not UtilClient.is_unset(request.resource_group_id):
-            body['resourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -225,7 +209,7 @@ class Client(OpenApiClient):
             action='CreateTopic',
             version='2022-08-01',
             protocol='HTTPS',
-            pathname=f'/instances/{instance_id}/topics/{topic_name}',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/topics/{OpenApiUtilClient.get_encode_param(topic_name)}',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -262,8 +246,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.DeleteConsumerGroupResponse:
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        consumer_group_id = OpenApiUtilClient.get_encode_param(consumer_group_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -271,7 +253,7 @@ class Client(OpenApiClient):
             action='DeleteConsumerGroup',
             version='2022-08-01',
             protocol='HTTPS',
-            pathname=f'/instances/{instance_id}/consumerGroups/{consumer_group_id}',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/consumerGroups/{OpenApiUtilClient.get_encode_param(consumer_group_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -290,8 +272,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.DeleteConsumerGroupResponse:
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        consumer_group_id = OpenApiUtilClient.get_encode_param(consumer_group_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -299,7 +279,7 @@ class Client(OpenApiClient):
             action='DeleteConsumerGroup',
             version='2022-08-01',
             protocol='HTTPS',
-            pathname=f'/instances/{instance_id}/consumerGroups/{consumer_group_id}',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/consumerGroups/{OpenApiUtilClient.get_encode_param(consumer_group_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -333,7 +313,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.DeleteInstanceResponse:
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -341,7 +320,7 @@ class Client(OpenApiClient):
             action='DeleteInstance',
             version='2022-08-01',
             protocol='HTTPS',
-            pathname=f'/instances/{instance_id}',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -359,7 +338,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.DeleteInstanceResponse:
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -367,7 +345,7 @@ class Client(OpenApiClient):
             action='DeleteInstance',
             version='2022-08-01',
             protocol='HTTPS',
-            pathname=f'/instances/{instance_id}',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -404,8 +382,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.DeleteTopicResponse:
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        topic_name = OpenApiUtilClient.get_encode_param(topic_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -413,7 +389,7 @@ class Client(OpenApiClient):
             action='DeleteTopic',
             version='2022-08-01',
             protocol='HTTPS',
-            pathname=f'/instances/{instance_id}/topics/{topic_name}',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/topics/{OpenApiUtilClient.get_encode_param(topic_name)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -432,8 +408,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.DeleteTopicResponse:
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        topic_name = OpenApiUtilClient.get_encode_param(topic_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -441,7 +415,7 @@ class Client(OpenApiClient):
             action='DeleteTopic',
             version='2022-08-01',
             protocol='HTTPS',
-            pathname=f'/instances/{instance_id}/topics/{topic_name}',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/topics/{OpenApiUtilClient.get_encode_param(topic_name)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -478,8 +452,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.GetConsumerGroupResponse:
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        consumer_group_id = OpenApiUtilClient.get_encode_param(consumer_group_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -487,7 +459,7 @@ class Client(OpenApiClient):
             action='GetConsumerGroup',
             version='2022-08-01',
             protocol='HTTPS',
-            pathname=f'/instances/{instance_id}/consumerGroups/{consumer_group_id}',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/consumerGroups/{OpenApiUtilClient.get_encode_param(consumer_group_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -506,8 +478,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.GetConsumerGroupResponse:
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        consumer_group_id = OpenApiUtilClient.get_encode_param(consumer_group_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -515,7 +485,7 @@ class Client(OpenApiClient):
             action='GetConsumerGroup',
             version='2022-08-01',
             protocol='HTTPS',
-            pathname=f'/instances/{instance_id}/consumerGroups/{consumer_group_id}',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/consumerGroups/{OpenApiUtilClient.get_encode_param(consumer_group_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -549,7 +519,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.GetInstanceResponse:
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -557,7 +526,7 @@ class Client(OpenApiClient):
             action='GetInstance',
             version='2022-08-01',
             protocol='HTTPS',
-            pathname=f'/instances/{instance_id}',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -575,7 +544,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.GetInstanceResponse:
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -583,7 +551,7 @@ class Client(OpenApiClient):
             action='GetInstance',
             version='2022-08-01',
             protocol='HTTPS',
-            pathname=f'/instances/{instance_id}',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -620,8 +588,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.GetTopicResponse:
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        topic_name = OpenApiUtilClient.get_encode_param(topic_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -629,7 +595,7 @@ class Client(OpenApiClient):
             action='GetTopic',
             version='2022-08-01',
             protocol='HTTPS',
-            pathname=f'/instances/{instance_id}/topics/{topic_name}',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/topics/{OpenApiUtilClient.get_encode_param(topic_name)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -648,8 +614,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.GetTopicResponse:
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        topic_name = OpenApiUtilClient.get_encode_param(topic_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -657,7 +621,7 @@ class Client(OpenApiClient):
             action='GetTopic',
             version='2022-08-01',
             protocol='HTTPS',
-            pathname=f'/instances/{instance_id}/topics/{topic_name}',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/topics/{OpenApiUtilClient.get_encode_param(topic_name)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -695,7 +659,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.ListConsumerGroupsResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.filter):
             query['filter'] = request.filter
@@ -703,8 +666,6 @@ class Client(OpenApiClient):
             query['pageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['pageSize'] = request.page_size
-        if not UtilClient.is_unset(request.resource_group_id):
-            query['resourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -713,7 +674,7 @@ class Client(OpenApiClient):
             action='ListConsumerGroups',
             version='2022-08-01',
             protocol='HTTPS',
-            pathname=f'/instances/{instance_id}/consumerGroups',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/consumerGroups',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -733,7 +694,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.ListConsumerGroupsResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.filter):
             query['filter'] = request.filter
@@ -741,8 +701,6 @@ class Client(OpenApiClient):
             query['pageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['pageSize'] = request.page_size
-        if not UtilClient.is_unset(request.resource_group_id):
-            query['resourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -751,7 +709,7 @@ class Client(OpenApiClient):
             action='ListConsumerGroups',
             version='2022-08-01',
             protocol='HTTPS',
-            pathname=f'/instances/{instance_id}/consumerGroups',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/consumerGroups',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -793,8 +751,6 @@ class Client(OpenApiClient):
             query['pageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['pageSize'] = request.page_size
-        if not UtilClient.is_unset(request.resource_group_id):
-            query['resourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -829,8 +785,6 @@ class Client(OpenApiClient):
             query['pageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['pageSize'] = request.page_size
-        if not UtilClient.is_unset(request.resource_group_id):
-            query['resourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -877,7 +831,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.ListTopicsResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.filter):
             query['filter'] = request.filter
@@ -885,8 +838,6 @@ class Client(OpenApiClient):
             query['pageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['pageSize'] = request.page_size
-        if not UtilClient.is_unset(request.resource_group_id):
-            query['resourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -895,7 +846,7 @@ class Client(OpenApiClient):
             action='ListTopics',
             version='2022-08-01',
             protocol='HTTPS',
-            pathname=f'/instances/{instance_id}/topics',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/topics',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -915,7 +866,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.ListTopicsResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.filter):
             query['filter'] = request.filter
@@ -923,8 +873,6 @@ class Client(OpenApiClient):
             query['pageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['pageSize'] = request.page_size
-        if not UtilClient.is_unset(request.resource_group_id):
-            query['resourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -933,7 +881,7 @@ class Client(OpenApiClient):
             action='ListTopics',
             version='2022-08-01',
             protocol='HTTPS',
-            pathname=f'/instances/{instance_id}/topics',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/topics',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -974,8 +922,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.UpdateConsumerGroupResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        consumer_group_id = OpenApiUtilClient.get_encode_param(consumer_group_id)
         body = {}
         if not UtilClient.is_unset(request.consume_retry_policy):
             body['consumeRetryPolicy'] = request.consume_retry_policy
@@ -983,8 +929,6 @@ class Client(OpenApiClient):
             body['deliveryOrderType'] = request.delivery_order_type
         if not UtilClient.is_unset(request.remark):
             body['remark'] = request.remark
-        if not UtilClient.is_unset(request.resource_group_id):
-            body['resourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -993,7 +937,7 @@ class Client(OpenApiClient):
             action='UpdateConsumerGroup',
             version='2022-08-01',
             protocol='HTTPS',
-            pathname=f'/instances/{instance_id}/consumerGroups/{consumer_group_id}',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/consumerGroups/{OpenApiUtilClient.get_encode_param(consumer_group_id)}',
             method='PATCH',
             auth_type='AK',
             style='ROA',
@@ -1014,8 +958,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.UpdateConsumerGroupResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        consumer_group_id = OpenApiUtilClient.get_encode_param(consumer_group_id)
         body = {}
         if not UtilClient.is_unset(request.consume_retry_policy):
             body['consumeRetryPolicy'] = request.consume_retry_policy
@@ -1023,8 +965,6 @@ class Client(OpenApiClient):
             body['deliveryOrderType'] = request.delivery_order_type
         if not UtilClient.is_unset(request.remark):
             body['remark'] = request.remark
-        if not UtilClient.is_unset(request.resource_group_id):
-            body['resourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -1033,7 +973,7 @@ class Client(OpenApiClient):
             action='UpdateConsumerGroup',
             version='2022-08-01',
             protocol='HTTPS',
-            pathname=f'/instances/{instance_id}/consumerGroups/{consumer_group_id}',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/consumerGroups/{OpenApiUtilClient.get_encode_param(consumer_group_id)}',
             method='PATCH',
             auth_type='AK',
             style='ROA',
@@ -1071,7 +1011,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.UpdateInstanceResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         body = {}
         if not UtilClient.is_unset(request.ext_config):
             body['extConfig'] = request.ext_config
@@ -1081,8 +1020,6 @@ class Client(OpenApiClient):
             body['networkInfo'] = request.network_info
         if not UtilClient.is_unset(request.remark):
             body['remark'] = request.remark
-        if not UtilClient.is_unset(request.resource_group_id):
-            body['resourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -1091,7 +1028,7 @@ class Client(OpenApiClient):
             action='UpdateInstance',
             version='2022-08-01',
             protocol='HTTPS',
-            pathname=f'/instances/{instance_id}',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}',
             method='PATCH',
             auth_type='AK',
             style='ROA',
@@ -1111,7 +1048,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.UpdateInstanceResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         body = {}
         if not UtilClient.is_unset(request.ext_config):
             body['extConfig'] = request.ext_config
@@ -1121,8 +1057,6 @@ class Client(OpenApiClient):
             body['networkInfo'] = request.network_info
         if not UtilClient.is_unset(request.remark):
             body['remark'] = request.remark
-        if not UtilClient.is_unset(request.resource_group_id):
-            body['resourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -1131,7 +1065,7 @@ class Client(OpenApiClient):
             action='UpdateInstance',
             version='2022-08-01',
             protocol='HTTPS',
-            pathname=f'/instances/{instance_id}',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}',
             method='PATCH',
             auth_type='AK',
             style='ROA',
@@ -1172,13 +1106,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.UpdateTopicResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        topic_name = OpenApiUtilClient.get_encode_param(topic_name)
         body = {}
         if not UtilClient.is_unset(request.remark):
             body['remark'] = request.remark
-        if not UtilClient.is_unset(request.resource_group_id):
-            body['resourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -1187,7 +1117,7 @@ class Client(OpenApiClient):
             action='UpdateTopic',
             version='2022-08-01',
             protocol='HTTPS',
-            pathname=f'/instances/{instance_id}/topics/{topic_name}',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/topics/{OpenApiUtilClient.get_encode_param(topic_name)}',
             method='PATCH',
             auth_type='AK',
             style='ROA',
@@ -1208,13 +1138,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.UpdateTopicResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        topic_name = OpenApiUtilClient.get_encode_param(topic_name)
         body = {}
         if not UtilClient.is_unset(request.remark):
             body['remark'] = request.remark
-        if not UtilClient.is_unset(request.resource_group_id):
-            body['resourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -1223,7 +1149,7 @@ class Client(OpenApiClient):
             action='UpdateTopic',
             version='2022-08-01',
             protocol='HTTPS',
-            pathname=f'/instances/{instance_id}/topics/{topic_name}',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/topics/{OpenApiUtilClient.get_encode_param(topic_name)}',
             method='PATCH',
             auth_type='AK',
             style='ROA',

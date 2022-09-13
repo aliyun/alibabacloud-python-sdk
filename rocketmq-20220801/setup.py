@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_rocketmq20220801.
 
-Created on 04/08/2022
+Created on 13/09/2022
 
 @author: Alibaba Cloud SDK
 """
