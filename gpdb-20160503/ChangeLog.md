@@ -1,3 +1,8 @@
+2022-09-14 Version: 1.1.14
+- Support Openapi Tag.
+- Support Tag Ram.
+
+
 2022-09-05 Version: 1.1.13
 - Support Resource Group.
 

@@ -401,6 +401,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.create_sample_data):
+            query['CreateSampleData'] = request.create_sample_data
         if not UtilClient.is_unset(request.dbinstance_category):
             query['DBInstanceCategory'] = request.dbinstance_category
         if not UtilClient.is_unset(request.dbinstance_class):
@@ -479,6 +481,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.create_sample_data):
+            query['CreateSampleData'] = request.create_sample_data
         if not UtilClient.is_unset(request.dbinstance_category):
             query['DBInstanceCategory'] = request.dbinstance_category
         if not UtilClient.is_unset(request.dbinstance_class):
@@ -837,6 +841,80 @@ class Client(OpenApiClient):
     ) -> gpdb_20160503_models.CreateECSDBInstanceResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_ecsdbinstance_with_options_async(request, runtime)
+
+    def create_sample_data_with_options(
+        self,
+        request: gpdb_20160503_models.CreateSampleDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.CreateSampleDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateSampleData',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.CreateSampleDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_sample_data_with_options_async(
+        self,
+        request: gpdb_20160503_models.CreateSampleDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.CreateSampleDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateSampleData',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.CreateSampleDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_sample_data(
+        self,
+        request: gpdb_20160503_models.CreateSampleDataRequest,
+    ) -> gpdb_20160503_models.CreateSampleDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_sample_data_with_options(request, runtime)
+
+    async def create_sample_data_async(
+        self,
+        request: gpdb_20160503_models.CreateSampleDataRequest,
+    ) -> gpdb_20160503_models.CreateSampleDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_sample_data_with_options_async(request, runtime)
 
     def create_service_linked_role_with_options(
         self,
@@ -4746,6 +4824,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_sqllogs_on_slice_with_options_async(request, runtime)
 
+    def describe_sample_data_with_options(
+        self,
+        request: gpdb_20160503_models.DescribeSampleDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeSampleDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSampleData',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeSampleDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_sample_data_with_options_async(
+        self,
+        request: gpdb_20160503_models.DescribeSampleDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeSampleDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSampleData',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeSampleDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_sample_data(
+        self,
+        request: gpdb_20160503_models.DescribeSampleDataRequest,
+    ) -> gpdb_20160503_models.DescribeSampleDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_sample_data_with_options(request, runtime)
+
+    async def describe_sample_data_async(
+        self,
+        request: gpdb_20160503_models.DescribeSampleDataRequest,
+    ) -> gpdb_20160503_models.DescribeSampleDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_sample_data_with_options_async(request, runtime)
+
     def describe_slow_log_records_with_options(
         self,
         request: gpdb_20160503_models.DescribeSlowLogRecordsRequest,
@@ -7195,6 +7347,80 @@ class Client(OpenApiClient):
     ) -> gpdb_20160503_models.TagResourcesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.tag_resources_with_options_async(request, runtime)
+
+    def unload_sample_data_with_options(
+        self,
+        request: gpdb_20160503_models.UnloadSampleDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.UnloadSampleDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UnloadSampleData',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.UnloadSampleDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def unload_sample_data_with_options_async(
+        self,
+        request: gpdb_20160503_models.UnloadSampleDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.UnloadSampleDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UnloadSampleData',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.UnloadSampleDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def unload_sample_data(
+        self,
+        request: gpdb_20160503_models.UnloadSampleDataRequest,
+    ) -> gpdb_20160503_models.UnloadSampleDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.unload_sample_data_with_options(request, runtime)
+
+    async def unload_sample_data_async(
+        self,
+        request: gpdb_20160503_models.UnloadSampleDataRequest,
+    ) -> gpdb_20160503_models.UnloadSampleDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.unload_sample_data_with_options_async(request, runtime)
 
     def untag_resources_with_options(
         self,
