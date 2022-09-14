@@ -2310,6 +2310,8 @@ class Client(OpenApiClient):
             query['ServiceResourceType'] = request.service_resource_type
         if not UtilClient.is_unset(request.service_status):
             query['ServiceStatus'] = request.service_status
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.zone_affinity_enabled):
             query['ZoneAffinityEnabled'] = request.zone_affinity_enabled
         req = open_api_models.OpenApiRequest(
@@ -2358,6 +2360,8 @@ class Client(OpenApiClient):
             query['ServiceResourceType'] = request.service_resource_type
         if not UtilClient.is_unset(request.service_status):
             query['ServiceStatus'] = request.service_status
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.zone_affinity_enabled):
             query['ZoneAffinityEnabled'] = request.zone_affinity_enabled
         req = open_api_models.OpenApiRequest(
@@ -2414,6 +2418,8 @@ class Client(OpenApiClient):
             query['ServiceName'] = request.service_name
         if not UtilClient.is_unset(request.service_type):
             query['ServiceType'] = request.service_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2454,6 +2460,8 @@ class Client(OpenApiClient):
             query['ServiceName'] = request.service_name
         if not UtilClient.is_unset(request.service_type):
             query['ServiceType'] = request.service_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2598,6 +2606,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.service_name):
             query['ServiceName'] = request.service_name
         if not UtilClient.is_unset(request.tag):
@@ -2648,6 +2658,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.service_name):
             query['ServiceName'] = request.service_name
         if not UtilClient.is_unset(request.tag):
@@ -3022,6 +3034,102 @@ class Client(OpenApiClient):
     ) -> privatelink_20200415_models.RemoveZoneFromVpcEndpointResponse:
         runtime = util_models.RuntimeOptions()
         return await self.remove_zone_from_vpc_endpoint_with_options_async(request, runtime)
+
+    def tag_resources_with_options(
+        self,
+        request: privatelink_20200415_models.TagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> privatelink_20200415_models.TagResourcesResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            body['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        body_flat = {}
+        if not UtilClient.is_unset(request.resource_id):
+            body_flat['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            body['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            body_flat['Tag'] = request.tag
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TagResources',
+            version='2020-04-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            privatelink_20200415_models.TagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def tag_resources_with_options_async(
+        self,
+        request: privatelink_20200415_models.TagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> privatelink_20200415_models.TagResourcesResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            body['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        body_flat = {}
+        if not UtilClient.is_unset(request.resource_id):
+            body_flat['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            body['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            body_flat['Tag'] = request.tag
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TagResources',
+            version='2020-04-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            privatelink_20200415_models.TagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def tag_resources(
+        self,
+        request: privatelink_20200415_models.TagResourcesRequest,
+    ) -> privatelink_20200415_models.TagResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.tag_resources_with_options(request, runtime)
+
+    async def tag_resources_async(
+        self,
+        request: privatelink_20200415_models.TagResourcesRequest,
+    ) -> privatelink_20200415_models.TagResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.tag_resources_with_options_async(request, runtime)
 
     def update_vpc_endpoint_attribute_with_options(
         self,

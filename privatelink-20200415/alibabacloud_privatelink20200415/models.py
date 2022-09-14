@@ -636,13 +636,12 @@ class CheckResourceSupportOperateResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        resource_support_downgrade: bool = None,
-        resource_zone_support_deleted: bool = None,
+        resource_can_be_downgraded: bool = None,
+        resource_zone_can_be_deleted: bool = None,
     ):
-        # Id of the request
         self.request_id = request_id
-        self.resource_support_downgrade = resource_support_downgrade
-        self.resource_zone_support_deleted = resource_zone_support_deleted
+        self.resource_can_be_downgraded = resource_can_be_downgraded
+        self.resource_zone_can_be_deleted = resource_zone_can_be_deleted
 
     def validate(self):
         pass
@@ -655,20 +654,20 @@ class CheckResourceSupportOperateResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.resource_support_downgrade is not None:
-            result['ResourceSupportDowngrade'] = self.resource_support_downgrade
-        if self.resource_zone_support_deleted is not None:
-            result['ResourceZoneSupportDeleted'] = self.resource_zone_support_deleted
+        if self.resource_can_be_downgraded is not None:
+            result['ResourceCanBeDowngraded'] = self.resource_can_be_downgraded
+        if self.resource_zone_can_be_deleted is not None:
+            result['ResourceZoneCanBeDeleted'] = self.resource_zone_can_be_deleted
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('ResourceSupportDowngrade') is not None:
-            self.resource_support_downgrade = m.get('ResourceSupportDowngrade')
-        if m.get('ResourceZoneSupportDeleted') is not None:
-            self.resource_zone_support_deleted = m.get('ResourceZoneSupportDeleted')
+        if m.get('ResourceCanBeDowngraded') is not None:
+            self.resource_can_be_downgraded = m.get('ResourceCanBeDowngraded')
+        if m.get('ResourceZoneCanBeDeleted') is not None:
+            self.resource_zone_can_be_deleted = m.get('ResourceZoneCanBeDeleted')
         return self
 
 
@@ -2690,7 +2689,6 @@ class GetEndpointAttributeByNsiAndServiceIdResponseBody(TeaModel):
         self.endpoint_type = endpoint_type
         self.payer = payer
         self.region_id = region_id
-        # Id of the request
         self.request_id = request_id
         self.resource_owner = resource_owner
         self.service_id = service_id
@@ -2865,8 +2863,6 @@ class GetVpcEndpointAttributeResponseBody(TeaModel):
         endpoint_name: str = None,
         endpoint_status: str = None,
         endpoint_type: str = None,
-        nsi_index: int = None,
-        nsi_index_string: str = None,
         payer: str = None,
         region_id: str = None,
         request_id: str = None,
@@ -2887,8 +2883,6 @@ class GetVpcEndpointAttributeResponseBody(TeaModel):
         self.endpoint_name = endpoint_name
         self.endpoint_status = endpoint_status
         self.endpoint_type = endpoint_type
-        self.nsi_index = nsi_index
-        self.nsi_index_string = nsi_index_string
         self.payer = payer
         self.region_id = region_id
         self.request_id = request_id
@@ -2928,10 +2922,6 @@ class GetVpcEndpointAttributeResponseBody(TeaModel):
             result['EndpointStatus'] = self.endpoint_status
         if self.endpoint_type is not None:
             result['EndpointType'] = self.endpoint_type
-        if self.nsi_index is not None:
-            result['NsiIndex'] = self.nsi_index
-        if self.nsi_index_string is not None:
-            result['NsiIndexString'] = self.nsi_index_string
         if self.payer is not None:
             result['Payer'] = self.payer
         if self.region_id is not None:
@@ -2974,10 +2964,6 @@ class GetVpcEndpointAttributeResponseBody(TeaModel):
             self.endpoint_status = m.get('EndpointStatus')
         if m.get('EndpointType') is not None:
             self.endpoint_type = m.get('EndpointType')
-        if m.get('NsiIndex') is not None:
-            self.nsi_index = m.get('NsiIndex')
-        if m.get('NsiIndexString') is not None:
-            self.nsi_index_string = m.get('NsiIndexString')
         if m.get('Payer') is not None:
             self.payer = m.get('Payer')
         if m.get('RegionId') is not None:
@@ -4224,6 +4210,39 @@ class ListVpcEndpointServiceUsersResponse(TeaModel):
         return self
 
 
+class ListVpcEndpointServicesRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class ListVpcEndpointServicesRequest(TeaModel):
     def __init__(
         self,
@@ -4236,6 +4255,7 @@ class ListVpcEndpointServicesRequest(TeaModel):
         service_name: str = None,
         service_resource_type: str = None,
         service_status: str = None,
+        tag: List[ListVpcEndpointServicesRequestTag] = None,
         zone_affinity_enabled: bool = None,
     ):
         self.auto_accept_enabled = auto_accept_enabled
@@ -4247,10 +4267,14 @@ class ListVpcEndpointServicesRequest(TeaModel):
         self.service_name = service_name
         self.service_resource_type = service_resource_type
         self.service_status = service_status
+        self.tag = tag
         self.zone_affinity_enabled = zone_affinity_enabled
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -4276,6 +4300,10 @@ class ListVpcEndpointServicesRequest(TeaModel):
             result['ServiceResourceType'] = self.service_resource_type
         if self.service_status is not None:
             result['ServiceStatus'] = self.service_status
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         if self.zone_affinity_enabled is not None:
             result['ZoneAffinityEnabled'] = self.zone_affinity_enabled
         return result
@@ -4300,8 +4328,46 @@ class ListVpcEndpointServicesRequest(TeaModel):
             self.service_resource_type = m.get('ServiceResourceType')
         if m.get('ServiceStatus') is not None:
             self.service_status = m.get('ServiceStatus')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = ListVpcEndpointServicesRequestTag()
+                self.tag.append(temp_model.from_map(k))
         if m.get('ZoneAffinityEnabled') is not None:
             self.zone_affinity_enabled = m.get('ZoneAffinityEnabled')
+        return self
+
+
+class ListVpcEndpointServicesResponseBodyServicesTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
         return self
 
 
@@ -4324,6 +4390,7 @@ class ListVpcEndpointServicesResponseBodyServices(TeaModel):
         service_status: str = None,
         service_support_ipv_6: bool = None,
         service_type: str = None,
+        tags: List[ListVpcEndpointServicesResponseBodyServicesTags] = None,
         zone_affinity_enabled: bool = None,
     ):
         self.auto_accept_enabled = auto_accept_enabled
@@ -4342,10 +4409,14 @@ class ListVpcEndpointServicesResponseBodyServices(TeaModel):
         self.service_status = service_status
         self.service_support_ipv_6 = service_support_ipv_6
         self.service_type = service_type
+        self.tags = tags
         self.zone_affinity_enabled = zone_affinity_enabled
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -4385,6 +4456,10 @@ class ListVpcEndpointServicesResponseBodyServices(TeaModel):
             result['ServiceSupportIPv6'] = self.service_support_ipv_6
         if self.service_type is not None:
             result['ServiceType'] = self.service_type
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.zone_affinity_enabled is not None:
             result['ZoneAffinityEnabled'] = self.zone_affinity_enabled
         return result
@@ -4423,6 +4498,11 @@ class ListVpcEndpointServicesResponseBodyServices(TeaModel):
             self.service_support_ipv_6 = m.get('ServiceSupportIPv6')
         if m.get('ServiceType') is not None:
             self.service_type = m.get('ServiceType')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListVpcEndpointServicesResponseBodyServicesTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('ZoneAffinityEnabled') is not None:
             self.zone_affinity_enabled = m.get('ZoneAffinityEnabled')
         return self
@@ -4525,6 +4605,39 @@ class ListVpcEndpointServicesResponse(TeaModel):
         return self
 
 
+class ListVpcEndpointServicesByEndUserRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class ListVpcEndpointServicesByEndUserRequest(TeaModel):
     def __init__(
         self,
@@ -4534,6 +4647,7 @@ class ListVpcEndpointServicesByEndUserRequest(TeaModel):
         service_id: str = None,
         service_name: str = None,
         service_type: str = None,
+        tag: List[ListVpcEndpointServicesByEndUserRequestTag] = None,
     ):
         self.max_results = max_results
         self.next_token = next_token
@@ -4541,9 +4655,13 @@ class ListVpcEndpointServicesByEndUserRequest(TeaModel):
         self.service_id = service_id
         self.service_name = service_name
         self.service_type = service_type
+        self.tag = tag
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -4563,6 +4681,10 @@ class ListVpcEndpointServicesByEndUserRequest(TeaModel):
             result['ServiceName'] = self.service_name
         if self.service_type is not None:
             result['ServiceType'] = self.service_type
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -4579,6 +4701,44 @@ class ListVpcEndpointServicesByEndUserRequest(TeaModel):
             self.service_name = m.get('ServiceName')
         if m.get('ServiceType') is not None:
             self.service_type = m.get('ServiceType')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = ListVpcEndpointServicesByEndUserRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class ListVpcEndpointServicesByEndUserResponseBodyServicesTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
         return self
 
 
@@ -4591,6 +4751,7 @@ class ListVpcEndpointServicesByEndUserResponseBodyServices(TeaModel):
         service_name: str = None,
         service_support_ipv_6: bool = None,
         service_type: str = None,
+        tags: List[ListVpcEndpointServicesByEndUserResponseBodyServicesTags] = None,
         zones: List[str] = None,
     ):
         self.payer = payer
@@ -4599,10 +4760,14 @@ class ListVpcEndpointServicesByEndUserResponseBodyServices(TeaModel):
         self.service_name = service_name
         self.service_support_ipv_6 = service_support_ipv_6
         self.service_type = service_type
+        self.tags = tags
         self.zones = zones
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -4622,6 +4787,10 @@ class ListVpcEndpointServicesByEndUserResponseBodyServices(TeaModel):
             result['ServiceSupportIPv6'] = self.service_support_ipv_6
         if self.service_type is not None:
             result['ServiceType'] = self.service_type
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.zones is not None:
             result['Zones'] = self.zones
         return result
@@ -4640,6 +4809,11 @@ class ListVpcEndpointServicesByEndUserResponseBodyServices(TeaModel):
             self.service_support_ipv_6 = m.get('ServiceSupportIPv6')
         if m.get('ServiceType') is not None:
             self.service_type = m.get('ServiceType')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListVpcEndpointServicesByEndUserResponseBodyServicesTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('Zones') is not None:
             self.zones = m.get('Zones')
         return self
@@ -5003,6 +5177,7 @@ class ListVpcEndpointsRequest(TeaModel):
         max_results: int = None,
         next_token: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         service_name: str = None,
         tag: List[ListVpcEndpointsRequestTag] = None,
         vpc_id: str = None,
@@ -5015,6 +5190,7 @@ class ListVpcEndpointsRequest(TeaModel):
         self.max_results = max_results
         self.next_token = next_token
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         self.service_name = service_name
         self.tag = tag
         self.vpc_id = vpc_id
@@ -5047,6 +5223,8 @@ class ListVpcEndpointsRequest(TeaModel):
             result['NextToken'] = self.next_token
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.service_name is not None:
             result['ServiceName'] = self.service_name
         result['Tag'] = []
@@ -5075,6 +5253,8 @@ class ListVpcEndpointsRequest(TeaModel):
             self.next_token = m.get('NextToken')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ServiceName') is not None:
             self.service_name = m.get('ServiceName')
         self.tag = []
@@ -5134,6 +5314,7 @@ class ListVpcEndpointsResponseBodyEndpoints(TeaModel):
         endpoint_status: str = None,
         endpoint_type: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         resource_owner: bool = None,
         service_id: str = None,
         service_name: str = None,
@@ -5152,6 +5333,7 @@ class ListVpcEndpointsResponseBodyEndpoints(TeaModel):
         self.endpoint_status = endpoint_status
         self.endpoint_type = endpoint_type
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         self.resource_owner = resource_owner
         self.service_id = service_id
         self.service_name = service_name
@@ -5193,6 +5375,8 @@ class ListVpcEndpointsResponseBodyEndpoints(TeaModel):
             result['EndpointType'] = self.endpoint_type
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner is not None:
             result['ResourceOwner'] = self.resource_owner
         if self.service_id is not None:
@@ -5233,6 +5417,8 @@ class ListVpcEndpointsResponseBodyEndpoints(TeaModel):
             self.endpoint_type = m.get('EndpointType')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwner') is not None:
             self.resource_owner = m.get('ResourceOwner')
         if m.get('ServiceId') is not None:
@@ -5398,7 +5584,6 @@ class NotifyResourceAddressFamilyResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -5815,6 +6000,175 @@ class RemoveZoneFromVpcEndpointResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = RemoveZoneFromVpcEndpointResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class TagResourcesRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class TagResourcesRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        dry_run: bool = None,
+        region_id: str = None,
+        resource_id: List[str] = None,
+        resource_type: str = None,
+        tag: List[TagResourcesRequestTag] = None,
+    ):
+        self.client_token = client_token
+        self.dry_run = dry_run
+        self.region_id = region_id
+        self.resource_id = resource_id
+        self.resource_type = resource_type
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = TagResourcesRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class TagResourcesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class TagResourcesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: TagResourcesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = TagResourcesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
