@@ -1,3 +1,6 @@
+2022-09-15 Version: 1.0.6
+- Support Certificate Warehouse.
+
 2022-03-16 Version: 1.0.5
 - Fixed ListUserCertificateOrder API response error bug.
 

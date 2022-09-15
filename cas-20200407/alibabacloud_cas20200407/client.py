@@ -580,6 +580,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_certificate_request_with_options_async(request, runtime)
 
+    def delete_pcacert_with_options(
+        self,
+        request: cas_20200407_models.DeletePCACertRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.DeletePCACertResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.identifier):
+            query['Identifier'] = request.identifier
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeletePCACert',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.DeletePCACertResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_pcacert_with_options_async(
+        self,
+        request: cas_20200407_models.DeletePCACertRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.DeletePCACertResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.identifier):
+            query['Identifier'] = request.identifier
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeletePCACert',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.DeletePCACertResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_pcacert(
+        self,
+        request: cas_20200407_models.DeletePCACertRequest,
+    ) -> cas_20200407_models.DeletePCACertResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_pcacert_with_options(request, runtime)
+
+    async def delete_pcacert_async(
+        self,
+        request: cas_20200407_models.DeletePCACertRequest,
+    ) -> cas_20200407_models.DeletePCACertResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_pcacert_with_options_async(request, runtime)
+
     def describe_certificate_state_with_options(
         self,
         request: cas_20200407_models.DescribeCertificateStateRequest,
@@ -719,6 +789,178 @@ class Client(OpenApiClient):
     ) -> cas_20200407_models.DescribePackageStateResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_package_state_with_options_async(request, runtime)
+
+    def list_cert_with_options(
+        self,
+        request: cas_20200407_models.ListCertRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.ListCertResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.key_word):
+            query['KeyWord'] = request.key_word
+        if not UtilClient.is_unset(request.show_size):
+            query['ShowSize'] = request.show_size
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.warehouse_id):
+            query['WarehouseId'] = request.warehouse_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCert',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.ListCertResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_cert_with_options_async(
+        self,
+        request: cas_20200407_models.ListCertRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.ListCertResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.key_word):
+            query['KeyWord'] = request.key_word
+        if not UtilClient.is_unset(request.show_size):
+            query['ShowSize'] = request.show_size
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.warehouse_id):
+            query['WarehouseId'] = request.warehouse_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCert',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.ListCertResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_cert(
+        self,
+        request: cas_20200407_models.ListCertRequest,
+    ) -> cas_20200407_models.ListCertResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_cert_with_options(request, runtime)
+
+    async def list_cert_async(
+        self,
+        request: cas_20200407_models.ListCertRequest,
+    ) -> cas_20200407_models.ListCertResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_cert_with_options_async(request, runtime)
+
+    def list_cert_warehouse_with_options(
+        self,
+        request: cas_20200407_models.ListCertWarehouseRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.ListCertWarehouseResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.show_size):
+            query['ShowSize'] = request.show_size
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCertWarehouse',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.ListCertWarehouseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_cert_warehouse_with_options_async(
+        self,
+        request: cas_20200407_models.ListCertWarehouseRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.ListCertWarehouseResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.show_size):
+            query['ShowSize'] = request.show_size
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCertWarehouse',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.ListCertWarehouseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_cert_warehouse(
+        self,
+        request: cas_20200407_models.ListCertWarehouseRequest,
+    ) -> cas_20200407_models.ListCertWarehouseResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_cert_warehouse_with_options(request, runtime)
+
+    async def list_cert_warehouse_async(
+        self,
+        request: cas_20200407_models.ListCertWarehouseRequest,
+    ) -> cas_20200407_models.ListCertWarehouseResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_cert_warehouse_with_options_async(request, runtime)
 
     def list_user_certificate_order_with_options(
         self,
@@ -879,3 +1121,253 @@ class Client(OpenApiClient):
     ) -> cas_20200407_models.RenewCertificateOrderForPackageRequestResponse:
         runtime = util_models.RuntimeOptions()
         return await self.renew_certificate_order_for_package_request_with_options_async(request, runtime)
+
+    def sign_with_options(
+        self,
+        request: cas_20200407_models.SignRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.SignResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cert_identifier):
+            query['CertIdentifier'] = request.cert_identifier
+        if not UtilClient.is_unset(request.message):
+            query['Message'] = request.message
+        if not UtilClient.is_unset(request.message_type):
+            query['MessageType'] = request.message_type
+        if not UtilClient.is_unset(request.signing_algorithm):
+            query['SigningAlgorithm'] = request.signing_algorithm
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='Sign',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.SignResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def sign_with_options_async(
+        self,
+        request: cas_20200407_models.SignRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.SignResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cert_identifier):
+            query['CertIdentifier'] = request.cert_identifier
+        if not UtilClient.is_unset(request.message):
+            query['Message'] = request.message
+        if not UtilClient.is_unset(request.message_type):
+            query['MessageType'] = request.message_type
+        if not UtilClient.is_unset(request.signing_algorithm):
+            query['SigningAlgorithm'] = request.signing_algorithm
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='Sign',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.SignResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def sign(
+        self,
+        request: cas_20200407_models.SignRequest,
+    ) -> cas_20200407_models.SignResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.sign_with_options(request, runtime)
+
+    async def sign_async(
+        self,
+        request: cas_20200407_models.SignRequest,
+    ) -> cas_20200407_models.SignResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.sign_with_options_async(request, runtime)
+
+    def upload_pcacert_with_options(
+        self,
+        request: cas_20200407_models.UploadPCACertRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.UploadPCACertResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cert):
+            query['Cert'] = request.cert
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.private_key):
+            query['PrivateKey'] = request.private_key
+        if not UtilClient.is_unset(request.warehouse_id):
+            query['WarehouseId'] = request.warehouse_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UploadPCACert',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.UploadPCACertResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def upload_pcacert_with_options_async(
+        self,
+        request: cas_20200407_models.UploadPCACertRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.UploadPCACertResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cert):
+            query['Cert'] = request.cert
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.private_key):
+            query['PrivateKey'] = request.private_key
+        if not UtilClient.is_unset(request.warehouse_id):
+            query['WarehouseId'] = request.warehouse_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UploadPCACert',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.UploadPCACertResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def upload_pcacert(
+        self,
+        request: cas_20200407_models.UploadPCACertRequest,
+    ) -> cas_20200407_models.UploadPCACertResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.upload_pcacert_with_options(request, runtime)
+
+    async def upload_pcacert_async(
+        self,
+        request: cas_20200407_models.UploadPCACertRequest,
+    ) -> cas_20200407_models.UploadPCACertResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.upload_pcacert_with_options_async(request, runtime)
+
+    def verify_with_options(
+        self,
+        request: cas_20200407_models.VerifyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.VerifyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.identifier):
+            query['Identifier'] = request.identifier
+        if not UtilClient.is_unset(request.message):
+            query['Message'] = request.message
+        if not UtilClient.is_unset(request.message_type):
+            query['MessageType'] = request.message_type
+        if not UtilClient.is_unset(request.signature_value):
+            query['SignatureValue'] = request.signature_value
+        if not UtilClient.is_unset(request.signing_algorithm):
+            query['SigningAlgorithm'] = request.signing_algorithm
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='Verify',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.VerifyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def verify_with_options_async(
+        self,
+        request: cas_20200407_models.VerifyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.VerifyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.identifier):
+            query['Identifier'] = request.identifier
+        if not UtilClient.is_unset(request.message):
+            query['Message'] = request.message
+        if not UtilClient.is_unset(request.message_type):
+            query['MessageType'] = request.message_type
+        if not UtilClient.is_unset(request.signature_value):
+            query['SignatureValue'] = request.signature_value
+        if not UtilClient.is_unset(request.signing_algorithm):
+            query['SigningAlgorithm'] = request.signing_algorithm
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='Verify',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.VerifyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def verify(
+        self,
+        request: cas_20200407_models.VerifyRequest,
+    ) -> cas_20200407_models.VerifyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.verify_with_options(request, runtime)
+
+    async def verify_async(
+        self,
+        request: cas_20200407_models.VerifyRequest,
+    ) -> cas_20200407_models.VerifyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.verify_with_options_async(request, runtime)
