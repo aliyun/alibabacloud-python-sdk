@@ -9126,6 +9126,75 @@ class DescribeDtsJobDetailResponseBodyMigrationMode(TeaModel):
         return self
 
 
+class DescribeDtsJobDetailResponseBodyRetryState(TeaModel):
+    def __init__(
+        self,
+        err_message: str = None,
+        job_id: str = None,
+        max_retry_time: int = None,
+        module: str = None,
+        retry_count: int = None,
+        retry_target: str = None,
+        retry_time: int = None,
+        retrying: bool = None,
+    ):
+        self.err_message = err_message
+        self.job_id = job_id
+        self.max_retry_time = max_retry_time
+        self.module = module
+        self.retry_count = retry_count
+        self.retry_target = retry_target
+        self.retry_time = retry_time
+        self.retrying = retrying
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.err_message is not None:
+            result['ErrMessage'] = self.err_message
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.max_retry_time is not None:
+            result['MaxRetryTime'] = self.max_retry_time
+        if self.module is not None:
+            result['Module'] = self.module
+        if self.retry_count is not None:
+            result['RetryCount'] = self.retry_count
+        if self.retry_target is not None:
+            result['RetryTarget'] = self.retry_target
+        if self.retry_time is not None:
+            result['RetryTime'] = self.retry_time
+        if self.retrying is not None:
+            result['Retrying'] = self.retrying
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrMessage') is not None:
+            self.err_message = m.get('ErrMessage')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('MaxRetryTime') is not None:
+            self.max_retry_time = m.get('MaxRetryTime')
+        if m.get('Module') is not None:
+            self.module = m.get('Module')
+        if m.get('RetryCount') is not None:
+            self.retry_count = m.get('RetryCount')
+        if m.get('RetryTarget') is not None:
+            self.retry_target = m.get('RetryTarget')
+        if m.get('RetryTime') is not None:
+            self.retry_time = m.get('RetryTime')
+        if m.get('Retrying') is not None:
+            self.retrying = m.get('Retrying')
+        return self
+
+
 class DescribeDtsJobDetailResponseBodySourceEndpoint(TeaModel):
     def __init__(
         self,
@@ -13878,10 +13947,6 @@ class DescribeDtsJobDetailResponseBody(TeaModel):
         self,
         app_name: str = None,
         begin_timestamp: str = None,
-        binlog: str = None,
-        binlog_site: str = None,
-        binlog_time: str = None,
-        boot_time: str = None,
         checkpoint: int = None,
         code: int = None,
         consumption_checkpoint: str = None,
@@ -13911,11 +13976,11 @@ class DescribeDtsJobDetailResponseBody(TeaModel):
         group_id: str = None,
         http_status_code: int = None,
         job_type: str = None,
-        last_update_time: str = None,
         migration_mode: DescribeDtsJobDetailResponseBodyMigrationMode = None,
         pay_type: str = None,
         request_id: str = None,
         reserved: str = None,
+        retry_state: DescribeDtsJobDetailResponseBodyRetryState = None,
         source_endpoint: DescribeDtsJobDetailResponseBodySourceEndpoint = None,
         status: str = None,
         sub_distributed_job: List[DescribeDtsJobDetailResponseBodySubDistributedJob] = None,
@@ -13929,10 +13994,6 @@ class DescribeDtsJobDetailResponseBody(TeaModel):
     ):
         self.app_name = app_name
         self.begin_timestamp = begin_timestamp
-        self.binlog = binlog
-        self.binlog_site = binlog_site
-        self.binlog_time = binlog_time
-        self.boot_time = boot_time
         self.checkpoint = checkpoint
         self.code = code
         self.consumption_checkpoint = consumption_checkpoint
@@ -13962,11 +14023,11 @@ class DescribeDtsJobDetailResponseBody(TeaModel):
         self.group_id = group_id
         self.http_status_code = http_status_code
         self.job_type = job_type
-        self.last_update_time = last_update_time
         self.migration_mode = migration_mode
         self.pay_type = pay_type
         self.request_id = request_id
         self.reserved = reserved
+        self.retry_state = retry_state
         self.source_endpoint = source_endpoint
         self.status = status
         self.sub_distributed_job = sub_distributed_job
@@ -13985,6 +14046,8 @@ class DescribeDtsJobDetailResponseBody(TeaModel):
             self.destination_endpoint.validate()
         if self.migration_mode:
             self.migration_mode.validate()
+        if self.retry_state:
+            self.retry_state.validate()
         if self.source_endpoint:
             self.source_endpoint.validate()
         if self.sub_distributed_job:
@@ -14010,14 +14073,6 @@ class DescribeDtsJobDetailResponseBody(TeaModel):
             result['AppName'] = self.app_name
         if self.begin_timestamp is not None:
             result['BeginTimestamp'] = self.begin_timestamp
-        if self.binlog is not None:
-            result['Binlog'] = self.binlog
-        if self.binlog_site is not None:
-            result['BinlogSite'] = self.binlog_site
-        if self.binlog_time is not None:
-            result['BinlogTime'] = self.binlog_time
-        if self.boot_time is not None:
-            result['BootTime'] = self.boot_time
         if self.checkpoint is not None:
             result['Checkpoint'] = self.checkpoint
         if self.code is not None:
@@ -14076,8 +14131,6 @@ class DescribeDtsJobDetailResponseBody(TeaModel):
             result['HttpStatusCode'] = self.http_status_code
         if self.job_type is not None:
             result['JobType'] = self.job_type
-        if self.last_update_time is not None:
-            result['LastUpdateTime'] = self.last_update_time
         if self.migration_mode is not None:
             result['MigrationMode'] = self.migration_mode.to_map()
         if self.pay_type is not None:
@@ -14086,6 +14139,8 @@ class DescribeDtsJobDetailResponseBody(TeaModel):
             result['RequestId'] = self.request_id
         if self.reserved is not None:
             result['Reserved'] = self.reserved
+        if self.retry_state is not None:
+            result['RetryState'] = self.retry_state.to_map()
         if self.source_endpoint is not None:
             result['SourceEndpoint'] = self.source_endpoint.to_map()
         if self.status is not None:
@@ -14118,14 +14173,6 @@ class DescribeDtsJobDetailResponseBody(TeaModel):
             self.app_name = m.get('AppName')
         if m.get('BeginTimestamp') is not None:
             self.begin_timestamp = m.get('BeginTimestamp')
-        if m.get('Binlog') is not None:
-            self.binlog = m.get('Binlog')
-        if m.get('BinlogSite') is not None:
-            self.binlog_site = m.get('BinlogSite')
-        if m.get('BinlogTime') is not None:
-            self.binlog_time = m.get('BinlogTime')
-        if m.get('BootTime') is not None:
-            self.boot_time = m.get('BootTime')
         if m.get('Checkpoint') is not None:
             self.checkpoint = m.get('Checkpoint')
         if m.get('Code') is not None:
@@ -14186,8 +14233,6 @@ class DescribeDtsJobDetailResponseBody(TeaModel):
             self.http_status_code = m.get('HttpStatusCode')
         if m.get('JobType') is not None:
             self.job_type = m.get('JobType')
-        if m.get('LastUpdateTime') is not None:
-            self.last_update_time = m.get('LastUpdateTime')
         if m.get('MigrationMode') is not None:
             temp_model = DescribeDtsJobDetailResponseBodyMigrationMode()
             self.migration_mode = temp_model.from_map(m['MigrationMode'])
@@ -14197,6 +14242,9 @@ class DescribeDtsJobDetailResponseBody(TeaModel):
             self.request_id = m.get('RequestId')
         if m.get('Reserved') is not None:
             self.reserved = m.get('Reserved')
+        if m.get('RetryState') is not None:
+            temp_model = DescribeDtsJobDetailResponseBodyRetryState()
+            self.retry_state = temp_model.from_map(m['RetryState'])
         if m.get('SourceEndpoint') is not None:
             temp_model = DescribeDtsJobDetailResponseBodySourceEndpoint()
             self.source_endpoint = temp_model.from_map(m['SourceEndpoint'])
@@ -14831,16 +14879,22 @@ class DescribeDtsJobsResponseBodyDtsJobListRetryState(TeaModel):
     def __init__(
         self,
         err_message: str = None,
+        job_id: str = None,
         max_retry_time: int = None,
+        module: str = None,
         retry_count: int = None,
         retry_target: str = None,
         retry_time: int = None,
+        retrying: bool = None,
     ):
         self.err_message = err_message
+        self.job_id = job_id
         self.max_retry_time = max_retry_time
+        self.module = module
         self.retry_count = retry_count
         self.retry_target = retry_target
         self.retry_time = retry_time
+        self.retrying = retrying
 
     def validate(self):
         pass
@@ -14853,28 +14907,40 @@ class DescribeDtsJobsResponseBodyDtsJobListRetryState(TeaModel):
         result = dict()
         if self.err_message is not None:
             result['ErrMessage'] = self.err_message
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
         if self.max_retry_time is not None:
             result['MaxRetryTime'] = self.max_retry_time
+        if self.module is not None:
+            result['Module'] = self.module
         if self.retry_count is not None:
             result['RetryCount'] = self.retry_count
         if self.retry_target is not None:
             result['RetryTarget'] = self.retry_target
         if self.retry_time is not None:
             result['RetryTime'] = self.retry_time
+        if self.retrying is not None:
+            result['Retrying'] = self.retrying
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('ErrMessage') is not None:
             self.err_message = m.get('ErrMessage')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
         if m.get('MaxRetryTime') is not None:
             self.max_retry_time = m.get('MaxRetryTime')
+        if m.get('Module') is not None:
+            self.module = m.get('Module')
         if m.get('RetryCount') is not None:
             self.retry_count = m.get('RetryCount')
         if m.get('RetryTarget') is not None:
             self.retry_target = m.get('RetryTarget')
         if m.get('RetryTime') is not None:
             self.retry_time = m.get('RetryTime')
+        if m.get('Retrying') is not None:
+            self.retrying = m.get('Retrying')
         return self
 
 
@@ -15799,6 +15865,7 @@ class DescribeDtsJobsResponseBodyDtsJobList(TeaModel):
         performance: DescribeDtsJobsResponseBodyDtsJobListPerformance = None,
         precheck_status: DescribeDtsJobsResponseBodyDtsJobListPrecheckStatus = None,
         reserved: str = None,
+        resource_group_display_name: str = None,
         resource_group_id: str = None,
         retry_state: DescribeDtsJobsResponseBodyDtsJobListRetryState = None,
         reverse_job: DescribeDtsJobsResponseBodyDtsJobListReverseJob = None,
@@ -15839,6 +15906,7 @@ class DescribeDtsJobsResponseBodyDtsJobList(TeaModel):
         self.performance = performance
         self.precheck_status = precheck_status
         self.reserved = reserved
+        self.resource_group_display_name = resource_group_display_name
         self.resource_group_id = resource_group_id
         self.retry_state = retry_state
         self.reverse_job = reverse_job
@@ -15951,6 +16019,8 @@ class DescribeDtsJobsResponseBodyDtsJobList(TeaModel):
             result['PrecheckStatus'] = self.precheck_status.to_map()
         if self.reserved is not None:
             result['Reserved'] = self.reserved
+        if self.resource_group_display_name is not None:
+            result['ResourceGroupDisplayName'] = self.resource_group_display_name
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
         if self.retry_state is not None:
@@ -16045,6 +16115,8 @@ class DescribeDtsJobsResponseBodyDtsJobList(TeaModel):
             self.precheck_status = temp_model.from_map(m['PrecheckStatus'])
         if m.get('Reserved') is not None:
             self.reserved = m.get('Reserved')
+        if m.get('ResourceGroupDisplayName') is not None:
+            self.resource_group_display_name = m.get('ResourceGroupDisplayName')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('RetryState') is not None:
@@ -16471,16 +16543,22 @@ class DescribeDtsJobsResponseBodyEtlDemoListRetryState(TeaModel):
     def __init__(
         self,
         err_message: str = None,
+        job_id: str = None,
         max_retry_time: int = None,
+        module: str = None,
         retry_count: int = None,
         retry_target: str = None,
         retry_time: int = None,
+        retrying: bool = None,
     ):
         self.err_message = err_message
+        self.job_id = job_id
         self.max_retry_time = max_retry_time
+        self.module = module
         self.retry_count = retry_count
         self.retry_target = retry_target
         self.retry_time = retry_time
+        self.retrying = retrying
 
     def validate(self):
         pass
@@ -16493,28 +16571,40 @@ class DescribeDtsJobsResponseBodyEtlDemoListRetryState(TeaModel):
         result = dict()
         if self.err_message is not None:
             result['ErrMessage'] = self.err_message
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
         if self.max_retry_time is not None:
             result['MaxRetryTime'] = self.max_retry_time
+        if self.module is not None:
+            result['Module'] = self.module
         if self.retry_count is not None:
             result['RetryCount'] = self.retry_count
         if self.retry_target is not None:
             result['RetryTarget'] = self.retry_target
         if self.retry_time is not None:
             result['RetryTime'] = self.retry_time
+        if self.retrying is not None:
+            result['Retrying'] = self.retrying
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('ErrMessage') is not None:
             self.err_message = m.get('ErrMessage')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
         if m.get('MaxRetryTime') is not None:
             self.max_retry_time = m.get('MaxRetryTime')
+        if m.get('Module') is not None:
+            self.module = m.get('Module')
         if m.get('RetryCount') is not None:
             self.retry_count = m.get('RetryCount')
         if m.get('RetryTarget') is not None:
             self.retry_target = m.get('RetryTarget')
         if m.get('RetryTime') is not None:
             self.retry_time = m.get('RetryTime')
+        if m.get('Retrying') is not None:
+            self.retrying = m.get('Retrying')
         return self
 
 
@@ -17362,6 +17452,7 @@ class DescribeDtsJobsResponseBodyEtlDemoList(TeaModel):
         performance: DescribeDtsJobsResponseBodyEtlDemoListPerformance = None,
         precheck_status: DescribeDtsJobsResponseBodyEtlDemoListPrecheckStatus = None,
         reserved: str = None,
+        resource_group_display_name: str = None,
         resource_group_id: str = None,
         retry_state: DescribeDtsJobsResponseBodyEtlDemoListRetryState = None,
         reverse_job: DescribeDtsJobsResponseBodyEtlDemoListReverseJob = None,
@@ -17397,6 +17488,7 @@ class DescribeDtsJobsResponseBodyEtlDemoList(TeaModel):
         self.performance = performance
         self.precheck_status = precheck_status
         self.reserved = reserved
+        self.resource_group_display_name = resource_group_display_name
         self.resource_group_id = resource_group_id
         self.retry_state = retry_state
         self.reverse_job = reverse_job
@@ -17493,6 +17585,8 @@ class DescribeDtsJobsResponseBodyEtlDemoList(TeaModel):
             result['PrecheckStatus'] = self.precheck_status.to_map()
         if self.reserved is not None:
             result['Reserved'] = self.reserved
+        if self.resource_group_display_name is not None:
+            result['ResourceGroupDisplayName'] = self.resource_group_display_name
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
         if self.retry_state is not None:
@@ -17574,6 +17668,8 @@ class DescribeDtsJobsResponseBodyEtlDemoList(TeaModel):
             self.precheck_status = temp_model.from_map(m['PrecheckStatus'])
         if m.get('Reserved') is not None:
             self.reserved = m.get('Reserved')
+        if m.get('ResourceGroupDisplayName') is not None:
+            self.resource_group_display_name = m.get('ResourceGroupDisplayName')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('RetryState') is not None:
@@ -28564,7 +28660,7 @@ class ModifyDtsJobRequest(TeaModel):
     def __init__(
         self,
         client_token: str = None,
-        db_list: Dict[str, Any] = None,
+        db_list: str = None,
         dts_instance_id: str = None,
         etl_operator_column_reference: str = None,
         file_oss_url: str = None,
@@ -28645,7 +28741,7 @@ class ModifyDtsJobAdvanceRequest(TeaModel):
     def __init__(
         self,
         client_token: str = None,
-        db_list: Dict[str, Any] = None,
+        db_list: str = None,
         dts_instance_id: str = None,
         etl_operator_column_reference: str = None,
         file_oss_url_object: BinaryIO = None,
@@ -28709,87 +28805,6 @@ class ModifyDtsJobAdvanceRequest(TeaModel):
             self.etl_operator_column_reference = m.get('EtlOperatorColumnReference')
         if m.get('FileOssUrl') is not None:
             self.file_oss_url_object = m.get('FileOssUrl')
-        if m.get('FilterTableName') is not None:
-            self.filter_table_name = m.get('FilterTableName')
-        if m.get('ModifyTypeEnum') is not None:
-            self.modify_type_enum = m.get('ModifyTypeEnum')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
-        if m.get('Reserved') is not None:
-            self.reserved = m.get('Reserved')
-        if m.get('SynchronizationDirection') is not None:
-            self.synchronization_direction = m.get('SynchronizationDirection')
-        return self
-
-
-class ModifyDtsJobShrinkRequest(TeaModel):
-    def __init__(
-        self,
-        client_token: str = None,
-        db_list_shrink: str = None,
-        dts_instance_id: str = None,
-        etl_operator_column_reference: str = None,
-        file_oss_url: str = None,
-        filter_table_name: str = None,
-        modify_type_enum: str = None,
-        region_id: str = None,
-        reserved: str = None,
-        synchronization_direction: str = None,
-    ):
-        self.client_token = client_token
-        self.db_list_shrink = db_list_shrink
-        self.dts_instance_id = dts_instance_id
-        self.etl_operator_column_reference = etl_operator_column_reference
-        self.file_oss_url = file_oss_url
-        self.filter_table_name = filter_table_name
-        self.modify_type_enum = modify_type_enum
-        self.region_id = region_id
-        self.reserved = reserved
-        self.synchronization_direction = synchronization_direction
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.client_token is not None:
-            result['ClientToken'] = self.client_token
-        if self.db_list_shrink is not None:
-            result['DbList'] = self.db_list_shrink
-        if self.dts_instance_id is not None:
-            result['DtsInstanceId'] = self.dts_instance_id
-        if self.etl_operator_column_reference is not None:
-            result['EtlOperatorColumnReference'] = self.etl_operator_column_reference
-        if self.file_oss_url is not None:
-            result['FileOssUrl'] = self.file_oss_url
-        if self.filter_table_name is not None:
-            result['FilterTableName'] = self.filter_table_name
-        if self.modify_type_enum is not None:
-            result['ModifyTypeEnum'] = self.modify_type_enum
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
-        if self.reserved is not None:
-            result['Reserved'] = self.reserved
-        if self.synchronization_direction is not None:
-            result['SynchronizationDirection'] = self.synchronization_direction
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ClientToken') is not None:
-            self.client_token = m.get('ClientToken')
-        if m.get('DbList') is not None:
-            self.db_list_shrink = m.get('DbList')
-        if m.get('DtsInstanceId') is not None:
-            self.dts_instance_id = m.get('DtsInstanceId')
-        if m.get('EtlOperatorColumnReference') is not None:
-            self.etl_operator_column_reference = m.get('EtlOperatorColumnReference')
-        if m.get('FileOssUrl') is not None:
-            self.file_oss_url = m.get('FileOssUrl')
         if m.get('FilterTableName') is not None:
             self.filter_table_name = m.get('FilterTableName')
         if m.get('ModifyTypeEnum') is not None:

@@ -7347,14 +7347,10 @@ class Client(OpenApiClient):
 
     def modify_dts_job_with_options(
         self,
-        tmp_req: dts_20200101_models.ModifyDtsJobRequest,
+        request: dts_20200101_models.ModifyDtsJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ModifyDtsJobResponse:
-        UtilClient.validate_model(tmp_req)
-        request = dts_20200101_models.ModifyDtsJobShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.db_list):
-            request.db_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.db_list, 'DbList', 'json')
+        UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
@@ -7367,8 +7363,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.synchronization_direction):
             query['SynchronizationDirection'] = request.synchronization_direction
         body = {}
-        if not UtilClient.is_unset(request.db_list_shrink):
-            body['DbList'] = request.db_list_shrink
+        if not UtilClient.is_unset(request.db_list):
+            body['DbList'] = request.db_list
         if not UtilClient.is_unset(request.etl_operator_column_reference):
             body['EtlOperatorColumnReference'] = request.etl_operator_column_reference
         if not UtilClient.is_unset(request.filter_table_name):
@@ -7399,14 +7395,10 @@ class Client(OpenApiClient):
 
     async def modify_dts_job_with_options_async(
         self,
-        tmp_req: dts_20200101_models.ModifyDtsJobRequest,
+        request: dts_20200101_models.ModifyDtsJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dts_20200101_models.ModifyDtsJobResponse:
-        UtilClient.validate_model(tmp_req)
-        request = dts_20200101_models.ModifyDtsJobShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.db_list):
-            request.db_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.db_list, 'DbList', 'json')
+        UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
@@ -7419,8 +7411,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.synchronization_direction):
             query['SynchronizationDirection'] = request.synchronization_direction
         body = {}
-        if not UtilClient.is_unset(request.db_list_shrink):
-            body['DbList'] = request.db_list_shrink
+        if not UtilClient.is_unset(request.db_list):
+            body['DbList'] = request.db_list
         if not UtilClient.is_unset(request.etl_operator_column_reference):
             body['EtlOperatorColumnReference'] = request.etl_operator_column_reference
         if not UtilClient.is_unset(request.filter_table_name):

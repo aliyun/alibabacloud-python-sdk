@@ -1,3 +1,6 @@
+2022-09-15 Version: 5.1.28
+- DTS SDK.
+
 2022-09-06 Version: 5.1.27
 - DTS SDK.
 
