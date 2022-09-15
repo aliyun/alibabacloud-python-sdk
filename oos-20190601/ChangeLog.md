@@ -1,3 +1,6 @@
+2022-09-15 Version: 1.0.4
+- Update CreateSecret Parameter Tags Type.
+
 2022-07-27 Version: 1.0.3
  - Update.
 

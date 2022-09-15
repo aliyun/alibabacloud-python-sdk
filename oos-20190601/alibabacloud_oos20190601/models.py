@@ -1368,7 +1368,7 @@ class CreateSecretParameterRequest(TeaModel):
         name: str = None,
         region_id: str = None,
         resource_group_id: str = None,
-        tags: str = None,
+        tags: Dict[str, Any] = None,
         type: str = None,
         value: str = None,
     ):
@@ -1439,6 +1439,87 @@ class CreateSecretParameterRequest(TeaModel):
         return self
 
 
+class CreateSecretParameterShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        constraints: str = None,
+        description: str = None,
+        key_id: str = None,
+        name: str = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        tags_shrink: str = None,
+        type: str = None,
+        value: str = None,
+    ):
+        self.client_token = client_token
+        self.constraints = constraints
+        self.description = description
+        self.key_id = key_id
+        self.name = name
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.tags_shrink = tags_shrink
+        self.type = type
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.constraints is not None:
+            result['Constraints'] = self.constraints
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.key_id is not None:
+            result['KeyId'] = self.key_id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.tags_shrink is not None:
+            result['Tags'] = self.tags_shrink
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('Constraints') is not None:
+            self.constraints = m.get('Constraints')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('KeyId') is not None:
+            self.key_id = m.get('KeyId')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('Tags') is not None:
+            self.tags_shrink = m.get('Tags')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateSecretParameterResponseBodyParameter(TeaModel):
     def __init__(
         self,
@@ -1452,7 +1533,7 @@ class CreateSecretParameterResponseBodyParameter(TeaModel):
         parameter_version: int = None,
         resource_group_id: str = None,
         share_type: str = None,
-        tags: str = None,
+        tags: Dict[str, Any] = None,
         type: str = None,
         updated_by: str = None,
         updated_date: str = None,
@@ -2294,9 +2375,11 @@ class CreateTemplateResponse(TeaModel):
 class DeleteApplicationRequest(TeaModel):
     def __init__(
         self,
+        force: bool = None,
         name: str = None,
         region_id: str = None,
     ):
+        self.force = force
         self.name = name
         self.region_id = region_id
 
@@ -2309,6 +2392,8 @@ class DeleteApplicationRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.force is not None:
+            result['Force'] = self.force
         if self.name is not None:
             result['Name'] = self.name
         if self.region_id is not None:
@@ -2317,6 +2402,8 @@ class DeleteApplicationRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Force') is not None:
+            self.force = m.get('Force')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('RegionId') is not None:
@@ -3861,6 +3948,7 @@ class GetApplicationGroupResponseBodyApplicationGroup(TeaModel):
         import_tag_key: str = None,
         import_tag_value: str = None,
         name: str = None,
+        progress: str = None,
         status: str = None,
         status_reason: str = None,
         update_date: str = None,
@@ -3875,6 +3963,7 @@ class GetApplicationGroupResponseBodyApplicationGroup(TeaModel):
         self.import_tag_key = import_tag_key
         self.import_tag_value = import_tag_value
         self.name = name
+        self.progress = progress
         self.status = status
         self.status_reason = status_reason
         self.update_date = update_date
@@ -3908,6 +3997,8 @@ class GetApplicationGroupResponseBodyApplicationGroup(TeaModel):
             result['ImportTagValue'] = self.import_tag_value
         if self.name is not None:
             result['Name'] = self.name
+        if self.progress is not None:
+            result['Progress'] = self.progress
         if self.status is not None:
             result['Status'] = self.status
         if self.status_reason is not None:
@@ -3938,6 +4029,8 @@ class GetApplicationGroupResponseBodyApplicationGroup(TeaModel):
             self.import_tag_value = m.get('ImportTagValue')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('Progress') is not None:
+            self.progress = m.get('Progress')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('StatusReason') is not None:
@@ -6726,13 +6819,19 @@ class ListApplicationGroupsRequest(TeaModel):
         deploy_region_id: str = None,
         max_results: int = None,
         next_token: str = None,
+        product: str = None,
         region_id: str = None,
+        resource_id: str = None,
+        resource_type: str = None,
     ):
         self.application_name = application_name
         self.deploy_region_id = deploy_region_id
         self.max_results = max_results
         self.next_token = next_token
+        self.product = product
         self.region_id = region_id
+        self.resource_id = resource_id
+        self.resource_type = resource_type
 
     def validate(self):
         pass
@@ -6751,8 +6850,14 @@ class ListApplicationGroupsRequest(TeaModel):
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
             result['NextToken'] = self.next_token
+        if self.product is not None:
+            result['Product'] = self.product
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
         return result
 
     def from_map(self, m: dict = None):
@@ -6765,8 +6870,14 @@ class ListApplicationGroupsRequest(TeaModel):
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
+        if m.get('Product') is not None:
+            self.product = m.get('Product')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
         return self
 
 
