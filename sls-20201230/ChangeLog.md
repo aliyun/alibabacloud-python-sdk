@@ -1,3 +1,6 @@
+2022-09-15 Version: 1.5.1
+- Fix signature bug.
+
 2022-08-01 Version: 1.5.0
 - Add resource Shipper.
 - Add resource ExternalStore.

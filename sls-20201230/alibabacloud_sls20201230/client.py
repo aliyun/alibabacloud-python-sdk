@@ -9,8 +9,8 @@ from alibabacloud_tea_openapi import models as open_api_models
 from alibabacloud_gateway_sls.client import Client as GatewayClientClient
 from alibabacloud_sls20201230 import models as sls_20201230_models
 from alibabacloud_tea_util import models as util_models
-from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 from alibabacloud_tea_util.client import Client as UtilClient
+from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 
 
 class Client(OpenApiClient):
@@ -58,8 +58,6 @@ class Client(OpenApiClient):
     ) -> sls_20201230_models.ApplyConfigToMachineGroupResponse:
         host_map = {}
         host_map['project'] = project
-        machine_group = OpenApiUtilClient.get_encode_param(machine_group)
-        config_name = OpenApiUtilClient.get_encode_param(config_name)
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers
@@ -90,8 +88,6 @@ class Client(OpenApiClient):
     ) -> sls_20201230_models.ApplyConfigToMachineGroupResponse:
         host_map = {}
         host_map['project'] = project
-        machine_group = OpenApiUtilClient.get_encode_param(machine_group)
-        config_name = OpenApiUtilClient.get_encode_param(config_name)
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers
@@ -421,7 +417,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
-        logstore = OpenApiUtilClient.get_encode_param(logstore)
         body = {}
         if not UtilClient.is_unset(request.consumer_group):
             body['consumerGroup'] = request.consumer_group
@@ -461,7 +456,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
-        logstore = OpenApiUtilClient.get_encode_param(logstore)
         body = {}
         if not UtilClient.is_unset(request.consumer_group):
             body['consumerGroup'] = request.consumer_group
@@ -573,6 +567,116 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             sls_20201230_models.CreateDomainResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def create_etl_job(
+        self,
+        project: str,
+        request: sls_20201230_models.CreateEtlJobRequest,
+    ) -> sls_20201230_models.CreateEtlJobResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_etl_job_with_options(project, request, headers, runtime)
+
+    async def create_etl_job_async(
+        self,
+        project: str,
+        request: sls_20201230_models.CreateEtlJobRequest,
+    ) -> sls_20201230_models.CreateEtlJobResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_etl_job_with_options_async(project, request, headers, runtime)
+
+    def create_etl_job_with_options(
+        self,
+        project: str,
+        request: sls_20201230_models.CreateEtlJobRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.CreateEtlJobResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not UtilClient.is_unset(request.enable):
+            body['enable'] = request.enable
+        if not UtilClient.is_unset(request.etl_job_name):
+            body['etlJobName'] = request.etl_job_name
+        if not UtilClient.is_unset(request.function_config):
+            body['functionConfig'] = request.function_config
+        if not UtilClient.is_unset(request.function_parameter):
+            body['functionParameter'] = request.function_parameter
+        if not UtilClient.is_unset(request.log_config):
+            body['logConfig'] = request.log_config
+        if not UtilClient.is_unset(request.source_config):
+            body['sourceConfig'] = request.source_config
+        if not UtilClient.is_unset(request.trigger_config):
+            body['triggerConfig'] = request.trigger_config
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateEtlJob',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/etljobs',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.CreateEtlJobResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def create_etl_job_with_options_async(
+        self,
+        project: str,
+        request: sls_20201230_models.CreateEtlJobRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.CreateEtlJobResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not UtilClient.is_unset(request.enable):
+            body['enable'] = request.enable
+        if not UtilClient.is_unset(request.etl_job_name):
+            body['etlJobName'] = request.etl_job_name
+        if not UtilClient.is_unset(request.function_config):
+            body['functionConfig'] = request.function_config
+        if not UtilClient.is_unset(request.function_parameter):
+            body['functionParameter'] = request.function_parameter
+        if not UtilClient.is_unset(request.log_config):
+            body['logConfig'] = request.log_config
+        if not UtilClient.is_unset(request.source_config):
+            body['sourceConfig'] = request.source_config
+        if not UtilClient.is_unset(request.trigger_config):
+            body['triggerConfig'] = request.trigger_config
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateEtlJob',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/etljobs',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.CreateEtlJobResponse(),
             await self.execute_async(params, req, runtime)
         )
 
@@ -709,7 +813,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
-        logstore = OpenApiUtilClient.get_encode_param(logstore)
         body = {}
         if not UtilClient.is_unset(request.keys):
             body['keys'] = request.keys
@@ -757,7 +860,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
-        logstore = OpenApiUtilClient.get_encode_param(logstore)
         body = {}
         if not UtilClient.is_unset(request.keys):
             body['keys'] = request.keys
@@ -837,6 +939,8 @@ class Client(OpenApiClient):
             body['logstoreName'] = request.logstore_name
         if not UtilClient.is_unset(request.max_split_shard):
             body['maxSplitShard'] = request.max_split_shard
+        if not UtilClient.is_unset(request.mode):
+            body['mode'] = request.mode
         if not UtilClient.is_unset(request.shard_count):
             body['shardCount'] = request.shard_count
         if not UtilClient.is_unset(request.telemetry_type):
@@ -889,6 +993,8 @@ class Client(OpenApiClient):
             body['logstoreName'] = request.logstore_name
         if not UtilClient.is_unset(request.max_split_shard):
             body['maxSplitShard'] = request.max_split_shard
+        if not UtilClient.is_unset(request.mode):
+            body['mode'] = request.mode
         if not UtilClient.is_unset(request.shard_count):
             body['shardCount'] = request.shard_count
         if not UtilClient.is_unset(request.telemetry_type):
@@ -1139,7 +1245,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
-        logstore = OpenApiUtilClient.get_encode_param(logstore)
         body = {}
         if not UtilClient.is_unset(request.shipper_name):
             body['shipperName'] = request.shipper_name
@@ -1179,7 +1284,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
-        logstore = OpenApiUtilClient.get_encode_param(logstore)
         body = {}
         if not UtilClient.is_unset(request.shipper_name):
             body['shipperName'] = request.shipper_name
@@ -1333,7 +1437,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
-        logstore = OpenApiUtilClient.get_encode_param(logstore)
         body = {}
         if not UtilClient.is_unset(request.shipper_name):
             body['shipperName'] = request.shipper_name
@@ -1373,7 +1476,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
-        logstore = OpenApiUtilClient.get_encode_param(logstore)
         body = {}
         if not UtilClient.is_unset(request.shipper_name):
             body['shipperName'] = request.shipper_name
@@ -1708,8 +1810,6 @@ class Client(OpenApiClient):
     ) -> sls_20201230_models.DeleteConsumerGroupResponse:
         host_map = {}
         host_map['project'] = project
-        logstore = OpenApiUtilClient.get_encode_param(logstore)
-        consumer_group = OpenApiUtilClient.get_encode_param(consumer_group)
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers
@@ -1740,8 +1840,6 @@ class Client(OpenApiClient):
     ) -> sls_20201230_models.DeleteConsumerGroupResponse:
         host_map = {}
         host_map['project'] = project
-        logstore = OpenApiUtilClient.get_encode_param(logstore)
-        consumer_group = OpenApiUtilClient.get_encode_param(consumer_group)
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers
@@ -1789,7 +1887,6 @@ class Client(OpenApiClient):
     ) -> sls_20201230_models.DeleteDomainResponse:
         host_map = {}
         host_map['project'] = project
-        domain_name = OpenApiUtilClient.get_encode_param(domain_name)
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers
@@ -1819,7 +1916,6 @@ class Client(OpenApiClient):
     ) -> sls_20201230_models.DeleteDomainResponse:
         host_map = {}
         host_map['project'] = project
-        domain_name = OpenApiUtilClient.get_encode_param(domain_name)
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers
@@ -1837,6 +1933,82 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             sls_20201230_models.DeleteDomainResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def delete_etl_job(
+        self,
+        project: str,
+        etl_job_name: str,
+    ) -> sls_20201230_models.DeleteEtlJobResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_etl_job_with_options(project, etl_job_name, headers, runtime)
+
+    async def delete_etl_job_async(
+        self,
+        project: str,
+        etl_job_name: str,
+    ) -> sls_20201230_models.DeleteEtlJobResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_etl_job_with_options_async(project, etl_job_name, headers, runtime)
+
+    def delete_etl_job_with_options(
+        self,
+        project: str,
+        etl_job_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.DeleteEtlJobResponse:
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteEtlJob',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/etljobs/{etl_job_name}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.DeleteEtlJobResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def delete_etl_job_with_options_async(
+        self,
+        project: str,
+        etl_job_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.DeleteEtlJobResponse:
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteEtlJob',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/etljobs/{etl_job_name}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.DeleteEtlJobResponse(),
             await self.execute_async(params, req, runtime)
         )
 
@@ -1961,7 +2133,6 @@ class Client(OpenApiClient):
     ) -> sls_20201230_models.DeleteExternalStoreResponse:
         host_map = {}
         host_map['project'] = project
-        external_store_name = OpenApiUtilClient.get_encode_param(external_store_name)
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers
@@ -1991,7 +2162,6 @@ class Client(OpenApiClient):
     ) -> sls_20201230_models.DeleteExternalStoreResponse:
         host_map = {}
         host_map['project'] = project
-        external_store_name = OpenApiUtilClient.get_encode_param(external_store_name)
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers
@@ -2039,7 +2209,6 @@ class Client(OpenApiClient):
     ) -> sls_20201230_models.DeleteIndexResponse:
         host_map = {}
         host_map['project'] = project
-        logstore = OpenApiUtilClient.get_encode_param(logstore)
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers
@@ -2069,7 +2238,6 @@ class Client(OpenApiClient):
     ) -> sls_20201230_models.DeleteIndexResponse:
         host_map = {}
         host_map['project'] = project
-        logstore = OpenApiUtilClient.get_encode_param(logstore)
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers
@@ -2117,7 +2285,6 @@ class Client(OpenApiClient):
     ) -> sls_20201230_models.DeleteLogStoreResponse:
         host_map = {}
         host_map['project'] = project
-        logstore = OpenApiUtilClient.get_encode_param(logstore)
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers
@@ -2147,7 +2314,6 @@ class Client(OpenApiClient):
     ) -> sls_20201230_models.DeleteLogStoreResponse:
         host_map = {}
         host_map['project'] = project
-        logstore = OpenApiUtilClient.get_encode_param(logstore)
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers
@@ -2267,7 +2433,6 @@ class Client(OpenApiClient):
     ) -> sls_20201230_models.DeleteMachineGroupResponse:
         host_map = {}
         host_map['project'] = project
-        machine_group = OpenApiUtilClient.get_encode_param(machine_group)
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers
@@ -2297,7 +2462,6 @@ class Client(OpenApiClient):
     ) -> sls_20201230_models.DeleteMachineGroupResponse:
         host_map = {}
         host_map['project'] = project
-        machine_group = OpenApiUtilClient.get_encode_param(machine_group)
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers
@@ -2417,7 +2581,6 @@ class Client(OpenApiClient):
     ) -> sls_20201230_models.DeleteSavedSearchResponse:
         host_map = {}
         host_map['project'] = project
-        savedsearch_name = OpenApiUtilClient.get_encode_param(savedsearch_name)
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers
@@ -2447,7 +2610,6 @@ class Client(OpenApiClient):
     ) -> sls_20201230_models.DeleteSavedSearchResponse:
         host_map = {}
         host_map['project'] = project
-        savedsearch_name = OpenApiUtilClient.get_encode_param(savedsearch_name)
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers
@@ -2498,8 +2660,6 @@ class Client(OpenApiClient):
     ) -> sls_20201230_models.DeleteShipperResponse:
         host_map = {}
         host_map['project'] = project
-        logstore = OpenApiUtilClient.get_encode_param(logstore)
-        shipper_name = OpenApiUtilClient.get_encode_param(shipper_name)
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers
@@ -2530,8 +2690,6 @@ class Client(OpenApiClient):
     ) -> sls_20201230_models.DeleteShipperResponse:
         host_map = {}
         host_map['project'] = project
-        logstore = OpenApiUtilClient.get_encode_param(logstore)
-        shipper_name = OpenApiUtilClient.get_encode_param(shipper_name)
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers
@@ -2579,7 +2737,6 @@ class Client(OpenApiClient):
     ) -> sls_20201230_models.GetAppliedConfigsResponse:
         host_map = {}
         host_map['project'] = project
-        machine_group = OpenApiUtilClient.get_encode_param(machine_group)
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers
@@ -2609,7 +2766,6 @@ class Client(OpenApiClient):
     ) -> sls_20201230_models.GetAppliedConfigsResponse:
         host_map = {}
         host_map['project'] = project
-        machine_group = OpenApiUtilClient.get_encode_param(machine_group)
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers
@@ -2657,7 +2813,6 @@ class Client(OpenApiClient):
     ) -> sls_20201230_models.GetAppliedMachineGroupsResponse:
         host_map = {}
         host_map['project'] = project
-        config_name = OpenApiUtilClient.get_encode_param(config_name)
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers
@@ -2687,7 +2842,6 @@ class Client(OpenApiClient):
     ) -> sls_20201230_models.GetAppliedMachineGroupsResponse:
         host_map = {}
         host_map['project'] = project
-        config_name = OpenApiUtilClient.get_encode_param(config_name)
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers
@@ -2742,8 +2896,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
-        logstore = OpenApiUtilClient.get_encode_param(logstore)
-        consumer_group = OpenApiUtilClient.get_encode_param(consumer_group)
         query = {}
         if not UtilClient.is_unset(request.shard):
             query['shard'] = request.shard
@@ -2780,8 +2932,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
-        logstore = OpenApiUtilClient.get_encode_param(logstore)
-        consumer_group = OpenApiUtilClient.get_encode_param(consumer_group)
         query = {}
         if not UtilClient.is_unset(request.shard):
             query['shard'] = request.shard
@@ -2837,7 +2987,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
-        logstore = OpenApiUtilClient.get_encode_param(logstore)
         query = {}
         if not UtilClient.is_unset(request.back_lines):
             query['back_lines'] = request.back_lines
@@ -2881,7 +3030,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
-        logstore = OpenApiUtilClient.get_encode_param(logstore)
         query = {}
         if not UtilClient.is_unset(request.back_lines):
             query['back_lines'] = request.back_lines
@@ -2948,8 +3096,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
-        logstore = OpenApiUtilClient.get_encode_param(logstore)
-        shard_id = OpenApiUtilClient.get_encode_param(shard_id)
         query = {}
         if not UtilClient.is_unset(request.from_):
             query['from'] = request.from_
@@ -2988,8 +3134,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
-        logstore = OpenApiUtilClient.get_encode_param(logstore)
-        shard_id = OpenApiUtilClient.get_encode_param(shard_id)
         query = {}
         if not UtilClient.is_unset(request.from_):
             query['from'] = request.from_
@@ -3050,8 +3194,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
-        logstore = OpenApiUtilClient.get_encode_param(logstore)
-        shard_id = OpenApiUtilClient.get_encode_param(shard_id)
         query = {}
         if not UtilClient.is_unset(request.cursor):
             query['cursor'] = request.cursor
@@ -3090,8 +3232,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
-        logstore = OpenApiUtilClient.get_encode_param(logstore)
-        shard_id = OpenApiUtilClient.get_encode_param(shard_id)
         query = {}
         if not UtilClient.is_unset(request.cursor):
             query['cursor'] = request.cursor
@@ -3115,6 +3255,82 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             sls_20201230_models.GetCursorTimeResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def get_etl_job(
+        self,
+        project: str,
+        etl_job_name: str,
+    ) -> sls_20201230_models.GetEtlJobResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_etl_job_with_options(project, etl_job_name, headers, runtime)
+
+    async def get_etl_job_async(
+        self,
+        project: str,
+        etl_job_name: str,
+    ) -> sls_20201230_models.GetEtlJobResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_etl_job_with_options_async(project, etl_job_name, headers, runtime)
+
+    def get_etl_job_with_options(
+        self,
+        project: str,
+        etl_job_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.GetEtlJobResponse:
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetEtlJob',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/etljobs/{etl_job_name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.GetEtlJobResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def get_etl_job_with_options_async(
+        self,
+        project: str,
+        etl_job_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.GetEtlJobResponse:
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetEtlJob',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/etljobs/{etl_job_name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.GetEtlJobResponse(),
             await self.execute_async(params, req, runtime)
         )
 
@@ -3147,10 +3363,10 @@ class Client(OpenApiClient):
         host_map = {}
         host_map['project'] = project
         query = {}
-        if not UtilClient.is_unset(request.el_meta_name):
-            query['elMetaName'] = request.el_meta_name
         if not UtilClient.is_unset(request.etl_meta_key):
             query['etlMetaKey'] = request.etl_meta_key
+        if not UtilClient.is_unset(request.etl_meta_name):
+            query['etlMetaName'] = request.etl_meta_name
         if not UtilClient.is_unset(request.etl_meta_tag):
             query['etlMetaTag'] = request.etl_meta_tag
         req = open_api_models.OpenApiRequest(
@@ -3185,10 +3401,10 @@ class Client(OpenApiClient):
         host_map = {}
         host_map['project'] = project
         query = {}
-        if not UtilClient.is_unset(request.el_meta_name):
-            query['elMetaName'] = request.el_meta_name
         if not UtilClient.is_unset(request.etl_meta_key):
             query['etlMetaKey'] = request.etl_meta_key
+        if not UtilClient.is_unset(request.etl_meta_name):
+            query['etlMetaName'] = request.etl_meta_name
         if not UtilClient.is_unset(request.etl_meta_tag):
             query['etlMetaTag'] = request.etl_meta_tag
         req = open_api_models.OpenApiRequest(
@@ -3239,7 +3455,6 @@ class Client(OpenApiClient):
     ) -> sls_20201230_models.GetExternalStoreResponse:
         host_map = {}
         host_map['project'] = project
-        external_store_name = OpenApiUtilClient.get_encode_param(external_store_name)
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers
@@ -3269,7 +3484,6 @@ class Client(OpenApiClient):
     ) -> sls_20201230_models.GetExternalStoreResponse:
         host_map = {}
         host_map['project'] = project
-        external_store_name = OpenApiUtilClient.get_encode_param(external_store_name)
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers
@@ -3321,7 +3535,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
-        logstore = OpenApiUtilClient.get_encode_param(logstore)
         query = {}
         if not UtilClient.is_unset(request.from_):
             query['from'] = request.from_
@@ -3331,8 +3544,6 @@ class Client(OpenApiClient):
             query['to'] = request.to
         if not UtilClient.is_unset(request.topic):
             query['topic'] = request.topic
-        if not UtilClient.is_unset(request.type):
-            query['type'] = request.type
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers,
@@ -3342,7 +3553,7 @@ class Client(OpenApiClient):
             action='GetHistograms',
             version='2020-12-30',
             protocol='HTTPS',
-            pathname=f'/logstores/{logstore}/index',
+            pathname=f'/logstores/{logstore}/index?type=histogram',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3365,7 +3576,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
-        logstore = OpenApiUtilClient.get_encode_param(logstore)
         query = {}
         if not UtilClient.is_unset(request.from_):
             query['from'] = request.from_
@@ -3375,8 +3585,6 @@ class Client(OpenApiClient):
             query['to'] = request.to
         if not UtilClient.is_unset(request.topic):
             query['topic'] = request.topic
-        if not UtilClient.is_unset(request.type):
-            query['type'] = request.type
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers,
@@ -3386,7 +3594,7 @@ class Client(OpenApiClient):
             action='GetHistograms',
             version='2020-12-30',
             protocol='HTTPS',
-            pathname=f'/logstores/{logstore}/index',
+            pathname=f'/logstores/{logstore}/index?type=histogram',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3425,7 +3633,6 @@ class Client(OpenApiClient):
     ) -> sls_20201230_models.GetIndexResponse:
         host_map = {}
         host_map['project'] = project
-        logstore = OpenApiUtilClient.get_encode_param(logstore)
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers
@@ -3455,7 +3662,6 @@ class Client(OpenApiClient):
     ) -> sls_20201230_models.GetIndexResponse:
         host_map = {}
         host_map['project'] = project
-        logstore = OpenApiUtilClient.get_encode_param(logstore)
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers
@@ -3503,7 +3709,6 @@ class Client(OpenApiClient):
     ) -> sls_20201230_models.GetLogStoreResponse:
         host_map = {}
         host_map['project'] = project
-        logstore = OpenApiUtilClient.get_encode_param(logstore)
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers
@@ -3533,7 +3738,6 @@ class Client(OpenApiClient):
     ) -> sls_20201230_models.GetLogStoreResponse:
         host_map = {}
         host_map['project'] = project
-        logstore = OpenApiUtilClient.get_encode_param(logstore)
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers
@@ -3657,7 +3861,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
-        logstore = OpenApiUtilClient.get_encode_param(logstore)
         query = {}
         if not UtilClient.is_unset(request.from_):
             query['from'] = request.from_
@@ -3675,8 +3878,6 @@ class Client(OpenApiClient):
             query['to'] = request.to
         if not UtilClient.is_unset(request.topic):
             query['topic'] = request.topic
-        if not UtilClient.is_unset(request.type):
-            query['type'] = request.type
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers,
@@ -3686,7 +3887,7 @@ class Client(OpenApiClient):
             action='GetLogs',
             version='2020-12-30',
             protocol='HTTPS',
-            pathname=f'/logstores/{logstore}/index',
+            pathname=f'/logstores/{logstore}?type=log',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3709,7 +3910,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
-        logstore = OpenApiUtilClient.get_encode_param(logstore)
         query = {}
         if not UtilClient.is_unset(request.from_):
             query['from'] = request.from_
@@ -3727,8 +3927,6 @@ class Client(OpenApiClient):
             query['to'] = request.to
         if not UtilClient.is_unset(request.topic):
             query['topic'] = request.topic
-        if not UtilClient.is_unset(request.type):
-            query['type'] = request.type
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers,
@@ -3738,7 +3936,7 @@ class Client(OpenApiClient):
             action='GetLogs',
             version='2020-12-30',
             protocol='HTTPS',
-            pathname=f'/logstores/{logstore}/index',
+            pathname=f'/logstores/{logstore}?type=log',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3777,7 +3975,6 @@ class Client(OpenApiClient):
     ) -> sls_20201230_models.GetMachineGroupResponse:
         host_map = {}
         host_map['project'] = project
-        machine_group = OpenApiUtilClient.get_encode_param(machine_group)
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers
@@ -3807,7 +4004,6 @@ class Client(OpenApiClient):
     ) -> sls_20201230_models.GetMachineGroupResponse:
         host_map = {}
         host_map['project'] = project
-        machine_group = OpenApiUtilClient.get_encode_param(machine_group)
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers
@@ -4017,7 +4213,6 @@ class Client(OpenApiClient):
     ) -> sls_20201230_models.GetSavedSearchResponse:
         host_map = {}
         host_map['project'] = project
-        savedsearch_name = OpenApiUtilClient.get_encode_param(savedsearch_name)
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers
@@ -4047,7 +4242,6 @@ class Client(OpenApiClient):
     ) -> sls_20201230_models.GetSavedSearchResponse:
         host_map = {}
         host_map['project'] = project
-        savedsearch_name = OpenApiUtilClient.get_encode_param(savedsearch_name)
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers
@@ -4098,8 +4292,6 @@ class Client(OpenApiClient):
     ) -> sls_20201230_models.GetShipperConfigResponse:
         host_map = {}
         host_map['project'] = project
-        logstore = OpenApiUtilClient.get_encode_param(logstore)
-        shipper_name = OpenApiUtilClient.get_encode_param(shipper_name)
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers
@@ -4130,8 +4322,6 @@ class Client(OpenApiClient):
     ) -> sls_20201230_models.GetShipperConfigResponse:
         host_map = {}
         host_map['project'] = project
-        logstore = OpenApiUtilClient.get_encode_param(logstore)
-        shipper_name = OpenApiUtilClient.get_encode_param(shipper_name)
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers
@@ -4186,8 +4376,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
-        logstore = OpenApiUtilClient.get_encode_param(logstore)
-        shipper_name = OpenApiUtilClient.get_encode_param(shipper_name)
         query = {}
         if not UtilClient.is_unset(request.from_):
             query['from'] = request.from_
@@ -4232,8 +4420,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
-        logstore = OpenApiUtilClient.get_encode_param(logstore)
-        shipper_name = OpenApiUtilClient.get_encode_param(shipper_name)
         query = {}
         if not UtilClient.is_unset(request.from_):
             query['from'] = request.from_
@@ -4293,7 +4479,6 @@ class Client(OpenApiClient):
     ) -> sls_20201230_models.ListConsumerGroupResponse:
         host_map = {}
         host_map['project'] = project
-        logstore = OpenApiUtilClient.get_encode_param(logstore)
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers
@@ -4323,7 +4508,6 @@ class Client(OpenApiClient):
     ) -> sls_20201230_models.ListConsumerGroupResponse:
         host_map = {}
         host_map['project'] = project
-        logstore = OpenApiUtilClient.get_encode_param(logstore)
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers
@@ -4435,6 +4619,96 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             sls_20201230_models.ListDomainsResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def list_etl_job(
+        self,
+        project: str,
+        request: sls_20201230_models.ListEtlJobRequest,
+    ) -> sls_20201230_models.ListEtlJobResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_etl_job_with_options(project, request, headers, runtime)
+
+    async def list_etl_job_async(
+        self,
+        project: str,
+        request: sls_20201230_models.ListEtlJobRequest,
+    ) -> sls_20201230_models.ListEtlJobResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_etl_job_with_options_async(project, request, headers, runtime)
+
+    def list_etl_job_with_options(
+        self,
+        project: str,
+        request: sls_20201230_models.ListEtlJobRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.ListEtlJobResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        query = {}
+        if not UtilClient.is_unset(request.offset):
+            query['offset'] = request.offset
+        if not UtilClient.is_unset(request.size):
+            query['size'] = request.size
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListEtlJob',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/etljobs',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.ListEtlJobResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def list_etl_job_with_options_async(
+        self,
+        project: str,
+        request: sls_20201230_models.ListEtlJobRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.ListEtlJobResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        query = {}
+        if not UtilClient.is_unset(request.offset):
+            query['offset'] = request.offset
+        if not UtilClient.is_unset(request.size):
+            query['size'] = request.size
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListEtlJob',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/etljobs',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.ListEtlJobResponse(),
             await self.execute_async(params, req, runtime)
         )
 
@@ -4755,6 +5029,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.logstore_name):
             query['logstoreName'] = request.logstore_name
+        if not UtilClient.is_unset(request.mode):
+            query['mode'] = request.mode
         if not UtilClient.is_unset(request.offset):
             query['offset'] = request.offset
         if not UtilClient.is_unset(request.size):
@@ -4795,6 +5071,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.logstore_name):
             query['logstoreName'] = request.logstore_name
+        if not UtilClient.is_unset(request.mode):
+            query['mode'] = request.mode
         if not UtilClient.is_unset(request.offset):
             query['offset'] = request.offset
         if not UtilClient.is_unset(request.size):
@@ -4947,7 +5225,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
-        machine_group = OpenApiUtilClient.get_encode_param(machine_group)
         query = {}
         if not UtilClient.is_unset(request.offset):
             query['offset'] = request.offset
@@ -4985,7 +5262,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
-        machine_group = OpenApiUtilClient.get_encode_param(machine_group)
         query = {}
         if not UtilClient.is_unset(request.offset):
             query['offset'] = request.offset
@@ -5213,7 +5489,6 @@ class Client(OpenApiClient):
     ) -> sls_20201230_models.ListShardsResponse:
         host_map = {}
         host_map['project'] = project
-        logstore = OpenApiUtilClient.get_encode_param(logstore)
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers
@@ -5243,7 +5518,6 @@ class Client(OpenApiClient):
     ) -> sls_20201230_models.ListShardsResponse:
         host_map = {}
         host_map['project'] = project
-        logstore = OpenApiUtilClient.get_encode_param(logstore)
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers
@@ -5291,7 +5565,6 @@ class Client(OpenApiClient):
     ) -> sls_20201230_models.ListShipperResponse:
         host_map = {}
         host_map['project'] = project
-        logstore = OpenApiUtilClient.get_encode_param(logstore)
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers
@@ -5321,7 +5594,6 @@ class Client(OpenApiClient):
     ) -> sls_20201230_models.ListShipperResponse:
         host_map = {}
         host_map['project'] = project
-        logstore = OpenApiUtilClient.get_encode_param(logstore)
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers
@@ -5472,8 +5744,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
-        logstore = OpenApiUtilClient.get_encode_param(logstore)
-        shard_id = OpenApiUtilClient.get_encode_param(shard_id)
         query = {}
         if not UtilClient.is_unset(request.action):
             query['action'] = request.action
@@ -5510,8 +5780,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
-        logstore = OpenApiUtilClient.get_encode_param(logstore)
-        shard_id = OpenApiUtilClient.get_encode_param(shard_id)
         query = {}
         if not UtilClient.is_unset(request.action):
             query['action'] = request.action
@@ -5566,8 +5834,6 @@ class Client(OpenApiClient):
     ) -> sls_20201230_models.RemoveConfigFromMachineGroupResponse:
         host_map = {}
         host_map['project'] = project
-        machine_group = OpenApiUtilClient.get_encode_param(machine_group)
-        config_name = OpenApiUtilClient.get_encode_param(config_name)
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers
@@ -5598,8 +5864,6 @@ class Client(OpenApiClient):
     ) -> sls_20201230_models.RemoveConfigFromMachineGroupResponse:
         host_map = {}
         host_map['project'] = project
-        machine_group = OpenApiUtilClient.get_encode_param(machine_group)
-        config_name = OpenApiUtilClient.get_encode_param(config_name)
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers
@@ -5654,8 +5918,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
-        logstore = OpenApiUtilClient.get_encode_param(logstore)
-        shard_id = OpenApiUtilClient.get_encode_param(shard_id)
         query = {}
         if not UtilClient.is_unset(request.action):
             query['action'] = request.action
@@ -5696,8 +5958,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
-        logstore = OpenApiUtilClient.get_encode_param(logstore)
-        shard_id = OpenApiUtilClient.get_encode_param(shard_id)
         query = {}
         if not UtilClient.is_unset(request.action):
             query['action'] = request.action
@@ -5932,8 +6192,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
-        logstore = OpenApiUtilClient.get_encode_param(logstore)
-        consumer_group = OpenApiUtilClient.get_encode_param(consumer_group)
         query = {}
         if not UtilClient.is_unset(request.consumer):
             query['consumer'] = request.consumer
@@ -5980,8 +6238,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
-        logstore = OpenApiUtilClient.get_encode_param(logstore)
-        consumer_group = OpenApiUtilClient.get_encode_param(consumer_group)
         query = {}
         if not UtilClient.is_unset(request.consumer):
             query['consumer'] = request.consumer
@@ -6050,8 +6306,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
-        logstore = OpenApiUtilClient.get_encode_param(logstore)
-        consumer_group = OpenApiUtilClient.get_encode_param(consumer_group)
         body = {}
         if not UtilClient.is_unset(request.order):
             body['order'] = request.order
@@ -6090,8 +6344,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
-        logstore = OpenApiUtilClient.get_encode_param(logstore)
-        consumer_group = OpenApiUtilClient.get_encode_param(consumer_group)
         body = {}
         if not UtilClient.is_unset(request.order):
             body['order'] = request.order
@@ -6115,6 +6367,120 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             sls_20201230_models.UpdateConsumerGroupResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def update_etl_job(
+        self,
+        project: str,
+        etl_job_name: str,
+        request: sls_20201230_models.UpdateEtlJobRequest,
+    ) -> sls_20201230_models.UpdateEtlJobResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_etl_job_with_options(project, etl_job_name, request, headers, runtime)
+
+    async def update_etl_job_async(
+        self,
+        project: str,
+        etl_job_name: str,
+        request: sls_20201230_models.UpdateEtlJobRequest,
+    ) -> sls_20201230_models.UpdateEtlJobResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_etl_job_with_options_async(project, etl_job_name, request, headers, runtime)
+
+    def update_etl_job_with_options(
+        self,
+        project: str,
+        etl_job_name: str,
+        request: sls_20201230_models.UpdateEtlJobRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.UpdateEtlJobResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not UtilClient.is_unset(request.enable):
+            body['enable'] = request.enable
+        if not UtilClient.is_unset(request.etl_job_name):
+            body['etlJobName'] = request.etl_job_name
+        if not UtilClient.is_unset(request.function_config):
+            body['functionConfig'] = request.function_config
+        if not UtilClient.is_unset(request.function_parameter):
+            body['functionParameter'] = request.function_parameter
+        if not UtilClient.is_unset(request.log_config):
+            body['logConfig'] = request.log_config
+        if not UtilClient.is_unset(request.source_config):
+            body['sourceConfig'] = request.source_config
+        if not UtilClient.is_unset(request.trigger_config):
+            body['triggerConfig'] = request.trigger_config
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateEtlJob',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/etljobs/{etl_job_name}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.UpdateEtlJobResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def update_etl_job_with_options_async(
+        self,
+        project: str,
+        etl_job_name: str,
+        request: sls_20201230_models.UpdateEtlJobRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.UpdateEtlJobResponse:
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not UtilClient.is_unset(request.enable):
+            body['enable'] = request.enable
+        if not UtilClient.is_unset(request.etl_job_name):
+            body['etlJobName'] = request.etl_job_name
+        if not UtilClient.is_unset(request.function_config):
+            body['functionConfig'] = request.function_config
+        if not UtilClient.is_unset(request.function_parameter):
+            body['functionParameter'] = request.function_parameter
+        if not UtilClient.is_unset(request.log_config):
+            body['logConfig'] = request.log_config
+        if not UtilClient.is_unset(request.source_config):
+            body['sourceConfig'] = request.source_config
+        if not UtilClient.is_unset(request.trigger_config):
+            body['triggerConfig'] = request.trigger_config
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateEtlJob',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/etljobs/{etl_job_name}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.UpdateEtlJobResponse(),
             await self.execute_async(params, req, runtime)
         )
 
@@ -6251,7 +6617,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
-        logstore = OpenApiUtilClient.get_encode_param(logstore)
         body = {}
         if not UtilClient.is_unset(request.keys):
             body['keys'] = request.keys
@@ -6299,7 +6664,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
-        logstore = OpenApiUtilClient.get_encode_param(logstore)
         body = {}
         if not UtilClient.is_unset(request.keys):
             body['keys'] = request.keys
@@ -6367,7 +6731,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
-        logstore = OpenApiUtilClient.get_encode_param(logstore)
         body = {}
         if not UtilClient.is_unset(request.append_meta):
             body['appendMeta'] = request.append_meta
@@ -6383,6 +6746,8 @@ class Client(OpenApiClient):
             body['logstoreName'] = request.logstore_name
         if not UtilClient.is_unset(request.max_split_shard):
             body['maxSplitShard'] = request.max_split_shard
+        if not UtilClient.is_unset(request.mode):
+            body['mode'] = request.mode
         if not UtilClient.is_unset(request.shard_count):
             body['shardCount'] = request.shard_count
         if not UtilClient.is_unset(request.telemetry_type):
@@ -6421,7 +6786,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
-        logstore = OpenApiUtilClient.get_encode_param(logstore)
         body = {}
         if not UtilClient.is_unset(request.append_meta):
             body['appendMeta'] = request.append_meta
@@ -6437,6 +6801,8 @@ class Client(OpenApiClient):
             body['logstoreName'] = request.logstore_name
         if not UtilClient.is_unset(request.max_split_shard):
             body['maxSplitShard'] = request.max_split_shard
+        if not UtilClient.is_unset(request.mode):
+            body['mode'] = request.mode
         if not UtilClient.is_unset(request.shard_count):
             body['shardCount'] = request.shard_count
         if not UtilClient.is_unset(request.telemetry_type):
@@ -6585,7 +6951,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
-        group_name = OpenApiUtilClient.get_encode_param(group_name)
         body = {}
         if not UtilClient.is_unset(request.group_attribute):
             body['groupAttribute'] = request.group_attribute
@@ -6629,7 +6994,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
-        group_name = OpenApiUtilClient.get_encode_param(group_name)
         body = {}
         if not UtilClient.is_unset(request.group_attribute):
             body['groupAttribute'] = request.group_attribute
@@ -6696,8 +7060,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
-        logstore = OpenApiUtilClient.get_encode_param(logstore)
-        shipper_name = OpenApiUtilClient.get_encode_param(shipper_name)
         body = {}
         if not UtilClient.is_unset(request.shipper_name):
             body['shipperName'] = request.shipper_name
@@ -6738,8 +7100,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
-        logstore = OpenApiUtilClient.get_encode_param(logstore)
-        shipper_name = OpenApiUtilClient.get_encode_param(shipper_name)
         body = {}
         if not UtilClient.is_unset(request.shipper_name):
             body['shipperName'] = request.shipper_name
@@ -6799,7 +7159,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
-        external_store_name = OpenApiUtilClient.get_encode_param(external_store_name)
         body = {}
         if not UtilClient.is_unset(request.external_store_name):
             body['externalStoreName'] = request.external_store_name
@@ -6839,7 +7198,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
-        external_store_name = OpenApiUtilClient.get_encode_param(external_store_name)
         body = {}
         if not UtilClient.is_unset(request.external_store_name):
             body['externalStoreName'] = request.external_store_name
@@ -6902,8 +7260,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
-        logstore = OpenApiUtilClient.get_encode_param(logstore)
-        shipper_name = OpenApiUtilClient.get_encode_param(shipper_name)
         body = {}
         if not UtilClient.is_unset(request.shipper_name):
             body['shipperName'] = request.shipper_name
@@ -6944,8 +7300,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
-        logstore = OpenApiUtilClient.get_encode_param(logstore)
-        shipper_name = OpenApiUtilClient.get_encode_param(shipper_name)
         body = {}
         if not UtilClient.is_unset(request.shipper_name):
             body['shipperName'] = request.shipper_name
@@ -7091,7 +7445,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
-        external_store_name = OpenApiUtilClient.get_encode_param(external_store_name)
         body = {}
         if not UtilClient.is_unset(request.external_store_name):
             body['externalStoreName'] = request.external_store_name
@@ -7131,7 +7484,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
-        external_store_name = OpenApiUtilClient.get_encode_param(external_store_name)
         body = {}
         if not UtilClient.is_unset(request.external_store_name):
             body['externalStoreName'] = request.external_store_name
@@ -7191,7 +7543,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
-        savedsearch_name = OpenApiUtilClient.get_encode_param(savedsearch_name)
         body = {}
         if not UtilClient.is_unset(request.display_name):
             body['displayName'] = request.display_name
@@ -7235,7 +7586,6 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
-        savedsearch_name = OpenApiUtilClient.get_encode_param(savedsearch_name)
         body = {}
         if not UtilClient.is_unset(request.display_name):
             body['displayName'] = request.display_name
