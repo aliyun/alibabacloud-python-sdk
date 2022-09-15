@@ -21,7 +21,6 @@ class Client(OpenApiClient):
         config: open_api_models.Config,
     ):
         super().__init__(config)
-        self._signature_algorithm = 'v2'
         self._endpoint_rule = ''
         self.check_config(config)
         self._endpoint = self.get_endpoint('btripopen', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -80,7 +79,7 @@ class Client(OpenApiClient):
             protocol='HTTPS',
             pathname=f'/btrip-open-auth/v1/access-token/action/take',
             method='GET',
-            auth_type='Anonymous',
+            auth_type='AK',
             style='ROA',
             req_body_type='json',
             body_type='json'
@@ -112,7 +111,7 @@ class Client(OpenApiClient):
             protocol='HTTPS',
             pathname=f'/btrip-open-auth/v1/access-token/action/take',
             method='GET',
-            auth_type='Anonymous',
+            auth_type='AK',
             style='ROA',
             req_body_type='json',
             body_type='json'

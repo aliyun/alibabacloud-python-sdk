@@ -7878,16 +7878,16 @@ class CorpTokenResponseBodyData(TeaModel):
 class CorpTokenResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         code: str = None,
         data: CorpTokenResponseBodyData = None,
         message: str = None,
+        request_id: str = None,
         trace_id: str = None,
     ):
-        self.request_id = request_id
         self.code = code
         self.data = data
         self.message = message
+        self.request_id = request_id
         self.trace_id = trace_id
 
     def validate(self):
@@ -7900,22 +7900,20 @@ class CorpTokenResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.code is not None:
             result['code'] = self.code
         if self.data is not None:
             result['data'] = self.data.to_map()
         if self.message is not None:
             result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
         if self.trace_id is not None:
             result['traceId'] = self.trace_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('code') is not None:
             self.code = m.get('code')
         if m.get('data') is not None:
@@ -7923,6 +7921,8 @@ class CorpTokenResponseBody(TeaModel):
             self.data = temp_model.from_map(m['data'])
         if m.get('message') is not None:
             self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
         if m.get('traceId') is not None:
             self.trace_id = m.get('traceId')
         return self

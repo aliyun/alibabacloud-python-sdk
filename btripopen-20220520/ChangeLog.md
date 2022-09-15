@@ -1,3 +1,6 @@
+2022-09-15 Version: 1.0.12
+- Update AccessToken AK.
+
 2022-09-06 Version: 1.0.11
 - Update ApplyAdd and ApplyModify.
 
