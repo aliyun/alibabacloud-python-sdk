@@ -721,6 +721,8 @@ class Client(OpenApiClient):
             query['HttpPort'] = request.http_port
         if not UtilClient.is_unset(request.https_port):
             query['HttpsPort'] = request.https_port
+        if not UtilClient.is_unset(request.https_vserver_group_id):
+            query['HttpsVServerGroupId'] = request.https_vserver_group_id
         if not UtilClient.is_unset(request.mse_session_id):
             query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.service_weight):
@@ -765,6 +767,8 @@ class Client(OpenApiClient):
             query['HttpPort'] = request.http_port
         if not UtilClient.is_unset(request.https_port):
             query['HttpsPort'] = request.https_port
+        if not UtilClient.is_unset(request.https_vserver_group_id):
+            query['HttpsVServerGroupId'] = request.https_vserver_group_id
         if not UtilClient.is_unset(request.mse_session_id):
             query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.service_weight):
@@ -1405,8 +1409,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
-        if not UtilClient.is_unset(request.config_info_json):
-            query['ConfigInfoJson'] = request.config_info_json
         if not UtilClient.is_unset(request.ids):
             query['Ids'] = request.ids
         if not UtilClient.is_unset(request.instance_id):
@@ -1447,8 +1449,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
-        if not UtilClient.is_unset(request.config_info_json):
-            query['ConfigInfoJson'] = request.config_info_json
         if not UtilClient.is_unset(request.ids):
             query['Ids'] = request.ids
         if not UtilClient.is_unset(request.instance_id):
@@ -2282,14 +2282,10 @@ class Client(OpenApiClient):
 
     def create_or_update_swimming_lane_with_options(
         self,
-        tmp_req: mse_20190531_models.CreateOrUpdateSwimmingLaneRequest,
+        request: mse_20190531_models.CreateOrUpdateSwimmingLaneRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.CreateOrUpdateSwimmingLaneResponse:
-        UtilClient.validate_model(tmp_req)
-        request = mse_20190531_models.CreateOrUpdateSwimmingLaneShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.entry_rules):
-            request.entry_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.entry_rules, 'EntryRules', 'json')
+        UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
@@ -2297,8 +2293,10 @@ class Client(OpenApiClient):
             query['Enable'] = request.enable
         if not UtilClient.is_unset(request.enable_rules):
             query['EnableRules'] = request.enable_rules
-        if not UtilClient.is_unset(request.entry_rules_shrink):
-            query['EntryRules'] = request.entry_rules_shrink
+        if not UtilClient.is_unset(request.entry_rule):
+            query['EntryRule'] = request.entry_rule
+        if not UtilClient.is_unset(request.entry_rules):
+            query['EntryRules'] = request.entry_rules
         if not UtilClient.is_unset(request.gmt_create):
             query['GmtCreate'] = request.gmt_create
         if not UtilClient.is_unset(request.gmt_modified):
@@ -2344,14 +2342,10 @@ class Client(OpenApiClient):
 
     async def create_or_update_swimming_lane_with_options_async(
         self,
-        tmp_req: mse_20190531_models.CreateOrUpdateSwimmingLaneRequest,
+        request: mse_20190531_models.CreateOrUpdateSwimmingLaneRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.CreateOrUpdateSwimmingLaneResponse:
-        UtilClient.validate_model(tmp_req)
-        request = mse_20190531_models.CreateOrUpdateSwimmingLaneShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.entry_rules):
-            request.entry_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.entry_rules, 'EntryRules', 'json')
+        UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
@@ -2359,8 +2353,10 @@ class Client(OpenApiClient):
             query['Enable'] = request.enable
         if not UtilClient.is_unset(request.enable_rules):
             query['EnableRules'] = request.enable_rules
-        if not UtilClient.is_unset(request.entry_rules_shrink):
-            query['EntryRules'] = request.entry_rules_shrink
+        if not UtilClient.is_unset(request.entry_rule):
+            query['EntryRule'] = request.entry_rule
+        if not UtilClient.is_unset(request.entry_rules):
+            query['EntryRules'] = request.entry_rules
         if not UtilClient.is_unset(request.gmt_create):
             query['GmtCreate'] = request.gmt_create
         if not UtilClient.is_unset(request.gmt_modified):
@@ -2441,6 +2437,10 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not UtilClient.is_unset(request.license_key):
             query['LicenseKey'] = request.license_key
+        if not UtilClient.is_unset(request.message_queue_filter_side):
+            query['MessageQueueFilterSide'] = request.message_queue_filter_side
+        if not UtilClient.is_unset(request.message_queue_gray_enable):
+            query['MessageQueueGrayEnable'] = request.message_queue_gray_enable
         if not UtilClient.is_unset(request.mse_session_id):
             query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.name):
@@ -2495,6 +2495,10 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not UtilClient.is_unset(request.license_key):
             query['LicenseKey'] = request.license_key
+        if not UtilClient.is_unset(request.message_queue_filter_side):
+            query['MessageQueueFilterSide'] = request.message_queue_filter_side
+        if not UtilClient.is_unset(request.message_queue_gray_enable):
+            query['MessageQueueGrayEnable'] = request.message_queue_gray_enable
         if not UtilClient.is_unset(request.mse_session_id):
             query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.name):
@@ -4538,72 +4542,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_black_white_list_with_options_async(request, runtime)
 
-    def get_canary_status_with_options(
-        self,
-        request: mse_20190531_models.GetCanaryStatusRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> mse_20190531_models.GetCanaryStatusResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetCanaryStatus',
-            version='2019-05-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            mse_20190531_models.GetCanaryStatusResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_canary_status_with_options_async(
-        self,
-        request: mse_20190531_models.GetCanaryStatusRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> mse_20190531_models.GetCanaryStatusResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetCanaryStatus',
-            version='2019-05-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            mse_20190531_models.GetCanaryStatusResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_canary_status(
-        self,
-        request: mse_20190531_models.GetCanaryStatusRequest,
-    ) -> mse_20190531_models.GetCanaryStatusResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_canary_status_with_options(request, runtime)
-
-    async def get_canary_status_async(
-        self,
-        request: mse_20190531_models.GetCanaryStatusRequest,
-    ) -> mse_20190531_models.GetCanaryStatusResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_canary_status_with_options_async(request, runtime)
-
     def get_engine_namepace_with_options(
         self,
         request: mse_20190531_models.GetEngineNamepaceRequest,
@@ -5845,6 +5783,178 @@ class Client(OpenApiClient):
     ) -> mse_20190531_models.GetOverviewResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_overview_with_options_async(request, runtime)
+
+    def get_plugin_config_with_options(
+        self,
+        request: mse_20190531_models.GetPluginConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.GetPluginConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.mse_session_id):
+            query['MseSessionId'] = request.mse_session_id
+        if not UtilClient.is_unset(request.plugin_id):
+            query['PluginId'] = request.plugin_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetPluginConfig',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.GetPluginConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_plugin_config_with_options_async(
+        self,
+        request: mse_20190531_models.GetPluginConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.GetPluginConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.mse_session_id):
+            query['MseSessionId'] = request.mse_session_id
+        if not UtilClient.is_unset(request.plugin_id):
+            query['PluginId'] = request.plugin_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetPluginConfig',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.GetPluginConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_plugin_config(
+        self,
+        request: mse_20190531_models.GetPluginConfigRequest,
+    ) -> mse_20190531_models.GetPluginConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_plugin_config_with_options(request, runtime)
+
+    async def get_plugin_config_async(
+        self,
+        request: mse_20190531_models.GetPluginConfigRequest,
+    ) -> mse_20190531_models.GetPluginConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_plugin_config_with_options_async(request, runtime)
+
+    def get_plugins_with_options(
+        self,
+        request: mse_20190531_models.GetPluginsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.GetPluginsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.category):
+            query['Category'] = request.category
+        if not UtilClient.is_unset(request.enable_only):
+            query['EnableOnly'] = request.enable_only
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.mse_session_id):
+            query['MseSessionId'] = request.mse_session_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetPlugins',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.GetPluginsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_plugins_with_options_async(
+        self,
+        request: mse_20190531_models.GetPluginsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.GetPluginsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.category):
+            query['Category'] = request.category
+        if not UtilClient.is_unset(request.enable_only):
+            query['EnableOnly'] = request.enable_only
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.mse_session_id):
+            query['MseSessionId'] = request.mse_session_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetPlugins',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.GetPluginsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_plugins(
+        self,
+        request: mse_20190531_models.GetPluginsRequest,
+    ) -> mse_20190531_models.GetPluginsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_plugins_with_options(request, runtime)
+
+    async def get_plugins_async(
+        self,
+        request: mse_20190531_models.GetPluginsRequest,
+    ) -> mse_20190531_models.GetPluginsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_plugins_with_options_async(request, runtime)
 
     def get_service_list_with_options(
         self,
@@ -10096,72 +10206,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_znode_detail_with_options_async(request, runtime)
 
-    def release_with_options(
-        self,
-        request: mse_20190531_models.ReleaseRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> mse_20190531_models.ReleaseResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='Release',
-            version='2019-05-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            mse_20190531_models.ReleaseResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def release_with_options_async(
-        self,
-        request: mse_20190531_models.ReleaseRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> mse_20190531_models.ReleaseResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='Release',
-            version='2019-05-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            mse_20190531_models.ReleaseResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def release(
-        self,
-        request: mse_20190531_models.ReleaseRequest,
-    ) -> mse_20190531_models.ReleaseResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.release_with_options(request, runtime)
-
-    async def release_async(
-        self,
-        request: mse_20190531_models.ReleaseRequest,
-    ) -> mse_20190531_models.ReleaseResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.release_with_options_async(request, runtime)
-
     def restart_cluster_with_options(
         self,
         request: mse_20190531_models.RestartClusterRequest,
@@ -10333,88 +10377,6 @@ class Client(OpenApiClient):
     ) -> mse_20190531_models.RetryClusterResponse:
         runtime = util_models.RuntimeOptions()
         return await self.retry_cluster_with_options_async(request, runtime)
-
-    def scale_seata_server_with_options(
-        self,
-        request: mse_20190531_models.ScaleSeataServerRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> mse_20190531_models.ScaleSeataServerResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.accept_language):
-            query['AcceptLanguage'] = request.accept_language
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
-        if not UtilClient.is_unset(request.replica):
-            query['Replica'] = request.replica
-        if not UtilClient.is_unset(request.seata_server_unique_id):
-            query['SeataServerUniqueId'] = request.seata_server_unique_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ScaleSeataServer',
-            version='2019-05-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            mse_20190531_models.ScaleSeataServerResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def scale_seata_server_with_options_async(
-        self,
-        request: mse_20190531_models.ScaleSeataServerRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> mse_20190531_models.ScaleSeataServerResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.accept_language):
-            query['AcceptLanguage'] = request.accept_language
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
-        if not UtilClient.is_unset(request.replica):
-            query['Replica'] = request.replica
-        if not UtilClient.is_unset(request.seata_server_unique_id):
-            query['SeataServerUniqueId'] = request.seata_server_unique_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ScaleSeataServer',
-            version='2019-05-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            mse_20190531_models.ScaleSeataServerResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def scale_seata_server(
-        self,
-        request: mse_20190531_models.ScaleSeataServerRequest,
-    ) -> mse_20190531_models.ScaleSeataServerResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.scale_seata_server_with_options(request, runtime)
-
-    async def scale_seata_server_async(
-        self,
-        request: mse_20190531_models.ScaleSeataServerRequest,
-    ) -> mse_20190531_models.ScaleSeataServerResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.scale_seata_server_with_options_async(request, runtime)
 
     def select_gateway_slb_with_options(
         self,
@@ -10591,84 +10553,6 @@ class Client(OpenApiClient):
     ) -> mse_20190531_models.TagResourcesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.tag_resources_with_options_async(request, runtime)
-
-    def test_anonymous_with_options(
-        self,
-        request: mse_20190531_models.TestAnonymousRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> mse_20190531_models.TestAnonymousResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.accept_language):
-            query['AcceptLanguage'] = request.accept_language
-        if not UtilClient.is_unset(request.agent_info_json):
-            query['AgentInfoJson'] = request.agent_info_json
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='TestAnonymous',
-            version='2019-05-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='Anonymous',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            mse_20190531_models.TestAnonymousResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def test_anonymous_with_options_async(
-        self,
-        request: mse_20190531_models.TestAnonymousRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> mse_20190531_models.TestAnonymousResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.accept_language):
-            query['AcceptLanguage'] = request.accept_language
-        if not UtilClient.is_unset(request.agent_info_json):
-            query['AgentInfoJson'] = request.agent_info_json
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='TestAnonymous',
-            version='2019-05-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='Anonymous',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            mse_20190531_models.TestAnonymousResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def test_anonymous(
-        self,
-        request: mse_20190531_models.TestAnonymousRequest,
-    ) -> mse_20190531_models.TestAnonymousResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.test_anonymous_with_options(request, runtime)
-
-    async def test_anonymous_async(
-        self,
-        request: mse_20190531_models.TestAnonymousRequest,
-    ) -> mse_20190531_models.TestAnonymousResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.test_anonymous_with_options_async(request, runtime)
 
     def untag_resources_with_options(
         self,
@@ -11161,6 +11045,8 @@ class Client(OpenApiClient):
             query['MinSessionTimeout'] = request.min_session_timeout
         if not UtilClient.is_unset(request.mse_session_id):
             query['MseSessionId'] = request.mse_session_id
+        if not UtilClient.is_unset(request.naming_auth_enabled):
+            query['NamingAuthEnabled'] = request.naming_auth_enabled
         if not UtilClient.is_unset(request.pass_word):
             query['PassWord'] = request.pass_word
         if not UtilClient.is_unset(request.request_pars):
@@ -11233,6 +11119,8 @@ class Client(OpenApiClient):
             query['MinSessionTimeout'] = request.min_session_timeout
         if not UtilClient.is_unset(request.mse_session_id):
             query['MseSessionId'] = request.mse_session_id
+        if not UtilClient.is_unset(request.naming_auth_enabled):
+            query['NamingAuthEnabled'] = request.naming_auth_enabled
         if not UtilClient.is_unset(request.pass_word):
             query['PassWord'] = request.pass_word
         if not UtilClient.is_unset(request.request_pars):
@@ -12745,6 +12633,8 @@ class Client(OpenApiClient):
             query['AppId'] = request.app_id
         if not UtilClient.is_unset(request.enable):
             query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.filter_side):
+            query['FilterSide'] = request.filter_side
         if not UtilClient.is_unset(request.mse_session_id):
             query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.region):
@@ -12787,6 +12677,8 @@ class Client(OpenApiClient):
             query['AppId'] = request.app_id
         if not UtilClient.is_unset(request.enable):
             query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.filter_side):
+            query['FilterSide'] = request.filter_side
         if not UtilClient.is_unset(request.mse_session_id):
             query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.region):
@@ -13273,6 +13165,116 @@ class Client(OpenApiClient):
     ) -> mse_20190531_models.UpdateNacosServiceResponse:
         runtime = util_models.RuntimeOptions()
         return await self.update_nacos_service_with_options_async(request, runtime)
+
+    def update_plugin_config_with_options(
+        self,
+        request: mse_20190531_models.UpdatePluginConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.UpdatePluginConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.config):
+            query['Config'] = request.config
+        if not UtilClient.is_unset(request.config_level):
+            query['ConfigLevel'] = request.config_level
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.gateway_id):
+            query['GatewayId'] = request.gateway_id
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.gmt_create):
+            query['GmtCreate'] = request.gmt_create
+        if not UtilClient.is_unset(request.gmt_modified):
+            query['GmtModified'] = request.gmt_modified
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.mse_session_id):
+            query['MseSessionId'] = request.mse_session_id
+        if not UtilClient.is_unset(request.plugin_id):
+            query['PluginId'] = request.plugin_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdatePluginConfig',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.UpdatePluginConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_plugin_config_with_options_async(
+        self,
+        request: mse_20190531_models.UpdatePluginConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.UpdatePluginConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.config):
+            query['Config'] = request.config
+        if not UtilClient.is_unset(request.config_level):
+            query['ConfigLevel'] = request.config_level
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.gateway_id):
+            query['GatewayId'] = request.gateway_id
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.gmt_create):
+            query['GmtCreate'] = request.gmt_create
+        if not UtilClient.is_unset(request.gmt_modified):
+            query['GmtModified'] = request.gmt_modified
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.mse_session_id):
+            query['MseSessionId'] = request.mse_session_id
+        if not UtilClient.is_unset(request.plugin_id):
+            query['PluginId'] = request.plugin_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdatePluginConfig',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.UpdatePluginConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_plugin_config(
+        self,
+        request: mse_20190531_models.UpdatePluginConfigRequest,
+    ) -> mse_20190531_models.UpdatePluginConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_plugin_config_with_options(request, runtime)
+
+    async def update_plugin_config_async(
+        self,
+        request: mse_20190531_models.UpdatePluginConfigRequest,
+    ) -> mse_20190531_models.UpdatePluginConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_plugin_config_with_options_async(request, runtime)
 
     def update_sslcert_with_options(
         self,
