@@ -73,9 +73,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.AddWorkNodeWorkforceResponse:
         UtilClient.validate_model(request)
-        tenant_id = OpenApiUtilClient.get_encode_param(tenant_id)
-        task_id = OpenApiUtilClient.get_encode_param(task_id)
-        work_node_id = OpenApiUtilClient.get_encode_param(work_node_id)
         body = {}
         if not UtilClient.is_unset(request.user_ids):
             body['UserIds'] = request.user_ids
@@ -87,7 +84,7 @@ class Client(OpenApiClient):
             action='AddWorkNodeWorkforce',
             version='2022-06-16',
             protocol='HTTPS',
-            pathname=f'/openapi/api/v1/tenants/{tenant_id}/tasks/{task_id}/worknodes/{work_node_id}/workforce',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}/tasks/{OpenApiUtilClient.get_encode_param(task_id)}/worknodes/{OpenApiUtilClient.get_encode_param(work_node_id)}/workforce',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -109,9 +106,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.AddWorkNodeWorkforceResponse:
         UtilClient.validate_model(request)
-        tenant_id = OpenApiUtilClient.get_encode_param(tenant_id)
-        task_id = OpenApiUtilClient.get_encode_param(task_id)
-        work_node_id = OpenApiUtilClient.get_encode_param(work_node_id)
         body = {}
         if not UtilClient.is_unset(request.user_ids):
             body['UserIds'] = request.user_ids
@@ -123,7 +117,7 @@ class Client(OpenApiClient):
             action='AddWorkNodeWorkforce',
             version='2022-06-16',
             protocol='HTTPS',
-            pathname=f'/openapi/api/v1/tenants/{tenant_id}/tasks/{task_id}/worknodes/{work_node_id}/workforce',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}/tasks/{OpenApiUtilClient.get_encode_param(task_id)}/worknodes/{OpenApiUtilClient.get_encode_param(work_node_id)}/workforce',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -161,7 +155,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.CreateTaskResponse:
         UtilClient.validate_model(request)
-        tenant_id = OpenApiUtilClient.get_encode_param(tenant_id)
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(TeaCore.to_map(request.body))
@@ -170,7 +163,7 @@ class Client(OpenApiClient):
             action='CreateTask',
             version='2022-06-16',
             protocol='HTTPS',
-            pathname=f'/openapi/api/v1/tenants/{tenant_id}/tasks',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}/tasks',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -190,7 +183,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.CreateTaskResponse:
         UtilClient.validate_model(request)
-        tenant_id = OpenApiUtilClient.get_encode_param(tenant_id)
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(TeaCore.to_map(request.body))
@@ -199,7 +191,7 @@ class Client(OpenApiClient):
             action='CreateTask',
             version='2022-06-16',
             protocol='HTTPS',
-            pathname=f'/openapi/api/v1/tenants/{tenant_id}/tasks',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}/tasks',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -237,7 +229,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.CreateTemplateResponse:
         UtilClient.validate_model(request)
-        tenant_id = OpenApiUtilClient.get_encode_param(tenant_id)
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(TeaCore.to_map(request.body))
@@ -246,7 +237,7 @@ class Client(OpenApiClient):
             action='CreateTemplate',
             version='2022-06-16',
             protocol='HTTPS',
-            pathname=f'/openapi/api/v1/tenants/{tenant_id}/templates',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}/templates',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -266,7 +257,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.CreateTemplateResponse:
         UtilClient.validate_model(request)
-        tenant_id = OpenApiUtilClient.get_encode_param(tenant_id)
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(TeaCore.to_map(request.body))
@@ -275,7 +265,7 @@ class Client(OpenApiClient):
             action='CreateTemplate',
             version='2022-06-16',
             protocol='HTTPS',
-            pathname=f'/openapi/api/v1/tenants/{tenant_id}/templates',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}/templates',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -313,7 +303,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.CreateUserResponse:
         UtilClient.validate_model(request)
-        tenant_id = OpenApiUtilClient.get_encode_param(tenant_id)
         body = {}
         if not UtilClient.is_unset(request.account_no):
             body['AccountNo'] = request.account_no
@@ -331,7 +320,7 @@ class Client(OpenApiClient):
             action='CreateUser',
             version='2022-06-16',
             protocol='HTTPS',
-            pathname=f'/openapi/api/v1/tenants/{tenant_id}/users',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}/users',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -351,7 +340,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.CreateUserResponse:
         UtilClient.validate_model(request)
-        tenant_id = OpenApiUtilClient.get_encode_param(tenant_id)
         body = {}
         if not UtilClient.is_unset(request.account_no):
             body['AccountNo'] = request.account_no
@@ -369,7 +357,7 @@ class Client(OpenApiClient):
             action='CreateUser',
             version='2022-06-16',
             protocol='HTTPS',
-            pathname=f'/openapi/api/v1/tenants/{tenant_id}/users',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}/users',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -406,8 +394,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.DeleteTaskResponse:
-        tenant_id = OpenApiUtilClient.get_encode_param(tenant_id)
-        task_id = OpenApiUtilClient.get_encode_param(task_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -415,7 +401,7 @@ class Client(OpenApiClient):
             action='DeleteTask',
             version='2022-06-16',
             protocol='HTTPS',
-            pathname=f'/openapi/api/v1/tenants/{tenant_id}/tasks/{task_id}',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}/tasks/{OpenApiUtilClient.get_encode_param(task_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -434,8 +420,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.DeleteTaskResponse:
-        tenant_id = OpenApiUtilClient.get_encode_param(tenant_id)
-        task_id = OpenApiUtilClient.get_encode_param(task_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -443,7 +427,7 @@ class Client(OpenApiClient):
             action='DeleteTask',
             version='2022-06-16',
             protocol='HTTPS',
-            pathname=f'/openapi/api/v1/tenants/{tenant_id}/tasks/{task_id}',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}/tasks/{OpenApiUtilClient.get_encode_param(task_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -480,8 +464,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.DeleteTemplateResponse:
-        tenant_id = OpenApiUtilClient.get_encode_param(tenant_id)
-        template_id = OpenApiUtilClient.get_encode_param(template_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -489,7 +471,7 @@ class Client(OpenApiClient):
             action='DeleteTemplate',
             version='2022-06-16',
             protocol='HTTPS',
-            pathname=f'/openapi/api/v1/tenants/{tenant_id}/templates/{template_id}',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}/templates/{OpenApiUtilClient.get_encode_param(template_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -508,8 +490,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.DeleteTemplateResponse:
-        tenant_id = OpenApiUtilClient.get_encode_param(tenant_id)
-        template_id = OpenApiUtilClient.get_encode_param(template_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -517,7 +497,7 @@ class Client(OpenApiClient):
             action='DeleteTemplate',
             version='2022-06-16',
             protocol='HTTPS',
-            pathname=f'/openapi/api/v1/tenants/{tenant_id}/templates/{template_id}',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}/templates/{OpenApiUtilClient.get_encode_param(template_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -554,8 +534,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.DeleteUserResponse:
-        tenant_id = OpenApiUtilClient.get_encode_param(tenant_id)
-        user_id = OpenApiUtilClient.get_encode_param(user_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -563,7 +541,7 @@ class Client(OpenApiClient):
             action='DeleteUser',
             version='2022-06-16',
             protocol='HTTPS',
-            pathname=f'/openapi/api/v1/tenants/{tenant_id}/users/{user_id}',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}/users/{OpenApiUtilClient.get_encode_param(user_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -582,8 +560,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.DeleteUserResponse:
-        tenant_id = OpenApiUtilClient.get_encode_param(tenant_id)
-        user_id = OpenApiUtilClient.get_encode_param(user_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -591,7 +567,7 @@ class Client(OpenApiClient):
             action='DeleteUser',
             version='2022-06-16',
             protocol='HTTPS',
-            pathname=f'/openapi/api/v1/tenants/{tenant_id}/users/{user_id}',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}/users/{OpenApiUtilClient.get_encode_param(user_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -632,8 +608,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.ExportAnnotationsResponse:
         UtilClient.validate_model(request)
-        tenant_id = OpenApiUtilClient.get_encode_param(tenant_id)
-        task_id = OpenApiUtilClient.get_encode_param(task_id)
         query = {}
         if not UtilClient.is_unset(request.oss_path):
             query['OssPath'] = request.oss_path
@@ -649,7 +623,7 @@ class Client(OpenApiClient):
             action='ExportAnnotations',
             version='2022-06-16',
             protocol='HTTPS',
-            pathname=f'/openapi/api/v1/tenants/{tenant_id}/tasks/{task_id}/annotations/export',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}/tasks/{OpenApiUtilClient.get_encode_param(task_id)}/annotations/export',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -670,8 +644,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.ExportAnnotationsResponse:
         UtilClient.validate_model(request)
-        tenant_id = OpenApiUtilClient.get_encode_param(tenant_id)
-        task_id = OpenApiUtilClient.get_encode_param(task_id)
         query = {}
         if not UtilClient.is_unset(request.oss_path):
             query['OssPath'] = request.oss_path
@@ -687,7 +659,7 @@ class Client(OpenApiClient):
             action='ExportAnnotations',
             version='2022-06-16',
             protocol='HTTPS',
-            pathname=f'/openapi/api/v1/tenants/{tenant_id}/tasks/{task_id}/annotations/export',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}/tasks/{OpenApiUtilClient.get_encode_param(task_id)}/annotations/export',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -728,8 +700,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.GetJobResponse:
         UtilClient.validate_model(request)
-        tenant_id = OpenApiUtilClient.get_encode_param(tenant_id)
-        job_id = OpenApiUtilClient.get_encode_param(job_id)
         query = {}
         if not UtilClient.is_unset(request.job_type):
             query['JobType'] = request.job_type
@@ -741,7 +711,7 @@ class Client(OpenApiClient):
             action='GetJob',
             version='2022-06-16',
             protocol='HTTPS',
-            pathname=f'/openapi/api/v1/tenants/{tenant_id}/jobs/{job_id}',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}/jobs/{OpenApiUtilClient.get_encode_param(job_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -762,8 +732,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.GetJobResponse:
         UtilClient.validate_model(request)
-        tenant_id = OpenApiUtilClient.get_encode_param(tenant_id)
-        job_id = OpenApiUtilClient.get_encode_param(job_id)
         query = {}
         if not UtilClient.is_unset(request.job_type):
             query['JobType'] = request.job_type
@@ -775,7 +743,7 @@ class Client(OpenApiClient):
             action='GetJob',
             version='2022-06-16',
             protocol='HTTPS',
-            pathname=f'/openapi/api/v1/tenants/{tenant_id}/jobs/{job_id}',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}/jobs/{OpenApiUtilClient.get_encode_param(job_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -815,9 +783,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.GetSubtaskResponse:
-        tenant_id = OpenApiUtilClient.get_encode_param(tenant_id)
-        task_id = OpenApiUtilClient.get_encode_param(task_id)
-        subtask_id = OpenApiUtilClient.get_encode_param(subtask_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -825,7 +790,7 @@ class Client(OpenApiClient):
             action='GetSubtask',
             version='2022-06-16',
             protocol='HTTPS',
-            pathname=f'/openapi/api/v1/tenants/{tenant_id}/tasks/{task_id}/subtasks/{subtask_id}',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}/tasks/{OpenApiUtilClient.get_encode_param(task_id)}/subtasks/{OpenApiUtilClient.get_encode_param(subtask_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -845,9 +810,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.GetSubtaskResponse:
-        tenant_id = OpenApiUtilClient.get_encode_param(tenant_id)
-        task_id = OpenApiUtilClient.get_encode_param(task_id)
-        subtask_id = OpenApiUtilClient.get_encode_param(subtask_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -855,7 +817,7 @@ class Client(OpenApiClient):
             action='GetSubtask',
             version='2022-06-16',
             protocol='HTTPS',
-            pathname=f'/openapi/api/v1/tenants/{tenant_id}/tasks/{task_id}/subtasks/{subtask_id}',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}/tasks/{OpenApiUtilClient.get_encode_param(task_id)}/subtasks/{OpenApiUtilClient.get_encode_param(subtask_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -898,10 +860,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.GetSubtaskItemResponse:
-        tenant_id = OpenApiUtilClient.get_encode_param(tenant_id)
-        task_id = OpenApiUtilClient.get_encode_param(task_id)
-        subtask_id = OpenApiUtilClient.get_encode_param(subtask_id)
-        item_id = OpenApiUtilClient.get_encode_param(item_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -909,7 +867,7 @@ class Client(OpenApiClient):
             action='GetSubtaskItem',
             version='2022-06-16',
             protocol='HTTPS',
-            pathname=f'/openapi/api/v1/tenants/{tenant_id}/tasks/{task_id}/subtasks/{subtask_id}/items/{item_id}',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}/tasks/{OpenApiUtilClient.get_encode_param(task_id)}/subtasks/{OpenApiUtilClient.get_encode_param(subtask_id)}/items/{OpenApiUtilClient.get_encode_param(item_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -930,10 +888,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.GetSubtaskItemResponse:
-        tenant_id = OpenApiUtilClient.get_encode_param(tenant_id)
-        task_id = OpenApiUtilClient.get_encode_param(task_id)
-        subtask_id = OpenApiUtilClient.get_encode_param(subtask_id)
-        item_id = OpenApiUtilClient.get_encode_param(item_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -941,7 +895,7 @@ class Client(OpenApiClient):
             action='GetSubtaskItem',
             version='2022-06-16',
             protocol='HTTPS',
-            pathname=f'/openapi/api/v1/tenants/{tenant_id}/tasks/{task_id}/subtasks/{subtask_id}/items/{item_id}',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}/tasks/{OpenApiUtilClient.get_encode_param(task_id)}/subtasks/{OpenApiUtilClient.get_encode_param(subtask_id)}/items/{OpenApiUtilClient.get_encode_param(item_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -978,8 +932,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.GetTaskResponse:
-        tenant_id = OpenApiUtilClient.get_encode_param(tenant_id)
-        task_id = OpenApiUtilClient.get_encode_param(task_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -987,7 +939,7 @@ class Client(OpenApiClient):
             action='GetTask',
             version='2022-06-16',
             protocol='HTTPS',
-            pathname=f'/openapi/api/v1/tenants/{tenant_id}/tasks/{task_id}',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}/tasks/{OpenApiUtilClient.get_encode_param(task_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1006,8 +958,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.GetTaskResponse:
-        tenant_id = OpenApiUtilClient.get_encode_param(tenant_id)
-        task_id = OpenApiUtilClient.get_encode_param(task_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1015,7 +965,7 @@ class Client(OpenApiClient):
             action='GetTask',
             version='2022-06-16',
             protocol='HTTPS',
-            pathname=f'/openapi/api/v1/tenants/{tenant_id}/tasks/{task_id}',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}/tasks/{OpenApiUtilClient.get_encode_param(task_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1056,8 +1006,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.GetTaskStatisticsResponse:
         UtilClient.validate_model(request)
-        tenant_id = OpenApiUtilClient.get_encode_param(tenant_id)
-        task_id = OpenApiUtilClient.get_encode_param(task_id)
         query = {}
         if not UtilClient.is_unset(request.stat_type):
             query['StatType'] = request.stat_type
@@ -1069,7 +1017,7 @@ class Client(OpenApiClient):
             action='GetTaskStatistics',
             version='2022-06-16',
             protocol='HTTPS',
-            pathname=f'/openapi/api/v1/tenants/{tenant_id}/tasks/{task_id}/statistics',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}/tasks/{OpenApiUtilClient.get_encode_param(task_id)}/statistics',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1090,8 +1038,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.GetTaskStatisticsResponse:
         UtilClient.validate_model(request)
-        tenant_id = OpenApiUtilClient.get_encode_param(tenant_id)
-        task_id = OpenApiUtilClient.get_encode_param(task_id)
         query = {}
         if not UtilClient.is_unset(request.stat_type):
             query['StatType'] = request.stat_type
@@ -1103,7 +1049,7 @@ class Client(OpenApiClient):
             action='GetTaskStatistics',
             version='2022-06-16',
             protocol='HTTPS',
-            pathname=f'/openapi/api/v1/tenants/{tenant_id}/tasks/{task_id}/statistics',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}/tasks/{OpenApiUtilClient.get_encode_param(task_id)}/statistics',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1140,8 +1086,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.GetTaskStatusResponse:
-        tenant_id = OpenApiUtilClient.get_encode_param(tenant_id)
-        task_id = OpenApiUtilClient.get_encode_param(task_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1149,7 +1093,7 @@ class Client(OpenApiClient):
             action='GetTaskStatus',
             version='2022-06-16',
             protocol='HTTPS',
-            pathname=f'/openapi/api/v1/tenants/{tenant_id}/tasks/{task_id}/status',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}/tasks/{OpenApiUtilClient.get_encode_param(task_id)}/status',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1168,8 +1112,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.GetTaskStatusResponse:
-        tenant_id = OpenApiUtilClient.get_encode_param(tenant_id)
-        task_id = OpenApiUtilClient.get_encode_param(task_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1177,7 +1119,7 @@ class Client(OpenApiClient):
             action='GetTaskStatus',
             version='2022-06-16',
             protocol='HTTPS',
-            pathname=f'/openapi/api/v1/tenants/{tenant_id}/tasks/{task_id}/status',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}/tasks/{OpenApiUtilClient.get_encode_param(task_id)}/status',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1214,8 +1156,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.GetTaskTemplateResponse:
-        tenant_id = OpenApiUtilClient.get_encode_param(tenant_id)
-        task_id = OpenApiUtilClient.get_encode_param(task_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1223,7 +1163,7 @@ class Client(OpenApiClient):
             action='GetTaskTemplate',
             version='2022-06-16',
             protocol='HTTPS',
-            pathname=f'/openapi/api/v1/tenants/{tenant_id}/tasks/{task_id}/template',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}/tasks/{OpenApiUtilClient.get_encode_param(task_id)}/template',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1242,8 +1182,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.GetTaskTemplateResponse:
-        tenant_id = OpenApiUtilClient.get_encode_param(tenant_id)
-        task_id = OpenApiUtilClient.get_encode_param(task_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1251,7 +1189,7 @@ class Client(OpenApiClient):
             action='GetTaskTemplate',
             version='2022-06-16',
             protocol='HTTPS',
-            pathname=f'/openapi/api/v1/tenants/{tenant_id}/tasks/{task_id}/template',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}/tasks/{OpenApiUtilClient.get_encode_param(task_id)}/template',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1288,8 +1226,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.GetTaskTemplateQuestionsResponse:
-        tenant_id = OpenApiUtilClient.get_encode_param(tenant_id)
-        task_id = OpenApiUtilClient.get_encode_param(task_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1297,7 +1233,7 @@ class Client(OpenApiClient):
             action='GetTaskTemplateQuestions',
             version='2022-06-16',
             protocol='HTTPS',
-            pathname=f'/openapi/api/v1/tenants/{tenant_id}/tasks/{task_id}/template/questions',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}/tasks/{OpenApiUtilClient.get_encode_param(task_id)}/template/questions',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1316,8 +1252,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.GetTaskTemplateQuestionsResponse:
-        tenant_id = OpenApiUtilClient.get_encode_param(tenant_id)
-        task_id = OpenApiUtilClient.get_encode_param(task_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1325,7 +1259,7 @@ class Client(OpenApiClient):
             action='GetTaskTemplateQuestions',
             version='2022-06-16',
             protocol='HTTPS',
-            pathname=f'/openapi/api/v1/tenants/{tenant_id}/tasks/{task_id}/template/questions',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}/tasks/{OpenApiUtilClient.get_encode_param(task_id)}/template/questions',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1362,8 +1296,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.GetTaskTemplateViewsResponse:
-        tenant_id = OpenApiUtilClient.get_encode_param(tenant_id)
-        task_id = OpenApiUtilClient.get_encode_param(task_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1371,7 +1303,7 @@ class Client(OpenApiClient):
             action='GetTaskTemplateViews',
             version='2022-06-16',
             protocol='HTTPS',
-            pathname=f'/openapi/api/v1/tenants/{tenant_id}/tasks/{task_id}/template/views',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}/tasks/{OpenApiUtilClient.get_encode_param(task_id)}/template/views',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1390,8 +1322,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.GetTaskTemplateViewsResponse:
-        tenant_id = OpenApiUtilClient.get_encode_param(tenant_id)
-        task_id = OpenApiUtilClient.get_encode_param(task_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1399,7 +1329,7 @@ class Client(OpenApiClient):
             action='GetTaskTemplateViews',
             version='2022-06-16',
             protocol='HTTPS',
-            pathname=f'/openapi/api/v1/tenants/{tenant_id}/tasks/{task_id}/template/views',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}/tasks/{OpenApiUtilClient.get_encode_param(task_id)}/template/views',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1436,8 +1366,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.GetTaskWorkforceResponse:
-        tenant_id = OpenApiUtilClient.get_encode_param(tenant_id)
-        task_id = OpenApiUtilClient.get_encode_param(task_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1445,7 +1373,7 @@ class Client(OpenApiClient):
             action='GetTaskWorkforce',
             version='2022-06-16',
             protocol='HTTPS',
-            pathname=f'/openapi/api/v1/tenants/{tenant_id}/tasks/{task_id}/workforce',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}/tasks/{OpenApiUtilClient.get_encode_param(task_id)}/workforce',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1464,8 +1392,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.GetTaskWorkforceResponse:
-        tenant_id = OpenApiUtilClient.get_encode_param(tenant_id)
-        task_id = OpenApiUtilClient.get_encode_param(task_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1473,7 +1399,7 @@ class Client(OpenApiClient):
             action='GetTaskWorkforce',
             version='2022-06-16',
             protocol='HTTPS',
-            pathname=f'/openapi/api/v1/tenants/{tenant_id}/tasks/{task_id}/workforce',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}/tasks/{OpenApiUtilClient.get_encode_param(task_id)}/workforce',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1514,8 +1440,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.GetTaskWorkforceStatisticResponse:
         UtilClient.validate_model(request)
-        tenant_id = OpenApiUtilClient.get_encode_param(tenant_id)
-        task_id = OpenApiUtilClient.get_encode_param(task_id)
         query = {}
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
@@ -1531,7 +1455,7 @@ class Client(OpenApiClient):
             action='GetTaskWorkforceStatistic',
             version='2022-06-16',
             protocol='HTTPS',
-            pathname=f'/openapi/api/v1/tenants/{tenant_id}/tasks/{task_id}/workforce/statistic',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}/tasks/{OpenApiUtilClient.get_encode_param(task_id)}/workforce/statistic',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1552,8 +1476,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.GetTaskWorkforceStatisticResponse:
         UtilClient.validate_model(request)
-        tenant_id = OpenApiUtilClient.get_encode_param(tenant_id)
-        task_id = OpenApiUtilClient.get_encode_param(task_id)
         query = {}
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
@@ -1569,7 +1491,7 @@ class Client(OpenApiClient):
             action='GetTaskWorkforceStatistic',
             version='2022-06-16',
             protocol='HTTPS',
-            pathname=f'/openapi/api/v1/tenants/{tenant_id}/tasks/{task_id}/workforce/statistic',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}/tasks/{OpenApiUtilClient.get_encode_param(task_id)}/workforce/statistic',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1606,8 +1528,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.GetTemplateResponse:
-        tenant_id = OpenApiUtilClient.get_encode_param(tenant_id)
-        template_id = OpenApiUtilClient.get_encode_param(template_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1615,7 +1535,7 @@ class Client(OpenApiClient):
             action='GetTemplate',
             version='2022-06-16',
             protocol='HTTPS',
-            pathname=f'/openapi/api/v1/tenants/{tenant_id}/templates/{template_id}',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}/templates/{OpenApiUtilClient.get_encode_param(template_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1634,8 +1554,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.GetTemplateResponse:
-        tenant_id = OpenApiUtilClient.get_encode_param(tenant_id)
-        template_id = OpenApiUtilClient.get_encode_param(template_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1643,7 +1561,7 @@ class Client(OpenApiClient):
             action='GetTemplate',
             version='2022-06-16',
             protocol='HTTPS',
-            pathname=f'/openapi/api/v1/tenants/{tenant_id}/templates/{template_id}',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}/templates/{OpenApiUtilClient.get_encode_param(template_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1680,8 +1598,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.GetTemplateQuestionsResponse:
-        tenant_id = OpenApiUtilClient.get_encode_param(tenant_id)
-        template_id = OpenApiUtilClient.get_encode_param(template_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1689,7 +1605,7 @@ class Client(OpenApiClient):
             action='GetTemplateQuestions',
             version='2022-06-16',
             protocol='HTTPS',
-            pathname=f'/openapi/api/v1/tenants/{tenant_id}/templates/{template_id}/questions',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}/templates/{OpenApiUtilClient.get_encode_param(template_id)}/questions',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1708,8 +1624,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.GetTemplateQuestionsResponse:
-        tenant_id = OpenApiUtilClient.get_encode_param(tenant_id)
-        template_id = OpenApiUtilClient.get_encode_param(template_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1717,7 +1631,7 @@ class Client(OpenApiClient):
             action='GetTemplateQuestions',
             version='2022-06-16',
             protocol='HTTPS',
-            pathname=f'/openapi/api/v1/tenants/{tenant_id}/templates/{template_id}/questions',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}/templates/{OpenApiUtilClient.get_encode_param(template_id)}/questions',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1754,8 +1668,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.GetTemplateViewResponse:
-        tenant_id = OpenApiUtilClient.get_encode_param(tenant_id)
-        template_id = OpenApiUtilClient.get_encode_param(template_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1763,7 +1675,7 @@ class Client(OpenApiClient):
             action='GetTemplateView',
             version='2022-06-16',
             protocol='HTTPS',
-            pathname=f'/openapi/api/v1/tenants/{tenant_id}/templates/{template_id}/views',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}/templates/{OpenApiUtilClient.get_encode_param(template_id)}/views',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1782,8 +1694,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.GetTemplateViewResponse:
-        tenant_id = OpenApiUtilClient.get_encode_param(tenant_id)
-        template_id = OpenApiUtilClient.get_encode_param(template_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1791,7 +1701,7 @@ class Client(OpenApiClient):
             action='GetTemplateView',
             version='2022-06-16',
             protocol='HTTPS',
-            pathname=f'/openapi/api/v1/tenants/{tenant_id}/templates/{template_id}/views',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}/templates/{OpenApiUtilClient.get_encode_param(template_id)}/views',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1825,7 +1735,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.GetTenantResponse:
-        tenant_id = OpenApiUtilClient.get_encode_param(tenant_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1833,7 +1742,7 @@ class Client(OpenApiClient):
             action='GetTenant',
             version='2022-06-16',
             protocol='HTTPS',
-            pathname=f'/openapi/api/v1/tenants/{tenant_id}',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1851,7 +1760,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.GetTenantResponse:
-        tenant_id = OpenApiUtilClient.get_encode_param(tenant_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1859,7 +1767,7 @@ class Client(OpenApiClient):
             action='GetTenant',
             version='2022-06-16',
             protocol='HTTPS',
-            pathname=f'/openapi/api/v1/tenants/{tenant_id}',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1896,8 +1804,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.GetUserResponse:
-        tenant_id = OpenApiUtilClient.get_encode_param(tenant_id)
-        user_id = OpenApiUtilClient.get_encode_param(user_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1905,7 +1811,7 @@ class Client(OpenApiClient):
             action='GetUser',
             version='2022-06-16',
             protocol='HTTPS',
-            pathname=f'/openapi/api/v1/tenants/{tenant_id}/users/{user_id}',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}/users/{OpenApiUtilClient.get_encode_param(user_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1924,8 +1830,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.GetUserResponse:
-        tenant_id = OpenApiUtilClient.get_encode_param(tenant_id)
-        user_id = OpenApiUtilClient.get_encode_param(user_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1933,7 +1837,7 @@ class Client(OpenApiClient):
             action='GetUser',
             version='2022-06-16',
             protocol='HTTPS',
-            pathname=f'/openapi/api/v1/tenants/{tenant_id}/users/{user_id}',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}/users/{OpenApiUtilClient.get_encode_param(user_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1971,7 +1875,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.ListJobsResponse:
         UtilClient.validate_model(request)
-        tenant_id = OpenApiUtilClient.get_encode_param(tenant_id)
         query = {}
         if not UtilClient.is_unset(request.job_type):
             query['JobType'] = request.job_type
@@ -1987,7 +1890,7 @@ class Client(OpenApiClient):
             action='ListJobs',
             version='2022-06-16',
             protocol='HTTPS',
-            pathname=f'/openapi/api/v1/tenants/{tenant_id}/jobs',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}/jobs',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2007,7 +1910,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.ListJobsResponse:
         UtilClient.validate_model(request)
-        tenant_id = OpenApiUtilClient.get_encode_param(tenant_id)
         query = {}
         if not UtilClient.is_unset(request.job_type):
             query['JobType'] = request.job_type
@@ -2023,7 +1925,7 @@ class Client(OpenApiClient):
             action='ListJobs',
             version='2022-06-16',
             protocol='HTTPS',
-            pathname=f'/openapi/api/v1/tenants/{tenant_id}/jobs',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}/jobs',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2067,9 +1969,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.ListSubtaskItemsResponse:
         UtilClient.validate_model(request)
-        tenant_id = OpenApiUtilClient.get_encode_param(tenant_id)
-        task_id = OpenApiUtilClient.get_encode_param(task_id)
-        subtask_id = OpenApiUtilClient.get_encode_param(subtask_id)
         query = {}
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
@@ -2083,7 +1982,7 @@ class Client(OpenApiClient):
             action='ListSubtaskItems',
             version='2022-06-16',
             protocol='HTTPS',
-            pathname=f'/openapi/api/v1/tenants/{tenant_id}/tasks/{task_id}/subtasks/{subtask_id}/items',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}/tasks/{OpenApiUtilClient.get_encode_param(task_id)}/subtasks/{OpenApiUtilClient.get_encode_param(subtask_id)}/items',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2105,9 +2004,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.ListSubtaskItemsResponse:
         UtilClient.validate_model(request)
-        tenant_id = OpenApiUtilClient.get_encode_param(tenant_id)
-        task_id = OpenApiUtilClient.get_encode_param(task_id)
-        subtask_id = OpenApiUtilClient.get_encode_param(subtask_id)
         query = {}
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
@@ -2121,7 +2017,7 @@ class Client(OpenApiClient):
             action='ListSubtaskItems',
             version='2022-06-16',
             protocol='HTTPS',
-            pathname=f'/openapi/api/v1/tenants/{tenant_id}/tasks/{task_id}/subtasks/{subtask_id}/items',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}/tasks/{OpenApiUtilClient.get_encode_param(task_id)}/subtasks/{OpenApiUtilClient.get_encode_param(subtask_id)}/items',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2162,8 +2058,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.ListSubtasksResponse:
         UtilClient.validate_model(request)
-        tenant_id = OpenApiUtilClient.get_encode_param(tenant_id)
-        task_id = OpenApiUtilClient.get_encode_param(task_id)
         query = {}
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
@@ -2177,7 +2071,7 @@ class Client(OpenApiClient):
             action='ListSubtasks',
             version='2022-06-16',
             protocol='HTTPS',
-            pathname=f'/openapi/api/v1/tenants/{tenant_id}/tasks/{task_id}/subtasks',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}/tasks/{OpenApiUtilClient.get_encode_param(task_id)}/subtasks',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2198,8 +2092,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.ListSubtasksResponse:
         UtilClient.validate_model(request)
-        tenant_id = OpenApiUtilClient.get_encode_param(tenant_id)
-        task_id = OpenApiUtilClient.get_encode_param(task_id)
         query = {}
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
@@ -2213,7 +2105,7 @@ class Client(OpenApiClient):
             action='ListSubtasks',
             version='2022-06-16',
             protocol='HTTPS',
-            pathname=f'/openapi/api/v1/tenants/{tenant_id}/tasks/{task_id}/subtasks',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}/tasks/{OpenApiUtilClient.get_encode_param(task_id)}/subtasks',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2251,7 +2143,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.ListTasksResponse:
         UtilClient.validate_model(request)
-        tenant_id = OpenApiUtilClient.get_encode_param(tenant_id)
         query = {}
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
@@ -2265,7 +2156,7 @@ class Client(OpenApiClient):
             action='ListTasks',
             version='2022-06-16',
             protocol='HTTPS',
-            pathname=f'/openapi/api/v1/tenants/{tenant_id}/tasks',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}/tasks',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2285,7 +2176,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.ListTasksResponse:
         UtilClient.validate_model(request)
-        tenant_id = OpenApiUtilClient.get_encode_param(tenant_id)
         query = {}
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
@@ -2299,7 +2189,7 @@ class Client(OpenApiClient):
             action='ListTasks',
             version='2022-06-16',
             protocol='HTTPS',
-            pathname=f'/openapi/api/v1/tenants/{tenant_id}/tasks',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}/tasks',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2332,12 +2222,15 @@ class Client(OpenApiClient):
     def list_templates_with_options(
         self,
         tenant_id: str,
-        request: open_itag_20220616_models.ListTemplatesRequest,
+        tmp_req: open_itag_20220616_models.ListTemplatesRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.ListTemplatesResponse:
-        UtilClient.validate_model(request)
-        tenant_id = OpenApiUtilClient.get_encode_param(tenant_id)
+        UtilClient.validate_model(tmp_req)
+        request = open_itag_20220616_models.ListTemplatesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.types):
+            request.types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.types, 'Types', 'simple')
         query = {}
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
@@ -2345,6 +2238,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.search_key):
             query['SearchKey'] = request.search_key
+        if not UtilClient.is_unset(request.types_shrink):
+            query['Types'] = request.types_shrink
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -2353,7 +2248,7 @@ class Client(OpenApiClient):
             action='ListTemplates',
             version='2022-06-16',
             protocol='HTTPS',
-            pathname=f'/openapi/api/v1/tenants/{tenant_id}/templates',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}/templates',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2368,12 +2263,15 @@ class Client(OpenApiClient):
     async def list_templates_with_options_async(
         self,
         tenant_id: str,
-        request: open_itag_20220616_models.ListTemplatesRequest,
+        tmp_req: open_itag_20220616_models.ListTemplatesRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.ListTemplatesResponse:
-        UtilClient.validate_model(request)
-        tenant_id = OpenApiUtilClient.get_encode_param(tenant_id)
+        UtilClient.validate_model(tmp_req)
+        request = open_itag_20220616_models.ListTemplatesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.types):
+            request.types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.types, 'Types', 'simple')
         query = {}
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
@@ -2381,6 +2279,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.search_key):
             query['SearchKey'] = request.search_key
+        if not UtilClient.is_unset(request.types_shrink):
+            query['Types'] = request.types_shrink
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -2389,7 +2289,7 @@ class Client(OpenApiClient):
             action='ListTemplates',
             version='2022-06-16',
             protocol='HTTPS',
-            pathname=f'/openapi/api/v1/tenants/{tenant_id}/templates',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}/templates',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2507,7 +2407,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.ListUsersResponse:
         UtilClient.validate_model(request)
-        tenant_id = OpenApiUtilClient.get_encode_param(tenant_id)
         query = {}
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
@@ -2521,7 +2420,7 @@ class Client(OpenApiClient):
             action='ListUsers',
             version='2022-06-16',
             protocol='HTTPS',
-            pathname=f'/openapi/api/v1/tenants/{tenant_id}/users',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}/users',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2541,7 +2440,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.ListUsersResponse:
         UtilClient.validate_model(request)
-        tenant_id = OpenApiUtilClient.get_encode_param(tenant_id)
         query = {}
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
@@ -2555,7 +2453,7 @@ class Client(OpenApiClient):
             action='ListUsers',
             version='2022-06-16',
             protocol='HTTPS',
-            pathname=f'/openapi/api/v1/tenants/{tenant_id}/users',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}/users',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2599,9 +2497,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.RemoveWorkNodeWorkforceResponse:
         UtilClient.validate_model(request)
-        tenant_id = OpenApiUtilClient.get_encode_param(tenant_id)
-        task_id = OpenApiUtilClient.get_encode_param(task_id)
-        work_node_id = OpenApiUtilClient.get_encode_param(work_node_id)
         body = {}
         if not UtilClient.is_unset(request.user_ids):
             body['UserIds'] = request.user_ids
@@ -2613,7 +2508,7 @@ class Client(OpenApiClient):
             action='RemoveWorkNodeWorkforce',
             version='2022-06-16',
             protocol='HTTPS',
-            pathname=f'/openapi/api/v1/tenants/{tenant_id}/tasks/{task_id}/worknodes/{work_node_id}/workforce',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}/tasks/{OpenApiUtilClient.get_encode_param(task_id)}/worknodes/{OpenApiUtilClient.get_encode_param(work_node_id)}/workforce',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -2635,9 +2530,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.RemoveWorkNodeWorkforceResponse:
         UtilClient.validate_model(request)
-        tenant_id = OpenApiUtilClient.get_encode_param(tenant_id)
-        task_id = OpenApiUtilClient.get_encode_param(task_id)
-        work_node_id = OpenApiUtilClient.get_encode_param(work_node_id)
         body = {}
         if not UtilClient.is_unset(request.user_ids):
             body['UserIds'] = request.user_ids
@@ -2649,7 +2541,7 @@ class Client(OpenApiClient):
             action='RemoveWorkNodeWorkforce',
             version='2022-06-16',
             protocol='HTTPS',
-            pathname=f'/openapi/api/v1/tenants/{tenant_id}/tasks/{task_id}/worknodes/{work_node_id}/workforce',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}/tasks/{OpenApiUtilClient.get_encode_param(task_id)}/worknodes/{OpenApiUtilClient.get_encode_param(work_node_id)}/workforce',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -2690,8 +2582,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.UpdateTaskResponse:
         UtilClient.validate_model(request)
-        tenant_id = OpenApiUtilClient.get_encode_param(tenant_id)
-        task_id = OpenApiUtilClient.get_encode_param(task_id)
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(TeaCore.to_map(request.body))
@@ -2700,7 +2590,7 @@ class Client(OpenApiClient):
             action='UpdateTask',
             version='2022-06-16',
             protocol='HTTPS',
-            pathname=f'/openapi/api/v1/tenants/{tenant_id}/tasks/{task_id}',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}/tasks/{OpenApiUtilClient.get_encode_param(task_id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -2721,8 +2611,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.UpdateTaskResponse:
         UtilClient.validate_model(request)
-        tenant_id = OpenApiUtilClient.get_encode_param(tenant_id)
-        task_id = OpenApiUtilClient.get_encode_param(task_id)
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(TeaCore.to_map(request.body))
@@ -2731,7 +2619,7 @@ class Client(OpenApiClient):
             action='UpdateTask',
             version='2022-06-16',
             protocol='HTTPS',
-            pathname=f'/openapi/api/v1/tenants/{tenant_id}/tasks/{task_id}',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}/tasks/{OpenApiUtilClient.get_encode_param(task_id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -2772,8 +2660,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.UpdateTaskWorkforceResponse:
         UtilClient.validate_model(request)
-        tenant_id = OpenApiUtilClient.get_encode_param(tenant_id)
-        task_id = OpenApiUtilClient.get_encode_param(task_id)
         body = {}
         if not UtilClient.is_unset(request.workforce):
             body['Workforce'] = request.workforce
@@ -2785,7 +2671,7 @@ class Client(OpenApiClient):
             action='UpdateTaskWorkforce',
             version='2022-06-16',
             protocol='HTTPS',
-            pathname=f'/openapi/api/v1/tenants/{tenant_id}/tasks/{task_id}/workforce',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}/tasks/{OpenApiUtilClient.get_encode_param(task_id)}/workforce',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -2806,8 +2692,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.UpdateTaskWorkforceResponse:
         UtilClient.validate_model(request)
-        tenant_id = OpenApiUtilClient.get_encode_param(tenant_id)
-        task_id = OpenApiUtilClient.get_encode_param(task_id)
         body = {}
         if not UtilClient.is_unset(request.workforce):
             body['Workforce'] = request.workforce
@@ -2819,7 +2703,7 @@ class Client(OpenApiClient):
             action='UpdateTaskWorkforce',
             version='2022-06-16',
             protocol='HTTPS',
-            pathname=f'/openapi/api/v1/tenants/{tenant_id}/tasks/{task_id}/workforce',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}/tasks/{OpenApiUtilClient.get_encode_param(task_id)}/workforce',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -2860,8 +2744,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.UpdateTemplateResponse:
         UtilClient.validate_model(request)
-        tenant_id = OpenApiUtilClient.get_encode_param(tenant_id)
-        template_id = OpenApiUtilClient.get_encode_param(template_id)
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(TeaCore.to_map(request.body))
@@ -2870,7 +2752,7 @@ class Client(OpenApiClient):
             action='UpdateTemplate',
             version='2022-06-16',
             protocol='HTTPS',
-            pathname=f'/openapi/api/v1/tenants/{tenant_id}/templates/{template_id}',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}/templates/{OpenApiUtilClient.get_encode_param(template_id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -2891,8 +2773,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.UpdateTemplateResponse:
         UtilClient.validate_model(request)
-        tenant_id = OpenApiUtilClient.get_encode_param(tenant_id)
-        template_id = OpenApiUtilClient.get_encode_param(template_id)
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(TeaCore.to_map(request.body))
@@ -2901,7 +2781,7 @@ class Client(OpenApiClient):
             action='UpdateTemplate',
             version='2022-06-16',
             protocol='HTTPS',
-            pathname=f'/openapi/api/v1/tenants/{tenant_id}/templates/{template_id}',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}/templates/{OpenApiUtilClient.get_encode_param(template_id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -2939,7 +2819,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.UpdateTenantResponse:
         UtilClient.validate_model(request)
-        tenant_id = OpenApiUtilClient.get_encode_param(tenant_id)
         body = {}
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
@@ -2953,7 +2832,7 @@ class Client(OpenApiClient):
             action='UpdateTenant',
             version='2022-06-16',
             protocol='HTTPS',
-            pathname=f'/openapi/api/v1/tenants/{tenant_id}',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -2973,7 +2852,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.UpdateTenantResponse:
         UtilClient.validate_model(request)
-        tenant_id = OpenApiUtilClient.get_encode_param(tenant_id)
         body = {}
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
@@ -2987,7 +2865,7 @@ class Client(OpenApiClient):
             action='UpdateTenant',
             version='2022-06-16',
             protocol='HTTPS',
-            pathname=f'/openapi/api/v1/tenants/{tenant_id}',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -3028,8 +2906,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.UpdateUserResponse:
         UtilClient.validate_model(request)
-        tenant_id = OpenApiUtilClient.get_encode_param(tenant_id)
-        user_id = OpenApiUtilClient.get_encode_param(user_id)
         body = {}
         if not UtilClient.is_unset(request.role):
             body['Role'] = request.role
@@ -3043,7 +2919,7 @@ class Client(OpenApiClient):
             action='UpdateUser',
             version='2022-06-16',
             protocol='HTTPS',
-            pathname=f'/openapi/api/v1/tenants/{tenant_id}/users/{user_id}',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}/users/{OpenApiUtilClient.get_encode_param(user_id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -3064,8 +2940,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_itag_20220616_models.UpdateUserResponse:
         UtilClient.validate_model(request)
-        tenant_id = OpenApiUtilClient.get_encode_param(tenant_id)
-        user_id = OpenApiUtilClient.get_encode_param(user_id)
         body = {}
         if not UtilClient.is_unset(request.role):
             body['Role'] = request.role
@@ -3079,7 +2953,7 @@ class Client(OpenApiClient):
             action='UpdateUser',
             version='2022-06-16',
             protocol='HTTPS',
-            pathname=f'/openapi/api/v1/tenants/{tenant_id}/users/{user_id}',
+            pathname=f'/openapi/api/v1/tenants/{OpenApiUtilClient.get_encode_param(tenant_id)}/users/{OpenApiUtilClient.get_encode_param(user_id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
