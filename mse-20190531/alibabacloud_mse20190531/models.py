@@ -495,6 +495,7 @@ class AddAuthResourceRequest(TeaModel):
         auth_id: int = None,
         domain_id: int = None,
         gateway_unique_id: str = None,
+        match_type: str = None,
         mse_session_id: str = None,
         path: str = None,
     ):
@@ -502,6 +503,7 @@ class AddAuthResourceRequest(TeaModel):
         self.auth_id = auth_id
         self.domain_id = domain_id
         self.gateway_unique_id = gateway_unique_id
+        self.match_type = match_type
         self.mse_session_id = mse_session_id
         self.path = path
 
@@ -522,6 +524,8 @@ class AddAuthResourceRequest(TeaModel):
             result['DomainId'] = self.domain_id
         if self.gateway_unique_id is not None:
             result['GatewayUniqueId'] = self.gateway_unique_id
+        if self.match_type is not None:
+            result['MatchType'] = self.match_type
         if self.mse_session_id is not None:
             result['MseSessionId'] = self.mse_session_id
         if self.path is not None:
@@ -538,6 +542,8 @@ class AddAuthResourceRequest(TeaModel):
             self.domain_id = m.get('DomainId')
         if m.get('GatewayUniqueId') is not None:
             self.gateway_unique_id = m.get('GatewayUniqueId')
+        if m.get('MatchType') is not None:
+            self.match_type = m.get('MatchType')
         if m.get('MseSessionId') is not None:
             self.mse_session_id = m.get('MseSessionId')
         if m.get('Path') is not None:

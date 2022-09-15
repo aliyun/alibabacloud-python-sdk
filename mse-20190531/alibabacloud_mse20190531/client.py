@@ -57,6 +57,8 @@ class Client(OpenApiClient):
             query['DomainId'] = request.domain_id
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.match_type):
+            query['MatchType'] = request.match_type
         if not UtilClient.is_unset(request.mse_session_id):
             query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.path):
@@ -95,6 +97,8 @@ class Client(OpenApiClient):
             query['DomainId'] = request.domain_id
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.match_type):
+            query['MatchType'] = request.match_type
         if not UtilClient.is_unset(request.mse_session_id):
             query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.path):
