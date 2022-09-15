@@ -1,3 +1,6 @@
+2022-09-15 Version: 1.0.13
+- Update Code and Message.
+
 2022-09-15 Version: 1.0.12
 - Update AccessToken AK.
 

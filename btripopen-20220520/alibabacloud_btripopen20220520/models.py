@@ -9008,17 +9008,17 @@ class DepartmentSaveShrinkRequest(TeaModel):
 class DepartmentSaveResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
+        code: int = None,
+        message: str = None,
         module: str = None,
-        result_code: int = None,
-        result_msg: str = None,
+        request_id: str = None,
         success: bool = None,
         trace_id: str = None,
     ):
-        self.request_id = request_id
+        self.code = code
+        self.message = message
         self.module = module
-        self.result_code = result_code
-        self.result_msg = result_msg
+        self.request_id = request_id
         self.success = success
         self.trace_id = trace_id
 
@@ -9031,14 +9031,14 @@ class DepartmentSaveResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
+        if self.code is not None:
+            result['code'] = self.code
+        if self.message is not None:
+            result['message'] = self.message
         if self.module is not None:
             result['module'] = self.module
-        if self.result_code is not None:
-            result['result_code'] = self.result_code
-        if self.result_msg is not None:
-            result['result_msg'] = self.result_msg
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
         if self.success is not None:
             result['success'] = self.success
         if self.trace_id is not None:
@@ -9047,14 +9047,14 @@ class DepartmentSaveResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('message') is not None:
+            self.message = m.get('message')
         if m.get('module') is not None:
             self.module = m.get('module')
-        if m.get('result_code') is not None:
-            self.result_code = m.get('result_code')
-        if m.get('result_msg') is not None:
-            self.result_msg = m.get('result_msg')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
         if m.get('success') is not None:
             self.success = m.get('success')
         if m.get('traceId') is not None:
@@ -16623,17 +16623,17 @@ class IsvUserSaveShrinkRequest(TeaModel):
 class IsvUserSaveResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
+        code: int = None,
+        message: str = None,
         module: str = None,
-        result_code: int = None,
-        result_msg: str = None,
+        request_id: str = None,
         success: bool = None,
         trace_id: str = None,
     ):
-        self.request_id = request_id
+        self.code = code
+        self.message = message
         self.module = module
-        self.result_code = result_code
-        self.result_msg = result_msg
+        self.request_id = request_id
         self.success = success
         self.trace_id = trace_id
 
@@ -16646,14 +16646,14 @@ class IsvUserSaveResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
+        if self.code is not None:
+            result['code'] = self.code
+        if self.message is not None:
+            result['message'] = self.message
         if self.module is not None:
             result['module'] = self.module
-        if self.result_code is not None:
-            result['result_code'] = self.result_code
-        if self.result_msg is not None:
-            result['result_msg'] = self.result_msg
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
         if self.success is not None:
             result['success'] = self.success
         if self.trace_id is not None:
@@ -16662,14 +16662,14 @@ class IsvUserSaveResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('message') is not None:
+            self.message = m.get('message')
         if m.get('module') is not None:
             self.module = m.get('module')
-        if m.get('result_code') is not None:
-            self.result_code = m.get('result_code')
-        if m.get('result_msg') is not None:
-            self.result_msg = m.get('result_msg')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
         if m.get('success') is not None:
             self.success = m.get('success')
         if m.get('traceId') is not None:
