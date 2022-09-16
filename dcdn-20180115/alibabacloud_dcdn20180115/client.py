@@ -4082,6 +4082,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.sslpub):
             query['SSLPub'] = request.sslpub
+        if not UtilClient.is_unset(request.sslstatus):
+            query['SSLStatus'] = request.sslstatus
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4112,6 +4114,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.sslpub):
             query['SSLPub'] = request.sslpub
+        if not UtilClient.is_unset(request.sslstatus):
+            query['SSLStatus'] = request.sslstatus
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

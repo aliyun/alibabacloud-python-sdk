@@ -6742,9 +6742,11 @@ class DescribeDcdnDomainByCertificateRequest(TeaModel):
         self,
         owner_id: int = None,
         sslpub: str = None,
+        sslstatus: bool = None,
     ):
         self.owner_id = owner_id
         self.sslpub = sslpub
+        self.sslstatus = sslstatus
 
     def validate(self):
         pass
@@ -6759,6 +6761,8 @@ class DescribeDcdnDomainByCertificateRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.sslpub is not None:
             result['SSLPub'] = self.sslpub
+        if self.sslstatus is not None:
+            result['SSLStatus'] = self.sslstatus
         return result
 
     def from_map(self, m: dict = None):
@@ -6767,6 +6771,8 @@ class DescribeDcdnDomainByCertificateRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('SSLPub') is not None:
             self.sslpub = m.get('SSLPub')
+        if m.get('SSLStatus') is not None:
+            self.sslstatus = m.get('SSLStatus')
         return self
 
 
@@ -20302,7 +20308,7 @@ class DescribeDcdnReportRequest(TeaModel):
 class DescribeDcdnReportResponseBody(TeaModel):
     def __init__(
         self,
-        content: str = None,
+        content: Dict[str, Any] = None,
         request_id: str = None,
     ):
         self.content = content
