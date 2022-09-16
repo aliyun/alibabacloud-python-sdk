@@ -9043,6 +9043,140 @@ class CopyThingModelResponse(TeaModel):
         return self
 
 
+class CountSpeechBroadcastHourRequest(TeaModel):
+    def __init__(
+        self,
+        iot_instance_id: str = None,
+        query_date_time_hour: str = None,
+        share_task_code: str = None,
+    ):
+        self.iot_instance_id = iot_instance_id
+        self.query_date_time_hour = query_date_time_hour
+        self.share_task_code = share_task_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.iot_instance_id is not None:
+            result['IotInstanceId'] = self.iot_instance_id
+        if self.query_date_time_hour is not None:
+            result['QueryDateTimeHour'] = self.query_date_time_hour
+        if self.share_task_code is not None:
+            result['ShareTaskCode'] = self.share_task_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IotInstanceId') is not None:
+            self.iot_instance_id = m.get('IotInstanceId')
+        if m.get('QueryDateTimeHour') is not None:
+            self.query_date_time_hour = m.get('QueryDateTimeHour')
+        if m.get('ShareTaskCode') is not None:
+            self.share_task_code = m.get('ShareTaskCode')
+        return self
+
+
+class CountSpeechBroadcastHourResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: int = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.error_message = error_message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CountSpeechBroadcastHourResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CountSpeechBroadcastHourResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CountSpeechBroadcastHourResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateConsumerGroupRequest(TeaModel):
     def __init__(
         self,
@@ -24759,6 +24893,7 @@ class GetDestinationResponseBodyDestination(TeaModel):
         destination_id: str = None,
         is_failover: bool = None,
         name: str = None,
+        status: str = None,
         type: str = None,
         utc_created: str = None,
     ):
@@ -24766,6 +24901,7 @@ class GetDestinationResponseBodyDestination(TeaModel):
         self.destination_id = destination_id
         self.is_failover = is_failover
         self.name = name
+        self.status = status
         self.type = type
         self.utc_created = utc_created
 
@@ -24786,6 +24922,8 @@ class GetDestinationResponseBodyDestination(TeaModel):
             result['IsFailover'] = self.is_failover
         if self.name is not None:
             result['Name'] = self.name
+        if self.status is not None:
+            result['Status'] = self.status
         if self.type is not None:
             result['Type'] = self.type
         if self.utc_created is not None:
@@ -24802,6 +24940,8 @@ class GetDestinationResponseBodyDestination(TeaModel):
             self.is_failover = m.get('IsFailover')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         if m.get('Type') is not None:
             self.type = m.get('Type')
         if m.get('UtcCreated') is not None:
@@ -32978,6 +33118,7 @@ class ListDestinationResponseBodyDestinationsDestinations(TeaModel):
         destination_id: int = None,
         is_failover: bool = None,
         name: str = None,
+        status: str = None,
         type: str = None,
         utc_created: str = None,
     ):
@@ -32986,6 +33127,7 @@ class ListDestinationResponseBodyDestinationsDestinations(TeaModel):
         self.destination_id = destination_id
         self.is_failover = is_failover
         self.name = name
+        self.status = status
         self.type = type
         self.utc_created = utc_created
 
@@ -33008,6 +33150,8 @@ class ListDestinationResponseBodyDestinationsDestinations(TeaModel):
             result['IsFailover'] = self.is_failover
         if self.name is not None:
             result['Name'] = self.name
+        if self.status is not None:
+            result['Status'] = self.status
         if self.type is not None:
             result['Type'] = self.type
         if self.utc_created is not None:
@@ -33026,6 +33170,8 @@ class ListDestinationResponseBodyDestinationsDestinations(TeaModel):
             self.is_failover = m.get('IsFailover')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         if m.get('Type') is not None:
             self.type = m.get('Type')
         if m.get('UtcCreated') is not None:
@@ -38140,12 +38286,14 @@ class ListRuleActionsResponseBodyRuleActionListRuleActionInfo(TeaModel):
         error_action_flag: bool = None,
         id: int = None,
         rule_id: int = None,
+        status: str = None,
         type: str = None,
     ):
         self.configuration = configuration
         self.error_action_flag = error_action_flag
         self.id = id
         self.rule_id = rule_id
+        self.status = status
         self.type = type
 
     def validate(self):
@@ -38165,6 +38313,8 @@ class ListRuleActionsResponseBodyRuleActionListRuleActionInfo(TeaModel):
             result['Id'] = self.id
         if self.rule_id is not None:
             result['RuleId'] = self.rule_id
+        if self.status is not None:
+            result['Status'] = self.status
         if self.type is not None:
             result['Type'] = self.type
         return result
@@ -38179,6 +38329,8 @@ class ListRuleActionsResponseBodyRuleActionListRuleActionInfo(TeaModel):
             self.id = m.get('Id')
         if m.get('RuleId') is not None:
             self.rule_id = m.get('RuleId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         if m.get('Type') is not None:
             self.type = m.get('Type')
         return self
@@ -39736,6 +39888,311 @@ class PageQuerySharedSpeechOpenResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = PageQuerySharedSpeechOpenResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class PageQuerySpeechBroadcastHourRequest(TeaModel):
+    def __init__(
+        self,
+        iot_instance_id: str = None,
+        page_size: int = None,
+        page_token: str = None,
+        query_date_time_hour: str = None,
+        share_task_code: str = None,
+    ):
+        self.iot_instance_id = iot_instance_id
+        self.page_size = page_size
+        self.page_token = page_token
+        self.query_date_time_hour = query_date_time_hour
+        self.share_task_code = share_task_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.iot_instance_id is not None:
+            result['IotInstanceId'] = self.iot_instance_id
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.page_token is not None:
+            result['PageToken'] = self.page_token
+        if self.query_date_time_hour is not None:
+            result['QueryDateTimeHour'] = self.query_date_time_hour
+        if self.share_task_code is not None:
+            result['ShareTaskCode'] = self.share_task_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IotInstanceId') is not None:
+            self.iot_instance_id = m.get('IotInstanceId')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('PageToken') is not None:
+            self.page_token = m.get('PageToken')
+        if m.get('QueryDateTimeHour') is not None:
+            self.query_date_time_hour = m.get('QueryDateTimeHour')
+        if m.get('ShareTaskCode') is not None:
+            self.share_task_code = m.get('ShareTaskCode')
+        return self
+
+
+class PageQuerySpeechBroadcastHourResponseBodyDataResultDataData(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        device_name: str = None,
+        msg: str = None,
+        product_key: str = None,
+        share_task_code: str = None,
+        speech_id: str = None,
+        speechs: str = None,
+        start_time: int = None,
+    ):
+        self.code = code
+        self.device_name = device_name
+        self.msg = msg
+        self.product_key = product_key
+        self.share_task_code = share_task_code
+        self.speech_id = speech_id
+        self.speechs = speechs
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.device_name is not None:
+            result['DeviceName'] = self.device_name
+        if self.msg is not None:
+            result['Msg'] = self.msg
+        if self.product_key is not None:
+            result['ProductKey'] = self.product_key
+        if self.share_task_code is not None:
+            result['ShareTaskCode'] = self.share_task_code
+        if self.speech_id is not None:
+            result['SpeechId'] = self.speech_id
+        if self.speechs is not None:
+            result['Speechs'] = self.speechs
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('DeviceName') is not None:
+            self.device_name = m.get('DeviceName')
+        if m.get('Msg') is not None:
+            self.msg = m.get('Msg')
+        if m.get('ProductKey') is not None:
+            self.product_key = m.get('ProductKey')
+        if m.get('ShareTaskCode') is not None:
+            self.share_task_code = m.get('ShareTaskCode')
+        if m.get('SpeechId') is not None:
+            self.speech_id = m.get('SpeechId')
+        if m.get('Speechs') is not None:
+            self.speechs = m.get('Speechs')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class PageQuerySpeechBroadcastHourResponseBodyDataResultData(TeaModel):
+    def __init__(
+        self,
+        data: List[PageQuerySpeechBroadcastHourResponseBodyDataResultDataData] = None,
+    ):
+        self.data = data
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = PageQuerySpeechBroadcastHourResponseBodyDataResultDataData()
+                self.data.append(temp_model.from_map(k))
+        return self
+
+
+class PageQuerySpeechBroadcastHourResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        page_id: int = None,
+        page_size: int = None,
+        page_token: str = None,
+        result_data: PageQuerySpeechBroadcastHourResponseBodyDataResultData = None,
+        total: int = None,
+    ):
+        self.page_id = page_id
+        self.page_size = page_size
+        self.page_token = page_token
+        self.result_data = result_data
+        self.total = total
+
+    def validate(self):
+        if self.result_data:
+            self.result_data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_id is not None:
+            result['PageId'] = self.page_id
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.page_token is not None:
+            result['PageToken'] = self.page_token
+        if self.result_data is not None:
+            result['ResultData'] = self.result_data.to_map()
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageId') is not None:
+            self.page_id = m.get('PageId')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('PageToken') is not None:
+            self.page_token = m.get('PageToken')
+        if m.get('ResultData') is not None:
+            temp_model = PageQuerySpeechBroadcastHourResponseBodyDataResultData()
+            self.result_data = temp_model.from_map(m['ResultData'])
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class PageQuerySpeechBroadcastHourResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: PageQuerySpeechBroadcastHourResponseBodyData = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.error_message = error_message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = PageQuerySpeechBroadcastHourResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class PageQuerySpeechBroadcastHourResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: PageQuerySpeechBroadcastHourResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = PageQuerySpeechBroadcastHourResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
