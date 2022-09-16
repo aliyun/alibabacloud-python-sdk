@@ -1,3 +1,6 @@
+2022-09-16 Version: 2.0.13
+- Support remote coordinate control.
+
 2022-09-05 Version: 2.0.11
 - PolicyGroup support appContentProtection and recordContent.
 
