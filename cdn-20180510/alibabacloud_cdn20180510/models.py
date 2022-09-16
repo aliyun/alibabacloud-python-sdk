@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, List
+from typing import Dict, List, Any
 
 
 class AddCdnDomainRequest(TeaModel):
@@ -4366,9 +4366,11 @@ class DescribeCdnDomainByCertificateRequest(TeaModel):
         self,
         owner_id: int = None,
         sslpub: str = None,
+        sslstatus: bool = None,
     ):
         self.owner_id = owner_id
         self.sslpub = sslpub
+        self.sslstatus = sslstatus
 
     def validate(self):
         pass
@@ -4383,6 +4385,8 @@ class DescribeCdnDomainByCertificateRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.sslpub is not None:
             result['SSLPub'] = self.sslpub
+        if self.sslstatus is not None:
+            result['SSLStatus'] = self.sslstatus
         return result
 
     def from_map(self, m: dict = None):
@@ -4391,6 +4395,8 @@ class DescribeCdnDomainByCertificateRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('SSLPub') is not None:
             self.sslpub = m.get('SSLPub')
+        if m.get('SSLStatus') is not None:
+            self.sslstatus = m.get('SSLStatus')
         return self
 
 
@@ -6421,7 +6427,7 @@ class DescribeCdnReportRequest(TeaModel):
 class DescribeCdnReportResponseBody(TeaModel):
     def __init__(
         self,
-        content: str = None,
+        content: Dict[str, Any] = None,
         request_id: str = None,
     ):
         self.content = content

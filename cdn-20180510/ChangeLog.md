@@ -1,3 +1,6 @@
+2022-09-16 Version: 1.1.2
+- Update DescribeCdnReport.
+
 2022-09-05 Version: 1.1.1
 - Support STS.
 
