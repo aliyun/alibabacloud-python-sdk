@@ -13,15 +13,10 @@ class ConsoleBody(TeaModel):
         request_id: str = None,
         team_hash_id: str = None,
     ):
-        # appCode
         self.app_code = app_code
-        # interfaceName
         self.interface_name = interface_name
-        # paramJson
         self.param_json = param_json
-        # requestId
         self.request_id = request_id
-        # teamHashId
         self.team_hash_id = team_hash_id
 
     def validate(self):
@@ -69,15 +64,10 @@ class FieldCondition(TeaModel):
         operate_type: str = None,
         value: str = None,
     ):
-        # 字段名称
         self.field_name = field_name
-        # 复杂查询下，嵌套子条件字段jsonPath
         self.nest_field_path = nest_field_path
-        # 复杂查询下，嵌套子条件字段值
         self.nest_field_value = nest_field_value
-        # 操作符，枚举值
         self.operate_type = operate_type
-        # 字段值，不同字段值类型不一样
         self.value = value
 
     def validate(self):
@@ -133,31 +123,18 @@ class ProductInstance(TeaModel):
         tenant_name: str = None,
         tenant_uid: str = None,
     ):
-        # 应用码
         self.app_code = app_code
-        # 购买者名称
         self.buyer_name = buyer_name
-        # 购买者账号uid
         self.buyer_uid = buyer_uid
-        # 商业化渠道码
         self.channel = channel
-        # 购买配置信息
         self.config = config
-        # 生效结束时间
         self.end = end
-        # 实例id
         self.instance_id = instance_id
-        # 订单号，幂等使用
         self.order_no = order_no
-        # 产品码
         self.product_code = product_code
-        # 规格码
         self.product_spec_code = product_spec_code
-        # 生效开始时间
         self.start = start
-        # 租户名称
         self.tenant_name = tenant_name
-        # 租户uid
         self.tenant_uid = tenant_uid
 
     def validate(self):
@@ -249,6 +226,7 @@ class SearchCondition(TeaModel):
         exclude_keyword_list: List[str] = None,
         exclude_keyword_list_in_title: List[str] = None,
         exclude_keyword_tag_ids: List[int] = None,
+        exclude_material_tag_list: List[str] = None,
         exclude_media_library_id_list: List[str] = None,
         exclude_media_name_list: List[str] = None,
         exclude_media_type_list: List[str] = None,
@@ -262,6 +240,7 @@ class SearchCondition(TeaModel):
         influence_level: int = None,
         keyword_tag_ids: List[int] = None,
         likes_level: int = None,
+        material_tag_list: List[str] = None,
         media_library_id_list: List[str] = None,
         media_name_list: List[str] = None,
         media_type_list: List[str] = None,
@@ -284,109 +263,59 @@ class SearchCondition(TeaModel):
         update_time_end: int = None,
         update_time_start: int = None,
     ):
-        # 搭配词
         self.ass_keyword_list = ass_keyword_list
-        # 被@的用户名称
         self.at_author_name_list = at_author_name_list
-        # 作者名称
         self.author_name_list = author_name_list
-        # 评论级别，1：100以内，2：100-1k，3：1k-1w以内，4：1w-10w，5，10w+\
         self.comments_level = comments_level
-        # 内容长度级别，1：100以内，2：100-1k，3：1k-1w以内，4：1w-10w，5，10w+\
         self.content_len_level = content_len_level
-        # 抓取截止时间
         self.create_time_end = create_time_end
-        # 抓取起始时间
         self.create_time_start = create_time_start
-        # 文章签名
         self.doc_content_sign = doc_content_sign
-        # 舆情文章唯一docId
         self.doc_id_list = doc_id_list
-        # 是否去重
         self.duplicate_removal = duplicate_removal
-        # 情感类型，1非负，-1负面
         self.emotion_type = emotion_type
-        # 是否高亮关键词
         self.enable_keyword_highlight = enable_keyword_highlight
-        # 排除被@的用户名称
         self.exclude_at_author_name_list = exclude_at_author_name_list
-        # 排除作者名称
         self.exclude_author_name_list = exclude_author_name_list
-        # 排除网站域名
         self.exclude_host_name_list = exclude_host_name_list
-        # 排除词
         self.exclude_keyword_list = exclude_keyword_list
-        # 标题排除词
         self.exclude_keyword_list_in_title = exclude_keyword_list_in_title
-        # 排除关键词标签Id列表
         self.exclude_keyword_tag_ids = exclude_keyword_tag_ids
-        # 排除媒体库id列表
+        self.exclude_material_tag_list = exclude_material_tag_list
         self.exclude_media_library_id_list = exclude_media_library_id_list
-        # 排除媒体名称
         self.exclude_media_name_list = exclude_media_name_list
-        # 排除媒体类型，枚举值
         self.exclude_media_type_list = exclude_media_type_list
-        # 排除消息类型，枚举值
         self.exclude_message_type_list = exclude_message_type_list
-        # 其他过滤条件
         self.field_conditions = field_conditions
-        # 高级筛选模板id
         self.filter_id = filter_id
-        # 是否含有音频
         self.has_audio = has_audio
-        # 文章是否含有图片
         self.has_image = has_image
-        # 是否含有视频
         self.has_video = has_video
-        # 网站域名
         self.host_name_list = host_name_list
-        # 影响力等级，1：低，2：中，3：高，4：低级别以上
         self.influence_level = influence_level
-        # 关键词标签Id列表
         self.keyword_tag_ids = keyword_tag_ids
-        # 点赞级别，1：100以内，2：100-1k，3：1k-1w以内，4：1w-10w，5，10w+\
         self.likes_level = likes_level
-        # 媒体库id列表
+        self.material_tag_list = material_tag_list
         self.media_library_id_list = media_library_id_list
-        # 媒体名称
         self.media_name_list = media_name_list
-        # 媒体类型，枚举值
         self.media_type_list = media_type_list
-        # 消息类型，枚举值
         self.message_type_list = message_type_list
-        # 当前页
         self.page_now = page_now
-        # 页大小
         self.page_size = page_size
-        # 舆情父文章的docId，一般用于查看某篇文章的评论
         self.parent_doc_id = parent_doc_id
-        # 关键词
         self.pos_keyword_list = pos_keyword_list
-        # 标题关键词
         self.pos_keyword_list_in_title = pos_keyword_list_in_title
-        # 舆情项目id
         self.project_id = project_id
-        # 传播度等级，1：低，2：中，3：高，4：低级别以上
         self.propagation_level = propagation_level
-        # 截止发布时间
         self.publish_time_end = publish_time_end
-        # 起始发布时间
         self.publish_time_start = publish_time_start
-        # 阅读级别，1：100以内，2：100-1k，3：1k-1w以内，4：1w-10w，5，10w+\
         self.reads_level = reads_level
-        # 相关性等级，1：低，2：中，3：高，4：低级别以上
         self.relevance_level = relevance_level
-        # 转发级别，1：100以内，2：100-1k，3：1k-1w以内，4：1w-10w，5，10w+\
         self.repost_level = repost_level
-        # 排序字段
         self.sort_by = sort_by
-        # 指定正反向排序
         self.sort_by_direction = sort_by_direction
-        # #话题
         self.topic_list = topic_list
-        # 舆情文章截止更新时间
         self.update_time_end = update_time_end
-        # 舆情文章起始更新时间
         self.update_time_start = update_time_start
 
     def validate(self):
@@ -437,6 +366,8 @@ class SearchCondition(TeaModel):
             result['excludeKeywordListInTitle'] = self.exclude_keyword_list_in_title
         if self.exclude_keyword_tag_ids is not None:
             result['excludeKeywordTagIds'] = self.exclude_keyword_tag_ids
+        if self.exclude_material_tag_list is not None:
+            result['excludeMaterialTagList'] = self.exclude_material_tag_list
         if self.exclude_media_library_id_list is not None:
             result['excludeMediaLibraryIdList'] = self.exclude_media_library_id_list
         if self.exclude_media_name_list is not None:
@@ -465,6 +396,8 @@ class SearchCondition(TeaModel):
             result['keywordTagIds'] = self.keyword_tag_ids
         if self.likes_level is not None:
             result['likesLevel'] = self.likes_level
+        if self.material_tag_list is not None:
+            result['materialTagList'] = self.material_tag_list
         if self.media_library_id_list is not None:
             result['mediaLibraryIdList'] = self.media_library_id_list
         if self.media_name_list is not None:
@@ -547,6 +480,8 @@ class SearchCondition(TeaModel):
             self.exclude_keyword_list_in_title = m.get('excludeKeywordListInTitle')
         if m.get('excludeKeywordTagIds') is not None:
             self.exclude_keyword_tag_ids = m.get('excludeKeywordTagIds')
+        if m.get('excludeMaterialTagList') is not None:
+            self.exclude_material_tag_list = m.get('excludeMaterialTagList')
         if m.get('excludeMediaLibraryIdList') is not None:
             self.exclude_media_library_id_list = m.get('excludeMediaLibraryIdList')
         if m.get('excludeMediaNameList') is not None:
@@ -576,6 +511,8 @@ class SearchCondition(TeaModel):
             self.keyword_tag_ids = m.get('keywordTagIds')
         if m.get('likesLevel') is not None:
             self.likes_level = m.get('likesLevel')
+        if m.get('materialTagList') is not None:
+            self.material_tag_list = m.get('materialTagList')
         if m.get('mediaLibraryIdList') is not None:
             self.media_library_id_list = m.get('mediaLibraryIdList')
         if m.get('mediaNameList') is not None:
@@ -690,135 +627,70 @@ class YuqingMessage(TeaModel):
         weibo_comment_id: str = None,
         weibo_mid: str = None,
     ):
-        # 应用名称
         self.app_name = app_name
-        # 应用市场评分
         self.app_score = app_score
-        # 应用市场名称
         self.app_store_name = app_store_name
-        # 提及到的用户列表
         self.at_author_names = at_author_names
-        # 音频数
         self.audio_count = audio_count
-        # 作者头像地址
         self.author_avatar_url = author_avatar_url
-        # 粉丝数
         self.author_followers_count = author_followers_count
-        # 好友数
         self.author_friends_count = author_friends_count
-        # 性别,f:女，m:男
         self.author_gender = author_gender
-        # 作者id
         self.author_id = author_id
-        # 作者收到的点赞数
         self.author_likes_count = author_likes_count
-        # 作者名称
         self.author_name = author_name
-        # 作者主页地址
         self.author_profile_url = author_profile_url
-        # 发文数
         self.author_statuses_count = author_statuses_count
-        # 作者是否认证
         self.author_verified = author_verified
-        # 作者认证等级，0:黄V，>0:蓝V
         self.author_verify_type = author_verify_type
-        # 音频识别出来的文本
         self.content_audio_text = content_audio_text
-        # 音频列表地址
         self.content_audio_urls = content_audio_urls
-        # 图片识别出来的文本
         self.content_image_text = content_image_text
-        # 图片列表地址
         self.content_image_urls = content_image_urls
-        # 语种
         self.content_lang = content_lang
-        # 文本长度
         self.content_len = content_len
-        # 视频识别出来的文本
         self.content_video_text = content_video_text
-        # 视频列表地址
         self.content_video_urls = content_video_urls
-        # 舆情文章被抓取的时间戳
         self.create_time = create_time
-        # 回答数
         self.doc_answers_count = doc_answers_count
-        # 提级地域列表
         self.doc_areas = doc_areas
-        # 投币数
         self.doc_coin_count = doc_coin_count
-        # 文章评论数
         self.doc_comments_count = doc_comments_count
-        # 文章正文内容
         self.doc_content = doc_content
-        # 文章摘要
         self.doc_content_brief = doc_content_brief
-        # 文章内容签名，如果是转发微博或者其他有父内容的doc，计算的是父文章的得分。一般用于去重，相同的doc_content_sign说明内容相同
         self.doc_content_sign = doc_content_sign
-        # 文章唯一docId
         self.doc_id = doc_id
-        # 文章点赞数
         self.doc_likes_count = doc_likes_count
-        # 播放数
         self.doc_play_count = doc_play_count
-        # 在读数
         self.doc_reading_count = doc_reading_count
-        # 文章阅读数
         self.doc_reads_count = doc_reads_count
-        # 文章点赞数
         self.doc_reposts_count = doc_reposts_count
-        # 文章转载自
         self.doc_reprint_name = doc_reprint_name
-        # 文章自身的内容签名，转发微博计算的是转发内容的contentSign，与父微博无关
         self.doc_self_content_sign = doc_self_content_sign
-        # 文章标题
         self.doc_title = doc_title
-        # 原文地址
         self.doc_url = doc_url
-        # 情感得分
         self.emotion_score = emotion_score
-        # 情感的正负面，-1代表负面，1代表非负面
         self.emotion_type = emotion_type
-        # 扩展字段值
         self.ext_info = ext_info
-        # 企业事件数
         self.fin_event_count = fin_event_count
-        # 命中的关键词列表
         self.highlight_keywords = highlight_keywords
-        # 图片数
         self.image_count = image_count
-        # 影响力得分，0-10
         self.influence_score = influence_score
-        # 站点列表
         self.media_hosts = media_hosts
-        # 影响力等级
         self.media_influence_level = media_influence_level
-        # 媒体名称
         self.media_name = media_name
-        # 传播等级
         self.media_propagation_level = media_propagation_level
-        # 媒体类型，枚举值
         self.media_type = media_type
-        # 舆情消息类型:转发,评论/回复, 原文,群聊等
         self.message_type = message_type
-        # 文章的父docId，如被转发的文章docId
         self.parent_doc_id = parent_doc_id
-        # 传播得分，0-10
         self.propagation_score = propagation_score
-        # 舆情文章的发布时间戳
         self.publish_time = publish_time
-        # 相关性得分
         self.relevance_score = relevance_score
-        # 疑似首发列表
         self.repost_list = repost_list
-        # 相似文章数
         self.similar_number = similar_number
-        # 话题列表
         self.topics = topics
-        # 视频数
         self.video_count = video_count
-        # 微博评论id
         self.weibo_comment_id = weibo_comment_id
-        # 微博消息id
         self.weibo_mid = weibo_mid
 
     def validate(self):
@@ -1104,7 +976,6 @@ class CloseProductRequest(TeaModel):
         request_id: str = None,
     ):
         self.product_instance = product_instance
-        # A short description of struct
         self.request_id = request_id
 
     def validate(self):
@@ -1140,7 +1011,6 @@ class CloseProductResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.data = data
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -1246,7 +1116,6 @@ class ConsoleApiProxyResponseBody(TeaModel):
         request_id: str = None,
         result_json: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
         self.result_json = result_json
 
@@ -1330,7 +1199,6 @@ class ConsoleProxyRequest(TeaModel):
         self.app_code = app_code
         self.interface_name = interface_name
         self.param_json = param_json
-        # A short description of struct
         self.request_id = request_id
         self.team_hash_id = team_hash_id
 
@@ -1376,7 +1244,6 @@ class ConsoleProxyResponseBody(TeaModel):
         request_id: str = None,
         result_json: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
         self.result_json = result_json
 
@@ -1456,7 +1323,6 @@ class GetAnalysisTaskResultRequest(TeaModel):
         team_hash_id: str = None,
     ):
         self.analysis_id = analysis_id
-        # A short description of struct
         self.request_id = request_id
         self.team_hash_id = team_hash_id
 
@@ -1496,7 +1362,6 @@ class GetAnalysisTaskResultResponseBody(TeaModel):
         result_json: str = None,
     ):
         self.analysis_id = analysis_id
-        # Id of the request
         self.request_id = request_id
         self.result_json = result_json
 
@@ -1579,10 +1444,8 @@ class OpenProductRequest(TeaModel):
         product_instance: ProductInstance = None,
         request_id: str = None,
     ):
-        # 幂等参数
         self.client_token = client_token
         self.product_instance = product_instance
-        # A short description of struct
         self.request_id = request_id
 
     def validate(self):
@@ -1622,7 +1485,6 @@ class OpenProductResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.id = id
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -1704,7 +1566,6 @@ class QueryProductInstanceListRequest(TeaModel):
     ):
         self.app_code = app_code
         self.from_time = from_time
-        # A short description of struct
         self.request_id = request_id
         self.tenant_uid = tenant_uid
         self.to_time = to_time
@@ -1752,7 +1613,6 @@ class QueryProductInstanceListResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.instance_list = instance_list
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -1838,7 +1698,6 @@ class QueryYuqingMessageRequest(TeaModel):
         search_condition: SearchCondition = None,
         team_hash_id: str = None,
     ):
-        # A short description of struct
         self.request_id = request_id
         self.search_condition = search_condition
         self.team_hash_id = team_hash_id
@@ -1880,7 +1739,6 @@ class QueryYuqingMessageResponseBody(TeaModel):
         total_count: int = None,
         yuqing_messages: List[YuqingMessage] = None,
     ):
-        # Id of the request
         self.request_id = request_id
         self.total_count = total_count
         self.yuqing_messages = yuqing_messages
@@ -1974,7 +1832,6 @@ class SubmitAnalysisTaskRequest(TeaModel):
         team_hash_id: str = None,
     ):
         self.analyse_type = analyse_type
-        # A short description of struct
         self.request_id = request_id
         self.search_condition = search_condition
         self.team_hash_id = team_hash_id
@@ -2021,7 +1878,6 @@ class SubmitAnalysisTaskResponseBody(TeaModel):
         result_json: str = None,
     ):
         self.analysis_id = analysis_id
-        # Id of the request
         self.request_id = request_id
         self.result_json = result_json
 

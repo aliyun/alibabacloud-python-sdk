@@ -1,3 +1,7 @@
+2022-09-19 Version: 1.2.1
+- Update SearchCondition .
+
+
 2022-06-09 Version: 1.2.0
 - Update ConsoleApiProxy .
 
