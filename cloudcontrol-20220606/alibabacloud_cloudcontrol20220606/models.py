@@ -4,14 +4,87 @@ from Tea.model import TeaModel
 from typing import Dict, List, Any
 
 
+class CancelTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class CancelTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CancelTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CancelTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateResourceRequest(TeaModel):
     def __init__(
         self,
         body: str = None,
-        resource_type_version: str = None,
+        client_token: str = None,
+        region_id: str = None,
     ):
         self.body = body
-        self.resource_type_version = resource_type_version
+        self.client_token = client_token
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -24,16 +97,20 @@ class CreateResourceRequest(TeaModel):
         result = dict()
         if self.body is not None:
             result['body'] = self.body
-        if self.resource_type_version is not None:
-            result['resourceTypeVersion'] = self.resource_type_version
+        if self.client_token is not None:
+            result['clientToken'] = self.client_token
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('body') is not None:
             self.body = m.get('body')
-        if m.get('resourceTypeVersion') is not None:
-            self.resource_type_version = m.get('resourceTypeVersion')
+        if m.get('clientToken') is not None:
+            self.client_token = m.get('clientToken')
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
         return self
 
 
@@ -42,10 +119,12 @@ class CreateResourceResponseBody(TeaModel):
         self,
         request_id: str = None,
         resource_id: str = None,
+        retry_timeout: int = None,
         task_id: str = None,
     ):
         self.request_id = request_id
         self.resource_id = resource_id
+        self.retry_timeout = retry_timeout
         self.task_id = task_id
 
     def validate(self):
@@ -61,6 +140,8 @@ class CreateResourceResponseBody(TeaModel):
             result['requestId'] = self.request_id
         if self.resource_id is not None:
             result['resourceId'] = self.resource_id
+        if self.retry_timeout is not None:
+            result['retryTimeout'] = self.retry_timeout
         if self.task_id is not None:
             result['taskId'] = self.task_id
         return result
@@ -71,6 +152,8 @@ class CreateResourceResponseBody(TeaModel):
             self.request_id = m.get('requestId')
         if m.get('resourceId') is not None:
             self.resource_id = m.get('resourceId')
+        if m.get('retryTimeout') is not None:
+            self.retry_timeout = m.get('retryTimeout')
         if m.get('taskId') is not None:
             self.task_id = m.get('taskId')
         return self
@@ -123,11 +206,11 @@ class CreateResourceResponse(TeaModel):
 class DeleteResourceRequest(TeaModel):
     def __init__(
         self,
+        client_token: str = None,
         region_id: str = None,
-        resource_type_version: str = None,
     ):
+        self.client_token = client_token
         self.region_id = region_id
-        self.resource_type_version = resource_type_version
 
     def validate(self):
         pass
@@ -138,18 +221,18 @@ class DeleteResourceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.client_token is not None:
+            result['clientToken'] = self.client_token
         if self.region_id is not None:
             result['regionId'] = self.region_id
-        if self.resource_type_version is not None:
-            result['resourceTypeVersion'] = self.resource_type_version
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('clientToken') is not None:
+            self.client_token = m.get('clientToken')
         if m.get('regionId') is not None:
             self.region_id = m.get('regionId')
-        if m.get('resourceTypeVersion') is not None:
-            self.resource_type_version = m.get('resourceTypeVersion')
         return self
 
 
@@ -157,9 +240,11 @@ class DeleteResourceResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
+        retry_timeout: int = None,
         task_id: str = None,
     ):
         self.request_id = request_id
+        self.retry_timeout = retry_timeout
         self.task_id = task_id
 
     def validate(self):
@@ -173,6 +258,8 @@ class DeleteResourceResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['requestId'] = self.request_id
+        if self.retry_timeout is not None:
+            result['retryTimeout'] = self.retry_timeout
         if self.task_id is not None:
             result['taskId'] = self.task_id
         return result
@@ -181,6 +268,8 @@ class DeleteResourceResponseBody(TeaModel):
         m = m or dict()
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
+        if m.get('retryTimeout') is not None:
+            self.retry_timeout = m.get('retryTimeout')
         if m.get('taskId') is not None:
             self.task_id = m.get('taskId')
         return self
@@ -917,6 +1006,7 @@ class GetTaskResponseBodyTask(TeaModel):
         create_time: str = None,
         error: GetTaskResponseBodyTaskError = None,
         product: str = None,
+        region_id: str = None,
         resource_id: str = None,
         resource_type: str = None,
         status: str = None,
@@ -926,6 +1016,7 @@ class GetTaskResponseBodyTask(TeaModel):
         self.create_time = create_time
         self.error = error
         self.product = product
+        self.region_id = region_id
         self.resource_id = resource_id
         self.resource_type = resource_type
         self.status = status
@@ -948,6 +1039,8 @@ class GetTaskResponseBodyTask(TeaModel):
             result['error'] = self.error.to_map()
         if self.product is not None:
             result['product'] = self.product
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
         if self.resource_id is not None:
             result['resourceId'] = self.resource_id
         if self.resource_type is not None:
@@ -969,6 +1062,8 @@ class GetTaskResponseBodyTask(TeaModel):
             self.error = temp_model.from_map(m['error'])
         if m.get('product') is not None:
             self.product = m.get('product')
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
         if m.get('resourceId') is not None:
             self.resource_id = m.get('resourceId')
         if m.get('resourceType') is not None:
@@ -2222,12 +2317,12 @@ class UpdateResourceRequest(TeaModel):
     def __init__(
         self,
         body: str = None,
+        client_token: str = None,
         region_id: str = None,
-        resource_type_version: str = None,
     ):
         self.body = body
+        self.client_token = client_token
         self.region_id = region_id
-        self.resource_type_version = resource_type_version
 
     def validate(self):
         pass
@@ -2240,20 +2335,20 @@ class UpdateResourceRequest(TeaModel):
         result = dict()
         if self.body is not None:
             result['body'] = self.body
+        if self.client_token is not None:
+            result['clientToken'] = self.client_token
         if self.region_id is not None:
             result['regionId'] = self.region_id
-        if self.resource_type_version is not None:
-            result['resourceTypeVersion'] = self.resource_type_version
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('body') is not None:
             self.body = m.get('body')
+        if m.get('clientToken') is not None:
+            self.client_token = m.get('clientToken')
         if m.get('regionId') is not None:
             self.region_id = m.get('regionId')
-        if m.get('resourceTypeVersion') is not None:
-            self.resource_type_version = m.get('resourceTypeVersion')
         return self
 
 
@@ -2261,9 +2356,11 @@ class UpdateResourceResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
+        retry_timeout: int = None,
         task_id: str = None,
     ):
         self.request_id = request_id
+        self.retry_timeout = retry_timeout
         self.task_id = task_id
 
     def validate(self):
@@ -2277,6 +2374,8 @@ class UpdateResourceResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['requestId'] = self.request_id
+        if self.retry_timeout is not None:
+            result['retryTimeout'] = self.retry_timeout
         if self.task_id is not None:
             result['taskId'] = self.task_id
         return result
@@ -2285,6 +2384,8 @@ class UpdateResourceResponseBody(TeaModel):
         m = m or dict()
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
+        if m.get('retryTimeout') is not None:
+            self.retry_timeout = m.get('retryTimeout')
         if m.get('taskId') is not None:
             self.task_id = m.get('taskId')
         return self

@@ -41,6 +41,72 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def cancel_task(
+        self,
+        task_id: str,
+    ) -> cloudcontrol_20220606_models.CancelTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.cancel_task_with_options(task_id, headers, runtime)
+
+    async def cancel_task_async(
+        self,
+        task_id: str,
+    ) -> cloudcontrol_20220606_models.CancelTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.cancel_task_with_options_async(task_id, headers, runtime)
+
+    def cancel_task_with_options(
+        self,
+        task_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudcontrol_20220606_models.CancelTaskResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='CancelTask',
+            version='2022-06-06',
+            protocol='HTTPS',
+            pathname=f'/api/v1/tasks/{OpenApiUtilClient.get_encode_param(task_id)}/operation/cancel',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudcontrol_20220606_models.CancelTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cancel_task_with_options_async(
+        self,
+        task_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudcontrol_20220606_models.CancelTaskResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='CancelTask',
+            version='2022-06-06',
+            protocol='HTTPS',
+            pathname=f'/api/v1/tasks/{OpenApiUtilClient.get_encode_param(task_id)}/operation/cancel',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudcontrol_20220606_models.CancelTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
     def create_resource(
         self,
         provider: str,
@@ -73,12 +139,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudcontrol_20220606_models.CreateResourceResponse:
         UtilClient.validate_model(request)
-        provider = OpenApiUtilClient.get_encode_param(provider)
-        product_code = OpenApiUtilClient.get_encode_param(product_code)
-        resource_type_code = OpenApiUtilClient.get_encode_param(resource_type_code)
         query = {}
-        if not UtilClient.is_unset(request.resource_type_version):
-            query['resourceTypeVersion'] = request.resource_type_version
+        if not UtilClient.is_unset(request.client_token):
+            query['clientToken'] = request.client_token
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),
@@ -88,7 +153,7 @@ class Client(OpenApiClient):
             action='CreateResource',
             version='2022-06-06',
             protocol='HTTPS',
-            pathname=f'/api/v1/providers/{provider}/products/{product_code}/resourceTypes/{resource_type_code}/resources',
+            pathname=f'/api/v1/providers/{OpenApiUtilClient.get_encode_param(provider)}/products/{OpenApiUtilClient.get_encode_param(product_code)}/resourceTypes/{OpenApiUtilClient.get_encode_param(resource_type_code)}/resources',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -110,12 +175,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudcontrol_20220606_models.CreateResourceResponse:
         UtilClient.validate_model(request)
-        provider = OpenApiUtilClient.get_encode_param(provider)
-        product_code = OpenApiUtilClient.get_encode_param(product_code)
-        resource_type_code = OpenApiUtilClient.get_encode_param(resource_type_code)
         query = {}
-        if not UtilClient.is_unset(request.resource_type_version):
-            query['resourceTypeVersion'] = request.resource_type_version
+        if not UtilClient.is_unset(request.client_token):
+            query['clientToken'] = request.client_token
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),
@@ -125,7 +189,7 @@ class Client(OpenApiClient):
             action='CreateResource',
             version='2022-06-06',
             protocol='HTTPS',
-            pathname=f'/api/v1/providers/{provider}/products/{product_code}/resourceTypes/{resource_type_code}/resources',
+            pathname=f'/api/v1/providers/{OpenApiUtilClient.get_encode_param(provider)}/products/{OpenApiUtilClient.get_encode_param(product_code)}/resourceTypes/{OpenApiUtilClient.get_encode_param(resource_type_code)}/resources',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -172,15 +236,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudcontrol_20220606_models.DeleteResourceResponse:
         UtilClient.validate_model(request)
-        provider = OpenApiUtilClient.get_encode_param(provider)
-        product_code = OpenApiUtilClient.get_encode_param(product_code)
-        resource_type_code = OpenApiUtilClient.get_encode_param(resource_type_code)
-        resource_id = OpenApiUtilClient.get_encode_param(resource_id)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['clientToken'] = request.client_token
         if not UtilClient.is_unset(request.region_id):
             query['regionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_type_version):
-            query['resourceTypeVersion'] = request.resource_type_version
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -189,7 +249,7 @@ class Client(OpenApiClient):
             action='DeleteResource',
             version='2022-06-06',
             protocol='HTTPS',
-            pathname=f'/api/v1/providers/{provider}/products/{product_code}/resourceTypes/{resource_type_code}/resources/{resource_id}',
+            pathname=f'/api/v1/providers/{OpenApiUtilClient.get_encode_param(provider)}/products/{OpenApiUtilClient.get_encode_param(product_code)}/resourceTypes/{OpenApiUtilClient.get_encode_param(resource_type_code)}/resources/{OpenApiUtilClient.get_encode_param(resource_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -212,15 +272,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudcontrol_20220606_models.DeleteResourceResponse:
         UtilClient.validate_model(request)
-        provider = OpenApiUtilClient.get_encode_param(provider)
-        product_code = OpenApiUtilClient.get_encode_param(product_code)
-        resource_type_code = OpenApiUtilClient.get_encode_param(resource_type_code)
-        resource_id = OpenApiUtilClient.get_encode_param(resource_id)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['clientToken'] = request.client_token
         if not UtilClient.is_unset(request.region_id):
             query['regionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_type_version):
-            query['resourceTypeVersion'] = request.resource_type_version
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -229,7 +285,7 @@ class Client(OpenApiClient):
             action='DeleteResource',
             version='2022-06-06',
             protocol='HTTPS',
-            pathname=f'/api/v1/providers/{provider}/products/{product_code}/resourceTypes/{resource_type_code}/resources/{resource_id}',
+            pathname=f'/api/v1/providers/{OpenApiUtilClient.get_encode_param(provider)}/products/{OpenApiUtilClient.get_encode_param(product_code)}/resourceTypes/{OpenApiUtilClient.get_encode_param(resource_type_code)}/resources/{OpenApiUtilClient.get_encode_param(resource_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -276,10 +332,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudcontrol_20220606_models.GetResourceResponse:
         UtilClient.validate_model(request)
-        provider = OpenApiUtilClient.get_encode_param(provider)
-        product_code = OpenApiUtilClient.get_encode_param(product_code)
-        resource_type_code = OpenApiUtilClient.get_encode_param(resource_type_code)
-        resource_id = OpenApiUtilClient.get_encode_param(resource_id)
         query = {}
         if not UtilClient.is_unset(request.region_id):
             query['regionId'] = request.region_id
@@ -293,7 +345,7 @@ class Client(OpenApiClient):
             action='GetResource',
             version='2022-06-06',
             protocol='HTTPS',
-            pathname=f'/api/v1/providers/{provider}/products/{product_code}/resourceTypes/{resource_type_code}/resources/{resource_id}',
+            pathname=f'/api/v1/providers/{OpenApiUtilClient.get_encode_param(provider)}/products/{OpenApiUtilClient.get_encode_param(product_code)}/resourceTypes/{OpenApiUtilClient.get_encode_param(resource_type_code)}/resources/{OpenApiUtilClient.get_encode_param(resource_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -316,10 +368,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudcontrol_20220606_models.GetResourceResponse:
         UtilClient.validate_model(request)
-        provider = OpenApiUtilClient.get_encode_param(provider)
-        product_code = OpenApiUtilClient.get_encode_param(product_code)
-        resource_type_code = OpenApiUtilClient.get_encode_param(resource_type_code)
-        resource_id = OpenApiUtilClient.get_encode_param(resource_id)
         query = {}
         if not UtilClient.is_unset(request.region_id):
             query['regionId'] = request.region_id
@@ -333,7 +381,7 @@ class Client(OpenApiClient):
             action='GetResource',
             version='2022-06-06',
             protocol='HTTPS',
-            pathname=f'/api/v1/providers/{provider}/products/{product_code}/resourceTypes/{resource_type_code}/resources/{resource_id}',
+            pathname=f'/api/v1/providers/{OpenApiUtilClient.get_encode_param(provider)}/products/{OpenApiUtilClient.get_encode_param(product_code)}/resourceTypes/{OpenApiUtilClient.get_encode_param(resource_type_code)}/resources/{OpenApiUtilClient.get_encode_param(resource_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -377,9 +425,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudcontrol_20220606_models.GetResourceTypeResponse:
         UtilClient.validate_model(request)
-        provider = OpenApiUtilClient.get_encode_param(provider)
-        product_code = OpenApiUtilClient.get_encode_param(product_code)
-        resource_type_code = OpenApiUtilClient.get_encode_param(resource_type_code)
         query = {}
         if not UtilClient.is_unset(request.resource_type_version):
             query['resourceTypeVersion'] = request.resource_type_version
@@ -391,7 +436,7 @@ class Client(OpenApiClient):
             action='GetResourceType',
             version='2022-06-06',
             protocol='HTTPS',
-            pathname=f'/api/v1/providers/{provider}/products/{product_code}/resourceTypes/{resource_type_code}',
+            pathname=f'/api/v1/providers/{OpenApiUtilClient.get_encode_param(provider)}/products/{OpenApiUtilClient.get_encode_param(product_code)}/resourceTypes/{OpenApiUtilClient.get_encode_param(resource_type_code)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -413,9 +458,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudcontrol_20220606_models.GetResourceTypeResponse:
         UtilClient.validate_model(request)
-        provider = OpenApiUtilClient.get_encode_param(provider)
-        product_code = OpenApiUtilClient.get_encode_param(product_code)
-        resource_type_code = OpenApiUtilClient.get_encode_param(resource_type_code)
         query = {}
         if not UtilClient.is_unset(request.resource_type_version):
             query['resourceTypeVersion'] = request.resource_type_version
@@ -427,7 +469,7 @@ class Client(OpenApiClient):
             action='GetResourceType',
             version='2022-06-06',
             protocol='HTTPS',
-            pathname=f'/api/v1/providers/{provider}/products/{product_code}/resourceTypes/{resource_type_code}',
+            pathname=f'/api/v1/providers/{OpenApiUtilClient.get_encode_param(provider)}/products/{OpenApiUtilClient.get_encode_param(product_code)}/resourceTypes/{OpenApiUtilClient.get_encode_param(resource_type_code)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -461,7 +503,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cloudcontrol_20220606_models.GetTaskResponse:
-        task_id = OpenApiUtilClient.get_encode_param(task_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -469,7 +510,7 @@ class Client(OpenApiClient):
             action='GetTask',
             version='2022-06-06',
             protocol='HTTPS',
-            pathname=f'/api/v1/tasks/{task_id}',
+            pathname=f'/api/v1/tasks/{OpenApiUtilClient.get_encode_param(task_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -487,7 +528,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cloudcontrol_20220606_models.GetTaskResponse:
-        task_id = OpenApiUtilClient.get_encode_param(task_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -495,7 +535,7 @@ class Client(OpenApiClient):
             action='GetTask',
             version='2022-06-06',
             protocol='HTTPS',
-            pathname=f'/api/v1/tasks/{task_id}',
+            pathname=f'/api/v1/tasks/{OpenApiUtilClient.get_encode_param(task_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -542,10 +582,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudcontrol_20220606_models.ListDataSourcesResponse:
         UtilClient.validate_model(tmp_req)
-        provider = OpenApiUtilClient.get_encode_param(provider)
-        product_code = OpenApiUtilClient.get_encode_param(product_code)
-        resource_type_code = OpenApiUtilClient.get_encode_param(resource_type_code)
-        attribute_name = OpenApiUtilClient.get_encode_param(attribute_name)
         request = cloudcontrol_20220606_models.ListDataSourcesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.filter):
@@ -561,7 +597,7 @@ class Client(OpenApiClient):
             action='ListDataSources',
             version='2022-06-06',
             protocol='HTTPS',
-            pathname=f'/api/v1/providers/{provider}/products/{product_code}/resourceTypes/{resource_type_code}/dataSources/{attribute_name}',
+            pathname=f'/api/v1/providers/{OpenApiUtilClient.get_encode_param(provider)}/products/{OpenApiUtilClient.get_encode_param(product_code)}/resourceTypes/{OpenApiUtilClient.get_encode_param(resource_type_code)}/dataSources/{OpenApiUtilClient.get_encode_param(attribute_name)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -584,10 +620,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudcontrol_20220606_models.ListDataSourcesResponse:
         UtilClient.validate_model(tmp_req)
-        provider = OpenApiUtilClient.get_encode_param(provider)
-        product_code = OpenApiUtilClient.get_encode_param(product_code)
-        resource_type_code = OpenApiUtilClient.get_encode_param(resource_type_code)
-        attribute_name = OpenApiUtilClient.get_encode_param(attribute_name)
         request = cloudcontrol_20220606_models.ListDataSourcesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.filter):
@@ -603,7 +635,7 @@ class Client(OpenApiClient):
             action='ListDataSources',
             version='2022-06-06',
             protocol='HTTPS',
-            pathname=f'/api/v1/providers/{provider}/products/{product_code}/resourceTypes/{resource_type_code}/dataSources/{attribute_name}',
+            pathname=f'/api/v1/providers/{OpenApiUtilClient.get_encode_param(provider)}/products/{OpenApiUtilClient.get_encode_param(product_code)}/resourceTypes/{OpenApiUtilClient.get_encode_param(resource_type_code)}/dataSources/{OpenApiUtilClient.get_encode_param(attribute_name)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -641,7 +673,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudcontrol_20220606_models.ListProductsResponse:
         UtilClient.validate_model(request)
-        provider = OpenApiUtilClient.get_encode_param(provider)
         query = {}
         if not UtilClient.is_unset(request.max_results):
             query['maxResults'] = request.max_results
@@ -655,7 +686,7 @@ class Client(OpenApiClient):
             action='ListProducts',
             version='2022-06-06',
             protocol='HTTPS',
-            pathname=f'/api/v1/providers/{provider}/products',
+            pathname=f'/api/v1/providers/{OpenApiUtilClient.get_encode_param(provider)}/products',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -675,7 +706,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudcontrol_20220606_models.ListProductsResponse:
         UtilClient.validate_model(request)
-        provider = OpenApiUtilClient.get_encode_param(provider)
         query = {}
         if not UtilClient.is_unset(request.max_results):
             query['maxResults'] = request.max_results
@@ -689,7 +719,7 @@ class Client(OpenApiClient):
             action='ListProducts',
             version='2022-06-06',
             protocol='HTTPS',
-            pathname=f'/api/v1/providers/{provider}/products',
+            pathname=f'/api/v1/providers/{OpenApiUtilClient.get_encode_param(provider)}/products',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -730,8 +760,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudcontrol_20220606_models.ListResourceTypesResponse:
         UtilClient.validate_model(tmp_req)
-        provider = OpenApiUtilClient.get_encode_param(provider)
-        product_code = OpenApiUtilClient.get_encode_param(product_code)
         request = cloudcontrol_20220606_models.ListResourceTypesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.resource_type_codes):
@@ -751,7 +779,7 @@ class Client(OpenApiClient):
             action='ListResourceTypes',
             version='2022-06-06',
             protocol='HTTPS',
-            pathname=f'/api/v1/providers/{provider}/products/{product_code}/resourceTypes',
+            pathname=f'/api/v1/providers/{OpenApiUtilClient.get_encode_param(provider)}/products/{OpenApiUtilClient.get_encode_param(product_code)}/resourceTypes',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -772,8 +800,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudcontrol_20220606_models.ListResourceTypesResponse:
         UtilClient.validate_model(tmp_req)
-        provider = OpenApiUtilClient.get_encode_param(provider)
-        product_code = OpenApiUtilClient.get_encode_param(product_code)
         request = cloudcontrol_20220606_models.ListResourceTypesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.resource_type_codes):
@@ -793,7 +819,7 @@ class Client(OpenApiClient):
             action='ListResourceTypes',
             version='2022-06-06',
             protocol='HTTPS',
-            pathname=f'/api/v1/providers/{provider}/products/{product_code}/resourceTypes',
+            pathname=f'/api/v1/providers/{OpenApiUtilClient.get_encode_param(provider)}/products/{OpenApiUtilClient.get_encode_param(product_code)}/resourceTypes',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -837,9 +863,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudcontrol_20220606_models.ListResourcesResponse:
         UtilClient.validate_model(tmp_req)
-        provider = OpenApiUtilClient.get_encode_param(provider)
-        product_code = OpenApiUtilClient.get_encode_param(product_code)
-        resource_type_code = OpenApiUtilClient.get_encode_param(resource_type_code)
         request = cloudcontrol_20220606_models.ListResourcesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.filter):
@@ -865,7 +888,7 @@ class Client(OpenApiClient):
             action='ListResources',
             version='2022-06-06',
             protocol='HTTPS',
-            pathname=f'/api/v1/providers/{provider}/products/{product_code}/resourceTypes/{resource_type_code}/resources',
+            pathname=f'/api/v1/providers/{OpenApiUtilClient.get_encode_param(provider)}/products/{OpenApiUtilClient.get_encode_param(product_code)}/resourceTypes/{OpenApiUtilClient.get_encode_param(resource_type_code)}/resources',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -887,9 +910,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudcontrol_20220606_models.ListResourcesResponse:
         UtilClient.validate_model(tmp_req)
-        provider = OpenApiUtilClient.get_encode_param(provider)
-        product_code = OpenApiUtilClient.get_encode_param(product_code)
-        resource_type_code = OpenApiUtilClient.get_encode_param(resource_type_code)
         request = cloudcontrol_20220606_models.ListResourcesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.filter):
@@ -915,7 +935,7 @@ class Client(OpenApiClient):
             action='ListResources',
             version='2022-06-06',
             protocol='HTTPS',
-            pathname=f'/api/v1/providers/{provider}/products/{product_code}/resourceTypes/{resource_type_code}/resources',
+            pathname=f'/api/v1/providers/{OpenApiUtilClient.get_encode_param(provider)}/products/{OpenApiUtilClient.get_encode_param(product_code)}/resourceTypes/{OpenApiUtilClient.get_encode_param(resource_type_code)}/resources',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -962,15 +982,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudcontrol_20220606_models.UpdateResourceResponse:
         UtilClient.validate_model(request)
-        provider = OpenApiUtilClient.get_encode_param(provider)
-        product_code = OpenApiUtilClient.get_encode_param(product_code)
-        resource_type_code = OpenApiUtilClient.get_encode_param(resource_type_code)
-        resource_id = OpenApiUtilClient.get_encode_param(resource_id)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['clientToken'] = request.client_token
         if not UtilClient.is_unset(request.region_id):
             query['regionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_type_version):
-            query['resourceTypeVersion'] = request.resource_type_version
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),
@@ -980,7 +996,7 @@ class Client(OpenApiClient):
             action='UpdateResource',
             version='2022-06-06',
             protocol='HTTPS',
-            pathname=f'/api/v1/providers/{provider}/products/{product_code}/resourceTypes/{resource_type_code}/resources/{resource_id}',
+            pathname=f'/api/v1/providers/{OpenApiUtilClient.get_encode_param(provider)}/products/{OpenApiUtilClient.get_encode_param(product_code)}/resourceTypes/{OpenApiUtilClient.get_encode_param(resource_type_code)}/resources/{OpenApiUtilClient.get_encode_param(resource_id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -1003,15 +1019,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudcontrol_20220606_models.UpdateResourceResponse:
         UtilClient.validate_model(request)
-        provider = OpenApiUtilClient.get_encode_param(provider)
-        product_code = OpenApiUtilClient.get_encode_param(product_code)
-        resource_type_code = OpenApiUtilClient.get_encode_param(resource_type_code)
-        resource_id = OpenApiUtilClient.get_encode_param(resource_id)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['clientToken'] = request.client_token
         if not UtilClient.is_unset(request.region_id):
             query['regionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_type_version):
-            query['resourceTypeVersion'] = request.resource_type_version
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),
@@ -1021,7 +1033,7 @@ class Client(OpenApiClient):
             action='UpdateResource',
             version='2022-06-06',
             protocol='HTTPS',
-            pathname=f'/api/v1/providers/{provider}/products/{product_code}/resourceTypes/{resource_type_code}/resources/{resource_id}',
+            pathname=f'/api/v1/providers/{OpenApiUtilClient.get_encode_param(provider)}/products/{OpenApiUtilClient.get_encode_param(product_code)}/resourceTypes/{OpenApiUtilClient.get_encode_param(resource_type_code)}/resources/{OpenApiUtilClient.get_encode_param(resource_id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
