@@ -1,3 +1,6 @@
+2022-09-19 Version: 2.0.29
+- ADD GetRedisSession.
+
 2022-08-17 Version: 2.0.27
 - ADD GetFullRequestSampleByInstanceId.
 
