@@ -11,7 +11,8 @@ class CreateDedicatedHostRequest(TeaModel):
         client_token: str = None,
         dedicated_host_group_id: str = None,
         host_class: str = None,
-        host_name: str = None,
+        host_storage: str = None,
+        host_storage_type: str = None,
         image_category: str = None,
         os_password: str = None,
         owner_id: int = None,
@@ -28,7 +29,8 @@ class CreateDedicatedHostRequest(TeaModel):
         self.client_token = client_token
         self.dedicated_host_group_id = dedicated_host_group_id
         self.host_class = host_class
-        self.host_name = host_name
+        self.host_storage = host_storage
+        self.host_storage_type = host_storage_type
         self.image_category = image_category
         self.os_password = os_password
         self.owner_id = owner_id
@@ -58,8 +60,10 @@ class CreateDedicatedHostRequest(TeaModel):
             result['DedicatedHostGroupId'] = self.dedicated_host_group_id
         if self.host_class is not None:
             result['HostClass'] = self.host_class
-        if self.host_name is not None:
-            result['HostName'] = self.host_name
+        if self.host_storage is not None:
+            result['HostStorage'] = self.host_storage
+        if self.host_storage_type is not None:
+            result['HostStorageType'] = self.host_storage_type
         if self.image_category is not None:
             result['ImageCategory'] = self.image_category
         if self.os_password is not None:
@@ -94,8 +98,10 @@ class CreateDedicatedHostRequest(TeaModel):
             self.dedicated_host_group_id = m.get('DedicatedHostGroupId')
         if m.get('HostClass') is not None:
             self.host_class = m.get('HostClass')
-        if m.get('HostName') is not None:
-            self.host_name = m.get('HostName')
+        if m.get('HostStorage') is not None:
+            self.host_storage = m.get('HostStorage')
+        if m.get('HostStorageType') is not None:
+            self.host_storage_type = m.get('HostStorageType')
         if m.get('ImageCategory') is not None:
             self.image_category = m.get('ImageCategory')
         if m.get('OsPassword') is not None:
@@ -228,13 +234,16 @@ class CreateDedicatedHostResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreateDedicatedHostResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -247,6 +256,8 @@ class CreateDedicatedHostResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -255,6 +266,8 @@ class CreateDedicatedHostResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateDedicatedHostResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -373,13 +386,16 @@ class CreateDedicatedHostAccountResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreateDedicatedHostAccountResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -392,6 +408,8 @@ class CreateDedicatedHostAccountResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -400,6 +418,8 @@ class CreateDedicatedHostAccountResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateDedicatedHostAccountResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -548,13 +568,16 @@ class CreateDedicatedHostGroupResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreateDedicatedHostGroupResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -567,6 +590,8 @@ class CreateDedicatedHostGroupResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -575,8 +600,474 @@ class CreateDedicatedHostGroupResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateDedicatedHostGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateMyBaseRequestECSClassList(TeaModel):
+    def __init__(
+        self,
+        instance_type: str = None,
+        node_count: int = None,
+        sys_disk_capacity: int = None,
+        sys_disk_type: str = None,
+    ):
+        self.instance_type = instance_type
+        self.node_count = node_count
+        self.sys_disk_capacity = sys_disk_capacity
+        self.sys_disk_type = sys_disk_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_type is not None:
+            result['instanceType'] = self.instance_type
+        if self.node_count is not None:
+            result['nodeCount'] = self.node_count
+        if self.sys_disk_capacity is not None:
+            result['sysDiskCapacity'] = self.sys_disk_capacity
+        if self.sys_disk_type is not None:
+            result['sysDiskType'] = self.sys_disk_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('instanceType') is not None:
+            self.instance_type = m.get('instanceType')
+        if m.get('nodeCount') is not None:
+            self.node_count = m.get('nodeCount')
+        if m.get('sysDiskCapacity') is not None:
+            self.sys_disk_capacity = m.get('sysDiskCapacity')
+        if m.get('sysDiskType') is not None:
+            self.sys_disk_type = m.get('sysDiskType')
+        return self
+
+
+class CreateMyBaseRequest(TeaModel):
+    def __init__(
+        self,
+        auto_renew: str = None,
+        client_token: str = None,
+        dedicated_host_group_description: str = None,
+        dedicated_host_group_id: str = None,
+        ecsclass_list: List[CreateMyBaseRequestECSClassList] = None,
+        engine: str = None,
+        os_password: str = None,
+        owner_id: int = None,
+        pay_type: str = None,
+        period: str = None,
+        period_type: str = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        security_group_id: str = None,
+        v_switch_id: str = None,
+        vpc_id: str = None,
+        zone_id: str = None,
+    ):
+        self.auto_renew = auto_renew
+        self.client_token = client_token
+        self.dedicated_host_group_description = dedicated_host_group_description
+        self.dedicated_host_group_id = dedicated_host_group_id
+        self.ecsclass_list = ecsclass_list
+        self.engine = engine
+        self.os_password = os_password
+        self.owner_id = owner_id
+        self.pay_type = pay_type
+        self.period = period
+        self.period_type = period_type
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.security_group_id = security_group_id
+        self.v_switch_id = v_switch_id
+        self.vpc_id = vpc_id
+        self.zone_id = zone_id
+
+    def validate(self):
+        if self.ecsclass_list:
+            for k in self.ecsclass_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_renew is not None:
+            result['AutoRenew'] = self.auto_renew
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dedicated_host_group_description is not None:
+            result['DedicatedHostGroupDescription'] = self.dedicated_host_group_description
+        if self.dedicated_host_group_id is not None:
+            result['DedicatedHostGroupId'] = self.dedicated_host_group_id
+        result['ECSClassList'] = []
+        if self.ecsclass_list is not None:
+            for k in self.ecsclass_list:
+                result['ECSClassList'].append(k.to_map() if k else None)
+        if self.engine is not None:
+            result['Engine'] = self.engine
+        if self.os_password is not None:
+            result['OsPassword'] = self.os_password
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.pay_type is not None:
+            result['PayType'] = self.pay_type
+        if self.period is not None:
+            result['Period'] = self.period
+        if self.period_type is not None:
+            result['PeriodType'] = self.period_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AutoRenew') is not None:
+            self.auto_renew = m.get('AutoRenew')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DedicatedHostGroupDescription') is not None:
+            self.dedicated_host_group_description = m.get('DedicatedHostGroupDescription')
+        if m.get('DedicatedHostGroupId') is not None:
+            self.dedicated_host_group_id = m.get('DedicatedHostGroupId')
+        self.ecsclass_list = []
+        if m.get('ECSClassList') is not None:
+            for k in m.get('ECSClassList'):
+                temp_model = CreateMyBaseRequestECSClassList()
+                self.ecsclass_list.append(temp_model.from_map(k))
+        if m.get('Engine') is not None:
+            self.engine = m.get('Engine')
+        if m.get('OsPassword') is not None:
+            self.os_password = m.get('OsPassword')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PayType') is not None:
+            self.pay_type = m.get('PayType')
+        if m.get('Period') is not None:
+            self.period = m.get('Period')
+        if m.get('PeriodType') is not None:
+            self.period_type = m.get('PeriodType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class CreateMyBaseShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        auto_renew: str = None,
+        client_token: str = None,
+        dedicated_host_group_description: str = None,
+        dedicated_host_group_id: str = None,
+        ecsclass_list_shrink: str = None,
+        engine: str = None,
+        os_password: str = None,
+        owner_id: int = None,
+        pay_type: str = None,
+        period: str = None,
+        period_type: str = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        security_group_id: str = None,
+        v_switch_id: str = None,
+        vpc_id: str = None,
+        zone_id: str = None,
+    ):
+        self.auto_renew = auto_renew
+        self.client_token = client_token
+        self.dedicated_host_group_description = dedicated_host_group_description
+        self.dedicated_host_group_id = dedicated_host_group_id
+        self.ecsclass_list_shrink = ecsclass_list_shrink
+        self.engine = engine
+        self.os_password = os_password
+        self.owner_id = owner_id
+        self.pay_type = pay_type
+        self.period = period
+        self.period_type = period_type
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.security_group_id = security_group_id
+        self.v_switch_id = v_switch_id
+        self.vpc_id = vpc_id
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_renew is not None:
+            result['AutoRenew'] = self.auto_renew
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dedicated_host_group_description is not None:
+            result['DedicatedHostGroupDescription'] = self.dedicated_host_group_description
+        if self.dedicated_host_group_id is not None:
+            result['DedicatedHostGroupId'] = self.dedicated_host_group_id
+        if self.ecsclass_list_shrink is not None:
+            result['ECSClassList'] = self.ecsclass_list_shrink
+        if self.engine is not None:
+            result['Engine'] = self.engine
+        if self.os_password is not None:
+            result['OsPassword'] = self.os_password
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.pay_type is not None:
+            result['PayType'] = self.pay_type
+        if self.period is not None:
+            result['Period'] = self.period
+        if self.period_type is not None:
+            result['PeriodType'] = self.period_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AutoRenew') is not None:
+            self.auto_renew = m.get('AutoRenew')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DedicatedHostGroupDescription') is not None:
+            self.dedicated_host_group_description = m.get('DedicatedHostGroupDescription')
+        if m.get('DedicatedHostGroupId') is not None:
+            self.dedicated_host_group_id = m.get('DedicatedHostGroupId')
+        if m.get('ECSClassList') is not None:
+            self.ecsclass_list_shrink = m.get('ECSClassList')
+        if m.get('Engine') is not None:
+            self.engine = m.get('Engine')
+        if m.get('OsPassword') is not None:
+            self.os_password = m.get('OsPassword')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PayType') is not None:
+            self.pay_type = m.get('PayType')
+        if m.get('Period') is not None:
+            self.period = m.get('Period')
+        if m.get('PeriodType') is not None:
+            self.period_type = m.get('PeriodType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class CreateMyBaseResponseBodyOrderListOrderList(TeaModel):
+    def __init__(
+        self,
+        create_timestamp: int = None,
+        ecsinstance_ids: str = None,
+        order_id: str = None,
+    ):
+        self.create_timestamp = create_timestamp
+        self.ecsinstance_ids = ecsinstance_ids
+        self.order_id = order_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_timestamp is not None:
+            result['CreateTimestamp'] = self.create_timestamp
+        if self.ecsinstance_ids is not None:
+            result['ECSInstanceIds'] = self.ecsinstance_ids
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTimestamp') is not None:
+            self.create_timestamp = m.get('CreateTimestamp')
+        if m.get('ECSInstanceIds') is not None:
+            self.ecsinstance_ids = m.get('ECSInstanceIds')
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        return self
+
+
+class CreateMyBaseResponseBodyOrderList(TeaModel):
+    def __init__(
+        self,
+        order_list: List[CreateMyBaseResponseBodyOrderListOrderList] = None,
+    ):
+        self.order_list = order_list
+
+    def validate(self):
+        if self.order_list:
+            for k in self.order_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['OrderList'] = []
+        if self.order_list is not None:
+            for k in self.order_list:
+                result['OrderList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.order_list = []
+        if m.get('OrderList') is not None:
+            for k in m.get('OrderList'):
+                temp_model = CreateMyBaseResponseBodyOrderListOrderList()
+                self.order_list.append(temp_model.from_map(k))
+        return self
+
+
+class CreateMyBaseResponseBody(TeaModel):
+    def __init__(
+        self,
+        order_list: CreateMyBaseResponseBodyOrderList = None,
+        request_id: str = None,
+    ):
+        self.order_list = order_list
+        self.request_id = request_id
+
+    def validate(self):
+        if self.order_list:
+            self.order_list.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.order_list is not None:
+            result['OrderList'] = self.order_list.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OrderList') is not None:
+            temp_model = CreateMyBaseResponseBodyOrderList()
+            self.order_list = temp_model.from_map(m['OrderList'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateMyBaseResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateMyBaseResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateMyBaseResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -669,13 +1160,16 @@ class DeleteDedicatedHostAccountResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteDedicatedHostAccountResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -688,6 +1182,8 @@ class DeleteDedicatedHostAccountResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -696,6 +1192,8 @@ class DeleteDedicatedHostAccountResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteDedicatedHostAccountResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -784,13 +1282,16 @@ class DeleteDedicatedHostGroupResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteDedicatedHostGroupResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -803,6 +1304,8 @@ class DeleteDedicatedHostGroupResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -811,6 +1314,8 @@ class DeleteDedicatedHostGroupResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteDedicatedHostGroupResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -887,6 +1392,7 @@ class DescribeDedicatedHostAttributeResponseBody(TeaModel):
         dedicated_host_group_id: str = None,
         dedicated_host_id: str = None,
         disk_allocation_ratio: str = None,
+        distribution_tag: str = None,
         ecs_class_code: str = None,
         expired_time: str = None,
         host_cpu: int = None,
@@ -923,6 +1429,7 @@ class DescribeDedicatedHostAttributeResponseBody(TeaModel):
         self.dedicated_host_group_id = dedicated_host_group_id
         self.dedicated_host_id = dedicated_host_id
         self.disk_allocation_ratio = disk_allocation_ratio
+        self.distribution_tag = distribution_tag
         self.ecs_class_code = ecs_class_code
         self.expired_time = expired_time
         self.host_cpu = host_cpu
@@ -978,6 +1485,8 @@ class DescribeDedicatedHostAttributeResponseBody(TeaModel):
             result['DedicatedHostId'] = self.dedicated_host_id
         if self.disk_allocation_ratio is not None:
             result['DiskAllocationRatio'] = self.disk_allocation_ratio
+        if self.distribution_tag is not None:
+            result['DistributionTag'] = self.distribution_tag
         if self.ecs_class_code is not None:
             result['EcsClassCode'] = self.ecs_class_code
         if self.expired_time is not None:
@@ -1052,6 +1561,8 @@ class DescribeDedicatedHostAttributeResponseBody(TeaModel):
             self.dedicated_host_id = m.get('DedicatedHostId')
         if m.get('DiskAllocationRatio') is not None:
             self.disk_allocation_ratio = m.get('DiskAllocationRatio')
+        if m.get('DistributionTag') is not None:
+            self.distribution_tag = m.get('DistributionTag')
         if m.get('EcsClassCode') is not None:
             self.ecs_class_code = m.get('EcsClassCode')
         if m.get('ExpiredTime') is not None:
@@ -1109,13 +1620,16 @@ class DescribeDedicatedHostAttributeResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeDedicatedHostAttributeResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1128,6 +1642,8 @@ class DescribeDedicatedHostAttributeResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1136,6 +1652,8 @@ class DescribeDedicatedHostAttributeResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeDedicatedHostAttributeResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1337,13 +1855,16 @@ class DescribeDedicatedHostDisksResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeDedicatedHostDisksResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1356,6 +1877,8 @@ class DescribeDedicatedHostDisksResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1364,6 +1887,8 @@ class DescribeDedicatedHostDisksResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeDedicatedHostDisksResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1465,6 +1990,7 @@ class DescribeDedicatedHostGroupsResponseBodyDedicatedHostGroupsDedicatedHostGro
         self,
         allocation_policy: str = None,
         bastion_instance_id: str = None,
+        category: str = None,
         cpu_allocate_ration: float = None,
         cpu_allocated_amount: float = None,
         cpu_allocation_ratio: int = None,
@@ -1494,6 +2020,7 @@ class DescribeDedicatedHostGroupsResponseBodyDedicatedHostGroupsDedicatedHostGro
     ):
         self.allocation_policy = allocation_policy
         self.bastion_instance_id = bastion_instance_id
+        self.category = category
         self.cpu_allocate_ration = cpu_allocate_ration
         self.cpu_allocated_amount = cpu_allocated_amount
         self.cpu_allocation_ratio = cpu_allocation_ratio
@@ -1535,6 +2062,8 @@ class DescribeDedicatedHostGroupsResponseBodyDedicatedHostGroupsDedicatedHostGro
             result['AllocationPolicy'] = self.allocation_policy
         if self.bastion_instance_id is not None:
             result['BastionInstanceId'] = self.bastion_instance_id
+        if self.category is not None:
+            result['Category'] = self.category
         if self.cpu_allocate_ration is not None:
             result['CpuAllocateRation'] = self.cpu_allocate_ration
         if self.cpu_allocated_amount is not None:
@@ -1595,6 +2124,8 @@ class DescribeDedicatedHostGroupsResponseBodyDedicatedHostGroupsDedicatedHostGro
             self.allocation_policy = m.get('AllocationPolicy')
         if m.get('BastionInstanceId') is not None:
             self.bastion_instance_id = m.get('BastionInstanceId')
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
         if m.get('CpuAllocateRation') is not None:
             self.cpu_allocate_ration = m.get('CpuAllocateRation')
         if m.get('CpuAllocatedAmount') is not None:
@@ -1725,13 +2256,16 @@ class DescribeDedicatedHostGroupsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeDedicatedHostGroupsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1744,6 +2278,8 @@ class DescribeDedicatedHostGroupsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1752,6 +2288,8 @@ class DescribeDedicatedHostGroupsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeDedicatedHostGroupsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1867,17 +2405,22 @@ class DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHosts(TeaModel):
     def __init__(
         self,
         account_name: str = None,
+        account_type: str = None,
         allocation_status: str = None,
         bastion_instance_id: str = None,
         cpuallocation_ratio: str = None,
+        category: str = None,
+        charge_type: str = None,
         cpu_used: str = None,
         created_time: str = None,
         dedicated_host_group_id: str = None,
         dedicated_host_id: str = None,
-        deploy_type: str = None,
         disk_allocation_ratio: str = None,
+        disk_info: str = None,
         distribution_symbol: str = None,
+        distribution_tag: str = None,
         ecs_class_code: str = None,
+        ecs_id: str = None,
         end_time: str = None,
         engine: str = None,
         host_cpu: str = None,
@@ -1892,6 +2435,7 @@ class DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHosts(TeaModel):
         instance_number: str = None,
         mem_allocation_ratio: str = None,
         memory_used: str = None,
+        mssql_support_version: str = None,
         open_permission: str = None,
         storage_used: str = None,
         vpcid: str = None,
@@ -1899,17 +2443,22 @@ class DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHosts(TeaModel):
         zone_id: str = None,
     ):
         self.account_name = account_name
+        self.account_type = account_type
         self.allocation_status = allocation_status
         self.bastion_instance_id = bastion_instance_id
         self.cpuallocation_ratio = cpuallocation_ratio
+        self.category = category
+        self.charge_type = charge_type
         self.cpu_used = cpu_used
         self.created_time = created_time
         self.dedicated_host_group_id = dedicated_host_group_id
         self.dedicated_host_id = dedicated_host_id
-        self.deploy_type = deploy_type
         self.disk_allocation_ratio = disk_allocation_ratio
+        self.disk_info = disk_info
         self.distribution_symbol = distribution_symbol
+        self.distribution_tag = distribution_tag
         self.ecs_class_code = ecs_class_code
+        self.ecs_id = ecs_id
         self.end_time = end_time
         self.engine = engine
         self.host_cpu = host_cpu
@@ -1924,6 +2473,7 @@ class DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHosts(TeaModel):
         self.instance_number = instance_number
         self.mem_allocation_ratio = mem_allocation_ratio
         self.memory_used = memory_used
+        self.mssql_support_version = mssql_support_version
         self.open_permission = open_permission
         self.storage_used = storage_used
         self.vpcid = vpcid
@@ -1941,12 +2491,18 @@ class DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHosts(TeaModel):
         result = dict()
         if self.account_name is not None:
             result['AccountName'] = self.account_name
+        if self.account_type is not None:
+            result['AccountType'] = self.account_type
         if self.allocation_status is not None:
             result['AllocationStatus'] = self.allocation_status
         if self.bastion_instance_id is not None:
             result['BastionInstanceId'] = self.bastion_instance_id
         if self.cpuallocation_ratio is not None:
             result['CPUAllocationRatio'] = self.cpuallocation_ratio
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.charge_type is not None:
+            result['ChargeType'] = self.charge_type
         if self.cpu_used is not None:
             result['CpuUsed'] = self.cpu_used
         if self.created_time is not None:
@@ -1955,14 +2511,18 @@ class DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHosts(TeaModel):
             result['DedicatedHostGroupId'] = self.dedicated_host_group_id
         if self.dedicated_host_id is not None:
             result['DedicatedHostId'] = self.dedicated_host_id
-        if self.deploy_type is not None:
-            result['DeployType'] = self.deploy_type
         if self.disk_allocation_ratio is not None:
             result['DiskAllocationRatio'] = self.disk_allocation_ratio
+        if self.disk_info is not None:
+            result['DiskInfo'] = self.disk_info
         if self.distribution_symbol is not None:
             result['DistributionSymbol'] = self.distribution_symbol
+        if self.distribution_tag is not None:
+            result['DistributionTag'] = self.distribution_tag
         if self.ecs_class_code is not None:
             result['EcsClassCode'] = self.ecs_class_code
+        if self.ecs_id is not None:
+            result['EcsId'] = self.ecs_id
         if self.end_time is not None:
             result['EndTime'] = self.end_time
         if self.engine is not None:
@@ -1991,6 +2551,8 @@ class DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHosts(TeaModel):
             result['MemAllocationRatio'] = self.mem_allocation_ratio
         if self.memory_used is not None:
             result['MemoryUsed'] = self.memory_used
+        if self.mssql_support_version is not None:
+            result['MssqlSupportVersion'] = self.mssql_support_version
         if self.open_permission is not None:
             result['OpenPermission'] = self.open_permission
         if self.storage_used is not None:
@@ -2007,12 +2569,18 @@ class DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHosts(TeaModel):
         m = m or dict()
         if m.get('AccountName') is not None:
             self.account_name = m.get('AccountName')
+        if m.get('AccountType') is not None:
+            self.account_type = m.get('AccountType')
         if m.get('AllocationStatus') is not None:
             self.allocation_status = m.get('AllocationStatus')
         if m.get('BastionInstanceId') is not None:
             self.bastion_instance_id = m.get('BastionInstanceId')
         if m.get('CPUAllocationRatio') is not None:
             self.cpuallocation_ratio = m.get('CPUAllocationRatio')
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('ChargeType') is not None:
+            self.charge_type = m.get('ChargeType')
         if m.get('CpuUsed') is not None:
             self.cpu_used = m.get('CpuUsed')
         if m.get('CreatedTime') is not None:
@@ -2021,14 +2589,18 @@ class DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHosts(TeaModel):
             self.dedicated_host_group_id = m.get('DedicatedHostGroupId')
         if m.get('DedicatedHostId') is not None:
             self.dedicated_host_id = m.get('DedicatedHostId')
-        if m.get('DeployType') is not None:
-            self.deploy_type = m.get('DeployType')
         if m.get('DiskAllocationRatio') is not None:
             self.disk_allocation_ratio = m.get('DiskAllocationRatio')
+        if m.get('DiskInfo') is not None:
+            self.disk_info = m.get('DiskInfo')
         if m.get('DistributionSymbol') is not None:
             self.distribution_symbol = m.get('DistributionSymbol')
+        if m.get('DistributionTag') is not None:
+            self.distribution_tag = m.get('DistributionTag')
         if m.get('EcsClassCode') is not None:
             self.ecs_class_code = m.get('EcsClassCode')
+        if m.get('EcsId') is not None:
+            self.ecs_id = m.get('EcsId')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
         if m.get('Engine') is not None:
@@ -2057,6 +2629,8 @@ class DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHosts(TeaModel):
             self.mem_allocation_ratio = m.get('MemAllocationRatio')
         if m.get('MemoryUsed') is not None:
             self.memory_used = m.get('MemoryUsed')
+        if m.get('MssqlSupportVersion') is not None:
+            self.mssql_support_version = m.get('MssqlSupportVersion')
         if m.get('OpenPermission') is not None:
             self.open_permission = m.get('OpenPermission')
         if m.get('StorageUsed') is not None:
@@ -2174,13 +2748,16 @@ class DescribeDedicatedHostsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeDedicatedHostsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2193,6 +2770,8 @@ class DescribeDedicatedHostsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2201,6 +2780,8 @@ class DescribeDedicatedHostsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeDedicatedHostsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2210,18 +2791,22 @@ class DescribeDedicatedHostsResponse(TeaModel):
 class DescribeHostEcsLevelInfoRequest(TeaModel):
     def __init__(
         self,
+        commodity_code: str = None,
         db_type: str = None,
         image_category: str = None,
         owner_id: int = None,
+        pay_type: str = None,
         region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         storage_type: str = None,
         zone_id: str = None,
     ):
+        self.commodity_code = commodity_code
         self.db_type = db_type
         self.image_category = image_category
         self.owner_id = owner_id
+        self.pay_type = pay_type
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -2237,12 +2822,16 @@ class DescribeHostEcsLevelInfoRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.commodity_code is not None:
+            result['CommodityCode'] = self.commodity_code
         if self.db_type is not None:
             result['DbType'] = self.db_type
         if self.image_category is not None:
             result['ImageCategory'] = self.image_category
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+        if self.pay_type is not None:
+            result['PayType'] = self.pay_type
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_owner_account is not None:
@@ -2257,12 +2846,16 @@ class DescribeHostEcsLevelInfoRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CommodityCode') is not None:
+            self.commodity_code = m.get('CommodityCode')
         if m.get('DbType') is not None:
             self.db_type = m.get('DbType')
         if m.get('ImageCategory') is not None:
             self.image_category = m.get('ImageCategory')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+        if m.get('PayType') is not None:
+            self.pay_type = m.get('PayType')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceOwnerAccount') is not None:
@@ -2467,13 +3060,16 @@ class DescribeHostEcsLevelInfoResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeHostEcsLevelInfoResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2486,6 +3082,8 @@ class DescribeHostEcsLevelInfoResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2494,8 +3092,250 @@ class DescribeHostEcsLevelInfoResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeHostEcsLevelInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeHostSecurityGroupAttributeRequest(TeaModel):
+    def __init__(
+        self,
+        dedicated_host_id: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        self.dedicated_host_id = dedicated_host_id
+        self.owner_id = owner_id
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dedicated_host_id is not None:
+            result['DedicatedHostId'] = self.dedicated_host_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DedicatedHostId') is not None:
+            self.dedicated_host_id = m.get('DedicatedHostId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class DescribeHostSecurityGroupAttributeResponseBodySecGroupPermissionSecGroupPermission(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        description: str = None,
+        direction: str = None,
+        ip_protocol: str = None,
+        nic_type: str = None,
+        policy: str = None,
+        port_range: str = None,
+        source_cidr_ip: str = None,
+    ):
+        self.create_time = create_time
+        self.description = description
+        self.direction = direction
+        self.ip_protocol = ip_protocol
+        self.nic_type = nic_type
+        self.policy = policy
+        self.port_range = port_range
+        self.source_cidr_ip = source_cidr_ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.direction is not None:
+            result['Direction'] = self.direction
+        if self.ip_protocol is not None:
+            result['IpProtocol'] = self.ip_protocol
+        if self.nic_type is not None:
+            result['NicType'] = self.nic_type
+        if self.policy is not None:
+            result['Policy'] = self.policy
+        if self.port_range is not None:
+            result['PortRange'] = self.port_range
+        if self.source_cidr_ip is not None:
+            result['SourceCidrIp'] = self.source_cidr_ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Direction') is not None:
+            self.direction = m.get('Direction')
+        if m.get('IpProtocol') is not None:
+            self.ip_protocol = m.get('IpProtocol')
+        if m.get('NicType') is not None:
+            self.nic_type = m.get('NicType')
+        if m.get('Policy') is not None:
+            self.policy = m.get('Policy')
+        if m.get('PortRange') is not None:
+            self.port_range = m.get('PortRange')
+        if m.get('SourceCidrIp') is not None:
+            self.source_cidr_ip = m.get('SourceCidrIp')
+        return self
+
+
+class DescribeHostSecurityGroupAttributeResponseBodySecGroupPermission(TeaModel):
+    def __init__(
+        self,
+        sec_group_permission: List[DescribeHostSecurityGroupAttributeResponseBodySecGroupPermissionSecGroupPermission] = None,
+    ):
+        self.sec_group_permission = sec_group_permission
+
+    def validate(self):
+        if self.sec_group_permission:
+            for k in self.sec_group_permission:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['SecGroupPermission'] = []
+        if self.sec_group_permission is not None:
+            for k in self.sec_group_permission:
+                result['SecGroupPermission'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.sec_group_permission = []
+        if m.get('SecGroupPermission') is not None:
+            for k in m.get('SecGroupPermission'):
+                temp_model = DescribeHostSecurityGroupAttributeResponseBodySecGroupPermissionSecGroupPermission()
+                self.sec_group_permission.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeHostSecurityGroupAttributeResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        sec_group_permission: DescribeHostSecurityGroupAttributeResponseBodySecGroupPermission = None,
+        success: int = None,
+    ):
+        self.request_id = request_id
+        self.sec_group_permission = sec_group_permission
+        self.success = success
+
+    def validate(self):
+        if self.sec_group_permission:
+            self.sec_group_permission.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.sec_group_permission is not None:
+            result['SecGroupPermission'] = self.sec_group_permission.to_map()
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SecGroupPermission') is not None:
+            temp_model = DescribeHostSecurityGroupAttributeResponseBodySecGroupPermission()
+            self.sec_group_permission = temp_model.from_map(m['SecGroupPermission'])
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DescribeHostSecurityGroupAttributeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeHostSecurityGroupAttributeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeHostSecurityGroupAttributeResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2594,13 +3434,16 @@ class DescribeHostWebShellResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeHostWebShellResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2613,6 +3456,8 @@ class DescribeHostWebShellResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2621,8 +3466,688 @@ class DescribeHostWebShellResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeHostWebShellResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeMyBaseHostOverViewRequest(TeaModel):
+    def __init__(
+        self,
+        owner_id: int = None,
+        region: str = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        self.owner_id = owner_id
+        self.region = region
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class DescribeMyBaseHostOverViewResponseBodyRegionsRegionModelTypeModelsTypeModel(TeaModel):
+    def __init__(
+        self,
+        count: int = None,
+        host_date_type: str = None,
+        host_engine_count: str = None,
+    ):
+        self.count = count
+        self.host_date_type = host_date_type
+        self.host_engine_count = host_engine_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.count is not None:
+            result['Count'] = self.count
+        if self.host_date_type is not None:
+            result['HostDateType'] = self.host_date_type
+        if self.host_engine_count is not None:
+            result['HostEngineCount'] = self.host_engine_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        if m.get('HostDateType') is not None:
+            self.host_date_type = m.get('HostDateType')
+        if m.get('HostEngineCount') is not None:
+            self.host_engine_count = m.get('HostEngineCount')
+        return self
+
+
+class DescribeMyBaseHostOverViewResponseBodyRegionsRegionModelTypeModels(TeaModel):
+    def __init__(
+        self,
+        type_model: List[DescribeMyBaseHostOverViewResponseBodyRegionsRegionModelTypeModelsTypeModel] = None,
+    ):
+        self.type_model = type_model
+
+    def validate(self):
+        if self.type_model:
+            for k in self.type_model:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['TypeModel'] = []
+        if self.type_model is not None:
+            for k in self.type_model:
+                result['TypeModel'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.type_model = []
+        if m.get('TypeModel') is not None:
+            for k in m.get('TypeModel'):
+                temp_model = DescribeMyBaseHostOverViewResponseBodyRegionsRegionModelTypeModelsTypeModel()
+                self.type_model.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeMyBaseHostOverViewResponseBodyRegionsRegionModel(TeaModel):
+    def __init__(
+        self,
+        engine_count: str = None,
+        host_group_count: int = None,
+        region: str = None,
+        total_count: int = None,
+        type_models: DescribeMyBaseHostOverViewResponseBodyRegionsRegionModelTypeModels = None,
+    ):
+        self.engine_count = engine_count
+        self.host_group_count = host_group_count
+        self.region = region
+        self.total_count = total_count
+        self.type_models = type_models
+
+    def validate(self):
+        if self.type_models:
+            self.type_models.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.engine_count is not None:
+            result['EngineCount'] = self.engine_count
+        if self.host_group_count is not None:
+            result['HostGroupCount'] = self.host_group_count
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.type_models is not None:
+            result['TypeModels'] = self.type_models.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EngineCount') is not None:
+            self.engine_count = m.get('EngineCount')
+        if m.get('HostGroupCount') is not None:
+            self.host_group_count = m.get('HostGroupCount')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('TypeModels') is not None:
+            temp_model = DescribeMyBaseHostOverViewResponseBodyRegionsRegionModelTypeModels()
+            self.type_models = temp_model.from_map(m['TypeModels'])
+        return self
+
+
+class DescribeMyBaseHostOverViewResponseBodyRegions(TeaModel):
+    def __init__(
+        self,
+        region_model: List[DescribeMyBaseHostOverViewResponseBodyRegionsRegionModel] = None,
+    ):
+        self.region_model = region_model
+
+    def validate(self):
+        if self.region_model:
+            for k in self.region_model:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['RegionModel'] = []
+        if self.region_model is not None:
+            for k in self.region_model:
+                result['RegionModel'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.region_model = []
+        if m.get('RegionModel') is not None:
+            for k in m.get('RegionModel'):
+                temp_model = DescribeMyBaseHostOverViewResponseBodyRegionsRegionModel()
+                self.region_model.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeMyBaseHostOverViewResponseBody(TeaModel):
+    def __init__(
+        self,
+        regions: DescribeMyBaseHostOverViewResponseBodyRegions = None,
+        request_id: str = None,
+    ):
+        self.regions = regions
+        self.request_id = request_id
+
+    def validate(self):
+        if self.regions:
+            self.regions.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.regions is not None:
+            result['Regions'] = self.regions.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Regions') is not None:
+            temp_model = DescribeMyBaseHostOverViewResponseBodyRegions()
+            self.regions = temp_model.from_map(m['Regions'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeMyBaseHostOverViewResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeMyBaseHostOverViewResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeMyBaseHostOverViewResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeMyBaseInstanceOverViewRequest(TeaModel):
+    def __init__(
+        self,
+        owner_id: int = None,
+        region: str = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        self.owner_id = owner_id
+        self.region = region
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class DescribeMyBaseInstanceOverViewResponseBodyRegionsRegionModelTypeModelsTypeModelInstanceModelsInstanceModel(TeaModel):
+    def __init__(
+        self,
+        created_time: str = None,
+        dbinstance_id: str = None,
+        dbinstance_status: str = None,
+        expire_time: str = None,
+        pay_type: str = None,
+        zone_id: str = None,
+    ):
+        self.created_time = created_time
+        self.dbinstance_id = dbinstance_id
+        self.dbinstance_status = dbinstance_status
+        self.expire_time = expire_time
+        self.pay_type = pay_type
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.created_time is not None:
+            result['CreatedTime'] = self.created_time
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.dbinstance_status is not None:
+            result['DBInstanceStatus'] = self.dbinstance_status
+        if self.expire_time is not None:
+            result['ExpireTime'] = self.expire_time
+        if self.pay_type is not None:
+            result['PayType'] = self.pay_type
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreatedTime') is not None:
+            self.created_time = m.get('CreatedTime')
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('DBInstanceStatus') is not None:
+            self.dbinstance_status = m.get('DBInstanceStatus')
+        if m.get('ExpireTime') is not None:
+            self.expire_time = m.get('ExpireTime')
+        if m.get('PayType') is not None:
+            self.pay_type = m.get('PayType')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class DescribeMyBaseInstanceOverViewResponseBodyRegionsRegionModelTypeModelsTypeModelInstanceModels(TeaModel):
+    def __init__(
+        self,
+        instance_model: List[DescribeMyBaseInstanceOverViewResponseBodyRegionsRegionModelTypeModelsTypeModelInstanceModelsInstanceModel] = None,
+    ):
+        self.instance_model = instance_model
+
+    def validate(self):
+        if self.instance_model:
+            for k in self.instance_model:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['InstanceModel'] = []
+        if self.instance_model is not None:
+            for k in self.instance_model:
+                result['InstanceModel'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.instance_model = []
+        if m.get('InstanceModel') is not None:
+            for k in m.get('InstanceModel'):
+                temp_model = DescribeMyBaseInstanceOverViewResponseBodyRegionsRegionModelTypeModelsTypeModelInstanceModelsInstanceModel()
+                self.instance_model.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeMyBaseInstanceOverViewResponseBodyRegionsRegionModelTypeModelsTypeModel(TeaModel):
+    def __init__(
+        self,
+        count: int = None,
+        instance_date_type: str = None,
+        instance_engine_count: str = None,
+        instance_models: DescribeMyBaseInstanceOverViewResponseBodyRegionsRegionModelTypeModelsTypeModelInstanceModels = None,
+    ):
+        self.count = count
+        self.instance_date_type = instance_date_type
+        self.instance_engine_count = instance_engine_count
+        self.instance_models = instance_models
+
+    def validate(self):
+        if self.instance_models:
+            self.instance_models.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.count is not None:
+            result['Count'] = self.count
+        if self.instance_date_type is not None:
+            result['InstanceDateType'] = self.instance_date_type
+        if self.instance_engine_count is not None:
+            result['InstanceEngineCount'] = self.instance_engine_count
+        if self.instance_models is not None:
+            result['InstanceModels'] = self.instance_models.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        if m.get('InstanceDateType') is not None:
+            self.instance_date_type = m.get('InstanceDateType')
+        if m.get('InstanceEngineCount') is not None:
+            self.instance_engine_count = m.get('InstanceEngineCount')
+        if m.get('InstanceModels') is not None:
+            temp_model = DescribeMyBaseInstanceOverViewResponseBodyRegionsRegionModelTypeModelsTypeModelInstanceModels()
+            self.instance_models = temp_model.from_map(m['InstanceModels'])
+        return self
+
+
+class DescribeMyBaseInstanceOverViewResponseBodyRegionsRegionModelTypeModels(TeaModel):
+    def __init__(
+        self,
+        type_model: List[DescribeMyBaseInstanceOverViewResponseBodyRegionsRegionModelTypeModelsTypeModel] = None,
+    ):
+        self.type_model = type_model
+
+    def validate(self):
+        if self.type_model:
+            for k in self.type_model:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['TypeModel'] = []
+        if self.type_model is not None:
+            for k in self.type_model:
+                result['TypeModel'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.type_model = []
+        if m.get('TypeModel') is not None:
+            for k in m.get('TypeModel'):
+                temp_model = DescribeMyBaseInstanceOverViewResponseBodyRegionsRegionModelTypeModelsTypeModel()
+                self.type_model.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeMyBaseInstanceOverViewResponseBodyRegionsRegionModel(TeaModel):
+    def __init__(
+        self,
+        engine_count: str = None,
+        region: str = None,
+        total_count: int = None,
+        type_models: DescribeMyBaseInstanceOverViewResponseBodyRegionsRegionModelTypeModels = None,
+    ):
+        self.engine_count = engine_count
+        self.region = region
+        self.total_count = total_count
+        self.type_models = type_models
+
+    def validate(self):
+        if self.type_models:
+            self.type_models.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.engine_count is not None:
+            result['EngineCount'] = self.engine_count
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.type_models is not None:
+            result['TypeModels'] = self.type_models.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EngineCount') is not None:
+            self.engine_count = m.get('EngineCount')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('TypeModels') is not None:
+            temp_model = DescribeMyBaseInstanceOverViewResponseBodyRegionsRegionModelTypeModels()
+            self.type_models = temp_model.from_map(m['TypeModels'])
+        return self
+
+
+class DescribeMyBaseInstanceOverViewResponseBodyRegions(TeaModel):
+    def __init__(
+        self,
+        region_model: List[DescribeMyBaseInstanceOverViewResponseBodyRegionsRegionModel] = None,
+    ):
+        self.region_model = region_model
+
+    def validate(self):
+        if self.region_model:
+            for k in self.region_model:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['RegionModel'] = []
+        if self.region_model is not None:
+            for k in self.region_model:
+                result['RegionModel'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.region_model = []
+        if m.get('RegionModel') is not None:
+            for k in m.get('RegionModel'):
+                temp_model = DescribeMyBaseInstanceOverViewResponseBodyRegionsRegionModel()
+                self.region_model.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeMyBaseInstanceOverViewResponseBody(TeaModel):
+    def __init__(
+        self,
+        regions: DescribeMyBaseInstanceOverViewResponseBodyRegions = None,
+        request_id: str = None,
+    ):
+        self.regions = regions
+        self.request_id = request_id
+
+    def validate(self):
+        if self.regions:
+            self.regions.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.regions is not None:
+            result['Regions'] = self.regions.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Regions') is not None:
+            temp_model = DescribeMyBaseInstanceOverViewResponseBodyRegions()
+            self.regions = temp_model.from_map(m['Regions'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeMyBaseInstanceOverViewResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeMyBaseInstanceOverViewResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeMyBaseInstanceOverViewResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2761,13 +4286,16 @@ class DescribeRegionsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeRegionsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2780,6 +4308,8 @@ class DescribeRegionsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2788,6 +4318,8 @@ class DescribeRegionsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeRegionsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2988,13 +4520,16 @@ class ListTagResourcesResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ListTagResourcesResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -3007,6 +4542,8 @@ class ListTagResourcesResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3015,6 +4552,8 @@ class ListTagResourcesResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListTagResourcesResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -3115,13 +4654,16 @@ class ModifyDedicatedHostAccountResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ModifyDedicatedHostAccountResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -3134,6 +4676,8 @@ class ModifyDedicatedHostAccountResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3142,6 +4686,8 @@ class ModifyDedicatedHostAccountResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyDedicatedHostAccountResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -3242,13 +4788,16 @@ class ModifyDedicatedHostAttributeResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ModifyDedicatedHostAttributeResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -3261,6 +4810,8 @@ class ModifyDedicatedHostAttributeResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3269,6 +4820,8 @@ class ModifyDedicatedHostAttributeResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyDedicatedHostAttributeResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -3387,13 +4940,16 @@ class ModifyDedicatedHostClassResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ModifyDedicatedHostClassResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -3406,6 +4962,8 @@ class ModifyDedicatedHostClassResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3414,6 +4972,8 @@ class ModifyDedicatedHostClassResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyDedicatedHostClassResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -3544,13 +5104,16 @@ class ModifyDedicatedHostGroupAttributeResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ModifyDedicatedHostGroupAttributeResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -3563,6 +5126,8 @@ class ModifyDedicatedHostGroupAttributeResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3571,6 +5136,8 @@ class ModifyDedicatedHostGroupAttributeResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyDedicatedHostGroupAttributeResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -3671,13 +5238,16 @@ class ModifyDedicatedHostPasswordResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ModifyDedicatedHostPasswordResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -3690,6 +5260,8 @@ class ModifyDedicatedHostPasswordResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3698,6 +5270,8 @@ class ModifyDedicatedHostPasswordResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyDedicatedHostPasswordResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -3881,13 +5455,16 @@ class QueryHostBaseInfoByInstanceResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: QueryHostBaseInfoByInstanceResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -3900,6 +5477,8 @@ class QueryHostBaseInfoByInstanceResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3908,6 +5487,8 @@ class QueryHostBaseInfoByInstanceResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = QueryHostBaseInfoByInstanceResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -4174,13 +5755,16 @@ class QueryHostInstanceConsoleInfoResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: QueryHostInstanceConsoleInfoResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -4193,6 +5777,8 @@ class QueryHostInstanceConsoleInfoResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -4201,6 +5787,8 @@ class QueryHostInstanceConsoleInfoResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = QueryHostInstanceConsoleInfoResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -4307,13 +5895,16 @@ class ReplaceDedicatedHostResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ReplaceDedicatedHostResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -4326,6 +5917,8 @@ class ReplaceDedicatedHostResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -4334,6 +5927,8 @@ class ReplaceDedicatedHostResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ReplaceDedicatedHostResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -4446,13 +6041,16 @@ class RestartDedicatedHostResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: RestartDedicatedHostResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -4465,6 +6063,8 @@ class RestartDedicatedHostResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -4473,6 +6073,8 @@ class RestartDedicatedHostResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = RestartDedicatedHostResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -4614,13 +6216,16 @@ class TagResourcesResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: TagResourcesResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -4633,6 +6238,8 @@ class TagResourcesResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -4641,6 +6248,8 @@ class TagResourcesResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = TagResourcesResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -4747,13 +6356,16 @@ class UntagResourcesResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: UntagResourcesResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -4766,6 +6378,8 @@ class UntagResourcesResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -4774,8 +6388,537 @@ class UntagResourcesResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UntagResourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListRequest(TeaModel):
+    def __init__(
+        self,
+        ali_uid: int = None,
+        bid: str = None,
+        keys: List[str] = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_ids: List[str] = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        resource_type: str = None,
+        values: List[str] = None,
+    ):
+        self.ali_uid = ali_uid
+        self.bid = bid
+        self.keys = keys
+        self.owner_id = owner_id
+        self.region_id = region_id
+        self.resource_ids = resource_ids
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.resource_type = resource_type
+        self.values = values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ali_uid is not None:
+            result['AliUid'] = self.ali_uid
+        if self.bid is not None:
+            result['Bid'] = self.bid
+        if self.keys is not None:
+            result['Keys'] = self.keys
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_ids is not None:
+            result['ResourceIds'] = self.resource_ids
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.values is not None:
+            result['Values'] = self.values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AliUid') is not None:
+            self.ali_uid = m.get('AliUid')
+        if m.get('Bid') is not None:
+            self.bid = m.get('Bid')
+        if m.get('Keys') is not None:
+            self.keys = m.get('Keys')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceIds') is not None:
+            self.resource_ids = m.get('ResourceIds')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('Values') is not None:
+            self.values = m.get('Values')
+        return self
+
+
+class ListResponseBodyTagResources(TeaModel):
+    def __init__(
+        self,
+        resource_id: str = None,
+        resource_type: str = None,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.resource_id = resource_id
+        self.resource_type = resource_type
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
+        return self
+
+
+class ListResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        tag_resources: List[ListResponseBodyTagResources] = None,
+    ):
+        self.request_id = request_id
+        self.tag_resources = tag_resources
+
+    def validate(self):
+        if self.tag_resources:
+            for k in self.tag_resources:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['TagResources'] = []
+        if self.tag_resources is not None:
+            for k in self.tag_resources:
+                result['TagResources'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.tag_resources = []
+        if m.get('TagResources') is not None:
+            for k in m.get('TagResources'):
+                temp_model = ListResponseBodyTagResources()
+                self.tag_resources.append(temp_model.from_map(k))
+        return self
+
+
+class ListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class TagRequest(TeaModel):
+    def __init__(
+        self,
+        ali_uid: int = None,
+        bid: str = None,
+        keys: List[str] = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_ids: List[str] = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        resource_type: str = None,
+        values: List[str] = None,
+    ):
+        self.ali_uid = ali_uid
+        self.bid = bid
+        self.keys = keys
+        self.owner_id = owner_id
+        self.region_id = region_id
+        self.resource_ids = resource_ids
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.resource_type = resource_type
+        self.values = values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ali_uid is not None:
+            result['AliUid'] = self.ali_uid
+        if self.bid is not None:
+            result['Bid'] = self.bid
+        if self.keys is not None:
+            result['Keys'] = self.keys
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_ids is not None:
+            result['ResourceIds'] = self.resource_ids
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.values is not None:
+            result['Values'] = self.values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AliUid') is not None:
+            self.ali_uid = m.get('AliUid')
+        if m.get('Bid') is not None:
+            self.bid = m.get('Bid')
+        if m.get('Keys') is not None:
+            self.keys = m.get('Keys')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceIds') is not None:
+            self.resource_ids = m.get('ResourceIds')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('Values') is not None:
+            self.values = m.get('Values')
+        return self
+
+
+class TagResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class TagResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: TagResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = TagResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UntagRequest(TeaModel):
+    def __init__(
+        self,
+        ali_uid: int = None,
+        all: bool = None,
+        bid: str = None,
+        keys: List[str] = None,
+        owner_id: int = None,
+        region_id: str = None,
+        release: bool = None,
+        resource_ids: List[str] = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        resource_type: str = None,
+        values: List[str] = None,
+    ):
+        self.ali_uid = ali_uid
+        self.all = all
+        self.bid = bid
+        self.keys = keys
+        self.owner_id = owner_id
+        self.region_id = region_id
+        self.release = release
+        self.resource_ids = resource_ids
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.resource_type = resource_type
+        self.values = values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ali_uid is not None:
+            result['AliUid'] = self.ali_uid
+        if self.all is not None:
+            result['All'] = self.all
+        if self.bid is not None:
+            result['Bid'] = self.bid
+        if self.keys is not None:
+            result['Keys'] = self.keys
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.release is not None:
+            result['Release'] = self.release
+        if self.resource_ids is not None:
+            result['ResourceIds'] = self.resource_ids
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.values is not None:
+            result['Values'] = self.values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AliUid') is not None:
+            self.ali_uid = m.get('AliUid')
+        if m.get('All') is not None:
+            self.all = m.get('All')
+        if m.get('Bid') is not None:
+            self.bid = m.get('Bid')
+        if m.get('Keys') is not None:
+            self.keys = m.get('Keys')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Release') is not None:
+            self.release = m.get('Release')
+        if m.get('ResourceIds') is not None:
+            self.resource_ids = m.get('ResourceIds')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('Values') is not None:
+            self.values = m.get('Values')
+        return self
+
+
+class UntagResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UntagResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UntagResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UntagResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

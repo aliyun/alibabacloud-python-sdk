@@ -48,22 +48,40 @@ class Client(OpenApiClient):
     ) -> cddc_20200320_models.CreateDedicatedHostResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AutoRenew'] = request.auto_renew
-        query['ClientToken'] = request.client_token
-        query['DedicatedHostGroupId'] = request.dedicated_host_group_id
-        query['HostClass'] = request.host_class
-        query['HostName'] = request.host_name
-        query['ImageCategory'] = request.image_category
-        query['OsPassword'] = request.os_password
-        query['OwnerId'] = request.owner_id
-        query['PayType'] = request.pay_type
-        query['Period'] = request.period
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['UsedTime'] = request.used_time
-        query['VSwitchId'] = request.v_switch_id
-        query['ZoneId'] = request.zone_id
+        if not UtilClient.is_unset(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dedicated_host_group_id):
+            query['DedicatedHostGroupId'] = request.dedicated_host_group_id
+        if not UtilClient.is_unset(request.host_class):
+            query['HostClass'] = request.host_class
+        if not UtilClient.is_unset(request.host_storage):
+            query['HostStorage'] = request.host_storage
+        if not UtilClient.is_unset(request.host_storage_type):
+            query['HostStorageType'] = request.host_storage_type
+        if not UtilClient.is_unset(request.image_category):
+            query['ImageCategory'] = request.image_category
+        if not UtilClient.is_unset(request.os_password):
+            query['OsPassword'] = request.os_password
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.used_time):
+            query['UsedTime'] = request.used_time
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -90,22 +108,40 @@ class Client(OpenApiClient):
     ) -> cddc_20200320_models.CreateDedicatedHostResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AutoRenew'] = request.auto_renew
-        query['ClientToken'] = request.client_token
-        query['DedicatedHostGroupId'] = request.dedicated_host_group_id
-        query['HostClass'] = request.host_class
-        query['HostName'] = request.host_name
-        query['ImageCategory'] = request.image_category
-        query['OsPassword'] = request.os_password
-        query['OwnerId'] = request.owner_id
-        query['PayType'] = request.pay_type
-        query['Period'] = request.period
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['UsedTime'] = request.used_time
-        query['VSwitchId'] = request.v_switch_id
-        query['ZoneId'] = request.zone_id
+        if not UtilClient.is_unset(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dedicated_host_group_id):
+            query['DedicatedHostGroupId'] = request.dedicated_host_group_id
+        if not UtilClient.is_unset(request.host_class):
+            query['HostClass'] = request.host_class
+        if not UtilClient.is_unset(request.host_storage):
+            query['HostStorage'] = request.host_storage
+        if not UtilClient.is_unset(request.host_storage_type):
+            query['HostStorageType'] = request.host_storage_type
+        if not UtilClient.is_unset(request.image_category):
+            query['ImageCategory'] = request.image_category
+        if not UtilClient.is_unset(request.os_password):
+            query['OsPassword'] = request.os_password
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.used_time):
+            query['UsedTime'] = request.used_time
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -146,16 +182,26 @@ class Client(OpenApiClient):
     ) -> cddc_20200320_models.CreateDedicatedHostAccountResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AccountName'] = request.account_name
-        query['AccountPassword'] = request.account_password
-        query['AccountType'] = request.account_type
-        query['BastionInstanceId'] = request.bastion_instance_id
-        query['ClientToken'] = request.client_token
-        query['DedicatedHostId'] = request.dedicated_host_id
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.account_password):
+            query['AccountPassword'] = request.account_password
+        if not UtilClient.is_unset(request.account_type):
+            query['AccountType'] = request.account_type
+        if not UtilClient.is_unset(request.bastion_instance_id):
+            query['BastionInstanceId'] = request.bastion_instance_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dedicated_host_id):
+            query['DedicatedHostId'] = request.dedicated_host_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -182,16 +228,26 @@ class Client(OpenApiClient):
     ) -> cddc_20200320_models.CreateDedicatedHostAccountResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AccountName'] = request.account_name
-        query['AccountPassword'] = request.account_password
-        query['AccountType'] = request.account_type
-        query['BastionInstanceId'] = request.bastion_instance_id
-        query['ClientToken'] = request.client_token
-        query['DedicatedHostId'] = request.dedicated_host_id
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.account_password):
+            query['AccountPassword'] = request.account_password
+        if not UtilClient.is_unset(request.account_type):
+            query['AccountType'] = request.account_type
+        if not UtilClient.is_unset(request.bastion_instance_id):
+            query['BastionInstanceId'] = request.bastion_instance_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dedicated_host_id):
+            query['DedicatedHostId'] = request.dedicated_host_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -232,20 +288,34 @@ class Client(OpenApiClient):
     ) -> cddc_20200320_models.CreateDedicatedHostGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AllocationPolicy'] = request.allocation_policy
-        query['ClientToken'] = request.client_token
-        query['CpuAllocationRatio'] = request.cpu_allocation_ratio
-        query['DedicatedHostGroupDesc'] = request.dedicated_host_group_desc
-        query['DiskAllocationRatio'] = request.disk_allocation_ratio
-        query['Engine'] = request.engine
-        query['HostReplacePolicy'] = request.host_replace_policy
-        query['MemAllocationRatio'] = request.mem_allocation_ratio
-        query['OpenPermission'] = request.open_permission
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VPCId'] = request.vpcid
+        if not UtilClient.is_unset(request.allocation_policy):
+            query['AllocationPolicy'] = request.allocation_policy
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.cpu_allocation_ratio):
+            query['CpuAllocationRatio'] = request.cpu_allocation_ratio
+        if not UtilClient.is_unset(request.dedicated_host_group_desc):
+            query['DedicatedHostGroupDesc'] = request.dedicated_host_group_desc
+        if not UtilClient.is_unset(request.disk_allocation_ratio):
+            query['DiskAllocationRatio'] = request.disk_allocation_ratio
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
+        if not UtilClient.is_unset(request.host_replace_policy):
+            query['HostReplacePolicy'] = request.host_replace_policy
+        if not UtilClient.is_unset(request.mem_allocation_ratio):
+            query['MemAllocationRatio'] = request.mem_allocation_ratio
+        if not UtilClient.is_unset(request.open_permission):
+            query['OpenPermission'] = request.open_permission
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.vpcid):
+            query['VPCId'] = request.vpcid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -272,20 +342,34 @@ class Client(OpenApiClient):
     ) -> cddc_20200320_models.CreateDedicatedHostGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AllocationPolicy'] = request.allocation_policy
-        query['ClientToken'] = request.client_token
-        query['CpuAllocationRatio'] = request.cpu_allocation_ratio
-        query['DedicatedHostGroupDesc'] = request.dedicated_host_group_desc
-        query['DiskAllocationRatio'] = request.disk_allocation_ratio
-        query['Engine'] = request.engine
-        query['HostReplacePolicy'] = request.host_replace_policy
-        query['MemAllocationRatio'] = request.mem_allocation_ratio
-        query['OpenPermission'] = request.open_permission
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['VPCId'] = request.vpcid
+        if not UtilClient.is_unset(request.allocation_policy):
+            query['AllocationPolicy'] = request.allocation_policy
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.cpu_allocation_ratio):
+            query['CpuAllocationRatio'] = request.cpu_allocation_ratio
+        if not UtilClient.is_unset(request.dedicated_host_group_desc):
+            query['DedicatedHostGroupDesc'] = request.dedicated_host_group_desc
+        if not UtilClient.is_unset(request.disk_allocation_ratio):
+            query['DiskAllocationRatio'] = request.disk_allocation_ratio
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
+        if not UtilClient.is_unset(request.host_replace_policy):
+            query['HostReplacePolicy'] = request.host_replace_policy
+        if not UtilClient.is_unset(request.mem_allocation_ratio):
+            query['MemAllocationRatio'] = request.mem_allocation_ratio
+        if not UtilClient.is_unset(request.open_permission):
+            query['OpenPermission'] = request.open_permission
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.vpcid):
+            query['VPCId'] = request.vpcid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -319,6 +403,152 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_dedicated_host_group_with_options_async(request, runtime)
 
+    def create_my_base_with_options(
+        self,
+        tmp_req: cddc_20200320_models.CreateMyBaseRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cddc_20200320_models.CreateMyBaseResponse:
+        UtilClient.validate_model(tmp_req)
+        request = cddc_20200320_models.CreateMyBaseShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ecsclass_list):
+            request.ecsclass_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ecsclass_list, 'ECSClassList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dedicated_host_group_description):
+            query['DedicatedHostGroupDescription'] = request.dedicated_host_group_description
+        if not UtilClient.is_unset(request.dedicated_host_group_id):
+            query['DedicatedHostGroupId'] = request.dedicated_host_group_id
+        if not UtilClient.is_unset(request.ecsclass_list_shrink):
+            query['ECSClassList'] = request.ecsclass_list_shrink
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
+        if not UtilClient.is_unset(request.os_password):
+            query['OsPassword'] = request.os_password
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.period_type):
+            query['PeriodType'] = request.period_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_group_id):
+            query['SecurityGroupId'] = request.security_group_id
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateMyBase',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cddc_20200320_models.CreateMyBaseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_my_base_with_options_async(
+        self,
+        tmp_req: cddc_20200320_models.CreateMyBaseRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cddc_20200320_models.CreateMyBaseResponse:
+        UtilClient.validate_model(tmp_req)
+        request = cddc_20200320_models.CreateMyBaseShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ecsclass_list):
+            request.ecsclass_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ecsclass_list, 'ECSClassList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dedicated_host_group_description):
+            query['DedicatedHostGroupDescription'] = request.dedicated_host_group_description
+        if not UtilClient.is_unset(request.dedicated_host_group_id):
+            query['DedicatedHostGroupId'] = request.dedicated_host_group_id
+        if not UtilClient.is_unset(request.ecsclass_list_shrink):
+            query['ECSClassList'] = request.ecsclass_list_shrink
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
+        if not UtilClient.is_unset(request.os_password):
+            query['OsPassword'] = request.os_password
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.period_type):
+            query['PeriodType'] = request.period_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_group_id):
+            query['SecurityGroupId'] = request.security_group_id
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateMyBase',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cddc_20200320_models.CreateMyBaseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_my_base(
+        self,
+        request: cddc_20200320_models.CreateMyBaseRequest,
+    ) -> cddc_20200320_models.CreateMyBaseResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_my_base_with_options(request, runtime)
+
+    async def create_my_base_async(
+        self,
+        request: cddc_20200320_models.CreateMyBaseRequest,
+    ) -> cddc_20200320_models.CreateMyBaseResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_my_base_with_options_async(request, runtime)
+
     def delete_dedicated_host_account_with_options(
         self,
         request: cddc_20200320_models.DeleteDedicatedHostAccountRequest,
@@ -326,12 +556,18 @@ class Client(OpenApiClient):
     ) -> cddc_20200320_models.DeleteDedicatedHostAccountResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AccountName'] = request.account_name
-        query['DedicatedHostId'] = request.dedicated_host_id
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.dedicated_host_id):
+            query['DedicatedHostId'] = request.dedicated_host_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -358,12 +594,18 @@ class Client(OpenApiClient):
     ) -> cddc_20200320_models.DeleteDedicatedHostAccountResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AccountName'] = request.account_name
-        query['DedicatedHostId'] = request.dedicated_host_id
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.dedicated_host_id):
+            query['DedicatedHostId'] = request.dedicated_host_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -404,11 +646,16 @@ class Client(OpenApiClient):
     ) -> cddc_20200320_models.DeleteDedicatedHostGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DedicatedHostGroupId'] = request.dedicated_host_group_id
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.dedicated_host_group_id):
+            query['DedicatedHostGroupId'] = request.dedicated_host_group_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -435,11 +682,16 @@ class Client(OpenApiClient):
     ) -> cddc_20200320_models.DeleteDedicatedHostGroupResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DedicatedHostGroupId'] = request.dedicated_host_group_id
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.dedicated_host_group_id):
+            query['DedicatedHostGroupId'] = request.dedicated_host_group_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -480,12 +732,18 @@ class Client(OpenApiClient):
     ) -> cddc_20200320_models.DescribeDedicatedHostAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DedicatedHostGroupId'] = request.dedicated_host_group_id
-        query['DedicatedHostId'] = request.dedicated_host_id
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.dedicated_host_group_id):
+            query['DedicatedHostGroupId'] = request.dedicated_host_group_id
+        if not UtilClient.is_unset(request.dedicated_host_id):
+            query['DedicatedHostId'] = request.dedicated_host_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -512,12 +770,18 @@ class Client(OpenApiClient):
     ) -> cddc_20200320_models.DescribeDedicatedHostAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DedicatedHostGroupId'] = request.dedicated_host_group_id
-        query['DedicatedHostId'] = request.dedicated_host_id
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.dedicated_host_group_id):
+            query['DedicatedHostGroupId'] = request.dedicated_host_group_id
+        if not UtilClient.is_unset(request.dedicated_host_id):
+            query['DedicatedHostId'] = request.dedicated_host_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -558,11 +822,16 @@ class Client(OpenApiClient):
     ) -> cddc_20200320_models.DescribeDedicatedHostDisksResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DedicatedHostId'] = request.dedicated_host_id
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.dedicated_host_id):
+            query['DedicatedHostId'] = request.dedicated_host_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -589,11 +858,16 @@ class Client(OpenApiClient):
     ) -> cddc_20200320_models.DescribeDedicatedHostDisksResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DedicatedHostId'] = request.dedicated_host_id
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.dedicated_host_id):
+            query['DedicatedHostId'] = request.dedicated_host_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -634,13 +908,20 @@ class Client(OpenApiClient):
     ) -> cddc_20200320_models.DescribeDedicatedHostGroupsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DedicatedHostGroupId'] = request.dedicated_host_group_id
-        query['Engine'] = request.engine
-        query['ImageCategory'] = request.image_category
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.dedicated_host_group_id):
+            query['DedicatedHostGroupId'] = request.dedicated_host_group_id
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
+        if not UtilClient.is_unset(request.image_category):
+            query['ImageCategory'] = request.image_category
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -667,13 +948,20 @@ class Client(OpenApiClient):
     ) -> cddc_20200320_models.DescribeDedicatedHostGroupsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DedicatedHostGroupId'] = request.dedicated_host_group_id
-        query['Engine'] = request.engine
-        query['ImageCategory'] = request.image_category
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.dedicated_host_group_id):
+            query['DedicatedHostGroupId'] = request.dedicated_host_group_id
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
+        if not UtilClient.is_unset(request.image_category):
+            query['ImageCategory'] = request.image_category
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -714,20 +1002,34 @@ class Client(OpenApiClient):
     ) -> cddc_20200320_models.DescribeDedicatedHostsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AllocationStatus'] = request.allocation_status
-        query['DedicatedHostGroupId'] = request.dedicated_host_group_id
-        query['DedicatedHostId'] = request.dedicated_host_id
-        query['HostStatus'] = request.host_status
-        query['HostType'] = request.host_type
-        query['OrderId'] = request.order_id
-        query['OwnerId'] = request.owner_id
-        query['PageNumbers'] = request.page_numbers
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Tags'] = request.tags
-        query['ZoneId'] = request.zone_id
+        if not UtilClient.is_unset(request.allocation_status):
+            query['AllocationStatus'] = request.allocation_status
+        if not UtilClient.is_unset(request.dedicated_host_group_id):
+            query['DedicatedHostGroupId'] = request.dedicated_host_group_id
+        if not UtilClient.is_unset(request.dedicated_host_id):
+            query['DedicatedHostId'] = request.dedicated_host_id
+        if not UtilClient.is_unset(request.host_status):
+            query['HostStatus'] = request.host_status
+        if not UtilClient.is_unset(request.host_type):
+            query['HostType'] = request.host_type
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_numbers):
+            query['PageNumbers'] = request.page_numbers
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -754,20 +1056,34 @@ class Client(OpenApiClient):
     ) -> cddc_20200320_models.DescribeDedicatedHostsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AllocationStatus'] = request.allocation_status
-        query['DedicatedHostGroupId'] = request.dedicated_host_group_id
-        query['DedicatedHostId'] = request.dedicated_host_id
-        query['HostStatus'] = request.host_status
-        query['HostType'] = request.host_type
-        query['OrderId'] = request.order_id
-        query['OwnerId'] = request.owner_id
-        query['PageNumbers'] = request.page_numbers
-        query['PageSize'] = request.page_size
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['Tags'] = request.tags
-        query['ZoneId'] = request.zone_id
+        if not UtilClient.is_unset(request.allocation_status):
+            query['AllocationStatus'] = request.allocation_status
+        if not UtilClient.is_unset(request.dedicated_host_group_id):
+            query['DedicatedHostGroupId'] = request.dedicated_host_group_id
+        if not UtilClient.is_unset(request.dedicated_host_id):
+            query['DedicatedHostId'] = request.dedicated_host_id
+        if not UtilClient.is_unset(request.host_status):
+            query['HostStatus'] = request.host_status
+        if not UtilClient.is_unset(request.host_type):
+            query['HostType'] = request.host_type
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_numbers):
+            query['PageNumbers'] = request.page_numbers
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -808,14 +1124,26 @@ class Client(OpenApiClient):
     ) -> cddc_20200320_models.DescribeHostEcsLevelInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DbType'] = request.db_type
-        query['ImageCategory'] = request.image_category
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['StorageType'] = request.storage_type
-        query['ZoneId'] = request.zone_id
+        if not UtilClient.is_unset(request.commodity_code):
+            query['CommodityCode'] = request.commodity_code
+        if not UtilClient.is_unset(request.db_type):
+            query['DbType'] = request.db_type
+        if not UtilClient.is_unset(request.image_category):
+            query['ImageCategory'] = request.image_category
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.storage_type):
+            query['StorageType'] = request.storage_type
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -842,14 +1170,26 @@ class Client(OpenApiClient):
     ) -> cddc_20200320_models.DescribeHostEcsLevelInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DbType'] = request.db_type
-        query['ImageCategory'] = request.image_category
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['StorageType'] = request.storage_type
-        query['ZoneId'] = request.zone_id
+        if not UtilClient.is_unset(request.commodity_code):
+            query['CommodityCode'] = request.commodity_code
+        if not UtilClient.is_unset(request.db_type):
+            query['DbType'] = request.db_type
+        if not UtilClient.is_unset(request.image_category):
+            query['ImageCategory'] = request.image_category
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.storage_type):
+            query['StorageType'] = request.storage_type
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -883,6 +1223,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_host_ecs_level_info_with_options_async(request, runtime)
 
+    def describe_host_security_group_attribute_with_options(
+        self,
+        request: cddc_20200320_models.DescribeHostSecurityGroupAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cddc_20200320_models.DescribeHostSecurityGroupAttributeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dedicated_host_id):
+            query['DedicatedHostId'] = request.dedicated_host_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeHostSecurityGroupAttribute',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cddc_20200320_models.DescribeHostSecurityGroupAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_host_security_group_attribute_with_options_async(
+        self,
+        request: cddc_20200320_models.DescribeHostSecurityGroupAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cddc_20200320_models.DescribeHostSecurityGroupAttributeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dedicated_host_id):
+            query['DedicatedHostId'] = request.dedicated_host_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeHostSecurityGroupAttribute',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cddc_20200320_models.DescribeHostSecurityGroupAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_host_security_group_attribute(
+        self,
+        request: cddc_20200320_models.DescribeHostSecurityGroupAttributeRequest,
+    ) -> cddc_20200320_models.DescribeHostSecurityGroupAttributeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_host_security_group_attribute_with_options(request, runtime)
+
+    async def describe_host_security_group_attribute_async(
+        self,
+        request: cddc_20200320_models.DescribeHostSecurityGroupAttributeRequest,
+    ) -> cddc_20200320_models.DescribeHostSecurityGroupAttributeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_host_security_group_attribute_with_options_async(request, runtime)
+
     def describe_host_web_shell_with_options(
         self,
         request: cddc_20200320_models.DescribeHostWebShellRequest,
@@ -890,12 +1316,18 @@ class Client(OpenApiClient):
     ) -> cddc_20200320_models.DescribeHostWebShellResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DedicatedHostId'] = request.dedicated_host_id
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['ZoneId'] = request.zone_id
+        if not UtilClient.is_unset(request.dedicated_host_id):
+            query['DedicatedHostId'] = request.dedicated_host_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -922,12 +1354,18 @@ class Client(OpenApiClient):
     ) -> cddc_20200320_models.DescribeHostWebShellResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DedicatedHostId'] = request.dedicated_host_id
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['ZoneId'] = request.zone_id
+        if not UtilClient.is_unset(request.dedicated_host_id):
+            query['DedicatedHostId'] = request.dedicated_host_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -961,6 +1399,178 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_host_web_shell_with_options_async(request, runtime)
 
+    def describe_my_base_host_over_view_with_options(
+        self,
+        request: cddc_20200320_models.DescribeMyBaseHostOverViewRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cddc_20200320_models.DescribeMyBaseHostOverViewResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMyBaseHostOverView',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cddc_20200320_models.DescribeMyBaseHostOverViewResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_my_base_host_over_view_with_options_async(
+        self,
+        request: cddc_20200320_models.DescribeMyBaseHostOverViewRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cddc_20200320_models.DescribeMyBaseHostOverViewResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMyBaseHostOverView',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cddc_20200320_models.DescribeMyBaseHostOverViewResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_my_base_host_over_view(
+        self,
+        request: cddc_20200320_models.DescribeMyBaseHostOverViewRequest,
+    ) -> cddc_20200320_models.DescribeMyBaseHostOverViewResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_my_base_host_over_view_with_options(request, runtime)
+
+    async def describe_my_base_host_over_view_async(
+        self,
+        request: cddc_20200320_models.DescribeMyBaseHostOverViewRequest,
+    ) -> cddc_20200320_models.DescribeMyBaseHostOverViewResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_my_base_host_over_view_with_options_async(request, runtime)
+
+    def describe_my_base_instance_over_view_with_options(
+        self,
+        request: cddc_20200320_models.DescribeMyBaseInstanceOverViewRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cddc_20200320_models.DescribeMyBaseInstanceOverViewResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMyBaseInstanceOverView',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cddc_20200320_models.DescribeMyBaseInstanceOverViewResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_my_base_instance_over_view_with_options_async(
+        self,
+        request: cddc_20200320_models.DescribeMyBaseInstanceOverViewRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cddc_20200320_models.DescribeMyBaseInstanceOverViewResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMyBaseInstanceOverView',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cddc_20200320_models.DescribeMyBaseInstanceOverViewResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_my_base_instance_over_view(
+        self,
+        request: cddc_20200320_models.DescribeMyBaseInstanceOverViewRequest,
+    ) -> cddc_20200320_models.DescribeMyBaseInstanceOverViewResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_my_base_instance_over_view_with_options(request, runtime)
+
+    async def describe_my_base_instance_over_view_async(
+        self,
+        request: cddc_20200320_models.DescribeMyBaseInstanceOverViewRequest,
+    ) -> cddc_20200320_models.DescribeMyBaseInstanceOverViewResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_my_base_instance_over_view_with_options_async(request, runtime)
+
     def describe_regions_with_options(
         self,
         request: cddc_20200320_models.DescribeRegionsRequest,
@@ -968,7 +1578,8 @@ class Client(OpenApiClient):
     ) -> cddc_20200320_models.DescribeRegionsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -995,7 +1606,8 @@ class Client(OpenApiClient):
     ) -> cddc_20200320_models.DescribeRegionsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1036,13 +1648,20 @@ class Client(OpenApiClient):
     ) -> cddc_20200320_models.ListTagResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceId'] = request.resource_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['ResourceType'] = request.resource_type
-        query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1069,13 +1688,20 @@ class Client(OpenApiClient):
     ) -> cddc_20200320_models.ListTagResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceId'] = request.resource_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['ResourceType'] = request.resource_type
-        query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1116,13 +1742,20 @@ class Client(OpenApiClient):
     ) -> cddc_20200320_models.ModifyDedicatedHostAccountResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AccountName'] = request.account_name
-        query['AccountPassword'] = request.account_password
-        query['DedicatedHostId'] = request.dedicated_host_id
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.account_password):
+            query['AccountPassword'] = request.account_password
+        if not UtilClient.is_unset(request.dedicated_host_id):
+            query['DedicatedHostId'] = request.dedicated_host_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1149,13 +1782,20 @@ class Client(OpenApiClient):
     ) -> cddc_20200320_models.ModifyDedicatedHostAccountResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AccountName'] = request.account_name
-        query['AccountPassword'] = request.account_password
-        query['DedicatedHostId'] = request.dedicated_host_id
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.account_password):
+            query['AccountPassword'] = request.account_password
+        if not UtilClient.is_unset(request.dedicated_host_id):
+            query['DedicatedHostId'] = request.dedicated_host_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1196,13 +1836,20 @@ class Client(OpenApiClient):
     ) -> cddc_20200320_models.ModifyDedicatedHostAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AllocationStatus'] = request.allocation_status
-        query['DedicatedHostId'] = request.dedicated_host_id
-        query['HostName'] = request.host_name
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.allocation_status):
+            query['AllocationStatus'] = request.allocation_status
+        if not UtilClient.is_unset(request.dedicated_host_id):
+            query['DedicatedHostId'] = request.dedicated_host_id
+        if not UtilClient.is_unset(request.host_name):
+            query['HostName'] = request.host_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1229,13 +1876,20 @@ class Client(OpenApiClient):
     ) -> cddc_20200320_models.ModifyDedicatedHostAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AllocationStatus'] = request.allocation_status
-        query['DedicatedHostId'] = request.dedicated_host_id
-        query['HostName'] = request.host_name
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.allocation_status):
+            query['AllocationStatus'] = request.allocation_status
+        if not UtilClient.is_unset(request.dedicated_host_id):
+            query['DedicatedHostId'] = request.dedicated_host_id
+        if not UtilClient.is_unset(request.host_name):
+            query['HostName'] = request.host_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1276,14 +1930,22 @@ class Client(OpenApiClient):
     ) -> cddc_20200320_models.ModifyDedicatedHostClassResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DedicatedHostId'] = request.dedicated_host_id
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SwitchTime'] = request.switch_time
-        query['SwitchTimeMode'] = request.switch_time_mode
-        query['TargetClassCode'] = request.target_class_code
+        if not UtilClient.is_unset(request.dedicated_host_id):
+            query['DedicatedHostId'] = request.dedicated_host_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.switch_time):
+            query['SwitchTime'] = request.switch_time
+        if not UtilClient.is_unset(request.switch_time_mode):
+            query['SwitchTimeMode'] = request.switch_time_mode
+        if not UtilClient.is_unset(request.target_class_code):
+            query['TargetClassCode'] = request.target_class_code
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1310,14 +1972,22 @@ class Client(OpenApiClient):
     ) -> cddc_20200320_models.ModifyDedicatedHostClassResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DedicatedHostId'] = request.dedicated_host_id
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['SwitchTime'] = request.switch_time
-        query['SwitchTimeMode'] = request.switch_time_mode
-        query['TargetClassCode'] = request.target_class_code
+        if not UtilClient.is_unset(request.dedicated_host_id):
+            query['DedicatedHostId'] = request.dedicated_host_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.switch_time):
+            query['SwitchTime'] = request.switch_time
+        if not UtilClient.is_unset(request.switch_time_mode):
+            query['SwitchTimeMode'] = request.switch_time_mode
+        if not UtilClient.is_unset(request.target_class_code):
+            query['TargetClassCode'] = request.target_class_code
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1358,18 +2028,30 @@ class Client(OpenApiClient):
     ) -> cddc_20200320_models.ModifyDedicatedHostGroupAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AllocationPolicy'] = request.allocation_policy
-        query['CpuAllocationRatio'] = request.cpu_allocation_ratio
-        query['DedicatedHostGroupDesc'] = request.dedicated_host_group_desc
-        query['DedicatedHostGroupId'] = request.dedicated_host_group_id
-        query['DiskAllocationRatio'] = request.disk_allocation_ratio
-        query['HostReplacePolicy'] = request.host_replace_policy
-        query['MemAllocationRatio'] = request.mem_allocation_ratio
-        query['OpenPermission'] = request.open_permission
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.allocation_policy):
+            query['AllocationPolicy'] = request.allocation_policy
+        if not UtilClient.is_unset(request.cpu_allocation_ratio):
+            query['CpuAllocationRatio'] = request.cpu_allocation_ratio
+        if not UtilClient.is_unset(request.dedicated_host_group_desc):
+            query['DedicatedHostGroupDesc'] = request.dedicated_host_group_desc
+        if not UtilClient.is_unset(request.dedicated_host_group_id):
+            query['DedicatedHostGroupId'] = request.dedicated_host_group_id
+        if not UtilClient.is_unset(request.disk_allocation_ratio):
+            query['DiskAllocationRatio'] = request.disk_allocation_ratio
+        if not UtilClient.is_unset(request.host_replace_policy):
+            query['HostReplacePolicy'] = request.host_replace_policy
+        if not UtilClient.is_unset(request.mem_allocation_ratio):
+            query['MemAllocationRatio'] = request.mem_allocation_ratio
+        if not UtilClient.is_unset(request.open_permission):
+            query['OpenPermission'] = request.open_permission
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1396,18 +2078,30 @@ class Client(OpenApiClient):
     ) -> cddc_20200320_models.ModifyDedicatedHostGroupAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AllocationPolicy'] = request.allocation_policy
-        query['CpuAllocationRatio'] = request.cpu_allocation_ratio
-        query['DedicatedHostGroupDesc'] = request.dedicated_host_group_desc
-        query['DedicatedHostGroupId'] = request.dedicated_host_group_id
-        query['DiskAllocationRatio'] = request.disk_allocation_ratio
-        query['HostReplacePolicy'] = request.host_replace_policy
-        query['MemAllocationRatio'] = request.mem_allocation_ratio
-        query['OpenPermission'] = request.open_permission
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.allocation_policy):
+            query['AllocationPolicy'] = request.allocation_policy
+        if not UtilClient.is_unset(request.cpu_allocation_ratio):
+            query['CpuAllocationRatio'] = request.cpu_allocation_ratio
+        if not UtilClient.is_unset(request.dedicated_host_group_desc):
+            query['DedicatedHostGroupDesc'] = request.dedicated_host_group_desc
+        if not UtilClient.is_unset(request.dedicated_host_group_id):
+            query['DedicatedHostGroupId'] = request.dedicated_host_group_id
+        if not UtilClient.is_unset(request.disk_allocation_ratio):
+            query['DiskAllocationRatio'] = request.disk_allocation_ratio
+        if not UtilClient.is_unset(request.host_replace_policy):
+            query['HostReplacePolicy'] = request.host_replace_policy
+        if not UtilClient.is_unset(request.mem_allocation_ratio):
+            query['MemAllocationRatio'] = request.mem_allocation_ratio
+        if not UtilClient.is_unset(request.open_permission):
+            query['OpenPermission'] = request.open_permission
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1448,12 +2142,18 @@ class Client(OpenApiClient):
     ) -> cddc_20200320_models.ModifyDedicatedHostPasswordResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DedicatedHostId'] = request.dedicated_host_id
-        query['NewPassword'] = request.new_password
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.dedicated_host_id):
+            query['DedicatedHostId'] = request.dedicated_host_id
+        if not UtilClient.is_unset(request.new_password):
+            query['NewPassword'] = request.new_password
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1480,12 +2180,18 @@ class Client(OpenApiClient):
     ) -> cddc_20200320_models.ModifyDedicatedHostPasswordResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DedicatedHostId'] = request.dedicated_host_id
-        query['NewPassword'] = request.new_password
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.dedicated_host_id):
+            query['DedicatedHostId'] = request.dedicated_host_id
+        if not UtilClient.is_unset(request.new_password):
+            query['NewPassword'] = request.new_password
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1526,11 +2232,16 @@ class Client(OpenApiClient):
     ) -> cddc_20200320_models.QueryHostBaseInfoByInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DBInstanceId'] = request.dbinstance_id
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1557,11 +2268,16 @@ class Client(OpenApiClient):
     ) -> cddc_20200320_models.QueryHostBaseInfoByInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DBInstanceId'] = request.dbinstance_id
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1602,11 +2318,16 @@ class Client(OpenApiClient):
     ) -> cddc_20200320_models.QueryHostInstanceConsoleInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DedicatedHostId'] = request.dedicated_host_id
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.dedicated_host_id):
+            query['DedicatedHostId'] = request.dedicated_host_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1633,11 +2354,16 @@ class Client(OpenApiClient):
     ) -> cddc_20200320_models.QueryHostInstanceConsoleInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DedicatedHostId'] = request.dedicated_host_id
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.dedicated_host_id):
+            query['DedicatedHostId'] = request.dedicated_host_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1678,12 +2404,18 @@ class Client(OpenApiClient):
     ) -> cddc_20200320_models.ReplaceDedicatedHostResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DedicatedHostId'] = request.dedicated_host_id
-        query['FailoverMode'] = request.failover_mode
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.dedicated_host_id):
+            query['DedicatedHostId'] = request.dedicated_host_id
+        if not UtilClient.is_unset(request.failover_mode):
+            query['FailoverMode'] = request.failover_mode
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1710,12 +2442,18 @@ class Client(OpenApiClient):
     ) -> cddc_20200320_models.ReplaceDedicatedHostResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DedicatedHostId'] = request.dedicated_host_id
-        query['FailoverMode'] = request.failover_mode
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.dedicated_host_id):
+            query['DedicatedHostId'] = request.dedicated_host_id
+        if not UtilClient.is_unset(request.failover_mode):
+            query['FailoverMode'] = request.failover_mode
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1756,13 +2494,20 @@ class Client(OpenApiClient):
     ) -> cddc_20200320_models.RestartDedicatedHostResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DedicatedHostId'] = request.dedicated_host_id
-        query['FailoverMode'] = request.failover_mode
-        query['ForceStop'] = request.force_stop
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.dedicated_host_id):
+            query['DedicatedHostId'] = request.dedicated_host_id
+        if not UtilClient.is_unset(request.failover_mode):
+            query['FailoverMode'] = request.failover_mode
+        if not UtilClient.is_unset(request.force_stop):
+            query['ForceStop'] = request.force_stop
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1789,13 +2534,20 @@ class Client(OpenApiClient):
     ) -> cddc_20200320_models.RestartDedicatedHostResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['DedicatedHostId'] = request.dedicated_host_id
-        query['FailoverMode'] = request.failover_mode
-        query['ForceStop'] = request.force_stop
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.dedicated_host_id):
+            query['DedicatedHostId'] = request.dedicated_host_id
+        if not UtilClient.is_unset(request.failover_mode):
+            query['FailoverMode'] = request.failover_mode
+        if not UtilClient.is_unset(request.force_stop):
+            query['ForceStop'] = request.force_stop
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1836,13 +2588,20 @@ class Client(OpenApiClient):
     ) -> cddc_20200320_models.TagResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceId'] = request.resource_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['ResourceType'] = request.resource_type
-        query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1869,13 +2628,20 @@ class Client(OpenApiClient):
     ) -> cddc_20200320_models.TagResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceId'] = request.resource_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['ResourceType'] = request.resource_type
-        query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1916,14 +2682,22 @@ class Client(OpenApiClient):
     ) -> cddc_20200320_models.UntagResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['All'] = request.all
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceId'] = request.resource_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['ResourceType'] = request.resource_type
-        query['TagKey'] = request.tag_key
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_key):
+            query['TagKey'] = request.tag_key
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1950,14 +2724,22 @@ class Client(OpenApiClient):
     ) -> cddc_20200320_models.UntagResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['All'] = request.all
-        query['OwnerId'] = request.owner_id
-        query['RegionId'] = request.region_id
-        query['ResourceId'] = request.resource_id
-        query['ResourceOwnerAccount'] = request.resource_owner_account
-        query['ResourceOwnerId'] = request.resource_owner_id
-        query['ResourceType'] = request.resource_type
-        query['TagKey'] = request.tag_key
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_key):
+            query['TagKey'] = request.tag_key
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1990,3 +2772,329 @@ class Client(OpenApiClient):
     ) -> cddc_20200320_models.UntagResourcesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.untag_resources_with_options_async(request, runtime)
+
+    def list_with_options(
+        self,
+        request: cddc_20200320_models.ListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cddc_20200320_models.ListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ali_uid):
+            query['AliUid'] = request.ali_uid
+        if not UtilClient.is_unset(request.bid):
+            query['Bid'] = request.bid
+        if not UtilClient.is_unset(request.keys):
+            query['Keys'] = request.keys
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_ids):
+            query['ResourceIds'] = request.resource_ids
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.values):
+            query['Values'] = request.values
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='list',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cddc_20200320_models.ListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_with_options_async(
+        self,
+        request: cddc_20200320_models.ListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cddc_20200320_models.ListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ali_uid):
+            query['AliUid'] = request.ali_uid
+        if not UtilClient.is_unset(request.bid):
+            query['Bid'] = request.bid
+        if not UtilClient.is_unset(request.keys):
+            query['Keys'] = request.keys
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_ids):
+            query['ResourceIds'] = request.resource_ids
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.values):
+            query['Values'] = request.values
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='list',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cddc_20200320_models.ListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list(
+        self,
+        request: cddc_20200320_models.ListRequest,
+    ) -> cddc_20200320_models.ListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_with_options(request, runtime)
+
+    async def list_async(
+        self,
+        request: cddc_20200320_models.ListRequest,
+    ) -> cddc_20200320_models.ListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_with_options_async(request, runtime)
+
+    def tag_with_options(
+        self,
+        request: cddc_20200320_models.TagRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cddc_20200320_models.TagResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ali_uid):
+            query['AliUid'] = request.ali_uid
+        if not UtilClient.is_unset(request.bid):
+            query['Bid'] = request.bid
+        if not UtilClient.is_unset(request.keys):
+            query['Keys'] = request.keys
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_ids):
+            query['ResourceIds'] = request.resource_ids
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.values):
+            query['Values'] = request.values
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='tag',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cddc_20200320_models.TagResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def tag_with_options_async(
+        self,
+        request: cddc_20200320_models.TagRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cddc_20200320_models.TagResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ali_uid):
+            query['AliUid'] = request.ali_uid
+        if not UtilClient.is_unset(request.bid):
+            query['Bid'] = request.bid
+        if not UtilClient.is_unset(request.keys):
+            query['Keys'] = request.keys
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_ids):
+            query['ResourceIds'] = request.resource_ids
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.values):
+            query['Values'] = request.values
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='tag',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cddc_20200320_models.TagResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def tag(
+        self,
+        request: cddc_20200320_models.TagRequest,
+    ) -> cddc_20200320_models.TagResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.tag_with_options(request, runtime)
+
+    async def tag_async(
+        self,
+        request: cddc_20200320_models.TagRequest,
+    ) -> cddc_20200320_models.TagResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.tag_with_options_async(request, runtime)
+
+    def untag_with_options(
+        self,
+        request: cddc_20200320_models.UntagRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cddc_20200320_models.UntagResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ali_uid):
+            query['AliUid'] = request.ali_uid
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
+        if not UtilClient.is_unset(request.bid):
+            query['Bid'] = request.bid
+        if not UtilClient.is_unset(request.keys):
+            query['Keys'] = request.keys
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.release):
+            query['Release'] = request.release
+        if not UtilClient.is_unset(request.resource_ids):
+            query['ResourceIds'] = request.resource_ids
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.values):
+            query['Values'] = request.values
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='untag',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cddc_20200320_models.UntagResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def untag_with_options_async(
+        self,
+        request: cddc_20200320_models.UntagRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cddc_20200320_models.UntagResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ali_uid):
+            query['AliUid'] = request.ali_uid
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
+        if not UtilClient.is_unset(request.bid):
+            query['Bid'] = request.bid
+        if not UtilClient.is_unset(request.keys):
+            query['Keys'] = request.keys
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.release):
+            query['Release'] = request.release
+        if not UtilClient.is_unset(request.resource_ids):
+            query['ResourceIds'] = request.resource_ids
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.values):
+            query['Values'] = request.values
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='untag',
+            version='2020-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cddc_20200320_models.UntagResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def untag(
+        self,
+        request: cddc_20200320_models.UntagRequest,
+    ) -> cddc_20200320_models.UntagResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.untag_with_options(request, runtime)
+
+    async def untag_async(
+        self,
+        request: cddc_20200320_models.UntagRequest,
+    ) -> cddc_20200320_models.UntagResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.untag_with_options_async(request, runtime)
