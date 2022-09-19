@@ -172,6 +172,7 @@ class AddServersToServerGroupRequestServers(TeaModel):
         self,
         description: str = None,
         port: int = None,
+        remote_ip_enabled: bool = None,
         server_id: str = None,
         server_ip: str = None,
         server_type: str = None,
@@ -179,6 +180,7 @@ class AddServersToServerGroupRequestServers(TeaModel):
     ):
         self.description = description
         self.port = port
+        self.remote_ip_enabled = remote_ip_enabled
         self.server_id = server_id
         self.server_ip = server_ip
         self.server_type = server_type
@@ -197,6 +199,8 @@ class AddServersToServerGroupRequestServers(TeaModel):
             result['Description'] = self.description
         if self.port is not None:
             result['Port'] = self.port
+        if self.remote_ip_enabled is not None:
+            result['RemoteIpEnabled'] = self.remote_ip_enabled
         if self.server_id is not None:
             result['ServerId'] = self.server_id
         if self.server_ip is not None:
@@ -213,6 +217,8 @@ class AddServersToServerGroupRequestServers(TeaModel):
             self.description = m.get('Description')
         if m.get('Port') is not None:
             self.port = m.get('Port')
+        if m.get('RemoteIpEnabled') is not None:
+            self.remote_ip_enabled = m.get('RemoteIpEnabled')
         if m.get('ServerId') is not None:
             self.server_id = m.get('ServerId')
         if m.get('ServerIp') is not None:
@@ -12671,6 +12677,7 @@ class ListServerGroupServersResponseBodyServers(TeaModel):
         self,
         description: str = None,
         port: int = None,
+        remote_ip_enabled: bool = None,
         server_group_id: str = None,
         server_id: str = None,
         server_ip: str = None,
@@ -12680,6 +12687,7 @@ class ListServerGroupServersResponseBodyServers(TeaModel):
     ):
         self.description = description
         self.port = port
+        self.remote_ip_enabled = remote_ip_enabled
         self.server_group_id = server_group_id
         self.server_id = server_id
         self.server_ip = server_ip
@@ -12700,6 +12708,8 @@ class ListServerGroupServersResponseBodyServers(TeaModel):
             result['Description'] = self.description
         if self.port is not None:
             result['Port'] = self.port
+        if self.remote_ip_enabled is not None:
+            result['RemoteIpEnabled'] = self.remote_ip_enabled
         if self.server_group_id is not None:
             result['ServerGroupId'] = self.server_group_id
         if self.server_id is not None:
@@ -12720,6 +12730,8 @@ class ListServerGroupServersResponseBodyServers(TeaModel):
             self.description = m.get('Description')
         if m.get('Port') is not None:
             self.port = m.get('Port')
+        if m.get('RemoteIpEnabled') is not None:
+            self.remote_ip_enabled = m.get('RemoteIpEnabled')
         if m.get('ServerGroupId') is not None:
             self.server_group_id = m.get('ServerGroupId')
         if m.get('ServerId') is not None:
