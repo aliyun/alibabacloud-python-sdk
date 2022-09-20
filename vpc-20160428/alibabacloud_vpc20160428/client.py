@@ -15796,6 +15796,8 @@ class Client(OpenApiClient):
             query['InternalPort'] = request.internal_port
         if not UtilClient.is_unset(request.ip_protocol):
             query['IpProtocol'] = request.ip_protocol
+        if not UtilClient.is_unset(request.nat_gateway_id):
+            query['NatGatewayId'] = request.nat_gateway_id
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -15852,6 +15854,8 @@ class Client(OpenApiClient):
             query['InternalPort'] = request.internal_port
         if not UtilClient.is_unset(request.ip_protocol):
             query['IpProtocol'] = request.ip_protocol
+        if not UtilClient.is_unset(request.nat_gateway_id):
+            query['NatGatewayId'] = request.nat_gateway_id
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -17718,6 +17722,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -17764,6 +17770,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -18636,6 +18644,8 @@ class Client(OpenApiClient):
     ) -> vpc_20160428_models.DescribeSnatTableEntriesResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.nat_gateway_id):
+            query['NatGatewayId'] = request.nat_gateway_id
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -18688,6 +18698,8 @@ class Client(OpenApiClient):
     ) -> vpc_20160428_models.DescribeSnatTableEntriesResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.nat_gateway_id):
+            query['NatGatewayId'] = request.nat_gateway_id
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -23278,6 +23290,8 @@ class Client(OpenApiClient):
             query['IpProtocol'] = request.ip_protocol
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.nat_gateway_id):
+            query['NatGatewayId'] = request.nat_gateway_id
         if not UtilClient.is_unset(request.network_interface_ids):
             query['NetworkInterfaceIds'] = request.network_interface_ids
         if not UtilClient.is_unset(request.next_token):
@@ -23330,6 +23344,8 @@ class Client(OpenApiClient):
             query['IpProtocol'] = request.ip_protocol
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.nat_gateway_id):
+            query['NatGatewayId'] = request.nat_gateway_id
         if not UtilClient.is_unset(request.network_interface_ids):
             query['NetworkInterfaceIds'] = request.network_interface_ids
         if not UtilClient.is_unset(request.next_token):
@@ -24363,6 +24379,112 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_tag_resources_with_options_async(request, runtime)
 
+    def list_tag_resources_for_express_connect_with_options(
+        self,
+        request: vpc_20160428_models.ListTagResourcesForExpressConnectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.ListTagResourcesForExpressConnectResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTagResourcesForExpressConnect',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.ListTagResourcesForExpressConnectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_tag_resources_for_express_connect_with_options_async(
+        self,
+        request: vpc_20160428_models.ListTagResourcesForExpressConnectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.ListTagResourcesForExpressConnectResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTagResourcesForExpressConnect',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.ListTagResourcesForExpressConnectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_tag_resources_for_express_connect(
+        self,
+        request: vpc_20160428_models.ListTagResourcesForExpressConnectRequest,
+    ) -> vpc_20160428_models.ListTagResourcesForExpressConnectResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_tag_resources_for_express_connect_with_options(request, runtime)
+
+    async def list_tag_resources_for_express_connect_async(
+        self,
+        request: vpc_20160428_models.ListTagResourcesForExpressConnectRequest,
+    ) -> vpc_20160428_models.ListTagResourcesForExpressConnectResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_tag_resources_for_express_connect_with_options_async(request, runtime)
+
     def list_traffic_mirror_filters_with_options(
         self,
         request: vpc_20160428_models.ListTrafficMirrorFiltersRequest,
@@ -24608,6 +24730,8 @@ class Client(OpenApiClient):
             query['PhysicalConnectionId'] = request.physical_connection_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         if not UtilClient.is_unset(request.virtual_physical_connection_ali_uids):
             query['VirtualPhysicalConnectionAliUids'] = request.virtual_physical_connection_ali_uids
         if not UtilClient.is_unset(request.virtual_physical_connection_business_status):
@@ -24654,6 +24778,8 @@ class Client(OpenApiClient):
             query['PhysicalConnectionId'] = request.physical_connection_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         if not UtilClient.is_unset(request.virtual_physical_connection_ali_uids):
             query['VirtualPhysicalConnectionAliUids'] = request.virtual_physical_connection_ali_uids
         if not UtilClient.is_unset(request.virtual_physical_connection_business_status):
@@ -31889,6 +32015,104 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.tag_resources_with_options_async(request, runtime)
 
+    def tag_resources_for_express_connect_with_options(
+        self,
+        request: vpc_20160428_models.TagResourcesForExpressConnectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.TagResourcesForExpressConnectResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TagResourcesForExpressConnect',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.TagResourcesForExpressConnectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def tag_resources_for_express_connect_with_options_async(
+        self,
+        request: vpc_20160428_models.TagResourcesForExpressConnectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.TagResourcesForExpressConnectResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TagResourcesForExpressConnect',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.TagResourcesForExpressConnectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def tag_resources_for_express_connect(
+        self,
+        request: vpc_20160428_models.TagResourcesForExpressConnectRequest,
+    ) -> vpc_20160428_models.TagResourcesForExpressConnectResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.tag_resources_for_express_connect_with_options(request, runtime)
+
+    async def tag_resources_for_express_connect_async(
+        self,
+        request: vpc_20160428_models.TagResourcesForExpressConnectRequest,
+    ) -> vpc_20160428_models.TagResourcesForExpressConnectResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.tag_resources_for_express_connect_with_options_async(request, runtime)
+
     def terminate_physical_connection_with_options(
         self,
         request: vpc_20160428_models.TerminatePhysicalConnectionRequest,
@@ -32884,6 +33108,108 @@ class Client(OpenApiClient):
     ) -> vpc_20160428_models.UnassociateVpcCidrBlockResponse:
         runtime = util_models.RuntimeOptions()
         return await self.unassociate_vpc_cidr_block_with_options_async(request, runtime)
+
+    def untag_resources_for_express_connect_with_options(
+        self,
+        request: vpc_20160428_models.UntagResourcesForExpressConnectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.UntagResourcesForExpressConnectResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_key):
+            query['TagKey'] = request.tag_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UntagResourcesForExpressConnect',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.UntagResourcesForExpressConnectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def untag_resources_for_express_connect_with_options_async(
+        self,
+        request: vpc_20160428_models.UntagResourcesForExpressConnectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.UntagResourcesForExpressConnectResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_key):
+            query['TagKey'] = request.tag_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UntagResourcesForExpressConnect',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.UntagResourcesForExpressConnectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def untag_resources_for_express_connect(
+        self,
+        request: vpc_20160428_models.UntagResourcesForExpressConnectRequest,
+    ) -> vpc_20160428_models.UntagResourcesForExpressConnectResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.untag_resources_for_express_connect_with_options(request, runtime)
+
+    async def untag_resources_for_express_connect_async(
+        self,
+        request: vpc_20160428_models.UntagResourcesForExpressConnectRequest,
+    ) -> vpc_20160428_models.UntagResourcesForExpressConnectResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.untag_resources_for_express_connect_with_options_async(request, runtime)
 
     def update_dhcp_options_set_attribute_with_options(
         self,

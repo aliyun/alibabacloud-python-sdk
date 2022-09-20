@@ -26389,6 +26389,7 @@ class DescribeForwardTableEntriesRequest(TeaModel):
         internal_ip: str = None,
         internal_port: str = None,
         ip_protocol: str = None,
+        nat_gateway_id: str = None,
         owner_account: str = None,
         owner_id: int = None,
         page_number: int = None,
@@ -26405,6 +26406,7 @@ class DescribeForwardTableEntriesRequest(TeaModel):
         self.internal_ip = internal_ip
         self.internal_port = internal_port
         self.ip_protocol = ip_protocol
+        self.nat_gateway_id = nat_gateway_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.page_number = page_number
@@ -26438,6 +26440,8 @@ class DescribeForwardTableEntriesRequest(TeaModel):
             result['InternalPort'] = self.internal_port
         if self.ip_protocol is not None:
             result['IpProtocol'] = self.ip_protocol
+        if self.nat_gateway_id is not None:
+            result['NatGatewayId'] = self.nat_gateway_id
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
@@ -26472,6 +26476,8 @@ class DescribeForwardTableEntriesRequest(TeaModel):
             self.internal_port = m.get('InternalPort')
         if m.get('IpProtocol') is not None:
             self.ip_protocol = m.get('IpProtocol')
+        if m.get('NatGatewayId') is not None:
+            self.nat_gateway_id = m.get('NatGatewayId')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
@@ -32726,6 +32732,39 @@ class DescribePhysicalConnectionsRequestFilter(TeaModel):
         return self
 
 
+class DescribePhysicalConnectionsRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class DescribePhysicalConnectionsRequest(TeaModel):
     def __init__(
         self,
@@ -32739,6 +32778,7 @@ class DescribePhysicalConnectionsRequest(TeaModel):
         region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        tags: List[DescribePhysicalConnectionsRequestTags] = None,
     ):
         self.client_token = client_token
         self.filter = filter
@@ -32750,10 +32790,15 @@ class DescribePhysicalConnectionsRequest(TeaModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.tags = tags
 
     def validate(self):
         if self.filter:
             for k in self.filter:
+                if k:
+                    k.validate()
+        if self.tags:
+            for k in self.tags:
                 if k:
                     k.validate()
 
@@ -32785,6 +32830,10 @@ class DescribePhysicalConnectionsRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -32812,6 +32861,11 @@ class DescribePhysicalConnectionsRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = DescribePhysicalConnectionsRequestTags()
+                self.tags.append(temp_model.from_map(k))
         return self
 
 
@@ -35509,6 +35563,7 @@ class DescribeRouterInterfacesResponseBodyRouterInterfaceSetRouterInterfaceType(
         cross_border: bool = None,
         description: str = None,
         end_time: str = None,
+        fast_link_mode: bool = None,
         has_reservation_data: str = None,
         hc_rate: int = None,
         hc_threshold: int = None,
@@ -35548,6 +35603,7 @@ class DescribeRouterInterfacesResponseBodyRouterInterfaceSetRouterInterfaceType(
         self.cross_border = cross_border
         self.description = description
         self.end_time = end_time
+        self.fast_link_mode = fast_link_mode
         self.has_reservation_data = has_reservation_data
         self.hc_rate = hc_rate
         self.hc_threshold = hc_threshold
@@ -35605,6 +35661,8 @@ class DescribeRouterInterfacesResponseBodyRouterInterfaceSetRouterInterfaceType(
             result['Description'] = self.description
         if self.end_time is not None:
             result['EndTime'] = self.end_time
+        if self.fast_link_mode is not None:
+            result['FastLinkMode'] = self.fast_link_mode
         if self.has_reservation_data is not None:
             result['HasReservationData'] = self.has_reservation_data
         if self.hc_rate is not None:
@@ -35685,6 +35743,8 @@ class DescribeRouterInterfacesResponseBodyRouterInterfaceSetRouterInterfaceType(
             self.description = m.get('Description')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
+        if m.get('FastLinkMode') is not None:
+            self.fast_link_mode = m.get('FastLinkMode')
         if m.get('HasReservationData') is not None:
             self.has_reservation_data = m.get('HasReservationData')
         if m.get('HcRate') is not None:
@@ -36103,6 +36163,7 @@ class DescribeServerRelatedGlobalAccelerationInstancesResponse(TeaModel):
 class DescribeSnatTableEntriesRequest(TeaModel):
     def __init__(
         self,
+        nat_gateway_id: str = None,
         owner_account: str = None,
         owner_id: int = None,
         page_number: int = None,
@@ -36117,6 +36178,7 @@ class DescribeSnatTableEntriesRequest(TeaModel):
         source_cidr: str = None,
         source_vswitch_id: str = None,
     ):
+        self.nat_gateway_id = nat_gateway_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.page_number = page_number
@@ -36140,6 +36202,8 @@ class DescribeSnatTableEntriesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.nat_gateway_id is not None:
+            result['NatGatewayId'] = self.nat_gateway_id
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
@@ -36170,6 +36234,8 @@ class DescribeSnatTableEntriesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('NatGatewayId') is not None:
+            self.nat_gateway_id = m.get('NatGatewayId')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
@@ -49076,6 +49142,7 @@ class ListFullNatEntriesRequest(TeaModel):
         full_nat_table_id: str = None,
         ip_protocol: str = None,
         max_results: int = None,
+        nat_gateway_id: str = None,
         network_interface_ids: List[str] = None,
         next_token: str = None,
         owner_account: str = None,
@@ -49090,6 +49157,7 @@ class ListFullNatEntriesRequest(TeaModel):
         self.full_nat_table_id = full_nat_table_id
         self.ip_protocol = ip_protocol
         self.max_results = max_results
+        self.nat_gateway_id = nat_gateway_id
         self.network_interface_ids = network_interface_ids
         self.next_token = next_token
         self.owner_account = owner_account
@@ -49119,6 +49187,8 @@ class ListFullNatEntriesRequest(TeaModel):
             result['IpProtocol'] = self.ip_protocol
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
+        if self.nat_gateway_id is not None:
+            result['NatGatewayId'] = self.nat_gateway_id
         if self.network_interface_ids is not None:
             result['NetworkInterfaceIds'] = self.network_interface_ids
         if self.next_token is not None:
@@ -49149,6 +49219,8 @@ class ListFullNatEntriesRequest(TeaModel):
             self.ip_protocol = m.get('IpProtocol')
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
+        if m.get('NatGatewayId') is not None:
+            self.nat_gateway_id = m.get('NatGatewayId')
         if m.get('NetworkInterfaceIds') is not None:
             self.network_interface_ids = m.get('NetworkInterfaceIds')
         if m.get('NextToken') is not None:
@@ -51935,6 +52007,293 @@ class ListTagResourcesResponse(TeaModel):
         return self
 
 
+class ListTagResourcesForExpressConnectRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListTagResourcesForExpressConnectRequest(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_id: List[str] = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        resource_type: str = None,
+        tag: List[ListTagResourcesForExpressConnectRequestTag] = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.region_id = region_id
+        self.resource_id = resource_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.resource_type = resource_type
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = ListTagResourcesForExpressConnectRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class ListTagResourcesForExpressConnectResponseBodyTagResourcesTagResource(TeaModel):
+    def __init__(
+        self,
+        resource_id: str = None,
+        resource_type: str = None,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.resource_id = resource_id
+        self.resource_type = resource_type
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
+        return self
+
+
+class ListTagResourcesForExpressConnectResponseBodyTagResources(TeaModel):
+    def __init__(
+        self,
+        tag_resource: List[ListTagResourcesForExpressConnectResponseBodyTagResourcesTagResource] = None,
+    ):
+        self.tag_resource = tag_resource
+
+    def validate(self):
+        if self.tag_resource:
+            for k in self.tag_resource:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['TagResource'] = []
+        if self.tag_resource is not None:
+            for k in self.tag_resource:
+                result['TagResource'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.tag_resource = []
+        if m.get('TagResource') is not None:
+            for k in m.get('TagResource'):
+                temp_model = ListTagResourcesForExpressConnectResponseBodyTagResourcesTagResource()
+                self.tag_resource.append(temp_model.from_map(k))
+        return self
+
+
+class ListTagResourcesForExpressConnectResponseBody(TeaModel):
+    def __init__(
+        self,
+        next_token: str = None,
+        request_id: str = None,
+        tag_resources: ListTagResourcesForExpressConnectResponseBodyTagResources = None,
+    ):
+        self.next_token = next_token
+        self.request_id = request_id
+        self.tag_resources = tag_resources
+
+    def validate(self):
+        if self.tag_resources:
+            self.tag_resources.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.tag_resources is not None:
+            result['TagResources'] = self.tag_resources.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TagResources') is not None:
+            temp_model = ListTagResourcesForExpressConnectResponseBodyTagResources()
+            self.tag_resources = temp_model.from_map(m['TagResources'])
+        return self
+
+
+class ListTagResourcesForExpressConnectResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListTagResourcesForExpressConnectResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListTagResourcesForExpressConnectResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListTrafficMirrorFiltersRequest(TeaModel):
     def __init__(
         self,
@@ -52662,6 +53021,39 @@ class ListTrafficMirrorSessionsResponse(TeaModel):
         return self
 
 
+class ListVirtualPhysicalConnectionsRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class ListVirtualPhysicalConnectionsRequest(TeaModel):
     def __init__(
         self,
@@ -52670,6 +53062,7 @@ class ListVirtualPhysicalConnectionsRequest(TeaModel):
         next_token: str = None,
         physical_connection_id: str = None,
         region_id: str = None,
+        tags: List[ListVirtualPhysicalConnectionsRequestTags] = None,
         virtual_physical_connection_ali_uids: List[str] = None,
         virtual_physical_connection_business_status: str = None,
         virtual_physical_connection_ids: List[str] = None,
@@ -52681,6 +53074,7 @@ class ListVirtualPhysicalConnectionsRequest(TeaModel):
         self.next_token = next_token
         self.physical_connection_id = physical_connection_id
         self.region_id = region_id
+        self.tags = tags
         self.virtual_physical_connection_ali_uids = virtual_physical_connection_ali_uids
         self.virtual_physical_connection_business_status = virtual_physical_connection_business_status
         self.virtual_physical_connection_ids = virtual_physical_connection_ids
@@ -52688,7 +53082,10 @@ class ListVirtualPhysicalConnectionsRequest(TeaModel):
         self.vlan_ids = vlan_ids
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -52706,6 +53103,10 @@ class ListVirtualPhysicalConnectionsRequest(TeaModel):
             result['PhysicalConnectionId'] = self.physical_connection_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.virtual_physical_connection_ali_uids is not None:
             result['VirtualPhysicalConnectionAliUids'] = self.virtual_physical_connection_ali_uids
         if self.virtual_physical_connection_business_status is not None:
@@ -52730,6 +53131,11 @@ class ListVirtualPhysicalConnectionsRequest(TeaModel):
             self.physical_connection_id = m.get('PhysicalConnectionId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListVirtualPhysicalConnectionsRequestTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('VirtualPhysicalConnectionAliUids') is not None:
             self.virtual_physical_connection_ali_uids = m.get('VirtualPhysicalConnectionAliUids')
         if m.get('VirtualPhysicalConnectionBusinessStatus') is not None:
@@ -64654,6 +65060,187 @@ class TagResourcesResponse(TeaModel):
         return self
 
 
+class TagResourcesForExpressConnectRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class TagResourcesForExpressConnectRequest(TeaModel):
+    def __init__(
+        self,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_id: List[str] = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        resource_type: str = None,
+        tag: List[TagResourcesForExpressConnectRequestTag] = None,
+    ):
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.region_id = region_id
+        self.resource_id = resource_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.resource_type = resource_type
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = TagResourcesForExpressConnectRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class TagResourcesForExpressConnectResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class TagResourcesForExpressConnectResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: TagResourcesForExpressConnectResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = TagResourcesForExpressConnectResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class TerminatePhysicalConnectionRequest(TeaModel):
     def __init__(
         self,
@@ -66097,6 +66684,152 @@ class UnassociateVpcCidrBlockResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UnassociateVpcCidrBlockResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UntagResourcesForExpressConnectRequest(TeaModel):
+    def __init__(
+        self,
+        all: bool = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_id: List[str] = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        resource_type: str = None,
+        tag_key: List[str] = None,
+    ):
+        self.all = all
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.region_id = region_id
+        self.resource_id = resource_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.resource_type = resource_type
+        self.tag_key = tag_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.all is not None:
+            result['All'] = self.all
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('All') is not None:
+            self.all = m.get('All')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        return self
+
+
+class UntagResourcesForExpressConnectResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UntagResourcesForExpressConnectResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UntagResourcesForExpressConnectResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UntagResourcesForExpressConnectResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
