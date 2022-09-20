@@ -1,3 +1,6 @@
+2022-09-20 Version: 2.3.4
+- Add BatchCheckSession api.
+
 2022-09-07 Version: 2.3.3
 - Add proposeCluster.
 
