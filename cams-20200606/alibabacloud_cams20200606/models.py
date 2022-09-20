@@ -4,226 +4,6 @@ from Tea.model import TeaModel
 from typing import List, Dict
 
 
-class CheckChatappContactsRequest(TeaModel):
-    def __init__(
-        self,
-        channel_type: str = None,
-        contacts: List[str] = None,
-        cust_waba_id: str = None,
-        from_: str = None,
-    ):
-        self.channel_type = channel_type
-        self.contacts = contacts
-        self.cust_waba_id = cust_waba_id
-        self.from_ = from_
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.channel_type is not None:
-            result['ChannelType'] = self.channel_type
-        if self.contacts is not None:
-            result['Contacts'] = self.contacts
-        if self.cust_waba_id is not None:
-            result['CustWabaId'] = self.cust_waba_id
-        if self.from_ is not None:
-            result['From'] = self.from_
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ChannelType') is not None:
-            self.channel_type = m.get('ChannelType')
-        if m.get('Contacts') is not None:
-            self.contacts = m.get('Contacts')
-        if m.get('CustWabaId') is not None:
-            self.cust_waba_id = m.get('CustWabaId')
-        if m.get('From') is not None:
-            self.from_ = m.get('From')
-        return self
-
-
-class CheckChatappContactsShrinkRequest(TeaModel):
-    def __init__(
-        self,
-        channel_type: str = None,
-        contacts_shrink: str = None,
-        cust_waba_id: str = None,
-        from_: str = None,
-    ):
-        self.channel_type = channel_type
-        self.contacts_shrink = contacts_shrink
-        self.cust_waba_id = cust_waba_id
-        self.from_ = from_
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.channel_type is not None:
-            result['ChannelType'] = self.channel_type
-        if self.contacts_shrink is not None:
-            result['Contacts'] = self.contacts_shrink
-        if self.cust_waba_id is not None:
-            result['CustWabaId'] = self.cust_waba_id
-        if self.from_ is not None:
-            result['From'] = self.from_
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ChannelType') is not None:
-            self.channel_type = m.get('ChannelType')
-        if m.get('Contacts') is not None:
-            self.contacts_shrink = m.get('Contacts')
-        if m.get('CustWabaId') is not None:
-            self.cust_waba_id = m.get('CustWabaId')
-        if m.get('From') is not None:
-            self.from_ = m.get('From')
-        return self
-
-
-class CheckChatappContactsResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        phone_number: str = None,
-        status: str = None,
-    ):
-        self.phone_number = phone_number
-        self.status = status
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.phone_number is not None:
-            result['PhoneNumber'] = self.phone_number
-        if self.status is not None:
-            result['Status'] = self.status
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('PhoneNumber') is not None:
-            self.phone_number = m.get('PhoneNumber')
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        return self
-
-
-class CheckChatappContactsResponseBody(TeaModel):
-    def __init__(
-        self,
-        code: str = None,
-        data: List[CheckChatappContactsResponseBodyData] = None,
-        message: str = None,
-        request_id: str = None,
-    ):
-        self.code = code
-        self.data = data
-        self.message = message
-        self.request_id = request_id
-
-    def validate(self):
-        if self.data:
-            for k in self.data:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        result['Data'] = []
-        if self.data is not None:
-            for k in self.data:
-                result['Data'].append(k.to_map() if k else None)
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        self.data = []
-        if m.get('Data') is not None:
-            for k in m.get('Data'):
-                temp_model = CheckChatappContactsResponseBodyData()
-                self.data.append(temp_model.from_map(k))
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class CheckChatappContactsResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: CheckChatappContactsResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = CheckChatappContactsResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class CreateChatappTemplateRequestComponentsButtons(TeaModel):
     def __init__(
         self,
@@ -353,6 +133,7 @@ class CreateChatappTemplateRequest(TeaModel):
         components: List[CreateChatappTemplateRequestComponents] = None,
         cust_waba_id: str = None,
         example: Dict[str, str] = None,
+        isv_code: str = None,
         language: str = None,
         name: str = None,
         template_type: str = None,
@@ -361,6 +142,7 @@ class CreateChatappTemplateRequest(TeaModel):
         self.components = components
         self.cust_waba_id = cust_waba_id
         self.example = example
+        self.isv_code = isv_code
         self.language = language
         self.name = name
         self.template_type = template_type
@@ -387,6 +169,8 @@ class CreateChatappTemplateRequest(TeaModel):
             result['CustWabaId'] = self.cust_waba_id
         if self.example is not None:
             result['Example'] = self.example
+        if self.isv_code is not None:
+            result['IsvCode'] = self.isv_code
         if self.language is not None:
             result['Language'] = self.language
         if self.name is not None:
@@ -408,6 +192,8 @@ class CreateChatappTemplateRequest(TeaModel):
             self.cust_waba_id = m.get('CustWabaId')
         if m.get('Example') is not None:
             self.example = m.get('Example')
+        if m.get('IsvCode') is not None:
+            self.isv_code = m.get('IsvCode')
         if m.get('Language') is not None:
             self.language = m.get('Language')
         if m.get('Name') is not None:
@@ -424,6 +210,7 @@ class CreateChatappTemplateShrinkRequest(TeaModel):
         components_shrink: str = None,
         cust_waba_id: str = None,
         example_shrink: str = None,
+        isv_code: str = None,
         language: str = None,
         name: str = None,
         template_type: str = None,
@@ -432,6 +219,7 @@ class CreateChatappTemplateShrinkRequest(TeaModel):
         self.components_shrink = components_shrink
         self.cust_waba_id = cust_waba_id
         self.example_shrink = example_shrink
+        self.isv_code = isv_code
         self.language = language
         self.name = name
         self.template_type = template_type
@@ -453,6 +241,8 @@ class CreateChatappTemplateShrinkRequest(TeaModel):
             result['CustWabaId'] = self.cust_waba_id
         if self.example_shrink is not None:
             result['Example'] = self.example_shrink
+        if self.isv_code is not None:
+            result['IsvCode'] = self.isv_code
         if self.language is not None:
             result['Language'] = self.language
         if self.name is not None:
@@ -471,6 +261,8 @@ class CreateChatappTemplateShrinkRequest(TeaModel):
             self.cust_waba_id = m.get('CustWabaId')
         if m.get('Example') is not None:
             self.example_shrink = m.get('Example')
+        if m.get('IsvCode') is not None:
+            self.isv_code = m.get('IsvCode')
         if m.get('Language') is not None:
             self.language = m.get('Language')
         if m.get('Name') is not None:
@@ -608,9 +400,11 @@ class DeleteChatappTemplateRequest(TeaModel):
     def __init__(
         self,
         cust_waba_id: str = None,
+        isv_code: str = None,
         template_code: str = None,
     ):
         self.cust_waba_id = cust_waba_id
+        self.isv_code = isv_code
         self.template_code = template_code
 
     def validate(self):
@@ -624,6 +418,8 @@ class DeleteChatappTemplateRequest(TeaModel):
         result = dict()
         if self.cust_waba_id is not None:
             result['CustWabaId'] = self.cust_waba_id
+        if self.isv_code is not None:
+            result['IsvCode'] = self.isv_code
         if self.template_code is not None:
             result['TemplateCode'] = self.template_code
         return result
@@ -632,6 +428,8 @@ class DeleteChatappTemplateRequest(TeaModel):
         m = m or dict()
         if m.get('CustWabaId') is not None:
             self.cust_waba_id = m.get('CustWabaId')
+        if m.get('IsvCode') is not None:
+            self.isv_code = m.get('IsvCode')
         if m.get('TemplateCode') is not None:
             self.template_code = m.get('TemplateCode')
         return self
@@ -724,10 +522,12 @@ class GetChatappTemplateDetailRequest(TeaModel):
     def __init__(
         self,
         cust_waba_id: str = None,
+        isv_code: str = None,
         language: str = None,
         template_code: str = None,
     ):
         self.cust_waba_id = cust_waba_id
+        self.isv_code = isv_code
         self.language = language
         self.template_code = template_code
 
@@ -742,6 +542,8 @@ class GetChatappTemplateDetailRequest(TeaModel):
         result = dict()
         if self.cust_waba_id is not None:
             result['CustWabaId'] = self.cust_waba_id
+        if self.isv_code is not None:
+            result['IsvCode'] = self.isv_code
         if self.language is not None:
             result['Language'] = self.language
         if self.template_code is not None:
@@ -752,6 +554,8 @@ class GetChatappTemplateDetailRequest(TeaModel):
         m = m or dict()
         if m.get('CustWabaId') is not None:
             self.cust_waba_id = m.get('CustWabaId')
+        if m.get('IsvCode') is not None:
+            self.isv_code = m.get('IsvCode')
         if m.get('Language') is not None:
             self.language = m.get('Language')
         if m.get('TemplateCode') is not None:
@@ -1081,12 +885,14 @@ class ListChatappTemplateRequest(TeaModel):
         self,
         audit_status: str = None,
         cust_waba_id: str = None,
+        isv_code: str = None,
         language: str = None,
         name: str = None,
         page: ListChatappTemplateRequestPage = None,
     ):
         self.audit_status = audit_status
         self.cust_waba_id = cust_waba_id
+        self.isv_code = isv_code
         self.language = language
         self.name = name
         self.page = page
@@ -1105,6 +911,8 @@ class ListChatappTemplateRequest(TeaModel):
             result['AuditStatus'] = self.audit_status
         if self.cust_waba_id is not None:
             result['CustWabaId'] = self.cust_waba_id
+        if self.isv_code is not None:
+            result['IsvCode'] = self.isv_code
         if self.language is not None:
             result['Language'] = self.language
         if self.name is not None:
@@ -1119,6 +927,8 @@ class ListChatappTemplateRequest(TeaModel):
             self.audit_status = m.get('AuditStatus')
         if m.get('CustWabaId') is not None:
             self.cust_waba_id = m.get('CustWabaId')
+        if m.get('IsvCode') is not None:
+            self.isv_code = m.get('IsvCode')
         if m.get('Language') is not None:
             self.language = m.get('Language')
         if m.get('Name') is not None:
@@ -1134,12 +944,14 @@ class ListChatappTemplateShrinkRequest(TeaModel):
         self,
         audit_status: str = None,
         cust_waba_id: str = None,
+        isv_code: str = None,
         language: str = None,
         name: str = None,
         page_shrink: str = None,
     ):
         self.audit_status = audit_status
         self.cust_waba_id = cust_waba_id
+        self.isv_code = isv_code
         self.language = language
         self.name = name
         self.page_shrink = page_shrink
@@ -1157,6 +969,8 @@ class ListChatappTemplateShrinkRequest(TeaModel):
             result['AuditStatus'] = self.audit_status
         if self.cust_waba_id is not None:
             result['CustWabaId'] = self.cust_waba_id
+        if self.isv_code is not None:
+            result['IsvCode'] = self.isv_code
         if self.language is not None:
             result['Language'] = self.language
         if self.name is not None:
@@ -1171,6 +985,8 @@ class ListChatappTemplateShrinkRequest(TeaModel):
             self.audit_status = m.get('AuditStatus')
         if m.get('CustWabaId') is not None:
             self.cust_waba_id = m.get('CustWabaId')
+        if m.get('IsvCode') is not None:
+            self.isv_code = m.get('IsvCode')
         if m.get('Language') is not None:
             self.language = m.get('Language')
         if m.get('Name') is not None:
@@ -1375,6 +1191,7 @@ class SendChatappMassMessageRequest(TeaModel):
         fall_back_content: str = None,
         fall_back_id: str = None,
         from_: str = None,
+        isv_code: str = None,
         language: str = None,
         sender_list: List[SendChatappMassMessageRequestSenderList] = None,
         task_id: str = None,
@@ -1385,6 +1202,7 @@ class SendChatappMassMessageRequest(TeaModel):
         self.fall_back_content = fall_back_content
         self.fall_back_id = fall_back_id
         self.from_ = from_
+        self.isv_code = isv_code
         self.language = language
         self.sender_list = sender_list
         self.task_id = task_id
@@ -1412,6 +1230,8 @@ class SendChatappMassMessageRequest(TeaModel):
             result['FallBackId'] = self.fall_back_id
         if self.from_ is not None:
             result['From'] = self.from_
+        if self.isv_code is not None:
+            result['IsvCode'] = self.isv_code
         if self.language is not None:
             result['Language'] = self.language
         result['SenderList'] = []
@@ -1436,6 +1256,8 @@ class SendChatappMassMessageRequest(TeaModel):
             self.fall_back_id = m.get('FallBackId')
         if m.get('From') is not None:
             self.from_ = m.get('From')
+        if m.get('IsvCode') is not None:
+            self.isv_code = m.get('IsvCode')
         if m.get('Language') is not None:
             self.language = m.get('Language')
         self.sender_list = []
@@ -1458,6 +1280,7 @@ class SendChatappMassMessageShrinkRequest(TeaModel):
         fall_back_content: str = None,
         fall_back_id: str = None,
         from_: str = None,
+        isv_code: str = None,
         language: str = None,
         sender_list_shrink: str = None,
         task_id: str = None,
@@ -1468,6 +1291,7 @@ class SendChatappMassMessageShrinkRequest(TeaModel):
         self.fall_back_content = fall_back_content
         self.fall_back_id = fall_back_id
         self.from_ = from_
+        self.isv_code = isv_code
         self.language = language
         self.sender_list_shrink = sender_list_shrink
         self.task_id = task_id
@@ -1492,6 +1316,8 @@ class SendChatappMassMessageShrinkRequest(TeaModel):
             result['FallBackId'] = self.fall_back_id
         if self.from_ is not None:
             result['From'] = self.from_
+        if self.isv_code is not None:
+            result['IsvCode'] = self.isv_code
         if self.language is not None:
             result['Language'] = self.language
         if self.sender_list_shrink is not None:
@@ -1514,6 +1340,8 @@ class SendChatappMassMessageShrinkRequest(TeaModel):
             self.fall_back_id = m.get('FallBackId')
         if m.get('From') is not None:
             self.from_ = m.get('From')
+        if m.get('IsvCode') is not None:
+            self.isv_code = m.get('IsvCode')
         if m.get('Language') is not None:
             self.language = m.get('Language')
         if m.get('SenderList') is not None:
@@ -1623,6 +1451,7 @@ class SendChatappMessageRequest(TeaModel):
         fall_back_content: str = None,
         fall_back_id: str = None,
         from_: str = None,
+        isv_code: str = None,
         language: str = None,
         message_type: str = None,
         payload: List[str] = None,
@@ -1637,6 +1466,7 @@ class SendChatappMessageRequest(TeaModel):
         self.fall_back_content = fall_back_content
         self.fall_back_id = fall_back_id
         self.from_ = from_
+        self.isv_code = isv_code
         self.language = language
         self.message_type = message_type
         self.payload = payload
@@ -1666,6 +1496,8 @@ class SendChatappMessageRequest(TeaModel):
             result['FallBackId'] = self.fall_back_id
         if self.from_ is not None:
             result['From'] = self.from_
+        if self.isv_code is not None:
+            result['IsvCode'] = self.isv_code
         if self.language is not None:
             result['Language'] = self.language
         if self.message_type is not None:
@@ -1696,6 +1528,8 @@ class SendChatappMessageRequest(TeaModel):
             self.fall_back_id = m.get('FallBackId')
         if m.get('From') is not None:
             self.from_ = m.get('From')
+        if m.get('IsvCode') is not None:
+            self.isv_code = m.get('IsvCode')
         if m.get('Language') is not None:
             self.language = m.get('Language')
         if m.get('MessageType') is not None:
@@ -1722,6 +1556,7 @@ class SendChatappMessageShrinkRequest(TeaModel):
         fall_back_content: str = None,
         fall_back_id: str = None,
         from_: str = None,
+        isv_code: str = None,
         language: str = None,
         message_type: str = None,
         payload_shrink: str = None,
@@ -1736,6 +1571,7 @@ class SendChatappMessageShrinkRequest(TeaModel):
         self.fall_back_content = fall_back_content
         self.fall_back_id = fall_back_id
         self.from_ = from_
+        self.isv_code = isv_code
         self.language = language
         self.message_type = message_type
         self.payload_shrink = payload_shrink
@@ -1765,6 +1601,8 @@ class SendChatappMessageShrinkRequest(TeaModel):
             result['FallBackId'] = self.fall_back_id
         if self.from_ is not None:
             result['From'] = self.from_
+        if self.isv_code is not None:
+            result['IsvCode'] = self.isv_code
         if self.language is not None:
             result['Language'] = self.language
         if self.message_type is not None:
@@ -1795,6 +1633,8 @@ class SendChatappMessageShrinkRequest(TeaModel):
             self.fall_back_id = m.get('FallBackId')
         if m.get('From') is not None:
             self.from_ = m.get('From')
+        if m.get('IsvCode') is not None:
+            self.isv_code = m.get('IsvCode')
         if m.get('Language') is not None:
             self.language = m.get('Language')
         if m.get('MessageType') is not None:

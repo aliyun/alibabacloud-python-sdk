@@ -1,3 +1,6 @@
+2022-09-20 Version: 1.0.11
+- Support ISV features.
+
 2022-08-19 Version: 1.0.10
 - Support Batch Send API.
 

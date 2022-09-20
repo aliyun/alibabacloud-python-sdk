@@ -41,96 +41,6 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
-    def check_chatapp_contacts_with_options(
-        self,
-        tmp_req: cams_20200606_models.CheckChatappContactsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cams_20200606_models.CheckChatappContactsResponse:
-        UtilClient.validate_model(tmp_req)
-        request = cams_20200606_models.CheckChatappContactsShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.contacts):
-            request.contacts_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.contacts, 'Contacts', 'json')
-        body = {}
-        if not UtilClient.is_unset(request.channel_type):
-            body['ChannelType'] = request.channel_type
-        if not UtilClient.is_unset(request.contacts_shrink):
-            body['Contacts'] = request.contacts_shrink
-        if not UtilClient.is_unset(request.cust_waba_id):
-            body['CustWabaId'] = request.cust_waba_id
-        if not UtilClient.is_unset(request.from_):
-            body['From'] = request.from_
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='CheckChatappContacts',
-            version='2020-06-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cams_20200606_models.CheckChatappContactsResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def check_chatapp_contacts_with_options_async(
-        self,
-        tmp_req: cams_20200606_models.CheckChatappContactsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cams_20200606_models.CheckChatappContactsResponse:
-        UtilClient.validate_model(tmp_req)
-        request = cams_20200606_models.CheckChatappContactsShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.contacts):
-            request.contacts_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.contacts, 'Contacts', 'json')
-        body = {}
-        if not UtilClient.is_unset(request.channel_type):
-            body['ChannelType'] = request.channel_type
-        if not UtilClient.is_unset(request.contacts_shrink):
-            body['Contacts'] = request.contacts_shrink
-        if not UtilClient.is_unset(request.cust_waba_id):
-            body['CustWabaId'] = request.cust_waba_id
-        if not UtilClient.is_unset(request.from_):
-            body['From'] = request.from_
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='CheckChatappContacts',
-            version='2020-06-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cams_20200606_models.CheckChatappContactsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def check_chatapp_contacts(
-        self,
-        request: cams_20200606_models.CheckChatappContactsRequest,
-    ) -> cams_20200606_models.CheckChatappContactsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.check_chatapp_contacts_with_options(request, runtime)
-
-    async def check_chatapp_contacts_async(
-        self,
-        request: cams_20200606_models.CheckChatappContactsRequest,
-    ) -> cams_20200606_models.CheckChatappContactsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.check_chatapp_contacts_with_options_async(request, runtime)
-
     def create_chatapp_template_with_options(
         self,
         tmp_req: cams_20200606_models.CreateChatappTemplateRequest,
@@ -152,6 +62,8 @@ class Client(OpenApiClient):
             body['CustWabaId'] = request.cust_waba_id
         if not UtilClient.is_unset(request.example_shrink):
             body['Example'] = request.example_shrink
+        if not UtilClient.is_unset(request.isv_code):
+            body['IsvCode'] = request.isv_code
         if not UtilClient.is_unset(request.language):
             body['Language'] = request.language
         if not UtilClient.is_unset(request.name):
@@ -198,6 +110,8 @@ class Client(OpenApiClient):
             body['CustWabaId'] = request.cust_waba_id
         if not UtilClient.is_unset(request.example_shrink):
             body['Example'] = request.example_shrink
+        if not UtilClient.is_unset(request.isv_code):
+            body['IsvCode'] = request.isv_code
         if not UtilClient.is_unset(request.language):
             body['Language'] = request.language
         if not UtilClient.is_unset(request.name):
@@ -246,6 +160,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.cust_waba_id):
             query['CustWabaId'] = request.cust_waba_id
+        if not UtilClient.is_unset(request.isv_code):
+            query['IsvCode'] = request.isv_code
         if not UtilClient.is_unset(request.template_code):
             query['TemplateCode'] = request.template_code
         req = open_api_models.OpenApiRequest(
@@ -276,6 +192,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.cust_waba_id):
             query['CustWabaId'] = request.cust_waba_id
+        if not UtilClient.is_unset(request.isv_code):
+            query['IsvCode'] = request.isv_code
         if not UtilClient.is_unset(request.template_code):
             query['TemplateCode'] = request.template_code
         req = open_api_models.OpenApiRequest(
@@ -320,6 +238,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.cust_waba_id):
             query['CustWabaId'] = request.cust_waba_id
+        if not UtilClient.is_unset(request.isv_code):
+            query['IsvCode'] = request.isv_code
         if not UtilClient.is_unset(request.language):
             query['Language'] = request.language
         if not UtilClient.is_unset(request.template_code):
@@ -352,6 +272,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.cust_waba_id):
             query['CustWabaId'] = request.cust_waba_id
+        if not UtilClient.is_unset(request.isv_code):
+            query['IsvCode'] = request.isv_code
         if not UtilClient.is_unset(request.language):
             query['Language'] = request.language
         if not UtilClient.is_unset(request.template_code):
@@ -404,6 +326,8 @@ class Client(OpenApiClient):
             query['AuditStatus'] = request.audit_status
         if not UtilClient.is_unset(request.cust_waba_id):
             query['CustWabaId'] = request.cust_waba_id
+        if not UtilClient.is_unset(request.isv_code):
+            query['IsvCode'] = request.isv_code
         if not UtilClient.is_unset(request.language):
             query['Language'] = request.language
         if not UtilClient.is_unset(request.name):
@@ -444,6 +368,8 @@ class Client(OpenApiClient):
             query['AuditStatus'] = request.audit_status
         if not UtilClient.is_unset(request.cust_waba_id):
             query['CustWabaId'] = request.cust_waba_id
+        if not UtilClient.is_unset(request.isv_code):
+            query['IsvCode'] = request.isv_code
         if not UtilClient.is_unset(request.language):
             query['Language'] = request.language
         if not UtilClient.is_unset(request.name):
@@ -504,6 +430,8 @@ class Client(OpenApiClient):
             body['FallBackId'] = request.fall_back_id
         if not UtilClient.is_unset(request.from_):
             body['From'] = request.from_
+        if not UtilClient.is_unset(request.isv_code):
+            body['IsvCode'] = request.isv_code
         if not UtilClient.is_unset(request.language):
             body['Language'] = request.language
         if not UtilClient.is_unset(request.sender_list_shrink):
@@ -552,6 +480,8 @@ class Client(OpenApiClient):
             body['FallBackId'] = request.fall_back_id
         if not UtilClient.is_unset(request.from_):
             body['From'] = request.from_
+        if not UtilClient.is_unset(request.isv_code):
+            body['IsvCode'] = request.isv_code
         if not UtilClient.is_unset(request.language):
             body['Language'] = request.language
         if not UtilClient.is_unset(request.sender_list_shrink):
@@ -621,6 +551,8 @@ class Client(OpenApiClient):
             body['FallBackId'] = request.fall_back_id
         if not UtilClient.is_unset(request.from_):
             body['From'] = request.from_
+        if not UtilClient.is_unset(request.isv_code):
+            body['IsvCode'] = request.isv_code
         if not UtilClient.is_unset(request.language):
             body['Language'] = request.language
         if not UtilClient.is_unset(request.message_type):
@@ -681,6 +613,8 @@ class Client(OpenApiClient):
             body['FallBackId'] = request.fall_back_id
         if not UtilClient.is_unset(request.from_):
             body['From'] = request.from_
+        if not UtilClient.is_unset(request.isv_code):
+            body['IsvCode'] = request.isv_code
         if not UtilClient.is_unset(request.language):
             body['Language'] = request.language
         if not UtilClient.is_unset(request.message_type):
