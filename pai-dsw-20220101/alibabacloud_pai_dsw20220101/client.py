@@ -41,6 +41,94 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def create_idle_instance_culler(
+        self,
+        instance_id: str,
+        request: pai_dsw_20220101_models.CreateIdleInstanceCullerRequest,
+    ) -> pai_dsw_20220101_models.CreateIdleInstanceCullerResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_idle_instance_culler_with_options(instance_id, request, headers, runtime)
+
+    async def create_idle_instance_culler_async(
+        self,
+        instance_id: str,
+        request: pai_dsw_20220101_models.CreateIdleInstanceCullerRequest,
+    ) -> pai_dsw_20220101_models.CreateIdleInstanceCullerResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_idle_instance_culler_with_options_async(instance_id, request, headers, runtime)
+
+    def create_idle_instance_culler_with_options(
+        self,
+        instance_id: str,
+        request: pai_dsw_20220101_models.CreateIdleInstanceCullerRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_dsw_20220101_models.CreateIdleInstanceCullerResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cpu_percent_threshold):
+            body['CpuPercentThreshold'] = request.cpu_percent_threshold
+        if not UtilClient.is_unset(request.gpu_percent_threshold):
+            body['GpuPercentThreshold'] = request.gpu_percent_threshold
+        if not UtilClient.is_unset(request.max_idle_time_in_minutes):
+            body['MaxIdleTimeInMinutes'] = request.max_idle_time_in_minutes
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateIdleInstanceCuller',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/idleinstanceculler',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.CreateIdleInstanceCullerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_idle_instance_culler_with_options_async(
+        self,
+        instance_id: str,
+        request: pai_dsw_20220101_models.CreateIdleInstanceCullerRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_dsw_20220101_models.CreateIdleInstanceCullerResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cpu_percent_threshold):
+            body['CpuPercentThreshold'] = request.cpu_percent_threshold
+        if not UtilClient.is_unset(request.gpu_percent_threshold):
+            body['GpuPercentThreshold'] = request.gpu_percent_threshold
+        if not UtilClient.is_unset(request.max_idle_time_in_minutes):
+            body['MaxIdleTimeInMinutes'] = request.max_idle_time_in_minutes
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateIdleInstanceCuller',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/idleinstanceculler',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.CreateIdleInstanceCullerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
     def create_instance(
         self,
         request: pai_dsw_20220101_models.CreateInstanceRequest,
@@ -337,6 +425,72 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
+    def delete_idle_instance_culler(
+        self,
+        instance_id: str,
+    ) -> pai_dsw_20220101_models.DeleteIdleInstanceCullerResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_idle_instance_culler_with_options(instance_id, headers, runtime)
+
+    async def delete_idle_instance_culler_async(
+        self,
+        instance_id: str,
+    ) -> pai_dsw_20220101_models.DeleteIdleInstanceCullerResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_idle_instance_culler_with_options_async(instance_id, headers, runtime)
+
+    def delete_idle_instance_culler_with_options(
+        self,
+        instance_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_dsw_20220101_models.DeleteIdleInstanceCullerResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteIdleInstanceCuller',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/idleinstanceculler',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.DeleteIdleInstanceCullerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_idle_instance_culler_with_options_async(
+        self,
+        instance_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_dsw_20220101_models.DeleteIdleInstanceCullerResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteIdleInstanceCuller',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/idleinstanceculler',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.DeleteIdleInstanceCullerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
     def delete_instance(
         self,
         instance_id: str,
@@ -536,6 +690,72 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             pai_dsw_20220101_models.DeleteInstanceSnapshotResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_idle_instance_culler(
+        self,
+        instance_id: str,
+    ) -> pai_dsw_20220101_models.GetIdleInstanceCullerResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_idle_instance_culler_with_options(instance_id, headers, runtime)
+
+    async def get_idle_instance_culler_async(
+        self,
+        instance_id: str,
+    ) -> pai_dsw_20220101_models.GetIdleInstanceCullerResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_idle_instance_culler_with_options_async(instance_id, headers, runtime)
+
+    def get_idle_instance_culler_with_options(
+        self,
+        instance_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_dsw_20220101_models.GetIdleInstanceCullerResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetIdleInstanceCuller',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/idleinstanceculler',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.GetIdleInstanceCullerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_idle_instance_culler_with_options_async(
+        self,
+        instance_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_dsw_20220101_models.GetIdleInstanceCullerResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetIdleInstanceCuller',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/idleinstanceculler',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.GetIdleInstanceCullerResponse(),
             await self.call_api_async(params, req, runtime)
         )
 

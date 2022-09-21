@@ -57,6 +57,140 @@ class DemoCategory(TeaModel):
         return self
 
 
+class CreateIdleInstanceCullerRequest(TeaModel):
+    def __init__(
+        self,
+        cpu_percent_threshold: int = None,
+        gpu_percent_threshold: int = None,
+        max_idle_time_in_minutes: int = None,
+    ):
+        self.cpu_percent_threshold = cpu_percent_threshold
+        self.gpu_percent_threshold = gpu_percent_threshold
+        self.max_idle_time_in_minutes = max_idle_time_in_minutes
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cpu_percent_threshold is not None:
+            result['CpuPercentThreshold'] = self.cpu_percent_threshold
+        if self.gpu_percent_threshold is not None:
+            result['GpuPercentThreshold'] = self.gpu_percent_threshold
+        if self.max_idle_time_in_minutes is not None:
+            result['MaxIdleTimeInMinutes'] = self.max_idle_time_in_minutes
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CpuPercentThreshold') is not None:
+            self.cpu_percent_threshold = m.get('CpuPercentThreshold')
+        if m.get('GpuPercentThreshold') is not None:
+            self.gpu_percent_threshold = m.get('GpuPercentThreshold')
+        if m.get('MaxIdleTimeInMinutes') is not None:
+            self.max_idle_time_in_minutes = m.get('MaxIdleTimeInMinutes')
+        return self
+
+
+class CreateIdleInstanceCullerResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        instance_id: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.instance_id = instance_id
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateIdleInstanceCullerResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateIdleInstanceCullerResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateIdleInstanceCullerResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateInstanceRequestDatasets(TeaModel):
     def __init__(
         self,
@@ -716,6 +850,101 @@ class CreateInstanceSnapshotResponse(TeaModel):
         return self
 
 
+class DeleteIdleInstanceCullerResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        instance_id: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.instance_id = instance_id
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteIdleInstanceCullerResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteIdleInstanceCullerResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteIdleInstanceCullerResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteInstanceResponseBody(TeaModel):
     def __init__(
         self,
@@ -1021,6 +1250,125 @@ class DeleteInstanceSnapshotResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteInstanceSnapshotResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetIdleInstanceCullerResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        cpu_percent_threshold: int = None,
+        gpu_percent_threshold: int = None,
+        idle_time_in_minutes: int = None,
+        instance_id: str = None,
+        max_idle_time_in_minutes: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.cpu_percent_threshold = cpu_percent_threshold
+        self.gpu_percent_threshold = gpu_percent_threshold
+        self.idle_time_in_minutes = idle_time_in_minutes
+        self.instance_id = instance_id
+        self.max_idle_time_in_minutes = max_idle_time_in_minutes
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.cpu_percent_threshold is not None:
+            result['CpuPercentThreshold'] = self.cpu_percent_threshold
+        if self.gpu_percent_threshold is not None:
+            result['GpuPercentThreshold'] = self.gpu_percent_threshold
+        if self.idle_time_in_minutes is not None:
+            result['IdleTimeInMinutes'] = self.idle_time_in_minutes
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.max_idle_time_in_minutes is not None:
+            result['MaxIdleTimeInMinutes'] = self.max_idle_time_in_minutes
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('CpuPercentThreshold') is not None:
+            self.cpu_percent_threshold = m.get('CpuPercentThreshold')
+        if m.get('GpuPercentThreshold') is not None:
+            self.gpu_percent_threshold = m.get('GpuPercentThreshold')
+        if m.get('IdleTimeInMinutes') is not None:
+            self.idle_time_in_minutes = m.get('IdleTimeInMinutes')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('MaxIdleTimeInMinutes') is not None:
+            self.max_idle_time_in_minutes = m.get('MaxIdleTimeInMinutes')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetIdleInstanceCullerResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetIdleInstanceCullerResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetIdleInstanceCullerResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
