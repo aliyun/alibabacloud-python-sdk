@@ -214,6 +214,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.app_shrink):
             query['App'] = request.app_shrink
+        if not UtilClient.is_unset(request.session_id):
+            query['SessionId'] = request.session_id
         if not UtilClient.is_unset(request.tenant_id):
             query['TenantId'] = request.tenant_id
         req = open_api_models.OpenApiRequest(
@@ -248,6 +250,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.app_shrink):
             query['App'] = request.app_shrink
+        if not UtilClient.is_unset(request.session_id):
+            query['SessionId'] = request.session_id
         if not UtilClient.is_unset(request.tenant_id):
             query['TenantId'] = request.tenant_id
         req = open_api_models.OpenApiRequest(

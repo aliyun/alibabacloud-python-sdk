@@ -574,9 +574,11 @@ class QueryRunningInstanceRequest(TeaModel):
     def __init__(
         self,
         app: QueryRunningInstanceRequestApp = None,
+        session_id: str = None,
         tenant_id: int = None,
     ):
         self.app = app
+        self.session_id = session_id
         self.tenant_id = tenant_id
 
     def validate(self):
@@ -591,6 +593,8 @@ class QueryRunningInstanceRequest(TeaModel):
         result = dict()
         if self.app is not None:
             result['App'] = self.app.to_map()
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
         if self.tenant_id is not None:
             result['TenantId'] = self.tenant_id
         return result
@@ -600,6 +604,8 @@ class QueryRunningInstanceRequest(TeaModel):
         if m.get('App') is not None:
             temp_model = QueryRunningInstanceRequestApp()
             self.app = temp_model.from_map(m['App'])
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
         if m.get('TenantId') is not None:
             self.tenant_id = m.get('TenantId')
         return self
@@ -609,9 +615,11 @@ class QueryRunningInstanceShrinkRequest(TeaModel):
     def __init__(
         self,
         app_shrink: str = None,
+        session_id: str = None,
         tenant_id: int = None,
     ):
         self.app_shrink = app_shrink
+        self.session_id = session_id
         self.tenant_id = tenant_id
 
     def validate(self):
@@ -625,6 +633,8 @@ class QueryRunningInstanceShrinkRequest(TeaModel):
         result = dict()
         if self.app_shrink is not None:
             result['App'] = self.app_shrink
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
         if self.tenant_id is not None:
             result['TenantId'] = self.tenant_id
         return result
@@ -633,6 +643,8 @@ class QueryRunningInstanceShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('App') is not None:
             self.app_shrink = m.get('App')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
         if m.get('TenantId') is not None:
             self.tenant_id = m.get('TenantId')
         return self
