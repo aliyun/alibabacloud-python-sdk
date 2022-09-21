@@ -100,7 +100,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.AttachInstancesResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         body = {}
         if not UtilClient.is_unset(request.cpu_policy):
             body['cpu_policy'] = request.cpu_policy
@@ -136,7 +135,7 @@ class Client(OpenApiClient):
             action='AttachInstances',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/attach',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/attach',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -156,7 +155,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.AttachInstancesResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         body = {}
         if not UtilClient.is_unset(request.cpu_policy):
             body['cpu_policy'] = request.cpu_policy
@@ -192,7 +190,7 @@ class Client(OpenApiClient):
             action='AttachInstances',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/attach',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/attach',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -226,7 +224,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.CancelClusterUpgradeResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -234,7 +231,7 @@ class Client(OpenApiClient):
             action='CancelClusterUpgrade',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/api/v2/clusters/{cluster_id}/upgrade/cancel',
+            pathname=f'/api/v2/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/upgrade/cancel',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -252,7 +249,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.CancelClusterUpgradeResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -260,7 +256,7 @@ class Client(OpenApiClient):
             action='CancelClusterUpgrade',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/api/v2/clusters/{cluster_id}/upgrade/cancel',
+            pathname=f'/api/v2/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/upgrade/cancel',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -297,8 +293,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.CancelComponentUpgradeResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        component_id = OpenApiUtilClient.get_encode_param(component_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -306,7 +300,7 @@ class Client(OpenApiClient):
             action='CancelComponentUpgrade',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/components/{component_id}/cancel',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/components/{OpenApiUtilClient.get_encode_param(component_id)}/cancel',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -325,8 +319,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.CancelComponentUpgradeResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        component_id = OpenApiUtilClient.get_encode_param(component_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -334,7 +326,7 @@ class Client(OpenApiClient):
             action='CancelComponentUpgrade',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/components/{component_id}/cancel',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/components/{OpenApiUtilClient.get_encode_param(component_id)}/cancel',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -368,7 +360,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.CancelTaskResponse:
-        task_id = OpenApiUtilClient.get_encode_param(task_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -376,7 +367,7 @@ class Client(OpenApiClient):
             action='CancelTask',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/tasks/{task_id}/cancel',
+            pathname=f'/tasks/{OpenApiUtilClient.get_encode_param(task_id)}/cancel',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -394,7 +385,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.CancelTaskResponse:
-        task_id = OpenApiUtilClient.get_encode_param(task_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -402,7 +392,7 @@ class Client(OpenApiClient):
             action='CancelTask',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/tasks/{task_id}/cancel',
+            pathname=f'/tasks/{OpenApiUtilClient.get_encode_param(task_id)}/cancel',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -440,7 +430,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.CancelWorkflowResponse:
         UtilClient.validate_model(request)
-        workflow_name = OpenApiUtilClient.get_encode_param(workflow_name)
         body = {}
         if not UtilClient.is_unset(request.action):
             body['action'] = request.action
@@ -452,7 +441,7 @@ class Client(OpenApiClient):
             action='CancelWorkflow',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/gs/workflow/{workflow_name}',
+            pathname=f'/gs/workflow/{OpenApiUtilClient.get_encode_param(workflow_name)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -472,7 +461,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.CancelWorkflowResponse:
         UtilClient.validate_model(request)
-        workflow_name = OpenApiUtilClient.get_encode_param(workflow_name)
         body = {}
         if not UtilClient.is_unset(request.action):
             body['action'] = request.action
@@ -484,7 +472,7 @@ class Client(OpenApiClient):
             action='CancelWorkflow',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/gs/workflow/{workflow_name}',
+            pathname=f'/gs/workflow/{OpenApiUtilClient.get_encode_param(workflow_name)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -522,7 +510,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.CreateAutoscalingConfigResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         body = {}
         if not UtilClient.is_unset(request.cool_down_duration):
             body['cool_down_duration'] = request.cool_down_duration
@@ -546,7 +533,7 @@ class Client(OpenApiClient):
             action='CreateAutoscalingConfig',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/cluster/{cluster_id}/autoscale/config/',
+            pathname=f'/cluster/{OpenApiUtilClient.get_encode_param(cluster_id)}/autoscale/config/',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -566,7 +553,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.CreateAutoscalingConfigResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         body = {}
         if not UtilClient.is_unset(request.cool_down_duration):
             body['cool_down_duration'] = request.cool_down_duration
@@ -590,7 +576,7 @@ class Client(OpenApiClient):
             action='CreateAutoscalingConfig',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/cluster/{cluster_id}/autoscale/config/',
+            pathname=f'/cluster/{OpenApiUtilClient.get_encode_param(cluster_id)}/autoscale/config/',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -1048,7 +1034,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.CreateClusterNodePoolResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         body = {}
         if not UtilClient.is_unset(request.auto_scaling):
             body['auto_scaling'] = request.auto_scaling
@@ -1078,7 +1063,7 @@ class Client(OpenApiClient):
             action='CreateClusterNodePool',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/nodepools',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/nodepools',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -1098,7 +1083,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.CreateClusterNodePoolResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         body = {}
         if not UtilClient.is_unset(request.auto_scaling):
             body['auto_scaling'] = request.auto_scaling
@@ -1128,7 +1112,7 @@ class Client(OpenApiClient):
             action='CreateClusterNodePool',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/nodepools',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/nodepools',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -1430,7 +1414,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.CreateTriggerResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         body = {}
         if not UtilClient.is_unset(request.action):
             body['action'] = request.action
@@ -1448,7 +1431,7 @@ class Client(OpenApiClient):
             action='CreateTrigger',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/triggers',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/triggers',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -1468,7 +1451,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.CreateTriggerResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         body = {}
         if not UtilClient.is_unset(request.action):
             body['action'] = request.action
@@ -1486,7 +1468,7 @@ class Client(OpenApiClient):
             action='CreateTrigger',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/triggers',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/triggers',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -1640,7 +1622,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DeleteClusterResponse:
         UtilClient.validate_model(tmp_req)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         request = cs20151215_models.DeleteClusterShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.retain_resources):
@@ -1660,7 +1641,7 @@ class Client(OpenApiClient):
             action='DeleteCluster',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1680,7 +1661,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DeleteClusterResponse:
         UtilClient.validate_model(tmp_req)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         request = cs20151215_models.DeleteClusterShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.retain_resources):
@@ -1700,7 +1680,7 @@ class Client(OpenApiClient):
             action='DeleteCluster',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1741,8 +1721,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DeleteClusterNodepoolResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        nodepool_id = OpenApiUtilClient.get_encode_param(nodepool_id)
         query = {}
         if not UtilClient.is_unset(request.force):
             query['force'] = request.force
@@ -1754,7 +1732,7 @@ class Client(OpenApiClient):
             action='DeleteClusterNodepool',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/nodepools/{nodepool_id}',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/nodepools/{OpenApiUtilClient.get_encode_param(nodepool_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1775,8 +1753,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DeleteClusterNodepoolResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        nodepool_id = OpenApiUtilClient.get_encode_param(nodepool_id)
         query = {}
         if not UtilClient.is_unset(request.force):
             query['force'] = request.force
@@ -1788,7 +1764,7 @@ class Client(OpenApiClient):
             action='DeleteClusterNodepool',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/nodepools/{nodepool_id}',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/nodepools/{OpenApiUtilClient.get_encode_param(nodepool_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1826,7 +1802,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DeleteClusterNodesResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         body = {}
         if not UtilClient.is_unset(request.drain_node):
             body['drain_node'] = request.drain_node
@@ -1842,7 +1817,7 @@ class Client(OpenApiClient):
             action='DeleteClusterNodes',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/nodes',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/nodes',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -1862,7 +1837,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DeleteClusterNodesResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         body = {}
         if not UtilClient.is_unset(request.drain_node):
             body['drain_node'] = request.drain_node
@@ -1878,7 +1852,7 @@ class Client(OpenApiClient):
             action='DeleteClusterNodes',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/nodes',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/nodes',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -1916,7 +1890,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DeleteEdgeMachineResponse:
         UtilClient.validate_model(request)
-        edge_machineid = OpenApiUtilClient.get_encode_param(edge_machineid)
         query = {}
         if not UtilClient.is_unset(request.force):
             query['force'] = request.force
@@ -1928,7 +1901,7 @@ class Client(OpenApiClient):
             action='DeleteEdgeMachine',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/edge_machines/[edge_machineid]',
+            pathname=f'/edge_machines/%5Bedge_machineid%5D',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1948,7 +1921,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DeleteEdgeMachineResponse:
         UtilClient.validate_model(request)
-        edge_machineid = OpenApiUtilClient.get_encode_param(edge_machineid)
         query = {}
         if not UtilClient.is_unset(request.force):
             query['force'] = request.force
@@ -1960,7 +1932,7 @@ class Client(OpenApiClient):
             action='DeleteEdgeMachine',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/edge_machines/[edge_machineid]',
+            pathname=f'/edge_machines/%5Bedge_machineid%5D',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1994,7 +1966,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DeleteKubernetesTriggerResponse:
-        id = OpenApiUtilClient.get_encode_param(id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2002,7 +1973,7 @@ class Client(OpenApiClient):
             action='DeleteKubernetesTrigger',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/triggers/revoke/{id}',
+            pathname=f'/triggers/revoke/{OpenApiUtilClient.get_encode_param(id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -2020,7 +1991,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DeleteKubernetesTriggerResponse:
-        id = OpenApiUtilClient.get_encode_param(id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2028,7 +1998,7 @@ class Client(OpenApiClient):
             action='DeleteKubernetesTrigger',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/triggers/revoke/{id}',
+            pathname=f'/triggers/revoke/{OpenApiUtilClient.get_encode_param(id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -2069,8 +2039,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DeletePolicyInstanceResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        policy_name = OpenApiUtilClient.get_encode_param(policy_name)
         query = {}
         if not UtilClient.is_unset(request.instance_name):
             query['instance_name'] = request.instance_name
@@ -2082,7 +2050,7 @@ class Client(OpenApiClient):
             action='DeletePolicyInstance',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/policies/{policy_name}',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/policies/{OpenApiUtilClient.get_encode_param(policy_name)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -2103,8 +2071,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DeletePolicyInstanceResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        policy_name = OpenApiUtilClient.get_encode_param(policy_name)
         query = {}
         if not UtilClient.is_unset(request.instance_name):
             query['instance_name'] = request.instance_name
@@ -2116,7 +2082,7 @@ class Client(OpenApiClient):
             action='DeletePolicyInstance',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/policies/{policy_name}',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/policies/{OpenApiUtilClient.get_encode_param(policy_name)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -2150,7 +2116,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DeleteTemplateResponse:
-        template_id = OpenApiUtilClient.get_encode_param(template_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2158,7 +2123,7 @@ class Client(OpenApiClient):
             action='DeleteTemplate',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/templates/{template_id}',
+            pathname=f'/templates/{OpenApiUtilClient.get_encode_param(template_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -2176,7 +2141,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DeleteTemplateResponse:
-        template_id = OpenApiUtilClient.get_encode_param(template_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2184,7 +2148,7 @@ class Client(OpenApiClient):
             action='DeleteTemplate',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/templates/{template_id}',
+            pathname=f'/templates/{OpenApiUtilClient.get_encode_param(template_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -2221,8 +2185,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DeleteTriggerResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        id = OpenApiUtilClient.get_encode_param(id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2230,7 +2192,7 @@ class Client(OpenApiClient):
             action='DeleteTrigger',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/[cluster_id]/triggers/[Id]',
+            pathname=f'/clusters/%5Bcluster_id%5D/triggers/%5BId%5D',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -2249,8 +2211,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DeleteTriggerResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        id = OpenApiUtilClient.get_encode_param(id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2258,7 +2218,7 @@ class Client(OpenApiClient):
             action='DeleteTrigger',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/[cluster_id]/triggers/[Id]',
+            pathname=f'/clusters/%5Bcluster_id%5D/triggers/%5BId%5D',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -2299,8 +2259,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DeployPolicyInstanceResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        policy_name = OpenApiUtilClient.get_encode_param(policy_name)
         body = {}
         if not UtilClient.is_unset(request.action):
             body['action'] = request.action
@@ -2316,7 +2274,7 @@ class Client(OpenApiClient):
             action='DeployPolicyInstance',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/policies/{policy_name}',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/policies/{OpenApiUtilClient.get_encode_param(policy_name)}',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -2337,8 +2295,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DeployPolicyInstanceResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        policy_name = OpenApiUtilClient.get_encode_param(policy_name)
         body = {}
         if not UtilClient.is_unset(request.action):
             body['action'] = request.action
@@ -2354,7 +2310,7 @@ class Client(OpenApiClient):
             action='DeployPolicyInstance',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/policies/{policy_name}',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/policies/{OpenApiUtilClient.get_encode_param(policy_name)}',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -2388,7 +2344,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescirbeWorkflowResponse:
-        workflow_name = OpenApiUtilClient.get_encode_param(workflow_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2396,7 +2351,7 @@ class Client(OpenApiClient):
             action='DescirbeWorkflow',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/gs/workflow/{workflow_name}',
+            pathname=f'/gs/workflow/{OpenApiUtilClient.get_encode_param(workflow_name)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2414,7 +2369,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescirbeWorkflowResponse:
-        workflow_name = OpenApiUtilClient.get_encode_param(workflow_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2422,7 +2376,7 @@ class Client(OpenApiClient):
             action='DescirbeWorkflow',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/gs/workflow/{workflow_name}',
+            pathname=f'/gs/workflow/{OpenApiUtilClient.get_encode_param(workflow_name)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2542,9 +2496,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterAddonMetadataResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        component_id = OpenApiUtilClient.get_encode_param(component_id)
-        version = OpenApiUtilClient.get_encode_param(version)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2552,7 +2503,7 @@ class Client(OpenApiClient):
             action='DescribeClusterAddonMetadata',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/components/{component_id}/metadata',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/components/{OpenApiUtilClient.get_encode_param(component_id)}/metadata',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2572,9 +2523,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterAddonMetadataResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        component_id = OpenApiUtilClient.get_encode_param(component_id)
-        version = OpenApiUtilClient.get_encode_param(version)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2582,7 +2530,7 @@ class Client(OpenApiClient):
             action='DescribeClusterAddonMetadata',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/components/{component_id}/metadata',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/components/{OpenApiUtilClient.get_encode_param(component_id)}/metadata',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2619,8 +2567,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterAddonUpgradeStatusResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        component_id = OpenApiUtilClient.get_encode_param(component_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2628,7 +2574,7 @@ class Client(OpenApiClient):
             action='DescribeClusterAddonUpgradeStatus',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/components/{component_id}/upgradestatus',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/components/{OpenApiUtilClient.get_encode_param(component_id)}/upgradestatus',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2647,8 +2593,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterAddonUpgradeStatusResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        component_id = OpenApiUtilClient.get_encode_param(component_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2656,7 +2600,7 @@ class Client(OpenApiClient):
             action='DescribeClusterAddonUpgradeStatus',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/components/{component_id}/upgradestatus',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/components/{OpenApiUtilClient.get_encode_param(component_id)}/upgradestatus',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2694,7 +2638,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterAddonsUpgradeStatusResponse:
         UtilClient.validate_model(tmp_req)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         request = cs20151215_models.DescribeClusterAddonsUpgradeStatusShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.component_ids):
@@ -2710,7 +2653,7 @@ class Client(OpenApiClient):
             action='DescribeClusterAddonsUpgradeStatus',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/components/upgradestatus',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/components/upgradestatus',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2730,7 +2673,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterAddonsUpgradeStatusResponse:
         UtilClient.validate_model(tmp_req)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         request = cs20151215_models.DescribeClusterAddonsUpgradeStatusShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.component_ids):
@@ -2746,7 +2688,7 @@ class Client(OpenApiClient):
             action='DescribeClusterAddonsUpgradeStatus',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/components/upgradestatus',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/components/upgradestatus',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2780,7 +2722,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterAddonsVersionResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2788,7 +2729,7 @@ class Client(OpenApiClient):
             action='DescribeClusterAddonsVersion',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/components/version',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/components/version',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2806,7 +2747,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterAddonsVersionResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2814,7 +2754,7 @@ class Client(OpenApiClient):
             action='DescribeClusterAddonsVersion',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/components/version',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/components/version',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2852,7 +2792,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterAttachScriptsResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         body = {}
         if not UtilClient.is_unset(request.arch):
             body['arch'] = request.arch
@@ -2874,7 +2813,7 @@ class Client(OpenApiClient):
             action='DescribeClusterAttachScripts',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/attachscript',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/attachscript',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -2894,7 +2833,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterAttachScriptsResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         body = {}
         if not UtilClient.is_unset(request.arch):
             body['arch'] = request.arch
@@ -2916,7 +2854,7 @@ class Client(OpenApiClient):
             action='DescribeClusterAttachScripts',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/attachscript',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/attachscript',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -2950,7 +2888,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterDetailResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2958,7 +2895,7 @@ class Client(OpenApiClient):
             action='DescribeClusterDetail',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2976,7 +2913,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterDetailResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2984,7 +2920,7 @@ class Client(OpenApiClient):
             action='DescribeClusterDetail',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3022,7 +2958,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterEventsResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         query = {}
         if not UtilClient.is_unset(request.page_number):
             query['page_number'] = request.page_number
@@ -3038,7 +2973,7 @@ class Client(OpenApiClient):
             action='DescribeClusterEvents',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/events',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/events',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3058,7 +2993,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterEventsResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         query = {}
         if not UtilClient.is_unset(request.page_number):
             query['page_number'] = request.page_number
@@ -3074,7 +3008,7 @@ class Client(OpenApiClient):
             action='DescribeClusterEvents',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/events',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/events',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3108,7 +3042,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterLogsResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3116,7 +3049,7 @@ class Client(OpenApiClient):
             action='DescribeClusterLogs',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/logs',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/logs',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3134,7 +3067,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterLogsResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3142,7 +3074,7 @@ class Client(OpenApiClient):
             action='DescribeClusterLogs',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/logs',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/logs',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3179,8 +3111,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterNodePoolDetailResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        nodepool_id = OpenApiUtilClient.get_encode_param(nodepool_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3188,7 +3118,7 @@ class Client(OpenApiClient):
             action='DescribeClusterNodePoolDetail',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/nodepools/{nodepool_id}',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/nodepools/{OpenApiUtilClient.get_encode_param(nodepool_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3207,8 +3137,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterNodePoolDetailResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        nodepool_id = OpenApiUtilClient.get_encode_param(nodepool_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3216,7 +3144,7 @@ class Client(OpenApiClient):
             action='DescribeClusterNodePoolDetail',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/nodepools/{nodepool_id}',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/nodepools/{OpenApiUtilClient.get_encode_param(nodepool_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3250,7 +3178,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterNodePoolsResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3258,7 +3185,7 @@ class Client(OpenApiClient):
             action='DescribeClusterNodePools',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/nodepools',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/nodepools',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3276,7 +3203,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterNodePoolsResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3284,7 +3210,7 @@ class Client(OpenApiClient):
             action='DescribeClusterNodePools',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/nodepools',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/nodepools',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3322,7 +3248,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterNodesResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         query = {}
         if not UtilClient.is_unset(request.instance_ids):
             query['instanceIds'] = request.instance_ids
@@ -3342,7 +3267,7 @@ class Client(OpenApiClient):
             action='DescribeClusterNodes',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/nodes',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/nodes',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3362,7 +3287,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterNodesResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         query = {}
         if not UtilClient.is_unset(request.instance_ids):
             query['instanceIds'] = request.instance_ids
@@ -3382,7 +3306,7 @@ class Client(OpenApiClient):
             action='DescribeClusterNodes',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/nodes',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/nodes',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3416,7 +3340,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterResourcesResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3424,7 +3347,7 @@ class Client(OpenApiClient):
             action='DescribeClusterResources',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/resources',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/resources',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3442,7 +3365,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterResourcesResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3450,7 +3372,7 @@ class Client(OpenApiClient):
             action='DescribeClusterResources',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/resources',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/resources',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3484,7 +3406,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterTasksResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3492,7 +3413,7 @@ class Client(OpenApiClient):
             action='DescribeClusterTasks',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/tasks',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/tasks',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3510,7 +3431,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterTasksResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3518,7 +3438,7 @@ class Client(OpenApiClient):
             action='DescribeClusterTasks',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/tasks',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/tasks',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3556,7 +3476,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterUserKubeconfigResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         query = {}
         if not UtilClient.is_unset(request.private_ip_address):
             query['PrivateIpAddress'] = request.private_ip_address
@@ -3570,7 +3489,7 @@ class Client(OpenApiClient):
             action='DescribeClusterUserKubeconfig',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/k8s/{cluster_id}/user_config',
+            pathname=f'/k8s/{OpenApiUtilClient.get_encode_param(cluster_id)}/user_config',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3590,7 +3509,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterUserKubeconfigResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         query = {}
         if not UtilClient.is_unset(request.private_ip_address):
             query['PrivateIpAddress'] = request.private_ip_address
@@ -3604,7 +3522,7 @@ class Client(OpenApiClient):
             action='DescribeClusterUserKubeconfig',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/k8s/{cluster_id}/user_config',
+            pathname=f'/k8s/{OpenApiUtilClient.get_encode_param(cluster_id)}/user_config',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3642,7 +3560,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterV2UserKubeconfigResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         query = {}
         if not UtilClient.is_unset(request.private_ip_address):
             query['PrivateIpAddress'] = request.private_ip_address
@@ -3654,7 +3571,7 @@ class Client(OpenApiClient):
             action='DescribeClusterV2UserKubeconfig',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/api/v2/k8s/{cluster_id}/user_config',
+            pathname=f'/api/v2/k8s/{OpenApiUtilClient.get_encode_param(cluster_id)}/user_config',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3674,7 +3591,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterV2UserKubeconfigResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         query = {}
         if not UtilClient.is_unset(request.private_ip_address):
             query['PrivateIpAddress'] = request.private_ip_address
@@ -3686,7 +3602,7 @@ class Client(OpenApiClient):
             action='DescribeClusterV2UserKubeconfig',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/api/v2/k8s/{cluster_id}/user_config',
+            pathname=f'/api/v2/k8s/{OpenApiUtilClient.get_encode_param(cluster_id)}/user_config',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3900,7 +3816,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeEdgeMachineActiveProcessResponse:
-        edge_machineid = OpenApiUtilClient.get_encode_param(edge_machineid)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3908,7 +3823,7 @@ class Client(OpenApiClient):
             action='DescribeEdgeMachineActiveProcess',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/edge_machines/[edge_machineid]/activeprocess',
+            pathname=f'/edge_machines/%5Bedge_machineid%5D/activeprocess',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3926,7 +3841,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeEdgeMachineActiveProcessResponse:
-        edge_machineid = OpenApiUtilClient.get_encode_param(edge_machineid)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3934,7 +3848,7 @@ class Client(OpenApiClient):
             action='DescribeEdgeMachineActiveProcess',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/edge_machines/[edge_machineid]/activeprocess',
+            pathname=f'/edge_machines/%5Bedge_machineid%5D/activeprocess',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4026,7 +3940,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeEdgeMachineTunnelConfigDetailResponse:
-        edge_machineid = OpenApiUtilClient.get_encode_param(edge_machineid)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4034,7 +3947,7 @@ class Client(OpenApiClient):
             action='DescribeEdgeMachineTunnelConfigDetail',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/edge_machines/[edge_machineid]/tunnelconfig',
+            pathname=f'/edge_machines/%5Bedge_machineid%5D/tunnelconfig',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -4052,7 +3965,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeEdgeMachineTunnelConfigDetailResponse:
-        edge_machineid = OpenApiUtilClient.get_encode_param(edge_machineid)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4060,7 +3972,7 @@ class Client(OpenApiClient):
             action='DescribeEdgeMachineTunnelConfigDetail',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/edge_machines/[edge_machineid]/tunnelconfig',
+            pathname=f'/edge_machines/%5Bedge_machineid%5D/tunnelconfig',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -4282,7 +4194,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeExternalAgentResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         query = {}
         if not UtilClient.is_unset(request.private_ip_address):
             query['PrivateIpAddress'] = request.private_ip_address
@@ -4294,7 +4205,7 @@ class Client(OpenApiClient):
             action='DescribeExternalAgent',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/k8s/{cluster_id}/external/agent/deployment',
+            pathname=f'/k8s/{OpenApiUtilClient.get_encode_param(cluster_id)}/external/agent/deployment',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4314,7 +4225,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeExternalAgentResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         query = {}
         if not UtilClient.is_unset(request.private_ip_address):
             query['PrivateIpAddress'] = request.private_ip_address
@@ -4326,7 +4236,7 @@ class Client(OpenApiClient):
             action='DescribeExternalAgent',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/k8s/{cluster_id}/external/agent/deployment',
+            pathname=f'/k8s/{OpenApiUtilClient.get_encode_param(cluster_id)}/external/agent/deployment',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4455,8 +4365,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeNodePoolVulsResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        nodepool_id = OpenApiUtilClient.get_encode_param(nodepool_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4464,7 +4372,7 @@ class Client(OpenApiClient):
             action='DescribeNodePoolVuls',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/nodepools/{nodepool_id}/vuls',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/nodepools/{OpenApiUtilClient.get_encode_param(nodepool_id)}/vuls',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4483,8 +4391,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeNodePoolVulsResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        nodepool_id = OpenApiUtilClient.get_encode_param(nodepool_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4492,7 +4398,7 @@ class Client(OpenApiClient):
             action='DescribeNodePoolVuls',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/nodepools/{nodepool_id}/vuls',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/nodepools/{OpenApiUtilClient.get_encode_param(nodepool_id)}/vuls',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4584,7 +4490,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribePolicyDetailsResponse:
-        policy_name = OpenApiUtilClient.get_encode_param(policy_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4592,7 +4497,7 @@ class Client(OpenApiClient):
             action='DescribePolicyDetails',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/policies/{policy_name}',
+            pathname=f'/policies/{OpenApiUtilClient.get_encode_param(policy_name)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4610,7 +4515,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribePolicyDetailsResponse:
-        policy_name = OpenApiUtilClient.get_encode_param(policy_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4618,7 +4522,7 @@ class Client(OpenApiClient):
             action='DescribePolicyDetails',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/policies/{policy_name}',
+            pathname=f'/policies/{OpenApiUtilClient.get_encode_param(policy_name)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4652,7 +4556,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribePolicyGovernanceInClusterResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4660,7 +4563,7 @@ class Client(OpenApiClient):
             action='DescribePolicyGovernanceInCluster',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/policygovernance',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/policygovernance',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4678,7 +4581,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribePolicyGovernanceInClusterResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4686,7 +4588,7 @@ class Client(OpenApiClient):
             action='DescribePolicyGovernanceInCluster',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/policygovernance',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/policygovernance',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4724,7 +4626,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribePolicyInstancesResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         query = {}
         if not UtilClient.is_unset(request.instance_name):
             query['instance_name'] = request.instance_name
@@ -4738,7 +4639,7 @@ class Client(OpenApiClient):
             action='DescribePolicyInstances',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/policies',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/policies',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4758,7 +4659,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribePolicyInstancesResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         query = {}
         if not UtilClient.is_unset(request.instance_name):
             query['instance_name'] = request.instance_name
@@ -4772,7 +4672,7 @@ class Client(OpenApiClient):
             action='DescribePolicyInstances',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/policies',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/policies',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4806,7 +4706,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribePolicyInstancesStatusResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4814,7 +4713,7 @@ class Client(OpenApiClient):
             action='DescribePolicyInstancesStatus',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/policies/status',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/policies/status',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4832,7 +4731,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribePolicyInstancesStatusResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4840,7 +4738,7 @@ class Client(OpenApiClient):
             action='DescribePolicyInstancesStatus',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/policies/status',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/policies/status',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4874,7 +4772,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeTaskInfoResponse:
-        task_id = OpenApiUtilClient.get_encode_param(task_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4882,7 +4779,7 @@ class Client(OpenApiClient):
             action='DescribeTaskInfo',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/tasks/{task_id}',
+            pathname=f'/tasks/{OpenApiUtilClient.get_encode_param(task_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4900,7 +4797,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeTaskInfoResponse:
-        task_id = OpenApiUtilClient.get_encode_param(task_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4908,7 +4804,7 @@ class Client(OpenApiClient):
             action='DescribeTaskInfo',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/tasks/{task_id}',
+            pathname=f'/tasks/{OpenApiUtilClient.get_encode_param(task_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4946,7 +4842,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeTemplateAttributeResponse:
         UtilClient.validate_model(request)
-        template_id = OpenApiUtilClient.get_encode_param(template_id)
         query = {}
         if not UtilClient.is_unset(request.template_type):
             query['template_type'] = request.template_type
@@ -4958,7 +4853,7 @@ class Client(OpenApiClient):
             action='DescribeTemplateAttribute',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/templates/{template_id}',
+            pathname=f'/templates/{OpenApiUtilClient.get_encode_param(template_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4978,7 +4873,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeTemplateAttributeResponse:
         UtilClient.validate_model(request)
-        template_id = OpenApiUtilClient.get_encode_param(template_id)
         query = {}
         if not UtilClient.is_unset(request.template_type):
             query['template_type'] = request.template_type
@@ -4990,7 +4884,7 @@ class Client(OpenApiClient):
             action='DescribeTemplateAttribute',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/templates/{template_id}',
+            pathname=f'/templates/{OpenApiUtilClient.get_encode_param(template_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5112,7 +5006,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeTriggerResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         query = {}
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
@@ -5130,7 +5023,7 @@ class Client(OpenApiClient):
             action='DescribeTrigger',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/[cluster_id]/triggers',
+            pathname=f'/clusters/%5Bcluster_id%5D/triggers',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5150,7 +5043,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeTriggerResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         query = {}
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
@@ -5168,7 +5060,7 @@ class Client(OpenApiClient):
             action='DescribeTrigger',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/[cluster_id]/triggers',
+            pathname=f'/clusters/%5Bcluster_id%5D/triggers',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5202,7 +5094,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeUserPermissionResponse:
-        uid = OpenApiUtilClient.get_encode_param(uid)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -5210,7 +5101,7 @@ class Client(OpenApiClient):
             action='DescribeUserPermission',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/permissions/users/{uid}',
+            pathname=f'/permissions/users/{OpenApiUtilClient.get_encode_param(uid)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5228,7 +5119,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeUserPermissionResponse:
-        uid = OpenApiUtilClient.get_encode_param(uid)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -5236,7 +5126,7 @@ class Client(OpenApiClient):
             action='DescribeUserPermission',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/permissions/users/{uid}',
+            pathname=f'/permissions/users/{OpenApiUtilClient.get_encode_param(uid)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5393,8 +5283,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.EdgeClusterAddEdgeMachineResponse:
         UtilClient.validate_model(request)
-        clusterid = OpenApiUtilClient.get_encode_param(clusterid)
-        edge_machineid = OpenApiUtilClient.get_encode_param(edge_machineid)
         body = {}
         if not UtilClient.is_unset(request.expired):
             body['expired'] = request.expired
@@ -5410,7 +5298,7 @@ class Client(OpenApiClient):
             action='EdgeClusterAddEdgeMachine',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/[clusterid]/attachedgemachine/[edge_machineid]',
+            pathname=f'/clusters/%5Bclusterid%5D/attachedgemachine/%5Bedge_machineid%5D',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -5431,8 +5319,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.EdgeClusterAddEdgeMachineResponse:
         UtilClient.validate_model(request)
-        clusterid = OpenApiUtilClient.get_encode_param(clusterid)
-        edge_machineid = OpenApiUtilClient.get_encode_param(edge_machineid)
         body = {}
         if not UtilClient.is_unset(request.expired):
             body['expired'] = request.expired
@@ -5448,7 +5334,7 @@ class Client(OpenApiClient):
             action='EdgeClusterAddEdgeMachine',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/[clusterid]/attachedgemachine/[edge_machineid]',
+            pathname=f'/clusters/%5Bclusterid%5D/attachedgemachine/%5Bedge_machineid%5D',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -5489,8 +5375,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.FixNodePoolVulsResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        nodepool_id = OpenApiUtilClient.get_encode_param(nodepool_id)
         body = {}
         if not UtilClient.is_unset(request.nodes):
             body['nodes'] = request.nodes
@@ -5506,7 +5390,7 @@ class Client(OpenApiClient):
             action='FixNodePoolVuls',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/nodepools/{nodepool_id}/vuls/fix',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/nodepools/{OpenApiUtilClient.get_encode_param(nodepool_id)}/vuls/fix',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -5527,8 +5411,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.FixNodePoolVulsResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        nodepool_id = OpenApiUtilClient.get_encode_param(nodepool_id)
         body = {}
         if not UtilClient.is_unset(request.nodes):
             body['nodes'] = request.nodes
@@ -5544,7 +5426,7 @@ class Client(OpenApiClient):
             action='FixNodePoolVuls',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/nodepools/{nodepool_id}/vuls/fix',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/nodepools/{OpenApiUtilClient.get_encode_param(nodepool_id)}/vuls/fix',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -5582,7 +5464,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.GetKubernetesTriggerResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         query = {}
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
@@ -5600,7 +5481,7 @@ class Client(OpenApiClient):
             action='GetKubernetesTrigger',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/triggers/{cluster_id}',
+            pathname=f'/triggers/{OpenApiUtilClient.get_encode_param(cluster_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5620,7 +5501,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.GetKubernetesTriggerResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         query = {}
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
@@ -5638,7 +5518,7 @@ class Client(OpenApiClient):
             action='GetKubernetesTrigger',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/triggers/{cluster_id}',
+            pathname=f'/triggers/{OpenApiUtilClient.get_encode_param(cluster_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5672,7 +5552,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.GetUpgradeStatusResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -5680,7 +5559,7 @@ class Client(OpenApiClient):
             action='GetUpgradeStatus',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/api/v2/clusters/{cluster_id}/upgrade/status',
+            pathname=f'/api/v2/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/upgrade/status',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5698,7 +5577,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.GetUpgradeStatusResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -5706,7 +5584,7 @@ class Client(OpenApiClient):
             action='GetUpgradeStatus',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/api/v2/clusters/{cluster_id}/upgrade/status',
+            pathname=f'/api/v2/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/upgrade/status',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5744,7 +5622,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.GrantPermissionsResponse:
         UtilClient.validate_model(request)
-        uid = OpenApiUtilClient.get_encode_param(uid)
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=UtilClient.to_array(request.body)
@@ -5753,7 +5630,7 @@ class Client(OpenApiClient):
             action='GrantPermissions',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/permissions/users/{uid}',
+            pathname=f'/permissions/users/{OpenApiUtilClient.get_encode_param(uid)}',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -5773,7 +5650,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.GrantPermissionsResponse:
         UtilClient.validate_model(request)
-        uid = OpenApiUtilClient.get_encode_param(uid)
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=UtilClient.to_array(request.body)
@@ -5782,7 +5658,7 @@ class Client(OpenApiClient):
             action='GrantPermissions',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/permissions/users/{uid}',
+            pathname=f'/permissions/users/{OpenApiUtilClient.get_encode_param(uid)}',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -5820,7 +5696,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.InstallClusterAddonsResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=UtilClient.to_array(request.body)
@@ -5829,7 +5704,7 @@ class Client(OpenApiClient):
             action='InstallClusterAddons',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/components/install',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/components/install',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -5849,7 +5724,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.InstallClusterAddonsResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=UtilClient.to_array(request.body)
@@ -5858,7 +5732,7 @@ class Client(OpenApiClient):
             action='InstallClusterAddons',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/components/install',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/components/install',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -6000,7 +5874,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.MigrateClusterResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         body = {}
         if not UtilClient.is_unset(request.oss_bucket_endpoint):
             body['oss_bucket_endpoint'] = request.oss_bucket_endpoint
@@ -6014,7 +5887,7 @@ class Client(OpenApiClient):
             action='MigrateCluster',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/migrate',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/migrate',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -6034,7 +5907,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.MigrateClusterResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         body = {}
         if not UtilClient.is_unset(request.oss_bucket_endpoint):
             body['oss_bucket_endpoint'] = request.oss_bucket_endpoint
@@ -6048,7 +5920,7 @@ class Client(OpenApiClient):
             action='MigrateCluster',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/migrate',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/migrate',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -6086,7 +5958,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ModifyClusterResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         body = {}
         if not UtilClient.is_unset(request.api_server_eip):
             body['api_server_eip'] = request.api_server_eip
@@ -6114,7 +5985,7 @@ class Client(OpenApiClient):
             action='ModifyCluster',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/api/v2/clusters/{cluster_id}',
+            pathname=f'/api/v2/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -6134,7 +6005,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ModifyClusterResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         body = {}
         if not UtilClient.is_unset(request.api_server_eip):
             body['api_server_eip'] = request.api_server_eip
@@ -6162,7 +6032,7 @@ class Client(OpenApiClient):
             action='ModifyCluster',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/api/v2/clusters/{cluster_id}',
+            pathname=f'/api/v2/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -6203,8 +6073,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ModifyClusterAddonResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        component_id = OpenApiUtilClient.get_encode_param(component_id)
         body = {}
         if not UtilClient.is_unset(request.config):
             body['config'] = request.config
@@ -6216,7 +6084,7 @@ class Client(OpenApiClient):
             action='ModifyClusterAddon',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/components/{component_id}/config',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/components/{OpenApiUtilClient.get_encode_param(component_id)}/config',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -6237,8 +6105,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ModifyClusterAddonResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        component_id = OpenApiUtilClient.get_encode_param(component_id)
         body = {}
         if not UtilClient.is_unset(request.config):
             body['config'] = request.config
@@ -6250,7 +6116,7 @@ class Client(OpenApiClient):
             action='ModifyClusterAddon',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/components/{component_id}/config',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/components/{OpenApiUtilClient.get_encode_param(component_id)}/config',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -6288,7 +6154,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ModifyClusterConfigurationResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         body = {}
         if not UtilClient.is_unset(request.customize_config):
             body['customize_config'] = request.customize_config
@@ -6300,7 +6165,7 @@ class Client(OpenApiClient):
             action='ModifyClusterConfiguration',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/configuration',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/configuration',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -6320,7 +6185,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ModifyClusterConfigurationResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         body = {}
         if not UtilClient.is_unset(request.customize_config):
             body['customize_config'] = request.customize_config
@@ -6332,7 +6196,7 @@ class Client(OpenApiClient):
             action='ModifyClusterConfiguration',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/configuration',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/configuration',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -6373,8 +6237,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ModifyClusterNodePoolResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        nodepool_id = OpenApiUtilClient.get_encode_param(nodepool_id)
         body = {}
         if not UtilClient.is_unset(request.auto_scaling):
             body['auto_scaling'] = request.auto_scaling
@@ -6398,7 +6260,7 @@ class Client(OpenApiClient):
             action='ModifyClusterNodePool',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/nodepools/{nodepool_id}',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/nodepools/{OpenApiUtilClient.get_encode_param(nodepool_id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -6419,8 +6281,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ModifyClusterNodePoolResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        nodepool_id = OpenApiUtilClient.get_encode_param(nodepool_id)
         body = {}
         if not UtilClient.is_unset(request.auto_scaling):
             body['auto_scaling'] = request.auto_scaling
@@ -6444,7 +6304,7 @@ class Client(OpenApiClient):
             action='ModifyClusterNodePool',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/nodepools/{nodepool_id}',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/nodepools/{OpenApiUtilClient.get_encode_param(nodepool_id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -6482,7 +6342,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ModifyClusterTagsResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=UtilClient.to_array(request.body)
@@ -6491,7 +6350,7 @@ class Client(OpenApiClient):
             action='ModifyClusterTags',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/tags',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/tags',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -6511,7 +6370,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ModifyClusterTagsResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=UtilClient.to_array(request.body)
@@ -6520,7 +6378,7 @@ class Client(OpenApiClient):
             action='ModifyClusterTags',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/tags',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/tags',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -6561,8 +6419,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ModifyNodePoolNodeConfigResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        nodepool_id = OpenApiUtilClient.get_encode_param(nodepool_id)
         body = {}
         if not UtilClient.is_unset(request.kubelet_config):
             body['kubelet_config'] = request.kubelet_config
@@ -6576,7 +6432,7 @@ class Client(OpenApiClient):
             action='ModifyNodePoolNodeConfig',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/nodepools/{nodepool_id}/node_config',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/nodepools/{OpenApiUtilClient.get_encode_param(nodepool_id)}/node_config',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -6597,8 +6453,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ModifyNodePoolNodeConfigResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        nodepool_id = OpenApiUtilClient.get_encode_param(nodepool_id)
         body = {}
         if not UtilClient.is_unset(request.kubelet_config):
             body['kubelet_config'] = request.kubelet_config
@@ -6612,7 +6466,7 @@ class Client(OpenApiClient):
             action='ModifyNodePoolNodeConfig',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/nodepools/{nodepool_id}/node_config',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/nodepools/{OpenApiUtilClient.get_encode_param(nodepool_id)}/node_config',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -6653,8 +6507,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ModifyPolicyInstanceResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        policy_name = OpenApiUtilClient.get_encode_param(policy_name)
         body = {}
         if not UtilClient.is_unset(request.action):
             body['action'] = request.action
@@ -6672,7 +6524,7 @@ class Client(OpenApiClient):
             action='ModifyPolicyInstance',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/policies/{policy_name}',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/policies/{OpenApiUtilClient.get_encode_param(policy_name)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -6693,8 +6545,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ModifyPolicyInstanceResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        policy_name = OpenApiUtilClient.get_encode_param(policy_name)
         body = {}
         if not UtilClient.is_unset(request.action):
             body['action'] = request.action
@@ -6712,7 +6562,7 @@ class Client(OpenApiClient):
             action='ModifyPolicyInstance',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/policies/{policy_name}',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/policies/{OpenApiUtilClient.get_encode_param(policy_name)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -6822,7 +6672,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.PauseClusterUpgradeResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -6830,7 +6679,7 @@ class Client(OpenApiClient):
             action='PauseClusterUpgrade',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/api/v2/clusters/{cluster_id}/upgrade/pause',
+            pathname=f'/api/v2/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/upgrade/pause',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -6848,7 +6697,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.PauseClusterUpgradeResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -6856,7 +6704,7 @@ class Client(OpenApiClient):
             action='PauseClusterUpgrade',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/api/v2/clusters/{cluster_id}/upgrade/pause',
+            pathname=f'/api/v2/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/upgrade/pause',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -6893,8 +6741,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.PauseComponentUpgradeResponse:
-        clusterid = OpenApiUtilClient.get_encode_param(clusterid)
-        componentid = OpenApiUtilClient.get_encode_param(componentid)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -6902,7 +6748,7 @@ class Client(OpenApiClient):
             action='PauseComponentUpgrade',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{clusterid}/components/{componentid}/pause',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(clusterid)}/components/{OpenApiUtilClient.get_encode_param(componentid)}/pause',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -6921,8 +6767,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.PauseComponentUpgradeResponse:
-        clusterid = OpenApiUtilClient.get_encode_param(clusterid)
-        componentid = OpenApiUtilClient.get_encode_param(componentid)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -6930,7 +6774,7 @@ class Client(OpenApiClient):
             action='PauseComponentUpgrade',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{clusterid}/components/{componentid}/pause',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(clusterid)}/components/{OpenApiUtilClient.get_encode_param(componentid)}/pause',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -6964,7 +6808,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.PauseTaskResponse:
-        task_id = OpenApiUtilClient.get_encode_param(task_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -6972,7 +6815,7 @@ class Client(OpenApiClient):
             action='PauseTask',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/tasks/{task_id}/pause',
+            pathname=f'/tasks/{OpenApiUtilClient.get_encode_param(task_id)}/pause',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -6990,7 +6833,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.PauseTaskResponse:
-        task_id = OpenApiUtilClient.get_encode_param(task_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -6998,7 +6840,7 @@ class Client(OpenApiClient):
             action='PauseTask',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/tasks/{task_id}/pause',
+            pathname=f'/tasks/{OpenApiUtilClient.get_encode_param(task_id)}/pause',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -7036,7 +6878,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.RemoveClusterNodesResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         body = {}
         if not UtilClient.is_unset(request.drain_node):
             body['drain_node'] = request.drain_node
@@ -7052,7 +6893,7 @@ class Client(OpenApiClient):
             action='RemoveClusterNodes',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/api/v2/clusters/{cluster_id}/nodes/remove',
+            pathname=f'/api/v2/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/nodes/remove',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -7072,7 +6913,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.RemoveClusterNodesResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         body = {}
         if not UtilClient.is_unset(request.drain_node):
             body['drain_node'] = request.drain_node
@@ -7088,7 +6928,7 @@ class Client(OpenApiClient):
             action='RemoveClusterNodes',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/api/v2/clusters/{cluster_id}/nodes/remove',
+            pathname=f'/api/v2/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/nodes/remove',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -7097,6 +6937,106 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             cs20151215_models.RemoveClusterNodesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def remove_node_pool_nodes(
+        self,
+        cluster_id: str,
+        nodepool_id: str,
+        request: cs20151215_models.RemoveNodePoolNodesRequest,
+    ) -> cs20151215_models.RemoveNodePoolNodesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.remove_node_pool_nodes_with_options(cluster_id, nodepool_id, request, headers, runtime)
+
+    async def remove_node_pool_nodes_async(
+        self,
+        cluster_id: str,
+        nodepool_id: str,
+        request: cs20151215_models.RemoveNodePoolNodesRequest,
+    ) -> cs20151215_models.RemoveNodePoolNodesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.remove_node_pool_nodes_with_options_async(cluster_id, nodepool_id, request, headers, runtime)
+
+    def remove_node_pool_nodes_with_options(
+        self,
+        cluster_id: str,
+        nodepool_id: str,
+        tmp_req: cs20151215_models.RemoveNodePoolNodesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.RemoveNodePoolNodesResponse:
+        UtilClient.validate_model(tmp_req)
+        request = cs20151215_models.RemoveNodePoolNodesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.nodes):
+            request.nodes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.nodes, 'nodes', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.drain_node):
+            query['drain_node'] = request.drain_node
+        if not UtilClient.is_unset(request.nodes_shrink):
+            query['nodes'] = request.nodes_shrink
+        if not UtilClient.is_unset(request.release_node):
+            query['release_node'] = request.release_node
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RemoveNodePoolNodes',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/nodepools/{OpenApiUtilClient.get_encode_param(nodepool_id)}/nodes',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.RemoveNodePoolNodesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def remove_node_pool_nodes_with_options_async(
+        self,
+        cluster_id: str,
+        nodepool_id: str,
+        tmp_req: cs20151215_models.RemoveNodePoolNodesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.RemoveNodePoolNodesResponse:
+        UtilClient.validate_model(tmp_req)
+        request = cs20151215_models.RemoveNodePoolNodesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.nodes):
+            request.nodes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.nodes, 'nodes', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.drain_node):
+            query['drain_node'] = request.drain_node
+        if not UtilClient.is_unset(request.nodes_shrink):
+            query['nodes'] = request.nodes_shrink
+        if not UtilClient.is_unset(request.release_node):
+            query['release_node'] = request.release_node
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RemoveNodePoolNodes',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/nodepools/{OpenApiUtilClient.get_encode_param(nodepool_id)}/nodes',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.RemoveNodePoolNodesResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
@@ -7122,7 +7062,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.RemoveWorkflowResponse:
-        workflow_name = OpenApiUtilClient.get_encode_param(workflow_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -7130,7 +7069,7 @@ class Client(OpenApiClient):
             action='RemoveWorkflow',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/gs/workflow/{workflow_name}',
+            pathname=f'/gs/workflow/{OpenApiUtilClient.get_encode_param(workflow_name)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -7148,7 +7087,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.RemoveWorkflowResponse:
-        workflow_name = OpenApiUtilClient.get_encode_param(workflow_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -7156,7 +7094,7 @@ class Client(OpenApiClient):
             action='RemoveWorkflow',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/gs/workflow/{workflow_name}',
+            pathname=f'/gs/workflow/{OpenApiUtilClient.get_encode_param(workflow_name)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -7197,8 +7135,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.RepairClusterNodePoolResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        nodepool_id = OpenApiUtilClient.get_encode_param(nodepool_id)
         body = {}
         if not UtilClient.is_unset(request.nodes):
             body['nodes'] = request.nodes
@@ -7210,7 +7146,7 @@ class Client(OpenApiClient):
             action='RepairClusterNodePool',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/nodepools/{nodepool_id}/repair',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/nodepools/{OpenApiUtilClient.get_encode_param(nodepool_id)}/repair',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -7231,8 +7167,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.RepairClusterNodePoolResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        nodepool_id = OpenApiUtilClient.get_encode_param(nodepool_id)
         body = {}
         if not UtilClient.is_unset(request.nodes):
             body['nodes'] = request.nodes
@@ -7244,7 +7178,7 @@ class Client(OpenApiClient):
             action='RepairClusterNodePool',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/nodepools/{nodepool_id}/repair',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/nodepools/{OpenApiUtilClient.get_encode_param(nodepool_id)}/repair',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -7281,8 +7215,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ResumeComponentUpgradeResponse:
-        clusterid = OpenApiUtilClient.get_encode_param(clusterid)
-        componentid = OpenApiUtilClient.get_encode_param(componentid)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -7290,7 +7222,7 @@ class Client(OpenApiClient):
             action='ResumeComponentUpgrade',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{clusterid}/components/{componentid}/resume',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(clusterid)}/components/{OpenApiUtilClient.get_encode_param(componentid)}/resume',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -7309,8 +7241,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ResumeComponentUpgradeResponse:
-        clusterid = OpenApiUtilClient.get_encode_param(clusterid)
-        componentid = OpenApiUtilClient.get_encode_param(componentid)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -7318,7 +7248,7 @@ class Client(OpenApiClient):
             action='ResumeComponentUpgrade',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{clusterid}/components/{componentid}/resume',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(clusterid)}/components/{OpenApiUtilClient.get_encode_param(componentid)}/resume',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -7352,7 +7282,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ResumeTaskResponse:
-        task_id = OpenApiUtilClient.get_encode_param(task_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -7360,7 +7289,7 @@ class Client(OpenApiClient):
             action='ResumeTask',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/tasks/{task_id}/resume',
+            pathname=f'/tasks/{OpenApiUtilClient.get_encode_param(task_id)}/resume',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -7378,7 +7307,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ResumeTaskResponse:
-        task_id = OpenApiUtilClient.get_encode_param(task_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -7386,7 +7314,7 @@ class Client(OpenApiClient):
             action='ResumeTask',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/tasks/{task_id}/resume',
+            pathname=f'/tasks/{OpenApiUtilClient.get_encode_param(task_id)}/resume',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -7420,7 +7348,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ResumeUpgradeClusterResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -7428,7 +7355,7 @@ class Client(OpenApiClient):
             action='ResumeUpgradeCluster',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/api/v2/clusters/{cluster_id}/upgrade/resume',
+            pathname=f'/api/v2/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/upgrade/resume',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -7446,7 +7373,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ResumeUpgradeClusterResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -7454,7 +7380,7 @@ class Client(OpenApiClient):
             action='ResumeUpgradeCluster',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/api/v2/clusters/{cluster_id}/upgrade/resume',
+            pathname=f'/api/v2/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/upgrade/resume',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -7492,7 +7418,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ScaleClusterResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         body = {}
         if not UtilClient.is_unset(request.cloud_monitor_flags):
             body['cloud_monitor_flags'] = request.cloud_monitor_flags
@@ -7540,7 +7465,7 @@ class Client(OpenApiClient):
             action='ScaleCluster',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -7560,7 +7485,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ScaleClusterResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         body = {}
         if not UtilClient.is_unset(request.cloud_monitor_flags):
             body['cloud_monitor_flags'] = request.cloud_monitor_flags
@@ -7608,7 +7532,7 @@ class Client(OpenApiClient):
             action='ScaleCluster',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -7649,8 +7573,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ScaleClusterNodePoolResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        nodepool_id = OpenApiUtilClient.get_encode_param(nodepool_id)
         body = {}
         if not UtilClient.is_unset(request.count):
             body['count'] = request.count
@@ -7662,7 +7584,7 @@ class Client(OpenApiClient):
             action='ScaleClusterNodePool',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/nodepools/{nodepool_id}',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/nodepools/{OpenApiUtilClient.get_encode_param(nodepool_id)}',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -7683,8 +7605,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ScaleClusterNodePoolResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        nodepool_id = OpenApiUtilClient.get_encode_param(nodepool_id)
         body = {}
         if not UtilClient.is_unset(request.count):
             body['count'] = request.count
@@ -7696,7 +7616,7 @@ class Client(OpenApiClient):
             action='ScaleClusterNodePool',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/nodepools/{nodepool_id}',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/nodepools/{OpenApiUtilClient.get_encode_param(nodepool_id)}',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -7734,7 +7654,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ScaleOutClusterResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         body = {}
         if not UtilClient.is_unset(request.cloud_monitor_flags):
             body['cloud_monitor_flags'] = request.cloud_monitor_flags
@@ -7786,7 +7705,7 @@ class Client(OpenApiClient):
             action='ScaleOutCluster',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/api/v2/clusters/{cluster_id}',
+            pathname=f'/api/v2/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -7806,7 +7725,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.ScaleOutClusterResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         body = {}
         if not UtilClient.is_unset(request.cloud_monitor_flags):
             body['cloud_monitor_flags'] = request.cloud_monitor_flags
@@ -7858,7 +7776,7 @@ class Client(OpenApiClient):
             action='ScaleOutCluster',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/api/v2/clusters/{cluster_id}',
+            pathname=f'/api/v2/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -8132,7 +8050,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.UnInstallClusterAddonsResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=UtilClient.to_array(request.addons)
@@ -8141,7 +8058,7 @@ class Client(OpenApiClient):
             action='UnInstallClusterAddons',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/components/uninstall',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/components/uninstall',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -8161,7 +8078,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.UnInstallClusterAddonsResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=UtilClient.to_array(request.addons)
@@ -8170,7 +8086,7 @@ class Client(OpenApiClient):
             action='UnInstallClusterAddons',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/components/uninstall',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/components/uninstall',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -8296,7 +8212,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.UpdateContactGroupForAlertResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -8304,7 +8219,7 @@ class Client(OpenApiClient):
             action='UpdateContactGroupForAlert',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/alert/{cluster_id}/alert_rule/contact_groups',
+            pathname=f'/alert/{OpenApiUtilClient.get_encode_param(cluster_id)}/alert_rule/contact_groups',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -8322,7 +8237,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.UpdateContactGroupForAlertResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -8330,7 +8244,7 @@ class Client(OpenApiClient):
             action='UpdateContactGroupForAlert',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/alert/{cluster_id}/alert_rule/contact_groups',
+            pathname=f'/alert/{OpenApiUtilClient.get_encode_param(cluster_id)}/alert_rule/contact_groups',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -8368,7 +8282,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.UpdateK8sClusterUserConfigExpireResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         body = {}
         if not UtilClient.is_unset(request.expire_hour):
             body['expire_hour'] = request.expire_hour
@@ -8382,7 +8295,7 @@ class Client(OpenApiClient):
             action='UpdateK8sClusterUserConfigExpire',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/k8s/{cluster_id}/user_config/expire',
+            pathname=f'/k8s/{OpenApiUtilClient.get_encode_param(cluster_id)}/user_config/expire',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -8402,7 +8315,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.UpdateK8sClusterUserConfigExpireResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         body = {}
         if not UtilClient.is_unset(request.expire_hour):
             body['expire_hour'] = request.expire_hour
@@ -8416,7 +8328,7 @@ class Client(OpenApiClient):
             action='UpdateK8sClusterUserConfigExpire',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/k8s/{cluster_id}/user_config/expire',
+            pathname=f'/k8s/{OpenApiUtilClient.get_encode_param(cluster_id)}/user_config/expire',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -8454,7 +8366,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.UpdateTemplateResponse:
         UtilClient.validate_model(request)
-        template_id = OpenApiUtilClient.get_encode_param(template_id)
         body = {}
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
@@ -8474,7 +8385,7 @@ class Client(OpenApiClient):
             action='UpdateTemplate',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/templates/{template_id}',
+            pathname=f'/templates/{OpenApiUtilClient.get_encode_param(template_id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -8494,7 +8405,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.UpdateTemplateResponse:
         UtilClient.validate_model(request)
-        template_id = OpenApiUtilClient.get_encode_param(template_id)
         body = {}
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
@@ -8514,7 +8424,7 @@ class Client(OpenApiClient):
             action='UpdateTemplate',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/templates/{template_id}',
+            pathname=f'/templates/{OpenApiUtilClient.get_encode_param(template_id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -8552,7 +8462,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.UpgradeClusterResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         body = {}
         if not UtilClient.is_unset(request.component_name):
             body['component_name'] = request.component_name
@@ -8568,7 +8477,7 @@ class Client(OpenApiClient):
             action='UpgradeCluster',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/api/v2/clusters/{cluster_id}/upgrade',
+            pathname=f'/api/v2/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/upgrade',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -8588,7 +8497,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.UpgradeClusterResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         body = {}
         if not UtilClient.is_unset(request.component_name):
             body['component_name'] = request.component_name
@@ -8604,7 +8512,7 @@ class Client(OpenApiClient):
             action='UpgradeCluster',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/api/v2/clusters/{cluster_id}/upgrade',
+            pathname=f'/api/v2/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/upgrade',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -8642,7 +8550,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.UpgradeClusterAddonsResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=UtilClient.to_array(request.body)
@@ -8651,7 +8558,7 @@ class Client(OpenApiClient):
             action='UpgradeClusterAddons',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/components/upgrade',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/components/upgrade',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -8671,7 +8578,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.UpgradeClusterAddonsResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=UtilClient.to_array(request.body)
@@ -8680,7 +8586,7 @@ class Client(OpenApiClient):
             action='UpgradeClusterAddons',
             version='2015-12-15',
             protocol='HTTPS',
-            pathname=f'/clusters/{cluster_id}/components/upgrade',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/components/upgrade',
             method='POST',
             auth_type='AK',
             style='ROA',

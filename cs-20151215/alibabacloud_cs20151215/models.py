@@ -244,6 +244,57 @@ class Taint(TeaModel):
         return self
 
 
+class StandardComponentsValue(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        version: str = None,
+        description: str = None,
+        required: str = None,
+        disabled: bool = None,
+    ):
+        self.name = name
+        self.version = version
+        self.description = description
+        self.required = required
+        self.disabled = disabled
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['name'] = self.name
+        if self.version is not None:
+            result['version'] = self.version
+        if self.description is not None:
+            result['description'] = self.description
+        if self.required is not None:
+            result['required'] = self.required
+        if self.disabled is not None:
+            result['disabled'] = self.disabled
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('required') is not None:
+            self.required = m.get('required')
+        if m.get('disabled') is not None:
+            self.disabled = m.get('disabled')
+        return self
+
+
 class AttachInstancesRequest(TeaModel):
     def __init__(
         self,
@@ -3800,57 +3851,6 @@ class DescribeAddonsResponseBodyComponentGroups(TeaModel):
             for k in m.get('items'):
                 temp_model = DescribeAddonsResponseBodyComponentGroupsItems()
                 self.items.append(temp_model.from_map(k))
-        return self
-
-
-class StandardComponentsValue(TeaModel):
-    def __init__(
-        self,
-        name: str = None,
-        version: str = None,
-        description: str = None,
-        required: str = None,
-        disabled: bool = None,
-    ):
-        self.name = name
-        self.version = version
-        self.description = description
-        self.required = required
-        self.disabled = disabled
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.name is not None:
-            result['name'] = self.name
-        if self.version is not None:
-            result['version'] = self.version
-        if self.description is not None:
-            result['description'] = self.description
-        if self.required is not None:
-            result['required'] = self.required
-        if self.disabled is not None:
-            result['disabled'] = self.disabled
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('name') is not None:
-            self.name = m.get('name')
-        if m.get('version') is not None:
-            self.version = m.get('version')
-        if m.get('description') is not None:
-            self.description = m.get('description')
-        if m.get('required') is not None:
-            self.required = m.get('required')
-        if m.get('disabled') is not None:
-            self.disabled = m.get('disabled')
         return self
 
 
@@ -14840,6 +14840,161 @@ class RemoveClusterNodesResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('statusCode') is not None:
             self.status_code = m.get('statusCode')
+        return self
+
+
+class RemoveNodePoolNodesRequest(TeaModel):
+    def __init__(
+        self,
+        drain_node: bool = None,
+        nodes: List[str] = None,
+        release_node: bool = None,
+    ):
+        self.drain_node = drain_node
+        self.nodes = nodes
+        self.release_node = release_node
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.drain_node is not None:
+            result['drain_node'] = self.drain_node
+        if self.nodes is not None:
+            result['nodes'] = self.nodes
+        if self.release_node is not None:
+            result['release_node'] = self.release_node
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('drain_node') is not None:
+            self.drain_node = m.get('drain_node')
+        if m.get('nodes') is not None:
+            self.nodes = m.get('nodes')
+        if m.get('release_node') is not None:
+            self.release_node = m.get('release_node')
+        return self
+
+
+class RemoveNodePoolNodesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        drain_node: bool = None,
+        nodes_shrink: str = None,
+        release_node: bool = None,
+    ):
+        self.drain_node = drain_node
+        self.nodes_shrink = nodes_shrink
+        self.release_node = release_node
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.drain_node is not None:
+            result['drain_node'] = self.drain_node
+        if self.nodes_shrink is not None:
+            result['nodes'] = self.nodes_shrink
+        if self.release_node is not None:
+            result['release_node'] = self.release_node
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('drain_node') is not None:
+            self.drain_node = m.get('drain_node')
+        if m.get('nodes') is not None:
+            self.nodes_shrink = m.get('nodes')
+        if m.get('release_node') is not None:
+            self.release_node = m.get('release_node')
+        return self
+
+
+class RemoveNodePoolNodesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        task_id: str = None,
+    ):
+        self.request_id = request_id
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['request_id'] = self.request_id
+        if self.task_id is not None:
+            result['task_id'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('request_id') is not None:
+            self.request_id = m.get('request_id')
+        if m.get('task_id') is not None:
+            self.task_id = m.get('task_id')
+        return self
+
+
+class RemoveNodePoolNodesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RemoveNodePoolNodesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RemoveNodePoolNodesResponseBody()
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
