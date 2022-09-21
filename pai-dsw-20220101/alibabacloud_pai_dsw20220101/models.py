@@ -1058,6 +1058,57 @@ class GetInstanceResponseBodyDatasets(TeaModel):
         return self
 
 
+class GetInstanceResponseBodyIdleInstanceCuller(TeaModel):
+    def __init__(
+        self,
+        cpu_percent_threshold: int = None,
+        gpu_percent_threshold: int = None,
+        idle_time_in_minutes: int = None,
+        instance_id: str = None,
+        max_idle_time_in_minutes: int = None,
+    ):
+        self.cpu_percent_threshold = cpu_percent_threshold
+        self.gpu_percent_threshold = gpu_percent_threshold
+        self.idle_time_in_minutes = idle_time_in_minutes
+        self.instance_id = instance_id
+        self.max_idle_time_in_minutes = max_idle_time_in_minutes
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cpu_percent_threshold is not None:
+            result['CpuPercentThreshold'] = self.cpu_percent_threshold
+        if self.gpu_percent_threshold is not None:
+            result['GpuPercentThreshold'] = self.gpu_percent_threshold
+        if self.idle_time_in_minutes is not None:
+            result['IdleTimeInMinutes'] = self.idle_time_in_minutes
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.max_idle_time_in_minutes is not None:
+            result['MaxIdleTimeInMinutes'] = self.max_idle_time_in_minutes
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CpuPercentThreshold') is not None:
+            self.cpu_percent_threshold = m.get('CpuPercentThreshold')
+        if m.get('GpuPercentThreshold') is not None:
+            self.gpu_percent_threshold = m.get('GpuPercentThreshold')
+        if m.get('IdleTimeInMinutes') is not None:
+            self.idle_time_in_minutes = m.get('IdleTimeInMinutes')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('MaxIdleTimeInMinutes') is not None:
+            self.max_idle_time_in_minutes = m.get('MaxIdleTimeInMinutes')
+        return self
+
+
 class GetInstanceResponseBodyInstanceShutdownTimer(TeaModel):
     def __init__(
         self,
@@ -1106,6 +1157,39 @@ class GetInstanceResponseBodyInstanceShutdownTimer(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('RemainingTimeInMs') is not None:
             self.remaining_time_in_ms = m.get('RemainingTimeInMs')
+        return self
+
+
+class GetInstanceResponseBodyLabels(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
         return self
 
 
@@ -1269,6 +1353,7 @@ class GetInstanceResponseBody(TeaModel):
         gmt_create_time: str = None,
         gmt_modified_time: str = None,
         http_status_code: int = None,
+        idle_instance_culler: GetInstanceResponseBodyIdleInstanceCuller = None,
         image_id: str = None,
         image_name: str = None,
         image_url: str = None,
@@ -1277,6 +1362,7 @@ class GetInstanceResponseBody(TeaModel):
         instance_shutdown_timer: GetInstanceResponseBodyInstanceShutdownTimer = None,
         instance_url: str = None,
         jupyterlab_url: str = None,
+        labels: List[GetInstanceResponseBodyLabels] = None,
         latest_snapshot: GetInstanceResponseBodyLatestSnapshot = None,
         message: str = None,
         payment_type: str = None,
@@ -1307,6 +1393,7 @@ class GetInstanceResponseBody(TeaModel):
         self.gmt_create_time = gmt_create_time
         self.gmt_modified_time = gmt_modified_time
         self.http_status_code = http_status_code
+        self.idle_instance_culler = idle_instance_culler
         self.image_id = image_id
         self.image_name = image_name
         self.image_url = image_url
@@ -1315,6 +1402,7 @@ class GetInstanceResponseBody(TeaModel):
         self.instance_shutdown_timer = instance_shutdown_timer
         self.instance_url = instance_url
         self.jupyterlab_url = jupyterlab_url
+        self.labels = labels
         self.latest_snapshot = latest_snapshot
         self.message = message
         self.payment_type = payment_type
@@ -1340,8 +1428,14 @@ class GetInstanceResponseBody(TeaModel):
             for k in self.datasets:
                 if k:
                     k.validate()
+        if self.idle_instance_culler:
+            self.idle_instance_culler.validate()
         if self.instance_shutdown_timer:
             self.instance_shutdown_timer.validate()
+        if self.labels:
+            for k in self.labels:
+                if k:
+                    k.validate()
         if self.latest_snapshot:
             self.latest_snapshot.validate()
         if self.requested_resource:
@@ -1377,6 +1471,8 @@ class GetInstanceResponseBody(TeaModel):
             result['GmtModifiedTime'] = self.gmt_modified_time
         if self.http_status_code is not None:
             result['HttpStatusCode'] = self.http_status_code
+        if self.idle_instance_culler is not None:
+            result['IdleInstanceCuller'] = self.idle_instance_culler.to_map()
         if self.image_id is not None:
             result['ImageId'] = self.image_id
         if self.image_name is not None:
@@ -1393,6 +1489,10 @@ class GetInstanceResponseBody(TeaModel):
             result['InstanceUrl'] = self.instance_url
         if self.jupyterlab_url is not None:
             result['JupyterlabUrl'] = self.jupyterlab_url
+        result['Labels'] = []
+        if self.labels is not None:
+            for k in self.labels:
+                result['Labels'].append(k.to_map() if k else None)
         if self.latest_snapshot is not None:
             result['LatestSnapshot'] = self.latest_snapshot.to_map()
         if self.message is not None:
@@ -1458,6 +1558,9 @@ class GetInstanceResponseBody(TeaModel):
             self.gmt_modified_time = m.get('GmtModifiedTime')
         if m.get('HttpStatusCode') is not None:
             self.http_status_code = m.get('HttpStatusCode')
+        if m.get('IdleInstanceCuller') is not None:
+            temp_model = GetInstanceResponseBodyIdleInstanceCuller()
+            self.idle_instance_culler = temp_model.from_map(m['IdleInstanceCuller'])
         if m.get('ImageId') is not None:
             self.image_id = m.get('ImageId')
         if m.get('ImageName') is not None:
@@ -1475,6 +1578,11 @@ class GetInstanceResponseBody(TeaModel):
             self.instance_url = m.get('InstanceUrl')
         if m.get('JupyterlabUrl') is not None:
             self.jupyterlab_url = m.get('JupyterlabUrl')
+        self.labels = []
+        if m.get('Labels') is not None:
+            for k in m.get('Labels'):
+                temp_model = GetInstanceResponseBodyLabels()
+                self.labels.append(temp_model.from_map(k))
         if m.get('LatestSnapshot') is not None:
             temp_model = GetInstanceResponseBodyLatestSnapshot()
             self.latest_snapshot = temp_model.from_map(m['LatestSnapshot'])
@@ -3320,6 +3428,57 @@ class ListInstancesResponseBodyInstancesDatasets(TeaModel):
         return self
 
 
+class ListInstancesResponseBodyInstancesIdleInstanceCuller(TeaModel):
+    def __init__(
+        self,
+        cpu_percent_threshold: int = None,
+        gpu_percent_threshold: int = None,
+        idle_time_in_minutes: int = None,
+        instance_id: str = None,
+        max_idle_time_in_minutes: int = None,
+    ):
+        self.cpu_percent_threshold = cpu_percent_threshold
+        self.gpu_percent_threshold = gpu_percent_threshold
+        self.idle_time_in_minutes = idle_time_in_minutes
+        self.instance_id = instance_id
+        self.max_idle_time_in_minutes = max_idle_time_in_minutes
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cpu_percent_threshold is not None:
+            result['CpuPercentThreshold'] = self.cpu_percent_threshold
+        if self.gpu_percent_threshold is not None:
+            result['GpuPercentThreshold'] = self.gpu_percent_threshold
+        if self.idle_time_in_minutes is not None:
+            result['IdleTimeInMinutes'] = self.idle_time_in_minutes
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.max_idle_time_in_minutes is not None:
+            result['MaxIdleTimeInMinutes'] = self.max_idle_time_in_minutes
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CpuPercentThreshold') is not None:
+            self.cpu_percent_threshold = m.get('CpuPercentThreshold')
+        if m.get('GpuPercentThreshold') is not None:
+            self.gpu_percent_threshold = m.get('GpuPercentThreshold')
+        if m.get('IdleTimeInMinutes') is not None:
+            self.idle_time_in_minutes = m.get('IdleTimeInMinutes')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('MaxIdleTimeInMinutes') is not None:
+            self.max_idle_time_in_minutes = m.get('MaxIdleTimeInMinutes')
+        return self
+
+
 class ListInstancesResponseBodyInstancesInstanceShutdownTimer(TeaModel):
     def __init__(
         self,
@@ -3562,6 +3721,7 @@ class ListInstancesResponseBodyInstances(TeaModel):
         environment_variables: Dict[str, str] = None,
         gmt_create_time: str = None,
         gmt_modified_time: str = None,
+        idle_instance_culler: ListInstancesResponseBodyInstancesIdleInstanceCuller = None,
         image_id: str = None,
         image_name: str = None,
         image_url: str = None,
@@ -3596,6 +3756,7 @@ class ListInstancesResponseBodyInstances(TeaModel):
         self.environment_variables = environment_variables
         self.gmt_create_time = gmt_create_time
         self.gmt_modified_time = gmt_modified_time
+        self.idle_instance_culler = idle_instance_culler
         self.image_id = image_id
         self.image_name = image_name
         self.image_url = image_url
@@ -3627,6 +3788,8 @@ class ListInstancesResponseBodyInstances(TeaModel):
             for k in self.datasets:
                 if k:
                     k.validate()
+        if self.idle_instance_culler:
+            self.idle_instance_culler.validate()
         if self.instance_shutdown_timer:
             self.instance_shutdown_timer.validate()
         if self.labels:
@@ -3664,6 +3827,8 @@ class ListInstancesResponseBodyInstances(TeaModel):
             result['GmtCreateTime'] = self.gmt_create_time
         if self.gmt_modified_time is not None:
             result['GmtModifiedTime'] = self.gmt_modified_time
+        if self.idle_instance_culler is not None:
+            result['IdleInstanceCuller'] = self.idle_instance_culler.to_map()
         if self.image_id is not None:
             result['ImageId'] = self.image_id
         if self.image_name is not None:
@@ -3739,6 +3904,9 @@ class ListInstancesResponseBodyInstances(TeaModel):
             self.gmt_create_time = m.get('GmtCreateTime')
         if m.get('GmtModifiedTime') is not None:
             self.gmt_modified_time = m.get('GmtModifiedTime')
+        if m.get('IdleInstanceCuller') is not None:
+            temp_model = ListInstancesResponseBodyInstancesIdleInstanceCuller()
+            self.idle_instance_culler = temp_model.from_map(m['IdleInstanceCuller'])
         if m.get('ImageId') is not None:
             self.image_id = m.get('ImageId')
         if m.get('ImageName') is not None:

@@ -191,7 +191,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.CreateInstanceShutdownTimerResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         body = {}
         if not UtilClient.is_unset(request.due_time):
             body['DueTime'] = request.due_time
@@ -205,7 +204,7 @@ class Client(OpenApiClient):
             action='CreateInstanceShutdownTimer',
             version='2022-01-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/instances/{instance_id}/shutdowntimer',
+            pathname=f'/api/v2/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/shutdowntimer',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -225,7 +224,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.CreateInstanceShutdownTimerResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         body = {}
         if not UtilClient.is_unset(request.due_time):
             body['DueTime'] = request.due_time
@@ -239,7 +237,7 @@ class Client(OpenApiClient):
             action='CreateInstanceShutdownTimer',
             version='2022-01-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/instances/{instance_id}/shutdowntimer',
+            pathname=f'/api/v2/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/shutdowntimer',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -277,7 +275,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.CreateInstanceSnapshotResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         body = {}
         if not UtilClient.is_unset(request.image_url):
             body['ImageUrl'] = request.image_url
@@ -293,7 +290,7 @@ class Client(OpenApiClient):
             action='CreateInstanceSnapshot',
             version='2022-01-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/instances/{instance_id}/snapshots',
+            pathname=f'/api/v2/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/snapshots',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -313,7 +310,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.CreateInstanceSnapshotResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         body = {}
         if not UtilClient.is_unset(request.image_url):
             body['ImageUrl'] = request.image_url
@@ -329,7 +325,7 @@ class Client(OpenApiClient):
             action='CreateInstanceSnapshot',
             version='2022-01-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/instances/{instance_id}/snapshots',
+            pathname=f'/api/v2/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/snapshots',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -363,7 +359,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.DeleteInstanceResponse:
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -371,7 +366,7 @@ class Client(OpenApiClient):
             action='DeleteInstance',
             version='2022-01-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/instances/{instance_id}',
+            pathname=f'/api/v2/instances/{OpenApiUtilClient.get_encode_param(instance_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -389,7 +384,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.DeleteInstanceResponse:
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -397,7 +391,7 @@ class Client(OpenApiClient):
             action='DeleteInstance',
             version='2022-01-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/instances/{instance_id}',
+            pathname=f'/api/v2/instances/{OpenApiUtilClient.get_encode_param(instance_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -431,7 +425,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.DeleteInstanceShutdownTimerResponse:
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -439,7 +432,7 @@ class Client(OpenApiClient):
             action='DeleteInstanceShutdownTimer',
             version='2022-01-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/instances/{instance_id}/shutdowntimer',
+            pathname=f'/api/v2/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/shutdowntimer',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -457,7 +450,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.DeleteInstanceShutdownTimerResponse:
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -465,7 +457,7 @@ class Client(OpenApiClient):
             action='DeleteInstanceShutdownTimer',
             version='2022-01-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/instances/{instance_id}/shutdowntimer',
+            pathname=f'/api/v2/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/shutdowntimer',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -502,8 +494,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.DeleteInstanceSnapshotResponse:
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        snapshot_id = OpenApiUtilClient.get_encode_param(snapshot_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -511,7 +501,7 @@ class Client(OpenApiClient):
             action='DeleteInstanceSnapshot',
             version='2022-01-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/instances/{instance_id}/snapshots/{snapshot_id}',
+            pathname=f'/api/v2/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/snapshots/{OpenApiUtilClient.get_encode_param(snapshot_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -530,8 +520,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.DeleteInstanceSnapshotResponse:
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        snapshot_id = OpenApiUtilClient.get_encode_param(snapshot_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -539,7 +527,7 @@ class Client(OpenApiClient):
             action='DeleteInstanceSnapshot',
             version='2022-01-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/instances/{instance_id}/snapshots/{snapshot_id}',
+            pathname=f'/api/v2/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/snapshots/{OpenApiUtilClient.get_encode_param(snapshot_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -573,7 +561,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.GetInstanceResponse:
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -581,7 +568,7 @@ class Client(OpenApiClient):
             action='GetInstance',
             version='2022-01-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/instances/{instance_id}',
+            pathname=f'/api/v2/instances/{OpenApiUtilClient.get_encode_param(instance_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -599,7 +586,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.GetInstanceResponse:
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -607,7 +593,7 @@ class Client(OpenApiClient):
             action='GetInstance',
             version='2022-01-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/instances/{instance_id}',
+            pathname=f'/api/v2/instances/{OpenApiUtilClient.get_encode_param(instance_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -645,7 +631,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.GetInstanceMetricsResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
@@ -663,7 +648,7 @@ class Client(OpenApiClient):
             action='GetInstanceMetrics',
             version='2022-01-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/instance/{instance_id}/metrics',
+            pathname=f'/api/v2/instance/{OpenApiUtilClient.get_encode_param(instance_id)}/metrics',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -683,7 +668,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.GetInstanceMetricsResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
@@ -701,7 +685,7 @@ class Client(OpenApiClient):
             action='GetInstanceMetrics',
             version='2022-01-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/instance/{instance_id}/metrics',
+            pathname=f'/api/v2/instance/{OpenApiUtilClient.get_encode_param(instance_id)}/metrics',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -735,7 +719,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.GetInstanceShutdownTimerResponse:
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -743,7 +726,7 @@ class Client(OpenApiClient):
             action='GetInstanceShutdownTimer',
             version='2022-01-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/instances/{instance_id}/shutdowntimer',
+            pathname=f'/api/v2/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/shutdowntimer',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -761,7 +744,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.GetInstanceShutdownTimerResponse:
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -769,7 +751,7 @@ class Client(OpenApiClient):
             action='GetInstanceShutdownTimer',
             version='2022-01-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/instances/{instance_id}/shutdowntimer',
+            pathname=f'/api/v2/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/shutdowntimer',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -806,8 +788,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.GetInstanceSnapshotResponse:
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        snapshot_id = OpenApiUtilClient.get_encode_param(snapshot_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -815,7 +795,7 @@ class Client(OpenApiClient):
             action='GetInstanceSnapshot',
             version='2022-01-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/instances/{instance_id}/snapshots/{snapshot_id}',
+            pathname=f'/api/v2/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/snapshots/{OpenApiUtilClient.get_encode_param(snapshot_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -834,8 +814,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.GetInstanceSnapshotResponse:
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        snapshot_id = OpenApiUtilClient.get_encode_param(snapshot_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -843,7 +821,7 @@ class Client(OpenApiClient):
             action='GetInstanceSnapshot',
             version='2022-01-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/instances/{instance_id}/snapshots/{snapshot_id}',
+            pathname=f'/api/v2/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/snapshots/{OpenApiUtilClient.get_encode_param(snapshot_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1257,7 +1235,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.ListInstanceSnapshotResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.order):
             query['Order'] = request.order
@@ -1275,7 +1252,7 @@ class Client(OpenApiClient):
             action='ListInstanceSnapshot',
             version='2022-01-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/instances/{instance_id}/snapshots',
+            pathname=f'/api/v2/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/snapshots',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1295,7 +1272,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.ListInstanceSnapshotResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.order):
             query['Order'] = request.order
@@ -1313,7 +1289,7 @@ class Client(OpenApiClient):
             action='ListInstanceSnapshot',
             version='2022-01-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/instances/{instance_id}/snapshots',
+            pathname=f'/api/v2/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/snapshots',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1539,7 +1515,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.StartInstanceResponse:
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1547,7 +1522,7 @@ class Client(OpenApiClient):
             action='StartInstance',
             version='2022-01-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/instances/{instance_id}/start',
+            pathname=f'/api/v2/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/start',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -1565,7 +1540,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.StartInstanceResponse:
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1573,7 +1547,7 @@ class Client(OpenApiClient):
             action='StartInstance',
             version='2022-01-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/instances/{instance_id}/start',
+            pathname=f'/api/v2/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/start',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -1611,7 +1585,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.StopInstanceResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.save_image):
             query['SaveImage'] = request.save_image
@@ -1623,7 +1596,7 @@ class Client(OpenApiClient):
             action='StopInstance',
             version='2022-01-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/instances/{instance_id}/stop',
+            pathname=f'/api/v2/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/stop',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -1643,7 +1616,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.StopInstanceResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.save_image):
             query['SaveImage'] = request.save_image
@@ -1655,7 +1627,7 @@ class Client(OpenApiClient):
             action='StopInstance',
             version='2022-01-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/instances/{instance_id}/stop',
+            pathname=f'/api/v2/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/stop',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -1693,7 +1665,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.UpdateInstanceResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         body = {}
         if not UtilClient.is_unset(request.instance_name):
             body['InstanceName'] = request.instance_name
@@ -1705,7 +1676,7 @@ class Client(OpenApiClient):
             action='UpdateInstance',
             version='2022-01-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/instances/{instance_id}',
+            pathname=f'/api/v2/instances/{OpenApiUtilClient.get_encode_param(instance_id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -1725,7 +1696,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.UpdateInstanceResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         body = {}
         if not UtilClient.is_unset(request.instance_name):
             body['InstanceName'] = request.instance_name
@@ -1737,7 +1707,7 @@ class Client(OpenApiClient):
             action='UpdateInstance',
             version='2022-01-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/instances/{instance_id}',
+            pathname=f'/api/v2/instances/{OpenApiUtilClient.get_encode_param(instance_id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',

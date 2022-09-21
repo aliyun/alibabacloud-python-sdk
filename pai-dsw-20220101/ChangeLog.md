@@ -1,3 +1,6 @@
+2022-09-21 Version: 1.1.23
+- Automatically generate sdk tasks.
+
 2022-09-05 Version: 1.1.22
 - DSW support role chain.
 
