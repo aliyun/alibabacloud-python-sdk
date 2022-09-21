@@ -1687,10 +1687,12 @@ class AddGatewayRouteRequestServicesHttpDubboTranscoderMothedMapList(TeaModel):
 class AddGatewayRouteRequestServicesHttpDubboTranscoder(TeaModel):
     def __init__(
         self,
+        dubbo_service_group: str = None,
         dubbo_service_name: str = None,
         dubbo_service_version: str = None,
         mothed_map_list: List[AddGatewayRouteRequestServicesHttpDubboTranscoderMothedMapList] = None,
     ):
+        self.dubbo_service_group = dubbo_service_group
         self.dubbo_service_name = dubbo_service_name
         self.dubbo_service_version = dubbo_service_version
         self.mothed_map_list = mothed_map_list
@@ -1707,6 +1709,8 @@ class AddGatewayRouteRequestServicesHttpDubboTranscoder(TeaModel):
             return _map
 
         result = dict()
+        if self.dubbo_service_group is not None:
+            result['DubboServiceGroup'] = self.dubbo_service_group
         if self.dubbo_service_name is not None:
             result['DubboServiceName'] = self.dubbo_service_name
         if self.dubbo_service_version is not None:
@@ -1719,6 +1723,8 @@ class AddGatewayRouteRequestServicesHttpDubboTranscoder(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DubboServiceGroup') is not None:
+            self.dubbo_service_group = m.get('DubboServiceGroup')
         if m.get('DubboServiceName') is not None:
             self.dubbo_service_name = m.get('DubboServiceName')
         if m.get('DubboServiceVersion') is not None:
@@ -18807,11 +18813,13 @@ class ListClusterTypesRequest(TeaModel):
         accept_language: str = None,
         connect_type: str = None,
         mse_session_id: str = None,
+        mse_version: str = None,
         region_id: str = None,
     ):
         self.accept_language = accept_language
         self.connect_type = connect_type
         self.mse_session_id = mse_session_id
+        self.mse_version = mse_version
         self.region_id = region_id
 
     def validate(self):
@@ -18829,6 +18837,8 @@ class ListClusterTypesRequest(TeaModel):
             result['ConnectType'] = self.connect_type
         if self.mse_session_id is not None:
             result['MseSessionId'] = self.mse_session_id
+        if self.mse_version is not None:
+            result['MseVersion'] = self.mse_version
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         return result
@@ -18841,6 +18851,8 @@ class ListClusterTypesRequest(TeaModel):
             self.connect_type = m.get('ConnectType')
         if m.get('MseSessionId') is not None:
             self.mse_session_id = m.get('MseSessionId')
+        if m.get('MseVersion') is not None:
+            self.mse_version = m.get('MseVersion')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         return self
@@ -19000,10 +19012,12 @@ class ListClusterVersionsRequest(TeaModel):
         accept_language: str = None,
         cluster_type: str = None,
         mse_session_id: str = None,
+        mse_version: str = None,
     ):
         self.accept_language = accept_language
         self.cluster_type = cluster_type
         self.mse_session_id = mse_session_id
+        self.mse_version = mse_version
 
     def validate(self):
         pass
@@ -19020,6 +19034,8 @@ class ListClusterVersionsRequest(TeaModel):
             result['ClusterType'] = self.cluster_type
         if self.mse_session_id is not None:
             result['MseSessionId'] = self.mse_session_id
+        if self.mse_version is not None:
+            result['MseVersion'] = self.mse_version
         return result
 
     def from_map(self, m: dict = None):
@@ -19030,6 +19046,8 @@ class ListClusterVersionsRequest(TeaModel):
             self.cluster_type = m.get('ClusterType')
         if m.get('MseSessionId') is not None:
             self.mse_session_id = m.get('MseSessionId')
+        if m.get('MseVersion') is not None:
+            self.mse_version = m.get('MseVersion')
         return self
 
 
@@ -22011,10 +22029,12 @@ class ListGatewayRouteResponseBodyDataResultRouteServicesHttpDubboTranscoderMoth
 class ListGatewayRouteResponseBodyDataResultRouteServicesHttpDubboTranscoder(TeaModel):
     def __init__(
         self,
+        dubbo_service_group: str = None,
         dubbo_service_name: str = None,
         dubbo_service_version: str = None,
         mothed_map_list: List[ListGatewayRouteResponseBodyDataResultRouteServicesHttpDubboTranscoderMothedMapList] = None,
     ):
+        self.dubbo_service_group = dubbo_service_group
         self.dubbo_service_name = dubbo_service_name
         self.dubbo_service_version = dubbo_service_version
         self.mothed_map_list = mothed_map_list
@@ -22031,6 +22051,8 @@ class ListGatewayRouteResponseBodyDataResultRouteServicesHttpDubboTranscoder(Tea
             return _map
 
         result = dict()
+        if self.dubbo_service_group is not None:
+            result['DubboServiceGroup'] = self.dubbo_service_group
         if self.dubbo_service_name is not None:
             result['DubboServiceName'] = self.dubbo_service_name
         if self.dubbo_service_version is not None:
@@ -22043,6 +22065,8 @@ class ListGatewayRouteResponseBodyDataResultRouteServicesHttpDubboTranscoder(Tea
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DubboServiceGroup') is not None:
+            self.dubbo_service_group = m.get('DubboServiceGroup')
         if m.get('DubboServiceName') is not None:
             self.dubbo_service_name = m.get('DubboServiceName')
         if m.get('DubboServiceVersion') is not None:
@@ -33608,10 +33632,12 @@ class UpdateGatewayRouteRequestServicesHttpDubboTranscoderMothedMapList(TeaModel
 class UpdateGatewayRouteRequestServicesHttpDubboTranscoder(TeaModel):
     def __init__(
         self,
+        dubbo_service_group: str = None,
         dubbo_service_name: str = None,
         dubbo_service_version: str = None,
         mothed_map_list: List[UpdateGatewayRouteRequestServicesHttpDubboTranscoderMothedMapList] = None,
     ):
+        self.dubbo_service_group = dubbo_service_group
         self.dubbo_service_name = dubbo_service_name
         self.dubbo_service_version = dubbo_service_version
         self.mothed_map_list = mothed_map_list
@@ -33628,6 +33654,8 @@ class UpdateGatewayRouteRequestServicesHttpDubboTranscoder(TeaModel):
             return _map
 
         result = dict()
+        if self.dubbo_service_group is not None:
+            result['DubboServiceGroup'] = self.dubbo_service_group
         if self.dubbo_service_name is not None:
             result['DubboServiceName'] = self.dubbo_service_name
         if self.dubbo_service_version is not None:
@@ -33640,6 +33668,8 @@ class UpdateGatewayRouteRequestServicesHttpDubboTranscoder(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DubboServiceGroup') is not None:
+            self.dubbo_service_group = m.get('DubboServiceGroup')
         if m.get('DubboServiceName') is not None:
             self.dubbo_service_name = m.get('DubboServiceName')
         if m.get('DubboServiceVersion') is not None:
