@@ -1,3 +1,6 @@
+2022-09-21 Version: 2.0.0
+- Generated python 2019-12-19 for OpenPlatform.
+
 2020-12-20 Version: 1.1.1
 - Generated python 2019-12-19 for OpenPlatform.
 

@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
+from typing import Dict
 
 
 class AuthorizeFileUploadRequest(TeaModel):
@@ -13,9 +14,13 @@ class AuthorizeFileUploadRequest(TeaModel):
         self.region_id = region_id
 
     def validate(self):
-        self.validate_required(self.product, 'product')
+        pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.product is not None:
             result['Product'] = self.product
@@ -32,7 +37,7 @@ class AuthorizeFileUploadRequest(TeaModel):
         return self
 
 
-class AuthorizeFileUploadResponse(TeaModel):
+class AuthorizeFileUploadResponseBody(TeaModel):
     def __init__(
         self,
         access_key_id: str = None,
@@ -54,16 +59,13 @@ class AuthorizeFileUploadResponse(TeaModel):
         self.use_accelerate = use_accelerate
 
     def validate(self):
-        self.validate_required(self.access_key_id, 'access_key_id')
-        self.validate_required(self.bucket, 'bucket')
-        self.validate_required(self.encoded_policy, 'encoded_policy')
-        self.validate_required(self.endpoint, 'endpoint')
-        self.validate_required(self.object_key, 'object_key')
-        self.validate_required(self.request_id, 'request_id')
-        self.validate_required(self.signature, 'signature')
-        self.validate_required(self.use_accelerate, 'use_accelerate')
+        pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.access_key_id is not None:
             result['AccessKeyId'] = self.access_key_id
@@ -101,6 +103,50 @@ class AuthorizeFileUploadResponse(TeaModel):
             self.signature = m.get('Signature')
         if m.get('UseAccelerate') is not None:
             self.use_accelerate = m.get('UseAccelerate')
+        return self
+
+
+class AuthorizeFileUploadResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AuthorizeFileUploadResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AuthorizeFileUploadResponseBody()
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
