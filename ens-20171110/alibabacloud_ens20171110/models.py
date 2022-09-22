@@ -484,6 +484,151 @@ class UdpConfig(TeaModel):
         return self
 
 
+class AccosicateNetworkAclRequestResource(TeaModel):
+    def __init__(
+        self,
+        resource_id: str = None,
+        resource_type: str = None,
+    ):
+        self.resource_id = resource_id
+        self.resource_type = resource_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        return self
+
+
+class AccosicateNetworkAclRequest(TeaModel):
+    def __init__(
+        self,
+        network_acl_id: str = None,
+        resource: List[AccosicateNetworkAclRequestResource] = None,
+    ):
+        self.network_acl_id = network_acl_id
+        self.resource = resource
+
+    def validate(self):
+        if self.resource:
+            for k in self.resource:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.network_acl_id is not None:
+            result['NetworkAclId'] = self.network_acl_id
+        result['Resource'] = []
+        if self.resource is not None:
+            for k in self.resource:
+                result['Resource'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NetworkAclId') is not None:
+            self.network_acl_id = m.get('NetworkAclId')
+        self.resource = []
+        if m.get('Resource') is not None:
+            for k in m.get('Resource'):
+                temp_model = AccosicateNetworkAclRequestResource()
+                self.resource.append(temp_model.from_map(k))
+        return self
+
+
+class AccosicateNetworkAclResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class AccosicateNetworkAclResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AccosicateNetworkAclResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AccosicateNetworkAclResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class AddBackendServersRequestBackendServers(TeaModel):
     def __init__(
         self,
@@ -2821,6 +2966,226 @@ class CreateEpnInstanceResponse(TeaModel):
         return self
 
 
+class CreateFileSystemRequestOrderDetails(TeaModel):
+    def __init__(
+        self,
+        charge_type: str = None,
+        ens_region_id: str = None,
+        file_system_name: str = None,
+        mount_target_domain: str = None,
+        network_id: str = None,
+        order_type: str = None,
+        protocol_type: str = None,
+        storge_type: str = None,
+    ):
+        self.charge_type = charge_type
+        self.ens_region_id = ens_region_id
+        self.file_system_name = file_system_name
+        self.mount_target_domain = mount_target_domain
+        self.network_id = network_id
+        self.order_type = order_type
+        self.protocol_type = protocol_type
+        self.storge_type = storge_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.charge_type is not None:
+            result['ChargeType'] = self.charge_type
+        if self.ens_region_id is not None:
+            result['EnsRegionId'] = self.ens_region_id
+        if self.file_system_name is not None:
+            result['FileSystemName'] = self.file_system_name
+        if self.mount_target_domain is not None:
+            result['MountTargetDomain'] = self.mount_target_domain
+        if self.network_id is not None:
+            result['NetworkId'] = self.network_id
+        if self.order_type is not None:
+            result['OrderType'] = self.order_type
+        if self.protocol_type is not None:
+            result['ProtocolType'] = self.protocol_type
+        if self.storge_type is not None:
+            result['StorgeType'] = self.storge_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChargeType') is not None:
+            self.charge_type = m.get('ChargeType')
+        if m.get('EnsRegionId') is not None:
+            self.ens_region_id = m.get('EnsRegionId')
+        if m.get('FileSystemName') is not None:
+            self.file_system_name = m.get('FileSystemName')
+        if m.get('MountTargetDomain') is not None:
+            self.mount_target_domain = m.get('MountTargetDomain')
+        if m.get('NetworkId') is not None:
+            self.network_id = m.get('NetworkId')
+        if m.get('OrderType') is not None:
+            self.order_type = m.get('OrderType')
+        if m.get('ProtocolType') is not None:
+            self.protocol_type = m.get('ProtocolType')
+        if m.get('StorgeType') is not None:
+            self.storge_type = m.get('StorgeType')
+        return self
+
+
+class CreateFileSystemRequest(TeaModel):
+    def __init__(
+        self,
+        order_details: List[CreateFileSystemRequestOrderDetails] = None,
+    ):
+        self.order_details = order_details
+
+    def validate(self):
+        if self.order_details:
+            for k in self.order_details:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['OrderDetails'] = []
+        if self.order_details is not None:
+            for k in self.order_details:
+                result['OrderDetails'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.order_details = []
+        if m.get('OrderDetails') is not None:
+            for k in m.get('OrderDetails'):
+                temp_model = CreateFileSystemRequestOrderDetails()
+                self.order_details.append(temp_model.from_map(k))
+        return self
+
+
+class CreateFileSystemShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        order_details_shrink: str = None,
+    ):
+        self.order_details_shrink = order_details_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.order_details_shrink is not None:
+            result['OrderDetails'] = self.order_details_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OrderDetails') is not None:
+            self.order_details_shrink = m.get('OrderDetails')
+        return self
+
+
+class CreateFileSystemResponseBody(TeaModel):
+    def __init__(
+        self,
+        allocation_id: List[str] = None,
+        biz_status_code: str = None,
+        request_id: str = None,
+        un_allocation_id: List[str] = None,
+    ):
+        self.allocation_id = allocation_id
+        self.biz_status_code = biz_status_code
+        self.request_id = request_id
+        self.un_allocation_id = un_allocation_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.allocation_id is not None:
+            result['AllocationId'] = self.allocation_id
+        if self.biz_status_code is not None:
+            result['BizStatusCode'] = self.biz_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.un_allocation_id is not None:
+            result['UnAllocationId'] = self.un_allocation_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllocationId') is not None:
+            self.allocation_id = m.get('AllocationId')
+        if m.get('BizStatusCode') is not None:
+            self.biz_status_code = m.get('BizStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('UnAllocationId') is not None:
+            self.un_allocation_id = m.get('UnAllocationId')
+        return self
+
+
+class CreateFileSystemResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateFileSystemResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateFileSystemResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateForwardEntryRequest(TeaModel):
     def __init__(
         self,
@@ -4505,6 +4870,128 @@ class CreateLoadBalancerUDPListenerResponse(TeaModel):
         return self
 
 
+class CreateMountTargetRequest(TeaModel):
+    def __init__(
+        self,
+        ens_region_id: str = None,
+        file_system_id: str = None,
+        mount_target_name: str = None,
+        net_work_id: str = None,
+    ):
+        self.ens_region_id = ens_region_id
+        self.file_system_id = file_system_id
+        self.mount_target_name = mount_target_name
+        self.net_work_id = net_work_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ens_region_id is not None:
+            result['EnsRegionId'] = self.ens_region_id
+        if self.file_system_id is not None:
+            result['FileSystemId'] = self.file_system_id
+        if self.mount_target_name is not None:
+            result['MountTargetName'] = self.mount_target_name
+        if self.net_work_id is not None:
+            result['NetWorkId'] = self.net_work_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnsRegionId') is not None:
+            self.ens_region_id = m.get('EnsRegionId')
+        if m.get('FileSystemId') is not None:
+            self.file_system_id = m.get('FileSystemId')
+        if m.get('MountTargetName') is not None:
+            self.mount_target_name = m.get('MountTargetName')
+        if m.get('NetWorkId') is not None:
+            self.net_work_id = m.get('NetWorkId')
+        return self
+
+
+class CreateMountTargetResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        status: str = None,
+    ):
+        self.request_id = request_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class CreateMountTargetResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateMountTargetResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateMountTargetResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateNatGatewayRequest(TeaModel):
     def __init__(
         self,
@@ -4751,6 +5238,268 @@ class CreateNetworkResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateNetworkResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateNetworkAclRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        network_acl_name: str = None,
+    ):
+        self.description = description
+        self.network_acl_name = network_acl_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.network_acl_name is not None:
+            result['NetworkAclName'] = self.network_acl_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('NetworkAclName') is not None:
+            self.network_acl_name = m.get('NetworkAclName')
+        return self
+
+
+class CreateNetworkAclResponseBody(TeaModel):
+    def __init__(
+        self,
+        network_acl_id: str = None,
+        request_id: str = None,
+    ):
+        self.network_acl_id = network_acl_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.network_acl_id is not None:
+            result['NetworkAclId'] = self.network_acl_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NetworkAclId') is not None:
+            self.network_acl_id = m.get('NetworkAclId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateNetworkAclResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateNetworkAclResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateNetworkAclResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateNetworkAclEntryRequest(TeaModel):
+    def __init__(
+        self,
+        cidr_block: str = None,
+        description: str = None,
+        direction: str = None,
+        network_acl_entry_name: str = None,
+        network_acl_id: str = None,
+        policy: str = None,
+        port_range: str = None,
+        priority: int = None,
+        protocol: str = None,
+    ):
+        self.cidr_block = cidr_block
+        self.description = description
+        self.direction = direction
+        self.network_acl_entry_name = network_acl_entry_name
+        self.network_acl_id = network_acl_id
+        self.policy = policy
+        self.port_range = port_range
+        self.priority = priority
+        self.protocol = protocol
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cidr_block is not None:
+            result['CidrBlock'] = self.cidr_block
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.direction is not None:
+            result['Direction'] = self.direction
+        if self.network_acl_entry_name is not None:
+            result['NetworkAclEntryName'] = self.network_acl_entry_name
+        if self.network_acl_id is not None:
+            result['NetworkAclId'] = self.network_acl_id
+        if self.policy is not None:
+            result['Policy'] = self.policy
+        if self.port_range is not None:
+            result['PortRange'] = self.port_range
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CidrBlock') is not None:
+            self.cidr_block = m.get('CidrBlock')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Direction') is not None:
+            self.direction = m.get('Direction')
+        if m.get('NetworkAclEntryName') is not None:
+            self.network_acl_entry_name = m.get('NetworkAclEntryName')
+        if m.get('NetworkAclId') is not None:
+            self.network_acl_id = m.get('NetworkAclId')
+        if m.get('Policy') is not None:
+            self.policy = m.get('Policy')
+        if m.get('PortRange') is not None:
+            self.port_range = m.get('PortRange')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        return self
+
+
+class CreateNetworkAclEntryResponseBody(TeaModel):
+    def __init__(
+        self,
+        network_acl_entry_id: str = None,
+        request_id: str = None,
+    ):
+        self.network_acl_entry_id = network_acl_entry_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.network_acl_entry_id is not None:
+            result['NetworkAclEntryId'] = self.network_acl_entry_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NetworkAclEntryId') is not None:
+            self.network_acl_entry_id = m.get('NetworkAclEntryId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateNetworkAclEntryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateNetworkAclEntryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateNetworkAclEntryResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -5549,6 +6298,110 @@ class DeleteEpnInstanceResponse(TeaModel):
         return self
 
 
+class DeleteFileSystemRequest(TeaModel):
+    def __init__(
+        self,
+        ens_region_id: str = None,
+        file_system_id: str = None,
+    ):
+        self.ens_region_id = ens_region_id
+        self.file_system_id = file_system_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ens_region_id is not None:
+            result['EnsRegionId'] = self.ens_region_id
+        if self.file_system_id is not None:
+            result['FileSystemId'] = self.file_system_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnsRegionId') is not None:
+            self.ens_region_id = m.get('EnsRegionId')
+        if m.get('FileSystemId') is not None:
+            self.file_system_id = m.get('FileSystemId')
+        return self
+
+
+class DeleteFileSystemResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteFileSystemResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteFileSystemResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteFileSystemResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteForwardEntryRequest(TeaModel):
     def __init__(
         self,
@@ -5965,6 +6818,116 @@ class DeleteLoadBalancerListenerResponse(TeaModel):
         return self
 
 
+class DeleteMountTargetRequest(TeaModel):
+    def __init__(
+        self,
+        ens_region_id: str = None,
+        file_system_id: str = None,
+        mount_target_name: str = None,
+    ):
+        self.ens_region_id = ens_region_id
+        self.file_system_id = file_system_id
+        self.mount_target_name = mount_target_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ens_region_id is not None:
+            result['EnsRegionId'] = self.ens_region_id
+        if self.file_system_id is not None:
+            result['FileSystemId'] = self.file_system_id
+        if self.mount_target_name is not None:
+            result['MountTargetName'] = self.mount_target_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnsRegionId') is not None:
+            self.ens_region_id = m.get('EnsRegionId')
+        if m.get('FileSystemId') is not None:
+            self.file_system_id = m.get('FileSystemId')
+        if m.get('MountTargetName') is not None:
+            self.mount_target_name = m.get('MountTargetName')
+        return self
+
+
+class DeleteMountTargetResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteMountTargetResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteMountTargetResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteMountTargetResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteNatGatewayRequest(TeaModel):
     def __init__(
         self,
@@ -6157,6 +7120,202 @@ class DeleteNetworkResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteNetworkResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteNetworkAclRequest(TeaModel):
+    def __init__(
+        self,
+        network_acl_id: str = None,
+    ):
+        self.network_acl_id = network_acl_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.network_acl_id is not None:
+            result['NetworkAclId'] = self.network_acl_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NetworkAclId') is not None:
+            self.network_acl_id = m.get('NetworkAclId')
+        return self
+
+
+class DeleteNetworkAclResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteNetworkAclResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteNetworkAclResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteNetworkAclResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteNetworkAclEntryRequest(TeaModel):
+    def __init__(
+        self,
+        network_acl_entry_id: str = None,
+    ):
+        self.network_acl_entry_id = network_acl_entry_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.network_acl_entry_id is not None:
+            result['NetworkAclEntryId'] = self.network_acl_entry_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NetworkAclEntryId') is not None:
+            self.network_acl_entry_id = m.get('NetworkAclEntryId')
+        return self
+
+
+class DeleteNetworkAclEntryResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteNetworkAclEntryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteNetworkAclEntryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteNetworkAclEntryResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -7333,33 +8492,6 @@ class DescribeAvailableResourceResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = DescribeAvailableResourceResponseBody()
             self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class DescribeAvailableResourceInfoRequest(TeaModel):
-    def __init__(
-        self,
-        version: str = None,
-    ):
-        self.version = version
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.version is not None:
-            result['Version'] = self.version
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Version') is not None:
-            self.version = m.get('Version')
         return self
 
 
@@ -16923,6 +18055,7 @@ class DescribeInstancesResponseBodyInstancesInstance(TeaModel):
         instance_id: str = None,
         instance_name: str = None,
         instance_resource_type: str = None,
+        instance_type_family: str = None,
         internet_max_bandwidth_in: int = None,
         internet_max_bandwidth_out: int = None,
         memory: int = None,
@@ -16948,6 +18081,7 @@ class DescribeInstancesResponseBodyInstancesInstance(TeaModel):
         self.instance_id = instance_id
         self.instance_name = instance_name
         self.instance_resource_type = instance_resource_type
+        self.instance_type_family = instance_type_family
         self.internet_max_bandwidth_in = internet_max_bandwidth_in
         self.internet_max_bandwidth_out = internet_max_bandwidth_out
         self.memory = memory
@@ -17009,6 +18143,8 @@ class DescribeInstancesResponseBodyInstancesInstance(TeaModel):
             result['InstanceName'] = self.instance_name
         if self.instance_resource_type is not None:
             result['InstanceResourceType'] = self.instance_resource_type
+        if self.instance_type_family is not None:
+            result['InstanceTypeFamily'] = self.instance_type_family
         if self.internet_max_bandwidth_in is not None:
             result['InternetMaxBandwidthIn'] = self.internet_max_bandwidth_in
         if self.internet_max_bandwidth_out is not None:
@@ -17063,6 +18199,8 @@ class DescribeInstancesResponseBodyInstancesInstance(TeaModel):
             self.instance_name = m.get('InstanceName')
         if m.get('InstanceResourceType') is not None:
             self.instance_resource_type = m.get('InstanceResourceType')
+        if m.get('InstanceTypeFamily') is not None:
+            self.instance_type_family = m.get('InstanceTypeFamily')
         if m.get('InternetMaxBandwidthIn') is not None:
             self.internet_max_bandwidth_in = m.get('InternetMaxBandwidthIn')
         if m.get('InternetMaxBandwidthOut') is not None:
@@ -19497,6 +20635,217 @@ class DescribeMeasurementDataResponse(TeaModel):
         return self
 
 
+class DescribeMountTargetsRequest(TeaModel):
+    def __init__(
+        self,
+        ens_region_id: str = None,
+        file_system_id: str = None,
+        mount_target_name: str = None,
+        page_number: int = None,
+        page_size: int = None,
+    ):
+        self.ens_region_id = ens_region_id
+        self.file_system_id = file_system_id
+        self.mount_target_name = mount_target_name
+        self.page_number = page_number
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ens_region_id is not None:
+            result['EnsRegionId'] = self.ens_region_id
+        if self.file_system_id is not None:
+            result['FileSystemId'] = self.file_system_id
+        if self.mount_target_name is not None:
+            result['MountTargetName'] = self.mount_target_name
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnsRegionId') is not None:
+            self.ens_region_id = m.get('EnsRegionId')
+        if m.get('FileSystemId') is not None:
+            self.file_system_id = m.get('FileSystemId')
+        if m.get('MountTargetName') is not None:
+            self.mount_target_name = m.get('MountTargetName')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class DescribeMountTargetsResponseBodyMountTargets(TeaModel):
+    def __init__(
+        self,
+        ens_region_id: str = None,
+        file_system_id: str = None,
+        mount_target_domain: str = None,
+        mount_target_name: str = None,
+        net_work_id: str = None,
+        status: str = None,
+    ):
+        self.ens_region_id = ens_region_id
+        self.file_system_id = file_system_id
+        self.mount_target_domain = mount_target_domain
+        self.mount_target_name = mount_target_name
+        self.net_work_id = net_work_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ens_region_id is not None:
+            result['EnsRegionId'] = self.ens_region_id
+        if self.file_system_id is not None:
+            result['FileSystemId'] = self.file_system_id
+        if self.mount_target_domain is not None:
+            result['MountTargetDomain'] = self.mount_target_domain
+        if self.mount_target_name is not None:
+            result['MountTargetName'] = self.mount_target_name
+        if self.net_work_id is not None:
+            result['NetWorkId'] = self.net_work_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnsRegionId') is not None:
+            self.ens_region_id = m.get('EnsRegionId')
+        if m.get('FileSystemId') is not None:
+            self.file_system_id = m.get('FileSystemId')
+        if m.get('MountTargetDomain') is not None:
+            self.mount_target_domain = m.get('MountTargetDomain')
+        if m.get('MountTargetName') is not None:
+            self.mount_target_name = m.get('MountTargetName')
+        if m.get('NetWorkId') is not None:
+            self.net_work_id = m.get('NetWorkId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DescribeMountTargetsResponseBody(TeaModel):
+    def __init__(
+        self,
+        mount_targets: List[DescribeMountTargetsResponseBodyMountTargets] = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.mount_targets = mount_targets
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.mount_targets:
+            for k in self.mount_targets:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['MountTargets'] = []
+        if self.mount_targets is not None:
+            for k in self.mount_targets:
+                result['MountTargets'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.mount_targets = []
+        if m.get('MountTargets') is not None:
+            for k in m.get('MountTargets'):
+                temp_model = DescribeMountTargetsResponseBodyMountTargets()
+                self.mount_targets.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeMountTargetsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeMountTargetsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeMountTargetsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeNatGatewaysRequest(TeaModel):
     def __init__(
         self,
@@ -19726,6 +21075,450 @@ class DescribeNatGatewaysResponse(TeaModel):
         return self
 
 
+class DescribeNetworkAclsRequest(TeaModel):
+    def __init__(
+        self,
+        network_acl_id: str = None,
+        network_acl_name: str = None,
+        page_number: str = None,
+        page_size: str = None,
+        resource_id: str = None,
+    ):
+        self.network_acl_id = network_acl_id
+        self.network_acl_name = network_acl_name
+        self.page_number = page_number
+        self.page_size = page_size
+        self.resource_id = resource_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.network_acl_id is not None:
+            result['NetworkAclId'] = self.network_acl_id
+        if self.network_acl_name is not None:
+            result['NetworkAclName'] = self.network_acl_name
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NetworkAclId') is not None:
+            self.network_acl_id = m.get('NetworkAclId')
+        if m.get('NetworkAclName') is not None:
+            self.network_acl_name = m.get('NetworkAclName')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        return self
+
+
+class DescribeNetworkAclsResponseBodyNetworkAclsEgressAclEntries(TeaModel):
+    def __init__(
+        self,
+        cidr_block: str = None,
+        description: str = None,
+        network_acl_entry_id: str = None,
+        network_acl_entry_name: str = None,
+        policy: str = None,
+        port_range: str = None,
+        priority: int = None,
+        protocol: str = None,
+        type: str = None,
+    ):
+        self.cidr_block = cidr_block
+        self.description = description
+        self.network_acl_entry_id = network_acl_entry_id
+        self.network_acl_entry_name = network_acl_entry_name
+        self.policy = policy
+        self.port_range = port_range
+        self.priority = priority
+        self.protocol = protocol
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cidr_block is not None:
+            result['CidrBlock'] = self.cidr_block
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.network_acl_entry_id is not None:
+            result['NetworkAclEntryId'] = self.network_acl_entry_id
+        if self.network_acl_entry_name is not None:
+            result['NetworkAclEntryName'] = self.network_acl_entry_name
+        if self.policy is not None:
+            result['Policy'] = self.policy
+        if self.port_range is not None:
+            result['PortRange'] = self.port_range
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CidrBlock') is not None:
+            self.cidr_block = m.get('CidrBlock')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('NetworkAclEntryId') is not None:
+            self.network_acl_entry_id = m.get('NetworkAclEntryId')
+        if m.get('NetworkAclEntryName') is not None:
+            self.network_acl_entry_name = m.get('NetworkAclEntryName')
+        if m.get('Policy') is not None:
+            self.policy = m.get('Policy')
+        if m.get('PortRange') is not None:
+            self.port_range = m.get('PortRange')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DescribeNetworkAclsResponseBodyNetworkAclsIngressAclEntries(TeaModel):
+    def __init__(
+        self,
+        cidr_block: str = None,
+        description: str = None,
+        network_acl_entry_id: str = None,
+        network_acl_entry_name: str = None,
+        policy: str = None,
+        port_range: str = None,
+        priority: int = None,
+        protocol: str = None,
+        type: str = None,
+    ):
+        self.cidr_block = cidr_block
+        self.description = description
+        self.network_acl_entry_id = network_acl_entry_id
+        self.network_acl_entry_name = network_acl_entry_name
+        self.policy = policy
+        self.port_range = port_range
+        self.priority = priority
+        self.protocol = protocol
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cidr_block is not None:
+            result['CidrBlock'] = self.cidr_block
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.network_acl_entry_id is not None:
+            result['NetworkAclEntryId'] = self.network_acl_entry_id
+        if self.network_acl_entry_name is not None:
+            result['NetworkAclEntryName'] = self.network_acl_entry_name
+        if self.policy is not None:
+            result['Policy'] = self.policy
+        if self.port_range is not None:
+            result['PortRange'] = self.port_range
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CidrBlock') is not None:
+            self.cidr_block = m.get('CidrBlock')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('NetworkAclEntryId') is not None:
+            self.network_acl_entry_id = m.get('NetworkAclEntryId')
+        if m.get('NetworkAclEntryName') is not None:
+            self.network_acl_entry_name = m.get('NetworkAclEntryName')
+        if m.get('Policy') is not None:
+            self.policy = m.get('Policy')
+        if m.get('PortRange') is not None:
+            self.port_range = m.get('PortRange')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DescribeNetworkAclsResponseBodyNetworkAclsResources(TeaModel):
+    def __init__(
+        self,
+        ens_region_id: str = None,
+        resource_id: str = None,
+        resource_type: str = None,
+        status: str = None,
+    ):
+        self.ens_region_id = ens_region_id
+        self.resource_id = resource_id
+        self.resource_type = resource_type
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ens_region_id is not None:
+            result['EnsRegionId'] = self.ens_region_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnsRegionId') is not None:
+            self.ens_region_id = m.get('EnsRegionId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DescribeNetworkAclsResponseBodyNetworkAcls(TeaModel):
+    def __init__(
+        self,
+        creation_time: str = None,
+        description: str = None,
+        egress_acl_entries: List[DescribeNetworkAclsResponseBodyNetworkAclsEgressAclEntries] = None,
+        ingress_acl_entries: List[DescribeNetworkAclsResponseBodyNetworkAclsIngressAclEntries] = None,
+        network_acl_id: str = None,
+        network_acl_name: str = None,
+        resources: List[DescribeNetworkAclsResponseBodyNetworkAclsResources] = None,
+        status: str = None,
+    ):
+        self.creation_time = creation_time
+        self.description = description
+        self.egress_acl_entries = egress_acl_entries
+        self.ingress_acl_entries = ingress_acl_entries
+        self.network_acl_id = network_acl_id
+        self.network_acl_name = network_acl_name
+        self.resources = resources
+        self.status = status
+
+    def validate(self):
+        if self.egress_acl_entries:
+            for k in self.egress_acl_entries:
+                if k:
+                    k.validate()
+        if self.ingress_acl_entries:
+            for k in self.ingress_acl_entries:
+                if k:
+                    k.validate()
+        if self.resources:
+            for k in self.resources:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.creation_time is not None:
+            result['CreationTime'] = self.creation_time
+        if self.description is not None:
+            result['Description'] = self.description
+        result['EgressAclEntries'] = []
+        if self.egress_acl_entries is not None:
+            for k in self.egress_acl_entries:
+                result['EgressAclEntries'].append(k.to_map() if k else None)
+        result['IngressAclEntries'] = []
+        if self.ingress_acl_entries is not None:
+            for k in self.ingress_acl_entries:
+                result['IngressAclEntries'].append(k.to_map() if k else None)
+        if self.network_acl_id is not None:
+            result['NetworkAclId'] = self.network_acl_id
+        if self.network_acl_name is not None:
+            result['NetworkAclName'] = self.network_acl_name
+        result['Resources'] = []
+        if self.resources is not None:
+            for k in self.resources:
+                result['Resources'].append(k.to_map() if k else None)
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreationTime') is not None:
+            self.creation_time = m.get('CreationTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        self.egress_acl_entries = []
+        if m.get('EgressAclEntries') is not None:
+            for k in m.get('EgressAclEntries'):
+                temp_model = DescribeNetworkAclsResponseBodyNetworkAclsEgressAclEntries()
+                self.egress_acl_entries.append(temp_model.from_map(k))
+        self.ingress_acl_entries = []
+        if m.get('IngressAclEntries') is not None:
+            for k in m.get('IngressAclEntries'):
+                temp_model = DescribeNetworkAclsResponseBodyNetworkAclsIngressAclEntries()
+                self.ingress_acl_entries.append(temp_model.from_map(k))
+        if m.get('NetworkAclId') is not None:
+            self.network_acl_id = m.get('NetworkAclId')
+        if m.get('NetworkAclName') is not None:
+            self.network_acl_name = m.get('NetworkAclName')
+        self.resources = []
+        if m.get('Resources') is not None:
+            for k in m.get('Resources'):
+                temp_model = DescribeNetworkAclsResponseBodyNetworkAclsResources()
+                self.resources.append(temp_model.from_map(k))
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DescribeNetworkAclsResponseBody(TeaModel):
+    def __init__(
+        self,
+        network_acls: List[DescribeNetworkAclsResponseBodyNetworkAcls] = None,
+        page_number: str = None,
+        page_size: str = None,
+        request_id: str = None,
+        total_count: str = None,
+    ):
+        self.network_acls = network_acls
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.network_acls:
+            for k in self.network_acls:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['NetworkAcls'] = []
+        if self.network_acls is not None:
+            for k in self.network_acls:
+                result['NetworkAcls'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.network_acls = []
+        if m.get('NetworkAcls') is not None:
+            for k in m.get('NetworkAcls'):
+                temp_model = DescribeNetworkAclsResponseBodyNetworkAcls()
+                self.network_acls.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeNetworkAclsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeNetworkAclsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeNetworkAclsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeNetworkAttributeRequest(TeaModel):
     def __init__(
         self,
@@ -19856,6 +21649,7 @@ class DescribeNetworkAttributeResponseBody(TeaModel):
         created_time: str = None,
         description: str = None,
         ens_region_id: str = None,
+        network_acl_id: str = None,
         network_id: str = None,
         network_name: str = None,
         request_id: str = None,
@@ -19868,6 +21662,7 @@ class DescribeNetworkAttributeResponseBody(TeaModel):
         self.created_time = created_time
         self.description = description
         self.ens_region_id = ens_region_id
+        self.network_acl_id = network_acl_id
         self.network_id = network_id
         self.network_name = network_name
         self.request_id = request_id
@@ -19897,6 +21692,8 @@ class DescribeNetworkAttributeResponseBody(TeaModel):
             result['Description'] = self.description
         if self.ens_region_id is not None:
             result['EnsRegionId'] = self.ens_region_id
+        if self.network_acl_id is not None:
+            result['NetworkAclId'] = self.network_acl_id
         if self.network_id is not None:
             result['NetworkId'] = self.network_id
         if self.network_name is not None:
@@ -19924,6 +21721,8 @@ class DescribeNetworkAttributeResponseBody(TeaModel):
             self.description = m.get('Description')
         if m.get('EnsRegionId') is not None:
             self.ens_region_id = m.get('EnsRegionId')
+        if m.get('NetworkAclId') is not None:
+            self.network_acl_id = m.get('NetworkAclId')
         if m.get('NetworkId') is not None:
             self.network_id = m.get('NetworkId')
         if m.get('NetworkName') is not None:
@@ -20409,6 +22208,7 @@ class DescribeNetworksResponseBodyNetworksNetwork(TeaModel):
         created_time: str = None,
         description: str = None,
         ens_region_id: str = None,
+        network_acl_id: str = None,
         network_id: str = None,
         network_name: str = None,
         router_table_id: str = None,
@@ -20419,6 +22219,7 @@ class DescribeNetworksResponseBodyNetworksNetwork(TeaModel):
         self.created_time = created_time
         self.description = description
         self.ens_region_id = ens_region_id
+        self.network_acl_id = network_acl_id
         self.network_id = network_id
         self.network_name = network_name
         self.router_table_id = router_table_id
@@ -20443,6 +22244,8 @@ class DescribeNetworksResponseBodyNetworksNetwork(TeaModel):
             result['Description'] = self.description
         if self.ens_region_id is not None:
             result['EnsRegionId'] = self.ens_region_id
+        if self.network_acl_id is not None:
+            result['NetworkAclId'] = self.network_acl_id
         if self.network_id is not None:
             result['NetworkId'] = self.network_id
         if self.network_name is not None:
@@ -20465,6 +22268,8 @@ class DescribeNetworksResponseBodyNetworksNetwork(TeaModel):
             self.description = m.get('Description')
         if m.get('EnsRegionId') is not None:
             self.ens_region_id = m.get('EnsRegionId')
+        if m.get('NetworkAclId') is not None:
+            self.network_acl_id = m.get('NetworkAclId')
         if m.get('NetworkId') is not None:
             self.network_id = m.get('NetworkId')
         if m.get('NetworkName') is not None:
@@ -22199,6 +24004,252 @@ class DescribeSecurityGroupsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeSecurityGroupsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeSelfImagesRequest(TeaModel):
+    def __init__(
+        self,
+        image_id: str = None,
+        image_name: str = None,
+        page_number: int = None,
+        page_size: int = None,
+    ):
+        self.image_id = image_id
+        self.image_name = image_name
+        self.page_number = page_number
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
+        if self.image_name is not None:
+            result['ImageName'] = self.image_name
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
+        if m.get('ImageName') is not None:
+            self.image_name = m.get('ImageName')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class DescribeSelfImagesResponseBodyImagesImage(TeaModel):
+    def __init__(
+        self,
+        architecture: str = None,
+        creation_time: str = None,
+        image_id: str = None,
+        image_name: str = None,
+        image_owner_alias: str = None,
+        image_size: str = None,
+        instance_id: str = None,
+        os_version: str = None,
+        platform: str = None,
+        status: str = None,
+    ):
+        self.architecture = architecture
+        self.creation_time = creation_time
+        self.image_id = image_id
+        self.image_name = image_name
+        self.image_owner_alias = image_owner_alias
+        self.image_size = image_size
+        self.instance_id = instance_id
+        self.os_version = os_version
+        self.platform = platform
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.architecture is not None:
+            result['Architecture'] = self.architecture
+        if self.creation_time is not None:
+            result['CreationTime'] = self.creation_time
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
+        if self.image_name is not None:
+            result['ImageName'] = self.image_name
+        if self.image_owner_alias is not None:
+            result['ImageOwnerAlias'] = self.image_owner_alias
+        if self.image_size is not None:
+            result['ImageSize'] = self.image_size
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.os_version is not None:
+            result['OsVersion'] = self.os_version
+        if self.platform is not None:
+            result['Platform'] = self.platform
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Architecture') is not None:
+            self.architecture = m.get('Architecture')
+        if m.get('CreationTime') is not None:
+            self.creation_time = m.get('CreationTime')
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
+        if m.get('ImageName') is not None:
+            self.image_name = m.get('ImageName')
+        if m.get('ImageOwnerAlias') is not None:
+            self.image_owner_alias = m.get('ImageOwnerAlias')
+        if m.get('ImageSize') is not None:
+            self.image_size = m.get('ImageSize')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('OsVersion') is not None:
+            self.os_version = m.get('OsVersion')
+        if m.get('Platform') is not None:
+            self.platform = m.get('Platform')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DescribeSelfImagesResponseBodyImages(TeaModel):
+    def __init__(
+        self,
+        image: List[DescribeSelfImagesResponseBodyImagesImage] = None,
+    ):
+        self.image = image
+
+    def validate(self):
+        if self.image:
+            for k in self.image:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Image'] = []
+        if self.image is not None:
+            for k in self.image:
+                result['Image'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.image = []
+        if m.get('Image') is not None:
+            for k in m.get('Image'):
+                temp_model = DescribeSelfImagesResponseBodyImagesImage()
+                self.image.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeSelfImagesResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        images: DescribeSelfImagesResponseBodyImages = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.images = images
+        self.request_id = request_id
+
+    def validate(self):
+        if self.images:
+            self.images.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.images is not None:
+            result['Images'] = self.images.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Images') is not None:
+            temp_model = DescribeSelfImagesResponseBodyImages()
+            self.images = temp_model.from_map(m['Images'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeSelfImagesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeSelfImagesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeSelfImagesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -25341,6 +27392,116 @@ class ModifyEpnInstanceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyEpnInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyFileSystemRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        ens_region_id: str = None,
+        file_system_id: str = None,
+    ):
+        self.description = description
+        self.ens_region_id = ens_region_id
+        self.file_system_id = file_system_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.ens_region_id is not None:
+            result['EnsRegionId'] = self.ens_region_id
+        if self.file_system_id is not None:
+            result['FileSystemId'] = self.file_system_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('EnsRegionId') is not None:
+            self.ens_region_id = m.get('EnsRegionId')
+        if m.get('FileSystemId') is not None:
+            self.file_system_id = m.get('FileSystemId')
+        return self
+
+
+class ModifyFileSystemResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyFileSystemResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyFileSystemResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyFileSystemResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -29110,6 +31271,116 @@ class ResetDeviceInstanceResponse(TeaModel):
         return self
 
 
+class ResizeDiskRequest(TeaModel):
+    def __init__(
+        self,
+        disk_id: str = None,
+        new_size: str = None,
+    ):
+        self.disk_id = disk_id
+        self.new_size = new_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.disk_id is not None:
+            result['DiskId'] = self.disk_id
+        if self.new_size is not None:
+            result['NewSize'] = self.new_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DiskId') is not None:
+            self.disk_id = m.get('DiskId')
+        if m.get('NewSize') is not None:
+            self.new_size = m.get('NewSize')
+        return self
+
+
+class ResizeDiskResponseBody(TeaModel):
+    def __init__(
+        self,
+        order_id: str = None,
+        request_id: str = None,
+    ):
+        self.order_id = order_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ResizeDiskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ResizeDiskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ResizeDiskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class RestartDeviceInstanceRequest(TeaModel):
     def __init__(
         self,
@@ -32356,6 +34627,151 @@ class UnassignPrivateIpAddressesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UnassignPrivateIpAddressesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UnassociateNetworkAclRequestResource(TeaModel):
+    def __init__(
+        self,
+        resource_id: str = None,
+        resource_type: str = None,
+    ):
+        self.resource_id = resource_id
+        self.resource_type = resource_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        return self
+
+
+class UnassociateNetworkAclRequest(TeaModel):
+    def __init__(
+        self,
+        network_acl_id: str = None,
+        resource: List[UnassociateNetworkAclRequestResource] = None,
+    ):
+        self.network_acl_id = network_acl_id
+        self.resource = resource
+
+    def validate(self):
+        if self.resource:
+            for k in self.resource:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.network_acl_id is not None:
+            result['NetworkAclId'] = self.network_acl_id
+        result['Resource'] = []
+        if self.resource is not None:
+            for k in self.resource:
+                result['Resource'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NetworkAclId') is not None:
+            self.network_acl_id = m.get('NetworkAclId')
+        self.resource = []
+        if m.get('Resource') is not None:
+            for k in m.get('Resource'):
+                temp_model = UnassociateNetworkAclRequestResource()
+                self.resource.append(temp_model.from_map(k))
+        return self
+
+
+class UnassociateNetworkAclResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UnassociateNetworkAclResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UnassociateNetworkAclResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UnassociateNetworkAclResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

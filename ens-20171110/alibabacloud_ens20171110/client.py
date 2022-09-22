@@ -41,6 +41,80 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def accosicate_network_acl_with_options(
+        self,
+        request: ens_20171110_models.AccosicateNetworkAclRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.AccosicateNetworkAclResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.network_acl_id):
+            query['NetworkAclId'] = request.network_acl_id
+        if not UtilClient.is_unset(request.resource):
+            query['Resource'] = request.resource
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AccosicateNetworkAcl',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.AccosicateNetworkAclResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def accosicate_network_acl_with_options_async(
+        self,
+        request: ens_20171110_models.AccosicateNetworkAclRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.AccosicateNetworkAclResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.network_acl_id):
+            query['NetworkAclId'] = request.network_acl_id
+        if not UtilClient.is_unset(request.resource):
+            query['Resource'] = request.resource
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AccosicateNetworkAcl',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.AccosicateNetworkAclResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def accosicate_network_acl(
+        self,
+        request: ens_20171110_models.AccosicateNetworkAclRequest,
+    ) -> ens_20171110_models.AccosicateNetworkAclResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.accosicate_network_acl_with_options(request, runtime)
+
+    async def accosicate_network_acl_async(
+        self,
+        request: ens_20171110_models.AccosicateNetworkAclRequest,
+    ) -> ens_20171110_models.AccosicateNetworkAclResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.accosicate_network_acl_with_options_async(request, runtime)
+
     def add_backend_servers_with_options(
         self,
         tmp_req: ens_20171110_models.AddBackendServersRequest,
@@ -1463,6 +1537,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_epn_instance_with_options_async(request, runtime)
 
+    def create_file_system_with_options(
+        self,
+        tmp_req: ens_20171110_models.CreateFileSystemRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.CreateFileSystemResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.CreateFileSystemShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.order_details):
+            request.order_details_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.order_details, 'OrderDetails', 'json')
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateFileSystem',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.CreateFileSystemResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_file_system_with_options_async(
+        self,
+        tmp_req: ens_20171110_models.CreateFileSystemRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.CreateFileSystemResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.CreateFileSystemShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.order_details):
+            request.order_details_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.order_details, 'OrderDetails', 'json')
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateFileSystem',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.CreateFileSystemResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_file_system(
+        self,
+        request: ens_20171110_models.CreateFileSystemRequest,
+    ) -> ens_20171110_models.CreateFileSystemResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_file_system_with_options(request, runtime)
+
+    async def create_file_system_async(
+        self,
+        request: ens_20171110_models.CreateFileSystemRequest,
+    ) -> ens_20171110_models.CreateFileSystemResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_file_system_with_options_async(request, runtime)
+
     def create_forward_entry_with_options(
         self,
         request: ens_20171110_models.CreateForwardEntryRequest,
@@ -2513,6 +2661,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_load_balancer_udplistener_with_options_async(request, runtime)
 
+    def create_mount_target_with_options(
+        self,
+        request: ens_20171110_models.CreateMountTargetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.CreateMountTargetResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ens_region_id):
+            query['EnsRegionId'] = request.ens_region_id
+        if not UtilClient.is_unset(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not UtilClient.is_unset(request.mount_target_name):
+            query['MountTargetName'] = request.mount_target_name
+        if not UtilClient.is_unset(request.net_work_id):
+            query['NetWorkId'] = request.net_work_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateMountTarget',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.CreateMountTargetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_mount_target_with_options_async(
+        self,
+        request: ens_20171110_models.CreateMountTargetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.CreateMountTargetResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ens_region_id):
+            query['EnsRegionId'] = request.ens_region_id
+        if not UtilClient.is_unset(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not UtilClient.is_unset(request.mount_target_name):
+            query['MountTargetName'] = request.mount_target_name
+        if not UtilClient.is_unset(request.net_work_id):
+            query['NetWorkId'] = request.net_work_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateMountTarget',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.CreateMountTargetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_mount_target(
+        self,
+        request: ens_20171110_models.CreateMountTargetRequest,
+    ) -> ens_20171110_models.CreateMountTargetResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_mount_target_with_options(request, runtime)
+
+    async def create_mount_target_async(
+        self,
+        request: ens_20171110_models.CreateMountTargetRequest,
+    ) -> ens_20171110_models.CreateMountTargetResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_mount_target_with_options_async(request, runtime)
+
     def create_nat_gateway_with_options(
         self,
         request: ens_20171110_models.CreateNatGatewayRequest,
@@ -2680,6 +2910,182 @@ class Client(OpenApiClient):
     ) -> ens_20171110_models.CreateNetworkResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_network_with_options_async(request, runtime)
+
+    def create_network_acl_with_options(
+        self,
+        request: ens_20171110_models.CreateNetworkAclRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.CreateNetworkAclResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.network_acl_name):
+            query['NetworkAclName'] = request.network_acl_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateNetworkAcl',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.CreateNetworkAclResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_network_acl_with_options_async(
+        self,
+        request: ens_20171110_models.CreateNetworkAclRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.CreateNetworkAclResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.network_acl_name):
+            query['NetworkAclName'] = request.network_acl_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateNetworkAcl',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.CreateNetworkAclResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_network_acl(
+        self,
+        request: ens_20171110_models.CreateNetworkAclRequest,
+    ) -> ens_20171110_models.CreateNetworkAclResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_network_acl_with_options(request, runtime)
+
+    async def create_network_acl_async(
+        self,
+        request: ens_20171110_models.CreateNetworkAclRequest,
+    ) -> ens_20171110_models.CreateNetworkAclResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_network_acl_with_options_async(request, runtime)
+
+    def create_network_acl_entry_with_options(
+        self,
+        request: ens_20171110_models.CreateNetworkAclEntryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.CreateNetworkAclEntryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cidr_block):
+            query['CidrBlock'] = request.cidr_block
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.network_acl_entry_name):
+            query['NetworkAclEntryName'] = request.network_acl_entry_name
+        if not UtilClient.is_unset(request.network_acl_id):
+            query['NetworkAclId'] = request.network_acl_id
+        if not UtilClient.is_unset(request.policy):
+            query['Policy'] = request.policy
+        if not UtilClient.is_unset(request.port_range):
+            query['PortRange'] = request.port_range
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.protocol):
+            query['Protocol'] = request.protocol
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateNetworkAclEntry',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.CreateNetworkAclEntryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_network_acl_entry_with_options_async(
+        self,
+        request: ens_20171110_models.CreateNetworkAclEntryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.CreateNetworkAclEntryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cidr_block):
+            query['CidrBlock'] = request.cidr_block
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.network_acl_entry_name):
+            query['NetworkAclEntryName'] = request.network_acl_entry_name
+        if not UtilClient.is_unset(request.network_acl_id):
+            query['NetworkAclId'] = request.network_acl_id
+        if not UtilClient.is_unset(request.policy):
+            query['Policy'] = request.policy
+        if not UtilClient.is_unset(request.port_range):
+            query['PortRange'] = request.port_range
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.protocol):
+            query['Protocol'] = request.protocol
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateNetworkAclEntry',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.CreateNetworkAclEntryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_network_acl_entry(
+        self,
+        request: ens_20171110_models.CreateNetworkAclEntryRequest,
+    ) -> ens_20171110_models.CreateNetworkAclEntryResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_network_acl_entry_with_options(request, runtime)
+
+    async def create_network_acl_entry_async(
+        self,
+        request: ens_20171110_models.CreateNetworkAclEntryRequest,
+    ) -> ens_20171110_models.CreateNetworkAclEntryResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_network_acl_entry_with_options_async(request, runtime)
 
     def create_security_group_with_options(
         self,
@@ -3215,6 +3621,72 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_epn_instance_with_options_async(request, runtime)
 
+    def delete_file_system_with_options(
+        self,
+        request: ens_20171110_models.DeleteFileSystemRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DeleteFileSystemResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteFileSystem',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DeleteFileSystemResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_file_system_with_options_async(
+        self,
+        request: ens_20171110_models.DeleteFileSystemRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DeleteFileSystemResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteFileSystem',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DeleteFileSystemResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_file_system(
+        self,
+        request: ens_20171110_models.DeleteFileSystemRequest,
+    ) -> ens_20171110_models.DeleteFileSystemResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_file_system_with_options(request, runtime)
+
+    async def delete_file_system_async(
+        self,
+        request: ens_20171110_models.DeleteFileSystemRequest,
+    ) -> ens_20171110_models.DeleteFileSystemResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_file_system_with_options_async(request, runtime)
+
     def delete_forward_entry_with_options(
         self,
         request: ens_20171110_models.DeleteForwardEntryRequest,
@@ -3507,6 +3979,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_load_balancer_listener_with_options_async(request, runtime)
 
+    def delete_mount_target_with_options(
+        self,
+        request: ens_20171110_models.DeleteMountTargetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DeleteMountTargetResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ens_region_id):
+            query['EnsRegionId'] = request.ens_region_id
+        if not UtilClient.is_unset(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not UtilClient.is_unset(request.mount_target_name):
+            query['MountTargetName'] = request.mount_target_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteMountTarget',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DeleteMountTargetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_mount_target_with_options_async(
+        self,
+        request: ens_20171110_models.DeleteMountTargetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DeleteMountTargetResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ens_region_id):
+            query['EnsRegionId'] = request.ens_region_id
+        if not UtilClient.is_unset(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not UtilClient.is_unset(request.mount_target_name):
+            query['MountTargetName'] = request.mount_target_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteMountTarget',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DeleteMountTargetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_mount_target(
+        self,
+        request: ens_20171110_models.DeleteMountTargetRequest,
+    ) -> ens_20171110_models.DeleteMountTargetResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_mount_target_with_options(request, runtime)
+
+    async def delete_mount_target_async(
+        self,
+        request: ens_20171110_models.DeleteMountTargetRequest,
+    ) -> ens_20171110_models.DeleteMountTargetResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_mount_target_with_options_async(request, runtime)
+
     def delete_nat_gateway_with_options(
         self,
         request: ens_20171110_models.DeleteNatGatewayRequest,
@@ -3646,6 +4196,146 @@ class Client(OpenApiClient):
     ) -> ens_20171110_models.DeleteNetworkResponse:
         runtime = util_models.RuntimeOptions()
         return await self.delete_network_with_options_async(request, runtime)
+
+    def delete_network_acl_with_options(
+        self,
+        request: ens_20171110_models.DeleteNetworkAclRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DeleteNetworkAclResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.network_acl_id):
+            query['NetworkAclId'] = request.network_acl_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteNetworkAcl',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DeleteNetworkAclResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_network_acl_with_options_async(
+        self,
+        request: ens_20171110_models.DeleteNetworkAclRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DeleteNetworkAclResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.network_acl_id):
+            query['NetworkAclId'] = request.network_acl_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteNetworkAcl',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DeleteNetworkAclResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_network_acl(
+        self,
+        request: ens_20171110_models.DeleteNetworkAclRequest,
+    ) -> ens_20171110_models.DeleteNetworkAclResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_network_acl_with_options(request, runtime)
+
+    async def delete_network_acl_async(
+        self,
+        request: ens_20171110_models.DeleteNetworkAclRequest,
+    ) -> ens_20171110_models.DeleteNetworkAclResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_network_acl_with_options_async(request, runtime)
+
+    def delete_network_acl_entry_with_options(
+        self,
+        request: ens_20171110_models.DeleteNetworkAclEntryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DeleteNetworkAclEntryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.network_acl_entry_id):
+            query['NetworkAclEntryId'] = request.network_acl_entry_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteNetworkAclEntry',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DeleteNetworkAclEntryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_network_acl_entry_with_options_async(
+        self,
+        request: ens_20171110_models.DeleteNetworkAclEntryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DeleteNetworkAclEntryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.network_acl_entry_id):
+            query['NetworkAclEntryId'] = request.network_acl_entry_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteNetworkAclEntry',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DeleteNetworkAclEntryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_network_acl_entry(
+        self,
+        request: ens_20171110_models.DeleteNetworkAclEntryRequest,
+    ) -> ens_20171110_models.DeleteNetworkAclEntryResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_network_acl_entry_with_options(request, runtime)
+
+    async def delete_network_acl_entry_async(
+        self,
+        request: ens_20171110_models.DeleteNetworkAclEntryRequest,
+    ) -> ens_20171110_models.DeleteNetworkAclEntryResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_network_acl_entry_with_options_async(request, runtime)
 
     def delete_security_group_with_options(
         self,
@@ -4171,16 +4861,9 @@ class Client(OpenApiClient):
 
     def describe_available_resource_info_with_options(
         self,
-        request: ens_20171110_models.DescribeAvailableResourceInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeAvailableResourceInfoResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
+        req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeAvailableResourceInfo',
             version='2017-11-10',
@@ -4199,16 +4882,9 @@ class Client(OpenApiClient):
 
     async def describe_available_resource_info_with_options_async(
         self,
-        request: ens_20171110_models.DescribeAvailableResourceInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeAvailableResourceInfoResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
+        req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeAvailableResourceInfo',
             version='2017-11-10',
@@ -4225,19 +4901,13 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_available_resource_info(
-        self,
-        request: ens_20171110_models.DescribeAvailableResourceInfoRequest,
-    ) -> ens_20171110_models.DescribeAvailableResourceInfoResponse:
+    def describe_available_resource_info(self) -> ens_20171110_models.DescribeAvailableResourceInfoResponse:
         runtime = util_models.RuntimeOptions()
-        return self.describe_available_resource_info_with_options(request, runtime)
+        return self.describe_available_resource_info_with_options(runtime)
 
-    async def describe_available_resource_info_async(
-        self,
-        request: ens_20171110_models.DescribeAvailableResourceInfoRequest,
-    ) -> ens_20171110_models.DescribeAvailableResourceInfoResponse:
+    async def describe_available_resource_info_async(self) -> ens_20171110_models.DescribeAvailableResourceInfoResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.describe_available_resource_info_with_options_async(request, runtime)
+        return await self.describe_available_resource_info_with_options_async(runtime)
 
     def describe_band_withd_charge_type_with_options(
         self,
@@ -7973,6 +8643,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_measurement_data_with_options_async(request, runtime)
 
+    def describe_mount_targets_with_options(
+        self,
+        request: ens_20171110_models.DescribeMountTargetsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeMountTargetsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ens_region_id):
+            query['EnsRegionId'] = request.ens_region_id
+        if not UtilClient.is_unset(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not UtilClient.is_unset(request.mount_target_name):
+            query['MountTargetName'] = request.mount_target_name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMountTargets',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeMountTargetsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_mount_targets_with_options_async(
+        self,
+        request: ens_20171110_models.DescribeMountTargetsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeMountTargetsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ens_region_id):
+            query['EnsRegionId'] = request.ens_region_id
+        if not UtilClient.is_unset(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not UtilClient.is_unset(request.mount_target_name):
+            query['MountTargetName'] = request.mount_target_name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMountTargets',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeMountTargetsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_mount_targets(
+        self,
+        request: ens_20171110_models.DescribeMountTargetsRequest,
+    ) -> ens_20171110_models.DescribeMountTargetsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_mount_targets_with_options(request, runtime)
+
+    async def describe_mount_targets_async(
+        self,
+        request: ens_20171110_models.DescribeMountTargetsRequest,
+    ) -> ens_20171110_models.DescribeMountTargetsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_mount_targets_with_options_async(request, runtime)
+
     def describe_nat_gateways_with_options(
         self,
         request: ens_20171110_models.DescribeNatGatewaysRequest,
@@ -8038,6 +8794,72 @@ class Client(OpenApiClient):
     ) -> ens_20171110_models.DescribeNatGatewaysResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_nat_gateways_with_options_async(request, runtime)
+
+    def describe_network_acls_with_options(
+        self,
+        request: ens_20171110_models.DescribeNetworkAclsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeNetworkAclsResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeNetworkAcls',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeNetworkAclsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_network_acls_with_options_async(
+        self,
+        request: ens_20171110_models.DescribeNetworkAclsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeNetworkAclsResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeNetworkAcls',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeNetworkAclsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_network_acls(
+        self,
+        request: ens_20171110_models.DescribeNetworkAclsRequest,
+    ) -> ens_20171110_models.DescribeNetworkAclsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_network_acls_with_options(request, runtime)
+
+    async def describe_network_acls_async(
+        self,
+        request: ens_20171110_models.DescribeNetworkAclsRequest,
+    ) -> ens_20171110_models.DescribeNetworkAclsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_network_acls_with_options_async(request, runtime)
 
     def describe_network_attribute_with_options(
         self,
@@ -8772,6 +9594,88 @@ class Client(OpenApiClient):
     ) -> ens_20171110_models.DescribeSecurityGroupsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_security_groups_with_options_async(request, runtime)
+
+    def describe_self_images_with_options(
+        self,
+        request: ens_20171110_models.DescribeSelfImagesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeSelfImagesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.image_id):
+            query['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.image_name):
+            query['ImageName'] = request.image_name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSelfImages',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeSelfImagesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_self_images_with_options_async(
+        self,
+        request: ens_20171110_models.DescribeSelfImagesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeSelfImagesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.image_id):
+            query['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.image_name):
+            query['ImageName'] = request.image_name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSelfImages',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeSelfImagesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_self_images(
+        self,
+        request: ens_20171110_models.DescribeSelfImagesRequest,
+    ) -> ens_20171110_models.DescribeSelfImagesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_self_images_with_options(request, runtime)
+
+    async def describe_self_images_async(
+        self,
+        request: ens_20171110_models.DescribeSelfImagesRequest,
+    ) -> ens_20171110_models.DescribeSelfImagesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_self_images_with_options_async(request, runtime)
 
     def describe_servcie_schedule_with_options(
         self,
@@ -10266,6 +11170,84 @@ class Client(OpenApiClient):
     ) -> ens_20171110_models.ModifyEpnInstanceResponse:
         runtime = util_models.RuntimeOptions()
         return await self.modify_epn_instance_with_options_async(request, runtime)
+
+    def modify_file_system_with_options(
+        self,
+        request: ens_20171110_models.ModifyFileSystemRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.ModifyFileSystemResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.ens_region_id):
+            query['EnsRegionId'] = request.ens_region_id
+        if not UtilClient.is_unset(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyFileSystem',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.ModifyFileSystemResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_file_system_with_options_async(
+        self,
+        request: ens_20171110_models.ModifyFileSystemRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.ModifyFileSystemResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.ens_region_id):
+            query['EnsRegionId'] = request.ens_region_id
+        if not UtilClient.is_unset(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyFileSystem',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.ModifyFileSystemResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_file_system(
+        self,
+        request: ens_20171110_models.ModifyFileSystemRequest,
+    ) -> ens_20171110_models.ModifyFileSystemResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_file_system_with_options(request, runtime)
+
+    async def modify_file_system_async(
+        self,
+        request: ens_20171110_models.ModifyFileSystemRequest,
+    ) -> ens_20171110_models.ModifyFileSystemResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_file_system_with_options_async(request, runtime)
 
     def modify_forward_entry_with_options(
         self,
@@ -12607,6 +13589,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.reset_device_instance_with_options_async(request, runtime)
 
+    def resize_disk_with_options(
+        self,
+        request: ens_20171110_models.ResizeDiskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.ResizeDiskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.disk_id):
+            query['DiskId'] = request.disk_id
+        if not UtilClient.is_unset(request.new_size):
+            query['NewSize'] = request.new_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ResizeDisk',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.ResizeDiskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def resize_disk_with_options_async(
+        self,
+        request: ens_20171110_models.ResizeDiskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.ResizeDiskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.disk_id):
+            query['DiskId'] = request.disk_id
+        if not UtilClient.is_unset(request.new_size):
+            query['NewSize'] = request.new_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ResizeDisk',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.ResizeDiskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def resize_disk(
+        self,
+        request: ens_20171110_models.ResizeDiskRequest,
+    ) -> ens_20171110_models.ResizeDiskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.resize_disk_with_options(request, runtime)
+
+    async def resize_disk_async(
+        self,
+        request: ens_20171110_models.ResizeDiskRequest,
+    ) -> ens_20171110_models.ResizeDiskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.resize_disk_with_options_async(request, runtime)
+
     def restart_device_instance_with_options(
         self,
         request: ens_20171110_models.RestartDeviceInstanceRequest,
@@ -14494,6 +15550,80 @@ class Client(OpenApiClient):
     ) -> ens_20171110_models.UnassignPrivateIpAddressesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.unassign_private_ip_addresses_with_options_async(request, runtime)
+
+    def unassociate_network_acl_with_options(
+        self,
+        request: ens_20171110_models.UnassociateNetworkAclRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.UnassociateNetworkAclResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.network_acl_id):
+            query['NetworkAclId'] = request.network_acl_id
+        if not UtilClient.is_unset(request.resource):
+            query['Resource'] = request.resource
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UnassociateNetworkAcl',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.UnassociateNetworkAclResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def unassociate_network_acl_with_options_async(
+        self,
+        request: ens_20171110_models.UnassociateNetworkAclRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.UnassociateNetworkAclResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.network_acl_id):
+            query['NetworkAclId'] = request.network_acl_id
+        if not UtilClient.is_unset(request.resource):
+            query['Resource'] = request.resource
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UnassociateNetworkAcl',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.UnassociateNetworkAclResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def unassociate_network_acl(
+        self,
+        request: ens_20171110_models.UnassociateNetworkAclRequest,
+    ) -> ens_20171110_models.UnassociateNetworkAclResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.unassociate_network_acl_with_options(request, runtime)
+
+    async def unassociate_network_acl_async(
+        self,
+        request: ens_20171110_models.UnassociateNetworkAclRequest,
+    ) -> ens_20171110_models.UnassociateNetworkAclResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.unassociate_network_acl_with_options_async(request, runtime)
 
     def upgrade_aicinstance_image_with_options(
         self,
