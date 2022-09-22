@@ -1,3 +1,6 @@
+2022-09-22 Version: 1.3.2
+- SubmitLiveEditingJob response add VodMediaId.
+
 2022-08-29 Version: 1.3.1
 - Change RegisterMediaInfo.
 
