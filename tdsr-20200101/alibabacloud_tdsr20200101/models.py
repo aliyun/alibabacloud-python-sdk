@@ -1673,12 +1673,58 @@ class DetailSceneResponseBodyCaptures(TeaModel):
         return self
 
 
+class DetailSceneResponseBodyFloorPlans(TeaModel):
+    def __init__(
+        self,
+        color_map_url: str = None,
+        floor_label: str = None,
+        floor_name: str = None,
+        mini_map_url: str = None,
+    ):
+        self.color_map_url = color_map_url
+        self.floor_label = floor_label
+        self.floor_name = floor_name
+        self.mini_map_url = mini_map_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.color_map_url is not None:
+            result['ColorMapUrl'] = self.color_map_url
+        if self.floor_label is not None:
+            result['FloorLabel'] = self.floor_label
+        if self.floor_name is not None:
+            result['FloorName'] = self.floor_name
+        if self.mini_map_url is not None:
+            result['MiniMapUrl'] = self.mini_map_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ColorMapUrl') is not None:
+            self.color_map_url = m.get('ColorMapUrl')
+        if m.get('FloorLabel') is not None:
+            self.floor_label = m.get('FloorLabel')
+        if m.get('FloorName') is not None:
+            self.floor_name = m.get('FloorName')
+        if m.get('MiniMapUrl') is not None:
+            self.mini_map_url = m.get('MiniMapUrl')
+        return self
+
+
 class DetailSceneResponseBody(TeaModel):
     def __init__(
         self,
         captures: List[DetailSceneResponseBodyCaptures] = None,
         code: int = None,
         cover_url: str = None,
+        floor_plans: List[DetailSceneResponseBodyFloorPlans] = None,
         gmt_create: int = None,
         gmt_modified: int = None,
         id: str = None,
@@ -1697,6 +1743,7 @@ class DetailSceneResponseBody(TeaModel):
         self.captures = captures
         self.code = code
         self.cover_url = cover_url
+        self.floor_plans = floor_plans
         self.gmt_create = gmt_create
         self.gmt_modified = gmt_modified
         self.id = id
@@ -1717,6 +1764,10 @@ class DetailSceneResponseBody(TeaModel):
             for k in self.captures:
                 if k:
                     k.validate()
+        if self.floor_plans:
+            for k in self.floor_plans:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1732,6 +1783,10 @@ class DetailSceneResponseBody(TeaModel):
             result['Code'] = self.code
         if self.cover_url is not None:
             result['CoverUrl'] = self.cover_url
+        result['FloorPlans'] = []
+        if self.floor_plans is not None:
+            for k in self.floor_plans:
+                result['FloorPlans'].append(k.to_map() if k else None)
         if self.gmt_create is not None:
             result['GmtCreate'] = self.gmt_create
         if self.gmt_modified is not None:
@@ -1773,6 +1828,11 @@ class DetailSceneResponseBody(TeaModel):
             self.code = m.get('Code')
         if m.get('CoverUrl') is not None:
             self.cover_url = m.get('CoverUrl')
+        self.floor_plans = []
+        if m.get('FloorPlans') is not None:
+            for k in m.get('FloorPlans'):
+                temp_model = DetailSceneResponseBodyFloorPlans()
+                self.floor_plans.append(temp_model.from_map(k))
         if m.get('GmtCreate') is not None:
             self.gmt_create = m.get('GmtCreate')
         if m.get('GmtModified') is not None:
