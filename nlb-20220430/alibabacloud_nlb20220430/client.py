@@ -592,6 +592,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.address_ipversion):
             body['AddressIPVersion'] = request.address_ipversion
+        if not UtilClient.is_unset(request.any_port_enabled):
+            body['AnyPortEnabled'] = request.any_port_enabled
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.connection_drain_enabled):
@@ -649,6 +651,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.address_ipversion):
             body['AddressIPVersion'] = request.address_ipversion
+        if not UtilClient.is_unset(request.any_port_enabled):
+            body['AnyPortEnabled'] = request.any_port_enabled
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.connection_drain_enabled):

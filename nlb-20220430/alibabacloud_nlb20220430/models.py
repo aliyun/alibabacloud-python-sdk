@@ -740,12 +740,10 @@ class CreateLoadBalancerRequest(TeaModel):
 class CreateLoadBalancerResponseBody(TeaModel):
     def __init__(
         self,
-        job_id: str = None,
         loadbalancer_id: str = None,
         order_id: int = None,
         request_id: str = None,
     ):
-        self.job_id = job_id
         self.loadbalancer_id = loadbalancer_id
         self.order_id = order_id
         self.request_id = request_id
@@ -759,8 +757,6 @@ class CreateLoadBalancerResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.job_id is not None:
-            result['JobId'] = self.job_id
         if self.loadbalancer_id is not None:
             result['LoadbalancerId'] = self.loadbalancer_id
         if self.order_id is not None:
@@ -771,8 +767,6 @@ class CreateLoadBalancerResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('JobId') is not None:
-            self.job_id = m.get('JobId')
         if m.get('LoadbalancerId') is not None:
             self.loadbalancer_id = m.get('LoadbalancerId')
         if m.get('OrderId') is not None:
@@ -1063,6 +1057,7 @@ class CreateServerGroupRequest(TeaModel):
     def __init__(
         self,
         address_ipversion: str = None,
+        any_port_enabled: bool = None,
         client_token: str = None,
         connection_drain_enabled: bool = None,
         connection_drain_timeout: int = None,
@@ -1078,6 +1073,7 @@ class CreateServerGroupRequest(TeaModel):
         vpc_id: str = None,
     ):
         self.address_ipversion = address_ipversion
+        self.any_port_enabled = any_port_enabled
         self.client_token = client_token
         self.connection_drain_enabled = connection_drain_enabled
         self.connection_drain_timeout = connection_drain_timeout
@@ -1104,6 +1100,8 @@ class CreateServerGroupRequest(TeaModel):
         result = dict()
         if self.address_ipversion is not None:
             result['AddressIPVersion'] = self.address_ipversion
+        if self.any_port_enabled is not None:
+            result['AnyPortEnabled'] = self.any_port_enabled
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
         if self.connection_drain_enabled is not None:
@@ -1136,6 +1134,8 @@ class CreateServerGroupRequest(TeaModel):
         m = m or dict()
         if m.get('AddressIPVersion') is not None:
             self.address_ipversion = m.get('AddressIPVersion')
+        if m.get('AnyPortEnabled') is not None:
+            self.any_port_enabled = m.get('AnyPortEnabled')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
         if m.get('ConnectionDrainEnabled') is not None:
@@ -2602,10 +2602,10 @@ class GetListenerAttributeResponseBody(TeaModel):
         listener_status: str = None,
         load_balancer_id: str = None,
         mss: int = None,
-        proxy_protocol_enabled: str = None,
+        proxy_protocol_enabled: bool = None,
         region_id: str = None,
         request_id: str = None,
-        sec_sensor_enabled: str = None,
+        sec_sensor_enabled: bool = None,
         security_policy_id: str = None,
         server_group_id: str = None,
         start_port: str = None,
@@ -5445,6 +5445,7 @@ class ListServerGroupsResponseBodyServerGroups(TeaModel):
         self,
         address_ipversion: str = None,
         ali_uid: int = None,
+        any_port_enabled: bool = None,
         connection_drain_enabled: bool = None,
         connection_drain_timeout: int = None,
         health_check: ListServerGroupsResponseBodyServerGroupsHealthCheck = None,
@@ -5464,6 +5465,7 @@ class ListServerGroupsResponseBodyServerGroups(TeaModel):
     ):
         self.address_ipversion = address_ipversion
         self.ali_uid = ali_uid
+        self.any_port_enabled = any_port_enabled
         self.connection_drain_enabled = connection_drain_enabled
         self.connection_drain_timeout = connection_drain_timeout
         self.health_check = health_check
@@ -5499,6 +5501,8 @@ class ListServerGroupsResponseBodyServerGroups(TeaModel):
             result['AddressIPVersion'] = self.address_ipversion
         if self.ali_uid is not None:
             result['AliUid'] = self.ali_uid
+        if self.any_port_enabled is not None:
+            result['AnyPortEnabled'] = self.any_port_enabled
         if self.connection_drain_enabled is not None:
             result['ConnectionDrainEnabled'] = self.connection_drain_enabled
         if self.connection_drain_timeout is not None:
@@ -5541,6 +5545,8 @@ class ListServerGroupsResponseBodyServerGroups(TeaModel):
             self.address_ipversion = m.get('AddressIPVersion')
         if m.get('AliUid') is not None:
             self.ali_uid = m.get('AliUid')
+        if m.get('AnyPortEnabled') is not None:
+            self.any_port_enabled = m.get('AnyPortEnabled')
         if m.get('ConnectionDrainEnabled') is not None:
             self.connection_drain_enabled = m.get('ConnectionDrainEnabled')
         if m.get('ConnectionDrainTimeout') is not None:
