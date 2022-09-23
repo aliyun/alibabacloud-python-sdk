@@ -1,3 +1,6 @@
+2022-09-23 Version: 1.0.7
+- Support SSL Sign.
+
 2022-09-15 Version: 1.0.6
 - Support Certificate Warehouse.
 
