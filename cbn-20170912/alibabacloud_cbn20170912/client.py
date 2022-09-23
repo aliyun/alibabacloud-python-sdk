@@ -1367,6 +1367,116 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_cen_inter_region_traffic_qos_policy_with_options_async(request, runtime)
 
+    def create_cen_inter_region_traffic_qos_queue_with_options(
+        self,
+        request: cbn_20170912_models.CreateCenInterRegionTrafficQosQueueRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cbn_20170912_models.CreateCenInterRegionTrafficQosQueueResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.dscps):
+            query['Dscps'] = request.dscps
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.qos_queue_description):
+            query['QosQueueDescription'] = request.qos_queue_description
+        if not UtilClient.is_unset(request.qos_queue_name):
+            query['QosQueueName'] = request.qos_queue_name
+        if not UtilClient.is_unset(request.remain_bandwidth_percent):
+            query['RemainBandwidthPercent'] = request.remain_bandwidth_percent
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.traffic_qos_policy_id):
+            query['TrafficQosPolicyId'] = request.traffic_qos_policy_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateCenInterRegionTrafficQosQueue',
+            version='2017-09-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cbn_20170912_models.CreateCenInterRegionTrafficQosQueueResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_cen_inter_region_traffic_qos_queue_with_options_async(
+        self,
+        request: cbn_20170912_models.CreateCenInterRegionTrafficQosQueueRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cbn_20170912_models.CreateCenInterRegionTrafficQosQueueResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.dscps):
+            query['Dscps'] = request.dscps
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.qos_queue_description):
+            query['QosQueueDescription'] = request.qos_queue_description
+        if not UtilClient.is_unset(request.qos_queue_name):
+            query['QosQueueName'] = request.qos_queue_name
+        if not UtilClient.is_unset(request.remain_bandwidth_percent):
+            query['RemainBandwidthPercent'] = request.remain_bandwidth_percent
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.traffic_qos_policy_id):
+            query['TrafficQosPolicyId'] = request.traffic_qos_policy_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateCenInterRegionTrafficQosQueue',
+            version='2017-09-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cbn_20170912_models.CreateCenInterRegionTrafficQosQueueResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_cen_inter_region_traffic_qos_queue(
+        self,
+        request: cbn_20170912_models.CreateCenInterRegionTrafficQosQueueRequest,
+    ) -> cbn_20170912_models.CreateCenInterRegionTrafficQosQueueResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_cen_inter_region_traffic_qos_queue_with_options(request, runtime)
+
+    async def create_cen_inter_region_traffic_qos_queue_async(
+        self,
+        request: cbn_20170912_models.CreateCenInterRegionTrafficQosQueueRequest,
+    ) -> cbn_20170912_models.CreateCenInterRegionTrafficQosQueueResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_cen_inter_region_traffic_qos_queue_with_options_async(request, runtime)
+
     def create_cen_route_map_with_options(
         self,
         request: cbn_20170912_models.CreateCenRouteMapRequest,
@@ -6632,6 +6742,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.cen_id):
             query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -6672,6 +6786,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.cen_id):
             query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -6716,6 +6834,108 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DescribeGrantRulesToCenResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_grant_rules_to_cen_with_options_async(request, runtime)
+
+    def describe_grant_rules_to_resource_with_options(
+        self,
+        request: cbn_20170912_models.DescribeGrantRulesToResourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cbn_20170912_models.DescribeGrantRulesToResourceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.product_type):
+            query['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeGrantRulesToResource',
+            version='2017-09-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeGrantRulesToResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_grant_rules_to_resource_with_options_async(
+        self,
+        request: cbn_20170912_models.DescribeGrantRulesToResourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cbn_20170912_models.DescribeGrantRulesToResourceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.product_type):
+            query['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeGrantRulesToResource',
+            version='2017-09-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cbn_20170912_models.DescribeGrantRulesToResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_grant_rules_to_resource(
+        self,
+        request: cbn_20170912_models.DescribeGrantRulesToResourceRequest,
+    ) -> cbn_20170912_models.DescribeGrantRulesToResourceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_grant_rules_to_resource_with_options(request, runtime)
+
+    async def describe_grant_rules_to_resource_async(
+        self,
+        request: cbn_20170912_models.DescribeGrantRulesToResourceRequest,
+    ) -> cbn_20170912_models.DescribeGrantRulesToResourceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_grant_rules_to_resource_with_options_async(request, runtime)
 
     def describe_published_route_entries_with_options(
         self,
@@ -8676,8 +8896,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.dry_run):
-            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
@@ -8728,8 +8946,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.dry_run):
-            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
@@ -8898,8 +9114,6 @@ class Client(OpenApiClient):
             query['CenId'] = request.cen_id
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.dry_run):
-            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
@@ -8948,8 +9162,6 @@ class Client(OpenApiClient):
             query['CenId'] = request.cen_id
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.dry_run):
-            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
@@ -11360,6 +11572,104 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.RegisterTransitRouterMulticastGroupSourcesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.register_transit_router_multicast_group_sources_with_options_async(request, runtime)
+
+    def remove_traffic_match_rule_from_traffic_marking_policy_with_options(
+        self,
+        request: cbn_20170912_models.RemoveTrafficMatchRuleFromTrafficMarkingPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cbn_20170912_models.RemoveTrafficMatchRuleFromTrafficMarkingPolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.traffic_mark_rule_ids):
+            query['TrafficMarkRuleIds'] = request.traffic_mark_rule_ids
+        if not UtilClient.is_unset(request.traffic_marking_policy_id):
+            query['TrafficMarkingPolicyId'] = request.traffic_marking_policy_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RemoveTrafficMatchRuleFromTrafficMarkingPolicy',
+            version='2017-09-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cbn_20170912_models.RemoveTrafficMatchRuleFromTrafficMarkingPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def remove_traffic_match_rule_from_traffic_marking_policy_with_options_async(
+        self,
+        request: cbn_20170912_models.RemoveTrafficMatchRuleFromTrafficMarkingPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cbn_20170912_models.RemoveTrafficMatchRuleFromTrafficMarkingPolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.traffic_mark_rule_ids):
+            query['TrafficMarkRuleIds'] = request.traffic_mark_rule_ids
+        if not UtilClient.is_unset(request.traffic_marking_policy_id):
+            query['TrafficMarkingPolicyId'] = request.traffic_marking_policy_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RemoveTrafficMatchRuleFromTrafficMarkingPolicy',
+            version='2017-09-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cbn_20170912_models.RemoveTrafficMatchRuleFromTrafficMarkingPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def remove_traffic_match_rule_from_traffic_marking_policy(
+        self,
+        request: cbn_20170912_models.RemoveTrafficMatchRuleFromTrafficMarkingPolicyRequest,
+    ) -> cbn_20170912_models.RemoveTrafficMatchRuleFromTrafficMarkingPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.remove_traffic_match_rule_from_traffic_marking_policy_with_options(request, runtime)
+
+    async def remove_traffic_match_rule_from_traffic_marking_policy_async(
+        self,
+        request: cbn_20170912_models.RemoveTrafficMatchRuleFromTrafficMarkingPolicyRequest,
+    ) -> cbn_20170912_models.RemoveTrafficMatchRuleFromTrafficMarkingPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.remove_traffic_match_rule_from_traffic_marking_policy_with_options_async(request, runtime)
 
     def remove_trafic_match_rule_from_traffic_marking_policy_with_options(
         self,
