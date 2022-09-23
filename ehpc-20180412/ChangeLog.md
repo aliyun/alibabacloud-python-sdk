@@ -1,3 +1,7 @@
+2022-09-23 Version: 1.14.15
+- Add eStack APIs;
+- Add parameters for SyncUsers, AddLocalNodes and so on.
+
 2022-04-02 Version: 1.14.14
 - Support Domain for CreateCluster.
 
