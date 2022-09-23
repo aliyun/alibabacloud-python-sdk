@@ -860,6 +860,7 @@ class CreateClusterRequest(TeaModel):
         image_id: str = None,
         image_type: str = None,
         instances: List[str] = None,
+        ip_stack: str = None,
         is_enterprise_security_group: bool = None,
         keep_instance_name: bool = None,
         key_pair: str = None,
@@ -948,6 +949,7 @@ class CreateClusterRequest(TeaModel):
         self.image_id = image_id
         self.image_type = image_type
         self.instances = instances
+        self.ip_stack = ip_stack
         self.is_enterprise_security_group = is_enterprise_security_group
         self.keep_instance_name = keep_instance_name
         self.key_pair = key_pair
@@ -1087,6 +1089,8 @@ class CreateClusterRequest(TeaModel):
             result['image_type'] = self.image_type
         if self.instances is not None:
             result['instances'] = self.instances
+        if self.ip_stack is not None:
+            result['ip_stack'] = self.ip_stack
         if self.is_enterprise_security_group is not None:
             result['is_enterprise_security_group'] = self.is_enterprise_security_group
         if self.keep_instance_name is not None:
@@ -1274,6 +1278,8 @@ class CreateClusterRequest(TeaModel):
             self.image_type = m.get('image_type')
         if m.get('instances') is not None:
             self.instances = m.get('instances')
+        if m.get('ip_stack') is not None:
+            self.ip_stack = m.get('ip_stack')
         if m.get('is_enterprise_security_group') is not None:
             self.is_enterprise_security_group = m.get('is_enterprise_security_group')
         if m.get('keep_instance_name') is not None:

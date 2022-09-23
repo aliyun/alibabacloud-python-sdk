@@ -1,3 +1,6 @@
+2022-09-23 Version: 3.0.18
+- Update CreateCluster.
+
 2022-09-21 Version: 3.0.17
 - Update endpoint.
 
