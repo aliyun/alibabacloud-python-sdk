@@ -1301,6 +1301,110 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
+    def get_user_view_metrics(
+        self,
+        resource_group_id: str,
+        request: pai_studio_20220112_models.GetUserViewMetricsRequest,
+    ) -> pai_studio_20220112_models.GetUserViewMetricsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_user_view_metrics_with_options(resource_group_id, request, headers, runtime)
+
+    async def get_user_view_metrics_async(
+        self,
+        resource_group_id: str,
+        request: pai_studio_20220112_models.GetUserViewMetricsRequest,
+    ) -> pai_studio_20220112_models.GetUserViewMetricsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_user_view_metrics_with_options_async(resource_group_id, request, headers, runtime)
+
+    def get_user_view_metrics_with_options(
+        self,
+        resource_group_id: str,
+        request: pai_studio_20220112_models.GetUserViewMetricsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_studio_20220112_models.GetUserViewMetricsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.time_step):
+            query['TimeStep'] = request.time_step
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetUserViewMetrics',
+            version='2022-01-12',
+            protocol='HTTPS',
+            pathname=f'/api/v1/resources/{OpenApiUtilClient.get_encode_param(resource_group_id)}/usermetrics',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_studio_20220112_models.GetUserViewMetricsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_user_view_metrics_with_options_async(
+        self,
+        resource_group_id: str,
+        request: pai_studio_20220112_models.GetUserViewMetricsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_studio_20220112_models.GetUserViewMetricsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.time_step):
+            query['TimeStep'] = request.time_step
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetUserViewMetrics',
+            version='2022-01-12',
+            protocol='HTTPS',
+            pathname=f'/api/v1/resources/{OpenApiUtilClient.get_encode_param(resource_group_id)}/usermetrics',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_studio_20220112_models.GetUserViewMetricsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
     def list_algorithm_versions(
         self,
         algorithm_id: str,
