@@ -1,3 +1,6 @@
+2022-09-26 Version: 1.0.8
+- Resource Service python sdk .
+
 2022-09-24 Version: 1.0.7
 - Resource Service python sdk .
 

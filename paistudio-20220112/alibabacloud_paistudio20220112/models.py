@@ -4841,6 +4841,677 @@ class ListTrainingJobMetricsResponse(TeaModel):
         return self
 
 
+class ListTrainingJobsRequest(TeaModel):
+    def __init__(
+        self,
+        order: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        sort_by: str = None,
+        status: str = None,
+        training_job_name: str = None,
+        workspace_id: str = None,
+    ):
+        self.order = order
+        self.page_number = page_number
+        self.page_size = page_size
+        self.sort_by = sort_by
+        self.status = status
+        self.training_job_name = training_job_name
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.order is not None:
+            result['Order'] = self.order
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.sort_by is not None:
+            result['SortBy'] = self.sort_by
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.training_job_name is not None:
+            result['TrainingJobName'] = self.training_job_name
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SortBy') is not None:
+            self.sort_by = m.get('SortBy')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TrainingJobName') is not None:
+            self.training_job_name = m.get('TrainingJobName')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class ListTrainingJobsResponseBodyTrainingJobsComputeResource(TeaModel):
+    def __init__(
+        self,
+        ecs_count: int = None,
+        ecs_spec: str = None,
+    ):
+        self.ecs_count = ecs_count
+        self.ecs_spec = ecs_spec
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ecs_count is not None:
+            result['EcsCount'] = self.ecs_count
+        if self.ecs_spec is not None:
+            result['EcsSpec'] = self.ecs_spec
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EcsCount') is not None:
+            self.ecs_count = m.get('EcsCount')
+        if m.get('EcsSpec') is not None:
+            self.ecs_spec = m.get('EcsSpec')
+        return self
+
+
+class ListTrainingJobsResponseBodyTrainingJobsHyperParameters(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        value: str = None,
+    ):
+        self.name = name
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListTrainingJobsResponseBodyTrainingJobsInputChannels(TeaModel):
+    def __init__(
+        self,
+        dataset_id: str = None,
+        input_uri: str = None,
+        name: str = None,
+    ):
+        self.dataset_id = dataset_id
+        self.input_uri = input_uri
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dataset_id is not None:
+            result['DatasetId'] = self.dataset_id
+        if self.input_uri is not None:
+            result['InputUri'] = self.input_uri
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DatasetId') is not None:
+            self.dataset_id = m.get('DatasetId')
+        if m.get('InputUri') is not None:
+            self.input_uri = m.get('InputUri')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class ListTrainingJobsResponseBodyTrainingJobsLabels(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListTrainingJobsResponseBodyTrainingJobsOutputChannels(TeaModel):
+    def __init__(
+        self,
+        dataset_id: str = None,
+        name: str = None,
+        output_uri: str = None,
+    ):
+        self.dataset_id = dataset_id
+        self.name = name
+        self.output_uri = output_uri
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dataset_id is not None:
+            result['DatasetId'] = self.dataset_id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.output_uri is not None:
+            result['OutputUri'] = self.output_uri
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DatasetId') is not None:
+            self.dataset_id = m.get('DatasetId')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('OutputUri') is not None:
+            self.output_uri = m.get('OutputUri')
+        return self
+
+
+class ListTrainingJobsResponseBodyTrainingJobsScheduler(TeaModel):
+    def __init__(
+        self,
+        max_running_time_in_seconds: int = None,
+    ):
+        self.max_running_time_in_seconds = max_running_time_in_seconds
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_running_time_in_seconds is not None:
+            result['MaxRunningTimeInSeconds'] = self.max_running_time_in_seconds
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxRunningTimeInSeconds') is not None:
+            self.max_running_time_in_seconds = m.get('MaxRunningTimeInSeconds')
+        return self
+
+
+class ListTrainingJobsResponseBodyTrainingJobsStatusTransitions(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        reason_code: str = None,
+        reason_message: str = None,
+        start_time: str = None,
+        status: str = None,
+    ):
+        self.end_time = end_time
+        self.reason_code = reason_code
+        self.reason_message = reason_message
+        self.start_time = start_time
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.reason_code is not None:
+            result['ReasonCode'] = self.reason_code
+        if self.reason_message is not None:
+            result['ReasonMessage'] = self.reason_message
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('ReasonCode') is not None:
+            self.reason_code = m.get('ReasonCode')
+        if m.get('ReasonMessage') is not None:
+            self.reason_message = m.get('ReasonMessage')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ListTrainingJobsResponseBodyTrainingJobs(TeaModel):
+    def __init__(
+        self,
+        algorithm_name: str = None,
+        algorithm_provider: str = None,
+        algorithm_version: str = None,
+        compute_resource: ListTrainingJobsResponseBodyTrainingJobsComputeResource = None,
+        gmt_create_time: str = None,
+        gmt_modified_time: str = None,
+        hyper_parameters: List[ListTrainingJobsResponseBodyTrainingJobsHyperParameters] = None,
+        input_channels: List[ListTrainingJobsResponseBodyTrainingJobsInputChannels] = None,
+        labels: List[ListTrainingJobsResponseBodyTrainingJobsLabels] = None,
+        output_channels: List[ListTrainingJobsResponseBodyTrainingJobsOutputChannels] = None,
+        reason_code: str = None,
+        reason_message: str = None,
+        scheduler: ListTrainingJobsResponseBodyTrainingJobsScheduler = None,
+        status: str = None,
+        status_transitions: List[ListTrainingJobsResponseBodyTrainingJobsStatusTransitions] = None,
+        training_job_description: str = None,
+        training_job_id: str = None,
+        training_job_name: str = None,
+        user_id: str = None,
+        workspace_id: str = None,
+    ):
+        self.algorithm_name = algorithm_name
+        self.algorithm_provider = algorithm_provider
+        self.algorithm_version = algorithm_version
+        self.compute_resource = compute_resource
+        self.gmt_create_time = gmt_create_time
+        self.gmt_modified_time = gmt_modified_time
+        self.hyper_parameters = hyper_parameters
+        self.input_channels = input_channels
+        self.labels = labels
+        self.output_channels = output_channels
+        self.reason_code = reason_code
+        self.reason_message = reason_message
+        self.scheduler = scheduler
+        self.status = status
+        self.status_transitions = status_transitions
+        self.training_job_description = training_job_description
+        self.training_job_id = training_job_id
+        self.training_job_name = training_job_name
+        self.user_id = user_id
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        if self.compute_resource:
+            self.compute_resource.validate()
+        if self.hyper_parameters:
+            for k in self.hyper_parameters:
+                if k:
+                    k.validate()
+        if self.input_channels:
+            for k in self.input_channels:
+                if k:
+                    k.validate()
+        if self.labels:
+            for k in self.labels:
+                if k:
+                    k.validate()
+        if self.output_channels:
+            for k in self.output_channels:
+                if k:
+                    k.validate()
+        if self.scheduler:
+            self.scheduler.validate()
+        if self.status_transitions:
+            for k in self.status_transitions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.algorithm_name is not None:
+            result['AlgorithmName'] = self.algorithm_name
+        if self.algorithm_provider is not None:
+            result['AlgorithmProvider'] = self.algorithm_provider
+        if self.algorithm_version is not None:
+            result['AlgorithmVersion'] = self.algorithm_version
+        if self.compute_resource is not None:
+            result['ComputeResource'] = self.compute_resource.to_map()
+        if self.gmt_create_time is not None:
+            result['GmtCreateTime'] = self.gmt_create_time
+        if self.gmt_modified_time is not None:
+            result['GmtModifiedTime'] = self.gmt_modified_time
+        result['HyperParameters'] = []
+        if self.hyper_parameters is not None:
+            for k in self.hyper_parameters:
+                result['HyperParameters'].append(k.to_map() if k else None)
+        result['InputChannels'] = []
+        if self.input_channels is not None:
+            for k in self.input_channels:
+                result['InputChannels'].append(k.to_map() if k else None)
+        result['Labels'] = []
+        if self.labels is not None:
+            for k in self.labels:
+                result['Labels'].append(k.to_map() if k else None)
+        result['OutputChannels'] = []
+        if self.output_channels is not None:
+            for k in self.output_channels:
+                result['OutputChannels'].append(k.to_map() if k else None)
+        if self.reason_code is not None:
+            result['ReasonCode'] = self.reason_code
+        if self.reason_message is not None:
+            result['ReasonMessage'] = self.reason_message
+        if self.scheduler is not None:
+            result['Scheduler'] = self.scheduler.to_map()
+        if self.status is not None:
+            result['Status'] = self.status
+        result['StatusTransitions'] = []
+        if self.status_transitions is not None:
+            for k in self.status_transitions:
+                result['StatusTransitions'].append(k.to_map() if k else None)
+        if self.training_job_description is not None:
+            result['TrainingJobDescription'] = self.training_job_description
+        if self.training_job_id is not None:
+            result['TrainingJobId'] = self.training_job_id
+        if self.training_job_name is not None:
+            result['TrainingJobName'] = self.training_job_name
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AlgorithmName') is not None:
+            self.algorithm_name = m.get('AlgorithmName')
+        if m.get('AlgorithmProvider') is not None:
+            self.algorithm_provider = m.get('AlgorithmProvider')
+        if m.get('AlgorithmVersion') is not None:
+            self.algorithm_version = m.get('AlgorithmVersion')
+        if m.get('ComputeResource') is not None:
+            temp_model = ListTrainingJobsResponseBodyTrainingJobsComputeResource()
+            self.compute_resource = temp_model.from_map(m['ComputeResource'])
+        if m.get('GmtCreateTime') is not None:
+            self.gmt_create_time = m.get('GmtCreateTime')
+        if m.get('GmtModifiedTime') is not None:
+            self.gmt_modified_time = m.get('GmtModifiedTime')
+        self.hyper_parameters = []
+        if m.get('HyperParameters') is not None:
+            for k in m.get('HyperParameters'):
+                temp_model = ListTrainingJobsResponseBodyTrainingJobsHyperParameters()
+                self.hyper_parameters.append(temp_model.from_map(k))
+        self.input_channels = []
+        if m.get('InputChannels') is not None:
+            for k in m.get('InputChannels'):
+                temp_model = ListTrainingJobsResponseBodyTrainingJobsInputChannels()
+                self.input_channels.append(temp_model.from_map(k))
+        self.labels = []
+        if m.get('Labels') is not None:
+            for k in m.get('Labels'):
+                temp_model = ListTrainingJobsResponseBodyTrainingJobsLabels()
+                self.labels.append(temp_model.from_map(k))
+        self.output_channels = []
+        if m.get('OutputChannels') is not None:
+            for k in m.get('OutputChannels'):
+                temp_model = ListTrainingJobsResponseBodyTrainingJobsOutputChannels()
+                self.output_channels.append(temp_model.from_map(k))
+        if m.get('ReasonCode') is not None:
+            self.reason_code = m.get('ReasonCode')
+        if m.get('ReasonMessage') is not None:
+            self.reason_message = m.get('ReasonMessage')
+        if m.get('Scheduler') is not None:
+            temp_model = ListTrainingJobsResponseBodyTrainingJobsScheduler()
+            self.scheduler = temp_model.from_map(m['Scheduler'])
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        self.status_transitions = []
+        if m.get('StatusTransitions') is not None:
+            for k in m.get('StatusTransitions'):
+                temp_model = ListTrainingJobsResponseBodyTrainingJobsStatusTransitions()
+                self.status_transitions.append(temp_model.from_map(k))
+        if m.get('TrainingJobDescription') is not None:
+            self.training_job_description = m.get('TrainingJobDescription')
+        if m.get('TrainingJobId') is not None:
+            self.training_job_id = m.get('TrainingJobId')
+        if m.get('TrainingJobName') is not None:
+            self.training_job_name = m.get('TrainingJobName')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class ListTrainingJobsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        total_count: int = None,
+        training_jobs: List[ListTrainingJobsResponseBodyTrainingJobs] = None,
+    ):
+        self.request_id = request_id
+        self.total_count = total_count
+        self.training_jobs = training_jobs
+
+    def validate(self):
+        if self.training_jobs:
+            for k in self.training_jobs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        result['TrainingJobs'] = []
+        if self.training_jobs is not None:
+            for k in self.training_jobs:
+                result['TrainingJobs'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        self.training_jobs = []
+        if m.get('TrainingJobs') is not None:
+            for k in m.get('TrainingJobs'):
+                temp_model = ListTrainingJobsResponseBodyTrainingJobs()
+                self.training_jobs.append(temp_model.from_map(k))
+        return self
+
+
+class ListTrainingJobsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListTrainingJobsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListTrainingJobsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class StopTrainingJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class StopTrainingJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StopTrainingJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StopTrainingJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateAlgorithmRequest(TeaModel):
     def __init__(
         self,
@@ -5186,6 +5857,145 @@ class UpdateResourceGroupResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateResourceGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateTrainingJobLabelsRequestLabels(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class UpdateTrainingJobLabelsRequest(TeaModel):
+    def __init__(
+        self,
+        labels: List[UpdateTrainingJobLabelsRequestLabels] = None,
+    ):
+        self.labels = labels
+
+    def validate(self):
+        if self.labels:
+            for k in self.labels:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Labels'] = []
+        if self.labels is not None:
+            for k in self.labels:
+                result['Labels'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.labels = []
+        if m.get('Labels') is not None:
+            for k in m.get('Labels'):
+                temp_model = UpdateTrainingJobLabelsRequestLabels()
+                self.labels.append(temp_model.from_map(k))
+        return self
+
+
+class UpdateTrainingJobLabelsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateTrainingJobLabelsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateTrainingJobLabelsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateTrainingJobLabelsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
