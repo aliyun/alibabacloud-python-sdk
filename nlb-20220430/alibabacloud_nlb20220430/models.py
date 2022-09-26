@@ -3729,7 +3729,7 @@ class ListListenersRequest(TeaModel):
 class ListListenersResponseBodyListeners(TeaModel):
     def __init__(
         self,
-        alpn_enabled: str = None,
+        alpn_enabled: bool = None,
         alpn_policy: str = None,
         ca_certificate_ids: List[str] = None,
         ca_enabled: bool = None,
@@ -3744,9 +3744,9 @@ class ListListenersResponseBodyListeners(TeaModel):
         listener_status: str = None,
         load_balancer_id: str = None,
         mss: int = None,
-        proxy_protocol_enabled: str = None,
+        proxy_protocol_enabled: bool = None,
         region_id: str = None,
-        sec_sensor_enabled: str = None,
+        sec_sensor_enabled: bool = None,
         security_policy_id: str = None,
         server_group_id: str = None,
         start_port: str = None,
