@@ -1,3 +1,6 @@
+2022-09-27 Version: 3.0.0
+- Modify Size type form int32 to int64 of `DescribePriceRequest` `DataDisk` param.
+
 2022-07-15 Version: 2.1.3
 - Support Security Group Batch Manager Rules.
 

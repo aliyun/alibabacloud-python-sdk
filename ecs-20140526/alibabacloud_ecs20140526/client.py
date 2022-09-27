@@ -3239,6 +3239,8 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.excess_capacity_termination_policy):
             query['ExcessCapacityTerminationPolicy'] = request.excess_capacity_termination_policy
+        if not UtilClient.is_unset(request.hibernation_options_configured):
+            query['HibernationOptionsConfigured'] = request.hibernation_options_configured
         if not UtilClient.is_unset(request.launch_template_config):
             query['LaunchTemplateConfig'] = request.launch_template_config
         if not UtilClient.is_unset(request.launch_template_id):
@@ -3327,6 +3329,8 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.excess_capacity_termination_policy):
             query['ExcessCapacityTerminationPolicy'] = request.excess_capacity_termination_policy
+        if not UtilClient.is_unset(request.hibernation_options_configured):
+            query['HibernationOptionsConfigured'] = request.hibernation_options_configured
         if not UtilClient.is_unset(request.launch_template_config):
             query['LaunchTemplateConfig'] = request.launch_template_config
         if not UtilClient.is_unset(request.launch_template_id):
@@ -4266,6 +4270,178 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_deployment_set_with_options_async(request, runtime)
 
+    def create_diagnostic_metric_set_with_options(
+        self,
+        request: ecs_20140526_models.CreateDiagnosticMetricSetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.CreateDiagnosticMetricSetResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.metric_ids):
+            query['MetricIds'] = request.metric_ids
+        if not UtilClient.is_unset(request.metric_set_name):
+            query['MetricSetName'] = request.metric_set_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDiagnosticMetricSet',
+            version='2014-05-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateDiagnosticMetricSetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_diagnostic_metric_set_with_options_async(
+        self,
+        request: ecs_20140526_models.CreateDiagnosticMetricSetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.CreateDiagnosticMetricSetResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.metric_ids):
+            query['MetricIds'] = request.metric_ids
+        if not UtilClient.is_unset(request.metric_set_name):
+            query['MetricSetName'] = request.metric_set_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDiagnosticMetricSet',
+            version='2014-05-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateDiagnosticMetricSetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_diagnostic_metric_set(
+        self,
+        request: ecs_20140526_models.CreateDiagnosticMetricSetRequest,
+    ) -> ecs_20140526_models.CreateDiagnosticMetricSetResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_diagnostic_metric_set_with_options(request, runtime)
+
+    async def create_diagnostic_metric_set_async(
+        self,
+        request: ecs_20140526_models.CreateDiagnosticMetricSetRequest,
+    ) -> ecs_20140526_models.CreateDiagnosticMetricSetResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_diagnostic_metric_set_with_options_async(request, runtime)
+
+    def create_diagnostic_report_with_options(
+        self,
+        request: ecs_20140526_models.CreateDiagnosticReportRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.CreateDiagnosticReportResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.metric_set_id):
+            query['MetricSetId'] = request.metric_set_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDiagnosticReport',
+            version='2014-05-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateDiagnosticReportResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_diagnostic_report_with_options_async(
+        self,
+        request: ecs_20140526_models.CreateDiagnosticReportRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.CreateDiagnosticReportResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.metric_set_id):
+            query['MetricSetId'] = request.metric_set_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDiagnosticReport',
+            version='2014-05-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecs_20140526_models.CreateDiagnosticReportResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_diagnostic_report(
+        self,
+        request: ecs_20140526_models.CreateDiagnosticReportRequest,
+    ) -> ecs_20140526_models.CreateDiagnosticReportResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_diagnostic_report_with_options(request, runtime)
+
+    async def create_diagnostic_report_async(
+        self,
+        request: ecs_20140526_models.CreateDiagnosticReportRequest,
+    ) -> ecs_20140526_models.CreateDiagnosticReportResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_diagnostic_report_with_options_async(request, runtime)
+
     def create_disk_with_options(
         self,
         request: ecs_20140526_models.CreateDiskRequest,
@@ -4901,6 +5077,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.architecture):
             query['Architecture'] = request.architecture
+        if not UtilClient.is_unset(request.boot_mode):
+            query['BootMode'] = request.boot_mode
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.description):
@@ -4961,6 +5139,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.architecture):
             query['Architecture'] = request.architecture
+        if not UtilClient.is_unset(request.boot_mode):
+            query['BootMode'] = request.boot_mode
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.description):
@@ -8862,6 +9042,154 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_deployment_set_with_options_async(request, runtime)
 
+    def delete_diagnostic_metric_sets_with_options(
+        self,
+        request: ecs_20140526_models.DeleteDiagnosticMetricSetsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.DeleteDiagnosticMetricSetsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.metric_set_ids):
+            query['MetricSetIds'] = request.metric_set_ids
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDiagnosticMetricSets',
+            version='2014-05-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeleteDiagnosticMetricSetsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_diagnostic_metric_sets_with_options_async(
+        self,
+        request: ecs_20140526_models.DeleteDiagnosticMetricSetsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.DeleteDiagnosticMetricSetsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.metric_set_ids):
+            query['MetricSetIds'] = request.metric_set_ids
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDiagnosticMetricSets',
+            version='2014-05-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeleteDiagnosticMetricSetsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_diagnostic_metric_sets(
+        self,
+        request: ecs_20140526_models.DeleteDiagnosticMetricSetsRequest,
+    ) -> ecs_20140526_models.DeleteDiagnosticMetricSetsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_diagnostic_metric_sets_with_options(request, runtime)
+
+    async def delete_diagnostic_metric_sets_async(
+        self,
+        request: ecs_20140526_models.DeleteDiagnosticMetricSetsRequest,
+    ) -> ecs_20140526_models.DeleteDiagnosticMetricSetsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_diagnostic_metric_sets_with_options_async(request, runtime)
+
+    def delete_diagnostic_reports_with_options(
+        self,
+        request: ecs_20140526_models.DeleteDiagnosticReportsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.DeleteDiagnosticReportsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.report_ids):
+            query['ReportIds'] = request.report_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDiagnosticReports',
+            version='2014-05-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeleteDiagnosticReportsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_diagnostic_reports_with_options_async(
+        self,
+        request: ecs_20140526_models.DeleteDiagnosticReportsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.DeleteDiagnosticReportsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.report_ids):
+            query['ReportIds'] = request.report_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDiagnosticReports',
+            version='2014-05-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecs_20140526_models.DeleteDiagnosticReportsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_diagnostic_reports(
+        self,
+        request: ecs_20140526_models.DeleteDiagnosticReportsRequest,
+    ) -> ecs_20140526_models.DeleteDiagnosticReportsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_diagnostic_reports_with_options(request, runtime)
+
+    async def delete_diagnostic_reports_async(
+        self,
+        request: ecs_20140526_models.DeleteDiagnosticReportsRequest,
+    ) -> ecs_20140526_models.DeleteDiagnosticReportsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_diagnostic_reports_with_options_async(request, runtime)
+
     def delete_disk_with_options(
         self,
         request: ecs_20140526_models.DeleteDiskRequest,
@@ -9349,8 +9677,6 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.template_tag):
-            query['TemplateTag'] = request.template_tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9391,8 +9717,6 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.template_tag):
-            query['TemplateTag'] = request.template_tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9447,8 +9771,6 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.template_tag):
-            query['TemplateTag'] = request.template_tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9489,8 +9811,6 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.template_tag):
-            query['TemplateTag'] = request.template_tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -13025,6 +13345,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.type):
             query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
@@ -13081,6 +13403,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.type):
             query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
@@ -13999,6 +14323,276 @@ class Client(OpenApiClient):
     ) -> ecs_20140526_models.DescribeDeploymentSetsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_deployment_sets_with_options_async(request, runtime)
+
+    def describe_diagnostic_metric_sets_with_options(
+        self,
+        request: ecs_20140526_models.DescribeDiagnosticMetricSetsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.DescribeDiagnosticMetricSetsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.metric_set_ids):
+            query['MetricSetIds'] = request.metric_set_ids
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDiagnosticMetricSets',
+            version='2014-05-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeDiagnosticMetricSetsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_diagnostic_metric_sets_with_options_async(
+        self,
+        request: ecs_20140526_models.DescribeDiagnosticMetricSetsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.DescribeDiagnosticMetricSetsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.metric_set_ids):
+            query['MetricSetIds'] = request.metric_set_ids
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDiagnosticMetricSets',
+            version='2014-05-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeDiagnosticMetricSetsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_diagnostic_metric_sets(
+        self,
+        request: ecs_20140526_models.DescribeDiagnosticMetricSetsRequest,
+    ) -> ecs_20140526_models.DescribeDiagnosticMetricSetsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_diagnostic_metric_sets_with_options(request, runtime)
+
+    async def describe_diagnostic_metric_sets_async(
+        self,
+        request: ecs_20140526_models.DescribeDiagnosticMetricSetsRequest,
+    ) -> ecs_20140526_models.DescribeDiagnosticMetricSetsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_diagnostic_metric_sets_with_options_async(request, runtime)
+
+    def describe_diagnostic_metrics_with_options(
+        self,
+        request: ecs_20140526_models.DescribeDiagnosticMetricsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.DescribeDiagnosticMetricsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.metric_ids):
+            query['MetricIds'] = request.metric_ids
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDiagnosticMetrics',
+            version='2014-05-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeDiagnosticMetricsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_diagnostic_metrics_with_options_async(
+        self,
+        request: ecs_20140526_models.DescribeDiagnosticMetricsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.DescribeDiagnosticMetricsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.metric_ids):
+            query['MetricIds'] = request.metric_ids
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDiagnosticMetrics',
+            version='2014-05-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeDiagnosticMetricsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_diagnostic_metrics(
+        self,
+        request: ecs_20140526_models.DescribeDiagnosticMetricsRequest,
+    ) -> ecs_20140526_models.DescribeDiagnosticMetricsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_diagnostic_metrics_with_options(request, runtime)
+
+    async def describe_diagnostic_metrics_async(
+        self,
+        request: ecs_20140526_models.DescribeDiagnosticMetricsRequest,
+    ) -> ecs_20140526_models.DescribeDiagnosticMetricsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_diagnostic_metrics_with_options_async(request, runtime)
+
+    def describe_diagnostic_reports_with_options(
+        self,
+        request: ecs_20140526_models.DescribeDiagnosticReportsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.DescribeDiagnosticReportsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.report_ids):
+            query['ReportIds'] = request.report_ids
+        if not UtilClient.is_unset(request.resource_ids):
+            query['ResourceIds'] = request.resource_ids
+        if not UtilClient.is_unset(request.severity):
+            query['Severity'] = request.severity
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDiagnosticReports',
+            version='2014-05-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeDiagnosticReportsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_diagnostic_reports_with_options_async(
+        self,
+        request: ecs_20140526_models.DescribeDiagnosticReportsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.DescribeDiagnosticReportsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.report_ids):
+            query['ReportIds'] = request.report_ids
+        if not UtilClient.is_unset(request.resource_ids):
+            query['ResourceIds'] = request.resource_ids
+        if not UtilClient.is_unset(request.severity):
+            query['Severity'] = request.severity
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDiagnosticReports',
+            version='2014-05-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeDiagnosticReportsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_diagnostic_reports(
+        self,
+        request: ecs_20140526_models.DescribeDiagnosticReportsRequest,
+    ) -> ecs_20140526_models.DescribeDiagnosticReportsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_diagnostic_reports_with_options(request, runtime)
+
+    async def describe_diagnostic_reports_async(
+        self,
+        request: ecs_20140526_models.DescribeDiagnosticReportsRequest,
+    ) -> ecs_20140526_models.DescribeDiagnosticReportsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_diagnostic_reports_with_options_async(request, runtime)
 
     def describe_disk_monitor_data_with_options(
         self,
@@ -17229,18 +17823,84 @@ class Client(OpenApiClient):
     ) -> ecs_20140526_models.DescribeInstanceTypesResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.cpu_architecture):
+            query['CpuArchitecture'] = request.cpu_architecture
+        if not UtilClient.is_unset(request.gpuspec):
+            query['GPUSpec'] = request.gpuspec
+        if not UtilClient.is_unset(request.instance_category):
+            query['InstanceCategory'] = request.instance_category
+        if not UtilClient.is_unset(request.instance_family_level):
+            query['InstanceFamilyLevel'] = request.instance_family_level
         if not UtilClient.is_unset(request.instance_type_family):
             query['InstanceTypeFamily'] = request.instance_type_family
         if not UtilClient.is_unset(request.instance_types):
             query['InstanceTypes'] = request.instance_types
+        if not UtilClient.is_unset(request.local_storage_category):
+            query['LocalStorageCategory'] = request.local_storage_category
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.maximum_cpu_core_count):
+            query['MaximumCpuCoreCount'] = request.maximum_cpu_core_count
+        if not UtilClient.is_unset(request.maximum_cpu_speed_frequency):
+            query['MaximumCpuSpeedFrequency'] = request.maximum_cpu_speed_frequency
+        if not UtilClient.is_unset(request.maximum_cpu_turbo_frequency):
+            query['MaximumCpuTurboFrequency'] = request.maximum_cpu_turbo_frequency
+        if not UtilClient.is_unset(request.maximum_gpuamount):
+            query['MaximumGPUAmount'] = request.maximum_gpuamount
+        if not UtilClient.is_unset(request.maximum_memory_size):
+            query['MaximumMemorySize'] = request.maximum_memory_size
+        if not UtilClient.is_unset(request.minimum_baseline_credit):
+            query['MinimumBaselineCredit'] = request.minimum_baseline_credit
+        if not UtilClient.is_unset(request.minimum_cpu_core_count):
+            query['MinimumCpuCoreCount'] = request.minimum_cpu_core_count
+        if not UtilClient.is_unset(request.minimum_cpu_speed_frequency):
+            query['MinimumCpuSpeedFrequency'] = request.minimum_cpu_speed_frequency
+        if not UtilClient.is_unset(request.minimum_cpu_turbo_frequency):
+            query['MinimumCpuTurboFrequency'] = request.minimum_cpu_turbo_frequency
+        if not UtilClient.is_unset(request.minimum_disk_quantity):
+            query['MinimumDiskQuantity'] = request.minimum_disk_quantity
+        if not UtilClient.is_unset(request.minimum_eni_ipv_6address_quantity):
+            query['MinimumEniIpv6AddressQuantity'] = request.minimum_eni_ipv_6address_quantity
+        if not UtilClient.is_unset(request.minimum_eni_private_ip_address_quantity):
+            query['MinimumEniPrivateIpAddressQuantity'] = request.minimum_eni_private_ip_address_quantity
+        if not UtilClient.is_unset(request.minimum_eni_quantity):
+            query['MinimumEniQuantity'] = request.minimum_eni_quantity
+        if not UtilClient.is_unset(request.minimum_eri_quantity):
+            query['MinimumEriQuantity'] = request.minimum_eri_quantity
+        if not UtilClient.is_unset(request.minimum_gpuamount):
+            query['MinimumGPUAmount'] = request.minimum_gpuamount
+        if not UtilClient.is_unset(request.minimum_initial_credit):
+            query['MinimumInitialCredit'] = request.minimum_initial_credit
+        if not UtilClient.is_unset(request.minimum_instance_bandwidth_rx):
+            query['MinimumInstanceBandwidthRx'] = request.minimum_instance_bandwidth_rx
+        if not UtilClient.is_unset(request.minimum_instance_bandwidth_tx):
+            query['MinimumInstanceBandwidthTx'] = request.minimum_instance_bandwidth_tx
+        if not UtilClient.is_unset(request.minimum_instance_pps_rx):
+            query['MinimumInstancePpsRx'] = request.minimum_instance_pps_rx
+        if not UtilClient.is_unset(request.minimum_instance_pps_tx):
+            query['MinimumInstancePpsTx'] = request.minimum_instance_pps_tx
+        if not UtilClient.is_unset(request.minimum_local_storage_amount):
+            query['MinimumLocalStorageAmount'] = request.minimum_local_storage_amount
+        if not UtilClient.is_unset(request.minimum_local_storage_capacity):
+            query['MinimumLocalStorageCapacity'] = request.minimum_local_storage_capacity
+        if not UtilClient.is_unset(request.minimum_memory_size):
+            query['MinimumMemorySize'] = request.minimum_memory_size
+        if not UtilClient.is_unset(request.minimum_primary_eni_queue_number):
+            query['MinimumPrimaryEniQueueNumber'] = request.minimum_primary_eni_queue_number
+        if not UtilClient.is_unset(request.minimum_queue_pair_number):
+            query['MinimumQueuePairNumber'] = request.minimum_queue_pair_number
+        if not UtilClient.is_unset(request.minimum_secondary_eni_queue_number):
+            query['MinimumSecondaryEniQueueNumber'] = request.minimum_secondary_eni_queue_number
         if not UtilClient.is_unset(request.next_token):
             query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.nvme_support):
+            query['NvmeSupport'] = request.nvme_support
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.physical_processor_model):
+            query['PhysicalProcessorModel'] = request.physical_processor_model
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -17271,18 +17931,84 @@ class Client(OpenApiClient):
     ) -> ecs_20140526_models.DescribeInstanceTypesResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.cpu_architecture):
+            query['CpuArchitecture'] = request.cpu_architecture
+        if not UtilClient.is_unset(request.gpuspec):
+            query['GPUSpec'] = request.gpuspec
+        if not UtilClient.is_unset(request.instance_category):
+            query['InstanceCategory'] = request.instance_category
+        if not UtilClient.is_unset(request.instance_family_level):
+            query['InstanceFamilyLevel'] = request.instance_family_level
         if not UtilClient.is_unset(request.instance_type_family):
             query['InstanceTypeFamily'] = request.instance_type_family
         if not UtilClient.is_unset(request.instance_types):
             query['InstanceTypes'] = request.instance_types
+        if not UtilClient.is_unset(request.local_storage_category):
+            query['LocalStorageCategory'] = request.local_storage_category
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.maximum_cpu_core_count):
+            query['MaximumCpuCoreCount'] = request.maximum_cpu_core_count
+        if not UtilClient.is_unset(request.maximum_cpu_speed_frequency):
+            query['MaximumCpuSpeedFrequency'] = request.maximum_cpu_speed_frequency
+        if not UtilClient.is_unset(request.maximum_cpu_turbo_frequency):
+            query['MaximumCpuTurboFrequency'] = request.maximum_cpu_turbo_frequency
+        if not UtilClient.is_unset(request.maximum_gpuamount):
+            query['MaximumGPUAmount'] = request.maximum_gpuamount
+        if not UtilClient.is_unset(request.maximum_memory_size):
+            query['MaximumMemorySize'] = request.maximum_memory_size
+        if not UtilClient.is_unset(request.minimum_baseline_credit):
+            query['MinimumBaselineCredit'] = request.minimum_baseline_credit
+        if not UtilClient.is_unset(request.minimum_cpu_core_count):
+            query['MinimumCpuCoreCount'] = request.minimum_cpu_core_count
+        if not UtilClient.is_unset(request.minimum_cpu_speed_frequency):
+            query['MinimumCpuSpeedFrequency'] = request.minimum_cpu_speed_frequency
+        if not UtilClient.is_unset(request.minimum_cpu_turbo_frequency):
+            query['MinimumCpuTurboFrequency'] = request.minimum_cpu_turbo_frequency
+        if not UtilClient.is_unset(request.minimum_disk_quantity):
+            query['MinimumDiskQuantity'] = request.minimum_disk_quantity
+        if not UtilClient.is_unset(request.minimum_eni_ipv_6address_quantity):
+            query['MinimumEniIpv6AddressQuantity'] = request.minimum_eni_ipv_6address_quantity
+        if not UtilClient.is_unset(request.minimum_eni_private_ip_address_quantity):
+            query['MinimumEniPrivateIpAddressQuantity'] = request.minimum_eni_private_ip_address_quantity
+        if not UtilClient.is_unset(request.minimum_eni_quantity):
+            query['MinimumEniQuantity'] = request.minimum_eni_quantity
+        if not UtilClient.is_unset(request.minimum_eri_quantity):
+            query['MinimumEriQuantity'] = request.minimum_eri_quantity
+        if not UtilClient.is_unset(request.minimum_gpuamount):
+            query['MinimumGPUAmount'] = request.minimum_gpuamount
+        if not UtilClient.is_unset(request.minimum_initial_credit):
+            query['MinimumInitialCredit'] = request.minimum_initial_credit
+        if not UtilClient.is_unset(request.minimum_instance_bandwidth_rx):
+            query['MinimumInstanceBandwidthRx'] = request.minimum_instance_bandwidth_rx
+        if not UtilClient.is_unset(request.minimum_instance_bandwidth_tx):
+            query['MinimumInstanceBandwidthTx'] = request.minimum_instance_bandwidth_tx
+        if not UtilClient.is_unset(request.minimum_instance_pps_rx):
+            query['MinimumInstancePpsRx'] = request.minimum_instance_pps_rx
+        if not UtilClient.is_unset(request.minimum_instance_pps_tx):
+            query['MinimumInstancePpsTx'] = request.minimum_instance_pps_tx
+        if not UtilClient.is_unset(request.minimum_local_storage_amount):
+            query['MinimumLocalStorageAmount'] = request.minimum_local_storage_amount
+        if not UtilClient.is_unset(request.minimum_local_storage_capacity):
+            query['MinimumLocalStorageCapacity'] = request.minimum_local_storage_capacity
+        if not UtilClient.is_unset(request.minimum_memory_size):
+            query['MinimumMemorySize'] = request.minimum_memory_size
+        if not UtilClient.is_unset(request.minimum_primary_eni_queue_number):
+            query['MinimumPrimaryEniQueueNumber'] = request.minimum_primary_eni_queue_number
+        if not UtilClient.is_unset(request.minimum_queue_pair_number):
+            query['MinimumQueuePairNumber'] = request.minimum_queue_pair_number
+        if not UtilClient.is_unset(request.minimum_secondary_eni_queue_number):
+            query['MinimumSecondaryEniQueueNumber'] = request.minimum_secondary_eni_queue_number
         if not UtilClient.is_unset(request.next_token):
             query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.nvme_support):
+            query['NvmeSupport'] = request.nvme_support
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.physical_processor_model):
+            query['PhysicalProcessorModel'] = request.physical_processor_model
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -17899,6 +18625,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -17953,6 +18681,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -18027,6 +18757,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.timed):
             query['Timed'] = request.timed
         req = open_api_models.OpenApiRequest(
@@ -18089,6 +18821,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.timed):
             query['Timed'] = request.timed
         req = open_api_models.OpenApiRequest(
@@ -20459,6 +21193,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -20509,6 +21245,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -25315,6 +26053,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.command_id):
             query['CommandId'] = request.command_id
+        if not UtilClient.is_unset(request.container_id):
+            query['ContainerId'] = request.container_id
+        if not UtilClient.is_unset(request.container_name):
+            query['ContainerName'] = request.container_name
         if not UtilClient.is_unset(request.frequency):
             query['Frequency'] = request.frequency
         if not UtilClient.is_unset(request.instance_id):
@@ -25373,6 +26115,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.command_id):
             query['CommandId'] = request.command_id
+        if not UtilClient.is_unset(request.container_id):
+            query['ContainerId'] = request.container_id
+        if not UtilClient.is_unset(request.container_name):
+            query['ContainerName'] = request.container_name
         if not UtilClient.is_unset(request.frequency):
             query['Frequency'] = request.frequency
         if not UtilClient.is_unset(request.instance_id):
@@ -25725,6 +26471,112 @@ class Client(OpenApiClient):
     ) -> ecs_20140526_models.LeaveSecurityGroupResponse:
         runtime = util_models.RuntimeOptions()
         return await self.leave_security_group_with_options_async(request, runtime)
+
+    def list_plugin_status_with_options(
+        self,
+        request: ecs_20140526_models.ListPluginStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.ListPluginStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPluginStatus',
+            version='2014-05-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecs_20140526_models.ListPluginStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_plugin_status_with_options_async(
+        self,
+        request: ecs_20140526_models.ListPluginStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.ListPluginStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPluginStatus',
+            version='2014-05-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecs_20140526_models.ListPluginStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_plugin_status(
+        self,
+        request: ecs_20140526_models.ListPluginStatusRequest,
+    ) -> ecs_20140526_models.ListPluginStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_plugin_status_with_options(request, runtime)
+
+    async def list_plugin_status_async(
+        self,
+        request: ecs_20140526_models.ListPluginStatusRequest,
+    ) -> ecs_20140526_models.ListPluginStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_plugin_status_with_options_async(request, runtime)
 
     def list_tag_resources_with_options(
         self,
@@ -27281,6 +28133,96 @@ class Client(OpenApiClient):
     ) -> ecs_20140526_models.ModifyDeploymentSetAttributeResponse:
         runtime = util_models.RuntimeOptions()
         return await self.modify_deployment_set_attribute_with_options_async(request, runtime)
+
+    def modify_diagnostic_metric_set_with_options(
+        self,
+        request: ecs_20140526_models.ModifyDiagnosticMetricSetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.ModifyDiagnosticMetricSetResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.metric_ids):
+            query['MetricIds'] = request.metric_ids
+        if not UtilClient.is_unset(request.metric_set_id):
+            query['MetricSetId'] = request.metric_set_id
+        if not UtilClient.is_unset(request.metric_set_name):
+            query['MetricSetName'] = request.metric_set_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDiagnosticMetricSet',
+            version='2014-05-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyDiagnosticMetricSetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_diagnostic_metric_set_with_options_async(
+        self,
+        request: ecs_20140526_models.ModifyDiagnosticMetricSetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.ModifyDiagnosticMetricSetResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.metric_ids):
+            query['MetricIds'] = request.metric_ids
+        if not UtilClient.is_unset(request.metric_set_id):
+            query['MetricSetId'] = request.metric_set_id
+        if not UtilClient.is_unset(request.metric_set_name):
+            query['MetricSetName'] = request.metric_set_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDiagnosticMetricSet',
+            version='2014-05-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyDiagnosticMetricSetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_diagnostic_metric_set(
+        self,
+        request: ecs_20140526_models.ModifyDiagnosticMetricSetRequest,
+    ) -> ecs_20140526_models.ModifyDiagnosticMetricSetResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_diagnostic_metric_set_with_options(request, runtime)
+
+    async def modify_diagnostic_metric_set_async(
+        self,
+        request: ecs_20140526_models.ModifyDiagnosticMetricSetRequest,
+    ) -> ecs_20140526_models.ModifyDiagnosticMetricSetResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_diagnostic_metric_set_with_options_async(request, runtime)
 
     def modify_disk_attribute_with_options(
         self,
@@ -33956,6 +34898,108 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.renew_instance_with_options_async(request, runtime)
 
+    def renew_reserved_instances_with_options(
+        self,
+        request: ecs_20140526_models.RenewReservedInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.RenewReservedInstancesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.reserved_instance_id):
+            query['ReservedInstanceId'] = request.reserved_instance_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RenewReservedInstances',
+            version='2014-05-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecs_20140526_models.RenewReservedInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def renew_reserved_instances_with_options_async(
+        self,
+        request: ecs_20140526_models.RenewReservedInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.RenewReservedInstancesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.reserved_instance_id):
+            query['ReservedInstanceId'] = request.reserved_instance_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RenewReservedInstances',
+            version='2014-05-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecs_20140526_models.RenewReservedInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def renew_reserved_instances(
+        self,
+        request: ecs_20140526_models.RenewReservedInstancesRequest,
+    ) -> ecs_20140526_models.RenewReservedInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.renew_reserved_instances_with_options(request, runtime)
+
+    async def renew_reserved_instances_async(
+        self,
+        request: ecs_20140526_models.RenewReservedInstancesRequest,
+    ) -> ecs_20140526_models.RenewReservedInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.renew_reserved_instances_with_options_async(request, runtime)
+
     def replace_system_disk_with_options(
         self,
         request: ecs_20140526_models.ReplaceSystemDiskRequest,
@@ -34851,6 +35895,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.command_content):
             query['CommandContent'] = request.command_content
+        if not UtilClient.is_unset(request.container_id):
+            query['ContainerId'] = request.container_id
+        if not UtilClient.is_unset(request.container_name):
+            query['ContainerName'] = request.container_name
         if not UtilClient.is_unset(request.content_encoding):
             query['ContentEncoding'] = request.content_encoding
         if not UtilClient.is_unset(request.description):
@@ -34881,6 +35929,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.timed):
             query['Timed'] = request.timed
         if not UtilClient.is_unset(request.timeout):
@@ -34925,6 +35975,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.command_content):
             query['CommandContent'] = request.command_content
+        if not UtilClient.is_unset(request.container_id):
+            query['ContainerId'] = request.container_id
+        if not UtilClient.is_unset(request.container_name):
+            query['ContainerName'] = request.container_name
         if not UtilClient.is_unset(request.content_encoding):
             query['ContentEncoding'] = request.content_encoding
         if not UtilClient.is_unset(request.description):
@@ -34955,6 +36009,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.timed):
             query['Timed'] = request.timed
         if not UtilClient.is_unset(request.timeout):
