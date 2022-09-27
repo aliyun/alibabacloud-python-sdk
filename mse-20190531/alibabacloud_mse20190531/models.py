@@ -4400,6 +4400,39 @@ class CreateApplicationResponse(TeaModel):
         return self
 
 
+class CreateClusterRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateClusterRequest(TeaModel):
     def __init__(
         self,
@@ -4420,6 +4453,7 @@ class CreateClusterRequest(TeaModel):
         region: str = None,
         request_pars: str = None,
         resource_group_id: str = None,
+        tag: List[CreateClusterRequestTag] = None,
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
@@ -4440,11 +4474,15 @@ class CreateClusterRequest(TeaModel):
         self.region = region
         self.request_pars = request_pars
         self.resource_group_id = resource_group_id
+        self.tag = tag
         self.v_switch_id = v_switch_id
         self.vpc_id = vpc_id
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -4486,6 +4524,10 @@ class CreateClusterRequest(TeaModel):
             result['RequestPars'] = self.request_pars
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
         if self.vpc_id is not None:
@@ -4528,6 +4570,11 @@ class CreateClusterRequest(TeaModel):
             self.request_pars = m.get('RequestPars')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateClusterRequestTag()
+                self.tag.append(temp_model.from_map(k))
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
         if m.get('VpcId') is not None:

@@ -1,3 +1,6 @@
+2022-09-27 Version: 3.9.4
+- Automatically generate sdk tasks.
+
 2022-09-22 Version: 3.9.3
 - Automatically generate sdk tasks.
 
