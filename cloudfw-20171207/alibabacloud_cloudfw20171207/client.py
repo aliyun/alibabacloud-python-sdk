@@ -1250,8 +1250,6 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.query):
             query['Query'] = request.query
-        if not UtilClient.is_unset(request.source_ip):
-            query['SourceIp'] = request.source_ip
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1290,8 +1288,6 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.query):
             query['Query'] = request.query
-        if not UtilClient.is_unset(request.source_ip):
-            query['SourceIp'] = request.source_ip
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1350,8 +1346,6 @@ class Client(OpenApiClient):
             query['SearchItem'] = request.search_item
         if not UtilClient.is_unset(request.sg_status):
             query['SgStatus'] = request.sg_status
-        if not UtilClient.is_unset(request.source_ip):
-            query['SourceIp'] = request.source_ip
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
         if not UtilClient.is_unset(request.type):
@@ -1402,8 +1396,6 @@ class Client(OpenApiClient):
             query['SearchItem'] = request.search_item
         if not UtilClient.is_unset(request.sg_status):
             query['SgStatus'] = request.sg_status
-        if not UtilClient.is_unset(request.source_ip):
-            query['SourceIp'] = request.source_ip
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
         if not UtilClient.is_unset(request.type):
@@ -1476,8 +1468,6 @@ class Client(OpenApiClient):
             query['Release'] = request.release
         if not UtilClient.is_unset(request.source):
             query['Source'] = request.source
-        if not UtilClient.is_unset(request.source_ip):
-            query['SourceIp'] = request.source_ip
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1530,8 +1520,6 @@ class Client(OpenApiClient):
             query['Release'] = request.release
         if not UtilClient.is_unset(request.source):
             query['Source'] = request.source
-        if not UtilClient.is_unset(request.source_ip):
-            query['SourceIp'] = request.source_ip
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

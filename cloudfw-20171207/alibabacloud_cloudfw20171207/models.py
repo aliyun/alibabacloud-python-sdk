@@ -1813,7 +1813,6 @@ class DescribeAddressBookRequest(TeaModel):
         lang: str = None,
         page_size: str = None,
         query: str = None,
-        source_ip: str = None,
     ):
         self.contain_port = contain_port
         self.current_page = current_page
@@ -1821,7 +1820,6 @@ class DescribeAddressBookRequest(TeaModel):
         self.lang = lang
         self.page_size = page_size
         self.query = query
-        self.source_ip = source_ip
 
     def validate(self):
         pass
@@ -1844,8 +1842,6 @@ class DescribeAddressBookRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.query is not None:
             result['Query'] = self.query
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         return result
 
     def from_map(self, m: dict = None):
@@ -1862,8 +1858,6 @@ class DescribeAddressBookRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('Query') is not None:
             self.query = m.get('Query')
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         return self
 
 
@@ -2104,7 +2098,6 @@ class DescribeAssetListRequest(TeaModel):
         resource_type: str = None,
         search_item: str = None,
         sg_status: str = None,
-        source_ip: str = None,
         status: str = None,
         type: str = None,
         user_type: str = None,
@@ -2118,7 +2111,6 @@ class DescribeAssetListRequest(TeaModel):
         self.resource_type = resource_type
         self.search_item = search_item
         self.sg_status = sg_status
-        self.source_ip = source_ip
         self.status = status
         self.type = type
         self.user_type = user_type
@@ -2150,8 +2142,6 @@ class DescribeAssetListRequest(TeaModel):
             result['SearchItem'] = self.search_item
         if self.sg_status is not None:
             result['SgStatus'] = self.sg_status
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         if self.status is not None:
             result['Status'] = self.status
         if self.type is not None:
@@ -2180,8 +2170,6 @@ class DescribeAssetListRequest(TeaModel):
             self.search_item = m.get('SearchItem')
         if m.get('SgStatus') is not None:
             self.sg_status = m.get('SgStatus')
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('Type') is not None:
@@ -2432,7 +2420,6 @@ class DescribeControlPolicyRequest(TeaModel):
         proto: str = None,
         release: str = None,
         source: str = None,
-        source_ip: str = None,
     ):
         self.acl_action = acl_action
         self.acl_uuid = acl_uuid
@@ -2446,7 +2433,6 @@ class DescribeControlPolicyRequest(TeaModel):
         self.proto = proto
         self.release = release
         self.source = source
-        self.source_ip = source_ip
 
     def validate(self):
         pass
@@ -2481,8 +2467,6 @@ class DescribeControlPolicyRequest(TeaModel):
             result['Release'] = self.release
         if self.source is not None:
             result['Source'] = self.source
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         return result
 
     def from_map(self, m: dict = None):
@@ -2511,8 +2495,6 @@ class DescribeControlPolicyRequest(TeaModel):
             self.release = m.get('Release')
         if m.get('Source') is not None:
             self.source = m.get('Source')
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         return self
 
 
