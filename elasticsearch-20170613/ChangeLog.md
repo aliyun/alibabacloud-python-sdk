@@ -1,3 +1,6 @@
+2022-09-27 Version: 1.1.1
+- Supported next-api-aliyun-com.
+
 2022-06-11 Version: 1.1.0
 - Supported next-api-aliyun-com.
 

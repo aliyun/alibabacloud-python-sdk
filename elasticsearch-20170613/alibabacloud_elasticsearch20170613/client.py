@@ -68,7 +68,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ActivateZonesResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -81,7 +80,7 @@ class Client(OpenApiClient):
             action='ActivateZones',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/recover-zones',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/recover-zones',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -101,7 +100,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ActivateZonesResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -114,7 +112,7 @@ class Client(OpenApiClient):
             action='ActivateZones',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/recover-zones',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/recover-zones',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -152,7 +150,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.AddConnectableClusterResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -165,7 +162,7 @@ class Client(OpenApiClient):
             action='AddConnectableCluster',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/connected-clusters',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/connected-clusters',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -185,7 +182,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.AddConnectableClusterResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -198,7 +194,7 @@ class Client(OpenApiClient):
             action='AddConnectableCluster',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/connected-clusters',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/connected-clusters',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -236,7 +232,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.AddSnapshotRepoResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=request.body
@@ -245,7 +240,7 @@ class Client(OpenApiClient):
             action='AddSnapshotRepo',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/snapshot-repos',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/snapshot-repos',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -265,7 +260,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.AddSnapshotRepoResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=request.body
@@ -274,7 +268,7 @@ class Client(OpenApiClient):
             action='AddSnapshotRepo',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/snapshot-repos',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/snapshot-repos',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -312,20 +306,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.CancelDeletionResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CancelDeletion',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/cancel-deletion',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/cancel-deletion',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -345,20 +337,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.CancelDeletionResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CancelDeletion',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/cancel-deletion',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/cancel-deletion',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -396,20 +386,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.CancelLogstashDeletionResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CancelLogstashDeletion',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/actions/cancel-deletion',
+            pathname=f'/openapi/logstashes/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/cancel-deletion',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -429,20 +417,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.CancelLogstashDeletionResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CancelLogstashDeletion',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/actions/cancel-deletion',
+            pathname=f'/openapi/logstashes/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/cancel-deletion',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -480,7 +466,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.CancelTaskResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -488,14 +473,13 @@ class Client(OpenApiClient):
             query['taskType'] = request.task_type
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CancelTask',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/cancel-task',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/cancel-task',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -515,7 +499,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.CancelTaskResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -523,14 +506,13 @@ class Client(OpenApiClient):
             query['taskType'] = request.task_type
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CancelTask',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/cancel-task',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/cancel-task',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -656,7 +638,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.CloseDiagnosisResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
@@ -664,14 +645,13 @@ class Client(OpenApiClient):
             query['lang'] = request.lang
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CloseDiagnosis',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/diagnosis/instances/{instance_id}/actions/close-diagnosis',
+            pathname=f'/openapi/diagnosis/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/close-diagnosis',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -691,7 +671,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.CloseDiagnosisResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
@@ -699,14 +678,13 @@ class Client(OpenApiClient):
             query['lang'] = request.lang
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CloseDiagnosis',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/diagnosis/instances/{instance_id}/actions/close-diagnosis',
+            pathname=f'/openapi/diagnosis/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/close-diagnosis',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -744,20 +722,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.CloseHttpsResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CloseHttps',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/close-https',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/close-https',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -777,20 +753,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.CloseHttpsResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CloseHttps',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/close-https',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/close-https',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -831,21 +805,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.CloseManagedIndexResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        index = OpenApiUtilClient.get_encode_param(index)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CloseManagedIndex',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/indices/{index}/close-managed',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/indices/{OpenApiUtilClient.get_encode_param(index)}/close-managed',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -866,21 +837,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.CloseManagedIndexResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        index = OpenApiUtilClient.get_encode_param(index)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CloseManagedIndex',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/indices/{index}/close-managed',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/indices/{OpenApiUtilClient.get_encode_param(index)}/close-managed',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -999,8 +967,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.CreateComponentIndexResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        name = OpenApiUtilClient.get_encode_param(name)
         body = {}
         if not UtilClient.is_unset(request.meta):
             body['_meta'] = request.meta
@@ -1014,7 +980,7 @@ class Client(OpenApiClient):
             action='CreateComponentIndex',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/component-index/{name}',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/component-index/{OpenApiUtilClient.get_encode_param(name)}',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -1035,8 +1001,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.CreateComponentIndexResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        name = OpenApiUtilClient.get_encode_param(name)
         body = {}
         if not UtilClient.is_unset(request.meta):
             body['_meta'] = request.meta
@@ -1050,7 +1014,7 @@ class Client(OpenApiClient):
             action='CreateComponentIndex',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/component-index/{name}',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/component-index/{OpenApiUtilClient.get_encode_param(name)}',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -1088,7 +1052,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.CreateDataStreamResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
@@ -1101,7 +1064,7 @@ class Client(OpenApiClient):
             action='CreateDataStream',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/data-streams',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/data-streams',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -1121,7 +1084,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.CreateDataStreamResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
@@ -1134,7 +1096,7 @@ class Client(OpenApiClient):
             action='CreateDataStream',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/data-streams',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/data-streams',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -1172,7 +1134,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.CreateDataTasksResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
@@ -1185,7 +1146,7 @@ class Client(OpenApiClient):
             action='CreateDataTasks',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/data-task',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/data-task',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -1205,7 +1166,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.CreateDataTasksResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
@@ -1218,7 +1178,7 @@ class Client(OpenApiClient):
             action='CreateDataTasks',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/data-task',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/data-task',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -1256,7 +1216,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.CreateILMPolicyResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
@@ -1269,7 +1228,7 @@ class Client(OpenApiClient):
             action='CreateILMPolicy',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/ilm-policies',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/ilm-policies',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -1289,7 +1248,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.CreateILMPolicyResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
@@ -1302,7 +1260,7 @@ class Client(OpenApiClient):
             action='CreateILMPolicy',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/ilm-policies',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/ilm-policies',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -1340,7 +1298,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.CreateIndexTemplateResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
@@ -1353,7 +1310,7 @@ class Client(OpenApiClient):
             action='CreateIndexTemplate',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/index-templates',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/index-templates',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -1373,7 +1330,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.CreateIndexTemplateResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
@@ -1386,7 +1342,7 @@ class Client(OpenApiClient):
             action='CreateIndexTemplate',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/index-templates',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/index-templates',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -1532,7 +1488,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.CreatePipelinesResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
@@ -1547,7 +1502,7 @@ class Client(OpenApiClient):
             action='CreatePipelines',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/pipelines',
+            pathname=f'/openapi/logstashes/{OpenApiUtilClient.get_encode_param(instance_id)}/pipelines',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -1567,7 +1522,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.CreatePipelinesResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
@@ -1582,7 +1536,7 @@ class Client(OpenApiClient):
             action='CreatePipelines',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/pipelines',
+            pathname=f'/openapi/logstashes/{OpenApiUtilClient.get_encode_param(instance_id)}/pipelines',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -1620,7 +1574,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.CreateSnapshotResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
@@ -1633,7 +1586,7 @@ class Client(OpenApiClient):
             action='CreateSnapshot',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/snapshots',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/snapshots',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -1653,7 +1606,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.CreateSnapshotResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
@@ -1666,7 +1618,7 @@ class Client(OpenApiClient):
             action='CreateSnapshot',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/snapshots',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/snapshots',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -1704,7 +1656,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.CreateVpcEndpointResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
@@ -1724,7 +1675,7 @@ class Client(OpenApiClient):
             action='CreateVpcEndpoint',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/vpc-endpoints',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/vpc-endpoints',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -1744,7 +1695,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.CreateVpcEndpointResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
@@ -1764,7 +1714,7 @@ class Client(OpenApiClient):
             action='CreateVpcEndpoint',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/vpc-endpoints',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/vpc-endpoints',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -1802,7 +1752,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DeactivateZonesResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -1815,7 +1764,7 @@ class Client(OpenApiClient):
             action='DeactivateZones',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/down-zones',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/down-zones',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -1835,7 +1784,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DeactivateZonesResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -1848,7 +1796,7 @@ class Client(OpenApiClient):
             action='DeactivateZones',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/down-zones',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/down-zones',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -1886,20 +1834,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DeleteCollectorResponse:
         UtilClient.validate_model(request)
-        res_id = OpenApiUtilClient.get_encode_param(res_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteCollector',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/collectors/{res_id}',
+            pathname=f'/openapi/collectors/{OpenApiUtilClient.get_encode_param(res_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1919,20 +1865,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DeleteCollectorResponse:
         UtilClient.validate_model(request)
-        res_id = OpenApiUtilClient.get_encode_param(res_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteCollector',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/collectors/{res_id}',
+            pathname=f'/openapi/collectors/{OpenApiUtilClient.get_encode_param(res_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1948,42 +1892,35 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
         name: str,
-        request: elasticsearch_20170613_models.DeleteComponentIndexRequest,
     ) -> elasticsearch_20170613_models.DeleteComponentIndexResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_component_index_with_options(instance_id, name, request, headers, runtime)
+        return self.delete_component_index_with_options(instance_id, name, headers, runtime)
 
     async def delete_component_index_async(
         self,
         instance_id: str,
         name: str,
-        request: elasticsearch_20170613_models.DeleteComponentIndexRequest,
     ) -> elasticsearch_20170613_models.DeleteComponentIndexResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_component_index_with_options_async(instance_id, name, request, headers, runtime)
+        return await self.delete_component_index_with_options_async(instance_id, name, headers, runtime)
 
     def delete_component_index_with_options(
         self,
         instance_id: str,
         name: str,
-        request: elasticsearch_20170613_models.DeleteComponentIndexRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DeleteComponentIndexResponse:
-        UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        name = OpenApiUtilClient.get_encode_param(name)
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=request.body
+            headers=headers
         )
         params = open_api_models.Params(
             action='DeleteComponentIndex',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/component-index/{name}',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/component-index/{OpenApiUtilClient.get_encode_param(name)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1999,22 +1936,17 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
         name: str,
-        request: elasticsearch_20170613_models.DeleteComponentIndexRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DeleteComponentIndexResponse:
-        UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        name = OpenApiUtilClient.get_encode_param(name)
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=request.body
+            headers=headers
         )
         params = open_api_models.Params(
             action='DeleteComponentIndex',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/component-index/{name}',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/component-index/{OpenApiUtilClient.get_encode_param(name)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -2052,7 +1984,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DeleteConnectedClusterResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -2060,14 +1991,13 @@ class Client(OpenApiClient):
             query['connectedInstanceId'] = request.connected_instance_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteConnectedCluster',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/connected-clusters',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/connected-clusters',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -2087,7 +2017,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DeleteConnectedClusterResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -2095,14 +2024,13 @@ class Client(OpenApiClient):
             query['connectedInstanceId'] = request.connected_instance_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteConnectedCluster',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/connected-clusters',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/connected-clusters',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -2143,21 +2071,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DeleteDataStreamResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        data_stream = OpenApiUtilClient.get_encode_param(data_stream)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteDataStream',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/data-streams/{data_stream}',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/data-streams/{OpenApiUtilClient.get_encode_param(data_stream)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -2178,21 +2103,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DeleteDataStreamResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        data_stream = OpenApiUtilClient.get_encode_param(data_stream)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteDataStream',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/data-streams/{data_stream}',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/data-streams/{OpenApiUtilClient.get_encode_param(data_stream)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -2230,7 +2152,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DeleteDataTaskResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
@@ -2238,14 +2159,13 @@ class Client(OpenApiClient):
             query['taskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteDataTask',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/data-task',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/data-task',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -2265,7 +2185,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DeleteDataTaskResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
@@ -2273,14 +2192,13 @@ class Client(OpenApiClient):
             query['taskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteDataTask',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/data-task',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/data-task',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -2296,42 +2214,35 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
         name: str,
-        request: elasticsearch_20170613_models.DeleteDeprecatedTemplateRequest,
     ) -> elasticsearch_20170613_models.DeleteDeprecatedTemplateResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_deprecated_template_with_options(instance_id, name, request, headers, runtime)
+        return self.delete_deprecated_template_with_options(instance_id, name, headers, runtime)
 
     async def delete_deprecated_template_async(
         self,
         instance_id: str,
         name: str,
-        request: elasticsearch_20170613_models.DeleteDeprecatedTemplateRequest,
     ) -> elasticsearch_20170613_models.DeleteDeprecatedTemplateResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_deprecated_template_with_options_async(instance_id, name, request, headers, runtime)
+        return await self.delete_deprecated_template_with_options_async(instance_id, name, headers, runtime)
 
     def delete_deprecated_template_with_options(
         self,
         instance_id: str,
         name: str,
-        request: elasticsearch_20170613_models.DeleteDeprecatedTemplateRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DeleteDeprecatedTemplateResponse:
-        UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        name = OpenApiUtilClient.get_encode_param(name)
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=request.body
+            headers=headers
         )
         params = open_api_models.Params(
             action='DeleteDeprecatedTemplate',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/deprecated-templates/{name}',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/deprecated-templates/{OpenApiUtilClient.get_encode_param(name)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -2347,22 +2258,17 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
         name: str,
-        request: elasticsearch_20170613_models.DeleteDeprecatedTemplateRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DeleteDeprecatedTemplateResponse:
-        UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        name = OpenApiUtilClient.get_encode_param(name)
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=request.body
+            headers=headers
         )
         params = open_api_models.Params(
             action='DeleteDeprecatedTemplate',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/deprecated-templates/{name}',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/deprecated-templates/{OpenApiUtilClient.get_encode_param(name)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -2378,42 +2284,35 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
         policy_name: str,
-        request: elasticsearch_20170613_models.DeleteILMPolicyRequest,
     ) -> elasticsearch_20170613_models.DeleteILMPolicyResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_ilmpolicy_with_options(instance_id, policy_name, request, headers, runtime)
+        return self.delete_ilmpolicy_with_options(instance_id, policy_name, headers, runtime)
 
     async def delete_ilmpolicy_async(
         self,
         instance_id: str,
         policy_name: str,
-        request: elasticsearch_20170613_models.DeleteILMPolicyRequest,
     ) -> elasticsearch_20170613_models.DeleteILMPolicyResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_ilmpolicy_with_options_async(instance_id, policy_name, request, headers, runtime)
+        return await self.delete_ilmpolicy_with_options_async(instance_id, policy_name, headers, runtime)
 
     def delete_ilmpolicy_with_options(
         self,
         instance_id: str,
         policy_name: str,
-        request: elasticsearch_20170613_models.DeleteILMPolicyRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DeleteILMPolicyResponse:
-        UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        policy_name = OpenApiUtilClient.get_encode_param(policy_name)
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=request.body
+            headers=headers
         )
         params = open_api_models.Params(
             action='DeleteILMPolicy',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/ilm-policies/{policy_name}',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/ilm-policies/{OpenApiUtilClient.get_encode_param(policy_name)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -2429,22 +2328,17 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
         policy_name: str,
-        request: elasticsearch_20170613_models.DeleteILMPolicyRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DeleteILMPolicyResponse:
-        UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        policy_name = OpenApiUtilClient.get_encode_param(policy_name)
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=request.body
+            headers=headers
         )
         params = open_api_models.Params(
             action='DeleteILMPolicy',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/ilm-policies/{policy_name}',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/ilm-policies/{OpenApiUtilClient.get_encode_param(policy_name)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -2460,42 +2354,35 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
         index_template: str,
-        request: elasticsearch_20170613_models.DeleteIndexTemplateRequest,
     ) -> elasticsearch_20170613_models.DeleteIndexTemplateResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_index_template_with_options(instance_id, index_template, request, headers, runtime)
+        return self.delete_index_template_with_options(instance_id, index_template, headers, runtime)
 
     async def delete_index_template_async(
         self,
         instance_id: str,
         index_template: str,
-        request: elasticsearch_20170613_models.DeleteIndexTemplateRequest,
     ) -> elasticsearch_20170613_models.DeleteIndexTemplateResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_index_template_with_options_async(instance_id, index_template, request, headers, runtime)
+        return await self.delete_index_template_with_options_async(instance_id, index_template, headers, runtime)
 
     def delete_index_template_with_options(
         self,
         instance_id: str,
         index_template: str,
-        request: elasticsearch_20170613_models.DeleteIndexTemplateRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DeleteIndexTemplateResponse:
-        UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        index_template = OpenApiUtilClient.get_encode_param(index_template)
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=request.body
+            headers=headers
         )
         params = open_api_models.Params(
             action='DeleteIndexTemplate',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/index-templates/{index_template}',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/index-templates/{OpenApiUtilClient.get_encode_param(index_template)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -2511,22 +2398,17 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
         index_template: str,
-        request: elasticsearch_20170613_models.DeleteIndexTemplateRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DeleteIndexTemplateResponse:
-        UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        index_template = OpenApiUtilClient.get_encode_param(index_template)
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=request.body
+            headers=headers
         )
         params = open_api_models.Params(
             action='DeleteIndexTemplate',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/index-templates/{index_template}',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/index-templates/{OpenApiUtilClient.get_encode_param(index_template)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -2564,7 +2446,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DeleteInstanceResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -2572,14 +2453,13 @@ class Client(OpenApiClient):
             query['deleteType'] = request.delete_type
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteInstance',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -2599,7 +2479,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DeleteInstanceResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -2607,14 +2486,13 @@ class Client(OpenApiClient):
             query['deleteType'] = request.delete_type
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteInstance',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -2652,7 +2530,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DeleteLogstashResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -2660,14 +2537,13 @@ class Client(OpenApiClient):
             query['deleteType'] = request.delete_type
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteLogstash',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}',
+            pathname=f'/openapi/logstashes/{OpenApiUtilClient.get_encode_param(instance_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -2687,7 +2563,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DeleteLogstashResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -2695,14 +2570,13 @@ class Client(OpenApiClient):
             query['deleteType'] = request.delete_type
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteLogstash',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}',
+            pathname=f'/openapi/logstashes/{OpenApiUtilClient.get_encode_param(instance_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -2740,7 +2614,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DeletePipelinesResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
@@ -2748,14 +2621,13 @@ class Client(OpenApiClient):
             query['pipelineIds'] = request.pipeline_ids
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeletePipelines',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/pipelines',
+            pathname=f'/openapi/logstashes/{OpenApiUtilClient.get_encode_param(instance_id)}/pipelines',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -2775,7 +2647,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DeletePipelinesResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
@@ -2783,14 +2654,13 @@ class Client(OpenApiClient):
             query['pipelineIds'] = request.pipeline_ids
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeletePipelines',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/pipelines',
+            pathname=f'/openapi/logstashes/{OpenApiUtilClient.get_encode_param(instance_id)}/pipelines',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -2828,7 +2698,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DeleteSnapshotRepoResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -2836,14 +2705,13 @@ class Client(OpenApiClient):
             query['repoPath'] = request.repo_path
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteSnapshotRepo',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/snapshot-repos',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/snapshot-repos',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -2863,7 +2731,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DeleteSnapshotRepoResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -2871,14 +2738,13 @@ class Client(OpenApiClient):
             query['repoPath'] = request.repo_path
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteSnapshotRepo',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/snapshot-repos',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/snapshot-repos',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -2919,21 +2785,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DeleteVpcEndpointResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        endpoint_id = OpenApiUtilClient.get_encode_param(endpoint_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteVpcEndpoint',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/vpc-endpoints/{endpoint_id}',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/vpc-endpoints/{OpenApiUtilClient.get_encode_param(endpoint_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -2954,21 +2817,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DeleteVpcEndpointResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        endpoint_id = OpenApiUtilClient.get_encode_param(endpoint_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteVpcEndpoint',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/vpc-endpoints/{endpoint_id}',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/vpc-endpoints/{OpenApiUtilClient.get_encode_param(endpoint_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -2983,39 +2843,33 @@ class Client(OpenApiClient):
     def describe_ack_operator(
         self,
         cluster_id: str,
-        request: elasticsearch_20170613_models.DescribeAckOperatorRequest,
     ) -> elasticsearch_20170613_models.DescribeAckOperatorResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_ack_operator_with_options(cluster_id, request, headers, runtime)
+        return self.describe_ack_operator_with_options(cluster_id, headers, runtime)
 
     async def describe_ack_operator_async(
         self,
         cluster_id: str,
-        request: elasticsearch_20170613_models.DescribeAckOperatorRequest,
     ) -> elasticsearch_20170613_models.DescribeAckOperatorResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_ack_operator_with_options_async(cluster_id, request, headers, runtime)
+        return await self.describe_ack_operator_with_options_async(cluster_id, headers, runtime)
 
     def describe_ack_operator_with_options(
         self,
         cluster_id: str,
-        request: elasticsearch_20170613_models.DescribeAckOperatorRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeAckOperatorResponse:
-        UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=request.body
+            headers=headers
         )
         params = open_api_models.Params(
             action='DescribeAckOperator',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/ack-clusters/{cluster_id}/operator',
+            pathname=f'/openapi/ack-clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/operator',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3030,21 +2884,17 @@ class Client(OpenApiClient):
     async def describe_ack_operator_with_options_async(
         self,
         cluster_id: str,
-        request: elasticsearch_20170613_models.DescribeAckOperatorRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeAckOperatorResponse:
-        UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=request.body
+            headers=headers
         )
         params = open_api_models.Params(
             action='DescribeAckOperator',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/ack-clusters/{cluster_id}/operator',
+            pathname=f'/openapi/ack-clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/operator',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3059,39 +2909,33 @@ class Client(OpenApiClient):
     def describe_apm(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.DescribeApmRequest,
     ) -> elasticsearch_20170613_models.DescribeApmResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_apm_with_options(instance_id, request, headers, runtime)
+        return self.describe_apm_with_options(instance_id, headers, runtime)
 
     async def describe_apm_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.DescribeApmRequest,
     ) -> elasticsearch_20170613_models.DescribeApmResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_apm_with_options_async(instance_id, request, headers, runtime)
+        return await self.describe_apm_with_options_async(instance_id, headers, runtime)
 
     def describe_apm_with_options(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.DescribeApmRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeApmResponse:
-        UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=request.body
+            headers=headers
         )
         params = open_api_models.Params(
             action='DescribeApm',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/apm/{instance_id}',
+            pathname=f'/openapi/apm/{OpenApiUtilClient.get_encode_param(instance_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3106,21 +2950,17 @@ class Client(OpenApiClient):
     async def describe_apm_with_options_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.DescribeApmRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeApmResponse:
-        UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=request.body
+            headers=headers
         )
         params = open_api_models.Params(
             action='DescribeApm',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/apm/{instance_id}',
+            pathname=f'/openapi/apm/{OpenApiUtilClient.get_encode_param(instance_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3135,39 +2975,33 @@ class Client(OpenApiClient):
     def describe_collector(
         self,
         res_id: str,
-        request: elasticsearch_20170613_models.DescribeCollectorRequest,
     ) -> elasticsearch_20170613_models.DescribeCollectorResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_collector_with_options(res_id, request, headers, runtime)
+        return self.describe_collector_with_options(res_id, headers, runtime)
 
     async def describe_collector_async(
         self,
         res_id: str,
-        request: elasticsearch_20170613_models.DescribeCollectorRequest,
     ) -> elasticsearch_20170613_models.DescribeCollectorResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_collector_with_options_async(res_id, request, headers, runtime)
+        return await self.describe_collector_with_options_async(res_id, headers, runtime)
 
     def describe_collector_with_options(
         self,
         res_id: str,
-        request: elasticsearch_20170613_models.DescribeCollectorRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeCollectorResponse:
-        UtilClient.validate_model(request)
-        res_id = OpenApiUtilClient.get_encode_param(res_id)
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=request.body
+            headers=headers
         )
         params = open_api_models.Params(
             action='DescribeCollector',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/collectors/{res_id}',
+            pathname=f'/openapi/collectors/{OpenApiUtilClient.get_encode_param(res_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3182,21 +3016,17 @@ class Client(OpenApiClient):
     async def describe_collector_with_options_async(
         self,
         res_id: str,
-        request: elasticsearch_20170613_models.DescribeCollectorRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeCollectorResponse:
-        UtilClient.validate_model(request)
-        res_id = OpenApiUtilClient.get_encode_param(res_id)
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=request.body
+            headers=headers
         )
         params = open_api_models.Params(
             action='DescribeCollector',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/collectors/{res_id}',
+            pathname=f'/openapi/collectors/{OpenApiUtilClient.get_encode_param(res_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3212,42 +3042,35 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
         name: str,
-        request: elasticsearch_20170613_models.DescribeComponentIndexRequest,
     ) -> elasticsearch_20170613_models.DescribeComponentIndexResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_component_index_with_options(instance_id, name, request, headers, runtime)
+        return self.describe_component_index_with_options(instance_id, name, headers, runtime)
 
     async def describe_component_index_async(
         self,
         instance_id: str,
         name: str,
-        request: elasticsearch_20170613_models.DescribeComponentIndexRequest,
     ) -> elasticsearch_20170613_models.DescribeComponentIndexResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_component_index_with_options_async(instance_id, name, request, headers, runtime)
+        return await self.describe_component_index_with_options_async(instance_id, name, headers, runtime)
 
     def describe_component_index_with_options(
         self,
         instance_id: str,
         name: str,
-        request: elasticsearch_20170613_models.DescribeComponentIndexRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeComponentIndexResponse:
-        UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        name = OpenApiUtilClient.get_encode_param(name)
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=request.body
+            headers=headers
         )
         params = open_api_models.Params(
             action='DescribeComponentIndex',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/component-index/{name}',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/component-index/{OpenApiUtilClient.get_encode_param(name)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3263,22 +3086,17 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
         name: str,
-        request: elasticsearch_20170613_models.DescribeComponentIndexRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeComponentIndexResponse:
-        UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        name = OpenApiUtilClient.get_encode_param(name)
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=request.body
+            headers=headers
         )
         params = open_api_models.Params(
             action='DescribeComponentIndex',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/component-index/{name}',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/component-index/{OpenApiUtilClient.get_encode_param(name)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3316,20 +3134,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeConnectableClustersResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.already_set_items):
             query['alreadySetItems'] = request.already_set_items
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeConnectableClusters',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/connectable-clusters',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/connectable-clusters',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3349,20 +3165,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeConnectableClustersResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.already_set_items):
             query['alreadySetItems'] = request.already_set_items
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeConnectableClusters',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/connectable-clusters',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/connectable-clusters',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3378,42 +3192,35 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
         name: str,
-        request: elasticsearch_20170613_models.DescribeDeprecatedTemplateRequest,
     ) -> elasticsearch_20170613_models.DescribeDeprecatedTemplateResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_deprecated_template_with_options(instance_id, name, request, headers, runtime)
+        return self.describe_deprecated_template_with_options(instance_id, name, headers, runtime)
 
     async def describe_deprecated_template_async(
         self,
         instance_id: str,
         name: str,
-        request: elasticsearch_20170613_models.DescribeDeprecatedTemplateRequest,
     ) -> elasticsearch_20170613_models.DescribeDeprecatedTemplateResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_deprecated_template_with_options_async(instance_id, name, request, headers, runtime)
+        return await self.describe_deprecated_template_with_options_async(instance_id, name, headers, runtime)
 
     def describe_deprecated_template_with_options(
         self,
         instance_id: str,
         name: str,
-        request: elasticsearch_20170613_models.DescribeDeprecatedTemplateRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeDeprecatedTemplateResponse:
-        UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        name = OpenApiUtilClient.get_encode_param(name)
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=request.body
+            headers=headers
         )
         params = open_api_models.Params(
             action='DescribeDeprecatedTemplate',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/deprecated-templates/{name}',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/deprecated-templates/{OpenApiUtilClient.get_encode_param(name)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3429,22 +3236,17 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
         name: str,
-        request: elasticsearch_20170613_models.DescribeDeprecatedTemplateRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeDeprecatedTemplateResponse:
-        UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        name = OpenApiUtilClient.get_encode_param(name)
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=request.body
+            headers=headers
         )
         params = open_api_models.Params(
             action='DescribeDeprecatedTemplate',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/deprecated-templates/{name}',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/deprecated-templates/{OpenApiUtilClient.get_encode_param(name)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3485,21 +3287,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeDiagnoseReportResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        report_id = OpenApiUtilClient.get_encode_param(report_id)
         query = {}
         if not UtilClient.is_unset(request.lang):
             query['lang'] = request.lang
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDiagnoseReport',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/diagnosis/instances/{instance_id}/reports/{report_id}',
+            pathname=f'/openapi/diagnosis/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/reports/{OpenApiUtilClient.get_encode_param(report_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3520,21 +3319,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeDiagnoseReportResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        report_id = OpenApiUtilClient.get_encode_param(report_id)
         query = {}
         if not UtilClient.is_unset(request.lang):
             query['lang'] = request.lang
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDiagnoseReport',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/diagnosis/instances/{instance_id}/reports/{report_id}',
+            pathname=f'/openapi/diagnosis/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/reports/{OpenApiUtilClient.get_encode_param(report_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3572,20 +3368,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeDiagnosisSettingsResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.lang):
             query['lang'] = request.lang
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDiagnosisSettings',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/diagnosis/instances/{instance_id}/settings',
+            pathname=f'/openapi/diagnosis/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/settings',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3605,20 +3399,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeDiagnosisSettingsResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.lang):
             query['lang'] = request.lang
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDiagnosisSettings',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/diagnosis/instances/{instance_id}/settings',
+            pathname=f'/openapi/diagnosis/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/settings',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3633,39 +3425,33 @@ class Client(OpenApiClient):
     def describe_dynamic_settings(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.DescribeDynamicSettingsRequest,
     ) -> elasticsearch_20170613_models.DescribeDynamicSettingsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_dynamic_settings_with_options(instance_id, request, headers, runtime)
+        return self.describe_dynamic_settings_with_options(instance_id, headers, runtime)
 
     async def describe_dynamic_settings_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.DescribeDynamicSettingsRequest,
     ) -> elasticsearch_20170613_models.DescribeDynamicSettingsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_dynamic_settings_with_options_async(instance_id, request, headers, runtime)
+        return await self.describe_dynamic_settings_with_options_async(instance_id, headers, runtime)
 
     def describe_dynamic_settings_with_options(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.DescribeDynamicSettingsRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeDynamicSettingsResponse:
-        UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=request.body
+            headers=headers
         )
         params = open_api_models.Params(
             action='DescribeDynamicSettings',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/dynamic-settings',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/dynamic-settings',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3680,21 +3466,17 @@ class Client(OpenApiClient):
     async def describe_dynamic_settings_with_options_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.DescribeDynamicSettingsRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeDynamicSettingsResponse:
-        UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=request.body
+            headers=headers
         )
         params = open_api_models.Params(
             action='DescribeDynamicSettings',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/dynamic-settings',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/dynamic-settings',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3709,39 +3491,33 @@ class Client(OpenApiClient):
     def describe_elasticsearch_health(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.DescribeElasticsearchHealthRequest,
     ) -> elasticsearch_20170613_models.DescribeElasticsearchHealthResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_elasticsearch_health_with_options(instance_id, request, headers, runtime)
+        return self.describe_elasticsearch_health_with_options(instance_id, headers, runtime)
 
     async def describe_elasticsearch_health_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.DescribeElasticsearchHealthRequest,
     ) -> elasticsearch_20170613_models.DescribeElasticsearchHealthResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_elasticsearch_health_with_options_async(instance_id, request, headers, runtime)
+        return await self.describe_elasticsearch_health_with_options_async(instance_id, headers, runtime)
 
     def describe_elasticsearch_health_with_options(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.DescribeElasticsearchHealthRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeElasticsearchHealthResponse:
-        UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=request.body
+            headers=headers
         )
         params = open_api_models.Params(
             action='DescribeElasticsearchHealth',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/elasticsearch-health',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/elasticsearch-health',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3756,21 +3532,17 @@ class Client(OpenApiClient):
     async def describe_elasticsearch_health_with_options_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.DescribeElasticsearchHealthRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeElasticsearchHealthResponse:
-        UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=request.body
+            headers=headers
         )
         params = open_api_models.Params(
             action='DescribeElasticsearchHealth',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/elasticsearch-health',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/elasticsearch-health',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3786,42 +3558,35 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
         policy_name: str,
-        request: elasticsearch_20170613_models.DescribeILMPolicyRequest,
     ) -> elasticsearch_20170613_models.DescribeILMPolicyResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_ilmpolicy_with_options(instance_id, policy_name, request, headers, runtime)
+        return self.describe_ilmpolicy_with_options(instance_id, policy_name, headers, runtime)
 
     async def describe_ilmpolicy_async(
         self,
         instance_id: str,
         policy_name: str,
-        request: elasticsearch_20170613_models.DescribeILMPolicyRequest,
     ) -> elasticsearch_20170613_models.DescribeILMPolicyResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_ilmpolicy_with_options_async(instance_id, policy_name, request, headers, runtime)
+        return await self.describe_ilmpolicy_with_options_async(instance_id, policy_name, headers, runtime)
 
     def describe_ilmpolicy_with_options(
         self,
         instance_id: str,
         policy_name: str,
-        request: elasticsearch_20170613_models.DescribeILMPolicyRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeILMPolicyResponse:
-        UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        policy_name = OpenApiUtilClient.get_encode_param(policy_name)
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=request.body
+            headers=headers
         )
         params = open_api_models.Params(
             action='DescribeILMPolicy',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/ilm-policies/{policy_name}',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/ilm-policies/{OpenApiUtilClient.get_encode_param(policy_name)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3837,22 +3602,17 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
         policy_name: str,
-        request: elasticsearch_20170613_models.DescribeILMPolicyRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeILMPolicyResponse:
-        UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        policy_name = OpenApiUtilClient.get_encode_param(policy_name)
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=request.body
+            headers=headers
         )
         params = open_api_models.Params(
             action='DescribeILMPolicy',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/ilm-policies/{policy_name}',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/ilm-policies/{OpenApiUtilClient.get_encode_param(policy_name)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3868,42 +3628,35 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
         index_template: str,
-        request: elasticsearch_20170613_models.DescribeIndexTemplateRequest,
     ) -> elasticsearch_20170613_models.DescribeIndexTemplateResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_index_template_with_options(instance_id, index_template, request, headers, runtime)
+        return self.describe_index_template_with_options(instance_id, index_template, headers, runtime)
 
     async def describe_index_template_async(
         self,
         instance_id: str,
         index_template: str,
-        request: elasticsearch_20170613_models.DescribeIndexTemplateRequest,
     ) -> elasticsearch_20170613_models.DescribeIndexTemplateResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_index_template_with_options_async(instance_id, index_template, request, headers, runtime)
+        return await self.describe_index_template_with_options_async(instance_id, index_template, headers, runtime)
 
     def describe_index_template_with_options(
         self,
         instance_id: str,
         index_template: str,
-        request: elasticsearch_20170613_models.DescribeIndexTemplateRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeIndexTemplateResponse:
-        UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        index_template = OpenApiUtilClient.get_encode_param(index_template)
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=request.body
+            headers=headers
         )
         params = open_api_models.Params(
             action='DescribeIndexTemplate',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/index-templates/{index_template}',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/index-templates/{OpenApiUtilClient.get_encode_param(index_template)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3919,22 +3672,17 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
         index_template: str,
-        request: elasticsearch_20170613_models.DescribeIndexTemplateRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeIndexTemplateResponse:
-        UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        index_template = OpenApiUtilClient.get_encode_param(index_template)
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=request.body
+            headers=headers
         )
         params = open_api_models.Params(
             action='DescribeIndexTemplate',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/index-templates/{index_template}',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/index-templates/{OpenApiUtilClient.get_encode_param(index_template)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3949,39 +3697,33 @@ class Client(OpenApiClient):
     def describe_instance(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.DescribeInstanceRequest,
     ) -> elasticsearch_20170613_models.DescribeInstanceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_instance_with_options(instance_id, request, headers, runtime)
+        return self.describe_instance_with_options(instance_id, headers, runtime)
 
     async def describe_instance_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.DescribeInstanceRequest,
     ) -> elasticsearch_20170613_models.DescribeInstanceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_instance_with_options_async(instance_id, request, headers, runtime)
+        return await self.describe_instance_with_options_async(instance_id, headers, runtime)
 
     def describe_instance_with_options(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.DescribeInstanceRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeInstanceResponse:
-        UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=request.body
+            headers=headers
         )
         params = open_api_models.Params(
             action='DescribeInstance',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3996,21 +3738,17 @@ class Client(OpenApiClient):
     async def describe_instance_with_options_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.DescribeInstanceRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeInstanceResponse:
-        UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=request.body
+            headers=headers
         )
         params = open_api_models.Params(
             action='DescribeInstance',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4025,39 +3763,33 @@ class Client(OpenApiClient):
     def describe_kibana_settings(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.DescribeKibanaSettingsRequest,
     ) -> elasticsearch_20170613_models.DescribeKibanaSettingsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_kibana_settings_with_options(instance_id, request, headers, runtime)
+        return self.describe_kibana_settings_with_options(instance_id, headers, runtime)
 
     async def describe_kibana_settings_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.DescribeKibanaSettingsRequest,
     ) -> elasticsearch_20170613_models.DescribeKibanaSettingsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_kibana_settings_with_options_async(instance_id, request, headers, runtime)
+        return await self.describe_kibana_settings_with_options_async(instance_id, headers, runtime)
 
     def describe_kibana_settings_with_options(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.DescribeKibanaSettingsRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeKibanaSettingsResponse:
-        UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=request.body
+            headers=headers
         )
         params = open_api_models.Params(
             action='DescribeKibanaSettings',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/kibana-settings',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/kibana-settings',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4072,21 +3804,17 @@ class Client(OpenApiClient):
     async def describe_kibana_settings_with_options_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.DescribeKibanaSettingsRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeKibanaSettingsResponse:
-        UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=request.body
+            headers=headers
         )
         params = open_api_models.Params(
             action='DescribeKibanaSettings',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/kibana-settings',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/kibana-settings',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4101,39 +3829,33 @@ class Client(OpenApiClient):
     def describe_logstash(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.DescribeLogstashRequest,
     ) -> elasticsearch_20170613_models.DescribeLogstashResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_logstash_with_options(instance_id, request, headers, runtime)
+        return self.describe_logstash_with_options(instance_id, headers, runtime)
 
     async def describe_logstash_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.DescribeLogstashRequest,
     ) -> elasticsearch_20170613_models.DescribeLogstashResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_logstash_with_options_async(instance_id, request, headers, runtime)
+        return await self.describe_logstash_with_options_async(instance_id, headers, runtime)
 
     def describe_logstash_with_options(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.DescribeLogstashRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeLogstashResponse:
-        UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=request.body
+            headers=headers
         )
         params = open_api_models.Params(
             action='DescribeLogstash',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}',
+            pathname=f'/openapi/logstashes/{OpenApiUtilClient.get_encode_param(instance_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4148,21 +3870,17 @@ class Client(OpenApiClient):
     async def describe_logstash_with_options_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.DescribeLogstashRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeLogstashResponse:
-        UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=request.body
+            headers=headers
         )
         params = open_api_models.Params(
             action='DescribeLogstash',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}',
+            pathname=f'/openapi/logstashes/{OpenApiUtilClient.get_encode_param(instance_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4178,42 +3896,35 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
         pipeline_id: str,
-        request: elasticsearch_20170613_models.DescribePipelineRequest,
     ) -> elasticsearch_20170613_models.DescribePipelineResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_pipeline_with_options(instance_id, pipeline_id, request, headers, runtime)
+        return self.describe_pipeline_with_options(instance_id, pipeline_id, headers, runtime)
 
     async def describe_pipeline_async(
         self,
         instance_id: str,
         pipeline_id: str,
-        request: elasticsearch_20170613_models.DescribePipelineRequest,
     ) -> elasticsearch_20170613_models.DescribePipelineResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_pipeline_with_options_async(instance_id, pipeline_id, request, headers, runtime)
+        return await self.describe_pipeline_with_options_async(instance_id, pipeline_id, headers, runtime)
 
     def describe_pipeline_with_options(
         self,
         instance_id: str,
         pipeline_id: str,
-        request: elasticsearch_20170613_models.DescribePipelineRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribePipelineResponse:
-        UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=request.body
+            headers=headers
         )
         params = open_api_models.Params(
             action='DescribePipeline',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/pipelines/{pipeline_id}',
+            pathname=f'/openapi/logstashes/{OpenApiUtilClient.get_encode_param(instance_id)}/pipelines/{OpenApiUtilClient.get_encode_param(pipeline_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4229,22 +3940,17 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
         pipeline_id: str,
-        request: elasticsearch_20170613_models.DescribePipelineRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribePipelineResponse:
-        UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=request.body
+            headers=headers
         )
         params = open_api_models.Params(
             action='DescribePipeline',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/pipelines/{pipeline_id}',
+            pathname=f'/openapi/logstashes/{OpenApiUtilClient.get_encode_param(instance_id)}/pipelines/{OpenApiUtilClient.get_encode_param(pipeline_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4282,20 +3988,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribePipelineManagementConfigResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribePipelineManagementConfig',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/pipeline-management-config',
+            pathname=f'/openapi/logstashes/{OpenApiUtilClient.get_encode_param(instance_id)}/pipeline-management-config',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4315,20 +4019,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribePipelineManagementConfigResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribePipelineManagementConfig',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/pipeline-management-config',
+            pathname=f'/openapi/logstashes/{OpenApiUtilClient.get_encode_param(instance_id)}/pipeline-management-config',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4340,32 +4042,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_regions(
-        self,
-        request: elasticsearch_20170613_models.DescribeRegionsRequest,
-    ) -> elasticsearch_20170613_models.DescribeRegionsResponse:
+    def describe_regions(self) -> elasticsearch_20170613_models.DescribeRegionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_regions_with_options(request, headers, runtime)
+        return self.describe_regions_with_options(headers, runtime)
 
-    async def describe_regions_async(
-        self,
-        request: elasticsearch_20170613_models.DescribeRegionsRequest,
-    ) -> elasticsearch_20170613_models.DescribeRegionsResponse:
+    async def describe_regions_async(self) -> elasticsearch_20170613_models.DescribeRegionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_regions_with_options_async(request, headers, runtime)
+        return await self.describe_regions_with_options_async(headers, runtime)
 
     def describe_regions_with_options(
         self,
-        request: elasticsearch_20170613_models.DescribeRegionsRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeRegionsResponse:
-        UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=request.body
+            headers=headers
         )
         params = open_api_models.Params(
             action='DescribeRegions',
@@ -4385,14 +4078,11 @@ class Client(OpenApiClient):
 
     async def describe_regions_with_options_async(
         self,
-        request: elasticsearch_20170613_models.DescribeRegionsRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeRegionsResponse:
-        UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=request.body
+            headers=headers
         )
         params = open_api_models.Params(
             action='DescribeRegions',
@@ -4413,39 +4103,33 @@ class Client(OpenApiClient):
     def describe_snapshot_setting(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.DescribeSnapshotSettingRequest,
     ) -> elasticsearch_20170613_models.DescribeSnapshotSettingResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_snapshot_setting_with_options(instance_id, request, headers, runtime)
+        return self.describe_snapshot_setting_with_options(instance_id, headers, runtime)
 
     async def describe_snapshot_setting_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.DescribeSnapshotSettingRequest,
     ) -> elasticsearch_20170613_models.DescribeSnapshotSettingResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_snapshot_setting_with_options_async(instance_id, request, headers, runtime)
+        return await self.describe_snapshot_setting_with_options_async(instance_id, headers, runtime)
 
     def describe_snapshot_setting_with_options(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.DescribeSnapshotSettingRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeSnapshotSettingResponse:
-        UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=request.body
+            headers=headers
         )
         params = open_api_models.Params(
             action='DescribeSnapshotSetting',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/snapshot-setting',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/snapshot-setting',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4460,21 +4144,17 @@ class Client(OpenApiClient):
     async def describe_snapshot_setting_with_options_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.DescribeSnapshotSettingRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeSnapshotSettingResponse:
-        UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=request.body
+            headers=headers
         )
         params = open_api_models.Params(
             action='DescribeSnapshotSetting',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/snapshot-setting',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/snapshot-setting',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4489,39 +4169,33 @@ class Client(OpenApiClient):
     def describe_templates(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.DescribeTemplatesRequest,
     ) -> elasticsearch_20170613_models.DescribeTemplatesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_templates_with_options(instance_id, request, headers, runtime)
+        return self.describe_templates_with_options(instance_id, headers, runtime)
 
     async def describe_templates_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.DescribeTemplatesRequest,
     ) -> elasticsearch_20170613_models.DescribeTemplatesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_templates_with_options_async(instance_id, request, headers, runtime)
+        return await self.describe_templates_with_options_async(instance_id, headers, runtime)
 
     def describe_templates_with_options(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.DescribeTemplatesRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeTemplatesResponse:
-        UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=request.body
+            headers=headers
         )
         params = open_api_models.Params(
             action='DescribeTemplates',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/templates',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/templates',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4536,21 +4210,17 @@ class Client(OpenApiClient):
     async def describe_templates_with_options_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.DescribeTemplatesRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeTemplatesResponse:
-        UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=request.body
+            headers=headers
         )
         params = open_api_models.Params(
             action='DescribeTemplates',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/templates',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/templates',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4565,39 +4235,33 @@ class Client(OpenApiClient):
     def describe_xpack_monitor_config(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.DescribeXpackMonitorConfigRequest,
     ) -> elasticsearch_20170613_models.DescribeXpackMonitorConfigResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_xpack_monitor_config_with_options(instance_id, request, headers, runtime)
+        return self.describe_xpack_monitor_config_with_options(instance_id, headers, runtime)
 
     async def describe_xpack_monitor_config_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.DescribeXpackMonitorConfigRequest,
     ) -> elasticsearch_20170613_models.DescribeXpackMonitorConfigResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_xpack_monitor_config_with_options_async(instance_id, request, headers, runtime)
+        return await self.describe_xpack_monitor_config_with_options_async(instance_id, headers, runtime)
 
     def describe_xpack_monitor_config_with_options(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.DescribeXpackMonitorConfigRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeXpackMonitorConfigResponse:
-        UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=request.body
+            headers=headers
         )
         params = open_api_models.Params(
             action='DescribeXpackMonitorConfig',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/xpack-monitor-config',
+            pathname=f'/openapi/logstashes/{OpenApiUtilClient.get_encode_param(instance_id)}/xpack-monitor-config',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4612,21 +4276,17 @@ class Client(OpenApiClient):
     async def describe_xpack_monitor_config_with_options_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.DescribeXpackMonitorConfigRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeXpackMonitorConfigResponse:
-        UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=request.body
+            headers=headers
         )
         params = open_api_models.Params(
             action='DescribeXpackMonitorConfig',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/xpack-monitor-config',
+            pathname=f'/openapi/logstashes/{OpenApiUtilClient.get_encode_param(instance_id)}/xpack-monitor-config',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4664,22 +4324,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DiagnoseInstanceResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.lang):
             query['lang'] = request.lang
+        body = {}
+        if not UtilClient.is_unset(request.diagnose_items):
+            body['diagnoseItems'] = request.diagnose_items
+        if not UtilClient.is_unset(request.indices):
+            body['indices'] = request.indices
+        if not UtilClient.is_unset(request.type):
+            body['type'] = request.type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),
-            body=request.body
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='DiagnoseInstance',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/diagnosis/instances/{instance_id}/actions/diagnose',
+            pathname=f'/openapi/diagnosis/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/diagnose',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -4699,22 +4365,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DiagnoseInstanceResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.lang):
             query['lang'] = request.lang
+        body = {}
+        if not UtilClient.is_unset(request.diagnose_items):
+            body['diagnoseItems'] = request.diagnose_items
+        if not UtilClient.is_unset(request.indices):
+            body['indices'] = request.indices
+        if not UtilClient.is_unset(request.type):
+            body['type'] = request.type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),
-            body=request.body
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='DiagnoseInstance',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/diagnosis/instances/{instance_id}/actions/diagnose',
+            pathname=f'/openapi/diagnosis/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/diagnose',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -4752,7 +4424,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.EstimatedLogstashRestartTimeResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.force):
             query['force'] = request.force
@@ -4765,7 +4436,7 @@ class Client(OpenApiClient):
             action='EstimatedLogstashRestartTime',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/estimated-time/restart-time',
+            pathname=f'/openapi/logstashes/{OpenApiUtilClient.get_encode_param(instance_id)}/estimated-time/restart-time',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -4785,7 +4456,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.EstimatedLogstashRestartTimeResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.force):
             query['force'] = request.force
@@ -4798,7 +4468,7 @@ class Client(OpenApiClient):
             action='EstimatedLogstashRestartTime',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/estimated-time/restart-time',
+            pathname=f'/openapi/logstashes/{OpenApiUtilClient.get_encode_param(instance_id)}/estimated-time/restart-time',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -4836,7 +4506,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.EstimatedRestartTimeResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.force):
             query['force'] = request.force
@@ -4849,7 +4518,7 @@ class Client(OpenApiClient):
             action='EstimatedRestartTime',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/estimated-time/restart-time',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/estimated-time/restart-time',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -4869,7 +4538,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.EstimatedRestartTimeResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.force):
             query['force'] = request.force
@@ -4882,7 +4550,7 @@ class Client(OpenApiClient):
             action='EstimatedRestartTime',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/estimated-time/restart-time',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/estimated-time/restart-time',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -4967,39 +4635,33 @@ class Client(OpenApiClient):
     def get_elastictask(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.GetElastictaskRequest,
     ) -> elasticsearch_20170613_models.GetElastictaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_elastictask_with_options(instance_id, request, headers, runtime)
+        return self.get_elastictask_with_options(instance_id, headers, runtime)
 
     async def get_elastictask_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.GetElastictaskRequest,
     ) -> elasticsearch_20170613_models.GetElastictaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_elastictask_with_options_async(instance_id, request, headers, runtime)
+        return await self.get_elastictask_with_options_async(instance_id, headers, runtime)
 
     def get_elastictask_with_options(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.GetElastictaskRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.GetElastictaskResponse:
-        UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=request.body
+            headers=headers
         )
         params = open_api_models.Params(
             action='GetElastictask',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/elastic-task',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/elastic-task',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5014,21 +4676,17 @@ class Client(OpenApiClient):
     async def get_elastictask_with_options_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.GetElastictaskRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.GetElastictaskResponse:
-        UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=request.body
+            headers=headers
         )
         params = open_api_models.Params(
             action='GetElastictask',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/elastic-task',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/elastic-task',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5066,7 +4724,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.GetEmonGrafanaAlertsResponse:
         UtilClient.validate_model(request)
-        project_id = OpenApiUtilClient.get_encode_param(project_id)
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=request.body
@@ -5075,7 +4732,7 @@ class Client(OpenApiClient):
             action='GetEmonGrafanaAlerts',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/emon/projects/{project_id}/grafana/proxy/api/alerts',
+            pathname=f'/openapi/emon/projects/{OpenApiUtilClient.get_encode_param(project_id)}/grafana/proxy/api/alerts',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5095,7 +4752,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.GetEmonGrafanaAlertsResponse:
         UtilClient.validate_model(request)
-        project_id = OpenApiUtilClient.get_encode_param(project_id)
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=request.body
@@ -5104,7 +4760,7 @@ class Client(OpenApiClient):
             action='GetEmonGrafanaAlerts',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/emon/projects/{project_id}/grafana/proxy/api/alerts',
+            pathname=f'/openapi/emon/projects/{OpenApiUtilClient.get_encode_param(project_id)}/grafana/proxy/api/alerts',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5142,7 +4798,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.GetEmonGrafanaDashboardsResponse:
         UtilClient.validate_model(request)
-        project_id = OpenApiUtilClient.get_encode_param(project_id)
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=request.body
@@ -5151,7 +4806,7 @@ class Client(OpenApiClient):
             action='GetEmonGrafanaDashboards',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/emon/projects/{project_id}/grafana/proxy/api/search',
+            pathname=f'/openapi/emon/projects/{OpenApiUtilClient.get_encode_param(project_id)}/grafana/proxy/api/search',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5171,7 +4826,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.GetEmonGrafanaDashboardsResponse:
         UtilClient.validate_model(request)
-        project_id = OpenApiUtilClient.get_encode_param(project_id)
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=request.body
@@ -5180,7 +4834,7 @@ class Client(OpenApiClient):
             action='GetEmonGrafanaDashboards',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/emon/projects/{project_id}/grafana/proxy/api/search',
+            pathname=f'/openapi/emon/projects/{OpenApiUtilClient.get_encode_param(project_id)}/grafana/proxy/api/search',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5218,7 +4872,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.GetEmonMonitorDataResponse:
         UtilClient.validate_model(request)
-        project_id = OpenApiUtilClient.get_encode_param(project_id)
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=request.body
@@ -5227,7 +4880,7 @@ class Client(OpenApiClient):
             action='GetEmonMonitorData',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/emon/projects/{project_id}/metrics/query',
+            pathname=f'/openapi/emon/projects/{OpenApiUtilClient.get_encode_param(project_id)}/metrics/query',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -5247,7 +4900,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.GetEmonMonitorDataResponse:
         UtilClient.validate_model(request)
-        project_id = OpenApiUtilClient.get_encode_param(project_id)
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=request.body
@@ -5256,7 +4908,7 @@ class Client(OpenApiClient):
             action='GetEmonMonitorData',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/emon/projects/{project_id}/metrics/query',
+            pathname=f'/openapi/emon/projects/{OpenApiUtilClient.get_encode_param(project_id)}/metrics/query',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -5271,39 +4923,33 @@ class Client(OpenApiClient):
     def get_open_store_usage(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.GetOpenStoreUsageRequest,
     ) -> elasticsearch_20170613_models.GetOpenStoreUsageResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_open_store_usage_with_options(instance_id, request, headers, runtime)
+        return self.get_open_store_usage_with_options(instance_id, headers, runtime)
 
     async def get_open_store_usage_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.GetOpenStoreUsageRequest,
     ) -> elasticsearch_20170613_models.GetOpenStoreUsageResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_open_store_usage_with_options_async(instance_id, request, headers, runtime)
+        return await self.get_open_store_usage_with_options_async(instance_id, headers, runtime)
 
     def get_open_store_usage_with_options(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.GetOpenStoreUsageRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.GetOpenStoreUsageResponse:
-        UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=request.body
+            headers=headers
         )
         params = open_api_models.Params(
             action='GetOpenStoreUsage',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/openstore/usage',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/openstore/usage',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5318,21 +4964,17 @@ class Client(OpenApiClient):
     async def get_open_store_usage_with_options_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.GetOpenStoreUsageRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.GetOpenStoreUsageResponse:
-        UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=request.body
+            headers=headers
         )
         params = open_api_models.Params(
             action='GetOpenStoreUsage',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/openstore/usage',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/openstore/usage',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5372,8 +5014,7 @@ class Client(OpenApiClient):
             query['zoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetRegionConfiguration',
@@ -5403,8 +5044,7 @@ class Client(OpenApiClient):
             query['zoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetRegionConfiguration',
@@ -5448,7 +5088,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.GetSuggestShrinkableNodesResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.count):
             query['count'] = request.count
@@ -5458,14 +5097,13 @@ class Client(OpenApiClient):
             query['nodeType'] = request.node_type
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetSuggestShrinkableNodes',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/suggest-shrinkable-nodes',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/suggest-shrinkable-nodes',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5485,7 +5123,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.GetSuggestShrinkableNodesResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.count):
             query['count'] = request.count
@@ -5495,14 +5132,13 @@ class Client(OpenApiClient):
             query['nodeType'] = request.node_type
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetSuggestShrinkableNodes',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/suggest-shrinkable-nodes',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/suggest-shrinkable-nodes',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5540,7 +5176,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.GetTransferableNodesResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.count):
             query['count'] = request.count
@@ -5548,14 +5183,13 @@ class Client(OpenApiClient):
             query['nodeType'] = request.node_type
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetTransferableNodes',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/transferable-nodes',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/transferable-nodes',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5575,7 +5209,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.GetTransferableNodesResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.count):
             query['count'] = request.count
@@ -5583,14 +5216,13 @@ class Client(OpenApiClient):
             query['nodeType'] = request.node_type
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetTransferableNodes',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/transferable-nodes',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/transferable-nodes',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5706,7 +5338,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.InstallAckOperatorResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
@@ -5719,7 +5350,7 @@ class Client(OpenApiClient):
             action='InstallAckOperator',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/ack-clusters/{cluster_id}/operator',
+            pathname=f'/openapi/ack-clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/operator',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -5739,7 +5370,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.InstallAckOperatorResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
@@ -5752,7 +5382,7 @@ class Client(OpenApiClient):
             action='InstallAckOperator',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/ack-clusters/{cluster_id}/operator',
+            pathname=f'/openapi/ack-clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/operator',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -5790,7 +5420,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.InstallKibanaSystemPluginResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -5803,7 +5432,7 @@ class Client(OpenApiClient):
             action='InstallKibanaSystemPlugin',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/kibana-plugins/system/actions/install',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/kibana-plugins/system/actions/install',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -5823,7 +5452,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.InstallKibanaSystemPluginResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -5836,7 +5464,7 @@ class Client(OpenApiClient):
             action='InstallKibanaSystemPlugin',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/kibana-plugins/system/actions/install',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/kibana-plugins/system/actions/install',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -5874,7 +5502,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.InstallLogstashSystemPluginResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -5887,7 +5514,7 @@ class Client(OpenApiClient):
             action='InstallLogstashSystemPlugin',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/plugins/system/actions/install',
+            pathname=f'/openapi/logstashes/{OpenApiUtilClient.get_encode_param(instance_id)}/plugins/system/actions/install',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -5907,7 +5534,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.InstallLogstashSystemPluginResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -5920,7 +5546,7 @@ class Client(OpenApiClient):
             action='InstallLogstashSystemPlugin',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/plugins/system/actions/install',
+            pathname=f'/openapi/logstashes/{OpenApiUtilClient.get_encode_param(instance_id)}/plugins/system/actions/install',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -5958,7 +5584,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.InstallSystemPluginResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -5971,7 +5596,7 @@ class Client(OpenApiClient):
             action='InstallSystemPlugin',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/plugins/system/actions/install',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/plugins/system/actions/install',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -5991,7 +5616,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.InstallSystemPluginResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -6004,7 +5628,7 @@ class Client(OpenApiClient):
             action='InstallSystemPlugin',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/plugins/system/actions/install',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/plugins/system/actions/install',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -6042,7 +5666,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.InstallUserPluginsResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=request.body
@@ -6051,7 +5674,7 @@ class Client(OpenApiClient):
             action='InstallUserPlugins',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/plugins/user/actions/install',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/plugins/user/actions/install',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -6071,7 +5694,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.InstallUserPluginsResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=request.body
@@ -6080,7 +5702,7 @@ class Client(OpenApiClient):
             action='InstallUserPlugins',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/plugins/user/actions/install',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/plugins/user/actions/install',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -6118,20 +5740,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.InterruptElasticsearchTaskResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='InterruptElasticsearchTask',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/interrupt',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/interrupt',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -6151,20 +5771,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.InterruptElasticsearchTaskResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='InterruptElasticsearchTask',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/interrupt',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/interrupt',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -6202,20 +5820,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.InterruptLogstashTaskResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='InterruptLogstashTask',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/actions/interrupt',
+            pathname=f'/openapi/logstashes/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/interrupt',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -6235,20 +5851,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.InterruptLogstashTaskResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='InterruptLogstashTask',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/actions/interrupt',
+            pathname=f'/openapi/logstashes/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/interrupt',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -6292,8 +5906,7 @@ class Client(OpenApiClient):
             query['vpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListAckClusters',
@@ -6327,8 +5940,7 @@ class Client(OpenApiClient):
             query['vpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListAckClusters',
@@ -6372,7 +5984,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListAckNamespacesResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         query = {}
         if not UtilClient.is_unset(request.page):
             query['page'] = request.page
@@ -6380,14 +5991,13 @@ class Client(OpenApiClient):
             query['size'] = request.size
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListAckNamespaces',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/ack-clusters/{cluster_id}/namespaces',
+            pathname=f'/openapi/ack-clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/namespaces',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -6407,7 +6017,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListAckNamespacesResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
         query = {}
         if not UtilClient.is_unset(request.page):
             query['page'] = request.page
@@ -6415,14 +6024,13 @@ class Client(OpenApiClient):
             query['size'] = request.size
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListAckNamespaces',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/ack-clusters/{cluster_id}/namespaces',
+            pathname=f'/openapi/ack-clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/namespaces',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -6460,7 +6068,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListActionRecordsResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.action_names):
             query['actionNames'] = request.action_names
@@ -6480,14 +6087,13 @@ class Client(OpenApiClient):
             query['userId'] = request.user_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListActionRecords',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/action-records',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/action-records',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -6507,7 +6113,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListActionRecordsResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.action_names):
             query['actionNames'] = request.action_names
@@ -6527,14 +6132,13 @@ class Client(OpenApiClient):
             query['userId'] = request.user_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListActionRecords',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/action-records',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/action-records',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -6572,20 +6176,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListAllNodeResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.extended):
             query['extended'] = request.extended
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListAllNode',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/nodes',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/nodes',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -6605,20 +6207,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListAllNodeResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.extended):
             query['extended'] = request.extended
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListAllNode',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/nodes',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/nodes',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -6656,20 +6256,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListAlternativeSnapshotReposResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.already_set_items):
             query['alreadySetItems'] = request.already_set_items
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListAlternativeSnapshotRepos',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/alternative-snapshot-repos',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/alternative-snapshot-repos',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -6689,20 +6287,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListAlternativeSnapshotReposResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.already_set_items):
             query['alreadySetItems'] = request.already_set_items
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListAlternativeSnapshotRepos',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/alternative-snapshot-repos',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/alternative-snapshot-repos',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -6750,8 +6346,7 @@ class Client(OpenApiClient):
             query['size'] = request.size
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListApm',
@@ -6789,8 +6384,7 @@ class Client(OpenApiClient):
             query['size'] = request.size
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListApm',
@@ -6811,39 +6405,33 @@ class Client(OpenApiClient):
     def list_available_es_instance_ids(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.ListAvailableEsInstanceIdsRequest,
     ) -> elasticsearch_20170613_models.ListAvailableEsInstanceIdsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_available_es_instance_ids_with_options(instance_id, request, headers, runtime)
+        return self.list_available_es_instance_ids_with_options(instance_id, headers, runtime)
 
     async def list_available_es_instance_ids_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.ListAvailableEsInstanceIdsRequest,
     ) -> elasticsearch_20170613_models.ListAvailableEsInstanceIdsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_available_es_instance_ids_with_options_async(instance_id, request, headers, runtime)
+        return await self.list_available_es_instance_ids_with_options_async(instance_id, headers, runtime)
 
     def list_available_es_instance_ids_with_options(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.ListAvailableEsInstanceIdsRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListAvailableEsInstanceIdsResponse:
-        UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=request.body
+            headers=headers
         )
         params = open_api_models.Params(
             action='ListAvailableEsInstanceIds',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/available-elasticsearch-for-centralized-management',
+            pathname=f'/openapi/logstashes/{OpenApiUtilClient.get_encode_param(instance_id)}/available-elasticsearch-for-centralized-management',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -6858,21 +6446,17 @@ class Client(OpenApiClient):
     async def list_available_es_instance_ids_with_options_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.ListAvailableEsInstanceIdsRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListAvailableEsInstanceIdsResponse:
-        UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=request.body
+            headers=headers
         )
         params = open_api_models.Params(
             action='ListAvailableEsInstanceIds',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/available-elasticsearch-for-centralized-management',
+            pathname=f'/openapi/logstashes/{OpenApiUtilClient.get_encode_param(instance_id)}/available-elasticsearch-for-centralized-management',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -6922,8 +6506,7 @@ class Client(OpenApiClient):
             query['sourceType'] = request.source_type
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListCollectors',
@@ -6963,8 +6546,7 @@ class Client(OpenApiClient):
             query['sourceType'] = request.source_type
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListCollectors',
@@ -7008,7 +6590,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListComponentIndicesResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.name):
             query['name'] = request.name
@@ -7018,14 +6599,13 @@ class Client(OpenApiClient):
             query['size'] = request.size
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListComponentIndices',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/component-index',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/component-index',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -7045,7 +6625,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListComponentIndicesResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.name):
             query['name'] = request.name
@@ -7055,14 +6634,13 @@ class Client(OpenApiClient):
             query['size'] = request.size
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListComponentIndices',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/component-index',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/component-index',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -7077,39 +6655,33 @@ class Client(OpenApiClient):
     def list_connected_clusters(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.ListConnectedClustersRequest,
     ) -> elasticsearch_20170613_models.ListConnectedClustersResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_connected_clusters_with_options(instance_id, request, headers, runtime)
+        return self.list_connected_clusters_with_options(instance_id, headers, runtime)
 
     async def list_connected_clusters_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.ListConnectedClustersRequest,
     ) -> elasticsearch_20170613_models.ListConnectedClustersResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_connected_clusters_with_options_async(instance_id, request, headers, runtime)
+        return await self.list_connected_clusters_with_options_async(instance_id, headers, runtime)
 
     def list_connected_clusters_with_options(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.ListConnectedClustersRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListConnectedClustersResponse:
-        UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=request.body
+            headers=headers
         )
         params = open_api_models.Params(
             action='ListConnectedClusters',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/connected-clusters',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/connected-clusters',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -7124,21 +6696,17 @@ class Client(OpenApiClient):
     async def list_connected_clusters_with_options_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.ListConnectedClustersRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListConnectedClustersResponse:
-        UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=request.body
+            headers=headers
         )
         params = open_api_models.Params(
             action='ListConnectedClusters',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/connected-clusters',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/connected-clusters',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -7176,7 +6744,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListDataStreamsResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.is_managed):
             query['isManaged'] = request.is_managed
@@ -7184,14 +6751,13 @@ class Client(OpenApiClient):
             query['name'] = request.name
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListDataStreams',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/data-streams',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/data-streams',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -7211,7 +6777,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListDataStreamsResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.is_managed):
             query['isManaged'] = request.is_managed
@@ -7219,14 +6784,13 @@ class Client(OpenApiClient):
             query['name'] = request.name
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListDataStreams',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/data-streams',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/data-streams',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -7241,39 +6805,33 @@ class Client(OpenApiClient):
     def list_data_tasks(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.ListDataTasksRequest,
     ) -> elasticsearch_20170613_models.ListDataTasksResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_data_tasks_with_options(instance_id, request, headers, runtime)
+        return self.list_data_tasks_with_options(instance_id, headers, runtime)
 
     async def list_data_tasks_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.ListDataTasksRequest,
     ) -> elasticsearch_20170613_models.ListDataTasksResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_data_tasks_with_options_async(instance_id, request, headers, runtime)
+        return await self.list_data_tasks_with_options_async(instance_id, headers, runtime)
 
     def list_data_tasks_with_options(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.ListDataTasksRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListDataTasksResponse:
-        UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=request.body
+            headers=headers
         )
         params = open_api_models.Params(
             action='ListDataTasks',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/data-task',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/data-task',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -7288,21 +6846,17 @@ class Client(OpenApiClient):
     async def list_data_tasks_with_options_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.ListDataTasksRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListDataTasksResponse:
-        UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=request.body
+            headers=headers
         )
         params = open_api_models.Params(
             action='ListDataTasks',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/data-task',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/data-task',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -7346,8 +6900,7 @@ class Client(OpenApiClient):
             query['sourceType'] = request.source_type
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListDefaultCollectorConfigurations',
@@ -7381,8 +6934,7 @@ class Client(OpenApiClient):
             query['sourceType'] = request.source_type
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListDefaultCollectorConfigurations',
@@ -7426,7 +6978,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListDeprecatedTemplatesResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.name):
             query['name'] = request.name
@@ -7436,14 +6987,13 @@ class Client(OpenApiClient):
             query['size'] = request.size
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListDeprecatedTemplates',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/deprecated-templates',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/deprecated-templates',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -7463,7 +7013,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListDeprecatedTemplatesResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.name):
             query['name'] = request.name
@@ -7473,14 +7022,13 @@ class Client(OpenApiClient):
             query['size'] = request.size
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListDeprecatedTemplates',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/deprecated-templates',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/deprecated-templates',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -7518,20 +7066,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListDiagnoseIndicesResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.lang):
             query['lang'] = request.lang
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListDiagnoseIndices',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/diagnosis/instances/{instance_id}/indices',
+            pathname=f'/openapi/diagnosis/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/indices',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -7551,20 +7097,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListDiagnoseIndicesResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.lang):
             query['lang'] = request.lang
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListDiagnoseIndices',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/diagnosis/instances/{instance_id}/indices',
+            pathname=f'/openapi/diagnosis/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/indices',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -7602,7 +7146,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListDiagnoseReportResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.detail):
             query['detail'] = request.detail
@@ -7620,14 +7163,13 @@ class Client(OpenApiClient):
             query['trigger'] = request.trigger
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListDiagnoseReport',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/diagnosis/instances/{instance_id}/reports',
+            pathname=f'/openapi/diagnosis/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/reports',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -7647,7 +7189,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListDiagnoseReportResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.detail):
             query['detail'] = request.detail
@@ -7665,14 +7206,13 @@ class Client(OpenApiClient):
             query['trigger'] = request.trigger
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListDiagnoseReport',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/diagnosis/instances/{instance_id}/reports',
+            pathname=f'/openapi/diagnosis/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/reports',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -7710,7 +7250,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListDiagnoseReportIdsResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.end_time):
             query['endTime'] = request.end_time
@@ -7726,14 +7265,13 @@ class Client(OpenApiClient):
             query['trigger'] = request.trigger
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListDiagnoseReportIds',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/diagnosis/instances/{instance_id}/report-ids',
+            pathname=f'/openapi/diagnosis/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/report-ids',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -7753,7 +7291,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListDiagnoseReportIdsResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.end_time):
             query['endTime'] = request.end_time
@@ -7769,14 +7306,13 @@ class Client(OpenApiClient):
             query['trigger'] = request.trigger
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListDiagnoseReportIds',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/diagnosis/instances/{instance_id}/report-ids',
+            pathname=f'/openapi/diagnosis/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/report-ids',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -7814,7 +7350,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListDictInformationResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.analyzer_type):
             query['analyzerType'] = request.analyzer_type
@@ -7824,14 +7359,13 @@ class Client(OpenApiClient):
             query['key'] = request.key
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListDictInformation',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/dict/_info',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/dict/_info',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -7851,7 +7385,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListDictInformationResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.analyzer_type):
             query['analyzerType'] = request.analyzer_type
@@ -7861,14 +7394,13 @@ class Client(OpenApiClient):
             query['key'] = request.key
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListDictInformation',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/dict/_info',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/dict/_info',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -7906,7 +7438,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListDictsResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.analyzer_type):
             query['analyzerType'] = request.analyzer_type
@@ -7914,14 +7445,13 @@ class Client(OpenApiClient):
             query['name'] = request.name
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListDicts',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/dicts',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/dicts',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -7941,7 +7471,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListDictsResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.analyzer_type):
             query['analyzerType'] = request.analyzer_type
@@ -7949,14 +7478,13 @@ class Client(OpenApiClient):
             query['name'] = request.name
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListDicts',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/dicts',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/dicts',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -8006,8 +7534,7 @@ class Client(OpenApiClient):
             query['vpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListEcsInstances',
@@ -8047,8 +7574,7 @@ class Client(OpenApiClient):
             query['vpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListEcsInstances',
@@ -8069,39 +7595,33 @@ class Client(OpenApiClient):
     def list_extendfiles(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.ListExtendfilesRequest,
     ) -> elasticsearch_20170613_models.ListExtendfilesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_extendfiles_with_options(instance_id, request, headers, runtime)
+        return self.list_extendfiles_with_options(instance_id, headers, runtime)
 
     async def list_extendfiles_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.ListExtendfilesRequest,
     ) -> elasticsearch_20170613_models.ListExtendfilesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_extendfiles_with_options_async(instance_id, request, headers, runtime)
+        return await self.list_extendfiles_with_options_async(instance_id, headers, runtime)
 
     def list_extendfiles_with_options(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.ListExtendfilesRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListExtendfilesResponse:
-        UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=request.body
+            headers=headers
         )
         params = open_api_models.Params(
             action='ListExtendfiles',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/extendfiles',
+            pathname=f'/openapi/logstashes/{OpenApiUtilClient.get_encode_param(instance_id)}/extendfiles',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -8116,21 +7636,17 @@ class Client(OpenApiClient):
     async def list_extendfiles_with_options_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.ListExtendfilesRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListExtendfilesResponse:
-        UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=request.body
+            headers=headers
         )
         params = open_api_models.Params(
             action='ListExtendfiles',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/extendfiles',
+            pathname=f'/openapi/logstashes/{OpenApiUtilClient.get_encode_param(instance_id)}/extendfiles',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -8168,20 +7684,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListILMPoliciesResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.policy_name):
             query['policyName'] = request.policy_name
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListILMPolicies',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/ilm-policies',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/ilm-policies',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -8201,20 +7715,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListILMPoliciesResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.policy_name):
             query['policyName'] = request.policy_name
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListILMPolicies',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/ilm-policies',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/ilm-policies',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -8252,7 +7764,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListIndexTemplatesResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.index_template):
             query['indexTemplate'] = request.index_template
@@ -8262,14 +7773,13 @@ class Client(OpenApiClient):
             query['size'] = request.size
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListIndexTemplates',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/index-templates',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/index-templates',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -8289,7 +7799,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListIndexTemplatesResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.index_template):
             query['indexTemplate'] = request.index_template
@@ -8299,14 +7808,13 @@ class Client(OpenApiClient):
             query['size'] = request.size
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListIndexTemplates',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/index-templates',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/index-templates',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -8366,8 +7874,7 @@ class Client(OpenApiClient):
             query['zoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListInstance',
@@ -8417,8 +7924,7 @@ class Client(OpenApiClient):
             query['zoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListInstance',
@@ -8433,6 +7939,146 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             elasticsearch_20170613_models.ListInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_instance_history_events(
+        self,
+        request: elasticsearch_20170613_models.ListInstanceHistoryEventsRequest,
+    ) -> elasticsearch_20170613_models.ListInstanceHistoryEventsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_instance_history_events_with_options(request, headers, runtime)
+
+    async def list_instance_history_events_async(
+        self,
+        request: elasticsearch_20170613_models.ListInstanceHistoryEventsRequest,
+    ) -> elasticsearch_20170613_models.ListInstanceHistoryEventsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_instance_history_events_with_options_async(request, headers, runtime)
+
+    def list_instance_history_events_with_options(
+        self,
+        tmp_req: elasticsearch_20170613_models.ListInstanceHistoryEventsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> elasticsearch_20170613_models.ListInstanceHistoryEventsResponse:
+        UtilClient.validate_model(tmp_req)
+        request = elasticsearch_20170613_models.ListInstanceHistoryEventsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.event_cycle_status):
+            request.event_cycle_status_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.event_cycle_status, 'eventCycleStatus', 'simple')
+        if not UtilClient.is_unset(tmp_req.event_level):
+            request.event_level_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.event_level, 'eventLevel', 'simple')
+        if not UtilClient.is_unset(tmp_req.event_type):
+            request.event_type_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.event_type, 'eventType', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.event_create_end_time):
+            query['eventCreateEndTime'] = request.event_create_end_time
+        if not UtilClient.is_unset(request.event_create_start_time):
+            query['eventCreateStartTime'] = request.event_create_start_time
+        if not UtilClient.is_unset(request.event_cycle_status_shrink):
+            query['eventCycleStatus'] = request.event_cycle_status_shrink
+        if not UtilClient.is_unset(request.event_execute_end_time):
+            query['eventExecuteEndTime'] = request.event_execute_end_time
+        if not UtilClient.is_unset(request.event_execute_start_time):
+            query['eventExecuteStartTime'] = request.event_execute_start_time
+        if not UtilClient.is_unset(request.event_finash_end_time):
+            query['eventFinashEndTime'] = request.event_finash_end_time
+        if not UtilClient.is_unset(request.event_finash_start_time):
+            query['eventFinashStartTime'] = request.event_finash_start_time
+        if not UtilClient.is_unset(request.event_level_shrink):
+            query['eventLevel'] = request.event_level_shrink
+        if not UtilClient.is_unset(request.event_type_shrink):
+            query['eventType'] = request.event_type_shrink
+        if not UtilClient.is_unset(request.instance_id):
+            query['instanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.node_ip):
+            query['nodeIP'] = request.node_ip
+        if not UtilClient.is_unset(request.page):
+            query['page'] = request.page
+        if not UtilClient.is_unset(request.size):
+            query['size'] = request.size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListInstanceHistoryEvents',
+            version='2017-06-13',
+            protocol='HTTPS',
+            pathname=f'/openapi/events',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            elasticsearch_20170613_models.ListInstanceHistoryEventsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_instance_history_events_with_options_async(
+        self,
+        tmp_req: elasticsearch_20170613_models.ListInstanceHistoryEventsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> elasticsearch_20170613_models.ListInstanceHistoryEventsResponse:
+        UtilClient.validate_model(tmp_req)
+        request = elasticsearch_20170613_models.ListInstanceHistoryEventsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.event_cycle_status):
+            request.event_cycle_status_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.event_cycle_status, 'eventCycleStatus', 'simple')
+        if not UtilClient.is_unset(tmp_req.event_level):
+            request.event_level_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.event_level, 'eventLevel', 'simple')
+        if not UtilClient.is_unset(tmp_req.event_type):
+            request.event_type_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.event_type, 'eventType', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.event_create_end_time):
+            query['eventCreateEndTime'] = request.event_create_end_time
+        if not UtilClient.is_unset(request.event_create_start_time):
+            query['eventCreateStartTime'] = request.event_create_start_time
+        if not UtilClient.is_unset(request.event_cycle_status_shrink):
+            query['eventCycleStatus'] = request.event_cycle_status_shrink
+        if not UtilClient.is_unset(request.event_execute_end_time):
+            query['eventExecuteEndTime'] = request.event_execute_end_time
+        if not UtilClient.is_unset(request.event_execute_start_time):
+            query['eventExecuteStartTime'] = request.event_execute_start_time
+        if not UtilClient.is_unset(request.event_finash_end_time):
+            query['eventFinashEndTime'] = request.event_finash_end_time
+        if not UtilClient.is_unset(request.event_finash_start_time):
+            query['eventFinashStartTime'] = request.event_finash_start_time
+        if not UtilClient.is_unset(request.event_level_shrink):
+            query['eventLevel'] = request.event_level_shrink
+        if not UtilClient.is_unset(request.event_type_shrink):
+            query['eventType'] = request.event_type_shrink
+        if not UtilClient.is_unset(request.instance_id):
+            query['instanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.node_ip):
+            query['nodeIP'] = request.node_ip
+        if not UtilClient.is_unset(request.page):
+            query['page'] = request.page
+        if not UtilClient.is_unset(request.size):
+            query['size'] = request.size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListInstanceHistoryEvents',
+            version='2017-06-13',
+            protocol='HTTPS',
+            pathname=f'/openapi/events',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            elasticsearch_20170613_models.ListInstanceHistoryEventsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
@@ -8462,7 +8108,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListInstanceIndicesResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.all):
             query['all'] = request.all
@@ -8478,14 +8123,13 @@ class Client(OpenApiClient):
             query['size'] = request.size
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListInstanceIndices',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/indices',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/indices',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -8505,7 +8149,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListInstanceIndicesResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.all):
             query['all'] = request.all
@@ -8521,14 +8164,13 @@ class Client(OpenApiClient):
             query['size'] = request.size
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListInstanceIndices',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/indices',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/indices',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -8566,7 +8208,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListKibanaPluginsResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.page):
             query['page'] = request.page
@@ -8574,14 +8215,13 @@ class Client(OpenApiClient):
             query['size'] = request.size
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListKibanaPlugins',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/kibana-plugins',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/kibana-plugins',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -8601,7 +8241,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListKibanaPluginsResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.page):
             query['page'] = request.page
@@ -8609,14 +8248,13 @@ class Client(OpenApiClient):
             query['size'] = request.size
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListKibanaPlugins',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/kibana-plugins',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/kibana-plugins',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -8664,12 +8302,13 @@ class Client(OpenApiClient):
             query['resourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.size):
             query['size'] = request.size
+        if not UtilClient.is_unset(request.tags):
+            query['tags'] = request.tags
         if not UtilClient.is_unset(request.version):
             query['version'] = request.version
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListLogstash',
@@ -8707,12 +8346,13 @@ class Client(OpenApiClient):
             query['resourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.size):
             query['size'] = request.size
+        if not UtilClient.is_unset(request.tags):
+            query['tags'] = request.tags
         if not UtilClient.is_unset(request.version):
             query['version'] = request.version
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListLogstash',
@@ -8756,7 +8396,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListLogstashLogResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.begin_time):
             query['beginTime'] = request.begin_time
@@ -8772,14 +8411,13 @@ class Client(OpenApiClient):
             query['type'] = request.type
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListLogstashLog',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/search-log',
+            pathname=f'/openapi/logstashes/{OpenApiUtilClient.get_encode_param(instance_id)}/search-log',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -8799,7 +8437,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListLogstashLogResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.begin_time):
             query['beginTime'] = request.begin_time
@@ -8815,14 +8452,13 @@ class Client(OpenApiClient):
             query['type'] = request.type
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListLogstashLog',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/search-log',
+            pathname=f'/openapi/logstashes/{OpenApiUtilClient.get_encode_param(instance_id)}/search-log',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -8860,7 +8496,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListLogstashPluginsResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.name):
             query['name'] = request.name
@@ -8872,14 +8507,13 @@ class Client(OpenApiClient):
             query['source'] = request.source
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListLogstashPlugins',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/plugins',
+            pathname=f'/openapi/logstashes/{OpenApiUtilClient.get_encode_param(instance_id)}/plugins',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -8899,7 +8533,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListLogstashPluginsResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.name):
             query['name'] = request.name
@@ -8911,14 +8544,13 @@ class Client(OpenApiClient):
             query['source'] = request.source
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListLogstashPlugins',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/plugins',
+            pathname=f'/openapi/logstashes/{OpenApiUtilClient.get_encode_param(instance_id)}/plugins',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -8956,7 +8588,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListNodesResponse:
         UtilClient.validate_model(request)
-        res_id = OpenApiUtilClient.get_encode_param(res_id)
         query = {}
         if not UtilClient.is_unset(request.ecs_instance_ids):
             query['ecsInstanceIds'] = request.ecs_instance_ids
@@ -8970,14 +8601,13 @@ class Client(OpenApiClient):
             query['tags'] = request.tags
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListNodes',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/collectors/{res_id}/nodes',
+            pathname=f'/openapi/collectors/{OpenApiUtilClient.get_encode_param(res_id)}/nodes',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -8997,7 +8627,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListNodesResponse:
         UtilClient.validate_model(request)
-        res_id = OpenApiUtilClient.get_encode_param(res_id)
         query = {}
         if not UtilClient.is_unset(request.ecs_instance_ids):
             query['ecsInstanceIds'] = request.ecs_instance_ids
@@ -9011,14 +8640,13 @@ class Client(OpenApiClient):
             query['tags'] = request.tags
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListNodes',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/collectors/{res_id}/nodes',
+            pathname=f'/openapi/collectors/{OpenApiUtilClient.get_encode_param(res_id)}/nodes',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -9056,7 +8684,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListPipelineResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.page):
             query['page'] = request.page
@@ -9066,14 +8693,13 @@ class Client(OpenApiClient):
             query['size'] = request.size
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListPipeline',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/pipelines',
+            pathname=f'/openapi/logstashes/{OpenApiUtilClient.get_encode_param(instance_id)}/pipelines',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -9093,7 +8719,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListPipelineResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.page):
             query['page'] = request.page
@@ -9103,14 +8728,13 @@ class Client(OpenApiClient):
             query['size'] = request.size
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListPipeline',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/pipelines',
+            pathname=f'/openapi/logstashes/{OpenApiUtilClient.get_encode_param(instance_id)}/pipelines',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -9148,7 +8772,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListPipelineIdsResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=request.body
@@ -9157,7 +8780,7 @@ class Client(OpenApiClient):
             action='ListPipelineIds',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/pipeline-ids',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/pipeline-ids',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -9177,7 +8800,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListPipelineIdsResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=request.body
@@ -9186,7 +8808,7 @@ class Client(OpenApiClient):
             action='ListPipelineIds',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/pipeline-ids',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/pipeline-ids',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -9224,7 +8846,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListPluginsResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.name):
             query['name'] = request.name
@@ -9236,14 +8857,13 @@ class Client(OpenApiClient):
             query['source'] = request.source
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListPlugins',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/plugins',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/plugins',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -9263,7 +8883,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListPluginsResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.name):
             query['name'] = request.name
@@ -9275,14 +8894,13 @@ class Client(OpenApiClient):
             query['source'] = request.source
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListPlugins',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/plugins',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/plugins',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -9320,7 +8938,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListSearchLogResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.begin_time):
             query['beginTime'] = request.begin_time
@@ -9336,14 +8953,13 @@ class Client(OpenApiClient):
             query['type'] = request.type
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListSearchLog',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/search-log',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/search-log',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -9363,7 +8979,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListSearchLogResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.begin_time):
             query['beginTime'] = request.begin_time
@@ -9379,14 +8994,13 @@ class Client(OpenApiClient):
             query['type'] = request.type
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListSearchLog',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/search-log',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/search-log',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -9424,20 +9038,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListShardRecoveriesResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.active_only):
             query['activeOnly'] = request.active_only
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListShardRecoveries',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/cat-recovery',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/cat-recovery',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -9457,20 +9069,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListShardRecoveriesResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.active_only):
             query['activeOnly'] = request.active_only
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListShardRecoveries',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/cat-recovery',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/cat-recovery',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -9485,39 +9095,33 @@ class Client(OpenApiClient):
     def list_snapshot_repos_by_instance_id(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.ListSnapshotReposByInstanceIdRequest,
     ) -> elasticsearch_20170613_models.ListSnapshotReposByInstanceIdResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_snapshot_repos_by_instance_id_with_options(instance_id, request, headers, runtime)
+        return self.list_snapshot_repos_by_instance_id_with_options(instance_id, headers, runtime)
 
     async def list_snapshot_repos_by_instance_id_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.ListSnapshotReposByInstanceIdRequest,
     ) -> elasticsearch_20170613_models.ListSnapshotReposByInstanceIdResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_snapshot_repos_by_instance_id_with_options_async(instance_id, request, headers, runtime)
+        return await self.list_snapshot_repos_by_instance_id_with_options_async(instance_id, headers, runtime)
 
     def list_snapshot_repos_by_instance_id_with_options(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.ListSnapshotReposByInstanceIdRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListSnapshotReposByInstanceIdResponse:
-        UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=request.body
+            headers=headers
         )
         params = open_api_models.Params(
             action='ListSnapshotReposByInstanceId',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/snapshot-repos',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/snapshot-repos',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -9532,21 +9136,17 @@ class Client(OpenApiClient):
     async def list_snapshot_repos_by_instance_id_with_options_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.ListSnapshotReposByInstanceIdRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListSnapshotReposByInstanceIdResponse:
-        UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=request.body
+            headers=headers
         )
         params = open_api_models.Params(
             action='ListSnapshotReposByInstanceId',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/snapshot-repos',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/snapshot-repos',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -9596,8 +9196,7 @@ class Client(OpenApiClient):
             query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListTagResources',
@@ -9637,8 +9236,7 @@ class Client(OpenApiClient):
             query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListTagResources',
@@ -9686,8 +9284,7 @@ class Client(OpenApiClient):
             query['resourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListTags',
@@ -9719,8 +9316,7 @@ class Client(OpenApiClient):
             query['resourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListTags',
@@ -9764,7 +9360,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListVpcEndpointsResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.page):
             query['page'] = request.page
@@ -9772,14 +9367,13 @@ class Client(OpenApiClient):
             query['size'] = request.size
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListVpcEndpoints',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/vpc-endpoints',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/vpc-endpoints',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -9799,7 +9393,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListVpcEndpointsResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.page):
             query['page'] = request.page
@@ -9807,14 +9400,13 @@ class Client(OpenApiClient):
             query['size'] = request.size
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListVpcEndpoints',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/vpc-endpoints',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/vpc-endpoints',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -9852,7 +9444,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.MigrateToOtherZoneResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
             query['dryRun'] = request.dry_run
@@ -9865,7 +9456,7 @@ class Client(OpenApiClient):
             action='MigrateToOtherZone',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/migrate-zones',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/migrate-zones',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -9885,7 +9476,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.MigrateToOtherZoneResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
             query['dryRun'] = request.dry_run
@@ -9898,7 +9488,7 @@ class Client(OpenApiClient):
             action='MigrateToOtherZone',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/migrate-zones',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/migrate-zones',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -9936,7 +9526,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ModifyDeployMachineResponse:
         UtilClient.validate_model(request)
-        res_id = OpenApiUtilClient.get_encode_param(res_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
@@ -9949,7 +9538,7 @@ class Client(OpenApiClient):
             action='ModifyDeployMachine',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/collectors/{res_id}/actions/modify-deploy-machines',
+            pathname=f'/openapi/collectors/{OpenApiUtilClient.get_encode_param(res_id)}/actions/modify-deploy-machines',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -9969,7 +9558,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ModifyDeployMachineResponse:
         UtilClient.validate_model(request)
-        res_id = OpenApiUtilClient.get_encode_param(res_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
@@ -9982,7 +9570,7 @@ class Client(OpenApiClient):
             action='ModifyDeployMachine',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/collectors/{res_id}/actions/modify-deploy-machines',
+            pathname=f'/openapi/collectors/{OpenApiUtilClient.get_encode_param(res_id)}/actions/modify-deploy-machines',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -10020,7 +9608,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ModifyElastictaskResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=request.body
@@ -10029,7 +9616,7 @@ class Client(OpenApiClient):
             action='ModifyElastictask',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/elastic-task',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/elastic-task',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -10049,7 +9636,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ModifyElastictaskResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=request.body
@@ -10058,7 +9644,7 @@ class Client(OpenApiClient):
             action='ModifyElastictask',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/elastic-task',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/elastic-task',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -10096,7 +9682,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ModifyInstanceMaintainTimeResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
@@ -10109,7 +9694,7 @@ class Client(OpenApiClient):
             action='ModifyInstanceMaintainTime',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/modify-maintaintime',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/modify-maintaintime',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -10129,7 +9714,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ModifyInstanceMaintainTimeResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
@@ -10142,7 +9726,7 @@ class Client(OpenApiClient):
             action='ModifyInstanceMaintainTime',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/modify-maintaintime',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/modify-maintaintime',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -10180,7 +9764,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ModifyWhiteIpsResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -10204,7 +9787,7 @@ class Client(OpenApiClient):
             action='ModifyWhiteIps',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/modify-white-ips',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/modify-white-ips',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -10224,7 +9807,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ModifyWhiteIpsResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -10248,7 +9830,7 @@ class Client(OpenApiClient):
             action='ModifyWhiteIps',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/modify-white-ips',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/modify-white-ips',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -10286,7 +9868,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.MoveResourceGroupResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -10299,7 +9880,7 @@ class Client(OpenApiClient):
             action='MoveResourceGroup',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/resourcegroup',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/resourcegroup',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -10319,7 +9900,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.MoveResourceGroupResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -10332,7 +9912,7 @@ class Client(OpenApiClient):
             action='MoveResourceGroup',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/resourcegroup',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/resourcegroup',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -10370,7 +9950,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.OpenDiagnosisResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
@@ -10378,14 +9957,13 @@ class Client(OpenApiClient):
             query['lang'] = request.lang
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='OpenDiagnosis',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/diagnosis/instances/{instance_id}/actions/open-diagnosis',
+            pathname=f'/openapi/diagnosis/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/open-diagnosis',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -10405,7 +9983,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.OpenDiagnosisResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
@@ -10413,14 +9990,13 @@ class Client(OpenApiClient):
             query['lang'] = request.lang
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='OpenDiagnosis',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/diagnosis/instances/{instance_id}/actions/open-diagnosis',
+            pathname=f'/openapi/diagnosis/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/open-diagnosis',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -10458,20 +10034,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.OpenHttpsResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='OpenHttps',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/open-https',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/open-https',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -10491,20 +10065,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.OpenHttpsResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='OpenHttps',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/open-https',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/open-https',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -10545,8 +10117,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.PostEmonTryAlarmRuleResponse:
         UtilClient.validate_model(request)
-        project_id = OpenApiUtilClient.get_encode_param(project_id)
-        alarm_group_id = OpenApiUtilClient.get_encode_param(alarm_group_id)
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=request.body
@@ -10555,7 +10125,7 @@ class Client(OpenApiClient):
             action='PostEmonTryAlarmRule',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/emon/projects/{project_id}/alarm-groups/{alarm_group_id}/alarm-rules/_test',
+            pathname=f'/openapi/emon/projects/{OpenApiUtilClient.get_encode_param(project_id)}/alarm-groups/{OpenApiUtilClient.get_encode_param(alarm_group_id)}/alarm-rules/_test',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -10576,8 +10146,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.PostEmonTryAlarmRuleResponse:
         UtilClient.validate_model(request)
-        project_id = OpenApiUtilClient.get_encode_param(project_id)
-        alarm_group_id = OpenApiUtilClient.get_encode_param(alarm_group_id)
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=request.body
@@ -10586,7 +10154,7 @@ class Client(OpenApiClient):
             action='PostEmonTryAlarmRule',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/emon/projects/{project_id}/alarm-groups/{alarm_group_id}/alarm-rules/_test',
+            pathname=f'/openapi/emon/projects/{OpenApiUtilClient.get_encode_param(project_id)}/alarm-groups/{OpenApiUtilClient.get_encode_param(alarm_group_id)}/alarm-rules/_test',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -10624,20 +10192,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.RecommendTemplatesResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.usage_scenario):
             query['usageScenario'] = request.usage_scenario
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='RecommendTemplates',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/recommended-templates',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/recommended-templates',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -10657,20 +10223,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.RecommendTemplatesResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.usage_scenario):
             query['usageScenario'] = request.usage_scenario
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='RecommendTemplates',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/recommended-templates',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/recommended-templates',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -10708,7 +10272,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ReinstallCollectorResponse:
         UtilClient.validate_model(request)
-        res_id = OpenApiUtilClient.get_encode_param(res_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
@@ -10721,7 +10284,7 @@ class Client(OpenApiClient):
             action='ReinstallCollector',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/collectors/{res_id}/actions/reinstall',
+            pathname=f'/openapi/collectors/{OpenApiUtilClient.get_encode_param(res_id)}/actions/reinstall',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -10741,7 +10304,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ReinstallCollectorResponse:
         UtilClient.validate_model(request)
-        res_id = OpenApiUtilClient.get_encode_param(res_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
@@ -10754,7 +10316,7 @@ class Client(OpenApiClient):
             action='ReinstallCollector',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/collectors/{res_id}/actions/reinstall',
+            pathname=f'/openapi/collectors/{OpenApiUtilClient.get_encode_param(res_id)}/actions/reinstall',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -10769,39 +10331,33 @@ class Client(OpenApiClient):
     def remove_apm(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.RemoveApmRequest,
     ) -> elasticsearch_20170613_models.RemoveApmResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.remove_apm_with_options(instance_id, request, headers, runtime)
+        return self.remove_apm_with_options(instance_id, headers, runtime)
 
     async def remove_apm_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.RemoveApmRequest,
     ) -> elasticsearch_20170613_models.RemoveApmResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.remove_apm_with_options_async(instance_id, request, headers, runtime)
+        return await self.remove_apm_with_options_async(instance_id, headers, runtime)
 
     def remove_apm_with_options(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.RemoveApmRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.RemoveApmResponse:
-        UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=request.body
+            headers=headers
         )
         params = open_api_models.Params(
             action='RemoveApm',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/apm/{instance_id}',
+            pathname=f'/openapi/apm/{OpenApiUtilClient.get_encode_param(instance_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -10816,21 +10372,17 @@ class Client(OpenApiClient):
     async def remove_apm_with_options_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.RemoveApmRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.RemoveApmResponse:
-        UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=request.body
+            headers=headers
         )
         params = open_api_models.Params(
             action='RemoveApm',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/apm/{instance_id}',
+            pathname=f'/openapi/apm/{OpenApiUtilClient.get_encode_param(instance_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -10868,7 +10420,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.RenewInstanceResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -10881,7 +10432,7 @@ class Client(OpenApiClient):
             action='RenewInstance',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/renew',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/renew',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -10901,7 +10452,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.RenewInstanceResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -10914,7 +10464,7 @@ class Client(OpenApiClient):
             action='RenewInstance',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/renew',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/renew',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -10952,7 +10502,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.RenewLogstashResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -10965,7 +10514,7 @@ class Client(OpenApiClient):
             action='RenewLogstash',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/actions/renew',
+            pathname=f'/openapi/logstashes/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/renew',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -10985,7 +10534,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.RenewLogstashResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -10998,7 +10546,7 @@ class Client(OpenApiClient):
             action='RenewLogstash',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/actions/renew',
+            pathname=f'/openapi/logstashes/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/renew',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -11036,20 +10584,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.RestartCollectorResponse:
         UtilClient.validate_model(request)
-        res_id = OpenApiUtilClient.get_encode_param(res_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='RestartCollector',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/collectors/{res_id}/actions/restart',
+            pathname=f'/openapi/collectors/{OpenApiUtilClient.get_encode_param(res_id)}/actions/restart',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -11069,20 +10615,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.RestartCollectorResponse:
         UtilClient.validate_model(request)
-        res_id = OpenApiUtilClient.get_encode_param(res_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='RestartCollector',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/collectors/{res_id}/actions/restart',
+            pathname=f'/openapi/collectors/{OpenApiUtilClient.get_encode_param(res_id)}/actions/restart',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -11120,7 +10664,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.RestartInstanceResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -11135,7 +10678,7 @@ class Client(OpenApiClient):
             action='RestartInstance',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/restart',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/restart',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -11155,7 +10698,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.RestartInstanceResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -11170,7 +10712,7 @@ class Client(OpenApiClient):
             action='RestartInstance',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/restart',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/restart',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -11208,22 +10750,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.RestartLogstashResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
         if not UtilClient.is_unset(request.force):
             query['force'] = request.force
+        body = {}
+        if not UtilClient.is_unset(request.batch_count):
+            body['batchCount'] = request.batch_count
+        if not UtilClient.is_unset(request.blue_green_dep):
+            body['blueGreenDep'] = request.blue_green_dep
+        if not UtilClient.is_unset(request.node_types):
+            body['nodeTypes'] = request.node_types
+        if not UtilClient.is_unset(request.nodes):
+            body['nodes'] = request.nodes
+        if not UtilClient.is_unset(request.restart_type):
+            body['restartType'] = request.restart_type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),
-            body=request.body
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='RestartLogstash',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/actions/restart',
+            pathname=f'/openapi/logstashes/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/restart',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -11243,22 +10795,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.RestartLogstashResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
         if not UtilClient.is_unset(request.force):
             query['force'] = request.force
+        body = {}
+        if not UtilClient.is_unset(request.batch_count):
+            body['batchCount'] = request.batch_count
+        if not UtilClient.is_unset(request.blue_green_dep):
+            body['blueGreenDep'] = request.blue_green_dep
+        if not UtilClient.is_unset(request.node_types):
+            body['nodeTypes'] = request.node_types
+        if not UtilClient.is_unset(request.nodes):
+            body['nodes'] = request.nodes
+        if not UtilClient.is_unset(request.restart_type):
+            body['restartType'] = request.restart_type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),
-            body=request.body
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='RestartLogstash',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/actions/restart',
+            pathname=f'/openapi/logstashes/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/restart',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -11296,20 +10858,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ResumeElasticsearchTaskResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ResumeElasticsearchTask',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/resume',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/resume',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -11329,20 +10889,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ResumeElasticsearchTaskResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ResumeElasticsearchTask',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/resume',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/resume',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -11380,20 +10938,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ResumeLogstashTaskResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ResumeLogstashTask',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/actions/resume',
+            pathname=f'/openapi/logstashes/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/resume',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -11413,20 +10969,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ResumeLogstashTaskResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ResumeLogstashTask',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/actions/resume',
+            pathname=f'/openapi/logstashes/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/resume',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -11467,21 +11021,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.RolloverDataStreamResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        data_stream = OpenApiUtilClient.get_encode_param(data_stream)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='RolloverDataStream',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/data-streams/{data_stream}/rollover',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/data-streams/{OpenApiUtilClient.get_encode_param(data_stream)}/rollover',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -11502,21 +11053,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.RolloverDataStreamResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        data_stream = OpenApiUtilClient.get_encode_param(data_stream)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='RolloverDataStream',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/data-streams/{data_stream}/rollover',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/data-streams/{OpenApiUtilClient.get_encode_param(data_stream)}/rollover',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -11554,7 +11102,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.RunPipelinesResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
@@ -11567,7 +11114,7 @@ class Client(OpenApiClient):
             action='RunPipelines',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/pipelines/action/run',
+            pathname=f'/openapi/logstashes/{OpenApiUtilClient.get_encode_param(instance_id)}/pipelines/action/run',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -11587,7 +11134,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.RunPipelinesResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
@@ -11600,7 +11146,7 @@ class Client(OpenApiClient):
             action='RunPipelines',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/pipelines/action/run',
+            pathname=f'/openapi/logstashes/{OpenApiUtilClient.get_encode_param(instance_id)}/pipelines/action/run',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -11638,10 +11184,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ShrinkNodeResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
+        if not UtilClient.is_unset(request.count):
+            query['count'] = request.count
         if not UtilClient.is_unset(request.ignore_status):
             query['ignoreStatus'] = request.ignore_status
         if not UtilClient.is_unset(request.node_type):
@@ -11655,7 +11202,7 @@ class Client(OpenApiClient):
             action='ShrinkNode',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/shrink',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/shrink',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -11675,10 +11222,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ShrinkNodeResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
+        if not UtilClient.is_unset(request.count):
+            query['count'] = request.count
         if not UtilClient.is_unset(request.ignore_status):
             query['ignoreStatus'] = request.ignore_status
         if not UtilClient.is_unset(request.node_type):
@@ -11692,7 +11240,7 @@ class Client(OpenApiClient):
             action='ShrinkNode',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/shrink',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/shrink',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -11707,39 +11255,33 @@ class Client(OpenApiClient):
     def start_apm(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.StartApmRequest,
     ) -> elasticsearch_20170613_models.StartApmResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.start_apm_with_options(instance_id, request, headers, runtime)
+        return self.start_apm_with_options(instance_id, headers, runtime)
 
     async def start_apm_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.StartApmRequest,
     ) -> elasticsearch_20170613_models.StartApmResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.start_apm_with_options_async(instance_id, request, headers, runtime)
+        return await self.start_apm_with_options_async(instance_id, headers, runtime)
 
     def start_apm_with_options(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.StartApmRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.StartApmResponse:
-        UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=request.body
+            headers=headers
         )
         params = open_api_models.Params(
             action='StartApm',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/apm/{instance_id}/actions/start',
+            pathname=f'/openapi/apm/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/start',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -11754,21 +11296,17 @@ class Client(OpenApiClient):
     async def start_apm_with_options_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.StartApmRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.StartApmResponse:
-        UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=request.body
+            headers=headers
         )
         params = open_api_models.Params(
             action='StartApm',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/apm/{instance_id}/actions/start',
+            pathname=f'/openapi/apm/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/start',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -11806,20 +11344,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.StartCollectorResponse:
         UtilClient.validate_model(request)
-        res_id = OpenApiUtilClient.get_encode_param(res_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='StartCollector',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/collectors/{res_id}/actions/start',
+            pathname=f'/openapi/collectors/{OpenApiUtilClient.get_encode_param(res_id)}/actions/start',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -11839,20 +11375,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.StartCollectorResponse:
         UtilClient.validate_model(request)
-        res_id = OpenApiUtilClient.get_encode_param(res_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='StartCollector',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/collectors/{res_id}/actions/start',
+            pathname=f'/openapi/collectors/{OpenApiUtilClient.get_encode_param(res_id)}/actions/start',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -11867,39 +11401,33 @@ class Client(OpenApiClient):
     def stop_apm(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.StopApmRequest,
     ) -> elasticsearch_20170613_models.StopApmResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.stop_apm_with_options(instance_id, request, headers, runtime)
+        return self.stop_apm_with_options(instance_id, headers, runtime)
 
     async def stop_apm_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.StopApmRequest,
     ) -> elasticsearch_20170613_models.StopApmResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.stop_apm_with_options_async(instance_id, request, headers, runtime)
+        return await self.stop_apm_with_options_async(instance_id, headers, runtime)
 
     def stop_apm_with_options(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.StopApmRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.StopApmResponse:
-        UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=request.body
+            headers=headers
         )
         params = open_api_models.Params(
             action='StopApm',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/apm/{instance_id}/actions/stop',
+            pathname=f'/openapi/apm/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/stop',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -11914,21 +11442,17 @@ class Client(OpenApiClient):
     async def stop_apm_with_options_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.StopApmRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.StopApmResponse:
-        UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=request.body
+            headers=headers
         )
         params = open_api_models.Params(
             action='StopApm',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/apm/{instance_id}/actions/stop',
+            pathname=f'/openapi/apm/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/stop',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -11966,20 +11490,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.StopCollectorResponse:
         UtilClient.validate_model(request)
-        res_id = OpenApiUtilClient.get_encode_param(res_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='StopCollector',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/collectors/{res_id}/actions/stop',
+            pathname=f'/openapi/collectors/{OpenApiUtilClient.get_encode_param(res_id)}/actions/stop',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -11999,20 +11521,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.StopCollectorResponse:
         UtilClient.validate_model(request)
-        res_id = OpenApiUtilClient.get_encode_param(res_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='StopCollector',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/collectors/{res_id}/actions/stop',
+            pathname=f'/openapi/collectors/{OpenApiUtilClient.get_encode_param(res_id)}/actions/stop',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -12050,7 +11570,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.StopPipelinesResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
@@ -12063,7 +11582,7 @@ class Client(OpenApiClient):
             action='StopPipelines',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/pipelines/action/stop',
+            pathname=f'/openapi/logstashes/{OpenApiUtilClient.get_encode_param(instance_id)}/pipelines/action/stop',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -12083,7 +11602,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.StopPipelinesResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
@@ -12096,7 +11614,7 @@ class Client(OpenApiClient):
             action='StopPipelines',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/pipelines/action/stop',
+            pathname=f'/openapi/logstashes/{OpenApiUtilClient.get_encode_param(instance_id)}/pipelines/action/stop',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -12131,9 +11649,16 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.TagResourcesResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.resource_ids):
+            body['ResourceIds'] = request.resource_ids
+        if not UtilClient.is_unset(request.resource_type):
+            body['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tags):
+            body['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            body=request.body
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='TagResources',
@@ -12158,9 +11683,16 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.TagResourcesResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.resource_ids):
+            body['ResourceIds'] = request.resource_ids
+        if not UtilClient.is_unset(request.resource_type):
+            body['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tags):
+            body['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            body=request.body
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='TagResources',
@@ -12204,7 +11736,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.TransferNodeResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -12219,7 +11750,7 @@ class Client(OpenApiClient):
             action='TransferNode',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/transfer',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/transfer',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -12239,7 +11770,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.TransferNodeResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -12254,7 +11784,7 @@ class Client(OpenApiClient):
             action='TransferNode',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/transfer',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/transfer',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -12292,7 +11822,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.TriggerNetworkResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -12312,7 +11841,7 @@ class Client(OpenApiClient):
             action='TriggerNetwork',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/network-trigger',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/network-trigger',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -12332,7 +11861,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.TriggerNetworkResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -12352,7 +11880,7 @@ class Client(OpenApiClient):
             action='TriggerNetwork',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/network-trigger',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/network-trigger',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -12390,7 +11918,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UninstallKibanaPluginResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -12403,7 +11930,7 @@ class Client(OpenApiClient):
             action='UninstallKibanaPlugin',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/kibana-plugins/actions/uninstall',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/kibana-plugins/actions/uninstall',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -12423,7 +11950,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UninstallKibanaPluginResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -12436,7 +11962,7 @@ class Client(OpenApiClient):
             action='UninstallKibanaPlugin',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/kibana-plugins/actions/uninstall',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/kibana-plugins/actions/uninstall',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -12474,7 +12000,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UninstallLogstashPluginResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -12487,7 +12012,7 @@ class Client(OpenApiClient):
             action='UninstallLogstashPlugin',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/plugins/actions/uninstall',
+            pathname=f'/openapi/logstashes/{OpenApiUtilClient.get_encode_param(instance_id)}/plugins/actions/uninstall',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -12507,7 +12032,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UninstallLogstashPluginResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -12520,7 +12044,7 @@ class Client(OpenApiClient):
             action='UninstallLogstashPlugin',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/plugins/actions/uninstall',
+            pathname=f'/openapi/logstashes/{OpenApiUtilClient.get_encode_param(instance_id)}/plugins/actions/uninstall',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -12558,7 +12082,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UninstallPluginResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -12571,7 +12094,7 @@ class Client(OpenApiClient):
             action='UninstallPlugin',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/plugins/actions/uninstall',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/plugins/actions/uninstall',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -12591,7 +12114,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UninstallPluginResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -12604,7 +12126,7 @@ class Client(OpenApiClient):
             action='UninstallPlugin',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/plugins/actions/uninstall',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/plugins/actions/uninstall',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -12732,7 +12254,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateAdminPasswordResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -12745,7 +12266,7 @@ class Client(OpenApiClient):
             action='UpdateAdminPassword',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/admin-pwd',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/admin-pwd',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -12765,7 +12286,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateAdminPasswordResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -12778,7 +12298,7 @@ class Client(OpenApiClient):
             action='UpdateAdminPassword',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/admin-pwd',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/admin-pwd',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -12816,7 +12336,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateAdvancedSettingResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -12829,7 +12348,7 @@ class Client(OpenApiClient):
             action='UpdateAdvancedSetting',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/update-advanced-setting',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/update-advanced-setting',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -12849,7 +12368,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateAdvancedSettingResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -12862,7 +12380,7 @@ class Client(OpenApiClient):
             action='UpdateAdvancedSetting',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/update-advanced-setting',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/update-advanced-setting',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -12900,7 +12418,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateAliwsDictResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -12913,7 +12430,7 @@ class Client(OpenApiClient):
             action='UpdateAliwsDict',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/aliws-dict',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/aliws-dict',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -12933,7 +12450,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateAliwsDictResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -12946,7 +12462,7 @@ class Client(OpenApiClient):
             action='UpdateAliwsDict',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/aliws-dict',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/aliws-dict',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -12984,7 +12500,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateApmResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         body = {}
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
@@ -13004,7 +12519,7 @@ class Client(OpenApiClient):
             action='UpdateApm',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/apm/{instance_id}',
+            pathname=f'/openapi/apm/{OpenApiUtilClient.get_encode_param(instance_id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -13024,7 +12539,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateApmResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         body = {}
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
@@ -13044,7 +12558,7 @@ class Client(OpenApiClient):
             action='UpdateApm',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/apm/{instance_id}',
+            pathname=f'/openapi/apm/{OpenApiUtilClient.get_encode_param(instance_id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -13082,27 +12596,22 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateBlackIpsResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
-        body = {}
-        if not UtilClient.is_unset(request.es_ipblacklist):
-            body['esIPBlacklist'] = request.es_ipblacklist
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateBlackIps',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/black-ips',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/black-ips',
             method='POST',
             auth_type='AK',
             style='ROA',
-            req_body_type='formData',
+            req_body_type='json',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -13118,27 +12627,22 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateBlackIpsResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
-        body = {}
-        if not UtilClient.is_unset(request.es_ipblacklist):
-            body['esIPBlacklist'] = request.es_ipblacklist
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateBlackIps',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/black-ips',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/black-ips',
             method='POST',
             auth_type='AK',
             style='ROA',
-            req_body_type='formData',
+            req_body_type='json',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -13172,7 +12676,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateCollectorResponse:
         UtilClient.validate_model(request)
-        res_id = OpenApiUtilClient.get_encode_param(res_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
@@ -13185,7 +12688,7 @@ class Client(OpenApiClient):
             action='UpdateCollector',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/collectors/{res_id}',
+            pathname=f'/openapi/collectors/{OpenApiUtilClient.get_encode_param(res_id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -13205,7 +12708,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateCollectorResponse:
         UtilClient.validate_model(request)
-        res_id = OpenApiUtilClient.get_encode_param(res_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
@@ -13218,7 +12720,7 @@ class Client(OpenApiClient):
             action='UpdateCollector',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/collectors/{res_id}',
+            pathname=f'/openapi/collectors/{OpenApiUtilClient.get_encode_param(res_id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -13256,7 +12758,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateCollectorNameResponse:
         UtilClient.validate_model(request)
-        res_id = OpenApiUtilClient.get_encode_param(res_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
@@ -13269,7 +12770,7 @@ class Client(OpenApiClient):
             action='UpdateCollectorName',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/collectors/{res_id}/actions/rename',
+            pathname=f'/openapi/collectors/{OpenApiUtilClient.get_encode_param(res_id)}/actions/rename',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -13289,7 +12790,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateCollectorNameResponse:
         UtilClient.validate_model(request)
-        res_id = OpenApiUtilClient.get_encode_param(res_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
@@ -13302,7 +12802,7 @@ class Client(OpenApiClient):
             action='UpdateCollectorName',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/collectors/{res_id}/actions/rename',
+            pathname=f'/openapi/collectors/{OpenApiUtilClient.get_encode_param(res_id)}/actions/rename',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -13343,8 +12843,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateComponentIndexResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        name = OpenApiUtilClient.get_encode_param(name)
         body = {}
         if not UtilClient.is_unset(request.meta):
             body['_meta'] = request.meta
@@ -13358,7 +12856,7 @@ class Client(OpenApiClient):
             action='UpdateComponentIndex',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/component-index/{name}',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/component-index/{OpenApiUtilClient.get_encode_param(name)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -13379,8 +12877,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateComponentIndexResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        name = OpenApiUtilClient.get_encode_param(name)
         body = {}
         if not UtilClient.is_unset(request.meta):
             body['_meta'] = request.meta
@@ -13394,7 +12890,7 @@ class Client(OpenApiClient):
             action='UpdateComponentIndex',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/component-index/{name}',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/component-index/{OpenApiUtilClient.get_encode_param(name)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -13432,7 +12928,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateDescriptionResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -13448,7 +12943,7 @@ class Client(OpenApiClient):
             action='UpdateDescription',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/description',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/description',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -13468,7 +12963,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateDescriptionResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -13484,7 +12978,7 @@ class Client(OpenApiClient):
             action='UpdateDescription',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/description',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/description',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -13522,7 +13016,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateDiagnosisSettingsResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
@@ -13537,7 +13030,7 @@ class Client(OpenApiClient):
             action='UpdateDiagnosisSettings',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/diagnosis/instances/{instance_id}/settings',
+            pathname=f'/openapi/diagnosis/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/settings',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -13557,7 +13050,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateDiagnosisSettingsResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
@@ -13572,7 +13064,7 @@ class Client(OpenApiClient):
             action='UpdateDiagnosisSettings',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/diagnosis/instances/{instance_id}/settings',
+            pathname=f'/openapi/diagnosis/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/settings',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -13610,7 +13102,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateDictResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -13623,7 +13114,7 @@ class Client(OpenApiClient):
             action='UpdateDict',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/dict',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/dict',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -13643,7 +13134,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateDictResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -13656,7 +13146,7 @@ class Client(OpenApiClient):
             action='UpdateDict',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/dict',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/dict',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -13694,7 +13184,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateDynamicSettingsResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
@@ -13711,7 +13200,7 @@ class Client(OpenApiClient):
             action='UpdateDynamicSettings',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/dynamic-settings',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/dynamic-settings',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -13731,7 +13220,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateDynamicSettingsResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
@@ -13748,7 +13236,7 @@ class Client(OpenApiClient):
             action='UpdateDynamicSettings',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/dynamic-settings',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/dynamic-settings',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -13786,7 +13274,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateExtendConfigResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
@@ -13799,7 +13286,7 @@ class Client(OpenApiClient):
             action='UpdateExtendConfig',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/extend-configs/actions/update',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/extend-configs/actions/update',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -13819,7 +13306,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateExtendConfigResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
@@ -13832,7 +13318,7 @@ class Client(OpenApiClient):
             action='UpdateExtendConfig',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/extend-configs/actions/update',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/extend-configs/actions/update',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -13870,7 +13356,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateExtendfilesResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
@@ -13883,7 +13368,7 @@ class Client(OpenApiClient):
             action='UpdateExtendfiles',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/extendfiles',
+            pathname=f'/openapi/logstashes/{OpenApiUtilClient.get_encode_param(instance_id)}/extendfiles',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -13903,7 +13388,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateExtendfilesResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
@@ -13916,7 +13400,7 @@ class Client(OpenApiClient):
             action='UpdateExtendfiles',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/extendfiles',
+            pathname=f'/openapi/logstashes/{OpenApiUtilClient.get_encode_param(instance_id)}/extendfiles',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -13954,7 +13438,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateHotIkDictsResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -13967,7 +13450,7 @@ class Client(OpenApiClient):
             action='UpdateHotIkDicts',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/ik-hot-dict',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/ik-hot-dict',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -13987,7 +13470,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateHotIkDictsResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -14000,7 +13482,7 @@ class Client(OpenApiClient):
             action='UpdateHotIkDicts',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/ik-hot-dict',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/ik-hot-dict',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -14041,8 +13523,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateILMPolicyResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        policy_name = OpenApiUtilClient.get_encode_param(policy_name)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
@@ -14055,7 +13535,7 @@ class Client(OpenApiClient):
             action='UpdateILMPolicy',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/ilm-policies/{policy_name}',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/ilm-policies/{OpenApiUtilClient.get_encode_param(policy_name)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -14076,8 +13556,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateILMPolicyResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        policy_name = OpenApiUtilClient.get_encode_param(policy_name)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
@@ -14090,7 +13568,7 @@ class Client(OpenApiClient):
             action='UpdateILMPolicy',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/ilm-policies/{policy_name}',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/ilm-policies/{OpenApiUtilClient.get_encode_param(policy_name)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -14131,8 +13609,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateIndexTemplateResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        index_template = OpenApiUtilClient.get_encode_param(index_template)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
@@ -14145,7 +13621,7 @@ class Client(OpenApiClient):
             action='UpdateIndexTemplate',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/index-templates/{index_template}',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/index-templates/{OpenApiUtilClient.get_encode_param(index_template)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -14166,8 +13642,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateIndexTemplateResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        index_template = OpenApiUtilClient.get_encode_param(index_template)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
@@ -14180,7 +13654,7 @@ class Client(OpenApiClient):
             action='UpdateIndexTemplate',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/index-templates/{index_template}',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/index-templates/{OpenApiUtilClient.get_encode_param(index_template)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -14218,22 +13692,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateInstanceResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
+        if not UtilClient.is_unset(request.force):
+            query['force'] = request.force
         if not UtilClient.is_unset(request.order_action_type):
             query['orderActionType'] = request.order_action_type
+        body = {}
+        if not UtilClient.is_unset(request.client_node_configuration):
+            body['clientNodeConfiguration'] = request.client_node_configuration
+        if not UtilClient.is_unset(request.elastic_data_node_configuration):
+            body['elasticDataNodeConfiguration'] = request.elastic_data_node_configuration
+        if not UtilClient.is_unset(request.instance_category):
+            body['instanceCategory'] = request.instance_category
+        if not UtilClient.is_unset(request.kibana_configuration):
+            body['kibanaConfiguration'] = request.kibana_configuration
+        if not UtilClient.is_unset(request.master_configuration):
+            body['masterConfiguration'] = request.master_configuration
+        if not UtilClient.is_unset(request.node_amount):
+            body['nodeAmount'] = request.node_amount
+        if not UtilClient.is_unset(request.node_spec):
+            body['nodeSpec'] = request.node_spec
+        if not UtilClient.is_unset(request.warm_node_configuration):
+            body['warmNodeConfiguration'] = request.warm_node_configuration
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),
-            body=request.body
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateInstance',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -14253,22 +13745,40 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateInstanceResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
+        if not UtilClient.is_unset(request.force):
+            query['force'] = request.force
         if not UtilClient.is_unset(request.order_action_type):
             query['orderActionType'] = request.order_action_type
+        body = {}
+        if not UtilClient.is_unset(request.client_node_configuration):
+            body['clientNodeConfiguration'] = request.client_node_configuration
+        if not UtilClient.is_unset(request.elastic_data_node_configuration):
+            body['elasticDataNodeConfiguration'] = request.elastic_data_node_configuration
+        if not UtilClient.is_unset(request.instance_category):
+            body['instanceCategory'] = request.instance_category
+        if not UtilClient.is_unset(request.kibana_configuration):
+            body['kibanaConfiguration'] = request.kibana_configuration
+        if not UtilClient.is_unset(request.master_configuration):
+            body['masterConfiguration'] = request.master_configuration
+        if not UtilClient.is_unset(request.node_amount):
+            body['nodeAmount'] = request.node_amount
+        if not UtilClient.is_unset(request.node_spec):
+            body['nodeSpec'] = request.node_spec
+        if not UtilClient.is_unset(request.warm_node_configuration):
+            body['warmNodeConfiguration'] = request.warm_node_configuration
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),
-            body=request.body
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateInstance',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -14306,7 +13816,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateInstanceChargeTypeResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -14319,7 +13828,7 @@ class Client(OpenApiClient):
             action='UpdateInstanceChargeType',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/convert-pay-type',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/convert-pay-type',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -14339,7 +13848,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateInstanceChargeTypeResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -14352,7 +13860,7 @@ class Client(OpenApiClient):
             action='UpdateInstanceChargeType',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/convert-pay-type',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/convert-pay-type',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -14390,7 +13898,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateInstanceSettingsResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -14403,7 +13910,7 @@ class Client(OpenApiClient):
             action='UpdateInstanceSettings',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/instance-settings',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/instance-settings',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -14423,7 +13930,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateInstanceSettingsResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -14436,7 +13942,7 @@ class Client(OpenApiClient):
             action='UpdateInstanceSettings',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/instance-settings',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/instance-settings',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -14474,7 +13980,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateKibanaSettingsResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -14487,7 +13992,7 @@ class Client(OpenApiClient):
             action='UpdateKibanaSettings',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/update-kibana-settings',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/update-kibana-settings',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -14507,7 +14012,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateKibanaSettingsResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -14520,7 +14024,7 @@ class Client(OpenApiClient):
             action='UpdateKibanaSettings',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/update-kibana-settings',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/update-kibana-settings',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -14558,22 +14062,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateKibanaWhiteIpsResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
         if not UtilClient.is_unset(request.modify_mode):
             query['modifyMode'] = request.modify_mode
+        body = {}
+        if not UtilClient.is_unset(request.kibana_ipwhitelist):
+            body['kibanaIPWhitelist'] = request.kibana_ipwhitelist
+        if not UtilClient.is_unset(request.white_ip_group):
+            body['whiteIpGroup'] = request.white_ip_group
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),
-            body=request.body
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateKibanaWhiteIps',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/kibana-white-ips',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/kibana-white-ips',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -14593,22 +14101,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateKibanaWhiteIpsResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
         if not UtilClient.is_unset(request.modify_mode):
             query['modifyMode'] = request.modify_mode
+        body = {}
+        if not UtilClient.is_unset(request.kibana_ipwhitelist):
+            body['kibanaIPWhitelist'] = request.kibana_ipwhitelist
+        if not UtilClient.is_unset(request.white_ip_group):
+            body['whiteIpGroup'] = request.white_ip_group
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),
-            body=request.body
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateKibanaWhiteIps',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/kibana-white-ips',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/kibana-white-ips',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -14646,20 +14158,24 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateLogstashResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
+        body = {}
+        if not UtilClient.is_unset(request.node_amount):
+            body['nodeAmount'] = request.node_amount
+        if not UtilClient.is_unset(request.node_spec):
+            body['nodeSpec'] = request.node_spec
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),
-            body=request.body
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateLogstash',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}',
+            pathname=f'/openapi/logstashes/{OpenApiUtilClient.get_encode_param(instance_id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -14679,20 +14195,24 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateLogstashResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
+        body = {}
+        if not UtilClient.is_unset(request.node_amount):
+            body['nodeAmount'] = request.node_amount
+        if not UtilClient.is_unset(request.node_spec):
+            body['nodeSpec'] = request.node_spec
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),
-            body=request.body
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateLogstash',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}',
+            pathname=f'/openapi/logstashes/{OpenApiUtilClient.get_encode_param(instance_id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -14730,7 +14250,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateLogstashChargeTypeResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -14743,7 +14262,7 @@ class Client(OpenApiClient):
             action='UpdateLogstashChargeType',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/actions/convert-pay-type',
+            pathname=f'/openapi/logstashes/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/convert-pay-type',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -14763,7 +14282,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateLogstashChargeTypeResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -14776,7 +14294,7 @@ class Client(OpenApiClient):
             action='UpdateLogstashChargeType',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/actions/convert-pay-type',
+            pathname=f'/openapi/logstashes/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/convert-pay-type',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -14814,7 +14332,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateLogstashDescriptionResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -14827,7 +14344,7 @@ class Client(OpenApiClient):
             action='UpdateLogstashDescription',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/description',
+            pathname=f'/openapi/logstashes/{OpenApiUtilClient.get_encode_param(instance_id)}/description',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -14847,7 +14364,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateLogstashDescriptionResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -14860,7 +14376,7 @@ class Client(OpenApiClient):
             action='UpdateLogstashDescription',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/description',
+            pathname=f'/openapi/logstashes/{OpenApiUtilClient.get_encode_param(instance_id)}/description',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -14898,7 +14414,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateLogstashSettingsResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -14911,7 +14426,7 @@ class Client(OpenApiClient):
             action='UpdateLogstashSettings',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/instance-settings',
+            pathname=f'/openapi/logstashes/{OpenApiUtilClient.get_encode_param(instance_id)}/instance-settings',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -14931,7 +14446,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateLogstashSettingsResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -14944,7 +14458,7 @@ class Client(OpenApiClient):
             action='UpdateLogstashSettings',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/instance-settings',
+            pathname=f'/openapi/logstashes/{OpenApiUtilClient.get_encode_param(instance_id)}/instance-settings',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -14982,20 +14496,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdatePipelineManagementConfigResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
+        body = {}
+        if not UtilClient.is_unset(request.endpoints):
+            body['endpoints'] = request.endpoints
+        if not UtilClient.is_unset(request.password):
+            body['password'] = request.password
+        if not UtilClient.is_unset(request.pipeline_ids):
+            body['pipelineIds'] = request.pipeline_ids
+        if not UtilClient.is_unset(request.pipeline_management_type):
+            body['pipelineManagementType'] = request.pipeline_management_type
+        if not UtilClient.is_unset(request.user_name):
+            body['userName'] = request.user_name
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),
-            body=request.body
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdatePipelineManagementConfig',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/pipeline-management-config',
+            pathname=f'/openapi/logstashes/{OpenApiUtilClient.get_encode_param(instance_id)}/pipeline-management-config',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -15015,20 +14539,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdatePipelineManagementConfigResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
+        body = {}
+        if not UtilClient.is_unset(request.endpoints):
+            body['endpoints'] = request.endpoints
+        if not UtilClient.is_unset(request.password):
+            body['password'] = request.password
+        if not UtilClient.is_unset(request.pipeline_ids):
+            body['pipelineIds'] = request.pipeline_ids
+        if not UtilClient.is_unset(request.pipeline_management_type):
+            body['pipelineManagementType'] = request.pipeline_management_type
+        if not UtilClient.is_unset(request.user_name):
+            body['userName'] = request.user_name
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),
-            body=request.body
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdatePipelineManagementConfig',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/pipeline-management-config',
+            pathname=f'/openapi/logstashes/{OpenApiUtilClient.get_encode_param(instance_id)}/pipeline-management-config',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -15066,7 +14600,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdatePipelinesResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -15081,7 +14614,7 @@ class Client(OpenApiClient):
             action='UpdatePipelines',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/pipelines',
+            pathname=f'/openapi/logstashes/{OpenApiUtilClient.get_encode_param(instance_id)}/pipelines',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -15101,7 +14634,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdatePipelinesResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -15116,7 +14648,7 @@ class Client(OpenApiClient):
             action='UpdatePipelines',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/pipelines',
+            pathname=f'/openapi/logstashes/{OpenApiUtilClient.get_encode_param(instance_id)}/pipelines',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -15154,7 +14686,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdatePrivateNetworkWhiteIpsResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -15169,7 +14700,7 @@ class Client(OpenApiClient):
             action='UpdatePrivateNetworkWhiteIps',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/private-network-white-ips',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/private-network-white-ips',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -15189,7 +14720,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdatePrivateNetworkWhiteIpsResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -15204,7 +14734,7 @@ class Client(OpenApiClient):
             action='UpdatePrivateNetworkWhiteIps',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/private-network-white-ips',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/private-network-white-ips',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -15242,7 +14772,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdatePublicNetworkResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -15255,7 +14784,7 @@ class Client(OpenApiClient):
             action='UpdatePublicNetwork',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/public-network',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/public-network',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -15275,7 +14804,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdatePublicNetworkResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -15288,7 +14816,7 @@ class Client(OpenApiClient):
             action='UpdatePublicNetwork',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/public-network',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/public-network',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -15326,7 +14854,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdatePublicWhiteIpsResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -15341,7 +14868,7 @@ class Client(OpenApiClient):
             action='UpdatePublicWhiteIps',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/public-white-ips',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/public-white-ips',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -15361,7 +14888,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdatePublicWhiteIpsResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -15376,7 +14902,7 @@ class Client(OpenApiClient):
             action='UpdatePublicWhiteIps',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/public-white-ips',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/public-white-ips',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -15414,7 +14940,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateReadWritePolicyResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
@@ -15427,7 +14952,7 @@ class Client(OpenApiClient):
             action='UpdateReadWritePolicy',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/update-read-write-policy',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/update-read-write-policy',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -15447,7 +14972,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateReadWritePolicyResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
@@ -15460,7 +14984,7 @@ class Client(OpenApiClient):
             action='UpdateReadWritePolicy',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/update-read-write-policy',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/update-read-write-policy',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -15498,7 +15022,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateSnapshotSettingResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=request.body
@@ -15507,7 +15030,7 @@ class Client(OpenApiClient):
             action='UpdateSnapshotSetting',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/snapshot-setting',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/snapshot-setting',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -15527,7 +15050,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateSnapshotSettingResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=request.body
@@ -15536,7 +15058,7 @@ class Client(OpenApiClient):
             action='UpdateSnapshotSetting',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/snapshot-setting',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/snapshot-setting',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -15574,7 +15096,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateSynonymsDictsResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -15587,7 +15108,7 @@ class Client(OpenApiClient):
             action='UpdateSynonymsDicts',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/synonymsDict',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/synonymsDict',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -15607,7 +15128,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateSynonymsDictsResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -15620,7 +15140,7 @@ class Client(OpenApiClient):
             action='UpdateSynonymsDicts',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/synonymsDict',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/synonymsDict',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -15661,8 +15181,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateTemplateResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        template_name = OpenApiUtilClient.get_encode_param(template_name)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
@@ -15675,7 +15193,7 @@ class Client(OpenApiClient):
             action='UpdateTemplate',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/templates/{template_name}',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/templates/{OpenApiUtilClient.get_encode_param(template_name)}',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -15696,8 +15214,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateTemplateResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        template_name = OpenApiUtilClient.get_encode_param(template_name)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
@@ -15710,7 +15226,7 @@ class Client(OpenApiClient):
             action='UpdateTemplate',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/templates/{template_name}',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/templates/{OpenApiUtilClient.get_encode_param(template_name)}',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -15748,7 +15264,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateWhiteIpsResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -15768,7 +15283,7 @@ class Client(OpenApiClient):
             action='UpdateWhiteIps',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/white-ips',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/white-ips',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -15788,7 +15303,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateWhiteIpsResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -15808,7 +15322,7 @@ class Client(OpenApiClient):
             action='UpdateWhiteIps',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/white-ips',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/white-ips',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -15846,20 +15360,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateXpackMonitorConfigResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        body = {}
+        if not UtilClient.is_unset(request.enable):
+            body['enable'] = request.enable
+        if not UtilClient.is_unset(request.endpoints):
+            body['endpoints'] = request.endpoints
+        if not UtilClient.is_unset(request.password):
+            body['password'] = request.password
+        if not UtilClient.is_unset(request.user_name):
+            body['userName'] = request.user_name
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),
-            body=request.body
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateXpackMonitorConfig',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/xpack-monitor-config',
+            pathname=f'/openapi/logstashes/{OpenApiUtilClient.get_encode_param(instance_id)}/xpack-monitor-config',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -15879,20 +15401,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateXpackMonitorConfigResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        body = {}
+        if not UtilClient.is_unset(request.enable):
+            body['enable'] = request.enable
+        if not UtilClient.is_unset(request.endpoints):
+            body['endpoints'] = request.endpoints
+        if not UtilClient.is_unset(request.password):
+            body['password'] = request.password
+        if not UtilClient.is_unset(request.user_name):
+            body['userName'] = request.user_name
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),
-            body=request.body
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateXpackMonitorConfig',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/xpack-monitor-config',
+            pathname=f'/openapi/logstashes/{OpenApiUtilClient.get_encode_param(instance_id)}/xpack-monitor-config',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -15930,7 +15460,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpgradeEngineVersionResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -15950,11 +15479,11 @@ class Client(OpenApiClient):
             action='UpgradeEngineVersion',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/upgrade-version',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/upgrade-version',
             method='POST',
             auth_type='AK',
             style='ROA',
-            req_body_type='formData',
+            req_body_type='json',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -15970,7 +15499,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpgradeEngineVersionResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
@@ -15990,11 +15518,11 @@ class Client(OpenApiClient):
             action='UpgradeEngineVersion',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/actions/upgrade-version',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/actions/upgrade-version',
             method='POST',
             auth_type='AK',
             style='ROA',
-            req_body_type='formData',
+            req_body_type='json',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -16028,7 +15556,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ValidateConnectionResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
@@ -16041,7 +15568,7 @@ class Client(OpenApiClient):
             action='ValidateConnection',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/validate-connection',
+            pathname=f'/openapi/logstashes/{OpenApiUtilClient.get_encode_param(instance_id)}/validate-connection',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -16061,7 +15588,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ValidateConnectionResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
@@ -16074,7 +15600,7 @@ class Client(OpenApiClient):
             action='ValidateConnection',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/logstashes/{instance_id}/validate-connection',
+            pathname=f'/openapi/logstashes/{OpenApiUtilClient.get_encode_param(instance_id)}/validate-connection',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -16112,8 +15638,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ValidateShrinkNodesResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
+        if not UtilClient.is_unset(request.count):
+            query['count'] = request.count
         if not UtilClient.is_unset(request.ignore_status):
             query['ignoreStatus'] = request.ignore_status
         if not UtilClient.is_unset(request.node_type):
@@ -16127,7 +15654,7 @@ class Client(OpenApiClient):
             action='ValidateShrinkNodes',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/validate-shrink-nodes',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/validate-shrink-nodes',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -16147,8 +15674,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ValidateShrinkNodesResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
+        if not UtilClient.is_unset(request.count):
+            query['count'] = request.count
         if not UtilClient.is_unset(request.ignore_status):
             query['ignoreStatus'] = request.ignore_status
         if not UtilClient.is_unset(request.node_type):
@@ -16162,7 +15690,7 @@ class Client(OpenApiClient):
             action='ValidateShrinkNodes',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/validate-shrink-nodes',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/validate-shrink-nodes',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -16204,8 +15732,7 @@ class Client(OpenApiClient):
             query['rolename'] = request.rolename
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ValidateSlrPermission',
@@ -16237,8 +15764,7 @@ class Client(OpenApiClient):
             query['rolename'] = request.rolename
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ValidateSlrPermission',
@@ -16282,7 +15808,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ValidateTransferableNodesResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.node_type):
             query['nodeType'] = request.node_type
@@ -16295,7 +15820,7 @@ class Client(OpenApiClient):
             action='ValidateTransferableNodes',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/validate-transfer-nodes',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/validate-transfer-nodes',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -16315,7 +15840,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ValidateTransferableNodesResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         query = {}
         if not UtilClient.is_unset(request.node_type):
             query['nodeType'] = request.node_type
@@ -16328,7 +15852,7 @@ class Client(OpenApiClient):
             action='ValidateTransferableNodes',
             version='2017-06-13',
             protocol='HTTPS',
-            pathname=f'/openapi/instances/{instance_id}/validate-transfer-nodes',
+            pathname=f'/openapi/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/validate-transfer-nodes',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -16366,10 +15890,39 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
+        body = {}
+        if not UtilClient.is_unset(request.client_node_configuration):
+            body['clientNodeConfiguration'] = request.client_node_configuration
+        if not UtilClient.is_unset(request.elastic_data_node_configuration):
+            body['elasticDataNodeConfiguration'] = request.elastic_data_node_configuration
+        if not UtilClient.is_unset(request.es_admin_password):
+            body['esAdminPassword'] = request.es_admin_password
+        if not UtilClient.is_unset(request.es_version):
+            body['esVersion'] = request.es_version
+        if not UtilClient.is_unset(request.instance_category):
+            body['instanceCategory'] = request.instance_category
+        if not UtilClient.is_unset(request.kibana_configuration):
+            body['kibanaConfiguration'] = request.kibana_configuration
+        if not UtilClient.is_unset(request.master_configuration):
+            body['masterConfiguration'] = request.master_configuration
+        if not UtilClient.is_unset(request.network_config):
+            body['networkConfig'] = request.network_config
+        if not UtilClient.is_unset(request.node_amount):
+            body['nodeAmount'] = request.node_amount
+        if not UtilClient.is_unset(request.node_spec):
+            body['nodeSpec'] = request.node_spec
+        if not UtilClient.is_unset(request.payment_info):
+            body['paymentInfo'] = request.payment_info
+        if not UtilClient.is_unset(request.payment_type):
+            body['paymentType'] = request.payment_type
+        if not UtilClient.is_unset(request.warm_node_configuration):
+            body['warmNodeConfiguration'] = request.warm_node_configuration
+        if not UtilClient.is_unset(request.zone_count):
+            body['zoneCount'] = request.zone_count
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),
-            body=request.body
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='createInstance',
@@ -16397,10 +15950,39 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
+        body = {}
+        if not UtilClient.is_unset(request.client_node_configuration):
+            body['clientNodeConfiguration'] = request.client_node_configuration
+        if not UtilClient.is_unset(request.elastic_data_node_configuration):
+            body['elasticDataNodeConfiguration'] = request.elastic_data_node_configuration
+        if not UtilClient.is_unset(request.es_admin_password):
+            body['esAdminPassword'] = request.es_admin_password
+        if not UtilClient.is_unset(request.es_version):
+            body['esVersion'] = request.es_version
+        if not UtilClient.is_unset(request.instance_category):
+            body['instanceCategory'] = request.instance_category
+        if not UtilClient.is_unset(request.kibana_configuration):
+            body['kibanaConfiguration'] = request.kibana_configuration
+        if not UtilClient.is_unset(request.master_configuration):
+            body['masterConfiguration'] = request.master_configuration
+        if not UtilClient.is_unset(request.network_config):
+            body['networkConfig'] = request.network_config
+        if not UtilClient.is_unset(request.node_amount):
+            body['nodeAmount'] = request.node_amount
+        if not UtilClient.is_unset(request.node_spec):
+            body['nodeSpec'] = request.node_spec
+        if not UtilClient.is_unset(request.payment_info):
+            body['paymentInfo'] = request.payment_info
+        if not UtilClient.is_unset(request.payment_type):
+            body['paymentType'] = request.payment_type
+        if not UtilClient.is_unset(request.warm_node_configuration):
+            body['warmNodeConfiguration'] = request.warm_node_configuration
+        if not UtilClient.is_unset(request.zone_count):
+            body['zoneCount'] = request.zone_count
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),
-            body=request.body
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='createInstance',
