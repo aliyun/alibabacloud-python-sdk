@@ -429,6 +429,7 @@ class CreateAppGroupRequest(TeaModel):
         self,
         app_key: str = None,
         app_name: str = None,
+        app_type: int = None,
         description: str = None,
         group_id: str = None,
         max_jobs: int = None,
@@ -442,6 +443,7 @@ class CreateAppGroupRequest(TeaModel):
     ):
         self.app_key = app_key
         self.app_name = app_name
+        self.app_type = app_type
         self.description = description
         self.group_id = group_id
         self.max_jobs = max_jobs
@@ -466,6 +468,8 @@ class CreateAppGroupRequest(TeaModel):
             result['AppKey'] = self.app_key
         if self.app_name is not None:
             result['AppName'] = self.app_name
+        if self.app_type is not None:
+            result['AppType'] = self.app_type
         if self.description is not None:
             result['Description'] = self.description
         if self.group_id is not None:
@@ -494,6 +498,8 @@ class CreateAppGroupRequest(TeaModel):
             self.app_key = m.get('AppKey')
         if m.get('AppName') is not None:
             self.app_name = m.get('AppName')
+        if m.get('AppType') is not None:
+            self.app_type = m.get('AppType')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('GroupId') is not None:
@@ -728,6 +734,7 @@ class CreateJobRequest(TeaModel):
         timeout: int = None,
         timeout_enable: bool = None,
         timeout_kill_enable: bool = None,
+        xattrs: str = None,
     ):
         self.attempt_interval = attempt_interval
         self.calendar = calendar
@@ -762,6 +769,7 @@ class CreateJobRequest(TeaModel):
         self.timeout = timeout
         self.timeout_enable = timeout_enable
         self.timeout_kill_enable = timeout_kill_enable
+        self.xattrs = xattrs
 
     def validate(self):
         if self.contact_info:
@@ -843,6 +851,8 @@ class CreateJobRequest(TeaModel):
             result['TimeoutEnable'] = self.timeout_enable
         if self.timeout_kill_enable is not None:
             result['TimeoutKillEnable'] = self.timeout_kill_enable
+        if self.xattrs is not None:
+            result['XAttrs'] = self.xattrs
         return result
 
     def from_map(self, m: dict = None):
@@ -916,6 +926,8 @@ class CreateJobRequest(TeaModel):
             self.timeout_enable = m.get('TimeoutEnable')
         if m.get('TimeoutKillEnable') is not None:
             self.timeout_kill_enable = m.get('TimeoutKillEnable')
+        if m.get('XAttrs') is not None:
+            self.xattrs = m.get('XAttrs')
         return self
 
 
@@ -1127,7 +1139,6 @@ class CreateNamespaceResponseBody(TeaModel):
         self.code = code
         self.data = data
         self.message = message
-        # Id of the request
         self.request_id = request_id
         self.success = success
 
@@ -1648,22 +1659,14 @@ class DesignateWorkersRequest(TeaModel):
         transferable: bool = None,
         workers: str = None,
     ):
-        # 指定机器的类型
         self.designate_type = designate_type
-        # 应用分组ID
         self.group_id = group_id
-        # 任务ID
         self.job_id = job_id
-        # 指定label列表json格式
         self.labels = labels
-        # 命名空间UID
         self.namespace = namespace
-        # 命名空间来源
         self.namespace_source = namespace_source
         self.region_id = region_id
-        # 是否故障转移
         self.transferable = transferable
-        # 指定机器列表json格式
         self.workers = workers
 
     def validate(self):
@@ -1726,13 +1729,9 @@ class DesignateWorkersResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 错误码
         self.code = code
-        # 错误信息
         self.message = message
-        # Id of the request
         self.request_id = request_id
-        # 是否成功
         self.success = success
 
     def validate(self):
@@ -2386,17 +2385,14 @@ class ExecuteJobRequest(TeaModel):
         worker: str = None,
     ):
         self.check_job_status = check_job_status
-        # 指定机器类型：1.workerAddr; 2. label
         self.designate_type = designate_type
         self.group_id = group_id
         self.instance_parameters = instance_parameters
         self.job_id = job_id
-        # 指定机器的标签
         self.label = label
         self.namespace = namespace
         self.namespace_source = namespace_source
         self.region_id = region_id
-        # 指定机器的workerAddr
         self.worker = worker
 
     def validate(self):
@@ -3871,14 +3867,10 @@ class GetWorkFlowRequest(TeaModel):
         region_id: str = None,
         workflow_id: int = None,
     ):
-        # 应用分组ID
         self.group_id = group_id
-        # 命名空间uid
         self.namespace = namespace
-        # 命名空间来源
         self.namespace_source = namespace_source
         self.region_id = region_id
-        # 工作流ID
         self.workflow_id = workflow_id
 
     def validate(self):
@@ -3927,17 +3919,11 @@ class GetWorkFlowResponseBodyDataWorkFlowInfo(TeaModel):
         time_type: str = None,
         workflow_id: int = None,
     ):
-        # 工作流描述
         self.description = description
-        # 工作流名称
         self.name = name
-        # 工作流状态
         self.status = status
-        # 工作流时间表达式
         self.time_expression = time_expression
-        # 工作流时间类型
         self.time_type = time_type
-        # 工作流ID
         self.workflow_id = workflow_id
 
     def validate(self):
@@ -3986,9 +3972,7 @@ class GetWorkFlowResponseBodyDataWorkFlowNodeInfoEdges(TeaModel):
         source: int = None,
         target: int = None,
     ):
-        # 起始任务ID
         self.source = source
-        # 目的任务ID
         self.target = target
 
     def validate(self):
@@ -4022,11 +4006,8 @@ class GetWorkFlowResponseBodyDataWorkFlowNodeInfoNodes(TeaModel):
         label: str = None,
         status: int = None,
     ):
-        # 任务ID
         self.id = id
-        # 任务名称
         self.label = label
-        # 任务状态
         self.status = status
 
     def validate(self):
@@ -4063,9 +4044,7 @@ class GetWorkFlowResponseBodyDataWorkFlowNodeInfo(TeaModel):
         edges: List[GetWorkFlowResponseBodyDataWorkFlowNodeInfoEdges] = None,
         nodes: List[GetWorkFlowResponseBodyDataWorkFlowNodeInfoNodes] = None,
     ):
-        # 工作流边列表
         self.edges = edges
-        # 工作流节点列表
         self.nodes = nodes
 
     def validate(self):
@@ -4115,9 +4094,7 @@ class GetWorkFlowResponseBodyData(TeaModel):
         work_flow_info: GetWorkFlowResponseBodyDataWorkFlowInfo = None,
         work_flow_node_info: GetWorkFlowResponseBodyDataWorkFlowNodeInfo = None,
     ):
-        # 工作流基本信息
         self.work_flow_info = work_flow_info
-        # 工作流节点信息
         self.work_flow_node_info = work_flow_node_info
 
     def validate(self):
@@ -4158,15 +4135,10 @@ class GetWorkFlowResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 错误码
         self.code = code
-        # 工作流的数据
         self.data = data
-        # 错误信息
         self.message = message
-        # Id of the request
         self.request_id = request_id
-        # 会否成功
         self.success = success
 
     def validate(self):
@@ -4400,7 +4372,6 @@ class GetWorkerListResponseBody(TeaModel):
         self.code = code
         self.data = data
         self.message = message
-        # Id of the request
         self.request_id = request_id
         self.success = success
 
