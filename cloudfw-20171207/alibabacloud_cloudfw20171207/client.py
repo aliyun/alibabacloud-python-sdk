@@ -1972,8 +1972,6 @@ class Client(OpenApiClient):
     ) -> cloudfw_20171207_models.DescribeOutgoingDomainResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.category_id):
-            query['CategoryId'] = request.category_id
         if not UtilClient.is_unset(request.current_page):
             query['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.domain):
@@ -2018,8 +2016,6 @@ class Client(OpenApiClient):
     ) -> cloudfw_20171207_models.DescribeOutgoingDomainResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.category_id):
-            query['CategoryId'] = request.category_id
         if not UtilClient.is_unset(request.current_page):
             query['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.domain):
@@ -2264,12 +2260,16 @@ class Client(OpenApiClient):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.no_location):
             query['NoLocation'] = request.no_location
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.rule_result):
             query['RuleResult'] = request.rule_result
         if not UtilClient.is_unset(request.rule_source):
             query['RuleSource'] = request.rule_source
+        if not UtilClient.is_unset(request.sort):
+            query['Sort'] = request.sort
         if not UtilClient.is_unset(request.src_ip):
             query['SrcIP'] = request.src_ip
         if not UtilClient.is_unset(request.src_network_instance_id):
@@ -2330,12 +2330,16 @@ class Client(OpenApiClient):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.no_location):
             query['NoLocation'] = request.no_location
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.rule_result):
             query['RuleResult'] = request.rule_result
         if not UtilClient.is_unset(request.rule_source):
             query['RuleSource'] = request.rule_source
+        if not UtilClient.is_unset(request.sort):
+            query['Sort'] = request.sort
         if not UtilClient.is_unset(request.src_ip):
             query['SrcIP'] = request.src_ip
         if not UtilClient.is_unset(request.src_network_instance_id):

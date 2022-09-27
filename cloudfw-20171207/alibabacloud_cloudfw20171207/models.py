@@ -3672,6 +3672,39 @@ class DescribeOutgoingDestinationIPRequest(TeaModel):
         return self
 
 
+class DescribeOutgoingDestinationIPResponseBodyDstIPListAddressGroupList(TeaModel):
+    def __init__(
+        self,
+        address_group_name: str = None,
+        address_group_uuid: str = None,
+    ):
+        self.address_group_name = address_group_name
+        self.address_group_uuid = address_group_uuid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address_group_name is not None:
+            result['AddressGroupName'] = self.address_group_name
+        if self.address_group_uuid is not None:
+            result['AddressGroupUUID'] = self.address_group_uuid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AddressGroupName') is not None:
+            self.address_group_name = m.get('AddressGroupName')
+        if m.get('AddressGroupUUID') is not None:
+            self.address_group_uuid = m.get('AddressGroupUUID')
+        return self
+
+
 class DescribeOutgoingDestinationIPResponseBodyDstIPListApplicationPortList(TeaModel):
     def __init__(
         self,
@@ -3708,11 +3741,13 @@ class DescribeOutgoingDestinationIPResponseBodyDstIPListApplicationPortList(TeaM
 class DescribeOutgoingDestinationIPResponseBodyDstIPListTagList(TeaModel):
     def __init__(
         self,
+        class_id: str = None,
         risk_level: int = None,
         tag_describe: str = None,
         tag_id: str = None,
         tag_name: str = None,
     ):
+        self.class_id = class_id
         self.risk_level = risk_level
         self.tag_describe = tag_describe
         self.tag_id = tag_id
@@ -3727,6 +3762,8 @@ class DescribeOutgoingDestinationIPResponseBodyDstIPListTagList(TeaModel):
             return _map
 
         result = dict()
+        if self.class_id is not None:
+            result['ClassId'] = self.class_id
         if self.risk_level is not None:
             result['RiskLevel'] = self.risk_level
         if self.tag_describe is not None:
@@ -3739,6 +3776,8 @@ class DescribeOutgoingDestinationIPResponseBodyDstIPListTagList(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClassId') is not None:
+            self.class_id = m.get('ClassId')
         if m.get('RiskLevel') is not None:
             self.risk_level = m.get('RiskLevel')
         if m.get('TagDescribe') is not None:
@@ -3756,44 +3795,54 @@ class DescribeOutgoingDestinationIPResponseBodyDstIPList(TeaModel):
         acl_coverage: str = None,
         acl_recommend_detail: str = None,
         acl_status: str = None,
-        address_group_name: str = None,
-        address_group_uuid: str = None,
+        address_group_list: List[DescribeOutgoingDestinationIPResponseBodyDstIPListAddressGroupList] = None,
         application_port_list: List[DescribeOutgoingDestinationIPResponseBodyDstIPListApplicationPortList] = None,
+        category_class_id: str = None,
         category_id: str = None,
         category_name: str = None,
         dst_ip: str = None,
         group_name: str = None,
+        has_acl: str = None,
         has_acl_recommend: bool = None,
         in_bytes: int = None,
         is_mark_normal: bool = None,
         out_bytes: int = None,
         rule_id: str = None,
         rule_name: str = None,
+        security_reason: str = None,
         security_suggest: str = None,
         session_count: int = None,
         tag_list: List[DescribeOutgoingDestinationIPResponseBodyDstIPListTagList] = None,
+        total_bytes: str = None,
     ):
         self.acl_coverage = acl_coverage
         self.acl_recommend_detail = acl_recommend_detail
         self.acl_status = acl_status
-        self.address_group_name = address_group_name
-        self.address_group_uuid = address_group_uuid
+        self.address_group_list = address_group_list
         self.application_port_list = application_port_list
+        self.category_class_id = category_class_id
         self.category_id = category_id
         self.category_name = category_name
         self.dst_ip = dst_ip
         self.group_name = group_name
+        self.has_acl = has_acl
         self.has_acl_recommend = has_acl_recommend
         self.in_bytes = in_bytes
         self.is_mark_normal = is_mark_normal
         self.out_bytes = out_bytes
         self.rule_id = rule_id
         self.rule_name = rule_name
+        self.security_reason = security_reason
         self.security_suggest = security_suggest
         self.session_count = session_count
         self.tag_list = tag_list
+        self.total_bytes = total_bytes
 
     def validate(self):
+        if self.address_group_list:
+            for k in self.address_group_list:
+                if k:
+                    k.validate()
         if self.application_port_list:
             for k in self.application_port_list:
                 if k:
@@ -3815,14 +3864,16 @@ class DescribeOutgoingDestinationIPResponseBodyDstIPList(TeaModel):
             result['AclRecommendDetail'] = self.acl_recommend_detail
         if self.acl_status is not None:
             result['AclStatus'] = self.acl_status
-        if self.address_group_name is not None:
-            result['AddressGroupName'] = self.address_group_name
-        if self.address_group_uuid is not None:
-            result['AddressGroupUUID'] = self.address_group_uuid
+        result['AddressGroupList'] = []
+        if self.address_group_list is not None:
+            for k in self.address_group_list:
+                result['AddressGroupList'].append(k.to_map() if k else None)
         result['ApplicationPortList'] = []
         if self.application_port_list is not None:
             for k in self.application_port_list:
                 result['ApplicationPortList'].append(k.to_map() if k else None)
+        if self.category_class_id is not None:
+            result['CategoryClassId'] = self.category_class_id
         if self.category_id is not None:
             result['CategoryId'] = self.category_id
         if self.category_name is not None:
@@ -3831,6 +3882,8 @@ class DescribeOutgoingDestinationIPResponseBodyDstIPList(TeaModel):
             result['DstIP'] = self.dst_ip
         if self.group_name is not None:
             result['GroupName'] = self.group_name
+        if self.has_acl is not None:
+            result['HasAcl'] = self.has_acl
         if self.has_acl_recommend is not None:
             result['HasAclRecommend'] = self.has_acl_recommend
         if self.in_bytes is not None:
@@ -3843,6 +3896,8 @@ class DescribeOutgoingDestinationIPResponseBodyDstIPList(TeaModel):
             result['RuleId'] = self.rule_id
         if self.rule_name is not None:
             result['RuleName'] = self.rule_name
+        if self.security_reason is not None:
+            result['SecurityReason'] = self.security_reason
         if self.security_suggest is not None:
             result['SecuritySuggest'] = self.security_suggest
         if self.session_count is not None:
@@ -3851,6 +3906,8 @@ class DescribeOutgoingDestinationIPResponseBodyDstIPList(TeaModel):
         if self.tag_list is not None:
             for k in self.tag_list:
                 result['TagList'].append(k.to_map() if k else None)
+        if self.total_bytes is not None:
+            result['TotalBytes'] = self.total_bytes
         return result
 
     def from_map(self, m: dict = None):
@@ -3861,15 +3918,18 @@ class DescribeOutgoingDestinationIPResponseBodyDstIPList(TeaModel):
             self.acl_recommend_detail = m.get('AclRecommendDetail')
         if m.get('AclStatus') is not None:
             self.acl_status = m.get('AclStatus')
-        if m.get('AddressGroupName') is not None:
-            self.address_group_name = m.get('AddressGroupName')
-        if m.get('AddressGroupUUID') is not None:
-            self.address_group_uuid = m.get('AddressGroupUUID')
+        self.address_group_list = []
+        if m.get('AddressGroupList') is not None:
+            for k in m.get('AddressGroupList'):
+                temp_model = DescribeOutgoingDestinationIPResponseBodyDstIPListAddressGroupList()
+                self.address_group_list.append(temp_model.from_map(k))
         self.application_port_list = []
         if m.get('ApplicationPortList') is not None:
             for k in m.get('ApplicationPortList'):
                 temp_model = DescribeOutgoingDestinationIPResponseBodyDstIPListApplicationPortList()
                 self.application_port_list.append(temp_model.from_map(k))
+        if m.get('CategoryClassId') is not None:
+            self.category_class_id = m.get('CategoryClassId')
         if m.get('CategoryId') is not None:
             self.category_id = m.get('CategoryId')
         if m.get('CategoryName') is not None:
@@ -3878,6 +3938,8 @@ class DescribeOutgoingDestinationIPResponseBodyDstIPList(TeaModel):
             self.dst_ip = m.get('DstIP')
         if m.get('GroupName') is not None:
             self.group_name = m.get('GroupName')
+        if m.get('HasAcl') is not None:
+            self.has_acl = m.get('HasAcl')
         if m.get('HasAclRecommend') is not None:
             self.has_acl_recommend = m.get('HasAclRecommend')
         if m.get('InBytes') is not None:
@@ -3890,6 +3952,8 @@ class DescribeOutgoingDestinationIPResponseBodyDstIPList(TeaModel):
             self.rule_id = m.get('RuleId')
         if m.get('RuleName') is not None:
             self.rule_name = m.get('RuleName')
+        if m.get('SecurityReason') is not None:
+            self.security_reason = m.get('SecurityReason')
         if m.get('SecuritySuggest') is not None:
             self.security_suggest = m.get('SecuritySuggest')
         if m.get('SessionCount') is not None:
@@ -3899,6 +3963,8 @@ class DescribeOutgoingDestinationIPResponseBodyDstIPList(TeaModel):
             for k in m.get('TagList'):
                 temp_model = DescribeOutgoingDestinationIPResponseBodyDstIPListTagList()
                 self.tag_list.append(temp_model.from_map(k))
+        if m.get('TotalBytes') is not None:
+            self.total_bytes = m.get('TotalBytes')
         return self
 
 
@@ -3996,7 +4062,6 @@ class DescribeOutgoingDestinationIPResponse(TeaModel):
 class DescribeOutgoingDomainRequest(TeaModel):
     def __init__(
         self,
-        category_id: str = None,
         current_page: str = None,
         domain: str = None,
         end_time: str = None,
@@ -4007,7 +4072,6 @@ class DescribeOutgoingDomainRequest(TeaModel):
         sort: str = None,
         start_time: str = None,
     ):
-        self.category_id = category_id
         self.current_page = current_page
         self.domain = domain
         self.end_time = end_time
@@ -4027,8 +4091,6 @@ class DescribeOutgoingDomainRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.category_id is not None:
-            result['CategoryId'] = self.category_id
         if self.current_page is not None:
             result['CurrentPage'] = self.current_page
         if self.domain is not None:
@@ -4051,8 +4113,6 @@ class DescribeOutgoingDomainRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('CategoryId') is not None:
-            self.category_id = m.get('CategoryId')
         if m.get('CurrentPage') is not None:
             self.current_page = m.get('CurrentPage')
         if m.get('Domain') is not None:
@@ -4077,11 +4137,13 @@ class DescribeOutgoingDomainRequest(TeaModel):
 class DescribeOutgoingDomainResponseBodyDomainListTagList(TeaModel):
     def __init__(
         self,
+        class_id: str = None,
         risk_level: int = None,
         tag_describe: str = None,
         tag_id: str = None,
         tag_name: str = None,
     ):
+        self.class_id = class_id
         self.risk_level = risk_level
         self.tag_describe = tag_describe
         self.tag_id = tag_id
@@ -4096,6 +4158,8 @@ class DescribeOutgoingDomainResponseBodyDomainListTagList(TeaModel):
             return _map
 
         result = dict()
+        if self.class_id is not None:
+            result['ClassId'] = self.class_id
         if self.risk_level is not None:
             result['RiskLevel'] = self.risk_level
         if self.tag_describe is not None:
@@ -4108,6 +4172,8 @@ class DescribeOutgoingDomainResponseBodyDomainListTagList(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClassId') is not None:
+            self.class_id = m.get('ClassId')
         if m.get('RiskLevel') is not None:
             self.risk_level = m.get('RiskLevel')
         if m.get('TagDescribe') is not None:
@@ -4127,38 +4193,50 @@ class DescribeOutgoingDomainResponseBodyDomainList(TeaModel):
         acl_status: str = None,
         address_group_name: str = None,
         address_group_uuid: str = None,
+        business: str = None,
+        category_class_id: str = None,
         category_id: str = None,
         category_name: str = None,
         domain: str = None,
         group_name: str = None,
+        has_acl: str = None,
         has_acl_recommend: bool = None,
         in_bytes: int = None,
         is_mark_normal: bool = None,
+        organization: str = None,
         out_bytes: int = None,
         rule_id: str = None,
         rule_name: str = None,
+        security_reason: str = None,
         security_suggest: str = None,
         session_count: int = None,
         tag_list: List[DescribeOutgoingDomainResponseBodyDomainListTagList] = None,
+        total_bytes: str = None,
     ):
         self.acl_coverage = acl_coverage
         self.acl_recommend_detail = acl_recommend_detail
         self.acl_status = acl_status
         self.address_group_name = address_group_name
         self.address_group_uuid = address_group_uuid
+        self.business = business
+        self.category_class_id = category_class_id
         self.category_id = category_id
         self.category_name = category_name
         self.domain = domain
         self.group_name = group_name
+        self.has_acl = has_acl
         self.has_acl_recommend = has_acl_recommend
         self.in_bytes = in_bytes
         self.is_mark_normal = is_mark_normal
+        self.organization = organization
         self.out_bytes = out_bytes
         self.rule_id = rule_id
         self.rule_name = rule_name
+        self.security_reason = security_reason
         self.security_suggest = security_suggest
         self.session_count = session_count
         self.tag_list = tag_list
+        self.total_bytes = total_bytes
 
     def validate(self):
         if self.tag_list:
@@ -4182,6 +4260,10 @@ class DescribeOutgoingDomainResponseBodyDomainList(TeaModel):
             result['AddressGroupName'] = self.address_group_name
         if self.address_group_uuid is not None:
             result['AddressGroupUUID'] = self.address_group_uuid
+        if self.business is not None:
+            result['Business'] = self.business
+        if self.category_class_id is not None:
+            result['CategoryClassId'] = self.category_class_id
         if self.category_id is not None:
             result['CategoryId'] = self.category_id
         if self.category_name is not None:
@@ -4190,18 +4272,24 @@ class DescribeOutgoingDomainResponseBodyDomainList(TeaModel):
             result['Domain'] = self.domain
         if self.group_name is not None:
             result['GroupName'] = self.group_name
+        if self.has_acl is not None:
+            result['HasAcl'] = self.has_acl
         if self.has_acl_recommend is not None:
             result['HasAclRecommend'] = self.has_acl_recommend
         if self.in_bytes is not None:
             result['InBytes'] = self.in_bytes
         if self.is_mark_normal is not None:
             result['IsMarkNormal'] = self.is_mark_normal
+        if self.organization is not None:
+            result['Organization'] = self.organization
         if self.out_bytes is not None:
             result['OutBytes'] = self.out_bytes
         if self.rule_id is not None:
             result['RuleId'] = self.rule_id
         if self.rule_name is not None:
             result['RuleName'] = self.rule_name
+        if self.security_reason is not None:
+            result['SecurityReason'] = self.security_reason
         if self.security_suggest is not None:
             result['SecuritySuggest'] = self.security_suggest
         if self.session_count is not None:
@@ -4210,6 +4298,8 @@ class DescribeOutgoingDomainResponseBodyDomainList(TeaModel):
         if self.tag_list is not None:
             for k in self.tag_list:
                 result['TagList'].append(k.to_map() if k else None)
+        if self.total_bytes is not None:
+            result['TotalBytes'] = self.total_bytes
         return result
 
     def from_map(self, m: dict = None):
@@ -4224,6 +4314,10 @@ class DescribeOutgoingDomainResponseBodyDomainList(TeaModel):
             self.address_group_name = m.get('AddressGroupName')
         if m.get('AddressGroupUUID') is not None:
             self.address_group_uuid = m.get('AddressGroupUUID')
+        if m.get('Business') is not None:
+            self.business = m.get('Business')
+        if m.get('CategoryClassId') is not None:
+            self.category_class_id = m.get('CategoryClassId')
         if m.get('CategoryId') is not None:
             self.category_id = m.get('CategoryId')
         if m.get('CategoryName') is not None:
@@ -4232,18 +4326,24 @@ class DescribeOutgoingDomainResponseBodyDomainList(TeaModel):
             self.domain = m.get('Domain')
         if m.get('GroupName') is not None:
             self.group_name = m.get('GroupName')
+        if m.get('HasAcl') is not None:
+            self.has_acl = m.get('HasAcl')
         if m.get('HasAclRecommend') is not None:
             self.has_acl_recommend = m.get('HasAclRecommend')
         if m.get('InBytes') is not None:
             self.in_bytes = m.get('InBytes')
         if m.get('IsMarkNormal') is not None:
             self.is_mark_normal = m.get('IsMarkNormal')
+        if m.get('Organization') is not None:
+            self.organization = m.get('Organization')
         if m.get('OutBytes') is not None:
             self.out_bytes = m.get('OutBytes')
         if m.get('RuleId') is not None:
             self.rule_id = m.get('RuleId')
         if m.get('RuleName') is not None:
             self.rule_name = m.get('RuleName')
+        if m.get('SecurityReason') is not None:
+            self.security_reason = m.get('SecurityReason')
         if m.get('SecuritySuggest') is not None:
             self.security_suggest = m.get('SecuritySuggest')
         if m.get('SessionCount') is not None:
@@ -4253,6 +4353,8 @@ class DescribeOutgoingDomainResponseBodyDomainList(TeaModel):
             for k in m.get('TagList'):
                 temp_model = DescribeOutgoingDomainResponseBodyDomainListTagList()
                 self.tag_list.append(temp_model.from_map(k))
+        if m.get('TotalBytes') is not None:
+            self.total_bytes = m.get('TotalBytes')
         return self
 
 
@@ -4600,9 +4702,11 @@ class DescribeRiskEventGroupRequest(TeaModel):
         firewall_type: str = None,
         lang: str = None,
         no_location: str = None,
+        order: str = None,
         page_size: str = None,
         rule_result: str = None,
         rule_source: str = None,
+        sort: str = None,
         src_ip: str = None,
         src_network_instance_id: str = None,
         start_time: str = None,
@@ -4620,9 +4724,11 @@ class DescribeRiskEventGroupRequest(TeaModel):
         self.firewall_type = firewall_type
         self.lang = lang
         self.no_location = no_location
+        self.order = order
         self.page_size = page_size
         self.rule_result = rule_result
         self.rule_source = rule_source
+        self.sort = sort
         self.src_ip = src_ip
         self.src_network_instance_id = src_network_instance_id
         self.start_time = start_time
@@ -4661,12 +4767,16 @@ class DescribeRiskEventGroupRequest(TeaModel):
             result['Lang'] = self.lang
         if self.no_location is not None:
             result['NoLocation'] = self.no_location
+        if self.order is not None:
+            result['Order'] = self.order
         if self.page_size is not None:
             result['PageSize'] = self.page_size
         if self.rule_result is not None:
             result['RuleResult'] = self.rule_result
         if self.rule_source is not None:
             result['RuleSource'] = self.rule_source
+        if self.sort is not None:
+            result['Sort'] = self.sort
         if self.src_ip is not None:
             result['SrcIP'] = self.src_ip
         if self.src_network_instance_id is not None:
@@ -4703,12 +4813,16 @@ class DescribeRiskEventGroupRequest(TeaModel):
             self.lang = m.get('Lang')
         if m.get('NoLocation') is not None:
             self.no_location = m.get('NoLocation')
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
         if m.get('RuleResult') is not None:
             self.rule_result = m.get('RuleResult')
         if m.get('RuleSource') is not None:
             self.rule_source = m.get('RuleSource')
+        if m.get('Sort') is not None:
+            self.sort = m.get('Sort')
         if m.get('SrcIP') is not None:
             self.src_ip = m.get('SrcIP')
         if m.get('SrcNetworkInstanceId') is not None:
