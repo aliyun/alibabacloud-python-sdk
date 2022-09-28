@@ -120,6 +120,8 @@ class Client(OpenApiClient):
             query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.sources):
             query['Sources'] = request.sources
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.top_level_domain):
             query['TopLevelDomain'] = request.top_level_domain
         req = open_api_models.OpenApiRequest(
@@ -164,6 +166,8 @@ class Client(OpenApiClient):
             query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.sources):
             query['Sources'] = request.sources
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.top_level_domain):
             query['TopLevelDomain'] = request.top_level_domain
         req = open_api_models.OpenApiRequest(
@@ -652,6 +656,80 @@ class Client(OpenApiClient):
     ) -> dcdn_20180115_models.BatchDeleteDcdnWafRulesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.batch_delete_dcdn_waf_rules_with_options_async(request, runtime)
+
+    def batch_modify_dcdn_waf_rules_with_options(
+        self,
+        request: dcdn_20180115_models.BatchModifyDcdnWafRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.BatchModifyDcdnWafRulesResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.policy_id):
+            body['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.rule_configs):
+            body['RuleConfigs'] = request.rule_configs
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='BatchModifyDcdnWafRules',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.BatchModifyDcdnWafRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_modify_dcdn_waf_rules_with_options_async(
+        self,
+        request: dcdn_20180115_models.BatchModifyDcdnWafRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.BatchModifyDcdnWafRulesResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.policy_id):
+            body['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.rule_configs):
+            body['RuleConfigs'] = request.rule_configs
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='BatchModifyDcdnWafRules',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.BatchModifyDcdnWafRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_modify_dcdn_waf_rules(
+        self,
+        request: dcdn_20180115_models.BatchModifyDcdnWafRulesRequest,
+    ) -> dcdn_20180115_models.BatchModifyDcdnWafRulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.batch_modify_dcdn_waf_rules_with_options(request, runtime)
+
+    async def batch_modify_dcdn_waf_rules_async(
+        self,
+        request: dcdn_20180115_models.BatchModifyDcdnWafRulesRequest,
+    ) -> dcdn_20180115_models.BatchModifyDcdnWafRulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.batch_modify_dcdn_waf_rules_with_options_async(request, runtime)
 
     def batch_set_dcdn_domain_certificate_with_options(
         self,
@@ -3652,80 +3730,6 @@ class Client(OpenApiClient):
     ) -> dcdn_20180115_models.DescribeDcdnCertificateListResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_dcdn_certificate_list_with_options_async(request, runtime)
-
-    def describe_dcdn_ddos_service_with_options(
-        self,
-        request: dcdn_20180115_models.DescribeDcdnDdosServiceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dcdn_20180115_models.DescribeDcdnDdosServiceResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.security_token):
-            query['SecurityToken'] = request.security_token
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeDcdnDdosService',
-            version='2018-01-15',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dcdn_20180115_models.DescribeDcdnDdosServiceResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_dcdn_ddos_service_with_options_async(
-        self,
-        request: dcdn_20180115_models.DescribeDcdnDdosServiceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dcdn_20180115_models.DescribeDcdnDdosServiceResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.security_token):
-            query['SecurityToken'] = request.security_token
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeDcdnDdosService',
-            version='2018-01-15',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dcdn_20180115_models.DescribeDcdnDdosServiceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_dcdn_ddos_service(
-        self,
-        request: dcdn_20180115_models.DescribeDcdnDdosServiceRequest,
-    ) -> dcdn_20180115_models.DescribeDcdnDdosServiceResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_dcdn_ddos_service_with_options(request, runtime)
-
-    async def describe_dcdn_ddos_service_async(
-        self,
-        request: dcdn_20180115_models.DescribeDcdnDdosServiceRequest,
-    ) -> dcdn_20180115_models.DescribeDcdnDdosServiceResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_dcdn_ddos_service_with_options_async(request, runtime)
 
     def describe_dcdn_deleted_domains_with_options(
         self,
@@ -7942,88 +7946,6 @@ class Client(OpenApiClient):
     ) -> dcdn_20180115_models.DescribeDcdnIpaDomainDetailResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_dcdn_ipa_domain_detail_with_options_async(request, runtime)
-
-    def describe_dcdn_ipa_domain_multi_usage_data_with_options(
-        self,
-        request: dcdn_20180115_models.DescribeDcdnIpaDomainMultiUsageDataRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dcdn_20180115_models.DescribeDcdnIpaDomainMultiUsageDataResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.domain_name):
-            query['DomainName'] = request.domain_name
-        if not UtilClient.is_unset(request.end_time):
-            query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.start_time):
-            query['StartTime'] = request.start_time
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeDcdnIpaDomainMultiUsageData',
-            version='2018-01-15',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dcdn_20180115_models.DescribeDcdnIpaDomainMultiUsageDataResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_dcdn_ipa_domain_multi_usage_data_with_options_async(
-        self,
-        request: dcdn_20180115_models.DescribeDcdnIpaDomainMultiUsageDataRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dcdn_20180115_models.DescribeDcdnIpaDomainMultiUsageDataResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.domain_name):
-            query['DomainName'] = request.domain_name
-        if not UtilClient.is_unset(request.end_time):
-            query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.start_time):
-            query['StartTime'] = request.start_time
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeDcdnIpaDomainMultiUsageData',
-            version='2018-01-15',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dcdn_20180115_models.DescribeDcdnIpaDomainMultiUsageDataResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_dcdn_ipa_domain_multi_usage_data(
-        self,
-        request: dcdn_20180115_models.DescribeDcdnIpaDomainMultiUsageDataRequest,
-    ) -> dcdn_20180115_models.DescribeDcdnIpaDomainMultiUsageDataResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_dcdn_ipa_domain_multi_usage_data_with_options(request, runtime)
-
-    async def describe_dcdn_ipa_domain_multi_usage_data_async(
-        self,
-        request: dcdn_20180115_models.DescribeDcdnIpaDomainMultiUsageDataRequest,
-    ) -> dcdn_20180115_models.DescribeDcdnIpaDomainMultiUsageDataResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_dcdn_ipa_domain_multi_usage_data_with_options_async(request, runtime)
 
     def describe_dcdn_ipa_service_with_options(
         self,
