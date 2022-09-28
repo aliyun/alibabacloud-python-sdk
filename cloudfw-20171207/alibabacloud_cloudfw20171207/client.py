@@ -1862,6 +1862,8 @@ class Client(OpenApiClient):
     ) -> cloudfw_20171207_models.DescribeOutgoingDestinationIPResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.application_name):
+            query['ApplicationName'] = request.application_name
         if not UtilClient.is_unset(request.current_page):
             query['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.dst_ip):
@@ -1910,6 +1912,8 @@ class Client(OpenApiClient):
     ) -> cloudfw_20171207_models.DescribeOutgoingDestinationIPResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.application_name):
+            query['ApplicationName'] = request.application_name
         if not UtilClient.is_unset(request.current_page):
             query['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.dst_ip):

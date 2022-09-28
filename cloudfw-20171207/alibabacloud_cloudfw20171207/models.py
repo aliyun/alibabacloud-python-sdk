@@ -3588,6 +3588,7 @@ class DescribeInvadeEventListResponse(TeaModel):
 class DescribeOutgoingDestinationIPRequest(TeaModel):
     def __init__(
         self,
+        application_name: str = None,
         current_page: str = None,
         dst_ip: str = None,
         end_time: str = None,
@@ -3600,6 +3601,7 @@ class DescribeOutgoingDestinationIPRequest(TeaModel):
         sort: str = None,
         start_time: str = None,
     ):
+        self.application_name = application_name
         self.current_page = current_page
         self.dst_ip = dst_ip
         self.end_time = end_time
@@ -3621,6 +3623,8 @@ class DescribeOutgoingDestinationIPRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.application_name is not None:
+            result['ApplicationName'] = self.application_name
         if self.current_page is not None:
             result['CurrentPage'] = self.current_page
         if self.dst_ip is not None:
@@ -3647,6 +3651,8 @@ class DescribeOutgoingDestinationIPRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ApplicationName') is not None:
+            self.application_name = m.get('ApplicationName')
         if m.get('CurrentPage') is not None:
             self.current_page = m.get('CurrentPage')
         if m.get('DstIP') is not None:
