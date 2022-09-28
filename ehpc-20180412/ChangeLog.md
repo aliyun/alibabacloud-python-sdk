@@ -1,3 +1,6 @@
+2022-09-28 Version: 1.14.16
+- Add ListUsersAsync
+
 2022-09-23 Version: 1.14.15
 - Add eStack APIs;
 - Add parameters for SyncUsers, AddLocalNodes and so on.

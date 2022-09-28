@@ -6047,6 +6047,72 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_users_with_options_async(request, runtime)
 
+    def list_users_async_with_options(
+        self,
+        request: ehpc20180412_models.ListUsersAsyncRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ehpc20180412_models.ListUsersAsyncResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListUsersAsync',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ListUsersAsyncResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_users_async_with_options_async(
+        self,
+        request: ehpc20180412_models.ListUsersAsyncRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ehpc20180412_models.ListUsersAsyncResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListUsersAsync',
+            version='2018-04-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc20180412_models.ListUsersAsyncResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_users_async(
+        self,
+        request: ehpc20180412_models.ListUsersAsyncRequest,
+    ) -> ehpc20180412_models.ListUsersAsyncResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_users_async_with_options(request, runtime)
+
+    async def list_users_async_async(
+        self,
+        request: ehpc20180412_models.ListUsersAsyncRequest,
+    ) -> ehpc20180412_models.ListUsersAsyncResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_users_async_with_options_async(request, runtime)
+
     def list_volumes_with_options(
         self,
         request: ehpc20180412_models.ListVolumesRequest,
