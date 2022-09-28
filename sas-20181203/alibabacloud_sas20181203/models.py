@@ -4161,7 +4161,6 @@ class DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImages
         layer: str = None,
         level: str = None,
         malicious_md_5: str = None,
-        malicious_source: str = None,
         namespace: str = None,
         pod: str = None,
         repo_id: str = None,
@@ -4186,7 +4185,6 @@ class DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImages
         self.layer = layer
         self.level = level
         self.malicious_md_5 = malicious_md_5
-        self.malicious_source = malicious_source
         self.namespace = namespace
         self.pod = pod
         self.repo_id = repo_id
@@ -4235,8 +4233,6 @@ class DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImages
             result['Level'] = self.level
         if self.malicious_md_5 is not None:
             result['MaliciousMd5'] = self.malicious_md_5
-        if self.malicious_source is not None:
-            result['MaliciousSource'] = self.malicious_source
         if self.namespace is not None:
             result['Namespace'] = self.namespace
         if self.pod is not None:
@@ -4287,8 +4283,6 @@ class DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImages
             self.level = m.get('Level')
         if m.get('MaliciousMd5') is not None:
             self.malicious_md_5 = m.get('MaliciousMd5')
-        if m.get('MaliciousSource') is not None:
-            self.malicious_source = m.get('MaliciousSource')
         if m.get('Namespace') is not None:
             self.namespace = m.get('Namespace')
         if m.get('Pod') is not None:
@@ -15520,7 +15514,6 @@ class DescribeImageListWithBaselineNameRequest(TeaModel):
 class DescribeImageListWithBaselineNameResponseBodyImageInfos(TeaModel):
     def __init__(
         self,
-        baseline_type: str = None,
         cluster_id: str = None,
         cluster_name: str = None,
         container_id: str = None,
@@ -15547,7 +15540,6 @@ class DescribeImageListWithBaselineNameResponseBodyImageInfos(TeaModel):
         total_item_count: int = None,
         uuid: str = None,
     ):
-        self.baseline_type = baseline_type
         self.cluster_id = cluster_id
         self.cluster_name = cluster_name
         self.container_id = container_id
@@ -15583,8 +15575,6 @@ class DescribeImageListWithBaselineNameResponseBodyImageInfos(TeaModel):
             return _map
 
         result = dict()
-        if self.baseline_type is not None:
-            result['BaselineType'] = self.baseline_type
         if self.cluster_id is not None:
             result['ClusterId'] = self.cluster_id
         if self.cluster_name is not None:
@@ -15639,8 +15629,6 @@ class DescribeImageListWithBaselineNameResponseBodyImageInfos(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('BaselineType') is not None:
-            self.baseline_type = m.get('BaselineType')
         if m.get('ClusterId') is not None:
             self.cluster_id = m.get('ClusterId')
         if m.get('ClusterName') is not None:
@@ -27121,11 +27109,9 @@ class DescribeSummaryInfoRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        resource_directory_account_id: str = None,
         source_ip: str = None,
     ):
         self.lang = lang
-        self.resource_directory_account_id = resource_directory_account_id
         self.source_ip = source_ip
 
     def validate(self):
@@ -27139,8 +27125,6 @@ class DescribeSummaryInfoRequest(TeaModel):
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.resource_directory_account_id is not None:
-            result['ResourceDirectoryAccountId'] = self.resource_directory_account_id
         if self.source_ip is not None:
             result['SourceIp'] = self.source_ip
         return result
@@ -27149,8 +27133,6 @@ class DescribeSummaryInfoRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('ResourceDirectoryAccountId') is not None:
-            self.resource_directory_account_id = m.get('ResourceDirectoryAccountId')
         if m.get('SourceIp') is not None:
             self.source_ip = m.get('SourceIp')
         return self
@@ -30967,13 +30949,60 @@ class DescribeVulFixStatisticsResponseBodyFixStat(TeaModel):
         return self
 
 
+class DescribeVulFixStatisticsResponseBodyFixTotal(TeaModel):
+    def __init__(
+        self,
+        fixed_today_num: int = None,
+        fixed_total_num: int = None,
+        fixing_num: int = None,
+        need_fix_num: int = None,
+    ):
+        self.fixed_today_num = fixed_today_num
+        self.fixed_total_num = fixed_total_num
+        self.fixing_num = fixing_num
+        self.need_fix_num = need_fix_num
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.fixed_today_num is not None:
+            result['FixedTodayNum'] = self.fixed_today_num
+        if self.fixed_total_num is not None:
+            result['FixedTotalNum'] = self.fixed_total_num
+        if self.fixing_num is not None:
+            result['FixingNum'] = self.fixing_num
+        if self.need_fix_num is not None:
+            result['NeedFixNum'] = self.need_fix_num
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FixedTodayNum') is not None:
+            self.fixed_today_num = m.get('FixedTodayNum')
+        if m.get('FixedTotalNum') is not None:
+            self.fixed_total_num = m.get('FixedTotalNum')
+        if m.get('FixingNum') is not None:
+            self.fixing_num = m.get('FixingNum')
+        if m.get('NeedFixNum') is not None:
+            self.need_fix_num = m.get('NeedFixNum')
+        return self
+
+
 class DescribeVulFixStatisticsResponseBody(TeaModel):
     def __init__(
         self,
         fix_stat: List[DescribeVulFixStatisticsResponseBodyFixStat] = None,
+        fix_total: DescribeVulFixStatisticsResponseBodyFixTotal = None,
         request_id: str = None,
     ):
         self.fix_stat = fix_stat
+        self.fix_total = fix_total
         self.request_id = request_id
 
     def validate(self):
@@ -30981,6 +31010,8 @@ class DescribeVulFixStatisticsResponseBody(TeaModel):
             for k in self.fix_stat:
                 if k:
                     k.validate()
+        if self.fix_total:
+            self.fix_total.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -30992,6 +31023,8 @@ class DescribeVulFixStatisticsResponseBody(TeaModel):
         if self.fix_stat is not None:
             for k in self.fix_stat:
                 result['FixStat'].append(k.to_map() if k else None)
+        if self.fix_total is not None:
+            result['FixTotal'] = self.fix_total.to_map()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
@@ -31003,6 +31036,9 @@ class DescribeVulFixStatisticsResponseBody(TeaModel):
             for k in m.get('FixStat'):
                 temp_model = DescribeVulFixStatisticsResponseBodyFixStat()
                 self.fix_stat.append(temp_model.from_map(k))
+        if m.get('FixTotal') is not None:
+            temp_model = DescribeVulFixStatisticsResponseBodyFixTotal()
+            self.fix_total = temp_model.from_map(m['FixTotal'])
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
