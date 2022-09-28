@@ -1,7 +1,40 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, List, Any
+from typing import List, Dict, Any
+
+
+class AddCdnDomainRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
 
 
 class AddCdnDomainRequest(TeaModel):
@@ -16,6 +49,7 @@ class AddCdnDomainRequest(TeaModel):
         scope: str = None,
         security_token: str = None,
         sources: str = None,
+        tag: List[AddCdnDomainRequestTag] = None,
         top_level_domain: str = None,
     ):
         self.cdn_type = cdn_type
@@ -27,10 +61,14 @@ class AddCdnDomainRequest(TeaModel):
         self.scope = scope
         self.security_token = security_token
         self.sources = sources
+        self.tag = tag
         self.top_level_domain = top_level_domain
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -56,6 +94,10 @@ class AddCdnDomainRequest(TeaModel):
             result['SecurityToken'] = self.security_token
         if self.sources is not None:
             result['Sources'] = self.sources
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         if self.top_level_domain is not None:
             result['TopLevelDomain'] = self.top_level_domain
         return result
@@ -80,6 +122,11 @@ class AddCdnDomainRequest(TeaModel):
             self.security_token = m.get('SecurityToken')
         if m.get('Sources') is not None:
             self.sources = m.get('Sources')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = AddCdnDomainRequestTag()
+                self.tag.append(temp_model.from_map(k))
         if m.get('TopLevelDomain') is not None:
             self.top_level_domain = m.get('TopLevelDomain')
         return self

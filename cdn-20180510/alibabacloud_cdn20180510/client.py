@@ -79,6 +79,8 @@ class Client(OpenApiClient):
             query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.sources):
             query['Sources'] = request.sources
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.top_level_domain):
             query['TopLevelDomain'] = request.top_level_domain
         req = open_api_models.OpenApiRequest(
@@ -125,6 +127,8 @@ class Client(OpenApiClient):
             query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.sources):
             query['Sources'] = request.sources
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.top_level_domain):
             query['TopLevelDomain'] = request.top_level_domain
         req = open_api_models.OpenApiRequest(

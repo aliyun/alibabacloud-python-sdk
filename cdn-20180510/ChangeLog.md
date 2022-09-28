@@ -1,3 +1,6 @@
+2022-09-28 Version: 1.1.3
+- Update AddCdnDomain.
+
 2022-09-16 Version: 1.1.2
 - Update DescribeCdnReport.
 
