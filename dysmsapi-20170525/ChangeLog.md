@@ -1,3 +1,6 @@
+2022-09-28 Version: 2.0.19
+- Upgrade formdata for CheckMobilesCardTemplateSupport.
+
 2022-08-11 Version: 2.0.18
 - Upgrade formdata for SendBatchSms.
 

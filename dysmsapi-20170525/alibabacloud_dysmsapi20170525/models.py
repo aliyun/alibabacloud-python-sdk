@@ -575,18 +575,14 @@ class CheckMobilesCardSupportRequest(TeaModel):
         return self
 
 
-class CheckMobilesCardSupportResponseBody(TeaModel):
+class CheckMobilesCardSupportResponseBodyDataQueryResult(TeaModel):
     def __init__(
         self,
-        code: str = None,
-        data: List[Dict[str, Any]] = None,
-        request_id: str = None,
-        success: bool = None,
+        mobile: str = None,
+        support: bool = None,
     ):
-        self.code = code
-        self.data = data
-        self.request_id = request_id
-        self.success = success
+        self.mobile = mobile
+        self.support = support
 
     def validate(self):
         pass
@@ -597,10 +593,83 @@ class CheckMobilesCardSupportResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.mobile is not None:
+            result['mobile'] = self.mobile
+        if self.support is not None:
+            result['support'] = self.support
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('mobile') is not None:
+            self.mobile = m.get('mobile')
+        if m.get('support') is not None:
+            self.support = m.get('support')
+        return self
+
+
+class CheckMobilesCardSupportResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        query_result: List[CheckMobilesCardSupportResponseBodyDataQueryResult] = None,
+    ):
+        self.query_result = query_result
+
+    def validate(self):
+        if self.query_result:
+            for k in self.query_result:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['queryResult'] = []
+        if self.query_result is not None:
+            for k in self.query_result:
+                result['queryResult'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.query_result = []
+        if m.get('queryResult') is not None:
+            for k in m.get('queryResult'):
+                temp_model = CheckMobilesCardSupportResponseBodyDataQueryResult()
+                self.query_result.append(temp_model.from_map(k))
+        return self
+
+
+class CheckMobilesCardSupportResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: CheckMobilesCardSupportResponseBodyData = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
         if self.code is not None:
             result['Code'] = self.code
         if self.data is not None:
-            result['Data'] = self.data
+            result['Data'] = self.data.to_map()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.success is not None:
@@ -612,7 +681,8 @@ class CheckMobilesCardSupportResponseBody(TeaModel):
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Data') is not None:
-            self.data = m.get('Data')
+            temp_model = CheckMobilesCardSupportResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('Success') is not None:
