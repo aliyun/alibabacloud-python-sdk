@@ -300,56 +300,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.batch_add_directional_address_with_options_async(request, runtime)
 
-    def card_statistics_with_options(
-        self,
-        runtime: util_models.RuntimeOptions,
-    ) -> linkcard_20210520_models.CardStatisticsResponse:
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='CardStatistics',
-            version='2021-05-20',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            linkcard_20210520_models.CardStatisticsResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def card_statistics_with_options_async(
-        self,
-        runtime: util_models.RuntimeOptions,
-    ) -> linkcard_20210520_models.CardStatisticsResponse:
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='CardStatistics',
-            version='2021-05-20',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            linkcard_20210520_models.CardStatisticsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def card_statistics(self) -> linkcard_20210520_models.CardStatisticsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.card_statistics_with_options(runtime)
-
-    async def card_statistics_async(self) -> linkcard_20210520_models.CardStatisticsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.card_statistics_with_options_async(runtime)
-
     def force_activation_with_options(
         self,
         request: linkcard_20210520_models.ForceActivationRequest,
@@ -693,6 +643,8 @@ class Client(OpenApiClient):
             query['IsAutoRecharge'] = request.is_auto_recharge
         if not UtilClient.is_unset(request.max_flow):
             query['MaxFlow'] = request.max_flow
+        if not UtilClient.is_unset(request.max_rest_flow_percentage):
+            query['MaxRestFlowPercentage'] = request.max_rest_flow_percentage
         if not UtilClient.is_unset(request.min_flow):
             query['MinFlow'] = request.min_flow
         if not UtilClient.is_unset(request.msisdn):
@@ -775,6 +727,8 @@ class Client(OpenApiClient):
             query['IsAutoRecharge'] = request.is_auto_recharge
         if not UtilClient.is_unset(request.max_flow):
             query['MaxFlow'] = request.max_flow
+        if not UtilClient.is_unset(request.max_rest_flow_percentage):
+            query['MaxRestFlowPercentage'] = request.max_rest_flow_percentage
         if not UtilClient.is_unset(request.min_flow):
             query['MinFlow'] = request.min_flow
         if not UtilClient.is_unset(request.msisdn):
