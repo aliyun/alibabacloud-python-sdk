@@ -1,3 +1,6 @@
+2022-09-29 Version: 3.0.2
+- Release MergeVideoModelFace.
+
 2021-04-13 Version: 3.0.1
 - Release AddFaceVideoTemplate DeleteFaceVideoTemplate QueryFaceVideoTemplate MergeVideoModelFace.
 
