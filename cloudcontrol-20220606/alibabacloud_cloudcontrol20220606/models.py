@@ -119,13 +119,13 @@ class CreateResourceResponseBody(TeaModel):
         self,
         request_id: str = None,
         resource_id: str = None,
-        retry_timeout: int = None,
         task_id: str = None,
+        timeout: int = None,
     ):
         self.request_id = request_id
         self.resource_id = resource_id
-        self.retry_timeout = retry_timeout
         self.task_id = task_id
+        self.timeout = timeout
 
     def validate(self):
         pass
@@ -140,10 +140,10 @@ class CreateResourceResponseBody(TeaModel):
             result['requestId'] = self.request_id
         if self.resource_id is not None:
             result['resourceId'] = self.resource_id
-        if self.retry_timeout is not None:
-            result['retryTimeout'] = self.retry_timeout
         if self.task_id is not None:
             result['taskId'] = self.task_id
+        if self.timeout is not None:
+            result['timeout'] = self.timeout
         return result
 
     def from_map(self, m: dict = None):
@@ -152,10 +152,10 @@ class CreateResourceResponseBody(TeaModel):
             self.request_id = m.get('requestId')
         if m.get('resourceId') is not None:
             self.resource_id = m.get('resourceId')
-        if m.get('retryTimeout') is not None:
-            self.retry_timeout = m.get('retryTimeout')
         if m.get('taskId') is not None:
             self.task_id = m.get('taskId')
+        if m.get('timeout') is not None:
+            self.timeout = m.get('timeout')
         return self
 
 
@@ -240,12 +240,12 @@ class DeleteResourceResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        retry_timeout: int = None,
         task_id: str = None,
+        timeout: int = None,
     ):
         self.request_id = request_id
-        self.retry_timeout = retry_timeout
         self.task_id = task_id
+        self.timeout = timeout
 
     def validate(self):
         pass
@@ -258,20 +258,20 @@ class DeleteResourceResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['requestId'] = self.request_id
-        if self.retry_timeout is not None:
-            result['retryTimeout'] = self.retry_timeout
         if self.task_id is not None:
             result['taskId'] = self.task_id
+        if self.timeout is not None:
+            result['timeout'] = self.timeout
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
-        if m.get('retryTimeout') is not None:
-            self.retry_timeout = m.get('retryTimeout')
         if m.get('taskId') is not None:
             self.task_id = m.get('taskId')
+        if m.get('timeout') is not None:
+            self.timeout = m.get('timeout')
         return self
 
 
@@ -2356,12 +2356,12 @@ class UpdateResourceResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        retry_timeout: int = None,
         task_id: str = None,
+        timeout: int = None,
     ):
         self.request_id = request_id
-        self.retry_timeout = retry_timeout
         self.task_id = task_id
+        self.timeout = timeout
 
     def validate(self):
         pass
@@ -2374,20 +2374,20 @@ class UpdateResourceResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['requestId'] = self.request_id
-        if self.retry_timeout is not None:
-            result['retryTimeout'] = self.retry_timeout
         if self.task_id is not None:
             result['taskId'] = self.task_id
+        if self.timeout is not None:
+            result['timeout'] = self.timeout
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
-        if m.get('retryTimeout') is not None:
-            self.retry_timeout = m.get('retryTimeout')
         if m.get('taskId') is not None:
             self.task_id = m.get('taskId')
+        if m.get('timeout') is not None:
+            self.timeout = m.get('timeout')
         return self
 
 
