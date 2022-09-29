@@ -14,17 +14,11 @@ class DetectObjectElement(TeaModel):
         x: int = None,
         y: int = None,
     ):
-        # 目标高度(像素)
         self.height = height
-        # 目标置信度，范围为[0.0, 1.0]
         self.score = score
-        # 目标类型：PERSON, VEHICLE, PET
         self.type = type
-        # 目标宽度(像素)
         self.width = width
-        # 左上角x坐标(像素)
         self.x = x
-        # 左上角y坐标(像素)
         self.y = y
 
     def validate(self):
@@ -73,9 +67,7 @@ class DetectObjectFrame(TeaModel):
         elements: List[DetectObjectElement] = None,
         time: int = None,
     ):
-        # 结果集
         self.elements = elements
-        # 时间
         self.time = time
 
     def validate(self):
@@ -145,7 +137,7 @@ class ClassifyVehicleInsuranceAdvanceRequest(TeaModel):
         self.image_urlobject = image_urlobject
 
     def validate(self):
-        self.validate_required(self.image_urlobject, 'image_urlobject')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -154,13 +146,13 @@ class ClassifyVehicleInsuranceAdvanceRequest(TeaModel):
 
         result = dict()
         if self.image_urlobject is not None:
-            result['ImageURLObject'] = self.image_urlobject
+            result['ImageURL'] = self.image_urlobject
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ImageURLObject') is not None:
-            self.image_urlobject = m.get('ImageURLObject')
+        if m.get('ImageURL') is not None:
+            self.image_urlobject = m.get('ImageURL')
         return self
 
 
@@ -277,13 +269,16 @@ class ClassifyVehicleInsuranceResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ClassifyVehicleInsuranceResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -296,6 +291,8 @@ class ClassifyVehicleInsuranceResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -304,6 +301,8 @@ class ClassifyVehicleInsuranceResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ClassifyVehicleInsuranceResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -315,7 +314,6 @@ class DetectIPCObjectRequest(TeaModel):
         self,
         image_url: str = None,
     ):
-        # 图片URL地址
         self.image_url = image_url
 
     def validate(self):
@@ -335,6 +333,33 @@ class DetectIPCObjectRequest(TeaModel):
         m = m or dict()
         if m.get('ImageURL') is not None:
             self.image_url = m.get('ImageURL')
+        return self
+
+
+class DetectIPCObjectAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        image_urlobject: BinaryIO = None,
+    ):
+        self.image_urlobject = image_urlobject
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_urlobject is not None:
+            result['ImageURL'] = self.image_urlobject
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageURL') is not None:
+            self.image_urlobject = m.get('ImageURL')
         return self
 
 
@@ -437,7 +462,6 @@ class DetectIPCObjectResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.data = data
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -470,13 +494,16 @@ class DetectIPCObjectResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DetectIPCObjectResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -489,6 +516,8 @@ class DetectIPCObjectResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -497,6 +526,8 @@ class DetectIPCObjectResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DetectIPCObjectResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -540,13 +571,13 @@ class DetectKitchenAnimalsAdvanceRequest(TeaModel):
     def __init__(
         self,
         image_urlaobject: BinaryIO = None,
-        image_urlb: str = None,
+        image_urlbobject: BinaryIO = None,
     ):
         self.image_urlaobject = image_urlaobject
-        self.image_urlb = image_urlb
+        self.image_urlbobject = image_urlbobject
 
     def validate(self):
-        self.validate_required(self.image_urlaobject, 'image_urlaobject')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -555,17 +586,17 @@ class DetectKitchenAnimalsAdvanceRequest(TeaModel):
 
         result = dict()
         if self.image_urlaobject is not None:
-            result['ImageURLAObject'] = self.image_urlaobject
-        if self.image_urlb is not None:
-            result['ImageURLB'] = self.image_urlb
+            result['ImageURLA'] = self.image_urlaobject
+        if self.image_urlbobject is not None:
+            result['ImageURLB'] = self.image_urlbobject
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ImageURLAObject') is not None:
-            self.image_urlaobject = m.get('ImageURLAObject')
+        if m.get('ImageURLA') is not None:
+            self.image_urlaobject = m.get('ImageURLA')
         if m.get('ImageURLB') is not None:
-            self.image_urlb = m.get('ImageURLB')
+            self.image_urlbobject = m.get('ImageURLB')
         return self
 
 
@@ -697,7 +728,6 @@ class DetectKitchenAnimalsResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.data = data
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -730,13 +760,16 @@ class DetectKitchenAnimalsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DetectKitchenAnimalsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -749,6 +782,8 @@ class DetectKitchenAnimalsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -757,6 +792,8 @@ class DetectKitchenAnimalsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DetectKitchenAnimalsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -798,7 +835,7 @@ class DetectMainBodyAdvanceRequest(TeaModel):
         self.image_urlobject = image_urlobject
 
     def validate(self):
-        self.validate_required(self.image_urlobject, 'image_urlobject')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -807,13 +844,13 @@ class DetectMainBodyAdvanceRequest(TeaModel):
 
         result = dict()
         if self.image_urlobject is not None:
-            result['ImageURLObject'] = self.image_urlobject
+            result['ImageURL'] = self.image_urlobject
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ImageURLObject') is not None:
-            self.image_urlobject = m.get('ImageURLObject')
+        if m.get('ImageURL') is not None:
+            self.image_urlobject = m.get('ImageURL')
         return self
 
 
@@ -930,13 +967,16 @@ class DetectMainBodyResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DetectMainBodyResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -949,6 +989,8 @@ class DetectMainBodyResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -957,6 +999,8 @@ class DetectMainBodyResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DetectMainBodyResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -998,7 +1042,7 @@ class DetectObjectAdvanceRequest(TeaModel):
         self.image_urlobject = image_urlobject
 
     def validate(self):
-        self.validate_required(self.image_urlobject, 'image_urlobject')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -1007,13 +1051,13 @@ class DetectObjectAdvanceRequest(TeaModel):
 
         result = dict()
         if self.image_urlobject is not None:
-            result['ImageURLObject'] = self.image_urlobject
+            result['ImageURL'] = self.image_urlobject
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ImageURLObject') is not None:
-            self.image_urlobject = m.get('ImageURLObject')
+        if m.get('ImageURL') is not None:
+            self.image_urlobject = m.get('ImageURL')
         return self
 
 
@@ -1142,13 +1186,16 @@ class DetectObjectResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DetectObjectResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1161,6 +1208,8 @@ class DetectObjectResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1169,6 +1218,8 @@ class DetectObjectResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DetectObjectResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1210,7 +1261,7 @@ class DetectTransparentImageAdvanceRequest(TeaModel):
         self.image_urlobject = image_urlobject
 
     def validate(self):
-        self.validate_required(self.image_urlobject, 'image_urlobject')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -1219,13 +1270,13 @@ class DetectTransparentImageAdvanceRequest(TeaModel):
 
         result = dict()
         if self.image_urlobject is not None:
-            result['ImageURLObject'] = self.image_urlobject
+            result['ImageURL'] = self.image_urlobject
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ImageURLObject') is not None:
-            self.image_urlobject = m.get('ImageURLObject')
+        if m.get('ImageURL') is not None:
+            self.image_urlobject = m.get('ImageURL')
         return self
 
 
@@ -1330,13 +1381,16 @@ class DetectTransparentImageResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DetectTransparentImageResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1349,6 +1403,8 @@ class DetectTransparentImageResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1357,6 +1413,8 @@ class DetectTransparentImageResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DetectTransparentImageResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1398,7 +1456,7 @@ class DetectVehicleAdvanceRequest(TeaModel):
         self.image_urlobject = image_urlobject
 
     def validate(self):
-        self.validate_required(self.image_urlobject, 'image_urlobject')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -1407,13 +1465,13 @@ class DetectVehicleAdvanceRequest(TeaModel):
 
         result = dict()
         if self.image_urlobject is not None:
-            result['ImageURLObject'] = self.image_urlobject
+            result['ImageURL'] = self.image_urlobject
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ImageURLObject') is not None:
-            self.image_urlobject = m.get('ImageURLObject')
+        if m.get('ImageURL') is not None:
+            self.image_urlobject = m.get('ImageURL')
         return self
 
 
@@ -1548,13 +1606,16 @@ class DetectVehicleResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DetectVehicleResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1567,6 +1628,8 @@ class DetectVehicleResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1575,6 +1638,8 @@ class DetectVehicleResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DetectVehicleResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1712,7 +1777,6 @@ class DetectVehicleICongestionRequest(TeaModel):
         pre_region_intersect_features: List[DetectVehicleICongestionRequestPreRegionIntersectFeatures] = None,
         road_regions: List[DetectVehicleICongestionRequestRoadRegions] = None,
     ):
-        # A short description of struct
         self.image_url = image_url
         self.pre_region_intersect_features = pre_region_intersect_features
         self.road_regions = road_regions
@@ -1762,6 +1826,186 @@ class DetectVehicleICongestionRequest(TeaModel):
         return self
 
 
+class DetectVehicleICongestionAdvanceRequestPreRegionIntersectFeatures(TeaModel):
+    def __init__(
+        self,
+        features: List[str] = None,
+    ):
+        self.features = features
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.features is not None:
+            result['Features'] = self.features
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Features') is not None:
+            self.features = m.get('Features')
+        return self
+
+
+class DetectVehicleICongestionAdvanceRequestRoadRegionsRoadRegionPoint(TeaModel):
+    def __init__(
+        self,
+        x: int = None,
+        y: int = None,
+    ):
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class DetectVehicleICongestionAdvanceRequestRoadRegionsRoadRegion(TeaModel):
+    def __init__(
+        self,
+        point: DetectVehicleICongestionAdvanceRequestRoadRegionsRoadRegionPoint = None,
+    ):
+        self.point = point
+
+    def validate(self):
+        if self.point:
+            self.point.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.point is not None:
+            result['Point'] = self.point.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Point') is not None:
+            temp_model = DetectVehicleICongestionAdvanceRequestRoadRegionsRoadRegionPoint()
+            self.point = temp_model.from_map(m['Point'])
+        return self
+
+
+class DetectVehicleICongestionAdvanceRequestRoadRegions(TeaModel):
+    def __init__(
+        self,
+        road_region: List[DetectVehicleICongestionAdvanceRequestRoadRegionsRoadRegion] = None,
+    ):
+        self.road_region = road_region
+
+    def validate(self):
+        if self.road_region:
+            for k in self.road_region:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['RoadRegion'] = []
+        if self.road_region is not None:
+            for k in self.road_region:
+                result['RoadRegion'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.road_region = []
+        if m.get('RoadRegion') is not None:
+            for k in m.get('RoadRegion'):
+                temp_model = DetectVehicleICongestionAdvanceRequestRoadRegionsRoadRegion()
+                self.road_region.append(temp_model.from_map(k))
+        return self
+
+
+class DetectVehicleICongestionAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        image_urlobject: BinaryIO = None,
+        pre_region_intersect_features: List[DetectVehicleICongestionAdvanceRequestPreRegionIntersectFeatures] = None,
+        road_regions: List[DetectVehicleICongestionAdvanceRequestRoadRegions] = None,
+    ):
+        self.image_urlobject = image_urlobject
+        self.pre_region_intersect_features = pre_region_intersect_features
+        self.road_regions = road_regions
+
+    def validate(self):
+        if self.pre_region_intersect_features:
+            for k in self.pre_region_intersect_features:
+                if k:
+                    k.validate()
+        if self.road_regions:
+            for k in self.road_regions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_urlobject is not None:
+            result['ImageURL'] = self.image_urlobject
+        result['PreRegionIntersectFeatures'] = []
+        if self.pre_region_intersect_features is not None:
+            for k in self.pre_region_intersect_features:
+                result['PreRegionIntersectFeatures'].append(k.to_map() if k else None)
+        result['RoadRegions'] = []
+        if self.road_regions is not None:
+            for k in self.road_regions:
+                result['RoadRegions'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageURL') is not None:
+            self.image_urlobject = m.get('ImageURL')
+        self.pre_region_intersect_features = []
+        if m.get('PreRegionIntersectFeatures') is not None:
+            for k in m.get('PreRegionIntersectFeatures'):
+                temp_model = DetectVehicleICongestionAdvanceRequestPreRegionIntersectFeatures()
+                self.pre_region_intersect_features.append(temp_model.from_map(k))
+        self.road_regions = []
+        if m.get('RoadRegions') is not None:
+            for k in m.get('RoadRegions'):
+                temp_model = DetectVehicleICongestionAdvanceRequestRoadRegions()
+                self.road_regions.append(temp_model.from_map(k))
+        return self
+
+
 class DetectVehicleICongestionShrinkRequest(TeaModel):
     def __init__(
         self,
@@ -1769,7 +2013,6 @@ class DetectVehicleICongestionShrinkRequest(TeaModel):
         pre_region_intersect_features_shrink: str = None,
         road_regions_shrink: str = None,
     ):
-        # A short description of struct
         self.image_url = image_url
         self.pre_region_intersect_features_shrink = pre_region_intersect_features_shrink
         self.road_regions_shrink = road_regions_shrink
@@ -2068,7 +2311,6 @@ class DetectVehicleICongestionResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.data = data
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -2101,13 +2343,16 @@ class DetectVehicleICongestionResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DetectVehicleICongestionResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2120,6 +2365,8 @@ class DetectVehicleICongestionResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2128,6 +2375,8 @@ class DetectVehicleICongestionResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DetectVehicleICongestionResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2237,7 +2486,6 @@ class DetectVehicleIllegalParkingRequest(TeaModel):
         image_url: str = None,
         road_regions: List[DetectVehicleIllegalParkingRequestRoadRegions] = None,
     ):
-        # A short description of struct
         self.image_url = image_url
         self.road_regions = road_regions
 
@@ -2273,13 +2521,150 @@ class DetectVehicleIllegalParkingRequest(TeaModel):
         return self
 
 
+class DetectVehicleIllegalParkingAdvanceRequestRoadRegionsRoadRegionPoint(TeaModel):
+    def __init__(
+        self,
+        x: int = None,
+        y: int = None,
+    ):
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class DetectVehicleIllegalParkingAdvanceRequestRoadRegionsRoadRegion(TeaModel):
+    def __init__(
+        self,
+        point: DetectVehicleIllegalParkingAdvanceRequestRoadRegionsRoadRegionPoint = None,
+    ):
+        self.point = point
+
+    def validate(self):
+        if self.point:
+            self.point.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.point is not None:
+            result['Point'] = self.point.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Point') is not None:
+            temp_model = DetectVehicleIllegalParkingAdvanceRequestRoadRegionsRoadRegionPoint()
+            self.point = temp_model.from_map(m['Point'])
+        return self
+
+
+class DetectVehicleIllegalParkingAdvanceRequestRoadRegions(TeaModel):
+    def __init__(
+        self,
+        road_region: List[DetectVehicleIllegalParkingAdvanceRequestRoadRegionsRoadRegion] = None,
+    ):
+        self.road_region = road_region
+
+    def validate(self):
+        if self.road_region:
+            for k in self.road_region:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['RoadRegion'] = []
+        if self.road_region is not None:
+            for k in self.road_region:
+                result['RoadRegion'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.road_region = []
+        if m.get('RoadRegion') is not None:
+            for k in m.get('RoadRegion'):
+                temp_model = DetectVehicleIllegalParkingAdvanceRequestRoadRegionsRoadRegion()
+                self.road_region.append(temp_model.from_map(k))
+        return self
+
+
+class DetectVehicleIllegalParkingAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        image_urlobject: BinaryIO = None,
+        road_regions: List[DetectVehicleIllegalParkingAdvanceRequestRoadRegions] = None,
+    ):
+        self.image_urlobject = image_urlobject
+        self.road_regions = road_regions
+
+    def validate(self):
+        if self.road_regions:
+            for k in self.road_regions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_urlobject is not None:
+            result['ImageURL'] = self.image_urlobject
+        result['RoadRegions'] = []
+        if self.road_regions is not None:
+            for k in self.road_regions:
+                result['RoadRegions'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageURL') is not None:
+            self.image_urlobject = m.get('ImageURL')
+        self.road_regions = []
+        if m.get('RoadRegions') is not None:
+            for k in m.get('RoadRegions'):
+                temp_model = DetectVehicleIllegalParkingAdvanceRequestRoadRegions()
+                self.road_regions.append(temp_model.from_map(k))
+        return self
+
+
 class DetectVehicleIllegalParkingShrinkRequest(TeaModel):
     def __init__(
         self,
         image_url: str = None,
         road_regions_shrink: str = None,
     ):
-        # A short description of struct
         self.image_url = image_url
         self.road_regions_shrink = road_regions_shrink
 
@@ -2489,7 +2874,6 @@ class DetectVehicleIllegalParkingResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.data = data
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -2522,13 +2906,16 @@ class DetectVehicleIllegalParkingResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DetectVehicleIllegalParkingResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2541,6 +2928,8 @@ class DetectVehicleIllegalParkingResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2549,6 +2938,8 @@ class DetectVehicleIllegalParkingResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DetectVehicleIllegalParkingResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2567,21 +2958,13 @@ class DetectVideoFrameRequest(TeaModel):
         stream_arn: str = None,
         width: int = None,
     ):
-        # 图片创建时间
         self.create_time = create_time
-        # AI每个功能具体配置描述，每个AI算法配置都不一样
         self.feature_config = feature_config
-        # AI功能名称列表
         self.features = features
-        # 图像高度
         self.height = height
-        # 图片URL地址
         self.image_url = image_url
-        # 自用拥有者pk
         self.owner_id = owner_id
-        # 流资源唯一描述
         self.stream_arn = stream_arn
-        # 图像宽度
         self.width = width
 
     def validate(self):
@@ -2644,21 +3027,13 @@ class DetectVideoFrameShrinkRequest(TeaModel):
         stream_arn: str = None,
         width: int = None,
     ):
-        # 图片创建时间
         self.create_time = create_time
-        # AI每个功能具体配置描述，每个AI算法配置都不一样
         self.feature_config = feature_config
-        # AI功能名称列表
         self.features_shrink = features_shrink
-        # 图像高度
         self.height = height
-        # 图片URL地址
         self.image_url = image_url
-        # 自用拥有者pk
         self.owner_id = owner_id
-        # 流资源唯一描述
         self.stream_arn = stream_arn
-        # 图像宽度
         self.width = width
 
     def validate(self):
@@ -2714,7 +3089,6 @@ class DetectVideoFrameResponseBodyData(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -2744,7 +3118,6 @@ class DetectVideoFrameResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.data = data
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -2777,13 +3150,16 @@ class DetectVideoFrameResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DetectVideoFrameResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2796,6 +3172,8 @@ class DetectVideoFrameResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2804,6 +3182,8 @@ class DetectVideoFrameResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DetectVideoFrameResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2817,11 +3197,8 @@ class DetectVideoIPCObjectRequest(TeaModel):
         start_timestamp: int = None,
         video_url: str = None,
     ):
-        # 是否只有检测到物体才回调
         self.callback_only_has_object = callback_only_has_object
-        # 视频的开始时间戳(秒)，即UTC时间，默认为0
         self.start_timestamp = start_timestamp
-        # 视频文件URL地址
         self.video_url = video_url
 
     def validate(self):
@@ -2855,18 +3232,16 @@ class DetectVideoIPCObjectRequest(TeaModel):
 class DetectVideoIPCObjectAdvanceRequest(TeaModel):
     def __init__(
         self,
-        video_urlobject: BinaryIO = None,
         callback_only_has_object: bool = None,
         start_timestamp: int = None,
+        video_urlobject: BinaryIO = None,
     ):
-        self.video_urlobject = video_urlobject
-        # 是否只有检测到物体才回调
         self.callback_only_has_object = callback_only_has_object
-        # 视频的开始时间戳(秒)，即UTC时间，默认为0
         self.start_timestamp = start_timestamp
+        self.video_urlobject = video_urlobject
 
     def validate(self):
-        self.validate_required(self.video_urlobject, 'video_urlobject')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -2874,22 +3249,22 @@ class DetectVideoIPCObjectAdvanceRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.video_urlobject is not None:
-            result['VideoURLObject'] = self.video_urlobject
         if self.callback_only_has_object is not None:
             result['CallbackOnlyHasObject'] = self.callback_only_has_object
         if self.start_timestamp is not None:
             result['StartTimestamp'] = self.start_timestamp
+        if self.video_urlobject is not None:
+            result['VideoURL'] = self.video_urlobject
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('VideoURLObject') is not None:
-            self.video_urlobject = m.get('VideoURLObject')
         if m.get('CallbackOnlyHasObject') is not None:
             self.callback_only_has_object = m.get('CallbackOnlyHasObject')
         if m.get('StartTimestamp') is not None:
             self.start_timestamp = m.get('StartTimestamp')
+        if m.get('VideoURL') is not None:
+            self.video_urlobject = m.get('VideoURL')
         return self
 
 
@@ -2957,7 +3332,6 @@ class DetectVideoIPCObjectResponseBodyDataFrames(TeaModel):
         time: int = None,
     ):
         self.elements = elements
-        # 视频帧时间，startTimestamp+视频帧的相对时间的值，单位毫秒，如果startTimestamp为空，则是相对时间
         self.time = time
 
     def validate(self):
@@ -3000,13 +3374,9 @@ class DetectVideoIPCObjectResponseBodyData(TeaModel):
         input_file: str = None,
         width: int = None,
     ):
-        # 视频帧的集合，未检测到目标的帧不列出
         self.frames = frames
-        # 视频文件的分辨率(像素)
         self.height = height
-        # 输入文件信息
         self.input_file = input_file
-        # 视频文件的分辨率(像素)
         self.width = width
 
     def validate(self):
@@ -3056,7 +3426,6 @@ class DetectVideoIPCObjectResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.data = data
-        # JobId
         self.request_id = request_id
 
     def validate(self):
@@ -3089,13 +3458,16 @@ class DetectVideoIPCObjectResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DetectVideoIPCObjectResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -3108,6 +3480,8 @@ class DetectVideoIPCObjectResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3116,6 +3490,8 @@ class DetectVideoIPCObjectResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DetectVideoIPCObjectResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -3157,7 +3533,7 @@ class DetectWhiteBaseImageAdvanceRequest(TeaModel):
         self.image_urlobject = image_urlobject
 
     def validate(self):
-        self.validate_required(self.image_urlobject, 'image_urlobject')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -3166,13 +3542,13 @@ class DetectWhiteBaseImageAdvanceRequest(TeaModel):
 
         result = dict()
         if self.image_urlobject is not None:
-            result['ImageURLObject'] = self.image_urlobject
+            result['ImageURL'] = self.image_urlobject
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ImageURLObject') is not None:
-            self.image_urlobject = m.get('ImageURLObject')
+        if m.get('ImageURL') is not None:
+            self.image_urlobject = m.get('ImageURL')
         return self
 
 
@@ -3277,13 +3653,16 @@ class DetectWhiteBaseImageResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DetectWhiteBaseImageResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -3296,6 +3675,8 @@ class DetectWhiteBaseImageResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3304,6 +3685,8 @@ class DetectWhiteBaseImageResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DetectWhiteBaseImageResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -3420,16 +3803,15 @@ class DetectWorkwearAdvanceRequestClothes(TeaModel):
 class DetectWorkwearAdvanceRequest(TeaModel):
     def __init__(
         self,
-        image_url_object: BinaryIO = None,
         clothes: DetectWorkwearAdvanceRequestClothes = None,
+        image_url_object: BinaryIO = None,
         labels: List[str] = None,
     ):
-        self.image_url_object = image_url_object
         self.clothes = clothes
+        self.image_url_object = image_url_object
         self.labels = labels
 
     def validate(self):
-        self.validate_required(self.image_url_object, 'image_url_object')
         if self.clothes:
             self.clothes.validate()
 
@@ -3439,21 +3821,21 @@ class DetectWorkwearAdvanceRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.image_url_object is not None:
-            result['ImageUrlObject'] = self.image_url_object
         if self.clothes is not None:
             result['Clothes'] = self.clothes.to_map()
+        if self.image_url_object is not None:
+            result['ImageUrl'] = self.image_url_object
         if self.labels is not None:
             result['Labels'] = self.labels
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ImageUrlObject') is not None:
-            self.image_url_object = m.get('ImageUrlObject')
         if m.get('Clothes') is not None:
             temp_model = DetectWorkwearAdvanceRequestClothes()
             self.clothes = temp_model.from_map(m['Clothes'])
+        if m.get('ImageUrl') is not None:
+            self.image_url_object = m.get('ImageUrl')
         if m.get('Labels') is not None:
             self.labels = m.get('Labels')
         return self
@@ -3721,7 +4103,6 @@ class DetectWorkwearResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.data = data
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -3754,13 +4135,16 @@ class DetectWorkwearResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DetectWorkwearResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -3773,6 +4157,8 @@ class DetectWorkwearResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3781,6 +4167,8 @@ class DetectWorkwearResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DetectWorkwearResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -3945,13 +4333,16 @@ class GenerateVehicleRepairPlanResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GenerateVehicleRepairPlanResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -3964,6 +4355,8 @@ class GenerateVehicleRepairPlanResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3972,6 +4365,8 @@ class GenerateVehicleRepairPlanResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GenerateVehicleRepairPlanResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -4095,13 +4490,16 @@ class GetAsyncJobResultResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetAsyncJobResultResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -4114,6 +4512,8 @@ class GetAsyncJobResultResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -4122,6 +4522,8 @@ class GetAsyncJobResultResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetAsyncJobResultResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -4164,6 +4566,45 @@ class GetVehicleRepairPlanRequest(TeaModel):
             self.task_id = m.get('TaskId')
         if m.get('VinCodeImage') is not None:
             self.vin_code_image = m.get('VinCodeImage')
+        return self
+
+
+class GetVehicleRepairPlanAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        car_number_image_object: BinaryIO = None,
+        task_id: str = None,
+        vin_code_image_object: BinaryIO = None,
+    ):
+        self.car_number_image_object = car_number_image_object
+        self.task_id = task_id
+        self.vin_code_image_object = vin_code_image_object
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.car_number_image_object is not None:
+            result['CarNumberImage'] = self.car_number_image_object
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.vin_code_image_object is not None:
+            result['VinCodeImage'] = self.vin_code_image_object
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CarNumberImage') is not None:
+            self.car_number_image_object = m.get('CarNumberImage')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('VinCodeImage') is not None:
+            self.vin_code_image_object = m.get('VinCodeImage')
         return self
 
 
@@ -4358,13 +4799,16 @@ class GetVehicleRepairPlanResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetVehicleRepairPlanResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -4377,6 +4821,8 @@ class GetVehicleRepairPlanResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -4385,6 +4831,8 @@ class GetVehicleRepairPlanResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetVehicleRepairPlanResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -4426,7 +4874,7 @@ class RecognizeVehicleDamageAdvanceRequest(TeaModel):
         self.image_urlobject = image_urlobject
 
     def validate(self):
-        self.validate_required(self.image_urlobject, 'image_urlobject')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -4435,13 +4883,13 @@ class RecognizeVehicleDamageAdvanceRequest(TeaModel):
 
         result = dict()
         if self.image_urlobject is not None:
-            result['ImageURLObject'] = self.image_urlobject
+            result['ImageURL'] = self.image_urlobject
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ImageURLObject') is not None:
-            self.image_urlobject = m.get('ImageURLObject')
+        if m.get('ImageURL') is not None:
+            self.image_urlobject = m.get('ImageURL')
         return self
 
 
@@ -4564,13 +5012,16 @@ class RecognizeVehicleDamageResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: RecognizeVehicleDamageResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -4583,6 +5034,8 @@ class RecognizeVehicleDamageResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -4591,6 +5044,8 @@ class RecognizeVehicleDamageResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = RecognizeVehicleDamageResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -4632,7 +5087,7 @@ class RecognizeVehicleDashboardAdvanceRequest(TeaModel):
         self.image_urlobject = image_urlobject
 
     def validate(self):
-        self.validate_required(self.image_urlobject, 'image_urlobject')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -4641,13 +5096,13 @@ class RecognizeVehicleDashboardAdvanceRequest(TeaModel):
 
         result = dict()
         if self.image_urlobject is not None:
-            result['ImageURLObject'] = self.image_urlobject
+            result['ImageURL'] = self.image_urlobject
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ImageURLObject') is not None:
-            self.image_urlobject = m.get('ImageURLObject')
+        if m.get('ImageURL') is not None:
+            self.image_urlobject = m.get('ImageURL')
         return self
 
 
@@ -4770,13 +5225,16 @@ class RecognizeVehicleDashboardResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: RecognizeVehicleDashboardResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -4789,6 +5247,8 @@ class RecognizeVehicleDashboardResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -4797,6 +5257,8 @@ class RecognizeVehicleDashboardResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = RecognizeVehicleDashboardResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -4838,7 +5300,7 @@ class RecognizeVehiclePartsAdvanceRequest(TeaModel):
         self.image_urlobject = image_urlobject
 
     def validate(self):
-        self.validate_required(self.image_urlobject, 'image_urlobject')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -4847,13 +5309,13 @@ class RecognizeVehiclePartsAdvanceRequest(TeaModel):
 
         result = dict()
         if self.image_urlobject is not None:
-            result['ImageURLObject'] = self.image_urlobject
+            result['ImageURL'] = self.image_urlobject
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ImageURLObject') is not None:
-            self.image_urlobject = m.get('ImageURLObject')
+        if m.get('ImageURL') is not None:
+            self.image_urlobject = m.get('ImageURL')
         return self
 
 
@@ -4976,13 +5438,16 @@ class RecognizeVehiclePartsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: RecognizeVehiclePartsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -4995,6 +5460,8 @@ class RecognizeVehiclePartsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -5003,6 +5470,8 @@ class RecognizeVehiclePartsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = RecognizeVehiclePartsResponseBody()
             self.body = temp_model.from_map(m['body'])
