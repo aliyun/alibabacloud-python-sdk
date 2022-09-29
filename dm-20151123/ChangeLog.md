@@ -1,3 +1,6 @@
+2022-09-29 Version: 1.0.5
+- Automatically generate sdk tasks.
+
 2022-08-02 Version: 1.0.4
 - The input parameter IpProtection of UpdateIpProtection API  is corrected to be required. 
 

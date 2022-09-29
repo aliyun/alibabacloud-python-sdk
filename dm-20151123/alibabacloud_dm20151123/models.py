@@ -52,8 +52,10 @@ class AddIpfilterRequest(TeaModel):
 class AddIpfilterResponseBody(TeaModel):
     def __init__(
         self,
+        ip_filter_id: str = None,
         request_id: str = None,
     ):
+        self.ip_filter_id = ip_filter_id
         self.request_id = request_id
 
     def validate(self):
@@ -65,12 +67,16 @@ class AddIpfilterResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.ip_filter_id is not None:
+            result['IpFilterId'] = self.ip_filter_id
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('IpFilterId') is not None:
+            self.ip_filter_id = m.get('IpFilterId')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -6612,128 +6618,6 @@ class UpdateIpProtectionResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateIpProtectionResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class UpdateMailAddressMsgCallBackUrlRequest(TeaModel):
-    def __init__(
-        self,
-        mail_from: str = None,
-        notify_url: str = None,
-        owner_id: int = None,
-        resource_owner_account: str = None,
-        resource_owner_id: int = None,
-    ):
-        self.mail_from = mail_from
-        self.notify_url = notify_url
-        self.owner_id = owner_id
-        self.resource_owner_account = resource_owner_account
-        self.resource_owner_id = resource_owner_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.mail_from is not None:
-            result['MailFrom'] = self.mail_from
-        if self.notify_url is not None:
-            result['NotifyUrl'] = self.notify_url
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        if self.resource_owner_account is not None:
-            result['ResourceOwnerAccount'] = self.resource_owner_account
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('MailFrom') is not None:
-            self.mail_from = m.get('MailFrom')
-        if m.get('NotifyUrl') is not None:
-            self.notify_url = m.get('NotifyUrl')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        if m.get('ResourceOwnerAccount') is not None:
-            self.resource_owner_account = m.get('ResourceOwnerAccount')
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
-        return self
-
-
-class UpdateMailAddressMsgCallBackUrlResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-    ):
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class UpdateMailAddressMsgCallBackUrlResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: UpdateMailAddressMsgCallBackUrlResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = UpdateMailAddressMsgCallBackUrlResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
