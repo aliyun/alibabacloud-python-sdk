@@ -4658,6 +4658,7 @@ class SendBatchCardSmsResponse(TeaModel):
 class SendBatchSmsRequest(TeaModel):
     def __init__(
         self,
+        out_id: str = None,
         owner_id: int = None,
         phone_number_json: str = None,
         resource_owner_account: str = None,
@@ -4667,6 +4668,7 @@ class SendBatchSmsRequest(TeaModel):
         template_code: str = None,
         template_param_json: str = None,
     ):
+        self.out_id = out_id
         self.owner_id = owner_id
         self.phone_number_json = phone_number_json
         self.resource_owner_account = resource_owner_account
@@ -4685,6 +4687,8 @@ class SendBatchSmsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.out_id is not None:
+            result['OutId'] = self.out_id
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
         if self.phone_number_json is not None:
@@ -4705,6 +4709,8 @@ class SendBatchSmsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('OutId') is not None:
+            self.out_id = m.get('OutId')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
         if m.get('PhoneNumberJson') is not None:

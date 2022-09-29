@@ -2186,6 +2186,8 @@ class Client(OpenApiClient):
     ) -> dysmsapi_20170525_models.SendBatchSmsResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.out_id):
+            query['OutId'] = request.out_id
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -2230,6 +2232,8 @@ class Client(OpenApiClient):
     ) -> dysmsapi_20170525_models.SendBatchSmsResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.out_id):
+            query['OutId'] = request.out_id
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.resource_owner_account):
