@@ -66,8 +66,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.BindESUserAnalyzerResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        es_instance_id = OpenApiUtilClient.get_encode_param(es_instance_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -75,7 +73,7 @@ class Client(OpenApiClient):
             action='BindESUserAnalyzer',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/es/{es_instance_id}/actions/bind-analyzer',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/es/{OpenApiUtilClient.get_encode_param(es_instance_id)}/actions/bind-analyzer',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -94,8 +92,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.BindESUserAnalyzerResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        es_instance_id = OpenApiUtilClient.get_encode_param(es_instance_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -103,7 +99,7 @@ class Client(OpenApiClient):
             action='BindESUserAnalyzer',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/es/{es_instance_id}/actions/bind-analyzer',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/es/{OpenApiUtilClient.get_encode_param(es_instance_id)}/actions/bind-analyzer',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -137,7 +133,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.BindEsInstanceResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -145,7 +140,7 @@ class Client(OpenApiClient):
             action='BindEsInstance',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/actions/bind-es-instance',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/actions/bind-es-instance',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -163,7 +158,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.BindEsInstanceResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -171,7 +165,7 @@ class Client(OpenApiClient):
             action='BindEsInstance',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/actions/bind-es-instance',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/actions/bind-es-instance',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -211,9 +205,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CompileSortScriptResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        script_name = OpenApiUtilClient.get_encode_param(script_name)
-        app_version_id = OpenApiUtilClient.get_encode_param(app_version_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -221,7 +212,7 @@ class Client(OpenApiClient):
             action='CompileSortScript',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_version_id}/sort-scripts/{script_name}/actions/compiling',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_version_id)}/sort-scripts/{OpenApiUtilClient.get_encode_param(script_name)}/actions/compiling',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -241,9 +232,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CompileSortScriptResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        script_name = OpenApiUtilClient.get_encode_param(script_name)
-        app_version_id = OpenApiUtilClient.get_encode_param(app_version_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -251,7 +239,7 @@ class Client(OpenApiClient):
             action='CompileSortScript',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_version_id}/sort-scripts/{script_name}/actions/compiling',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_version_id)}/sort-scripts/{OpenApiUtilClient.get_encode_param(script_name)}/actions/compiling',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -291,9 +279,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateABTestExperimentResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        scene_id = OpenApiUtilClient.get_encode_param(scene_id)
-        group_id = OpenApiUtilClient.get_encode_param(group_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -301,7 +286,7 @@ class Client(OpenApiClient):
             action='CreateABTestExperiment',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups/{group_id}/experiments',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/scenes/{OpenApiUtilClient.get_encode_param(scene_id)}/groups/{OpenApiUtilClient.get_encode_param(group_id)}/experiments',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -321,9 +306,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateABTestExperimentResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        scene_id = OpenApiUtilClient.get_encode_param(scene_id)
-        group_id = OpenApiUtilClient.get_encode_param(group_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -331,7 +313,7 @@ class Client(OpenApiClient):
             action='CreateABTestExperiment',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups/{group_id}/experiments',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/scenes/{OpenApiUtilClient.get_encode_param(scene_id)}/groups/{OpenApiUtilClient.get_encode_param(group_id)}/experiments',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -368,8 +350,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateABTestGroupResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        scene_id = OpenApiUtilClient.get_encode_param(scene_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -377,7 +357,7 @@ class Client(OpenApiClient):
             action='CreateABTestGroup',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/scenes/{OpenApiUtilClient.get_encode_param(scene_id)}/groups',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -396,8 +376,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateABTestGroupResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        scene_id = OpenApiUtilClient.get_encode_param(scene_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -405,7 +383,7 @@ class Client(OpenApiClient):
             action='CreateABTestGroup',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/scenes/{OpenApiUtilClient.get_encode_param(scene_id)}/groups',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -439,7 +417,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateABTestSceneResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -447,7 +424,7 @@ class Client(OpenApiClient):
             action='CreateABTestScene',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scenes',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/scenes',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -465,7 +442,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateABTestSceneResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -473,7 +449,7 @@ class Client(OpenApiClient):
             action='CreateABTestScene',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scenes',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/scenes',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -511,7 +487,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateAppResponse:
         UtilClient.validate_model(request)
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
             query['dryRun'] = request.dry_run
@@ -523,7 +498,7 @@ class Client(OpenApiClient):
             action='CreateApp',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -543,7 +518,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateAppResponse:
         UtilClient.validate_model(request)
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
             query['dryRun'] = request.dry_run
@@ -555,7 +529,7 @@ class Client(OpenApiClient):
             action='CreateApp',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -647,7 +621,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateDataCollectionResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -655,7 +628,7 @@ class Client(OpenApiClient):
             action='CreateDataCollection',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/data-collections',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/data-collections',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -673,7 +646,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateDataCollectionResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -681,7 +653,7 @@ class Client(OpenApiClient):
             action='CreateDataCollection',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/data-collections',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/data-collections',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -722,8 +694,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateFirstRankResponse:
         UtilClient.validate_model(request)
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        app_id = OpenApiUtilClient.get_encode_param(app_id)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
             query['dryRun'] = request.dry_run
@@ -735,7 +705,7 @@ class Client(OpenApiClient):
             action='CreateFirstRank',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/first-ranks',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_id)}/first-ranks',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -756,8 +726,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateFirstRankResponse:
         UtilClient.validate_model(request)
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        app_id = OpenApiUtilClient.get_encode_param(app_id)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
             query['dryRun'] = request.dry_run
@@ -769,7 +737,7 @@ class Client(OpenApiClient):
             action='CreateFirstRank',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/first-ranks',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_id)}/first-ranks',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -810,8 +778,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateFunctionInstanceResponse:
         UtilClient.validate_model(request)
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
         body = {}
         if not UtilClient.is_unset(request.create_parameters):
             body['createParameters'] = request.create_parameters
@@ -835,7 +801,7 @@ class Client(OpenApiClient):
             action='CreateFunctionInstance',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/functions/{function_name}/instances',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}/instances',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -856,8 +822,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateFunctionInstanceResponse:
         UtilClient.validate_model(request)
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
         body = {}
         if not UtilClient.is_unset(request.create_parameters):
             body['createParameters'] = request.create_parameters
@@ -881,7 +845,7 @@ class Client(OpenApiClient):
             action='CreateFunctionInstance',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/functions/{function_name}/instances',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}/instances',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -921,9 +885,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateFunctionTaskResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
-        instance_name = OpenApiUtilClient.get_encode_param(instance_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -931,7 +892,7 @@ class Client(OpenApiClient):
             action='CreateFunctionTask',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/functions/{function_name}/instances/{instance_name}/tasks',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}/instances/{OpenApiUtilClient.get_encode_param(instance_name)}/tasks',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -951,9 +912,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateFunctionTaskResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
-        instance_name = OpenApiUtilClient.get_encode_param(instance_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -961,7 +919,7 @@ class Client(OpenApiClient):
             action='CreateFunctionTask',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/functions/{function_name}/instances/{instance_name}/tasks',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}/instances/{OpenApiUtilClient.get_encode_param(instance_name)}/tasks',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -1034,42 +992,33 @@ class Client(OpenApiClient):
     def create_model(
         self,
         app_group_identity: str,
-        request: open_search_20171225_models.CreateModelRequest,
     ) -> open_search_20171225_models.CreateModelResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_model_with_options(app_group_identity, request, headers, runtime)
+        return self.create_model_with_options(app_group_identity, headers, runtime)
 
     async def create_model_async(
         self,
         app_group_identity: str,
-        request: open_search_20171225_models.CreateModelRequest,
     ) -> open_search_20171225_models.CreateModelResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_model_with_options_async(app_group_identity, request, headers, runtime)
+        return await self.create_model_with_options_async(app_group_identity, headers, runtime)
 
     def create_model_with_options(
         self,
         app_group_identity: str,
-        request: open_search_20171225_models.CreateModelRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateModelResponse:
-        UtilClient.validate_model(request)
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        body = {}
-        if not UtilClient.is_unset(request.body):
-            body['body'] = request.body
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+            headers=headers
         )
         params = open_api_models.Params(
             action='CreateModel',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/algorithm/models',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/algorithm/models',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -1084,24 +1033,17 @@ class Client(OpenApiClient):
     async def create_model_with_options_async(
         self,
         app_group_identity: str,
-        request: open_search_20171225_models.CreateModelRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateModelResponse:
-        UtilClient.validate_model(request)
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        body = {}
-        if not UtilClient.is_unset(request.body):
-            body['body'] = request.body
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+            headers=headers
         )
         params = open_api_models.Params(
             action='CreateModel',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/algorithm/models',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/algorithm/models',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -1142,8 +1084,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateQueryProcessorResponse:
         UtilClient.validate_model(request)
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        app_id = OpenApiUtilClient.get_encode_param(app_id)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
             query['dryRun'] = request.dry_run
@@ -1155,7 +1095,7 @@ class Client(OpenApiClient):
             action='CreateQueryProcessor',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/query-processors',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_id)}/query-processors',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -1176,8 +1116,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateQueryProcessorResponse:
         UtilClient.validate_model(request)
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        app_id = OpenApiUtilClient.get_encode_param(app_id)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
             query['dryRun'] = request.dry_run
@@ -1189,7 +1127,7 @@ class Client(OpenApiClient):
             action='CreateQueryProcessor',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/query-processors',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_id)}/query-processors',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -1223,7 +1161,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateScheduledTaskResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1231,7 +1168,7 @@ class Client(OpenApiClient):
             action='CreateScheduledTask',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scheduled-tasks',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/scheduled-tasks',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -1249,7 +1186,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateScheduledTaskResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1257,7 +1193,7 @@ class Client(OpenApiClient):
             action='CreateScheduledTask',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scheduled-tasks',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/scheduled-tasks',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -1294,8 +1230,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateSearchStrategyResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        app_id = OpenApiUtilClient.get_encode_param(app_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1303,7 +1237,7 @@ class Client(OpenApiClient):
             action='CreateSearchStrategy',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/search-strategies',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_id)}/search-strategies',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -1322,8 +1256,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateSearchStrategyResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        app_id = OpenApiUtilClient.get_encode_param(app_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1331,7 +1263,7 @@ class Client(OpenApiClient):
             action='CreateSearchStrategy',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/search-strategies',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_id)}/search-strategies',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -1372,8 +1304,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateSecondRankResponse:
         UtilClient.validate_model(request)
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        app_id = OpenApiUtilClient.get_encode_param(app_id)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
             query['dryRun'] = request.dry_run
@@ -1385,7 +1315,7 @@ class Client(OpenApiClient):
             action='CreateSecondRank',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/second-ranks',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_id)}/second-ranks',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -1406,8 +1336,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateSecondRankResponse:
         UtilClient.validate_model(request)
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        app_id = OpenApiUtilClient.get_encode_param(app_id)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
             query['dryRun'] = request.dry_run
@@ -1419,7 +1347,7 @@ class Client(OpenApiClient):
             action='CreateSecondRank',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/second-ranks',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_id)}/second-ranks',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -1456,8 +1384,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateSortScriptResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        app_version_id = OpenApiUtilClient.get_encode_param(app_version_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1465,7 +1391,7 @@ class Client(OpenApiClient):
             action='CreateSortScript',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_version_id}/sort-scripts',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_version_id)}/sort-scripts',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -1484,8 +1410,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateSortScriptResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        app_version_id = OpenApiUtilClient.get_encode_param(app_version_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1493,7 +1417,7 @@ class Client(OpenApiClient):
             action='CreateSortScript',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_version_id}/sort-scripts',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_version_id)}/sort-scripts',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -1594,10 +1518,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DeleteABTestExperimentResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        scene_id = OpenApiUtilClient.get_encode_param(scene_id)
-        group_id = OpenApiUtilClient.get_encode_param(group_id)
-        experiment_id = OpenApiUtilClient.get_encode_param(experiment_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1605,7 +1525,7 @@ class Client(OpenApiClient):
             action='DeleteABTestExperiment',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups/{group_id}/experiments/{experiment_id}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/scenes/{OpenApiUtilClient.get_encode_param(scene_id)}/groups/{OpenApiUtilClient.get_encode_param(group_id)}/experiments/{OpenApiUtilClient.get_encode_param(experiment_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1626,10 +1546,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DeleteABTestExperimentResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        scene_id = OpenApiUtilClient.get_encode_param(scene_id)
-        group_id = OpenApiUtilClient.get_encode_param(group_id)
-        experiment_id = OpenApiUtilClient.get_encode_param(experiment_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1637,7 +1553,7 @@ class Client(OpenApiClient):
             action='DeleteABTestExperiment',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups/{group_id}/experiments/{experiment_id}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/scenes/{OpenApiUtilClient.get_encode_param(scene_id)}/groups/{OpenApiUtilClient.get_encode_param(group_id)}/experiments/{OpenApiUtilClient.get_encode_param(experiment_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1677,9 +1593,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DeleteABTestGroupResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        scene_id = OpenApiUtilClient.get_encode_param(scene_id)
-        group_id = OpenApiUtilClient.get_encode_param(group_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1687,7 +1600,7 @@ class Client(OpenApiClient):
             action='DeleteABTestGroup',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups/{group_id}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/scenes/{OpenApiUtilClient.get_encode_param(scene_id)}/groups/{OpenApiUtilClient.get_encode_param(group_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1707,9 +1620,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DeleteABTestGroupResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        scene_id = OpenApiUtilClient.get_encode_param(scene_id)
-        group_id = OpenApiUtilClient.get_encode_param(group_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1717,7 +1627,7 @@ class Client(OpenApiClient):
             action='DeleteABTestGroup',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups/{group_id}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/scenes/{OpenApiUtilClient.get_encode_param(scene_id)}/groups/{OpenApiUtilClient.get_encode_param(group_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1754,8 +1664,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DeleteABTestSceneResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        scene_id = OpenApiUtilClient.get_encode_param(scene_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1763,7 +1671,7 @@ class Client(OpenApiClient):
             action='DeleteABTestScene',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/scenes/{OpenApiUtilClient.get_encode_param(scene_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1782,8 +1690,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DeleteABTestSceneResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        scene_id = OpenApiUtilClient.get_encode_param(scene_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1791,7 +1697,7 @@ class Client(OpenApiClient):
             action='DeleteABTestScene',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/scenes/{OpenApiUtilClient.get_encode_param(scene_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1831,9 +1737,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DeleteFunctionInstanceResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
-        instance_name = OpenApiUtilClient.get_encode_param(instance_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1841,7 +1744,7 @@ class Client(OpenApiClient):
             action='DeleteFunctionInstance',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/functions/{function_name}/instances/{instance_name}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}/instances/{OpenApiUtilClient.get_encode_param(instance_name)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1861,9 +1764,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DeleteFunctionInstanceResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
-        instance_name = OpenApiUtilClient.get_encode_param(instance_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1871,7 +1771,7 @@ class Client(OpenApiClient):
             action='DeleteFunctionInstance',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/functions/{function_name}/instances/{instance_name}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}/instances/{OpenApiUtilClient.get_encode_param(instance_name)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1914,10 +1814,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DeleteFunctionTaskResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
-        instance_name = OpenApiUtilClient.get_encode_param(instance_name)
-        generation = OpenApiUtilClient.get_encode_param(generation)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1925,7 +1821,7 @@ class Client(OpenApiClient):
             action='DeleteFunctionTask',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/functions/{function_name}/instances/{instance_name}/tasks/{generation}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}/instances/{OpenApiUtilClient.get_encode_param(instance_name)}/tasks/{OpenApiUtilClient.get_encode_param(generation)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1946,10 +1842,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DeleteFunctionTaskResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
-        instance_name = OpenApiUtilClient.get_encode_param(instance_name)
-        generation = OpenApiUtilClient.get_encode_param(generation)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1957,7 +1849,7 @@ class Client(OpenApiClient):
             action='DeleteFunctionTask',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/functions/{function_name}/instances/{instance_name}/tasks/{generation}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}/instances/{OpenApiUtilClient.get_encode_param(instance_name)}/tasks/{OpenApiUtilClient.get_encode_param(generation)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1994,8 +1886,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DeleteModelResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        model_name = OpenApiUtilClient.get_encode_param(model_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2003,7 +1893,7 @@ class Client(OpenApiClient):
             action='DeleteModel',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/algorithm/models/{model_name}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/algorithm/models/{OpenApiUtilClient.get_encode_param(model_name)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -2022,8 +1912,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DeleteModelResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        model_name = OpenApiUtilClient.get_encode_param(model_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2031,7 +1919,7 @@ class Client(OpenApiClient):
             action='DeleteModel',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/algorithm/models/{model_name}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/algorithm/models/{OpenApiUtilClient.get_encode_param(model_name)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -2071,9 +1959,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DeleteSortScriptResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        script_name = OpenApiUtilClient.get_encode_param(script_name)
-        app_version_id = OpenApiUtilClient.get_encode_param(app_version_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2081,7 +1966,7 @@ class Client(OpenApiClient):
             action='DeleteSortScript',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_version_id}/sort-scripts/{script_name}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_version_id)}/sort-scripts/{OpenApiUtilClient.get_encode_param(script_name)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -2101,9 +1986,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DeleteSortScriptResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        script_name = OpenApiUtilClient.get_encode_param(script_name)
-        app_version_id = OpenApiUtilClient.get_encode_param(app_version_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2111,7 +1993,7 @@ class Client(OpenApiClient):
             action='DeleteSortScript',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_version_id}/sort-scripts/{script_name}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_version_id)}/sort-scripts/{OpenApiUtilClient.get_encode_param(script_name)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -2154,10 +2036,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DeleteSortScriptFileResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        app_version_id = OpenApiUtilClient.get_encode_param(app_version_id)
-        script_name = OpenApiUtilClient.get_encode_param(script_name)
-        file_name = OpenApiUtilClient.get_encode_param(file_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2165,7 +2043,7 @@ class Client(OpenApiClient):
             action='DeleteSortScriptFile',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_version_id}/sort-scripts/{script_name}/files/src/{file_name}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_version_id)}/sort-scripts/{OpenApiUtilClient.get_encode_param(script_name)}/files/src/{OpenApiUtilClient.get_encode_param(file_name)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -2186,10 +2064,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DeleteSortScriptFileResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        app_version_id = OpenApiUtilClient.get_encode_param(app_version_id)
-        script_name = OpenApiUtilClient.get_encode_param(script_name)
-        file_name = OpenApiUtilClient.get_encode_param(file_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2197,7 +2071,7 @@ class Client(OpenApiClient):
             action='DeleteSortScriptFile',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_version_id}/sort-scripts/{script_name}/files/src/{file_name}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_version_id)}/sort-scripts/{OpenApiUtilClient.get_encode_param(script_name)}/files/src/{OpenApiUtilClient.get_encode_param(file_name)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -2240,10 +2114,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeABTestExperimentResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        scene_id = OpenApiUtilClient.get_encode_param(scene_id)
-        group_id = OpenApiUtilClient.get_encode_param(group_id)
-        experiment_id = OpenApiUtilClient.get_encode_param(experiment_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2251,7 +2121,7 @@ class Client(OpenApiClient):
             action='DescribeABTestExperiment',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups/{group_id}/experiments/{experiment_id}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/scenes/{OpenApiUtilClient.get_encode_param(scene_id)}/groups/{OpenApiUtilClient.get_encode_param(group_id)}/experiments/{OpenApiUtilClient.get_encode_param(experiment_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2272,10 +2142,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeABTestExperimentResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        scene_id = OpenApiUtilClient.get_encode_param(scene_id)
-        group_id = OpenApiUtilClient.get_encode_param(group_id)
-        experiment_id = OpenApiUtilClient.get_encode_param(experiment_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2283,7 +2149,7 @@ class Client(OpenApiClient):
             action='DescribeABTestExperiment',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups/{group_id}/experiments/{experiment_id}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/scenes/{OpenApiUtilClient.get_encode_param(scene_id)}/groups/{OpenApiUtilClient.get_encode_param(group_id)}/experiments/{OpenApiUtilClient.get_encode_param(experiment_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2323,9 +2189,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeABTestGroupResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        scene_id = OpenApiUtilClient.get_encode_param(scene_id)
-        group_id = OpenApiUtilClient.get_encode_param(group_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2333,7 +2196,7 @@ class Client(OpenApiClient):
             action='DescribeABTestGroup',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups/{group_id}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/scenes/{OpenApiUtilClient.get_encode_param(scene_id)}/groups/{OpenApiUtilClient.get_encode_param(group_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2353,9 +2216,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeABTestGroupResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        scene_id = OpenApiUtilClient.get_encode_param(scene_id)
-        group_id = OpenApiUtilClient.get_encode_param(group_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2363,7 +2223,7 @@ class Client(OpenApiClient):
             action='DescribeABTestGroup',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups/{group_id}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/scenes/{OpenApiUtilClient.get_encode_param(scene_id)}/groups/{OpenApiUtilClient.get_encode_param(group_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2400,8 +2260,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeABTestSceneResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        scene_id = OpenApiUtilClient.get_encode_param(scene_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2409,7 +2267,7 @@ class Client(OpenApiClient):
             action='DescribeABTestScene',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/scenes/{OpenApiUtilClient.get_encode_param(scene_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2428,8 +2286,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeABTestSceneResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        scene_id = OpenApiUtilClient.get_encode_param(scene_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2437,7 +2293,7 @@ class Client(OpenApiClient):
             action='DescribeABTestScene',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/scenes/{OpenApiUtilClient.get_encode_param(scene_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2474,8 +2330,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeAppResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        app_id = OpenApiUtilClient.get_encode_param(app_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2483,7 +2337,7 @@ class Client(OpenApiClient):
             action='DescribeApp',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2502,8 +2356,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeAppResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        app_id = OpenApiUtilClient.get_encode_param(app_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2511,7 +2363,7 @@ class Client(OpenApiClient):
             action='DescribeApp',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2545,7 +2397,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeAppGroupResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2553,7 +2404,7 @@ class Client(OpenApiClient):
             action='DescribeAppGroup',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2571,7 +2422,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeAppGroupResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2579,7 +2429,7 @@ class Client(OpenApiClient):
             action='DescribeAppGroup',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2617,7 +2467,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeAppGroupDataReportResponse:
         UtilClient.validate_model(request)
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         query = {}
         if not UtilClient.is_unset(request.end_time):
             query['endTime'] = request.end_time
@@ -2631,7 +2480,7 @@ class Client(OpenApiClient):
             action='DescribeAppGroupDataReport',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/data-report',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/data-report',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2651,7 +2500,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeAppGroupDataReportResponse:
         UtilClient.validate_model(request)
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         query = {}
         if not UtilClient.is_unset(request.end_time):
             query['endTime'] = request.end_time
@@ -2665,7 +2513,7 @@ class Client(OpenApiClient):
             action='DescribeAppGroupDataReport',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/data-report',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/data-report',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2699,7 +2547,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeAppGroupStatisticsResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2707,7 +2554,7 @@ class Client(OpenApiClient):
             action='DescribeAppGroupStatistics',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/statistics',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/statistics',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2725,7 +2572,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeAppGroupStatisticsResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2733,7 +2579,7 @@ class Client(OpenApiClient):
             action='DescribeAppGroupStatistics',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/statistics',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/statistics',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2770,8 +2616,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeAppStatisticsResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        app_id = OpenApiUtilClient.get_encode_param(app_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2779,7 +2623,7 @@ class Client(OpenApiClient):
             action='DescribeAppStatistics',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/statistics',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_id)}/statistics',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2798,8 +2642,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeAppStatisticsResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        app_id = OpenApiUtilClient.get_encode_param(app_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2807,7 +2649,7 @@ class Client(OpenApiClient):
             action='DescribeAppStatistics',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/statistics',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_id)}/statistics',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2841,7 +2683,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeAppsResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2849,7 +2690,7 @@ class Client(OpenApiClient):
             action='DescribeApps',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2867,7 +2708,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeAppsResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2875,7 +2715,7 @@ class Client(OpenApiClient):
             action='DescribeApps',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2912,8 +2752,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeDataCollctionResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        data_collection_identity = OpenApiUtilClient.get_encode_param(data_collection_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2921,7 +2759,7 @@ class Client(OpenApiClient):
             action='DescribeDataCollction',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/data-collections/{data_collection_identity}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/data-collections/{OpenApiUtilClient.get_encode_param(data_collection_identity)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2940,8 +2778,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeDataCollctionResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        data_collection_identity = OpenApiUtilClient.get_encode_param(data_collection_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2949,7 +2785,7 @@ class Client(OpenApiClient):
             action='DescribeDataCollction',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/data-collections/{data_collection_identity}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/data-collections/{OpenApiUtilClient.get_encode_param(data_collection_identity)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2989,9 +2825,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeFirstRankResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        app_id = OpenApiUtilClient.get_encode_param(app_id)
-        name = OpenApiUtilClient.get_encode_param(name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2999,7 +2832,7 @@ class Client(OpenApiClient):
             action='DescribeFirstRank',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/first-ranks/{name}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_id)}/first-ranks/{OpenApiUtilClient.get_encode_param(name)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3019,9 +2852,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeFirstRankResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        app_id = OpenApiUtilClient.get_encode_param(app_id)
-        name = OpenApiUtilClient.get_encode_param(name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3029,7 +2859,7 @@ class Client(OpenApiClient):
             action='DescribeFirstRank',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/first-ranks/{name}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_id)}/first-ranks/{OpenApiUtilClient.get_encode_param(name)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3063,7 +2893,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeInterventionDictionaryResponse:
-        name = OpenApiUtilClient.get_encode_param(name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3071,7 +2900,7 @@ class Client(OpenApiClient):
             action='DescribeInterventionDictionary',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/intervention-dictionaries/{name}',
+            pathname=f'/v4/openapi/intervention-dictionaries/{OpenApiUtilClient.get_encode_param(name)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3089,7 +2918,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeInterventionDictionaryResponse:
-        name = OpenApiUtilClient.get_encode_param(name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3097,7 +2925,7 @@ class Client(OpenApiClient):
             action='DescribeInterventionDictionary',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/intervention-dictionaries/{name}',
+            pathname=f'/v4/openapi/intervention-dictionaries/{OpenApiUtilClient.get_encode_param(name)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3134,8 +2962,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeModelResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        model_name = OpenApiUtilClient.get_encode_param(model_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3143,7 +2969,7 @@ class Client(OpenApiClient):
             action='DescribeModel',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/algorithm/models/{model_name}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/algorithm/models/{OpenApiUtilClient.get_encode_param(model_name)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3162,8 +2988,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeModelResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        model_name = OpenApiUtilClient.get_encode_param(model_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3171,7 +2995,7 @@ class Client(OpenApiClient):
             action='DescribeModel',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/algorithm/models/{model_name}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/algorithm/models/{OpenApiUtilClient.get_encode_param(model_name)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3211,9 +3035,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeQueryProcessorResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        app_id = OpenApiUtilClient.get_encode_param(app_id)
-        name = OpenApiUtilClient.get_encode_param(name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3221,7 +3042,7 @@ class Client(OpenApiClient):
             action='DescribeQueryProcessor',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/query-processors/{name}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_id)}/query-processors/{OpenApiUtilClient.get_encode_param(name)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3241,9 +3062,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeQueryProcessorResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        app_id = OpenApiUtilClient.get_encode_param(app_id)
-        name = OpenApiUtilClient.get_encode_param(name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3251,7 +3069,7 @@ class Client(OpenApiClient):
             action='DescribeQueryProcessor',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/query-processors/{name}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_id)}/query-processors/{OpenApiUtilClient.get_encode_param(name)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3404,8 +3222,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeScheduledTaskResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        task_id = OpenApiUtilClient.get_encode_param(task_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3413,7 +3229,7 @@ class Client(OpenApiClient):
             action='DescribeScheduledTask',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scheduled-tasks/{task_id}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/scheduled-tasks/{OpenApiUtilClient.get_encode_param(task_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3432,8 +3248,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeScheduledTaskResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        task_id = OpenApiUtilClient.get_encode_param(task_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3441,7 +3255,7 @@ class Client(OpenApiClient):
             action='DescribeScheduledTask',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scheduled-tasks/{task_id}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/scheduled-tasks/{OpenApiUtilClient.get_encode_param(task_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3481,9 +3295,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeSecondRankResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        app_id = OpenApiUtilClient.get_encode_param(app_id)
-        name = OpenApiUtilClient.get_encode_param(name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3491,7 +3302,7 @@ class Client(OpenApiClient):
             action='DescribeSecondRank',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/second-ranks/{name}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_id)}/second-ranks/{OpenApiUtilClient.get_encode_param(name)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3511,9 +3322,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeSecondRankResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        app_id = OpenApiUtilClient.get_encode_param(app_id)
-        name = OpenApiUtilClient.get_encode_param(name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3521,7 +3329,7 @@ class Client(OpenApiClient):
             action='DescribeSecondRank',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/second-ranks/{name}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_id)}/second-ranks/{OpenApiUtilClient.get_encode_param(name)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3555,7 +3363,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeSlowQueryStatusResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3563,7 +3370,7 @@ class Client(OpenApiClient):
             action='DescribeSlowQueryStatus',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/optimizers/slow-query',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/optimizers/slow-query',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3581,7 +3388,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeSlowQueryStatusResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3589,7 +3395,7 @@ class Client(OpenApiClient):
             action='DescribeSlowQueryStatus',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/optimizers/slow-query',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/optimizers/slow-query',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3627,7 +3433,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeUserAnalyzerResponse:
         UtilClient.validate_model(request)
-        name = OpenApiUtilClient.get_encode_param(name)
         query = {}
         if not UtilClient.is_unset(request.with_):
             query['with'] = request.with_
@@ -3639,7 +3444,7 @@ class Client(OpenApiClient):
             action='DescribeUserAnalyzer',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/user-analyzers/{name}',
+            pathname=f'/v4/openapi/user-analyzers/{OpenApiUtilClient.get_encode_param(name)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3659,7 +3464,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeUserAnalyzerResponse:
         UtilClient.validate_model(request)
-        name = OpenApiUtilClient.get_encode_param(name)
         query = {}
         if not UtilClient.is_unset(request.with_):
             query['with'] = request.with_
@@ -3671,7 +3475,7 @@ class Client(OpenApiClient):
             action='DescribeUserAnalyzer',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/user-analyzers/{name}',
+            pathname=f'/v4/openapi/user-analyzers/{OpenApiUtilClient.get_encode_param(name)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3705,7 +3509,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DisableSlowQueryResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3713,7 +3516,7 @@ class Client(OpenApiClient):
             action='DisableSlowQuery',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/optimizers/slow-query/actions/disable',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/optimizers/slow-query/actions/disable',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -3731,7 +3534,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DisableSlowQueryResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3739,7 +3541,7 @@ class Client(OpenApiClient):
             action='DisableSlowQuery',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/optimizers/slow-query/actions/disable',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/optimizers/slow-query/actions/disable',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -3773,7 +3575,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.EnableSlowQueryResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3781,7 +3582,7 @@ class Client(OpenApiClient):
             action='EnableSlowQuery',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/optimizers/slow-query/actions/enable',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/optimizers/slow-query/actions/enable',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -3799,7 +3600,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.EnableSlowQueryResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3807,7 +3607,7 @@ class Client(OpenApiClient):
             action='EnableSlowQuery',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/optimizers/slow-query/actions/enable',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/optimizers/slow-query/actions/enable',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -3921,7 +3721,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.GetDomainResponse:
         UtilClient.validate_model(request)
-        domain_name = OpenApiUtilClient.get_encode_param(domain_name)
         query = {}
         if not UtilClient.is_unset(request.app_group_identity):
             query['appGroupIdentity'] = request.app_group_identity
@@ -3933,7 +3732,7 @@ class Client(OpenApiClient):
             action='GetDomain',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/domains/{domain_name}',
+            pathname=f'/v4/openapi/domains/{OpenApiUtilClient.get_encode_param(domain_name)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3953,7 +3752,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.GetDomainResponse:
         UtilClient.validate_model(request)
-        domain_name = OpenApiUtilClient.get_encode_param(domain_name)
         query = {}
         if not UtilClient.is_unset(request.app_group_identity):
             query['appGroupIdentity'] = request.app_group_identity
@@ -3965,7 +3763,7 @@ class Client(OpenApiClient):
             action='GetDomain',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/domains/{domain_name}',
+            pathname=f'/v4/openapi/domains/{OpenApiUtilClient.get_encode_param(domain_name)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4003,7 +3801,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.GetFunctionCurrentVersionResponse:
         UtilClient.validate_model(request)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
         query = {}
         if not UtilClient.is_unset(request.category):
             query['category'] = request.category
@@ -4021,7 +3818,7 @@ class Client(OpenApiClient):
             action='GetFunctionCurrentVersion',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/functions/{function_name}/current-version',
+            pathname=f'/v4/openapi/functions/{OpenApiUtilClient.get_encode_param(function_name)}/current-version',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4041,7 +3838,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.GetFunctionCurrentVersionResponse:
         UtilClient.validate_model(request)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
         query = {}
         if not UtilClient.is_unset(request.category):
             query['category'] = request.category
@@ -4059,7 +3855,7 @@ class Client(OpenApiClient):
             action='GetFunctionCurrentVersion',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/functions/{function_name}/current-version',
+            pathname=f'/v4/openapi/functions/{OpenApiUtilClient.get_encode_param(function_name)}/current-version',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4096,8 +3892,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.GetFunctionDefaultInstanceResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4105,7 +3899,7 @@ class Client(OpenApiClient):
             action='GetFunctionDefaultInstance',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/functions/{function_name}/default-instance',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}/default-instance',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4124,8 +3918,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.GetFunctionDefaultInstanceResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4133,7 +3925,7 @@ class Client(OpenApiClient):
             action='GetFunctionDefaultInstance',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/functions/{function_name}/default-instance',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}/default-instance',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4177,9 +3969,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.GetFunctionInstanceResponse:
         UtilClient.validate_model(request)
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
-        instance_name = OpenApiUtilClient.get_encode_param(instance_name)
         query = {}
         if not UtilClient.is_unset(request.output):
             query['output'] = request.output
@@ -4191,7 +3980,7 @@ class Client(OpenApiClient):
             action='GetFunctionInstance',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/functions/{function_name}/instances/{instance_name}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}/instances/{OpenApiUtilClient.get_encode_param(instance_name)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4213,9 +4002,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.GetFunctionInstanceResponse:
         UtilClient.validate_model(request)
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
-        instance_name = OpenApiUtilClient.get_encode_param(instance_name)
         query = {}
         if not UtilClient.is_unset(request.output):
             query['output'] = request.output
@@ -4227,7 +4013,7 @@ class Client(OpenApiClient):
             action='GetFunctionInstance',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/functions/{function_name}/instances/{instance_name}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}/instances/{OpenApiUtilClient.get_encode_param(instance_name)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4270,10 +4056,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.GetFunctionTaskResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
-        instance_name = OpenApiUtilClient.get_encode_param(instance_name)
-        generation = OpenApiUtilClient.get_encode_param(generation)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4281,7 +4063,7 @@ class Client(OpenApiClient):
             action='GetFunctionTask',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/functions/{function_name}/instances/{instance_name}/tasks/{generation}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}/instances/{OpenApiUtilClient.get_encode_param(instance_name)}/tasks/{OpenApiUtilClient.get_encode_param(generation)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4302,10 +4084,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.GetFunctionTaskResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
-        instance_name = OpenApiUtilClient.get_encode_param(instance_name)
-        generation = OpenApiUtilClient.get_encode_param(generation)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4313,7 +4091,7 @@ class Client(OpenApiClient):
             action='GetFunctionTask',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/functions/{function_name}/instances/{instance_name}/tasks/{generation}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}/instances/{OpenApiUtilClient.get_encode_param(instance_name)}/tasks/{OpenApiUtilClient.get_encode_param(generation)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4350,8 +4128,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.GetFunctionVersionResponse:
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
-        version_id = OpenApiUtilClient.get_encode_param(version_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4359,7 +4135,7 @@ class Client(OpenApiClient):
             action='GetFunctionVersion',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/functions/{function_name}/versions/{version_id}',
+            pathname=f'/v4/openapi/functions/{OpenApiUtilClient.get_encode_param(function_name)}/versions/{OpenApiUtilClient.get_encode_param(version_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4378,8 +4154,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.GetFunctionVersionResponse:
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
-        version_id = OpenApiUtilClient.get_encode_param(version_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4387,7 +4161,7 @@ class Client(OpenApiClient):
             action='GetFunctionVersion',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/functions/{function_name}/versions/{version_id}',
+            pathname=f'/v4/openapi/functions/{OpenApiUtilClient.get_encode_param(function_name)}/versions/{OpenApiUtilClient.get_encode_param(version_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4424,8 +4198,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.GetModelProgressResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        model_name = OpenApiUtilClient.get_encode_param(model_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4433,7 +4205,7 @@ class Client(OpenApiClient):
             action='GetModelProgress',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/algorithm/models/{model_name}/progress',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/algorithm/models/{OpenApiUtilClient.get_encode_param(model_name)}/progress',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4452,8 +4224,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.GetModelProgressResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        model_name = OpenApiUtilClient.get_encode_param(model_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4461,7 +4231,7 @@ class Client(OpenApiClient):
             action='GetModelProgress',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/algorithm/models/{model_name}/progress',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/algorithm/models/{OpenApiUtilClient.get_encode_param(model_name)}/progress',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4498,8 +4268,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.GetModelReportResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        model_name = OpenApiUtilClient.get_encode_param(model_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4507,7 +4275,7 @@ class Client(OpenApiClient):
             action='GetModelReport',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/algorithm/models/{model_name}/report',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/algorithm/models/{OpenApiUtilClient.get_encode_param(model_name)}/report',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4526,8 +4294,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.GetModelReportResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        model_name = OpenApiUtilClient.get_encode_param(model_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4535,7 +4301,7 @@ class Client(OpenApiClient):
             action='GetModelReport',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/algorithm/models/{model_name}/report',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/algorithm/models/{OpenApiUtilClient.get_encode_param(model_name)}/report',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4575,9 +4341,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.GetScriptFileNamesResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        app_version_id = OpenApiUtilClient.get_encode_param(app_version_id)
-        script_name = OpenApiUtilClient.get_encode_param(script_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4585,7 +4348,7 @@ class Client(OpenApiClient):
             action='GetScriptFileNames',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_version_id}/sort-scripts/{script_name}/file-names',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_version_id)}/sort-scripts/{OpenApiUtilClient.get_encode_param(script_name)}/file-names',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4605,9 +4368,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.GetScriptFileNamesResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        app_version_id = OpenApiUtilClient.get_encode_param(app_version_id)
-        script_name = OpenApiUtilClient.get_encode_param(script_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4615,7 +4375,7 @@ class Client(OpenApiClient):
             action='GetScriptFileNames',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_version_id}/sort-scripts/{script_name}/file-names',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_version_id)}/sort-scripts/{OpenApiUtilClient.get_encode_param(script_name)}/file-names',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4655,9 +4415,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.GetSearchStrategyResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        app_id = OpenApiUtilClient.get_encode_param(app_id)
-        strategy_name = OpenApiUtilClient.get_encode_param(strategy_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4665,7 +4422,7 @@ class Client(OpenApiClient):
             action='GetSearchStrategy',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/search-strategies/{strategy_name}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_id)}/search-strategies/{OpenApiUtilClient.get_encode_param(strategy_name)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4685,9 +4442,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.GetSearchStrategyResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        app_id = OpenApiUtilClient.get_encode_param(app_id)
-        strategy_name = OpenApiUtilClient.get_encode_param(strategy_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4695,7 +4449,7 @@ class Client(OpenApiClient):
             action='GetSearchStrategy',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/search-strategies/{strategy_name}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_id)}/search-strategies/{OpenApiUtilClient.get_encode_param(strategy_name)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4735,9 +4489,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.GetSortScriptResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        script_name = OpenApiUtilClient.get_encode_param(script_name)
-        app_version_id = OpenApiUtilClient.get_encode_param(app_version_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4745,7 +4496,7 @@ class Client(OpenApiClient):
             action='GetSortScript',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_version_id}/sort-scripts/{script_name}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_version_id)}/sort-scripts/{OpenApiUtilClient.get_encode_param(script_name)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4765,9 +4516,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.GetSortScriptResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        script_name = OpenApiUtilClient.get_encode_param(script_name)
-        app_version_id = OpenApiUtilClient.get_encode_param(app_version_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4775,7 +4523,7 @@ class Client(OpenApiClient):
             action='GetSortScript',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_version_id}/sort-scripts/{script_name}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_version_id)}/sort-scripts/{OpenApiUtilClient.get_encode_param(script_name)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4818,10 +4566,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.GetSortScriptFileResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        script_name = OpenApiUtilClient.get_encode_param(script_name)
-        app_version_id = OpenApiUtilClient.get_encode_param(app_version_id)
-        file_name = OpenApiUtilClient.get_encode_param(file_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4829,7 +4573,7 @@ class Client(OpenApiClient):
             action='GetSortScriptFile',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_version_id}/sort-scripts/{script_name}/files/src/{file_name}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_version_id)}/sort-scripts/{OpenApiUtilClient.get_encode_param(script_name)}/files/src/{OpenApiUtilClient.get_encode_param(file_name)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4850,10 +4594,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.GetSortScriptFileResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        script_name = OpenApiUtilClient.get_encode_param(script_name)
-        app_version_id = OpenApiUtilClient.get_encode_param(app_version_id)
-        file_name = OpenApiUtilClient.get_encode_param(file_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4861,7 +4601,7 @@ class Client(OpenApiClient):
             action='GetSortScriptFile',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_version_id}/sort-scripts/{script_name}/files/src/{file_name}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_version_id)}/sort-scripts/{OpenApiUtilClient.get_encode_param(script_name)}/files/src/{OpenApiUtilClient.get_encode_param(file_name)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4899,7 +4639,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.GetValidationErrorResponse:
         UtilClient.validate_model(request)
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         query = {}
         if not UtilClient.is_unset(request.error_code):
             query['errorCode'] = request.error_code
@@ -4911,7 +4650,7 @@ class Client(OpenApiClient):
             action='GetValidationError',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/algorithm/data/validation-error',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/algorithm/data/validation-error',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4931,7 +4670,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.GetValidationErrorResponse:
         UtilClient.validate_model(request)
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         query = {}
         if not UtilClient.is_unset(request.error_code):
             query['errorCode'] = request.error_code
@@ -4943,7 +4681,7 @@ class Client(OpenApiClient):
             action='GetValidationError',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/algorithm/data/validation-error',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/algorithm/data/validation-error',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4981,7 +4719,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.GetValidationReportResponse:
         UtilClient.validate_model(request)
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         query = {}
         if not UtilClient.is_unset(request.type):
             query['type'] = request.type
@@ -4993,7 +4730,7 @@ class Client(OpenApiClient):
             action='GetValidationReport',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/algorithm/data/validation-report',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/algorithm/data/validation-report',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5013,7 +4750,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.GetValidationReportResponse:
         UtilClient.validate_model(request)
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         query = {}
         if not UtilClient.is_unset(request.type):
             query['type'] = request.type
@@ -5025,7 +4761,7 @@ class Client(OpenApiClient):
             action='GetValidationReport',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/algorithm/data/validation-report',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/algorithm/data/validation-report',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5065,9 +4801,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListABTestExperimentsResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        scene_id = OpenApiUtilClient.get_encode_param(scene_id)
-        group_id = OpenApiUtilClient.get_encode_param(group_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -5075,7 +4808,7 @@ class Client(OpenApiClient):
             action='ListABTestExperiments',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups/{group_id}/experiments',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/scenes/{OpenApiUtilClient.get_encode_param(scene_id)}/groups/{OpenApiUtilClient.get_encode_param(group_id)}/experiments',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5095,9 +4828,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListABTestExperimentsResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        scene_id = OpenApiUtilClient.get_encode_param(scene_id)
-        group_id = OpenApiUtilClient.get_encode_param(group_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -5105,7 +4835,7 @@ class Client(OpenApiClient):
             action='ListABTestExperiments',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups/{group_id}/experiments',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/scenes/{OpenApiUtilClient.get_encode_param(scene_id)}/groups/{OpenApiUtilClient.get_encode_param(group_id)}/experiments',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5148,10 +4878,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListABTestFixedFlowDividersResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        scene_id = OpenApiUtilClient.get_encode_param(scene_id)
-        group_id = OpenApiUtilClient.get_encode_param(group_id)
-        experiment_id = OpenApiUtilClient.get_encode_param(experiment_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -5159,7 +4885,7 @@ class Client(OpenApiClient):
             action='ListABTestFixedFlowDividers',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups/{group_id}/experiments/{experiment_id}/fixed-flow-dividers',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/scenes/{OpenApiUtilClient.get_encode_param(scene_id)}/groups/{OpenApiUtilClient.get_encode_param(group_id)}/experiments/{OpenApiUtilClient.get_encode_param(experiment_id)}/fixed-flow-dividers',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5180,10 +4906,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListABTestFixedFlowDividersResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        scene_id = OpenApiUtilClient.get_encode_param(scene_id)
-        group_id = OpenApiUtilClient.get_encode_param(group_id)
-        experiment_id = OpenApiUtilClient.get_encode_param(experiment_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -5191,7 +4913,7 @@ class Client(OpenApiClient):
             action='ListABTestFixedFlowDividers',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups/{group_id}/experiments/{experiment_id}/fixed-flow-dividers',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/scenes/{OpenApiUtilClient.get_encode_param(scene_id)}/groups/{OpenApiUtilClient.get_encode_param(group_id)}/experiments/{OpenApiUtilClient.get_encode_param(experiment_id)}/fixed-flow-dividers',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5228,8 +4950,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListABTestGroupsResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        scene_id = OpenApiUtilClient.get_encode_param(scene_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -5237,7 +4957,7 @@ class Client(OpenApiClient):
             action='ListABTestGroups',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/scenes/{OpenApiUtilClient.get_encode_param(scene_id)}/groups',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5256,8 +4976,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListABTestGroupsResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        scene_id = OpenApiUtilClient.get_encode_param(scene_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -5265,7 +4983,7 @@ class Client(OpenApiClient):
             action='ListABTestGroups',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/scenes/{OpenApiUtilClient.get_encode_param(scene_id)}/groups',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5305,9 +5023,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListABTestMetricsResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        scene_id = OpenApiUtilClient.get_encode_param(scene_id)
-        group_id = OpenApiUtilClient.get_encode_param(group_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -5315,7 +5030,7 @@ class Client(OpenApiClient):
             action='ListABTestMetrics',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups/{group_id}/metrics',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/scenes/{OpenApiUtilClient.get_encode_param(scene_id)}/groups/{OpenApiUtilClient.get_encode_param(group_id)}/metrics',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5335,9 +5050,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListABTestMetricsResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        scene_id = OpenApiUtilClient.get_encode_param(scene_id)
-        group_id = OpenApiUtilClient.get_encode_param(group_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -5345,7 +5057,7 @@ class Client(OpenApiClient):
             action='ListABTestMetrics',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups/{group_id}/metrics',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/scenes/{OpenApiUtilClient.get_encode_param(scene_id)}/groups/{OpenApiUtilClient.get_encode_param(group_id)}/metrics',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5379,7 +5091,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListABTestScenesResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -5387,7 +5098,7 @@ class Client(OpenApiClient):
             action='ListABTestScenes',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scenes',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/scenes',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5405,7 +5116,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListABTestScenesResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -5413,7 +5123,7 @@ class Client(OpenApiClient):
             action='ListABTestScenes',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scenes',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/scenes',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5451,7 +5161,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListAppGroupErrorsResponse:
         UtilClient.validate_model(request)
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         query = {}
         if not UtilClient.is_unset(request.app_id):
             query['appId'] = request.app_id
@@ -5471,7 +5180,7 @@ class Client(OpenApiClient):
             action='ListAppGroupErrors',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/errors',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/errors',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5491,7 +5200,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListAppGroupErrorsResponse:
         UtilClient.validate_model(request)
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         query = {}
         if not UtilClient.is_unset(request.app_id):
             query['appId'] = request.app_id
@@ -5511,7 +5219,7 @@ class Client(OpenApiClient):
             action='ListAppGroupErrors',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/errors',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/errors',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5549,7 +5257,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListAppGroupMetricsResponse:
         UtilClient.validate_model(request)
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         query = {}
         if not UtilClient.is_unset(request.end_time):
             query['endTime'] = request.end_time
@@ -5567,7 +5274,7 @@ class Client(OpenApiClient):
             action='ListAppGroupMetrics',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/metrics',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/metrics',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5587,7 +5294,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListAppGroupMetricsResponse:
         UtilClient.validate_model(request)
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         query = {}
         if not UtilClient.is_unset(request.end_time):
             query['endTime'] = request.end_time
@@ -5605,7 +5311,7 @@ class Client(OpenApiClient):
             action='ListAppGroupMetrics',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/metrics',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/metrics',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5827,7 +5533,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListDataCollectionsResponse:
         UtilClient.validate_model(request)
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         query = {}
         if not UtilClient.is_unset(request.page_number):
             query['pageNumber'] = request.page_number
@@ -5841,7 +5546,7 @@ class Client(OpenApiClient):
             action='ListDataCollections',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/data-collections',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/data-collections',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5861,7 +5566,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListDataCollectionsResponse:
         UtilClient.validate_model(request)
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         query = {}
         if not UtilClient.is_unset(request.page_number):
             query['pageNumber'] = request.page_number
@@ -5875,7 +5579,7 @@ class Client(OpenApiClient):
             action='ListDataCollections',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/data-collections',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/data-collections',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5913,7 +5617,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListDataSourceTableFieldsResponse:
         UtilClient.validate_model(request)
-        data_source_type = OpenApiUtilClient.get_encode_param(data_source_type)
         query = {}
         if not UtilClient.is_unset(request.params):
             query['params'] = request.params
@@ -5925,7 +5628,7 @@ class Client(OpenApiClient):
             action='ListDataSourceTableFields',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/assist/data-sources/{data_source_type}/fields',
+            pathname=f'/v4/openapi/assist/data-sources/{OpenApiUtilClient.get_encode_param(data_source_type)}/fields',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5945,7 +5648,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListDataSourceTableFieldsResponse:
         UtilClient.validate_model(request)
-        data_source_type = OpenApiUtilClient.get_encode_param(data_source_type)
         query = {}
         if not UtilClient.is_unset(request.params):
             query['params'] = request.params
@@ -5957,7 +5659,7 @@ class Client(OpenApiClient):
             action='ListDataSourceTableFields',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/assist/data-sources/{data_source_type}/fields',
+            pathname=f'/v4/openapi/assist/data-sources/{OpenApiUtilClient.get_encode_param(data_source_type)}/fields',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5995,7 +5697,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListDataSourceTablesResponse:
         UtilClient.validate_model(request)
-        data_source_type = OpenApiUtilClient.get_encode_param(data_source_type)
         query = {}
         if not UtilClient.is_unset(request.params):
             query['params'] = request.params
@@ -6007,7 +5708,7 @@ class Client(OpenApiClient):
             action='ListDataSourceTables',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/assist/data-sources/{data_source_type}/tables',
+            pathname=f'/v4/openapi/assist/data-sources/{OpenApiUtilClient.get_encode_param(data_source_type)}/tables',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -6027,7 +5728,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListDataSourceTablesResponse:
         UtilClient.validate_model(request)
-        data_source_type = OpenApiUtilClient.get_encode_param(data_source_type)
         query = {}
         if not UtilClient.is_unset(request.params):
             query['params'] = request.params
@@ -6039,7 +5739,7 @@ class Client(OpenApiClient):
             action='ListDataSourceTables',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/assist/data-sources/{data_source_type}/tables',
+            pathname=f'/v4/openapi/assist/data-sources/{OpenApiUtilClient.get_encode_param(data_source_type)}/tables',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -6077,7 +5777,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListDeployedAlgorithmModelsResponse:
         UtilClient.validate_model(request)
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         query = {}
         if not UtilClient.is_unset(request.algorithm_type):
             query['algorithmType'] = request.algorithm_type
@@ -6091,7 +5790,7 @@ class Client(OpenApiClient):
             action='ListDeployedAlgorithmModels',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/deployed-algorithm-models',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/deployed-algorithm-models',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -6111,7 +5810,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListDeployedAlgorithmModelsResponse:
         UtilClient.validate_model(request)
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         query = {}
         if not UtilClient.is_unset(request.algorithm_type):
             query['algorithmType'] = request.algorithm_type
@@ -6125,7 +5823,7 @@ class Client(OpenApiClient):
             action='ListDeployedAlgorithmModels',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/deployed-algorithm-models',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/deployed-algorithm-models',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -6162,8 +5860,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListFirstRanksResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        app_id = OpenApiUtilClient.get_encode_param(app_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -6171,7 +5867,7 @@ class Client(OpenApiClient):
             action='ListFirstRanks',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/first-ranks',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_id)}/first-ranks',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -6190,8 +5886,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListFirstRanksResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        app_id = OpenApiUtilClient.get_encode_param(app_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -6199,7 +5893,7 @@ class Client(OpenApiClient):
             action='ListFirstRanks',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/first-ranks',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_id)}/first-ranks',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -6240,8 +5934,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListFunctionInstancesResponse:
         UtilClient.validate_model(request)
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
         query = {}
         if not UtilClient.is_unset(request.function_type):
             query['functionType'] = request.function_type
@@ -6263,7 +5955,7 @@ class Client(OpenApiClient):
             action='ListFunctionInstances',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/functions/{function_name}/instances',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}/instances',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -6284,8 +5976,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListFunctionInstancesResponse:
         UtilClient.validate_model(request)
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
         query = {}
         if not UtilClient.is_unset(request.function_type):
             query['functionType'] = request.function_type
@@ -6307,7 +5997,7 @@ class Client(OpenApiClient):
             action='ListFunctionInstances',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/functions/{function_name}/instances',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}/instances',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -6351,9 +6041,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListFunctionTasksResponse:
         UtilClient.validate_model(request)
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
-        instance_name = OpenApiUtilClient.get_encode_param(instance_name)
         query = {}
         if not UtilClient.is_unset(request.end_time):
             query['endTime'] = request.end_time
@@ -6373,7 +6060,7 @@ class Client(OpenApiClient):
             action='ListFunctionTasks',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/functions/{function_name}/instances/{instance_name}/tasks',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}/instances/{OpenApiUtilClient.get_encode_param(instance_name)}/tasks',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -6395,9 +6082,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListFunctionTasksResponse:
         UtilClient.validate_model(request)
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
-        instance_name = OpenApiUtilClient.get_encode_param(instance_name)
         query = {}
         if not UtilClient.is_unset(request.end_time):
             query['endTime'] = request.end_time
@@ -6417,7 +6101,7 @@ class Client(OpenApiClient):
             action='ListFunctionTasks',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/functions/{function_name}/instances/{instance_name}/tasks',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}/instances/{OpenApiUtilClient.get_encode_param(instance_name)}/tasks',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -6539,7 +6223,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListInterventionDictionaryEntriesResponse:
         UtilClient.validate_model(request)
-        name = OpenApiUtilClient.get_encode_param(name)
         query = {}
         if not UtilClient.is_unset(request.page_number):
             query['pageNumber'] = request.page_number
@@ -6555,7 +6238,7 @@ class Client(OpenApiClient):
             action='ListInterventionDictionaryEntries',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/intervention-dictionaries/{name}/entries',
+            pathname=f'/v4/openapi/intervention-dictionaries/{OpenApiUtilClient.get_encode_param(name)}/entries',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -6575,7 +6258,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListInterventionDictionaryEntriesResponse:
         UtilClient.validate_model(request)
-        name = OpenApiUtilClient.get_encode_param(name)
         query = {}
         if not UtilClient.is_unset(request.page_number):
             query['pageNumber'] = request.page_number
@@ -6591,7 +6273,7 @@ class Client(OpenApiClient):
             action='ListInterventionDictionaryEntries',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/intervention-dictionaries/{name}/entries',
+            pathname=f'/v4/openapi/intervention-dictionaries/{OpenApiUtilClient.get_encode_param(name)}/entries',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -6629,7 +6311,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListInterventionDictionaryNerResultsResponse:
         UtilClient.validate_model(request)
-        name = OpenApiUtilClient.get_encode_param(name)
         query = {}
         if not UtilClient.is_unset(request.query):
             query['query'] = request.query
@@ -6641,7 +6322,7 @@ class Client(OpenApiClient):
             action='ListInterventionDictionaryNerResults',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/intervention-dictionaries/{name}/ner-results',
+            pathname=f'/v4/openapi/intervention-dictionaries/{OpenApiUtilClient.get_encode_param(name)}/ner-results',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -6661,7 +6342,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListInterventionDictionaryNerResultsResponse:
         UtilClient.validate_model(request)
-        name = OpenApiUtilClient.get_encode_param(name)
         query = {}
         if not UtilClient.is_unset(request.query):
             query['query'] = request.query
@@ -6673,7 +6353,7 @@ class Client(OpenApiClient):
             action='ListInterventionDictionaryNerResults',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/intervention-dictionaries/{name}/ner-results',
+            pathname=f'/v4/openapi/intervention-dictionaries/{OpenApiUtilClient.get_encode_param(name)}/ner-results',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -6707,7 +6387,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListInterventionDictionaryRelatedEntitiesResponse:
-        name = OpenApiUtilClient.get_encode_param(name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -6715,7 +6394,7 @@ class Client(OpenApiClient):
             action='ListInterventionDictionaryRelatedEntities',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/intervention-dictionaries/{name}/related',
+            pathname=f'/v4/openapi/intervention-dictionaries/{OpenApiUtilClient.get_encode_param(name)}/related',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -6733,7 +6412,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListInterventionDictionaryRelatedEntitiesResponse:
-        name = OpenApiUtilClient.get_encode_param(name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -6741,7 +6419,7 @@ class Client(OpenApiClient):
             action='ListInterventionDictionaryRelatedEntities',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/intervention-dictionaries/{name}/related',
+            pathname=f'/v4/openapi/intervention-dictionaries/{OpenApiUtilClient.get_encode_param(name)}/related',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -6779,7 +6457,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListModelsResponse:
         UtilClient.validate_model(request)
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         query = {}
         if not UtilClient.is_unset(request.page_number):
             query['pageNumber'] = request.page_number
@@ -6795,7 +6472,7 @@ class Client(OpenApiClient):
             action='ListModels',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/algorithm/models',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/algorithm/models',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -6815,7 +6492,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListModelsResponse:
         UtilClient.validate_model(request)
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         query = {}
         if not UtilClient.is_unset(request.page_number):
             query['pageNumber'] = request.page_number
@@ -6831,7 +6507,7 @@ class Client(OpenApiClient):
             action='ListModels',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/algorithm/models',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/algorithm/models',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -6869,7 +6545,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListProceedingsResponse:
         UtilClient.validate_model(request)
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         query = {}
         if not UtilClient.is_unset(request.filter_finished):
             query['filterFinished'] = request.filter_finished
@@ -6881,7 +6556,7 @@ class Client(OpenApiClient):
             action='ListProceedings',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/proceedings',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/proceedings',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -6901,7 +6576,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListProceedingsResponse:
         UtilClient.validate_model(request)
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         query = {}
         if not UtilClient.is_unset(request.filter_finished):
             query['filterFinished'] = request.filter_finished
@@ -6913,7 +6587,7 @@ class Client(OpenApiClient):
             action='ListProceedings',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/proceedings',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/proceedings',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -6957,9 +6631,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListQueryProcessorAnalyzerResultsResponse:
         UtilClient.validate_model(request)
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        app_id = OpenApiUtilClient.get_encode_param(app_id)
-        name = OpenApiUtilClient.get_encode_param(name)
         query = {}
         if not UtilClient.is_unset(request.text):
             query['text'] = request.text
@@ -6971,7 +6642,7 @@ class Client(OpenApiClient):
             action='ListQueryProcessorAnalyzerResults',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/query-processors/{name}/analyze',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_id)}/query-processors/{OpenApiUtilClient.get_encode_param(name)}/analyze',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -6993,9 +6664,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListQueryProcessorAnalyzerResultsResponse:
         UtilClient.validate_model(request)
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        app_id = OpenApiUtilClient.get_encode_param(app_id)
-        name = OpenApiUtilClient.get_encode_param(name)
         query = {}
         if not UtilClient.is_unset(request.text):
             query['text'] = request.text
@@ -7007,7 +6675,7 @@ class Client(OpenApiClient):
             action='ListQueryProcessorAnalyzerResults',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/query-processors/{name}/analyze',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_id)}/query-processors/{OpenApiUtilClient.get_encode_param(name)}/analyze',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -7124,8 +6792,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListQueryProcessorsResponse:
         UtilClient.validate_model(request)
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        app_id = OpenApiUtilClient.get_encode_param(app_id)
         query = {}
         if not UtilClient.is_unset(request.is_active):
             query['isActive'] = request.is_active
@@ -7137,7 +6803,7 @@ class Client(OpenApiClient):
             action='ListQueryProcessors',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/query-processors',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_id)}/query-processors',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -7158,8 +6824,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListQueryProcessorsResponse:
         UtilClient.validate_model(request)
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        app_id = OpenApiUtilClient.get_encode_param(app_id)
         query = {}
         if not UtilClient.is_unset(request.is_active):
             query['isActive'] = request.is_active
@@ -7171,7 +6835,7 @@ class Client(OpenApiClient):
             action='ListQueryProcessors',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/query-processors',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_id)}/query-processors',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -7209,7 +6873,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListQuotaReviewTasksResponse:
         UtilClient.validate_model(request)
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         query = {}
         if not UtilClient.is_unset(request.page_number):
             query['pageNumber'] = request.page_number
@@ -7223,7 +6886,7 @@ class Client(OpenApiClient):
             action='ListQuotaReviewTasks',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/quota-review-tasks',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/quota-review-tasks',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -7243,7 +6906,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListQuotaReviewTasksResponse:
         UtilClient.validate_model(request)
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         query = {}
         if not UtilClient.is_unset(request.page_number):
             query['pageNumber'] = request.page_number
@@ -7257,7 +6919,7 @@ class Client(OpenApiClient):
             action='ListQuotaReviewTasks',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/quota-review-tasks',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/quota-review-tasks',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -7353,7 +7015,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListScheduledTasksResponse:
         UtilClient.validate_model(request)
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         query = {}
         if not UtilClient.is_unset(request.page_number):
             query['pageNumber'] = request.page_number
@@ -7369,7 +7030,7 @@ class Client(OpenApiClient):
             action='ListScheduledTasks',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scheduled-tasks',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/scheduled-tasks',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -7389,7 +7050,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListScheduledTasksResponse:
         UtilClient.validate_model(request)
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         query = {}
         if not UtilClient.is_unset(request.page_number):
             query['pageNumber'] = request.page_number
@@ -7405,7 +7065,7 @@ class Client(OpenApiClient):
             action='ListScheduledTasks',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scheduled-tasks',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/scheduled-tasks',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -7442,8 +7102,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListSearchStrategiesResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        app_id = OpenApiUtilClient.get_encode_param(app_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -7451,7 +7109,7 @@ class Client(OpenApiClient):
             action='ListSearchStrategies',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/search-strategies',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_id)}/search-strategies',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -7470,8 +7128,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListSearchStrategiesResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        app_id = OpenApiUtilClient.get_encode_param(app_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -7479,7 +7135,7 @@ class Client(OpenApiClient):
             action='ListSearchStrategies',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/search-strategies',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_id)}/search-strategies',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -7516,8 +7172,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListSecondRanksResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        app_id = OpenApiUtilClient.get_encode_param(app_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -7525,7 +7179,7 @@ class Client(OpenApiClient):
             action='ListSecondRanks',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/second-ranks',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_id)}/second-ranks',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -7544,8 +7198,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListSecondRanksResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        app_id = OpenApiUtilClient.get_encode_param(app_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -7553,7 +7205,7 @@ class Client(OpenApiClient):
             action='ListSecondRanks',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/second-ranks',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_id)}/second-ranks',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -7587,7 +7239,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListSlowQueryCategoriesResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -7595,7 +7246,7 @@ class Client(OpenApiClient):
             action='ListSlowQueryCategories',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/optimizers/slow-query/categories',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/optimizers/slow-query/categories',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -7613,7 +7264,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListSlowQueryCategoriesResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -7621,7 +7271,7 @@ class Client(OpenApiClient):
             action='ListSlowQueryCategories',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/optimizers/slow-query/categories',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/optimizers/slow-query/categories',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -7658,8 +7308,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListSlowQueryQueriesResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        category_index = OpenApiUtilClient.get_encode_param(category_index)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -7667,7 +7315,7 @@ class Client(OpenApiClient):
             action='ListSlowQueryQueries',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/optimizers/slow-query/categories/{category_index}/queries',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/optimizers/slow-query/categories/{OpenApiUtilClient.get_encode_param(category_index)}/queries',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -7686,8 +7334,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListSlowQueryQueriesResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        category_index = OpenApiUtilClient.get_encode_param(category_index)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -7695,7 +7341,7 @@ class Client(OpenApiClient):
             action='ListSlowQueryQueries',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/optimizers/slow-query/categories/{category_index}/queries',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/optimizers/slow-query/categories/{OpenApiUtilClient.get_encode_param(category_index)}/queries',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -7732,8 +7378,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListSortExpressionsResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        app_id = OpenApiUtilClient.get_encode_param(app_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -7741,7 +7385,7 @@ class Client(OpenApiClient):
             action='ListSortExpressions',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/sort-expressions',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_id)}/sort-expressions',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -7760,8 +7404,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListSortExpressionsResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        app_id = OpenApiUtilClient.get_encode_param(app_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -7769,7 +7411,7 @@ class Client(OpenApiClient):
             action='ListSortExpressions',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/sort-expressions',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_id)}/sort-expressions',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -7806,8 +7448,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListSortScriptsResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        app_version_id = OpenApiUtilClient.get_encode_param(app_version_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -7815,7 +7455,7 @@ class Client(OpenApiClient):
             action='ListSortScripts',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_version_id}/sort-scripts',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_version_id)}/sort-scripts',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -7834,8 +7474,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListSortScriptsResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        app_version_id = OpenApiUtilClient.get_encode_param(app_version_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -7843,7 +7481,7 @@ class Client(OpenApiClient):
             action='ListSortScripts',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_version_id}/sort-scripts',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_version_id)}/sort-scripts',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -7884,8 +7522,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListStatisticLogsResponse:
         UtilClient.validate_model(request)
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        module_name = OpenApiUtilClient.get_encode_param(module_name)
         query = {}
         if not UtilClient.is_unset(request.columns):
             query['columns'] = request.columns
@@ -7911,7 +7547,7 @@ class Client(OpenApiClient):
             action='ListStatisticLogs',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/statistic-logs/{module_name}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/statistic-logs/{OpenApiUtilClient.get_encode_param(module_name)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -7932,8 +7568,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListStatisticLogsResponse:
         UtilClient.validate_model(request)
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        module_name = OpenApiUtilClient.get_encode_param(module_name)
         query = {}
         if not UtilClient.is_unset(request.columns):
             query['columns'] = request.columns
@@ -7959,7 +7593,7 @@ class Client(OpenApiClient):
             action='ListStatisticLogs',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/statistic-logs/{module_name}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/statistic-logs/{OpenApiUtilClient.get_encode_param(module_name)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -8000,8 +7634,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListStatisticReportResponse:
         UtilClient.validate_model(request)
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        module_name = OpenApiUtilClient.get_encode_param(module_name)
         query = {}
         if not UtilClient.is_unset(request.columns):
             query['columns'] = request.columns
@@ -8023,7 +7655,7 @@ class Client(OpenApiClient):
             action='ListStatisticReport',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/statistic-report/{module_name}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/statistic-report/{OpenApiUtilClient.get_encode_param(module_name)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -8044,8 +7676,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListStatisticReportResponse:
         UtilClient.validate_model(request)
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        module_name = OpenApiUtilClient.get_encode_param(module_name)
         query = {}
         if not UtilClient.is_unset(request.columns):
             query['columns'] = request.columns
@@ -8067,7 +7697,7 @@ class Client(OpenApiClient):
             action='ListStatisticReport',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/statistic-report/{module_name}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/statistic-report/{OpenApiUtilClient.get_encode_param(module_name)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -8076,6 +7706,106 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             open_search_20171225_models.ListStatisticReportResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_tag_resources(
+        self,
+        request: open_search_20171225_models.ListTagResourcesRequest,
+    ) -> open_search_20171225_models.ListTagResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_tag_resources_with_options(request, headers, runtime)
+
+    async def list_tag_resources_async(
+        self,
+        request: open_search_20171225_models.ListTagResourcesRequest,
+    ) -> open_search_20171225_models.ListTagResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_tag_resources_with_options_async(request, headers, runtime)
+
+    def list_tag_resources_with_options(
+        self,
+        tmp_req: open_search_20171225_models.ListTagResourcesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_search_20171225_models.ListTagResourcesResponse:
+        UtilClient.validate_model(tmp_req)
+        request = open_search_20171225_models.ListTagResourcesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.resource_id):
+            request.resource_id_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_id, 'resourceId', 'json')
+        if not UtilClient.is_unset(tmp_req.tag):
+            request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'tag', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_id_shrink):
+            query['resourceId'] = request.resource_id_shrink
+        if not UtilClient.is_unset(request.resource_type):
+            query['resourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_shrink):
+            query['tag'] = request.tag_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTagResources',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/resource-tags',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_search_20171225_models.ListTagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_tag_resources_with_options_async(
+        self,
+        tmp_req: open_search_20171225_models.ListTagResourcesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_search_20171225_models.ListTagResourcesResponse:
+        UtilClient.validate_model(tmp_req)
+        request = open_search_20171225_models.ListTagResourcesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.resource_id):
+            request.resource_id_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_id, 'resourceId', 'json')
+        if not UtilClient.is_unset(tmp_req.tag):
+            request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'tag', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_id_shrink):
+            query['resourceId'] = request.resource_id_shrink
+        if not UtilClient.is_unset(request.resource_type):
+            query['resourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_shrink):
+            query['tag'] = request.tag_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTagResources',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/resource-tags',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_search_20171225_models.ListTagResourcesResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
@@ -8105,7 +7835,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListUserAnalyzerEntriesResponse:
         UtilClient.validate_model(request)
-        name = OpenApiUtilClient.get_encode_param(name)
         query = {}
         if not UtilClient.is_unset(request.page_number):
             query['pageNumber'] = request.page_number
@@ -8121,7 +7850,7 @@ class Client(OpenApiClient):
             action='ListUserAnalyzerEntries',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/user-analyzers/{name}/entries',
+            pathname=f'/v4/openapi/user-analyzers/{OpenApiUtilClient.get_encode_param(name)}/entries',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -8141,7 +7870,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListUserAnalyzerEntriesResponse:
         UtilClient.validate_model(request)
-        name = OpenApiUtilClient.get_encode_param(name)
         query = {}
         if not UtilClient.is_unset(request.page_number):
             query['pageNumber'] = request.page_number
@@ -8157,7 +7885,7 @@ class Client(OpenApiClient):
             action='ListUserAnalyzerEntries',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/user-analyzers/{name}/entries',
+            pathname=f'/v4/openapi/user-analyzers/{OpenApiUtilClient.get_encode_param(name)}/entries',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -8271,7 +7999,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ModifyAppGroupResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -8279,7 +8006,7 @@ class Client(OpenApiClient):
             action='ModifyAppGroup',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -8297,7 +8024,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ModifyAppGroupResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -8305,7 +8031,7 @@ class Client(OpenApiClient):
             action='ModifyAppGroup',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -8339,7 +8065,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ModifyAppGroupQuotaResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -8347,7 +8072,7 @@ class Client(OpenApiClient):
             action='ModifyAppGroupQuota',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/quota',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/quota',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -8365,7 +8090,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ModifyAppGroupQuotaResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -8373,7 +8097,7 @@ class Client(OpenApiClient):
             action='ModifyAppGroupQuota',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/quota',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/quota',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -8417,9 +8141,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ModifyFirstRankResponse:
         UtilClient.validate_model(request)
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        app_id = OpenApiUtilClient.get_encode_param(app_id)
-        name = OpenApiUtilClient.get_encode_param(name)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
             query['dryRun'] = request.dry_run
@@ -8431,7 +8152,7 @@ class Client(OpenApiClient):
             action='ModifyFirstRank',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/first-ranks/{name}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_id)}/first-ranks/{OpenApiUtilClient.get_encode_param(name)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -8453,9 +8174,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ModifyFirstRankResponse:
         UtilClient.validate_model(request)
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        app_id = OpenApiUtilClient.get_encode_param(app_id)
-        name = OpenApiUtilClient.get_encode_param(name)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
             query['dryRun'] = request.dry_run
@@ -8467,7 +8185,7 @@ class Client(OpenApiClient):
             action='ModifyFirstRank',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/first-ranks/{name}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_id)}/first-ranks/{OpenApiUtilClient.get_encode_param(name)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -8504,8 +8222,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ModifyModelResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        model_name = OpenApiUtilClient.get_encode_param(model_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -8513,7 +8229,7 @@ class Client(OpenApiClient):
             action='ModifyModel',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/algorithm/models/{model_name}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/algorithm/models/{OpenApiUtilClient.get_encode_param(model_name)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -8532,8 +8248,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ModifyModelResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        model_name = OpenApiUtilClient.get_encode_param(model_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -8541,7 +8255,7 @@ class Client(OpenApiClient):
             action='ModifyModel',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/algorithm/models/{model_name}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/algorithm/models/{OpenApiUtilClient.get_encode_param(model_name)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -8585,9 +8299,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ModifyQueryProcessorResponse:
         UtilClient.validate_model(request)
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        app_id = OpenApiUtilClient.get_encode_param(app_id)
-        name = OpenApiUtilClient.get_encode_param(name)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
             query['dryRun'] = request.dry_run
@@ -8599,7 +8310,7 @@ class Client(OpenApiClient):
             action='ModifyQueryProcessor',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/query-processors/{name}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_id)}/query-processors/{OpenApiUtilClient.get_encode_param(name)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -8621,9 +8332,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ModifyQueryProcessorResponse:
         UtilClient.validate_model(request)
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        app_id = OpenApiUtilClient.get_encode_param(app_id)
-        name = OpenApiUtilClient.get_encode_param(name)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
             query['dryRun'] = request.dry_run
@@ -8635,7 +8343,7 @@ class Client(OpenApiClient):
             action='ModifyQueryProcessor',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/query-processors/{name}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_id)}/query-processors/{OpenApiUtilClient.get_encode_param(name)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -8672,8 +8380,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ModifyScheduledTaskResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        task_id = OpenApiUtilClient.get_encode_param(task_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -8681,7 +8387,7 @@ class Client(OpenApiClient):
             action='ModifyScheduledTask',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scheduled-tasks/{task_id}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/scheduled-tasks/{OpenApiUtilClient.get_encode_param(task_id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -8700,8 +8406,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ModifyScheduledTaskResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        task_id = OpenApiUtilClient.get_encode_param(task_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -8709,7 +8413,7 @@ class Client(OpenApiClient):
             action='ModifyScheduledTask',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scheduled-tasks/{task_id}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/scheduled-tasks/{OpenApiUtilClient.get_encode_param(task_id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -8753,9 +8457,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ModifySecondRankResponse:
         UtilClient.validate_model(request)
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        app_id = OpenApiUtilClient.get_encode_param(app_id)
-        name = OpenApiUtilClient.get_encode_param(name)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
             query['dryRun'] = request.dry_run
@@ -8767,7 +8468,7 @@ class Client(OpenApiClient):
             action='ModifySecondRank',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/second-ranks/{name}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_id)}/second-ranks/{OpenApiUtilClient.get_encode_param(name)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -8789,9 +8490,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ModifySecondRankResponse:
         UtilClient.validate_model(request)
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        app_id = OpenApiUtilClient.get_encode_param(app_id)
-        name = OpenApiUtilClient.get_encode_param(name)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
             query['dryRun'] = request.dry_run
@@ -8803,7 +8501,7 @@ class Client(OpenApiClient):
             action='ModifySecondRank',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/second-ranks/{name}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_id)}/second-ranks/{OpenApiUtilClient.get_encode_param(name)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -8844,8 +8542,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.PreviewModelResponse:
         UtilClient.validate_model(request)
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        model_name = OpenApiUtilClient.get_encode_param(model_name)
         query = {}
         if not UtilClient.is_unset(request.query):
             query['query'] = request.query
@@ -8857,7 +8553,7 @@ class Client(OpenApiClient):
             action='PreviewModel',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/algorithm/models/{model_name}/actions/preview',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/algorithm/models/{OpenApiUtilClient.get_encode_param(model_name)}/actions/preview',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -8878,8 +8574,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.PreviewModelResponse:
         UtilClient.validate_model(request)
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        model_name = OpenApiUtilClient.get_encode_param(model_name)
         query = {}
         if not UtilClient.is_unset(request.query):
             query['query'] = request.query
@@ -8891,7 +8585,7 @@ class Client(OpenApiClient):
             action='PreviewModel',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/algorithm/models/{model_name}/actions/preview',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/algorithm/models/{OpenApiUtilClient.get_encode_param(model_name)}/actions/preview',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -8925,7 +8619,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.PushInterventionDictionaryEntriesResponse:
-        name = OpenApiUtilClient.get_encode_param(name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -8933,7 +8626,7 @@ class Client(OpenApiClient):
             action='PushInterventionDictionaryEntries',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/intervention-dictionaries/{name}/entries/actions/bulk',
+            pathname=f'/v4/openapi/intervention-dictionaries/{OpenApiUtilClient.get_encode_param(name)}/entries/actions/bulk',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -8951,7 +8644,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.PushInterventionDictionaryEntriesResponse:
-        name = OpenApiUtilClient.get_encode_param(name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -8959,7 +8651,7 @@ class Client(OpenApiClient):
             action='PushInterventionDictionaryEntries',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/intervention-dictionaries/{name}/entries/actions/bulk',
+            pathname=f'/v4/openapi/intervention-dictionaries/{OpenApiUtilClient.get_encode_param(name)}/entries/actions/bulk',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -8993,7 +8685,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.PushUserAnalyzerEntriesResponse:
-        name = OpenApiUtilClient.get_encode_param(name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -9001,7 +8692,7 @@ class Client(OpenApiClient):
             action='PushUserAnalyzerEntries',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/user-analyzers/{name}/entries/actions/bulk',
+            pathname=f'/v4/openapi/user-analyzers/{OpenApiUtilClient.get_encode_param(name)}/entries/actions/bulk',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -9019,7 +8710,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.PushUserAnalyzerEntriesResponse:
-        name = OpenApiUtilClient.get_encode_param(name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -9027,7 +8717,7 @@ class Client(OpenApiClient):
             action='PushUserAnalyzerEntries',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/user-analyzers/{name}/entries/actions/bulk',
+            pathname=f'/v4/openapi/user-analyzers/{OpenApiUtilClient.get_encode_param(name)}/entries/actions/bulk',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -9064,8 +8754,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RankPreviewQueryResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        model_name = OpenApiUtilClient.get_encode_param(model_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -9073,7 +8761,7 @@ class Client(OpenApiClient):
             action='RankPreviewQuery',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/algorithm/models/{model_name}/actions/query-rank',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/algorithm/models/{OpenApiUtilClient.get_encode_param(model_name)}/actions/query-rank',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -9092,8 +8780,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RankPreviewQueryResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        model_name = OpenApiUtilClient.get_encode_param(model_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -9101,7 +8787,7 @@ class Client(OpenApiClient):
             action='RankPreviewQuery',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/algorithm/models/{model_name}/actions/query-rank',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/algorithm/models/{OpenApiUtilClient.get_encode_param(model_name)}/actions/query-rank',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -9141,9 +8827,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ReleaseSortScriptResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        script_name = OpenApiUtilClient.get_encode_param(script_name)
-        app_version_id = OpenApiUtilClient.get_encode_param(app_version_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -9151,7 +8834,7 @@ class Client(OpenApiClient):
             action='ReleaseSortScript',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_version_id}/sort-scripts/{script_name}/actions/release',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_version_id)}/sort-scripts/{OpenApiUtilClient.get_encode_param(script_name)}/actions/release',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -9171,9 +8854,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ReleaseSortScriptResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        script_name = OpenApiUtilClient.get_encode_param(script_name)
-        app_version_id = OpenApiUtilClient.get_encode_param(app_version_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -9181,7 +8861,7 @@ class Client(OpenApiClient):
             action='ReleaseSortScript',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_version_id}/sort-scripts/{script_name}/actions/release',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_version_id)}/sort-scripts/{OpenApiUtilClient.get_encode_param(script_name)}/actions/release',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -9218,8 +8898,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveAppResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        app_id = OpenApiUtilClient.get_encode_param(app_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -9227,7 +8905,7 @@ class Client(OpenApiClient):
             action='RemoveApp',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -9246,8 +8924,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveAppResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        app_id = OpenApiUtilClient.get_encode_param(app_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -9255,7 +8931,7 @@ class Client(OpenApiClient):
             action='RemoveApp',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -9289,7 +8965,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveAppGroupResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -9297,7 +8972,7 @@ class Client(OpenApiClient):
             action='RemoveAppGroup',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -9315,7 +8990,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveAppGroupResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -9323,7 +8997,7 @@ class Client(OpenApiClient):
             action='RemoveAppGroup',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -9360,8 +9034,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveDataCollectionResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        data_collection_identity = OpenApiUtilClient.get_encode_param(data_collection_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -9369,7 +9041,7 @@ class Client(OpenApiClient):
             action='RemoveDataCollection',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/data-collections/{data_collection_identity}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/data-collections/{OpenApiUtilClient.get_encode_param(data_collection_identity)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -9388,8 +9060,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveDataCollectionResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        data_collection_identity = OpenApiUtilClient.get_encode_param(data_collection_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -9397,7 +9067,7 @@ class Client(OpenApiClient):
             action='RemoveDataCollection',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/data-collections/{data_collection_identity}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/data-collections/{OpenApiUtilClient.get_encode_param(data_collection_identity)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -9437,9 +9107,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveFirstRankResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        app_id = OpenApiUtilClient.get_encode_param(app_id)
-        name = OpenApiUtilClient.get_encode_param(name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -9447,7 +9114,7 @@ class Client(OpenApiClient):
             action='RemoveFirstRank',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/first-ranks/{name}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_id)}/first-ranks/{OpenApiUtilClient.get_encode_param(name)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -9467,9 +9134,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveFirstRankResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        app_id = OpenApiUtilClient.get_encode_param(app_id)
-        name = OpenApiUtilClient.get_encode_param(name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -9477,7 +9141,7 @@ class Client(OpenApiClient):
             action='RemoveFirstRank',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/first-ranks/{name}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_id)}/first-ranks/{OpenApiUtilClient.get_encode_param(name)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -9511,7 +9175,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveInterventionDictionaryResponse:
-        name = OpenApiUtilClient.get_encode_param(name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -9519,7 +9182,7 @@ class Client(OpenApiClient):
             action='RemoveInterventionDictionary',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/intervention-dictionaries/{name}',
+            pathname=f'/v4/openapi/intervention-dictionaries/{OpenApiUtilClient.get_encode_param(name)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -9537,7 +9200,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveInterventionDictionaryResponse:
-        name = OpenApiUtilClient.get_encode_param(name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -9545,7 +9207,7 @@ class Client(OpenApiClient):
             action='RemoveInterventionDictionary',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/intervention-dictionaries/{name}',
+            pathname=f'/v4/openapi/intervention-dictionaries/{OpenApiUtilClient.get_encode_param(name)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -9585,9 +9247,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveQueryProcessorResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        app_id = OpenApiUtilClient.get_encode_param(app_id)
-        name = OpenApiUtilClient.get_encode_param(name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -9595,7 +9254,7 @@ class Client(OpenApiClient):
             action='RemoveQueryProcessor',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/query-processors/{name}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_id)}/query-processors/{OpenApiUtilClient.get_encode_param(name)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -9615,9 +9274,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveQueryProcessorResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        app_id = OpenApiUtilClient.get_encode_param(app_id)
-        name = OpenApiUtilClient.get_encode_param(name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -9625,7 +9281,7 @@ class Client(OpenApiClient):
             action='RemoveQueryProcessor',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/query-processors/{name}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_id)}/query-processors/{OpenApiUtilClient.get_encode_param(name)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -9662,8 +9318,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveScheduledTaskResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        task_id = OpenApiUtilClient.get_encode_param(task_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -9671,7 +9325,7 @@ class Client(OpenApiClient):
             action='RemoveScheduledTask',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scheduled-tasks/{task_id}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/scheduled-tasks/{OpenApiUtilClient.get_encode_param(task_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -9690,8 +9344,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveScheduledTaskResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        task_id = OpenApiUtilClient.get_encode_param(task_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -9699,7 +9351,7 @@ class Client(OpenApiClient):
             action='RemoveScheduledTask',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scheduled-tasks/{task_id}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/scheduled-tasks/{OpenApiUtilClient.get_encode_param(task_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -9739,9 +9391,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveSearchStrategyResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        app_id = OpenApiUtilClient.get_encode_param(app_id)
-        strategy_name = OpenApiUtilClient.get_encode_param(strategy_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -9749,7 +9398,7 @@ class Client(OpenApiClient):
             action='RemoveSearchStrategy',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/search-strategies/{strategy_name}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_id)}/search-strategies/{OpenApiUtilClient.get_encode_param(strategy_name)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -9769,9 +9418,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveSearchStrategyResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        app_id = OpenApiUtilClient.get_encode_param(app_id)
-        strategy_name = OpenApiUtilClient.get_encode_param(strategy_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -9779,7 +9425,7 @@ class Client(OpenApiClient):
             action='RemoveSearchStrategy',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/search-strategies/{strategy_name}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_id)}/search-strategies/{OpenApiUtilClient.get_encode_param(strategy_name)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -9819,9 +9465,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveSecondRankResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        app_id = OpenApiUtilClient.get_encode_param(app_id)
-        name = OpenApiUtilClient.get_encode_param(name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -9829,7 +9472,7 @@ class Client(OpenApiClient):
             action='RemoveSecondRank',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/second-ranks/{name}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_id)}/second-ranks/{OpenApiUtilClient.get_encode_param(name)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -9849,9 +9492,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveSecondRankResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        app_id = OpenApiUtilClient.get_encode_param(app_id)
-        name = OpenApiUtilClient.get_encode_param(name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -9859,7 +9499,7 @@ class Client(OpenApiClient):
             action='RemoveSecondRank',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/second-ranks/{name}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_id)}/second-ranks/{OpenApiUtilClient.get_encode_param(name)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -9893,7 +9533,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveUserAnalyzerResponse:
-        name = OpenApiUtilClient.get_encode_param(name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -9901,7 +9540,7 @@ class Client(OpenApiClient):
             action='RemoveUserAnalyzer',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/user-analyzers/{name}',
+            pathname=f'/v4/openapi/user-analyzers/{OpenApiUtilClient.get_encode_param(name)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -9919,7 +9558,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveUserAnalyzerResponse:
-        name = OpenApiUtilClient.get_encode_param(name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -9927,7 +9565,7 @@ class Client(OpenApiClient):
             action='RemoveUserAnalyzer',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/user-analyzers/{name}',
+            pathname=f'/v4/openapi/user-analyzers/{OpenApiUtilClient.get_encode_param(name)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -9942,34 +9580,41 @@ class Client(OpenApiClient):
     def renew_app_group(
         self,
         app_group_identity: str,
+        request: open_search_20171225_models.RenewAppGroupRequest,
     ) -> open_search_20171225_models.RenewAppGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.renew_app_group_with_options(app_group_identity, headers, runtime)
+        return self.renew_app_group_with_options(app_group_identity, request, headers, runtime)
 
     async def renew_app_group_async(
         self,
         app_group_identity: str,
+        request: open_search_20171225_models.RenewAppGroupRequest,
     ) -> open_search_20171225_models.RenewAppGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.renew_app_group_with_options_async(app_group_identity, headers, runtime)
+        return await self.renew_app_group_with_options_async(app_group_identity, request, headers, runtime)
 
     def renew_app_group_with_options(
         self,
         app_group_identity: str,
+        request: open_search_20171225_models.RenewAppGroupRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RenewAppGroupResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['clientToken'] = request.client_token
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='RenewAppGroup',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/actions/renew',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/actions/renew',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -9984,18 +9629,23 @@ class Client(OpenApiClient):
     async def renew_app_group_with_options_async(
         self,
         app_group_identity: str,
+        request: open_search_20171225_models.RenewAppGroupRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RenewAppGroupResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['clientToken'] = request.client_token
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='RenewAppGroup',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/actions/renew',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/actions/renew',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -10029,7 +9679,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ReplaceAppGroupCommodityCodeResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -10037,7 +9686,7 @@ class Client(OpenApiClient):
             action='ReplaceAppGroupCommodityCode',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/actions/to-instance-typed',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/actions/to-instance-typed',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -10055,7 +9704,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ReplaceAppGroupCommodityCodeResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -10063,7 +9711,7 @@ class Client(OpenApiClient):
             action='ReplaceAppGroupCommodityCode',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/actions/to-instance-typed',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/actions/to-instance-typed',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -10106,10 +9754,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.SaveSortScriptFileResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        script_name = OpenApiUtilClient.get_encode_param(script_name)
-        app_version_id = OpenApiUtilClient.get_encode_param(app_version_id)
-        file_name = OpenApiUtilClient.get_encode_param(file_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -10117,7 +9761,7 @@ class Client(OpenApiClient):
             action='SaveSortScriptFile',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_version_id}/sort-scripts/{script_name}/files/src/{file_name}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_version_id)}/sort-scripts/{OpenApiUtilClient.get_encode_param(script_name)}/files/src/{OpenApiUtilClient.get_encode_param(file_name)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -10138,10 +9782,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.SaveSortScriptFileResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        script_name = OpenApiUtilClient.get_encode_param(script_name)
-        app_version_id = OpenApiUtilClient.get_encode_param(app_version_id)
-        file_name = OpenApiUtilClient.get_encode_param(file_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -10149,7 +9789,7 @@ class Client(OpenApiClient):
             action='SaveSortScriptFile',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_version_id}/sort-scripts/{script_name}/files/src/{file_name}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_version_id)}/sort-scripts/{OpenApiUtilClient.get_encode_param(script_name)}/files/src/{OpenApiUtilClient.get_encode_param(file_name)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -10183,7 +9823,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.StartSlowQueryAnalyzerResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -10191,7 +9830,7 @@ class Client(OpenApiClient):
             action='StartSlowQueryAnalyzer',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/optimizers/slow-query/actions/run',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/optimizers/slow-query/actions/run',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -10209,7 +9848,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.StartSlowQueryAnalyzerResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -10217,7 +9855,7 @@ class Client(OpenApiClient):
             action='StartSlowQueryAnalyzer',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/optimizers/slow-query/actions/run',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/optimizers/slow-query/actions/run',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -10226,6 +9864,90 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             open_search_20171225_models.StartSlowQueryAnalyzerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def tag_resources(
+        self,
+        request: open_search_20171225_models.TagResourcesRequest,
+    ) -> open_search_20171225_models.TagResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.tag_resources_with_options(request, headers, runtime)
+
+    async def tag_resources_async(
+        self,
+        request: open_search_20171225_models.TagResourcesRequest,
+    ) -> open_search_20171225_models.TagResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.tag_resources_with_options_async(request, headers, runtime)
+
+    def tag_resources_with_options(
+        self,
+        request: open_search_20171225_models.TagResourcesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_search_20171225_models.TagResourcesResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.resource_id):
+            body['resourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            body['resourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            body['tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TagResources',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/resource-tags',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_search_20171225_models.TagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def tag_resources_with_options_async(
+        self,
+        request: open_search_20171225_models.TagResourcesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_search_20171225_models.TagResourcesResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.resource_id):
+            body['resourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            body['resourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            body['tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TagResources',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/resource-tags',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_search_20171225_models.TagResourcesResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
@@ -10254,8 +9976,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.TrainModelResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        model_name = OpenApiUtilClient.get_encode_param(model_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -10263,7 +9983,7 @@ class Client(OpenApiClient):
             action='TrainModel',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/algorithm/models/{model_name}/actions/train',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/algorithm/models/{OpenApiUtilClient.get_encode_param(model_name)}/actions/train',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -10282,8 +10002,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.TrainModelResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        model_name = OpenApiUtilClient.get_encode_param(model_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -10291,7 +10009,7 @@ class Client(OpenApiClient):
             action='TrainModel',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/algorithm/models/{model_name}/actions/train',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/algorithm/models/{OpenApiUtilClient.get_encode_param(model_name)}/actions/train',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -10328,8 +10046,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UnbindESUserAnalyzerResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        es_instance_id = OpenApiUtilClient.get_encode_param(es_instance_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -10337,7 +10053,7 @@ class Client(OpenApiClient):
             action='UnbindESUserAnalyzer',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/es/{es_instance_id}/actions/unbind-analyzer',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/es/{OpenApiUtilClient.get_encode_param(es_instance_id)}/actions/unbind-analyzer',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -10356,8 +10072,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UnbindESUserAnalyzerResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        es_instance_id = OpenApiUtilClient.get_encode_param(es_instance_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -10365,7 +10079,7 @@ class Client(OpenApiClient):
             action='UnbindESUserAnalyzer',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/es/{es_instance_id}/actions/unbind-analyzer',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/es/{OpenApiUtilClient.get_encode_param(es_instance_id)}/actions/unbind-analyzer',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -10399,7 +10113,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UnbindEsInstanceResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -10407,7 +10120,7 @@ class Client(OpenApiClient):
             action='UnbindEsInstance',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/actions/unbind-es-instance',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/actions/unbind-es-instance',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -10425,7 +10138,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UnbindEsInstanceResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -10433,7 +10145,7 @@ class Client(OpenApiClient):
             action='UnbindEsInstance',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/actions/unbind-es-instance',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/actions/unbind-es-instance',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -10442,6 +10154,106 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             open_search_20171225_models.UnbindEsInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def untag_resources(
+        self,
+        request: open_search_20171225_models.UntagResourcesRequest,
+    ) -> open_search_20171225_models.UntagResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.untag_resources_with_options(request, headers, runtime)
+
+    async def untag_resources_async(
+        self,
+        request: open_search_20171225_models.UntagResourcesRequest,
+    ) -> open_search_20171225_models.UntagResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.untag_resources_with_options_async(request, headers, runtime)
+
+    def untag_resources_with_options(
+        self,
+        tmp_req: open_search_20171225_models.UntagResourcesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_search_20171225_models.UntagResourcesResponse:
+        UtilClient.validate_model(tmp_req)
+        request = open_search_20171225_models.UntagResourcesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.resource_id):
+            request.resource_id_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_id, 'resourceId', 'json')
+        if not UtilClient.is_unset(tmp_req.tag_key):
+            request.tag_key_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag_key, 'tagKey', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.all):
+            query['all'] = request.all
+        if not UtilClient.is_unset(request.resource_id_shrink):
+            query['resourceId'] = request.resource_id_shrink
+        if not UtilClient.is_unset(request.resource_type):
+            query['resourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_key_shrink):
+            query['tagKey'] = request.tag_key_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UntagResources',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/resource-tags',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_search_20171225_models.UntagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def untag_resources_with_options_async(
+        self,
+        tmp_req: open_search_20171225_models.UntagResourcesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_search_20171225_models.UntagResourcesResponse:
+        UtilClient.validate_model(tmp_req)
+        request = open_search_20171225_models.UntagResourcesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.resource_id):
+            request.resource_id_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_id, 'resourceId', 'json')
+        if not UtilClient.is_unset(tmp_req.tag_key):
+            request.tag_key_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag_key, 'tagKey', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.all):
+            query['all'] = request.all
+        if not UtilClient.is_unset(request.resource_id_shrink):
+            query['resourceId'] = request.resource_id_shrink
+        if not UtilClient.is_unset(request.resource_type):
+            query['resourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_key_shrink):
+            query['tagKey'] = request.tag_key_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UntagResources',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/resource-tags',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_search_20171225_models.UntagResourcesResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
@@ -10476,10 +10288,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UpdateABTestExperimentResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        scene_id = OpenApiUtilClient.get_encode_param(scene_id)
-        group_id = OpenApiUtilClient.get_encode_param(group_id)
-        experiment_id = OpenApiUtilClient.get_encode_param(experiment_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -10487,7 +10295,7 @@ class Client(OpenApiClient):
             action='UpdateABTestExperiment',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups/{group_id}/experiments/{experiment_id}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/scenes/{OpenApiUtilClient.get_encode_param(scene_id)}/groups/{OpenApiUtilClient.get_encode_param(group_id)}/experiments/{OpenApiUtilClient.get_encode_param(experiment_id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -10508,10 +10316,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UpdateABTestExperimentResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        scene_id = OpenApiUtilClient.get_encode_param(scene_id)
-        group_id = OpenApiUtilClient.get_encode_param(group_id)
-        experiment_id = OpenApiUtilClient.get_encode_param(experiment_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -10519,7 +10323,7 @@ class Client(OpenApiClient):
             action='UpdateABTestExperiment',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups/{group_id}/experiments/{experiment_id}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/scenes/{OpenApiUtilClient.get_encode_param(scene_id)}/groups/{OpenApiUtilClient.get_encode_param(group_id)}/experiments/{OpenApiUtilClient.get_encode_param(experiment_id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -10562,10 +10366,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UpdateABTestFixedFlowDividersResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        scene_id = OpenApiUtilClient.get_encode_param(scene_id)
-        group_id = OpenApiUtilClient.get_encode_param(group_id)
-        experiment_id = OpenApiUtilClient.get_encode_param(experiment_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -10573,7 +10373,7 @@ class Client(OpenApiClient):
             action='UpdateABTestFixedFlowDividers',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups/{group_id}/experiments/{experiment_id}/fixed-flow-dividers',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/scenes/{OpenApiUtilClient.get_encode_param(scene_id)}/groups/{OpenApiUtilClient.get_encode_param(group_id)}/experiments/{OpenApiUtilClient.get_encode_param(experiment_id)}/fixed-flow-dividers',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -10594,10 +10394,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UpdateABTestFixedFlowDividersResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        scene_id = OpenApiUtilClient.get_encode_param(scene_id)
-        group_id = OpenApiUtilClient.get_encode_param(group_id)
-        experiment_id = OpenApiUtilClient.get_encode_param(experiment_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -10605,7 +10401,7 @@ class Client(OpenApiClient):
             action='UpdateABTestFixedFlowDividers',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups/{group_id}/experiments/{experiment_id}/fixed-flow-dividers',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/scenes/{OpenApiUtilClient.get_encode_param(scene_id)}/groups/{OpenApiUtilClient.get_encode_param(group_id)}/experiments/{OpenApiUtilClient.get_encode_param(experiment_id)}/fixed-flow-dividers',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -10645,9 +10441,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UpdateABTestGroupResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        scene_id = OpenApiUtilClient.get_encode_param(scene_id)
-        group_id = OpenApiUtilClient.get_encode_param(group_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -10655,7 +10448,7 @@ class Client(OpenApiClient):
             action='UpdateABTestGroup',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups/{group_id}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/scenes/{OpenApiUtilClient.get_encode_param(scene_id)}/groups/{OpenApiUtilClient.get_encode_param(group_id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -10675,9 +10468,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UpdateABTestGroupResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        scene_id = OpenApiUtilClient.get_encode_param(scene_id)
-        group_id = OpenApiUtilClient.get_encode_param(group_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -10685,7 +10475,7 @@ class Client(OpenApiClient):
             action='UpdateABTestGroup',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}/groups/{group_id}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/scenes/{OpenApiUtilClient.get_encode_param(scene_id)}/groups/{OpenApiUtilClient.get_encode_param(group_id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -10722,8 +10512,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UpdateABTestSceneResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        scene_id = OpenApiUtilClient.get_encode_param(scene_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -10731,7 +10519,7 @@ class Client(OpenApiClient):
             action='UpdateABTestScene',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/scenes/{OpenApiUtilClient.get_encode_param(scene_id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -10750,8 +10538,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UpdateABTestSceneResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        scene_id = OpenApiUtilClient.get_encode_param(scene_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -10759,7 +10545,7 @@ class Client(OpenApiClient):
             action='UpdateABTestScene',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/scenes/{scene_id}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/scenes/{OpenApiUtilClient.get_encode_param(scene_id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -10800,8 +10586,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UpdateFetchFieldsResponse:
         UtilClient.validate_model(request)
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        app_id = OpenApiUtilClient.get_encode_param(app_id)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
             query['dryRun'] = request.dry_run
@@ -10813,7 +10597,7 @@ class Client(OpenApiClient):
             action='UpdateFetchFields',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/fetch-fields',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_id)}/fetch-fields',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -10834,8 +10618,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UpdateFetchFieldsResponse:
         UtilClient.validate_model(request)
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        app_id = OpenApiUtilClient.get_encode_param(app_id)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
             query['dryRun'] = request.dry_run
@@ -10847,7 +10629,7 @@ class Client(OpenApiClient):
             action='UpdateFetchFields',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/fetch-fields',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_id)}/fetch-fields',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -10888,8 +10670,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UpdateFunctionDefaultInstanceResponse:
         UtilClient.validate_model(request)
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
         body = {}
         if not UtilClient.is_unset(request.instance_name):
             body['instanceName'] = request.instance_name
@@ -10901,7 +10681,7 @@ class Client(OpenApiClient):
             action='UpdateFunctionDefaultInstance',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/functions/{function_name}/default-instance',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}/default-instance',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -10922,8 +10702,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UpdateFunctionDefaultInstanceResponse:
         UtilClient.validate_model(request)
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
         body = {}
         if not UtilClient.is_unset(request.instance_name):
             body['instanceName'] = request.instance_name
@@ -10935,7 +10713,7 @@ class Client(OpenApiClient):
             action='UpdateFunctionDefaultInstance',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/functions/{function_name}/default-instance',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}/default-instance',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -10979,9 +10757,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UpdateFunctionInstanceResponse:
         UtilClient.validate_model(request)
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
-        instance_name = OpenApiUtilClient.get_encode_param(instance_name)
         body = {}
         if not UtilClient.is_unset(request.create_parameters):
             body['createParameters'] = request.create_parameters
@@ -10999,7 +10774,7 @@ class Client(OpenApiClient):
             action='UpdateFunctionInstance',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/functions/{function_name}/instances/{instance_name}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}/instances/{OpenApiUtilClient.get_encode_param(instance_name)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -11021,9 +10796,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UpdateFunctionInstanceResponse:
         UtilClient.validate_model(request)
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
-        instance_name = OpenApiUtilClient.get_encode_param(instance_name)
         body = {}
         if not UtilClient.is_unset(request.create_parameters):
             body['createParameters'] = request.create_parameters
@@ -11041,7 +10813,7 @@ class Client(OpenApiClient):
             action='UpdateFunctionInstance',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/functions/{function_name}/instances/{instance_name}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}/instances/{OpenApiUtilClient.get_encode_param(instance_name)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -11081,9 +10853,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UpdateSearchStrategyResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        app_id = OpenApiUtilClient.get_encode_param(app_id)
-        strategy_name = OpenApiUtilClient.get_encode_param(strategy_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -11091,7 +10860,7 @@ class Client(OpenApiClient):
             action='UpdateSearchStrategy',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/search-strategies/{strategy_name}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_id)}/search-strategies/{OpenApiUtilClient.get_encode_param(strategy_name)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -11111,9 +10880,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UpdateSearchStrategyResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        app_id = OpenApiUtilClient.get_encode_param(app_id)
-        strategy_name = OpenApiUtilClient.get_encode_param(strategy_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -11121,7 +10887,7 @@ class Client(OpenApiClient):
             action='UpdateSearchStrategy',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/search-strategies/{strategy_name}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_id)}/search-strategies/{OpenApiUtilClient.get_encode_param(strategy_name)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -11161,9 +10927,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UpdateSortScriptResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        app_version_id = OpenApiUtilClient.get_encode_param(app_version_id)
-        script_name = OpenApiUtilClient.get_encode_param(script_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -11171,7 +10934,7 @@ class Client(OpenApiClient):
             action='UpdateSortScript',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_version_id}/sort-scripts/{script_name}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_version_id)}/sort-scripts/{OpenApiUtilClient.get_encode_param(script_name)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -11191,9 +10954,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UpdateSortScriptResponse:
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        app_version_id = OpenApiUtilClient.get_encode_param(app_version_id)
-        script_name = OpenApiUtilClient.get_encode_param(script_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -11201,7 +10961,7 @@ class Client(OpenApiClient):
             action='UpdateSortScript',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_version_id}/sort-scripts/{script_name}',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_version_id)}/sort-scripts/{OpenApiUtilClient.get_encode_param(script_name)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -11242,8 +11002,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UpdateSummariesResponse:
         UtilClient.validate_model(request)
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        app_id = OpenApiUtilClient.get_encode_param(app_id)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
             query['dryRun'] = request.dry_run
@@ -11255,7 +11013,7 @@ class Client(OpenApiClient):
             action='UpdateSummaries',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/summaries',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_id)}/summaries',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -11276,8 +11034,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UpdateSummariesResponse:
         UtilClient.validate_model(request)
-        app_group_identity = OpenApiUtilClient.get_encode_param(app_group_identity)
-        app_id = OpenApiUtilClient.get_encode_param(app_id)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
             query['dryRun'] = request.dry_run
@@ -11289,7 +11045,7 @@ class Client(OpenApiClient):
             action='UpdateSummaries',
             version='2017-12-25',
             protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{app_group_identity}/apps/{app_id}/summaries',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/apps/{OpenApiUtilClient.get_encode_param(app_id)}/summaries',
             method='PUT',
             auth_type='AK',
             style='ROA',
