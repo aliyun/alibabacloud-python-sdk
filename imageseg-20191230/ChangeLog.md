@@ -1,3 +1,6 @@
+2022-09-29 Version: 2.0.1
+- Update RefineMask.
+
 2021-02-22 Version: 2.0.0
 - Generated python 2019-12-30 for imageseg.
 
