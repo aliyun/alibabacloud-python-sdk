@@ -803,7 +803,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_plugin_20220112_models.DeleteCampaignResponse:
-        id = OpenApiUtilClient.get_encode_param(id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -811,7 +810,7 @@ class Client(OpenApiClient):
             action='DeleteCampaign',
             version='2022-01-12',
             protocol='HTTPS',
-            pathname=f'/api/v2/campaigns/{id}',
+            pathname=f'/api/v2/campaigns/{OpenApiUtilClient.get_encode_param(id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -829,7 +828,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_plugin_20220112_models.DeleteCampaignResponse:
-        id = OpenApiUtilClient.get_encode_param(id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -837,7 +835,7 @@ class Client(OpenApiClient):
             action='DeleteCampaign',
             version='2022-01-12',
             protocol='HTTPS',
-            pathname=f'/api/v2/campaigns/{id}',
+            pathname=f'/api/v2/campaigns/{OpenApiUtilClient.get_encode_param(id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -877,7 +875,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_plugin_20220112_models.DeleteGroupResponse:
-        id = OpenApiUtilClient.get_encode_param(id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -885,7 +882,7 @@ class Client(OpenApiClient):
             action='DeleteGroup',
             version='2022-01-12',
             protocol='HTTPS',
-            pathname=f'/api/v2/groups/{id}',
+            pathname=f'/api/v2/groups/{OpenApiUtilClient.get_encode_param(id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -903,7 +900,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_plugin_20220112_models.DeleteGroupResponse:
-        id = OpenApiUtilClient.get_encode_param(id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -911,7 +907,7 @@ class Client(OpenApiClient):
             action='DeleteGroup',
             version='2022-01-12',
             protocol='HTTPS',
-            pathname=f'/api/v2/groups/{id}',
+            pathname=f'/api/v2/groups/{OpenApiUtilClient.get_encode_param(id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -951,7 +947,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_plugin_20220112_models.DeleteInferenceJobResponse:
-        id = OpenApiUtilClient.get_encode_param(id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -959,7 +954,7 @@ class Client(OpenApiClient):
             action='DeleteInferenceJob',
             version='2022-01-12',
             protocol='HTTPS',
-            pathname=f'/api/v2/inference/jobs/{id}',
+            pathname=f'/api/v2/inference/jobs/{OpenApiUtilClient.get_encode_param(id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -977,7 +972,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_plugin_20220112_models.DeleteInferenceJobResponse:
-        id = OpenApiUtilClient.get_encode_param(id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -985,7 +979,7 @@ class Client(OpenApiClient):
             action='DeleteInferenceJob',
             version='2022-01-12',
             protocol='HTTPS',
-            pathname=f'/api/v2/inference/jobs/{id}',
+            pathname=f'/api/v2/inference/jobs/{OpenApiUtilClient.get_encode_param(id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1025,7 +1019,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_plugin_20220112_models.DeleteScheduleResponse:
-        id = OpenApiUtilClient.get_encode_param(id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1033,7 +1026,7 @@ class Client(OpenApiClient):
             action='DeleteSchedule',
             version='2022-01-12',
             protocol='HTTPS',
-            pathname=f'/api/v2/schedules/{id}',
+            pathname=f'/api/v2/schedules/{OpenApiUtilClient.get_encode_param(id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1051,7 +1044,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_plugin_20220112_models.DeleteScheduleResponse:
-        id = OpenApiUtilClient.get_encode_param(id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1059,7 +1051,7 @@ class Client(OpenApiClient):
             action='DeleteSchedule',
             version='2022-01-12',
             protocol='HTTPS',
-            pathname=f'/api/v2/schedules/{id}',
+            pathname=f'/api/v2/schedules/{OpenApiUtilClient.get_encode_param(id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1099,7 +1091,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_plugin_20220112_models.DeleteSignatureResponse:
-        id = OpenApiUtilClient.get_encode_param(id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1107,7 +1098,7 @@ class Client(OpenApiClient):
             action='DeleteSignature',
             version='2022-01-12',
             protocol='HTTPS',
-            pathname=f'/api/v2/signatures/{id}',
+            pathname=f'/api/v2/signatures/{OpenApiUtilClient.get_encode_param(id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1125,7 +1116,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_plugin_20220112_models.DeleteSignatureResponse:
-        id = OpenApiUtilClient.get_encode_param(id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1133,7 +1123,7 @@ class Client(OpenApiClient):
             action='DeleteSignature',
             version='2022-01-12',
             protocol='HTTPS',
-            pathname=f'/api/v2/signatures/{id}',
+            pathname=f'/api/v2/signatures/{OpenApiUtilClient.get_encode_param(id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1173,7 +1163,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_plugin_20220112_models.DeleteTemplateResponse:
-        id = OpenApiUtilClient.get_encode_param(id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1181,7 +1170,7 @@ class Client(OpenApiClient):
             action='DeleteTemplate',
             version='2022-01-12',
             protocol='HTTPS',
-            pathname=f'/api/v2/templates/{id}',
+            pathname=f'/api/v2/templates/{OpenApiUtilClient.get_encode_param(id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1199,7 +1188,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_plugin_20220112_models.DeleteTemplateResponse:
-        id = OpenApiUtilClient.get_encode_param(id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1207,7 +1195,7 @@ class Client(OpenApiClient):
             action='DeleteTemplate',
             version='2022-01-12',
             protocol='HTTPS',
-            pathname=f'/api/v2/templates/{id}',
+            pathname=f'/api/v2/templates/{OpenApiUtilClient.get_encode_param(id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1247,7 +1235,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_plugin_20220112_models.DeleteTrainingJobResponse:
-        id = OpenApiUtilClient.get_encode_param(id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1255,7 +1242,7 @@ class Client(OpenApiClient):
             action='DeleteTrainingJob',
             version='2022-01-12',
             protocol='HTTPS',
-            pathname=f'/api/v2/training/jobs/{id}',
+            pathname=f'/api/v2/training/jobs/{OpenApiUtilClient.get_encode_param(id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1273,7 +1260,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_plugin_20220112_models.DeleteTrainingJobResponse:
-        id = OpenApiUtilClient.get_encode_param(id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1281,7 +1267,7 @@ class Client(OpenApiClient):
             action='DeleteTrainingJob',
             version='2022-01-12',
             protocol='HTTPS',
-            pathname=f'/api/v2/training/jobs/{id}',
+            pathname=f'/api/v2/training/jobs/{OpenApiUtilClient.get_encode_param(id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1321,7 +1307,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_plugin_20220112_models.GetAlgorithmResponse:
-        id = OpenApiUtilClient.get_encode_param(id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1329,7 +1314,7 @@ class Client(OpenApiClient):
             action='GetAlgorithm',
             version='2022-01-12',
             protocol='HTTPS',
-            pathname=f'/api/v2/algorithms/{id}',
+            pathname=f'/api/v2/algorithms/{OpenApiUtilClient.get_encode_param(id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1347,7 +1332,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_plugin_20220112_models.GetAlgorithmResponse:
-        id = OpenApiUtilClient.get_encode_param(id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1355,7 +1339,7 @@ class Client(OpenApiClient):
             action='GetAlgorithm',
             version='2022-01-12',
             protocol='HTTPS',
-            pathname=f'/api/v2/algorithms/{id}',
+            pathname=f'/api/v2/algorithms/{OpenApiUtilClient.get_encode_param(id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1395,7 +1379,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_plugin_20220112_models.GetCampaignResponse:
-        id = OpenApiUtilClient.get_encode_param(id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1403,7 +1386,7 @@ class Client(OpenApiClient):
             action='GetCampaign',
             version='2022-01-12',
             protocol='HTTPS',
-            pathname=f'/api/v2/campaigns/{id}',
+            pathname=f'/api/v2/campaigns/{OpenApiUtilClient.get_encode_param(id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1421,7 +1404,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_plugin_20220112_models.GetCampaignResponse:
-        id = OpenApiUtilClient.get_encode_param(id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1429,7 +1411,7 @@ class Client(OpenApiClient):
             action='GetCampaign',
             version='2022-01-12',
             protocol='HTTPS',
-            pathname=f'/api/v2/campaigns/{id}',
+            pathname=f'/api/v2/campaigns/{OpenApiUtilClient.get_encode_param(id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1469,7 +1451,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_plugin_20220112_models.GetGroupResponse:
-        id = OpenApiUtilClient.get_encode_param(id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1477,7 +1458,7 @@ class Client(OpenApiClient):
             action='GetGroup',
             version='2022-01-12',
             protocol='HTTPS',
-            pathname=f'/api/v2/groups/{id}',
+            pathname=f'/api/v2/groups/{OpenApiUtilClient.get_encode_param(id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1495,7 +1476,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_plugin_20220112_models.GetGroupResponse:
-        id = OpenApiUtilClient.get_encode_param(id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1503,7 +1483,7 @@ class Client(OpenApiClient):
             action='GetGroup',
             version='2022-01-12',
             protocol='HTTPS',
-            pathname=f'/api/v2/groups/{id}',
+            pathname=f'/api/v2/groups/{OpenApiUtilClient.get_encode_param(id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1543,7 +1523,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_plugin_20220112_models.GetInferenceJobResponse:
-        id = OpenApiUtilClient.get_encode_param(id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1551,7 +1530,7 @@ class Client(OpenApiClient):
             action='GetInferenceJob',
             version='2022-01-12',
             protocol='HTTPS',
-            pathname=f'/api/v2/inference/jobs/{id}',
+            pathname=f'/api/v2/inference/jobs/{OpenApiUtilClient.get_encode_param(id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1569,7 +1548,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_plugin_20220112_models.GetInferenceJobResponse:
-        id = OpenApiUtilClient.get_encode_param(id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1577,7 +1555,7 @@ class Client(OpenApiClient):
             action='GetInferenceJob',
             version='2022-01-12',
             protocol='HTTPS',
-            pathname=f'/api/v2/inference/jobs/{id}',
+            pathname=f'/api/v2/inference/jobs/{OpenApiUtilClient.get_encode_param(id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1681,7 +1659,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_plugin_20220112_models.GetScheduleResponse:
-        id = OpenApiUtilClient.get_encode_param(id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1689,7 +1666,7 @@ class Client(OpenApiClient):
             action='GetSchedule',
             version='2022-01-12',
             protocol='HTTPS',
-            pathname=f'/api/v2/schedules/{id}',
+            pathname=f'/api/v2/schedules/{OpenApiUtilClient.get_encode_param(id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1707,7 +1684,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_plugin_20220112_models.GetScheduleResponse:
-        id = OpenApiUtilClient.get_encode_param(id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1715,7 +1691,7 @@ class Client(OpenApiClient):
             action='GetSchedule',
             version='2022-01-12',
             protocol='HTTPS',
-            pathname=f'/api/v2/schedules/{id}',
+            pathname=f'/api/v2/schedules/{OpenApiUtilClient.get_encode_param(id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1755,7 +1731,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_plugin_20220112_models.GetSignatureResponse:
-        id = OpenApiUtilClient.get_encode_param(id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1763,7 +1738,7 @@ class Client(OpenApiClient):
             action='GetSignature',
             version='2022-01-12',
             protocol='HTTPS',
-            pathname=f'/api/v2/signatures/{id}',
+            pathname=f'/api/v2/signatures/{OpenApiUtilClient.get_encode_param(id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1781,7 +1756,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_plugin_20220112_models.GetSignatureResponse:
-        id = OpenApiUtilClient.get_encode_param(id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1789,7 +1763,7 @@ class Client(OpenApiClient):
             action='GetSignature',
             version='2022-01-12',
             protocol='HTTPS',
-            pathname=f'/api/v2/signatures/{id}',
+            pathname=f'/api/v2/signatures/{OpenApiUtilClient.get_encode_param(id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1829,7 +1803,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_plugin_20220112_models.GetTemplateResponse:
-        id = OpenApiUtilClient.get_encode_param(id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1837,7 +1810,7 @@ class Client(OpenApiClient):
             action='GetTemplate',
             version='2022-01-12',
             protocol='HTTPS',
-            pathname=f'/api/v2/templates/{id}',
+            pathname=f'/api/v2/templates/{OpenApiUtilClient.get_encode_param(id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1855,7 +1828,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_plugin_20220112_models.GetTemplateResponse:
-        id = OpenApiUtilClient.get_encode_param(id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1863,7 +1835,7 @@ class Client(OpenApiClient):
             action='GetTemplate',
             version='2022-01-12',
             protocol='HTTPS',
-            pathname=f'/api/v2/templates/{id}',
+            pathname=f'/api/v2/templates/{OpenApiUtilClient.get_encode_param(id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1903,7 +1875,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_plugin_20220112_models.GetTrainingJobResponse:
-        id = OpenApiUtilClient.get_encode_param(id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1911,7 +1882,7 @@ class Client(OpenApiClient):
             action='GetTrainingJob',
             version='2022-01-12',
             protocol='HTTPS',
-            pathname=f'/api/v2/training/jobs/{id}',
+            pathname=f'/api/v2/training/jobs/{OpenApiUtilClient.get_encode_param(id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1929,7 +1900,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_plugin_20220112_models.GetTrainingJobResponse:
-        id = OpenApiUtilClient.get_encode_param(id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1937,7 +1907,7 @@ class Client(OpenApiClient):
             action='GetTrainingJob',
             version='2022-01-12',
             protocol='HTTPS',
-            pathname=f'/api/v2/training/jobs/{id}',
+            pathname=f'/api/v2/training/jobs/{OpenApiUtilClient.get_encode_param(id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2311,9 +2281,6 @@ class Client(OpenApiClient):
         self,
         request: pai_plugin_20220112_models.ListInferenceJobsRequest,
     ) -> pai_plugin_20220112_models.ListInferenceJobsResponse:
-        """
-        获取预测任务列表。
-        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_inference_jobs_with_options(request, headers, runtime)
@@ -2322,9 +2289,6 @@ class Client(OpenApiClient):
         self,
         request: pai_plugin_20220112_models.ListInferenceJobsRequest,
     ) -> pai_plugin_20220112_models.ListInferenceJobsResponse:
-        """
-        获取预测任务列表。
-        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_inference_jobs_with_options_async(request, headers, runtime)
@@ -2339,6 +2303,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.campaign_id):
             query['CampaignId'] = request.campaign_id
+        if not UtilClient.is_unset(request.campaign_name):
+            query['CampaignName'] = request.campaign_name
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.page_number):
@@ -2349,6 +2315,8 @@ class Client(OpenApiClient):
             query['Remark'] = request.remark
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
+        if not UtilClient.is_unset(request.training_job_name):
+            query['TrainingJobName'] = request.training_job_name
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -2379,6 +2347,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.campaign_id):
             query['CampaignId'] = request.campaign_id
+        if not UtilClient.is_unset(request.campaign_name):
+            query['CampaignName'] = request.campaign_name
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.page_number):
@@ -2389,6 +2359,8 @@ class Client(OpenApiClient):
             query['Remark'] = request.remark
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
+        if not UtilClient.is_unset(request.training_job_name):
+            query['TrainingJobName'] = request.training_job_name
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -2967,9 +2939,6 @@ class Client(OpenApiClient):
         self,
         request: pai_plugin_20220112_models.ListTrainingJobsRequest,
     ) -> pai_plugin_20220112_models.ListTrainingJobsResponse:
-        """
-        获取训练任务列表。
-        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_training_jobs_with_options(request, headers, runtime)
@@ -2978,9 +2947,6 @@ class Client(OpenApiClient):
         self,
         request: pai_plugin_20220112_models.ListTrainingJobsRequest,
     ) -> pai_plugin_20220112_models.ListTrainingJobsResponse:
-        """
-        获取训练任务列表。
-        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_training_jobs_with_options_async(request, headers, runtime)
@@ -2995,6 +2961,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.campaign_id):
             query['CampaignId'] = request.campaign_id
+        if not UtilClient.is_unset(request.campaign_name):
+            query['CampaignName'] = request.campaign_name
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.page_number):
@@ -3005,6 +2973,8 @@ class Client(OpenApiClient):
             query['Remark'] = request.remark
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
+        if not UtilClient.is_unset(request.training_schedule_id):
+            query['TrainingScheduleId'] = request.training_schedule_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -3035,6 +3005,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.campaign_id):
             query['CampaignId'] = request.campaign_id
+        if not UtilClient.is_unset(request.campaign_name):
+            query['CampaignName'] = request.campaign_name
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.page_number):
@@ -3045,6 +3017,8 @@ class Client(OpenApiClient):
             query['Remark'] = request.remark
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
+        if not UtilClient.is_unset(request.training_schedule_id):
+            query['TrainingScheduleId'] = request.training_schedule_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -3069,9 +3043,6 @@ class Client(OpenApiClient):
         self,
         request: pai_plugin_20220112_models.SendMessageRequest,
     ) -> pai_plugin_20220112_models.SendMessageResponse:
-        """
-        发送短信。
-        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.send_message_with_options(request, headers, runtime)
@@ -3080,9 +3051,6 @@ class Client(OpenApiClient):
         self,
         request: pai_plugin_20220112_models.SendMessageRequest,
     ) -> pai_plugin_20220112_models.SendMessageResponse:
-        """
-        发送短信。
-        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.send_message_with_options_async(request, headers, runtime)
@@ -3367,7 +3335,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_plugin_20220112_models.UpdateCampaignResponse:
         UtilClient.validate_model(request)
-        id = OpenApiUtilClient.get_encode_param(id)
         body = {}
         if not UtilClient.is_unset(request.name):
             body['Name'] = request.name
@@ -3381,7 +3348,7 @@ class Client(OpenApiClient):
             action='UpdateCampaign',
             version='2022-01-12',
             protocol='HTTPS',
-            pathname=f'/api/v2/campaigns/{id}',
+            pathname=f'/api/v2/campaigns/{OpenApiUtilClient.get_encode_param(id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -3401,7 +3368,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_plugin_20220112_models.UpdateCampaignResponse:
         UtilClient.validate_model(request)
-        id = OpenApiUtilClient.get_encode_param(id)
         body = {}
         if not UtilClient.is_unset(request.name):
             body['Name'] = request.name
@@ -3415,7 +3381,7 @@ class Client(OpenApiClient):
             action='UpdateCampaign',
             version='2022-01-12',
             protocol='HTTPS',
-            pathname=f'/api/v2/campaigns/{id}',
+            pathname=f'/api/v2/campaigns/{OpenApiUtilClient.get_encode_param(id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
