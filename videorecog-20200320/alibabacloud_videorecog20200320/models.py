@@ -39,7 +39,7 @@ class DetectVideoShotAdvanceRequest(TeaModel):
         self.video_url_object = video_url_object
 
     def validate(self):
-        self.validate_required(self.video_url_object, 'video_url_object')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -48,13 +48,13 @@ class DetectVideoShotAdvanceRequest(TeaModel):
 
         result = dict()
         if self.video_url_object is not None:
-            result['VideoUrlObject'] = self.video_url_object
+            result['VideoUrl'] = self.video_url_object
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('VideoUrlObject') is not None:
-            self.video_url_object = m.get('VideoUrlObject')
+        if m.get('VideoUrl') is not None:
+            self.video_url_object = m.get('VideoUrl')
         return self
 
 
@@ -200,14 +200,14 @@ class GenerateVideoCoverRequest(TeaModel):
 class GenerateVideoCoverAdvanceRequest(TeaModel):
     def __init__(
         self,
-        video_url_object: BinaryIO = None,
         is_gif: bool = None,
+        video_url_object: BinaryIO = None,
     ):
-        self.video_url_object = video_url_object
         self.is_gif = is_gif
+        self.video_url_object = video_url_object
 
     def validate(self):
-        self.validate_required(self.video_url_object, 'video_url_object')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -215,18 +215,18 @@ class GenerateVideoCoverAdvanceRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.video_url_object is not None:
-            result['VideoUrlObject'] = self.video_url_object
         if self.is_gif is not None:
             result['IsGif'] = self.is_gif
+        if self.video_url_object is not None:
+            result['VideoUrl'] = self.video_url_object
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('VideoUrlObject') is not None:
-            self.video_url_object = m.get('VideoUrlObject')
         if m.get('IsGif') is not None:
             self.is_gif = m.get('IsGif')
+        if m.get('VideoUrl') is not None:
+            self.video_url_object = m.get('VideoUrl')
         return self
 
 
@@ -638,16 +638,15 @@ class RecognizeVideoCastCrewListAdvanceRequestParams(TeaModel):
 class RecognizeVideoCastCrewListAdvanceRequest(TeaModel):
     def __init__(
         self,
-        video_url_object: BinaryIO = None,
         params: List[RecognizeVideoCastCrewListAdvanceRequestParams] = None,
-        register_url: str = None,
+        register_url_object: BinaryIO = None,
+        video_url_object: BinaryIO = None,
     ):
-        self.video_url_object = video_url_object
         self.params = params
-        self.register_url = register_url
+        self.register_url_object = register_url_object
+        self.video_url_object = video_url_object
 
     def validate(self):
-        self.validate_required(self.video_url_object, 'video_url_object')
         if self.params:
             for k in self.params:
                 if k:
@@ -659,27 +658,27 @@ class RecognizeVideoCastCrewListAdvanceRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.video_url_object is not None:
-            result['VideoUrlObject'] = self.video_url_object
         result['Params'] = []
         if self.params is not None:
             for k in self.params:
                 result['Params'].append(k.to_map() if k else None)
-        if self.register_url is not None:
-            result['RegisterUrl'] = self.register_url
+        if self.register_url_object is not None:
+            result['RegisterUrl'] = self.register_url_object
+        if self.video_url_object is not None:
+            result['VideoUrl'] = self.video_url_object
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('VideoUrlObject') is not None:
-            self.video_url_object = m.get('VideoUrlObject')
         self.params = []
         if m.get('Params') is not None:
             for k in m.get('Params'):
                 temp_model = RecognizeVideoCastCrewListAdvanceRequestParams()
                 self.params.append(temp_model.from_map(k))
         if m.get('RegisterUrl') is not None:
-            self.register_url = m.get('RegisterUrl')
+            self.register_url_object = m.get('RegisterUrl')
+        if m.get('VideoUrl') is not None:
+            self.video_url_object = m.get('VideoUrl')
         return self
 
 
@@ -1207,7 +1206,6 @@ class RecognizeVideoCastCrewListResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.data = data
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -1315,7 +1313,7 @@ class SplitVideoPartsAdvanceRequest(TeaModel):
         self.video_url_object = video_url_object
 
     def validate(self):
-        self.validate_required(self.video_url_object, 'video_url_object')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -1324,13 +1322,13 @@ class SplitVideoPartsAdvanceRequest(TeaModel):
 
         result = dict()
         if self.video_url_object is not None:
-            result['VideoUrlObject'] = self.video_url_object
+            result['VideoUrl'] = self.video_url_object
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('VideoUrlObject') is not None:
-            self.video_url_object = m.get('VideoUrlObject')
+        if m.get('VideoUrl') is not None:
+            self.video_url_object = m.get('VideoUrl')
         return self
 
 
@@ -1415,7 +1413,6 @@ class SplitVideoPartsResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.data = data
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -1493,7 +1490,6 @@ class UnderstandVideoContentRequest(TeaModel):
         self,
         video_url: str = None,
     ):
-        # A short description of struct
         self.video_url = video_url
 
     def validate(self):
@@ -1524,7 +1520,7 @@ class UnderstandVideoContentAdvanceRequest(TeaModel):
         self.video_urlobject = video_urlobject
 
     def validate(self):
-        self.validate_required(self.video_urlobject, 'video_urlobject')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -1533,13 +1529,13 @@ class UnderstandVideoContentAdvanceRequest(TeaModel):
 
         result = dict()
         if self.video_urlobject is not None:
-            result['VideoURLObject'] = self.video_urlobject
+            result['VideoURL'] = self.video_urlobject
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('VideoURLObject') is not None:
-            self.video_urlobject = m.get('VideoURLObject')
+        if m.get('VideoURL') is not None:
+            self.video_urlobject = m.get('VideoURL')
         return self
 
 
@@ -1630,7 +1626,6 @@ class UnderstandVideoContentResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.data = data
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
