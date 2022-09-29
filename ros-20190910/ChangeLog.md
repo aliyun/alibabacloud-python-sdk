@@ -1,3 +1,7 @@
+2022-09-29 Version: 3.2.12
+- Add IllegalValueByRules and IllegalValueByParameterConstraints to GetTemplateParameterConstraints output.
+- Add Resources to ValidateTemplate output.
+
 2022-09-08 Version: 3.2.11
 - OperationInfo is added to the return value of GetStack and ListStacks.
 
