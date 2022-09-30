@@ -3341,6 +3341,7 @@ class ListCardsRequest(TeaModel):
         ip_address: str = None,
         lock: bool = None,
         max_results: int = None,
+        msisdn: str = None,
         net_link_id: str = None,
         next_token: str = None,
         online: bool = None,
@@ -3353,6 +3354,7 @@ class ListCardsRequest(TeaModel):
         self.ip_address = ip_address
         self.lock = lock
         self.max_results = max_results
+        self.msisdn = msisdn
         self.net_link_id = net_link_id
         self.next_token = next_token
         self.online = online
@@ -3380,6 +3382,8 @@ class ListCardsRequest(TeaModel):
             result['Lock'] = self.lock
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
+        if self.msisdn is not None:
+            result['Msisdn'] = self.msisdn
         if self.net_link_id is not None:
             result['NetLinkId'] = self.net_link_id
         if self.next_token is not None:
@@ -3406,6 +3410,8 @@ class ListCardsRequest(TeaModel):
             self.lock = m.get('Lock')
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
+        if m.get('Msisdn') is not None:
+            self.msisdn = m.get('Msisdn')
         if m.get('NetLinkId') is not None:
             self.net_link_id = m.get('NetLinkId')
         if m.get('NextToken') is not None:
