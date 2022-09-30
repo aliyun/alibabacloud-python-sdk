@@ -2098,6 +2098,10 @@ class Client(OpenApiClient):
             query['SmsTemplateParamJson'] = request.sms_template_param_json
         if not UtilClient.is_unset(request.sms_up_extend_code_json):
             query['SmsUpExtendCodeJson'] = request.sms_up_extend_code_json
+        if not UtilClient.is_unset(request.template_code):
+            query['TemplateCode'] = request.template_code
+        if not UtilClient.is_unset(request.template_param_json):
+            query['TemplateParamJson'] = request.template_param_json
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2146,6 +2150,10 @@ class Client(OpenApiClient):
             query['SmsTemplateParamJson'] = request.sms_template_param_json
         if not UtilClient.is_unset(request.sms_up_extend_code_json):
             query['SmsUpExtendCodeJson'] = request.sms_up_extend_code_json
+        if not UtilClient.is_unset(request.template_code):
+            query['TemplateCode'] = request.template_code
+        if not UtilClient.is_unset(request.template_param_json):
+            query['TemplateParamJson'] = request.template_param_json
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2312,6 +2320,10 @@ class Client(OpenApiClient):
             query['SmsTemplateParam'] = request.sms_template_param
         if not UtilClient.is_unset(request.sms_up_extend_code):
             query['SmsUpExtendCode'] = request.sms_up_extend_code
+        if not UtilClient.is_unset(request.template_code):
+            query['TemplateCode'] = request.template_code
+        if not UtilClient.is_unset(request.template_param):
+            query['TemplateParam'] = request.template_param
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2358,6 +2370,10 @@ class Client(OpenApiClient):
             query['SmsTemplateParam'] = request.sms_template_param
         if not UtilClient.is_unset(request.sms_up_extend_code):
             query['SmsUpExtendCode'] = request.sms_up_extend_code
+        if not UtilClient.is_unset(request.template_code):
+            query['TemplateCode'] = request.template_code
+        if not UtilClient.is_unset(request.template_param):
+            query['TemplateParam'] = request.template_param
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

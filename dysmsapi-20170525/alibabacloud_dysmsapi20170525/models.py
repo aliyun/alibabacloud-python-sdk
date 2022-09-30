@@ -4434,6 +4434,8 @@ class SendBatchCardSmsRequest(TeaModel):
         sms_template_code: str = None,
         sms_template_param_json: str = None,
         sms_up_extend_code_json: str = None,
+        template_code: str = None,
+        template_param_json: str = None,
     ):
         self.card_template_code = card_template_code
         self.card_template_param_json = card_template_param_json
@@ -4446,6 +4448,8 @@ class SendBatchCardSmsRequest(TeaModel):
         self.sms_template_code = sms_template_code
         self.sms_template_param_json = sms_template_param_json
         self.sms_up_extend_code_json = sms_up_extend_code_json
+        self.template_code = template_code
+        self.template_param_json = template_param_json
 
     def validate(self):
         pass
@@ -4478,6 +4482,10 @@ class SendBatchCardSmsRequest(TeaModel):
             result['SmsTemplateParamJson'] = self.sms_template_param_json
         if self.sms_up_extend_code_json is not None:
             result['SmsUpExtendCodeJson'] = self.sms_up_extend_code_json
+        if self.template_code is not None:
+            result['TemplateCode'] = self.template_code
+        if self.template_param_json is not None:
+            result['TemplateParamJson'] = self.template_param_json
         return result
 
     def from_map(self, m: dict = None):
@@ -4504,6 +4512,10 @@ class SendBatchCardSmsRequest(TeaModel):
             self.sms_template_param_json = m.get('SmsTemplateParamJson')
         if m.get('SmsUpExtendCodeJson') is not None:
             self.sms_up_extend_code_json = m.get('SmsUpExtendCodeJson')
+        if m.get('TemplateCode') is not None:
+            self.template_code = m.get('TemplateCode')
+        if m.get('TemplateParamJson') is not None:
+            self.template_param_json = m.get('TemplateParamJson')
         return self
 
 
@@ -4871,6 +4883,8 @@ class SendCardSmsRequest(TeaModel):
         sms_template_code: str = None,
         sms_template_param: str = None,
         sms_up_extend_code: str = None,
+        template_code: str = None,
+        template_param: str = None,
     ):
         self.card_objects = card_objects
         self.card_template_code = card_template_code
@@ -4882,6 +4896,8 @@ class SendCardSmsRequest(TeaModel):
         self.sms_template_code = sms_template_code
         self.sms_template_param = sms_template_param
         self.sms_up_extend_code = sms_up_extend_code
+        self.template_code = template_code
+        self.template_param = template_param
 
     def validate(self):
         if self.card_objects:
@@ -4917,6 +4933,10 @@ class SendCardSmsRequest(TeaModel):
             result['SmsTemplateParam'] = self.sms_template_param
         if self.sms_up_extend_code is not None:
             result['SmsUpExtendCode'] = self.sms_up_extend_code
+        if self.template_code is not None:
+            result['TemplateCode'] = self.template_code
+        if self.template_param is not None:
+            result['TemplateParam'] = self.template_param
         return result
 
     def from_map(self, m: dict = None):
@@ -4944,6 +4964,10 @@ class SendCardSmsRequest(TeaModel):
             self.sms_template_param = m.get('SmsTemplateParam')
         if m.get('SmsUpExtendCode') is not None:
             self.sms_up_extend_code = m.get('SmsUpExtendCode')
+        if m.get('TemplateCode') is not None:
+            self.template_code = m.get('TemplateCode')
+        if m.get('TemplateParam') is not None:
+            self.template_param = m.get('TemplateParam')
         return self
 
 

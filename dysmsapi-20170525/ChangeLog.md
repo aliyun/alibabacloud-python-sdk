@@ -1,3 +1,6 @@
+2022-09-30 Version: 2.0.21
+- Add custom content for SendBatchSms.
+
 2022-09-29 Version: 2.0.20
 - Add outId for SendBatchSms.
 
