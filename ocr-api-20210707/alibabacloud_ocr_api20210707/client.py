@@ -2931,6 +2931,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.recognize_idcard_with_options_async(request, runtime)
 
+    def recognize_international_idcard_with_options(
+        self,
+        request: ocr_api_20210707_models.RecognizeInternationalIdcardRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_api_20210707_models.RecognizeInternationalIdcardResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.country):
+            query['Country'] = request.country
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=request.body,
+            stream=request.body
+        )
+        params = open_api_models.Params(
+            action='RecognizeInternationalIdcard',
+            version='2021-07-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocr_api_20210707_models.RecognizeInternationalIdcardResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def recognize_international_idcard_with_options_async(
+        self,
+        request: ocr_api_20210707_models.RecognizeInternationalIdcardRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_api_20210707_models.RecognizeInternationalIdcardResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.country):
+            query['Country'] = request.country
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=request.body,
+            stream=request.body
+        )
+        params = open_api_models.Params(
+            action='RecognizeInternationalIdcard',
+            version='2021-07-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocr_api_20210707_models.RecognizeInternationalIdcardResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def recognize_international_idcard(
+        self,
+        request: ocr_api_20210707_models.RecognizeInternationalIdcardRequest,
+    ) -> ocr_api_20210707_models.RecognizeInternationalIdcardResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.recognize_international_idcard_with_options(request, runtime)
+
+    async def recognize_international_idcard_async(
+        self,
+        request: ocr_api_20210707_models.RecognizeInternationalIdcardRequest,
+    ) -> ocr_api_20210707_models.RecognizeInternationalIdcardResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.recognize_international_idcard_with_options_async(request, runtime)
+
     def recognize_invoice_with_options(
         self,
         request: ocr_api_20210707_models.RecognizeInvoiceRequest,
