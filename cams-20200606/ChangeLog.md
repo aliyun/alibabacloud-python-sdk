@@ -1,3 +1,7 @@
+2022-10-08 Version: 1.0.12
+- Add template modify API.
+- Add BeeBot APIs.
+
 2022-09-20 Version: 1.0.11
 - Support ISV features.
 

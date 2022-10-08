@@ -41,6 +41,222 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def bee_bot_associate_with_options(
+        self,
+        tmp_req: cams_20200606_models.BeeBotAssociateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.BeeBotAssociateResponse:
+        UtilClient.validate_model(tmp_req)
+        request = cams_20200606_models.BeeBotAssociateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.perspective):
+            request.perspective_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.perspective, 'Perspective', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.chat_bot_instnace_id):
+            body['ChatBotInstnaceId'] = request.chat_bot_instnace_id
+        if not UtilClient.is_unset(request.isv_code):
+            body['IsvCode'] = request.isv_code
+        if not UtilClient.is_unset(request.perspective_shrink):
+            body['Perspective'] = request.perspective_shrink
+        if not UtilClient.is_unset(request.recommend_num):
+            body['RecommendNum'] = request.recommend_num
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.utterance):
+            body['Utterance'] = request.utterance
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='BeeBotAssociate',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.BeeBotAssociateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def bee_bot_associate_with_options_async(
+        self,
+        tmp_req: cams_20200606_models.BeeBotAssociateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.BeeBotAssociateResponse:
+        UtilClient.validate_model(tmp_req)
+        request = cams_20200606_models.BeeBotAssociateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.perspective):
+            request.perspective_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.perspective, 'Perspective', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.chat_bot_instnace_id):
+            body['ChatBotInstnaceId'] = request.chat_bot_instnace_id
+        if not UtilClient.is_unset(request.isv_code):
+            body['IsvCode'] = request.isv_code
+        if not UtilClient.is_unset(request.perspective_shrink):
+            body['Perspective'] = request.perspective_shrink
+        if not UtilClient.is_unset(request.recommend_num):
+            body['RecommendNum'] = request.recommend_num
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.utterance):
+            body['Utterance'] = request.utterance
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='BeeBotAssociate',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.BeeBotAssociateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def bee_bot_associate(
+        self,
+        request: cams_20200606_models.BeeBotAssociateRequest,
+    ) -> cams_20200606_models.BeeBotAssociateResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.bee_bot_associate_with_options(request, runtime)
+
+    async def bee_bot_associate_async(
+        self,
+        request: cams_20200606_models.BeeBotAssociateRequest,
+    ) -> cams_20200606_models.BeeBotAssociateResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.bee_bot_associate_with_options_async(request, runtime)
+
+    def bee_bot_chat_with_options(
+        self,
+        tmp_req: cams_20200606_models.BeeBotChatRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.BeeBotChatResponse:
+        UtilClient.validate_model(tmp_req)
+        request = cams_20200606_models.BeeBotChatShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.perspective):
+            request.perspective_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.perspective, 'Perspective', 'json')
+        if not UtilClient.is_unset(tmp_req.vendor_param):
+            request.vendor_param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.vendor_param, 'VendorParam', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.chat_bot_instnace_id):
+            body['ChatBotInstnaceId'] = request.chat_bot_instnace_id
+        if not UtilClient.is_unset(request.intent_name):
+            body['IntentName'] = request.intent_name
+        if not UtilClient.is_unset(request.isv_code):
+            body['IsvCode'] = request.isv_code
+        if not UtilClient.is_unset(request.knowledge_id):
+            body['KnowledgeId'] = request.knowledge_id
+        if not UtilClient.is_unset(request.perspective_shrink):
+            body['Perspective'] = request.perspective_shrink
+        if not UtilClient.is_unset(request.sender_id):
+            body['SenderId'] = request.sender_id
+        if not UtilClient.is_unset(request.sender_nick):
+            body['SenderNick'] = request.sender_nick
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.utterance):
+            body['Utterance'] = request.utterance
+        if not UtilClient.is_unset(request.vendor_param_shrink):
+            body['VendorParam'] = request.vendor_param_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='BeeBotChat',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.BeeBotChatResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def bee_bot_chat_with_options_async(
+        self,
+        tmp_req: cams_20200606_models.BeeBotChatRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.BeeBotChatResponse:
+        UtilClient.validate_model(tmp_req)
+        request = cams_20200606_models.BeeBotChatShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.perspective):
+            request.perspective_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.perspective, 'Perspective', 'json')
+        if not UtilClient.is_unset(tmp_req.vendor_param):
+            request.vendor_param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.vendor_param, 'VendorParam', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.chat_bot_instnace_id):
+            body['ChatBotInstnaceId'] = request.chat_bot_instnace_id
+        if not UtilClient.is_unset(request.intent_name):
+            body['IntentName'] = request.intent_name
+        if not UtilClient.is_unset(request.isv_code):
+            body['IsvCode'] = request.isv_code
+        if not UtilClient.is_unset(request.knowledge_id):
+            body['KnowledgeId'] = request.knowledge_id
+        if not UtilClient.is_unset(request.perspective_shrink):
+            body['Perspective'] = request.perspective_shrink
+        if not UtilClient.is_unset(request.sender_id):
+            body['SenderId'] = request.sender_id
+        if not UtilClient.is_unset(request.sender_nick):
+            body['SenderNick'] = request.sender_nick
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.utterance):
+            body['Utterance'] = request.utterance
+        if not UtilClient.is_unset(request.vendor_param_shrink):
+            body['VendorParam'] = request.vendor_param_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='BeeBotChat',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.BeeBotChatResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def bee_bot_chat(
+        self,
+        request: cams_20200606_models.BeeBotChatRequest,
+    ) -> cams_20200606_models.BeeBotChatResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.bee_bot_chat_with_options(request, runtime)
+
+    async def bee_bot_chat_async(
+        self,
+        request: cams_20200606_models.BeeBotChatRequest,
+    ) -> cams_20200606_models.BeeBotChatResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.bee_bot_chat_with_options_async(request, runtime)
+
     def create_chatapp_template_with_options(
         self,
         tmp_req: cams_20200606_models.CreateChatappTemplateRequest,
@@ -408,6 +624,108 @@ class Client(OpenApiClient):
     ) -> cams_20200606_models.ListChatappTemplateResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_chatapp_template_with_options_async(request, runtime)
+
+    def modify_chatapp_template_with_options(
+        self,
+        tmp_req: cams_20200606_models.ModifyChatappTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.ModifyChatappTemplateResponse:
+        UtilClient.validate_model(tmp_req)
+        request = cams_20200606_models.ModifyChatappTemplateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.components):
+            request.components_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.components, 'Components', 'json')
+        if not UtilClient.is_unset(tmp_req.example):
+            request.example_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.example, 'Example', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.components_shrink):
+            body['Components'] = request.components_shrink
+        if not UtilClient.is_unset(request.cust_waba_id):
+            body['CustWabaId'] = request.cust_waba_id
+        if not UtilClient.is_unset(request.example_shrink):
+            body['Example'] = request.example_shrink
+        if not UtilClient.is_unset(request.isv_code):
+            body['IsvCode'] = request.isv_code
+        if not UtilClient.is_unset(request.language):
+            body['Language'] = request.language
+        if not UtilClient.is_unset(request.template_code):
+            body['TemplateCode'] = request.template_code
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyChatappTemplate',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.ModifyChatappTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_chatapp_template_with_options_async(
+        self,
+        tmp_req: cams_20200606_models.ModifyChatappTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.ModifyChatappTemplateResponse:
+        UtilClient.validate_model(tmp_req)
+        request = cams_20200606_models.ModifyChatappTemplateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.components):
+            request.components_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.components, 'Components', 'json')
+        if not UtilClient.is_unset(tmp_req.example):
+            request.example_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.example, 'Example', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.components_shrink):
+            body['Components'] = request.components_shrink
+        if not UtilClient.is_unset(request.cust_waba_id):
+            body['CustWabaId'] = request.cust_waba_id
+        if not UtilClient.is_unset(request.example_shrink):
+            body['Example'] = request.example_shrink
+        if not UtilClient.is_unset(request.isv_code):
+            body['IsvCode'] = request.isv_code
+        if not UtilClient.is_unset(request.language):
+            body['Language'] = request.language
+        if not UtilClient.is_unset(request.template_code):
+            body['TemplateCode'] = request.template_code
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyChatappTemplate',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.ModifyChatappTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_chatapp_template(
+        self,
+        request: cams_20200606_models.ModifyChatappTemplateRequest,
+    ) -> cams_20200606_models.ModifyChatappTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_chatapp_template_with_options(request, runtime)
+
+    async def modify_chatapp_template_async(
+        self,
+        request: cams_20200606_models.ModifyChatappTemplateRequest,
+    ) -> cams_20200606_models.ModifyChatappTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_chatapp_template_with_options_async(request, runtime)
 
     def send_chatapp_mass_message_with_options(
         self,
