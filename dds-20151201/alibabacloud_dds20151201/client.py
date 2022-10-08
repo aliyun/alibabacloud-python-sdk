@@ -570,6 +570,8 @@ class Client(OpenApiClient):
             query['Engine'] = request.engine
         if not UtilClient.is_unset(request.engine_version):
             query['EngineVersion'] = request.engine_version
+        if not UtilClient.is_unset(request.hidden_zone_id):
+            query['HiddenZoneId'] = request.hidden_zone_id
         if not UtilClient.is_unset(request.network_type):
             query['NetworkType'] = request.network_type
         if not UtilClient.is_unset(request.owner_account):
@@ -592,6 +594,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.restore_time):
             query['RestoreTime'] = request.restore_time
+        if not UtilClient.is_unset(request.secondary_zone_id):
+            query['SecondaryZoneId'] = request.secondary_zone_id
         if not UtilClient.is_unset(request.security_iplist):
             query['SecurityIPList'] = request.security_iplist
         if not UtilClient.is_unset(request.security_token):
@@ -662,6 +666,8 @@ class Client(OpenApiClient):
             query['Engine'] = request.engine
         if not UtilClient.is_unset(request.engine_version):
             query['EngineVersion'] = request.engine_version
+        if not UtilClient.is_unset(request.hidden_zone_id):
+            query['HiddenZoneId'] = request.hidden_zone_id
         if not UtilClient.is_unset(request.network_type):
             query['NetworkType'] = request.network_type
         if not UtilClient.is_unset(request.owner_account):
@@ -684,6 +690,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.restore_time):
             query['RestoreTime'] = request.restore_time
+        if not UtilClient.is_unset(request.secondary_zone_id):
+            query['SecondaryZoneId'] = request.secondary_zone_id
         if not UtilClient.is_unset(request.security_iplist):
             query['SecurityIPList'] = request.security_iplist
         if not UtilClient.is_unset(request.security_token):
@@ -6232,6 +6240,8 @@ class Client(OpenApiClient):
     ) -> dds_20151201_models.ModifyBackupPolicyResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.backup_interval):
+            query['BackupInterval'] = request.backup_interval
         if not UtilClient.is_unset(request.backup_retention_period):
             query['BackupRetentionPeriod'] = request.backup_retention_period
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -6254,6 +6264,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.snapshot_backup_type):
+            query['SnapshotBackupType'] = request.snapshot_backup_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6280,6 +6292,8 @@ class Client(OpenApiClient):
     ) -> dds_20151201_models.ModifyBackupPolicyResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.backup_interval):
+            query['BackupInterval'] = request.backup_interval
         if not UtilClient.is_unset(request.backup_retention_period):
             query['BackupRetentionPeriod'] = request.backup_retention_period
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -6302,6 +6316,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.snapshot_backup_type):
+            query['SnapshotBackupType'] = request.snapshot_backup_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6944,8 +6960,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.disable_tls_protocol):
-            query['DisableTlsProtocol'] = request.disable_tls_protocol
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -6986,8 +7000,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.disable_tls_protocol):
-            query['DisableTlsProtocol'] = request.disable_tls_protocol
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):

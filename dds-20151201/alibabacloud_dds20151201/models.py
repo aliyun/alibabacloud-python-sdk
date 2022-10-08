@@ -757,6 +757,7 @@ class CreateDBInstanceRequest(TeaModel):
         database_names: str = None,
         engine: str = None,
         engine_version: str = None,
+        hidden_zone_id: str = None,
         network_type: str = None,
         owner_account: str = None,
         owner_id: int = None,
@@ -768,6 +769,7 @@ class CreateDBInstanceRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         restore_time: str = None,
+        secondary_zone_id: str = None,
         security_iplist: str = None,
         security_token: str = None,
         src_dbinstance_id: str = None,
@@ -791,6 +793,7 @@ class CreateDBInstanceRequest(TeaModel):
         self.database_names = database_names
         self.engine = engine
         self.engine_version = engine_version
+        self.hidden_zone_id = hidden_zone_id
         self.network_type = network_type
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -802,6 +805,7 @@ class CreateDBInstanceRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.restore_time = restore_time
+        self.secondary_zone_id = secondary_zone_id
         self.security_iplist = security_iplist
         self.security_token = security_token
         self.src_dbinstance_id = src_dbinstance_id
@@ -848,6 +852,8 @@ class CreateDBInstanceRequest(TeaModel):
             result['Engine'] = self.engine
         if self.engine_version is not None:
             result['EngineVersion'] = self.engine_version
+        if self.hidden_zone_id is not None:
+            result['HiddenZoneId'] = self.hidden_zone_id
         if self.network_type is not None:
             result['NetworkType'] = self.network_type
         if self.owner_account is not None:
@@ -870,6 +876,8 @@ class CreateDBInstanceRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.restore_time is not None:
             result['RestoreTime'] = self.restore_time
+        if self.secondary_zone_id is not None:
+            result['SecondaryZoneId'] = self.secondary_zone_id
         if self.security_iplist is not None:
             result['SecurityIPList'] = self.security_iplist
         if self.security_token is not None:
@@ -918,6 +926,8 @@ class CreateDBInstanceRequest(TeaModel):
             self.engine = m.get('Engine')
         if m.get('EngineVersion') is not None:
             self.engine_version = m.get('EngineVersion')
+        if m.get('HiddenZoneId') is not None:
+            self.hidden_zone_id = m.get('HiddenZoneId')
         if m.get('NetworkType') is not None:
             self.network_type = m.get('NetworkType')
         if m.get('OwnerAccount') is not None:
@@ -940,6 +950,8 @@ class CreateDBInstanceRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('RestoreTime') is not None:
             self.restore_time = m.get('RestoreTime')
+        if m.get('SecondaryZoneId') is not None:
+            self.secondary_zone_id = m.get('SecondaryZoneId')
         if m.get('SecurityIPList') is not None:
             self.security_iplist = m.get('SecurityIPList')
         if m.get('SecurityToken') is not None:
@@ -4402,19 +4414,23 @@ class DescribeBackupPolicyRequest(TeaModel):
 class DescribeBackupPolicyResponseBody(TeaModel):
     def __init__(
         self,
+        backup_interval: int = None,
         backup_retention_period: str = None,
         enable_backup_log: int = None,
         log_backup_retention_period: int = None,
         preferred_backup_period: str = None,
         preferred_backup_time: str = None,
         request_id: str = None,
+        snapshot_backup_type: str = None,
     ):
+        self.backup_interval = backup_interval
         self.backup_retention_period = backup_retention_period
         self.enable_backup_log = enable_backup_log
         self.log_backup_retention_period = log_backup_retention_period
         self.preferred_backup_period = preferred_backup_period
         self.preferred_backup_time = preferred_backup_time
         self.request_id = request_id
+        self.snapshot_backup_type = snapshot_backup_type
 
     def validate(self):
         pass
@@ -4425,6 +4441,8 @@ class DescribeBackupPolicyResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.backup_interval is not None:
+            result['BackupInterval'] = self.backup_interval
         if self.backup_retention_period is not None:
             result['BackupRetentionPeriod'] = self.backup_retention_period
         if self.enable_backup_log is not None:
@@ -4437,10 +4455,14 @@ class DescribeBackupPolicyResponseBody(TeaModel):
             result['PreferredBackupTime'] = self.preferred_backup_time
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.snapshot_backup_type is not None:
+            result['SnapshotBackupType'] = self.snapshot_backup_type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BackupInterval') is not None:
+            self.backup_interval = m.get('BackupInterval')
         if m.get('BackupRetentionPeriod') is not None:
             self.backup_retention_period = m.get('BackupRetentionPeriod')
         if m.get('EnableBackupLog') is not None:
@@ -4453,6 +4475,8 @@ class DescribeBackupPolicyResponseBody(TeaModel):
             self.preferred_backup_time = m.get('PreferredBackupTime')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('SnapshotBackupType') is not None:
+            self.snapshot_backup_type = m.get('SnapshotBackupType')
         return self
 
 
@@ -15301,6 +15325,7 @@ class ModifyAuditPolicyResponse(TeaModel):
 class ModifyBackupPolicyRequest(TeaModel):
     def __init__(
         self,
+        backup_interval: str = None,
         backup_retention_period: int = None,
         dbinstance_id: str = None,
         enable_backup_log: int = None,
@@ -15312,7 +15337,9 @@ class ModifyBackupPolicyRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         security_token: str = None,
+        snapshot_backup_type: str = None,
     ):
+        self.backup_interval = backup_interval
         self.backup_retention_period = backup_retention_period
         self.dbinstance_id = dbinstance_id
         self.enable_backup_log = enable_backup_log
@@ -15324,6 +15351,7 @@ class ModifyBackupPolicyRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
+        self.snapshot_backup_type = snapshot_backup_type
 
     def validate(self):
         pass
@@ -15334,6 +15362,8 @@ class ModifyBackupPolicyRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.backup_interval is not None:
+            result['BackupInterval'] = self.backup_interval
         if self.backup_retention_period is not None:
             result['BackupRetentionPeriod'] = self.backup_retention_period
         if self.dbinstance_id is not None:
@@ -15356,10 +15386,14 @@ class ModifyBackupPolicyRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.security_token is not None:
             result['SecurityToken'] = self.security_token
+        if self.snapshot_backup_type is not None:
+            result['SnapshotBackupType'] = self.snapshot_backup_type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BackupInterval') is not None:
+            self.backup_interval = m.get('BackupInterval')
         if m.get('BackupRetentionPeriod') is not None:
             self.backup_retention_period = m.get('BackupRetentionPeriod')
         if m.get('DBInstanceId') is not None:
@@ -15382,6 +15416,8 @@ class ModifyBackupPolicyRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('SecurityToken') is not None:
             self.security_token = m.get('SecurityToken')
+        if m.get('SnapshotBackupType') is not None:
+            self.snapshot_backup_type = m.get('SnapshotBackupType')
         return self
 
 
@@ -16318,7 +16354,6 @@ class ModifyDBInstanceSSLRequest(TeaModel):
     def __init__(
         self,
         dbinstance_id: str = None,
-        disable_tls_protocol: str = None,
         owner_account: str = None,
         owner_id: int = None,
         resource_owner_account: str = None,
@@ -16327,7 +16362,6 @@ class ModifyDBInstanceSSLRequest(TeaModel):
         security_token: str = None,
     ):
         self.dbinstance_id = dbinstance_id
-        self.disable_tls_protocol = disable_tls_protocol
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -16346,8 +16380,6 @@ class ModifyDBInstanceSSLRequest(TeaModel):
         result = dict()
         if self.dbinstance_id is not None:
             result['DBInstanceId'] = self.dbinstance_id
-        if self.disable_tls_protocol is not None:
-            result['DisableTlsProtocol'] = self.disable_tls_protocol
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
@@ -16366,8 +16398,6 @@ class ModifyDBInstanceSSLRequest(TeaModel):
         m = m or dict()
         if m.get('DBInstanceId') is not None:
             self.dbinstance_id = m.get('DBInstanceId')
-        if m.get('DisableTlsProtocol') is not None:
-            self.disable_tls_protocol = m.get('DisableTlsProtocol')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
