@@ -1,3 +1,6 @@
+2022-10-08 Version: 1.0.13
+- Add EcologyAuthenticate api.
+
 2022-09-08 Version: 1.0.12
 - Add scgsearch api.
 

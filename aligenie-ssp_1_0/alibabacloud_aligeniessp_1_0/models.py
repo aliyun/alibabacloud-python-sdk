@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, Any, List
+from typing import List, Dict, Any
 
 
 class LoginStateInfo(TeaModel):
@@ -46,6 +46,104 @@ class LoginStateInfo(TeaModel):
             self.third_user_type = m.get('ThirdUserType')
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')
+        return self
+
+
+class ResultValueDeviceUnionIds(TeaModel):
+    def __init__(
+        self,
+        organization_id: str = None,
+        device_union_id: str = None,
+    ):
+        self.organization_id = organization_id
+        self.device_union_id = device_union_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.organization_id is not None:
+            result['OrganizationId'] = self.organization_id
+        if self.device_union_id is not None:
+            result['DeviceUnionId'] = self.device_union_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OrganizationId') is not None:
+            self.organization_id = m.get('OrganizationId')
+        if m.get('DeviceUnionId') is not None:
+            self.device_union_id = m.get('DeviceUnionId')
+        return self
+
+
+class ResultValue(TeaModel):
+    def __init__(
+        self,
+        device_open_id: str = None,
+        device_union_ids: List[ResultValueDeviceUnionIds] = None,
+        name: str = None,
+        firmware_version: str = None,
+        mac: str = None,
+        sn: str = None,
+    ):
+        self.device_open_id = device_open_id
+        self.device_union_ids = device_union_ids
+        self.name = name
+        self.firmware_version = firmware_version
+        self.mac = mac
+        self.sn = sn
+
+    def validate(self):
+        if self.device_union_ids:
+            for k in self.device_union_ids:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.device_open_id is not None:
+            result['DeviceOpenId'] = self.device_open_id
+        result['DeviceUnionIds'] = []
+        if self.device_union_ids is not None:
+            for k in self.device_union_ids:
+                result['DeviceUnionIds'].append(k.to_map() if k else None)
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.firmware_version is not None:
+            result['FirmwareVersion'] = self.firmware_version
+        if self.mac is not None:
+            result['Mac'] = self.mac
+        if self.sn is not None:
+            result['Sn'] = self.sn
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeviceOpenId') is not None:
+            self.device_open_id = m.get('DeviceOpenId')
+        self.device_union_ids = []
+        if m.get('DeviceUnionIds') is not None:
+            for k in m.get('DeviceUnionIds'):
+                temp_model = ResultValueDeviceUnionIds()
+                self.device_union_ids.append(temp_model.from_map(k))
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('FirmwareVersion') is not None:
+            self.firmware_version = m.get('FirmwareVersion')
+        if m.get('Mac') is not None:
+            self.mac = m.get('Mac')
+        if m.get('Sn') is not None:
+            self.sn = m.get('Sn')
         return self
 
 
@@ -7876,6 +7974,7 @@ class GetContentResponseBodyResult(TeaModel):
         id: int = None,
         item_type: str = None,
         lyric: str = None,
+        raw_id: str = None,
         source: str = None,
         styles: List[str] = None,
         title: str = None,
@@ -7896,6 +7995,7 @@ class GetContentResponseBodyResult(TeaModel):
         self.id = id
         self.item_type = item_type
         self.lyric = lyric
+        self.raw_id = raw_id
         self.source = source
         self.styles = styles
         self.title = title
@@ -7946,6 +8046,8 @@ class GetContentResponseBodyResult(TeaModel):
             result['ItemType'] = self.item_type
         if self.lyric is not None:
             result['Lyric'] = self.lyric
+        if self.raw_id is not None:
+            result['RawId'] = self.raw_id
         if self.source is not None:
             result['Source'] = self.source
         if self.styles is not None:
@@ -7992,6 +8094,8 @@ class GetContentResponseBodyResult(TeaModel):
             self.item_type = m.get('ItemType')
         if m.get('Lyric') is not None:
             self.lyric = m.get('Lyric')
+        if m.get('RawId') is not None:
+            self.raw_id = m.get('RawId')
         if m.get('Source') is not None:
             self.source = m.get('Source')
         if m.get('Styles') is not None:
@@ -15983,104 +16087,6 @@ class ListDeviceBasicInfoShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('DeviceInfos') is not None:
             self.device_infos_shrink = m.get('DeviceInfos')
-        return self
-
-
-class ResultValueDeviceUnionIds(TeaModel):
-    def __init__(
-        self,
-        organization_id: str = None,
-        device_union_id: str = None,
-    ):
-        self.organization_id = organization_id
-        self.device_union_id = device_union_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.organization_id is not None:
-            result['OrganizationId'] = self.organization_id
-        if self.device_union_id is not None:
-            result['DeviceUnionId'] = self.device_union_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('OrganizationId') is not None:
-            self.organization_id = m.get('OrganizationId')
-        if m.get('DeviceUnionId') is not None:
-            self.device_union_id = m.get('DeviceUnionId')
-        return self
-
-
-class ResultValue(TeaModel):
-    def __init__(
-        self,
-        device_open_id: str = None,
-        device_union_ids: List[ResultValueDeviceUnionIds] = None,
-        name: str = None,
-        firmware_version: str = None,
-        mac: str = None,
-        sn: str = None,
-    ):
-        self.device_open_id = device_open_id
-        self.device_union_ids = device_union_ids
-        self.name = name
-        self.firmware_version = firmware_version
-        self.mac = mac
-        self.sn = sn
-
-    def validate(self):
-        if self.device_union_ids:
-            for k in self.device_union_ids:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.device_open_id is not None:
-            result['DeviceOpenId'] = self.device_open_id
-        result['DeviceUnionIds'] = []
-        if self.device_union_ids is not None:
-            for k in self.device_union_ids:
-                result['DeviceUnionIds'].append(k.to_map() if k else None)
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.firmware_version is not None:
-            result['FirmwareVersion'] = self.firmware_version
-        if self.mac is not None:
-            result['Mac'] = self.mac
-        if self.sn is not None:
-            result['Sn'] = self.sn
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DeviceOpenId') is not None:
-            self.device_open_id = m.get('DeviceOpenId')
-        self.device_union_ids = []
-        if m.get('DeviceUnionIds') is not None:
-            for k in m.get('DeviceUnionIds'):
-                temp_model = ResultValueDeviceUnionIds()
-                self.device_union_ids.append(temp_model.from_map(k))
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('FirmwareVersion') is not None:
-            self.firmware_version = m.get('FirmwareVersion')
-        if m.get('Mac') is not None:
-            self.mac = m.get('Mac')
-        if m.get('Sn') is not None:
-            self.sn = m.get('Sn')
         return self
 
 
