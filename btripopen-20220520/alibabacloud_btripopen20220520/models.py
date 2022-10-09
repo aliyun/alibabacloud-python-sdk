@@ -16472,6 +16472,7 @@ class IsvUserSaveRequestUserList(TeaModel):
         email: str = None,
         job_no: str = None,
         leave_status: int = None,
+        manager_user_id: str = None,
         phone: str = None,
         position: str = None,
         position_level: str = None,
@@ -16485,6 +16486,7 @@ class IsvUserSaveRequestUserList(TeaModel):
         self.email = email
         self.job_no = job_no
         self.leave_status = leave_status
+        self.manager_user_id = manager_user_id
         self.phone = phone
         self.position = position
         self.position_level = position_level
@@ -16511,6 +16513,8 @@ class IsvUserSaveRequestUserList(TeaModel):
             result['job_no'] = self.job_no
         if self.leave_status is not None:
             result['leave_status'] = self.leave_status
+        if self.manager_user_id is not None:
+            result['manager_user_id'] = self.manager_user_id
         if self.phone is not None:
             result['phone'] = self.phone
         if self.position is not None:
@@ -16539,6 +16543,8 @@ class IsvUserSaveRequestUserList(TeaModel):
             self.job_no = m.get('job_no')
         if m.get('leave_status') is not None:
             self.leave_status = m.get('leave_status')
+        if m.get('manager_user_id') is not None:
+            self.manager_user_id = m.get('manager_user_id')
         if m.get('phone') is not None:
             self.phone = m.get('phone')
         if m.get('position') is not None:
