@@ -9784,6 +9784,7 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
         pay_type: str = None,
         region_id: str = None,
         resource_group_id: str = None,
+        serverless_type: str = None,
         storage_pay_type: str = None,
         storage_space: int = None,
         storage_used: int = None,
@@ -9810,6 +9811,7 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
         self.pay_type = pay_type
         self.region_id = region_id
         self.resource_group_id = resource_group_id
+        self.serverless_type = serverless_type
         self.storage_pay_type = storage_pay_type
         self.storage_space = storage_space
         self.storage_used = storage_used
@@ -9867,6 +9869,8 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
+        if self.serverless_type is not None:
+            result['ServerlessType'] = self.serverless_type
         if self.storage_pay_type is not None:
             result['StoragePayType'] = self.storage_pay_type
         if self.storage_space is not None:
@@ -9922,6 +9926,8 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ServerlessType') is not None:
+            self.serverless_type = m.get('ServerlessType')
         if m.get('StoragePayType') is not None:
             self.storage_pay_type = m.get('StoragePayType')
         if m.get('StorageSpace') is not None:
