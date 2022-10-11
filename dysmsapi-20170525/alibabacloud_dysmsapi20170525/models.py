@@ -2724,18 +2724,12 @@ class QueryCardSmsTemplateReportRequest(TeaModel):
         return self
 
 
-class QueryCardSmsTemplateReportResponseBody(TeaModel):
+class QueryCardSmsTemplateReportResponseBodyData(TeaModel):
     def __init__(
         self,
-        code: str = None,
-        data: List[Dict[str, Any]] = None,
-        request_id: str = None,
-        success: bool = None,
+        model: List[Dict[str, Any]] = None,
     ):
-        self.code = code
-        self.data = data
-        self.request_id = request_id
-        self.success = success
+        self.model = model
 
     def validate(self):
         pass
@@ -2746,10 +2740,44 @@ class QueryCardSmsTemplateReportResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.model is not None:
+            result['model'] = self.model
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('model') is not None:
+            self.model = m.get('model')
+        return self
+
+
+class QueryCardSmsTemplateReportResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: QueryCardSmsTemplateReportResponseBodyData = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
         if self.code is not None:
             result['Code'] = self.code
         if self.data is not None:
-            result['Data'] = self.data
+            result['Data'] = self.data.to_map()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.success is not None:
@@ -2761,7 +2789,8 @@ class QueryCardSmsTemplateReportResponseBody(TeaModel):
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Data') is not None:
-            self.data = m.get('Data')
+            temp_model = QueryCardSmsTemplateReportResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('Success') is not None:

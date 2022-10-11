@@ -1,3 +1,6 @@
+2022-10-11 Version: 2.0.22
+- Add custom content for QueryCardSmsTemplateReport.
+
 2022-09-30 Version: 2.0.21
 - Add custom content for SendBatchSms.
 
