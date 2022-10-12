@@ -1,3 +1,6 @@
+2022-10-12 Version: 1.0.13
+- Fixed parameter typo.
+
 2022-10-08 Version: 1.0.12
 - Add template modify API.
 - Add BeeBot APIs.

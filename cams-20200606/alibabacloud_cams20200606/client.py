@@ -52,8 +52,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.perspective):
             request.perspective_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.perspective, 'Perspective', 'json')
         body = {}
-        if not UtilClient.is_unset(request.chat_bot_instnace_id):
-            body['ChatBotInstnaceId'] = request.chat_bot_instnace_id
+        if not UtilClient.is_unset(request.chat_bot_instance_id):
+            body['ChatBotInstanceId'] = request.chat_bot_instance_id
         if not UtilClient.is_unset(request.isv_code):
             body['IsvCode'] = request.isv_code
         if not UtilClient.is_unset(request.perspective_shrink):
@@ -94,8 +94,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.perspective):
             request.perspective_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.perspective, 'Perspective', 'json')
         body = {}
-        if not UtilClient.is_unset(request.chat_bot_instnace_id):
-            body['ChatBotInstnaceId'] = request.chat_bot_instnace_id
+        if not UtilClient.is_unset(request.chat_bot_instance_id):
+            body['ChatBotInstanceId'] = request.chat_bot_instance_id
         if not UtilClient.is_unset(request.isv_code):
             body['IsvCode'] = request.isv_code
         if not UtilClient.is_unset(request.perspective_shrink):
@@ -152,8 +152,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.vendor_param):
             request.vendor_param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.vendor_param, 'VendorParam', 'json')
         body = {}
-        if not UtilClient.is_unset(request.chat_bot_instnace_id):
-            body['ChatBotInstnaceId'] = request.chat_bot_instnace_id
+        if not UtilClient.is_unset(request.chat_bot_instance_id):
+            body['ChatBotInstanceId'] = request.chat_bot_instance_id
         if not UtilClient.is_unset(request.intent_name):
             body['IntentName'] = request.intent_name
         if not UtilClient.is_unset(request.isv_code):
@@ -204,8 +204,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.vendor_param):
             request.vendor_param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.vendor_param, 'VendorParam', 'json')
         body = {}
-        if not UtilClient.is_unset(request.chat_bot_instnace_id):
-            body['ChatBotInstnaceId'] = request.chat_bot_instnace_id
+        if not UtilClient.is_unset(request.chat_bot_instance_id):
+            body['ChatBotInstanceId'] = request.chat_bot_instance_id
         if not UtilClient.is_unset(request.intent_name):
             body['IntentName'] = request.intent_name
         if not UtilClient.is_unset(request.isv_code):
