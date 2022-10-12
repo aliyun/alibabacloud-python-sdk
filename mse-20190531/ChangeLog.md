@@ -1,3 +1,6 @@
+2022-10-12 Version: 3.0.38
+- Add normandy api.
+
 2022-09-28 Version: 3.9.6
 - Automatically generate sdk tasks.
 
