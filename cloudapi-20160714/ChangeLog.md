@@ -1,3 +1,6 @@
+2022-10-13 Version: 2.2.9
+- Add DatasetMethods.
+
 2022-09-09 Version: 2.2.8
 - Update SetDomainWebSocketStatus.
 
