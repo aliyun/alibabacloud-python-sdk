@@ -1225,6 +1225,7 @@ class ApplyAddRequest(TeaModel):
         status: int = None,
         thirdpart_apply_id: str = None,
         thirdpart_business_id: str = None,
+        thirdpart_depart_id: str = None,
         together_book_rule: int = None,
         train_budget: int = None,
         traveler_list: List[ApplyAddRequestTravelerList] = None,
@@ -1256,6 +1257,7 @@ class ApplyAddRequest(TeaModel):
         self.status = status
         self.thirdpart_apply_id = thirdpart_apply_id
         self.thirdpart_business_id = thirdpart_business_id
+        self.thirdpart_depart_id = thirdpart_depart_id
         self.together_book_rule = together_book_rule
         self.train_budget = train_budget
         self.traveler_list = traveler_list
@@ -1343,6 +1345,8 @@ class ApplyAddRequest(TeaModel):
             result['thirdpart_apply_id'] = self.thirdpart_apply_id
         if self.thirdpart_business_id is not None:
             result['thirdpart_business_id'] = self.thirdpart_business_id
+        if self.thirdpart_depart_id is not None:
+            result['thirdpart_depart_id'] = self.thirdpart_depart_id
         if self.together_book_rule is not None:
             result['together_book_rule'] = self.together_book_rule
         if self.train_budget is not None:
@@ -1422,6 +1426,8 @@ class ApplyAddRequest(TeaModel):
             self.thirdpart_apply_id = m.get('thirdpart_apply_id')
         if m.get('thirdpart_business_id') is not None:
             self.thirdpart_business_id = m.get('thirdpart_business_id')
+        if m.get('thirdpart_depart_id') is not None:
+            self.thirdpart_depart_id = m.get('thirdpart_depart_id')
         if m.get('together_book_rule') is not None:
             self.together_book_rule = m.get('together_book_rule')
         if m.get('train_budget') is not None:
@@ -1476,6 +1482,7 @@ class ApplyAddShrinkRequest(TeaModel):
         status: int = None,
         thirdpart_apply_id: str = None,
         thirdpart_business_id: str = None,
+        thirdpart_depart_id: str = None,
         together_book_rule: int = None,
         train_budget: int = None,
         traveler_list_shrink: str = None,
@@ -1507,6 +1514,7 @@ class ApplyAddShrinkRequest(TeaModel):
         self.status = status
         self.thirdpart_apply_id = thirdpart_apply_id
         self.thirdpart_business_id = thirdpart_business_id
+        self.thirdpart_depart_id = thirdpart_depart_id
         self.together_book_rule = together_book_rule
         self.train_budget = train_budget
         self.traveler_list_shrink = traveler_list_shrink
@@ -1565,6 +1573,8 @@ class ApplyAddShrinkRequest(TeaModel):
             result['thirdpart_apply_id'] = self.thirdpart_apply_id
         if self.thirdpart_business_id is not None:
             result['thirdpart_business_id'] = self.thirdpart_business_id
+        if self.thirdpart_depart_id is not None:
+            result['thirdpart_depart_id'] = self.thirdpart_depart_id
         if self.together_book_rule is not None:
             result['together_book_rule'] = self.together_book_rule
         if self.train_budget is not None:
@@ -1629,6 +1639,8 @@ class ApplyAddShrinkRequest(TeaModel):
             self.thirdpart_apply_id = m.get('thirdpart_apply_id')
         if m.get('thirdpart_business_id') is not None:
             self.thirdpart_business_id = m.get('thirdpart_business_id')
+        if m.get('thirdpart_depart_id') is not None:
+            self.thirdpart_depart_id = m.get('thirdpart_depart_id')
         if m.get('together_book_rule') is not None:
             self.together_book_rule = m.get('together_book_rule')
         if m.get('train_budget') is not None:
@@ -3318,6 +3330,7 @@ class ApplyModifyRequest(TeaModel):
         status: int = None,
         thirdpart_apply_id: str = None,
         thirdpart_business_id: str = None,
+        thirdpart_depart_id: str = None,
         together_book_rule: int = None,
         train_budget: int = None,
         traveler_list: List[ApplyModifyRequestTravelerList] = None,
@@ -3347,6 +3360,7 @@ class ApplyModifyRequest(TeaModel):
         self.status = status
         self.thirdpart_apply_id = thirdpart_apply_id
         self.thirdpart_business_id = thirdpart_business_id
+        self.thirdpart_depart_id = thirdpart_depart_id
         self.together_book_rule = together_book_rule
         self.train_budget = train_budget
         self.traveler_list = traveler_list
@@ -3431,6 +3445,8 @@ class ApplyModifyRequest(TeaModel):
             result['thirdpart_apply_id'] = self.thirdpart_apply_id
         if self.thirdpart_business_id is not None:
             result['thirdpart_business_id'] = self.thirdpart_business_id
+        if self.thirdpart_depart_id is not None:
+            result['thirdpart_depart_id'] = self.thirdpart_depart_id
         if self.together_book_rule is not None:
             result['together_book_rule'] = self.together_book_rule
         if self.train_budget is not None:
@@ -3506,6 +3522,8 @@ class ApplyModifyRequest(TeaModel):
             self.thirdpart_apply_id = m.get('thirdpart_apply_id')
         if m.get('thirdpart_business_id') is not None:
             self.thirdpart_business_id = m.get('thirdpart_business_id')
+        if m.get('thirdpart_depart_id') is not None:
+            self.thirdpart_depart_id = m.get('thirdpart_depart_id')
         if m.get('together_book_rule') is not None:
             self.together_book_rule = m.get('together_book_rule')
         if m.get('train_budget') is not None:
@@ -3557,6 +3575,7 @@ class ApplyModifyShrinkRequest(TeaModel):
         status: int = None,
         thirdpart_apply_id: str = None,
         thirdpart_business_id: str = None,
+        thirdpart_depart_id: str = None,
         together_book_rule: int = None,
         train_budget: int = None,
         traveler_list_shrink: str = None,
@@ -3586,6 +3605,7 @@ class ApplyModifyShrinkRequest(TeaModel):
         self.status = status
         self.thirdpart_apply_id = thirdpart_apply_id
         self.thirdpart_business_id = thirdpart_business_id
+        self.thirdpart_depart_id = thirdpart_depart_id
         self.together_book_rule = together_book_rule
         self.train_budget = train_budget
         self.traveler_list_shrink = traveler_list_shrink
@@ -3641,6 +3661,8 @@ class ApplyModifyShrinkRequest(TeaModel):
             result['thirdpart_apply_id'] = self.thirdpart_apply_id
         if self.thirdpart_business_id is not None:
             result['thirdpart_business_id'] = self.thirdpart_business_id
+        if self.thirdpart_depart_id is not None:
+            result['thirdpart_depart_id'] = self.thirdpart_depart_id
         if self.together_book_rule is not None:
             result['together_book_rule'] = self.together_book_rule
         if self.train_budget is not None:
@@ -3701,6 +3723,8 @@ class ApplyModifyShrinkRequest(TeaModel):
             self.thirdpart_apply_id = m.get('thirdpart_apply_id')
         if m.get('thirdpart_business_id') is not None:
             self.thirdpart_business_id = m.get('thirdpart_business_id')
+        if m.get('thirdpart_depart_id') is not None:
+            self.thirdpart_depart_id = m.get('thirdpart_depart_id')
         if m.get('together_book_rule') is not None:
             self.together_book_rule = m.get('together_book_rule')
         if m.get('train_budget') is not None:

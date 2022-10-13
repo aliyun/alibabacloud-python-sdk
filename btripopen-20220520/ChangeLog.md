@@ -1,3 +1,6 @@
+2022-10-13 Version: 1.0.22
+- Update thirdpart_depart_id.
+
 2022-10-10 Version: 1.0.21
 - Update requestId.
 

@@ -390,6 +390,8 @@ class Client(OpenApiClient):
             body['thirdpart_apply_id'] = request.thirdpart_apply_id
         if not UtilClient.is_unset(request.thirdpart_business_id):
             body['thirdpart_business_id'] = request.thirdpart_business_id
+        if not UtilClient.is_unset(request.thirdpart_depart_id):
+            body['thirdpart_depart_id'] = request.thirdpart_depart_id
         if not UtilClient.is_unset(request.together_book_rule):
             body['together_book_rule'] = request.together_book_rule
         if not UtilClient.is_unset(request.train_budget):
@@ -501,6 +503,8 @@ class Client(OpenApiClient):
             body['thirdpart_apply_id'] = request.thirdpart_apply_id
         if not UtilClient.is_unset(request.thirdpart_business_id):
             body['thirdpart_business_id'] = request.thirdpart_business_id
+        if not UtilClient.is_unset(request.thirdpart_depart_id):
+            body['thirdpart_depart_id'] = request.thirdpart_depart_id
         if not UtilClient.is_unset(request.together_book_rule):
             body['together_book_rule'] = request.together_book_rule
         if not UtilClient.is_unset(request.train_budget):
@@ -857,6 +861,8 @@ class Client(OpenApiClient):
             body['thirdpart_apply_id'] = request.thirdpart_apply_id
         if not UtilClient.is_unset(request.thirdpart_business_id):
             body['thirdpart_business_id'] = request.thirdpart_business_id
+        if not UtilClient.is_unset(request.thirdpart_depart_id):
+            body['thirdpart_depart_id'] = request.thirdpart_depart_id
         if not UtilClient.is_unset(request.together_book_rule):
             body['together_book_rule'] = request.together_book_rule
         if not UtilClient.is_unset(request.train_budget):
@@ -962,6 +968,8 @@ class Client(OpenApiClient):
             body['thirdpart_apply_id'] = request.thirdpart_apply_id
         if not UtilClient.is_unset(request.thirdpart_business_id):
             body['thirdpart_business_id'] = request.thirdpart_business_id
+        if not UtilClient.is_unset(request.thirdpart_depart_id):
+            body['thirdpart_depart_id'] = request.thirdpart_depart_id
         if not UtilClient.is_unset(request.together_book_rule):
             body['together_book_rule'] = request.together_book_rule
         if not UtilClient.is_unset(request.train_budget):
