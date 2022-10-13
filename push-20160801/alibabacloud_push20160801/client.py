@@ -1014,6 +1014,10 @@ class Client(OpenApiClient):
             query['AndroidNotificationBarType'] = request.android_notification_bar_type
         if not UtilClient.is_unset(request.android_notification_channel):
             query['AndroidNotificationChannel'] = request.android_notification_channel
+        if not UtilClient.is_unset(request.android_notification_group):
+            query['AndroidNotificationGroup'] = request.android_notification_group
+        if not UtilClient.is_unset(request.android_notification_honor_channel):
+            query['AndroidNotificationHonorChannel'] = request.android_notification_honor_channel
         if not UtilClient.is_unset(request.android_notification_huawei_channel):
             query['AndroidNotificationHuaweiChannel'] = request.android_notification_huawei_channel
         if not UtilClient.is_unset(request.android_notification_notify_id):
@@ -1170,6 +1174,10 @@ class Client(OpenApiClient):
             query['AndroidNotificationBarType'] = request.android_notification_bar_type
         if not UtilClient.is_unset(request.android_notification_channel):
             query['AndroidNotificationChannel'] = request.android_notification_channel
+        if not UtilClient.is_unset(request.android_notification_group):
+            query['AndroidNotificationGroup'] = request.android_notification_group
+        if not UtilClient.is_unset(request.android_notification_honor_channel):
+            query['AndroidNotificationHonorChannel'] = request.android_notification_honor_channel
         if not UtilClient.is_unset(request.android_notification_huawei_channel):
             query['AndroidNotificationHuaweiChannel'] = request.android_notification_huawei_channel
         if not UtilClient.is_unset(request.android_notification_notify_id):
@@ -1752,84 +1760,6 @@ class Client(OpenApiClient):
     ) -> push_20160801_models.QueryAliasesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.query_aliases_with_options_async(request, runtime)
-
-    def query_device_count_with_options(
-        self,
-        request: push_20160801_models.QueryDeviceCountRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> push_20160801_models.QueryDeviceCountResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.app_key):
-            query['AppKey'] = request.app_key
-        if not UtilClient.is_unset(request.target):
-            query['Target'] = request.target
-        if not UtilClient.is_unset(request.target_value):
-            query['TargetValue'] = request.target_value
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='QueryDeviceCount',
-            version='2016-08-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            push_20160801_models.QueryDeviceCountResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def query_device_count_with_options_async(
-        self,
-        request: push_20160801_models.QueryDeviceCountRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> push_20160801_models.QueryDeviceCountResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.app_key):
-            query['AppKey'] = request.app_key
-        if not UtilClient.is_unset(request.target):
-            query['Target'] = request.target
-        if not UtilClient.is_unset(request.target_value):
-            query['TargetValue'] = request.target_value
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='QueryDeviceCount',
-            version='2016-08-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            push_20160801_models.QueryDeviceCountResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def query_device_count(
-        self,
-        request: push_20160801_models.QueryDeviceCountRequest,
-    ) -> push_20160801_models.QueryDeviceCountResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.query_device_count_with_options(request, runtime)
-
-    async def query_device_count_async(
-        self,
-        request: push_20160801_models.QueryDeviceCountRequest,
-    ) -> push_20160801_models.QueryDeviceCountResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.query_device_count_with_options_async(request, runtime)
 
     def query_device_info_with_options(
         self,
