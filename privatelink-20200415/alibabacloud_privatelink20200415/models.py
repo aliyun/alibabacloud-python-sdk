@@ -1015,9 +1015,11 @@ class CreateVpcEndpointServiceRequestResource(TeaModel):
         self,
         resource_id: str = None,
         resource_type: str = None,
+        zone_id: str = None,
     ):
         self.resource_id = resource_id
         self.resource_type = resource_type
+        self.zone_id = zone_id
 
     def validate(self):
         pass
@@ -1032,6 +1034,8 @@ class CreateVpcEndpointServiceRequestResource(TeaModel):
             result['ResourceId'] = self.resource_id
         if self.resource_type is not None:
             result['ResourceType'] = self.resource_type
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
         return result
 
     def from_map(self, m: dict = None):
@@ -1040,6 +1044,8 @@ class CreateVpcEndpointServiceRequestResource(TeaModel):
             self.resource_id = m.get('ResourceId')
         if m.get('ResourceType') is not None:
             self.resource_type = m.get('ResourceType')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
         return self
 
 
