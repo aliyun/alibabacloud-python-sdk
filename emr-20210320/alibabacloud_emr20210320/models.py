@@ -825,11 +825,13 @@ class ByTimeScalingRule(TeaModel):
     def __init__(
         self,
         end_time: int = None,
+        launch_expiration_time: int = None,
         launch_time: int = None,
         recurrence_type: str = None,
         recurrence_value: str = None,
     ):
         self.end_time = end_time
+        self.launch_expiration_time = launch_expiration_time
         self.launch_time = launch_time
         self.recurrence_type = recurrence_type
         self.recurrence_value = recurrence_value
@@ -845,6 +847,8 @@ class ByTimeScalingRule(TeaModel):
         result = dict()
         if self.end_time is not None:
             result['EndTime'] = self.end_time
+        if self.launch_expiration_time is not None:
+            result['LaunchExpirationTime'] = self.launch_expiration_time
         if self.launch_time is not None:
             result['LaunchTime'] = self.launch_time
         if self.recurrence_type is not None:
@@ -857,6 +861,8 @@ class ByTimeScalingRule(TeaModel):
         m = m or dict()
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
+        if m.get('LaunchExpirationTime') is not None:
+            self.launch_expiration_time = m.get('LaunchExpirationTime')
         if m.get('LaunchTime') is not None:
             self.launch_time = m.get('LaunchTime')
         if m.get('RecurrenceType') is not None:
@@ -1146,7 +1152,6 @@ class Cluster(TeaModel):
         state_change_reason: ClusterStateChangeReason = None,
         subscription_config: SubscriptionConfig = None,
         tags: List[Tag] = None,
-        vpc_id: str = None,
     ):
         self.cluster_id = cluster_id
         self.cluster_name = cluster_name
@@ -1167,7 +1172,6 @@ class Cluster(TeaModel):
         self.state_change_reason = state_change_reason
         self.subscription_config = subscription_config
         self.tags = tags
-        self.vpc_id = vpc_id
 
     def validate(self):
         if self.node_attributes:
@@ -1227,8 +1231,6 @@ class Cluster(TeaModel):
         if self.tags is not None:
             for k in self.tags:
                 result['Tags'].append(k.to_map() if k else None)
-        if self.vpc_id is not None:
-            result['VpcId'] = self.vpc_id
         return result
 
     def from_map(self, m: dict = None):
@@ -1277,8 +1279,6 @@ class Cluster(TeaModel):
             for k in m.get('Tags'):
                 temp_model = Tag()
                 self.tags.append(temp_model.from_map(k))
-        if m.get('VpcId') is not None:
-            self.vpc_id = m.get('VpcId')
         return self
 
 
@@ -2632,6 +2632,69 @@ class MetaStoreConf(TeaModel):
         return self
 
 
+class MetricsTrigger(TeaModel):
+    def __init__(
+        self,
+        comparison_operator: str = None,
+        cool_down_interval: int = None,
+        evaluation_count: int = None,
+        metric_name: str = None,
+        statistics: str = None,
+        threshold: float = None,
+        time_window: int = None,
+    ):
+        self.comparison_operator = comparison_operator
+        self.cool_down_interval = cool_down_interval
+        self.evaluation_count = evaluation_count
+        self.metric_name = metric_name
+        self.statistics = statistics
+        self.threshold = threshold
+        self.time_window = time_window
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.comparison_operator is not None:
+            result['ComparisonOperator'] = self.comparison_operator
+        if self.cool_down_interval is not None:
+            result['CoolDownInterval'] = self.cool_down_interval
+        if self.evaluation_count is not None:
+            result['EvaluationCount'] = self.evaluation_count
+        if self.metric_name is not None:
+            result['MetricName'] = self.metric_name
+        if self.statistics is not None:
+            result['Statistics'] = self.statistics
+        if self.threshold is not None:
+            result['Threshold'] = self.threshold
+        if self.time_window is not None:
+            result['TimeWindow'] = self.time_window
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ComparisonOperator') is not None:
+            self.comparison_operator = m.get('ComparisonOperator')
+        if m.get('CoolDownInterval') is not None:
+            self.cool_down_interval = m.get('CoolDownInterval')
+        if m.get('EvaluationCount') is not None:
+            self.evaluation_count = m.get('EvaluationCount')
+        if m.get('MetricName') is not None:
+            self.metric_name = m.get('MetricName')
+        if m.get('Statistics') is not None:
+            self.statistics = m.get('Statistics')
+        if m.get('Threshold') is not None:
+            self.threshold = m.get('Threshold')
+        if m.get('TimeWindow') is not None:
+            self.time_window = m.get('TimeWindow')
+        return self
+
+
 class Node(TeaModel):
     def __init__(
         self,
@@ -2640,6 +2703,7 @@ class Node(TeaModel):
         auto_renew_duration_unit: str = None,
         expire_time: int = None,
         instance_type: str = None,
+        maintenance_status: str = None,
         node_group_id: str = None,
         node_group_type: str = None,
         node_id: str = None,
@@ -2654,6 +2718,7 @@ class Node(TeaModel):
         self.auto_renew_duration_unit = auto_renew_duration_unit
         self.expire_time = expire_time
         self.instance_type = instance_type
+        self.maintenance_status = maintenance_status
         self.node_group_id = node_group_id
         self.node_group_type = node_group_type
         self.node_id = node_id
@@ -2682,6 +2747,8 @@ class Node(TeaModel):
             result['ExpireTime'] = self.expire_time
         if self.instance_type is not None:
             result['InstanceType'] = self.instance_type
+        if self.maintenance_status is not None:
+            result['MaintenanceStatus'] = self.maintenance_status
         if self.node_group_id is not None:
             result['NodeGroupId'] = self.node_group_id
         if self.node_group_type is not None:
@@ -2712,6 +2779,8 @@ class Node(TeaModel):
             self.expire_time = m.get('ExpireTime')
         if m.get('InstanceType') is not None:
             self.instance_type = m.get('InstanceType')
+        if m.get('MaintenanceStatus') is not None:
+            self.maintenance_status = m.get('MaintenanceStatus')
         if m.get('NodeGroupId') is not None:
             self.node_group_id = m.get('NodeGroupId')
         if m.get('NodeGroupType') is not None:
@@ -4145,6 +4214,39 @@ class ScalingActivity(TeaModel):
         return self
 
 
+class ScalingConstraints(TeaModel):
+    def __init__(
+        self,
+        max_capacity: int = None,
+        min_capacity: int = None,
+    ):
+        self.max_capacity = max_capacity
+        self.min_capacity = min_capacity
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_capacity is not None:
+            result['MaxCapacity'] = self.max_capacity
+        if self.min_capacity is not None:
+            result['MinCapacity'] = self.min_capacity
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxCapacity') is not None:
+            self.max_capacity = m.get('MaxCapacity')
+        if m.get('MinCapacity') is not None:
+            self.min_capacity = m.get('MinCapacity')
+        return self
+
+
 class ScalingGroupConfigInstanceTypeList(TeaModel):
     def __init__(
         self,
@@ -4446,78 +4548,17 @@ class ScalingGroupConfig(TeaModel):
         return self
 
 
-class ScalingRuleByLoadScalingRule(TeaModel):
-    def __init__(
-        self,
-        comparison_operator: str = None,
-        cool_down_interval: int = None,
-        evaluation_count: int = None,
-        metric_name: str = None,
-        statistics: str = None,
-        threshold: float = None,
-        time_window: int = None,
-    ):
-        self.comparison_operator = comparison_operator
-        self.cool_down_interval = cool_down_interval
-        self.evaluation_count = evaluation_count
-        self.metric_name = metric_name
-        self.statistics = statistics
-        self.threshold = threshold
-        self.time_window = time_window
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.comparison_operator is not None:
-            result['ComparisonOperator'] = self.comparison_operator
-        if self.cool_down_interval is not None:
-            result['CoolDownInterval'] = self.cool_down_interval
-        if self.evaluation_count is not None:
-            result['EvaluationCount'] = self.evaluation_count
-        if self.metric_name is not None:
-            result['MetricName'] = self.metric_name
-        if self.statistics is not None:
-            result['Statistics'] = self.statistics
-        if self.threshold is not None:
-            result['Threshold'] = self.threshold
-        if self.time_window is not None:
-            result['TimeWindow'] = self.time_window
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ComparisonOperator') is not None:
-            self.comparison_operator = m.get('ComparisonOperator')
-        if m.get('CoolDownInterval') is not None:
-            self.cool_down_interval = m.get('CoolDownInterval')
-        if m.get('EvaluationCount') is not None:
-            self.evaluation_count = m.get('EvaluationCount')
-        if m.get('MetricName') is not None:
-            self.metric_name = m.get('MetricName')
-        if m.get('Statistics') is not None:
-            self.statistics = m.get('Statistics')
-        if m.get('Threshold') is not None:
-            self.threshold = m.get('Threshold')
-        if m.get('TimeWindow') is not None:
-            self.time_window = m.get('TimeWindow')
-        return self
-
-
-class ScalingRuleByTimeScalingRule(TeaModel):
+class TimeTrigger(TeaModel):
     def __init__(
         self,
         end_time: int = None,
+        launch_expiration_time: int = None,
         launch_time: int = None,
         recurrence_type: str = None,
         recurrence_value: str = None,
     ):
         self.end_time = end_time
+        self.launch_expiration_time = launch_expiration_time
         self.launch_time = launch_time
         self.recurrence_type = recurrence_type
         self.recurrence_value = recurrence_value
@@ -4533,6 +4574,8 @@ class ScalingRuleByTimeScalingRule(TeaModel):
         result = dict()
         if self.end_time is not None:
             result['EndTime'] = self.end_time
+        if self.launch_expiration_time is not None:
+            result['LaunchExpirationTime'] = self.launch_expiration_time
         if self.launch_time is not None:
             result['LaunchTime'] = self.launch_time
         if self.recurrence_type is not None:
@@ -4545,6 +4588,8 @@ class ScalingRuleByTimeScalingRule(TeaModel):
         m = m or dict()
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
+        if m.get('LaunchExpirationTime') is not None:
+            self.launch_expiration_time = m.get('LaunchExpirationTime')
         if m.get('LaunchTime') is not None:
             self.launch_time = m.get('LaunchTime')
         if m.get('RecurrenceType') is not None:
@@ -4557,27 +4602,43 @@ class ScalingRuleByTimeScalingRule(TeaModel):
 class ScalingRule(TeaModel):
     def __init__(
         self,
+        activity_type: str = None,
+        adjustment_type: str = None,
         adjustment_value: int = None,
-        by_load_scaling_rule: ScalingRuleByLoadScalingRule = None,
-        by_time_scaling_rule: ScalingRuleByTimeScalingRule = None,
+        by_load_scaling_rule: MetricsTrigger = None,
+        by_time_scaling_rule: TimeTrigger = None,
         cool_down_interval: int = None,
+        metrics_trigger: MetricsTrigger = None,
+        rule_name: str = None,
         scaling_activity_type: str = None,
         scaling_rule_name: str = None,
         scaling_rule_type: str = None,
+        time_trigger: TimeTrigger = None,
+        trigger_type: str = None,
     ):
+        self.activity_type = activity_type
+        self.adjustment_type = adjustment_type
         self.adjustment_value = adjustment_value
         self.by_load_scaling_rule = by_load_scaling_rule
         self.by_time_scaling_rule = by_time_scaling_rule
         self.cool_down_interval = cool_down_interval
+        self.metrics_trigger = metrics_trigger
+        self.rule_name = rule_name
         self.scaling_activity_type = scaling_activity_type
         self.scaling_rule_name = scaling_rule_name
         self.scaling_rule_type = scaling_rule_type
+        self.time_trigger = time_trigger
+        self.trigger_type = trigger_type
 
     def validate(self):
         if self.by_load_scaling_rule:
             self.by_load_scaling_rule.validate()
         if self.by_time_scaling_rule:
             self.by_time_scaling_rule.validate()
+        if self.metrics_trigger:
+            self.metrics_trigger.validate()
+        if self.time_trigger:
+            self.time_trigger.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -4585,6 +4646,10 @@ class ScalingRule(TeaModel):
             return _map
 
         result = dict()
+        if self.activity_type is not None:
+            result['ActivityType'] = self.activity_type
+        if self.adjustment_type is not None:
+            result['AdjustmentType'] = self.adjustment_type
         if self.adjustment_value is not None:
             result['AdjustmentValue'] = self.adjustment_value
         if self.by_load_scaling_rule is not None:
@@ -4593,32 +4658,54 @@ class ScalingRule(TeaModel):
             result['ByTimeScalingRule'] = self.by_time_scaling_rule.to_map()
         if self.cool_down_interval is not None:
             result['CoolDownInterval'] = self.cool_down_interval
+        if self.metrics_trigger is not None:
+            result['MetricsTrigger'] = self.metrics_trigger.to_map()
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
         if self.scaling_activity_type is not None:
             result['ScalingActivityType'] = self.scaling_activity_type
         if self.scaling_rule_name is not None:
             result['ScalingRuleName'] = self.scaling_rule_name
         if self.scaling_rule_type is not None:
             result['ScalingRuleType'] = self.scaling_rule_type
+        if self.time_trigger is not None:
+            result['TimeTrigger'] = self.time_trigger.to_map()
+        if self.trigger_type is not None:
+            result['TriggerType'] = self.trigger_type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ActivityType') is not None:
+            self.activity_type = m.get('ActivityType')
+        if m.get('AdjustmentType') is not None:
+            self.adjustment_type = m.get('AdjustmentType')
         if m.get('AdjustmentValue') is not None:
             self.adjustment_value = m.get('AdjustmentValue')
         if m.get('ByLoadScalingRule') is not None:
-            temp_model = ScalingRuleByLoadScalingRule()
+            temp_model = MetricsTrigger()
             self.by_load_scaling_rule = temp_model.from_map(m['ByLoadScalingRule'])
         if m.get('ByTimeScalingRule') is not None:
-            temp_model = ScalingRuleByTimeScalingRule()
+            temp_model = TimeTrigger()
             self.by_time_scaling_rule = temp_model.from_map(m['ByTimeScalingRule'])
         if m.get('CoolDownInterval') is not None:
             self.cool_down_interval = m.get('CoolDownInterval')
+        if m.get('MetricsTrigger') is not None:
+            temp_model = MetricsTrigger()
+            self.metrics_trigger = temp_model.from_map(m['MetricsTrigger'])
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
         if m.get('ScalingActivityType') is not None:
             self.scaling_activity_type = m.get('ScalingActivityType')
         if m.get('ScalingRuleName') is not None:
             self.scaling_rule_name = m.get('ScalingRuleName')
         if m.get('ScalingRuleType') is not None:
             self.scaling_rule_type = m.get('ScalingRuleType')
+        if m.get('TimeTrigger') is not None:
+            temp_model = TimeTrigger()
+            self.time_trigger = temp_model.from_map(m['TimeTrigger'])
+        if m.get('TriggerType') is not None:
+            self.trigger_type = m.get('TriggerType')
         return self
 
 
@@ -6648,6 +6735,7 @@ class ListNodesRequest(TeaModel):
         private_ips: List[str] = None,
         public_ips: List[str] = None,
         region_id: str = None,
+        tags: List[Tag] = None,
     ):
         self.cluster_id = cluster_id
         self.max_results = max_results
@@ -6659,9 +6747,13 @@ class ListNodesRequest(TeaModel):
         self.private_ips = private_ips
         self.public_ips = public_ips
         self.region_id = region_id
+        self.tags = tags
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -6689,6 +6781,10 @@ class ListNodesRequest(TeaModel):
             result['PublicIps'] = self.public_ips
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -6713,6 +6809,11 @@ class ListNodesRequest(TeaModel):
             self.public_ips = m.get('PublicIps')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = Tag()
+                self.tags.append(temp_model.from_map(k))
         return self
 
 
