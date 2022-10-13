@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_privatelink20200415.
 
-Created on 14/09/2022
+Created on 13/10/2022
 
 @author: Alibaba Cloud SDK
 """

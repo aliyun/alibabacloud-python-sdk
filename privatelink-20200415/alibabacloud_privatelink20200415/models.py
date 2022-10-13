@@ -764,6 +764,7 @@ class CreateVpcEndpointRequest(TeaModel):
         endpoint_type: str = None,
         protected_enabled: bool = None,
         region_id: str = None,
+        resource_group_id: str = None,
         security_group_id: List[str] = None,
         service_id: str = None,
         service_name: str = None,
@@ -778,6 +779,7 @@ class CreateVpcEndpointRequest(TeaModel):
         self.endpoint_type = endpoint_type
         self.protected_enabled = protected_enabled
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         self.security_group_id = security_group_id
         self.service_id = service_id
         self.service_name = service_name
@@ -811,6 +813,8 @@ class CreateVpcEndpointRequest(TeaModel):
             result['ProtectedEnabled'] = self.protected_enabled
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.security_group_id is not None:
             result['SecurityGroupId'] = self.security_group_id
         if self.service_id is not None:
@@ -843,6 +847,8 @@ class CreateVpcEndpointRequest(TeaModel):
             self.protected_enabled = m.get('ProtectedEnabled')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SecurityGroupId') is not None:
             self.security_group_id = m.get('SecurityGroupId')
         if m.get('ServiceId') is not None:
@@ -1046,6 +1052,7 @@ class CreateVpcEndpointServiceRequest(TeaModel):
         payer: str = None,
         region_id: str = None,
         resource: List[CreateVpcEndpointServiceRequestResource] = None,
+        resource_group_id: str = None,
         service_description: str = None,
         service_resource_type: str = None,
         service_support_ipv_6: bool = None,
@@ -1057,6 +1064,7 @@ class CreateVpcEndpointServiceRequest(TeaModel):
         self.payer = payer
         self.region_id = region_id
         self.resource = resource
+        self.resource_group_id = resource_group_id
         self.service_description = service_description
         self.service_resource_type = service_resource_type
         self.service_support_ipv_6 = service_support_ipv_6
@@ -1088,6 +1096,8 @@ class CreateVpcEndpointServiceRequest(TeaModel):
         if self.resource is not None:
             for k in self.resource:
                 result['Resource'].append(k.to_map() if k else None)
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.service_description is not None:
             result['ServiceDescription'] = self.service_description
         if self.service_resource_type is not None:
@@ -1115,6 +1125,8 @@ class CreateVpcEndpointServiceRequest(TeaModel):
             for k in m.get('Resource'):
                 temp_model = CreateVpcEndpointServiceRequestResource()
                 self.resource.append(temp_model.from_map(k))
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ServiceDescription') is not None:
             self.service_description = m.get('ServiceDescription')
         if m.get('ServiceResourceType') is not None:
@@ -1132,6 +1144,7 @@ class CreateVpcEndpointServiceResponseBody(TeaModel):
         auto_accept_enabled: bool = None,
         create_time: str = None,
         request_id: str = None,
+        resource_group_id: str = None,
         service_business_status: str = None,
         service_description: str = None,
         service_domain: str = None,
@@ -1144,6 +1157,7 @@ class CreateVpcEndpointServiceResponseBody(TeaModel):
         self.auto_accept_enabled = auto_accept_enabled
         self.create_time = create_time
         self.request_id = request_id
+        self.resource_group_id = resource_group_id
         self.service_business_status = service_business_status
         self.service_description = service_description
         self.service_domain = service_domain
@@ -1168,6 +1182,8 @@ class CreateVpcEndpointServiceResponseBody(TeaModel):
             result['CreateTime'] = self.create_time
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.service_business_status is not None:
             result['ServiceBusinessStatus'] = self.service_business_status
         if self.service_description is not None:
@@ -1194,6 +1210,8 @@ class CreateVpcEndpointServiceResponseBody(TeaModel):
             self.create_time = m.get('CreateTime')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ServiceBusinessStatus') is not None:
             self.service_business_status = m.get('ServiceBusinessStatus')
         if m.get('ServiceDescription') is not None:
@@ -2866,6 +2884,7 @@ class GetVpcEndpointAttributeResponseBody(TeaModel):
         payer: str = None,
         region_id: str = None,
         request_id: str = None,
+        resource_group_id: str = None,
         resource_owner: bool = None,
         service_id: str = None,
         service_name: str = None,
@@ -2886,6 +2905,7 @@ class GetVpcEndpointAttributeResponseBody(TeaModel):
         self.payer = payer
         self.region_id = region_id
         self.request_id = request_id
+        self.resource_group_id = resource_group_id
         self.resource_owner = resource_owner
         self.service_id = service_id
         self.service_name = service_name
@@ -2928,6 +2948,8 @@ class GetVpcEndpointAttributeResponseBody(TeaModel):
             result['RegionId'] = self.region_id
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner is not None:
             result['ResourceOwner'] = self.resource_owner
         if self.service_id is not None:
@@ -2970,6 +2992,8 @@ class GetVpcEndpointAttributeResponseBody(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwner') is not None:
             self.resource_owner = m.get('ResourceOwner')
         if m.get('ServiceId') is not None:
@@ -3073,6 +3097,7 @@ class GetVpcEndpointServiceAttributeResponseBody(TeaModel):
         payer: str = None,
         region_id: str = None,
         request_id: str = None,
+        resource_group_id: str = None,
         service_business_status: str = None,
         service_description: str = None,
         service_domain: str = None,
@@ -3093,6 +3118,7 @@ class GetVpcEndpointServiceAttributeResponseBody(TeaModel):
         self.payer = payer
         self.region_id = region_id
         self.request_id = request_id
+        self.resource_group_id = resource_group_id
         self.service_business_status = service_business_status
         self.service_description = service_description
         self.service_domain = service_domain
@@ -3130,6 +3156,8 @@ class GetVpcEndpointServiceAttributeResponseBody(TeaModel):
             result['RegionId'] = self.region_id
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.service_business_status is not None:
             result['ServiceBusinessStatus'] = self.service_business_status
         if self.service_description is not None:
@@ -3172,6 +3200,8 @@ class GetVpcEndpointServiceAttributeResponseBody(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ServiceBusinessStatus') is not None:
             self.service_business_status = m.get('ServiceBusinessStatus')
         if m.get('ServiceDescription') is not None:
@@ -3253,6 +3283,7 @@ class ListVpcEndpointConnectionsRequest(TeaModel):
         next_token: str = None,
         region_id: str = None,
         replaced_resource_id: str = None,
+        resource_group_id: str = None,
         resource_id: str = None,
         service_id: str = None,
     ):
@@ -3265,6 +3296,7 @@ class ListVpcEndpointConnectionsRequest(TeaModel):
         self.next_token = next_token
         self.region_id = region_id
         self.replaced_resource_id = replaced_resource_id
+        self.resource_group_id = resource_group_id
         self.resource_id = resource_id
         self.service_id = service_id
 
@@ -3295,6 +3327,8 @@ class ListVpcEndpointConnectionsRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.replaced_resource_id is not None:
             result['ReplacedResourceId'] = self.replaced_resource_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_id is not None:
             result['ResourceId'] = self.resource_id
         if self.service_id is not None:
@@ -3321,6 +3355,8 @@ class ListVpcEndpointConnectionsRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('ReplacedResourceId') is not None:
             self.replaced_resource_id = m.get('ReplacedResourceId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceId') is not None:
             self.resource_id = m.get('ResourceId')
         if m.get('ServiceId') is not None:
@@ -3418,6 +3454,7 @@ class ListVpcEndpointConnectionsResponseBodyConnections(TeaModel):
         endpoint_owner_id: int = None,
         endpoint_vpc_id: str = None,
         modified_time: str = None,
+        resource_group_id: str = None,
         resource_owner: bool = None,
         service_id: str = None,
         zones: List[ListVpcEndpointConnectionsResponseBodyConnectionsZones] = None,
@@ -3428,6 +3465,7 @@ class ListVpcEndpointConnectionsResponseBodyConnections(TeaModel):
         self.endpoint_owner_id = endpoint_owner_id
         self.endpoint_vpc_id = endpoint_vpc_id
         self.modified_time = modified_time
+        self.resource_group_id = resource_group_id
         self.resource_owner = resource_owner
         self.service_id = service_id
         self.zones = zones
@@ -3456,6 +3494,8 @@ class ListVpcEndpointConnectionsResponseBodyConnections(TeaModel):
             result['EndpointVpcId'] = self.endpoint_vpc_id
         if self.modified_time is not None:
             result['ModifiedTime'] = self.modified_time
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner is not None:
             result['ResourceOwner'] = self.resource_owner
         if self.service_id is not None:
@@ -3480,6 +3520,8 @@ class ListVpcEndpointConnectionsResponseBodyConnections(TeaModel):
             self.endpoint_vpc_id = m.get('EndpointVpcId')
         if m.get('ModifiedTime') is not None:
             self.modified_time = m.get('ModifiedTime')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwner') is not None:
             self.resource_owner = m.get('ResourceOwner')
         if m.get('ServiceId') is not None:
@@ -4250,6 +4292,7 @@ class ListVpcEndpointServicesRequest(TeaModel):
         max_results: int = None,
         next_token: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         service_business_status: str = None,
         service_id: str = None,
         service_name: str = None,
@@ -4262,6 +4305,7 @@ class ListVpcEndpointServicesRequest(TeaModel):
         self.max_results = max_results
         self.next_token = next_token
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         self.service_business_status = service_business_status
         self.service_id = service_id
         self.service_name = service_name
@@ -4290,6 +4334,8 @@ class ListVpcEndpointServicesRequest(TeaModel):
             result['NextToken'] = self.next_token
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.service_business_status is not None:
             result['ServiceBusinessStatus'] = self.service_business_status
         if self.service_id is not None:
@@ -4318,6 +4364,8 @@ class ListVpcEndpointServicesRequest(TeaModel):
             self.next_token = m.get('NextToken')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ServiceBusinessStatus') is not None:
             self.service_business_status = m.get('ServiceBusinessStatus')
         if m.get('ServiceId') is not None:
@@ -4381,6 +4429,7 @@ class ListVpcEndpointServicesResponseBodyServices(TeaModel):
         min_bandwidth: int = None,
         payer: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         service_business_status: str = None,
         service_description: str = None,
         service_domain: str = None,
@@ -4400,6 +4449,7 @@ class ListVpcEndpointServicesResponseBodyServices(TeaModel):
         self.min_bandwidth = min_bandwidth
         self.payer = payer
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         self.service_business_status = service_business_status
         self.service_description = service_description
         self.service_domain = service_domain
@@ -4438,6 +4488,8 @@ class ListVpcEndpointServicesResponseBodyServices(TeaModel):
             result['Payer'] = self.payer
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.service_business_status is not None:
             result['ServiceBusinessStatus'] = self.service_business_status
         if self.service_description is not None:
@@ -4480,6 +4532,8 @@ class ListVpcEndpointServicesResponseBodyServices(TeaModel):
             self.payer = m.get('Payer')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ServiceBusinessStatus') is not None:
             self.service_business_status = m.get('ServiceBusinessStatus')
         if m.get('ServiceDescription') is not None:
@@ -4644,6 +4698,7 @@ class ListVpcEndpointServicesByEndUserRequest(TeaModel):
         max_results: int = None,
         next_token: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         service_id: str = None,
         service_name: str = None,
         service_type: str = None,
@@ -4652,6 +4707,7 @@ class ListVpcEndpointServicesByEndUserRequest(TeaModel):
         self.max_results = max_results
         self.next_token = next_token
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         self.service_id = service_id
         self.service_name = service_name
         self.service_type = service_type
@@ -4675,6 +4731,8 @@ class ListVpcEndpointServicesByEndUserRequest(TeaModel):
             result['NextToken'] = self.next_token
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.service_id is not None:
             result['ServiceId'] = self.service_id
         if self.service_name is not None:
@@ -4695,6 +4753,8 @@ class ListVpcEndpointServicesByEndUserRequest(TeaModel):
             self.next_token = m.get('NextToken')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ServiceId') is not None:
             self.service_id = m.get('ServiceId')
         if m.get('ServiceName') is not None:
@@ -4746,6 +4806,7 @@ class ListVpcEndpointServicesByEndUserResponseBodyServices(TeaModel):
     def __init__(
         self,
         payer: str = None,
+        resource_group_id: str = None,
         service_domain: str = None,
         service_id: str = None,
         service_name: str = None,
@@ -4755,6 +4816,7 @@ class ListVpcEndpointServicesByEndUserResponseBodyServices(TeaModel):
         zones: List[str] = None,
     ):
         self.payer = payer
+        self.resource_group_id = resource_group_id
         self.service_domain = service_domain
         self.service_id = service_id
         self.service_name = service_name
@@ -4777,6 +4839,8 @@ class ListVpcEndpointServicesByEndUserResponseBodyServices(TeaModel):
         result = dict()
         if self.payer is not None:
             result['Payer'] = self.payer
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.service_domain is not None:
             result['ServiceDomain'] = self.service_domain
         if self.service_id is not None:
@@ -4799,6 +4863,8 @@ class ListVpcEndpointServicesByEndUserResponseBodyServices(TeaModel):
         m = m or dict()
         if m.get('Payer') is not None:
             self.payer = m.get('Payer')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ServiceDomain') is not None:
             self.service_domain = m.get('ServiceDomain')
         if m.get('ServiceId') is not None:
