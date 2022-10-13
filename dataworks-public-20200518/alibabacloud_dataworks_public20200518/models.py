@@ -3145,28 +3145,28 @@ class CreateImportMigrationRequest(TeaModel):
 class CreateImportMigrationAdvanceRequest(TeaModel):
     def __init__(
         self,
-        package_file_object: BinaryIO = None,
         calculate_engine_map: str = None,
         commit_rule: str = None,
         description: str = None,
         name: str = None,
+        package_file_object: BinaryIO = None,
         package_type: str = None,
         project_id: int = None,
         resource_group_map: str = None,
         workspace_map: str = None,
     ):
-        self.package_file_object = package_file_object
         self.calculate_engine_map = calculate_engine_map
         self.commit_rule = commit_rule
         self.description = description
         self.name = name
+        self.package_file_object = package_file_object
         self.package_type = package_type
         self.project_id = project_id
         self.resource_group_map = resource_group_map
         self.workspace_map = workspace_map
 
     def validate(self):
-        self.validate_required(self.package_file_object, 'package_file_object')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -3174,8 +3174,6 @@ class CreateImportMigrationAdvanceRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.package_file_object is not None:
-            result['PackageFileObject'] = self.package_file_object
         if self.calculate_engine_map is not None:
             result['CalculateEngineMap'] = self.calculate_engine_map
         if self.commit_rule is not None:
@@ -3184,6 +3182,8 @@ class CreateImportMigrationAdvanceRequest(TeaModel):
             result['Description'] = self.description
         if self.name is not None:
             result['Name'] = self.name
+        if self.package_file_object is not None:
+            result['PackageFile'] = self.package_file_object
         if self.package_type is not None:
             result['PackageType'] = self.package_type
         if self.project_id is not None:
@@ -3196,8 +3196,6 @@ class CreateImportMigrationAdvanceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('PackageFileObject') is not None:
-            self.package_file_object = m.get('PackageFileObject')
         if m.get('CalculateEngineMap') is not None:
             self.calculate_engine_map = m.get('CalculateEngineMap')
         if m.get('CommitRule') is not None:
@@ -3206,6 +3204,8 @@ class CreateImportMigrationAdvanceRequest(TeaModel):
             self.description = m.get('Description')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('PackageFile') is not None:
+            self.package_file_object = m.get('PackageFile')
         if m.get('PackageType') is not None:
             self.package_type = m.get('PackageType')
         if m.get('ProjectId') is not None:
@@ -10983,10 +10983,12 @@ class GetDISyncInstanceInfoRequest(TeaModel):
 class GetDISyncInstanceInfoResponseBodyDataSolutionInfoStepDetail(TeaModel):
     def __init__(
         self,
+        info: str = None,
         status: str = None,
         step_id: int = None,
         step_name: str = None,
     ):
+        self.info = info
         self.status = status
         self.step_id = step_id
         self.step_name = step_name
@@ -11000,6 +11002,8 @@ class GetDISyncInstanceInfoResponseBodyDataSolutionInfoStepDetail(TeaModel):
             return _map
 
         result = dict()
+        if self.info is not None:
+            result['Info'] = self.info
         if self.status is not None:
             result['Status'] = self.status
         if self.step_id is not None:
@@ -11010,6 +11014,8 @@ class GetDISyncInstanceInfoResponseBodyDataSolutionInfoStepDetail(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Info') is not None:
+            self.info = m.get('Info')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('StepId') is not None:
@@ -14886,6 +14892,45 @@ class GetDeploymentRequest(TeaModel):
         return self
 
 
+class GetDeploymentResponseBodyDataDeployedItems(TeaModel):
+    def __init__(
+        self,
+        file_id: int = None,
+        file_version: int = None,
+        status: int = None,
+    ):
+        self.file_id = file_id
+        self.file_version = file_version
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_id is not None:
+            result['FileId'] = self.file_id
+        if self.file_version is not None:
+            result['FileVersion'] = self.file_version
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FileId') is not None:
+            self.file_id = m.get('FileId')
+        if m.get('FileVersion') is not None:
+            self.file_version = m.get('FileVersion')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
 class GetDeploymentResponseBodyDataDeployment(TeaModel):
     def __init__(
         self,
@@ -14970,11 +15015,17 @@ class GetDeploymentResponseBodyDataDeployment(TeaModel):
 class GetDeploymentResponseBodyData(TeaModel):
     def __init__(
         self,
+        deployed_items: List[GetDeploymentResponseBodyDataDeployedItems] = None,
         deployment: GetDeploymentResponseBodyDataDeployment = None,
     ):
+        self.deployed_items = deployed_items
         self.deployment = deployment
 
     def validate(self):
+        if self.deployed_items:
+            for k in self.deployed_items:
+                if k:
+                    k.validate()
         if self.deployment:
             self.deployment.validate()
 
@@ -14984,12 +15035,21 @@ class GetDeploymentResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        result['DeployedItems'] = []
+        if self.deployed_items is not None:
+            for k in self.deployed_items:
+                result['DeployedItems'].append(k.to_map() if k else None)
         if self.deployment is not None:
             result['Deployment'] = self.deployment.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.deployed_items = []
+        if m.get('DeployedItems') is not None:
+            for k in m.get('DeployedItems'):
+                temp_model = GetDeploymentResponseBodyDataDeployedItems()
+                self.deployed_items.append(temp_model.from_map(k))
         if m.get('Deployment') is not None:
             temp_model = GetDeploymentResponseBodyDataDeployment()
             self.deployment = temp_model.from_map(m['Deployment'])
@@ -45951,6 +46011,116 @@ class ListUsageForResourceGroupResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListUsageForResourceGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class OfflineNodeRequest(TeaModel):
+    def __init__(
+        self,
+        node_id: int = None,
+        project_id: int = None,
+    ):
+        self.node_id = node_id
+        self.project_id = project_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        return self
+
+
+class OfflineNodeResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class OfflineNodeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: OfflineNodeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = OfflineNodeResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

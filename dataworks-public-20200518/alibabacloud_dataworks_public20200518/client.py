@@ -10,7 +10,6 @@ from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_dataworks_public20200518 import models as dataworks_public_20200518_models
 from alibabacloud_tea_util import models as util_models
 from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
-from alibabacloud_tea_rpc import models as rpc_models
 from alibabacloud_openplatform20191219.client import Client as OpenPlatformClient
 from alibabacloud_openplatform20191219 import models as open_platform_models
 from alibabacloud_oss_sdk import models as oss_models
@@ -2059,7 +2058,7 @@ class Client(OpenApiClient):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
-        auth_config = rpc_models.Config(
+        auth_config = open_api_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             security_token=security_token,
@@ -2090,28 +2089,28 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(request, create_import_migration_req)
         if not UtilClient.is_unset(request.package_file_object):
             auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-            oss_config.access_key_id = auth_response.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_config.access_key_id = auth_response.body.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
             oss_client = OSSClient(oss_config)
             file_obj = file_form_models.FileField(
-                filename=auth_response.object_key,
+                filename=auth_response.body.object_key,
                 content=request.package_file_object,
                 content_type=''
             )
             oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.access_key_id,
-                policy=auth_response.encoded_policy,
-                signature=auth_response.signature,
-                key=auth_response.object_key,
+                access_key_id=auth_response.body.access_key_id,
+                policy=auth_response.body.encoded_policy,
+                signature=auth_response.body.signature,
+                key=auth_response.body.object_key,
                 file=file_obj,
                 success_action_status='201'
             )
             upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.bucket,
+                bucket_name=auth_response.body.bucket,
                 header=oss_header
             )
             oss_client.post_object(upload_request, oss_runtime)
-            create_import_migration_req.package_file = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+            create_import_migration_req.package_file = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
         create_import_migration_resp = self.create_import_migration_with_options(create_import_migration_req, runtime)
         return create_import_migration_resp
 
@@ -2130,7 +2129,7 @@ class Client(OpenApiClient):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
-        auth_config = rpc_models.Config(
+        auth_config = open_api_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             security_token=security_token,
@@ -2161,28 +2160,28 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(request, create_import_migration_req)
         if not UtilClient.is_unset(request.package_file_object):
             auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-            oss_config.access_key_id = auth_response.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_config.access_key_id = auth_response.body.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
             oss_client = OSSClient(oss_config)
             file_obj = file_form_models.FileField(
-                filename=auth_response.object_key,
+                filename=auth_response.body.object_key,
                 content=request.package_file_object,
                 content_type=''
             )
             oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.access_key_id,
-                policy=auth_response.encoded_policy,
-                signature=auth_response.signature,
-                key=auth_response.object_key,
+                access_key_id=auth_response.body.access_key_id,
+                policy=auth_response.body.encoded_policy,
+                signature=auth_response.body.signature,
+                key=auth_response.body.object_key,
                 file=file_obj,
                 success_action_status='201'
             )
             upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.bucket,
+                bucket_name=auth_response.body.bucket,
                 header=oss_header
             )
             await oss_client.post_object_async(upload_request, oss_runtime)
-            create_import_migration_req.package_file = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+            create_import_migration_req.package_file = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
         create_import_migration_resp = await self.create_import_migration_with_options_async(create_import_migration_req, runtime)
         return create_import_migration_resp
 
@@ -15461,6 +15460,80 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20200518_models.ListUsageForResourceGroupResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_usage_for_resource_group_with_options_async(request, runtime)
+
+    def offline_node_with_options(
+        self,
+        request: dataworks_public_20200518_models.OfflineNodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.OfflineNodeResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.node_id):
+            body['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='OfflineNode',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.OfflineNodeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def offline_node_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.OfflineNodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.OfflineNodeResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.node_id):
+            body['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='OfflineNode',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.OfflineNodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def offline_node(
+        self,
+        request: dataworks_public_20200518_models.OfflineNodeRequest,
+    ) -> dataworks_public_20200518_models.OfflineNodeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.offline_node_with_options(request, runtime)
+
+    async def offline_node_async(
+        self,
+        request: dataworks_public_20200518_models.OfflineNodeRequest,
+    ) -> dataworks_public_20200518_models.OfflineNodeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.offline_node_with_options_async(request, runtime)
 
     def publish_data_service_api_with_options(
         self,
