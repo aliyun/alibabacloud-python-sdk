@@ -1,3 +1,6 @@
+2022-10-13 Version: 1.1.4
+- Update DetachDomainNameFromVersion.
+
 2022-09-28 Version: 1.1.3
 - Update AddCdnDomain.
 
