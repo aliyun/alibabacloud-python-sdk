@@ -64,22 +64,22 @@ class CreateDocTranslateTaskRequest(TeaModel):
 class CreateDocTranslateTaskAdvanceRequest(TeaModel):
     def __init__(
         self,
-        file_url_object: BinaryIO = None,
         callback_url: str = None,
         client_token: str = None,
+        file_url_object: BinaryIO = None,
         scene: str = None,
         source_language: str = None,
         target_language: str = None,
     ):
-        self.file_url_object = file_url_object
         self.callback_url = callback_url
         self.client_token = client_token
+        self.file_url_object = file_url_object
         self.scene = scene
         self.source_language = source_language
         self.target_language = target_language
 
     def validate(self):
-        self.validate_required(self.file_url_object, 'file_url_object')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -87,12 +87,12 @@ class CreateDocTranslateTaskAdvanceRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.file_url_object is not None:
-            result['FileUrlObject'] = self.file_url_object
         if self.callback_url is not None:
             result['CallbackUrl'] = self.callback_url
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+        if self.file_url_object is not None:
+            result['FileUrl'] = self.file_url_object
         if self.scene is not None:
             result['Scene'] = self.scene
         if self.source_language is not None:
@@ -103,12 +103,12 @@ class CreateDocTranslateTaskAdvanceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('FileUrlObject') is not None:
-            self.file_url_object = m.get('FileUrlObject')
         if m.get('CallbackUrl') is not None:
             self.callback_url = m.get('CallbackUrl')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+        if m.get('FileUrl') is not None:
+            self.file_url_object = m.get('FileUrl')
         if m.get('Scene') is not None:
             self.scene = m.get('Scene')
         if m.get('SourceLanguage') is not None:
@@ -161,13 +161,16 @@ class CreateDocTranslateTaskResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreateDocTranslateTaskResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -180,6 +183,8 @@ class CreateDocTranslateTaskResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -188,6 +193,8 @@ class CreateDocTranslateTaskResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateDocTranslateTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -323,13 +330,16 @@ class CreateImageTranslateTaskResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreateImageTranslateTaskResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -342,6 +352,8 @@ class CreateImageTranslateTaskResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -350,6 +362,8 @@ class CreateImageTranslateTaskResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateImageTranslateTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -462,13 +476,16 @@ class GetBatchTranslateResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetBatchTranslateResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -481,6 +498,8 @@ class GetBatchTranslateResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -489,6 +508,8 @@ class GetBatchTranslateResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetBatchTranslateResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -559,13 +580,16 @@ class GetDetectLanguageResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetDetectLanguageResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -578,6 +602,8 @@ class GetDetectLanguageResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -586,6 +612,8 @@ class GetDetectLanguageResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetDetectLanguageResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -686,13 +714,16 @@ class GetDocTranslateTaskResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetDocTranslateTaskResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -705,6 +736,8 @@ class GetDocTranslateTaskResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -713,6 +746,8 @@ class GetDocTranslateTaskResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetDocTranslateTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -830,13 +865,16 @@ class GetImageDiagnoseResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetImageDiagnoseResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -849,6 +887,8 @@ class GetImageDiagnoseResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -857,6 +897,8 @@ class GetImageDiagnoseResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetImageDiagnoseResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -998,13 +1040,16 @@ class GetImageTranslateResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetImageTranslateResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1017,6 +1062,8 @@ class GetImageTranslateResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1025,6 +1072,8 @@ class GetImageTranslateResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetImageTranslateResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1136,13 +1185,16 @@ class GetImageTranslateTaskResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetImageTranslateTaskResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1155,6 +1207,8 @@ class GetImageTranslateTaskResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1163,6 +1217,8 @@ class GetImageTranslateTaskResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetImageTranslateTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1352,13 +1408,16 @@ class GetTitleDiagnoseResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetTitleDiagnoseResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1371,6 +1430,8 @@ class GetTitleDiagnoseResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1379,6 +1440,8 @@ class GetTitleDiagnoseResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetTitleDiagnoseResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1526,13 +1589,16 @@ class GetTitleGenerateResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetTitleGenerateResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1545,6 +1611,8 @@ class GetTitleGenerateResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1553,6 +1621,8 @@ class GetTitleGenerateResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetTitleGenerateResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1688,13 +1758,16 @@ class GetTitleIntelligenceResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetTitleIntelligenceResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1707,6 +1780,8 @@ class GetTitleIntelligenceResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1715,6 +1790,8 @@ class GetTitleIntelligenceResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetTitleIntelligenceResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1815,13 +1892,16 @@ class GetTranslateReportResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetTranslateReportResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1834,6 +1914,8 @@ class GetTranslateReportResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1842,90 +1924,10 @@ class GetTranslateReportResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetTranslateReportResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class GetUserResponseBody(TeaModel):
-    def __init__(
-        self,
-        code: int = None,
-        data: str = None,
-        message: str = None,
-        request_id: str = None,
-    ):
-        self.code = code
-        self.data = data
-        self.message = message
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.data is not None:
-            result['Data'] = self.data
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Data') is not None:
-            self.data = m.get('Data')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class GetUserResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: GetUserResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = GetUserResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2000,13 +2002,16 @@ class OpenAlimtServiceResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: OpenAlimtServiceResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2019,6 +2024,8 @@ class OpenAlimtServiceResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2027,6 +2034,8 @@ class OpenAlimtServiceResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = OpenAlimtServiceResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2036,12 +2045,14 @@ class OpenAlimtServiceResponse(TeaModel):
 class TranslateRequest(TeaModel):
     def __init__(
         self,
+        context: str = None,
         format_type: str = None,
         scene: str = None,
         source_language: str = None,
         source_text: str = None,
         target_language: str = None,
     ):
+        self.context = context
         self.format_type = format_type
         self.scene = scene
         self.source_language = source_language
@@ -2057,6 +2068,8 @@ class TranslateRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.context is not None:
+            result['Context'] = self.context
         if self.format_type is not None:
             result['FormatType'] = self.format_type
         if self.scene is not None:
@@ -2071,6 +2084,8 @@ class TranslateRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Context') is not None:
+            self.context = m.get('Context')
         if m.get('FormatType') is not None:
             self.format_type = m.get('FormatType')
         if m.get('Scene') is not None:
@@ -2168,13 +2183,16 @@ class TranslateResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: TranslateResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2187,6 +2205,8 @@ class TranslateResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2195,6 +2215,8 @@ class TranslateResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = TranslateResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2255,20 +2277,20 @@ class TranslateCertificateRequest(TeaModel):
 class TranslateCertificateAdvanceRequest(TeaModel):
     def __init__(
         self,
-        image_url_object: BinaryIO = None,
         certificate_type: str = None,
+        image_url_object: BinaryIO = None,
         result_type: str = None,
         source_language: str = None,
         target_language: str = None,
     ):
-        self.image_url_object = image_url_object
         self.certificate_type = certificate_type
+        self.image_url_object = image_url_object
         self.result_type = result_type
         self.source_language = source_language
         self.target_language = target_language
 
     def validate(self):
-        self.validate_required(self.image_url_object, 'image_url_object')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -2276,10 +2298,10 @@ class TranslateCertificateAdvanceRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.image_url_object is not None:
-            result['ImageUrlObject'] = self.image_url_object
         if self.certificate_type is not None:
             result['CertificateType'] = self.certificate_type
+        if self.image_url_object is not None:
+            result['ImageUrl'] = self.image_url_object
         if self.result_type is not None:
             result['ResultType'] = self.result_type
         if self.source_language is not None:
@@ -2290,10 +2312,10 @@ class TranslateCertificateAdvanceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ImageUrlObject') is not None:
-            self.image_url_object = m.get('ImageUrlObject')
         if m.get('CertificateType') is not None:
             self.certificate_type = m.get('CertificateType')
+        if m.get('ImageUrl') is not None:
+            self.image_url_object = m.get('ImageUrl')
         if m.get('ResultType') is not None:
             self.result_type = m.get('ResultType')
         if m.get('SourceLanguage') is not None:
@@ -2422,13 +2444,16 @@ class TranslateCertificateResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: TranslateCertificateResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2441,6 +2466,8 @@ class TranslateCertificateResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2449,6 +2476,8 @@ class TranslateCertificateResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = TranslateCertificateResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2458,12 +2487,14 @@ class TranslateCertificateResponse(TeaModel):
 class TranslateECommerceRequest(TeaModel):
     def __init__(
         self,
+        context: str = None,
         format_type: str = None,
         scene: str = None,
         source_language: str = None,
         source_text: str = None,
         target_language: str = None,
     ):
+        self.context = context
         self.format_type = format_type
         self.scene = scene
         self.source_language = source_language
@@ -2479,6 +2510,8 @@ class TranslateECommerceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.context is not None:
+            result['Context'] = self.context
         if self.format_type is not None:
             result['FormatType'] = self.format_type
         if self.scene is not None:
@@ -2493,6 +2526,8 @@ class TranslateECommerceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Context') is not None:
+            self.context = m.get('Context')
         if m.get('FormatType') is not None:
             self.format_type = m.get('FormatType')
         if m.get('Scene') is not None:
@@ -2590,13 +2625,16 @@ class TranslateECommerceResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: TranslateECommerceResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2609,6 +2647,8 @@ class TranslateECommerceResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2617,6 +2657,8 @@ class TranslateECommerceResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = TranslateECommerceResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2626,12 +2668,14 @@ class TranslateECommerceResponse(TeaModel):
 class TranslateGeneralRequest(TeaModel):
     def __init__(
         self,
+        context: str = None,
         format_type: str = None,
         scene: str = None,
         source_language: str = None,
         source_text: str = None,
         target_language: str = None,
     ):
+        self.context = context
         self.format_type = format_type
         self.scene = scene
         self.source_language = source_language
@@ -2647,6 +2691,8 @@ class TranslateGeneralRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.context is not None:
+            result['Context'] = self.context
         if self.format_type is not None:
             result['FormatType'] = self.format_type
         if self.scene is not None:
@@ -2661,6 +2707,8 @@ class TranslateGeneralRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Context') is not None:
+            self.context = m.get('Context')
         if m.get('FormatType') is not None:
             self.format_type = m.get('FormatType')
         if m.get('Scene') is not None:
@@ -2758,13 +2806,16 @@ class TranslateGeneralResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: TranslateGeneralResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2777,6 +2828,8 @@ class TranslateGeneralResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2785,6 +2838,8 @@ class TranslateGeneralResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = TranslateGeneralResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2938,13 +2993,16 @@ class TranslateImageResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: TranslateImageResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2957,6 +3015,8 @@ class TranslateImageResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2965,6 +3025,8 @@ class TranslateImageResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = TranslateImageResponseBody()
             self.body = temp_model.from_map(m['body'])

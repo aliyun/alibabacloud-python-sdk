@@ -9,13 +9,12 @@ from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_alimt20181012 import models as alimt_20181012_models
 from alibabacloud_tea_util import models as util_models
-from alibabacloud_tea_rpc import models as rpc_models
+from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 from alibabacloud_openplatform20191219.client import Client as OpenPlatformClient
 from alibabacloud_openplatform20191219 import models as open_platform_models
 from alibabacloud_oss_sdk import models as oss_models
 from alibabacloud_tea_fileform import models as file_form_models
 from alibabacloud_oss_util import models as ossutil_models
-from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 from alibabacloud_oss_sdk.client import Client as OSSClient
 
 
@@ -28,6 +27,7 @@ class Client(OpenApiClient):
         config: open_api_models.Config,
     ):
         super().__init__(config)
+        self._signature_algorithm = 'v2'
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
             'cn-hangzhou': 'mt.cn-hangzhou.aliyuncs.com',
@@ -110,12 +110,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.CreateDocTranslateTaskResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.callback_url):
+            body['CallbackUrl'] = request.callback_url
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.file_url):
+            body['FileUrl'] = request.file_url
+        if not UtilClient.is_unset(request.scene):
+            body['Scene'] = request.scene
+        if not UtilClient.is_unset(request.source_language):
+            body['SourceLanguage'] = request.source_language
+        if not UtilClient.is_unset(request.target_language):
+            body['TargetLanguage'] = request.target_language
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDocTranslateTask',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             alimt_20181012_models.CreateDocTranslateTaskResponse(),
-            self.do_rpcrequest('CreateDocTranslateTask', '2018-10-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_doc_translate_task_with_options_async(
@@ -124,12 +148,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.CreateDocTranslateTaskResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.callback_url):
+            body['CallbackUrl'] = request.callback_url
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.file_url):
+            body['FileUrl'] = request.file_url
+        if not UtilClient.is_unset(request.scene):
+            body['Scene'] = request.scene
+        if not UtilClient.is_unset(request.source_language):
+            body['SourceLanguage'] = request.source_language
+        if not UtilClient.is_unset(request.target_language):
+            body['TargetLanguage'] = request.target_language
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDocTranslateTask',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             alimt_20181012_models.CreateDocTranslateTaskResponse(),
-            await self.do_rpcrequest_async('CreateDocTranslateTask', '2018-10-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_doc_translate_task(
@@ -161,7 +209,7 @@ class Client(OpenApiClient):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
-        auth_config = rpc_models.Config(
+        auth_config = open_api_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             security_token=security_token,
@@ -192,28 +240,28 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(request, create_doc_translate_task_req)
         if not UtilClient.is_unset(request.file_url_object):
             auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-            oss_config.access_key_id = auth_response.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_config.access_key_id = auth_response.body.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
             oss_client = OSSClient(oss_config)
             file_obj = file_form_models.FileField(
-                filename=auth_response.object_key,
+                filename=auth_response.body.object_key,
                 content=request.file_url_object,
                 content_type=''
             )
             oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.access_key_id,
-                policy=auth_response.encoded_policy,
-                signature=auth_response.signature,
-                key=auth_response.object_key,
+                access_key_id=auth_response.body.access_key_id,
+                policy=auth_response.body.encoded_policy,
+                signature=auth_response.body.signature,
+                key=auth_response.body.object_key,
                 file=file_obj,
                 success_action_status='201'
             )
             upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.bucket,
+                bucket_name=auth_response.body.bucket,
                 header=oss_header
             )
             oss_client.post_object(upload_request, oss_runtime)
-            create_doc_translate_task_req.file_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+            create_doc_translate_task_req.file_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
         create_doc_translate_task_resp = self.create_doc_translate_task_with_options(create_doc_translate_task_req, runtime)
         return create_doc_translate_task_resp
 
@@ -232,7 +280,7 @@ class Client(OpenApiClient):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
-        auth_config = rpc_models.Config(
+        auth_config = open_api_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             security_token=security_token,
@@ -263,28 +311,28 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(request, create_doc_translate_task_req)
         if not UtilClient.is_unset(request.file_url_object):
             auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-            oss_config.access_key_id = auth_response.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_config.access_key_id = auth_response.body.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
             oss_client = OSSClient(oss_config)
             file_obj = file_form_models.FileField(
-                filename=auth_response.object_key,
+                filename=auth_response.body.object_key,
                 content=request.file_url_object,
                 content_type=''
             )
             oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.access_key_id,
-                policy=auth_response.encoded_policy,
-                signature=auth_response.signature,
-                key=auth_response.object_key,
+                access_key_id=auth_response.body.access_key_id,
+                policy=auth_response.body.encoded_policy,
+                signature=auth_response.body.signature,
+                key=auth_response.body.object_key,
                 file=file_obj,
                 success_action_status='201'
             )
             upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.bucket,
+                bucket_name=auth_response.body.bucket,
                 header=oss_header
             )
             await oss_client.post_object_async(upload_request, oss_runtime)
-            create_doc_translate_task_req.file_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+            create_doc_translate_task_req.file_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
         create_doc_translate_task_resp = await self.create_doc_translate_task_with_options_async(create_doc_translate_task_req, runtime)
         return create_doc_translate_task_resp
 
@@ -294,12 +342,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.CreateImageTranslateTaskResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.extra):
+            body['Extra'] = request.extra
+        if not UtilClient.is_unset(request.source_language):
+            body['SourceLanguage'] = request.source_language
+        if not UtilClient.is_unset(request.target_language):
+            body['TargetLanguage'] = request.target_language
+        if not UtilClient.is_unset(request.url_list):
+            body['UrlList'] = request.url_list
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateImageTranslateTask',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             alimt_20181012_models.CreateImageTranslateTaskResponse(),
-            self.do_rpcrequest('CreateImageTranslateTask', '2018-10-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def create_image_translate_task_with_options_async(
@@ -308,12 +378,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.CreateImageTranslateTaskResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.extra):
+            body['Extra'] = request.extra
+        if not UtilClient.is_unset(request.source_language):
+            body['SourceLanguage'] = request.source_language
+        if not UtilClient.is_unset(request.target_language):
+            body['TargetLanguage'] = request.target_language
+        if not UtilClient.is_unset(request.url_list):
+            body['UrlList'] = request.url_list
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateImageTranslateTask',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             alimt_20181012_models.CreateImageTranslateTaskResponse(),
-            await self.do_rpcrequest_async('CreateImageTranslateTask', '2018-10-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_image_translate_task(
@@ -336,12 +428,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.GetBatchTranslateResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.api_type):
+            body['ApiType'] = request.api_type
+        if not UtilClient.is_unset(request.format_type):
+            body['FormatType'] = request.format_type
+        if not UtilClient.is_unset(request.scene):
+            body['Scene'] = request.scene
+        if not UtilClient.is_unset(request.source_language):
+            body['SourceLanguage'] = request.source_language
+        if not UtilClient.is_unset(request.source_text):
+            body['SourceText'] = request.source_text
+        if not UtilClient.is_unset(request.target_language):
+            body['TargetLanguage'] = request.target_language
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetBatchTranslate',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             alimt_20181012_models.GetBatchTranslateResponse(),
-            self.do_rpcrequest('GetBatchTranslate', '2018-10-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_batch_translate_with_options_async(
@@ -350,12 +466,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.GetBatchTranslateResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.api_type):
+            body['ApiType'] = request.api_type
+        if not UtilClient.is_unset(request.format_type):
+            body['FormatType'] = request.format_type
+        if not UtilClient.is_unset(request.scene):
+            body['Scene'] = request.scene
+        if not UtilClient.is_unset(request.source_language):
+            body['SourceLanguage'] = request.source_language
+        if not UtilClient.is_unset(request.source_text):
+            body['SourceText'] = request.source_text
+        if not UtilClient.is_unset(request.target_language):
+            body['TargetLanguage'] = request.target_language
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetBatchTranslate',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             alimt_20181012_models.GetBatchTranslateResponse(),
-            await self.do_rpcrequest_async('GetBatchTranslate', '2018-10-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_batch_translate(
@@ -378,12 +518,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.GetDetectLanguageResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.source_text):
+            body['SourceText'] = request.source_text
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetDetectLanguage',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             alimt_20181012_models.GetDetectLanguageResponse(),
-            self.do_rpcrequest('GetDetectLanguage', '2018-10-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_detect_language_with_options_async(
@@ -392,12 +546,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.GetDetectLanguageResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.source_text):
+            body['SourceText'] = request.source_text
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetDetectLanguage',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             alimt_20181012_models.GetDetectLanguageResponse(),
-            await self.do_rpcrequest_async('GetDetectLanguage', '2018-10-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_detect_language(
@@ -422,11 +590,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDocTranslateTask',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             alimt_20181012_models.GetDocTranslateTaskResponse(),
-            self.do_rpcrequest('GetDocTranslateTask', '2018-10-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_doc_translate_task_with_options_async(
@@ -437,11 +616,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDocTranslateTask',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             alimt_20181012_models.GetDocTranslateTaskResponse(),
-            await self.do_rpcrequest_async('GetDocTranslateTask', '2018-10-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_doc_translate_task(
@@ -464,12 +654,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.GetImageDiagnoseResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.extra):
+            body['Extra'] = request.extra
+        if not UtilClient.is_unset(request.url):
+            body['Url'] = request.url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetImageDiagnose',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             alimt_20181012_models.GetImageDiagnoseResponse(),
-            self.do_rpcrequest('GetImageDiagnose', '2018-10-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_image_diagnose_with_options_async(
@@ -478,12 +684,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.GetImageDiagnoseResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.extra):
+            body['Extra'] = request.extra
+        if not UtilClient.is_unset(request.url):
+            body['Url'] = request.url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetImageDiagnose',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             alimt_20181012_models.GetImageDiagnoseResponse(),
-            await self.do_rpcrequest_async('GetImageDiagnose', '2018-10-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_image_diagnose(
@@ -506,12 +728,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.GetImageTranslateResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.extra):
+            body['Extra'] = request.extra
+        if not UtilClient.is_unset(request.source_language):
+            body['SourceLanguage'] = request.source_language
+        if not UtilClient.is_unset(request.target_language):
+            body['TargetLanguage'] = request.target_language
+        if not UtilClient.is_unset(request.url):
+            body['Url'] = request.url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetImageTranslate',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             alimt_20181012_models.GetImageTranslateResponse(),
-            self.do_rpcrequest('GetImageTranslate', '2018-10-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_image_translate_with_options_async(
@@ -520,12 +762,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.GetImageTranslateResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.extra):
+            body['Extra'] = request.extra
+        if not UtilClient.is_unset(request.source_language):
+            body['SourceLanguage'] = request.source_language
+        if not UtilClient.is_unset(request.target_language):
+            body['TargetLanguage'] = request.target_language
+        if not UtilClient.is_unset(request.url):
+            body['Url'] = request.url
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetImageTranslate',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             alimt_20181012_models.GetImageTranslateResponse(),
-            await self.do_rpcrequest_async('GetImageTranslate', '2018-10-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_image_translate(
@@ -548,12 +810,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.GetImageTranslateTaskResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetImageTranslateTask',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             alimt_20181012_models.GetImageTranslateTaskResponse(),
-            self.do_rpcrequest('GetImageTranslateTask', '2018-10-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_image_translate_task_with_options_async(
@@ -562,12 +838,26 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.GetImageTranslateTaskResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetImageTranslateTask',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             alimt_20181012_models.GetImageTranslateTaskResponse(),
-            await self.do_rpcrequest_async('GetImageTranslateTask', '2018-10-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_image_translate_task(
@@ -590,12 +880,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.GetTitleDiagnoseResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.category_id):
+            body['CategoryId'] = request.category_id
+        if not UtilClient.is_unset(request.extra):
+            body['Extra'] = request.extra
+        if not UtilClient.is_unset(request.language):
+            body['Language'] = request.language
+        if not UtilClient.is_unset(request.platform):
+            body['Platform'] = request.platform
+        if not UtilClient.is_unset(request.title):
+            body['Title'] = request.title
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetTitleDiagnose',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             alimt_20181012_models.GetTitleDiagnoseResponse(),
-            self.do_rpcrequest('GetTitleDiagnose', '2018-10-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_title_diagnose_with_options_async(
@@ -604,12 +916,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.GetTitleDiagnoseResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.category_id):
+            body['CategoryId'] = request.category_id
+        if not UtilClient.is_unset(request.extra):
+            body['Extra'] = request.extra
+        if not UtilClient.is_unset(request.language):
+            body['Language'] = request.language
+        if not UtilClient.is_unset(request.platform):
+            body['Platform'] = request.platform
+        if not UtilClient.is_unset(request.title):
+            body['Title'] = request.title
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetTitleDiagnose',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             alimt_20181012_models.GetTitleDiagnoseResponse(),
-            await self.do_rpcrequest_async('GetTitleDiagnose', '2018-10-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_title_diagnose(
@@ -632,12 +966,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.GetTitleGenerateResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.attributes):
+            body['Attributes'] = request.attributes
+        if not UtilClient.is_unset(request.category_id):
+            body['CategoryId'] = request.category_id
+        if not UtilClient.is_unset(request.extra):
+            body['Extra'] = request.extra
+        if not UtilClient.is_unset(request.hot_words):
+            body['HotWords'] = request.hot_words
+        if not UtilClient.is_unset(request.language):
+            body['Language'] = request.language
+        if not UtilClient.is_unset(request.platform):
+            body['Platform'] = request.platform
+        if not UtilClient.is_unset(request.title):
+            body['Title'] = request.title
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetTitleGenerate',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             alimt_20181012_models.GetTitleGenerateResponse(),
-            self.do_rpcrequest('GetTitleGenerate', '2018-10-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_title_generate_with_options_async(
@@ -646,12 +1006,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.GetTitleGenerateResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.attributes):
+            body['Attributes'] = request.attributes
+        if not UtilClient.is_unset(request.category_id):
+            body['CategoryId'] = request.category_id
+        if not UtilClient.is_unset(request.extra):
+            body['Extra'] = request.extra
+        if not UtilClient.is_unset(request.hot_words):
+            body['HotWords'] = request.hot_words
+        if not UtilClient.is_unset(request.language):
+            body['Language'] = request.language
+        if not UtilClient.is_unset(request.platform):
+            body['Platform'] = request.platform
+        if not UtilClient.is_unset(request.title):
+            body['Title'] = request.title
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetTitleGenerate',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             alimt_20181012_models.GetTitleGenerateResponse(),
-            await self.do_rpcrequest_async('GetTitleGenerate', '2018-10-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_title_generate(
@@ -674,12 +1060,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.GetTitleIntelligenceResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cat_level_three_id):
+            body['CatLevelThreeId'] = request.cat_level_three_id
+        if not UtilClient.is_unset(request.cat_level_two_id):
+            body['CatLevelTwoId'] = request.cat_level_two_id
+        if not UtilClient.is_unset(request.extra):
+            body['Extra'] = request.extra
+        if not UtilClient.is_unset(request.keywords):
+            body['Keywords'] = request.keywords
+        if not UtilClient.is_unset(request.platform):
+            body['Platform'] = request.platform
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetTitleIntelligence',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             alimt_20181012_models.GetTitleIntelligenceResponse(),
-            self.do_rpcrequest('GetTitleIntelligence', '2018-10-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_title_intelligence_with_options_async(
@@ -688,12 +1096,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.GetTitleIntelligenceResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cat_level_three_id):
+            body['CatLevelThreeId'] = request.cat_level_three_id
+        if not UtilClient.is_unset(request.cat_level_two_id):
+            body['CatLevelTwoId'] = request.cat_level_two_id
+        if not UtilClient.is_unset(request.extra):
+            body['Extra'] = request.extra
+        if not UtilClient.is_unset(request.keywords):
+            body['Keywords'] = request.keywords
+        if not UtilClient.is_unset(request.platform):
+            body['Platform'] = request.platform
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetTitleIntelligence',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             alimt_20181012_models.GetTitleIntelligenceResponse(),
-            await self.do_rpcrequest_async('GetTitleIntelligence', '2018-10-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_title_intelligence(
@@ -716,12 +1146,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.GetTranslateReportResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.api_name):
+            query['ApiName'] = request.api_name
+        if not UtilClient.is_unset(request.begin_time):
+            query['BeginTime'] = request.begin_time
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.group):
+            query['Group'] = request.group
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTranslateReport',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             alimt_20181012_models.GetTranslateReportResponse(),
-            self.do_rpcrequest('GetTranslateReport', '2018-10-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_translate_report_with_options_async(
@@ -730,12 +1180,32 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.GetTranslateReportResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.api_name):
+            query['ApiName'] = request.api_name
+        if not UtilClient.is_unset(request.begin_time):
+            query['BeginTime'] = request.begin_time
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.group):
+            query['Group'] = request.group
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTranslateReport',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             alimt_20181012_models.GetTranslateReportResponse(),
-            await self.do_rpcrequest_async('GetTranslateReport', '2018-10-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_translate_report(
@@ -752,46 +1222,34 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_translate_report_with_options_async(request, runtime)
 
-    def get_user_with_options(
-        self,
-        runtime: util_models.RuntimeOptions,
-    ) -> alimt_20181012_models.GetUserResponse:
-        req = open_api_models.OpenApiRequest()
-        return TeaCore.from_map(
-            alimt_20181012_models.GetUserResponse(),
-            self.do_rpcrequest('GetUser', '2018-10-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    async def get_user_with_options_async(
-        self,
-        runtime: util_models.RuntimeOptions,
-    ) -> alimt_20181012_models.GetUserResponse:
-        req = open_api_models.OpenApiRequest()
-        return TeaCore.from_map(
-            alimt_20181012_models.GetUserResponse(),
-            await self.do_rpcrequest_async('GetUser', '2018-10-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
-        )
-
-    def get_user(self) -> alimt_20181012_models.GetUserResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_user_with_options(runtime)
-
-    async def get_user_async(self) -> alimt_20181012_models.GetUserResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_user_with_options_async(runtime)
-
     def open_alimt_service_with_options(
         self,
         request: alimt_20181012_models.OpenAlimtServiceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.OpenAlimtServiceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='OpenAlimtService',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             alimt_20181012_models.OpenAlimtServiceResponse(),
-            self.do_rpcrequest('OpenAlimtService', '2018-10-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def open_alimt_service_with_options_async(
@@ -800,12 +1258,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.OpenAlimtServiceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='OpenAlimtService',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             alimt_20181012_models.OpenAlimtServiceResponse(),
-            await self.do_rpcrequest_async('OpenAlimtService', '2018-10-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def open_alimt_service(
@@ -828,12 +1302,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.TranslateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.context):
+            query['Context'] = request.context
+        body = {}
+        if not UtilClient.is_unset(request.format_type):
+            body['FormatType'] = request.format_type
+        if not UtilClient.is_unset(request.scene):
+            body['Scene'] = request.scene
+        if not UtilClient.is_unset(request.source_language):
+            body['SourceLanguage'] = request.source_language
+        if not UtilClient.is_unset(request.source_text):
+            body['SourceText'] = request.source_text
+        if not UtilClient.is_unset(request.target_language):
+            body['TargetLanguage'] = request.target_language
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='Translate',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             alimt_20181012_models.TranslateResponse(),
-            self.do_rpcrequest('Translate', '2018-10-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def translate_with_options_async(
@@ -842,12 +1342,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.TranslateResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.context):
+            query['Context'] = request.context
+        body = {}
+        if not UtilClient.is_unset(request.format_type):
+            body['FormatType'] = request.format_type
+        if not UtilClient.is_unset(request.scene):
+            body['Scene'] = request.scene
+        if not UtilClient.is_unset(request.source_language):
+            body['SourceLanguage'] = request.source_language
+        if not UtilClient.is_unset(request.source_text):
+            body['SourceText'] = request.source_text
+        if not UtilClient.is_unset(request.target_language):
+            body['TargetLanguage'] = request.target_language
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='Translate',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             alimt_20181012_models.TranslateResponse(),
-            await self.do_rpcrequest_async('Translate', '2018-10-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def translate(
@@ -870,12 +1396,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.TranslateCertificateResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.certificate_type):
+            body['CertificateType'] = request.certificate_type
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageUrl'] = request.image_url
+        if not UtilClient.is_unset(request.result_type):
+            body['ResultType'] = request.result_type
+        if not UtilClient.is_unset(request.source_language):
+            body['SourceLanguage'] = request.source_language
+        if not UtilClient.is_unset(request.target_language):
+            body['TargetLanguage'] = request.target_language
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TranslateCertificate',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             alimt_20181012_models.TranslateCertificateResponse(),
-            self.do_rpcrequest('TranslateCertificate', '2018-10-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def translate_certificate_with_options_async(
@@ -884,12 +1432,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.TranslateCertificateResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.certificate_type):
+            body['CertificateType'] = request.certificate_type
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageUrl'] = request.image_url
+        if not UtilClient.is_unset(request.result_type):
+            body['ResultType'] = request.result_type
+        if not UtilClient.is_unset(request.source_language):
+            body['SourceLanguage'] = request.source_language
+        if not UtilClient.is_unset(request.target_language):
+            body['TargetLanguage'] = request.target_language
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TranslateCertificate',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             alimt_20181012_models.TranslateCertificateResponse(),
-            await self.do_rpcrequest_async('TranslateCertificate', '2018-10-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def translate_certificate(
@@ -921,7 +1491,7 @@ class Client(OpenApiClient):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
-        auth_config = rpc_models.Config(
+        auth_config = open_api_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             security_token=security_token,
@@ -952,28 +1522,28 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(request, translate_certificate_req)
         if not UtilClient.is_unset(request.image_url_object):
             auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-            oss_config.access_key_id = auth_response.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_config.access_key_id = auth_response.body.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
             oss_client = OSSClient(oss_config)
             file_obj = file_form_models.FileField(
-                filename=auth_response.object_key,
+                filename=auth_response.body.object_key,
                 content=request.image_url_object,
                 content_type=''
             )
             oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.access_key_id,
-                policy=auth_response.encoded_policy,
-                signature=auth_response.signature,
-                key=auth_response.object_key,
+                access_key_id=auth_response.body.access_key_id,
+                policy=auth_response.body.encoded_policy,
+                signature=auth_response.body.signature,
+                key=auth_response.body.object_key,
                 file=file_obj,
                 success_action_status='201'
             )
             upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.bucket,
+                bucket_name=auth_response.body.bucket,
                 header=oss_header
             )
             oss_client.post_object(upload_request, oss_runtime)
-            translate_certificate_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+            translate_certificate_req.image_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
         translate_certificate_resp = self.translate_certificate_with_options(translate_certificate_req, runtime)
         return translate_certificate_resp
 
@@ -992,7 +1562,7 @@ class Client(OpenApiClient):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
-        auth_config = rpc_models.Config(
+        auth_config = open_api_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             security_token=security_token,
@@ -1023,28 +1593,28 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(request, translate_certificate_req)
         if not UtilClient.is_unset(request.image_url_object):
             auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-            oss_config.access_key_id = auth_response.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_config.access_key_id = auth_response.body.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
             oss_client = OSSClient(oss_config)
             file_obj = file_form_models.FileField(
-                filename=auth_response.object_key,
+                filename=auth_response.body.object_key,
                 content=request.image_url_object,
                 content_type=''
             )
             oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.access_key_id,
-                policy=auth_response.encoded_policy,
-                signature=auth_response.signature,
-                key=auth_response.object_key,
+                access_key_id=auth_response.body.access_key_id,
+                policy=auth_response.body.encoded_policy,
+                signature=auth_response.body.signature,
+                key=auth_response.body.object_key,
                 file=file_obj,
                 success_action_status='201'
             )
             upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.bucket,
+                bucket_name=auth_response.body.bucket,
                 header=oss_header
             )
             await oss_client.post_object_async(upload_request, oss_runtime)
-            translate_certificate_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+            translate_certificate_req.image_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
         translate_certificate_resp = await self.translate_certificate_with_options_async(translate_certificate_req, runtime)
         return translate_certificate_resp
 
@@ -1054,12 +1624,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.TranslateECommerceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.context):
+            query['Context'] = request.context
+        body = {}
+        if not UtilClient.is_unset(request.format_type):
+            body['FormatType'] = request.format_type
+        if not UtilClient.is_unset(request.scene):
+            body['Scene'] = request.scene
+        if not UtilClient.is_unset(request.source_language):
+            body['SourceLanguage'] = request.source_language
+        if not UtilClient.is_unset(request.source_text):
+            body['SourceText'] = request.source_text
+        if not UtilClient.is_unset(request.target_language):
+            body['TargetLanguage'] = request.target_language
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TranslateECommerce',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             alimt_20181012_models.TranslateECommerceResponse(),
-            self.do_rpcrequest('TranslateECommerce', '2018-10-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def translate_ecommerce_with_options_async(
@@ -1068,12 +1664,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.TranslateECommerceResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.context):
+            query['Context'] = request.context
+        body = {}
+        if not UtilClient.is_unset(request.format_type):
+            body['FormatType'] = request.format_type
+        if not UtilClient.is_unset(request.scene):
+            body['Scene'] = request.scene
+        if not UtilClient.is_unset(request.source_language):
+            body['SourceLanguage'] = request.source_language
+        if not UtilClient.is_unset(request.source_text):
+            body['SourceText'] = request.source_text
+        if not UtilClient.is_unset(request.target_language):
+            body['TargetLanguage'] = request.target_language
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TranslateECommerce',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             alimt_20181012_models.TranslateECommerceResponse(),
-            await self.do_rpcrequest_async('TranslateECommerce', '2018-10-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def translate_ecommerce(
@@ -1096,12 +1718,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.TranslateGeneralResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.context):
+            query['Context'] = request.context
+        body = {}
+        if not UtilClient.is_unset(request.format_type):
+            body['FormatType'] = request.format_type
+        if not UtilClient.is_unset(request.scene):
+            body['Scene'] = request.scene
+        if not UtilClient.is_unset(request.source_language):
+            body['SourceLanguage'] = request.source_language
+        if not UtilClient.is_unset(request.source_text):
+            body['SourceText'] = request.source_text
+        if not UtilClient.is_unset(request.target_language):
+            body['TargetLanguage'] = request.target_language
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TranslateGeneral',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             alimt_20181012_models.TranslateGeneralResponse(),
-            self.do_rpcrequest('TranslateGeneral', '2018-10-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def translate_general_with_options_async(
@@ -1110,12 +1758,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.TranslateGeneralResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.context):
+            query['Context'] = request.context
+        body = {}
+        if not UtilClient.is_unset(request.format_type):
+            body['FormatType'] = request.format_type
+        if not UtilClient.is_unset(request.scene):
+            body['Scene'] = request.scene
+        if not UtilClient.is_unset(request.source_language):
+            body['SourceLanguage'] = request.source_language
+        if not UtilClient.is_unset(request.source_text):
+            body['SourceText'] = request.source_text
+        if not UtilClient.is_unset(request.target_language):
+            body['TargetLanguage'] = request.target_language
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TranslateGeneral',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             alimt_20181012_models.TranslateGeneralResponse(),
-            await self.do_rpcrequest_async('TranslateGeneral', '2018-10-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def translate_general(
@@ -1138,12 +1812,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.TranslateImageResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ext):
+            body['Ext'] = request.ext
+        if not UtilClient.is_unset(request.field):
+            body['Field'] = request.field
+        if not UtilClient.is_unset(request.image_base_64):
+            body['ImageBase64'] = request.image_base_64
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageUrl'] = request.image_url
+        if not UtilClient.is_unset(request.source_language):
+            body['SourceLanguage'] = request.source_language
+        if not UtilClient.is_unset(request.target_language):
+            body['TargetLanguage'] = request.target_language
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TranslateImage',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             alimt_20181012_models.TranslateImageResponse(),
-            self.do_rpcrequest('TranslateImage', '2018-10-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def translate_image_with_options_async(
@@ -1152,12 +1850,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alimt_20181012_models.TranslateImageResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ext):
+            body['Ext'] = request.ext
+        if not UtilClient.is_unset(request.field):
+            body['Field'] = request.field
+        if not UtilClient.is_unset(request.image_base_64):
+            body['ImageBase64'] = request.image_base_64
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageUrl'] = request.image_url
+        if not UtilClient.is_unset(request.source_language):
+            body['SourceLanguage'] = request.source_language
+        if not UtilClient.is_unset(request.target_language):
+            body['TargetLanguage'] = request.target_language
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TranslateImage',
+            version='2018-10-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
         return TeaCore.from_map(
             alimt_20181012_models.TranslateImageResponse(),
-            await self.do_rpcrequest_async('TranslateImage', '2018-10-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def translate_image(
