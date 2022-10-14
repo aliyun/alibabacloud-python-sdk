@@ -1,3 +1,6 @@
+2022-10-14 Version: 1.0.2
+- Support user custom removal  function policy.
+
 2022-10-14 Version: 1.0.1
 - LifecycleHook support disable and enable, ScaleWithAdjustment support scale by instance type.
 

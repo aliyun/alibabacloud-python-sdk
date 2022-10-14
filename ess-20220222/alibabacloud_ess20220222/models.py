@@ -5347,6 +5347,7 @@ class CreateScalingGroupRequest(TeaModel):
         client_token: str = None,
         compensate_with_on_demand: bool = None,
         container_group_id: str = None,
+        custom_policy_arn: str = None,
         dbinstance_ids: str = None,
         default_cooldown: int = None,
         desired_capacity: int = None,
@@ -5387,6 +5388,7 @@ class CreateScalingGroupRequest(TeaModel):
         self.client_token = client_token
         self.compensate_with_on_demand = compensate_with_on_demand
         self.container_group_id = container_group_id
+        self.custom_policy_arn = custom_policy_arn
         self.dbinstance_ids = dbinstance_ids
         self.default_cooldown = default_cooldown
         self.desired_capacity = desired_capacity
@@ -5463,6 +5465,8 @@ class CreateScalingGroupRequest(TeaModel):
             result['CompensateWithOnDemand'] = self.compensate_with_on_demand
         if self.container_group_id is not None:
             result['ContainerGroupId'] = self.container_group_id
+        if self.custom_policy_arn is not None:
+            result['CustomPolicyARN'] = self.custom_policy_arn
         if self.dbinstance_ids is not None:
             result['DBInstanceIds'] = self.dbinstance_ids
         if self.default_cooldown is not None:
@@ -5556,6 +5560,8 @@ class CreateScalingGroupRequest(TeaModel):
             self.compensate_with_on_demand = m.get('CompensateWithOnDemand')
         if m.get('ContainerGroupId') is not None:
             self.container_group_id = m.get('ContainerGroupId')
+        if m.get('CustomPolicyARN') is not None:
+            self.custom_policy_arn = m.get('CustomPolicyARN')
         if m.get('DBInstanceIds') is not None:
             self.dbinstance_ids = m.get('DBInstanceIds')
         if m.get('DefaultCooldown') is not None:
@@ -6437,6 +6443,128 @@ class DeleteAlarmResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteAlarmResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteEciScalingConfigurationRequest(TeaModel):
+    def __init__(
+        self,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        scaling_configuration_id: str = None,
+    ):
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.scaling_configuration_id = scaling_configuration_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.scaling_configuration_id is not None:
+            result['ScalingConfigurationId'] = self.scaling_configuration_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ScalingConfigurationId') is not None:
+            self.scaling_configuration_id = m.get('ScalingConfigurationId')
+        return self
+
+
+class DeleteEciScalingConfigurationResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteEciScalingConfigurationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteEciScalingConfigurationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteEciScalingConfigurationResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -11860,6 +11988,7 @@ class DescribeScalingGroupsResponseBodyScalingGroups(TeaModel):
         compensate_with_on_demand: bool = None,
         creation_time: str = None,
         current_host_name: str = None,
+        custom_policy_arn: str = None,
         dbinstance_ids: List[str] = None,
         default_cooldown: int = None,
         desired_capacity: int = None,
@@ -11912,6 +12041,7 @@ class DescribeScalingGroupsResponseBodyScalingGroups(TeaModel):
         self.compensate_with_on_demand = compensate_with_on_demand
         self.creation_time = creation_time
         self.current_host_name = current_host_name
+        self.custom_policy_arn = custom_policy_arn
         self.dbinstance_ids = dbinstance_ids
         self.default_cooldown = default_cooldown
         self.desired_capacity = desired_capacity
@@ -11994,6 +12124,8 @@ class DescribeScalingGroupsResponseBodyScalingGroups(TeaModel):
             result['CreationTime'] = self.creation_time
         if self.current_host_name is not None:
             result['CurrentHostName'] = self.current_host_name
+        if self.custom_policy_arn is not None:
+            result['CustomPolicyARN'] = self.custom_policy_arn
         if self.dbinstance_ids is not None:
             result['DBInstanceIds'] = self.dbinstance_ids
         if self.default_cooldown is not None:
@@ -12107,6 +12239,8 @@ class DescribeScalingGroupsResponseBodyScalingGroups(TeaModel):
             self.creation_time = m.get('CreationTime')
         if m.get('CurrentHostName') is not None:
             self.current_host_name = m.get('CurrentHostName')
+        if m.get('CustomPolicyARN') is not None:
+            self.custom_policy_arn = m.get('CustomPolicyARN')
         if m.get('DBInstanceIds') is not None:
             self.dbinstance_ids = m.get('DBInstanceIds')
         if m.get('DefaultCooldown') is not None:
@@ -19997,6 +20131,7 @@ class ModifyScalingGroupRequest(TeaModel):
         allocation_strategy: str = None,
         az_balance: bool = None,
         compensate_with_on_demand: bool = None,
+        custom_policy_arn: str = None,
         default_cooldown: int = None,
         desired_capacity: int = None,
         group_deletion_protection: bool = None,
@@ -20026,6 +20161,7 @@ class ModifyScalingGroupRequest(TeaModel):
         self.allocation_strategy = allocation_strategy
         self.az_balance = az_balance
         self.compensate_with_on_demand = compensate_with_on_demand
+        self.custom_policy_arn = custom_policy_arn
         self.default_cooldown = default_cooldown
         self.desired_capacity = desired_capacity
         self.group_deletion_protection = group_deletion_protection
@@ -20071,6 +20207,8 @@ class ModifyScalingGroupRequest(TeaModel):
             result['AzBalance'] = self.az_balance
         if self.compensate_with_on_demand is not None:
             result['CompensateWithOnDemand'] = self.compensate_with_on_demand
+        if self.custom_policy_arn is not None:
+            result['CustomPolicyARN'] = self.custom_policy_arn
         if self.default_cooldown is not None:
             result['DefaultCooldown'] = self.default_cooldown
         if self.desired_capacity is not None:
@@ -20133,6 +20271,8 @@ class ModifyScalingGroupRequest(TeaModel):
             self.az_balance = m.get('AzBalance')
         if m.get('CompensateWithOnDemand') is not None:
             self.compensate_with_on_demand = m.get('CompensateWithOnDemand')
+        if m.get('CustomPolicyARN') is not None:
+            self.custom_policy_arn = m.get('CustomPolicyARN')
         if m.get('DefaultCooldown') is not None:
             self.default_cooldown = m.get('DefaultCooldown')
         if m.get('DesiredCapacity') is not None:

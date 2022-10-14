@@ -1540,6 +1540,8 @@ class Client(OpenApiClient):
             query['CompensateWithOnDemand'] = request.compensate_with_on_demand
         if not UtilClient.is_unset(request.container_group_id):
             query['ContainerGroupId'] = request.container_group_id
+        if not UtilClient.is_unset(request.custom_policy_arn):
+            query['CustomPolicyARN'] = request.custom_policy_arn
         if not UtilClient.is_unset(request.dbinstance_ids):
             query['DBInstanceIds'] = request.dbinstance_ids
         if not UtilClient.is_unset(request.default_cooldown):
@@ -1644,6 +1646,8 @@ class Client(OpenApiClient):
             query['CompensateWithOnDemand'] = request.compensate_with_on_demand
         if not UtilClient.is_unset(request.container_group_id):
             query['ContainerGroupId'] = request.container_group_id
+        if not UtilClient.is_unset(request.custom_policy_arn):
+            query['CustomPolicyARN'] = request.custom_policy_arn
         if not UtilClient.is_unset(request.dbinstance_ids):
             query['DBInstanceIds'] = request.dbinstance_ids
         if not UtilClient.is_unset(request.default_cooldown):
@@ -2198,6 +2202,92 @@ class Client(OpenApiClient):
     ) -> ess_20220222_models.DeleteAlarmResponse:
         runtime = util_models.RuntimeOptions()
         return await self.delete_alarm_with_options_async(request, runtime)
+
+    def delete_eci_scaling_configuration_with_options(
+        self,
+        request: ess_20220222_models.DeleteEciScalingConfigurationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ess_20220222_models.DeleteEciScalingConfigurationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.scaling_configuration_id):
+            query['ScalingConfigurationId'] = request.scaling_configuration_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteEciScalingConfiguration',
+            version='2022-02-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ess_20220222_models.DeleteEciScalingConfigurationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_eci_scaling_configuration_with_options_async(
+        self,
+        request: ess_20220222_models.DeleteEciScalingConfigurationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ess_20220222_models.DeleteEciScalingConfigurationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.scaling_configuration_id):
+            query['ScalingConfigurationId'] = request.scaling_configuration_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteEciScalingConfiguration',
+            version='2022-02-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ess_20220222_models.DeleteEciScalingConfigurationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_eci_scaling_configuration(
+        self,
+        request: ess_20220222_models.DeleteEciScalingConfigurationRequest,
+    ) -> ess_20220222_models.DeleteEciScalingConfigurationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_eci_scaling_configuration_with_options(request, runtime)
+
+    async def delete_eci_scaling_configuration_async(
+        self,
+        request: ess_20220222_models.DeleteEciScalingConfigurationRequest,
+    ) -> ess_20220222_models.DeleteEciScalingConfigurationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_eci_scaling_configuration_with_options_async(request, runtime)
 
     def delete_lifecycle_hook_with_options(
         self,
@@ -6476,6 +6566,8 @@ class Client(OpenApiClient):
             query['AzBalance'] = request.az_balance
         if not UtilClient.is_unset(request.compensate_with_on_demand):
             query['CompensateWithOnDemand'] = request.compensate_with_on_demand
+        if not UtilClient.is_unset(request.custom_policy_arn):
+            query['CustomPolicyARN'] = request.custom_policy_arn
         if not UtilClient.is_unset(request.default_cooldown):
             query['DefaultCooldown'] = request.default_cooldown
         if not UtilClient.is_unset(request.desired_capacity):
@@ -6558,6 +6650,8 @@ class Client(OpenApiClient):
             query['AzBalance'] = request.az_balance
         if not UtilClient.is_unset(request.compensate_with_on_demand):
             query['CompensateWithOnDemand'] = request.compensate_with_on_demand
+        if not UtilClient.is_unset(request.custom_policy_arn):
+            query['CustomPolicyARN'] = request.custom_policy_arn
         if not UtilClient.is_unset(request.default_cooldown):
             query['DefaultCooldown'] = request.default_cooldown
         if not UtilClient.is_unset(request.desired_capacity):
