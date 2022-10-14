@@ -1,3 +1,6 @@
+2022-10-14 Version: 2.0.23
+- DescribeGuestClusterNamespaces support show namespace labels.
+
 2022-09-08 Version: 2.0.22
 - UpdateCRAggregation support using public API Server endpoint of ASM.
 

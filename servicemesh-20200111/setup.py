@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_servicemesh20200111.
 
-Created on 08/09/2022
+Created on 14/10/2022
 
 @author: Alibaba Cloud SDK
 """

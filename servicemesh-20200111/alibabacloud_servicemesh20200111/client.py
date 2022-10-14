@@ -888,6 +888,182 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_service_mesh_with_options_async(request, runtime)
 
+    def create_swim_lane_with_options(
+        self,
+        request: servicemesh_20200111_models.CreateSwimLaneRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicemesh_20200111_models.CreateSwimLaneResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.group_name):
+            body['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.label_selector_key):
+            body['LabelSelectorKey'] = request.label_selector_key
+        if not UtilClient.is_unset(request.label_selector_value):
+            body['LabelSelectorValue'] = request.label_selector_value
+        if not UtilClient.is_unset(request.service_mesh_id):
+            body['ServiceMeshId'] = request.service_mesh_id
+        if not UtilClient.is_unset(request.services_list):
+            body['ServicesList'] = request.services_list
+        if not UtilClient.is_unset(request.swim_lane_name):
+            body['SwimLaneName'] = request.swim_lane_name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateSwimLane',
+            version='2020-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicemesh_20200111_models.CreateSwimLaneResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_swim_lane_with_options_async(
+        self,
+        request: servicemesh_20200111_models.CreateSwimLaneRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicemesh_20200111_models.CreateSwimLaneResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.group_name):
+            body['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.label_selector_key):
+            body['LabelSelectorKey'] = request.label_selector_key
+        if not UtilClient.is_unset(request.label_selector_value):
+            body['LabelSelectorValue'] = request.label_selector_value
+        if not UtilClient.is_unset(request.service_mesh_id):
+            body['ServiceMeshId'] = request.service_mesh_id
+        if not UtilClient.is_unset(request.services_list):
+            body['ServicesList'] = request.services_list
+        if not UtilClient.is_unset(request.swim_lane_name):
+            body['SwimLaneName'] = request.swim_lane_name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateSwimLane',
+            version='2020-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicemesh_20200111_models.CreateSwimLaneResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_swim_lane(
+        self,
+        request: servicemesh_20200111_models.CreateSwimLaneRequest,
+    ) -> servicemesh_20200111_models.CreateSwimLaneResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_swim_lane_with_options(request, runtime)
+
+    async def create_swim_lane_async(
+        self,
+        request: servicemesh_20200111_models.CreateSwimLaneRequest,
+    ) -> servicemesh_20200111_models.CreateSwimLaneResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_swim_lane_with_options_async(request, runtime)
+
+    def create_swim_lane_group_with_options(
+        self,
+        request: servicemesh_20200111_models.CreateSwimLaneGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicemesh_20200111_models.CreateSwimLaneGroupResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.group_name):
+            body['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.ingress_gateway_name):
+            body['IngressGatewayName'] = request.ingress_gateway_name
+        if not UtilClient.is_unset(request.ingress_type):
+            body['IngressType'] = request.ingress_type
+        if not UtilClient.is_unset(request.service_mesh_id):
+            body['ServiceMeshId'] = request.service_mesh_id
+        if not UtilClient.is_unset(request.services_list):
+            body['ServicesList'] = request.services_list
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateSwimLaneGroup',
+            version='2020-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicemesh_20200111_models.CreateSwimLaneGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_swim_lane_group_with_options_async(
+        self,
+        request: servicemesh_20200111_models.CreateSwimLaneGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicemesh_20200111_models.CreateSwimLaneGroupResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.group_name):
+            body['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.ingress_gateway_name):
+            body['IngressGatewayName'] = request.ingress_gateway_name
+        if not UtilClient.is_unset(request.ingress_type):
+            body['IngressType'] = request.ingress_type
+        if not UtilClient.is_unset(request.service_mesh_id):
+            body['ServiceMeshId'] = request.service_mesh_id
+        if not UtilClient.is_unset(request.services_list):
+            body['ServicesList'] = request.services_list
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateSwimLaneGroup',
+            version='2020-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicemesh_20200111_models.CreateSwimLaneGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_swim_lane_group(
+        self,
+        request: servicemesh_20200111_models.CreateSwimLaneGroupRequest,
+    ) -> servicemesh_20200111_models.CreateSwimLaneGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_swim_lane_group_with_options(request, runtime)
+
+    async def create_swim_lane_group_async(
+        self,
+        request: servicemesh_20200111_models.CreateSwimLaneGroupRequest,
+    ) -> servicemesh_20200111_models.CreateSwimLaneGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_swim_lane_group_with_options_async(request, runtime)
+
     def delete_gateway_route_with_options(
         self,
         request: servicemesh_20200111_models.DeleteGatewayRouteRequest,
@@ -1211,6 +1387,158 @@ class Client(OpenApiClient):
     ) -> servicemesh_20200111_models.DeleteServiceMeshResponse:
         runtime = util_models.RuntimeOptions()
         return await self.delete_service_mesh_with_options_async(request, runtime)
+
+    def delete_swim_lane_with_options(
+        self,
+        request: servicemesh_20200111_models.DeleteSwimLaneRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicemesh_20200111_models.DeleteSwimLaneResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.group_name):
+            body['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.service_mesh_id):
+            body['ServiceMeshId'] = request.service_mesh_id
+        if not UtilClient.is_unset(request.swim_lane_name):
+            body['SwimLaneName'] = request.swim_lane_name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteSwimLane',
+            version='2020-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicemesh_20200111_models.DeleteSwimLaneResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_swim_lane_with_options_async(
+        self,
+        request: servicemesh_20200111_models.DeleteSwimLaneRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicemesh_20200111_models.DeleteSwimLaneResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.group_name):
+            body['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.service_mesh_id):
+            body['ServiceMeshId'] = request.service_mesh_id
+        if not UtilClient.is_unset(request.swim_lane_name):
+            body['SwimLaneName'] = request.swim_lane_name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteSwimLane',
+            version='2020-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicemesh_20200111_models.DeleteSwimLaneResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_swim_lane(
+        self,
+        request: servicemesh_20200111_models.DeleteSwimLaneRequest,
+    ) -> servicemesh_20200111_models.DeleteSwimLaneResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_swim_lane_with_options(request, runtime)
+
+    async def delete_swim_lane_async(
+        self,
+        request: servicemesh_20200111_models.DeleteSwimLaneRequest,
+    ) -> servicemesh_20200111_models.DeleteSwimLaneResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_swim_lane_with_options_async(request, runtime)
+
+    def delete_swim_lane_group_with_options(
+        self,
+        request: servicemesh_20200111_models.DeleteSwimLaneGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicemesh_20200111_models.DeleteSwimLaneGroupResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.group_name):
+            body['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.service_mesh_id):
+            body['ServiceMeshId'] = request.service_mesh_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteSwimLaneGroup',
+            version='2020-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicemesh_20200111_models.DeleteSwimLaneGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_swim_lane_group_with_options_async(
+        self,
+        request: servicemesh_20200111_models.DeleteSwimLaneGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicemesh_20200111_models.DeleteSwimLaneGroupResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.group_name):
+            body['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.service_mesh_id):
+            body['ServiceMeshId'] = request.service_mesh_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteSwimLaneGroup',
+            version='2020-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicemesh_20200111_models.DeleteSwimLaneGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_swim_lane_group(
+        self,
+        request: servicemesh_20200111_models.DeleteSwimLaneGroupRequest,
+    ) -> servicemesh_20200111_models.DeleteSwimLaneGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_swim_lane_group_with_options(request, runtime)
+
+    async def delete_swim_lane_group_async(
+        self,
+        request: servicemesh_20200111_models.DeleteSwimLaneGroupRequest,
+    ) -> servicemesh_20200111_models.DeleteSwimLaneGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_swim_lane_group_with_options_async(request, runtime)
 
     def describe_asmgateway_imported_services_with_options(
         self,
@@ -2029,6 +2357,8 @@ class Client(OpenApiClient):
             body['GuestClusterID'] = request.guest_cluster_id
         if not UtilClient.is_unset(request.service_mesh_id):
             body['ServiceMeshId'] = request.service_mesh_id
+        if not UtilClient.is_unset(request.show_ns_labels):
+            body['ShowNsLabels'] = request.show_ns_labels
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -2059,6 +2389,8 @@ class Client(OpenApiClient):
             body['GuestClusterID'] = request.guest_cluster_id
         if not UtilClient.is_unset(request.service_mesh_id):
             body['ServiceMeshId'] = request.service_mesh_id
+        if not UtilClient.is_unset(request.show_ns_labels):
+            body['ShowNsLabels'] = request.show_ns_labels
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -3952,6 +4284,182 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_ca_cert_with_options_async(request, runtime)
 
+    def get_deployment_by_selector_with_options(
+        self,
+        tmp_req: servicemesh_20200111_models.GetDeploymentBySelectorRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicemesh_20200111_models.GetDeploymentBySelectorResponse:
+        UtilClient.validate_model(tmp_req)
+        request = servicemesh_20200111_models.GetDeploymentBySelectorShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.label_selector):
+            request.label_selector_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.label_selector, 'LabelSelector', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.guest_cluster):
+            body['GuestCluster'] = request.guest_cluster
+        if not UtilClient.is_unset(request.label_selector_shrink):
+            body['LabelSelector'] = request.label_selector_shrink
+        if not UtilClient.is_unset(request.limit):
+            body['Limit'] = request.limit
+        if not UtilClient.is_unset(request.mark):
+            body['Mark'] = request.mark
+        if not UtilClient.is_unset(request.name_space):
+            body['NameSpace'] = request.name_space
+        if not UtilClient.is_unset(request.service_mesh_id):
+            body['ServiceMeshId'] = request.service_mesh_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetDeploymentBySelector',
+            version='2020-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicemesh_20200111_models.GetDeploymentBySelectorResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_deployment_by_selector_with_options_async(
+        self,
+        tmp_req: servicemesh_20200111_models.GetDeploymentBySelectorRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicemesh_20200111_models.GetDeploymentBySelectorResponse:
+        UtilClient.validate_model(tmp_req)
+        request = servicemesh_20200111_models.GetDeploymentBySelectorShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.label_selector):
+            request.label_selector_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.label_selector, 'LabelSelector', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.guest_cluster):
+            body['GuestCluster'] = request.guest_cluster
+        if not UtilClient.is_unset(request.label_selector_shrink):
+            body['LabelSelector'] = request.label_selector_shrink
+        if not UtilClient.is_unset(request.limit):
+            body['Limit'] = request.limit
+        if not UtilClient.is_unset(request.mark):
+            body['Mark'] = request.mark
+        if not UtilClient.is_unset(request.name_space):
+            body['NameSpace'] = request.name_space
+        if not UtilClient.is_unset(request.service_mesh_id):
+            body['ServiceMeshId'] = request.service_mesh_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetDeploymentBySelector',
+            version='2020-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicemesh_20200111_models.GetDeploymentBySelectorResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_deployment_by_selector(
+        self,
+        request: servicemesh_20200111_models.GetDeploymentBySelectorRequest,
+    ) -> servicemesh_20200111_models.GetDeploymentBySelectorResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_deployment_by_selector_with_options(request, runtime)
+
+    async def get_deployment_by_selector_async(
+        self,
+        request: servicemesh_20200111_models.GetDeploymentBySelectorRequest,
+    ) -> servicemesh_20200111_models.GetDeploymentBySelectorResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_deployment_by_selector_with_options_async(request, runtime)
+
+    def get_grafana_dashboard_url_with_options(
+        self,
+        request: servicemesh_20200111_models.GetGrafanaDashboardUrlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicemesh_20200111_models.GetGrafanaDashboardUrlResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.k_8s_cluster_id):
+            body['K8sClusterId'] = request.k_8s_cluster_id
+        if not UtilClient.is_unset(request.service_mesh_id):
+            body['ServiceMeshId'] = request.service_mesh_id
+        if not UtilClient.is_unset(request.title):
+            body['Title'] = request.title
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetGrafanaDashboardUrl',
+            version='2020-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicemesh_20200111_models.GetGrafanaDashboardUrlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_grafana_dashboard_url_with_options_async(
+        self,
+        request: servicemesh_20200111_models.GetGrafanaDashboardUrlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicemesh_20200111_models.GetGrafanaDashboardUrlResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.k_8s_cluster_id):
+            body['K8sClusterId'] = request.k_8s_cluster_id
+        if not UtilClient.is_unset(request.service_mesh_id):
+            body['ServiceMeshId'] = request.service_mesh_id
+        if not UtilClient.is_unset(request.title):
+            body['Title'] = request.title
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetGrafanaDashboardUrl',
+            version='2020-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicemesh_20200111_models.GetGrafanaDashboardUrlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_grafana_dashboard_url(
+        self,
+        request: servicemesh_20200111_models.GetGrafanaDashboardUrlRequest,
+    ) -> servicemesh_20200111_models.GetGrafanaDashboardUrlResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_grafana_dashboard_url_with_options(request, runtime)
+
+    async def get_grafana_dashboard_url_async(
+        self,
+        request: servicemesh_20200111_models.GetGrafanaDashboardUrlRequest,
+    ) -> servicemesh_20200111_models.GetGrafanaDashboardUrlResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_grafana_dashboard_url_with_options_async(request, runtime)
+
     def get_registered_service_endpoints_with_options(
         self,
         request: servicemesh_20200111_models.GetRegisteredServiceEndpointsRequest,
@@ -4107,6 +4615,228 @@ class Client(OpenApiClient):
     ) -> servicemesh_20200111_models.GetRegisteredServiceNamespacesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_registered_service_namespaces_with_options_async(request, runtime)
+
+    def get_swim_lane_detail_with_options(
+        self,
+        request: servicemesh_20200111_models.GetSwimLaneDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicemesh_20200111_models.GetSwimLaneDetailResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.group_name):
+            body['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.service_mesh_id):
+            body['ServiceMeshId'] = request.service_mesh_id
+        if not UtilClient.is_unset(request.swim_lane_name):
+            body['SwimLaneName'] = request.swim_lane_name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetSwimLaneDetail',
+            version='2020-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicemesh_20200111_models.GetSwimLaneDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_swim_lane_detail_with_options_async(
+        self,
+        request: servicemesh_20200111_models.GetSwimLaneDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicemesh_20200111_models.GetSwimLaneDetailResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.group_name):
+            body['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.service_mesh_id):
+            body['ServiceMeshId'] = request.service_mesh_id
+        if not UtilClient.is_unset(request.swim_lane_name):
+            body['SwimLaneName'] = request.swim_lane_name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetSwimLaneDetail',
+            version='2020-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicemesh_20200111_models.GetSwimLaneDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_swim_lane_detail(
+        self,
+        request: servicemesh_20200111_models.GetSwimLaneDetailRequest,
+    ) -> servicemesh_20200111_models.GetSwimLaneDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_swim_lane_detail_with_options(request, runtime)
+
+    async def get_swim_lane_detail_async(
+        self,
+        request: servicemesh_20200111_models.GetSwimLaneDetailRequest,
+    ) -> servicemesh_20200111_models.GetSwimLaneDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_swim_lane_detail_with_options_async(request, runtime)
+
+    def get_swim_lane_group_list_with_options(
+        self,
+        request: servicemesh_20200111_models.GetSwimLaneGroupListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicemesh_20200111_models.GetSwimLaneGroupListResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.service_mesh_id):
+            body['ServiceMeshId'] = request.service_mesh_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetSwimLaneGroupList',
+            version='2020-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicemesh_20200111_models.GetSwimLaneGroupListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_swim_lane_group_list_with_options_async(
+        self,
+        request: servicemesh_20200111_models.GetSwimLaneGroupListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicemesh_20200111_models.GetSwimLaneGroupListResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.service_mesh_id):
+            body['ServiceMeshId'] = request.service_mesh_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetSwimLaneGroupList',
+            version='2020-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicemesh_20200111_models.GetSwimLaneGroupListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_swim_lane_group_list(
+        self,
+        request: servicemesh_20200111_models.GetSwimLaneGroupListRequest,
+    ) -> servicemesh_20200111_models.GetSwimLaneGroupListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_swim_lane_group_list_with_options(request, runtime)
+
+    async def get_swim_lane_group_list_async(
+        self,
+        request: servicemesh_20200111_models.GetSwimLaneGroupListRequest,
+    ) -> servicemesh_20200111_models.GetSwimLaneGroupListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_swim_lane_group_list_with_options_async(request, runtime)
+
+    def get_swim_lane_list_with_options(
+        self,
+        request: servicemesh_20200111_models.GetSwimLaneListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicemesh_20200111_models.GetSwimLaneListResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.group_name):
+            body['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.service_mesh_id):
+            body['ServiceMeshId'] = request.service_mesh_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetSwimLaneList',
+            version='2020-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicemesh_20200111_models.GetSwimLaneListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_swim_lane_list_with_options_async(
+        self,
+        request: servicemesh_20200111_models.GetSwimLaneListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicemesh_20200111_models.GetSwimLaneListResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.group_name):
+            body['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.service_mesh_id):
+            body['ServiceMeshId'] = request.service_mesh_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetSwimLaneList',
+            version='2020-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicemesh_20200111_models.GetSwimLaneListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_swim_lane_list(
+        self,
+        request: servicemesh_20200111_models.GetSwimLaneListRequest,
+    ) -> servicemesh_20200111_models.GetSwimLaneListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_swim_lane_list_with_options(request, runtime)
+
+    async def get_swim_lane_list_async(
+        self,
+        request: servicemesh_20200111_models.GetSwimLaneListRequest,
+    ) -> servicemesh_20200111_models.GetSwimLaneListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_swim_lane_list_with_options_async(request, runtime)
 
     def get_vm_app_mesh_info_with_options(
         self,
@@ -5857,6 +6587,174 @@ class Client(OpenApiClient):
     ) -> servicemesh_20200111_models.UpdateNamespaceScopeSidecarConfigResponse:
         runtime = util_models.RuntimeOptions()
         return await self.update_namespace_scope_sidecar_config_with_options_async(request, runtime)
+
+    def update_swim_lane_with_options(
+        self,
+        request: servicemesh_20200111_models.UpdateSwimLaneRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicemesh_20200111_models.UpdateSwimLaneResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.group_name):
+            body['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.label_selector_key):
+            body['LabelSelectorKey'] = request.label_selector_key
+        if not UtilClient.is_unset(request.label_selector_value):
+            body['LabelSelectorValue'] = request.label_selector_value
+        if not UtilClient.is_unset(request.service_mesh_id):
+            body['ServiceMeshId'] = request.service_mesh_id
+        if not UtilClient.is_unset(request.services_list):
+            body['ServicesList'] = request.services_list
+        if not UtilClient.is_unset(request.swim_lane_name):
+            body['SwimLaneName'] = request.swim_lane_name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateSwimLane',
+            version='2020-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicemesh_20200111_models.UpdateSwimLaneResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_swim_lane_with_options_async(
+        self,
+        request: servicemesh_20200111_models.UpdateSwimLaneRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicemesh_20200111_models.UpdateSwimLaneResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.group_name):
+            body['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.label_selector_key):
+            body['LabelSelectorKey'] = request.label_selector_key
+        if not UtilClient.is_unset(request.label_selector_value):
+            body['LabelSelectorValue'] = request.label_selector_value
+        if not UtilClient.is_unset(request.service_mesh_id):
+            body['ServiceMeshId'] = request.service_mesh_id
+        if not UtilClient.is_unset(request.services_list):
+            body['ServicesList'] = request.services_list
+        if not UtilClient.is_unset(request.swim_lane_name):
+            body['SwimLaneName'] = request.swim_lane_name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateSwimLane',
+            version='2020-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicemesh_20200111_models.UpdateSwimLaneResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_swim_lane(
+        self,
+        request: servicemesh_20200111_models.UpdateSwimLaneRequest,
+    ) -> servicemesh_20200111_models.UpdateSwimLaneResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_swim_lane_with_options(request, runtime)
+
+    async def update_swim_lane_async(
+        self,
+        request: servicemesh_20200111_models.UpdateSwimLaneRequest,
+    ) -> servicemesh_20200111_models.UpdateSwimLaneResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_swim_lane_with_options_async(request, runtime)
+
+    def update_swim_lane_group_with_options(
+        self,
+        request: servicemesh_20200111_models.UpdateSwimLaneGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicemesh_20200111_models.UpdateSwimLaneGroupResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.group_name):
+            body['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.service_mesh_id):
+            body['ServiceMeshId'] = request.service_mesh_id
+        if not UtilClient.is_unset(request.services_list):
+            body['ServicesList'] = request.services_list
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateSwimLaneGroup',
+            version='2020-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicemesh_20200111_models.UpdateSwimLaneGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_swim_lane_group_with_options_async(
+        self,
+        request: servicemesh_20200111_models.UpdateSwimLaneGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicemesh_20200111_models.UpdateSwimLaneGroupResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.group_name):
+            body['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.service_mesh_id):
+            body['ServiceMeshId'] = request.service_mesh_id
+        if not UtilClient.is_unset(request.services_list):
+            body['ServicesList'] = request.services_list
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateSwimLaneGroup',
+            version='2020-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicemesh_20200111_models.UpdateSwimLaneGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_swim_lane_group(
+        self,
+        request: servicemesh_20200111_models.UpdateSwimLaneGroupRequest,
+    ) -> servicemesh_20200111_models.UpdateSwimLaneGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_swim_lane_group_with_options(request, runtime)
+
+    async def update_swim_lane_group_async(
+        self,
+        request: servicemesh_20200111_models.UpdateSwimLaneGroupRequest,
+    ) -> servicemesh_20200111_models.UpdateSwimLaneGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_swim_lane_group_with_options_async(request, runtime)
 
     def upgrade_mesh_edition_partially_with_options(
         self,
