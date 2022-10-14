@@ -1,3 +1,6 @@
+2022-10-14 Version: 3.0.1
+- Add GPUMemorySize to DescribeInstanceTypes api.
+
 2022-09-27 Version: 3.0.0
 - Modify Size type form int32 to int64 of `DescribePriceRequest` `DataDisk` param.
 
