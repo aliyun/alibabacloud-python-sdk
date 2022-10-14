@@ -1,3 +1,6 @@
+2022-10-14 Version: 1.0.23
+- Update module.
+
 2022-10-13 Version: 1.0.22
 - Update thirdpart_depart_id.
 
