@@ -9491,6 +9491,7 @@ class DescribeLifecycleHooksResponseBodyLifecycleHooks(TeaModel):
         heartbeat_timeout: int = None,
         lifecycle_hook_id: str = None,
         lifecycle_hook_name: str = None,
+        lifecycle_hook_status: str = None,
         lifecycle_transition: str = None,
         notification_arn: str = None,
         notification_metadata: str = None,
@@ -9500,6 +9501,7 @@ class DescribeLifecycleHooksResponseBodyLifecycleHooks(TeaModel):
         self.heartbeat_timeout = heartbeat_timeout
         self.lifecycle_hook_id = lifecycle_hook_id
         self.lifecycle_hook_name = lifecycle_hook_name
+        self.lifecycle_hook_status = lifecycle_hook_status
         self.lifecycle_transition = lifecycle_transition
         self.notification_arn = notification_arn
         self.notification_metadata = notification_metadata
@@ -9522,6 +9524,8 @@ class DescribeLifecycleHooksResponseBodyLifecycleHooks(TeaModel):
             result['LifecycleHookId'] = self.lifecycle_hook_id
         if self.lifecycle_hook_name is not None:
             result['LifecycleHookName'] = self.lifecycle_hook_name
+        if self.lifecycle_hook_status is not None:
+            result['LifecycleHookStatus'] = self.lifecycle_hook_status
         if self.lifecycle_transition is not None:
             result['LifecycleTransition'] = self.lifecycle_transition
         if self.notification_arn is not None:
@@ -9542,6 +9546,8 @@ class DescribeLifecycleHooksResponseBodyLifecycleHooks(TeaModel):
             self.lifecycle_hook_id = m.get('LifecycleHookId')
         if m.get('LifecycleHookName') is not None:
             self.lifecycle_hook_name = m.get('LifecycleHookName')
+        if m.get('LifecycleHookStatus') is not None:
+            self.lifecycle_hook_status = m.get('LifecycleHookStatus')
         if m.get('LifecycleTransition') is not None:
             self.lifecycle_transition = m.get('LifecycleTransition')
         if m.get('NotificationArn') is not None:
@@ -18205,6 +18211,7 @@ class ModifyLifecycleHookRequest(TeaModel):
         heartbeat_timeout: int = None,
         lifecycle_hook_id: str = None,
         lifecycle_hook_name: str = None,
+        lifecycle_hook_status: str = None,
         lifecycle_transition: str = None,
         notification_arn: str = None,
         notification_metadata: str = None,
@@ -18218,6 +18225,7 @@ class ModifyLifecycleHookRequest(TeaModel):
         self.heartbeat_timeout = heartbeat_timeout
         self.lifecycle_hook_id = lifecycle_hook_id
         self.lifecycle_hook_name = lifecycle_hook_name
+        self.lifecycle_hook_status = lifecycle_hook_status
         self.lifecycle_transition = lifecycle_transition
         self.notification_arn = notification_arn
         self.notification_metadata = notification_metadata
@@ -18244,6 +18252,8 @@ class ModifyLifecycleHookRequest(TeaModel):
             result['LifecycleHookId'] = self.lifecycle_hook_id
         if self.lifecycle_hook_name is not None:
             result['LifecycleHookName'] = self.lifecycle_hook_name
+        if self.lifecycle_hook_status is not None:
+            result['LifecycleHookStatus'] = self.lifecycle_hook_status
         if self.lifecycle_transition is not None:
             result['LifecycleTransition'] = self.lifecycle_transition
         if self.notification_arn is not None:
@@ -18272,6 +18282,8 @@ class ModifyLifecycleHookRequest(TeaModel):
             self.lifecycle_hook_id = m.get('LifecycleHookId')
         if m.get('LifecycleHookName') is not None:
             self.lifecycle_hook_name = m.get('LifecycleHookName')
+        if m.get('LifecycleHookStatus') is not None:
+            self.lifecycle_hook_status = m.get('LifecycleHookStatus')
         if m.get('LifecycleTransition') is not None:
             self.lifecycle_transition = m.get('LifecycleTransition')
         if m.get('NotificationArn') is not None:

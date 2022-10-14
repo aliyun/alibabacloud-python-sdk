@@ -6010,6 +6010,8 @@ class Client(OpenApiClient):
             query['LifecycleHookId'] = request.lifecycle_hook_id
         if not UtilClient.is_unset(request.lifecycle_hook_name):
             query['LifecycleHookName'] = request.lifecycle_hook_name
+        if not UtilClient.is_unset(request.lifecycle_hook_status):
+            query['LifecycleHookStatus'] = request.lifecycle_hook_status
         if not UtilClient.is_unset(request.lifecycle_transition):
             query['LifecycleTransition'] = request.lifecycle_transition
         if not UtilClient.is_unset(request.notification_arn):
@@ -6060,6 +6062,8 @@ class Client(OpenApiClient):
             query['LifecycleHookId'] = request.lifecycle_hook_id
         if not UtilClient.is_unset(request.lifecycle_hook_name):
             query['LifecycleHookName'] = request.lifecycle_hook_name
+        if not UtilClient.is_unset(request.lifecycle_hook_status):
+            query['LifecycleHookStatus'] = request.lifecycle_hook_status
         if not UtilClient.is_unset(request.lifecycle_transition):
             query['LifecycleTransition'] = request.lifecycle_transition
         if not UtilClient.is_unset(request.notification_arn):
