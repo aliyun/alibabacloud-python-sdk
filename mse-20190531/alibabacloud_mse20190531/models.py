@@ -6225,6 +6225,7 @@ class CreateOrUpdateSwimmingLaneGroupRequest(TeaModel):
         self,
         accept_language: str = None,
         app_ids: str = None,
+        db_gray_enable: bool = None,
         enable: bool = None,
         entry_app: str = None,
         gmt_create: str = None,
@@ -6242,6 +6243,7 @@ class CreateOrUpdateSwimmingLaneGroupRequest(TeaModel):
     ):
         self.accept_language = accept_language
         self.app_ids = app_ids
+        self.db_gray_enable = db_gray_enable
         self.enable = enable
         self.entry_app = entry_app
         self.gmt_create = gmt_create
@@ -6270,6 +6272,8 @@ class CreateOrUpdateSwimmingLaneGroupRequest(TeaModel):
             result['AcceptLanguage'] = self.accept_language
         if self.app_ids is not None:
             result['AppIds'] = self.app_ids
+        if self.db_gray_enable is not None:
+            result['DbGrayEnable'] = self.db_gray_enable
         if self.enable is not None:
             result['Enable'] = self.enable
         if self.entry_app is not None:
@@ -6306,6 +6310,8 @@ class CreateOrUpdateSwimmingLaneGroupRequest(TeaModel):
             self.accept_language = m.get('AcceptLanguage')
         if m.get('AppIds') is not None:
             self.app_ids = m.get('AppIds')
+        if m.get('DbGrayEnable') is not None:
+            self.db_gray_enable = m.get('DbGrayEnable')
         if m.get('Enable') is not None:
             self.enable = m.get('Enable')
         if m.get('EntryApp') is not None:

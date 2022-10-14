@@ -2449,6 +2449,8 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.app_ids):
             query['AppIds'] = request.app_ids
+        if not UtilClient.is_unset(request.db_gray_enable):
+            query['DbGrayEnable'] = request.db_gray_enable
         if not UtilClient.is_unset(request.enable):
             query['Enable'] = request.enable
         if not UtilClient.is_unset(request.entry_app):
@@ -2507,6 +2509,8 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.app_ids):
             query['AppIds'] = request.app_ids
+        if not UtilClient.is_unset(request.db_gray_enable):
+            query['DbGrayEnable'] = request.db_gray_enable
         if not UtilClient.is_unset(request.enable):
             query['Enable'] = request.enable
         if not UtilClient.is_unset(request.entry_app):
