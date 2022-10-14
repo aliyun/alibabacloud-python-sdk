@@ -1,3 +1,6 @@
+2022-10-14 Version: 2.0.11
+- Release RecognizeVATInvoice.
+
 2022-06-21 Version: 2.0.10
 - Release RecognizeTurkeyIdentityCard RecognizeMalaysiaIdentityCard RecognizeRussiaIdentityCard RecognizeIndonesiaIdentityCard RecognizeUkraineIdentityCard RecognizeVietnamIdentityCard.
 

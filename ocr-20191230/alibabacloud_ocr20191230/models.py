@@ -39,7 +39,7 @@ class DetectCardScreenshotAdvanceRequest(TeaModel):
         self.image_urlobject = image_urlobject
 
     def validate(self):
-        self.validate_required(self.image_urlobject, 'image_urlobject')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -48,13 +48,13 @@ class DetectCardScreenshotAdvanceRequest(TeaModel):
 
         result = dict()
         if self.image_urlobject is not None:
-            result['ImageURLObject'] = self.image_urlobject
+            result['ImageURL'] = self.image_urlobject
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ImageURLObject') is not None:
-            self.image_urlobject = m.get('ImageURLObject')
+        if m.get('ImageURL') is not None:
+            self.image_urlobject = m.get('ImageURL')
         return self
 
 
@@ -438,7 +438,7 @@ class RecognizeAccountPageAdvanceRequest(TeaModel):
         self.image_urlobject = image_urlobject
 
     def validate(self):
-        self.validate_required(self.image_urlobject, 'image_urlobject')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -447,13 +447,13 @@ class RecognizeAccountPageAdvanceRequest(TeaModel):
 
         result = dict()
         if self.image_urlobject is not None:
-            result['ImageURLObject'] = self.image_urlobject
+            result['ImageURL'] = self.image_urlobject
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ImageURLObject') is not None:
-            self.image_urlobject = m.get('ImageURLObject')
+        if m.get('ImageURL') is not None:
+            self.image_urlobject = m.get('ImageURL')
         return self
 
 
@@ -939,7 +939,7 @@ class RecognizeBankCardAdvanceRequest(TeaModel):
         self.image_urlobject = image_urlobject
 
     def validate(self):
-        self.validate_required(self.image_urlobject, 'image_urlobject')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -948,13 +948,13 @@ class RecognizeBankCardAdvanceRequest(TeaModel):
 
         result = dict()
         if self.image_urlobject is not None:
-            result['ImageURLObject'] = self.image_urlobject
+            result['ImageURL'] = self.image_urlobject
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ImageURLObject') is not None:
-            self.image_urlobject = m.get('ImageURLObject')
+        if m.get('ImageURL') is not None:
+            self.image_urlobject = m.get('ImageURL')
         return self
 
 
@@ -1111,7 +1111,7 @@ class RecognizeBusinessCardAdvanceRequest(TeaModel):
         self.image_urlobject = image_urlobject
 
     def validate(self):
-        self.validate_required(self.image_urlobject, 'image_urlobject')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -1120,13 +1120,13 @@ class RecognizeBusinessCardAdvanceRequest(TeaModel):
 
         result = dict()
         if self.image_urlobject is not None:
-            result['ImageURLObject'] = self.image_urlobject
+            result['ImageURL'] = self.image_urlobject
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ImageURLObject') is not None:
-            self.image_urlobject = m.get('ImageURLObject')
+        if m.get('ImageURL') is not None:
+            self.image_urlobject = m.get('ImageURL')
         return self
 
 
@@ -1313,7 +1313,7 @@ class RecognizeBusinessLicenseAdvanceRequest(TeaModel):
         self.image_urlobject = image_urlobject
 
     def validate(self):
-        self.validate_required(self.image_urlobject, 'image_urlobject')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -1322,13 +1322,13 @@ class RecognizeBusinessLicenseAdvanceRequest(TeaModel):
 
         result = dict()
         if self.image_urlobject is not None:
-            result['ImageURLObject'] = self.image_urlobject
+            result['ImageURL'] = self.image_urlobject
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ImageURLObject') is not None:
-            self.image_urlobject = m.get('ImageURLObject')
+        if m.get('ImageURL') is not None:
+            self.image_urlobject = m.get('ImageURL')
         return self
 
 
@@ -1758,7 +1758,7 @@ class RecognizeCharacterAdvanceRequest(TeaModel):
         self.output_probability = output_probability
 
     def validate(self):
-        self.validate_required(self.image_urlobject, 'image_urlobject')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -1767,7 +1767,7 @@ class RecognizeCharacterAdvanceRequest(TeaModel):
 
         result = dict()
         if self.image_urlobject is not None:
-            result['ImageURLObject'] = self.image_urlobject
+            result['ImageURL'] = self.image_urlobject
         if self.min_height is not None:
             result['MinHeight'] = self.min_height
         if self.output_probability is not None:
@@ -1776,8 +1776,8 @@ class RecognizeCharacterAdvanceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ImageURLObject') is not None:
-            self.image_urlobject = m.get('ImageURLObject')
+        if m.get('ImageURL') is not None:
+            self.image_urlobject = m.get('ImageURL')
         if m.get('MinHeight') is not None:
             self.min_height = m.get('MinHeight')
         if m.get('OutputProbability') is not None:
@@ -2026,7 +2026,7 @@ class RecognizeChinapassportAdvanceRequest(TeaModel):
         self.image_urlobject = image_urlobject
 
     def validate(self):
-        self.validate_required(self.image_urlobject, 'image_urlobject')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -2035,13 +2035,13 @@ class RecognizeChinapassportAdvanceRequest(TeaModel):
 
         result = dict()
         if self.image_urlobject is not None:
-            result['ImageURLObject'] = self.image_urlobject
+            result['ImageURL'] = self.image_urlobject
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ImageURLObject') is not None:
-            self.image_urlobject = m.get('ImageURLObject')
+        if m.get('ImageURL') is not None:
+            self.image_urlobject = m.get('ImageURL')
         return self
 
 
@@ -2320,7 +2320,7 @@ class RecognizeDriverLicenseAdvanceRequest(TeaModel):
         self.side = side
 
     def validate(self):
-        self.validate_required(self.image_urlobject, 'image_urlobject')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -2329,15 +2329,15 @@ class RecognizeDriverLicenseAdvanceRequest(TeaModel):
 
         result = dict()
         if self.image_urlobject is not None:
-            result['ImageURLObject'] = self.image_urlobject
+            result['ImageURL'] = self.image_urlobject
         if self.side is not None:
             result['Side'] = self.side
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ImageURLObject') is not None:
-            self.image_urlobject = m.get('ImageURLObject')
+        if m.get('ImageURL') is not None:
+            self.image_urlobject = m.get('ImageURL')
         if m.get('Side') is not None:
             self.side = m.get('Side')
         return self
@@ -2623,7 +2623,7 @@ class RecognizeDrivingLicenseAdvanceRequest(TeaModel):
         self.side = side
 
     def validate(self):
-        self.validate_required(self.image_urlobject, 'image_urlobject')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -2632,15 +2632,15 @@ class RecognizeDrivingLicenseAdvanceRequest(TeaModel):
 
         result = dict()
         if self.image_urlobject is not None:
-            result['ImageURLObject'] = self.image_urlobject
+            result['ImageURL'] = self.image_urlobject
         if self.side is not None:
             result['Side'] = self.side
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ImageURLObject') is not None:
-            self.image_urlobject = m.get('ImageURLObject')
+        if m.get('ImageURL') is not None:
+            self.image_urlobject = m.get('ImageURL')
         if m.get('Side') is not None:
             self.side = m.get('Side')
         return self
@@ -2968,7 +2968,7 @@ class RecognizeIdentityCardAdvanceRequest(TeaModel):
         self.side = side
 
     def validate(self):
-        self.validate_required(self.image_urlobject, 'image_urlobject')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -2977,15 +2977,15 @@ class RecognizeIdentityCardAdvanceRequest(TeaModel):
 
         result = dict()
         if self.image_urlobject is not None:
-            result['ImageURLObject'] = self.image_urlobject
+            result['ImageURL'] = self.image_urlobject
         if self.side is not None:
             result['Side'] = self.side
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ImageURLObject') is not None:
-            self.image_urlobject = m.get('ImageURLObject')
+        if m.get('ImageURL') is not None:
+            self.image_urlobject = m.get('ImageURL')
         if m.get('Side') is not None:
             self.side = m.get('Side')
         return self
@@ -3453,7 +3453,7 @@ class RecognizeIndonesiaIdentityCardAdvanceRequest(TeaModel):
         self.image_url_object = image_url_object
 
     def validate(self):
-        self.validate_required(self.image_url_object, 'image_url_object')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -3462,13 +3462,13 @@ class RecognizeIndonesiaIdentityCardAdvanceRequest(TeaModel):
 
         result = dict()
         if self.image_url_object is not None:
-            result['ImageUrlObject'] = self.image_url_object
+            result['ImageUrl'] = self.image_url_object
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ImageUrlObject') is not None:
-            self.image_url_object = m.get('ImageUrlObject')
+        if m.get('ImageUrl') is not None:
+            self.image_url_object = m.get('ImageUrl')
         return self
 
 
@@ -5457,7 +5457,6 @@ class RecognizeIndonesiaIdentityCardResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.data = data
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -5565,7 +5564,7 @@ class RecognizeLicensePlateAdvanceRequest(TeaModel):
         self.image_urlobject = image_urlobject
 
     def validate(self):
-        self.validate_required(self.image_urlobject, 'image_urlobject')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -5574,13 +5573,13 @@ class RecognizeLicensePlateAdvanceRequest(TeaModel):
 
         result = dict()
         if self.image_urlobject is not None:
-            result['ImageURLObject'] = self.image_urlobject
+            result['ImageURL'] = self.image_urlobject
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ImageURLObject') is not None:
-            self.image_urlobject = m.get('ImageURLObject')
+        if m.get('ImageURL') is not None:
+            self.image_urlobject = m.get('ImageURL')
         return self
 
 
@@ -5879,7 +5878,7 @@ class RecognizeMalaysiaIdentityCardAdvanceRequest(TeaModel):
         self.image_url_object = image_url_object
 
     def validate(self):
-        self.validate_required(self.image_url_object, 'image_url_object')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -5888,13 +5887,13 @@ class RecognizeMalaysiaIdentityCardAdvanceRequest(TeaModel):
 
         result = dict()
         if self.image_url_object is not None:
-            result['ImageUrlObject'] = self.image_url_object
+            result['ImageUrl'] = self.image_url_object
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ImageUrlObject') is not None:
-            self.image_url_object = m.get('ImageUrlObject')
+        if m.get('ImageUrl') is not None:
+            self.image_url_object = m.get('ImageUrl')
         return self
 
 
@@ -7260,7 +7259,6 @@ class RecognizeMalaysiaIdentityCardResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.data = data
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -7368,7 +7366,7 @@ class RecognizePassportMRZAdvanceRequest(TeaModel):
         self.image_urlobject = image_urlobject
 
     def validate(self):
-        self.validate_required(self.image_urlobject, 'image_urlobject')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -7377,13 +7375,13 @@ class RecognizePassportMRZAdvanceRequest(TeaModel):
 
         result = dict()
         if self.image_urlobject is not None:
-            result['ImageURLObject'] = self.image_urlobject
+            result['ImageURL'] = self.image_urlobject
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ImageURLObject') is not None:
-            self.image_urlobject = m.get('ImageURLObject')
+        if m.get('ImageURL') is not None:
+            self.image_urlobject = m.get('ImageURL')
         return self
 
 
@@ -7557,7 +7555,6 @@ class RecognizePdfRequest(TeaModel):
         self,
         file_url: str = None,
     ):
-        # A short description of struct
         self.file_url = file_url
 
     def validate(self):
@@ -7588,7 +7585,7 @@ class RecognizePdfAdvanceRequest(TeaModel):
         self.file_urlobject = file_urlobject
 
     def validate(self):
-        self.validate_required(self.file_urlobject, 'file_urlobject')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -7597,13 +7594,13 @@ class RecognizePdfAdvanceRequest(TeaModel):
 
         result = dict()
         if self.file_urlobject is not None:
-            result['FileURLObject'] = self.file_urlobject
+            result['FileURL'] = self.file_urlobject
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('FileURLObject') is not None:
-            self.file_urlobject = m.get('FileURLObject')
+        if m.get('FileURL') is not None:
+            self.file_urlobject = m.get('FileURL')
         return self
 
 
@@ -7789,7 +7786,6 @@ class RecognizePdfResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.data = data
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -7897,7 +7893,7 @@ class RecognizePoiNameAdvanceRequest(TeaModel):
         self.image_urlobject = image_urlobject
 
     def validate(self):
-        self.validate_required(self.image_urlobject, 'image_urlobject')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -7906,13 +7902,13 @@ class RecognizePoiNameAdvanceRequest(TeaModel):
 
         result = dict()
         if self.image_urlobject is not None:
-            result['ImageURLObject'] = self.image_urlobject
+            result['ImageURL'] = self.image_urlobject
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ImageURLObject') is not None:
-            self.image_urlobject = m.get('ImageURLObject')
+        if m.get('ImageURL') is not None:
+            self.image_urlobject = m.get('ImageURL')
         return self
 
 
@@ -8461,7 +8457,7 @@ class RecognizeQuotaInvoiceAdvanceRequest(TeaModel):
         self.image_urlobject = image_urlobject
 
     def validate(self):
-        self.validate_required(self.image_urlobject, 'image_urlobject')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -8470,13 +8466,13 @@ class RecognizeQuotaInvoiceAdvanceRequest(TeaModel):
 
         result = dict()
         if self.image_urlobject is not None:
-            result['ImageURLObject'] = self.image_urlobject
+            result['ImageURL'] = self.image_urlobject
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ImageURLObject') is not None:
-            self.image_urlobject = m.get('ImageURLObject')
+        if m.get('ImageURL') is not None:
+            self.image_urlobject = m.get('ImageURL')
         return self
 
 
@@ -8698,7 +8694,6 @@ class RecognizeQuotaInvoiceResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.data = data
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -8806,7 +8801,7 @@ class RecognizeRussiaIdentityCardAdvanceRequest(TeaModel):
         self.image_url_object = image_url_object
 
     def validate(self):
-        self.validate_required(self.image_url_object, 'image_url_object')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -8815,13 +8810,13 @@ class RecognizeRussiaIdentityCardAdvanceRequest(TeaModel):
 
         result = dict()
         if self.image_url_object is not None:
-            result['ImageUrlObject'] = self.image_url_object
+            result['ImageUrl'] = self.image_url_object
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ImageUrlObject') is not None:
-            self.image_url_object = m.get('ImageUrlObject')
+        if m.get('ImageUrl') is not None:
+            self.image_url_object = m.get('ImageUrl')
         return self
 
 
@@ -9920,7 +9915,6 @@ class RecognizeRussiaIdentityCardResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.data = data
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -10028,7 +10022,7 @@ class RecognizeStampAdvanceRequest(TeaModel):
         self.image_urlobject = image_urlobject
 
     def validate(self):
-        self.validate_required(self.image_urlobject, 'image_urlobject')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -10037,13 +10031,13 @@ class RecognizeStampAdvanceRequest(TeaModel):
 
         result = dict()
         if self.image_urlobject is not None:
-            result['ImageURLObject'] = self.image_urlobject
+            result['ImageURL'] = self.image_urlobject
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ImageURLObject') is not None:
-            self.image_urlobject = m.get('ImageURLObject')
+        if m.get('ImageURL') is not None:
+            self.image_urlobject = m.get('ImageURL')
         return self
 
 
@@ -10385,22 +10379,22 @@ class RecognizeTableRequest(TeaModel):
 class RecognizeTableAdvanceRequest(TeaModel):
     def __init__(
         self,
-        image_urlobject: BinaryIO = None,
         assure_direction: bool = None,
         has_line: bool = None,
+        image_urlobject: BinaryIO = None,
         output_format: str = None,
         skip_detection: bool = None,
         use_finance_model: bool = None,
     ):
-        self.image_urlobject = image_urlobject
         self.assure_direction = assure_direction
         self.has_line = has_line
+        self.image_urlobject = image_urlobject
         self.output_format = output_format
         self.skip_detection = skip_detection
         self.use_finance_model = use_finance_model
 
     def validate(self):
-        self.validate_required(self.image_urlobject, 'image_urlobject')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -10408,12 +10402,12 @@ class RecognizeTableAdvanceRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.image_urlobject is not None:
-            result['ImageURLObject'] = self.image_urlobject
         if self.assure_direction is not None:
             result['AssureDirection'] = self.assure_direction
         if self.has_line is not None:
             result['HasLine'] = self.has_line
+        if self.image_urlobject is not None:
+            result['ImageURL'] = self.image_urlobject
         if self.output_format is not None:
             result['OutputFormat'] = self.output_format
         if self.skip_detection is not None:
@@ -10424,12 +10418,12 @@ class RecognizeTableAdvanceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ImageURLObject') is not None:
-            self.image_urlobject = m.get('ImageURLObject')
         if m.get('AssureDirection') is not None:
             self.assure_direction = m.get('AssureDirection')
         if m.get('HasLine') is not None:
             self.has_line = m.get('HasLine')
+        if m.get('ImageURL') is not None:
+            self.image_urlobject = m.get('ImageURL')
         if m.get('OutputFormat') is not None:
             self.output_format = m.get('OutputFormat')
         if m.get('SkipDetection') is not None:
@@ -10739,7 +10733,7 @@ class RecognizeTakeoutOrderAdvanceRequest(TeaModel):
         self.image_urlobject = image_urlobject
 
     def validate(self):
-        self.validate_required(self.image_urlobject, 'image_urlobject')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -10748,13 +10742,13 @@ class RecognizeTakeoutOrderAdvanceRequest(TeaModel):
 
         result = dict()
         if self.image_urlobject is not None:
-            result['ImageURLObject'] = self.image_urlobject
+            result['ImageURL'] = self.image_urlobject
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ImageURLObject') is not None:
-            self.image_urlobject = m.get('ImageURLObject')
+        if m.get('ImageURL') is not None:
+            self.image_urlobject = m.get('ImageURL')
         return self
 
 
@@ -10952,7 +10946,7 @@ class RecognizeTaxiInvoiceAdvanceRequest(TeaModel):
         self.image_urlobject = image_urlobject
 
     def validate(self):
-        self.validate_required(self.image_urlobject, 'image_urlobject')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -10961,13 +10955,13 @@ class RecognizeTaxiInvoiceAdvanceRequest(TeaModel):
 
         result = dict()
         if self.image_urlobject is not None:
-            result['ImageURLObject'] = self.image_urlobject
+            result['ImageURL'] = self.image_urlobject
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ImageURLObject') is not None:
-            self.image_urlobject = m.get('ImageURLObject')
+        if m.get('ImageURL') is not None:
+            self.image_urlobject = m.get('ImageURL')
         return self
 
 
@@ -11330,7 +11324,6 @@ class RecognizeTicketInvoiceRequest(TeaModel):
         self,
         image_url: str = None,
     ):
-        # A short description of struct
         self.image_url = image_url
 
     def validate(self):
@@ -11361,7 +11354,7 @@ class RecognizeTicketInvoiceAdvanceRequest(TeaModel):
         self.image_urlobject = image_urlobject
 
     def validate(self):
-        self.validate_required(self.image_urlobject, 'image_urlobject')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -11370,13 +11363,13 @@ class RecognizeTicketInvoiceAdvanceRequest(TeaModel):
 
         result = dict()
         if self.image_urlobject is not None:
-            result['ImageURLObject'] = self.image_urlobject
+            result['ImageURL'] = self.image_urlobject
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ImageURLObject') is not None:
-            self.image_urlobject = m.get('ImageURLObject')
+        if m.get('ImageURL') is not None:
+            self.image_urlobject = m.get('ImageURL')
         return self
 
 
@@ -11717,7 +11710,6 @@ class RecognizeTicketInvoiceResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.data = data
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -11825,7 +11817,7 @@ class RecognizeTrainTicketAdvanceRequest(TeaModel):
         self.image_urlobject = image_urlobject
 
     def validate(self):
-        self.validate_required(self.image_urlobject, 'image_urlobject')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -11834,13 +11826,13 @@ class RecognizeTrainTicketAdvanceRequest(TeaModel):
 
         result = dict()
         if self.image_urlobject is not None:
-            result['ImageURLObject'] = self.image_urlobject
+            result['ImageURL'] = self.image_urlobject
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ImageURLObject') is not None:
-            self.image_urlobject = m.get('ImageURLObject')
+        if m.get('ImageURL') is not None:
+            self.image_urlobject = m.get('ImageURL')
         return self
 
 
@@ -12027,7 +12019,7 @@ class RecognizeTurkeyIdentityCardAdvanceRequest(TeaModel):
         self.image_url_object = image_url_object
 
     def validate(self):
-        self.validate_required(self.image_url_object, 'image_url_object')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -12036,13 +12028,13 @@ class RecognizeTurkeyIdentityCardAdvanceRequest(TeaModel):
 
         result = dict()
         if self.image_url_object is not None:
-            result['ImageUrlObject'] = self.image_url_object
+            result['ImageUrl'] = self.image_url_object
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ImageUrlObject') is not None:
-            self.image_url_object = m.get('ImageUrlObject')
+        if m.get('ImageUrl') is not None:
+            self.image_url_object = m.get('ImageUrl')
         return self
 
 
@@ -15989,7 +15981,6 @@ class RecognizeTurkeyIdentityCardResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.data = data
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -16097,7 +16088,7 @@ class RecognizeUkraineIdentityCardAdvanceRequest(TeaModel):
         self.image_url_object = image_url_object
 
     def validate(self):
-        self.validate_required(self.image_url_object, 'image_url_object')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -16106,13 +16097,13 @@ class RecognizeUkraineIdentityCardAdvanceRequest(TeaModel):
 
         result = dict()
         if self.image_url_object is not None:
-            result['ImageUrlObject'] = self.image_url_object
+            result['ImageUrl'] = self.image_url_object
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ImageUrlObject') is not None:
-            self.image_url_object = m.get('ImageUrlObject')
+        if m.get('ImageUrl') is not None:
+            self.image_url_object = m.get('ImageUrl')
         return self
 
 
@@ -17300,7 +17291,6 @@ class RecognizeUkraineIdentityCardResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.data = data
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -17409,14 +17399,14 @@ class RecognizeVATInvoiceRequest(TeaModel):
 class RecognizeVATInvoiceAdvanceRequest(TeaModel):
     def __init__(
         self,
-        file_urlobject: BinaryIO = None,
         file_type: str = None,
+        file_urlobject: BinaryIO = None,
     ):
-        self.file_urlobject = file_urlobject
         self.file_type = file_type
+        self.file_urlobject = file_urlobject
 
     def validate(self):
-        self.validate_required(self.file_urlobject, 'file_urlobject')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -17424,18 +17414,18 @@ class RecognizeVATInvoiceAdvanceRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.file_urlobject is not None:
-            result['FileURLObject'] = self.file_urlobject
         if self.file_type is not None:
             result['FileType'] = self.file_type
+        if self.file_urlobject is not None:
+            result['FileURL'] = self.file_urlobject
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('FileURLObject') is not None:
-            self.file_urlobject = m.get('FileURLObject')
         if m.get('FileType') is not None:
             self.file_type = m.get('FileType')
+        if m.get('FileURL') is not None:
+            self.file_urlobject = m.get('FileURL')
         return self
 
 
@@ -17449,6 +17439,7 @@ class RecognizeVATInvoiceResponseBodyDataBox(TeaModel):
         invoice_dates: List[float] = None,
         invoice_fake_codes: List[float] = None,
         invoice_noes: List[float] = None,
+        item_names: List[int] = None,
         payee_addresses: List[float] = None,
         payee_bank_names: List[float] = None,
         payee_names: List[float] = None,
@@ -17469,6 +17460,7 @@ class RecognizeVATInvoiceResponseBodyDataBox(TeaModel):
         self.invoice_dates = invoice_dates
         self.invoice_fake_codes = invoice_fake_codes
         self.invoice_noes = invoice_noes
+        self.item_names = item_names
         self.payee_addresses = payee_addresses
         self.payee_bank_names = payee_bank_names
         self.payee_names = payee_names
@@ -17505,6 +17497,8 @@ class RecognizeVATInvoiceResponseBodyDataBox(TeaModel):
             result['InvoiceFakeCodes'] = self.invoice_fake_codes
         if self.invoice_noes is not None:
             result['InvoiceNoes'] = self.invoice_noes
+        if self.item_names is not None:
+            result['ItemNames'] = self.item_names
         if self.payee_addresses is not None:
             result['PayeeAddresses'] = self.payee_addresses
         if self.payee_bank_names is not None:
@@ -17547,6 +17541,8 @@ class RecognizeVATInvoiceResponseBodyDataBox(TeaModel):
             self.invoice_fake_codes = m.get('InvoiceFakeCodes')
         if m.get('InvoiceNoes') is not None:
             self.invoice_noes = m.get('InvoiceNoes')
+        if m.get('ItemNames') is not None:
+            self.item_names = m.get('ItemNames')
         if m.get('PayeeAddresses') is not None:
             self.payee_addresses = m.get('PayeeAddresses')
         if m.get('PayeeBankNames') is not None:
@@ -17584,6 +17580,7 @@ class RecognizeVATInvoiceResponseBodyDataContent(TeaModel):
         invoice_code: str = None,
         invoice_date: str = None,
         invoice_no: str = None,
+        item_name: List[str] = None,
         payee: str = None,
         payee_address: str = None,
         payee_bank_name: str = None,
@@ -17604,6 +17601,7 @@ class RecognizeVATInvoiceResponseBodyDataContent(TeaModel):
         self.invoice_code = invoice_code
         self.invoice_date = invoice_date
         self.invoice_no = invoice_no
+        self.item_name = item_name
         self.payee = payee
         self.payee_address = payee_address
         self.payee_bank_name = payee_bank_name
@@ -17640,6 +17638,8 @@ class RecognizeVATInvoiceResponseBodyDataContent(TeaModel):
             result['InvoiceDate'] = self.invoice_date
         if self.invoice_no is not None:
             result['InvoiceNo'] = self.invoice_no
+        if self.item_name is not None:
+            result['ItemName'] = self.item_name
         if self.payee is not None:
             result['Payee'] = self.payee
         if self.payee_address is not None:
@@ -17682,6 +17682,8 @@ class RecognizeVATInvoiceResponseBodyDataContent(TeaModel):
             self.invoice_date = m.get('InvoiceDate')
         if m.get('InvoiceNo') is not None:
             self.invoice_no = m.get('InvoiceNo')
+        if m.get('ItemName') is not None:
+            self.item_name = m.get('ItemName')
         if m.get('Payee') is not None:
             self.payee = m.get('Payee')
         if m.get('PayeeAddress') is not None:
@@ -17861,7 +17863,7 @@ class RecognizeVINCodeAdvanceRequest(TeaModel):
         self.image_urlobject = image_urlobject
 
     def validate(self):
-        self.validate_required(self.image_urlobject, 'image_urlobject')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -17870,13 +17872,13 @@ class RecognizeVINCodeAdvanceRequest(TeaModel):
 
         result = dict()
         if self.image_urlobject is not None:
-            result['ImageURLObject'] = self.image_urlobject
+            result['ImageURL'] = self.image_urlobject
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ImageURLObject') is not None:
-            self.image_urlobject = m.get('ImageURLObject')
+        if m.get('ImageURL') is not None:
+            self.image_urlobject = m.get('ImageURL')
         return self
 
 
@@ -18021,7 +18023,7 @@ class RecognizeVerificationcodeAdvanceRequest(TeaModel):
         self.image_urlobject = image_urlobject
 
     def validate(self):
-        self.validate_required(self.image_urlobject, 'image_urlobject')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -18030,13 +18032,13 @@ class RecognizeVerificationcodeAdvanceRequest(TeaModel):
 
         result = dict()
         if self.image_urlobject is not None:
-            result['ImageURLObject'] = self.image_urlobject
+            result['ImageURL'] = self.image_urlobject
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ImageURLObject') is not None:
-            self.image_urlobject = m.get('ImageURLObject')
+        if m.get('ImageURL') is not None:
+            self.image_urlobject = m.get('ImageURL')
         return self
 
 
@@ -18250,16 +18252,15 @@ class RecognizeVideoCastCrewListAdvanceRequestParams(TeaModel):
 class RecognizeVideoCastCrewListAdvanceRequest(TeaModel):
     def __init__(
         self,
-        video_url_object: BinaryIO = None,
         params: List[RecognizeVideoCastCrewListAdvanceRequestParams] = None,
         register_url: str = None,
+        video_url_object: BinaryIO = None,
     ):
-        self.video_url_object = video_url_object
         self.params = params
         self.register_url = register_url
+        self.video_url_object = video_url_object
 
     def validate(self):
-        self.validate_required(self.video_url_object, 'video_url_object')
         if self.params:
             for k in self.params:
                 if k:
@@ -18271,20 +18272,18 @@ class RecognizeVideoCastCrewListAdvanceRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.video_url_object is not None:
-            result['VideoUrlObject'] = self.video_url_object
         result['Params'] = []
         if self.params is not None:
             for k in self.params:
                 result['Params'].append(k.to_map() if k else None)
         if self.register_url is not None:
             result['RegisterUrl'] = self.register_url
+        if self.video_url_object is not None:
+            result['VideoUrl'] = self.video_url_object
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('VideoUrlObject') is not None:
-            self.video_url_object = m.get('VideoUrlObject')
         self.params = []
         if m.get('Params') is not None:
             for k in m.get('Params'):
@@ -18292,6 +18291,8 @@ class RecognizeVideoCastCrewListAdvanceRequest(TeaModel):
                 self.params.append(temp_model.from_map(k))
         if m.get('RegisterUrl') is not None:
             self.register_url = m.get('RegisterUrl')
+        if m.get('VideoUrl') is not None:
+            self.video_url_object = m.get('VideoUrl')
         return self
 
 
@@ -18819,7 +18820,6 @@ class RecognizeVideoCastCrewListResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.data = data
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -18897,7 +18897,6 @@ class RecognizeVideoCharacterRequest(TeaModel):
         self,
         video_url: str = None,
     ):
-        # 视频文件地址
         self.video_url = video_url
 
     def validate(self):
@@ -18929,15 +18928,10 @@ class RecognizeVideoCharacterResponseBodyDataFramesElementsTextRectangles(TeaMod
         top: int = None,
         width: int = None,
     ):
-        # 文字区域角度，角度范围[0, 360]
         self.angle = angle
-        # 文字区域高度
         self.height = height
-        # 文字区域左上角x坐标
         self.left = left
-        # 文字区域左上角y坐标
         self.top = top
-        # 文字区域宽度
         self.width = width
 
     def validate(self):
@@ -18983,9 +18977,7 @@ class RecognizeVideoCharacterResponseBodyDataFramesElements(TeaModel):
         text: str = None,
         text_rectangles: List[RecognizeVideoCharacterResponseBodyDataFramesElementsTextRectangles] = None,
     ):
-        # 文字区域概率，概率值的范围为[0.0, 1.0]
         self.score = score
-        # 文字内容
         self.text = text
         self.text_rectangles = text_rectangles
 
@@ -19032,7 +19024,6 @@ class RecognizeVideoCharacterResponseBodyDataFrames(TeaModel):
         timestamp: int = None,
     ):
         self.elements = elements
-        # 帧时间戳时间戳，单位秒。
         self.timestamp = timestamp
 
     def validate(self):
@@ -19075,10 +19066,8 @@ class RecognizeVideoCharacterResponseBodyData(TeaModel):
         input_file: str = None,
         width: int = None,
     ):
-        # 视频帧的集合，空信息的帧不列出。
         self.frames = frames
         self.height = height
-        # 对应的输入OSS文件 (格式oss://{bucketName}/{object})
         self.input_file = input_file
         self.width = width
 
@@ -19129,7 +19118,6 @@ class RecognizeVideoCharacterResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.data = data
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -19237,7 +19225,7 @@ class RecognizeVietnamIdentityCardAdvanceRequest(TeaModel):
         self.image_url_object = image_url_object
 
     def validate(self):
-        self.validate_required(self.image_url_object, 'image_url_object')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -19246,13 +19234,13 @@ class RecognizeVietnamIdentityCardAdvanceRequest(TeaModel):
 
         result = dict()
         if self.image_url_object is not None:
-            result['ImageUrlObject'] = self.image_url_object
+            result['ImageUrl'] = self.image_url_object
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ImageUrlObject') is not None:
-            self.image_url_object = m.get('ImageUrlObject')
+        if m.get('ImageUrl') is not None:
+            self.image_url_object = m.get('ImageUrl')
         return self
 
 
@@ -20618,7 +20606,6 @@ class RecognizeVietnamIdentityCardResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.data = data
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -20733,16 +20720,16 @@ class TrimDocumentRequest(TeaModel):
 class TrimDocumentAdvanceRequest(TeaModel):
     def __init__(
         self,
-        file_urlobject: BinaryIO = None,
         file_type: str = None,
+        file_urlobject: BinaryIO = None,
         output_type: str = None,
     ):
-        self.file_urlobject = file_urlobject
         self.file_type = file_type
+        self.file_urlobject = file_urlobject
         self.output_type = output_type
 
     def validate(self):
-        self.validate_required(self.file_urlobject, 'file_urlobject')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -20750,20 +20737,20 @@ class TrimDocumentAdvanceRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.file_urlobject is not None:
-            result['FileURLObject'] = self.file_urlobject
         if self.file_type is not None:
             result['FileType'] = self.file_type
+        if self.file_urlobject is not None:
+            result['FileURL'] = self.file_urlobject
         if self.output_type is not None:
             result['OutputType'] = self.output_type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('FileURLObject') is not None:
-            self.file_urlobject = m.get('FileURLObject')
         if m.get('FileType') is not None:
             self.file_type = m.get('FileType')
+        if m.get('FileURL') is not None:
+            self.file_urlobject = m.get('FileURL')
         if m.get('OutputType') is not None:
             self.output_type = m.get('OutputType')
         return self
