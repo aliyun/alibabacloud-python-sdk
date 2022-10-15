@@ -247,6 +247,380 @@ class CancelVideoTaskResponse(TeaModel):
         return self
 
 
+class DuplexDecisionRequestDialogContextHistories(TeaModel):
+    def __init__(
+        self,
+        robot: str = None,
+        user: str = None,
+    ):
+        self.robot = robot
+        self.user = user
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.robot is not None:
+            result['Robot'] = self.robot
+        if self.user is not None:
+            result['User'] = self.user
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Robot') is not None:
+            self.robot = m.get('Robot')
+        if m.get('User') is not None:
+            self.user = m.get('User')
+        return self
+
+
+class DuplexDecisionRequestDialogContext(TeaModel):
+    def __init__(
+        self,
+        cur_utterance_idx: int = None,
+        histories: List[DuplexDecisionRequestDialogContextHistories] = None,
+    ):
+        self.cur_utterance_idx = cur_utterance_idx
+        self.histories = histories
+
+    def validate(self):
+        if self.histories:
+            for k in self.histories:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cur_utterance_idx is not None:
+            result['CurUtteranceIdx'] = self.cur_utterance_idx
+        result['Histories'] = []
+        if self.histories is not None:
+            for k in self.histories:
+                result['Histories'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurUtteranceIdx') is not None:
+            self.cur_utterance_idx = m.get('CurUtteranceIdx')
+        self.histories = []
+        if m.get('Histories') is not None:
+            for k in m.get('Histories'):
+                temp_model = DuplexDecisionRequestDialogContextHistories()
+                self.histories.append(temp_model.from_map(k))
+        return self
+
+
+class DuplexDecisionRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        biz_request_id: str = None,
+        call_time: int = None,
+        custom_keywords: List[str] = None,
+        dialog_context: DuplexDecisionRequestDialogContext = None,
+        dialog_status: str = None,
+        interrupt_type: int = None,
+        session_id: str = None,
+        tenant_id: int = None,
+        text: str = None,
+    ):
+        self.app_id = app_id
+        self.biz_request_id = biz_request_id
+        self.call_time = call_time
+        self.custom_keywords = custom_keywords
+        self.dialog_context = dialog_context
+        self.dialog_status = dialog_status
+        self.interrupt_type = interrupt_type
+        self.session_id = session_id
+        self.tenant_id = tenant_id
+        self.text = text
+
+    def validate(self):
+        if self.dialog_context:
+            self.dialog_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.biz_request_id is not None:
+            result['BizRequestId'] = self.biz_request_id
+        if self.call_time is not None:
+            result['CallTime'] = self.call_time
+        if self.custom_keywords is not None:
+            result['CustomKeywords'] = self.custom_keywords
+        if self.dialog_context is not None:
+            result['DialogContext'] = self.dialog_context.to_map()
+        if self.dialog_status is not None:
+            result['DialogStatus'] = self.dialog_status
+        if self.interrupt_type is not None:
+            result['InterruptType'] = self.interrupt_type
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
+        if self.text is not None:
+            result['Text'] = self.text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('BizRequestId') is not None:
+            self.biz_request_id = m.get('BizRequestId')
+        if m.get('CallTime') is not None:
+            self.call_time = m.get('CallTime')
+        if m.get('CustomKeywords') is not None:
+            self.custom_keywords = m.get('CustomKeywords')
+        if m.get('DialogContext') is not None:
+            temp_model = DuplexDecisionRequestDialogContext()
+            self.dialog_context = temp_model.from_map(m['DialogContext'])
+        if m.get('DialogStatus') is not None:
+            self.dialog_status = m.get('DialogStatus')
+        if m.get('InterruptType') is not None:
+            self.interrupt_type = m.get('InterruptType')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        return self
+
+
+class DuplexDecisionShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        biz_request_id: str = None,
+        call_time: int = None,
+        custom_keywords_shrink: str = None,
+        dialog_context_shrink: str = None,
+        dialog_status: str = None,
+        interrupt_type: int = None,
+        session_id: str = None,
+        tenant_id: int = None,
+        text: str = None,
+    ):
+        self.app_id = app_id
+        self.biz_request_id = biz_request_id
+        self.call_time = call_time
+        self.custom_keywords_shrink = custom_keywords_shrink
+        self.dialog_context_shrink = dialog_context_shrink
+        self.dialog_status = dialog_status
+        self.interrupt_type = interrupt_type
+        self.session_id = session_id
+        self.tenant_id = tenant_id
+        self.text = text
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.biz_request_id is not None:
+            result['BizRequestId'] = self.biz_request_id
+        if self.call_time is not None:
+            result['CallTime'] = self.call_time
+        if self.custom_keywords_shrink is not None:
+            result['CustomKeywords'] = self.custom_keywords_shrink
+        if self.dialog_context_shrink is not None:
+            result['DialogContext'] = self.dialog_context_shrink
+        if self.dialog_status is not None:
+            result['DialogStatus'] = self.dialog_status
+        if self.interrupt_type is not None:
+            result['InterruptType'] = self.interrupt_type
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
+        if self.text is not None:
+            result['Text'] = self.text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('BizRequestId') is not None:
+            self.biz_request_id = m.get('BizRequestId')
+        if m.get('CallTime') is not None:
+            self.call_time = m.get('CallTime')
+        if m.get('CustomKeywords') is not None:
+            self.custom_keywords_shrink = m.get('CustomKeywords')
+        if m.get('DialogContext') is not None:
+            self.dialog_context_shrink = m.get('DialogContext')
+        if m.get('DialogStatus') is not None:
+            self.dialog_status = m.get('DialogStatus')
+        if m.get('InterruptType') is not None:
+            self.interrupt_type = m.get('InterruptType')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        return self
+
+
+class DuplexDecisionResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        action_type: str = None,
+        grab_type: str = None,
+        output_text: str = None,
+    ):
+        self.action_type = action_type
+        self.grab_type = grab_type
+        self.output_text = output_text
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action_type is not None:
+            result['ActionType'] = self.action_type
+        if self.grab_type is not None:
+            result['GrabType'] = self.grab_type
+        if self.output_text is not None:
+            result['OutputText'] = self.output_text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActionType') is not None:
+            self.action_type = m.get('ActionType')
+        if m.get('GrabType') is not None:
+            self.grab_type = m.get('GrabType')
+        if m.get('OutputText') is not None:
+            self.output_text = m.get('OutputText')
+        return self
+
+
+class DuplexDecisionResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: DuplexDecisionResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = DuplexDecisionResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DuplexDecisionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DuplexDecisionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DuplexDecisionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetVideoTaskInfoRequestApp(TeaModel):
     def __init__(
         self,

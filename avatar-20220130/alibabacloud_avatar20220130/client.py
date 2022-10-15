@@ -127,6 +127,124 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.cancel_video_task_with_options_async(request, runtime)
 
+    def duplex_decision_with_options(
+        self,
+        tmp_req: avatar_20220130_models.DuplexDecisionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> avatar_20220130_models.DuplexDecisionResponse:
+        UtilClient.validate_model(tmp_req)
+        request = avatar_20220130_models.DuplexDecisionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.custom_keywords):
+            request.custom_keywords_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.custom_keywords, 'CustomKeywords', 'json')
+        if not UtilClient.is_unset(tmp_req.dialog_context):
+            request.dialog_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.dialog_context), 'DialogContext', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.biz_request_id):
+            query['BizRequestId'] = request.biz_request_id
+        if not UtilClient.is_unset(request.call_time):
+            query['CallTime'] = request.call_time
+        if not UtilClient.is_unset(request.custom_keywords_shrink):
+            query['CustomKeywords'] = request.custom_keywords_shrink
+        if not UtilClient.is_unset(request.dialog_context_shrink):
+            query['DialogContext'] = request.dialog_context_shrink
+        if not UtilClient.is_unset(request.dialog_status):
+            query['DialogStatus'] = request.dialog_status
+        if not UtilClient.is_unset(request.interrupt_type):
+            query['InterruptType'] = request.interrupt_type
+        if not UtilClient.is_unset(request.session_id):
+            query['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.tenant_id):
+            query['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.text):
+            query['Text'] = request.text
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DuplexDecision',
+            version='2022-01-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            avatar_20220130_models.DuplexDecisionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def duplex_decision_with_options_async(
+        self,
+        tmp_req: avatar_20220130_models.DuplexDecisionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> avatar_20220130_models.DuplexDecisionResponse:
+        UtilClient.validate_model(tmp_req)
+        request = avatar_20220130_models.DuplexDecisionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.custom_keywords):
+            request.custom_keywords_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.custom_keywords, 'CustomKeywords', 'json')
+        if not UtilClient.is_unset(tmp_req.dialog_context):
+            request.dialog_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.dialog_context), 'DialogContext', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.biz_request_id):
+            query['BizRequestId'] = request.biz_request_id
+        if not UtilClient.is_unset(request.call_time):
+            query['CallTime'] = request.call_time
+        if not UtilClient.is_unset(request.custom_keywords_shrink):
+            query['CustomKeywords'] = request.custom_keywords_shrink
+        if not UtilClient.is_unset(request.dialog_context_shrink):
+            query['DialogContext'] = request.dialog_context_shrink
+        if not UtilClient.is_unset(request.dialog_status):
+            query['DialogStatus'] = request.dialog_status
+        if not UtilClient.is_unset(request.interrupt_type):
+            query['InterruptType'] = request.interrupt_type
+        if not UtilClient.is_unset(request.session_id):
+            query['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.tenant_id):
+            query['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.text):
+            query['Text'] = request.text
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DuplexDecision',
+            version='2022-01-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            avatar_20220130_models.DuplexDecisionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def duplex_decision(
+        self,
+        request: avatar_20220130_models.DuplexDecisionRequest,
+    ) -> avatar_20220130_models.DuplexDecisionResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.duplex_decision_with_options(request, runtime)
+
+    async def duplex_decision_async(
+        self,
+        request: avatar_20220130_models.DuplexDecisionRequest,
+    ) -> avatar_20220130_models.DuplexDecisionResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.duplex_decision_with_options_async(request, runtime)
+
     def get_video_task_info_with_options(
         self,
         tmp_req: avatar_20220130_models.GetVideoTaskInfoRequest,

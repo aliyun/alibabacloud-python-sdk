@@ -1,3 +1,6 @@
+2022-10-15 Version: 1.0.7
+- QueryRunningInstance add sessionId param.
+
 2022-09-21 Version: 1.0.6
 - QueryRunningInstance add sessionId param.
 
