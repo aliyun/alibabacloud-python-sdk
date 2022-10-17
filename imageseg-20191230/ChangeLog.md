@@ -1,3 +1,6 @@
+2022-10-17 Version: 2.0.2
+- Update RefineMask.
+
 2022-09-29 Version: 2.0.1
 - Update RefineMask.
 
