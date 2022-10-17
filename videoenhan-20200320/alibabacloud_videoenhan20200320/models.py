@@ -131,9 +131,11 @@ class AbstractEcommerceVideoResponseBody(TeaModel):
     def __init__(
         self,
         data: AbstractEcommerceVideoResponseBodyData = None,
+        message: str = None,
         request_id: str = None,
     ):
         self.data = data
+        self.message = message
         self.request_id = request_id
 
     def validate(self):
@@ -148,6 +150,8 @@ class AbstractEcommerceVideoResponseBody(TeaModel):
         result = dict()
         if self.data is not None:
             result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
@@ -157,6 +161,8 @@ class AbstractEcommerceVideoResponseBody(TeaModel):
         if m.get('Data') is not None:
             temp_model = AbstractEcommerceVideoResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -303,9 +309,11 @@ class AbstractFilmVideoResponseBody(TeaModel):
     def __init__(
         self,
         data: AbstractFilmVideoResponseBodyData = None,
+        message: str = None,
         request_id: str = None,
     ):
         self.data = data
+        self.message = message
         self.request_id = request_id
 
     def validate(self):
@@ -320,6 +328,8 @@ class AbstractFilmVideoResponseBody(TeaModel):
         result = dict()
         if self.data is not None:
             result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
@@ -329,6 +339,8 @@ class AbstractFilmVideoResponseBody(TeaModel):
         if m.get('Data') is not None:
             temp_model = AbstractFilmVideoResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -475,9 +487,11 @@ class AddFaceVideoTemplateResponseBody(TeaModel):
     def __init__(
         self,
         date: AddFaceVideoTemplateResponseBodyDate = None,
+        message: str = None,
         request_id: str = None,
     ):
         self.date = date
+        self.message = message
         self.request_id = request_id
 
     def validate(self):
@@ -492,6 +506,8 @@ class AddFaceVideoTemplateResponseBody(TeaModel):
         result = dict()
         if self.date is not None:
             result['Date'] = self.date.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
@@ -501,6 +517,8 @@ class AddFaceVideoTemplateResponseBody(TeaModel):
         if m.get('Date') is not None:
             temp_model = AddFaceVideoTemplateResponseBodyDate()
             self.date = temp_model.from_map(m['Date'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -683,9 +701,11 @@ class AdjustVideoColorResponseBody(TeaModel):
     def __init__(
         self,
         data: AdjustVideoColorResponseBodyData = None,
+        message: str = None,
         request_id: str = None,
     ):
         self.data = data
+        self.message = message
         self.request_id = request_id
 
     def validate(self):
@@ -700,6 +720,8 @@ class AdjustVideoColorResponseBody(TeaModel):
         result = dict()
         if self.data is not None:
             result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
@@ -709,6 +731,8 @@ class AdjustVideoColorResponseBody(TeaModel):
         if m.get('Data') is not None:
             temp_model = AdjustVideoColorResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -945,9 +969,11 @@ class ChangeVideoSizeResponseBody(TeaModel):
     def __init__(
         self,
         data: ChangeVideoSizeResponseBodyData = None,
+        message: str = None,
         request_id: str = None,
     ):
         self.data = data
+        self.message = message
         self.request_id = request_id
 
     def validate(self):
@@ -962,6 +988,8 @@ class ChangeVideoSizeResponseBody(TeaModel):
         result = dict()
         if self.data is not None:
             result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
@@ -971,6 +999,8 @@ class ChangeVideoSizeResponseBody(TeaModel):
         if m.get('Data') is not None:
             temp_model = ChangeVideoSizeResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -1141,9 +1171,11 @@ class ConvertHdrVideoResponseBody(TeaModel):
     def __init__(
         self,
         data: ConvertHdrVideoResponseBodyData = None,
+        message: str = None,
         request_id: str = None,
     ):
         self.data = data
+        self.message = message
         self.request_id = request_id
 
     def validate(self):
@@ -1158,6 +1190,8 @@ class ConvertHdrVideoResponseBody(TeaModel):
         result = dict()
         if self.data is not None:
             result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
@@ -1167,6 +1201,8 @@ class ConvertHdrVideoResponseBody(TeaModel):
         if m.get('Data') is not None:
             temp_model = ConvertHdrVideoResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -1477,9 +1513,11 @@ class EnhanceVideoQualityResponseBody(TeaModel):
     def __init__(
         self,
         data: EnhanceVideoQualityResponseBodyData = None,
+        message: str = None,
         request_id: str = None,
     ):
         self.data = data
+        self.message = message
         self.request_id = request_id
 
     def validate(self):
@@ -1494,6 +1532,8 @@ class EnhanceVideoQualityResponseBody(TeaModel):
         result = dict()
         if self.data is not None:
             result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
@@ -1503,6 +1543,8 @@ class EnhanceVideoQualityResponseBody(TeaModel):
         if m.get('Data') is not None:
             temp_model = EnhanceVideoQualityResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -1755,9 +1797,11 @@ class EraseVideoLogoResponseBody(TeaModel):
     def __init__(
         self,
         data: EraseVideoLogoResponseBodyData = None,
+        message: str = None,
         request_id: str = None,
     ):
         self.data = data
+        self.message = message
         self.request_id = request_id
 
     def validate(self):
@@ -1772,6 +1816,8 @@ class EraseVideoLogoResponseBody(TeaModel):
         result = dict()
         if self.data is not None:
             result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
@@ -1781,6 +1827,8 @@ class EraseVideoLogoResponseBody(TeaModel):
         if m.get('Data') is not None:
             temp_model = EraseVideoLogoResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -1963,9 +2011,11 @@ class EraseVideoSubtitlesResponseBody(TeaModel):
     def __init__(
         self,
         data: EraseVideoSubtitlesResponseBodyData = None,
+        message: str = None,
         request_id: str = None,
     ):
         self.data = data
+        self.message = message
         self.request_id = request_id
 
     def validate(self):
@@ -1980,6 +2030,8 @@ class EraseVideoSubtitlesResponseBody(TeaModel):
         result = dict()
         if self.data is not None:
             result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
@@ -1989,6 +2041,8 @@ class EraseVideoSubtitlesResponseBody(TeaModel):
         if m.get('Data') is not None:
             temp_model = EraseVideoSubtitlesResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -2209,9 +2263,11 @@ class GenerateVideoResponseBody(TeaModel):
     def __init__(
         self,
         data: GenerateVideoResponseBodyData = None,
+        message: str = None,
         request_id: str = None,
     ):
         self.data = data
+        self.message = message
         self.request_id = request_id
 
     def validate(self):
@@ -2226,6 +2282,8 @@ class GenerateVideoResponseBody(TeaModel):
         result = dict()
         if self.data is not None:
             result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
@@ -2235,6 +2293,8 @@ class GenerateVideoResponseBody(TeaModel):
         if m.get('Data') is not None:
             temp_model = GenerateVideoResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -2550,9 +2610,11 @@ class InterpolateVideoFrameResponseBody(TeaModel):
     def __init__(
         self,
         data: InterpolateVideoFrameResponseBodyData = None,
+        message: str = None,
         request_id: str = None,
     ):
         self.data = data
+        self.message = message
         self.request_id = request_id
 
     def validate(self):
@@ -2567,6 +2629,8 @@ class InterpolateVideoFrameResponseBody(TeaModel):
         result = dict()
         if self.data is not None:
             result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
@@ -2576,6 +2640,8 @@ class InterpolateVideoFrameResponseBody(TeaModel):
         if m.get('Data') is not None:
             temp_model = InterpolateVideoFrameResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -2734,9 +2800,11 @@ class MergeVideoFaceResponseBody(TeaModel):
     def __init__(
         self,
         data: MergeVideoFaceResponseBodyData = None,
+        message: str = None,
         request_id: str = None,
     ):
         self.data = data
+        self.message = message
         self.request_id = request_id
 
     def validate(self):
@@ -2751,6 +2819,8 @@ class MergeVideoFaceResponseBody(TeaModel):
         result = dict()
         if self.data is not None:
             result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
@@ -2760,6 +2830,8 @@ class MergeVideoFaceResponseBody(TeaModel):
         if m.get('Data') is not None:
             temp_model = MergeVideoFaceResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -2918,9 +2990,11 @@ class MergeVideoModelFaceResponseBody(TeaModel):
     def __init__(
         self,
         data: MergeVideoModelFaceResponseBodyData = None,
+        message: str = None,
         request_id: str = None,
     ):
         self.data = data
+        self.message = message
         self.request_id = request_id
 
     def validate(self):
@@ -2935,6 +3009,8 @@ class MergeVideoModelFaceResponseBody(TeaModel):
         result = dict()
         if self.data is not None:
             result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
@@ -2944,6 +3020,8 @@ class MergeVideoModelFaceResponseBody(TeaModel):
         if m.get('Data') is not None:
             temp_model = MergeVideoModelFaceResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -3288,9 +3366,11 @@ class SuperResolveVideoResponseBody(TeaModel):
     def __init__(
         self,
         data: SuperResolveVideoResponseBodyData = None,
+        message: str = None,
         request_id: str = None,
     ):
         self.data = data
+        self.message = message
         self.request_id = request_id
 
     def validate(self):
@@ -3305,6 +3385,8 @@ class SuperResolveVideoResponseBody(TeaModel):
         result = dict()
         if self.data is not None:
             result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
@@ -3314,6 +3396,8 @@ class SuperResolveVideoResponseBody(TeaModel):
         if m.get('Data') is not None:
             temp_model = SuperResolveVideoResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -3472,9 +3556,11 @@ class ToneSdrVideoResponseBody(TeaModel):
     def __init__(
         self,
         data: ToneSdrVideoResponseBodyData = None,
+        message: str = None,
         request_id: str = None,
     ):
         self.data = data
+        self.message = message
         self.request_id = request_id
 
     def validate(self):
@@ -3489,6 +3575,8 @@ class ToneSdrVideoResponseBody(TeaModel):
         result = dict()
         if self.data is not None:
             result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
@@ -3498,6 +3586,8 @@ class ToneSdrVideoResponseBody(TeaModel):
         if m.get('Data') is not None:
             temp_model = ToneSdrVideoResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
