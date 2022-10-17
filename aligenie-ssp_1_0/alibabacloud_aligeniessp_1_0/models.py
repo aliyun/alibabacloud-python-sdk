@@ -23019,9 +23019,13 @@ class ScanCodeBindResponseBodyResult(TeaModel):
         self,
         biz_group: str = None,
         biz_type: str = None,
+        device_open_id: str = None,
+        user_open_id: str = None,
     ):
         self.biz_group = biz_group
         self.biz_type = biz_type
+        self.device_open_id = device_open_id
+        self.user_open_id = user_open_id
 
     def validate(self):
         pass
@@ -23033,17 +23037,25 @@ class ScanCodeBindResponseBodyResult(TeaModel):
 
         result = dict()
         if self.biz_group is not None:
-            result['bizGroup'] = self.biz_group
+            result['BizGroup'] = self.biz_group
         if self.biz_type is not None:
-            result['bizType'] = self.biz_type
+            result['BizType'] = self.biz_type
+        if self.device_open_id is not None:
+            result['DeviceOpenId'] = self.device_open_id
+        if self.user_open_id is not None:
+            result['UserOpenId'] = self.user_open_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('bizGroup') is not None:
-            self.biz_group = m.get('bizGroup')
-        if m.get('bizType') is not None:
-            self.biz_type = m.get('bizType')
+        if m.get('BizGroup') is not None:
+            self.biz_group = m.get('BizGroup')
+        if m.get('BizType') is not None:
+            self.biz_type = m.get('BizType')
+        if m.get('DeviceOpenId') is not None:
+            self.device_open_id = m.get('DeviceOpenId')
+        if m.get('UserOpenId') is not None:
+            self.user_open_id = m.get('UserOpenId')
         return self
 
 

@@ -1,3 +1,6 @@
+2022-10-17 Version: 1.0.14
+- Add ScanCodeBind api.
+
 2022-10-08 Version: 1.0.13
 - Add EcologyAuthenticate api.
 
