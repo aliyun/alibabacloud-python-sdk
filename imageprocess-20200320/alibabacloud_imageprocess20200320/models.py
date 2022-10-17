@@ -258,9 +258,11 @@ class AnalyzeChestVesselResponseBody(TeaModel):
     def __init__(
         self,
         data: AnalyzeChestVesselResponseBodyData = None,
+        message: str = None,
         request_id: str = None,
     ):
         self.data = data
+        self.message = message
         self.request_id = request_id
 
     def validate(self):
@@ -275,6 +277,8 @@ class AnalyzeChestVesselResponseBody(TeaModel):
         result = dict()
         if self.data is not None:
             result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
@@ -284,6 +288,8 @@ class AnalyzeChestVesselResponseBody(TeaModel):
         if m.get('Data') is not None:
             temp_model = AnalyzeChestVesselResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -521,9 +527,11 @@ class CalcCACSResponseBody(TeaModel):
     def __init__(
         self,
         data: CalcCACSResponseBodyData = None,
+        message: str = None,
         request_id: str = None,
     ):
         self.data = data
+        self.message = message
         self.request_id = request_id
 
     def validate(self):
@@ -538,6 +546,8 @@ class CalcCACSResponseBody(TeaModel):
         result = dict()
         if self.data is not None:
             result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
@@ -547,6 +557,8 @@ class CalcCACSResponseBody(TeaModel):
         if m.get('Data') is not None:
             temp_model = CalcCACSResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -1033,9 +1045,11 @@ class DetectCovid19CadResponseBody(TeaModel):
     def __init__(
         self,
         data: DetectCovid19CadResponseBodyData = None,
+        message: str = None,
         request_id: str = None,
     ):
         self.data = data
+        self.message = message
         self.request_id = request_id
 
     def validate(self):
@@ -1050,6 +1064,8 @@ class DetectCovid19CadResponseBody(TeaModel):
         result = dict()
         if self.data is not None:
             result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
@@ -1059,6 +1075,8 @@ class DetectCovid19CadResponseBody(TeaModel):
         if m.get('Data') is not None:
             temp_model = DetectCovid19CadResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -2244,9 +2262,11 @@ class DetectLungNoduleResponseBody(TeaModel):
     def __init__(
         self,
         data: DetectLungNoduleResponseBodyData = None,
+        message: str = None,
         request_id: str = None,
     ):
         self.data = data
+        self.message = message
         self.request_id = request_id
 
     def validate(self):
@@ -2261,6 +2281,8 @@ class DetectLungNoduleResponseBody(TeaModel):
         result = dict()
         if self.data is not None:
             result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
@@ -2270,6 +2292,8 @@ class DetectLungNoduleResponseBody(TeaModel):
         if m.get('Data') is not None:
             temp_model = DetectLungNoduleResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -2985,9 +3009,11 @@ class DetectRibFractureResponseBody(TeaModel):
     def __init__(
         self,
         data: DetectRibFractureResponseBodyData = None,
+        message: str = None,
         request_id: str = None,
     ):
         self.data = data
+        self.message = message
         self.request_id = request_id
 
     def validate(self):
@@ -3002,6 +3028,8 @@ class DetectRibFractureResponseBody(TeaModel):
         result = dict()
         if self.data is not None:
             result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
@@ -3011,6 +3039,8 @@ class DetectRibFractureResponseBody(TeaModel):
         if m.get('Data') is not None:
             temp_model = DetectRibFractureResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -3957,9 +3987,11 @@ class RunCTRegistrationResponseBody(TeaModel):
     def __init__(
         self,
         data: RunCTRegistrationResponseBodyData = None,
+        message: str = None,
         request_id: str = None,
     ):
         self.data = data
+        self.message = message
         self.request_id = request_id
 
     def validate(self):
@@ -3974,6 +4006,8 @@ class RunCTRegistrationResponseBody(TeaModel):
         result = dict()
         if self.data is not None:
             result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
@@ -3983,6 +4017,8 @@ class RunCTRegistrationResponseBody(TeaModel):
         if m.get('Data') is not None:
             temp_model = RunCTRegistrationResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -5377,9 +5413,11 @@ class ScreenChestCTResponseBody(TeaModel):
     def __init__(
         self,
         data: ScreenChestCTResponseBodyData = None,
+        message: str = None,
         request_id: str = None,
     ):
         self.data = data
+        self.message = message
         self.request_id = request_id
 
     def validate(self):
@@ -5394,6 +5432,8 @@ class ScreenChestCTResponseBody(TeaModel):
         result = dict()
         if self.data is not None:
             result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
@@ -5403,6 +5443,8 @@ class ScreenChestCTResponseBody(TeaModel):
         if m.get('Data') is not None:
             temp_model = ScreenChestCTResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -5604,9 +5646,11 @@ class ScreenECResponseBody(TeaModel):
     def __init__(
         self,
         data: ScreenECResponseBodyData = None,
+        message: str = None,
         request_id: str = None,
     ):
         self.data = data
+        self.message = message
         self.request_id = request_id
 
     def validate(self):
@@ -5621,6 +5665,8 @@ class ScreenECResponseBody(TeaModel):
         result = dict()
         if self.data is not None:
             result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
@@ -5630,6 +5676,8 @@ class ScreenECResponseBody(TeaModel):
         if m.get('Data') is not None:
             temp_model = ScreenECResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -5808,9 +5856,11 @@ class SegmentOARResponseBody(TeaModel):
     def __init__(
         self,
         data: SegmentOARResponseBodyData = None,
+        message: str = None,
         request_id: str = None,
     ):
         self.data = data
+        self.message = message
         self.request_id = request_id
 
     def validate(self):
@@ -5825,6 +5875,8 @@ class SegmentOARResponseBody(TeaModel):
         result = dict()
         if self.data is not None:
             result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
@@ -5834,6 +5886,8 @@ class SegmentOARResponseBody(TeaModel):
         if m.get('Data') is not None:
             temp_model = SegmentOARResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
