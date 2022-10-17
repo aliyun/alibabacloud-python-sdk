@@ -1,3 +1,6 @@
+2022-10-17 Version: 3.0.2
+- Update videoseg.
+
 2021-03-08 Version: 3.0.1
 - Generated python 2020-03-20 for videoseg.
 

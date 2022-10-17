@@ -7,27 +7,25 @@ from typing import Dict, BinaryIO
 class GetAsyncJobResultRequest(TeaModel):
     def __init__(
         self,
-        async_: bool = None,
         job_id: str = None,
     ):
-        self.async_ = async_
         self.job_id = job_id
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.async_ is not None:
-            result['Async'] = self.async_
         if self.job_id is not None:
             result['JobId'] = self.job_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Async') is not None:
-            self.async_ = m.get('Async')
         if m.get('JobId') is not None:
             self.job_id = m.get('JobId')
         return self
@@ -36,78 +34,86 @@ class GetAsyncJobResultRequest(TeaModel):
 class GetAsyncJobResultResponseBodyData(TeaModel):
     def __init__(
         self,
-        status: str = None,
-        error_message: str = None,
-        result: str = None,
         error_code: str = None,
+        error_message: str = None,
         job_id: str = None,
+        result: str = None,
+        status: str = None,
     ):
-        self.status = status
-        self.error_message = error_message
-        self.result = result
         self.error_code = error_code
+        self.error_message = error_message
         self.job_id = job_id
+        self.result = result
+        self.status = status
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.status is not None:
-            result['Status'] = self.status
-        if self.error_message is not None:
-            result['ErrorMessage'] = self.error_message
-        if self.result is not None:
-            result['Result'] = self.result
         if self.error_code is not None:
             result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
         if self.job_id is not None:
             result['JobId'] = self.job_id
+        if self.result is not None:
+            result['Result'] = self.result
+        if self.status is not None:
+            result['Status'] = self.status
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        if m.get('ErrorMessage') is not None:
-            self.error_message = m.get('ErrorMessage')
-        if m.get('Result') is not None:
-            self.result = m.get('Result')
         if m.get('ErrorCode') is not None:
             self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
         if m.get('JobId') is not None:
             self.job_id = m.get('JobId')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         return self
 
 
 class GetAsyncJobResultResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         data: GetAsyncJobResultResponseBodyData = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.data = data
+        self.request_id = request_id
 
     def validate(self):
         if self.data:
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
             temp_model = GetAsyncJobResultResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -115,21 +121,30 @@ class GetAsyncJobResultResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetAsyncJobResultResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -138,6 +153,8 @@ class GetAsyncJobResultResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetAsyncJobResultResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -148,29 +165,26 @@ class SegmentGreenScreenVideoRequest(TeaModel):
     def __init__(
         self,
         video_url: str = None,
-        async_: bool = None,
     ):
-        # A short description of struct
         self.video_url = video_url
-        self.async_ = async_
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.video_url is not None:
             result['VideoURL'] = self.video_url
-        if self.async_ is not None:
-            result['Async'] = self.async_
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('VideoURL') is not None:
             self.video_url = m.get('VideoURL')
-        if m.get('Async') is not None:
-            self.async_ = m.get('Async')
         return self
 
 
@@ -178,28 +192,26 @@ class SegmentGreenScreenVideoAdvanceRequest(TeaModel):
     def __init__(
         self,
         video_urlobject: BinaryIO = None,
-        async_: bool = None,
     ):
         self.video_urlobject = video_urlobject
-        self.async_ = async_
 
     def validate(self):
-        self.validate_required(self.video_urlobject, 'video_urlobject')
+        pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.video_urlobject is not None:
-            result['VideoURLObject'] = self.video_urlobject
-        if self.async_ is not None:
-            result['Async'] = self.async_
+            result['VideoURL'] = self.video_urlobject
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('VideoURLObject') is not None:
-            self.video_urlobject = m.get('VideoURLObject')
-        if m.get('Async') is not None:
-            self.async_ = m.get('Async')
+        if m.get('VideoURL') is not None:
+            self.video_urlobject = m.get('VideoURL')
         return self
 
 
@@ -214,6 +226,10 @@ class SegmentGreenScreenVideoResponseBodyData(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.video_url is not None:
             result['VideoURL'] = self.video_url
@@ -229,32 +245,41 @@ class SegmentGreenScreenVideoResponseBodyData(TeaModel):
 class SegmentGreenScreenVideoResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         data: SegmentGreenScreenVideoResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
     ):
-        # Id of the request
-        self.request_id = request_id
         self.data = data
+        self.message = message
+        self.request_id = request_id
 
     def validate(self):
         if self.data:
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
             temp_model = SegmentGreenScreenVideoResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -262,21 +287,30 @@ class SegmentGreenScreenVideoResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: SegmentGreenScreenVideoResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -285,6 +319,8 @@ class SegmentGreenScreenVideoResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SegmentGreenScreenVideoResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -295,28 +331,26 @@ class SegmentHalfBodyRequest(TeaModel):
     def __init__(
         self,
         video_url: str = None,
-        async_: bool = None,
     ):
         self.video_url = video_url
-        self.async_ = async_
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.video_url is not None:
             result['VideoUrl'] = self.video_url
-        if self.async_ is not None:
-            result['Async'] = self.async_
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('VideoUrl') is not None:
             self.video_url = m.get('VideoUrl')
-        if m.get('Async') is not None:
-            self.async_ = m.get('Async')
         return self
 
 
@@ -324,28 +358,26 @@ class SegmentHalfBodyAdvanceRequest(TeaModel):
     def __init__(
         self,
         video_url_object: BinaryIO = None,
-        async_: bool = None,
     ):
         self.video_url_object = video_url_object
-        self.async_ = async_
 
     def validate(self):
-        self.validate_required(self.video_url_object, 'video_url_object')
+        pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.video_url_object is not None:
-            result['VideoUrlObject'] = self.video_url_object
-        if self.async_ is not None:
-            result['Async'] = self.async_
+            result['VideoUrl'] = self.video_url_object
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('VideoUrlObject') is not None:
-            self.video_url_object = m.get('VideoUrlObject')
-        if m.get('Async') is not None:
-            self.async_ = m.get('Async')
+        if m.get('VideoUrl') is not None:
+            self.video_url_object = m.get('VideoUrl')
         return self
 
 
@@ -360,6 +392,10 @@ class SegmentHalfBodyResponseBodyData(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.video_url is not None:
             result['VideoUrl'] = self.video_url
@@ -375,31 +411,41 @@ class SegmentHalfBodyResponseBodyData(TeaModel):
 class SegmentHalfBodyResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         data: SegmentHalfBodyResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.data = data
+        self.message = message
+        self.request_id = request_id
 
     def validate(self):
         if self.data:
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
             temp_model = SegmentHalfBodyResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -407,21 +453,30 @@ class SegmentHalfBodyResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: SegmentHalfBodyResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -430,6 +485,8 @@ class SegmentHalfBodyResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SegmentHalfBodyResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -440,28 +497,26 @@ class SegmentVideoBodyRequest(TeaModel):
     def __init__(
         self,
         video_url: str = None,
-        async_: bool = None,
     ):
         self.video_url = video_url
-        self.async_ = async_
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.video_url is not None:
             result['VideoUrl'] = self.video_url
-        if self.async_ is not None:
-            result['Async'] = self.async_
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('VideoUrl') is not None:
             self.video_url = m.get('VideoUrl')
-        if m.get('Async') is not None:
-            self.async_ = m.get('Async')
         return self
 
 
@@ -469,28 +524,26 @@ class SegmentVideoBodyAdvanceRequest(TeaModel):
     def __init__(
         self,
         video_url_object: BinaryIO = None,
-        async_: bool = None,
     ):
         self.video_url_object = video_url_object
-        self.async_ = async_
 
     def validate(self):
-        self.validate_required(self.video_url_object, 'video_url_object')
+        pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.video_url_object is not None:
-            result['VideoUrlObject'] = self.video_url_object
-        if self.async_ is not None:
-            result['Async'] = self.async_
+            result['VideoUrl'] = self.video_url_object
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('VideoUrlObject') is not None:
-            self.video_url_object = m.get('VideoUrlObject')
-        if m.get('Async') is not None:
-            self.async_ = m.get('Async')
+        if m.get('VideoUrl') is not None:
+            self.video_url_object = m.get('VideoUrl')
         return self
 
 
@@ -505,6 +558,10 @@ class SegmentVideoBodyResponseBodyData(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.video_url is not None:
             result['VideoUrl'] = self.video_url
@@ -520,31 +577,41 @@ class SegmentVideoBodyResponseBodyData(TeaModel):
 class SegmentVideoBodyResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         data: SegmentVideoBodyResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
     ):
-        self.request_id = request_id
         self.data = data
+        self.message = message
+        self.request_id = request_id
 
     def validate(self):
         if self.data:
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
             temp_model = SegmentVideoBodyResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -552,21 +619,30 @@ class SegmentVideoBodyResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: SegmentVideoBodyResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -575,6 +651,8 @@ class SegmentVideoBodyResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SegmentVideoBodyResponseBody()
             self.body = temp_model.from_map(m['body'])
