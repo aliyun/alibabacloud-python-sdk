@@ -3022,9 +3022,11 @@ class RecolorHDImageResponseBody(TeaModel):
     def __init__(
         self,
         data: RecolorHDImageResponseBodyData = None,
+        message: str = None,
         request_id: str = None,
     ):
         self.data = data
+        self.message = message
         self.request_id = request_id
 
     def validate(self):
@@ -3039,6 +3041,8 @@ class RecolorHDImageResponseBody(TeaModel):
         result = dict()
         if self.data is not None:
             result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
@@ -3048,6 +3052,8 @@ class RecolorHDImageResponseBody(TeaModel):
         if m.get('Data') is not None:
             temp_model = RecolorHDImageResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
