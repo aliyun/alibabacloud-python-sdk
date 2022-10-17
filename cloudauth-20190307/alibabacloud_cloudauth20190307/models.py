@@ -552,7 +552,6 @@ class ContrastFaceVerifyRequest(TeaModel):
 class ContrastFaceVerifyAdvanceRequest(TeaModel):
     def __init__(
         self,
-        face_contrast_file_object: BinaryIO = None,
         cert_name: str = None,
         cert_no: str = None,
         cert_type: str = None,
@@ -560,6 +559,7 @@ class ContrastFaceVerifyAdvanceRequest(TeaModel):
         crop: str = None,
         device_token: str = None,
         encrypt_type: str = None,
+        face_contrast_file_object: BinaryIO = None,
         face_contrast_picture: str = None,
         face_contrast_picture_url: str = None,
         ip: str = None,
@@ -572,7 +572,6 @@ class ContrastFaceVerifyAdvanceRequest(TeaModel):
         scene_id: int = None,
         user_id: str = None,
     ):
-        self.face_contrast_file_object = face_contrast_file_object
         self.cert_name = cert_name
         self.cert_no = cert_no
         self.cert_type = cert_type
@@ -580,6 +579,7 @@ class ContrastFaceVerifyAdvanceRequest(TeaModel):
         self.crop = crop
         self.device_token = device_token
         self.encrypt_type = encrypt_type
+        self.face_contrast_file_object = face_contrast_file_object
         self.face_contrast_picture = face_contrast_picture
         self.face_contrast_picture_url = face_contrast_picture_url
         self.ip = ip
@@ -593,7 +593,7 @@ class ContrastFaceVerifyAdvanceRequest(TeaModel):
         self.user_id = user_id
 
     def validate(self):
-        self.validate_required(self.face_contrast_file_object, 'face_contrast_file_object')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -601,8 +601,6 @@ class ContrastFaceVerifyAdvanceRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.face_contrast_file_object is not None:
-            result['FaceContrastFileObject'] = self.face_contrast_file_object
         if self.cert_name is not None:
             result['CertName'] = self.cert_name
         if self.cert_no is not None:
@@ -617,6 +615,8 @@ class ContrastFaceVerifyAdvanceRequest(TeaModel):
             result['DeviceToken'] = self.device_token
         if self.encrypt_type is not None:
             result['EncryptType'] = self.encrypt_type
+        if self.face_contrast_file_object is not None:
+            result['FaceContrastFile'] = self.face_contrast_file_object
         if self.face_contrast_picture is not None:
             result['FaceContrastPicture'] = self.face_contrast_picture
         if self.face_contrast_picture_url is not None:
@@ -643,8 +643,6 @@ class ContrastFaceVerifyAdvanceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('FaceContrastFileObject') is not None:
-            self.face_contrast_file_object = m.get('FaceContrastFileObject')
         if m.get('CertName') is not None:
             self.cert_name = m.get('CertName')
         if m.get('CertNo') is not None:
@@ -659,6 +657,8 @@ class ContrastFaceVerifyAdvanceRequest(TeaModel):
             self.device_token = m.get('DeviceToken')
         if m.get('EncryptType') is not None:
             self.encrypt_type = m.get('EncryptType')
+        if m.get('FaceContrastFile') is not None:
+            self.face_contrast_file_object = m.get('FaceContrastFile')
         if m.get('FaceContrastPicture') is not None:
             self.face_contrast_picture = m.get('FaceContrastPicture')
         if m.get('FaceContrastPictureUrl') is not None:
