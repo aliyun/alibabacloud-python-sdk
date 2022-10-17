@@ -1616,6 +1616,8 @@ class Client(OpenApiClient):
             body['NFSVersion'] = request.nfsversion
         if not UtilClient.is_unset(request.name):
             body['Name'] = request.name
+        if not UtilClient.is_unset(request.nas_type):
+            body['NasType'] = request.nas_type
         if not UtilClient.is_unset(request.reclaim_policy):
             body['ReclaimPolicy'] = request.reclaim_policy
         if not UtilClient.is_unset(request.storage_class):
@@ -1660,6 +1662,8 @@ class Client(OpenApiClient):
             body['NFSVersion'] = request.nfsversion
         if not UtilClient.is_unset(request.name):
             body['Name'] = request.name
+        if not UtilClient.is_unset(request.nas_type):
+            body['NasType'] = request.nas_type
         if not UtilClient.is_unset(request.reclaim_policy):
             body['ReclaimPolicy'] = request.reclaim_policy
         if not UtilClient.is_unset(request.storage_class):

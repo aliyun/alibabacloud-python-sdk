@@ -1,3 +1,6 @@
+2022-10-17 Version: 2.0.23
+- Fix CreatePersistentVolume interface, add support for nasType param.
+
 2022-06-16 Version: 2.0.22
 - Add offlineAppEnvironment API.
 - Add describeAppEnvDeployBaseline API.

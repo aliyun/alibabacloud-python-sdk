@@ -2366,17 +2366,11 @@ class CreateEciConfigRequest(TeaModel):
         normal_instance_limit: int = None,
         schedule_virtual_node: bool = None,
     ):
-        # appEnvId
         self.app_env_id = app_env_id
-        # eipBandwidth
         self.eip_bandwidth = eip_bandwidth
-        # enableEciSchedulePolicy
         self.enable_eci_schedule_policy = enable_eci_schedule_policy
-        # mirrorCache
         self.mirror_cache = mirror_cache
-        # normalInstanceLimit
         self.normal_instance_limit = normal_instance_limit
-        # scheduleVirtualNode
         self.schedule_virtual_node = schedule_virtual_node
 
     def validate(self):
@@ -2424,7 +2418,6 @@ class CreateEciConfigResponseBodyResult(TeaModel):
         self,
         success: bool = None,
     ):
-        # success
         self.success = success
 
     def validate(self):
@@ -2455,13 +2448,9 @@ class CreateEciConfigResponseBody(TeaModel):
         request_id: str = None,
         result: CreateEciConfigResponseBodyResult = None,
     ):
-        # code
         self.code = code
-        # errMsg
         self.err_msg = err_msg
-        # requestId
         self.request_id = request_id
-        # result
         self.result = result
 
     def validate(self):
@@ -2914,6 +2903,7 @@ class CreatePersistentVolumeRequest(TeaModel):
         mount_target_domain: str = None,
         nfsversion: str = None,
         name: str = None,
+        nas_type: str = None,
         reclaim_policy: str = None,
         storage_class: str = None,
     ):
@@ -2924,6 +2914,7 @@ class CreatePersistentVolumeRequest(TeaModel):
         self.mount_target_domain = mount_target_domain
         self.nfsversion = nfsversion
         self.name = name
+        self.nas_type = nas_type
         self.reclaim_policy = reclaim_policy
         self.storage_class = storage_class
 
@@ -2950,6 +2941,8 @@ class CreatePersistentVolumeRequest(TeaModel):
             result['NFSVersion'] = self.nfsversion
         if self.name is not None:
             result['Name'] = self.name
+        if self.nas_type is not None:
+            result['NasType'] = self.nas_type
         if self.reclaim_policy is not None:
             result['ReclaimPolicy'] = self.reclaim_policy
         if self.storage_class is not None:
@@ -2972,6 +2965,8 @@ class CreatePersistentVolumeRequest(TeaModel):
             self.nfsversion = m.get('NFSVersion')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('NasType') is not None:
+            self.nas_type = m.get('NasType')
         if m.get('ReclaimPolicy') is not None:
             self.reclaim_policy = m.get('ReclaimPolicy')
         if m.get('StorageClass') is not None:
@@ -6115,16 +6110,11 @@ class DescribeAppEnvDeployBaselineResponseBodyResult(TeaModel):
         schema_id: int = None,
     ):
         self.app_id = app_id
-        # 创建时间
         self.create_time = create_time
         self.env_id = env_id
-        # 代码包描述
         self.packet_comment = packet_comment
-        # 代码包id
         self.packet_id = packet_id
-        # 指定代码包发布时，为代码包Url；纯镜像发布时，为镜像地址
         self.packet_url = packet_url
-        # 部署配置schema_id
         self.schema_id = schema_id
 
     def validate(self):
@@ -6180,7 +6170,6 @@ class DescribeAppEnvDeployBaselineResponseBody(TeaModel):
         result: DescribeAppEnvDeployBaselineResponseBodyResult = None,
         success: bool = None,
     ):
-        # CodeEnum
         self.code = code
         self.err_msg = err_msg
         self.request_id = request_id
@@ -6501,9 +6490,7 @@ class DescribeAppGroupDeploySettingResponseBodyResult(TeaModel):
         default_packet_comment: str = None,
         default_packet_id: int = None,
     ):
-        # 默认代码包描述
         self.default_packet_comment = default_packet_comment
-        # 默认代码包id
         self.default_packet_id = default_packet_id
 
     def validate(self):
@@ -6539,7 +6526,6 @@ class DescribeAppGroupDeploySettingResponseBody(TeaModel):
         result: DescribeAppGroupDeploySettingResponseBodyResult = None,
         success: bool = None,
     ):
-        # CodeEnum
         self.code = code
         self.err_msg = err_msg
         self.request_id = request_id
@@ -8320,7 +8306,6 @@ class DescribeEciConfigRequest(TeaModel):
         self,
         app_env_id: int = None,
     ):
-        # appEnvId
         self.app_env_id = app_env_id
 
     def validate(self):
@@ -8353,17 +8338,11 @@ class DescribeEciConfigResponseBodyResult(TeaModel):
         normal_instance_limit: int = None,
         schedule_virtual_node: bool = None,
     ):
-        # appEnvId
         self.app_env_id = app_env_id
-        # eipBandwidth
         self.eip_bandwidth = eip_bandwidth
-        # enableEciSchedulePolicy
         self.enable_eci_schedule_policy = enable_eci_schedule_policy
-        # mirrorCache
         self.mirror_cache = mirror_cache
-        # normalInstanceLimit
         self.normal_instance_limit = normal_instance_limit
-        # scheduleVirtualNode
         self.schedule_virtual_node = schedule_virtual_node
 
     def validate(self):
@@ -8414,13 +8393,9 @@ class DescribeEciConfigResponseBody(TeaModel):
         request_id: str = None,
         result: DescribeEciConfigResponseBodyResult = None,
     ):
-        # code
         self.code = code
-        # errMsg
         self.err_msg = err_msg
-        # requestId
         self.request_id = request_id
-        # result
         self.result = result
 
     def validate(self):
@@ -16791,7 +16766,6 @@ class OfflineAppEnvironmentRequest(TeaModel):
         env_id: int = None,
     ):
         self.app_id = app_id
-        # 是否删除PVC，未传递默认不删除
         self.delete_pvc = delete_pvc
         self.env_id = env_id
 
@@ -16859,7 +16833,6 @@ class OfflineAppEnvironmentResponseBody(TeaModel):
         result: OfflineAppEnvironmentResponseBodyResult = None,
         success: bool = None,
     ):
-        # CodeEnum
         self.code = code
         self.err_msg = err_msg
         self.request_id = request_id
@@ -17962,11 +17935,8 @@ class RestartAppInstanceRequest(TeaModel):
         app_instance_id_list: List[int] = None,
         env_id: int = None,
     ):
-        # appId
         self.app_id = app_id
-        # appInstanceIdList
         self.app_instance_id_list = app_instance_id_list
-        # envId
         self.env_id = env_id
 
     def validate(self):
@@ -18005,13 +17975,9 @@ class RestartAppInstanceResponseBody(TeaModel):
         request_id: str = None,
         result: str = None,
     ):
-        # code
         self.code = code
-        # errMsg
         self.err_msg = err_msg
-        # requestId
         self.request_id = request_id
-        # result
         self.result = result
 
     def validate(self):
@@ -19751,17 +19717,11 @@ class UpdateEciConfigRequest(TeaModel):
         normal_instance_limit: int = None,
         schedule_virtual_node: bool = None,
     ):
-        # appEnvId
         self.app_env_id = app_env_id
-        # eipBandwidth
         self.eip_bandwidth = eip_bandwidth
-        # enableEciSchedulePolicy
         self.enable_eci_schedule_policy = enable_eci_schedule_policy
-        # mirrorCache
         self.mirror_cache = mirror_cache
-        # normalInstanceLimit
         self.normal_instance_limit = normal_instance_limit
-        # scheduleVirtualNode
         self.schedule_virtual_node = schedule_virtual_node
 
     def validate(self):
@@ -19809,7 +19769,6 @@ class UpdateEciConfigResponseBodyResult(TeaModel):
         self,
         success: bool = None,
     ):
-        # success
         self.success = success
 
     def validate(self):
@@ -19840,13 +19799,9 @@ class UpdateEciConfigResponseBody(TeaModel):
         request_id: str = None,
         result: UpdateEciConfigResponseBodyResult = None,
     ):
-        # code
         self.code = code
-        # errMsg
         self.err_msg = err_msg
-        # requestId
         self.request_id = request_id
-        # result
         self.result = result
 
     def validate(self):
@@ -20288,7 +20243,6 @@ class UpdateNormalDeployConfigResponseBody(TeaModel):
     ):
         self.code = code
         self.err_msg = err_msg
-        # Id of the request
         self.request_id = request_id
         self.result = result
 
