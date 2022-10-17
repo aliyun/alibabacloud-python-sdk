@@ -89,9 +89,11 @@ class DetectVideoShotResponseBody(TeaModel):
     def __init__(
         self,
         data: DetectVideoShotResponseBodyData = None,
+        message: str = None,
         request_id: str = None,
     ):
         self.data = data
+        self.message = message
         self.request_id = request_id
 
     def validate(self):
@@ -106,6 +108,8 @@ class DetectVideoShotResponseBody(TeaModel):
         result = dict()
         if self.data is not None:
             result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
@@ -115,6 +119,8 @@ class DetectVideoShotResponseBody(TeaModel):
         if m.get('Data') is not None:
             temp_model = DetectVideoShotResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -302,9 +308,11 @@ class GenerateVideoCoverResponseBody(TeaModel):
     def __init__(
         self,
         data: GenerateVideoCoverResponseBodyData = None,
+        message: str = None,
         request_id: str = None,
     ):
         self.data = data
+        self.message = message
         self.request_id = request_id
 
     def validate(self):
@@ -319,6 +327,8 @@ class GenerateVideoCoverResponseBody(TeaModel):
         result = dict()
         if self.data is not None:
             result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
@@ -328,6 +338,8 @@ class GenerateVideoCoverResponseBody(TeaModel):
         if m.get('Data') is not None:
             temp_model = GenerateVideoCoverResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -1124,11 +1136,15 @@ class RecognizeVideoCastCrewListResponseBodyData(TeaModel):
         self,
         cast_results: List[RecognizeVideoCastCrewListResponseBodyDataCastResults] = None,
         ocr_results: List[RecognizeVideoCastCrewListResponseBodyDataOcrResults] = None,
+        ocr_results_url: str = None,
+        ocr_video_results_url: str = None,
         subtitles_results: List[RecognizeVideoCastCrewListResponseBodyDataSubtitlesResults] = None,
         video_ocr_results: List[RecognizeVideoCastCrewListResponseBodyDataVideoOcrResults] = None,
     ):
         self.cast_results = cast_results
         self.ocr_results = ocr_results
+        self.ocr_results_url = ocr_results_url
+        self.ocr_video_results_url = ocr_video_results_url
         self.subtitles_results = subtitles_results
         self.video_ocr_results = video_ocr_results
 
@@ -1164,6 +1180,10 @@ class RecognizeVideoCastCrewListResponseBodyData(TeaModel):
         if self.ocr_results is not None:
             for k in self.ocr_results:
                 result['OcrResults'].append(k.to_map() if k else None)
+        if self.ocr_results_url is not None:
+            result['OcrResultsUrl'] = self.ocr_results_url
+        if self.ocr_video_results_url is not None:
+            result['OcrVideoResultsUrl'] = self.ocr_video_results_url
         result['SubtitlesResults'] = []
         if self.subtitles_results is not None:
             for k in self.subtitles_results:
@@ -1186,6 +1206,10 @@ class RecognizeVideoCastCrewListResponseBodyData(TeaModel):
             for k in m.get('OcrResults'):
                 temp_model = RecognizeVideoCastCrewListResponseBodyDataOcrResults()
                 self.ocr_results.append(temp_model.from_map(k))
+        if m.get('OcrResultsUrl') is not None:
+            self.ocr_results_url = m.get('OcrResultsUrl')
+        if m.get('OcrVideoResultsUrl') is not None:
+            self.ocr_video_results_url = m.get('OcrVideoResultsUrl')
         self.subtitles_results = []
         if m.get('SubtitlesResults') is not None:
             for k in m.get('SubtitlesResults'):
@@ -1203,9 +1227,11 @@ class RecognizeVideoCastCrewListResponseBody(TeaModel):
     def __init__(
         self,
         data: RecognizeVideoCastCrewListResponseBodyData = None,
+        message: str = None,
         request_id: str = None,
     ):
         self.data = data
+        self.message = message
         self.request_id = request_id
 
     def validate(self):
@@ -1220,6 +1246,8 @@ class RecognizeVideoCastCrewListResponseBody(TeaModel):
         result = dict()
         if self.data is not None:
             result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
@@ -1229,6 +1257,8 @@ class RecognizeVideoCastCrewListResponseBody(TeaModel):
         if m.get('Data') is not None:
             temp_model = RecognizeVideoCastCrewListResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -1410,9 +1440,11 @@ class SplitVideoPartsResponseBody(TeaModel):
     def __init__(
         self,
         data: SplitVideoPartsResponseBodyData = None,
+        message: str = None,
         request_id: str = None,
     ):
         self.data = data
+        self.message = message
         self.request_id = request_id
 
     def validate(self):
@@ -1427,6 +1459,8 @@ class SplitVideoPartsResponseBody(TeaModel):
         result = dict()
         if self.data is not None:
             result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
@@ -1436,6 +1470,8 @@ class SplitVideoPartsResponseBody(TeaModel):
         if m.get('Data') is not None:
             temp_model = SplitVideoPartsResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -1623,9 +1659,11 @@ class UnderstandVideoContentResponseBody(TeaModel):
     def __init__(
         self,
         data: UnderstandVideoContentResponseBodyData = None,
+        message: str = None,
         request_id: str = None,
     ):
         self.data = data
+        self.message = message
         self.request_id = request_id
 
     def validate(self):
@@ -1640,6 +1678,8 @@ class UnderstandVideoContentResponseBody(TeaModel):
         result = dict()
         if self.data is not None:
             result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
@@ -1649,6 +1689,8 @@ class UnderstandVideoContentResponseBody(TeaModel):
         if m.get('Data') is not None:
             temp_model = UnderstandVideoContentResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
