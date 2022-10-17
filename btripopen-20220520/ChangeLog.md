@@ -1,3 +1,6 @@
+2022-10-17 Version: 1.0.24
+- Update CarBillSettlementQuery.
+
 2022-10-14 Version: 1.0.23
 - Update module.
 
