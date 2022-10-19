@@ -1582,6 +1582,7 @@ class CreateShardingDBInstanceRequest(TeaModel):
         security_token: str = None,
         src_dbinstance_id: str = None,
         storage_engine: str = None,
+        storage_type: str = None,
         v_switch_id: str = None,
         vpc_id: str = None,
         zone_id: str = None,
@@ -1612,6 +1613,7 @@ class CreateShardingDBInstanceRequest(TeaModel):
         self.security_token = security_token
         self.src_dbinstance_id = src_dbinstance_id
         self.storage_engine = storage_engine
+        self.storage_type = storage_type
         self.v_switch_id = v_switch_id
         self.vpc_id = vpc_id
         self.zone_id = zone_id
@@ -1694,6 +1696,8 @@ class CreateShardingDBInstanceRequest(TeaModel):
             result['SrcDBInstanceId'] = self.src_dbinstance_id
         if self.storage_engine is not None:
             result['StorageEngine'] = self.storage_engine
+        if self.storage_type is not None:
+            result['StorageType'] = self.storage_type
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
         if self.vpc_id is not None:
@@ -1765,6 +1769,8 @@ class CreateShardingDBInstanceRequest(TeaModel):
             self.src_dbinstance_id = m.get('SrcDBInstanceId')
         if m.get('StorageEngine') is not None:
             self.storage_engine = m.get('StorageEngine')
+        if m.get('StorageType') is not None:
+            self.storage_type = m.get('StorageType')
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
         if m.get('VpcId') is not None:

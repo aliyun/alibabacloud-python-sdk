@@ -1060,6 +1060,8 @@ class Client(OpenApiClient):
             query['SrcDBInstanceId'] = request.src_dbinstance_id
         if not UtilClient.is_unset(request.storage_engine):
             query['StorageEngine'] = request.storage_engine
+        if not UtilClient.is_unset(request.storage_type):
+            query['StorageType'] = request.storage_type
         if not UtilClient.is_unset(request.v_switch_id):
             query['VSwitchId'] = request.v_switch_id
         if not UtilClient.is_unset(request.vpc_id):
@@ -1144,6 +1146,8 @@ class Client(OpenApiClient):
             query['SrcDBInstanceId'] = request.src_dbinstance_id
         if not UtilClient.is_unset(request.storage_engine):
             query['StorageEngine'] = request.storage_engine
+        if not UtilClient.is_unset(request.storage_type):
+            query['StorageType'] = request.storage_type
         if not UtilClient.is_unset(request.v_switch_id):
             query['VSwitchId'] = request.v_switch_id
         if not UtilClient.is_unset(request.vpc_id):
