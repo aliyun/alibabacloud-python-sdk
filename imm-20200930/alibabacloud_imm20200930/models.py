@@ -2109,6 +2109,7 @@ class FigureCluster(TeaModel):
         gender: str = None,
         image_count: int = None,
         max_age: float = None,
+        meta_lock_version: int = None,
         min_age: float = None,
         name: str = None,
         object_id: str = None,
@@ -2128,6 +2129,7 @@ class FigureCluster(TeaModel):
         self.gender = gender
         self.image_count = image_count
         self.max_age = max_age
+        self.meta_lock_version = meta_lock_version
         self.min_age = min_age
         self.name = name
         self.object_id = object_id
@@ -2167,6 +2169,8 @@ class FigureCluster(TeaModel):
             result['ImageCount'] = self.image_count
         if self.max_age is not None:
             result['MaxAge'] = self.max_age
+        if self.meta_lock_version is not None:
+            result['MetaLockVersion'] = self.meta_lock_version
         if self.min_age is not None:
             result['MinAge'] = self.min_age
         if self.name is not None:
@@ -2208,6 +2212,8 @@ class FigureCluster(TeaModel):
             self.image_count = m.get('ImageCount')
         if m.get('MaxAge') is not None:
             self.max_age = m.get('MaxAge')
+        if m.get('MetaLockVersion') is not None:
+            self.meta_lock_version = m.get('MetaLockVersion')
         if m.get('MinAge') is not None:
             self.min_age = m.get('MinAge')
         if m.get('Name') is not None:
@@ -2295,12 +2301,14 @@ class FigureClusterForReq(TeaModel):
         cover: FigureClusterForReqCover = None,
         custom_id: str = None,
         custom_labels: Dict[str, Any] = None,
+        meta_lock_version: int = None,
         name: str = None,
         object_id: str = None,
     ):
         self.cover = cover
         self.custom_id = custom_id
         self.custom_labels = custom_labels
+        self.meta_lock_version = meta_lock_version
         self.name = name
         self.object_id = object_id
 
@@ -2320,6 +2328,8 @@ class FigureClusterForReq(TeaModel):
             result['CustomId'] = self.custom_id
         if self.custom_labels is not None:
             result['CustomLabels'] = self.custom_labels
+        if self.meta_lock_version is not None:
+            result['MetaLockVersion'] = self.meta_lock_version
         if self.name is not None:
             result['Name'] = self.name
         if self.object_id is not None:
@@ -2335,6 +2345,8 @@ class FigureClusterForReq(TeaModel):
             self.custom_id = m.get('CustomId')
         if m.get('CustomLabels') is not None:
             self.custom_labels = m.get('CustomLabels')
+        if m.get('MetaLockVersion') is not None:
+            self.meta_lock_version = m.get('MetaLockVersion')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('ObjectId') is not None:

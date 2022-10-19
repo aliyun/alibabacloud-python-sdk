@@ -1,3 +1,6 @@
+2022-10-19 Version: 1.28.3
+- Automatically generate sdk tasks.
+
 2022-08-16 Version: 1.28.2
 - Add ImageToPDF.
 - Add Compress.
