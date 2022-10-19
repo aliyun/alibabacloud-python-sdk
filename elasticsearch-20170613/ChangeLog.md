@@ -1,3 +1,6 @@
+2022-10-19 Version: 1.1.2
+- Complete Request Body.
+
 2022-09-27 Version: 1.1.1
 - Supported next-api-aliyun-com.
 

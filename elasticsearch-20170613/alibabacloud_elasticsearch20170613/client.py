@@ -12257,10 +12257,13 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
+        body = {}
+        if not UtilClient.is_unset(request.es_admin_password):
+            body['esAdminPassword'] = request.es_admin_password
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),
-            body=request.body
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateAdminPassword',
@@ -12289,10 +12292,13 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
+        body = {}
+        if not UtilClient.is_unset(request.es_admin_password):
+            body['esAdminPassword'] = request.es_admin_password
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),
-            body=request.body
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateAdminPassword',

@@ -8099,13 +8099,60 @@ class DescribeInstanceResponseBodyResultElasticDataNodeConfiguration(TeaModel):
         return self
 
 
+class DescribeInstanceResponseBodyResultIkHotDicts(TeaModel):
+    def __init__(
+        self,
+        file_size: int = None,
+        name: str = None,
+        source_type: str = None,
+        type: str = None,
+    ):
+        self.file_size = file_size
+        self.name = name
+        self.source_type = source_type
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_size is not None:
+            result['fileSize'] = self.file_size
+        if self.name is not None:
+            result['name'] = self.name
+        if self.source_type is not None:
+            result['sourceType'] = self.source_type
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('fileSize') is not None:
+            self.file_size = m.get('fileSize')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('sourceType') is not None:
+            self.source_type = m.get('sourceType')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
 class DescribeInstanceResponseBodyResultKibanaConfiguration(TeaModel):
     def __init__(
         self,
         amount: int = None,
+        disk: int = None,
         spec: str = None,
     ):
         self.amount = amount
+        self.disk = disk
         self.spec = spec
 
     def validate(self):
@@ -8119,6 +8166,8 @@ class DescribeInstanceResponseBodyResultKibanaConfiguration(TeaModel):
         result = dict()
         if self.amount is not None:
             result['amount'] = self.amount
+        if self.disk is not None:
+            result['disk'] = self.disk
         if self.spec is not None:
             result['spec'] = self.spec
         return result
@@ -8127,6 +8176,8 @@ class DescribeInstanceResponseBodyResultKibanaConfiguration(TeaModel):
         m = m or dict()
         if m.get('amount') is not None:
             self.amount = m.get('amount')
+        if m.get('disk') is not None:
+            self.disk = m.get('disk')
         if m.get('spec') is not None:
             self.spec = m.get('spec')
         return self
@@ -8281,11 +8332,13 @@ class DescribeInstanceResponseBodyResultNodeSpec(TeaModel):
         disk: int = None,
         disk_encryption: bool = None,
         disk_type: str = None,
+        performance_level: str = None,
         spec: str = None,
     ):
         self.disk = disk
         self.disk_encryption = disk_encryption
         self.disk_type = disk_type
+        self.performance_level = performance_level
         self.spec = spec
 
     def validate(self):
@@ -8303,6 +8356,8 @@ class DescribeInstanceResponseBodyResultNodeSpec(TeaModel):
             result['diskEncryption'] = self.disk_encryption
         if self.disk_type is not None:
             result['diskType'] = self.disk_type
+        if self.performance_level is not None:
+            result['performanceLevel'] = self.performance_level
         if self.spec is not None:
             result['spec'] = self.spec
         return result
@@ -8315,6 +8370,8 @@ class DescribeInstanceResponseBodyResultNodeSpec(TeaModel):
             self.disk_encryption = m.get('diskEncryption')
         if m.get('diskType') is not None:
             self.disk_type = m.get('diskType')
+        if m.get('performanceLevel') is not None:
+            self.performance_level = m.get('performanceLevel')
         if m.get('spec') is not None:
             self.spec = m.get('spec')
         return self
@@ -8505,6 +8562,7 @@ class DescribeInstanceResponseBodyResult(TeaModel):
         extend_configs: List[Dict[str, Any]] = None,
         have_client_node: bool = None,
         have_kibana: bool = None,
+        ik_hot_dicts: List[DescribeInstanceResponseBodyResultIkHotDicts] = None,
         instance_id: str = None,
         is_new_deployment: bool = None,
         kibana_configuration: DescribeInstanceResponseBodyResultKibanaConfiguration = None,
@@ -8556,6 +8614,7 @@ class DescribeInstanceResponseBodyResult(TeaModel):
         self.extend_configs = extend_configs
         self.have_client_node = have_client_node
         self.have_kibana = have_kibana
+        self.ik_hot_dicts = ik_hot_dicts
         self.instance_id = instance_id
         self.is_new_deployment = is_new_deployment
         self.kibana_configuration = kibana_configuration
@@ -8602,6 +8661,10 @@ class DescribeInstanceResponseBodyResult(TeaModel):
                     k.validate()
         if self.elastic_data_node_configuration:
             self.elastic_data_node_configuration.validate()
+        if self.ik_hot_dicts:
+            for k in self.ik_hot_dicts:
+                if k:
+                    k.validate()
         if self.kibana_configuration:
             self.kibana_configuration.validate()
         if self.master_configuration:
@@ -8675,6 +8738,10 @@ class DescribeInstanceResponseBodyResult(TeaModel):
             result['haveClientNode'] = self.have_client_node
         if self.have_kibana is not None:
             result['haveKibana'] = self.have_kibana
+        result['ikHotDicts'] = []
+        if self.ik_hot_dicts is not None:
+            for k in self.ik_hot_dicts:
+                result['ikHotDicts'].append(k.to_map() if k else None)
         if self.instance_id is not None:
             result['instanceId'] = self.instance_id
         if self.is_new_deployment is not None:
@@ -8794,6 +8861,11 @@ class DescribeInstanceResponseBodyResult(TeaModel):
             self.have_client_node = m.get('haveClientNode')
         if m.get('haveKibana') is not None:
             self.have_kibana = m.get('haveKibana')
+        self.ik_hot_dicts = []
+        if m.get('ikHotDicts') is not None:
+            for k in m.get('ikHotDicts'):
+                temp_model = DescribeInstanceResponseBodyResultIkHotDicts()
+                self.ik_hot_dicts.append(temp_model.from_map(k))
         if m.get('instanceId') is not None:
             self.instance_id = m.get('instanceId')
         if m.get('isNewDeployment') is not None:
@@ -19881,11 +19953,13 @@ class ListInstanceResponseBodyResultNodeSpec(TeaModel):
         disk: int = None,
         disk_encryption: bool = None,
         disk_type: str = None,
+        performance_level: str = None,
         spec: str = None,
     ):
         self.disk = disk
         self.disk_encryption = disk_encryption
         self.disk_type = disk_type
+        self.performance_level = performance_level
         self.spec = spec
 
     def validate(self):
@@ -19903,6 +19977,8 @@ class ListInstanceResponseBodyResultNodeSpec(TeaModel):
             result['diskEncryption'] = self.disk_encryption
         if self.disk_type is not None:
             result['diskType'] = self.disk_type
+        if self.performance_level is not None:
+            result['performanceLevel'] = self.performance_level
         if self.spec is not None:
             result['spec'] = self.spec
         return result
@@ -19915,6 +19991,8 @@ class ListInstanceResponseBodyResultNodeSpec(TeaModel):
             self.disk_encryption = m.get('diskEncryption')
         if m.get('diskType') is not None:
             self.disk_type = m.get('diskType')
+        if m.get('performanceLevel') is not None:
+            self.performance_level = m.get('performanceLevel')
         if m.get('spec') is not None:
             self.spec = m.get('spec')
         return self
@@ -19978,6 +20056,7 @@ class ListInstanceResponseBodyResult(TeaModel):
         status: str = None,
         tags: List[ListInstanceResponseBodyResultTags] = None,
         updated_at: str = None,
+        vpc_instance_id: str = None,
     ):
         self.advanced_dedicate_master = advanced_dedicate_master
         self.client_node_configuration = client_node_configuration
@@ -20001,6 +20080,7 @@ class ListInstanceResponseBodyResult(TeaModel):
         self.status = status
         self.tags = tags
         self.updated_at = updated_at
+        self.vpc_instance_id = vpc_instance_id
 
     def validate(self):
         if self.client_node_configuration:
@@ -20072,6 +20152,8 @@ class ListInstanceResponseBodyResult(TeaModel):
                 result['tags'].append(k.to_map() if k else None)
         if self.updated_at is not None:
             result['updatedAt'] = self.updated_at
+        if self.vpc_instance_id is not None:
+            result['vpcInstanceId'] = self.vpc_instance_id
         return result
 
     def from_map(self, m: dict = None):
@@ -20129,6 +20211,8 @@ class ListInstanceResponseBodyResult(TeaModel):
                 self.tags.append(temp_model.from_map(k))
         if m.get('updatedAt') is not None:
             self.updated_at = m.get('updatedAt')
+        if m.get('vpcInstanceId') is not None:
+            self.vpc_instance_id = m.get('vpcInstanceId')
         return self
 
 
@@ -28938,10 +29022,10 @@ class UntagResourcesResponse(TeaModel):
 class UpdateAdminPasswordRequest(TeaModel):
     def __init__(
         self,
-        body: str = None,
+        es_admin_password: str = None,
         client_token: str = None,
     ):
-        self.body = body
+        self.es_admin_password = es_admin_password
         self.client_token = client_token
 
     def validate(self):
@@ -28953,16 +29037,16 @@ class UpdateAdminPasswordRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.body is not None:
-            result['body'] = self.body
+        if self.es_admin_password is not None:
+            result['esAdminPassword'] = self.es_admin_password
         if self.client_token is not None:
             result['clientToken'] = self.client_token
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('body') is not None:
-            self.body = m.get('body')
+        if m.get('esAdminPassword') is not None:
+            self.es_admin_password = m.get('esAdminPassword')
         if m.get('clientToken') is not None:
             self.client_token = m.get('clientToken')
         return self
@@ -28972,8 +29056,10 @@ class UpdateAdminPasswordResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
+        result: bool = None,
     ):
         self.request_id = request_id
+        self.result = result
 
     def validate(self):
         pass
@@ -28986,12 +29072,16 @@ class UpdateAdminPasswordResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
         return self
 
 
