@@ -1,3 +1,6 @@
+2022-10-20 Version: 1.5.2
+- Fix signature bug.
+
 2022-09-15 Version: 1.5.1
 - Fix signature bug.
 

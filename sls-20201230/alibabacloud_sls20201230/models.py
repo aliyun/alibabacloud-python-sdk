@@ -1482,325 +1482,6 @@ class ApplyConfigToMachineGroupResponse(TeaModel):
         return self
 
 
-class BatchCreateEtlMetaRequestEtlMetaList(TeaModel):
-    def __init__(
-        self,
-        enable: bool = None,
-        etl_meta_key: str = None,
-        etl_meta_name: str = None,
-        etl_meta_tag: str = None,
-        etl_meta_value: Dict[str, Any] = None,
-    ):
-        self.enable = enable
-        self.etl_meta_key = etl_meta_key
-        self.etl_meta_name = etl_meta_name
-        self.etl_meta_tag = etl_meta_tag
-        self.etl_meta_value = etl_meta_value
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.enable is not None:
-            result['enable'] = self.enable
-        if self.etl_meta_key is not None:
-            result['etlMetaKey'] = self.etl_meta_key
-        if self.etl_meta_name is not None:
-            result['etlMetaName'] = self.etl_meta_name
-        if self.etl_meta_tag is not None:
-            result['etlMetaTag'] = self.etl_meta_tag
-        if self.etl_meta_value is not None:
-            result['etlMetaValue'] = self.etl_meta_value
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('enable') is not None:
-            self.enable = m.get('enable')
-        if m.get('etlMetaKey') is not None:
-            self.etl_meta_key = m.get('etlMetaKey')
-        if m.get('etlMetaName') is not None:
-            self.etl_meta_name = m.get('etlMetaName')
-        if m.get('etlMetaTag') is not None:
-            self.etl_meta_tag = m.get('etlMetaTag')
-        if m.get('etlMetaValue') is not None:
-            self.etl_meta_value = m.get('etlMetaValue')
-        return self
-
-
-class BatchCreateEtlMetaRequest(TeaModel):
-    def __init__(
-        self,
-        etl_meta_list: List[BatchCreateEtlMetaRequestEtlMetaList] = None,
-    ):
-        self.etl_meta_list = etl_meta_list
-
-    def validate(self):
-        if self.etl_meta_list:
-            for k in self.etl_meta_list:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['etlMetaList'] = []
-        if self.etl_meta_list is not None:
-            for k in self.etl_meta_list:
-                result['etlMetaList'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.etl_meta_list = []
-        if m.get('etlMetaList') is not None:
-            for k in m.get('etlMetaList'):
-                temp_model = BatchCreateEtlMetaRequestEtlMetaList()
-                self.etl_meta_list.append(temp_model.from_map(k))
-        return self
-
-
-class BatchCreateEtlMetaResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        return self
-
-
-class BatchModifyEtlMetaStatusRequest(TeaModel):
-    def __init__(
-        self,
-        etl_meta_key_list: List[str] = None,
-        etl_meta_name: str = None,
-        etl_meta_tag: str = None,
-        range: str = None,
-        type: str = None,
-    ):
-        self.etl_meta_key_list = etl_meta_key_list
-        self.etl_meta_name = etl_meta_name
-        self.etl_meta_tag = etl_meta_tag
-        self.range = range
-        self.type = type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.etl_meta_key_list is not None:
-            result['etlMetaKeyList'] = self.etl_meta_key_list
-        if self.etl_meta_name is not None:
-            result['etlMetaName'] = self.etl_meta_name
-        if self.etl_meta_tag is not None:
-            result['etlMetaTag'] = self.etl_meta_tag
-        if self.range is not None:
-            result['range'] = self.range
-        if self.type is not None:
-            result['type'] = self.type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('etlMetaKeyList') is not None:
-            self.etl_meta_key_list = m.get('etlMetaKeyList')
-        if m.get('etlMetaName') is not None:
-            self.etl_meta_name = m.get('etlMetaName')
-        if m.get('etlMetaTag') is not None:
-            self.etl_meta_tag = m.get('etlMetaTag')
-        if m.get('range') is not None:
-            self.range = m.get('range')
-        if m.get('type') is not None:
-            self.type = m.get('type')
-        return self
-
-
-class BatchModifyEtlMetaStatusResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        return self
-
-
-class BatchUpdateEtlMetaRequestEtlMetaList(TeaModel):
-    def __init__(
-        self,
-        enable: bool = None,
-        etl_meta_key: str = None,
-        etl_meta_name: str = None,
-        etl_meta_tag: str = None,
-        etl_meta_value: Dict[str, Any] = None,
-    ):
-        self.enable = enable
-        self.etl_meta_key = etl_meta_key
-        self.etl_meta_name = etl_meta_name
-        self.etl_meta_tag = etl_meta_tag
-        self.etl_meta_value = etl_meta_value
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.enable is not None:
-            result['enable'] = self.enable
-        if self.etl_meta_key is not None:
-            result['etlMetaKey'] = self.etl_meta_key
-        if self.etl_meta_name is not None:
-            result['etlMetaName'] = self.etl_meta_name
-        if self.etl_meta_tag is not None:
-            result['etlMetaTag'] = self.etl_meta_tag
-        if self.etl_meta_value is not None:
-            result['etlMetaValue'] = self.etl_meta_value
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('enable') is not None:
-            self.enable = m.get('enable')
-        if m.get('etlMetaKey') is not None:
-            self.etl_meta_key = m.get('etlMetaKey')
-        if m.get('etlMetaName') is not None:
-            self.etl_meta_name = m.get('etlMetaName')
-        if m.get('etlMetaTag') is not None:
-            self.etl_meta_tag = m.get('etlMetaTag')
-        if m.get('etlMetaValue') is not None:
-            self.etl_meta_value = m.get('etlMetaValue')
-        return self
-
-
-class BatchUpdateEtlMetaRequest(TeaModel):
-    def __init__(
-        self,
-        etl_meta_list: BatchUpdateEtlMetaRequestEtlMetaList = None,
-    ):
-        self.etl_meta_list = etl_meta_list
-
-    def validate(self):
-        if self.etl_meta_list:
-            self.etl_meta_list.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.etl_meta_list is not None:
-            result['etlMetaList'] = self.etl_meta_list.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('etlMetaList') is not None:
-            temp_model = BatchUpdateEtlMetaRequestEtlMetaList()
-            self.etl_meta_list = temp_model.from_map(m['etlMetaList'])
-        return self
-
-
-class BatchUpdateEtlMetaResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        return self
-
-
 class CreateConsumerGroupRequest(TeaModel):
     def __init__(
         self,
@@ -1902,379 +1583,6 @@ class CreateDomainRequest(TeaModel):
 
 
 class CreateDomainResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        return self
-
-
-class CreateEtlJobRequestFunctionConfig(TeaModel):
-    def __init__(
-        self,
-        account_id: str = None,
-        endpoint: str = None,
-        function_name: str = None,
-        function_provider: str = None,
-        region_name: str = None,
-        role_arn: str = None,
-        service_name: str = None,
-    ):
-        self.account_id = account_id
-        self.endpoint = endpoint
-        self.function_name = function_name
-        self.function_provider = function_provider
-        self.region_name = region_name
-        self.role_arn = role_arn
-        self.service_name = service_name
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.account_id is not None:
-            result['accountId'] = self.account_id
-        if self.endpoint is not None:
-            result['endpoint'] = self.endpoint
-        if self.function_name is not None:
-            result['functionName'] = self.function_name
-        if self.function_provider is not None:
-            result['functionProvider'] = self.function_provider
-        if self.region_name is not None:
-            result['regionName'] = self.region_name
-        if self.role_arn is not None:
-            result['roleArn'] = self.role_arn
-        if self.service_name is not None:
-            result['serviceName'] = self.service_name
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('accountId') is not None:
-            self.account_id = m.get('accountId')
-        if m.get('endpoint') is not None:
-            self.endpoint = m.get('endpoint')
-        if m.get('functionName') is not None:
-            self.function_name = m.get('functionName')
-        if m.get('functionProvider') is not None:
-            self.function_provider = m.get('functionProvider')
-        if m.get('regionName') is not None:
-            self.region_name = m.get('regionName')
-        if m.get('roleArn') is not None:
-            self.role_arn = m.get('roleArn')
-        if m.get('serviceName') is not None:
-            self.service_name = m.get('serviceName')
-        return self
-
-
-class CreateEtlJobRequestLogConfig(TeaModel):
-    def __init__(
-        self,
-        endpoint: str = None,
-        logstore_name: str = None,
-        project_name: str = None,
-    ):
-        self.endpoint = endpoint
-        self.logstore_name = logstore_name
-        self.project_name = project_name
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.endpoint is not None:
-            result['endpoint'] = self.endpoint
-        if self.logstore_name is not None:
-            result['logstoreName'] = self.logstore_name
-        if self.project_name is not None:
-            result['projectName'] = self.project_name
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('endpoint') is not None:
-            self.endpoint = m.get('endpoint')
-        if m.get('logstoreName') is not None:
-            self.logstore_name = m.get('logstoreName')
-        if m.get('projectName') is not None:
-            self.project_name = m.get('projectName')
-        return self
-
-
-class CreateEtlJobRequestSourceConfig(TeaModel):
-    def __init__(
-        self,
-        logstore_name: str = None,
-    ):
-        self.logstore_name = logstore_name
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.logstore_name is not None:
-            result['logstoreName'] = self.logstore_name
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('logstoreName') is not None:
-            self.logstore_name = m.get('logstoreName')
-        return self
-
-
-class CreateEtlJobRequestTriggerConfig(TeaModel):
-    def __init__(
-        self,
-        max_retry_time: int = None,
-        role_arn: str = None,
-        starting_position: str = None,
-        starting_unixtime: int = None,
-        trigger_interval: int = None,
-    ):
-        self.max_retry_time = max_retry_time
-        self.role_arn = role_arn
-        self.starting_position = starting_position
-        self.starting_unixtime = starting_unixtime
-        self.trigger_interval = trigger_interval
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.max_retry_time is not None:
-            result['maxRetryTime'] = self.max_retry_time
-        if self.role_arn is not None:
-            result['roleArn'] = self.role_arn
-        if self.starting_position is not None:
-            result['startingPosition'] = self.starting_position
-        if self.starting_unixtime is not None:
-            result['startingUnixtime'] = self.starting_unixtime
-        if self.trigger_interval is not None:
-            result['triggerInterval'] = self.trigger_interval
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('maxRetryTime') is not None:
-            self.max_retry_time = m.get('maxRetryTime')
-        if m.get('roleArn') is not None:
-            self.role_arn = m.get('roleArn')
-        if m.get('startingPosition') is not None:
-            self.starting_position = m.get('startingPosition')
-        if m.get('startingUnixtime') is not None:
-            self.starting_unixtime = m.get('startingUnixtime')
-        if m.get('triggerInterval') is not None:
-            self.trigger_interval = m.get('triggerInterval')
-        return self
-
-
-class CreateEtlJobRequest(TeaModel):
-    def __init__(
-        self,
-        enable: bool = None,
-        etl_job_name: str = None,
-        function_config: CreateEtlJobRequestFunctionConfig = None,
-        function_parameter: Dict[str, Any] = None,
-        log_config: CreateEtlJobRequestLogConfig = None,
-        source_config: CreateEtlJobRequestSourceConfig = None,
-        trigger_config: CreateEtlJobRequestTriggerConfig = None,
-    ):
-        self.enable = enable
-        self.etl_job_name = etl_job_name
-        self.function_config = function_config
-        self.function_parameter = function_parameter
-        self.log_config = log_config
-        self.source_config = source_config
-        self.trigger_config = trigger_config
-
-    def validate(self):
-        if self.function_config:
-            self.function_config.validate()
-        if self.log_config:
-            self.log_config.validate()
-        if self.source_config:
-            self.source_config.validate()
-        if self.trigger_config:
-            self.trigger_config.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.enable is not None:
-            result['enable'] = self.enable
-        if self.etl_job_name is not None:
-            result['etlJobName'] = self.etl_job_name
-        if self.function_config is not None:
-            result['functionConfig'] = self.function_config.to_map()
-        if self.function_parameter is not None:
-            result['functionParameter'] = self.function_parameter
-        if self.log_config is not None:
-            result['logConfig'] = self.log_config.to_map()
-        if self.source_config is not None:
-            result['sourceConfig'] = self.source_config.to_map()
-        if self.trigger_config is not None:
-            result['triggerConfig'] = self.trigger_config.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('enable') is not None:
-            self.enable = m.get('enable')
-        if m.get('etlJobName') is not None:
-            self.etl_job_name = m.get('etlJobName')
-        if m.get('functionConfig') is not None:
-            temp_model = CreateEtlJobRequestFunctionConfig()
-            self.function_config = temp_model.from_map(m['functionConfig'])
-        if m.get('functionParameter') is not None:
-            self.function_parameter = m.get('functionParameter')
-        if m.get('logConfig') is not None:
-            temp_model = CreateEtlJobRequestLogConfig()
-            self.log_config = temp_model.from_map(m['logConfig'])
-        if m.get('sourceConfig') is not None:
-            temp_model = CreateEtlJobRequestSourceConfig()
-            self.source_config = temp_model.from_map(m['sourceConfig'])
-        if m.get('triggerConfig') is not None:
-            temp_model = CreateEtlJobRequestTriggerConfig()
-            self.trigger_config = temp_model.from_map(m['triggerConfig'])
-        return self
-
-
-class CreateEtlJobResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        return self
-
-
-class CreateEtlMetaRequest(TeaModel):
-    def __init__(
-        self,
-        enable: bool = None,
-        etl_meta_key: str = None,
-        etl_meta_name: str = None,
-        etl_meta_tag: str = None,
-        etl_meta_value: Dict[str, Any] = None,
-    ):
-        self.enable = enable
-        self.etl_meta_key = etl_meta_key
-        self.etl_meta_name = etl_meta_name
-        self.etl_meta_tag = etl_meta_tag
-        self.etl_meta_value = etl_meta_value
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.enable is not None:
-            result['enable'] = self.enable
-        if self.etl_meta_key is not None:
-            result['etlMetaKey'] = self.etl_meta_key
-        if self.etl_meta_name is not None:
-            result['etlMetaName'] = self.etl_meta_name
-        if self.etl_meta_tag is not None:
-            result['etlMetaTag'] = self.etl_meta_tag
-        if self.etl_meta_value is not None:
-            result['etlMetaValue'] = self.etl_meta_value
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('enable') is not None:
-            self.enable = m.get('enable')
-        if m.get('etlMetaKey') is not None:
-            self.etl_meta_key = m.get('etlMetaKey')
-        if m.get('etlMetaName') is not None:
-            self.etl_meta_name = m.get('etlMetaName')
-        if m.get('etlMetaTag') is not None:
-            self.etl_meta_tag = m.get('etlMetaTag')
-        if m.get('etlMetaValue') is not None:
-            self.etl_meta_value = m.get('etlMetaValue')
-        return self
-
-
-class CreateEtlMetaResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
@@ -3696,113 +3004,6 @@ class DeleteDomainResponse(TeaModel):
         return self
 
 
-class DeleteEtlJobResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        return self
-
-
-class DeleteEtlMetaRequest(TeaModel):
-    def __init__(
-        self,
-        etl_meta_key: str = None,
-        etl_meta_name: str = None,
-        etl_meta_tag: str = None,
-    ):
-        self.etl_meta_key = etl_meta_key
-        self.etl_meta_name = etl_meta_name
-        self.etl_meta_tag = etl_meta_tag
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.etl_meta_key is not None:
-            result['etlMetaKey'] = self.etl_meta_key
-        if self.etl_meta_name is not None:
-            result['etlMetaName'] = self.etl_meta_name
-        if self.etl_meta_tag is not None:
-            result['etlMetaTag'] = self.etl_meta_tag
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('etlMetaKey') is not None:
-            self.etl_meta_key = m.get('etlMetaKey')
-        if m.get('etlMetaName') is not None:
-            self.etl_meta_name = m.get('etlMetaName')
-        if m.get('etlMetaTag') is not None:
-            self.etl_meta_tag = m.get('etlMetaTag')
-        return self
-
-
-class DeleteEtlMetaResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        return self
-
-
 class DeleteExternalStoreResponse(TeaModel):
     def __init__(
         self,
@@ -3974,6 +3175,40 @@ class DeleteMachineGroupResponse(TeaModel):
 
 
 class DeleteProjectResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        return self
+
+
+class DeleteProjectPolicyResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
@@ -4501,10 +3736,8 @@ class GetCursorRequest(TeaModel):
     def __init__(
         self,
         from_: str = None,
-        type: str = None,
     ):
         self.from_ = from_
-        self.type = type
 
     def validate(self):
         pass
@@ -4517,16 +3750,12 @@ class GetCursorRequest(TeaModel):
         result = dict()
         if self.from_ is not None:
             result['from'] = self.from_
-        if self.type is not None:
-            result['type'] = self.type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('from') is not None:
             self.from_ = m.get('from')
-        if m.get('type') is not None:
-            self.type = m.get('type')
         return self
 
 
@@ -4605,10 +3834,8 @@ class GetCursorTimeRequest(TeaModel):
     def __init__(
         self,
         cursor: str = None,
-        type: str = None,
     ):
         self.cursor = cursor
-        self.type = type
 
     def validate(self):
         pass
@@ -4621,16 +3848,12 @@ class GetCursorTimeRequest(TeaModel):
         result = dict()
         if self.cursor is not None:
             result['cursor'] = self.cursor
-        if self.type is not None:
-            result['type'] = self.type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('cursor') is not None:
             self.cursor = m.get('cursor')
-        if m.get('type') is not None:
-            self.type = m.get('type')
         return self
 
 
@@ -4701,174 +3924,6 @@ class GetCursorTimeResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetCursorTimeResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class GetEtlJobResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: EtlJob = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = EtlJob()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class GetEtlMetaRequest(TeaModel):
-    def __init__(
-        self,
-        etl_meta_key: str = None,
-        etl_meta_name: str = None,
-        etl_meta_tag: str = None,
-    ):
-        self.etl_meta_key = etl_meta_key
-        self.etl_meta_name = etl_meta_name
-        self.etl_meta_tag = etl_meta_tag
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.etl_meta_key is not None:
-            result['etlMetaKey'] = self.etl_meta_key
-        if self.etl_meta_name is not None:
-            result['etlMetaName'] = self.etl_meta_name
-        if self.etl_meta_tag is not None:
-            result['etlMetaTag'] = self.etl_meta_tag
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('etlMetaKey') is not None:
-            self.etl_meta_key = m.get('etlMetaKey')
-        if m.get('etlMetaName') is not None:
-            self.etl_meta_name = m.get('etlMetaName')
-        if m.get('etlMetaTag') is not None:
-            self.etl_meta_tag = m.get('etlMetaTag')
-        return self
-
-
-class GetEtlMetaResponseBody(TeaModel):
-    def __init__(
-        self,
-        etl_meta_list: List[EtlMeta] = None,
-        total: int = None,
-    ):
-        self.etl_meta_list = etl_meta_list
-        self.total = total
-
-    def validate(self):
-        if self.etl_meta_list:
-            for k in self.etl_meta_list:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['etlMetaList'] = []
-        if self.etl_meta_list is not None:
-            for k in self.etl_meta_list:
-                result['etlMetaList'].append(k.to_map() if k else None)
-        if self.total is not None:
-            result['total'] = self.total
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.etl_meta_list = []
-        if m.get('etlMetaList') is not None:
-            for k in m.get('etlMetaList'):
-                temp_model = EtlMeta()
-                self.etl_meta_list.append(temp_model.from_map(k))
-        if m.get('total') is not None:
-            self.total = m.get('total')
-        return self
-
-
-class GetEtlMetaResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: GetEtlMetaResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = GetEtlMetaResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -5604,6 +4659,40 @@ class GetProjectLogsResponse(TeaModel):
         return self
 
 
+class GetProjectPolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        return self
+
+
 class GetSavedSearchResponse(TeaModel):
     def __init__(
         self,
@@ -5644,101 +4733,6 @@ class GetSavedSearchResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SavedSearch()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class GetShipperConfigResponseBody(TeaModel):
-    def __init__(
-        self,
-        create_time: int = None,
-        last_modify_time: int = None,
-        shipper_name: str = None,
-        target_configuration: Dict[str, Any] = None,
-        target_type: str = None,
-    ):
-        self.create_time = create_time
-        self.last_modify_time = last_modify_time
-        self.shipper_name = shipper_name
-        self.target_configuration = target_configuration
-        self.target_type = target_type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.create_time is not None:
-            result['createTime'] = self.create_time
-        if self.last_modify_time is not None:
-            result['lastModifyTime'] = self.last_modify_time
-        if self.shipper_name is not None:
-            result['shipperName'] = self.shipper_name
-        if self.target_configuration is not None:
-            result['targetConfiguration'] = self.target_configuration
-        if self.target_type is not None:
-            result['targetType'] = self.target_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('createTime') is not None:
-            self.create_time = m.get('createTime')
-        if m.get('lastModifyTime') is not None:
-            self.last_modify_time = m.get('lastModifyTime')
-        if m.get('shipperName') is not None:
-            self.shipper_name = m.get('shipperName')
-        if m.get('targetConfiguration') is not None:
-            self.target_configuration = m.get('targetConfiguration')
-        if m.get('targetType') is not None:
-            self.target_type = m.get('targetType')
-        return self
-
-
-class GetShipperConfigResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: GetShipperConfigResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = GetShipperConfigResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -6164,374 +5158,6 @@ class ListDomainsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListDomainsResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class ListEtlJobRequest(TeaModel):
-    def __init__(
-        self,
-        offset: int = None,
-        size: int = None,
-    ):
-        self.offset = offset
-        self.size = size
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.offset is not None:
-            result['offset'] = self.offset
-        if self.size is not None:
-            result['size'] = self.size
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('offset') is not None:
-            self.offset = m.get('offset')
-        if m.get('size') is not None:
-            self.size = m.get('size')
-        return self
-
-
-class ListEtlJobResponseBody(TeaModel):
-    def __init__(
-        self,
-        count: int = None,
-        etl_job_name_list: List[str] = None,
-        total: int = None,
-    ):
-        self.count = count
-        self.etl_job_name_list = etl_job_name_list
-        self.total = total
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.count is not None:
-            result['count'] = self.count
-        if self.etl_job_name_list is not None:
-            result['etlJobNameList'] = self.etl_job_name_list
-        if self.total is not None:
-            result['total'] = self.total
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('count') is not None:
-            self.count = m.get('count')
-        if m.get('etlJobNameList') is not None:
-            self.etl_job_name_list = m.get('etlJobNameList')
-        if m.get('total') is not None:
-            self.total = m.get('total')
-        return self
-
-
-class ListEtlJobResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: ListEtlJobResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = ListEtlJobResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class ListEtlMetaRequest(TeaModel):
-    def __init__(
-        self,
-        etl_meta_key: str = None,
-        etl_meta_name: str = None,
-        etl_meta_tag: str = None,
-        offset: int = None,
-        size: int = None,
-    ):
-        self.etl_meta_key = etl_meta_key
-        self.etl_meta_name = etl_meta_name
-        self.etl_meta_tag = etl_meta_tag
-        self.offset = offset
-        self.size = size
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.etl_meta_key is not None:
-            result['etlMetaKey'] = self.etl_meta_key
-        if self.etl_meta_name is not None:
-            result['etlMetaName'] = self.etl_meta_name
-        if self.etl_meta_tag is not None:
-            result['etlMetaTag'] = self.etl_meta_tag
-        if self.offset is not None:
-            result['offset'] = self.offset
-        if self.size is not None:
-            result['size'] = self.size
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('etlMetaKey') is not None:
-            self.etl_meta_key = m.get('etlMetaKey')
-        if m.get('etlMetaName') is not None:
-            self.etl_meta_name = m.get('etlMetaName')
-        if m.get('etlMetaTag') is not None:
-            self.etl_meta_tag = m.get('etlMetaTag')
-        if m.get('offset') is not None:
-            self.offset = m.get('offset')
-        if m.get('size') is not None:
-            self.size = m.get('size')
-        return self
-
-
-class ListEtlMetaResponseBody(TeaModel):
-    def __init__(
-        self,
-        etl_meta_list: List[EtlMeta] = None,
-        total: int = None,
-    ):
-        self.etl_meta_list = etl_meta_list
-        self.total = total
-
-    def validate(self):
-        if self.etl_meta_list:
-            for k in self.etl_meta_list:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['etlMetaList'] = []
-        if self.etl_meta_list is not None:
-            for k in self.etl_meta_list:
-                result['etlMetaList'].append(k.to_map() if k else None)
-        if self.total is not None:
-            result['total'] = self.total
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.etl_meta_list = []
-        if m.get('etlMetaList') is not None:
-            for k in m.get('etlMetaList'):
-                temp_model = EtlMeta()
-                self.etl_meta_list.append(temp_model.from_map(k))
-        if m.get('total') is not None:
-            self.total = m.get('total')
-        return self
-
-
-class ListEtlMetaResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: ListEtlMetaResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = ListEtlMetaResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class ListEtlMetaNameRequest(TeaModel):
-    def __init__(
-        self,
-        offset: int = None,
-        size: int = None,
-    ):
-        self.offset = offset
-        self.size = size
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.offset is not None:
-            result['offset'] = self.offset
-        if self.size is not None:
-            result['size'] = self.size
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('offset') is not None:
-            self.offset = m.get('offset')
-        if m.get('size') is not None:
-            self.size = m.get('size')
-        return self
-
-
-class ListEtlMetaNameResponseBody(TeaModel):
-    def __init__(
-        self,
-        count: int = None,
-        etl_meta_name_list: List[str] = None,
-        total: int = None,
-    ):
-        self.count = count
-        self.etl_meta_name_list = etl_meta_name_list
-        self.total = total
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.count is not None:
-            result['count'] = self.count
-        if self.etl_meta_name_list is not None:
-            result['etlMetaNameList'] = self.etl_meta_name_list
-        if self.total is not None:
-            result['total'] = self.total
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('count') is not None:
-            self.count = m.get('count')
-        if m.get('etlMetaNameList') is not None:
-            self.etl_meta_name_list = m.get('etlMetaNameList')
-        if m.get('total') is not None:
-            self.total = m.get('total')
-        return self
-
-
-class ListEtlMetaNameResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: ListEtlMetaNameResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = ListEtlMetaNameResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -7676,12 +6302,16 @@ class ListTagResourcesResponse(TeaModel):
         return self
 
 
-class MergeShardsRequest(TeaModel):
+class PullDataRequest(TeaModel):
     def __init__(
         self,
-        action: str = None,
+        count: str = None,
+        cursor: str = None,
+        end_cursor: str = None,
     ):
-        self.action = action
+        self.count = count
+        self.cursor = cursor
+        self.end_cursor = end_cursor
 
     def validate(self):
         pass
@@ -7692,36 +6322,37 @@ class MergeShardsRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.action is not None:
-            result['action'] = self.action
+        if self.count is not None:
+            result['count'] = self.count
+        if self.cursor is not None:
+            result['cursor'] = self.cursor
+        if self.end_cursor is not None:
+            result['endCursor'] = self.end_cursor
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('action') is not None:
-            self.action = m.get('action')
+        if m.get('count') is not None:
+            self.count = m.get('count')
+        if m.get('cursor') is not None:
+            self.cursor = m.get('cursor')
+        if m.get('endCursor') is not None:
+            self.end_cursor = m.get('endCursor')
         return self
 
 
-class MergeShardsResponse(TeaModel):
+class PullDataResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
         status_code: int = None,
-        body: List[Shard] = None,
     ):
         self.headers = headers
         self.status_code = status_code
-        self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
         self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            for k in self.body:
-                if k:
-                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -7733,10 +6364,6 @@ class MergeShardsResponse(TeaModel):
             result['headers'] = self.headers
         if self.status_code is not None:
             result['statusCode'] = self.status_code
-        result['body'] = []
-        if self.body is not None:
-            for k in self.body:
-                result['body'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -7745,11 +6372,146 @@ class MergeShardsResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('statusCode') is not None:
             self.status_code = m.get('statusCode')
-        self.body = []
+        return self
+
+
+class PutProjectPolicyRequest(TeaModel):
+    def __init__(
+        self,
+        body: str = None,
+    ):
+        self.body = body
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.body is not None:
+            result['body'] = self.body
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
         if m.get('body') is not None:
-            for k in m.get('body'):
-                temp_model = Shard()
-                self.body.append(temp_model.from_map(k))
+            self.body = m.get('body')
+        return self
+
+
+class PutProjectPolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        return self
+
+
+class PutWebtrackingRequest(TeaModel):
+    def __init__(
+        self,
+        logs: List[Dict[str, str]] = None,
+        source: str = None,
+        tags: Dict[str, str] = None,
+        topic: str = None,
+    ):
+        self.logs = logs
+        self.source = source
+        self.tags = tags
+        self.topic = topic
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.logs is not None:
+            result['__logs__'] = self.logs
+        if self.source is not None:
+            result['__source__'] = self.source
+        if self.tags is not None:
+            result['__tags__'] = self.tags
+        if self.topic is not None:
+            result['__topic__'] = self.topic
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('__logs__') is not None:
+            self.logs = m.get('__logs__')
+        if m.get('__source__') is not None:
+            self.source = m.get('__source__')
+        if m.get('__tags__') is not None:
+            self.tags = m.get('__tags__')
+        if m.get('__topic__') is not None:
+            self.topic = m.get('__topic__')
+        return self
+
+
+class PutWebtrackingResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         return self
 
 
@@ -7790,11 +6552,9 @@ class RemoveConfigFromMachineGroupResponse(TeaModel):
 class SplitShardRequest(TeaModel):
     def __init__(
         self,
-        action: str = None,
         key: str = None,
         shard_count: int = None,
     ):
-        self.action = action
         self.key = key
         self.shard_count = shard_count
 
@@ -7807,8 +6567,6 @@ class SplitShardRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.action is not None:
-            result['action'] = self.action
         if self.key is not None:
             result['key'] = self.key
         if self.shard_count is not None:
@@ -7817,8 +6575,6 @@ class SplitShardRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('action') is not None:
-            self.action = m.get('action')
         if m.get('key') is not None:
             self.key = m.get('key')
         if m.get('shardCount') is not None:
@@ -7990,11 +6746,11 @@ class TagResourcesResponse(TeaModel):
         return self
 
 
-class UnTagResourcesRequest(TeaModel):
+class UntagResourcesRequest(TeaModel):
     def __init__(
         self,
         all: bool = None,
-        resource_id: List[str] = None,
+        resource_id: str = None,
         resource_type: str = None,
         tags: List[str] = None,
     ):
@@ -8035,92 +6791,7 @@ class UnTagResourcesRequest(TeaModel):
         return self
 
 
-class UnTagResourcesResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        return self
-
-
-class UpdateCheckPointRequest(TeaModel):
-    def __init__(
-        self,
-        checkpoint: str = None,
-        shard: int = None,
-        consumer: str = None,
-        force_success: bool = None,
-        type: str = None,
-    ):
-        self.checkpoint = checkpoint
-        self.shard = shard
-        self.consumer = consumer
-        self.force_success = force_success
-        self.type = type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.checkpoint is not None:
-            result['checkpoint'] = self.checkpoint
-        if self.shard is not None:
-            result['shard'] = self.shard
-        if self.consumer is not None:
-            result['consumer'] = self.consumer
-        if self.force_success is not None:
-            result['forceSuccess'] = self.force_success
-        if self.type is not None:
-            result['type'] = self.type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('checkpoint') is not None:
-            self.checkpoint = m.get('checkpoint')
-        if m.get('shard') is not None:
-            self.shard = m.get('shard')
-        if m.get('consumer') is not None:
-            self.consumer = m.get('consumer')
-        if m.get('forceSuccess') is not None:
-            self.force_success = m.get('forceSuccess')
-        if m.get('type') is not None:
-            self.type = m.get('type')
-        return self
-
-
-class UpdateCheckPointResponse(TeaModel):
+class UntagResourcesResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
@@ -8188,379 +6859,6 @@ class UpdateConsumerGroupRequest(TeaModel):
 
 
 class UpdateConsumerGroupResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        return self
-
-
-class UpdateEtlJobRequestFunctionConfig(TeaModel):
-    def __init__(
-        self,
-        account_id: str = None,
-        endpoint: str = None,
-        function_name: str = None,
-        function_provider: str = None,
-        region_name: str = None,
-        role_arn: str = None,
-        service_name: str = None,
-    ):
-        self.account_id = account_id
-        self.endpoint = endpoint
-        self.function_name = function_name
-        self.function_provider = function_provider
-        self.region_name = region_name
-        self.role_arn = role_arn
-        self.service_name = service_name
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.account_id is not None:
-            result['accountId'] = self.account_id
-        if self.endpoint is not None:
-            result['endpoint'] = self.endpoint
-        if self.function_name is not None:
-            result['functionName'] = self.function_name
-        if self.function_provider is not None:
-            result['functionProvider'] = self.function_provider
-        if self.region_name is not None:
-            result['regionName'] = self.region_name
-        if self.role_arn is not None:
-            result['roleArn'] = self.role_arn
-        if self.service_name is not None:
-            result['serviceName'] = self.service_name
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('accountId') is not None:
-            self.account_id = m.get('accountId')
-        if m.get('endpoint') is not None:
-            self.endpoint = m.get('endpoint')
-        if m.get('functionName') is not None:
-            self.function_name = m.get('functionName')
-        if m.get('functionProvider') is not None:
-            self.function_provider = m.get('functionProvider')
-        if m.get('regionName') is not None:
-            self.region_name = m.get('regionName')
-        if m.get('roleArn') is not None:
-            self.role_arn = m.get('roleArn')
-        if m.get('serviceName') is not None:
-            self.service_name = m.get('serviceName')
-        return self
-
-
-class UpdateEtlJobRequestLogConfig(TeaModel):
-    def __init__(
-        self,
-        endpoint: str = None,
-        logstore_name: str = None,
-        project_name: str = None,
-    ):
-        self.endpoint = endpoint
-        self.logstore_name = logstore_name
-        self.project_name = project_name
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.endpoint is not None:
-            result['endpoint'] = self.endpoint
-        if self.logstore_name is not None:
-            result['logstoreName'] = self.logstore_name
-        if self.project_name is not None:
-            result['projectName'] = self.project_name
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('endpoint') is not None:
-            self.endpoint = m.get('endpoint')
-        if m.get('logstoreName') is not None:
-            self.logstore_name = m.get('logstoreName')
-        if m.get('projectName') is not None:
-            self.project_name = m.get('projectName')
-        return self
-
-
-class UpdateEtlJobRequestSourceConfig(TeaModel):
-    def __init__(
-        self,
-        logstore_name: str = None,
-    ):
-        self.logstore_name = logstore_name
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.logstore_name is not None:
-            result['logstoreName'] = self.logstore_name
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('logstoreName') is not None:
-            self.logstore_name = m.get('logstoreName')
-        return self
-
-
-class UpdateEtlJobRequestTriggerConfig(TeaModel):
-    def __init__(
-        self,
-        max_retry_time: int = None,
-        role_arn: str = None,
-        starting_position: str = None,
-        starting_unixtime: int = None,
-        trigger_interval: int = None,
-    ):
-        self.max_retry_time = max_retry_time
-        self.role_arn = role_arn
-        self.starting_position = starting_position
-        self.starting_unixtime = starting_unixtime
-        self.trigger_interval = trigger_interval
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.max_retry_time is not None:
-            result['maxRetryTime'] = self.max_retry_time
-        if self.role_arn is not None:
-            result['roleArn'] = self.role_arn
-        if self.starting_position is not None:
-            result['startingPosition'] = self.starting_position
-        if self.starting_unixtime is not None:
-            result['startingUnixtime'] = self.starting_unixtime
-        if self.trigger_interval is not None:
-            result['triggerInterval'] = self.trigger_interval
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('maxRetryTime') is not None:
-            self.max_retry_time = m.get('maxRetryTime')
-        if m.get('roleArn') is not None:
-            self.role_arn = m.get('roleArn')
-        if m.get('startingPosition') is not None:
-            self.starting_position = m.get('startingPosition')
-        if m.get('startingUnixtime') is not None:
-            self.starting_unixtime = m.get('startingUnixtime')
-        if m.get('triggerInterval') is not None:
-            self.trigger_interval = m.get('triggerInterval')
-        return self
-
-
-class UpdateEtlJobRequest(TeaModel):
-    def __init__(
-        self,
-        enable: bool = None,
-        etl_job_name: str = None,
-        function_config: UpdateEtlJobRequestFunctionConfig = None,
-        function_parameter: Dict[str, Any] = None,
-        log_config: UpdateEtlJobRequestLogConfig = None,
-        source_config: UpdateEtlJobRequestSourceConfig = None,
-        trigger_config: UpdateEtlJobRequestTriggerConfig = None,
-    ):
-        self.enable = enable
-        self.etl_job_name = etl_job_name
-        self.function_config = function_config
-        self.function_parameter = function_parameter
-        self.log_config = log_config
-        self.source_config = source_config
-        self.trigger_config = trigger_config
-
-    def validate(self):
-        if self.function_config:
-            self.function_config.validate()
-        if self.log_config:
-            self.log_config.validate()
-        if self.source_config:
-            self.source_config.validate()
-        if self.trigger_config:
-            self.trigger_config.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.enable is not None:
-            result['enable'] = self.enable
-        if self.etl_job_name is not None:
-            result['etlJobName'] = self.etl_job_name
-        if self.function_config is not None:
-            result['functionConfig'] = self.function_config.to_map()
-        if self.function_parameter is not None:
-            result['functionParameter'] = self.function_parameter
-        if self.log_config is not None:
-            result['logConfig'] = self.log_config.to_map()
-        if self.source_config is not None:
-            result['sourceConfig'] = self.source_config.to_map()
-        if self.trigger_config is not None:
-            result['triggerConfig'] = self.trigger_config.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('enable') is not None:
-            self.enable = m.get('enable')
-        if m.get('etlJobName') is not None:
-            self.etl_job_name = m.get('etlJobName')
-        if m.get('functionConfig') is not None:
-            temp_model = UpdateEtlJobRequestFunctionConfig()
-            self.function_config = temp_model.from_map(m['functionConfig'])
-        if m.get('functionParameter') is not None:
-            self.function_parameter = m.get('functionParameter')
-        if m.get('logConfig') is not None:
-            temp_model = UpdateEtlJobRequestLogConfig()
-            self.log_config = temp_model.from_map(m['logConfig'])
-        if m.get('sourceConfig') is not None:
-            temp_model = UpdateEtlJobRequestSourceConfig()
-            self.source_config = temp_model.from_map(m['sourceConfig'])
-        if m.get('triggerConfig') is not None:
-            temp_model = UpdateEtlJobRequestTriggerConfig()
-            self.trigger_config = temp_model.from_map(m['triggerConfig'])
-        return self
-
-
-class UpdateEtlJobResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        return self
-
-
-class UpdateEtlMetaRequest(TeaModel):
-    def __init__(
-        self,
-        enable: bool = None,
-        etl_meta_key: str = None,
-        etl_meta_name: str = None,
-        etl_meta_tag: str = None,
-        etl_meta_value: Dict[str, Any] = None,
-    ):
-        self.enable = enable
-        self.etl_meta_key = etl_meta_key
-        self.etl_meta_name = etl_meta_name
-        self.etl_meta_tag = etl_meta_tag
-        self.etl_meta_value = etl_meta_value
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.enable is not None:
-            result['enable'] = self.enable
-        if self.etl_meta_key is not None:
-            result['etlMetaKey'] = self.etl_meta_key
-        if self.etl_meta_name is not None:
-            result['etlMetaName'] = self.etl_meta_name
-        if self.etl_meta_tag is not None:
-            result['etlMetaTag'] = self.etl_meta_tag
-        if self.etl_meta_value is not None:
-            result['etlMetaValue'] = self.etl_meta_value
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('enable') is not None:
-            self.enable = m.get('enable')
-        if m.get('etlMetaKey') is not None:
-            self.etl_meta_key = m.get('etlMetaKey')
-        if m.get('etlMetaName') is not None:
-            self.etl_meta_name = m.get('etlMetaName')
-        if m.get('etlMetaTag') is not None:
-            self.etl_meta_tag = m.get('etlMetaTag')
-        if m.get('etlMetaValue') is not None:
-            self.etl_meta_value = m.get('etlMetaValue')
-        return self
-
-
-class UpdateEtlMetaResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
@@ -9071,6 +7369,73 @@ class UpdateMachineGroupRequest(TeaModel):
 
 
 class UpdateMachineGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        return self
+
+
+class UpdateMachineGroupMachineRequest(TeaModel):
+    def __init__(
+        self,
+        action: str = None,
+        body: List[str] = None,
+    ):
+        self.action = action
+        self.body = body
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action is not None:
+            result['action'] = self.action
+        if self.body is not None:
+            result['body'] = self.body
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('action') is not None:
+            self.action = m.get('action')
+        if m.get('body') is not None:
+            self.body = m.get('body')
+        return self
+
+
+class UpdateMachineGroupMachineResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
