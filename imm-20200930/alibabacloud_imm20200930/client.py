@@ -44,6 +44,112 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def add_image_mosaic_with_options(
+        self,
+        tmp_req: imm_20200930_models.AddImageMosaicRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.AddImageMosaicResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.AddImageMosaicShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.credential_config):
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.targets):
+            request.targets_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.targets, 'Targets', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.credential_config_shrink):
+            query['CredentialConfig'] = request.credential_config_shrink
+        if not UtilClient.is_unset(request.image_format):
+            query['ImageFormat'] = request.image_format
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.quality):
+            query['Quality'] = request.quality
+        if not UtilClient.is_unset(request.source_uri):
+            query['SourceURI'] = request.source_uri
+        if not UtilClient.is_unset(request.target_uri):
+            query['TargetURI'] = request.target_uri
+        if not UtilClient.is_unset(request.targets_shrink):
+            query['Targets'] = request.targets_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddImageMosaic',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.AddImageMosaicResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_image_mosaic_with_options_async(
+        self,
+        tmp_req: imm_20200930_models.AddImageMosaicRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.AddImageMosaicResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.AddImageMosaicShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.credential_config):
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.targets):
+            request.targets_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.targets, 'Targets', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.credential_config_shrink):
+            query['CredentialConfig'] = request.credential_config_shrink
+        if not UtilClient.is_unset(request.image_format):
+            query['ImageFormat'] = request.image_format
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.quality):
+            query['Quality'] = request.quality
+        if not UtilClient.is_unset(request.source_uri):
+            query['SourceURI'] = request.source_uri
+        if not UtilClient.is_unset(request.target_uri):
+            query['TargetURI'] = request.target_uri
+        if not UtilClient.is_unset(request.targets_shrink):
+            query['Targets'] = request.targets_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddImageMosaic',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.AddImageMosaicResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_image_mosaic(
+        self,
+        request: imm_20200930_models.AddImageMosaicRequest,
+    ) -> imm_20200930_models.AddImageMosaicResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.add_image_mosaic_with_options(request, runtime)
+
+    async def add_image_mosaic_async(
+        self,
+        request: imm_20200930_models.AddImageMosaicRequest,
+    ) -> imm_20200930_models.AddImageMosaicResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.add_image_mosaic_with_options_async(request, runtime)
+
     def add_story_files_with_options(
         self,
         tmp_req: imm_20200930_models.AddStoryFilesRequest,
@@ -772,6 +878,120 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_compress_point_cloud_task_with_options_async(request, runtime)
 
+    def create_customized_story_with_options(
+        self,
+        tmp_req: imm_20200930_models.CreateCustomizedStoryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.CreateCustomizedStoryResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.CreateCustomizedStoryShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.cover):
+            request.cover_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.cover), 'Cover', 'json')
+        if not UtilClient.is_unset(tmp_req.custom_labels):
+            request.custom_labels_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.custom_labels, 'CustomLabels', 'json')
+        if not UtilClient.is_unset(tmp_req.files):
+            request.files_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.files, 'Files', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.cover_shrink):
+            body['Cover'] = request.cover_shrink
+        if not UtilClient.is_unset(request.custom_labels_shrink):
+            body['CustomLabels'] = request.custom_labels_shrink
+        if not UtilClient.is_unset(request.dataset_name):
+            body['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.files_shrink):
+            body['Files'] = request.files_shrink
+        if not UtilClient.is_unset(request.project_name):
+            body['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.story_name):
+            body['StoryName'] = request.story_name
+        if not UtilClient.is_unset(request.story_sub_type):
+            body['StorySubType'] = request.story_sub_type
+        if not UtilClient.is_unset(request.story_type):
+            body['StoryType'] = request.story_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateCustomizedStory',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.CreateCustomizedStoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_customized_story_with_options_async(
+        self,
+        tmp_req: imm_20200930_models.CreateCustomizedStoryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.CreateCustomizedStoryResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.CreateCustomizedStoryShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.cover):
+            request.cover_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.cover), 'Cover', 'json')
+        if not UtilClient.is_unset(tmp_req.custom_labels):
+            request.custom_labels_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.custom_labels, 'CustomLabels', 'json')
+        if not UtilClient.is_unset(tmp_req.files):
+            request.files_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.files, 'Files', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.cover_shrink):
+            body['Cover'] = request.cover_shrink
+        if not UtilClient.is_unset(request.custom_labels_shrink):
+            body['CustomLabels'] = request.custom_labels_shrink
+        if not UtilClient.is_unset(request.dataset_name):
+            body['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.files_shrink):
+            body['Files'] = request.files_shrink
+        if not UtilClient.is_unset(request.project_name):
+            body['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.story_name):
+            body['StoryName'] = request.story_name
+        if not UtilClient.is_unset(request.story_sub_type):
+            body['StorySubType'] = request.story_sub_type
+        if not UtilClient.is_unset(request.story_type):
+            body['StoryType'] = request.story_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateCustomizedStory',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.CreateCustomizedStoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_customized_story(
+        self,
+        request: imm_20200930_models.CreateCustomizedStoryRequest,
+    ) -> imm_20200930_models.CreateCustomizedStoryResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_customized_story_with_options(request, runtime)
+
+    async def create_customized_story_async(
+        self,
+        request: imm_20200930_models.CreateCustomizedStoryRequest,
+    ) -> imm_20200930_models.CreateCustomizedStoryResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_customized_story_with_options_async(request, runtime)
+
     def create_dataset_with_options(
         self,
         request: imm_20200930_models.CreateDatasetRequest,
@@ -1171,6 +1391,120 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.CreateFigureClustersMergingTaskResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_figure_clusters_merging_task_with_options_async(request, runtime)
+
+    def create_file_compression_task_with_options(
+        self,
+        tmp_req: imm_20200930_models.CreateFileCompressionTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.CreateFileCompressionTaskResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.CreateFileCompressionTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.credential_config):
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.sources):
+            request.sources_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sources, 'Sources', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.compressed_format):
+            query['CompressedFormat'] = request.compressed_format
+        if not UtilClient.is_unset(request.credential_config_shrink):
+            query['CredentialConfig'] = request.credential_config_shrink
+        if not UtilClient.is_unset(request.manifest_uri):
+            query['ManifestURI'] = request.manifest_uri
+        if not UtilClient.is_unset(request.notify_topic_name):
+            query['NotifyTopicName'] = request.notify_topic_name
+        if not UtilClient.is_unset(request.password):
+            query['Password'] = request.password
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.sources_shrink):
+            query['Sources'] = request.sources_shrink
+        if not UtilClient.is_unset(request.target_uri):
+            query['TargetURI'] = request.target_uri
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateFileCompressionTask',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.CreateFileCompressionTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_file_compression_task_with_options_async(
+        self,
+        tmp_req: imm_20200930_models.CreateFileCompressionTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.CreateFileCompressionTaskResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.CreateFileCompressionTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.credential_config):
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.sources):
+            request.sources_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sources, 'Sources', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.compressed_format):
+            query['CompressedFormat'] = request.compressed_format
+        if not UtilClient.is_unset(request.credential_config_shrink):
+            query['CredentialConfig'] = request.credential_config_shrink
+        if not UtilClient.is_unset(request.manifest_uri):
+            query['ManifestURI'] = request.manifest_uri
+        if not UtilClient.is_unset(request.notify_topic_name):
+            query['NotifyTopicName'] = request.notify_topic_name
+        if not UtilClient.is_unset(request.password):
+            query['Password'] = request.password
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.sources_shrink):
+            query['Sources'] = request.sources_shrink
+        if not UtilClient.is_unset(request.target_uri):
+            query['TargetURI'] = request.target_uri
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateFileCompressionTask',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.CreateFileCompressionTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_file_compression_task(
+        self,
+        request: imm_20200930_models.CreateFileCompressionTaskRequest,
+    ) -> imm_20200930_models.CreateFileCompressionTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_file_compression_task_with_options(request, runtime)
+
+    async def create_file_compression_task_async(
+        self,
+        request: imm_20200930_models.CreateFileCompressionTaskRequest,
+    ) -> imm_20200930_models.CreateFileCompressionTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_file_compression_task_with_options_async(request, runtime)
 
     def create_image_moderation_task_with_options(
         self,
@@ -4160,6 +4494,128 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_task_with_options_async(request, runtime)
 
+    def get_video_playlist_with_options(
+        self,
+        tmp_req: imm_20200930_models.GetVideoPlaylistRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.GetVideoPlaylistResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.GetVideoPlaylistShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.credential_config):
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.source_subtitles):
+            request.source_subtitles_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_subtitles, 'SourceSubtitles', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        if not UtilClient.is_unset(tmp_req.targets):
+            request.targets_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.targets, 'Targets', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.credential_config_shrink):
+            query['CredentialConfig'] = request.credential_config_shrink
+        if not UtilClient.is_unset(request.master_uri):
+            query['MasterURI'] = request.master_uri
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.source_duration):
+            query['SourceDuration'] = request.source_duration
+        if not UtilClient.is_unset(request.source_start_time):
+            query['SourceStartTime'] = request.source_start_time
+        if not UtilClient.is_unset(request.source_subtitles_shrink):
+            query['SourceSubtitles'] = request.source_subtitles_shrink
+        if not UtilClient.is_unset(request.source_uri):
+            query['SourceURI'] = request.source_uri
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
+        if not UtilClient.is_unset(request.targets_shrink):
+            query['Targets'] = request.targets_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetVideoPlaylist',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.GetVideoPlaylistResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_video_playlist_with_options_async(
+        self,
+        tmp_req: imm_20200930_models.GetVideoPlaylistRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.GetVideoPlaylistResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.GetVideoPlaylistShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.credential_config):
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.source_subtitles):
+            request.source_subtitles_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_subtitles, 'SourceSubtitles', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        if not UtilClient.is_unset(tmp_req.targets):
+            request.targets_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.targets, 'Targets', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.credential_config_shrink):
+            query['CredentialConfig'] = request.credential_config_shrink
+        if not UtilClient.is_unset(request.master_uri):
+            query['MasterURI'] = request.master_uri
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.source_duration):
+            query['SourceDuration'] = request.source_duration
+        if not UtilClient.is_unset(request.source_start_time):
+            query['SourceStartTime'] = request.source_start_time
+        if not UtilClient.is_unset(request.source_subtitles_shrink):
+            query['SourceSubtitles'] = request.source_subtitles_shrink
+        if not UtilClient.is_unset(request.source_uri):
+            query['SourceURI'] = request.source_uri
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
+        if not UtilClient.is_unset(request.targets_shrink):
+            query['Targets'] = request.targets_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetVideoPlaylist',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.GetVideoPlaylistResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_video_playlist(
+        self,
+        request: imm_20200930_models.GetVideoPlaylistRequest,
+    ) -> imm_20200930_models.GetVideoPlaylistResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_video_playlist_with_options(request, runtime)
+
+    async def get_video_playlist_async(
+        self,
+        request: imm_20200930_models.GetVideoPlaylistRequest,
+    ) -> imm_20200930_models.GetVideoPlaylistResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_video_playlist_with_options_async(request, runtime)
+
     def get_weboffice_urlwith_options(
         self,
         tmp_req: imm_20200930_models.GetWebofficeURLRequest,
@@ -4829,6 +5285,96 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.ListTasksResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_tasks_with_options_async(request, runtime)
+
+    def live_transcoding_with_options(
+        self,
+        tmp_req: imm_20200930_models.LiveTranscodingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.LiveTranscodingResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.LiveTranscodingShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.credential_config):
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.credential_config_shrink):
+            query['CredentialConfig'] = request.credential_config_shrink
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.source_uri):
+            query['SourceURI'] = request.source_uri
+        if not UtilClient.is_unset(request.token):
+            query['Token'] = request.token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='LiveTranscoding',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.LiveTranscodingResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def live_transcoding_with_options_async(
+        self,
+        tmp_req: imm_20200930_models.LiveTranscodingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.LiveTranscodingResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.LiveTranscodingShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.credential_config):
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.credential_config_shrink):
+            query['CredentialConfig'] = request.credential_config_shrink
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.source_uri):
+            query['SourceURI'] = request.source_uri
+        if not UtilClient.is_unset(request.token):
+            query['Token'] = request.token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='LiveTranscoding',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.LiveTranscodingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def live_transcoding(
+        self,
+        request: imm_20200930_models.LiveTranscodingRequest,
+    ) -> imm_20200930_models.LiveTranscodingResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.live_transcoding_with_options(request, runtime)
+
+    async def live_transcoding_async(
+        self,
+        request: imm_20200930_models.LiveTranscodingRequest,
+    ) -> imm_20200930_models.LiveTranscodingResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.live_transcoding_with_options_async(request, runtime)
 
     def merge_figure_clusters_with_options(
         self,

@@ -3310,6 +3310,324 @@ class WebofficeWatermark(TeaModel):
         return self
 
 
+class AddImageMosaicRequestTargetsBoundary(TeaModel):
+    def __init__(
+        self,
+        height: float = None,
+        refer_pos: str = None,
+        width: float = None,
+        x: float = None,
+        y: float = None,
+    ):
+        self.height = height
+        self.refer_pos = refer_pos
+        self.width = width
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.refer_pos is not None:
+            result['ReferPos'] = self.refer_pos
+        if self.width is not None:
+            result['Width'] = self.width
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('ReferPos') is not None:
+            self.refer_pos = m.get('ReferPos')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class AddImageMosaicRequestTargets(TeaModel):
+    def __init__(
+        self,
+        blur_radius: int = None,
+        boundary: AddImageMosaicRequestTargetsBoundary = None,
+        color: str = None,
+        mosaic_radius: int = None,
+        sigma: int = None,
+        type: str = None,
+    ):
+        self.blur_radius = blur_radius
+        self.boundary = boundary
+        self.color = color
+        self.mosaic_radius = mosaic_radius
+        self.sigma = sigma
+        self.type = type
+
+    def validate(self):
+        if self.boundary:
+            self.boundary.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.blur_radius is not None:
+            result['BlurRadius'] = self.blur_radius
+        if self.boundary is not None:
+            result['Boundary'] = self.boundary.to_map()
+        if self.color is not None:
+            result['Color'] = self.color
+        if self.mosaic_radius is not None:
+            result['MosaicRadius'] = self.mosaic_radius
+        if self.sigma is not None:
+            result['Sigma'] = self.sigma
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BlurRadius') is not None:
+            self.blur_radius = m.get('BlurRadius')
+        if m.get('Boundary') is not None:
+            temp_model = AddImageMosaicRequestTargetsBoundary()
+            self.boundary = temp_model.from_map(m['Boundary'])
+        if m.get('Color') is not None:
+            self.color = m.get('Color')
+        if m.get('MosaicRadius') is not None:
+            self.mosaic_radius = m.get('MosaicRadius')
+        if m.get('Sigma') is not None:
+            self.sigma = m.get('Sigma')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class AddImageMosaicRequest(TeaModel):
+    def __init__(
+        self,
+        credential_config: CredentialConfig = None,
+        image_format: str = None,
+        project_name: str = None,
+        quality: int = None,
+        source_uri: str = None,
+        target_uri: str = None,
+        targets: List[AddImageMosaicRequestTargets] = None,
+    ):
+        self.credential_config = credential_config
+        self.image_format = image_format
+        self.project_name = project_name
+        self.quality = quality
+        self.source_uri = source_uri
+        self.target_uri = target_uri
+        self.targets = targets
+
+    def validate(self):
+        if self.credential_config:
+            self.credential_config.validate()
+        if self.targets:
+            for k in self.targets:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.credential_config is not None:
+            result['CredentialConfig'] = self.credential_config.to_map()
+        if self.image_format is not None:
+            result['ImageFormat'] = self.image_format
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.quality is not None:
+            result['Quality'] = self.quality
+        if self.source_uri is not None:
+            result['SourceURI'] = self.source_uri
+        if self.target_uri is not None:
+            result['TargetURI'] = self.target_uri
+        result['Targets'] = []
+        if self.targets is not None:
+            for k in self.targets:
+                result['Targets'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CredentialConfig') is not None:
+            temp_model = CredentialConfig()
+            self.credential_config = temp_model.from_map(m['CredentialConfig'])
+        if m.get('ImageFormat') is not None:
+            self.image_format = m.get('ImageFormat')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('Quality') is not None:
+            self.quality = m.get('Quality')
+        if m.get('SourceURI') is not None:
+            self.source_uri = m.get('SourceURI')
+        if m.get('TargetURI') is not None:
+            self.target_uri = m.get('TargetURI')
+        self.targets = []
+        if m.get('Targets') is not None:
+            for k in m.get('Targets'):
+                temp_model = AddImageMosaicRequestTargets()
+                self.targets.append(temp_model.from_map(k))
+        return self
+
+
+class AddImageMosaicShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        credential_config_shrink: str = None,
+        image_format: str = None,
+        project_name: str = None,
+        quality: int = None,
+        source_uri: str = None,
+        target_uri: str = None,
+        targets_shrink: str = None,
+    ):
+        self.credential_config_shrink = credential_config_shrink
+        self.image_format = image_format
+        self.project_name = project_name
+        self.quality = quality
+        self.source_uri = source_uri
+        self.target_uri = target_uri
+        self.targets_shrink = targets_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.credential_config_shrink is not None:
+            result['CredentialConfig'] = self.credential_config_shrink
+        if self.image_format is not None:
+            result['ImageFormat'] = self.image_format
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.quality is not None:
+            result['Quality'] = self.quality
+        if self.source_uri is not None:
+            result['SourceURI'] = self.source_uri
+        if self.target_uri is not None:
+            result['TargetURI'] = self.target_uri
+        if self.targets_shrink is not None:
+            result['Targets'] = self.targets_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CredentialConfig') is not None:
+            self.credential_config_shrink = m.get('CredentialConfig')
+        if m.get('ImageFormat') is not None:
+            self.image_format = m.get('ImageFormat')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('Quality') is not None:
+            self.quality = m.get('Quality')
+        if m.get('SourceURI') is not None:
+            self.source_uri = m.get('SourceURI')
+        if m.get('TargetURI') is not None:
+            self.target_uri = m.get('TargetURI')
+        if m.get('Targets') is not None:
+            self.targets_shrink = m.get('Targets')
+        return self
+
+
+class AddImageMosaicResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class AddImageMosaicResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AddImageMosaicResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AddImageMosaicResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class AddStoryFilesRequestFiles(TeaModel):
     def __init__(
         self,
@@ -4755,6 +5073,286 @@ class CreateCompressPointCloudTaskResponse(TeaModel):
         return self
 
 
+class CreateCustomizedStoryRequestCover(TeaModel):
+    def __init__(
+        self,
+        uri: str = None,
+    ):
+        self.uri = uri
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.uri is not None:
+            result['URI'] = self.uri
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('URI') is not None:
+            self.uri = m.get('URI')
+        return self
+
+
+class CreateCustomizedStoryRequestFiles(TeaModel):
+    def __init__(
+        self,
+        uri: str = None,
+    ):
+        self.uri = uri
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.uri is not None:
+            result['URI'] = self.uri
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('URI') is not None:
+            self.uri = m.get('URI')
+        return self
+
+
+class CreateCustomizedStoryRequest(TeaModel):
+    def __init__(
+        self,
+        cover: CreateCustomizedStoryRequestCover = None,
+        custom_labels: Dict[str, Any] = None,
+        dataset_name: str = None,
+        files: List[CreateCustomizedStoryRequestFiles] = None,
+        project_name: str = None,
+        story_name: str = None,
+        story_sub_type: str = None,
+        story_type: str = None,
+    ):
+        self.cover = cover
+        self.custom_labels = custom_labels
+        self.dataset_name = dataset_name
+        self.files = files
+        self.project_name = project_name
+        self.story_name = story_name
+        self.story_sub_type = story_sub_type
+        self.story_type = story_type
+
+    def validate(self):
+        if self.cover:
+            self.cover.validate()
+        if self.files:
+            for k in self.files:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cover is not None:
+            result['Cover'] = self.cover.to_map()
+        if self.custom_labels is not None:
+            result['CustomLabels'] = self.custom_labels
+        if self.dataset_name is not None:
+            result['DatasetName'] = self.dataset_name
+        result['Files'] = []
+        if self.files is not None:
+            for k in self.files:
+                result['Files'].append(k.to_map() if k else None)
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.story_name is not None:
+            result['StoryName'] = self.story_name
+        if self.story_sub_type is not None:
+            result['StorySubType'] = self.story_sub_type
+        if self.story_type is not None:
+            result['StoryType'] = self.story_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cover') is not None:
+            temp_model = CreateCustomizedStoryRequestCover()
+            self.cover = temp_model.from_map(m['Cover'])
+        if m.get('CustomLabels') is not None:
+            self.custom_labels = m.get('CustomLabels')
+        if m.get('DatasetName') is not None:
+            self.dataset_name = m.get('DatasetName')
+        self.files = []
+        if m.get('Files') is not None:
+            for k in m.get('Files'):
+                temp_model = CreateCustomizedStoryRequestFiles()
+                self.files.append(temp_model.from_map(k))
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('StoryName') is not None:
+            self.story_name = m.get('StoryName')
+        if m.get('StorySubType') is not None:
+            self.story_sub_type = m.get('StorySubType')
+        if m.get('StoryType') is not None:
+            self.story_type = m.get('StoryType')
+        return self
+
+
+class CreateCustomizedStoryShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        cover_shrink: str = None,
+        custom_labels_shrink: str = None,
+        dataset_name: str = None,
+        files_shrink: str = None,
+        project_name: str = None,
+        story_name: str = None,
+        story_sub_type: str = None,
+        story_type: str = None,
+    ):
+        self.cover_shrink = cover_shrink
+        self.custom_labels_shrink = custom_labels_shrink
+        self.dataset_name = dataset_name
+        self.files_shrink = files_shrink
+        self.project_name = project_name
+        self.story_name = story_name
+        self.story_sub_type = story_sub_type
+        self.story_type = story_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cover_shrink is not None:
+            result['Cover'] = self.cover_shrink
+        if self.custom_labels_shrink is not None:
+            result['CustomLabels'] = self.custom_labels_shrink
+        if self.dataset_name is not None:
+            result['DatasetName'] = self.dataset_name
+        if self.files_shrink is not None:
+            result['Files'] = self.files_shrink
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.story_name is not None:
+            result['StoryName'] = self.story_name
+        if self.story_sub_type is not None:
+            result['StorySubType'] = self.story_sub_type
+        if self.story_type is not None:
+            result['StoryType'] = self.story_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cover') is not None:
+            self.cover_shrink = m.get('Cover')
+        if m.get('CustomLabels') is not None:
+            self.custom_labels_shrink = m.get('CustomLabels')
+        if m.get('DatasetName') is not None:
+            self.dataset_name = m.get('DatasetName')
+        if m.get('Files') is not None:
+            self.files_shrink = m.get('Files')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('StoryName') is not None:
+            self.story_name = m.get('StoryName')
+        if m.get('StorySubType') is not None:
+            self.story_sub_type = m.get('StorySubType')
+        if m.get('StoryType') is not None:
+            self.story_type = m.get('StoryType')
+        return self
+
+
+class CreateCustomizedStoryResponseBody(TeaModel):
+    def __init__(
+        self,
+        object_id: str = None,
+        request_id: str = None,
+    ):
+        self.object_id = object_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.object_id is not None:
+            result['ObjectId'] = self.object_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ObjectId') is not None:
+            self.object_id = m.get('ObjectId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateCustomizedStoryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateCustomizedStoryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateCustomizedStoryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateDatasetRequest(TeaModel):
     def __init__(
         self,
@@ -5498,6 +6096,283 @@ class CreateFigureClustersMergingTaskResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateFigureClustersMergingTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateFileCompressionTaskRequestSources(TeaModel):
+    def __init__(
+        self,
+        alias: str = None,
+        uri: str = None,
+    ):
+        self.alias = alias
+        self.uri = uri
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alias is not None:
+            result['Alias'] = self.alias
+        if self.uri is not None:
+            result['URI'] = self.uri
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Alias') is not None:
+            self.alias = m.get('Alias')
+        if m.get('URI') is not None:
+            self.uri = m.get('URI')
+        return self
+
+
+class CreateFileCompressionTaskRequest(TeaModel):
+    def __init__(
+        self,
+        compressed_format: str = None,
+        credential_config: CredentialConfig = None,
+        manifest_uri: str = None,
+        notify_topic_name: str = None,
+        password: str = None,
+        project_name: str = None,
+        sources: List[CreateFileCompressionTaskRequestSources] = None,
+        target_uri: str = None,
+        user_data: str = None,
+    ):
+        self.compressed_format = compressed_format
+        self.credential_config = credential_config
+        self.manifest_uri = manifest_uri
+        self.notify_topic_name = notify_topic_name
+        self.password = password
+        self.project_name = project_name
+        self.sources = sources
+        self.target_uri = target_uri
+        self.user_data = user_data
+
+    def validate(self):
+        if self.credential_config:
+            self.credential_config.validate()
+        if self.sources:
+            for k in self.sources:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.compressed_format is not None:
+            result['CompressedFormat'] = self.compressed_format
+        if self.credential_config is not None:
+            result['CredentialConfig'] = self.credential_config.to_map()
+        if self.manifest_uri is not None:
+            result['ManifestURI'] = self.manifest_uri
+        if self.notify_topic_name is not None:
+            result['NotifyTopicName'] = self.notify_topic_name
+        if self.password is not None:
+            result['Password'] = self.password
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        result['Sources'] = []
+        if self.sources is not None:
+            for k in self.sources:
+                result['Sources'].append(k.to_map() if k else None)
+        if self.target_uri is not None:
+            result['TargetURI'] = self.target_uri
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CompressedFormat') is not None:
+            self.compressed_format = m.get('CompressedFormat')
+        if m.get('CredentialConfig') is not None:
+            temp_model = CredentialConfig()
+            self.credential_config = temp_model.from_map(m['CredentialConfig'])
+        if m.get('ManifestURI') is not None:
+            self.manifest_uri = m.get('ManifestURI')
+        if m.get('NotifyTopicName') is not None:
+            self.notify_topic_name = m.get('NotifyTopicName')
+        if m.get('Password') is not None:
+            self.password = m.get('Password')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        self.sources = []
+        if m.get('Sources') is not None:
+            for k in m.get('Sources'):
+                temp_model = CreateFileCompressionTaskRequestSources()
+                self.sources.append(temp_model.from_map(k))
+        if m.get('TargetURI') is not None:
+            self.target_uri = m.get('TargetURI')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        return self
+
+
+class CreateFileCompressionTaskShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        compressed_format: str = None,
+        credential_config_shrink: str = None,
+        manifest_uri: str = None,
+        notify_topic_name: str = None,
+        password: str = None,
+        project_name: str = None,
+        sources_shrink: str = None,
+        target_uri: str = None,
+        user_data: str = None,
+    ):
+        self.compressed_format = compressed_format
+        self.credential_config_shrink = credential_config_shrink
+        self.manifest_uri = manifest_uri
+        self.notify_topic_name = notify_topic_name
+        self.password = password
+        self.project_name = project_name
+        self.sources_shrink = sources_shrink
+        self.target_uri = target_uri
+        self.user_data = user_data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.compressed_format is not None:
+            result['CompressedFormat'] = self.compressed_format
+        if self.credential_config_shrink is not None:
+            result['CredentialConfig'] = self.credential_config_shrink
+        if self.manifest_uri is not None:
+            result['ManifestURI'] = self.manifest_uri
+        if self.notify_topic_name is not None:
+            result['NotifyTopicName'] = self.notify_topic_name
+        if self.password is not None:
+            result['Password'] = self.password
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.sources_shrink is not None:
+            result['Sources'] = self.sources_shrink
+        if self.target_uri is not None:
+            result['TargetURI'] = self.target_uri
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CompressedFormat') is not None:
+            self.compressed_format = m.get('CompressedFormat')
+        if m.get('CredentialConfig') is not None:
+            self.credential_config_shrink = m.get('CredentialConfig')
+        if m.get('ManifestURI') is not None:
+            self.manifest_uri = m.get('ManifestURI')
+        if m.get('NotifyTopicName') is not None:
+            self.notify_topic_name = m.get('NotifyTopicName')
+        if m.get('Password') is not None:
+            self.password = m.get('Password')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('Sources') is not None:
+            self.sources_shrink = m.get('Sources')
+        if m.get('TargetURI') is not None:
+            self.target_uri = m.get('TargetURI')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        return self
+
+
+class CreateFileCompressionTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        event_id: str = None,
+        request_id: str = None,
+        task_id: str = None,
+    ):
+        self.event_id = event_id
+        self.request_id = request_id
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.event_id is not None:
+            result['EventId'] = self.event_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EventId') is not None:
+            self.event_id = m.get('EventId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class CreateFileCompressionTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateFileCompressionTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateFileCompressionTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -12271,6 +13146,989 @@ class GetTaskResponse(TeaModel):
         return self
 
 
+class GetVideoPlaylistRequestSourceSubtitles(TeaModel):
+    def __init__(
+        self,
+        language: str = None,
+        uri: str = None,
+    ):
+        self.language = language
+        self.uri = uri
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.language is not None:
+            result['Language'] = self.language
+        if self.uri is not None:
+            result['URI'] = self.uri
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Language') is not None:
+            self.language = m.get('Language')
+        if m.get('URI') is not None:
+            self.uri = m.get('URI')
+        return self
+
+
+class GetVideoPlaylistRequestTargetsAudioFilterAudio(TeaModel):
+    def __init__(
+        self,
+        mixing: bool = None,
+    ):
+        self.mixing = mixing
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.mixing is not None:
+            result['Mixing'] = self.mixing
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Mixing') is not None:
+            self.mixing = m.get('Mixing')
+        return self
+
+
+class GetVideoPlaylistRequestTargetsAudioTranscodeAudio(TeaModel):
+    def __init__(
+        self,
+        bitrate: int = None,
+        bitrate_option: str = None,
+        channel: int = None,
+        codec: str = None,
+        quality: int = None,
+        sample_rate: int = None,
+        sample_rate_option: str = None,
+    ):
+        self.bitrate = bitrate
+        self.bitrate_option = bitrate_option
+        self.channel = channel
+        self.codec = codec
+        self.quality = quality
+        self.sample_rate = sample_rate
+        self.sample_rate_option = sample_rate_option
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bitrate is not None:
+            result['Bitrate'] = self.bitrate
+        if self.bitrate_option is not None:
+            result['BitrateOption'] = self.bitrate_option
+        if self.channel is not None:
+            result['Channel'] = self.channel
+        if self.codec is not None:
+            result['Codec'] = self.codec
+        if self.quality is not None:
+            result['Quality'] = self.quality
+        if self.sample_rate is not None:
+            result['SampleRate'] = self.sample_rate
+        if self.sample_rate_option is not None:
+            result['SampleRateOption'] = self.sample_rate_option
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bitrate') is not None:
+            self.bitrate = m.get('Bitrate')
+        if m.get('BitrateOption') is not None:
+            self.bitrate_option = m.get('BitrateOption')
+        if m.get('Channel') is not None:
+            self.channel = m.get('Channel')
+        if m.get('Codec') is not None:
+            self.codec = m.get('Codec')
+        if m.get('Quality') is not None:
+            self.quality = m.get('Quality')
+        if m.get('SampleRate') is not None:
+            self.sample_rate = m.get('SampleRate')
+        if m.get('SampleRateOption') is not None:
+            self.sample_rate_option = m.get('SampleRateOption')
+        return self
+
+
+class GetVideoPlaylistRequestTargetsAudio(TeaModel):
+    def __init__(
+        self,
+        disable_audio: bool = None,
+        filter_audio: GetVideoPlaylistRequestTargetsAudioFilterAudio = None,
+        transcode_audio: GetVideoPlaylistRequestTargetsAudioTranscodeAudio = None,
+    ):
+        self.disable_audio = disable_audio
+        self.filter_audio = filter_audio
+        self.transcode_audio = transcode_audio
+
+    def validate(self):
+        if self.filter_audio:
+            self.filter_audio.validate()
+        if self.transcode_audio:
+            self.transcode_audio.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.disable_audio is not None:
+            result['DisableAudio'] = self.disable_audio
+        if self.filter_audio is not None:
+            result['FilterAudio'] = self.filter_audio.to_map()
+        if self.transcode_audio is not None:
+            result['TranscodeAudio'] = self.transcode_audio.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DisableAudio') is not None:
+            self.disable_audio = m.get('DisableAudio')
+        if m.get('FilterAudio') is not None:
+            temp_model = GetVideoPlaylistRequestTargetsAudioFilterAudio()
+            self.filter_audio = temp_model.from_map(m['FilterAudio'])
+        if m.get('TranscodeAudio') is not None:
+            temp_model = GetVideoPlaylistRequestTargetsAudioTranscodeAudio()
+            self.transcode_audio = temp_model.from_map(m['TranscodeAudio'])
+        return self
+
+
+class GetVideoPlaylistRequestTargetsSubtitleExtractSubtitle(TeaModel):
+    def __init__(
+        self,
+        format: str = None,
+        uri: str = None,
+    ):
+        self.format = format
+        self.uri = uri
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.format is not None:
+            result['Format'] = self.format
+        if self.uri is not None:
+            result['URI'] = self.uri
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Format') is not None:
+            self.format = m.get('Format')
+        if m.get('URI') is not None:
+            self.uri = m.get('URI')
+        return self
+
+
+class GetVideoPlaylistRequestTargetsSubtitle(TeaModel):
+    def __init__(
+        self,
+        disable_subtitle: bool = None,
+        extract_subtitle: GetVideoPlaylistRequestTargetsSubtitleExtractSubtitle = None,
+    ):
+        self.disable_subtitle = disable_subtitle
+        self.extract_subtitle = extract_subtitle
+
+    def validate(self):
+        if self.extract_subtitle:
+            self.extract_subtitle.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.disable_subtitle is not None:
+            result['DisableSubtitle'] = self.disable_subtitle
+        if self.extract_subtitle is not None:
+            result['ExtractSubtitle'] = self.extract_subtitle.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DisableSubtitle') is not None:
+            self.disable_subtitle = m.get('DisableSubtitle')
+        if m.get('ExtractSubtitle') is not None:
+            temp_model = GetVideoPlaylistRequestTargetsSubtitleExtractSubtitle()
+            self.extract_subtitle = temp_model.from_map(m['ExtractSubtitle'])
+        return self
+
+
+class GetVideoPlaylistRequestTargetsVideoFilterVideoDelogos(TeaModel):
+    def __init__(
+        self,
+        duration: float = None,
+        dx: float = None,
+        dy: float = None,
+        height: float = None,
+        refer_pos: str = None,
+        start_time: float = None,
+        width: float = None,
+    ):
+        self.duration = duration
+        self.dx = dx
+        self.dy = dy
+        self.height = height
+        self.refer_pos = refer_pos
+        self.start_time = start_time
+        self.width = width
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        if self.dx is not None:
+            result['Dx'] = self.dx
+        if self.dy is not None:
+            result['Dy'] = self.dy
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.refer_pos is not None:
+            result['ReferPos'] = self.refer_pos
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.width is not None:
+            result['Width'] = self.width
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        if m.get('Dx') is not None:
+            self.dx = m.get('Dx')
+        if m.get('Dy') is not None:
+            self.dy = m.get('Dy')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('ReferPos') is not None:
+            self.refer_pos = m.get('ReferPos')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        return self
+
+
+class GetVideoPlaylistRequestTargetsVideoFilterVideoWatermarks(TeaModel):
+    def __init__(
+        self,
+        board_width: int = None,
+        border_color: str = None,
+        content: str = None,
+        duration: float = None,
+        dx: float = None,
+        dy: float = None,
+        font_apha: float = None,
+        font_color: str = None,
+        font_name: str = None,
+        font_size: int = None,
+        height: float = None,
+        refer_pos: str = None,
+        start_time: float = None,
+        type: str = None,
+        uri: str = None,
+        width: float = None,
+    ):
+        self.board_width = board_width
+        self.border_color = border_color
+        self.content = content
+        self.duration = duration
+        self.dx = dx
+        self.dy = dy
+        self.font_apha = font_apha
+        self.font_color = font_color
+        self.font_name = font_name
+        self.font_size = font_size
+        self.height = height
+        self.refer_pos = refer_pos
+        self.start_time = start_time
+        self.type = type
+        self.uri = uri
+        self.width = width
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.board_width is not None:
+            result['BoardWidth'] = self.board_width
+        if self.border_color is not None:
+            result['BorderColor'] = self.border_color
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        if self.dx is not None:
+            result['Dx'] = self.dx
+        if self.dy is not None:
+            result['Dy'] = self.dy
+        if self.font_apha is not None:
+            result['FontApha'] = self.font_apha
+        if self.font_color is not None:
+            result['FontColor'] = self.font_color
+        if self.font_name is not None:
+            result['FontName'] = self.font_name
+        if self.font_size is not None:
+            result['FontSize'] = self.font_size
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.refer_pos is not None:
+            result['ReferPos'] = self.refer_pos
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.uri is not None:
+            result['URI'] = self.uri
+        if self.width is not None:
+            result['Width'] = self.width
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BoardWidth') is not None:
+            self.board_width = m.get('BoardWidth')
+        if m.get('BorderColor') is not None:
+            self.border_color = m.get('BorderColor')
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        if m.get('Dx') is not None:
+            self.dx = m.get('Dx')
+        if m.get('Dy') is not None:
+            self.dy = m.get('Dy')
+        if m.get('FontApha') is not None:
+            self.font_apha = m.get('FontApha')
+        if m.get('FontColor') is not None:
+            self.font_color = m.get('FontColor')
+        if m.get('FontName') is not None:
+            self.font_name = m.get('FontName')
+        if m.get('FontSize') is not None:
+            self.font_size = m.get('FontSize')
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('ReferPos') is not None:
+            self.refer_pos = m.get('ReferPos')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('URI') is not None:
+            self.uri = m.get('URI')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        return self
+
+
+class GetVideoPlaylistRequestTargetsVideoFilterVideo(TeaModel):
+    def __init__(
+        self,
+        delogos: List[GetVideoPlaylistRequestTargetsVideoFilterVideoDelogos] = None,
+        watermarks: List[GetVideoPlaylistRequestTargetsVideoFilterVideoWatermarks] = None,
+    ):
+        self.delogos = delogos
+        self.watermarks = watermarks
+
+    def validate(self):
+        if self.delogos:
+            for k in self.delogos:
+                if k:
+                    k.validate()
+        if self.watermarks:
+            for k in self.watermarks:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Delogos'] = []
+        if self.delogos is not None:
+            for k in self.delogos:
+                result['Delogos'].append(k.to_map() if k else None)
+        result['Watermarks'] = []
+        if self.watermarks is not None:
+            for k in self.watermarks:
+                result['Watermarks'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.delogos = []
+        if m.get('Delogos') is not None:
+            for k in m.get('Delogos'):
+                temp_model = GetVideoPlaylistRequestTargetsVideoFilterVideoDelogos()
+                self.delogos.append(temp_model.from_map(k))
+        self.watermarks = []
+        if m.get('Watermarks') is not None:
+            for k in m.get('Watermarks'):
+                temp_model = GetVideoPlaylistRequestTargetsVideoFilterVideoWatermarks()
+                self.watermarks.append(temp_model.from_map(k))
+        return self
+
+
+class GetVideoPlaylistRequestTargetsVideoTranscodeVideo(TeaModel):
+    def __init__(
+        self,
+        adaptive_resolution_direction: bool = None,
+        bframes: int = None,
+        bitrate: int = None,
+        bitrate_option: str = None,
+        buffer_size: int = None,
+        crf: float = None,
+        codec: str = None,
+        frame_rate: float = None,
+        frame_rate_option: str = None,
+        gopsize: int = None,
+        max_bitrate: int = None,
+        pixel_format: str = None,
+        refs: int = None,
+        resolution: str = None,
+        resolution_option: str = None,
+        rotation: int = None,
+        scale_type: str = None,
+    ):
+        self.adaptive_resolution_direction = adaptive_resolution_direction
+        self.bframes = bframes
+        self.bitrate = bitrate
+        self.bitrate_option = bitrate_option
+        self.buffer_size = buffer_size
+        self.crf = crf
+        self.codec = codec
+        self.frame_rate = frame_rate
+        self.frame_rate_option = frame_rate_option
+        self.gopsize = gopsize
+        self.max_bitrate = max_bitrate
+        self.pixel_format = pixel_format
+        self.refs = refs
+        self.resolution = resolution
+        self.resolution_option = resolution_option
+        self.rotation = rotation
+        self.scale_type = scale_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.adaptive_resolution_direction is not None:
+            result['AdaptiveResolutionDirection'] = self.adaptive_resolution_direction
+        if self.bframes is not None:
+            result['BFrames'] = self.bframes
+        if self.bitrate is not None:
+            result['Bitrate'] = self.bitrate
+        if self.bitrate_option is not None:
+            result['BitrateOption'] = self.bitrate_option
+        if self.buffer_size is not None:
+            result['BufferSize'] = self.buffer_size
+        if self.crf is not None:
+            result['CRF'] = self.crf
+        if self.codec is not None:
+            result['Codec'] = self.codec
+        if self.frame_rate is not None:
+            result['FrameRate'] = self.frame_rate
+        if self.frame_rate_option is not None:
+            result['FrameRateOption'] = self.frame_rate_option
+        if self.gopsize is not None:
+            result['GOPSize'] = self.gopsize
+        if self.max_bitrate is not None:
+            result['MaxBitrate'] = self.max_bitrate
+        if self.pixel_format is not None:
+            result['PixelFormat'] = self.pixel_format
+        if self.refs is not None:
+            result['Refs'] = self.refs
+        if self.resolution is not None:
+            result['Resolution'] = self.resolution
+        if self.resolution_option is not None:
+            result['ResolutionOption'] = self.resolution_option
+        if self.rotation is not None:
+            result['Rotation'] = self.rotation
+        if self.scale_type is not None:
+            result['ScaleType'] = self.scale_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdaptiveResolutionDirection') is not None:
+            self.adaptive_resolution_direction = m.get('AdaptiveResolutionDirection')
+        if m.get('BFrames') is not None:
+            self.bframes = m.get('BFrames')
+        if m.get('Bitrate') is not None:
+            self.bitrate = m.get('Bitrate')
+        if m.get('BitrateOption') is not None:
+            self.bitrate_option = m.get('BitrateOption')
+        if m.get('BufferSize') is not None:
+            self.buffer_size = m.get('BufferSize')
+        if m.get('CRF') is not None:
+            self.crf = m.get('CRF')
+        if m.get('Codec') is not None:
+            self.codec = m.get('Codec')
+        if m.get('FrameRate') is not None:
+            self.frame_rate = m.get('FrameRate')
+        if m.get('FrameRateOption') is not None:
+            self.frame_rate_option = m.get('FrameRateOption')
+        if m.get('GOPSize') is not None:
+            self.gopsize = m.get('GOPSize')
+        if m.get('MaxBitrate') is not None:
+            self.max_bitrate = m.get('MaxBitrate')
+        if m.get('PixelFormat') is not None:
+            self.pixel_format = m.get('PixelFormat')
+        if m.get('Refs') is not None:
+            self.refs = m.get('Refs')
+        if m.get('Resolution') is not None:
+            self.resolution = m.get('Resolution')
+        if m.get('ResolutionOption') is not None:
+            self.resolution_option = m.get('ResolutionOption')
+        if m.get('Rotation') is not None:
+            self.rotation = m.get('Rotation')
+        if m.get('ScaleType') is not None:
+            self.scale_type = m.get('ScaleType')
+        return self
+
+
+class GetVideoPlaylistRequestTargetsVideo(TeaModel):
+    def __init__(
+        self,
+        disable_video: bool = None,
+        filter_video: GetVideoPlaylistRequestTargetsVideoFilterVideo = None,
+        transcode_video: GetVideoPlaylistRequestTargetsVideoTranscodeVideo = None,
+    ):
+        self.disable_video = disable_video
+        self.filter_video = filter_video
+        self.transcode_video = transcode_video
+
+    def validate(self):
+        if self.filter_video:
+            self.filter_video.validate()
+        if self.transcode_video:
+            self.transcode_video.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.disable_video is not None:
+            result['DisableVideo'] = self.disable_video
+        if self.filter_video is not None:
+            result['FilterVideo'] = self.filter_video.to_map()
+        if self.transcode_video is not None:
+            result['TranscodeVideo'] = self.transcode_video.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DisableVideo') is not None:
+            self.disable_video = m.get('DisableVideo')
+        if m.get('FilterVideo') is not None:
+            temp_model = GetVideoPlaylistRequestTargetsVideoFilterVideo()
+            self.filter_video = temp_model.from_map(m['FilterVideo'])
+        if m.get('TranscodeVideo') is not None:
+            temp_model = GetVideoPlaylistRequestTargetsVideoTranscodeVideo()
+            self.transcode_video = temp_model.from_map(m['TranscodeVideo'])
+        return self
+
+
+class GetVideoPlaylistRequestTargets(TeaModel):
+    def __init__(
+        self,
+        audio: GetVideoPlaylistRequestTargetsAudio = None,
+        duration: float = None,
+        initial_segments: List[float] = None,
+        initial_transcode: float = None,
+        preset_id: PresetReference = None,
+        speed: float = None,
+        subtitle: GetVideoPlaylistRequestTargetsSubtitle = None,
+        transcode_ahead: int = None,
+        uri: str = None,
+        video: GetVideoPlaylistRequestTargetsVideo = None,
+    ):
+        self.audio = audio
+        self.duration = duration
+        self.initial_segments = initial_segments
+        self.initial_transcode = initial_transcode
+        self.preset_id = preset_id
+        self.speed = speed
+        self.subtitle = subtitle
+        self.transcode_ahead = transcode_ahead
+        self.uri = uri
+        self.video = video
+
+    def validate(self):
+        if self.audio:
+            self.audio.validate()
+        if self.preset_id:
+            self.preset_id.validate()
+        if self.subtitle:
+            self.subtitle.validate()
+        if self.video:
+            self.video.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.audio is not None:
+            result['Audio'] = self.audio.to_map()
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        if self.initial_segments is not None:
+            result['InitialSegments'] = self.initial_segments
+        if self.initial_transcode is not None:
+            result['InitialTranscode'] = self.initial_transcode
+        if self.preset_id is not None:
+            result['PresetId'] = self.preset_id.to_map()
+        if self.speed is not None:
+            result['Speed'] = self.speed
+        if self.subtitle is not None:
+            result['Subtitle'] = self.subtitle.to_map()
+        if self.transcode_ahead is not None:
+            result['TranscodeAhead'] = self.transcode_ahead
+        if self.uri is not None:
+            result['URI'] = self.uri
+        if self.video is not None:
+            result['Video'] = self.video.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Audio') is not None:
+            temp_model = GetVideoPlaylistRequestTargetsAudio()
+            self.audio = temp_model.from_map(m['Audio'])
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        if m.get('InitialSegments') is not None:
+            self.initial_segments = m.get('InitialSegments')
+        if m.get('InitialTranscode') is not None:
+            self.initial_transcode = m.get('InitialTranscode')
+        if m.get('PresetId') is not None:
+            temp_model = PresetReference()
+            self.preset_id = temp_model.from_map(m['PresetId'])
+        if m.get('Speed') is not None:
+            self.speed = m.get('Speed')
+        if m.get('Subtitle') is not None:
+            temp_model = GetVideoPlaylistRequestTargetsSubtitle()
+            self.subtitle = temp_model.from_map(m['Subtitle'])
+        if m.get('TranscodeAhead') is not None:
+            self.transcode_ahead = m.get('TranscodeAhead')
+        if m.get('URI') is not None:
+            self.uri = m.get('URI')
+        if m.get('Video') is not None:
+            temp_model = GetVideoPlaylistRequestTargetsVideo()
+            self.video = temp_model.from_map(m['Video'])
+        return self
+
+
+class GetVideoPlaylistRequest(TeaModel):
+    def __init__(
+        self,
+        credential_config: CredentialConfig = None,
+        master_uri: str = None,
+        project_name: str = None,
+        source_duration: float = None,
+        source_start_time: float = None,
+        source_subtitles: List[GetVideoPlaylistRequestSourceSubtitles] = None,
+        source_uri: str = None,
+        tags: Dict[str, Any] = None,
+        targets: List[GetVideoPlaylistRequestTargets] = None,
+    ):
+        self.credential_config = credential_config
+        self.master_uri = master_uri
+        self.project_name = project_name
+        self.source_duration = source_duration
+        self.source_start_time = source_start_time
+        self.source_subtitles = source_subtitles
+        self.source_uri = source_uri
+        self.tags = tags
+        self.targets = targets
+
+    def validate(self):
+        if self.credential_config:
+            self.credential_config.validate()
+        if self.source_subtitles:
+            for k in self.source_subtitles:
+                if k:
+                    k.validate()
+        if self.targets:
+            for k in self.targets:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.credential_config is not None:
+            result['CredentialConfig'] = self.credential_config.to_map()
+        if self.master_uri is not None:
+            result['MasterURI'] = self.master_uri
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.source_duration is not None:
+            result['SourceDuration'] = self.source_duration
+        if self.source_start_time is not None:
+            result['SourceStartTime'] = self.source_start_time
+        result['SourceSubtitles'] = []
+        if self.source_subtitles is not None:
+            for k in self.source_subtitles:
+                result['SourceSubtitles'].append(k.to_map() if k else None)
+        if self.source_uri is not None:
+            result['SourceURI'] = self.source_uri
+        if self.tags is not None:
+            result['Tags'] = self.tags
+        result['Targets'] = []
+        if self.targets is not None:
+            for k in self.targets:
+                result['Targets'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CredentialConfig') is not None:
+            temp_model = CredentialConfig()
+            self.credential_config = temp_model.from_map(m['CredentialConfig'])
+        if m.get('MasterURI') is not None:
+            self.master_uri = m.get('MasterURI')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('SourceDuration') is not None:
+            self.source_duration = m.get('SourceDuration')
+        if m.get('SourceStartTime') is not None:
+            self.source_start_time = m.get('SourceStartTime')
+        self.source_subtitles = []
+        if m.get('SourceSubtitles') is not None:
+            for k in m.get('SourceSubtitles'):
+                temp_model = GetVideoPlaylistRequestSourceSubtitles()
+                self.source_subtitles.append(temp_model.from_map(k))
+        if m.get('SourceURI') is not None:
+            self.source_uri = m.get('SourceURI')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
+        self.targets = []
+        if m.get('Targets') is not None:
+            for k in m.get('Targets'):
+                temp_model = GetVideoPlaylistRequestTargets()
+                self.targets.append(temp_model.from_map(k))
+        return self
+
+
+class GetVideoPlaylistShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        credential_config_shrink: str = None,
+        master_uri: str = None,
+        project_name: str = None,
+        source_duration: float = None,
+        source_start_time: float = None,
+        source_subtitles_shrink: str = None,
+        source_uri: str = None,
+        tags_shrink: str = None,
+        targets_shrink: str = None,
+    ):
+        self.credential_config_shrink = credential_config_shrink
+        self.master_uri = master_uri
+        self.project_name = project_name
+        self.source_duration = source_duration
+        self.source_start_time = source_start_time
+        self.source_subtitles_shrink = source_subtitles_shrink
+        self.source_uri = source_uri
+        self.tags_shrink = tags_shrink
+        self.targets_shrink = targets_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.credential_config_shrink is not None:
+            result['CredentialConfig'] = self.credential_config_shrink
+        if self.master_uri is not None:
+            result['MasterURI'] = self.master_uri
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.source_duration is not None:
+            result['SourceDuration'] = self.source_duration
+        if self.source_start_time is not None:
+            result['SourceStartTime'] = self.source_start_time
+        if self.source_subtitles_shrink is not None:
+            result['SourceSubtitles'] = self.source_subtitles_shrink
+        if self.source_uri is not None:
+            result['SourceURI'] = self.source_uri
+        if self.tags_shrink is not None:
+            result['Tags'] = self.tags_shrink
+        if self.targets_shrink is not None:
+            result['Targets'] = self.targets_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CredentialConfig') is not None:
+            self.credential_config_shrink = m.get('CredentialConfig')
+        if m.get('MasterURI') is not None:
+            self.master_uri = m.get('MasterURI')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('SourceDuration') is not None:
+            self.source_duration = m.get('SourceDuration')
+        if m.get('SourceStartTime') is not None:
+            self.source_start_time = m.get('SourceStartTime')
+        if m.get('SourceSubtitles') is not None:
+            self.source_subtitles_shrink = m.get('SourceSubtitles')
+        if m.get('SourceURI') is not None:
+            self.source_uri = m.get('SourceURI')
+        if m.get('Tags') is not None:
+            self.tags_shrink = m.get('Tags')
+        if m.get('Targets') is not None:
+            self.targets_shrink = m.get('Targets')
+        return self
+
+
+class GetVideoPlaylistResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        signed_url: str = None,
+        token: str = None,
+        uri: str = None,
+    ):
+        self.request_id = request_id
+        self.signed_url = signed_url
+        self.token = token
+        self.uri = uri
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.signed_url is not None:
+            result['SignedURL'] = self.signed_url
+        if self.token is not None:
+            result['Token'] = self.token
+        if self.uri is not None:
+            result['URI'] = self.uri
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SignedURL') is not None:
+            self.signed_url = m.get('SignedURL')
+        if m.get('Token') is not None:
+            self.token = m.get('Token')
+        if m.get('URI') is not None:
+            self.uri = m.get('URI')
+        return self
+
+
+class GetVideoPlaylistResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetVideoPlaylistResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetVideoPlaylistResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetWebofficeURLRequest(TeaModel):
     def __init__(
         self,
@@ -13554,6 +15412,181 @@ class ListTasksResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListTasksResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class LiveTranscodingRequest(TeaModel):
+    def __init__(
+        self,
+        credential_config: CredentialConfig = None,
+        project_name: str = None,
+        source_uri: str = None,
+        token: str = None,
+    ):
+        self.credential_config = credential_config
+        self.project_name = project_name
+        self.source_uri = source_uri
+        self.token = token
+
+    def validate(self):
+        if self.credential_config:
+            self.credential_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.credential_config is not None:
+            result['CredentialConfig'] = self.credential_config.to_map()
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.source_uri is not None:
+            result['SourceURI'] = self.source_uri
+        if self.token is not None:
+            result['Token'] = self.token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CredentialConfig') is not None:
+            temp_model = CredentialConfig()
+            self.credential_config = temp_model.from_map(m['CredentialConfig'])
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('SourceURI') is not None:
+            self.source_uri = m.get('SourceURI')
+        if m.get('Token') is not None:
+            self.token = m.get('Token')
+        return self
+
+
+class LiveTranscodingShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        credential_config_shrink: str = None,
+        project_name: str = None,
+        source_uri: str = None,
+        token: str = None,
+    ):
+        self.credential_config_shrink = credential_config_shrink
+        self.project_name = project_name
+        self.source_uri = source_uri
+        self.token = token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.credential_config_shrink is not None:
+            result['CredentialConfig'] = self.credential_config_shrink
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.source_uri is not None:
+            result['SourceURI'] = self.source_uri
+        if self.token is not None:
+            result['Token'] = self.token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CredentialConfig') is not None:
+            self.credential_config_shrink = m.get('CredentialConfig')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('SourceURI') is not None:
+            self.source_uri = m.get('SourceURI')
+        if m.get('Token') is not None:
+            self.token = m.get('Token')
+        return self
+
+
+class LiveTranscodingResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        signed_url: str = None,
+        uri: str = None,
+    ):
+        self.request_id = request_id
+        self.signed_url = signed_url
+        self.uri = uri
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.signed_url is not None:
+            result['SignedURL'] = self.signed_url
+        if self.uri is not None:
+            result['URI'] = self.uri
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SignedURL') is not None:
+            self.signed_url = m.get('SignedURL')
+        if m.get('URI') is not None:
+            self.uri = m.get('URI')
+        return self
+
+
+class LiveTranscodingResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: LiveTranscodingResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = LiveTranscodingResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
