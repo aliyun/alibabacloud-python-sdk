@@ -1,3 +1,6 @@
+2022-10-20 Version: 1.1.28
+- DSW lifecycle sdk generate.
+
 2022-10-11 Version: 1.1.26
 - DSW lifecycle sdk generate.
 
