@@ -1,3 +1,6 @@
+2022-10-20 Version: 1.0.20
+- Support Service of number analysis.
+
 2022-09-21 Version: 1.0.19
 - Support Service of number analysis.
 
