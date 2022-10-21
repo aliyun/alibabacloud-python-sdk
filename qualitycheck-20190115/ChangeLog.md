@@ -1,3 +1,6 @@
+2022-10-21 Version: 4.12.2
+- Add Api.
+
 2022-01-20 Version: 4.2.0
 - Update Api.
 
