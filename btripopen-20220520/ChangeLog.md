@@ -1,3 +1,6 @@
+2022-10-21 Version: 1.0.26
+- Update map struct.
+
 2022-10-21 Version: 1.0.25
 - Update code String.
 
