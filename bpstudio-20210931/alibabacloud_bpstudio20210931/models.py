@@ -1,7 +1,135 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, Any, List
+from typing import Dict, List
+
+
+class ChangeResourceGroupRequest(TeaModel):
+    def __init__(
+        self,
+        new_resource_group_id: str = None,
+        resource_id: str = None,
+        resource_type: str = None,
+    ):
+        self.new_resource_group_id = new_resource_group_id
+        self.resource_id = resource_id
+        self.resource_type = resource_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.new_resource_group_id is not None:
+            result['NewResourceGroupId'] = self.new_resource_group_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NewResourceGroupId') is not None:
+            self.new_resource_group_id = m.get('NewResourceGroupId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        return self
+
+
+class ChangeResourceGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ChangeResourceGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ChangeResourceGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ChangeResourceGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
 
 
 class CreateApplicationRequestInstances(TeaModel):
@@ -11,11 +139,8 @@ class CreateApplicationRequestInstances(TeaModel):
         node_name: str = None,
         node_type: str = None,
     ):
-        # 实例ID
         self.id = id
-        # 图上实例名
         self.node_name = node_name
-        # 实例类型
         self.node_type = node_type
 
     def validate(self):
@@ -51,25 +176,19 @@ class CreateApplicationRequest(TeaModel):
         self,
         area_id: str = None,
         client_token: str = None,
-        configuration: Dict[str, Any] = None,
+        configuration: Dict[str, str] = None,
         instances: List[CreateApplicationRequestInstances] = None,
         name: str = None,
         resource_group_id: str = None,
         template_id: str = None,
-        variables: Dict[str, Any] = None,
+        variables: Dict[str, str] = None,
     ):
-        # 区域ID
         self.area_id = area_id
-        # 幂等标记
         self.client_token = client_token
         self.configuration = configuration
-        # 待替换实例列表
         self.instances = instances
-        # 新建应用名
         self.name = name
-        # 应用所属资源组ID
         self.resource_group_id = resource_group_id
-        # 模板ID
         self.template_id = template_id
         self.variables = variables
 
@@ -141,18 +260,12 @@ class CreateApplicationShrinkRequest(TeaModel):
         template_id: str = None,
         variables_shrink: str = None,
     ):
-        # 区域ID
         self.area_id = area_id
-        # 幂等标记
         self.client_token = client_token
         self.configuration_shrink = configuration_shrink
-        # 待替换实例列表
         self.instances_shrink = instances_shrink
-        # 新建应用名
         self.name = name
-        # 应用所属资源组ID
         self.resource_group_id = resource_group_id
-        # 模板ID
         self.template_id = template_id
         self.variables_shrink = variables_shrink
 
@@ -213,7 +326,6 @@ class CreateApplicationResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.code = code
-        # 应用ID
         self.data = data
         self.message = message
         self.request_id = request_id
@@ -416,9 +528,7 @@ class DeployApplicationRequest(TeaModel):
         application_id: str = None,
         resource_group_id: str = None,
     ):
-        # 应用ID
         self.application_id = application_id
-        # 资源组ID
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -534,6 +644,185 @@ class DeployApplicationResponse(TeaModel):
         return self
 
 
+class ExecuteOperationASyncRequest(TeaModel):
+    def __init__(
+        self,
+        attributes: Dict[str, str] = None,
+        operation: str = None,
+        resource_group_id: str = None,
+        service_type: str = None,
+    ):
+        self.attributes = attributes
+        self.operation = operation
+        self.resource_group_id = resource_group_id
+        self.service_type = service_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.attributes is not None:
+            result['Attributes'] = self.attributes
+        if self.operation is not None:
+            result['Operation'] = self.operation
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.service_type is not None:
+            result['ServiceType'] = self.service_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Attributes') is not None:
+            self.attributes = m.get('Attributes')
+        if m.get('Operation') is not None:
+            self.operation = m.get('Operation')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ServiceType') is not None:
+            self.service_type = m.get('ServiceType')
+        return self
+
+
+class ExecuteOperationASyncShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        attributes_shrink: str = None,
+        operation: str = None,
+        resource_group_id: str = None,
+        service_type: str = None,
+    ):
+        self.attributes_shrink = attributes_shrink
+        self.operation = operation
+        self.resource_group_id = resource_group_id
+        self.service_type = service_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.attributes_shrink is not None:
+            result['Attributes'] = self.attributes_shrink
+        if self.operation is not None:
+            result['Operation'] = self.operation
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.service_type is not None:
+            result['ServiceType'] = self.service_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Attributes') is not None:
+            self.attributes_shrink = m.get('Attributes')
+        if m.get('Operation') is not None:
+            self.operation = m.get('Operation')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ServiceType') is not None:
+            self.service_type = m.get('ServiceType')
+        return self
+
+
+class ExecuteOperationASyncResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: Dict[str, str] = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ExecuteOperationASyncResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ExecuteOperationASyncResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ExecuteOperationASyncResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetApplicationRequest(TeaModel):
     def __init__(
         self,
@@ -578,19 +867,12 @@ class GetApplicationResponseBodyDataChecklist(TeaModel):
         result: str = None,
         specification: str = None,
     ):
-        # 资源标记
         self.lifecycle = lifecycle
-        # 区域
         self.region = region
-        # 失败原因
         self.remark = remark
-        # 产品code
         self.resource_code = resource_code
-        # 实例名
         self.resource_name = resource_name
-        # 校验结果
         self.result = result
-        # 规格
         self.specification = specification
 
     def validate(self):
@@ -654,30 +936,18 @@ class GetApplicationResponseBodyDataPriceList(TeaModel):
         resource_code: str = None,
         specification: str = None,
     ):
-        # 支付类型
         self.charge_type = charge_type
-        # 数量
         self.count = count
-        # 实例名
         self.instance_name = instance_name
-        # 资源标记
         self.lifecycle = lifecycle
-        # 单价
         self.one_price = one_price
-        # 原价
         self.original_price = original_price
-        # 时长
         self.period = period
-        # 总价
         self.price = price
-        # 单位
         self.price_unit = price_unit
-        # 区域
         self.region = region
         self.remark = remark
-        # 产品code
         self.resource_code = resource_code
-        # 规格
         self.specification = specification
 
     def validate(self):
@@ -760,21 +1030,13 @@ class GetApplicationResponseBodyDataResourceList(TeaModel):
         resource_type: str = None,
         status: str = None,
     ):
-        # 支付类型
         self.charge_type = charge_type
-        # 资源标记
         self.lifecycle = lifecycle
-        # 部署结果
         self.remark = remark
-        # 产品code
         self.resource_code = resource_code
-        # 实例ID
         self.resource_id = resource_id
-        # 实例名称
         self.resource_name = resource_name
-        # 资源类型
         self.resource_type = resource_type
-        # 资源部署结果
         self.status = status
 
     def validate(self):
@@ -842,31 +1104,18 @@ class GetApplicationResponseBodyData(TeaModel):
         template_id: str = None,
         topo_url: str = None,
     ):
-        # 应用ID
         self.application_id = application_id
-        # 校验结果列表
         self.checklist = checklist
-        # 应用创建时间
         self.create_time = create_time
-        # 应用描述
         self.description = description
-        # 失败原因
         self.error = error
-        # 数据库中图片地址
         self.image_url = image_url
-        # 应用名
         self.name = name
-        # 计费结果列表
         self.price_list = price_list
-        # 应用所属资源组ID
         self.resource_group_id = resource_group_id
-        # 资源列表
         self.resource_list = resource_list
-        # 应用状态
         self.status = status
-        # 应用关联模板ID
         self.template_id = template_id
-        # 应用topo地址
         self.topo_url = topo_url
 
     def validate(self):
@@ -973,9 +1222,7 @@ class GetApplicationResponseBody(TeaModel):
     ):
         self.code = code
         self.data = data
-        # 请求失败原因
         self.message = message
-        # 请求ID
         self.request_id = request_id
 
     def validate(self):
@@ -1052,6 +1299,175 @@ class GetApplicationResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetApplicationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetExecuteOperationResultRequest(TeaModel):
+    def __init__(
+        self,
+        operation_id: str = None,
+        resource_group_id: str = None,
+    ):
+        self.operation_id = operation_id
+        self.resource_group_id = resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.operation_id is not None:
+            result['OperationId'] = self.operation_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OperationId') is not None:
+            self.operation_id = m.get('OperationId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        return self
+
+
+class GetExecuteOperationResultResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        arguments: str = None,
+        message: str = None,
+        operation_id: str = None,
+        status: str = None,
+    ):
+        self.arguments = arguments
+        self.message = message
+        self.operation_id = operation_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.arguments is not None:
+            result['Arguments'] = self.arguments
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.operation_id is not None:
+            result['OperationId'] = self.operation_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Arguments') is not None:
+            self.arguments = m.get('Arguments')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('OperationId') is not None:
+            self.operation_id = m.get('OperationId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class GetExecuteOperationResultResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: GetExecuteOperationResultResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetExecuteOperationResultResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetExecuteOperationResultResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetExecuteOperationResultResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetExecuteOperationResultResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -1254,7 +1670,6 @@ class GetTokenRequest(TeaModel):
         self,
         resource_group_id: str = None,
     ):
-        # 资源组ID
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -1287,17 +1702,11 @@ class GetTokenResponseBodyData(TeaModel):
         security_token: str = None,
         snapshot_bucket: str = None,
     ):
-        # oss访问access key id
         self.access_key_id = access_key_id
-        # oss访问access key secret id
         self.access_key_secret = access_key_secret
-        # oss文件保存bucket位置
         self.bucket = bucket
-        # oss的endpoint
         self.endpoint = endpoint
-        # oss访问token
         self.security_token = security_token
-        # oss快照保存bucket位置
         self.snapshot_bucket = snapshot_bucket
 
     def validate(self):
@@ -1444,10 +1853,8 @@ class ListApplicationRequest(TeaModel):
         self.keyword = keyword
         self.max_results = max_results
         self.next_token = next_token
-        # 排序字段
         self.order_type = order_type
         self.resource_group_id = resource_group_id
-        # 应用的状态
         self.status = status
 
     def validate(self):
@@ -1501,19 +1908,12 @@ class ListApplicationResponseBodyData(TeaModel):
         status: int = None,
         topo_url: str = None,
     ):
-        # 应用ID
         self.application_id = application_id
-        # 应用创建时间
         self.create_time = create_time
-        # 应用的图片链接
         self.image_url = image_url
-        # 应用的名称
         self.name = name
-        # 应用的资源组
         self.resource_group_id = resource_group_id
-        # 应用的状态
         self.status = status
-        # 应用的拓扑图链接
         self.topo_url = topo_url
 
     def validate(self):
@@ -1680,16 +2080,12 @@ class ListTemplateRequest(TeaModel):
         tag_list: int = None,
         type: str = None,
     ):
-        # 搜索关键字
         self.keyword = keyword
         self.max_results = max_results
         self.next_token = next_token
-        # 排序字段
         self.order_type = order_type
         self.resource_group_id = resource_group_id
-        # 模板的标签
         self.tag_list = tag_list
-        # 类型
         self.type = type
 
     def validate(self):
@@ -1748,21 +2144,13 @@ class ListTemplateResponseBodyData(TeaModel):
         template_id: str = None,
         topo_url: str = None,
     ):
-        # 创建时间
         self.create_time = create_time
-        # 模板的图片链接
         self.image_url = image_url
-        # 模板的名称
         self.name = name
-        # 资源组ID
         self.resource_group_id = resource_group_id
-        # 模板的标签的ID
         self.tag_id = tag_id
-        # 模板标签的名称
         self.tag_name = tag_name
-        # 模板的ID
         self.template_id = template_id
-        # 模板的拓扑图
         self.topo_url = topo_url
 
     def validate(self):
@@ -1928,7 +2316,6 @@ class ReleaseApplicationRequest(TeaModel):
         application_id: str = None,
         resource_group_id: str = None,
     ):
-        # 应用ID
         self.application_id = application_id
         self.resource_group_id = resource_group_id
 
@@ -2051,9 +2438,7 @@ class ValidateApplicationRequest(TeaModel):
         application_id: str = None,
         resource_group_id: str = None,
     ):
-        # 应用ID
         self.application_id = application_id
-        # 资源组ID
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -2175,9 +2560,7 @@ class ValuateApplicationRequest(TeaModel):
         application_id: str = None,
         resource_group_id: str = None,
     ):
-        # 应用ID
         self.application_id = application_id
-        # 资源组ID
         self.resource_group_id = resource_group_id
 
     def validate(self):
