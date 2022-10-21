@@ -1,3 +1,6 @@
+2022-10-21 Version: 1.0.25
+- Update code String.
+
 2022-10-17 Version: 1.0.24
 - Update CarBillSettlementQuery.
 

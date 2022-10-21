@@ -329,7 +329,7 @@ class AddressGetResponseBodyModule(TeaModel):
 class AddressGetResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
+        code: str = None,
         message: str = None,
         module: AddressGetResponseBodyModule = None,
         request_id: str = None,
@@ -584,7 +584,7 @@ class AirportSearchResponseBodyModule(TeaModel):
 class AirportSearchResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
+        code: str = None,
         message: str = None,
         module: AirportSearchResponseBodyModule = None,
         request_id: str = None,
@@ -1758,7 +1758,7 @@ class ApplyAddResponseBodyModule(TeaModel):
 class ApplyAddResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
+        code: str = None,
         message: str = None,
         module: ApplyAddResponseBodyModule = None,
         request_id: str = None,
@@ -1951,7 +1951,7 @@ class ApplyApproveRequest(TeaModel):
 class ApplyApproveResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
+        code: str = None,
         message: str = None,
         module: str = None,
         request_id: str = None,
@@ -2684,7 +2684,7 @@ class ApplyListQueryResponseBodyModuleList(TeaModel):
 class ApplyListQueryResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
+        code: str = None,
         message: str = None,
         module_list: List[ApplyListQueryResponseBodyModuleList] = None,
         request_id: str = None,
@@ -3840,7 +3840,7 @@ class ApplyModifyResponseBodyModule(TeaModel):
 class ApplyModifyResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
+        code: str = None,
         message: str = None,
         module: ApplyModifyResponseBodyModule = None,
         request_id: str = None,
@@ -4807,7 +4807,7 @@ class ApplyQueryResponseBodyModule(TeaModel):
 class ApplyQueryResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
+        code: str = None,
         message: str = None,
         module: ApplyQueryResponseBodyModule = None,
         request_id: str = None,
@@ -5054,7 +5054,7 @@ class CarApplyAddRequest(TeaModel):
 class CarApplyAddResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
+        code: str = None,
         message: str = None,
         module: int = None,
         request_id: str = None,
@@ -5239,7 +5239,7 @@ class CarApplyModifyRequest(TeaModel):
 class CarApplyModifyResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
+        code: str = None,
         message: str = None,
         module: bool = None,
         request_id: str = None,
@@ -5715,7 +5715,7 @@ class CarApplyQueryResponseBody(TeaModel):
     def __init__(
         self,
         apply_list: List[CarApplyQueryResponseBodyApplyList] = None,
-        code: int = None,
+        code: str = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
@@ -6335,7 +6335,7 @@ class CarBillSettlementQueryResponseBodyModule(TeaModel):
 class CarBillSettlementQueryResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
+        code: str = None,
         message: str = None,
         module: CarBillSettlementQueryResponseBodyModule = None,
         request_id: str = None,
@@ -7043,7 +7043,7 @@ class CarOrderListQueryResponseBodyPageInfo(TeaModel):
 class CarOrderListQueryResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
+        code: str = None,
         message: str = None,
         module: List[CarOrderListQueryResponseBodyModule] = None,
         page_info: CarOrderListQueryResponseBodyPageInfo = None,
@@ -7295,7 +7295,7 @@ class CitySearchResponseBodyModule(TeaModel):
 class CitySearchResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
+        code: str = None,
         message: str = None,
         module: CitySearchResponseBodyModule = None,
         request_id: str = None,
@@ -7557,7 +7557,7 @@ class CommonApplyQueryResponseBodyModule(TeaModel):
 class CommonApplyQueryResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
+        code: str = None,
         message: str = None,
         module: CommonApplyQueryResponseBodyModule = None,
         request_id: str = None,
@@ -7750,7 +7750,7 @@ class CommonApplySyncRequest(TeaModel):
 class CommonApplySyncResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
+        code: str = None,
         message: str = None,
         module: bool = None,
         request_id: str = None,
@@ -8155,7 +8155,7 @@ class CostCenterDeleteRequest(TeaModel):
 class CostCenterDeleteResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
+        code: str = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
@@ -8334,7 +8334,7 @@ class CostCenterModifyRequest(TeaModel):
 class CostCenterModifyResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
+        code: str = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
@@ -8641,7 +8641,7 @@ class CostCenterQueryResponseBodyModule(TeaModel):
 class CostCenterQueryResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
+        code: str = None,
         message: str = None,
         module: List[CostCenterQueryResponseBodyModule] = None,
         more_page: bool = None,
@@ -8867,7 +8867,7 @@ class CostCenterSaveResponseBodyModule(TeaModel):
 class CostCenterSaveResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
+        code: str = None,
         message: str = None,
         module: CostCenterSaveResponseBodyModule = None,
         request_id: str = None,
@@ -9128,7 +9128,7 @@ class DepartmentSaveShrinkRequest(TeaModel):
 class DepartmentSaveResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
+        code: str = None,
         message: str = None,
         module: str = None,
         request_id: str = None,
@@ -9402,7 +9402,7 @@ class EntityAddResponseBodyModule(TeaModel):
 class EntityAddResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
+        code: str = None,
         message: str = None,
         module: EntityAddResponseBodyModule = None,
         request_id: str = None,
@@ -9690,7 +9690,7 @@ class EntityDeleteResponseBodyModule(TeaModel):
 class EntityDeleteResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
+        code: str = None,
         message: str = None,
         module: EntityDeleteResponseBodyModule = None,
         more_page: bool = None,
@@ -9978,7 +9978,7 @@ class EntitySetResponseBodyModule(TeaModel):
 class EntitySetResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
+        code: str = None,
         message: str = None,
         module: EntitySetResponseBodyModule = None,
         more_page: bool = None,
@@ -10177,7 +10177,7 @@ class ExceedApplySyncRequest(TeaModel):
 class ExceedApplySyncResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
+        code: str = None,
         message: str = None,
         module: bool = None,
         request_id: str = None,
@@ -10868,7 +10868,7 @@ class FlightBillSettlementQueryResponseBodyModule(TeaModel):
 class FlightBillSettlementQueryResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
+        code: str = None,
         message: str = None,
         module: FlightBillSettlementQueryResponseBodyModule = None,
         request_id: str = None,
@@ -11225,7 +11225,7 @@ class FlightExceedApplyQueryResponseBodyModule(TeaModel):
 class FlightExceedApplyQueryResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
+        code: str = None,
         message: str = None,
         module: FlightExceedApplyQueryResponseBodyModule = None,
         request_id: str = None,
@@ -12011,7 +12011,7 @@ class FlightOrderListQueryResponseBodyPageInfo(TeaModel):
 class FlightOrderListQueryResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
+        code: str = None,
         message: str = None,
         module: List[FlightOrderListQueryResponseBodyModule] = None,
         page_info: FlightOrderListQueryResponseBodyPageInfo = None,
@@ -13067,7 +13067,7 @@ class FlightOrderQueryResponseBodyModule(TeaModel):
 class FlightOrderQueryResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
+        code: str = None,
         message: str = None,
         module: FlightOrderQueryResponseBodyModule = None,
         request_id: str = None,
@@ -13652,7 +13652,7 @@ class HotelBillSettlementQueryResponseBodyModule(TeaModel):
 class HotelBillSettlementQueryResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
+        code: str = None,
         message: str = None,
         module: HotelBillSettlementQueryResponseBodyModule = None,
         request_id: str = None,
@@ -13973,7 +13973,7 @@ class HotelExceedApplyQueryResponseBodyModule(TeaModel):
 class HotelExceedApplyQueryResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
+        code: str = None,
         message: str = None,
         module: HotelExceedApplyQueryResponseBodyModule = None,
         request_id: str = None,
@@ -14675,7 +14675,7 @@ class HotelOrderListQueryResponseBodyPageInfo(TeaModel):
 class HotelOrderListQueryResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
+        code: str = None,
         message: str = None,
         module: List[HotelOrderListQueryResponseBodyModule] = None,
         page_info: HotelOrderListQueryResponseBodyPageInfo = None,
@@ -15389,7 +15389,7 @@ class IeFlightBillSettlementQueryResponseBodyModule(TeaModel):
 class IeFlightBillSettlementQueryResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
+        code: str = None,
         message: str = None,
         module: IeFlightBillSettlementQueryResponseBodyModule = None,
         more_page: bool = None,
@@ -15600,7 +15600,7 @@ class InvoiceAddRequest(TeaModel):
 class InvoiceAddResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
+        code: str = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
@@ -15755,7 +15755,7 @@ class InvoiceDeleteRequest(TeaModel):
 class InvoiceDeleteResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
+        code: str = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
@@ -15952,7 +15952,7 @@ class InvoiceModifyRequest(TeaModel):
 class InvoiceModifyResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
+        code: str = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
@@ -16238,7 +16238,7 @@ class InvoiceRuleSaveResponseBodyModule(TeaModel):
 class InvoiceRuleSaveResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
+        code: str = None,
         message: str = None,
         module: InvoiceRuleSaveResponseBodyModule = None,
         request_id: str = None,
@@ -16446,7 +16446,7 @@ class InvoiceSearchResponseBodyModule(TeaModel):
 class InvoiceSearchResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
+        code: str = None,
         message: str = None,
         module: List[InvoiceSearchResponseBodyModule] = None,
         request_id: str = None,
@@ -16749,7 +16749,7 @@ class IsvUserSaveShrinkRequest(TeaModel):
 class IsvUserSaveResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
+        code: str = None,
         message: str = None,
         module: str = None,
         request_id: str = None,
@@ -16949,7 +16949,7 @@ class MonthBillGetResponseBodyModule(TeaModel):
 class MonthBillGetResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
+        code: str = None,
         message: str = None,
         module: List[MonthBillGetResponseBodyModule] = None,
         request_id: str = None,
@@ -17142,7 +17142,7 @@ class ProjectAddRequest(TeaModel):
 class ProjectAddResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
+        code: str = None,
         message: str = None,
         module: int = None,
         more_page: bool = None,
@@ -17309,7 +17309,7 @@ class ProjectDeleteRequest(TeaModel):
 class ProjectDeleteResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
+        code: str = None,
         message: str = None,
         module: bool = None,
         request_id: str = None,
@@ -17494,7 +17494,7 @@ class ProjectModifyRequest(TeaModel):
 class ProjectModifyResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
+        code: str = None,
         message: str = None,
         module: bool = None,
         request_id: str = None,
@@ -18053,7 +18053,7 @@ class TrainBillSettlementQueryResponseBodyModule(TeaModel):
 class TrainBillSettlementQueryResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
+        code: str = None,
         message: str = None,
         module: TrainBillSettlementQueryResponseBodyModule = None,
         request_id: str = None,
@@ -18410,7 +18410,7 @@ class TrainExceedApplyQueryResponseBodyModule(TeaModel):
 class TrainExceedApplyQueryResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
+        code: str = None,
         message: str = None,
         module: TrainExceedApplyQueryResponseBodyModule = None,
         request_id: str = None,
@@ -19154,7 +19154,7 @@ class TrainOrderListQueryResponseBodyPageInfo(TeaModel):
 class TrainOrderListQueryResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
+        code: str = None,
         message: str = None,
         module: List[TrainOrderListQueryResponseBodyModule] = None,
         page_info: TrainOrderListQueryResponseBodyPageInfo = None,
@@ -20132,17 +20132,17 @@ class TrainOrderQueryResponseBodyModule(TeaModel):
 class TrainOrderQueryResponseBody(TeaModel):
     def __init__(
         self,
+        code: str = None,
+        message: str = None,
         module: TrainOrderQueryResponseBodyModule = None,
         request_id: str = None,
-        result_code: int = None,
-        result_msg: str = None,
         success: bool = None,
         trace_id: str = None,
     ):
+        self.code = code
+        self.message = message
         self.module = module
         self.request_id = request_id
-        self.result_code = result_code
-        self.result_msg = result_msg
         self.success = success
         self.trace_id = trace_id
 
@@ -20156,14 +20156,14 @@ class TrainOrderQueryResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.message is not None:
+            result['message'] = self.message
         if self.module is not None:
             result['module'] = self.module.to_map()
         if self.request_id is not None:
             result['requestId'] = self.request_id
-        if self.result_code is not None:
-            result['result_code'] = self.result_code
-        if self.result_msg is not None:
-            result['result_msg'] = self.result_msg
         if self.success is not None:
             result['success'] = self.success
         if self.trace_id is not None:
@@ -20172,15 +20172,15 @@ class TrainOrderQueryResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('message') is not None:
+            self.message = m.get('message')
         if m.get('module') is not None:
             temp_model = TrainOrderQueryResponseBodyModule()
             self.module = temp_model.from_map(m['module'])
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
-        if m.get('result_code') is not None:
-            self.result_code = m.get('result_code')
-        if m.get('result_msg') is not None:
-            self.result_msg = m.get('result_msg')
         if m.get('success') is not None:
             self.success = m.get('success')
         if m.get('traceId') is not None:
@@ -20363,7 +20363,7 @@ class TrainStationSearchResponseBodyModule(TeaModel):
 class TrainStationSearchResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
+        code: str = None,
         message: str = None,
         module: TrainStationSearchResponseBodyModule = None,
         request_id: str = None,
@@ -20636,7 +20636,7 @@ class UserQueryResponseBodyModule(TeaModel):
 class UserQueryResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
+        code: str = None,
         message: str = None,
         module: UserQueryResponseBodyModule = None,
         request_id: str = None,
