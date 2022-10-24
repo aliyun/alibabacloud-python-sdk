@@ -1,3 +1,6 @@
+2022-10-24 Version: 1.0.5
+- CCAPI python v6 for user.
+
 2022-10-24 Version: 1.0.4
 - CCAPI python v5 for user.
 
