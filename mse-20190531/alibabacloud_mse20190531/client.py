@@ -59,8 +59,6 @@ class Client(OpenApiClient):
             query['GatewayUniqueId'] = request.gateway_unique_id
         if not UtilClient.is_unset(request.match_type):
             query['MatchType'] = request.match_type
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.path):
             query['Path'] = request.path
         req = open_api_models.OpenApiRequest(
@@ -99,8 +97,6 @@ class Client(OpenApiClient):
             query['GatewayUniqueId'] = request.gateway_unique_id
         if not UtilClient.is_unset(request.match_type):
             query['MatchType'] = request.match_type
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.path):
             query['Path'] = request.path
         req = open_api_models.OpenApiRequest(
@@ -151,8 +147,6 @@ class Client(OpenApiClient):
             query['GatewayUniqueId'] = request.gateway_unique_id
         if not UtilClient.is_unset(request.is_white):
             query['IsWhite'] = request.is_white
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.note):
@@ -199,8 +193,6 @@ class Client(OpenApiClient):
             query['GatewayUniqueId'] = request.gateway_unique_id
         if not UtilClient.is_unset(request.is_white):
             query['IsWhite'] = request.is_white
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.note):
@@ -265,8 +257,6 @@ class Client(OpenApiClient):
             query['EnterpriseSecurityGroup'] = request.enterprise_security_group
         if not UtilClient.is_unset(request.internet_slb_spec):
             query['InternetSlbSpec'] = request.internet_slb_spec
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.region):
@@ -325,8 +315,6 @@ class Client(OpenApiClient):
             query['EnterpriseSecurityGroup'] = request.enterprise_security_group
         if not UtilClient.is_unset(request.internet_slb_spec):
             query['InternetSlbSpec'] = request.internet_slb_spec
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.region):
@@ -395,8 +383,6 @@ class Client(OpenApiClient):
             query['GatewayUniqueId'] = request.gateway_unique_id
         if not UtilClient.is_unset(request.http_2):
             query['Http2'] = request.http_2
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.must_https):
             query['MustHttps'] = request.must_https
         if not UtilClient.is_unset(request.name):
@@ -441,8 +427,6 @@ class Client(OpenApiClient):
             query['GatewayUniqueId'] = request.gateway_unique_id
         if not UtilClient.is_unset(request.http_2):
             query['Http2'] = request.http_2
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.must_https):
             query['MustHttps'] = request.must_https
         if not UtilClient.is_unset(request.name):
@@ -525,8 +509,6 @@ class Client(OpenApiClient):
             query['GatewayId'] = request.gateway_id
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.predicates_shrink):
@@ -595,8 +577,6 @@ class Client(OpenApiClient):
             query['GatewayId'] = request.gateway_id
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.predicates_shrink):
@@ -651,8 +631,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.service_id):
             query['ServiceId'] = request.service_id
         if not UtilClient.is_unset(request.service_version):
@@ -687,8 +665,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.service_id):
             query['ServiceId'] = request.service_id
         if not UtilClient.is_unset(request.service_version):
@@ -743,8 +719,6 @@ class Client(OpenApiClient):
             query['HttpsPort'] = request.https_port
         if not UtilClient.is_unset(request.https_vserver_group_id):
             query['HttpsVServerGroupId'] = request.https_vserver_group_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.service_weight):
             query['ServiceWeight'] = request.service_weight
         if not UtilClient.is_unset(request.slb_id):
@@ -789,8 +763,6 @@ class Client(OpenApiClient):
             query['HttpsPort'] = request.https_port
         if not UtilClient.is_unset(request.https_vserver_group_id):
             query['HttpsVServerGroupId'] = request.https_vserver_group_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.service_weight):
             query['ServiceWeight'] = request.service_weight
         if not UtilClient.is_unset(request.slb_id):
@@ -851,8 +823,6 @@ class Client(OpenApiClient):
             query['ExtraJson'] = request.extra_json
         if not UtilClient.is_unset(request.mock_type):
             query['MockType'] = request.mock_type
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.provider_app_id):
@@ -903,8 +873,6 @@ class Client(OpenApiClient):
             query['ExtraJson'] = request.extra_json
         if not UtilClient.is_unset(request.mock_type):
             query['MockType'] = request.mock_type
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.provider_app_id):
@@ -965,8 +933,6 @@ class Client(OpenApiClient):
             query['DomainId'] = request.domain_id
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1001,8 +967,6 @@ class Client(OpenApiClient):
             query['DomainId'] = request.domain_id
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1049,8 +1013,6 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.port_range):
             query['PortRange'] = request.port_range
         if not UtilClient.is_unset(request.security_group_id):
@@ -1087,8 +1049,6 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.port_range):
             query['PortRange'] = request.port_range
         if not UtilClient.is_unset(request.security_group_id):
@@ -1138,6 +1098,8 @@ class Client(OpenApiClient):
             request.group_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.group_list, 'GroupList', 'json')
         if not UtilClient.is_unset(tmp_req.ingress_options_request):
             request.ingress_options_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.ingress_options_request), 'IngressOptionsRequest', 'json')
+        if not UtilClient.is_unset(tmp_req.path_list):
+            request.path_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.path_list, 'PathList', 'json')
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
@@ -1149,10 +1111,10 @@ class Client(OpenApiClient):
             query['GroupList'] = request.group_list_shrink
         if not UtilClient.is_unset(request.ingress_options_request_shrink):
             query['IngressOptionsRequest'] = request.ingress_options_request_shrink
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
+        if not UtilClient.is_unset(request.path_list_shrink):
+            query['PathList'] = request.path_list_shrink
         if not UtilClient.is_unset(request.source):
             query['Source'] = request.source
         if not UtilClient.is_unset(request.type):
@@ -1188,6 +1150,8 @@ class Client(OpenApiClient):
             request.group_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.group_list, 'GroupList', 'json')
         if not UtilClient.is_unset(tmp_req.ingress_options_request):
             request.ingress_options_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.ingress_options_request), 'IngressOptionsRequest', 'json')
+        if not UtilClient.is_unset(tmp_req.path_list):
+            request.path_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.path_list, 'PathList', 'json')
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
@@ -1199,10 +1163,10 @@ class Client(OpenApiClient):
             query['GroupList'] = request.group_list_shrink
         if not UtilClient.is_unset(request.ingress_options_request_shrink):
             query['IngressOptionsRequest'] = request.ingress_options_request_shrink
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
+        if not UtilClient.is_unset(request.path_list_shrink):
+            query['PathList'] = request.path_list_shrink
         if not UtilClient.is_unset(request.source):
             query['Source'] = request.source
         if not UtilClient.is_unset(request.type):
@@ -1251,8 +1215,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.route_id):
             query['RouteId'] = request.route_id
         req = open_api_models.OpenApiRequest(
@@ -1285,8 +1247,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.route_id):
             query['RouteId'] = request.route_id
         req = open_api_models.OpenApiRequest(
@@ -1335,8 +1295,6 @@ class Client(OpenApiClient):
             query['AppId'] = request.app_id
         if not UtilClient.is_unset(request.enable):
             query['Enable'] = request.enable
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
         if not UtilClient.is_unset(request.region):
@@ -1377,8 +1335,6 @@ class Client(OpenApiClient):
             query['AppId'] = request.app_id
         if not UtilClient.is_unset(request.enable):
             query['Enable'] = request.enable
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
         if not UtilClient.is_unset(request.region):
@@ -1433,8 +1389,6 @@ class Client(OpenApiClient):
             query['Ids'] = request.ids
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.origin_namespace_id):
             query['OriginNamespaceId'] = request.origin_namespace_id
         if not UtilClient.is_unset(request.policy):
@@ -1473,8 +1427,6 @@ class Client(OpenApiClient):
             query['Ids'] = request.ids
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.origin_namespace_id):
             query['OriginNamespaceId'] = request.origin_namespace_id
         if not UtilClient.is_unset(request.policy):
@@ -1529,8 +1481,6 @@ class Client(OpenApiClient):
             query['ExtraInfo'] = request.extra_info
         if not UtilClient.is_unset(request.language):
             query['Language'] = request.language
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.region):
             query['Region'] = request.region
         if not UtilClient.is_unset(request.sentinel_enable):
@@ -1573,8 +1523,6 @@ class Client(OpenApiClient):
             query['ExtraInfo'] = request.extra_info
         if not UtilClient.is_unset(request.language):
             query['Language'] = request.language
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.region):
             query['Region'] = request.region
         if not UtilClient.is_unset(request.sentinel_enable):
@@ -1639,8 +1587,6 @@ class Client(OpenApiClient):
             query['InstanceCount'] = request.instance_count
         if not UtilClient.is_unset(request.instance_name):
             query['InstanceName'] = request.instance_name
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.mse_version):
             query['MseVersion'] = request.mse_version
         if not UtilClient.is_unset(request.net_type):
@@ -1705,8 +1651,6 @@ class Client(OpenApiClient):
             query['InstanceCount'] = request.instance_count
         if not UtilClient.is_unset(request.instance_name):
             query['InstanceName'] = request.instance_name
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.mse_version):
             query['MseVersion'] = request.mse_version
         if not UtilClient.is_unset(request.net_type):
@@ -1779,8 +1723,6 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.service_count):
@@ -1821,8 +1763,6 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.service_count):
@@ -1875,8 +1815,6 @@ class Client(OpenApiClient):
             query['ExtraInfo'] = request.extra_info
         if not UtilClient.is_unset(request.language):
             query['Language'] = request.language
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.mse_version):
             query['MseVersion'] = request.mse_version
         if not UtilClient.is_unset(request.region):
@@ -1921,8 +1859,6 @@ class Client(OpenApiClient):
             query['ExtraInfo'] = request.extra_info
         if not UtilClient.is_unset(request.language):
             query['Language'] = request.language
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.mse_version):
             query['MseVersion'] = request.mse_version
         if not UtilClient.is_unset(request.region):
@@ -1989,8 +1925,6 @@ class Client(OpenApiClient):
             query['Group'] = request.group
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
         if not UtilClient.is_unset(request.tags):
@@ -2039,8 +1973,6 @@ class Client(OpenApiClient):
             query['Group'] = request.group
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
         if not UtilClient.is_unset(request.tags):
@@ -2101,8 +2033,6 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.ip):
             query['Ip'] = request.ip
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
         if not UtilClient.is_unset(request.port):
@@ -2155,8 +2085,6 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.ip):
             query['Ip'] = request.ip
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
         if not UtilClient.is_unset(request.port):
@@ -2219,8 +2147,6 @@ class Client(OpenApiClient):
             query['GroupName'] = request.group_name
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
         if not UtilClient.is_unset(request.protect_threshold):
@@ -2263,8 +2189,6 @@ class Client(OpenApiClient):
             query['GroupName'] = request.group_name
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
         if not UtilClient.is_unset(request.protect_threshold):
@@ -2331,8 +2255,6 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not UtilClient.is_unset(request.license_key):
             query['LicenseKey'] = request.license_key
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.region_id):
@@ -2391,8 +2313,6 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not UtilClient.is_unset(request.license_key):
             query['LicenseKey'] = request.license_key
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.region_id):
@@ -2467,8 +2387,6 @@ class Client(OpenApiClient):
             query['MessageQueueFilterSide'] = request.message_queue_filter_side
         if not UtilClient.is_unset(request.message_queue_gray_enable):
             query['MessageQueueGrayEnable'] = request.message_queue_gray_enable
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.region):
@@ -2527,8 +2445,6 @@ class Client(OpenApiClient):
             query['MessageQueueFilterSide'] = request.message_queue_filter_side
         if not UtilClient.is_unset(request.message_queue_gray_enable):
             query['MessageQueueGrayEnable'] = request.message_queue_gray_enable
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.region):
@@ -2585,8 +2501,6 @@ class Client(OpenApiClient):
             query['ClusterId'] = request.cluster_id
         if not UtilClient.is_unset(request.data):
             query['Data'] = request.data
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.path):
             query['Path'] = request.path
         req = open_api_models.OpenApiRequest(
@@ -2621,8 +2535,6 @@ class Client(OpenApiClient):
             query['ClusterId'] = request.cluster_id
         if not UtilClient.is_unset(request.data):
             query['Data'] = request.data
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.path):
             query['Path'] = request.path
         req = open_api_models.OpenApiRequest(
@@ -2671,8 +2583,6 @@ class Client(OpenApiClient):
             query['GatewayUniqueId'] = request.gateway_unique_id
         if not UtilClient.is_unset(request.id):
             query['Id'] = request.id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2705,8 +2615,6 @@ class Client(OpenApiClient):
             query['GatewayUniqueId'] = request.gateway_unique_id
         if not UtilClient.is_unset(request.id):
             query['Id'] = request.id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2751,8 +2659,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2783,8 +2689,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2833,8 +2737,6 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2869,8 +2771,6 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2917,8 +2817,6 @@ class Client(OpenApiClient):
             query['DeleteSlb'] = request.delete_slb
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2951,8 +2849,6 @@ class Client(OpenApiClient):
             query['DeleteSlb'] = request.delete_slb
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2999,8 +2895,6 @@ class Client(OpenApiClient):
             query['GatewayUniqueId'] = request.gateway_unique_id
         if not UtilClient.is_unset(request.id):
             query['Id'] = request.id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3033,8 +2927,6 @@ class Client(OpenApiClient):
             query['GatewayUniqueId'] = request.gateway_unique_id
         if not UtilClient.is_unset(request.id):
             query['Id'] = request.id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3079,8 +2971,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.route_id):
             query['RouteId'] = request.route_id
         req = open_api_models.OpenApiRequest(
@@ -3113,8 +3003,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.route_id):
             query['RouteId'] = request.route_id
         req = open_api_models.OpenApiRequest(
@@ -3163,8 +3051,6 @@ class Client(OpenApiClient):
             query['GatewayId'] = request.gateway_id
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.service_id):
             query['ServiceId'] = request.service_id
         req = open_api_models.OpenApiRequest(
@@ -3199,8 +3085,6 @@ class Client(OpenApiClient):
             query['GatewayId'] = request.gateway_id
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.service_id):
             query['ServiceId'] = request.service_id
         req = open_api_models.OpenApiRequest(
@@ -3247,8 +3131,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.service_id):
             query['ServiceId'] = request.service_id
         if not UtilClient.is_unset(request.service_version):
@@ -3283,8 +3165,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.service_id):
             query['ServiceId'] = request.service_id
         if not UtilClient.is_unset(request.service_version):
@@ -3337,8 +3217,6 @@ class Client(OpenApiClient):
             query['GatewayUniqueId'] = request.gateway_unique_id
         if not UtilClient.is_unset(request.id):
             query['Id'] = request.id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3373,8 +3251,6 @@ class Client(OpenApiClient):
             query['GatewayUniqueId'] = request.gateway_unique_id
         if not UtilClient.is_unset(request.id):
             query['Id'] = request.id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3425,8 +3301,6 @@ class Client(OpenApiClient):
             query['Group'] = request.group
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
         req = open_api_models.OpenApiRequest(
@@ -3465,8 +3339,6 @@ class Client(OpenApiClient):
             query['Group'] = request.group
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
         req = open_api_models.OpenApiRequest(
@@ -3515,8 +3387,6 @@ class Client(OpenApiClient):
             query['Ids'] = request.ids
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
         req = open_api_models.OpenApiRequest(
@@ -3551,8 +3421,6 @@ class Client(OpenApiClient):
             query['Ids'] = request.ids
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
         req = open_api_models.OpenApiRequest(
@@ -3607,8 +3475,6 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.ip):
             query['Ip'] = request.ip
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
         if not UtilClient.is_unset(request.port):
@@ -3653,8 +3519,6 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.ip):
             query['Ip'] = request.ip
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
         if not UtilClient.is_unset(request.port):
@@ -3707,8 +3571,6 @@ class Client(OpenApiClient):
             query['GroupName'] = request.group_name
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
         if not UtilClient.is_unset(request.service_name):
@@ -3745,8 +3607,6 @@ class Client(OpenApiClient):
             query['GroupName'] = request.group_name
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
         if not UtilClient.is_unset(request.service_name):
@@ -3797,8 +3657,6 @@ class Client(OpenApiClient):
             query['GatewayUniqueId'] = request.gateway_unique_id
         if not UtilClient.is_unset(request.id):
             query['Id'] = request.id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3831,8 +3689,6 @@ class Client(OpenApiClient):
             query['GatewayUniqueId'] = request.gateway_unique_id
         if not UtilClient.is_unset(request.id):
             query['Id'] = request.id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3877,8 +3733,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.source_id):
             query['SourceId'] = request.source_id
         req = open_api_models.OpenApiRequest(
@@ -3911,8 +3765,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.source_id):
             query['SourceId'] = request.source_id
         req = open_api_models.OpenApiRequest(
@@ -3959,8 +3811,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.lane_id):
             query['LaneId'] = request.lane_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3991,8 +3841,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.lane_id):
             query['LaneId'] = request.lane_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4037,8 +3885,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4069,8 +3915,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4115,8 +3959,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.cluster_id):
             query['ClusterId'] = request.cluster_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.path):
             query['Path'] = request.path
         if not UtilClient.is_unset(request.request_pars):
@@ -4151,8 +3993,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.cluster_id):
             query['ClusterId'] = request.cluster_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.path):
             query['Path'] = request.path
         if not UtilClient.is_unset(request.request_pars):
@@ -4209,8 +4049,6 @@ class Client(OpenApiClient):
             query['Ids'] = request.ids
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
         req = open_api_models.OpenApiRequest(
@@ -4251,8 +4089,6 @@ class Client(OpenApiClient):
             query['Ids'] = request.ids
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
         req = open_api_models.OpenApiRequest(
@@ -4299,8 +4135,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.region):
             query['Region'] = request.region
         req = open_api_models.OpenApiRequest(
@@ -4333,8 +4167,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.region):
             query['Region'] = request.region
         req = open_api_models.OpenApiRequest(
@@ -4385,8 +4217,6 @@ class Client(OpenApiClient):
             query['AppName'] = request.app_name
         if not UtilClient.is_unset(request.language):
             query['Language'] = request.language
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -4433,8 +4263,6 @@ class Client(OpenApiClient):
             query['AppName'] = request.app_name
         if not UtilClient.is_unset(request.language):
             query['Language'] = request.language
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -4493,8 +4321,6 @@ class Client(OpenApiClient):
             query['GatewayUniqueId'] = request.gateway_unique_id
         if not UtilClient.is_unset(request.is_white):
             query['IsWhite'] = request.is_white
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.resource_type):
             query['ResourceType'] = request.resource_type
         if not UtilClient.is_unset(request.type):
@@ -4531,8 +4357,6 @@ class Client(OpenApiClient):
             query['GatewayUniqueId'] = request.gateway_unique_id
         if not UtilClient.is_unset(request.is_white):
             query['IsWhite'] = request.is_white
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.resource_type):
             query['ResourceType'] = request.resource_type
         if not UtilClient.is_unset(request.type):
@@ -4585,8 +4409,6 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4621,8 +4443,6 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4667,8 +4487,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4699,8 +4517,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4747,8 +4563,6 @@ class Client(OpenApiClient):
             query['GatewayUniqueId'] = request.gateway_unique_id
         if not UtilClient.is_unset(request.id):
             query['Id'] = request.id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4781,8 +4595,6 @@ class Client(OpenApiClient):
             query['GatewayUniqueId'] = request.gateway_unique_id
         if not UtilClient.is_unset(request.id):
             query['Id'] = request.id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4829,8 +4641,6 @@ class Client(OpenApiClient):
             query['GatewayId'] = request.gateway_id
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4863,8 +4673,6 @@ class Client(OpenApiClient):
             query['GatewayId'] = request.gateway_id
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4909,8 +4717,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.route_id):
             query['RouteId'] = request.route_id
         req = open_api_models.OpenApiRequest(
@@ -4943,8 +4749,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.route_id):
             query['RouteId'] = request.route_id
         req = open_api_models.OpenApiRequest(
@@ -4991,8 +4795,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.service_id):
             query['ServiceId'] = request.service_id
         req = open_api_models.OpenApiRequest(
@@ -5025,8 +4827,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.service_id):
             query['ServiceId'] = request.service_id
         req = open_api_models.OpenApiRequest(
@@ -5073,8 +4873,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.cluster_id):
             query['ClusterId'] = request.cluster_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
@@ -5107,8 +4905,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.cluster_id):
             query['ClusterId'] = request.cluster_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
@@ -5153,8 +4949,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.version_code):
             query['VersionCode'] = request.version_code
         req = open_api_models.OpenApiRequest(
@@ -5185,8 +4979,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.version_code):
             query['VersionCode'] = request.version_code
         req = open_api_models.OpenApiRequest(
@@ -5235,8 +5027,6 @@ class Client(OpenApiClient):
             query['ContentType'] = request.content_type
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
         req = open_api_models.OpenApiRequest(
@@ -5271,8 +5061,6 @@ class Client(OpenApiClient):
             query['ContentType'] = request.content_type
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
         req = open_api_models.OpenApiRequest(
@@ -5319,8 +5107,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5351,8 +5137,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5395,8 +5179,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5425,8 +5207,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5471,8 +5251,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.type):
             query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
@@ -5505,8 +5283,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.type):
             query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
@@ -5559,8 +5335,6 @@ class Client(OpenApiClient):
             query['Group'] = request.group
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
         req = open_api_models.OpenApiRequest(
@@ -5599,8 +5373,6 @@ class Client(OpenApiClient):
             query['Group'] = request.group
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
         req = open_api_models.OpenApiRequest(
@@ -5651,8 +5423,6 @@ class Client(OpenApiClient):
             query['Group'] = request.group
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
         if not UtilClient.is_unset(request.nid):
@@ -5691,8 +5461,6 @@ class Client(OpenApiClient):
             query['Group'] = request.group
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
         if not UtilClient.is_unset(request.nid):
@@ -5739,8 +5507,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.period):
             query['Period'] = request.period
         if not UtilClient.is_unset(request.region):
@@ -5773,8 +5539,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.period):
             query['Period'] = request.period
         if not UtilClient.is_unset(request.region):
@@ -5823,8 +5587,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.plugin_id):
             query['PluginId'] = request.plugin_id
         req = open_api_models.OpenApiRequest(
@@ -5857,8 +5619,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.plugin_id):
             query['PluginId'] = request.plugin_id
         req = open_api_models.OpenApiRequest(
@@ -5909,8 +5669,6 @@ class Client(OpenApiClient):
             query['EnableOnly'] = request.enable_only
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         req = open_api_models.OpenApiRequest(
@@ -5947,8 +5705,6 @@ class Client(OpenApiClient):
             query['EnableOnly'] = request.enable_only
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         req = open_api_models.OpenApiRequest(
@@ -5997,8 +5753,6 @@ class Client(OpenApiClient):
             query['AppId'] = request.app_id
         if not UtilClient.is_unset(request.ip):
             query['Ip'] = request.ip
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.region):
             query['Region'] = request.region
         if not UtilClient.is_unset(request.service_name):
@@ -6037,8 +5791,6 @@ class Client(OpenApiClient):
             query['AppId'] = request.app_id
         if not UtilClient.is_unset(request.ip):
             query['Ip'] = request.ip
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.region):
             query['Region'] = request.region
         if not UtilClient.is_unset(request.service_name):
@@ -6097,8 +5849,6 @@ class Client(OpenApiClient):
             query['HasIpCount'] = request.has_ip_count
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
         if not UtilClient.is_unset(request.page_num):
@@ -6149,8 +5899,6 @@ class Client(OpenApiClient):
             query['HasIpCount'] = request.has_ip_count
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
         if not UtilClient.is_unset(request.page_num):
@@ -6207,8 +5955,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6239,8 +5985,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6287,8 +6031,6 @@ class Client(OpenApiClient):
             query['FileUrl'] = request.file_url
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
         if not UtilClient.is_unset(request.policy):
@@ -6325,8 +6067,6 @@ class Client(OpenApiClient):
             query['FileUrl'] = request.file_url
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
         if not UtilClient.is_unset(request.policy):
@@ -6379,8 +6119,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.service_list_shrink):
             query['ServiceList'] = request.service_list_shrink
         if not UtilClient.is_unset(request.source_type):
@@ -6421,8 +6159,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.service_list_shrink):
             query['ServiceList'] = request.service_list_shrink
         if not UtilClient.is_unset(request.source_type):
@@ -6671,8 +6407,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
@@ -6705,8 +6439,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
@@ -6817,8 +6549,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6847,8 +6577,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6893,8 +6621,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.connect_type):
             query['ConnectType'] = request.connect_type
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.mse_version):
             query['MseVersion'] = request.mse_version
         if not UtilClient.is_unset(request.region_id):
@@ -6929,8 +6655,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.connect_type):
             query['ConnectType'] = request.connect_type
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.mse_version):
             query['MseVersion'] = request.mse_version
         if not UtilClient.is_unset(request.region_id):
@@ -6979,8 +6703,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.cluster_type):
             query['ClusterType'] = request.cluster_type
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.mse_version):
             query['MseVersion'] = request.mse_version
         req = open_api_models.OpenApiRequest(
@@ -7013,8 +6735,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.cluster_type):
             query['ClusterType'] = request.cluster_type
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.mse_version):
             query['MseVersion'] = request.mse_version
         req = open_api_models.OpenApiRequest(
@@ -7331,8 +7051,6 @@ class Client(OpenApiClient):
             query['DescSort'] = request.desc_sort
         if not UtilClient.is_unset(request.filter_params_shrink):
             query['FilterParams'] = request.filter_params_shrink
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.order_item):
             query['OrderItem'] = request.order_item
         if not UtilClient.is_unset(request.page_number):
@@ -7375,8 +7093,6 @@ class Client(OpenApiClient):
             query['DescSort'] = request.desc_sort
         if not UtilClient.is_unset(request.filter_params_shrink):
             query['FilterParams'] = request.filter_params_shrink
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.order_item):
             query['OrderItem'] = request.order_item
         if not UtilClient.is_unset(request.page_number):
@@ -7427,8 +7143,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.type):
             query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
@@ -7461,8 +7175,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.type):
             query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
@@ -7515,8 +7227,6 @@ class Client(OpenApiClient):
             query['DescSort'] = request.desc_sort
         if not UtilClient.is_unset(request.filter_params_shrink):
             query['FilterParams'] = request.filter_params_shrink
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.order_item):
             query['OrderItem'] = request.order_item
         if not UtilClient.is_unset(request.page_number):
@@ -7559,8 +7269,6 @@ class Client(OpenApiClient):
             query['DescSort'] = request.desc_sort
         if not UtilClient.is_unset(request.filter_params_shrink):
             query['FilterParams'] = request.filter_params_shrink
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.order_item):
             query['OrderItem'] = request.order_item
         if not UtilClient.is_unset(request.page_number):
@@ -7617,8 +7325,6 @@ class Client(OpenApiClient):
             query['DescSort'] = request.desc_sort
         if not UtilClient.is_unset(request.filter_params_shrink):
             query['FilterParams'] = request.filter_params_shrink
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.order_item):
             query['OrderItem'] = request.order_item
         if not UtilClient.is_unset(request.page_number):
@@ -7661,8 +7367,6 @@ class Client(OpenApiClient):
             query['DescSort'] = request.desc_sort
         if not UtilClient.is_unset(request.filter_params_shrink):
             query['FilterParams'] = request.filter_params_shrink
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.order_item):
             query['OrderItem'] = request.order_item
         if not UtilClient.is_unset(request.page_number):
@@ -7713,8 +7417,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7745,8 +7447,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7791,8 +7491,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.cluster_type):
             query['ClusterType'] = request.cluster_type
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.mse_version):
             query['MseVersion'] = request.mse_version
         if not UtilClient.is_unset(request.region_id):
@@ -7829,8 +7527,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.cluster_type):
             query['ClusterType'] = request.cluster_type
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.mse_version):
             query['MseVersion'] = request.mse_version
         if not UtilClient.is_unset(request.region_id):
@@ -7951,8 +7647,6 @@ class Client(OpenApiClient):
             query['Group'] = request.group
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
         if not UtilClient.is_unset(request.request_pars):
@@ -7991,8 +7685,6 @@ class Client(OpenApiClient):
             query['Group'] = request.group
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
         if not UtilClient.is_unset(request.request_pars):
@@ -8043,8 +7735,6 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.ip):
             query['Ip'] = request.ip
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
         if not UtilClient.is_unset(request.request_pars):
@@ -8081,8 +7771,6 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.ip):
             query['Ip'] = request.ip
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
         if not UtilClient.is_unset(request.request_pars):
@@ -8137,8 +7825,6 @@ class Client(OpenApiClient):
             query['Group'] = request.group
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
         if not UtilClient.is_unset(request.page_num):
@@ -8187,8 +7873,6 @@ class Client(OpenApiClient):
             query['Group'] = request.group
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
         if not UtilClient.is_unset(request.page_num):
@@ -8249,8 +7933,6 @@ class Client(OpenApiClient):
             query['Group'] = request.group
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
         if not UtilClient.is_unset(request.page_num):
@@ -8295,8 +7977,6 @@ class Client(OpenApiClient):
             query['Group'] = request.group
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
         if not UtilClient.is_unset(request.page_num):
@@ -8351,8 +8031,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8383,8 +8061,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8429,8 +8105,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8461,8 +8135,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8507,8 +8179,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8539,8 +8209,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8585,8 +8253,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8617,8 +8283,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8661,8 +8325,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.next_token):
             query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.region_id):
@@ -8701,8 +8363,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.next_token):
             query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.region_id):
@@ -8955,8 +8615,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.cluster_id):
             query['ClusterId'] = request.cluster_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.namespace_infos):
             query['NamespaceInfos'] = request.namespace_infos
         if not UtilClient.is_unset(request.region_id):
@@ -8991,8 +8649,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.cluster_id):
             query['ClusterId'] = request.cluster_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.namespace_infos):
             query['NamespaceInfos'] = request.namespace_infos
         if not UtilClient.is_unset(request.region_id):
@@ -9051,8 +8707,6 @@ class Client(OpenApiClient):
             query['Enable'] = request.enable
         if not UtilClient.is_unset(request.func_type):
             query['FuncType'] = request.func_type
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.related):
@@ -9103,8 +8757,6 @@ class Client(OpenApiClient):
             query['Enable'] = request.enable
         if not UtilClient.is_unset(request.func_type):
             query['FuncType'] = request.func_type
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.related):
@@ -9159,8 +8811,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.route_id):
             query['RouteId'] = request.route_id
         req = open_api_models.OpenApiRequest(
@@ -9193,8 +8843,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.route_id):
             query['RouteId'] = request.route_id
         req = open_api_models.OpenApiRequest(
@@ -9241,8 +8889,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.namespace):
             query['Namespace'] = request.namespace
         if not UtilClient.is_unset(request.source_type):
@@ -9277,8 +8923,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.namespace):
             query['Namespace'] = request.namespace
         if not UtilClient.is_unset(request.source_type):
@@ -9327,8 +8971,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9359,8 +9001,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9403,8 +9043,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9433,8 +9071,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9547,8 +9183,6 @@ class Client(OpenApiClient):
             query['AclSwitch'] = request.acl_switch
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.order_id):
             query['OrderId'] = request.order_id
         req = open_api_models.OpenApiRequest(
@@ -9583,8 +9217,6 @@ class Client(OpenApiClient):
             query['AclSwitch'] = request.acl_switch
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.order_id):
             query['OrderId'] = request.order_id
         req = open_api_models.OpenApiRequest(
@@ -9631,8 +9263,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.cluster_type):
             query['ClusterType'] = request.cluster_type
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9663,8 +9293,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.cluster_type):
             query['ClusterType'] = request.cluster_type
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9709,8 +9337,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.connect_type):
             query['ConnectType'] = request.connect_type
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.mse_version):
             query['MseVersion'] = request.mse_version
         req = open_api_models.OpenApiRequest(
@@ -9743,8 +9369,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.connect_type):
             query['ConnectType'] = request.connect_type
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.mse_version):
             query['MseVersion'] = request.mse_version
         req = open_api_models.OpenApiRequest(
@@ -9855,8 +9479,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9885,8 +9507,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9929,8 +9549,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9959,8 +9577,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -10203,8 +9819,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.lane_id):
             query['LaneId'] = request.lane_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -10235,8 +9849,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.lane_id):
             query['LaneId'] = request.lane_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -10349,8 +9961,6 @@ class Client(OpenApiClient):
             query['ClusterId'] = request.cluster_id
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.pod_name_list):
             query['PodNameList'] = request.pod_name_list
         if not UtilClient.is_unset(request.request_pars):
@@ -10387,8 +9997,6 @@ class Client(OpenApiClient):
             query['ClusterId'] = request.cluster_id
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.pod_name_list):
             query['PodNameList'] = request.pod_name_list
         if not UtilClient.is_unset(request.request_pars):
@@ -10437,8 +10045,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.request_pars):
             query['RequestPars'] = request.request_pars
         req = open_api_models.OpenApiRequest(
@@ -10471,8 +10077,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.request_pars):
             query['RequestPars'] = request.request_pars
         req = open_api_models.OpenApiRequest(
@@ -10519,8 +10123,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.type):
@@ -10555,8 +10157,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.type):
@@ -10603,8 +10203,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_id):
@@ -10641,8 +10239,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_id):
@@ -10695,8 +10291,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.all):
             query['All'] = request.all
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_id):
@@ -10735,8 +10329,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.all):
             query['All'] = request.all
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_id):
@@ -10791,8 +10383,6 @@ class Client(OpenApiClient):
             query['AclEntryList'] = request.acl_entry_list
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -10825,8 +10415,6 @@ class Client(OpenApiClient):
             query['AclEntryList'] = request.acl_entry_list
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -10877,8 +10465,6 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not UtilClient.is_unset(request.is_white):
             query['IsWhite'] = request.is_white
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.note):
@@ -10927,8 +10513,6 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not UtilClient.is_unset(request.is_white):
             query['IsWhite'] = request.is_white
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.note):
@@ -10987,8 +10571,6 @@ class Client(OpenApiClient):
             query['ClusterAliasName'] = request.cluster_alias_name
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.request_pars):
             query['RequestPars'] = request.request_pars
         req = open_api_models.OpenApiRequest(
@@ -11023,8 +10605,6 @@ class Client(OpenApiClient):
             query['ClusterAliasName'] = request.cluster_alias_name
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.request_pars):
             query['RequestPars'] = request.request_pars
         req = open_api_models.OpenApiRequest(
@@ -11077,8 +10657,6 @@ class Client(OpenApiClient):
             query['InstanceCount'] = request.instance_count
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -11115,8 +10693,6 @@ class Client(OpenApiClient):
             query['InstanceCount'] = request.instance_count
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -11185,8 +10761,6 @@ class Client(OpenApiClient):
             query['MaxSessionTimeout'] = request.max_session_timeout
         if not UtilClient.is_unset(request.min_session_timeout):
             query['MinSessionTimeout'] = request.min_session_timeout
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.naming_auth_enabled):
             query['NamingAuthEnabled'] = request.naming_auth_enabled
         if not UtilClient.is_unset(request.pass_word):
@@ -11259,8 +10833,6 @@ class Client(OpenApiClient):
             query['MaxSessionTimeout'] = request.max_session_timeout
         if not UtilClient.is_unset(request.min_session_timeout):
             query['MinSessionTimeout'] = request.min_session_timeout
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.naming_auth_enabled):
             query['NamingAuthEnabled'] = request.naming_auth_enabled
         if not UtilClient.is_unset(request.pass_word):
@@ -11329,8 +10901,6 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.service_count):
@@ -11371,8 +10941,6 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.service_count):
@@ -11427,8 +10995,6 @@ class Client(OpenApiClient):
             query['Http2'] = request.http_2
         if not UtilClient.is_unset(request.id):
             query['Id'] = request.id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.must_https):
             query['MustHttps'] = request.must_https
         if not UtilClient.is_unset(request.protocol):
@@ -11473,8 +11039,6 @@ class Client(OpenApiClient):
             query['Http2'] = request.http_2
         if not UtilClient.is_unset(request.id):
             query['Id'] = request.id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.must_https):
             query['MustHttps'] = request.must_https
         if not UtilClient.is_unset(request.protocol):
@@ -11527,8 +11091,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         req = open_api_models.OpenApiRequest(
@@ -11561,8 +11123,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         req = open_api_models.OpenApiRequest(
@@ -11617,8 +11177,6 @@ class Client(OpenApiClient):
             query['GatewayOption'] = request.gateway_option_shrink
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -11657,8 +11215,6 @@ class Client(OpenApiClient):
             query['GatewayOption'] = request.gateway_option_shrink
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -11731,8 +11287,6 @@ class Client(OpenApiClient):
             query['GatewayUniqueId'] = request.gateway_unique_id
         if not UtilClient.is_unset(request.id):
             query['Id'] = request.id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.predicates_shrink):
@@ -11801,8 +11355,6 @@ class Client(OpenApiClient):
             query['GatewayUniqueId'] = request.gateway_unique_id
         if not UtilClient.is_unset(request.id):
             query['Id'] = request.id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.predicates_shrink):
@@ -11867,8 +11419,6 @@ class Client(OpenApiClient):
             query['GatewayUniqueId'] = request.gateway_unique_id
         if not UtilClient.is_unset(request.id):
             query['Id'] = request.id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -11909,8 +11459,6 @@ class Client(OpenApiClient):
             query['GatewayUniqueId'] = request.gateway_unique_id
         if not UtilClient.is_unset(request.id):
             query['Id'] = request.id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -11961,8 +11509,6 @@ class Client(OpenApiClient):
             query['HttpRewriteJSON'] = request.http_rewrite_json
         if not UtilClient.is_unset(request.id):
             query['Id'] = request.id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -11999,8 +11545,6 @@ class Client(OpenApiClient):
             query['HttpRewriteJSON'] = request.http_rewrite_json
         if not UtilClient.is_unset(request.id):
             query['Id'] = request.id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -12051,8 +11595,6 @@ class Client(OpenApiClient):
             query['HeaderOpJSON'] = request.header_op_json
         if not UtilClient.is_unset(request.id):
             query['Id'] = request.id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -12089,8 +11631,6 @@ class Client(OpenApiClient):
             query['HeaderOpJSON'] = request.header_op_json
         if not UtilClient.is_unset(request.id):
             query['Id'] = request.id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -12143,8 +11683,6 @@ class Client(OpenApiClient):
             query['GatewayUniqueId'] = request.gateway_unique_id
         if not UtilClient.is_unset(request.id):
             query['Id'] = request.id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.retry_jsonshrink):
             query['RetryJSON'] = request.retry_jsonshrink
         req = open_api_models.OpenApiRequest(
@@ -12185,8 +11723,6 @@ class Client(OpenApiClient):
             query['GatewayUniqueId'] = request.gateway_unique_id
         if not UtilClient.is_unset(request.id):
             query['Id'] = request.id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.retry_jsonshrink):
             query['RetryJSON'] = request.retry_jsonshrink
         req = open_api_models.OpenApiRequest(
@@ -12241,8 +11777,6 @@ class Client(OpenApiClient):
             query['GatewayUniqueId'] = request.gateway_unique_id
         if not UtilClient.is_unset(request.id):
             query['Id'] = request.id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.timeout_jsonshrink):
             query['TimeoutJSON'] = request.timeout_jsonshrink
         req = open_api_models.OpenApiRequest(
@@ -12283,8 +11817,6 @@ class Client(OpenApiClient):
             query['GatewayUniqueId'] = request.gateway_unique_id
         if not UtilClient.is_unset(request.id):
             query['Id'] = request.id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.timeout_jsonshrink):
             query['TimeoutJSON'] = request.timeout_jsonshrink
         req = open_api_models.OpenApiRequest(
@@ -12333,8 +11865,6 @@ class Client(OpenApiClient):
             query['EnableWaf'] = request.enable_waf
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.route_id):
             query['RouteId'] = request.route_id
         req = open_api_models.OpenApiRequest(
@@ -12369,8 +11899,6 @@ class Client(OpenApiClient):
             query['EnableWaf'] = request.enable_waf
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.route_id):
             query['RouteId'] = request.route_id
         req = open_api_models.OpenApiRequest(
@@ -12425,8 +11953,6 @@ class Client(OpenApiClient):
             query['GatewayTrafficPolicy'] = request.gateway_traffic_policy_shrink
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.service_id):
             query['ServiceId'] = request.service_id
         req = open_api_models.OpenApiRequest(
@@ -12467,8 +11993,6 @@ class Client(OpenApiClient):
             query['GatewayTrafficPolicy'] = request.gateway_traffic_policy_shrink
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.service_id):
             query['ServiceId'] = request.service_id
         req = open_api_models.OpenApiRequest(
@@ -12515,8 +12039,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.service_id):
             query['ServiceId'] = request.service_id
         if not UtilClient.is_unset(request.service_version):
@@ -12551,8 +12073,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.service_id):
             query['ServiceId'] = request.service_id
         if not UtilClient.is_unset(request.service_version):
@@ -12601,8 +12121,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.replica):
             query['Replica'] = request.replica
         if not UtilClient.is_unset(request.spec):
@@ -12637,8 +12155,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.replica):
             query['Replica'] = request.replica
         if not UtilClient.is_unset(request.spec):
@@ -12687,8 +12203,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.cluster_id):
             query['ClusterId'] = request.cluster_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.version_code):
             query['VersionCode'] = request.version_code
         req = open_api_models.OpenApiRequest(
@@ -12721,8 +12235,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.cluster_id):
             query['ClusterId'] = request.cluster_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.version_code):
             query['VersionCode'] = request.version_code
         req = open_api_models.OpenApiRequest(
@@ -12777,8 +12289,6 @@ class Client(OpenApiClient):
             query['Enable'] = request.enable
         if not UtilClient.is_unset(request.filter_side):
             query['FilterSide'] = request.filter_side
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.region):
             query['Region'] = request.region
         if not UtilClient.is_unset(request.tags_shrink):
@@ -12821,8 +12331,6 @@ class Client(OpenApiClient):
             query['Enable'] = request.enable
         if not UtilClient.is_unset(request.filter_side):
             query['FilterSide'] = request.filter_side
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.region):
             query['Region'] = request.region
         if not UtilClient.is_unset(request.tags_shrink):
@@ -12879,8 +12387,6 @@ class Client(OpenApiClient):
             query['HealthChecker'] = request.health_checker
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
         if not UtilClient.is_unset(request.service_name):
@@ -12925,8 +12431,6 @@ class Client(OpenApiClient):
             query['HealthChecker'] = request.health_checker
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
         if not UtilClient.is_unset(request.service_name):
@@ -12993,8 +12497,6 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.md_5):
             query['Md5'] = request.md_5
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
         if not UtilClient.is_unset(request.tags):
@@ -13047,8 +12549,6 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.md_5):
             query['Md5'] = request.md_5
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
         if not UtilClient.is_unset(request.tags):
@@ -13109,8 +12609,6 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.ip):
             query['Ip'] = request.ip
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
         if not UtilClient.is_unset(request.port):
@@ -13163,8 +12661,6 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.ip):
             query['Ip'] = request.ip
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
         if not UtilClient.is_unset(request.port):
@@ -13225,8 +12721,6 @@ class Client(OpenApiClient):
             query['GroupName'] = request.group_name
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
         if not UtilClient.is_unset(request.protect_threshold):
@@ -13267,8 +12761,6 @@ class Client(OpenApiClient):
             query['GroupName'] = request.group_name
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
         if not UtilClient.is_unset(request.protect_threshold):
@@ -13333,8 +12825,6 @@ class Client(OpenApiClient):
             query['GmtModified'] = request.gmt_modified
         if not UtilClient.is_unset(request.id):
             query['Id'] = request.id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.plugin_id):
             query['PluginId'] = request.plugin_id
         req = open_api_models.OpenApiRequest(
@@ -13381,8 +12871,6 @@ class Client(OpenApiClient):
             query['GmtModified'] = request.gmt_modified
         if not UtilClient.is_unset(request.id):
             query['Id'] = request.id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.plugin_id):
             query['PluginId'] = request.plugin_id
         req = open_api_models.OpenApiRequest(
@@ -13433,8 +12921,6 @@ class Client(OpenApiClient):
             query['DomainId'] = request.domain_id
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -13469,8 +12955,6 @@ class Client(OpenApiClient):
             query['DomainId'] = request.domain_id
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -13514,6 +12998,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.ingress_options_request):
             request.ingress_options_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.ingress_options_request), 'IngressOptionsRequest', 'json')
+        if not UtilClient.is_unset(tmp_req.path_list):
+            request.path_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.path_list, 'PathList', 'json')
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
@@ -13527,10 +13013,10 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not UtilClient.is_unset(request.ingress_options_request_shrink):
             query['IngressOptionsRequest'] = request.ingress_options_request_shrink
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
+        if not UtilClient.is_unset(request.path_list_shrink):
+            query['PathList'] = request.path_list_shrink
         if not UtilClient.is_unset(request.source):
             query['Source'] = request.source
         if not UtilClient.is_unset(request.type):
@@ -13564,6 +13050,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.ingress_options_request):
             request.ingress_options_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.ingress_options_request), 'IngressOptionsRequest', 'json')
+        if not UtilClient.is_unset(tmp_req.path_list):
+            request.path_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.path_list, 'PathList', 'json')
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
@@ -13577,10 +13065,10 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not UtilClient.is_unset(request.ingress_options_request_shrink):
             query['IngressOptionsRequest'] = request.ingress_options_request_shrink
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
+        if not UtilClient.is_unset(request.path_list_shrink):
+            query['PathList'] = request.path_list_shrink
         if not UtilClient.is_unset(request.source):
             query['Source'] = request.source
         if not UtilClient.is_unset(request.type):
@@ -13631,8 +13119,6 @@ class Client(OpenApiClient):
             query['ClusterId'] = request.cluster_id
         if not UtilClient.is_unset(request.data):
             query['Data'] = request.data
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.path):
             query['Path'] = request.path
         if not UtilClient.is_unset(request.request_pars):
@@ -13669,8 +13155,6 @@ class Client(OpenApiClient):
             query['ClusterId'] = request.cluster_id
         if not UtilClient.is_unset(request.data):
             query['Data'] = request.data
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.path):
             query['Path'] = request.path
         if not UtilClient.is_unset(request.request_pars):
@@ -13719,8 +13203,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.request_pars):
             query['RequestPars'] = request.request_pars
         if not UtilClient.is_unset(request.upgrade_version):
@@ -13755,8 +13237,6 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.mse_session_id):
-            query['MseSessionId'] = request.mse_session_id
         if not UtilClient.is_unset(request.request_pars):
             query['RequestPars'] = request.request_pars
         if not UtilClient.is_unset(request.upgrade_version):
