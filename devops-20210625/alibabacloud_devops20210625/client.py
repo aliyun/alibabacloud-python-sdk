@@ -67,7 +67,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.AddRepositoryMemberResponse:
         UtilClient.validate_model(request)
-        repository_id = OpenApiUtilClient.get_encode_param(repository_id)
         query = {}
         if not UtilClient.is_unset(request.access_token):
             query['AccessToken'] = request.access_token
@@ -87,7 +86,7 @@ class Client(OpenApiClient):
             action='AddRepositoryMember',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/repository/{repository_id}/members',
+            pathname=f'/repository/{OpenApiUtilClient.get_encode_param(repository_id)}/members',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -107,7 +106,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.AddRepositoryMemberResponse:
         UtilClient.validate_model(request)
-        repository_id = OpenApiUtilClient.get_encode_param(repository_id)
         query = {}
         if not UtilClient.is_unset(request.access_token):
             query['AccessToken'] = request.access_token
@@ -127,7 +125,7 @@ class Client(OpenApiClient):
             action='AddRepositoryMember',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/repository/{repository_id}/members',
+            pathname=f'/repository/{OpenApiUtilClient.get_encode_param(repository_id)}/members',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -165,7 +163,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.AddWebhookResponse:
         UtilClient.validate_model(request)
-        repository_id = OpenApiUtilClient.get_encode_param(repository_id)
         query = {}
         if not UtilClient.is_unset(request.access_token):
             query['AccessToken'] = request.access_token
@@ -197,7 +194,7 @@ class Client(OpenApiClient):
             action='AddWebhook',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/repository/{repository_id}/webhooks/create',
+            pathname=f'/repository/{OpenApiUtilClient.get_encode_param(repository_id)}/webhooks/create',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -217,7 +214,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.AddWebhookResponse:
         UtilClient.validate_model(request)
-        repository_id = OpenApiUtilClient.get_encode_param(repository_id)
         query = {}
         if not UtilClient.is_unset(request.access_token):
             query['AccessToken'] = request.access_token
@@ -249,7 +245,7 @@ class Client(OpenApiClient):
             action='AddWebhook',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/repository/{repository_id}/webhooks/create',
+            pathname=f'/repository/{OpenApiUtilClient.get_encode_param(repository_id)}/webhooks/create',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -287,7 +283,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateFlowTagResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         query = {}
         if not UtilClient.is_unset(request.color):
             query['color'] = request.color
@@ -303,7 +298,7 @@ class Client(OpenApiClient):
             action='CreateFlowTag',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/flow/tags',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/flow/tags',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -323,7 +318,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateFlowTagResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         query = {}
         if not UtilClient.is_unset(request.color):
             query['color'] = request.color
@@ -339,7 +333,7 @@ class Client(OpenApiClient):
             action='CreateFlowTag',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/flow/tags',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/flow/tags',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -377,7 +371,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateFlowTagGroupResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         query = {}
         if not UtilClient.is_unset(request.name):
             query['name'] = request.name
@@ -389,7 +382,7 @@ class Client(OpenApiClient):
             action='CreateFlowTagGroup',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/flow/tagGroups',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/flow/tagGroups',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -409,7 +402,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateFlowTagGroupResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         query = {}
         if not UtilClient.is_unset(request.name):
             query['name'] = request.name
@@ -421,7 +413,7 @@ class Client(OpenApiClient):
             action='CreateFlowTagGroup',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/flow/tagGroups',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/flow/tagGroups',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -459,7 +451,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateHostGroupResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         body = {}
         if not UtilClient.is_unset(request.aliyun_region):
             body['aliyunRegion'] = request.aliyun_region
@@ -489,7 +480,7 @@ class Client(OpenApiClient):
             action='CreateHostGroup',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/hostGroups',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/hostGroups',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -509,7 +500,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateHostGroupResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         body = {}
         if not UtilClient.is_unset(request.aliyun_region):
             body['aliyunRegion'] = request.aliyun_region
@@ -539,7 +529,7 @@ class Client(OpenApiClient):
             action='CreateHostGroup',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/hostGroups',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/hostGroups',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -647,100 +637,6 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_pipeline(
-        self,
-        organization_id: str,
-        request: devops_20210625_models.CreatePipelineRequest,
-    ) -> devops_20210625_models.CreatePipelineResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.create_pipeline_with_options(organization_id, request, headers, runtime)
-
-    async def create_pipeline_async(
-        self,
-        organization_id: str,
-        request: devops_20210625_models.CreatePipelineRequest,
-    ) -> devops_20210625_models.CreatePipelineResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.create_pipeline_with_options_async(organization_id, request, headers, runtime)
-
-    def create_pipeline_with_options(
-        self,
-        organization_id: str,
-        request: devops_20210625_models.CreatePipelineRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> devops_20210625_models.CreatePipelineResponse:
-        UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        body = {}
-        if not UtilClient.is_unset(request.basic_info):
-            body['basicInfo'] = request.basic_info
-        if not UtilClient.is_unset(request.pipeline_yaml):
-            body['pipelineYaml'] = request.pipeline_yaml
-        if not UtilClient.is_unset(request.settings):
-            body['settings'] = request.settings
-        if not UtilClient.is_unset(request.trigger_info):
-            body['triggerInfo'] = request.trigger_info
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='CreatePipeline',
-            version='2021-06-25',
-            protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/pipelines',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            devops_20210625_models.CreatePipelineResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def create_pipeline_with_options_async(
-        self,
-        organization_id: str,
-        request: devops_20210625_models.CreatePipelineRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> devops_20210625_models.CreatePipelineResponse:
-        UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        body = {}
-        if not UtilClient.is_unset(request.basic_info):
-            body['basicInfo'] = request.basic_info
-        if not UtilClient.is_unset(request.pipeline_yaml):
-            body['pipelineYaml'] = request.pipeline_yaml
-        if not UtilClient.is_unset(request.settings):
-            body['settings'] = request.settings
-        if not UtilClient.is_unset(request.trigger_info):
-            body['triggerInfo'] = request.trigger_info
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='CreatePipeline',
-            version='2021-06-25',
-            protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/pipelines',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            devops_20210625_models.CreatePipelineResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
     def create_pipeline_group(
         self,
         organization_id: str,
@@ -767,7 +663,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreatePipelineGroupResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         query = {}
         if not UtilClient.is_unset(request.name):
             query['name'] = request.name
@@ -779,7 +674,7 @@ class Client(OpenApiClient):
             action='CreatePipelineGroup',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/pipelineGroups',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/pipelineGroups',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -799,7 +694,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreatePipelineGroupResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         query = {}
         if not UtilClient.is_unset(request.name):
             query['name'] = request.name
@@ -811,7 +705,7 @@ class Client(OpenApiClient):
             action='CreatePipelineGroup',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/pipelineGroups',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/pipelineGroups',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -849,7 +743,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateProjectResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         body = {}
         if not UtilClient.is_unset(request.custom_code):
             body['customCode'] = request.custom_code
@@ -867,7 +760,7 @@ class Client(OpenApiClient):
             action='CreateProject',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/projects/createProject',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/projects/createProject',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -887,7 +780,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateProjectResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         body = {}
         if not UtilClient.is_unset(request.custom_code):
             body['customCode'] = request.custom_code
@@ -905,7 +797,7 @@ class Client(OpenApiClient):
             action='CreateProject',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/projects/createProject',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/projects/createProject',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -1109,9 +1001,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateResourceMemberResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        resource_type = OpenApiUtilClient.get_encode_param(resource_type)
-        resource_id = OpenApiUtilClient.get_encode_param(resource_id)
         body = {}
         if not UtilClient.is_unset(request.account_id):
             body['accountId'] = request.account_id
@@ -1125,7 +1014,7 @@ class Client(OpenApiClient):
             action='CreateResourceMember',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/{resource_type}/{resource_id}/members',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/{OpenApiUtilClient.get_encode_param(resource_type)}/{OpenApiUtilClient.get_encode_param(resource_id)}/members',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -1147,9 +1036,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateResourceMemberResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        resource_type = OpenApiUtilClient.get_encode_param(resource_type)
-        resource_id = OpenApiUtilClient.get_encode_param(resource_id)
         body = {}
         if not UtilClient.is_unset(request.account_id):
             body['accountId'] = request.account_id
@@ -1163,7 +1049,7 @@ class Client(OpenApiClient):
             action='CreateResourceMember',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/{resource_type}/{resource_id}/members',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/{OpenApiUtilClient.get_encode_param(resource_type)}/{OpenApiUtilClient.get_encode_param(resource_id)}/members',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -1201,7 +1087,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateSprintResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         body = {}
         if not UtilClient.is_unset(request.end_date):
             body['endDate'] = request.end_date
@@ -1221,7 +1106,7 @@ class Client(OpenApiClient):
             action='CreateSprint',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/sprints/create',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/sprints/create',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -1241,7 +1126,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateSprintResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         body = {}
         if not UtilClient.is_unset(request.end_date):
             body['endDate'] = request.end_date
@@ -1261,7 +1145,7 @@ class Client(OpenApiClient):
             action='CreateSprint',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/sprints/create',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/sprints/create',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -1295,7 +1179,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateSshKeyResponse:
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1303,7 +1186,7 @@ class Client(OpenApiClient):
             action='CreateSshKey',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/sshKey',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/sshKey',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -1321,7 +1204,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateSshKeyResponse:
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1329,7 +1211,7 @@ class Client(OpenApiClient):
             action='CreateSshKey',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/sshKey',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/sshKey',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -1367,7 +1249,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateVariableGroupResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         body = {}
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
@@ -1383,7 +1264,7 @@ class Client(OpenApiClient):
             action='CreateVariableGroup',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/variableGroups',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/variableGroups',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -1403,7 +1284,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateVariableGroupResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         body = {}
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
@@ -1419,7 +1299,7 @@ class Client(OpenApiClient):
             action='CreateVariableGroup',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/variableGroups',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/variableGroups',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -1457,7 +1337,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateWorkitemResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         body = {}
         if not UtilClient.is_unset(request.assigned_to):
             body['assignedTo'] = request.assigned_to
@@ -1497,7 +1376,7 @@ class Client(OpenApiClient):
             action='CreateWorkitem',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/workitems/create',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/workitems/create',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -1517,7 +1396,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateWorkitemResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         body = {}
         if not UtilClient.is_unset(request.assigned_to):
             body['assignedTo'] = request.assigned_to
@@ -1557,7 +1435,7 @@ class Client(OpenApiClient):
             action='CreateWorkitem',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/workitems/create',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/workitems/create',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -1698,8 +1576,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeleteFlowTagResponse:
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        id = OpenApiUtilClient.get_encode_param(id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1707,7 +1583,7 @@ class Client(OpenApiClient):
             action='DeleteFlowTag',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/flow/tags/{id}',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/flow/tags/{OpenApiUtilClient.get_encode_param(id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1726,8 +1602,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeleteFlowTagResponse:
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        id = OpenApiUtilClient.get_encode_param(id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1735,7 +1609,7 @@ class Client(OpenApiClient):
             action='DeleteFlowTag',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/flow/tags/{id}',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/flow/tags/{OpenApiUtilClient.get_encode_param(id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1772,8 +1646,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeleteFlowTagGroupResponse:
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        id = OpenApiUtilClient.get_encode_param(id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1781,7 +1653,7 @@ class Client(OpenApiClient):
             action='DeleteFlowTagGroup',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/flow/tagGroups/{id}',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/flow/tagGroups/{OpenApiUtilClient.get_encode_param(id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1800,8 +1672,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeleteFlowTagGroupResponse:
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        id = OpenApiUtilClient.get_encode_param(id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1809,7 +1679,7 @@ class Client(OpenApiClient):
             action='DeleteFlowTagGroup',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/flow/tagGroups/{id}',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/flow/tagGroups/{OpenApiUtilClient.get_encode_param(id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1846,8 +1716,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeleteHostGroupResponse:
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        id = OpenApiUtilClient.get_encode_param(id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1855,7 +1723,7 @@ class Client(OpenApiClient):
             action='DeleteHostGroup',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/hostGroups/{id}',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/hostGroups/{OpenApiUtilClient.get_encode_param(id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1874,8 +1742,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeleteHostGroupResponse:
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        id = OpenApiUtilClient.get_encode_param(id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1883,7 +1749,7 @@ class Client(OpenApiClient):
             action='DeleteHostGroup',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/hostGroups/{id}',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/hostGroups/{OpenApiUtilClient.get_encode_param(id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1920,8 +1786,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeletePipelineResponse:
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1929,7 +1793,7 @@ class Client(OpenApiClient):
             action='DeletePipeline',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/pipelines/{pipeline_id}',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/pipelines/{OpenApiUtilClient.get_encode_param(pipeline_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1948,8 +1812,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeletePipelineResponse:
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1957,7 +1819,7 @@ class Client(OpenApiClient):
             action='DeletePipeline',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/pipelines/{pipeline_id}',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/pipelines/{OpenApiUtilClient.get_encode_param(pipeline_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1994,8 +1856,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeletePipelineGroupResponse:
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        group_id = OpenApiUtilClient.get_encode_param(group_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2003,7 +1863,7 @@ class Client(OpenApiClient):
             action='DeletePipelineGroup',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/pipelineGroups/{group_id}',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/pipelineGroups/{OpenApiUtilClient.get_encode_param(group_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -2022,8 +1882,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeletePipelineGroupResponse:
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        group_id = OpenApiUtilClient.get_encode_param(group_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2031,7 +1889,7 @@ class Client(OpenApiClient):
             action='DeletePipelineGroup',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/pipelineGroups/{group_id}',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/pipelineGroups/{OpenApiUtilClient.get_encode_param(group_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -2069,7 +1927,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeleteProjectResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         query = {}
         if not UtilClient.is_unset(request.identifier):
             query['identifier'] = request.identifier
@@ -2081,7 +1938,7 @@ class Client(OpenApiClient):
             action='DeleteProject',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/projects/delete',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/projects/delete',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -2101,7 +1958,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeleteProjectResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         query = {}
         if not UtilClient.is_unset(request.identifier):
             query['identifier'] = request.identifier
@@ -2113,7 +1969,7 @@ class Client(OpenApiClient):
             action='DeleteProject',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/projects/delete',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/projects/delete',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -2156,10 +2012,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeleteResourceMemberResponse:
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        resource_type = OpenApiUtilClient.get_encode_param(resource_type)
-        resource_id = OpenApiUtilClient.get_encode_param(resource_id)
-        account_id = OpenApiUtilClient.get_encode_param(account_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2167,7 +2019,7 @@ class Client(OpenApiClient):
             action='DeleteResourceMember',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/{resource_type}/{resource_id}/members/{account_id}',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/{OpenApiUtilClient.get_encode_param(resource_type)}/{OpenApiUtilClient.get_encode_param(resource_id)}/members/{OpenApiUtilClient.get_encode_param(account_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -2188,10 +2040,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeleteResourceMemberResponse:
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        resource_type = OpenApiUtilClient.get_encode_param(resource_type)
-        resource_id = OpenApiUtilClient.get_encode_param(resource_id)
-        account_id = OpenApiUtilClient.get_encode_param(account_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2199,7 +2047,7 @@ class Client(OpenApiClient):
             action='DeleteResourceMember',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/{resource_type}/{resource_id}/members/{account_id}',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/{OpenApiUtilClient.get_encode_param(resource_type)}/{OpenApiUtilClient.get_encode_param(resource_id)}/members/{OpenApiUtilClient.get_encode_param(account_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -2236,8 +2084,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeleteVariableGroupResponse:
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        id = OpenApiUtilClient.get_encode_param(id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2245,7 +2091,7 @@ class Client(OpenApiClient):
             action='DeleteVariableGroup',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/variableGroups/{id}',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/variableGroups/{OpenApiUtilClient.get_encode_param(id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -2264,8 +2110,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeleteVariableGroupResponse:
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        id = OpenApiUtilClient.get_encode_param(id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2273,7 +2117,7 @@ class Client(OpenApiClient):
             action='DeleteVariableGroup',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/variableGroups/{id}',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/variableGroups/{OpenApiUtilClient.get_encode_param(id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -2307,7 +2151,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.FrozenWorkspaceResponse:
-        workspace_id = OpenApiUtilClient.get_encode_param(workspace_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2315,7 +2158,7 @@ class Client(OpenApiClient):
             action='FrozenWorkspace',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/api/workspaces/{workspace_id}/frozen',
+            pathname=f'/api/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}/frozen',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -2333,7 +2176,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.FrozenWorkspaceResponse:
-        workspace_id = OpenApiUtilClient.get_encode_param(workspace_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2341,7 +2183,7 @@ class Client(OpenApiClient):
             action='FrozenWorkspace',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/api/workspaces/{workspace_id}/frozen',
+            pathname=f'/api/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}/frozen',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -2379,7 +2221,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetCodeupOrganizationResponse:
         UtilClient.validate_model(request)
-        identity = OpenApiUtilClient.get_encode_param(identity)
         query = {}
         if not UtilClient.is_unset(request.access_token):
             query['AccessToken'] = request.access_token
@@ -2391,7 +2232,7 @@ class Client(OpenApiClient):
             action='GetCodeupOrganization',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/api/organization/{identity}',
+            pathname=f'/api/organization/{OpenApiUtilClient.get_encode_param(identity)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2411,7 +2252,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetCodeupOrganizationResponse:
         UtilClient.validate_model(request)
-        identity = OpenApiUtilClient.get_encode_param(identity)
         query = {}
         if not UtilClient.is_unset(request.access_token):
             query['AccessToken'] = request.access_token
@@ -2423,7 +2263,7 @@ class Client(OpenApiClient):
             action='GetCodeupOrganization',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/api/organization/{identity}',
+            pathname=f'/api/organization/{OpenApiUtilClient.get_encode_param(identity)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2464,8 +2304,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetCustomFieldOptionResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        field_id = OpenApiUtilClient.get_encode_param(field_id)
         query = {}
         if not UtilClient.is_unset(request.space_identifier):
             query['spaceIdentifier'] = request.space_identifier
@@ -2481,7 +2319,7 @@ class Client(OpenApiClient):
             action='GetCustomFieldOption',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/fields/{field_id}/getCustomOption',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/fields/{OpenApiUtilClient.get_encode_param(field_id)}/getCustomOption',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2502,8 +2340,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetCustomFieldOptionResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        field_id = OpenApiUtilClient.get_encode_param(field_id)
         query = {}
         if not UtilClient.is_unset(request.space_identifier):
             query['spaceIdentifier'] = request.space_identifier
@@ -2519,7 +2355,7 @@ class Client(OpenApiClient):
             action='GetCustomFieldOption',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/fields/{field_id}/getCustomOption',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/fields/{OpenApiUtilClient.get_encode_param(field_id)}/getCustomOption',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2557,7 +2393,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetFileLastCommitResponse:
         UtilClient.validate_model(request)
-        repository_id = OpenApiUtilClient.get_encode_param(repository_id)
         query = {}
         if not UtilClient.is_unset(request.access_token):
             query['accessToken'] = request.access_token
@@ -2567,6 +2402,8 @@ class Client(OpenApiClient):
             query['organizationId'] = request.organization_id
         if not UtilClient.is_unset(request.sha):
             query['sha'] = request.sha
+        if not UtilClient.is_unset(request.show_signature):
+            query['showSignature'] = request.show_signature
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -2575,7 +2412,7 @@ class Client(OpenApiClient):
             action='GetFileLastCommit',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/repository/{repository_id}/files/lastCommit',
+            pathname=f'/repository/{OpenApiUtilClient.get_encode_param(repository_id)}/files/lastCommit',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2595,7 +2432,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetFileLastCommitResponse:
         UtilClient.validate_model(request)
-        repository_id = OpenApiUtilClient.get_encode_param(repository_id)
         query = {}
         if not UtilClient.is_unset(request.access_token):
             query['accessToken'] = request.access_token
@@ -2605,6 +2441,8 @@ class Client(OpenApiClient):
             query['organizationId'] = request.organization_id
         if not UtilClient.is_unset(request.sha):
             query['sha'] = request.sha
+        if not UtilClient.is_unset(request.show_signature):
+            query['showSignature'] = request.show_signature
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -2613,7 +2451,7 @@ class Client(OpenApiClient):
             action='GetFileLastCommit',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/repository/{repository_id}/files/lastCommit',
+            pathname=f'/repository/{OpenApiUtilClient.get_encode_param(repository_id)}/files/lastCommit',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2650,8 +2488,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetFlowTagGroupResponse:
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        id = OpenApiUtilClient.get_encode_param(id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2659,7 +2495,7 @@ class Client(OpenApiClient):
             action='GetFlowTagGroup',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/flow/tagGroups/{id}',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/flow/tagGroups/{OpenApiUtilClient.get_encode_param(id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2678,8 +2514,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetFlowTagGroupResponse:
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        id = OpenApiUtilClient.get_encode_param(id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2687,7 +2521,7 @@ class Client(OpenApiClient):
             action='GetFlowTagGroup',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/flow/tagGroups/{id}',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/flow/tagGroups/{OpenApiUtilClient.get_encode_param(id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2724,8 +2558,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetHostGroupResponse:
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        id = OpenApiUtilClient.get_encode_param(id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2733,7 +2565,7 @@ class Client(OpenApiClient):
             action='GetHostGroup',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/hostGroups/{id}',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/hostGroups/{OpenApiUtilClient.get_encode_param(id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2752,8 +2584,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetHostGroupResponse:
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        id = OpenApiUtilClient.get_encode_param(id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2761,7 +2591,7 @@ class Client(OpenApiClient):
             action='GetHostGroup',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/hostGroups/{id}',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/hostGroups/{OpenApiUtilClient.get_encode_param(id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2798,8 +2628,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetOrganizationMemberResponse:
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        account_id = OpenApiUtilClient.get_encode_param(account_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2807,7 +2635,7 @@ class Client(OpenApiClient):
             action='GetOrganizationMember',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/members/{account_id}',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/members/{OpenApiUtilClient.get_encode_param(account_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2826,8 +2654,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetOrganizationMemberResponse:
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        account_id = OpenApiUtilClient.get_encode_param(account_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2835,7 +2661,7 @@ class Client(OpenApiClient):
             action='GetOrganizationMember',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/members/{account_id}',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/members/{OpenApiUtilClient.get_encode_param(account_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2872,8 +2698,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetPipelineResponse:
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2881,7 +2705,7 @@ class Client(OpenApiClient):
             action='GetPipeline',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/pipelines/{pipeline_id}',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/pipelines/{OpenApiUtilClient.get_encode_param(pipeline_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2900,8 +2724,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetPipelineResponse:
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2909,7 +2731,7 @@ class Client(OpenApiClient):
             action='GetPipeline',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/pipelines/{pipeline_id}',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/pipelines/{OpenApiUtilClient.get_encode_param(pipeline_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2947,7 +2769,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetPipelineArtifactUrlResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         query = {}
         if not UtilClient.is_unset(request.file_name):
             query['fileName'] = request.file_name
@@ -2961,7 +2782,7 @@ class Client(OpenApiClient):
             action='GetPipelineArtifactUrl',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/pipeline/getArtifactDownloadUrl',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/pipeline/getArtifactDownloadUrl',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -2981,7 +2802,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetPipelineArtifactUrlResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         query = {}
         if not UtilClient.is_unset(request.file_name):
             query['fileName'] = request.file_name
@@ -2995,7 +2815,7 @@ class Client(OpenApiClient):
             action='GetPipelineArtifactUrl',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/pipeline/getArtifactDownloadUrl',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/pipeline/getArtifactDownloadUrl',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -3045,11 +2865,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetPipelineEmasArtifactUrlResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        emas_job_instance_id = OpenApiUtilClient.get_encode_param(emas_job_instance_id)
-        md_5 = OpenApiUtilClient.get_encode_param(md_5)
-        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
-        pipeline_run_id = OpenApiUtilClient.get_encode_param(pipeline_run_id)
         query = {}
         if not UtilClient.is_unset(request.service_connection_id):
             query['serviceConnectionId'] = request.service_connection_id
@@ -3061,7 +2876,7 @@ class Client(OpenApiClient):
             action='GetPipelineEmasArtifactUrl',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/pipeline/{pipeline_id}/pipelineRun/{pipeline_run_id}/emas/artifact/{emas_job_instance_id}/{md_5}',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/pipeline/{OpenApiUtilClient.get_encode_param(pipeline_id)}/pipelineRun/{OpenApiUtilClient.get_encode_param(pipeline_run_id)}/emas/artifact/{OpenApiUtilClient.get_encode_param(emas_job_instance_id)}/{OpenApiUtilClient.get_encode_param(md_5)}',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -3085,11 +2900,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetPipelineEmasArtifactUrlResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        emas_job_instance_id = OpenApiUtilClient.get_encode_param(emas_job_instance_id)
-        md_5 = OpenApiUtilClient.get_encode_param(md_5)
-        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
-        pipeline_run_id = OpenApiUtilClient.get_encode_param(pipeline_run_id)
         query = {}
         if not UtilClient.is_unset(request.service_connection_id):
             query['serviceConnectionId'] = request.service_connection_id
@@ -3101,7 +2911,7 @@ class Client(OpenApiClient):
             action='GetPipelineEmasArtifactUrl',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/pipeline/{pipeline_id}/pipelineRun/{pipeline_run_id}/emas/artifact/{emas_job_instance_id}/{md_5}',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/pipeline/{OpenApiUtilClient.get_encode_param(pipeline_id)}/pipelineRun/{OpenApiUtilClient.get_encode_param(pipeline_run_id)}/emas/artifact/{OpenApiUtilClient.get_encode_param(emas_job_instance_id)}/{OpenApiUtilClient.get_encode_param(md_5)}',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -3138,8 +2948,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetPipelineGroupResponse:
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        group_id = OpenApiUtilClient.get_encode_param(group_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3147,7 +2955,7 @@ class Client(OpenApiClient):
             action='GetPipelineGroup',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/pipelineGroups/{group_id}',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/pipelineGroups/{OpenApiUtilClient.get_encode_param(group_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3166,8 +2974,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetPipelineGroupResponse:
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        group_id = OpenApiUtilClient.get_encode_param(group_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3175,7 +2981,7 @@ class Client(OpenApiClient):
             action='GetPipelineGroup',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/pipelineGroups/{group_id}',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/pipelineGroups/{OpenApiUtilClient.get_encode_param(group_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3215,9 +3021,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetPipelineRunResponse:
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
-        pipeline_run_id = OpenApiUtilClient.get_encode_param(pipeline_run_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3225,7 +3028,7 @@ class Client(OpenApiClient):
             action='GetPipelineRun',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/pipelines/{pipeline_id}/pipelineRuns/{pipeline_run_id}',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/pipelines/{OpenApiUtilClient.get_encode_param(pipeline_id)}/pipelineRuns/{OpenApiUtilClient.get_encode_param(pipeline_run_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3245,9 +3048,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetPipelineRunResponse:
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
-        pipeline_run_id = OpenApiUtilClient.get_encode_param(pipeline_run_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3255,7 +3055,7 @@ class Client(OpenApiClient):
             action='GetPipelineRun',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/pipelines/{pipeline_id}/pipelineRuns/{pipeline_run_id}',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/pipelines/{OpenApiUtilClient.get_encode_param(pipeline_id)}/pipelineRuns/{OpenApiUtilClient.get_encode_param(pipeline_run_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3293,7 +3093,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetPipelineScanReportUrlResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         body = {}
         if not UtilClient.is_unset(request.report_path):
             body['reportPath'] = request.report_path
@@ -3305,7 +3104,7 @@ class Client(OpenApiClient):
             action='GetPipelineScanReportUrl',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/pipeline/getPipelineScanReportUrl',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/pipeline/getPipelineScanReportUrl',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -3325,7 +3124,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetPipelineScanReportUrlResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         body = {}
         if not UtilClient.is_unset(request.report_path):
             body['reportPath'] = request.report_path
@@ -3337,7 +3135,7 @@ class Client(OpenApiClient):
             action='GetPipelineScanReportUrl',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/pipeline/getPipelineScanReportUrl',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/pipeline/getPipelineScanReportUrl',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -3374,8 +3172,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetProjectInfoResponse:
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        project_id = OpenApiUtilClient.get_encode_param(project_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3383,7 +3179,7 @@ class Client(OpenApiClient):
             action='GetProjectInfo',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/project/{project_id}',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/project/{OpenApiUtilClient.get_encode_param(project_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3402,8 +3198,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetProjectInfoResponse:
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        project_id = OpenApiUtilClient.get_encode_param(project_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3411,7 +3205,7 @@ class Client(OpenApiClient):
             action='GetProjectInfo',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/project/{project_id}',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/project/{OpenApiUtilClient.get_encode_param(project_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3620,8 +3414,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetSprintInfoResponse:
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        sprint_id = OpenApiUtilClient.get_encode_param(sprint_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3629,7 +3421,7 @@ class Client(OpenApiClient):
             action='GetSprintInfo',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/sprints/{sprint_id}/getSprintinfo',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/sprints/{OpenApiUtilClient.get_encode_param(sprint_id)}/getSprintinfo',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3648,8 +3440,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetSprintInfoResponse:
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        sprint_id = OpenApiUtilClient.get_encode_param(sprint_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3657,7 +3447,7 @@ class Client(OpenApiClient):
             action='GetSprintInfo',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/sprints/{sprint_id}/getSprintinfo',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/sprints/{OpenApiUtilClient.get_encode_param(sprint_id)}/getSprintinfo',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3697,9 +3487,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetVMDeployOrderResponse:
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
-        deploy_order_id = OpenApiUtilClient.get_encode_param(deploy_order_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3707,7 +3494,7 @@ class Client(OpenApiClient):
             action='GetVMDeployOrder',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/pipelines/{pipeline_id}/deploy/{deploy_order_id}',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/pipelines/{OpenApiUtilClient.get_encode_param(pipeline_id)}/deploy/{OpenApiUtilClient.get_encode_param(deploy_order_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3727,9 +3514,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetVMDeployOrderResponse:
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
-        deploy_order_id = OpenApiUtilClient.get_encode_param(deploy_order_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3737,7 +3521,7 @@ class Client(OpenApiClient):
             action='GetVMDeployOrder',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/pipelines/{pipeline_id}/deploy/{deploy_order_id}',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/pipelines/{OpenApiUtilClient.get_encode_param(pipeline_id)}/deploy/{OpenApiUtilClient.get_encode_param(deploy_order_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3774,8 +3558,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetVariableGroupResponse:
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        id = OpenApiUtilClient.get_encode_param(id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3783,7 +3565,7 @@ class Client(OpenApiClient):
             action='GetVariableGroup',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/variableGroups/{id}',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/variableGroups/{OpenApiUtilClient.get_encode_param(id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3802,8 +3584,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetVariableGroupResponse:
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        id = OpenApiUtilClient.get_encode_param(id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3811,7 +3591,7 @@ class Client(OpenApiClient):
             action='GetVariableGroup',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/variableGroups/{id}',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/variableGroups/{OpenApiUtilClient.get_encode_param(id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3848,8 +3628,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetWorkItemActivityResponse:
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        workitem_id = OpenApiUtilClient.get_encode_param(workitem_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3857,7 +3635,7 @@ class Client(OpenApiClient):
             action='GetWorkItemActivity',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/workitems/{workitem_id}/getActivity',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/workitems/{OpenApiUtilClient.get_encode_param(workitem_id)}/getActivity',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3876,8 +3654,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetWorkItemActivityResponse:
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        workitem_id = OpenApiUtilClient.get_encode_param(workitem_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3885,7 +3661,7 @@ class Client(OpenApiClient):
             action='GetWorkItemActivity',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/workitems/{workitem_id}/getActivity',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/workitems/{OpenApiUtilClient.get_encode_param(workitem_id)}/getActivity',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3922,8 +3698,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetWorkItemInfoResponse:
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        workitem_id = OpenApiUtilClient.get_encode_param(workitem_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3931,7 +3705,7 @@ class Client(OpenApiClient):
             action='GetWorkItemInfo',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/workitems/{workitem_id}',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/workitems/{OpenApiUtilClient.get_encode_param(workitem_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3950,8 +3724,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetWorkItemInfoResponse:
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        workitem_id = OpenApiUtilClient.get_encode_param(workitem_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3959,7 +3731,7 @@ class Client(OpenApiClient):
             action='GetWorkItemInfo',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/workitems/{workitem_id}',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/workitems/{OpenApiUtilClient.get_encode_param(workitem_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4000,8 +3772,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetWorkItemWorkFlowInfoResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        workitem_id = OpenApiUtilClient.get_encode_param(workitem_id)
         query = {}
         if not UtilClient.is_unset(request.configuration_id):
             query['configurationId'] = request.configuration_id
@@ -4013,7 +3783,7 @@ class Client(OpenApiClient):
             action='GetWorkItemWorkFlowInfo',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/workitems/{workitem_id}/getWorkflowInfo',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/workitems/{OpenApiUtilClient.get_encode_param(workitem_id)}/getWorkflowInfo',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4034,8 +3804,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetWorkItemWorkFlowInfoResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        workitem_id = OpenApiUtilClient.get_encode_param(workitem_id)
         query = {}
         if not UtilClient.is_unset(request.configuration_id):
             query['configurationId'] = request.configuration_id
@@ -4047,7 +3815,7 @@ class Client(OpenApiClient):
             action='GetWorkItemWorkFlowInfo',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/workitems/{workitem_id}/getWorkflowInfo',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/workitems/{OpenApiUtilClient.get_encode_param(workitem_id)}/getWorkflowInfo',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4081,7 +3849,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetWorkspaceResponse:
-        workspace_id = OpenApiUtilClient.get_encode_param(workspace_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4089,7 +3856,7 @@ class Client(OpenApiClient):
             action='GetWorkspace',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/api/workspaces/{workspace_id}',
+            pathname=f'/api/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4107,7 +3874,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetWorkspaceResponse:
-        workspace_id = OpenApiUtilClient.get_encode_param(workspace_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4115,7 +3881,7 @@ class Client(OpenApiClient):
             action='GetWorkspace',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/api/workspaces/{workspace_id}',
+            pathname=f'/api/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4153,7 +3919,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.JoinPipelineGroupResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         query = {}
         if not UtilClient.is_unset(request.group_id):
             query['groupId'] = request.group_id
@@ -4167,7 +3932,7 @@ class Client(OpenApiClient):
             action='JoinPipelineGroup',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/pipelineGroups/join',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/pipelineGroups/join',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -4187,7 +3952,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.JoinPipelineGroupResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         query = {}
         if not UtilClient.is_unset(request.group_id):
             query['groupId'] = request.group_id
@@ -4201,7 +3965,7 @@ class Client(OpenApiClient):
             action='JoinPipelineGroup',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/pipelineGroups/join',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/pipelineGroups/join',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -4235,7 +3999,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListFlowTagGroupsResponse:
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4243,7 +4006,7 @@ class Client(OpenApiClient):
             action='ListFlowTagGroups',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/flow/tagGroups',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/flow/tagGroups',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4261,7 +4024,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListFlowTagGroupsResponse:
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4269,7 +4031,7 @@ class Client(OpenApiClient):
             action='ListFlowTagGroups',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/flow/tagGroups',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/flow/tagGroups',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4307,7 +4069,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListHostGroupsResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         query = {}
         if not UtilClient.is_unset(request.create_end_time):
             query['createEndTime'] = request.create_end_time
@@ -4335,7 +4096,7 @@ class Client(OpenApiClient):
             action='ListHostGroups',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/hostGroups',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/hostGroups',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4355,7 +4116,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListHostGroupsResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         query = {}
         if not UtilClient.is_unset(request.create_end_time):
             query['createEndTime'] = request.create_end_time
@@ -4383,7 +4143,7 @@ class Client(OpenApiClient):
             action='ListHostGroups',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/hostGroups',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/hostGroups',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4421,7 +4181,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListOrganizationMembersResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         query = {}
         if not UtilClient.is_unset(request.extern_uid):
             query['externUid'] = request.extern_uid
@@ -4447,7 +4206,7 @@ class Client(OpenApiClient):
             action='ListOrganizationMembers',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/members',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/members',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4467,7 +4226,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListOrganizationMembersResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         query = {}
         if not UtilClient.is_unset(request.extern_uid):
             query['externUid'] = request.extern_uid
@@ -4493,7 +4251,7 @@ class Client(OpenApiClient):
             action='ListOrganizationMembers',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/members',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/members',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4534,8 +4292,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListPipelineGroupPipelinesResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        group_id = OpenApiUtilClient.get_encode_param(group_id)
         query = {}
         if not UtilClient.is_unset(request.create_end_time):
             query['createEndTime'] = request.create_end_time
@@ -4561,7 +4317,7 @@ class Client(OpenApiClient):
             action='ListPipelineGroupPipelines',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/pipelineGroups/{group_id}/pipelines',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/pipelineGroups/{OpenApiUtilClient.get_encode_param(group_id)}/pipelines',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4582,8 +4338,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListPipelineGroupPipelinesResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        group_id = OpenApiUtilClient.get_encode_param(group_id)
         query = {}
         if not UtilClient.is_unset(request.create_end_time):
             query['createEndTime'] = request.create_end_time
@@ -4609,7 +4363,7 @@ class Client(OpenApiClient):
             action='ListPipelineGroupPipelines',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/pipelineGroups/{group_id}/pipelines',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/pipelineGroups/{OpenApiUtilClient.get_encode_param(group_id)}/pipelines',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4647,7 +4401,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListPipelineGroupsResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         query = {}
         if not UtilClient.is_unset(request.max_results):
             query['maxResults'] = request.max_results
@@ -4661,7 +4414,7 @@ class Client(OpenApiClient):
             action='ListPipelineGroups',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/pipelineGroups',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/pipelineGroups',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4681,7 +4434,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListPipelineGroupsResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         query = {}
         if not UtilClient.is_unset(request.max_results):
             query['maxResults'] = request.max_results
@@ -4695,7 +4447,7 @@ class Client(OpenApiClient):
             action='ListPipelineGroups',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/pipelineGroups',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/pipelineGroups',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4736,8 +4488,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListPipelineJobHistorysResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
         query = {}
         if not UtilClient.is_unset(request.category):
             query['category'] = request.category
@@ -4755,7 +4505,7 @@ class Client(OpenApiClient):
             action='ListPipelineJobHistorys',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/pipeline/{pipeline_id}/job/historys',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/pipeline/{OpenApiUtilClient.get_encode_param(pipeline_id)}/job/historys',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -4776,8 +4526,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListPipelineJobHistorysResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
         query = {}
         if not UtilClient.is_unset(request.category):
             query['category'] = request.category
@@ -4795,7 +4543,7 @@ class Client(OpenApiClient):
             action='ListPipelineJobHistorys',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/pipeline/{pipeline_id}/job/historys',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/pipeline/{OpenApiUtilClient.get_encode_param(pipeline_id)}/job/historys',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -4836,8 +4584,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListPipelineJobsResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
         query = {}
         if not UtilClient.is_unset(request.category):
             query['category'] = request.category
@@ -4849,7 +4595,7 @@ class Client(OpenApiClient):
             action='ListPipelineJobs',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/pipeline/{pipeline_id}/jobs',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/pipeline/{OpenApiUtilClient.get_encode_param(pipeline_id)}/jobs',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -4870,8 +4616,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListPipelineJobsResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
         query = {}
         if not UtilClient.is_unset(request.category):
             query['category'] = request.category
@@ -4883,7 +4627,7 @@ class Client(OpenApiClient):
             action='ListPipelineJobs',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/pipeline/{pipeline_id}/jobs',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/pipeline/{OpenApiUtilClient.get_encode_param(pipeline_id)}/jobs',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -4924,8 +4668,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListPipelineRunsResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
         query = {}
         if not UtilClient.is_unset(request.end_time):
             query['endTime'] = request.end_time
@@ -4947,7 +4689,7 @@ class Client(OpenApiClient):
             action='ListPipelineRuns',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/pipelines/{pipeline_id}/pipelineRuns',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/pipelines/{OpenApiUtilClient.get_encode_param(pipeline_id)}/pipelineRuns',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4968,8 +4710,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListPipelineRunsResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
         query = {}
         if not UtilClient.is_unset(request.end_time):
             query['endTime'] = request.end_time
@@ -4991,7 +4731,7 @@ class Client(OpenApiClient):
             action='ListPipelineRuns',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/pipelines/{pipeline_id}/pipelineRuns',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/pipelines/{OpenApiUtilClient.get_encode_param(pipeline_id)}/pipelineRuns',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5029,7 +4769,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListPipelinesResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         query = {}
         if not UtilClient.is_unset(request.create_end_time):
             query['createEndTime'] = request.create_end_time
@@ -5059,7 +4798,7 @@ class Client(OpenApiClient):
             action='ListPipelines',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/pipelines',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/pipelines',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5079,7 +4818,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListPipelinesResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         query = {}
         if not UtilClient.is_unset(request.create_end_time):
             query['createEndTime'] = request.create_end_time
@@ -5109,7 +4847,7 @@ class Client(OpenApiClient):
             action='ListPipelines',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/pipelines',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/pipelines',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5150,8 +4888,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListProjectMembersResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        project_id = OpenApiUtilClient.get_encode_param(project_id)
         query = {}
         if not UtilClient.is_unset(request.target_type):
             query['targetType'] = request.target_type
@@ -5163,7 +4899,7 @@ class Client(OpenApiClient):
             action='ListProjectMembers',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/projects/{project_id}/listMembers',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/projects/{OpenApiUtilClient.get_encode_param(project_id)}/listMembers',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5184,8 +4920,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListProjectMembersResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        project_id = OpenApiUtilClient.get_encode_param(project_id)
         query = {}
         if not UtilClient.is_unset(request.target_type):
             query['targetType'] = request.target_type
@@ -5197,7 +4931,7 @@ class Client(OpenApiClient):
             action='ListProjectMembers',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/projects/{project_id}/listMembers',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/projects/{OpenApiUtilClient.get_encode_param(project_id)}/listMembers',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5235,7 +4969,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListProjectTemplatesResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         query = {}
         if not UtilClient.is_unset(request.category):
             query['category'] = request.category
@@ -5247,7 +4980,7 @@ class Client(OpenApiClient):
             action='ListProjectTemplates',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/projects/listTemplates',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/projects/listTemplates',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5267,7 +5000,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListProjectTemplatesResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         query = {}
         if not UtilClient.is_unset(request.category):
             query['category'] = request.category
@@ -5279,7 +5011,7 @@ class Client(OpenApiClient):
             action='ListProjectTemplates',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/projects/listTemplates',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/projects/listTemplates',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5320,8 +5052,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListProjectWorkitemTypesResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        project_id = OpenApiUtilClient.get_encode_param(project_id)
         query = {}
         if not UtilClient.is_unset(request.category):
             query['category'] = request.category
@@ -5335,7 +5065,7 @@ class Client(OpenApiClient):
             action='ListProjectWorkitemTypes',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/projects/{project_id}/getWorkitemType',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/projects/{OpenApiUtilClient.get_encode_param(project_id)}/getWorkitemType',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5356,8 +5086,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListProjectWorkitemTypesResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        project_id = OpenApiUtilClient.get_encode_param(project_id)
         query = {}
         if not UtilClient.is_unset(request.category):
             query['category'] = request.category
@@ -5371,7 +5099,7 @@ class Client(OpenApiClient):
             action='ListProjectWorkitemTypes',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/projects/{project_id}/getWorkitemType',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/projects/{OpenApiUtilClient.get_encode_param(project_id)}/getWorkitemType',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5409,7 +5137,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListProjectsResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         query = {}
         if not UtilClient.is_unset(request.category):
             query['category'] = request.category
@@ -5431,7 +5158,7 @@ class Client(OpenApiClient):
             action='ListProjects',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/listProjects',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/listProjects',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5451,7 +5178,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListProjectsResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         query = {}
         if not UtilClient.is_unset(request.category):
             query['category'] = request.category
@@ -5473,7 +5199,7 @@ class Client(OpenApiClient):
             action='ListProjects',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/listProjects',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/listProjects',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5589,6 +5315,98 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
+    def list_repository_commit_diff(
+        self,
+        repository_id: str,
+        sha: str,
+        request: devops_20210625_models.ListRepositoryCommitDiffRequest,
+    ) -> devops_20210625_models.ListRepositoryCommitDiffResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_repository_commit_diff_with_options(repository_id, sha, request, headers, runtime)
+
+    async def list_repository_commit_diff_async(
+        self,
+        repository_id: str,
+        sha: str,
+        request: devops_20210625_models.ListRepositoryCommitDiffRequest,
+    ) -> devops_20210625_models.ListRepositoryCommitDiffResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_repository_commit_diff_with_options_async(repository_id, sha, request, headers, runtime)
+
+    def list_repository_commit_diff_with_options(
+        self,
+        repository_id: str,
+        sha: str,
+        request: devops_20210625_models.ListRepositoryCommitDiffRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ListRepositoryCommitDiffResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.context_line):
+            query['contextLine'] = request.context_line
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListRepositoryCommitDiff',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/repository/{OpenApiUtilClient.get_encode_param(repository_id)}/commits/{OpenApiUtilClient.get_encode_param(sha)}/diff',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ListRepositoryCommitDiffResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_repository_commit_diff_with_options_async(
+        self,
+        repository_id: str,
+        sha: str,
+        request: devops_20210625_models.ListRepositoryCommitDiffRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ListRepositoryCommitDiffResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.context_line):
+            query['contextLine'] = request.context_line
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListRepositoryCommitDiff',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/repository/{OpenApiUtilClient.get_encode_param(repository_id)}/commits/{OpenApiUtilClient.get_encode_param(sha)}/diff',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ListRepositoryCommitDiffResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
     def list_repository_member_with_inherited(
         self,
         repository_id: str,
@@ -5615,7 +5433,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListRepositoryMemberWithInheritedResponse:
         UtilClient.validate_model(request)
-        repository_id = OpenApiUtilClient.get_encode_param(repository_id)
         query = {}
         if not UtilClient.is_unset(request.access_token):
             query['accessToken'] = request.access_token
@@ -5629,7 +5446,7 @@ class Client(OpenApiClient):
             action='ListRepositoryMemberWithInherited',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/repository/{repository_id}/members/list',
+            pathname=f'/repository/{OpenApiUtilClient.get_encode_param(repository_id)}/members/list',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5649,7 +5466,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListRepositoryMemberWithInheritedResponse:
         UtilClient.validate_model(request)
-        repository_id = OpenApiUtilClient.get_encode_param(repository_id)
         query = {}
         if not UtilClient.is_unset(request.access_token):
             query['accessToken'] = request.access_token
@@ -5663,7 +5479,7 @@ class Client(OpenApiClient):
             action='ListRepositoryMemberWithInherited',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/repository/{repository_id}/members/list',
+            pathname=f'/repository/{OpenApiUtilClient.get_encode_param(repository_id)}/members/list',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5701,7 +5517,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListRepositoryWebhookResponse:
         UtilClient.validate_model(request)
-        repository_id = OpenApiUtilClient.get_encode_param(repository_id)
         query = {}
         if not UtilClient.is_unset(request.access_token):
             query['accessToken'] = request.access_token
@@ -5719,7 +5534,7 @@ class Client(OpenApiClient):
             action='ListRepositoryWebhook',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/repository/{repository_id}/webhooks/list',
+            pathname=f'/repository/{OpenApiUtilClient.get_encode_param(repository_id)}/webhooks/list',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5739,7 +5554,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListRepositoryWebhookResponse:
         UtilClient.validate_model(request)
-        repository_id = OpenApiUtilClient.get_encode_param(repository_id)
         query = {}
         if not UtilClient.is_unset(request.access_token):
             query['accessToken'] = request.access_token
@@ -5757,7 +5571,7 @@ class Client(OpenApiClient):
             action='ListRepositoryWebhook',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/repository/{repository_id}/webhooks/list',
+            pathname=f'/repository/{OpenApiUtilClient.get_encode_param(repository_id)}/webhooks/list',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5797,9 +5611,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListResourceMembersResponse:
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        resource_type = OpenApiUtilClient.get_encode_param(resource_type)
-        resource_id = OpenApiUtilClient.get_encode_param(resource_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -5807,7 +5618,7 @@ class Client(OpenApiClient):
             action='ListResourceMembers',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/{resource_type}/{resource_id}/members',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/{OpenApiUtilClient.get_encode_param(resource_type)}/{OpenApiUtilClient.get_encode_param(resource_id)}/members',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5827,9 +5638,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListResourceMembersResponse:
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        resource_type = OpenApiUtilClient.get_encode_param(resource_type)
-        resource_id = OpenApiUtilClient.get_encode_param(resource_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -5837,7 +5645,7 @@ class Client(OpenApiClient):
             action='ListResourceMembers',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/{resource_type}/{resource_id}/members',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/{OpenApiUtilClient.get_encode_param(resource_type)}/{OpenApiUtilClient.get_encode_param(resource_id)}/members',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5875,7 +5683,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListServiceConnectionsResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         query = {}
         if not UtilClient.is_unset(request.serice_connection_type):
             query['sericeConnectionType'] = request.serice_connection_type
@@ -5887,7 +5694,7 @@ class Client(OpenApiClient):
             action='ListServiceConnections',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/serviceConnections',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/serviceConnections',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5907,7 +5714,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListServiceConnectionsResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         query = {}
         if not UtilClient.is_unset(request.serice_connection_type):
             query['sericeConnectionType'] = request.serice_connection_type
@@ -5919,7 +5725,7 @@ class Client(OpenApiClient):
             action='ListServiceConnections',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/serviceConnections',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/serviceConnections',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5957,7 +5763,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListSprintsResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         query = {}
         if not UtilClient.is_unset(request.max_results):
             query['maxResults'] = request.max_results
@@ -5975,7 +5780,7 @@ class Client(OpenApiClient):
             action='ListSprints',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/sprints/list',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/sprints/list',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5995,7 +5800,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListSprintsResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         query = {}
         if not UtilClient.is_unset(request.max_results):
             query['maxResults'] = request.max_results
@@ -6013,7 +5817,7 @@ class Client(OpenApiClient):
             action='ListSprints',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/sprints/list',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/sprints/list',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -6051,7 +5855,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListVariableGroupsResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         query = {}
         if not UtilClient.is_unset(request.max_results):
             query['maxResults'] = request.max_results
@@ -6069,7 +5872,7 @@ class Client(OpenApiClient):
             action='ListVariableGroups',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/variableGroups',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/variableGroups',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -6089,7 +5892,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListVariableGroupsResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         query = {}
         if not UtilClient.is_unset(request.max_results):
             query['maxResults'] = request.max_results
@@ -6107,7 +5909,7 @@ class Client(OpenApiClient):
             action='ListVariableGroups',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/variableGroups',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/variableGroups',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -6145,7 +5947,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListWorkItemAllFieldsResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         query = {}
         if not UtilClient.is_unset(request.space_identifier):
             query['spaceIdentifier'] = request.space_identifier
@@ -6161,7 +5962,7 @@ class Client(OpenApiClient):
             action='ListWorkItemAllFields',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/workitems/fields/listAll',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/workitems/fields/listAll',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -6181,7 +5982,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListWorkItemAllFieldsResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         query = {}
         if not UtilClient.is_unset(request.space_identifier):
             query['spaceIdentifier'] = request.space_identifier
@@ -6197,7 +5997,7 @@ class Client(OpenApiClient):
             action='ListWorkItemAllFields',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/workitems/fields/listAll',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/workitems/fields/listAll',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -6235,7 +6035,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListWorkItemWorkFlowStatusResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         query = {}
         if not UtilClient.is_unset(request.space_identifier):
             query['spaceIdentifier'] = request.space_identifier
@@ -6253,7 +6052,7 @@ class Client(OpenApiClient):
             action='ListWorkItemWorkFlowStatus',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/workitems/workflow/listWorkflowStatus',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/workitems/workflow/listWorkflowStatus',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -6273,7 +6072,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListWorkItemWorkFlowStatusResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         query = {}
         if not UtilClient.is_unset(request.space_identifier):
             query['spaceIdentifier'] = request.space_identifier
@@ -6291,7 +6089,7 @@ class Client(OpenApiClient):
             action='ListWorkItemWorkFlowStatus',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/workitems/workflow/listWorkflowStatus',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/workitems/workflow/listWorkflowStatus',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -6328,8 +6126,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListWorkitemTimeResponse:
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        workitem_id = OpenApiUtilClient.get_encode_param(workitem_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -6337,7 +6133,7 @@ class Client(OpenApiClient):
             action='ListWorkitemTime',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/workitems/{workitem_id}/time/list',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/workitems/{OpenApiUtilClient.get_encode_param(workitem_id)}/time/list',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -6356,8 +6152,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListWorkitemTimeResponse:
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        workitem_id = OpenApiUtilClient.get_encode_param(workitem_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -6365,7 +6159,7 @@ class Client(OpenApiClient):
             action='ListWorkitemTime',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/workitems/{workitem_id}/time/list',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/workitems/{OpenApiUtilClient.get_encode_param(workitem_id)}/time/list',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -6403,7 +6197,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListWorkitemsResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         query = {}
         if not UtilClient.is_unset(request.category):
             query['category'] = request.category
@@ -6433,7 +6226,7 @@ class Client(OpenApiClient):
             action='ListWorkitems',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/listWorkitems',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/listWorkitems',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -6453,7 +6246,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListWorkitemsResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         query = {}
         if not UtilClient.is_unset(request.category):
             query['category'] = request.category
@@ -6483,7 +6275,7 @@ class Client(OpenApiClient):
             action='ListWorkitems',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/listWorkitems',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/listWorkitems',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -6626,10 +6418,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.LogPipelineJobRunResponse:
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
-        job_id = OpenApiUtilClient.get_encode_param(job_id)
-        pipeline_run_id = OpenApiUtilClient.get_encode_param(pipeline_run_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -6637,7 +6425,7 @@ class Client(OpenApiClient):
             action='LogPipelineJobRun',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/pipeline/{pipeline_id}/pipelineRun/{pipeline_run_id}/job/{job_id}/logs',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/pipeline/{OpenApiUtilClient.get_encode_param(pipeline_id)}/pipelineRun/{OpenApiUtilClient.get_encode_param(pipeline_run_id)}/job/{OpenApiUtilClient.get_encode_param(job_id)}/logs',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -6658,10 +6446,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.LogPipelineJobRunResponse:
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
-        job_id = OpenApiUtilClient.get_encode_param(job_id)
-        pipeline_run_id = OpenApiUtilClient.get_encode_param(pipeline_run_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -6669,7 +6453,7 @@ class Client(OpenApiClient):
             action='LogPipelineJobRun',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/pipeline/{pipeline_id}/pipelineRun/{pipeline_run_id}/job/{job_id}/logs',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/pipeline/{OpenApiUtilClient.get_encode_param(pipeline_id)}/pipelineRun/{OpenApiUtilClient.get_encode_param(pipeline_run_id)}/job/{OpenApiUtilClient.get_encode_param(job_id)}/logs',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -6712,10 +6496,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.LogVMDeployMachineResponse:
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
-        deploy_order_id = OpenApiUtilClient.get_encode_param(deploy_order_id)
-        machine_sn = OpenApiUtilClient.get_encode_param(machine_sn)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -6723,7 +6503,7 @@ class Client(OpenApiClient):
             action='LogVMDeployMachine',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/pipelines/{pipeline_id}/deploy/{deploy_order_id}/machine/{machine_sn}/log',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/pipelines/{OpenApiUtilClient.get_encode_param(pipeline_id)}/deploy/{OpenApiUtilClient.get_encode_param(deploy_order_id)}/machine/{OpenApiUtilClient.get_encode_param(machine_sn)}/log',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -6744,10 +6524,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.LogVMDeployMachineResponse:
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
-        deploy_order_id = OpenApiUtilClient.get_encode_param(deploy_order_id)
-        machine_sn = OpenApiUtilClient.get_encode_param(machine_sn)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -6755,7 +6531,7 @@ class Client(OpenApiClient):
             action='LogVMDeployMachine',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/pipelines/{pipeline_id}/deploy/{deploy_order_id}/machine/{machine_sn}/log',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/pipelines/{OpenApiUtilClient.get_encode_param(pipeline_id)}/deploy/{OpenApiUtilClient.get_encode_param(deploy_order_id)}/machine/{OpenApiUtilClient.get_encode_param(machine_sn)}/log',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -6798,10 +6574,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.PassPipelineValidateResponse:
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
-        pipeline_run_id = OpenApiUtilClient.get_encode_param(pipeline_run_id)
-        job_id = OpenApiUtilClient.get_encode_param(job_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -6809,7 +6581,7 @@ class Client(OpenApiClient):
             action='PassPipelineValidate',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/pipelines/{pipeline_id}/pipelineRuns/{pipeline_run_id}/jobs/{job_id}/pass',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/pipelines/{OpenApiUtilClient.get_encode_param(pipeline_id)}/pipelineRuns/{OpenApiUtilClient.get_encode_param(pipeline_run_id)}/jobs/{OpenApiUtilClient.get_encode_param(job_id)}/pass',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -6830,10 +6602,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.PassPipelineValidateResponse:
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
-        pipeline_run_id = OpenApiUtilClient.get_encode_param(pipeline_run_id)
-        job_id = OpenApiUtilClient.get_encode_param(job_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -6841,7 +6609,7 @@ class Client(OpenApiClient):
             action='PassPipelineValidate',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/pipelines/{pipeline_id}/pipelineRuns/{pipeline_run_id}/jobs/{job_id}/pass',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/pipelines/{OpenApiUtilClient.get_encode_param(pipeline_id)}/pipelineRuns/{OpenApiUtilClient.get_encode_param(pipeline_run_id)}/jobs/{OpenApiUtilClient.get_encode_param(job_id)}/pass',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -6884,10 +6652,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.RefusePipelineValidateResponse:
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
-        pipeline_run_id = OpenApiUtilClient.get_encode_param(pipeline_run_id)
-        job_id = OpenApiUtilClient.get_encode_param(job_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -6895,7 +6659,7 @@ class Client(OpenApiClient):
             action='RefusePipelineValidate',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/pipelines/{pipeline_id}/pipelineRuns/{pipeline_run_id}/jobs/{job_id}/refuse',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/pipelines/{OpenApiUtilClient.get_encode_param(pipeline_id)}/pipelineRuns/{OpenApiUtilClient.get_encode_param(pipeline_run_id)}/jobs/{OpenApiUtilClient.get_encode_param(job_id)}/refuse',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -6916,10 +6680,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.RefusePipelineValidateResponse:
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
-        pipeline_run_id = OpenApiUtilClient.get_encode_param(pipeline_run_id)
-        job_id = OpenApiUtilClient.get_encode_param(job_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -6927,7 +6687,7 @@ class Client(OpenApiClient):
             action='RefusePipelineValidate',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/pipelines/{pipeline_id}/pipelineRuns/{pipeline_run_id}/jobs/{job_id}/refuse',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/pipelines/{OpenApiUtilClient.get_encode_param(pipeline_id)}/pipelineRuns/{OpenApiUtilClient.get_encode_param(pipeline_run_id)}/jobs/{OpenApiUtilClient.get_encode_param(job_id)}/refuse',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -6961,7 +6721,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ReleaseWorkspaceResponse:
-        workspace_id = OpenApiUtilClient.get_encode_param(workspace_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -6969,7 +6728,7 @@ class Client(OpenApiClient):
             action='ReleaseWorkspace',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/api/workspaces/{workspace_id}/release',
+            pathname=f'/api/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}/release',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -6987,7 +6746,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ReleaseWorkspaceResponse:
-        workspace_id = OpenApiUtilClient.get_encode_param(workspace_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -6995,7 +6753,7 @@ class Client(OpenApiClient):
             action='ReleaseWorkspace',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/api/workspaces/{workspace_id}/release',
+            pathname=f'/api/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}/release',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -7029,7 +6787,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ResetSshKeyResponse:
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -7037,7 +6794,7 @@ class Client(OpenApiClient):
             action='ResetSshKey',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/sshKey',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/sshKey',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -7055,7 +6812,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ResetSshKeyResponse:
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -7063,7 +6819,7 @@ class Client(OpenApiClient):
             action='ResetSshKey',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/sshKey',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/sshKey',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -7103,9 +6859,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ResumeVMDeployOrderResponse:
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
-        deploy_order_id = OpenApiUtilClient.get_encode_param(deploy_order_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -7113,7 +6866,7 @@ class Client(OpenApiClient):
             action='ResumeVMDeployOrder',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/pipelines/{pipeline_id}/deploy/{deploy_order_id}/resume',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/pipelines/{OpenApiUtilClient.get_encode_param(pipeline_id)}/deploy/{OpenApiUtilClient.get_encode_param(deploy_order_id)}/resume',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -7133,9 +6886,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ResumeVMDeployOrderResponse:
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
-        deploy_order_id = OpenApiUtilClient.get_encode_param(deploy_order_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -7143,7 +6893,7 @@ class Client(OpenApiClient):
             action='ResumeVMDeployOrder',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/pipelines/{pipeline_id}/deploy/{deploy_order_id}/resume',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/pipelines/{OpenApiUtilClient.get_encode_param(pipeline_id)}/deploy/{OpenApiUtilClient.get_encode_param(deploy_order_id)}/resume',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -7186,10 +6936,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.RetryPipelineJobRunResponse:
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
-        pipeline_run_id = OpenApiUtilClient.get_encode_param(pipeline_run_id)
-        job_id = OpenApiUtilClient.get_encode_param(job_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -7197,7 +6943,7 @@ class Client(OpenApiClient):
             action='RetryPipelineJobRun',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/pipelines/{pipeline_id}/pipelineRuns/{pipeline_run_id}/jobs/{job_id}',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/pipelines/{OpenApiUtilClient.get_encode_param(pipeline_id)}/pipelineRuns/{OpenApiUtilClient.get_encode_param(pipeline_run_id)}/jobs/{OpenApiUtilClient.get_encode_param(job_id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -7218,10 +6964,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.RetryPipelineJobRunResponse:
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
-        pipeline_run_id = OpenApiUtilClient.get_encode_param(pipeline_run_id)
-        job_id = OpenApiUtilClient.get_encode_param(job_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -7229,7 +6971,7 @@ class Client(OpenApiClient):
             action='RetryPipelineJobRun',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/pipelines/{pipeline_id}/pipelineRuns/{pipeline_run_id}/jobs/{job_id}',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/pipelines/{OpenApiUtilClient.get_encode_param(pipeline_id)}/pipelineRuns/{OpenApiUtilClient.get_encode_param(pipeline_run_id)}/jobs/{OpenApiUtilClient.get_encode_param(job_id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -7272,10 +7014,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.RetryVMDeployMachineResponse:
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
-        deploy_order_id = OpenApiUtilClient.get_encode_param(deploy_order_id)
-        machine_sn = OpenApiUtilClient.get_encode_param(machine_sn)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -7283,7 +7021,7 @@ class Client(OpenApiClient):
             action='RetryVMDeployMachine',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/pipelines/{pipeline_id}/deploy/{deploy_order_id}/machine/{machine_sn}/retry',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/pipelines/{OpenApiUtilClient.get_encode_param(pipeline_id)}/deploy/{OpenApiUtilClient.get_encode_param(deploy_order_id)}/machine/{OpenApiUtilClient.get_encode_param(machine_sn)}/retry',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -7304,10 +7042,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.RetryVMDeployMachineResponse:
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
-        deploy_order_id = OpenApiUtilClient.get_encode_param(deploy_order_id)
-        machine_sn = OpenApiUtilClient.get_encode_param(machine_sn)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -7315,7 +7049,7 @@ class Client(OpenApiClient):
             action='RetryVMDeployMachine',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/pipelines/{pipeline_id}/deploy/{deploy_order_id}/machine/{machine_sn}/retry',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/pipelines/{OpenApiUtilClient.get_encode_param(pipeline_id)}/deploy/{OpenApiUtilClient.get_encode_param(deploy_order_id)}/machine/{OpenApiUtilClient.get_encode_param(machine_sn)}/retry',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -7358,10 +7092,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.SkipPipelineJobRunResponse:
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
-        pipeline_run_id = OpenApiUtilClient.get_encode_param(pipeline_run_id)
-        job_id = OpenApiUtilClient.get_encode_param(job_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -7369,7 +7099,7 @@ class Client(OpenApiClient):
             action='SkipPipelineJobRun',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/pipelines/{pipeline_id}/pipelineRuns/{pipeline_run_id}/jobs/{job_id}/skip',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/pipelines/{OpenApiUtilClient.get_encode_param(pipeline_id)}/pipelineRuns/{OpenApiUtilClient.get_encode_param(pipeline_run_id)}/jobs/{OpenApiUtilClient.get_encode_param(job_id)}/skip',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -7390,10 +7120,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.SkipPipelineJobRunResponse:
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
-        pipeline_run_id = OpenApiUtilClient.get_encode_param(pipeline_run_id)
-        job_id = OpenApiUtilClient.get_encode_param(job_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -7401,7 +7127,7 @@ class Client(OpenApiClient):
             action='SkipPipelineJobRun',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/pipelines/{pipeline_id}/pipelineRuns/{pipeline_run_id}/jobs/{job_id}/skip',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/pipelines/{OpenApiUtilClient.get_encode_param(pipeline_id)}/pipelineRuns/{OpenApiUtilClient.get_encode_param(pipeline_run_id)}/jobs/{OpenApiUtilClient.get_encode_param(job_id)}/skip',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -7444,10 +7170,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.SkipVMDeployMachineResponse:
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
-        deploy_order_id = OpenApiUtilClient.get_encode_param(deploy_order_id)
-        machine_sn = OpenApiUtilClient.get_encode_param(machine_sn)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -7455,7 +7177,7 @@ class Client(OpenApiClient):
             action='SkipVMDeployMachine',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/pipelines/{pipeline_id}/deploy/{deploy_order_id}/machine/{machine_sn}/skip',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/pipelines/{OpenApiUtilClient.get_encode_param(pipeline_id)}/deploy/{OpenApiUtilClient.get_encode_param(deploy_order_id)}/machine/{OpenApiUtilClient.get_encode_param(machine_sn)}/skip',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -7476,10 +7198,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.SkipVMDeployMachineResponse:
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
-        deploy_order_id = OpenApiUtilClient.get_encode_param(deploy_order_id)
-        machine_sn = OpenApiUtilClient.get_encode_param(machine_sn)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -7487,7 +7205,7 @@ class Client(OpenApiClient):
             action='SkipVMDeployMachine',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/pipelines/{pipeline_id}/deploy/{deploy_order_id}/machine/{machine_sn}/skip',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/pipelines/{OpenApiUtilClient.get_encode_param(pipeline_id)}/deploy/{OpenApiUtilClient.get_encode_param(deploy_order_id)}/machine/{OpenApiUtilClient.get_encode_param(machine_sn)}/skip',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -7528,8 +7246,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.StartPipelineRunResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
         body = {}
         if not UtilClient.is_unset(request.params):
             body['params'] = request.params
@@ -7541,7 +7257,7 @@ class Client(OpenApiClient):
             action='StartPipelineRun',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organizations/{organization_id}/pipelines/{pipeline_id}/run',
+            pathname=f'/organizations/{OpenApiUtilClient.get_encode_param(organization_id)}/pipelines/{OpenApiUtilClient.get_encode_param(pipeline_id)}/run',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -7562,8 +7278,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.StartPipelineRunResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
         body = {}
         if not UtilClient.is_unset(request.params):
             body['params'] = request.params
@@ -7575,7 +7289,7 @@ class Client(OpenApiClient):
             action='StartPipelineRun',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organizations/{organization_id}/pipelines/{pipeline_id}/run',
+            pathname=f'/organizations/{OpenApiUtilClient.get_encode_param(organization_id)}/pipelines/{OpenApiUtilClient.get_encode_param(pipeline_id)}/run',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -7618,10 +7332,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.StopPipelineJobRunResponse:
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
-        pipeline_run_id = OpenApiUtilClient.get_encode_param(pipeline_run_id)
-        job_id = OpenApiUtilClient.get_encode_param(job_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -7629,7 +7339,7 @@ class Client(OpenApiClient):
             action='StopPipelineJobRun',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/pipelines/{pipeline_id}/pipelineRuns/{pipeline_run_id}/jobs/{job_id}/stop',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/pipelines/{OpenApiUtilClient.get_encode_param(pipeline_id)}/pipelineRuns/{OpenApiUtilClient.get_encode_param(pipeline_run_id)}/jobs/{OpenApiUtilClient.get_encode_param(job_id)}/stop',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -7650,10 +7360,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.StopPipelineJobRunResponse:
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
-        pipeline_run_id = OpenApiUtilClient.get_encode_param(pipeline_run_id)
-        job_id = OpenApiUtilClient.get_encode_param(job_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -7661,7 +7367,7 @@ class Client(OpenApiClient):
             action='StopPipelineJobRun',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/pipelines/{pipeline_id}/pipelineRuns/{pipeline_run_id}/jobs/{job_id}/stop',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/pipelines/{OpenApiUtilClient.get_encode_param(pipeline_id)}/pipelineRuns/{OpenApiUtilClient.get_encode_param(pipeline_run_id)}/jobs/{OpenApiUtilClient.get_encode_param(job_id)}/stop',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -7701,9 +7407,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.StopPipelineRunResponse:
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
-        pipeline_run_id = OpenApiUtilClient.get_encode_param(pipeline_run_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -7711,7 +7414,7 @@ class Client(OpenApiClient):
             action='StopPipelineRun',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/pipelines/{pipeline_id}/pipelineRuns/{pipeline_run_id}/stop',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/pipelines/{OpenApiUtilClient.get_encode_param(pipeline_id)}/pipelineRuns/{OpenApiUtilClient.get_encode_param(pipeline_run_id)}/stop',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -7731,9 +7434,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.StopPipelineRunResponse:
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
-        pipeline_run_id = OpenApiUtilClient.get_encode_param(pipeline_run_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -7741,7 +7441,7 @@ class Client(OpenApiClient):
             action='StopPipelineRun',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/pipelines/{pipeline_id}/pipelineRuns/{pipeline_run_id}/stop',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/pipelines/{OpenApiUtilClient.get_encode_param(pipeline_id)}/pipelineRuns/{OpenApiUtilClient.get_encode_param(pipeline_run_id)}/stop',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -7781,9 +7481,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.StopVMDeployOrderResponse:
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
-        deploy_order_id = OpenApiUtilClient.get_encode_param(deploy_order_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -7791,7 +7488,7 @@ class Client(OpenApiClient):
             action='StopVMDeployOrder',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/pipelines/{pipeline_id}/deploy/{deploy_order_id}/stop',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/pipelines/{OpenApiUtilClient.get_encode_param(pipeline_id)}/deploy/{OpenApiUtilClient.get_encode_param(deploy_order_id)}/stop',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -7811,9 +7508,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.StopVMDeployOrderResponse:
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
-        deploy_order_id = OpenApiUtilClient.get_encode_param(deploy_order_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -7821,7 +7515,7 @@ class Client(OpenApiClient):
             action='StopVMDeployOrder',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/pipelines/{pipeline_id}/deploy/{deploy_order_id}/stop',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/pipelines/{OpenApiUtilClient.get_encode_param(pipeline_id)}/deploy/{OpenApiUtilClient.get_encode_param(deploy_order_id)}/stop',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -7859,7 +7553,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.TriggerRepositoryMirrorSyncResponse:
         UtilClient.validate_model(request)
-        repository_id = OpenApiUtilClient.get_encode_param(repository_id)
         query = {}
         if not UtilClient.is_unset(request.access_token):
             query['accessToken'] = request.access_token
@@ -7877,7 +7570,7 @@ class Client(OpenApiClient):
             action='TriggerRepositoryMirrorSync',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/repository/{repository_id}/mirror',
+            pathname=f'/repository/{OpenApiUtilClient.get_encode_param(repository_id)}/mirror',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -7897,7 +7590,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.TriggerRepositoryMirrorSyncResponse:
         UtilClient.validate_model(request)
-        repository_id = OpenApiUtilClient.get_encode_param(repository_id)
         query = {}
         if not UtilClient.is_unset(request.access_token):
             query['accessToken'] = request.access_token
@@ -7915,7 +7607,7 @@ class Client(OpenApiClient):
             action='TriggerRepositoryMirrorSync',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/repository/{repository_id}/mirror',
+            pathname=f'/repository/{OpenApiUtilClient.get_encode_param(repository_id)}/mirror',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -7956,8 +7648,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdateFlowTagResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        id = OpenApiUtilClient.get_encode_param(id)
         query = {}
         if not UtilClient.is_unset(request.color):
             query['color'] = request.color
@@ -7973,7 +7663,7 @@ class Client(OpenApiClient):
             action='UpdateFlowTag',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/flow/tags/{id}',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/flow/tags/{OpenApiUtilClient.get_encode_param(id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -7994,8 +7684,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdateFlowTagResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        id = OpenApiUtilClient.get_encode_param(id)
         query = {}
         if not UtilClient.is_unset(request.color):
             query['color'] = request.color
@@ -8011,7 +7699,7 @@ class Client(OpenApiClient):
             action='UpdateFlowTag',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/flow/tags/{id}',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/flow/tags/{OpenApiUtilClient.get_encode_param(id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -8052,8 +7740,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdateFlowTagGroupResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        id = OpenApiUtilClient.get_encode_param(id)
         query = {}
         if not UtilClient.is_unset(request.name):
             query['name'] = request.name
@@ -8065,7 +7751,7 @@ class Client(OpenApiClient):
             action='UpdateFlowTagGroup',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/flow/tagGroups/{id}',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/flow/tagGroups/{OpenApiUtilClient.get_encode_param(id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -8086,8 +7772,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdateFlowTagGroupResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        id = OpenApiUtilClient.get_encode_param(id)
         query = {}
         if not UtilClient.is_unset(request.name):
             query['name'] = request.name
@@ -8099,7 +7783,7 @@ class Client(OpenApiClient):
             action='UpdateFlowTagGroup',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/flow/tagGroups/{id}',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/flow/tagGroups/{OpenApiUtilClient.get_encode_param(id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -8140,8 +7824,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdateHostGroupResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        id = OpenApiUtilClient.get_encode_param(id)
         body = {}
         if not UtilClient.is_unset(request.aliyun_region):
             body['aliyunRegion'] = request.aliyun_region
@@ -8171,7 +7853,7 @@ class Client(OpenApiClient):
             action='UpdateHostGroup',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/hostGroups/{id}',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/hostGroups/{OpenApiUtilClient.get_encode_param(id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -8192,8 +7874,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdateHostGroupResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        id = OpenApiUtilClient.get_encode_param(id)
         body = {}
         if not UtilClient.is_unset(request.aliyun_region):
             body['aliyunRegion'] = request.aliyun_region
@@ -8223,7 +7903,7 @@ class Client(OpenApiClient):
             action='UpdateHostGroup',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/hostGroups/{id}',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/hostGroups/{OpenApiUtilClient.get_encode_param(id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -8232,100 +7912,6 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             devops_20210625_models.UpdateHostGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def update_pipeline(
-        self,
-        organization_id: str,
-        request: devops_20210625_models.UpdatePipelineRequest,
-    ) -> devops_20210625_models.UpdatePipelineResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.update_pipeline_with_options(organization_id, request, headers, runtime)
-
-    async def update_pipeline_async(
-        self,
-        organization_id: str,
-        request: devops_20210625_models.UpdatePipelineRequest,
-    ) -> devops_20210625_models.UpdatePipelineResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.update_pipeline_with_options_async(organization_id, request, headers, runtime)
-
-    def update_pipeline_with_options(
-        self,
-        organization_id: str,
-        request: devops_20210625_models.UpdatePipelineRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> devops_20210625_models.UpdatePipelineResponse:
-        UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        body = {}
-        if not UtilClient.is_unset(request.basic_info):
-            body['basicInfo'] = request.basic_info
-        if not UtilClient.is_unset(request.pipeline_yaml):
-            body['pipelineYaml'] = request.pipeline_yaml
-        if not UtilClient.is_unset(request.settings):
-            body['settings'] = request.settings
-        if not UtilClient.is_unset(request.trigger_info):
-            body['triggerInfo'] = request.trigger_info
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='UpdatePipeline',
-            version='2021-06-25',
-            protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/pipelines',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            devops_20210625_models.UpdatePipelineResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def update_pipeline_with_options_async(
-        self,
-        organization_id: str,
-        request: devops_20210625_models.UpdatePipelineRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> devops_20210625_models.UpdatePipelineResponse:
-        UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        body = {}
-        if not UtilClient.is_unset(request.basic_info):
-            body['basicInfo'] = request.basic_info
-        if not UtilClient.is_unset(request.pipeline_yaml):
-            body['pipelineYaml'] = request.pipeline_yaml
-        if not UtilClient.is_unset(request.settings):
-            body['settings'] = request.settings
-        if not UtilClient.is_unset(request.trigger_info):
-            body['triggerInfo'] = request.trigger_info
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='UpdatePipeline',
-            version='2021-06-25',
-            protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/pipelines',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            devops_20210625_models.UpdatePipelineResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
@@ -8358,8 +7944,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdatePipelineBaseInfoResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
         query = {}
         if not UtilClient.is_unset(request.env_id):
             query['envId'] = request.env_id
@@ -8375,7 +7959,7 @@ class Client(OpenApiClient):
             action='UpdatePipelineBaseInfo',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/pipelines/{pipeline_id}/baseInfo',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/pipelines/{OpenApiUtilClient.get_encode_param(pipeline_id)}/baseInfo',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -8396,8 +7980,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdatePipelineBaseInfoResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
         query = {}
         if not UtilClient.is_unset(request.env_id):
             query['envId'] = request.env_id
@@ -8413,7 +7995,7 @@ class Client(OpenApiClient):
             action='UpdatePipelineBaseInfo',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/pipelines/{pipeline_id}/baseInfo',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/pipelines/{OpenApiUtilClient.get_encode_param(pipeline_id)}/baseInfo',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -8454,8 +8036,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdatePipelineGroupResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        group_id = OpenApiUtilClient.get_encode_param(group_id)
         query = {}
         if not UtilClient.is_unset(request.name):
             query['name'] = request.name
@@ -8467,7 +8047,7 @@ class Client(OpenApiClient):
             action='UpdatePipelineGroup',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/pipelineGroups/{group_id}',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/pipelineGroups/{OpenApiUtilClient.get_encode_param(group_id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -8488,8 +8068,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdatePipelineGroupResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        group_id = OpenApiUtilClient.get_encode_param(group_id)
         query = {}
         if not UtilClient.is_unset(request.name):
             query['name'] = request.name
@@ -8501,7 +8079,7 @@ class Client(OpenApiClient):
             action='UpdatePipelineGroup',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/pipelineGroups/{group_id}',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/pipelineGroups/{OpenApiUtilClient.get_encode_param(group_id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -8542,8 +8120,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdateProjectMemberResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        project_id = OpenApiUtilClient.get_encode_param(project_id)
         body = {}
         if not UtilClient.is_unset(request.role_identifier):
             body['roleIdentifier'] = request.role_identifier
@@ -8563,7 +8139,7 @@ class Client(OpenApiClient):
             action='UpdateProjectMember',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/projects/{project_id}/updateMember',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/projects/{OpenApiUtilClient.get_encode_param(project_id)}/updateMember',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -8584,8 +8160,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdateProjectMemberResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        project_id = OpenApiUtilClient.get_encode_param(project_id)
         body = {}
         if not UtilClient.is_unset(request.role_identifier):
             body['roleIdentifier'] = request.role_identifier
@@ -8605,7 +8179,7 @@ class Client(OpenApiClient):
             action='UpdateProjectMember',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/projects/{project_id}/updateMember',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/projects/{OpenApiUtilClient.get_encode_param(project_id)}/updateMember',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -8614,6 +8188,242 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             devops_20210625_models.UpdateProjectMemberResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_protected_branches(
+        self,
+        repository_id: str,
+        id: str,
+        request: devops_20210625_models.UpdateProtectedBranchesRequest,
+    ) -> devops_20210625_models.UpdateProtectedBranchesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_protected_branches_with_options(repository_id, id, request, headers, runtime)
+
+    async def update_protected_branches_async(
+        self,
+        repository_id: str,
+        id: str,
+        request: devops_20210625_models.UpdateProtectedBranchesRequest,
+    ) -> devops_20210625_models.UpdateProtectedBranchesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_protected_branches_with_options_async(repository_id, id, request, headers, runtime)
+
+    def update_protected_branches_with_options(
+        self,
+        repository_id: str,
+        id: str,
+        request: devops_20210625_models.UpdateProtectedBranchesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.UpdateProtectedBranchesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        body = {}
+        if not UtilClient.is_unset(request.allow_merge_roles):
+            body['allowMergeRoles'] = request.allow_merge_roles
+        if not UtilClient.is_unset(request.allow_merge_user_ids):
+            body['allowMergeUserIds'] = request.allow_merge_user_ids
+        if not UtilClient.is_unset(request.allow_push_roles):
+            body['allowPushRoles'] = request.allow_push_roles
+        if not UtilClient.is_unset(request.allow_push_user_ids):
+            body['allowPushUserIds'] = request.allow_push_user_ids
+        if not UtilClient.is_unset(request.branch):
+            body['branch'] = request.branch
+        if not UtilClient.is_unset(request.id):
+            body['id'] = request.id
+        if not UtilClient.is_unset(request.merge_request_setting):
+            body['mergeRequestSetting'] = request.merge_request_setting
+        if not UtilClient.is_unset(request.test_setting_dto):
+            body['testSettingDTO'] = request.test_setting_dto
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateProtectedBranches',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(repository_id)}/protect_branches/{OpenApiUtilClient.get_encode_param(id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.UpdateProtectedBranchesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_protected_branches_with_options_async(
+        self,
+        repository_id: str,
+        id: str,
+        request: devops_20210625_models.UpdateProtectedBranchesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.UpdateProtectedBranchesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        body = {}
+        if not UtilClient.is_unset(request.allow_merge_roles):
+            body['allowMergeRoles'] = request.allow_merge_roles
+        if not UtilClient.is_unset(request.allow_merge_user_ids):
+            body['allowMergeUserIds'] = request.allow_merge_user_ids
+        if not UtilClient.is_unset(request.allow_push_roles):
+            body['allowPushRoles'] = request.allow_push_roles
+        if not UtilClient.is_unset(request.allow_push_user_ids):
+            body['allowPushUserIds'] = request.allow_push_user_ids
+        if not UtilClient.is_unset(request.branch):
+            body['branch'] = request.branch
+        if not UtilClient.is_unset(request.id):
+            body['id'] = request.id
+        if not UtilClient.is_unset(request.merge_request_setting):
+            body['mergeRequestSetting'] = request.merge_request_setting
+        if not UtilClient.is_unset(request.test_setting_dto):
+            body['testSettingDTO'] = request.test_setting_dto
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateProtectedBranches',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(repository_id)}/protect_branches/{OpenApiUtilClient.get_encode_param(id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.UpdateProtectedBranchesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_repository_member(
+        self,
+        repository_id: str,
+        user_id: str,
+        request: devops_20210625_models.UpdateRepositoryMemberRequest,
+    ) -> devops_20210625_models.UpdateRepositoryMemberResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_repository_member_with_options(repository_id, user_id, request, headers, runtime)
+
+    async def update_repository_member_async(
+        self,
+        repository_id: str,
+        user_id: str,
+        request: devops_20210625_models.UpdateRepositoryMemberRequest,
+    ) -> devops_20210625_models.UpdateRepositoryMemberResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_repository_member_with_options_async(repository_id, user_id, request, headers, runtime)
+
+    def update_repository_member_with_options(
+        self,
+        repository_id: str,
+        user_id: str,
+        request: devops_20210625_models.UpdateRepositoryMemberRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.UpdateRepositoryMemberResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        body = {}
+        if not UtilClient.is_unset(request.access_level):
+            body['accessLevel'] = request.access_level
+        if not UtilClient.is_unset(request.expire_at):
+            body['expireAt'] = request.expire_at
+        if not UtilClient.is_unset(request.member_type):
+            body['memberType'] = request.member_type
+        if not UtilClient.is_unset(request.related_id):
+            body['relatedId'] = request.related_id
+        if not UtilClient.is_unset(request.related_infos):
+            body['relatedInfos'] = request.related_infos
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateRepositoryMember',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/repository/{OpenApiUtilClient.get_encode_param(repository_id)}/{OpenApiUtilClient.get_encode_param(user_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.UpdateRepositoryMemberResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_repository_member_with_options_async(
+        self,
+        repository_id: str,
+        user_id: str,
+        request: devops_20210625_models.UpdateRepositoryMemberRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.UpdateRepositoryMemberResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        body = {}
+        if not UtilClient.is_unset(request.access_level):
+            body['accessLevel'] = request.access_level
+        if not UtilClient.is_unset(request.expire_at):
+            body['expireAt'] = request.expire_at
+        if not UtilClient.is_unset(request.member_type):
+            body['memberType'] = request.member_type
+        if not UtilClient.is_unset(request.related_id):
+            body['relatedId'] = request.related_id
+        if not UtilClient.is_unset(request.related_infos):
+            body['relatedInfos'] = request.related_infos
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateRepositoryMember',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/repository/{OpenApiUtilClient.get_encode_param(repository_id)}/{OpenApiUtilClient.get_encode_param(user_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.UpdateRepositoryMemberResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
@@ -8652,10 +8462,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdateResourceMemberResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        resource_type = OpenApiUtilClient.get_encode_param(resource_type)
-        resource_id = OpenApiUtilClient.get_encode_param(resource_id)
-        account_id = OpenApiUtilClient.get_encode_param(account_id)
         body = {}
         if not UtilClient.is_unset(request.role_name):
             body['roleName'] = request.role_name
@@ -8667,7 +8473,7 @@ class Client(OpenApiClient):
             action='UpdateResourceMember',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/{resource_type}/{resource_id}/members/{account_id}',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/{OpenApiUtilClient.get_encode_param(resource_type)}/{OpenApiUtilClient.get_encode_param(resource_id)}/members/{OpenApiUtilClient.get_encode_param(account_id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -8690,10 +8496,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdateResourceMemberResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        resource_type = OpenApiUtilClient.get_encode_param(resource_type)
-        resource_id = OpenApiUtilClient.get_encode_param(resource_id)
-        account_id = OpenApiUtilClient.get_encode_param(account_id)
         body = {}
         if not UtilClient.is_unset(request.role_name):
             body['roleName'] = request.role_name
@@ -8705,7 +8507,7 @@ class Client(OpenApiClient):
             action='UpdateResourceMember',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/{resource_type}/{resource_id}/members/{account_id}',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/{OpenApiUtilClient.get_encode_param(resource_type)}/{OpenApiUtilClient.get_encode_param(resource_id)}/members/{OpenApiUtilClient.get_encode_param(account_id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -8746,8 +8548,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdateVariableGroupResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        id = OpenApiUtilClient.get_encode_param(id)
         body = {}
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
@@ -8763,7 +8563,7 @@ class Client(OpenApiClient):
             action='UpdateVariableGroup',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/variableGroups/{id}',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/variableGroups/{OpenApiUtilClient.get_encode_param(id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -8784,8 +8584,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdateVariableGroupResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
-        id = OpenApiUtilClient.get_encode_param(id)
         body = {}
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
@@ -8801,7 +8599,7 @@ class Client(OpenApiClient):
             action='UpdateVariableGroup',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/variableGroups/{id}',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/variableGroups/{OpenApiUtilClient.get_encode_param(id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -8839,7 +8637,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdateWorkItemResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         body = {}
         if not UtilClient.is_unset(request.field_type):
             body['fieldType'] = request.field_type
@@ -8857,7 +8654,7 @@ class Client(OpenApiClient):
             action='UpdateWorkItem',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/workitems/update',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/workitems/update',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -8877,7 +8674,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdateWorkItemResponse:
         UtilClient.validate_model(request)
-        organization_id = OpenApiUtilClient.get_encode_param(organization_id)
         body = {}
         if not UtilClient.is_unset(request.field_type):
             body['fieldType'] = request.field_type
@@ -8895,7 +8691,7 @@ class Client(OpenApiClient):
             action='UpdateWorkItem',
             version='2021-06-25',
             protocol='HTTPS',
-            pathname=f'/organization/{organization_id}/workitems/update',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/workitems/update',
             method='POST',
             auth_type='AK',
             style='ROA',

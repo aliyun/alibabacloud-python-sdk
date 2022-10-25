@@ -1,3 +1,6 @@
+2022-10-25 Version: 1.1.31
+- Add UpdateProtectedBranches and change some API params.
+
 2022-07-28 Version: 1.1.30
 - Add PipelineGroup.
 

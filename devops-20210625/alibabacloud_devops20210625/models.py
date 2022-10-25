@@ -1111,437 +1111,6 @@ class CreateOAuthTokenResponse(TeaModel):
         return self
 
 
-class CreatePipelineRequestBasicInfo(TeaModel):
-    def __init__(
-        self,
-        env_id: int = None,
-        group_id: int = None,
-        name: str = None,
-        tag_ids: str = None,
-    ):
-        self.env_id = env_id
-        self.group_id = group_id
-        self.name = name
-        self.tag_ids = tag_ids
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.env_id is not None:
-            result['envId'] = self.env_id
-        if self.group_id is not None:
-            result['groupId'] = self.group_id
-        if self.name is not None:
-            result['name'] = self.name
-        if self.tag_ids is not None:
-            result['tagIds'] = self.tag_ids
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('envId') is not None:
-            self.env_id = m.get('envId')
-        if m.get('groupId') is not None:
-            self.group_id = m.get('groupId')
-        if m.get('name') is not None:
-            self.name = m.get('name')
-        if m.get('tagIds') is not None:
-            self.tag_ids = m.get('tagIds')
-        return self
-
-
-class CreatePipelineRequestSettingsCaches(TeaModel):
-    def __init__(
-        self,
-        desc: str = None,
-        directory: str = None,
-        disable: bool = None,
-    ):
-        self.desc = desc
-        self.directory = directory
-        self.disable = disable
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.desc is not None:
-            result['desc'] = self.desc
-        if self.directory is not None:
-            result['directory'] = self.directory
-        if self.disable is not None:
-            result['disable'] = self.disable
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('desc') is not None:
-            self.desc = m.get('desc')
-        if m.get('directory') is not None:
-            self.directory = m.get('directory')
-        if m.get('disable') is not None:
-            self.disable = m.get('disable')
-        return self
-
-
-class CreatePipelineRequestSettingsGlobalParams(TeaModel):
-    def __init__(
-        self,
-        key: str = None,
-        mask: bool = None,
-        running_config: bool = None,
-        value: str = None,
-    ):
-        self.key = key
-        self.mask = mask
-        self.running_config = running_config
-        self.value = value
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.key is not None:
-            result['key'] = self.key
-        if self.mask is not None:
-            result['mask'] = self.mask
-        if self.running_config is not None:
-            result['runningConfig'] = self.running_config
-        if self.value is not None:
-            result['value'] = self.value
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('key') is not None:
-            self.key = m.get('key')
-        if m.get('mask') is not None:
-            self.mask = m.get('mask')
-        if m.get('runningConfig') is not None:
-            self.running_config = m.get('runningConfig')
-        if m.get('value') is not None:
-            self.value = m.get('value')
-        return self
-
-
-class CreatePipelineRequestSettings(TeaModel):
-    def __init__(
-        self,
-        caches: List[CreatePipelineRequestSettingsCaches] = None,
-        global_params: List[CreatePipelineRequestSettingsGlobalParams] = None,
-        runner_cache_mode: str = None,
-    ):
-        self.caches = caches
-        self.global_params = global_params
-        self.runner_cache_mode = runner_cache_mode
-
-    def validate(self):
-        if self.caches:
-            for k in self.caches:
-                if k:
-                    k.validate()
-        if self.global_params:
-            for k in self.global_params:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['caches'] = []
-        if self.caches is not None:
-            for k in self.caches:
-                result['caches'].append(k.to_map() if k else None)
-        result['globalParams'] = []
-        if self.global_params is not None:
-            for k in self.global_params:
-                result['globalParams'].append(k.to_map() if k else None)
-        if self.runner_cache_mode is not None:
-            result['runnerCacheMode'] = self.runner_cache_mode
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.caches = []
-        if m.get('caches') is not None:
-            for k in m.get('caches'):
-                temp_model = CreatePipelineRequestSettingsCaches()
-                self.caches.append(temp_model.from_map(k))
-        self.global_params = []
-        if m.get('globalParams') is not None:
-            for k in m.get('globalParams'):
-                temp_model = CreatePipelineRequestSettingsGlobalParams()
-                self.global_params.append(temp_model.from_map(k))
-        if m.get('runnerCacheMode') is not None:
-            self.runner_cache_mode = m.get('runnerCacheMode')
-        return self
-
-
-class CreatePipelineRequestTriggerInfoScheduled(TeaModel):
-    def __init__(
-        self,
-        days_of_week: str = None,
-        fixed_time: str = None,
-        from_: str = None,
-        interval: int = None,
-        only_source_change: bool = None,
-        to: str = None,
-        type: str = None,
-    ):
-        self.days_of_week = days_of_week
-        self.fixed_time = fixed_time
-        self.from_ = from_
-        self.interval = interval
-        self.only_source_change = only_source_change
-        self.to = to
-        self.type = type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.days_of_week is not None:
-            result['daysOfWeek'] = self.days_of_week
-        if self.fixed_time is not None:
-            result['fixedTime'] = self.fixed_time
-        if self.from_ is not None:
-            result['from'] = self.from_
-        if self.interval is not None:
-            result['interval'] = self.interval
-        if self.only_source_change is not None:
-            result['onlySourceChange'] = self.only_source_change
-        if self.to is not None:
-            result['to'] = self.to
-        if self.type is not None:
-            result['type'] = self.type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('daysOfWeek') is not None:
-            self.days_of_week = m.get('daysOfWeek')
-        if m.get('fixedTime') is not None:
-            self.fixed_time = m.get('fixedTime')
-        if m.get('from') is not None:
-            self.from_ = m.get('from')
-        if m.get('interval') is not None:
-            self.interval = m.get('interval')
-        if m.get('onlySourceChange') is not None:
-            self.only_source_change = m.get('onlySourceChange')
-        if m.get('to') is not None:
-            self.to = m.get('to')
-        if m.get('type') is not None:
-            self.type = m.get('type')
-        return self
-
-
-class CreatePipelineRequestTriggerInfo(TeaModel):
-    def __init__(
-        self,
-        scheduled: CreatePipelineRequestTriggerInfoScheduled = None,
-        webhook_enable: bool = None,
-    ):
-        self.scheduled = scheduled
-        self.webhook_enable = webhook_enable
-
-    def validate(self):
-        if self.scheduled:
-            self.scheduled.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.scheduled is not None:
-            result['scheduled'] = self.scheduled.to_map()
-        if self.webhook_enable is not None:
-            result['webhookEnable'] = self.webhook_enable
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('scheduled') is not None:
-            temp_model = CreatePipelineRequestTriggerInfoScheduled()
-            self.scheduled = temp_model.from_map(m['scheduled'])
-        if m.get('webhookEnable') is not None:
-            self.webhook_enable = m.get('webhookEnable')
-        return self
-
-
-class CreatePipelineRequest(TeaModel):
-    def __init__(
-        self,
-        basic_info: CreatePipelineRequestBasicInfo = None,
-        pipeline_yaml: str = None,
-        settings: CreatePipelineRequestSettings = None,
-        trigger_info: CreatePipelineRequestTriggerInfo = None,
-    ):
-        self.basic_info = basic_info
-        self.pipeline_yaml = pipeline_yaml
-        self.settings = settings
-        self.trigger_info = trigger_info
-
-    def validate(self):
-        if self.basic_info:
-            self.basic_info.validate()
-        if self.settings:
-            self.settings.validate()
-        if self.trigger_info:
-            self.trigger_info.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.basic_info is not None:
-            result['basicInfo'] = self.basic_info.to_map()
-        if self.pipeline_yaml is not None:
-            result['pipelineYaml'] = self.pipeline_yaml
-        if self.settings is not None:
-            result['settings'] = self.settings.to_map()
-        if self.trigger_info is not None:
-            result['triggerInfo'] = self.trigger_info.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('basicInfo') is not None:
-            temp_model = CreatePipelineRequestBasicInfo()
-            self.basic_info = temp_model.from_map(m['basicInfo'])
-        if m.get('pipelineYaml') is not None:
-            self.pipeline_yaml = m.get('pipelineYaml')
-        if m.get('settings') is not None:
-            temp_model = CreatePipelineRequestSettings()
-            self.settings = temp_model.from_map(m['settings'])
-        if m.get('triggerInfo') is not None:
-            temp_model = CreatePipelineRequestTriggerInfo()
-            self.trigger_info = temp_model.from_map(m['triggerInfo'])
-        return self
-
-
-class CreatePipelineResponseBody(TeaModel):
-    def __init__(
-        self,
-        error_code: str = None,
-        error_message: str = None,
-        object: int = None,
-        request_id: str = None,
-        success: bool = None,
-    ):
-        self.error_code = error_code
-        self.error_message = error_message
-        self.object = object
-        self.request_id = request_id
-        self.success = success
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.error_code is not None:
-            result['errorCode'] = self.error_code
-        if self.error_message is not None:
-            result['errorMessage'] = self.error_message
-        if self.object is not None:
-            result['object'] = self.object
-        if self.request_id is not None:
-            result['requestId'] = self.request_id
-        if self.success is not None:
-            result['success'] = self.success
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('errorCode') is not None:
-            self.error_code = m.get('errorCode')
-        if m.get('errorMessage') is not None:
-            self.error_message = m.get('errorMessage')
-        if m.get('object') is not None:
-            self.object = m.get('object')
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
-        if m.get('success') is not None:
-            self.success = m.get('success')
-        return self
-
-
-class CreatePipelineResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: CreatePipelineResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = CreatePipelineResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class CreatePipelineGroupRequest(TeaModel):
     def __init__(
         self,
@@ -4905,11 +4474,13 @@ class GetFileLastCommitRequest(TeaModel):
         filepath: str = None,
         organization_id: str = None,
         sha: str = None,
+        show_signature: bool = None,
     ):
         self.access_token = access_token
         self.filepath = filepath
         self.organization_id = organization_id
         self.sha = sha
+        self.show_signature = show_signature
 
     def validate(self):
         pass
@@ -4928,6 +4499,8 @@ class GetFileLastCommitRequest(TeaModel):
             result['organizationId'] = self.organization_id
         if self.sha is not None:
             result['sha'] = self.sha
+        if self.show_signature is not None:
+            result['showSignature'] = self.show_signature
         return result
 
     def from_map(self, m: dict = None):
@@ -4940,6 +4513,8 @@ class GetFileLastCommitRequest(TeaModel):
             self.organization_id = m.get('organizationId')
         if m.get('sha') is not None:
             self.sha = m.get('sha')
+        if m.get('showSignature') is not None:
+            self.show_signature = m.get('showSignature')
         return self
 
 
@@ -13722,6 +13297,247 @@ class ListRepositoriesResponse(TeaModel):
         return self
 
 
+class ListRepositoryCommitDiffRequest(TeaModel):
+    def __init__(
+        self,
+        access_token: str = None,
+        context_line: int = None,
+        organization_id: str = None,
+    ):
+        self.access_token = access_token
+        self.context_line = context_line
+        self.organization_id = organization_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_token is not None:
+            result['accessToken'] = self.access_token
+        if self.context_line is not None:
+            result['contextLine'] = self.context_line
+        if self.organization_id is not None:
+            result['organizationId'] = self.organization_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accessToken') is not None:
+            self.access_token = m.get('accessToken')
+        if m.get('contextLine') is not None:
+            self.context_line = m.get('contextLine')
+        if m.get('organizationId') is not None:
+            self.organization_id = m.get('organizationId')
+        return self
+
+
+class ListRepositoryCommitDiffResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        a_mode: str = None,
+        b_mode: str = None,
+        deleted_file: bool = None,
+        diff: str = None,
+        is_binary: bool = None,
+        is_new_lfs: bool = None,
+        is_old_lfs: bool = None,
+        new_file: bool = None,
+        new_id: str = None,
+        new_path: str = None,
+        old_id: str = None,
+        old_path: str = None,
+        renamed_file: bool = None,
+    ):
+        self.a_mode = a_mode
+        self.b_mode = b_mode
+        self.deleted_file = deleted_file
+        self.diff = diff
+        self.is_binary = is_binary
+        self.is_new_lfs = is_new_lfs
+        self.is_old_lfs = is_old_lfs
+        self.new_file = new_file
+        self.new_id = new_id
+        self.new_path = new_path
+        self.old_id = old_id
+        self.old_path = old_path
+        self.renamed_file = renamed_file
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.a_mode is not None:
+            result['aMode'] = self.a_mode
+        if self.b_mode is not None:
+            result['bMode'] = self.b_mode
+        if self.deleted_file is not None:
+            result['deletedFile'] = self.deleted_file
+        if self.diff is not None:
+            result['diff'] = self.diff
+        if self.is_binary is not None:
+            result['isBinary'] = self.is_binary
+        if self.is_new_lfs is not None:
+            result['isNewLfs'] = self.is_new_lfs
+        if self.is_old_lfs is not None:
+            result['isOldLfs'] = self.is_old_lfs
+        if self.new_file is not None:
+            result['newFile'] = self.new_file
+        if self.new_id is not None:
+            result['newId'] = self.new_id
+        if self.new_path is not None:
+            result['newPath'] = self.new_path
+        if self.old_id is not None:
+            result['oldId'] = self.old_id
+        if self.old_path is not None:
+            result['oldPath'] = self.old_path
+        if self.renamed_file is not None:
+            result['renamedFile'] = self.renamed_file
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('aMode') is not None:
+            self.a_mode = m.get('aMode')
+        if m.get('bMode') is not None:
+            self.b_mode = m.get('bMode')
+        if m.get('deletedFile') is not None:
+            self.deleted_file = m.get('deletedFile')
+        if m.get('diff') is not None:
+            self.diff = m.get('diff')
+        if m.get('isBinary') is not None:
+            self.is_binary = m.get('isBinary')
+        if m.get('isNewLfs') is not None:
+            self.is_new_lfs = m.get('isNewLfs')
+        if m.get('isOldLfs') is not None:
+            self.is_old_lfs = m.get('isOldLfs')
+        if m.get('newFile') is not None:
+            self.new_file = m.get('newFile')
+        if m.get('newId') is not None:
+            self.new_id = m.get('newId')
+        if m.get('newPath') is not None:
+            self.new_path = m.get('newPath')
+        if m.get('oldId') is not None:
+            self.old_id = m.get('oldId')
+        if m.get('oldPath') is not None:
+            self.old_path = m.get('oldPath')
+        if m.get('renamedFile') is not None:
+            self.renamed_file = m.get('renamedFile')
+        return self
+
+
+class ListRepositoryCommitDiffResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        result: List[ListRepositoryCommitDiffResponseBodyResult] = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.result = result
+        self.success = success
+
+    def validate(self):
+        if self.result:
+            for k in self.result:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        result['result'] = []
+        if self.result is not None:
+            for k in self.result:
+                result['result'].append(k.to_map() if k else None)
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        self.result = []
+        if m.get('result') is not None:
+            for k in m.get('result'):
+                temp_model = ListRepositoryCommitDiffResponseBodyResult()
+                self.result.append(temp_model.from_map(k))
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class ListRepositoryCommitDiffResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListRepositoryCommitDiffResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListRepositoryCommitDiffResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListRepositoryMemberWithInheritedRequest(TeaModel):
     def __init__(
         self,
@@ -18639,443 +18455,6 @@ class UpdateHostGroupResponse(TeaModel):
         return self
 
 
-class UpdatePipelineRequestBasicInfo(TeaModel):
-    def __init__(
-        self,
-        env_id: int = None,
-        group_id: int = None,
-        name: str = None,
-        pipeline_id: int = None,
-        tag_ids: str = None,
-    ):
-        self.env_id = env_id
-        self.group_id = group_id
-        self.name = name
-        self.pipeline_id = pipeline_id
-        self.tag_ids = tag_ids
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.env_id is not None:
-            result['envId'] = self.env_id
-        if self.group_id is not None:
-            result['groupId'] = self.group_id
-        if self.name is not None:
-            result['name'] = self.name
-        if self.pipeline_id is not None:
-            result['pipelineId'] = self.pipeline_id
-        if self.tag_ids is not None:
-            result['tagIds'] = self.tag_ids
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('envId') is not None:
-            self.env_id = m.get('envId')
-        if m.get('groupId') is not None:
-            self.group_id = m.get('groupId')
-        if m.get('name') is not None:
-            self.name = m.get('name')
-        if m.get('pipelineId') is not None:
-            self.pipeline_id = m.get('pipelineId')
-        if m.get('tagIds') is not None:
-            self.tag_ids = m.get('tagIds')
-        return self
-
-
-class UpdatePipelineRequestSettingsCaches(TeaModel):
-    def __init__(
-        self,
-        desc: str = None,
-        directory: str = None,
-        disable: bool = None,
-    ):
-        self.desc = desc
-        self.directory = directory
-        self.disable = disable
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.desc is not None:
-            result['desc'] = self.desc
-        if self.directory is not None:
-            result['directory'] = self.directory
-        if self.disable is not None:
-            result['disable'] = self.disable
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('desc') is not None:
-            self.desc = m.get('desc')
-        if m.get('directory') is not None:
-            self.directory = m.get('directory')
-        if m.get('disable') is not None:
-            self.disable = m.get('disable')
-        return self
-
-
-class UpdatePipelineRequestSettingsGlobalParams(TeaModel):
-    def __init__(
-        self,
-        key: str = None,
-        mask: bool = None,
-        running_config: bool = None,
-        value: str = None,
-    ):
-        self.key = key
-        self.mask = mask
-        self.running_config = running_config
-        self.value = value
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.key is not None:
-            result['key'] = self.key
-        if self.mask is not None:
-            result['mask'] = self.mask
-        if self.running_config is not None:
-            result['runningConfig'] = self.running_config
-        if self.value is not None:
-            result['value'] = self.value
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('key') is not None:
-            self.key = m.get('key')
-        if m.get('mask') is not None:
-            self.mask = m.get('mask')
-        if m.get('runningConfig') is not None:
-            self.running_config = m.get('runningConfig')
-        if m.get('value') is not None:
-            self.value = m.get('value')
-        return self
-
-
-class UpdatePipelineRequestSettings(TeaModel):
-    def __init__(
-        self,
-        caches: List[UpdatePipelineRequestSettingsCaches] = None,
-        global_params: List[UpdatePipelineRequestSettingsGlobalParams] = None,
-        runner_cache_mode: str = None,
-    ):
-        self.caches = caches
-        self.global_params = global_params
-        self.runner_cache_mode = runner_cache_mode
-
-    def validate(self):
-        if self.caches:
-            for k in self.caches:
-                if k:
-                    k.validate()
-        if self.global_params:
-            for k in self.global_params:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['caches'] = []
-        if self.caches is not None:
-            for k in self.caches:
-                result['caches'].append(k.to_map() if k else None)
-        result['globalParams'] = []
-        if self.global_params is not None:
-            for k in self.global_params:
-                result['globalParams'].append(k.to_map() if k else None)
-        if self.runner_cache_mode is not None:
-            result['runnerCacheMode'] = self.runner_cache_mode
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.caches = []
-        if m.get('caches') is not None:
-            for k in m.get('caches'):
-                temp_model = UpdatePipelineRequestSettingsCaches()
-                self.caches.append(temp_model.from_map(k))
-        self.global_params = []
-        if m.get('globalParams') is not None:
-            for k in m.get('globalParams'):
-                temp_model = UpdatePipelineRequestSettingsGlobalParams()
-                self.global_params.append(temp_model.from_map(k))
-        if m.get('runnerCacheMode') is not None:
-            self.runner_cache_mode = m.get('runnerCacheMode')
-        return self
-
-
-class UpdatePipelineRequestTriggerInfoScheduled(TeaModel):
-    def __init__(
-        self,
-        days_of_week: str = None,
-        fixed_time: str = None,
-        from_: str = None,
-        interval: int = None,
-        only_source_change: bool = None,
-        to: str = None,
-        type: str = None,
-    ):
-        self.days_of_week = days_of_week
-        self.fixed_time = fixed_time
-        self.from_ = from_
-        self.interval = interval
-        self.only_source_change = only_source_change
-        self.to = to
-        self.type = type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.days_of_week is not None:
-            result['daysOfWeek'] = self.days_of_week
-        if self.fixed_time is not None:
-            result['fixedTime'] = self.fixed_time
-        if self.from_ is not None:
-            result['from'] = self.from_
-        if self.interval is not None:
-            result['interval'] = self.interval
-        if self.only_source_change is not None:
-            result['onlySourceChange'] = self.only_source_change
-        if self.to is not None:
-            result['to'] = self.to
-        if self.type is not None:
-            result['type'] = self.type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('daysOfWeek') is not None:
-            self.days_of_week = m.get('daysOfWeek')
-        if m.get('fixedTime') is not None:
-            self.fixed_time = m.get('fixedTime')
-        if m.get('from') is not None:
-            self.from_ = m.get('from')
-        if m.get('interval') is not None:
-            self.interval = m.get('interval')
-        if m.get('onlySourceChange') is not None:
-            self.only_source_change = m.get('onlySourceChange')
-        if m.get('to') is not None:
-            self.to = m.get('to')
-        if m.get('type') is not None:
-            self.type = m.get('type')
-        return self
-
-
-class UpdatePipelineRequestTriggerInfo(TeaModel):
-    def __init__(
-        self,
-        scheduled: UpdatePipelineRequestTriggerInfoScheduled = None,
-        webhook_enable: bool = None,
-    ):
-        self.scheduled = scheduled
-        self.webhook_enable = webhook_enable
-
-    def validate(self):
-        if self.scheduled:
-            self.scheduled.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.scheduled is not None:
-            result['scheduled'] = self.scheduled.to_map()
-        if self.webhook_enable is not None:
-            result['webhookEnable'] = self.webhook_enable
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('scheduled') is not None:
-            temp_model = UpdatePipelineRequestTriggerInfoScheduled()
-            self.scheduled = temp_model.from_map(m['scheduled'])
-        if m.get('webhookEnable') is not None:
-            self.webhook_enable = m.get('webhookEnable')
-        return self
-
-
-class UpdatePipelineRequest(TeaModel):
-    def __init__(
-        self,
-        basic_info: UpdatePipelineRequestBasicInfo = None,
-        pipeline_yaml: str = None,
-        settings: UpdatePipelineRequestSettings = None,
-        trigger_info: UpdatePipelineRequestTriggerInfo = None,
-    ):
-        self.basic_info = basic_info
-        self.pipeline_yaml = pipeline_yaml
-        self.settings = settings
-        self.trigger_info = trigger_info
-
-    def validate(self):
-        if self.basic_info:
-            self.basic_info.validate()
-        if self.settings:
-            self.settings.validate()
-        if self.trigger_info:
-            self.trigger_info.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.basic_info is not None:
-            result['basicInfo'] = self.basic_info.to_map()
-        if self.pipeline_yaml is not None:
-            result['pipelineYaml'] = self.pipeline_yaml
-        if self.settings is not None:
-            result['settings'] = self.settings.to_map()
-        if self.trigger_info is not None:
-            result['triggerInfo'] = self.trigger_info.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('basicInfo') is not None:
-            temp_model = UpdatePipelineRequestBasicInfo()
-            self.basic_info = temp_model.from_map(m['basicInfo'])
-        if m.get('pipelineYaml') is not None:
-            self.pipeline_yaml = m.get('pipelineYaml')
-        if m.get('settings') is not None:
-            temp_model = UpdatePipelineRequestSettings()
-            self.settings = temp_model.from_map(m['settings'])
-        if m.get('triggerInfo') is not None:
-            temp_model = UpdatePipelineRequestTriggerInfo()
-            self.trigger_info = temp_model.from_map(m['triggerInfo'])
-        return self
-
-
-class UpdatePipelineResponseBody(TeaModel):
-    def __init__(
-        self,
-        error_code: str = None,
-        error_message: str = None,
-        object: int = None,
-        request_id: str = None,
-        success: bool = None,
-    ):
-        self.error_code = error_code
-        self.error_message = error_message
-        self.object = object
-        self.request_id = request_id
-        self.success = success
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.error_code is not None:
-            result['errorCode'] = self.error_code
-        if self.error_message is not None:
-            result['errorMessage'] = self.error_message
-        if self.object is not None:
-            result['object'] = self.object
-        if self.request_id is not None:
-            result['requestId'] = self.request_id
-        if self.success is not None:
-            result['success'] = self.success
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('errorCode') is not None:
-            self.error_code = m.get('errorCode')
-        if m.get('errorMessage') is not None:
-            self.error_message = m.get('errorMessage')
-        if m.get('object') is not None:
-            self.object = m.get('object')
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
-        if m.get('success') is not None:
-            self.success = m.get('success')
-        return self
-
-
-class UpdatePipelineResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: UpdatePipelineResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = UpdatePipelineResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class UpdatePipelineBaseInfoRequest(TeaModel):
     def __init__(
         self,
@@ -19533,6 +18912,1213 @@ class UpdateProjectMemberResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateProjectMemberResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateProtectedBranchesRequestMergeRequestSetting(TeaModel):
+    def __init__(
+        self,
+        allow_merge_request_roles: List[int] = None,
+        default_assignees: List[int] = None,
+        is_allow_self_approval: bool = None,
+        is_require_discussion_processed: bool = None,
+        is_required: bool = None,
+        is_reset_approval_when_new_push: bool = None,
+        minimum_approval: int = None,
+        mr_mode: str = None,
+        white_list: str = None,
+    ):
+        self.allow_merge_request_roles = allow_merge_request_roles
+        self.default_assignees = default_assignees
+        self.is_allow_self_approval = is_allow_self_approval
+        self.is_require_discussion_processed = is_require_discussion_processed
+        self.is_required = is_required
+        self.is_reset_approval_when_new_push = is_reset_approval_when_new_push
+        self.minimum_approval = minimum_approval
+        self.mr_mode = mr_mode
+        self.white_list = white_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.allow_merge_request_roles is not None:
+            result['allowMergeRequestRoles'] = self.allow_merge_request_roles
+        if self.default_assignees is not None:
+            result['defaultAssignees'] = self.default_assignees
+        if self.is_allow_self_approval is not None:
+            result['isAllowSelfApproval'] = self.is_allow_self_approval
+        if self.is_require_discussion_processed is not None:
+            result['isRequireDiscussionProcessed'] = self.is_require_discussion_processed
+        if self.is_required is not None:
+            result['isRequired'] = self.is_required
+        if self.is_reset_approval_when_new_push is not None:
+            result['isResetApprovalWhenNewPush'] = self.is_reset_approval_when_new_push
+        if self.minimum_approval is not None:
+            result['minimumApproval'] = self.minimum_approval
+        if self.mr_mode is not None:
+            result['mrMode'] = self.mr_mode
+        if self.white_list is not None:
+            result['whiteList'] = self.white_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('allowMergeRequestRoles') is not None:
+            self.allow_merge_request_roles = m.get('allowMergeRequestRoles')
+        if m.get('defaultAssignees') is not None:
+            self.default_assignees = m.get('defaultAssignees')
+        if m.get('isAllowSelfApproval') is not None:
+            self.is_allow_self_approval = m.get('isAllowSelfApproval')
+        if m.get('isRequireDiscussionProcessed') is not None:
+            self.is_require_discussion_processed = m.get('isRequireDiscussionProcessed')
+        if m.get('isRequired') is not None:
+            self.is_required = m.get('isRequired')
+        if m.get('isResetApprovalWhenNewPush') is not None:
+            self.is_reset_approval_when_new_push = m.get('isResetApprovalWhenNewPush')
+        if m.get('minimumApproval') is not None:
+            self.minimum_approval = m.get('minimumApproval')
+        if m.get('mrMode') is not None:
+            self.mr_mode = m.get('mrMode')
+        if m.get('whiteList') is not None:
+            self.white_list = m.get('whiteList')
+        return self
+
+
+class UpdateProtectedBranchesRequestTestSettingDTOCheckConfigCheckItems(TeaModel):
+    def __init__(
+        self,
+        is_required: bool = None,
+        name: str = None,
+    ):
+        self.is_required = is_required
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.is_required is not None:
+            result['isRequired'] = self.is_required
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('isRequired') is not None:
+            self.is_required = m.get('isRequired')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
+class UpdateProtectedBranchesRequestTestSettingDTOCheckConfig(TeaModel):
+    def __init__(
+        self,
+        check_items: List[UpdateProtectedBranchesRequestTestSettingDTOCheckConfigCheckItems] = None,
+    ):
+        self.check_items = check_items
+
+    def validate(self):
+        if self.check_items:
+            for k in self.check_items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['checkItems'] = []
+        if self.check_items is not None:
+            for k in self.check_items:
+                result['checkItems'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.check_items = []
+        if m.get('checkItems') is not None:
+            for k in m.get('checkItems'):
+                temp_model = UpdateProtectedBranchesRequestTestSettingDTOCheckConfigCheckItems()
+                self.check_items.append(temp_model.from_map(k))
+        return self
+
+
+class UpdateProtectedBranchesRequestTestSettingDTOCheckTaskQualityConfig(TeaModel):
+    def __init__(
+        self,
+        biz_no: str = None,
+        enabled: bool = None,
+        message: str = None,
+        task_name: str = None,
+    ):
+        self.biz_no = biz_no
+        self.enabled = enabled
+        self.message = message
+        self.task_name = task_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_no is not None:
+            result['bizNo'] = self.biz_no
+        if self.enabled is not None:
+            result['enabled'] = self.enabled
+        if self.message is not None:
+            result['message'] = self.message
+        if self.task_name is not None:
+            result['taskName'] = self.task_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('bizNo') is not None:
+            self.biz_no = m.get('bizNo')
+        if m.get('enabled') is not None:
+            self.enabled = m.get('enabled')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('taskName') is not None:
+            self.task_name = m.get('taskName')
+        return self
+
+
+class UpdateProtectedBranchesRequestTestSettingDTOCodeGuidelinesDetection(TeaModel):
+    def __init__(
+        self,
+        enabled: bool = None,
+        message: str = None,
+    ):
+        self.enabled = enabled
+        self.message = message
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enabled is not None:
+            result['enabled'] = self.enabled
+        if self.message is not None:
+            result['message'] = self.message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enabled') is not None:
+            self.enabled = m.get('enabled')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        return self
+
+
+class UpdateProtectedBranchesRequestTestSettingDTOSensitiveInfoDetection(TeaModel):
+    def __init__(
+        self,
+        enabled: bool = None,
+        message: str = None,
+    ):
+        self.enabled = enabled
+        self.message = message
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enabled is not None:
+            result['enabled'] = self.enabled
+        if self.message is not None:
+            result['message'] = self.message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enabled') is not None:
+            self.enabled = m.get('enabled')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        return self
+
+
+class UpdateProtectedBranchesRequestTestSettingDTO(TeaModel):
+    def __init__(
+        self,
+        check_config: UpdateProtectedBranchesRequestTestSettingDTOCheckConfig = None,
+        check_task_quality_config: UpdateProtectedBranchesRequestTestSettingDTOCheckTaskQualityConfig = None,
+        code_guidelines_detection: UpdateProtectedBranchesRequestTestSettingDTOCodeGuidelinesDetection = None,
+        is_required: bool = None,
+        sensitive_info_detection: UpdateProtectedBranchesRequestTestSettingDTOSensitiveInfoDetection = None,
+    ):
+        self.check_config = check_config
+        self.check_task_quality_config = check_task_quality_config
+        self.code_guidelines_detection = code_guidelines_detection
+        self.is_required = is_required
+        self.sensitive_info_detection = sensitive_info_detection
+
+    def validate(self):
+        if self.check_config:
+            self.check_config.validate()
+        if self.check_task_quality_config:
+            self.check_task_quality_config.validate()
+        if self.code_guidelines_detection:
+            self.code_guidelines_detection.validate()
+        if self.sensitive_info_detection:
+            self.sensitive_info_detection.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.check_config is not None:
+            result['checkConfig'] = self.check_config.to_map()
+        if self.check_task_quality_config is not None:
+            result['checkTaskQualityConfig'] = self.check_task_quality_config.to_map()
+        if self.code_guidelines_detection is not None:
+            result['codeGuidelinesDetection'] = self.code_guidelines_detection.to_map()
+        if self.is_required is not None:
+            result['isRequired'] = self.is_required
+        if self.sensitive_info_detection is not None:
+            result['sensitiveInfoDetection'] = self.sensitive_info_detection.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('checkConfig') is not None:
+            temp_model = UpdateProtectedBranchesRequestTestSettingDTOCheckConfig()
+            self.check_config = temp_model.from_map(m['checkConfig'])
+        if m.get('checkTaskQualityConfig') is not None:
+            temp_model = UpdateProtectedBranchesRequestTestSettingDTOCheckTaskQualityConfig()
+            self.check_task_quality_config = temp_model.from_map(m['checkTaskQualityConfig'])
+        if m.get('codeGuidelinesDetection') is not None:
+            temp_model = UpdateProtectedBranchesRequestTestSettingDTOCodeGuidelinesDetection()
+            self.code_guidelines_detection = temp_model.from_map(m['codeGuidelinesDetection'])
+        if m.get('isRequired') is not None:
+            self.is_required = m.get('isRequired')
+        if m.get('sensitiveInfoDetection') is not None:
+            temp_model = UpdateProtectedBranchesRequestTestSettingDTOSensitiveInfoDetection()
+            self.sensitive_info_detection = temp_model.from_map(m['sensitiveInfoDetection'])
+        return self
+
+
+class UpdateProtectedBranchesRequest(TeaModel):
+    def __init__(
+        self,
+        access_token: str = None,
+        allow_merge_roles: List[int] = None,
+        allow_merge_user_ids: List[int] = None,
+        allow_push_roles: List[int] = None,
+        allow_push_user_ids: List[int] = None,
+        branch: str = None,
+        id: int = None,
+        merge_request_setting: UpdateProtectedBranchesRequestMergeRequestSetting = None,
+        test_setting_dto: UpdateProtectedBranchesRequestTestSettingDTO = None,
+        organization_id: str = None,
+    ):
+        self.access_token = access_token
+        self.allow_merge_roles = allow_merge_roles
+        self.allow_merge_user_ids = allow_merge_user_ids
+        self.allow_push_roles = allow_push_roles
+        self.allow_push_user_ids = allow_push_user_ids
+        self.branch = branch
+        self.id = id
+        self.merge_request_setting = merge_request_setting
+        self.test_setting_dto = test_setting_dto
+        self.organization_id = organization_id
+
+    def validate(self):
+        if self.merge_request_setting:
+            self.merge_request_setting.validate()
+        if self.test_setting_dto:
+            self.test_setting_dto.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_token is not None:
+            result['accessToken'] = self.access_token
+        if self.allow_merge_roles is not None:
+            result['allowMergeRoles'] = self.allow_merge_roles
+        if self.allow_merge_user_ids is not None:
+            result['allowMergeUserIds'] = self.allow_merge_user_ids
+        if self.allow_push_roles is not None:
+            result['allowPushRoles'] = self.allow_push_roles
+        if self.allow_push_user_ids is not None:
+            result['allowPushUserIds'] = self.allow_push_user_ids
+        if self.branch is not None:
+            result['branch'] = self.branch
+        if self.id is not None:
+            result['id'] = self.id
+        if self.merge_request_setting is not None:
+            result['mergeRequestSetting'] = self.merge_request_setting.to_map()
+        if self.test_setting_dto is not None:
+            result['testSettingDTO'] = self.test_setting_dto.to_map()
+        if self.organization_id is not None:
+            result['organizationId'] = self.organization_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accessToken') is not None:
+            self.access_token = m.get('accessToken')
+        if m.get('allowMergeRoles') is not None:
+            self.allow_merge_roles = m.get('allowMergeRoles')
+        if m.get('allowMergeUserIds') is not None:
+            self.allow_merge_user_ids = m.get('allowMergeUserIds')
+        if m.get('allowPushRoles') is not None:
+            self.allow_push_roles = m.get('allowPushRoles')
+        if m.get('allowPushUserIds') is not None:
+            self.allow_push_user_ids = m.get('allowPushUserIds')
+        if m.get('branch') is not None:
+            self.branch = m.get('branch')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('mergeRequestSetting') is not None:
+            temp_model = UpdateProtectedBranchesRequestMergeRequestSetting()
+            self.merge_request_setting = temp_model.from_map(m['mergeRequestSetting'])
+        if m.get('testSettingDTO') is not None:
+            temp_model = UpdateProtectedBranchesRequestTestSettingDTO()
+            self.test_setting_dto = temp_model.from_map(m['testSettingDTO'])
+        if m.get('organizationId') is not None:
+            self.organization_id = m.get('organizationId')
+        return self
+
+
+class UpdateProtectedBranchesResponseBodyResultMergeRequestSetting(TeaModel):
+    def __init__(
+        self,
+        allow_merge_request_roles: List[int] = None,
+        default_assignees: List[int] = None,
+        is_allow_self_approval: bool = None,
+        is_require_discussion_processed: bool = None,
+        is_required: bool = None,
+        is_reset_approval_when_new_push: bool = None,
+        minimum_approval: int = None,
+        mr_mode: str = None,
+        white_list: str = None,
+    ):
+        self.allow_merge_request_roles = allow_merge_request_roles
+        self.default_assignees = default_assignees
+        self.is_allow_self_approval = is_allow_self_approval
+        self.is_require_discussion_processed = is_require_discussion_processed
+        self.is_required = is_required
+        self.is_reset_approval_when_new_push = is_reset_approval_when_new_push
+        self.minimum_approval = minimum_approval
+        self.mr_mode = mr_mode
+        self.white_list = white_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.allow_merge_request_roles is not None:
+            result['allowMergeRequestRoles'] = self.allow_merge_request_roles
+        if self.default_assignees is not None:
+            result['defaultAssignees'] = self.default_assignees
+        if self.is_allow_self_approval is not None:
+            result['isAllowSelfApproval'] = self.is_allow_self_approval
+        if self.is_require_discussion_processed is not None:
+            result['isRequireDiscussionProcessed'] = self.is_require_discussion_processed
+        if self.is_required is not None:
+            result['isRequired'] = self.is_required
+        if self.is_reset_approval_when_new_push is not None:
+            result['isResetApprovalWhenNewPush'] = self.is_reset_approval_when_new_push
+        if self.minimum_approval is not None:
+            result['minimumApproval'] = self.minimum_approval
+        if self.mr_mode is not None:
+            result['mrMode'] = self.mr_mode
+        if self.white_list is not None:
+            result['whiteList'] = self.white_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('allowMergeRequestRoles') is not None:
+            self.allow_merge_request_roles = m.get('allowMergeRequestRoles')
+        if m.get('defaultAssignees') is not None:
+            self.default_assignees = m.get('defaultAssignees')
+        if m.get('isAllowSelfApproval') is not None:
+            self.is_allow_self_approval = m.get('isAllowSelfApproval')
+        if m.get('isRequireDiscussionProcessed') is not None:
+            self.is_require_discussion_processed = m.get('isRequireDiscussionProcessed')
+        if m.get('isRequired') is not None:
+            self.is_required = m.get('isRequired')
+        if m.get('isResetApprovalWhenNewPush') is not None:
+            self.is_reset_approval_when_new_push = m.get('isResetApprovalWhenNewPush')
+        if m.get('minimumApproval') is not None:
+            self.minimum_approval = m.get('minimumApproval')
+        if m.get('mrMode') is not None:
+            self.mr_mode = m.get('mrMode')
+        if m.get('whiteList') is not None:
+            self.white_list = m.get('whiteList')
+        return self
+
+
+class UpdateProtectedBranchesResponseBodyResultTestSettingDTOCheckConfigCheckItems(TeaModel):
+    def __init__(
+        self,
+        is_required: bool = None,
+        name: str = None,
+    ):
+        self.is_required = is_required
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.is_required is not None:
+            result['isRequired'] = self.is_required
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('isRequired') is not None:
+            self.is_required = m.get('isRequired')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
+class UpdateProtectedBranchesResponseBodyResultTestSettingDTOCheckConfig(TeaModel):
+    def __init__(
+        self,
+        check_items: List[UpdateProtectedBranchesResponseBodyResultTestSettingDTOCheckConfigCheckItems] = None,
+    ):
+        self.check_items = check_items
+
+    def validate(self):
+        if self.check_items:
+            for k in self.check_items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['checkItems'] = []
+        if self.check_items is not None:
+            for k in self.check_items:
+                result['checkItems'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.check_items = []
+        if m.get('checkItems') is not None:
+            for k in m.get('checkItems'):
+                temp_model = UpdateProtectedBranchesResponseBodyResultTestSettingDTOCheckConfigCheckItems()
+                self.check_items.append(temp_model.from_map(k))
+        return self
+
+
+class UpdateProtectedBranchesResponseBodyResultTestSettingDTOCheckTaskQualityConfig(TeaModel):
+    def __init__(
+        self,
+        biz_no: str = None,
+        enabled: bool = None,
+        message: str = None,
+        task_name: str = None,
+    ):
+        self.biz_no = biz_no
+        self.enabled = enabled
+        self.message = message
+        self.task_name = task_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_no is not None:
+            result['bizNo'] = self.biz_no
+        if self.enabled is not None:
+            result['enabled'] = self.enabled
+        if self.message is not None:
+            result['message'] = self.message
+        if self.task_name is not None:
+            result['taskName'] = self.task_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('bizNo') is not None:
+            self.biz_no = m.get('bizNo')
+        if m.get('enabled') is not None:
+            self.enabled = m.get('enabled')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('taskName') is not None:
+            self.task_name = m.get('taskName')
+        return self
+
+
+class UpdateProtectedBranchesResponseBodyResultTestSettingDTOCodeGuidelinesDetection(TeaModel):
+    def __init__(
+        self,
+        enabled: bool = None,
+        message: str = None,
+    ):
+        self.enabled = enabled
+        self.message = message
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enabled is not None:
+            result['enabled'] = self.enabled
+        if self.message is not None:
+            result['message'] = self.message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enabled') is not None:
+            self.enabled = m.get('enabled')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        return self
+
+
+class UpdateProtectedBranchesResponseBodyResultTestSettingDTOSensitiveInfoDetection(TeaModel):
+    def __init__(
+        self,
+        enabled: bool = None,
+        message: str = None,
+    ):
+        self.enabled = enabled
+        self.message = message
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enabled is not None:
+            result['enabled'] = self.enabled
+        if self.message is not None:
+            result['message'] = self.message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enabled') is not None:
+            self.enabled = m.get('enabled')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        return self
+
+
+class UpdateProtectedBranchesResponseBodyResultTestSettingDTO(TeaModel):
+    def __init__(
+        self,
+        check_config: UpdateProtectedBranchesResponseBodyResultTestSettingDTOCheckConfig = None,
+        check_task_quality_config: UpdateProtectedBranchesResponseBodyResultTestSettingDTOCheckTaskQualityConfig = None,
+        code_guidelines_detection: UpdateProtectedBranchesResponseBodyResultTestSettingDTOCodeGuidelinesDetection = None,
+        is_required: bool = None,
+        sensitive_info_detection: UpdateProtectedBranchesResponseBodyResultTestSettingDTOSensitiveInfoDetection = None,
+    ):
+        self.check_config = check_config
+        self.check_task_quality_config = check_task_quality_config
+        self.code_guidelines_detection = code_guidelines_detection
+        self.is_required = is_required
+        self.sensitive_info_detection = sensitive_info_detection
+
+    def validate(self):
+        if self.check_config:
+            self.check_config.validate()
+        if self.check_task_quality_config:
+            self.check_task_quality_config.validate()
+        if self.code_guidelines_detection:
+            self.code_guidelines_detection.validate()
+        if self.sensitive_info_detection:
+            self.sensitive_info_detection.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.check_config is not None:
+            result['checkConfig'] = self.check_config.to_map()
+        if self.check_task_quality_config is not None:
+            result['checkTaskQualityConfig'] = self.check_task_quality_config.to_map()
+        if self.code_guidelines_detection is not None:
+            result['codeGuidelinesDetection'] = self.code_guidelines_detection.to_map()
+        if self.is_required is not None:
+            result['isRequired'] = self.is_required
+        if self.sensitive_info_detection is not None:
+            result['sensitiveInfoDetection'] = self.sensitive_info_detection.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('checkConfig') is not None:
+            temp_model = UpdateProtectedBranchesResponseBodyResultTestSettingDTOCheckConfig()
+            self.check_config = temp_model.from_map(m['checkConfig'])
+        if m.get('checkTaskQualityConfig') is not None:
+            temp_model = UpdateProtectedBranchesResponseBodyResultTestSettingDTOCheckTaskQualityConfig()
+            self.check_task_quality_config = temp_model.from_map(m['checkTaskQualityConfig'])
+        if m.get('codeGuidelinesDetection') is not None:
+            temp_model = UpdateProtectedBranchesResponseBodyResultTestSettingDTOCodeGuidelinesDetection()
+            self.code_guidelines_detection = temp_model.from_map(m['codeGuidelinesDetection'])
+        if m.get('isRequired') is not None:
+            self.is_required = m.get('isRequired')
+        if m.get('sensitiveInfoDetection') is not None:
+            temp_model = UpdateProtectedBranchesResponseBodyResultTestSettingDTOSensitiveInfoDetection()
+            self.sensitive_info_detection = temp_model.from_map(m['sensitiveInfoDetection'])
+        return self
+
+
+class UpdateProtectedBranchesResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        allow_merge_roles: List[int] = None,
+        allow_merge_user_ids: List[int] = None,
+        allow_push_roles: List[int] = None,
+        allow_push_user_ids: List[int] = None,
+        branch: str = None,
+        id: int = None,
+        merge_request_setting: UpdateProtectedBranchesResponseBodyResultMergeRequestSetting = None,
+        test_setting_dto: UpdateProtectedBranchesResponseBodyResultTestSettingDTO = None,
+    ):
+        self.allow_merge_roles = allow_merge_roles
+        self.allow_merge_user_ids = allow_merge_user_ids
+        self.allow_push_roles = allow_push_roles
+        self.allow_push_user_ids = allow_push_user_ids
+        self.branch = branch
+        self.id = id
+        self.merge_request_setting = merge_request_setting
+        self.test_setting_dto = test_setting_dto
+
+    def validate(self):
+        if self.merge_request_setting:
+            self.merge_request_setting.validate()
+        if self.test_setting_dto:
+            self.test_setting_dto.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.allow_merge_roles is not None:
+            result['allowMergeRoles'] = self.allow_merge_roles
+        if self.allow_merge_user_ids is not None:
+            result['allowMergeUserIds'] = self.allow_merge_user_ids
+        if self.allow_push_roles is not None:
+            result['allowPushRoles'] = self.allow_push_roles
+        if self.allow_push_user_ids is not None:
+            result['allowPushUserIds'] = self.allow_push_user_ids
+        if self.branch is not None:
+            result['branch'] = self.branch
+        if self.id is not None:
+            result['id'] = self.id
+        if self.merge_request_setting is not None:
+            result['mergeRequestSetting'] = self.merge_request_setting.to_map()
+        if self.test_setting_dto is not None:
+            result['testSettingDTO'] = self.test_setting_dto.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('allowMergeRoles') is not None:
+            self.allow_merge_roles = m.get('allowMergeRoles')
+        if m.get('allowMergeUserIds') is not None:
+            self.allow_merge_user_ids = m.get('allowMergeUserIds')
+        if m.get('allowPushRoles') is not None:
+            self.allow_push_roles = m.get('allowPushRoles')
+        if m.get('allowPushUserIds') is not None:
+            self.allow_push_user_ids = m.get('allowPushUserIds')
+        if m.get('branch') is not None:
+            self.branch = m.get('branch')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('mergeRequestSetting') is not None:
+            temp_model = UpdateProtectedBranchesResponseBodyResultMergeRequestSetting()
+            self.merge_request_setting = temp_model.from_map(m['mergeRequestSetting'])
+        if m.get('testSettingDTO') is not None:
+            temp_model = UpdateProtectedBranchesResponseBodyResultTestSettingDTO()
+            self.test_setting_dto = temp_model.from_map(m['testSettingDTO'])
+        return self
+
+
+class UpdateProtectedBranchesResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        result: UpdateProtectedBranchesResponseBodyResult = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.result = result
+        self.success = success
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.result is not None:
+            result['result'] = self.result.to_map()
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('result') is not None:
+            temp_model = UpdateProtectedBranchesResponseBodyResult()
+            self.result = temp_model.from_map(m['result'])
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class UpdateProtectedBranchesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateProtectedBranchesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateProtectedBranchesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateRepositoryMemberRequestRelatedInfos(TeaModel):
+    def __init__(
+        self,
+        related_id: str = None,
+        source_id: int = None,
+        source_type: str = None,
+    ):
+        self.related_id = related_id
+        self.source_id = source_id
+        self.source_type = source_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.related_id is not None:
+            result['relatedId'] = self.related_id
+        if self.source_id is not None:
+            result['sourceId'] = self.source_id
+        if self.source_type is not None:
+            result['sourceType'] = self.source_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('relatedId') is not None:
+            self.related_id = m.get('relatedId')
+        if m.get('sourceId') is not None:
+            self.source_id = m.get('sourceId')
+        if m.get('sourceType') is not None:
+            self.source_type = m.get('sourceType')
+        return self
+
+
+class UpdateRepositoryMemberRequest(TeaModel):
+    def __init__(
+        self,
+        access_token: str = None,
+        access_level: int = None,
+        expire_at: str = None,
+        member_type: str = None,
+        related_id: str = None,
+        related_infos: List[UpdateRepositoryMemberRequestRelatedInfos] = None,
+        organization_id: str = None,
+    ):
+        self.access_token = access_token
+        self.access_level = access_level
+        self.expire_at = expire_at
+        self.member_type = member_type
+        self.related_id = related_id
+        self.related_infos = related_infos
+        self.organization_id = organization_id
+
+    def validate(self):
+        if self.related_infos:
+            for k in self.related_infos:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_token is not None:
+            result['accessToken'] = self.access_token
+        if self.access_level is not None:
+            result['accessLevel'] = self.access_level
+        if self.expire_at is not None:
+            result['expireAt'] = self.expire_at
+        if self.member_type is not None:
+            result['memberType'] = self.member_type
+        if self.related_id is not None:
+            result['relatedId'] = self.related_id
+        result['relatedInfos'] = []
+        if self.related_infos is not None:
+            for k in self.related_infos:
+                result['relatedInfos'].append(k.to_map() if k else None)
+        if self.organization_id is not None:
+            result['organizationId'] = self.organization_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accessToken') is not None:
+            self.access_token = m.get('accessToken')
+        if m.get('accessLevel') is not None:
+            self.access_level = m.get('accessLevel')
+        if m.get('expireAt') is not None:
+            self.expire_at = m.get('expireAt')
+        if m.get('memberType') is not None:
+            self.member_type = m.get('memberType')
+        if m.get('relatedId') is not None:
+            self.related_id = m.get('relatedId')
+        self.related_infos = []
+        if m.get('relatedInfos') is not None:
+            for k in m.get('relatedInfos'):
+                temp_model = UpdateRepositoryMemberRequestRelatedInfos()
+                self.related_infos.append(temp_model.from_map(k))
+        if m.get('organizationId') is not None:
+            self.organization_id = m.get('organizationId')
+        return self
+
+
+class UpdateRepositoryMemberResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        access_level: int = None,
+        avatar_url: str = None,
+        email: str = None,
+        expire_at: str = None,
+        extern_uid: str = None,
+        id: int = None,
+        member_name: str = None,
+        member_type: str = None,
+        name: str = None,
+        source_id: int = None,
+        source_type: str = None,
+        state: str = None,
+        tb_user_id: str = None,
+        username: str = None,
+        web_url: str = None,
+    ):
+        self.access_level = access_level
+        self.avatar_url = avatar_url
+        self.email = email
+        self.expire_at = expire_at
+        self.extern_uid = extern_uid
+        self.id = id
+        self.member_name = member_name
+        self.member_type = member_type
+        self.name = name
+        self.source_id = source_id
+        self.source_type = source_type
+        self.state = state
+        self.tb_user_id = tb_user_id
+        self.username = username
+        self.web_url = web_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_level is not None:
+            result['accessLevel'] = self.access_level
+        if self.avatar_url is not None:
+            result['avatarUrl'] = self.avatar_url
+        if self.email is not None:
+            result['email'] = self.email
+        if self.expire_at is not None:
+            result['expireAt'] = self.expire_at
+        if self.extern_uid is not None:
+            result['externUid'] = self.extern_uid
+        if self.id is not None:
+            result['id'] = self.id
+        if self.member_name is not None:
+            result['memberName'] = self.member_name
+        if self.member_type is not None:
+            result['memberType'] = self.member_type
+        if self.name is not None:
+            result['name'] = self.name
+        if self.source_id is not None:
+            result['sourceId'] = self.source_id
+        if self.source_type is not None:
+            result['sourceType'] = self.source_type
+        if self.state is not None:
+            result['state'] = self.state
+        if self.tb_user_id is not None:
+            result['tbUserId'] = self.tb_user_id
+        if self.username is not None:
+            result['username'] = self.username
+        if self.web_url is not None:
+            result['webUrl'] = self.web_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accessLevel') is not None:
+            self.access_level = m.get('accessLevel')
+        if m.get('avatarUrl') is not None:
+            self.avatar_url = m.get('avatarUrl')
+        if m.get('email') is not None:
+            self.email = m.get('email')
+        if m.get('expireAt') is not None:
+            self.expire_at = m.get('expireAt')
+        if m.get('externUid') is not None:
+            self.extern_uid = m.get('externUid')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('memberName') is not None:
+            self.member_name = m.get('memberName')
+        if m.get('memberType') is not None:
+            self.member_type = m.get('memberType')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('sourceId') is not None:
+            self.source_id = m.get('sourceId')
+        if m.get('sourceType') is not None:
+            self.source_type = m.get('sourceType')
+        if m.get('state') is not None:
+            self.state = m.get('state')
+        if m.get('tbUserId') is not None:
+            self.tb_user_id = m.get('tbUserId')
+        if m.get('username') is not None:
+            self.username = m.get('username')
+        if m.get('webUrl') is not None:
+            self.web_url = m.get('webUrl')
+        return self
+
+
+class UpdateRepositoryMemberResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        result: UpdateRepositoryMemberResponseBodyResult = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.result = result
+        self.success = success
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.result is not None:
+            result['result'] = self.result.to_map()
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('result') is not None:
+            temp_model = UpdateRepositoryMemberResponseBodyResult()
+            self.result = temp_model.from_map(m['result'])
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class UpdateRepositoryMemberResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateRepositoryMemberResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateRepositoryMemberResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
