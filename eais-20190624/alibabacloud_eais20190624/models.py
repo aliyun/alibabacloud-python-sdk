@@ -454,17 +454,117 @@ class CreateEaiAllResponse(TeaModel):
         return self
 
 
+class CreateEaiJupyterRequestEnvironmentVar(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateEaiJupyterRequest(TeaModel):
     def __init__(
         self,
         client_token: str = None,
         eais_type: str = None,
+        environment_var: List[CreateEaiJupyterRequestEnvironmentVar] = None,
         region_id: str = None,
         security_group_id: str = None,
         v_switch_id: str = None,
     ):
         self.client_token = client_token
         self.eais_type = eais_type
+        self.environment_var = environment_var
+        self.region_id = region_id
+        self.security_group_id = security_group_id
+        self.v_switch_id = v_switch_id
+
+    def validate(self):
+        if self.environment_var:
+            for k in self.environment_var:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.eais_type is not None:
+            result['EaisType'] = self.eais_type
+        result['EnvironmentVar'] = []
+        if self.environment_var is not None:
+            for k in self.environment_var:
+                result['EnvironmentVar'].append(k.to_map() if k else None)
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('EaisType') is not None:
+            self.eais_type = m.get('EaisType')
+        self.environment_var = []
+        if m.get('EnvironmentVar') is not None:
+            for k in m.get('EnvironmentVar'):
+                temp_model = CreateEaiJupyterRequestEnvironmentVar()
+                self.environment_var.append(temp_model.from_map(k))
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        return self
+
+
+class CreateEaiJupyterShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        eais_type: str = None,
+        environment_var_shrink: str = None,
+        region_id: str = None,
+        security_group_id: str = None,
+        v_switch_id: str = None,
+    ):
+        self.client_token = client_token
+        self.eais_type = eais_type
+        self.environment_var_shrink = environment_var_shrink
         self.region_id = region_id
         self.security_group_id = security_group_id
         self.v_switch_id = v_switch_id
@@ -482,6 +582,8 @@ class CreateEaiJupyterRequest(TeaModel):
             result['ClientToken'] = self.client_token
         if self.eais_type is not None:
             result['EaisType'] = self.eais_type
+        if self.environment_var_shrink is not None:
+            result['EnvironmentVar'] = self.environment_var_shrink
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.security_group_id is not None:
@@ -496,6 +598,8 @@ class CreateEaiJupyterRequest(TeaModel):
             self.client_token = m.get('ClientToken')
         if m.get('EaisType') is not None:
             self.eais_type = m.get('EaisType')
+        if m.get('EnvironmentVar') is not None:
+            self.environment_var_shrink = m.get('EnvironmentVar')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('SecurityGroupId') is not None:

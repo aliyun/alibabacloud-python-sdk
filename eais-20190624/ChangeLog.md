@@ -1,3 +1,6 @@
+2022-10-25 Version: 1.0.4
+- OpenAPI CreateEaiJupyter add optional parameter `EnvironmentVar`.
+
 2022-10-20 Version: 1.0.3
 - Add OpenAPI CreateEaiJupyter.
 - Fixd bugs for OpenAPI  DeleteEaiAll.
