@@ -2067,6 +2067,7 @@ class CreateUploadImageRequest(TeaModel):
         description: str = None,
         image_ext: str = None,
         image_type: str = None,
+        original_file_name: str = None,
         storage_location: str = None,
         tags: str = None,
         title: str = None,
@@ -2077,6 +2078,7 @@ class CreateUploadImageRequest(TeaModel):
         self.description = description
         self.image_ext = image_ext
         self.image_type = image_type
+        self.original_file_name = original_file_name
         self.storage_location = storage_location
         self.tags = tags
         self.title = title
@@ -2101,6 +2103,8 @@ class CreateUploadImageRequest(TeaModel):
             result['ImageExt'] = self.image_ext
         if self.image_type is not None:
             result['ImageType'] = self.image_type
+        if self.original_file_name is not None:
+            result['OriginalFileName'] = self.original_file_name
         if self.storage_location is not None:
             result['StorageLocation'] = self.storage_location
         if self.tags is not None:
@@ -2123,6 +2127,8 @@ class CreateUploadImageRequest(TeaModel):
             self.image_ext = m.get('ImageExt')
         if m.get('ImageType') is not None:
             self.image_type = m.get('ImageType')
+        if m.get('OriginalFileName') is not None:
+            self.original_file_name = m.get('OriginalFileName')
         if m.get('StorageLocation') is not None:
             self.storage_location = m.get('StorageLocation')
         if m.get('Tags') is not None:

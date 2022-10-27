@@ -1367,6 +1367,8 @@ class Client(OpenApiClient):
             query['ImageExt'] = request.image_ext
         if not UtilClient.is_unset(request.image_type):
             query['ImageType'] = request.image_type
+        if not UtilClient.is_unset(request.original_file_name):
+            query['OriginalFileName'] = request.original_file_name
         if not UtilClient.is_unset(request.storage_location):
             query['StorageLocation'] = request.storage_location
         if not UtilClient.is_unset(request.tags):
@@ -1411,6 +1413,8 @@ class Client(OpenApiClient):
             query['ImageExt'] = request.image_ext
         if not UtilClient.is_unset(request.image_type):
             query['ImageType'] = request.image_type
+        if not UtilClient.is_unset(request.original_file_name):
+            query['OriginalFileName'] = request.original_file_name
         if not UtilClient.is_unset(request.storage_location):
             query['StorageLocation'] = request.storage_location
         if not UtilClient.is_unset(request.tags):
