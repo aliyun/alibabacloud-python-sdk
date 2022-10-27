@@ -14932,6 +14932,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.gis_search_device_trace_with_options_async(request, runtime)
 
+    def import_dtdata_with_options(
+        self,
+        request: iot_20180120_models.ImportDTDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.ImportDTDataResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.items):
+            body['Items'] = request.items
+        if not UtilClient.is_unset(request.product_key):
+            body['ProductKey'] = request.product_key
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ImportDTData',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.ImportDTDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def import_dtdata_with_options_async(
+        self,
+        request: iot_20180120_models.ImportDTDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.ImportDTDataResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            body['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.items):
+            body['Items'] = request.items
+        if not UtilClient.is_unset(request.product_key):
+            body['ProductKey'] = request.product_key
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ImportDTData',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.ImportDTDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def import_dtdata(
+        self,
+        request: iot_20180120_models.ImportDTDataRequest,
+    ) -> iot_20180120_models.ImportDTDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.import_dtdata_with_options(request, runtime)
+
+    async def import_dtdata_async(
+        self,
+        request: iot_20180120_models.ImportDTDataRequest,
+    ) -> iot_20180120_models.ImportDTDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.import_dtdata_with_options_async(request, runtime)
+
     def import_device_with_options(
         self,
         request: iot_20180120_models.ImportDeviceRequest,
