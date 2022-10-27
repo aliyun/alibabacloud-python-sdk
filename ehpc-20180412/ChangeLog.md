@@ -1,3 +1,6 @@
+2022-10-27 Version: 1.14.17
+- ListNodesByQueue and ListJobsWithFilters add Async.
+
 2022-09-28 Version: 1.14.16
 - Add ListUsersAsync
 
