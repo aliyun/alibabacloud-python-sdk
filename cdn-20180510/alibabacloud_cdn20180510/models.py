@@ -28490,12 +28490,16 @@ class SetCdnDomainStagingConfigRequest(TeaModel):
         return self
 
 
-class SetCdnDomainStagingConfigResponseBody(TeaModel):
+class SetCdnDomainStagingConfigResponseBodyDomainConfigList(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
+        config_id: int = None,
+        domain_name: str = None,
+        function_name: str = None,
     ):
-        self.request_id = request_id
+        self.config_id = config_id
+        self.domain_name = domain_name
+        self.function_name = function_name
 
     def validate(self):
         pass
@@ -28506,12 +28510,61 @@ class SetCdnDomainStagingConfigResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.function_name is not None:
+            result['FunctionName'] = self.function_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('FunctionName') is not None:
+            self.function_name = m.get('FunctionName')
+        return self
+
+
+class SetCdnDomainStagingConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        domain_config_list: List[SetCdnDomainStagingConfigResponseBodyDomainConfigList] = None,
+        request_id: str = None,
+    ):
+        self.domain_config_list = domain_config_list
+        self.request_id = request_id
+
+    def validate(self):
+        if self.domain_config_list:
+            for k in self.domain_config_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DomainConfigList'] = []
+        if self.domain_config_list is not None:
+            for k in self.domain_config_list:
+                result['DomainConfigList'].append(k.to_map() if k else None)
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.domain_config_list = []
+        if m.get('DomainConfigList') is not None:
+            for k in m.get('DomainConfigList'):
+                temp_model = SetCdnDomainStagingConfigResponseBodyDomainConfigList()
+                self.domain_config_list.append(temp_model.from_map(k))
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self

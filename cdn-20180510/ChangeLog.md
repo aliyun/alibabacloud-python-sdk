@@ -1,3 +1,6 @@
+2022-10-27 Version: 1.1.5
+- Add DescribeWildcardDomainDetailData.
+
 2022-10-13 Version: 1.1.4
 - Update DetachDomainNameFromVersion.
 
