@@ -313,6 +313,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_logic_table_route_config_with_options_async(request, runtime)
 
+    def add_task_flow_edges_with_options(
+        self,
+        tmp_req: dms_enterprise_20181101_models.AddTaskFlowEdgesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.AddTaskFlowEdgesResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dms_enterprise_20181101_models.AddTaskFlowEdgesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.edges):
+            request.edges_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.edges, 'Edges', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.edges_shrink):
+            query['Edges'] = request.edges_shrink
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddTaskFlowEdges',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.AddTaskFlowEdgesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_task_flow_edges_with_options_async(
+        self,
+        tmp_req: dms_enterprise_20181101_models.AddTaskFlowEdgesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.AddTaskFlowEdgesResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dms_enterprise_20181101_models.AddTaskFlowEdgesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.edges):
+            request.edges_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.edges, 'Edges', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.edges_shrink):
+            query['Edges'] = request.edges_shrink
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddTaskFlowEdges',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.AddTaskFlowEdgesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_task_flow_edges(
+        self,
+        request: dms_enterprise_20181101_models.AddTaskFlowEdgesRequest,
+    ) -> dms_enterprise_20181101_models.AddTaskFlowEdgesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.add_task_flow_edges_with_options(request, runtime)
+
+    async def add_task_flow_edges_async(
+        self,
+        request: dms_enterprise_20181101_models.AddTaskFlowEdgesRequest,
+    ) -> dms_enterprise_20181101_models.AddTaskFlowEdgesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.add_task_flow_edges_with_options_async(request, runtime)
+
     def approve_order_with_options(
         self,
         request: dms_enterprise_20181101_models.ApproveOrderRequest,
@@ -394,6 +480,202 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ApproveOrderResponse:
         runtime = util_models.RuntimeOptions()
         return await self.approve_order_with_options_async(request, runtime)
+
+    def back_fill_with_options(
+        self,
+        tmp_req: dms_enterprise_20181101_models.BackFillRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.BackFillResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dms_enterprise_20181101_models.BackFillShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.start_node_ids):
+            request.start_node_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.start_node_ids, 'StartNodeIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.asc):
+            query['Asc'] = request.asc
+        if not UtilClient.is_unset(request.back_fill_date):
+            query['BackFillDate'] = request.back_fill_date
+        if not UtilClient.is_unset(request.back_fill_date_begin):
+            query['BackFillDateBegin'] = request.back_fill_date_begin
+        if not UtilClient.is_unset(request.back_fill_date_end):
+            query['BackFillDateEnd'] = request.back_fill_date_end
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.history_dag_id):
+            query['HistoryDagId'] = request.history_dag_id
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.is_trigger_sub_tree):
+            query['IsTriggerSubTree'] = request.is_trigger_sub_tree
+        if not UtilClient.is_unset(request.start_node_ids_shrink):
+            query['StartNodeIds'] = request.start_node_ids_shrink
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BackFill',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.BackFillResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def back_fill_with_options_async(
+        self,
+        tmp_req: dms_enterprise_20181101_models.BackFillRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.BackFillResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dms_enterprise_20181101_models.BackFillShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.start_node_ids):
+            request.start_node_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.start_node_ids, 'StartNodeIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.asc):
+            query['Asc'] = request.asc
+        if not UtilClient.is_unset(request.back_fill_date):
+            query['BackFillDate'] = request.back_fill_date
+        if not UtilClient.is_unset(request.back_fill_date_begin):
+            query['BackFillDateBegin'] = request.back_fill_date_begin
+        if not UtilClient.is_unset(request.back_fill_date_end):
+            query['BackFillDateEnd'] = request.back_fill_date_end
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.history_dag_id):
+            query['HistoryDagId'] = request.history_dag_id
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.is_trigger_sub_tree):
+            query['IsTriggerSubTree'] = request.is_trigger_sub_tree
+        if not UtilClient.is_unset(request.start_node_ids_shrink):
+            query['StartNodeIds'] = request.start_node_ids_shrink
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BackFill',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.BackFillResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def back_fill(
+        self,
+        request: dms_enterprise_20181101_models.BackFillRequest,
+    ) -> dms_enterprise_20181101_models.BackFillResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.back_fill_with_options(request, runtime)
+
+    async def back_fill_async(
+        self,
+        request: dms_enterprise_20181101_models.BackFillRequest,
+    ) -> dms_enterprise_20181101_models.BackFillResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.back_fill_with_options_async(request, runtime)
+
+    def buy_pay_as_you_go_order_with_options(
+        self,
+        request: dms_enterprise_20181101_models.BuyPayAsYouGoOrderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.BuyPayAsYouGoOrderResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.commodity_type):
+            query['CommodityType'] = request.commodity_type
+        if not UtilClient.is_unset(request.ins_num):
+            query['InsNum'] = request.ins_num
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.version_type):
+            query['VersionType'] = request.version_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BuyPayAsYouGoOrder',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.BuyPayAsYouGoOrderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def buy_pay_as_you_go_order_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.BuyPayAsYouGoOrderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.BuyPayAsYouGoOrderResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.commodity_type):
+            query['CommodityType'] = request.commodity_type
+        if not UtilClient.is_unset(request.ins_num):
+            query['InsNum'] = request.ins_num
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.version_type):
+            query['VersionType'] = request.version_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BuyPayAsYouGoOrder',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.BuyPayAsYouGoOrderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def buy_pay_as_you_go_order(
+        self,
+        request: dms_enterprise_20181101_models.BuyPayAsYouGoOrderRequest,
+    ) -> dms_enterprise_20181101_models.BuyPayAsYouGoOrderResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.buy_pay_as_you_go_order_with_options(request, runtime)
+
+    async def buy_pay_as_you_go_order_async(
+        self,
+        request: dms_enterprise_20181101_models.BuyPayAsYouGoOrderRequest,
+    ) -> dms_enterprise_20181101_models.BuyPayAsYouGoOrderResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.buy_pay_as_you_go_order_with_options_async(request, runtime)
 
     def change_column_sec_level_with_options(
         self,
@@ -1675,6 +1957,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_sqlreview_order_with_options_async(request, runtime)
 
+    def create_scenario_with_options(
+        self,
+        request: dms_enterprise_20181101_models.CreateScenarioRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.CreateScenarioResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.scenario_name):
+            query['ScenarioName'] = request.scenario_name
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateScenario',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.CreateScenarioResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_scenario_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.CreateScenarioRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.CreateScenarioResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.scenario_name):
+            query['ScenarioName'] = request.scenario_name
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateScenario',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.CreateScenarioResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_scenario(
+        self,
+        request: dms_enterprise_20181101_models.CreateScenarioRequest,
+    ) -> dms_enterprise_20181101_models.CreateScenarioResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_scenario_with_options(request, runtime)
+
+    async def create_scenario_async(
+        self,
+        request: dms_enterprise_20181101_models.CreateScenarioRequest,
+    ) -> dms_enterprise_20181101_models.CreateScenarioResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_scenario_with_options_async(request, runtime)
+
     def create_standard_group_with_options(
         self,
         request: dms_enterprise_20181101_models.CreateStandardGroupRequest,
@@ -1854,6 +2214,186 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.CreateStructSyncOrderResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_struct_sync_order_with_options_async(request, runtime)
+
+    def create_task_with_options(
+        self,
+        request: dms_enterprise_20181101_models.CreateTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.CreateTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.graph_param):
+            query['GraphParam'] = request.graph_param
+        if not UtilClient.is_unset(request.node_content):
+            query['NodeContent'] = request.node_content
+        if not UtilClient.is_unset(request.node_name):
+            query['NodeName'] = request.node_name
+        if not UtilClient.is_unset(request.node_output):
+            query['NodeOutput'] = request.node_output
+        if not UtilClient.is_unset(request.node_type):
+            query['NodeType'] = request.node_type
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.time_variables):
+            query['TimeVariables'] = request.time_variables
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateTask',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.CreateTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_task_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.CreateTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.CreateTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.graph_param):
+            query['GraphParam'] = request.graph_param
+        if not UtilClient.is_unset(request.node_content):
+            query['NodeContent'] = request.node_content
+        if not UtilClient.is_unset(request.node_name):
+            query['NodeName'] = request.node_name
+        if not UtilClient.is_unset(request.node_output):
+            query['NodeOutput'] = request.node_output
+        if not UtilClient.is_unset(request.node_type):
+            query['NodeType'] = request.node_type
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.time_variables):
+            query['TimeVariables'] = request.time_variables
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateTask',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.CreateTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_task(
+        self,
+        request: dms_enterprise_20181101_models.CreateTaskRequest,
+    ) -> dms_enterprise_20181101_models.CreateTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_task_with_options(request, runtime)
+
+    async def create_task_async(
+        self,
+        request: dms_enterprise_20181101_models.CreateTaskRequest,
+    ) -> dms_enterprise_20181101_models.CreateTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_task_with_options_async(request, runtime)
+
+    def create_task_flow_with_options(
+        self,
+        request: dms_enterprise_20181101_models.CreateTaskFlowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.CreateTaskFlowResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dag_name):
+            query['DagName'] = request.dag_name
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.scenario_id):
+            query['ScenarioId'] = request.scenario_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateTaskFlow',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.CreateTaskFlowResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_task_flow_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.CreateTaskFlowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.CreateTaskFlowResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dag_name):
+            query['DagName'] = request.dag_name
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.scenario_id):
+            query['ScenarioId'] = request.scenario_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateTaskFlow',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.CreateTaskFlowResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_task_flow(
+        self,
+        request: dms_enterprise_20181101_models.CreateTaskFlowRequest,
+    ) -> dms_enterprise_20181101_models.CreateTaskFlowResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_task_flow_with_options(request, runtime)
+
+    async def create_task_flow_async(
+        self,
+        request: dms_enterprise_20181101_models.CreateTaskFlowRequest,
+    ) -> dms_enterprise_20181101_models.CreateTaskFlowResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_task_flow_with_options_async(request, runtime)
 
     def create_upload_file_job_with_options(
         self,
@@ -2573,6 +3113,154 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_proxy_access_with_options_async(request, runtime)
 
+    def delete_scenario_with_options(
+        self,
+        request: dms_enterprise_20181101_models.DeleteScenarioRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.DeleteScenarioResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.scenario_id):
+            query['ScenarioId'] = request.scenario_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteScenario',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.DeleteScenarioResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_scenario_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.DeleteScenarioRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.DeleteScenarioResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.scenario_id):
+            query['ScenarioId'] = request.scenario_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteScenario',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.DeleteScenarioResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_scenario(
+        self,
+        request: dms_enterprise_20181101_models.DeleteScenarioRequest,
+    ) -> dms_enterprise_20181101_models.DeleteScenarioResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_scenario_with_options(request, runtime)
+
+    async def delete_scenario_async(
+        self,
+        request: dms_enterprise_20181101_models.DeleteScenarioRequest,
+    ) -> dms_enterprise_20181101_models.DeleteScenarioResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_scenario_with_options_async(request, runtime)
+
+    def delete_task_with_options(
+        self,
+        request: dms_enterprise_20181101_models.DeleteTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.DeleteTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.node_id):
+            query['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteTask',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.DeleteTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_task_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.DeleteTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.DeleteTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.node_id):
+            query['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteTask',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.DeleteTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_task(
+        self,
+        request: dms_enterprise_20181101_models.DeleteTaskRequest,
+    ) -> dms_enterprise_20181101_models.DeleteTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_task_with_options(request, runtime)
+
+    async def delete_task_async(
+        self,
+        request: dms_enterprise_20181101_models.DeleteTaskRequest,
+    ) -> dms_enterprise_20181101_models.DeleteTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_task_with_options_async(request, runtime)
+
     def delete_task_flow_with_options(
         self,
         request: dms_enterprise_20181101_models.DeleteTaskFlowRequest,
@@ -2646,6 +3334,92 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.DeleteTaskFlowResponse:
         runtime = util_models.RuntimeOptions()
         return await self.delete_task_flow_with_options_async(request, runtime)
+
+    def delete_task_flow_edges_by_condition_with_options(
+        self,
+        request: dms_enterprise_20181101_models.DeleteTaskFlowEdgesByConditionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.DeleteTaskFlowEdgesByConditionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.node_end):
+            query['NodeEnd'] = request.node_end
+        if not UtilClient.is_unset(request.node_from):
+            query['NodeFrom'] = request.node_from
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteTaskFlowEdgesByCondition',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.DeleteTaskFlowEdgesByConditionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_task_flow_edges_by_condition_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.DeleteTaskFlowEdgesByConditionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.DeleteTaskFlowEdgesByConditionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.node_end):
+            query['NodeEnd'] = request.node_end
+        if not UtilClient.is_unset(request.node_from):
+            query['NodeFrom'] = request.node_from
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteTaskFlowEdgesByCondition',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.DeleteTaskFlowEdgesByConditionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_task_flow_edges_by_condition(
+        self,
+        request: dms_enterprise_20181101_models.DeleteTaskFlowEdgesByConditionRequest,
+    ) -> dms_enterprise_20181101_models.DeleteTaskFlowEdgesByConditionResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_task_flow_edges_by_condition_with_options(request, runtime)
+
+    async def delete_task_flow_edges_by_condition_async(
+        self,
+        request: dms_enterprise_20181101_models.DeleteTaskFlowEdgesByConditionRequest,
+    ) -> dms_enterprise_20181101_models.DeleteTaskFlowEdgesByConditionResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_task_flow_edges_by_condition_with_options_async(request, runtime)
 
     def delete_user_with_options(
         self,
@@ -4219,6 +4993,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_instance_with_options_async(request, runtime)
 
+    def get_interval_limit_of_slawith_options(
+        self,
+        request: dms_enterprise_20181101_models.GetIntervalLimitOfSLARequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetIntervalLimitOfSLAResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetIntervalLimitOfSLA',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetIntervalLimitOfSLAResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_interval_limit_of_slawith_options_async(
+        self,
+        request: dms_enterprise_20181101_models.GetIntervalLimitOfSLARequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetIntervalLimitOfSLAResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetIntervalLimitOfSLA',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetIntervalLimitOfSLAResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_interval_limit_of_sla(
+        self,
+        request: dms_enterprise_20181101_models.GetIntervalLimitOfSLARequest,
+    ) -> dms_enterprise_20181101_models.GetIntervalLimitOfSLAResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_interval_limit_of_slawith_options(request, runtime)
+
+    async def get_interval_limit_of_sla_async(
+        self,
+        request: dms_enterprise_20181101_models.GetIntervalLimitOfSLARequest,
+    ) -> dms_enterprise_20181101_models.GetIntervalLimitOfSLAResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_interval_limit_of_slawith_options_async(request, runtime)
+
     def get_lh_space_by_name_with_options(
         self,
         request: dms_enterprise_20181101_models.GetLhSpaceByNameRequest,
@@ -4979,6 +5827,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_proxy_with_options_async(request, runtime)
 
+    def get_rule_num_limit_of_slawith_options(
+        self,
+        request: dms_enterprise_20181101_models.GetRuleNumLimitOfSLARequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetRuleNumLimitOfSLAResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetRuleNumLimitOfSLA',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetRuleNumLimitOfSLAResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_rule_num_limit_of_slawith_options_async(
+        self,
+        request: dms_enterprise_20181101_models.GetRuleNumLimitOfSLARequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetRuleNumLimitOfSLAResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetRuleNumLimitOfSLA',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetRuleNumLimitOfSLAResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_rule_num_limit_of_sla(
+        self,
+        request: dms_enterprise_20181101_models.GetRuleNumLimitOfSLARequest,
+    ) -> dms_enterprise_20181101_models.GetRuleNumLimitOfSLAResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_rule_num_limit_of_slawith_options(request, runtime)
+
+    async def get_rule_num_limit_of_sla_async(
+        self,
+        request: dms_enterprise_20181101_models.GetRuleNumLimitOfSLARequest,
+    ) -> dms_enterprise_20181101_models.GetRuleNumLimitOfSLAResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_rule_num_limit_of_slawith_options_async(request, runtime)
+
     def get_sqlreview_check_result_status_with_options(
         self,
         request: dms_enterprise_20181101_models.GetSQLReviewCheckResultStatusRequest,
@@ -5591,6 +6513,228 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_table_topology_with_options_async(request, runtime)
 
+    def get_task_with_options(
+        self,
+        request: dms_enterprise_20181101_models.GetTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.node_id):
+            query['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTask',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_task_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.GetTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.node_id):
+            query['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTask',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_task(
+        self,
+        request: dms_enterprise_20181101_models.GetTaskRequest,
+    ) -> dms_enterprise_20181101_models.GetTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_task_with_options(request, runtime)
+
+    async def get_task_async(
+        self,
+        request: dms_enterprise_20181101_models.GetTaskRequest,
+    ) -> dms_enterprise_20181101_models.GetTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_task_with_options_async(request, runtime)
+
+    def get_task_flow_graph_with_options(
+        self,
+        request: dms_enterprise_20181101_models.GetTaskFlowGraphRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetTaskFlowGraphResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTaskFlowGraph',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetTaskFlowGraphResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_task_flow_graph_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.GetTaskFlowGraphRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetTaskFlowGraphResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTaskFlowGraph',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetTaskFlowGraphResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_task_flow_graph(
+        self,
+        request: dms_enterprise_20181101_models.GetTaskFlowGraphRequest,
+    ) -> dms_enterprise_20181101_models.GetTaskFlowGraphResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_task_flow_graph_with_options(request, runtime)
+
+    async def get_task_flow_graph_async(
+        self,
+        request: dms_enterprise_20181101_models.GetTaskFlowGraphRequest,
+    ) -> dms_enterprise_20181101_models.GetTaskFlowGraphResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_task_flow_graph_with_options_async(request, runtime)
+
+    def get_task_flow_notification_with_options(
+        self,
+        request: dms_enterprise_20181101_models.GetTaskFlowNotificationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetTaskFlowNotificationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTaskFlowNotification',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetTaskFlowNotificationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_task_flow_notification_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.GetTaskFlowNotificationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetTaskFlowNotificationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTaskFlowNotification',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetTaskFlowNotificationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_task_flow_notification(
+        self,
+        request: dms_enterprise_20181101_models.GetTaskFlowNotificationRequest,
+    ) -> dms_enterprise_20181101_models.GetTaskFlowNotificationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_task_flow_notification_with_options(request, runtime)
+
+    async def get_task_flow_notification_async(
+        self,
+        request: dms_enterprise_20181101_models.GetTaskFlowNotificationRequest,
+    ) -> dms_enterprise_20181101_models.GetTaskFlowNotificationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_task_flow_notification_with_options_async(request, runtime)
+
     def get_task_instance_relation_with_options(
         self,
         request: dms_enterprise_20181101_models.GetTaskInstanceRelationRequest,
@@ -6070,6 +7214,76 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.InspectProxyAccessSecretResponse:
         runtime = util_models.RuntimeOptions()
         return await self.inspect_proxy_access_secret_with_options_async(request, runtime)
+
+    def list_classification_templates_with_options(
+        self,
+        request: dms_enterprise_20181101_models.ListClassificationTemplatesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListClassificationTemplatesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListClassificationTemplates',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListClassificationTemplatesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_classification_templates_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.ListClassificationTemplatesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListClassificationTemplatesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListClassificationTemplates',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListClassificationTemplatesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_classification_templates(
+        self,
+        request: dms_enterprise_20181101_models.ListClassificationTemplatesRequest,
+    ) -> dms_enterprise_20181101_models.ListClassificationTemplatesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_classification_templates_with_options(request, runtime)
+
+    async def list_classification_templates_async(
+        self,
+        request: dms_enterprise_20181101_models.ListClassificationTemplatesRequest,
+    ) -> dms_enterprise_20181101_models.ListClassificationTemplatesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_classification_templates_with_options_async(request, runtime)
 
     def list_columns_with_options(
         self,
@@ -6813,6 +8027,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_databases_with_options_async(request, runtime)
 
+    def list_default_slarules_with_options(
+        self,
+        request: dms_enterprise_20181101_models.ListDefaultSLARulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListDefaultSLARulesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDefaultSLARules',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListDefaultSLARulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_default_slarules_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.ListDefaultSLARulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListDefaultSLARulesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDefaultSLARules',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListDefaultSLARulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_default_slarules(
+        self,
+        request: dms_enterprise_20181101_models.ListDefaultSLARulesRequest,
+    ) -> dms_enterprise_20181101_models.ListDefaultSLARulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_default_slarules_with_options(request, runtime)
+
+    async def list_default_slarules_async(
+        self,
+        request: dms_enterprise_20181101_models.ListDefaultSLARulesRequest,
+    ) -> dms_enterprise_20181101_models.ListDefaultSLARulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_default_slarules_with_options_async(request, runtime)
+
     def list_desensitization_rule_with_options(
         self,
         request: dms_enterprise_20181101_models.ListDesensitizationRuleRequest,
@@ -6906,6 +8194,76 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ListDesensitizationRuleResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_desensitization_rule_with_options_async(request, runtime)
+
+    def list_effective_orders_with_options(
+        self,
+        request: dms_enterprise_20181101_models.ListEffectiveOrdersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListEffectiveOrdersResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListEffectiveOrders',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListEffectiveOrdersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_effective_orders_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.ListEffectiveOrdersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListEffectiveOrdersResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListEffectiveOrders',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListEffectiveOrdersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_effective_orders(
+        self,
+        request: dms_enterprise_20181101_models.ListEffectiveOrdersRequest,
+    ) -> dms_enterprise_20181101_models.ListEffectiveOrdersResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_effective_orders_with_options(request, runtime)
+
+    async def list_effective_orders_async(
+        self,
+        request: dms_enterprise_20181101_models.ListEffectiveOrdersRequest,
+    ) -> dms_enterprise_20181101_models.ListEffectiveOrdersResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_effective_orders_with_options_async(request, runtime)
 
     def list_indexes_with_options(
         self,
@@ -7939,6 +9297,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_proxy_sqlexec_audit_log_with_options_async(request, runtime)
 
+    def list_slarules_with_options(
+        self,
+        request: dms_enterprise_20181101_models.ListSLARulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListSLARulesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListSLARules',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListSLARulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_slarules_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.ListSLARulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListSLARulesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListSLARules',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListSLARulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_slarules(
+        self,
+        request: dms_enterprise_20181101_models.ListSLARulesRequest,
+    ) -> dms_enterprise_20181101_models.ListSLARulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_slarules_with_options(request, runtime)
+
+    async def list_slarules_async(
+        self,
+        request: dms_enterprise_20181101_models.ListSLARulesRequest,
+    ) -> dms_enterprise_20181101_models.ListSLARulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_slarules_with_options_async(request, runtime)
+
     def list_sqlexec_audit_log_with_options(
         self,
         request: dms_enterprise_20181101_models.ListSQLExecAuditLogRequest,
@@ -8126,6 +9558,76 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ListSQLReviewOriginSQLResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_sqlreview_origin_sqlwith_options_async(request, runtime)
+
+    def list_scenarios_with_options(
+        self,
+        request: dms_enterprise_20181101_models.ListScenariosRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListScenariosResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListScenarios',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListScenariosResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_scenarios_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.ListScenariosRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListScenariosResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListScenarios',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListScenariosResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_scenarios(
+        self,
+        request: dms_enterprise_20181101_models.ListScenariosRequest,
+    ) -> dms_enterprise_20181101_models.ListScenariosResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_scenarios_with_options(request, runtime)
+
+    async def list_scenarios_async(
+        self,
+        request: dms_enterprise_20181101_models.ListScenariosRequest,
+    ) -> dms_enterprise_20181101_models.ListScenariosResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_scenarios_with_options_async(request, runtime)
 
     def list_sensitive_columns_with_options(
         self,
@@ -8318,6 +9820,112 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ListSensitiveColumnsDetailResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_sensitive_columns_detail_with_options_async(request, runtime)
+
+    def list_sensitive_data_audit_log_with_options(
+        self,
+        request: dms_enterprise_20181101_models.ListSensitiveDataAuditLogRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListSensitiveDataAuditLogResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.column_name):
+            query['ColumnName'] = request.column_name
+        if not UtilClient.is_unset(request.db_name):
+            query['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.module_name):
+            query['ModuleName'] = request.module_name
+        if not UtilClient.is_unset(request.op_user_name):
+            query['OpUserName'] = request.op_user_name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.table_name):
+            query['TableName'] = request.table_name
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListSensitiveDataAuditLog',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListSensitiveDataAuditLogResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_sensitive_data_audit_log_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.ListSensitiveDataAuditLogRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListSensitiveDataAuditLogResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.column_name):
+            query['ColumnName'] = request.column_name
+        if not UtilClient.is_unset(request.db_name):
+            query['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.module_name):
+            query['ModuleName'] = request.module_name
+        if not UtilClient.is_unset(request.op_user_name):
+            query['OpUserName'] = request.op_user_name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.table_name):
+            query['TableName'] = request.table_name
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListSensitiveDataAuditLog',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListSensitiveDataAuditLogResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_sensitive_data_audit_log(
+        self,
+        request: dms_enterprise_20181101_models.ListSensitiveDataAuditLogRequest,
+    ) -> dms_enterprise_20181101_models.ListSensitiveDataAuditLogResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_sensitive_data_audit_log_with_options(request, runtime)
+
+    async def list_sensitive_data_audit_log_async(
+        self,
+        request: dms_enterprise_20181101_models.ListSensitiveDataAuditLogRequest,
+    ) -> dms_enterprise_20181101_models.ListSensitiveDataAuditLogResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_sensitive_data_audit_log_with_options_async(request, runtime)
 
     def list_standard_groups_with_options(
         self,
@@ -8549,6 +10157,240 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_task_flow_with_options_async(request, runtime)
 
+    def list_task_flow_constants_with_options(
+        self,
+        request: dms_enterprise_20181101_models.ListTaskFlowConstantsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListTaskFlowConstantsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTaskFlowConstants',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListTaskFlowConstantsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_task_flow_constants_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.ListTaskFlowConstantsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListTaskFlowConstantsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTaskFlowConstants',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListTaskFlowConstantsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_task_flow_constants(
+        self,
+        request: dms_enterprise_20181101_models.ListTaskFlowConstantsRequest,
+    ) -> dms_enterprise_20181101_models.ListTaskFlowConstantsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_task_flow_constants_with_options(request, runtime)
+
+    async def list_task_flow_constants_async(
+        self,
+        request: dms_enterprise_20181101_models.ListTaskFlowConstantsRequest,
+    ) -> dms_enterprise_20181101_models.ListTaskFlowConstantsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_task_flow_constants_with_options_async(request, runtime)
+
+    def list_task_flow_cooperators_with_options(
+        self,
+        request: dms_enterprise_20181101_models.ListTaskFlowCooperatorsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListTaskFlowCooperatorsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTaskFlowCooperators',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListTaskFlowCooperatorsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_task_flow_cooperators_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.ListTaskFlowCooperatorsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListTaskFlowCooperatorsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTaskFlowCooperators',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListTaskFlowCooperatorsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_task_flow_cooperators(
+        self,
+        request: dms_enterprise_20181101_models.ListTaskFlowCooperatorsRequest,
+    ) -> dms_enterprise_20181101_models.ListTaskFlowCooperatorsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_task_flow_cooperators_with_options(request, runtime)
+
+    async def list_task_flow_cooperators_async(
+        self,
+        request: dms_enterprise_20181101_models.ListTaskFlowCooperatorsRequest,
+    ) -> dms_enterprise_20181101_models.ListTaskFlowCooperatorsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_task_flow_cooperators_with_options_async(request, runtime)
+
+    def list_task_flow_edges_by_condition_with_options(
+        self,
+        request: dms_enterprise_20181101_models.ListTaskFlowEdgesByConditionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListTaskFlowEdgesByConditionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.node_end):
+            query['NodeEnd'] = request.node_end
+        if not UtilClient.is_unset(request.node_from):
+            query['NodeFrom'] = request.node_from
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTaskFlowEdgesByCondition',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListTaskFlowEdgesByConditionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_task_flow_edges_by_condition_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.ListTaskFlowEdgesByConditionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListTaskFlowEdgesByConditionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.node_end):
+            query['NodeEnd'] = request.node_end
+        if not UtilClient.is_unset(request.node_from):
+            query['NodeFrom'] = request.node_from
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTaskFlowEdgesByCondition',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListTaskFlowEdgesByConditionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_task_flow_edges_by_condition(
+        self,
+        request: dms_enterprise_20181101_models.ListTaskFlowEdgesByConditionRequest,
+    ) -> dms_enterprise_20181101_models.ListTaskFlowEdgesByConditionResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_task_flow_edges_by_condition_with_options(request, runtime)
+
+    async def list_task_flow_edges_by_condition_async(
+        self,
+        request: dms_enterprise_20181101_models.ListTaskFlowEdgesByConditionRequest,
+    ) -> dms_enterprise_20181101_models.ListTaskFlowEdgesByConditionResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_task_flow_edges_by_condition_with_options_async(request, runtime)
+
     def list_task_flow_instance_with_options(
         self,
         request: dms_enterprise_20181101_models.ListTaskFlowInstanceRequest,
@@ -8642,6 +10484,236 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.ListTaskFlowInstanceResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_task_flow_instance_with_options_async(request, runtime)
+
+    def list_task_flow_time_variables_with_options(
+        self,
+        request: dms_enterprise_20181101_models.ListTaskFlowTimeVariablesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListTaskFlowTimeVariablesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTaskFlowTimeVariables',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListTaskFlowTimeVariablesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_task_flow_time_variables_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.ListTaskFlowTimeVariablesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListTaskFlowTimeVariablesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTaskFlowTimeVariables',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListTaskFlowTimeVariablesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_task_flow_time_variables(
+        self,
+        request: dms_enterprise_20181101_models.ListTaskFlowTimeVariablesRequest,
+    ) -> dms_enterprise_20181101_models.ListTaskFlowTimeVariablesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_task_flow_time_variables_with_options(request, runtime)
+
+    async def list_task_flow_time_variables_async(
+        self,
+        request: dms_enterprise_20181101_models.ListTaskFlowTimeVariablesRequest,
+    ) -> dms_enterprise_20181101_models.ListTaskFlowTimeVariablesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_task_flow_time_variables_with_options_async(request, runtime)
+
+    def list_task_flows_by_page_with_options(
+        self,
+        request: dms_enterprise_20181101_models.ListTaskFlowsByPageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListTaskFlowsByPageResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_index):
+            query['PageIndex'] = request.page_index
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.search_key):
+            query['SearchKey'] = request.search_key
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTaskFlowsByPage',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListTaskFlowsByPageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_task_flows_by_page_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.ListTaskFlowsByPageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListTaskFlowsByPageResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_index):
+            query['PageIndex'] = request.page_index
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.search_key):
+            query['SearchKey'] = request.search_key
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTaskFlowsByPage',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListTaskFlowsByPageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_task_flows_by_page(
+        self,
+        request: dms_enterprise_20181101_models.ListTaskFlowsByPageRequest,
+    ) -> dms_enterprise_20181101_models.ListTaskFlowsByPageResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_task_flows_by_page_with_options(request, runtime)
+
+    async def list_task_flows_by_page_async(
+        self,
+        request: dms_enterprise_20181101_models.ListTaskFlowsByPageRequest,
+    ) -> dms_enterprise_20181101_models.ListTaskFlowsByPageResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_task_flows_by_page_with_options_async(request, runtime)
+
+    def list_tasks_in_task_flow_with_options(
+        self,
+        request: dms_enterprise_20181101_models.ListTasksInTaskFlowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListTasksInTaskFlowResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTasksInTaskFlow',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListTasksInTaskFlowResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_tasks_in_task_flow_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.ListTasksInTaskFlowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListTasksInTaskFlowResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTasksInTaskFlow',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListTasksInTaskFlowResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_tasks_in_task_flow(
+        self,
+        request: dms_enterprise_20181101_models.ListTasksInTaskFlowRequest,
+    ) -> dms_enterprise_20181101_models.ListTasksInTaskFlowResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_tasks_in_task_flow_with_options(request, runtime)
+
+    async def list_tasks_in_task_flow_async(
+        self,
+        request: dms_enterprise_20181101_models.ListTasksInTaskFlowRequest,
+    ) -> dms_enterprise_20181101_models.ListTasksInTaskFlowResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_tasks_in_task_flow_with_options_async(request, runtime)
 
     def list_user_permissions_with_options(
         self,
@@ -9057,6 +11129,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_work_flow_templates_with_options_async(request, runtime)
 
+    def make_task_flow_instance_success_with_options(
+        self,
+        request: dms_enterprise_20181101_models.MakeTaskFlowInstanceSuccessRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.MakeTaskFlowInstanceSuccessResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.dag_instance_id):
+            query['DagInstanceId'] = request.dag_instance_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='MakeTaskFlowInstanceSuccess',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.MakeTaskFlowInstanceSuccessResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def make_task_flow_instance_success_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.MakeTaskFlowInstanceSuccessRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.MakeTaskFlowInstanceSuccessResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.dag_instance_id):
+            query['DagInstanceId'] = request.dag_instance_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='MakeTaskFlowInstanceSuccess',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.MakeTaskFlowInstanceSuccessResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def make_task_flow_instance_success(
+        self,
+        request: dms_enterprise_20181101_models.MakeTaskFlowInstanceSuccessRequest,
+    ) -> dms_enterprise_20181101_models.MakeTaskFlowInstanceSuccessResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.make_task_flow_instance_success_with_options(request, runtime)
+
+    async def make_task_flow_instance_success_async(
+        self,
+        request: dms_enterprise_20181101_models.MakeTaskFlowInstanceSuccessRequest,
+    ) -> dms_enterprise_20181101_models.MakeTaskFlowInstanceSuccessResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.make_task_flow_instance_success_with_options_async(request, runtime)
+
     def modify_data_correct_exec_sqlwith_options(
         self,
         request: dms_enterprise_20181101_models.ModifyDataCorrectExecSQLRequest,
@@ -9233,6 +11383,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_desensitization_strategy_with_options_async(request, runtime)
 
+    def move_task_flow_to_scenario_with_options(
+        self,
+        request: dms_enterprise_20181101_models.MoveTaskFlowToScenarioRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.MoveTaskFlowToScenarioResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.scenario_id):
+            query['ScenarioId'] = request.scenario_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='MoveTaskFlowToScenario',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.MoveTaskFlowToScenarioResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def move_task_flow_to_scenario_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.MoveTaskFlowToScenarioRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.MoveTaskFlowToScenarioResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.scenario_id):
+            query['ScenarioId'] = request.scenario_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='MoveTaskFlowToScenario',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.MoveTaskFlowToScenarioResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def move_task_flow_to_scenario(
+        self,
+        request: dms_enterprise_20181101_models.MoveTaskFlowToScenarioRequest,
+    ) -> dms_enterprise_20181101_models.MoveTaskFlowToScenarioResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.move_task_flow_to_scenario_with_options(request, runtime)
+
+    async def move_task_flow_to_scenario_async(
+        self,
+        request: dms_enterprise_20181101_models.MoveTaskFlowToScenarioRequest,
+    ) -> dms_enterprise_20181101_models.MoveTaskFlowToScenarioResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.move_task_flow_to_scenario_with_options_async(request, runtime)
+
     def offline_task_flow_with_options(
         self,
         request: dms_enterprise_20181101_models.OfflineTaskFlowRequest,
@@ -9389,6 +11617,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.pause_data_correct_sqljob_with_options_async(request, runtime)
 
+    def publish_and_deploy_task_flow_with_options(
+        self,
+        request: dms_enterprise_20181101_models.PublishAndDeployTaskFlowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.PublishAndDeployTaskFlowResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.version_comments):
+            query['VersionComments'] = request.version_comments
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PublishAndDeployTaskFlow',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.PublishAndDeployTaskFlowResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def publish_and_deploy_task_flow_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.PublishAndDeployTaskFlowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.PublishAndDeployTaskFlowResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.version_comments):
+            query['VersionComments'] = request.version_comments
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PublishAndDeployTaskFlow',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.PublishAndDeployTaskFlowResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def publish_and_deploy_task_flow(
+        self,
+        request: dms_enterprise_20181101_models.PublishAndDeployTaskFlowRequest,
+    ) -> dms_enterprise_20181101_models.PublishAndDeployTaskFlowResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.publish_and_deploy_task_flow_with_options(request, runtime)
+
+    async def publish_and_deploy_task_flow_async(
+        self,
+        request: dms_enterprise_20181101_models.PublishAndDeployTaskFlowRequest,
+    ) -> dms_enterprise_20181101_models.PublishAndDeployTaskFlowResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.publish_and_deploy_task_flow_with_options_async(request, runtime)
+
     def re_deploy_lh_dag_version_with_options(
         self,
         request: dms_enterprise_20181101_models.ReDeployLhDagVersionRequest,
@@ -9467,6 +11773,162 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.re_deploy_lh_dag_version_with_options_async(request, runtime)
 
+    def re_run_task_flow_instance_with_options(
+        self,
+        request: dms_enterprise_20181101_models.ReRunTaskFlowInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ReRunTaskFlowInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.dag_instance_id):
+            query['DagInstanceId'] = request.dag_instance_id
+        if not UtilClient.is_unset(request.dag_version):
+            query['DagVersion'] = request.dag_version
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ReRunTaskFlowInstance',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ReRunTaskFlowInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def re_run_task_flow_instance_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.ReRunTaskFlowInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ReRunTaskFlowInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.dag_instance_id):
+            query['DagInstanceId'] = request.dag_instance_id
+        if not UtilClient.is_unset(request.dag_version):
+            query['DagVersion'] = request.dag_version
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ReRunTaskFlowInstance',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ReRunTaskFlowInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def re_run_task_flow_instance(
+        self,
+        request: dms_enterprise_20181101_models.ReRunTaskFlowInstanceRequest,
+    ) -> dms_enterprise_20181101_models.ReRunTaskFlowInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.re_run_task_flow_instance_with_options(request, runtime)
+
+    async def re_run_task_flow_instance_async(
+        self,
+        request: dms_enterprise_20181101_models.ReRunTaskFlowInstanceRequest,
+    ) -> dms_enterprise_20181101_models.ReRunTaskFlowInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.re_run_task_flow_instance_with_options_async(request, runtime)
+
+    def refund_pay_as_you_go_order_with_options(
+        self,
+        request: dms_enterprise_20181101_models.RefundPayAsYouGoOrderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.RefundPayAsYouGoOrderResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RefundPayAsYouGoOrder',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.RefundPayAsYouGoOrderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def refund_pay_as_you_go_order_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.RefundPayAsYouGoOrderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.RefundPayAsYouGoOrderResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RefundPayAsYouGoOrder',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.RefundPayAsYouGoOrderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def refund_pay_as_you_go_order(
+        self,
+        request: dms_enterprise_20181101_models.RefundPayAsYouGoOrderRequest,
+    ) -> dms_enterprise_20181101_models.RefundPayAsYouGoOrderResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.refund_pay_as_you_go_order_with_options(request, runtime)
+
+    async def refund_pay_as_you_go_order_async(
+        self,
+        request: dms_enterprise_20181101_models.RefundPayAsYouGoOrderRequest,
+    ) -> dms_enterprise_20181101_models.RefundPayAsYouGoOrderResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.refund_pay_as_you_go_order_with_options_async(request, runtime)
+
     def register_instance_with_options(
         self,
         request: dms_enterprise_20181101_models.RegisterInstanceRequest,
@@ -9488,6 +11950,8 @@ class Client(OpenApiClient):
             query['EcsInstanceId'] = request.ecs_instance_id
         if not UtilClient.is_unset(request.ecs_region):
             query['EcsRegion'] = request.ecs_region
+        if not UtilClient.is_unset(request.enable_sell_sitd):
+            query['EnableSellSitd'] = request.enable_sell_sitd
         if not UtilClient.is_unset(request.env_type):
             query['EnvType'] = request.env_type
         if not UtilClient.is_unset(request.export_timeout):
@@ -9512,6 +11976,10 @@ class Client(OpenApiClient):
             query['Sid'] = request.sid
         if not UtilClient.is_unset(request.skip_test):
             query['SkipTest'] = request.skip_test
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_type):
+            query['TemplateType'] = request.template_type
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
         if not UtilClient.is_unset(request.use_dsql):
@@ -9558,6 +12026,8 @@ class Client(OpenApiClient):
             query['EcsInstanceId'] = request.ecs_instance_id
         if not UtilClient.is_unset(request.ecs_region):
             query['EcsRegion'] = request.ecs_region
+        if not UtilClient.is_unset(request.enable_sell_sitd):
+            query['EnableSellSitd'] = request.enable_sell_sitd
         if not UtilClient.is_unset(request.env_type):
             query['EnvType'] = request.env_type
         if not UtilClient.is_unset(request.export_timeout):
@@ -9582,6 +12052,10 @@ class Client(OpenApiClient):
             query['Sid'] = request.sid
         if not UtilClient.is_unset(request.skip_test):
             query['SkipTest'] = request.skip_test
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_type):
+            query['TemplateType'] = request.template_type
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
         if not UtilClient.is_unset(request.use_dsql):
@@ -9788,6 +12262,88 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.RestartDataCorrectSQLJobResponse:
         runtime = util_models.RuntimeOptions()
         return await self.restart_data_correct_sqljob_with_options_async(request, runtime)
+
+    def resume_task_flow_instance_with_options(
+        self,
+        request: dms_enterprise_20181101_models.ResumeTaskFlowInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ResumeTaskFlowInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.dag_instance_id):
+            query['DagInstanceId'] = request.dag_instance_id
+        if not UtilClient.is_unset(request.dag_version):
+            query['DagVersion'] = request.dag_version
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ResumeTaskFlowInstance',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ResumeTaskFlowInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def resume_task_flow_instance_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.ResumeTaskFlowInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ResumeTaskFlowInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.dag_instance_id):
+            query['DagInstanceId'] = request.dag_instance_id
+        if not UtilClient.is_unset(request.dag_version):
+            query['DagVersion'] = request.dag_version
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ResumeTaskFlowInstance',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ResumeTaskFlowInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def resume_task_flow_instance(
+        self,
+        request: dms_enterprise_20181101_models.ResumeTaskFlowInstanceRequest,
+    ) -> dms_enterprise_20181101_models.ResumeTaskFlowInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.resume_task_flow_instance_with_options(request, runtime)
+
+    async def resume_task_flow_instance_async(
+        self,
+        request: dms_enterprise_20181101_models.ResumeTaskFlowInstanceRequest,
+    ) -> dms_enterprise_20181101_models.ResumeTaskFlowInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.resume_task_flow_instance_with_options_async(request, runtime)
 
     def retry_data_correct_pre_check_with_options(
         self,
@@ -10251,6 +12807,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.set_owners_with_options_async(request, runtime)
 
+    def stop_task_flow_instance_with_options(
+        self,
+        request: dms_enterprise_20181101_models.StopTaskFlowInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.StopTaskFlowInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.dag_instance_id):
+            query['DagInstanceId'] = request.dag_instance_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StopTaskFlowInstance',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.StopTaskFlowInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def stop_task_flow_instance_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.StopTaskFlowInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.StopTaskFlowInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.dag_instance_id):
+            query['DagInstanceId'] = request.dag_instance_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StopTaskFlowInstance',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.StopTaskFlowInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def stop_task_flow_instance(
+        self,
+        request: dms_enterprise_20181101_models.StopTaskFlowInstanceRequest,
+    ) -> dms_enterprise_20181101_models.StopTaskFlowInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.stop_task_flow_instance_with_options(request, runtime)
+
+    async def stop_task_flow_instance_async(
+        self,
+        request: dms_enterprise_20181101_models.StopTaskFlowInstanceRequest,
+    ) -> dms_enterprise_20181101_models.StopTaskFlowInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.stop_task_flow_instance_with_options_async(request, runtime)
+
     def submit_order_approval_with_options(
         self,
         request: dms_enterprise_20181101_models.SubmitOrderApprovalRequest,
@@ -10398,6 +13032,84 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.SubmitStructSyncOrderApprovalResponse:
         runtime = util_models.RuntimeOptions()
         return await self.submit_struct_sync_order_approval_with_options_async(request, runtime)
+
+    def suspend_task_flow_instance_with_options(
+        self,
+        request: dms_enterprise_20181101_models.SuspendTaskFlowInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.SuspendTaskFlowInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.dag_instance_id):
+            query['DagInstanceId'] = request.dag_instance_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SuspendTaskFlowInstance',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.SuspendTaskFlowInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def suspend_task_flow_instance_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.SuspendTaskFlowInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.SuspendTaskFlowInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.dag_instance_id):
+            query['DagInstanceId'] = request.dag_instance_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SuspendTaskFlowInstance',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.SuspendTaskFlowInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def suspend_task_flow_instance(
+        self,
+        request: dms_enterprise_20181101_models.SuspendTaskFlowInstanceRequest,
+    ) -> dms_enterprise_20181101_models.SuspendTaskFlowInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.suspend_task_flow_instance_with_options(request, runtime)
+
+    async def suspend_task_flow_instance_async(
+        self,
+        request: dms_enterprise_20181101_models.SuspendTaskFlowInstanceRequest,
+    ) -> dms_enterprise_20181101_models.SuspendTaskFlowInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.suspend_task_flow_instance_with_options_async(request, runtime)
 
     def sync_database_meta_with_options(
         self,
@@ -10576,6 +13288,8 @@ class Client(OpenApiClient):
             query['EcsInstanceId'] = request.ecs_instance_id
         if not UtilClient.is_unset(request.ecs_region):
             query['EcsRegion'] = request.ecs_region
+        if not UtilClient.is_unset(request.enable_sell_sitd):
+            query['EnableSellSitd'] = request.enable_sell_sitd
         if not UtilClient.is_unset(request.env_type):
             query['EnvType'] = request.env_type
         if not UtilClient.is_unset(request.export_timeout):
@@ -10600,6 +13314,10 @@ class Client(OpenApiClient):
             query['Sid'] = request.sid
         if not UtilClient.is_unset(request.skip_test):
             query['SkipTest'] = request.skip_test
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_type):
+            query['TemplateType'] = request.template_type
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
         if not UtilClient.is_unset(request.use_dsql):
@@ -10646,6 +13364,8 @@ class Client(OpenApiClient):
             query['EcsInstanceId'] = request.ecs_instance_id
         if not UtilClient.is_unset(request.ecs_region):
             query['EcsRegion'] = request.ecs_region
+        if not UtilClient.is_unset(request.enable_sell_sitd):
+            query['EnableSellSitd'] = request.enable_sell_sitd
         if not UtilClient.is_unset(request.env_type):
             query['EnvType'] = request.env_type
         if not UtilClient.is_unset(request.export_timeout):
@@ -10670,6 +13390,10 @@ class Client(OpenApiClient):
             query['Sid'] = request.sid
         if not UtilClient.is_unset(request.skip_test):
             query['SkipTest'] = request.skip_test
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_type):
+            query['TemplateType'] = request.template_type
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
         if not UtilClient.is_unset(request.use_dsql):
@@ -10708,6 +13432,1338 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.UpdateInstanceResponse:
         runtime = util_models.RuntimeOptions()
         return await self.update_instance_with_options_async(request, runtime)
+
+    def update_slarules_with_options(
+        self,
+        tmp_req: dms_enterprise_20181101_models.UpdateSLARulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.UpdateSLARulesResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dms_enterprise_20181101_models.UpdateSLARulesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.sla_rule_list):
+            request.sla_rule_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sla_rule_list, 'SlaRuleList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.sla_rule_list_shrink):
+            query['SlaRuleList'] = request.sla_rule_list_shrink
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateSLARules',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.UpdateSLARulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_slarules_with_options_async(
+        self,
+        tmp_req: dms_enterprise_20181101_models.UpdateSLARulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.UpdateSLARulesResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dms_enterprise_20181101_models.UpdateSLARulesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.sla_rule_list):
+            request.sla_rule_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sla_rule_list, 'SlaRuleList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.sla_rule_list_shrink):
+            query['SlaRuleList'] = request.sla_rule_list_shrink
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateSLARules',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.UpdateSLARulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_slarules(
+        self,
+        request: dms_enterprise_20181101_models.UpdateSLARulesRequest,
+    ) -> dms_enterprise_20181101_models.UpdateSLARulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_slarules_with_options(request, runtime)
+
+    async def update_slarules_async(
+        self,
+        request: dms_enterprise_20181101_models.UpdateSLARulesRequest,
+    ) -> dms_enterprise_20181101_models.UpdateSLARulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_slarules_with_options_async(request, runtime)
+
+    def update_scenario_with_options(
+        self,
+        request: dms_enterprise_20181101_models.UpdateScenarioRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.UpdateScenarioResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.scenario_id):
+            query['ScenarioId'] = request.scenario_id
+        if not UtilClient.is_unset(request.scenario_name):
+            query['ScenarioName'] = request.scenario_name
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateScenario',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.UpdateScenarioResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_scenario_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.UpdateScenarioRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.UpdateScenarioResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.scenario_id):
+            query['ScenarioId'] = request.scenario_id
+        if not UtilClient.is_unset(request.scenario_name):
+            query['ScenarioName'] = request.scenario_name
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateScenario',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.UpdateScenarioResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_scenario(
+        self,
+        request: dms_enterprise_20181101_models.UpdateScenarioRequest,
+    ) -> dms_enterprise_20181101_models.UpdateScenarioResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_scenario_with_options(request, runtime)
+
+    async def update_scenario_async(
+        self,
+        request: dms_enterprise_20181101_models.UpdateScenarioRequest,
+    ) -> dms_enterprise_20181101_models.UpdateScenarioResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_scenario_with_options_async(request, runtime)
+
+    def update_task_config_with_options(
+        self,
+        request: dms_enterprise_20181101_models.UpdateTaskConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.UpdateTaskConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.node_config):
+            query['NodeConfig'] = request.node_config
+        if not UtilClient.is_unset(request.node_id):
+            query['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateTaskConfig',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.UpdateTaskConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_task_config_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.UpdateTaskConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.UpdateTaskConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.node_config):
+            query['NodeConfig'] = request.node_config
+        if not UtilClient.is_unset(request.node_id):
+            query['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateTaskConfig',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.UpdateTaskConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_task_config(
+        self,
+        request: dms_enterprise_20181101_models.UpdateTaskConfigRequest,
+    ) -> dms_enterprise_20181101_models.UpdateTaskConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_task_config_with_options(request, runtime)
+
+    async def update_task_config_async(
+        self,
+        request: dms_enterprise_20181101_models.UpdateTaskConfigRequest,
+    ) -> dms_enterprise_20181101_models.UpdateTaskConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_task_config_with_options_async(request, runtime)
+
+    def update_task_content_with_options(
+        self,
+        request: dms_enterprise_20181101_models.UpdateTaskContentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.UpdateTaskContentResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.node_content):
+            query['NodeContent'] = request.node_content
+        if not UtilClient.is_unset(request.node_id):
+            query['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateTaskContent',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.UpdateTaskContentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_task_content_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.UpdateTaskContentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.UpdateTaskContentResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.node_content):
+            query['NodeContent'] = request.node_content
+        if not UtilClient.is_unset(request.node_id):
+            query['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateTaskContent',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.UpdateTaskContentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_task_content(
+        self,
+        request: dms_enterprise_20181101_models.UpdateTaskContentRequest,
+    ) -> dms_enterprise_20181101_models.UpdateTaskContentResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_task_content_with_options(request, runtime)
+
+    async def update_task_content_async(
+        self,
+        request: dms_enterprise_20181101_models.UpdateTaskContentRequest,
+    ) -> dms_enterprise_20181101_models.UpdateTaskContentResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_task_content_with_options_async(request, runtime)
+
+    def update_task_flow_constants_with_options(
+        self,
+        tmp_req: dms_enterprise_20181101_models.UpdateTaskFlowConstantsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.UpdateTaskFlowConstantsResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dms_enterprise_20181101_models.UpdateTaskFlowConstantsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.dag_constants):
+            request.dag_constants_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dag_constants, 'DagConstants', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.dag_constants_shrink):
+            query['DagConstants'] = request.dag_constants_shrink
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateTaskFlowConstants',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.UpdateTaskFlowConstantsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_task_flow_constants_with_options_async(
+        self,
+        tmp_req: dms_enterprise_20181101_models.UpdateTaskFlowConstantsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.UpdateTaskFlowConstantsResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dms_enterprise_20181101_models.UpdateTaskFlowConstantsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.dag_constants):
+            request.dag_constants_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dag_constants, 'DagConstants', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.dag_constants_shrink):
+            query['DagConstants'] = request.dag_constants_shrink
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateTaskFlowConstants',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.UpdateTaskFlowConstantsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_task_flow_constants(
+        self,
+        request: dms_enterprise_20181101_models.UpdateTaskFlowConstantsRequest,
+    ) -> dms_enterprise_20181101_models.UpdateTaskFlowConstantsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_task_flow_constants_with_options(request, runtime)
+
+    async def update_task_flow_constants_async(
+        self,
+        request: dms_enterprise_20181101_models.UpdateTaskFlowConstantsRequest,
+    ) -> dms_enterprise_20181101_models.UpdateTaskFlowConstantsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_task_flow_constants_with_options_async(request, runtime)
+
+    def update_task_flow_cooperators_with_options(
+        self,
+        tmp_req: dms_enterprise_20181101_models.UpdateTaskFlowCooperatorsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.UpdateTaskFlowCooperatorsResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dms_enterprise_20181101_models.UpdateTaskFlowCooperatorsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.cooperator_ids):
+            request.cooperator_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.cooperator_ids, 'CooperatorIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.cooperator_ids_shrink):
+            query['CooperatorIds'] = request.cooperator_ids_shrink
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateTaskFlowCooperators',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.UpdateTaskFlowCooperatorsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_task_flow_cooperators_with_options_async(
+        self,
+        tmp_req: dms_enterprise_20181101_models.UpdateTaskFlowCooperatorsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.UpdateTaskFlowCooperatorsResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dms_enterprise_20181101_models.UpdateTaskFlowCooperatorsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.cooperator_ids):
+            request.cooperator_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.cooperator_ids, 'CooperatorIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.cooperator_ids_shrink):
+            query['CooperatorIds'] = request.cooperator_ids_shrink
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateTaskFlowCooperators',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.UpdateTaskFlowCooperatorsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_task_flow_cooperators(
+        self,
+        request: dms_enterprise_20181101_models.UpdateTaskFlowCooperatorsRequest,
+    ) -> dms_enterprise_20181101_models.UpdateTaskFlowCooperatorsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_task_flow_cooperators_with_options(request, runtime)
+
+    async def update_task_flow_cooperators_async(
+        self,
+        request: dms_enterprise_20181101_models.UpdateTaskFlowCooperatorsRequest,
+    ) -> dms_enterprise_20181101_models.UpdateTaskFlowCooperatorsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_task_flow_cooperators_with_options_async(request, runtime)
+
+    def update_task_flow_edges_with_options(
+        self,
+        tmp_req: dms_enterprise_20181101_models.UpdateTaskFlowEdgesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.UpdateTaskFlowEdgesResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dms_enterprise_20181101_models.UpdateTaskFlowEdgesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.edges):
+            request.edges_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.edges, 'Edges', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.edges_shrink):
+            query['Edges'] = request.edges_shrink
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateTaskFlowEdges',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.UpdateTaskFlowEdgesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_task_flow_edges_with_options_async(
+        self,
+        tmp_req: dms_enterprise_20181101_models.UpdateTaskFlowEdgesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.UpdateTaskFlowEdgesResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dms_enterprise_20181101_models.UpdateTaskFlowEdgesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.edges):
+            request.edges_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.edges, 'Edges', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.edges_shrink):
+            query['Edges'] = request.edges_shrink
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateTaskFlowEdges',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.UpdateTaskFlowEdgesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_task_flow_edges(
+        self,
+        request: dms_enterprise_20181101_models.UpdateTaskFlowEdgesRequest,
+    ) -> dms_enterprise_20181101_models.UpdateTaskFlowEdgesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_task_flow_edges_with_options(request, runtime)
+
+    async def update_task_flow_edges_async(
+        self,
+        request: dms_enterprise_20181101_models.UpdateTaskFlowEdgesRequest,
+    ) -> dms_enterprise_20181101_models.UpdateTaskFlowEdgesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_task_flow_edges_with_options_async(request, runtime)
+
+    def update_task_flow_name_and_desc_with_options(
+        self,
+        request: dms_enterprise_20181101_models.UpdateTaskFlowNameAndDescRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.UpdateTaskFlowNameAndDescResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.dag_name):
+            query['DagName'] = request.dag_name
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateTaskFlowNameAndDesc',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.UpdateTaskFlowNameAndDescResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_task_flow_name_and_desc_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.UpdateTaskFlowNameAndDescRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.UpdateTaskFlowNameAndDescResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.dag_name):
+            query['DagName'] = request.dag_name
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateTaskFlowNameAndDesc',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.UpdateTaskFlowNameAndDescResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_task_flow_name_and_desc(
+        self,
+        request: dms_enterprise_20181101_models.UpdateTaskFlowNameAndDescRequest,
+    ) -> dms_enterprise_20181101_models.UpdateTaskFlowNameAndDescResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_task_flow_name_and_desc_with_options(request, runtime)
+
+    async def update_task_flow_name_and_desc_async(
+        self,
+        request: dms_enterprise_20181101_models.UpdateTaskFlowNameAndDescRequest,
+    ) -> dms_enterprise_20181101_models.UpdateTaskFlowNameAndDescResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_task_flow_name_and_desc_with_options_async(request, runtime)
+
+    def update_task_flow_notification_with_options(
+        self,
+        request: dms_enterprise_20181101_models.UpdateTaskFlowNotificationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.UpdateTaskFlowNotificationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.dag_notification_fail):
+            query['DagNotificationFail'] = request.dag_notification_fail
+        if not UtilClient.is_unset(request.dag_notification_sla):
+            query['DagNotificationSla'] = request.dag_notification_sla
+        if not UtilClient.is_unset(request.dag_notification_success):
+            query['DagNotificationSuccess'] = request.dag_notification_success
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateTaskFlowNotification',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.UpdateTaskFlowNotificationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_task_flow_notification_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.UpdateTaskFlowNotificationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.UpdateTaskFlowNotificationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.dag_notification_fail):
+            query['DagNotificationFail'] = request.dag_notification_fail
+        if not UtilClient.is_unset(request.dag_notification_sla):
+            query['DagNotificationSla'] = request.dag_notification_sla
+        if not UtilClient.is_unset(request.dag_notification_success):
+            query['DagNotificationSuccess'] = request.dag_notification_success
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateTaskFlowNotification',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.UpdateTaskFlowNotificationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_task_flow_notification(
+        self,
+        request: dms_enterprise_20181101_models.UpdateTaskFlowNotificationRequest,
+    ) -> dms_enterprise_20181101_models.UpdateTaskFlowNotificationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_task_flow_notification_with_options(request, runtime)
+
+    async def update_task_flow_notification_async(
+        self,
+        request: dms_enterprise_20181101_models.UpdateTaskFlowNotificationRequest,
+    ) -> dms_enterprise_20181101_models.UpdateTaskFlowNotificationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_task_flow_notification_with_options_async(request, runtime)
+
+    def update_task_flow_owner_with_options(
+        self,
+        request: dms_enterprise_20181101_models.UpdateTaskFlowOwnerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.UpdateTaskFlowOwnerResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.new_owner_id):
+            query['NewOwnerId'] = request.new_owner_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateTaskFlowOwner',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.UpdateTaskFlowOwnerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_task_flow_owner_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.UpdateTaskFlowOwnerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.UpdateTaskFlowOwnerResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.new_owner_id):
+            query['NewOwnerId'] = request.new_owner_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateTaskFlowOwner',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.UpdateTaskFlowOwnerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_task_flow_owner(
+        self,
+        request: dms_enterprise_20181101_models.UpdateTaskFlowOwnerRequest,
+    ) -> dms_enterprise_20181101_models.UpdateTaskFlowOwnerResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_task_flow_owner_with_options(request, runtime)
+
+    async def update_task_flow_owner_async(
+        self,
+        request: dms_enterprise_20181101_models.UpdateTaskFlowOwnerRequest,
+    ) -> dms_enterprise_20181101_models.UpdateTaskFlowOwnerResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_task_flow_owner_with_options_async(request, runtime)
+
+    def update_task_flow_relations_with_options(
+        self,
+        tmp_req: dms_enterprise_20181101_models.UpdateTaskFlowRelationsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.UpdateTaskFlowRelationsResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dms_enterprise_20181101_models.UpdateTaskFlowRelationsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.edges):
+            request.edges_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.edges, 'Edges', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.edges_shrink):
+            query['Edges'] = request.edges_shrink
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateTaskFlowRelations',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.UpdateTaskFlowRelationsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_task_flow_relations_with_options_async(
+        self,
+        tmp_req: dms_enterprise_20181101_models.UpdateTaskFlowRelationsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.UpdateTaskFlowRelationsResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dms_enterprise_20181101_models.UpdateTaskFlowRelationsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.edges):
+            request.edges_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.edges, 'Edges', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.edges_shrink):
+            query['Edges'] = request.edges_shrink
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateTaskFlowRelations',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.UpdateTaskFlowRelationsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_task_flow_relations(
+        self,
+        request: dms_enterprise_20181101_models.UpdateTaskFlowRelationsRequest,
+    ) -> dms_enterprise_20181101_models.UpdateTaskFlowRelationsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_task_flow_relations_with_options(request, runtime)
+
+    async def update_task_flow_relations_async(
+        self,
+        request: dms_enterprise_20181101_models.UpdateTaskFlowRelationsRequest,
+    ) -> dms_enterprise_20181101_models.UpdateTaskFlowRelationsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_task_flow_relations_with_options_async(request, runtime)
+
+    def update_task_flow_schedule_with_options(
+        self,
+        request: dms_enterprise_20181101_models.UpdateTaskFlowScheduleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.UpdateTaskFlowScheduleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cron_begin_date):
+            query['CronBeginDate'] = request.cron_begin_date
+        if not UtilClient.is_unset(request.cron_end_date):
+            query['CronEndDate'] = request.cron_end_date
+        if not UtilClient.is_unset(request.cron_str):
+            query['CronStr'] = request.cron_str
+        if not UtilClient.is_unset(request.cron_type):
+            query['CronType'] = request.cron_type
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.schedule_param):
+            query['ScheduleParam'] = request.schedule_param
+        if not UtilClient.is_unset(request.schedule_switch):
+            query['ScheduleSwitch'] = request.schedule_switch
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.time_zone_id):
+            query['TimeZoneId'] = request.time_zone_id
+        if not UtilClient.is_unset(request.trigger_type):
+            query['TriggerType'] = request.trigger_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateTaskFlowSchedule',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.UpdateTaskFlowScheduleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_task_flow_schedule_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.UpdateTaskFlowScheduleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.UpdateTaskFlowScheduleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cron_begin_date):
+            query['CronBeginDate'] = request.cron_begin_date
+        if not UtilClient.is_unset(request.cron_end_date):
+            query['CronEndDate'] = request.cron_end_date
+        if not UtilClient.is_unset(request.cron_str):
+            query['CronStr'] = request.cron_str
+        if not UtilClient.is_unset(request.cron_type):
+            query['CronType'] = request.cron_type
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.schedule_param):
+            query['ScheduleParam'] = request.schedule_param
+        if not UtilClient.is_unset(request.schedule_switch):
+            query['ScheduleSwitch'] = request.schedule_switch
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.time_zone_id):
+            query['TimeZoneId'] = request.time_zone_id
+        if not UtilClient.is_unset(request.trigger_type):
+            query['TriggerType'] = request.trigger_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateTaskFlowSchedule',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.UpdateTaskFlowScheduleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_task_flow_schedule(
+        self,
+        request: dms_enterprise_20181101_models.UpdateTaskFlowScheduleRequest,
+    ) -> dms_enterprise_20181101_models.UpdateTaskFlowScheduleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_task_flow_schedule_with_options(request, runtime)
+
+    async def update_task_flow_schedule_async(
+        self,
+        request: dms_enterprise_20181101_models.UpdateTaskFlowScheduleRequest,
+    ) -> dms_enterprise_20181101_models.UpdateTaskFlowScheduleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_task_flow_schedule_with_options_async(request, runtime)
+
+    def update_task_flow_time_variables_with_options(
+        self,
+        request: dms_enterprise_20181101_models.UpdateTaskFlowTimeVariablesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.UpdateTaskFlowTimeVariablesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.time_variables):
+            query['TimeVariables'] = request.time_variables
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateTaskFlowTimeVariables',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.UpdateTaskFlowTimeVariablesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_task_flow_time_variables_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.UpdateTaskFlowTimeVariablesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.UpdateTaskFlowTimeVariablesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dag_id):
+            query['DagId'] = request.dag_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.time_variables):
+            query['TimeVariables'] = request.time_variables
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateTaskFlowTimeVariables',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.UpdateTaskFlowTimeVariablesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_task_flow_time_variables(
+        self,
+        request: dms_enterprise_20181101_models.UpdateTaskFlowTimeVariablesRequest,
+    ) -> dms_enterprise_20181101_models.UpdateTaskFlowTimeVariablesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_task_flow_time_variables_with_options(request, runtime)
+
+    async def update_task_flow_time_variables_async(
+        self,
+        request: dms_enterprise_20181101_models.UpdateTaskFlowTimeVariablesRequest,
+    ) -> dms_enterprise_20181101_models.UpdateTaskFlowTimeVariablesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_task_flow_time_variables_with_options_async(request, runtime)
+
+    def update_task_name_with_options(
+        self,
+        request: dms_enterprise_20181101_models.UpdateTaskNameRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.UpdateTaskNameResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.node_id):
+            query['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.node_name):
+            query['NodeName'] = request.node_name
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateTaskName',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.UpdateTaskNameResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_task_name_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.UpdateTaskNameRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.UpdateTaskNameResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.node_id):
+            query['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.node_name):
+            query['NodeName'] = request.node_name
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateTaskName',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.UpdateTaskNameResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_task_name(
+        self,
+        request: dms_enterprise_20181101_models.UpdateTaskNameRequest,
+    ) -> dms_enterprise_20181101_models.UpdateTaskNameResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_task_name_with_options(request, runtime)
+
+    async def update_task_name_async(
+        self,
+        request: dms_enterprise_20181101_models.UpdateTaskNameRequest,
+    ) -> dms_enterprise_20181101_models.UpdateTaskNameResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_task_name_with_options_async(request, runtime)
+
+    def update_task_output_with_options(
+        self,
+        request: dms_enterprise_20181101_models.UpdateTaskOutputRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.UpdateTaskOutputResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.node_id):
+            query['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.node_output):
+            query['NodeOutput'] = request.node_output
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateTaskOutput',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.UpdateTaskOutputResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_task_output_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.UpdateTaskOutputRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.UpdateTaskOutputResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.node_id):
+            query['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.node_output):
+            query['NodeOutput'] = request.node_output
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateTaskOutput',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.UpdateTaskOutputResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_task_output(
+        self,
+        request: dms_enterprise_20181101_models.UpdateTaskOutputRequest,
+    ) -> dms_enterprise_20181101_models.UpdateTaskOutputResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_task_output_with_options(request, runtime)
+
+    async def update_task_output_async(
+        self,
+        request: dms_enterprise_20181101_models.UpdateTaskOutputRequest,
+    ) -> dms_enterprise_20181101_models.UpdateTaskOutputResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_task_output_with_options_async(request, runtime)
+
+    def update_task_time_variables_with_options(
+        self,
+        request: dms_enterprise_20181101_models.UpdateTaskTimeVariablesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.UpdateTaskTimeVariablesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.node_id):
+            query['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.time_variables):
+            query['TimeVariables'] = request.time_variables
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateTaskTimeVariables',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.UpdateTaskTimeVariablesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_task_time_variables_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.UpdateTaskTimeVariablesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.UpdateTaskTimeVariablesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.node_id):
+            query['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        if not UtilClient.is_unset(request.time_variables):
+            query['TimeVariables'] = request.time_variables
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateTaskTimeVariables',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.UpdateTaskTimeVariablesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_task_time_variables(
+        self,
+        request: dms_enterprise_20181101_models.UpdateTaskTimeVariablesRequest,
+    ) -> dms_enterprise_20181101_models.UpdateTaskTimeVariablesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_task_time_variables_with_options(request, runtime)
+
+    async def update_task_time_variables_async(
+        self,
+        request: dms_enterprise_20181101_models.UpdateTaskTimeVariablesRequest,
+    ) -> dms_enterprise_20181101_models.UpdateTaskTimeVariablesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_task_time_variables_with_options_async(request, runtime)
 
     def update_user_with_options(
         self,
