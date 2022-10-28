@@ -115,6 +115,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.activate_office_site_with_options_async(request, runtime)
 
+    def add_devices_with_options(
+        self,
+        request: ecd_20200930_models.AddDevicesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.AddDevicesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_type):
+            query['ClientType'] = request.client_type
+        if not UtilClient.is_unset(request.device_ids):
+            query['DeviceIds'] = request.device_ids
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddDevices',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.AddDevicesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_devices_with_options_async(
+        self,
+        request: ecd_20200930_models.AddDevicesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.AddDevicesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_type):
+            query['ClientType'] = request.client_type
+        if not UtilClient.is_unset(request.device_ids):
+            query['DeviceIds'] = request.device_ids
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddDevices',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.AddDevicesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_devices(
+        self,
+        request: ecd_20200930_models.AddDevicesRequest,
+    ) -> ecd_20200930_models.AddDevicesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.add_devices_with_options(request, runtime)
+
+    async def add_devices_async(
+        self,
+        request: ecd_20200930_models.AddDevicesRequest,
+    ) -> ecd_20200930_models.AddDevicesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.add_devices_with_options_async(request, runtime)
+
     def add_user_to_desktop_group_with_options(
         self,
         request: ecd_20200930_models.AddUserToDesktopGroupRequest,
@@ -200,6 +278,84 @@ class Client(OpenApiClient):
     ) -> ecd_20200930_models.AddUserToDesktopGroupResponse:
         runtime = util_models.RuntimeOptions()
         return await self.add_user_to_desktop_group_with_options_async(request, runtime)
+
+    def apply_auto_snapshot_policy_with_options(
+        self,
+        request: ecd_20200930_models.ApplyAutoSnapshotPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.ApplyAutoSnapshotPolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.desktop_id):
+            query['DesktopId'] = request.desktop_id
+        if not UtilClient.is_unset(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ApplyAutoSnapshotPolicy',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.ApplyAutoSnapshotPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def apply_auto_snapshot_policy_with_options_async(
+        self,
+        request: ecd_20200930_models.ApplyAutoSnapshotPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.ApplyAutoSnapshotPolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.desktop_id):
+            query['DesktopId'] = request.desktop_id
+        if not UtilClient.is_unset(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ApplyAutoSnapshotPolicy',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.ApplyAutoSnapshotPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def apply_auto_snapshot_policy(
+        self,
+        request: ecd_20200930_models.ApplyAutoSnapshotPolicyRequest,
+    ) -> ecd_20200930_models.ApplyAutoSnapshotPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.apply_auto_snapshot_policy_with_options(request, runtime)
+
+    async def apply_auto_snapshot_policy_async(
+        self,
+        request: ecd_20200930_models.ApplyAutoSnapshotPolicyRequest,
+    ) -> ecd_20200930_models.ApplyAutoSnapshotPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.apply_auto_snapshot_policy_with_options_async(request, runtime)
 
     def apply_coordinate_privilege_with_options(
         self,
@@ -618,6 +774,178 @@ class Client(OpenApiClient):
     ) -> ecd_20200930_models.AttachCenResponse:
         runtime = util_models.RuntimeOptions()
         return await self.attach_cen_with_options_async(request, runtime)
+
+    def attach_end_user_with_options(
+        self,
+        request: ecd_20200930_models.AttachEndUserRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.AttachEndUserResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ad_domain):
+            query['AdDomain'] = request.ad_domain
+        if not UtilClient.is_unset(request.client_type):
+            query['ClientType'] = request.client_type
+        if not UtilClient.is_unset(request.device_id):
+            query['DeviceId'] = request.device_id
+        if not UtilClient.is_unset(request.directory_id):
+            query['DirectoryId'] = request.directory_id
+        if not UtilClient.is_unset(request.end_user_id):
+            query['EndUserId'] = request.end_user_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.user_type):
+            query['UserType'] = request.user_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AttachEndUser',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.AttachEndUserResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def attach_end_user_with_options_async(
+        self,
+        request: ecd_20200930_models.AttachEndUserRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.AttachEndUserResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ad_domain):
+            query['AdDomain'] = request.ad_domain
+        if not UtilClient.is_unset(request.client_type):
+            query['ClientType'] = request.client_type
+        if not UtilClient.is_unset(request.device_id):
+            query['DeviceId'] = request.device_id
+        if not UtilClient.is_unset(request.directory_id):
+            query['DirectoryId'] = request.directory_id
+        if not UtilClient.is_unset(request.end_user_id):
+            query['EndUserId'] = request.end_user_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.user_type):
+            query['UserType'] = request.user_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AttachEndUser',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.AttachEndUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def attach_end_user(
+        self,
+        request: ecd_20200930_models.AttachEndUserRequest,
+    ) -> ecd_20200930_models.AttachEndUserResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.attach_end_user_with_options(request, runtime)
+
+    async def attach_end_user_async(
+        self,
+        request: ecd_20200930_models.AttachEndUserRequest,
+    ) -> ecd_20200930_models.AttachEndUserResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.attach_end_user_with_options_async(request, runtime)
+
+    def cancel_auto_snapshot_policy_with_options(
+        self,
+        request: ecd_20200930_models.CancelAutoSnapshotPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.CancelAutoSnapshotPolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.desktop_id):
+            query['DesktopId'] = request.desktop_id
+        if not UtilClient.is_unset(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CancelAutoSnapshotPolicy',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.CancelAutoSnapshotPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cancel_auto_snapshot_policy_with_options_async(
+        self,
+        request: ecd_20200930_models.CancelAutoSnapshotPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.CancelAutoSnapshotPolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.desktop_id):
+            query['DesktopId'] = request.desktop_id
+        if not UtilClient.is_unset(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CancelAutoSnapshotPolicy',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.CancelAutoSnapshotPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cancel_auto_snapshot_policy(
+        self,
+        request: ecd_20200930_models.CancelAutoSnapshotPolicyRequest,
+    ) -> ecd_20200930_models.CancelAutoSnapshotPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.cancel_auto_snapshot_policy_with_options(request, runtime)
+
+    async def cancel_auto_snapshot_policy_async(
+        self,
+        request: ecd_20200930_models.CancelAutoSnapshotPolicyRequest,
+    ) -> ecd_20200930_models.CancelAutoSnapshotPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.cancel_auto_snapshot_policy_with_options_async(request, runtime)
 
     def cancel_coordination_for_monitoring_with_options(
         self,
@@ -1465,6 +1793,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_and_bind_nas_file_system_with_options_async(request, runtime)
 
+    def create_auto_snapshot_policy_with_options(
+        self,
+        request: ecd_20200930_models.CreateAutoSnapshotPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.CreateAutoSnapshotPolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cron_expression):
+            query['CronExpression'] = request.cron_expression
+        if not UtilClient.is_unset(request.policy_name):
+            query['PolicyName'] = request.policy_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.retention_days):
+            query['RetentionDays'] = request.retention_days
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAutoSnapshotPolicy',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.CreateAutoSnapshotPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_auto_snapshot_policy_with_options_async(
+        self,
+        request: ecd_20200930_models.CreateAutoSnapshotPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.CreateAutoSnapshotPolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cron_expression):
+            query['CronExpression'] = request.cron_expression
+        if not UtilClient.is_unset(request.policy_name):
+            query['PolicyName'] = request.policy_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.retention_days):
+            query['RetentionDays'] = request.retention_days
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAutoSnapshotPolicy',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.CreateAutoSnapshotPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_auto_snapshot_policy(
+        self,
+        request: ecd_20200930_models.CreateAutoSnapshotPolicyRequest,
+    ) -> ecd_20200930_models.CreateAutoSnapshotPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_auto_snapshot_policy_with_options(request, runtime)
+
+    async def create_auto_snapshot_policy_async(
+        self,
+        request: ecd_20200930_models.CreateAutoSnapshotPolicyRequest,
+    ) -> ecd_20200930_models.CreateAutoSnapshotPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_auto_snapshot_policy_with_options_async(request, runtime)
+
     def create_bundle_with_options(
         self,
         request: ecd_20200930_models.CreateBundleRequest,
@@ -1792,6 +2202,8 @@ class Client(OpenApiClient):
             query['AutoRenew'] = request.auto_renew
         if not UtilClient.is_unset(request.bundle_id):
             query['BundleId'] = request.bundle_id
+        if not UtilClient.is_unset(request.bundle_models):
+            query['BundleModels'] = request.bundle_models
         if not UtilClient.is_unset(request.charge_type):
             query['ChargeType'] = request.charge_type
         if not UtilClient.is_unset(request.desktop_name):
@@ -1866,6 +2278,8 @@ class Client(OpenApiClient):
             query['AutoRenew'] = request.auto_renew
         if not UtilClient.is_unset(request.bundle_id):
             query['BundleId'] = request.bundle_id
+        if not UtilClient.is_unset(request.bundle_models):
+            query['BundleModels'] = request.bundle_models
         if not UtilClient.is_unset(request.charge_type):
             query['ChargeType'] = request.charge_type
         if not UtilClient.is_unset(request.desktop_name):
@@ -2008,120 +2422,6 @@ class Client(OpenApiClient):
     ) -> ecd_20200930_models.CreateDiskEncryptionServiceResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_disk_encryption_service_with_options_async(request, runtime)
-
-    def create_drive_with_options(
-        self,
-        request: ecd_20200930_models.CreateDriveRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ecd_20200930_models.CreateDriveResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.ali_uid):
-            query['AliUid'] = request.ali_uid
-        if not UtilClient.is_unset(request.description):
-            query['Description'] = request.description
-        if not UtilClient.is_unset(request.domain_id):
-            query['DomainId'] = request.domain_id
-        if not UtilClient.is_unset(request.drive_name):
-            query['DriveName'] = request.drive_name
-        if not UtilClient.is_unset(request.external_domain_id):
-            query['ExternalDomainId'] = request.external_domain_id
-        if not UtilClient.is_unset(request.profile_roaming):
-            query['ProfileRoaming'] = request.profile_roaming
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_type):
-            query['ResourceType'] = request.resource_type
-        if not UtilClient.is_unset(request.total_size):
-            query['TotalSize'] = request.total_size
-        if not UtilClient.is_unset(request.type):
-            query['Type'] = request.type
-        if not UtilClient.is_unset(request.used_size):
-            query['UsedSize'] = request.used_size
-        if not UtilClient.is_unset(request.user_id):
-            query['UserId'] = request.user_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CreateDrive',
-            version='2020-09-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ecd_20200930_models.CreateDriveResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def create_drive_with_options_async(
-        self,
-        request: ecd_20200930_models.CreateDriveRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ecd_20200930_models.CreateDriveResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.ali_uid):
-            query['AliUid'] = request.ali_uid
-        if not UtilClient.is_unset(request.description):
-            query['Description'] = request.description
-        if not UtilClient.is_unset(request.domain_id):
-            query['DomainId'] = request.domain_id
-        if not UtilClient.is_unset(request.drive_name):
-            query['DriveName'] = request.drive_name
-        if not UtilClient.is_unset(request.external_domain_id):
-            query['ExternalDomainId'] = request.external_domain_id
-        if not UtilClient.is_unset(request.profile_roaming):
-            query['ProfileRoaming'] = request.profile_roaming
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_type):
-            query['ResourceType'] = request.resource_type
-        if not UtilClient.is_unset(request.total_size):
-            query['TotalSize'] = request.total_size
-        if not UtilClient.is_unset(request.type):
-            query['Type'] = request.type
-        if not UtilClient.is_unset(request.used_size):
-            query['UsedSize'] = request.used_size
-        if not UtilClient.is_unset(request.user_id):
-            query['UserId'] = request.user_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CreateDrive',
-            version='2020-09-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ecd_20200930_models.CreateDriveResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def create_drive(
-        self,
-        request: ecd_20200930_models.CreateDriveRequest,
-    ) -> ecd_20200930_models.CreateDriveResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.create_drive_with_options(request, runtime)
-
-    async def create_drive_async(
-        self,
-        request: ecd_20200930_models.CreateDriveRequest,
-    ) -> ecd_20200930_models.CreateDriveResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.create_drive_with_options_async(request, runtime)
 
     def create_image_with_options(
         self,
@@ -2462,6 +2762,8 @@ class Client(OpenApiClient):
             query['RecordContentExpires'] = request.record_content_expires
         if not UtilClient.is_unset(request.recording):
             query['Recording'] = request.recording
+        if not UtilClient.is_unset(request.recording_duration):
+            query['RecordingDuration'] = request.recording_duration
         if not UtilClient.is_unset(request.recording_end_time):
             query['RecordingEndTime'] = request.recording_end_time
         if not UtilClient.is_unset(request.recording_expires):
@@ -2550,6 +2852,8 @@ class Client(OpenApiClient):
             query['RecordContentExpires'] = request.record_content_expires
         if not UtilClient.is_unset(request.recording):
             query['Recording'] = request.recording
+        if not UtilClient.is_unset(request.recording_duration):
+            query['RecordingDuration'] = request.recording_duration
         if not UtilClient.is_unset(request.recording_end_time):
             query['RecordingEndTime'] = request.recording_end_time
         if not UtilClient.is_unset(request.recording_expires):
@@ -2901,6 +3205,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_snapshot_with_options_async(request, runtime)
 
+    def delete_auto_snapshot_policy_with_options(
+        self,
+        request: ecd_20200930_models.DeleteAutoSnapshotPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DeleteAutoSnapshotPolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAutoSnapshotPolicy',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DeleteAutoSnapshotPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_auto_snapshot_policy_with_options_async(
+        self,
+        request: ecd_20200930_models.DeleteAutoSnapshotPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DeleteAutoSnapshotPolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAutoSnapshotPolicy',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DeleteAutoSnapshotPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_auto_snapshot_policy(
+        self,
+        request: ecd_20200930_models.DeleteAutoSnapshotPolicyRequest,
+    ) -> ecd_20200930_models.DeleteAutoSnapshotPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_auto_snapshot_policy_with_options(request, runtime)
+
+    async def delete_auto_snapshot_policy_async(
+        self,
+        request: ecd_20200930_models.DeleteAutoSnapshotPolicyRequest,
+    ) -> ecd_20200930_models.DeleteAutoSnapshotPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_auto_snapshot_policy_with_options_async(request, runtime)
+
     def delete_bundles_with_options(
         self,
         request: ecd_20200930_models.DeleteBundlesRequest,
@@ -3201,6 +3579,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_desktops_with_options_async(request, runtime)
 
+    def delete_devices_with_options(
+        self,
+        request: ecd_20200930_models.DeleteDevicesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DeleteDevicesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_type):
+            query['ClientType'] = request.client_type
+        if not UtilClient.is_unset(request.device_ids):
+            query['DeviceIds'] = request.device_ids
+        if not UtilClient.is_unset(request.force):
+            query['Force'] = request.force
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDevices',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DeleteDevicesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_devices_with_options_async(
+        self,
+        request: ecd_20200930_models.DeleteDevicesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DeleteDevicesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_type):
+            query['ClientType'] = request.client_type
+        if not UtilClient.is_unset(request.device_ids):
+            query['DeviceIds'] = request.device_ids
+        if not UtilClient.is_unset(request.force):
+            query['Force'] = request.force
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDevices',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DeleteDevicesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_devices(
+        self,
+        request: ecd_20200930_models.DeleteDevicesRequest,
+    ) -> ecd_20200930_models.DeleteDevicesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_devices_with_options(request, runtime)
+
+    async def delete_devices_async(
+        self,
+        request: ecd_20200930_models.DeleteDevicesRequest,
+    ) -> ecd_20200930_models.DeleteDevicesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_devices_with_options_async(request, runtime)
+
     def delete_directories_with_options(
         self,
         request: ecd_20200930_models.DeleteDirectoriesRequest,
@@ -3274,80 +3734,6 @@ class Client(OpenApiClient):
     ) -> ecd_20200930_models.DeleteDirectoriesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.delete_directories_with_options_async(request, runtime)
-
-    def delete_drive_with_options(
-        self,
-        request: ecd_20200930_models.DeleteDriveRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ecd_20200930_models.DeleteDriveResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.drive_id):
-            query['DriveId'] = request.drive_id
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DeleteDrive',
-            version='2020-09-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ecd_20200930_models.DeleteDriveResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def delete_drive_with_options_async(
-        self,
-        request: ecd_20200930_models.DeleteDriveRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ecd_20200930_models.DeleteDriveResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.drive_id):
-            query['DriveId'] = request.drive_id
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DeleteDrive',
-            version='2020-09-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ecd_20200930_models.DeleteDriveResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def delete_drive(
-        self,
-        request: ecd_20200930_models.DeleteDriveRequest,
-    ) -> ecd_20200930_models.DeleteDriveResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.delete_drive_with_options(request, runtime)
-
-    async def delete_drive_async(
-        self,
-        request: ecd_20200930_models.DeleteDriveRequest,
-    ) -> ecd_20200930_models.DeleteDriveResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.delete_drive_with_options_async(request, runtime)
 
     def delete_images_with_options(
         self,
@@ -3953,6 +4339,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_alarm_event_stack_info_with_options_async(request, runtime)
 
+    def describe_auto_snapshot_policy_with_options(
+        self,
+        request: ecd_20200930_models.DescribeAutoSnapshotPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DescribeAutoSnapshotPolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.policy_name):
+            query['PolicyName'] = request.policy_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAutoSnapshotPolicy',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DescribeAutoSnapshotPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_auto_snapshot_policy_with_options_async(
+        self,
+        request: ecd_20200930_models.DescribeAutoSnapshotPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DescribeAutoSnapshotPolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.policy_name):
+            query['PolicyName'] = request.policy_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAutoSnapshotPolicy',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DescribeAutoSnapshotPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_auto_snapshot_policy(
+        self,
+        request: ecd_20200930_models.DescribeAutoSnapshotPolicyRequest,
+    ) -> ecd_20200930_models.DescribeAutoSnapshotPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_auto_snapshot_policy_with_options(request, runtime)
+
+    async def describe_auto_snapshot_policy_async(
+        self,
+        request: ecd_20200930_models.DescribeAutoSnapshotPolicyRequest,
+    ) -> ecd_20200930_models.DescribeAutoSnapshotPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_auto_snapshot_policy_with_options_async(request, runtime)
+
     def describe_bundles_with_options(
         self,
         request: ecd_20200930_models.DescribeBundlesRequest,
@@ -3986,6 +4458,8 @@ class Client(OpenApiClient):
             query['ProtocolType'] = request.protocol_type
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.selected_bundle):
+            query['SelectedBundle'] = request.selected_bundle
         if not UtilClient.is_unset(request.support_multi_session):
             query['SupportMultiSession'] = request.support_multi_session
         if not UtilClient.is_unset(request.volume_encryption_enabled):
@@ -4042,6 +4516,8 @@ class Client(OpenApiClient):
             query['ProtocolType'] = request.protocol_type
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.selected_bundle):
+            query['SelectedBundle'] = request.selected_bundle
         if not UtilClient.is_unset(request.support_multi_session):
             query['SupportMultiSession'] = request.support_multi_session
         if not UtilClient.is_unset(request.volume_encryption_enabled):
@@ -4635,6 +5111,104 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_desktop_ids_by_vul_names_with_options_async(request, runtime)
 
+    def describe_desktop_metric_list_with_options(
+        self,
+        request: ecd_20200930_models.DescribeDesktopMetricListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DescribeDesktopMetricListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dimensions):
+            query['Dimensions'] = request.dimensions
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.length):
+            query['Length'] = request.length
+        if not UtilClient.is_unset(request.metric_name):
+            query['MetricName'] = request.metric_name
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDesktopMetricList',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DescribeDesktopMetricListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_desktop_metric_list_with_options_async(
+        self,
+        request: ecd_20200930_models.DescribeDesktopMetricListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DescribeDesktopMetricListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dimensions):
+            query['Dimensions'] = request.dimensions
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.length):
+            query['Length'] = request.length
+        if not UtilClient.is_unset(request.metric_name):
+            query['MetricName'] = request.metric_name
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDesktopMetricList',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DescribeDesktopMetricListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_desktop_metric_list(
+        self,
+        request: ecd_20200930_models.DescribeDesktopMetricListRequest,
+    ) -> ecd_20200930_models.DescribeDesktopMetricListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_desktop_metric_list_with_options(request, runtime)
+
+    async def describe_desktop_metric_list_async(
+        self,
+        request: ecd_20200930_models.DescribeDesktopMetricListRequest,
+    ) -> ecd_20200930_models.DescribeDesktopMetricListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_desktop_metric_list_with_options_async(request, runtime)
+
     def describe_desktop_types_with_options(
         self,
         request: ecd_20200930_models.DescribeDesktopTypesRequest,
@@ -4746,6 +5320,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.charge_type):
             query['ChargeType'] = request.charge_type
+        if not UtilClient.is_unset(request.desktop_group_id):
+            query['DesktopGroupId'] = request.desktop_group_id
         if not UtilClient.is_unset(request.desktop_id):
             query['DesktopId'] = request.desktop_id
         if not UtilClient.is_unset(request.desktop_name):
@@ -4774,6 +5350,10 @@ class Client(OpenApiClient):
             query['OfficeSiteId'] = request.office_site_id
         if not UtilClient.is_unset(request.office_site_name):
             query['OfficeSiteName'] = request.office_site_name
+        if not UtilClient.is_unset(request.only_desktop_group):
+            query['OnlyDesktopGroup'] = request.only_desktop_group
+        if not UtilClient.is_unset(request.os_types):
+            query['OsTypes'] = request.os_types
         if not UtilClient.is_unset(request.policy_group_id):
             query['PolicyGroupId'] = request.policy_group_id
         if not UtilClient.is_unset(request.protocol_type):
@@ -4782,6 +5362,8 @@ class Client(OpenApiClient):
             query['QueryFotaUpdate'] = request.query_fota_update
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.snapshot_policy_id):
+            query['SnapshotPolicyId'] = request.snapshot_policy_id
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
         if not UtilClient.is_unset(request.user_name):
@@ -4814,6 +5396,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.charge_type):
             query['ChargeType'] = request.charge_type
+        if not UtilClient.is_unset(request.desktop_group_id):
+            query['DesktopGroupId'] = request.desktop_group_id
         if not UtilClient.is_unset(request.desktop_id):
             query['DesktopId'] = request.desktop_id
         if not UtilClient.is_unset(request.desktop_name):
@@ -4842,6 +5426,10 @@ class Client(OpenApiClient):
             query['OfficeSiteId'] = request.office_site_id
         if not UtilClient.is_unset(request.office_site_name):
             query['OfficeSiteName'] = request.office_site_name
+        if not UtilClient.is_unset(request.only_desktop_group):
+            query['OnlyDesktopGroup'] = request.only_desktop_group
+        if not UtilClient.is_unset(request.os_types):
+            query['OsTypes'] = request.os_types
         if not UtilClient.is_unset(request.policy_group_id):
             query['PolicyGroupId'] = request.policy_group_id
         if not UtilClient.is_unset(request.protocol_type):
@@ -4850,6 +5438,8 @@ class Client(OpenApiClient):
             query['QueryFotaUpdate'] = request.query_fota_update
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.snapshot_policy_id):
+            query['SnapshotPolicyId'] = request.snapshot_policy_id
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
         if not UtilClient.is_unset(request.user_name):
@@ -4977,6 +5567,108 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_desktops_in_group_with_options_async(request, runtime)
 
+    def describe_devices_with_options(
+        self,
+        request: ecd_20200930_models.DescribeDevicesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DescribeDevicesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ad_domain):
+            query['AdDomain'] = request.ad_domain
+        if not UtilClient.is_unset(request.client_type):
+            query['ClientType'] = request.client_type
+        if not UtilClient.is_unset(request.device_id):
+            query['DeviceId'] = request.device_id
+        if not UtilClient.is_unset(request.directory_id):
+            query['DirectoryId'] = request.directory_id
+        if not UtilClient.is_unset(request.end_user_id):
+            query['EndUserId'] = request.end_user_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.user_type):
+            query['UserType'] = request.user_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDevices',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DescribeDevicesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_devices_with_options_async(
+        self,
+        request: ecd_20200930_models.DescribeDevicesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DescribeDevicesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ad_domain):
+            query['AdDomain'] = request.ad_domain
+        if not UtilClient.is_unset(request.client_type):
+            query['ClientType'] = request.client_type
+        if not UtilClient.is_unset(request.device_id):
+            query['DeviceId'] = request.device_id
+        if not UtilClient.is_unset(request.directory_id):
+            query['DirectoryId'] = request.directory_id
+        if not UtilClient.is_unset(request.end_user_id):
+            query['EndUserId'] = request.end_user_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.user_type):
+            query['UserType'] = request.user_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDevices',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DescribeDevicesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_devices(
+        self,
+        request: ecd_20200930_models.DescribeDevicesRequest,
+    ) -> ecd_20200930_models.DescribeDevicesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_devices_with_options(request, runtime)
+
+    async def describe_devices_async(
+        self,
+        request: ecd_20200930_models.DescribeDevicesRequest,
+    ) -> ecd_20200930_models.DescribeDevicesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_devices_with_options_async(request, runtime)
+
     def describe_directories_with_options(
         self,
         request: ecd_20200930_models.DescribeDirectoriesRequest,
@@ -5070,88 +5762,6 @@ class Client(OpenApiClient):
     ) -> ecd_20200930_models.DescribeDirectoriesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_directories_with_options_async(request, runtime)
-
-    def describe_drives_with_options(
-        self,
-        request: ecd_20200930_models.DescribeDrivesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ecd_20200930_models.DescribeDrivesResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.domain_ids):
-            query['DomainIds'] = request.domain_ids
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_type):
-            query['ResourceType'] = request.resource_type
-        if not UtilClient.is_unset(request.user_id):
-            query['UserId'] = request.user_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeDrives',
-            version='2020-09-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ecd_20200930_models.DescribeDrivesResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_drives_with_options_async(
-        self,
-        request: ecd_20200930_models.DescribeDrivesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ecd_20200930_models.DescribeDrivesResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.domain_ids):
-            query['DomainIds'] = request.domain_ids
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_type):
-            query['ResourceType'] = request.resource_type
-        if not UtilClient.is_unset(request.user_id):
-            query['UserId'] = request.user_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeDrives',
-            version='2020-09-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ecd_20200930_models.DescribeDrivesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_drives(
-        self,
-        request: ecd_20200930_models.DescribeDrivesRequest,
-    ) -> ecd_20200930_models.DescribeDrivesResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_drives_with_options(request, runtime)
-
-    async def describe_drives_async(
-        self,
-        request: ecd_20200930_models.DescribeDrivesRequest,
-    ) -> ecd_20200930_models.DescribeDrivesResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_drives_with_options_async(request, runtime)
 
     def describe_flow_metric_with_options(
         self,
@@ -5838,8 +6448,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.desktop_instance_type):
             query['DesktopInstanceType'] = request.desktop_instance_type
-        if not UtilClient.is_unset(request.fota_channel):
-            query['FotaChannel'] = request.fota_channel
         if not UtilClient.is_unset(request.gpu_category):
             query['GpuCategory'] = request.gpu_category
         if not UtilClient.is_unset(request.gpu_driver_version):
@@ -5890,8 +6498,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.desktop_instance_type):
             query['DesktopInstanceType'] = request.desktop_instance_type
-        if not UtilClient.is_unset(request.fota_channel):
-            query['FotaChannel'] = request.fota_channel
         if not UtilClient.is_unset(request.gpu_category):
             query['GpuCategory'] = request.gpu_category
         if not UtilClient.is_unset(request.gpu_driver_version):
@@ -5960,6 +6566,10 @@ class Client(OpenApiClient):
             query['ContentEncoding'] = request.content_encoding
         if not UtilClient.is_unset(request.desktop_id):
             query['DesktopId'] = request.desktop_id
+        if not UtilClient.is_unset(request.desktop_ids):
+            query['DesktopIds'] = request.desktop_ids
+        if not UtilClient.is_unset(request.end_user_id):
+            query['EndUserId'] = request.end_user_id
         if not UtilClient.is_unset(request.include_output):
             query['IncludeOutput'] = request.include_output
         if not UtilClient.is_unset(request.invoke_id):
@@ -6004,6 +6614,10 @@ class Client(OpenApiClient):
             query['ContentEncoding'] = request.content_encoding
         if not UtilClient.is_unset(request.desktop_id):
             query['DesktopId'] = request.desktop_id
+        if not UtilClient.is_unset(request.desktop_ids):
+            query['DesktopIds'] = request.desktop_ids
+        if not UtilClient.is_unset(request.end_user_id):
+            query['EndUserId'] = request.end_user_id
         if not UtilClient.is_unset(request.include_output):
             query['IncludeOutput'] = request.include_output
         if not UtilClient.is_unset(request.invoke_id):
@@ -6128,6 +6742,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.file_system_id):
             query['FileSystemId'] = request.file_system_id
+        if not UtilClient.is_unset(request.match_compatible_profile):
+            query['MatchCompatibleProfile'] = request.match_compatible_profile
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
@@ -6164,6 +6780,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.file_system_id):
             query['FileSystemId'] = request.file_system_id
+        if not UtilClient.is_unset(request.match_compatible_profile):
+            query['MatchCompatibleProfile'] = request.match_compatible_profile
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
@@ -6772,6 +7390,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.desktop_id):
             query['DesktopId'] = request.desktop_id
+        if not UtilClient.is_unset(request.desktop_name):
+            query['DesktopName'] = request.desktop_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
@@ -6780,6 +7402,14 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.snapshot_id):
             query['SnapshotId'] = request.snapshot_id
+        if not UtilClient.is_unset(request.snapshot_name):
+            query['SnapshotName'] = request.snapshot_name
+        if not UtilClient.is_unset(request.snapshot_type):
+            query['SnapshotType'] = request.snapshot_type
+        if not UtilClient.is_unset(request.source_disk_type):
+            query['SourceDiskType'] = request.source_disk_type
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6808,6 +7438,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.desktop_id):
             query['DesktopId'] = request.desktop_id
+        if not UtilClient.is_unset(request.desktop_name):
+            query['DesktopName'] = request.desktop_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
@@ -6816,6 +7450,14 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.snapshot_id):
             query['SnapshotId'] = request.snapshot_id
+        if not UtilClient.is_unset(request.snapshot_name):
+            query['SnapshotName'] = request.snapshot_name
+        if not UtilClient.is_unset(request.snapshot_type):
+            query['SnapshotType'] = request.snapshot_type
+        if not UtilClient.is_unset(request.source_disk_type):
+            query['SourceDiskType'] = request.source_disk_type
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7238,6 +7880,8 @@ class Client(OpenApiClient):
             query['DesktopGroupId'] = request.desktop_group_id
         if not UtilClient.is_unset(request.end_user_id):
             query['EndUserId'] = request.end_user_id
+        if not UtilClient.is_unset(request.end_user_ids):
+            query['EndUserIds'] = request.end_user_ids
         if not UtilClient.is_unset(request.filter):
             query['Filter'] = request.filter
         if not UtilClient.is_unset(request.max_results):
@@ -7282,6 +7926,8 @@ class Client(OpenApiClient):
             query['DesktopGroupId'] = request.desktop_group_id
         if not UtilClient.is_unset(request.end_user_id):
             query['EndUserId'] = request.end_user_id
+        if not UtilClient.is_unset(request.end_user_ids):
+            query['EndUserIds'] = request.end_user_ids
         if not UtilClient.is_unset(request.filter):
             query['Filter'] = request.filter
         if not UtilClient.is_unset(request.max_results):
@@ -7897,6 +8543,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.detach_cen_with_options_async(request, runtime)
 
+    def detach_end_user_with_options(
+        self,
+        request: ecd_20200930_models.DetachEndUserRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DetachEndUserResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ad_domain):
+            query['AdDomain'] = request.ad_domain
+        if not UtilClient.is_unset(request.client_type):
+            query['ClientType'] = request.client_type
+        if not UtilClient.is_unset(request.device_id):
+            query['DeviceId'] = request.device_id
+        if not UtilClient.is_unset(request.directory_id):
+            query['DirectoryId'] = request.directory_id
+        if not UtilClient.is_unset(request.end_user_id):
+            query['EndUserId'] = request.end_user_id
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DetachEndUser',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DetachEndUserResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def detach_end_user_with_options_async(
+        self,
+        request: ecd_20200930_models.DetachEndUserRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DetachEndUserResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ad_domain):
+            query['AdDomain'] = request.ad_domain
+        if not UtilClient.is_unset(request.client_type):
+            query['ClientType'] = request.client_type
+        if not UtilClient.is_unset(request.device_id):
+            query['DeviceId'] = request.device_id
+        if not UtilClient.is_unset(request.directory_id):
+            query['DirectoryId'] = request.directory_id
+        if not UtilClient.is_unset(request.end_user_id):
+            query['EndUserId'] = request.end_user_id
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DetachEndUser',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DetachEndUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def detach_end_user(
+        self,
+        request: ecd_20200930_models.DetachEndUserRequest,
+    ) -> ecd_20200930_models.DetachEndUserResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.detach_end_user_with_options(request, runtime)
+
+    async def detach_end_user_async(
+        self,
+        request: ecd_20200930_models.DetachEndUserRequest,
+    ) -> ecd_20200930_models.DetachEndUserResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.detach_end_user_with_options_async(request, runtime)
+
     def disable_desktops_in_group_with_options(
         self,
         request: ecd_20200930_models.DisableDesktopsInGroupRequest,
@@ -8402,6 +9138,8 @@ class Client(OpenApiClient):
     ) -> ecd_20200930_models.GetConnectionTicketResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.command_content):
+            query['CommandContent'] = request.command_content
         if not UtilClient.is_unset(request.desktop_id):
             query['DesktopId'] = request.desktop_id
         if not UtilClient.is_unset(request.end_user_id):
@@ -8446,6 +9184,8 @@ class Client(OpenApiClient):
     ) -> ecd_20200930_models.GetConnectionTicketResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.command_content):
+            query['CommandContent'] = request.command_content
         if not UtilClient.is_unset(request.desktop_id):
             query['DesktopId'] = request.desktop_id
         if not UtilClient.is_unset(request.end_user_id):
@@ -9541,6 +10281,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_adconnector_office_site_with_options_async(request, runtime)
 
+    def modify_auto_snapshot_policy_with_options(
+        self,
+        request: ecd_20200930_models.ModifyAutoSnapshotPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.ModifyAutoSnapshotPolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cron_expression):
+            query['CronExpression'] = request.cron_expression
+        if not UtilClient.is_unset(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.policy_name):
+            query['PolicyName'] = request.policy_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.retention_days):
+            query['RetentionDays'] = request.retention_days
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyAutoSnapshotPolicy',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.ModifyAutoSnapshotPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_auto_snapshot_policy_with_options_async(
+        self,
+        request: ecd_20200930_models.ModifyAutoSnapshotPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.ModifyAutoSnapshotPolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cron_expression):
+            query['CronExpression'] = request.cron_expression
+        if not UtilClient.is_unset(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.policy_name):
+            query['PolicyName'] = request.policy_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.retention_days):
+            query['RetentionDays'] = request.retention_days
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyAutoSnapshotPolicy',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.ModifyAutoSnapshotPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_auto_snapshot_policy(
+        self,
+        request: ecd_20200930_models.ModifyAutoSnapshotPolicyRequest,
+    ) -> ecd_20200930_models.ModifyAutoSnapshotPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_auto_snapshot_policy_with_options(request, runtime)
+
+    async def modify_auto_snapshot_policy_async(
+        self,
+        request: ecd_20200930_models.ModifyAutoSnapshotPolicyRequest,
+    ) -> ecd_20200930_models.ModifyAutoSnapshotPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_auto_snapshot_policy_with_options_async(request, runtime)
+
     def modify_bundle_with_options(
         self,
         request: ecd_20200930_models.ModifyBundleRequest,
@@ -10312,6 +11138,8 @@ class Client(OpenApiClient):
             query['DesktopId'] = request.desktop_id
         if not UtilClient.is_unset(request.policy_group_id):
             query['PolicyGroupId'] = request.policy_group_id
+        if not UtilClient.is_unset(request.pre_check):
+            query['PreCheck'] = request.pre_check
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
@@ -10344,6 +11172,8 @@ class Client(OpenApiClient):
             query['DesktopId'] = request.desktop_id
         if not UtilClient.is_unset(request.policy_group_id):
             query['PolicyGroupId'] = request.policy_group_id
+        if not UtilClient.is_unset(request.pre_check):
+            query['PreCheck'] = request.pre_check
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
@@ -11332,6 +12162,8 @@ class Client(OpenApiClient):
             query['RecordContentExpires'] = request.record_content_expires
         if not UtilClient.is_unset(request.recording):
             query['Recording'] = request.recording
+        if not UtilClient.is_unset(request.recording_duration):
+            query['RecordingDuration'] = request.recording_duration
         if not UtilClient.is_unset(request.recording_end_time):
             query['RecordingEndTime'] = request.recording_end_time
         if not UtilClient.is_unset(request.recording_expires):
@@ -11426,6 +12258,8 @@ class Client(OpenApiClient):
             query['RecordContentExpires'] = request.record_content_expires
         if not UtilClient.is_unset(request.recording):
             query['Recording'] = request.recording
+        if not UtilClient.is_unset(request.recording_duration):
+            query['RecordingDuration'] = request.recording_duration
         if not UtilClient.is_unset(request.recording_end_time):
             query['RecordingEndTime'] = request.recording_end_time
         if not UtilClient.is_unset(request.recording_expires):
@@ -12574,6 +13408,8 @@ class Client(OpenApiClient):
             query['ContentEncoding'] = request.content_encoding
         if not UtilClient.is_unset(request.desktop_id):
             query['DesktopId'] = request.desktop_id
+        if not UtilClient.is_unset(request.end_user_id):
+            query['EndUserId'] = request.end_user_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.timeout):
@@ -12612,6 +13448,8 @@ class Client(OpenApiClient):
             query['ContentEncoding'] = request.content_encoding
         if not UtilClient.is_unset(request.desktop_id):
             query['DesktopId'] = request.desktop_id
+        if not UtilClient.is_unset(request.end_user_id):
+            query['EndUserId'] = request.end_user_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.timeout):
@@ -12728,6 +13566,84 @@ class Client(OpenApiClient):
     ) -> ecd_20200930_models.SendVerifyCodeResponse:
         runtime = util_models.RuntimeOptions()
         return await self.send_verify_code_with_options_async(request, runtime)
+
+    def set_desktop_group_scale_timer_with_options(
+        self,
+        request: ecd_20200930_models.SetDesktopGroupScaleTimerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.SetDesktopGroupScaleTimerResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.desktop_group_id):
+            query['DesktopGroupId'] = request.desktop_group_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.scale_timer_infos):
+            query['ScaleTimerInfos'] = request.scale_timer_infos
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetDesktopGroupScaleTimer',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.SetDesktopGroupScaleTimerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_desktop_group_scale_timer_with_options_async(
+        self,
+        request: ecd_20200930_models.SetDesktopGroupScaleTimerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.SetDesktopGroupScaleTimerResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.desktop_group_id):
+            query['DesktopGroupId'] = request.desktop_group_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.scale_timer_infos):
+            query['ScaleTimerInfos'] = request.scale_timer_infos
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetDesktopGroupScaleTimer',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.SetDesktopGroupScaleTimerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_desktop_group_scale_timer(
+        self,
+        request: ecd_20200930_models.SetDesktopGroupScaleTimerRequest,
+    ) -> ecd_20200930_models.SetDesktopGroupScaleTimerResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.set_desktop_group_scale_timer_with_options(request, runtime)
+
+    async def set_desktop_group_scale_timer_async(
+        self,
+        request: ecd_20200930_models.SetDesktopGroupScaleTimerRequest,
+    ) -> ecd_20200930_models.SetDesktopGroupScaleTimerResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.set_desktop_group_scale_timer_with_options_async(request, runtime)
 
     def set_desktop_group_timer_with_options(
         self,
