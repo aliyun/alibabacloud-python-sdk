@@ -6138,20 +6138,20 @@ class CreateFileCompressionTaskRequest(TeaModel):
         self,
         compressed_format: str = None,
         credential_config: CredentialConfig = None,
-        manifest_uri: str = None,
         notify_topic_name: str = None,
         password: str = None,
         project_name: str = None,
+        source_manifest_uri: str = None,
         sources: List[CreateFileCompressionTaskRequestSources] = None,
         target_uri: str = None,
         user_data: str = None,
     ):
         self.compressed_format = compressed_format
         self.credential_config = credential_config
-        self.manifest_uri = manifest_uri
         self.notify_topic_name = notify_topic_name
         self.password = password
         self.project_name = project_name
+        self.source_manifest_uri = source_manifest_uri
         self.sources = sources
         self.target_uri = target_uri
         self.user_data = user_data
@@ -6174,14 +6174,14 @@ class CreateFileCompressionTaskRequest(TeaModel):
             result['CompressedFormat'] = self.compressed_format
         if self.credential_config is not None:
             result['CredentialConfig'] = self.credential_config.to_map()
-        if self.manifest_uri is not None:
-            result['ManifestURI'] = self.manifest_uri
         if self.notify_topic_name is not None:
             result['NotifyTopicName'] = self.notify_topic_name
         if self.password is not None:
             result['Password'] = self.password
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
+        if self.source_manifest_uri is not None:
+            result['SourceManifestURI'] = self.source_manifest_uri
         result['Sources'] = []
         if self.sources is not None:
             for k in self.sources:
@@ -6199,14 +6199,14 @@ class CreateFileCompressionTaskRequest(TeaModel):
         if m.get('CredentialConfig') is not None:
             temp_model = CredentialConfig()
             self.credential_config = temp_model.from_map(m['CredentialConfig'])
-        if m.get('ManifestURI') is not None:
-            self.manifest_uri = m.get('ManifestURI')
         if m.get('NotifyTopicName') is not None:
             self.notify_topic_name = m.get('NotifyTopicName')
         if m.get('Password') is not None:
             self.password = m.get('Password')
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
+        if m.get('SourceManifestURI') is not None:
+            self.source_manifest_uri = m.get('SourceManifestURI')
         self.sources = []
         if m.get('Sources') is not None:
             for k in m.get('Sources'):
@@ -6224,20 +6224,20 @@ class CreateFileCompressionTaskShrinkRequest(TeaModel):
         self,
         compressed_format: str = None,
         credential_config_shrink: str = None,
-        manifest_uri: str = None,
         notify_topic_name: str = None,
         password: str = None,
         project_name: str = None,
+        source_manifest_uri: str = None,
         sources_shrink: str = None,
         target_uri: str = None,
         user_data: str = None,
     ):
         self.compressed_format = compressed_format
         self.credential_config_shrink = credential_config_shrink
-        self.manifest_uri = manifest_uri
         self.notify_topic_name = notify_topic_name
         self.password = password
         self.project_name = project_name
+        self.source_manifest_uri = source_manifest_uri
         self.sources_shrink = sources_shrink
         self.target_uri = target_uri
         self.user_data = user_data
@@ -6255,14 +6255,14 @@ class CreateFileCompressionTaskShrinkRequest(TeaModel):
             result['CompressedFormat'] = self.compressed_format
         if self.credential_config_shrink is not None:
             result['CredentialConfig'] = self.credential_config_shrink
-        if self.manifest_uri is not None:
-            result['ManifestURI'] = self.manifest_uri
         if self.notify_topic_name is not None:
             result['NotifyTopicName'] = self.notify_topic_name
         if self.password is not None:
             result['Password'] = self.password
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
+        if self.source_manifest_uri is not None:
+            result['SourceManifestURI'] = self.source_manifest_uri
         if self.sources_shrink is not None:
             result['Sources'] = self.sources_shrink
         if self.target_uri is not None:
@@ -6277,14 +6277,14 @@ class CreateFileCompressionTaskShrinkRequest(TeaModel):
             self.compressed_format = m.get('CompressedFormat')
         if m.get('CredentialConfig') is not None:
             self.credential_config_shrink = m.get('CredentialConfig')
-        if m.get('ManifestURI') is not None:
-            self.manifest_uri = m.get('ManifestURI')
         if m.get('NotifyTopicName') is not None:
             self.notify_topic_name = m.get('NotifyTopicName')
         if m.get('Password') is not None:
             self.password = m.get('Password')
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
+        if m.get('SourceManifestURI') is not None:
+            self.source_manifest_uri = m.get('SourceManifestURI')
         if m.get('Sources') is not None:
             self.sources_shrink = m.get('Sources')
         if m.get('TargetURI') is not None:

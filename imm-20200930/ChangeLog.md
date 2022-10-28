@@ -1,3 +1,6 @@
+2022-10-28 Version: 1.28.7
+- Support Compression.
+
 2022-10-28 Version: 1.28.6
 - Automatically generate sdk tasks.
 

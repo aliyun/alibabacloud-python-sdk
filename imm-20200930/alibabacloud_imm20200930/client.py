@@ -1409,14 +1409,14 @@ class Client(OpenApiClient):
             query['CompressedFormat'] = request.compressed_format
         if not UtilClient.is_unset(request.credential_config_shrink):
             query['CredentialConfig'] = request.credential_config_shrink
-        if not UtilClient.is_unset(request.manifest_uri):
-            query['ManifestURI'] = request.manifest_uri
         if not UtilClient.is_unset(request.notify_topic_name):
             query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.password):
             query['Password'] = request.password
         if not UtilClient.is_unset(request.project_name):
             query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.source_manifest_uri):
+            query['SourceManifestURI'] = request.source_manifest_uri
         if not UtilClient.is_unset(request.sources_shrink):
             query['Sources'] = request.sources_shrink
         if not UtilClient.is_unset(request.target_uri):
@@ -1459,14 +1459,14 @@ class Client(OpenApiClient):
             query['CompressedFormat'] = request.compressed_format
         if not UtilClient.is_unset(request.credential_config_shrink):
             query['CredentialConfig'] = request.credential_config_shrink
-        if not UtilClient.is_unset(request.manifest_uri):
-            query['ManifestURI'] = request.manifest_uri
         if not UtilClient.is_unset(request.notify_topic_name):
             query['NotifyTopicName'] = request.notify_topic_name
         if not UtilClient.is_unset(request.password):
             query['Password'] = request.password
         if not UtilClient.is_unset(request.project_name):
             query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.source_manifest_uri):
+            query['SourceManifestURI'] = request.source_manifest_uri
         if not UtilClient.is_unset(request.sources_shrink):
             query['Sources'] = request.sources_shrink
         if not UtilClient.is_unset(request.target_uri):
