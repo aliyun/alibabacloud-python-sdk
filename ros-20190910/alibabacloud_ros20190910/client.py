@@ -136,6 +136,8 @@ class Client(OpenApiClient):
             query['Parameters'] = request.parameters
         if not UtilClient.is_unset(request.ram_role_name):
             query['RamRoleName'] = request.ram_role_name
+        if not UtilClient.is_unset(request.recreating_options):
+            query['RecreatingOptions'] = request.recreating_options
         if not UtilClient.is_unset(request.recreating_resources):
             query['RecreatingResources'] = request.recreating_resources
         if not UtilClient.is_unset(request.region_id):
@@ -186,6 +188,8 @@ class Client(OpenApiClient):
             query['Parameters'] = request.parameters
         if not UtilClient.is_unset(request.ram_role_name):
             query['RamRoleName'] = request.ram_role_name
+        if not UtilClient.is_unset(request.recreating_options):
+            query['RecreatingOptions'] = request.recreating_options
         if not UtilClient.is_unset(request.recreating_resources):
             query['RecreatingResources'] = request.recreating_resources
         if not UtilClient.is_unset(request.region_id):
@@ -580,6 +584,8 @@ class Client(OpenApiClient):
             query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.stack_group_name):
             query['StackGroupName'] = request.stack_group_name
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         if not UtilClient.is_unset(request.template_body):
             query['TemplateBody'] = request.template_body
         if not UtilClient.is_unset(request.template_id):
@@ -638,6 +644,8 @@ class Client(OpenApiClient):
             query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.stack_group_name):
             query['StackGroupName'] = request.stack_group_name
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         if not UtilClient.is_unset(request.template_body):
             query['TemplateBody'] = request.template_body
         if not UtilClient.is_unset(request.template_id):
@@ -820,6 +828,8 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         if not UtilClient.is_unset(request.template_body):
             query['TemplateBody'] = request.template_body
         if not UtilClient.is_unset(request.template_name):
@@ -856,6 +866,8 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         if not UtilClient.is_unset(request.template_body):
             query['TemplateBody'] = request.template_body
         if not UtilClient.is_unset(request.template_name):
@@ -4148,6 +4160,14 @@ class Client(OpenApiClient):
             query['RetainResources'] = request.retain_resources
         if not UtilClient.is_unset(request.stack_id):
             query['StackId'] = request.stack_id
+        if not UtilClient.is_unset(request.template_body):
+            query['TemplateBody'] = request.template_body
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_url):
+            query['TemplateURL'] = request.template_url
+        if not UtilClient.is_unset(request.template_version):
+            query['TemplateVersion'] = request.template_version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4188,6 +4208,14 @@ class Client(OpenApiClient):
             query['RetainResources'] = request.retain_resources
         if not UtilClient.is_unset(request.stack_id):
             query['StackId'] = request.stack_id
+        if not UtilClient.is_unset(request.template_body):
+            query['TemplateBody'] = request.template_body
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_url):
+            query['TemplateURL'] = request.template_url
+        if not UtilClient.is_unset(request.template_version):
+            query['TemplateVersion'] = request.template_version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

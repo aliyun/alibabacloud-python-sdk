@@ -1,3 +1,9 @@
+2022-10-28 Version: 3.2.13
+- Add ApiForCreation in the return value ServiceProvisions-RoleProvision-Roles of GetServiceProvisions API.
+- The Tags parameter is supported in the CreateTemplate and CreateStackGroup API.
+- ListStackOperationRisks API support permission risk check when creating Stack.
+- ContinueCreateStack support parameter RecreatingOptions.
+
 2022-09-29 Version: 3.2.12
 - Add IllegalValueByRules and IllegalValueByParameterConstraints to GetTemplateParameterConstraints output.
 - Add Resources to ValidateTemplate output.
