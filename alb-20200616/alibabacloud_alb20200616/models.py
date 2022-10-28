@@ -2020,6 +2020,63 @@ class CreateLoadBalancerResponse(TeaModel):
         return self
 
 
+class CreateRuleRequestRuleActionsCorsConfig(TeaModel):
+    def __init__(
+        self,
+        allow_credentials: str = None,
+        allow_headers: List[str] = None,
+        allow_methods: List[str] = None,
+        allow_origin: List[str] = None,
+        expose_headers: List[str] = None,
+        max_age: int = None,
+    ):
+        self.allow_credentials = allow_credentials
+        self.allow_headers = allow_headers
+        self.allow_methods = allow_methods
+        self.allow_origin = allow_origin
+        self.expose_headers = expose_headers
+        self.max_age = max_age
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.allow_credentials is not None:
+            result['AllowCredentials'] = self.allow_credentials
+        if self.allow_headers is not None:
+            result['AllowHeaders'] = self.allow_headers
+        if self.allow_methods is not None:
+            result['AllowMethods'] = self.allow_methods
+        if self.allow_origin is not None:
+            result['AllowOrigin'] = self.allow_origin
+        if self.expose_headers is not None:
+            result['ExposeHeaders'] = self.expose_headers
+        if self.max_age is not None:
+            result['MaxAge'] = self.max_age
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllowCredentials') is not None:
+            self.allow_credentials = m.get('AllowCredentials')
+        if m.get('AllowHeaders') is not None:
+            self.allow_headers = m.get('AllowHeaders')
+        if m.get('AllowMethods') is not None:
+            self.allow_methods = m.get('AllowMethods')
+        if m.get('AllowOrigin') is not None:
+            self.allow_origin = m.get('AllowOrigin')
+        if m.get('ExposeHeaders') is not None:
+            self.expose_headers = m.get('ExposeHeaders')
+        if m.get('MaxAge') is not None:
+            self.max_age = m.get('MaxAge')
+        return self
+
+
 class CreateRuleRequestRuleActionsFixedResponseConfig(TeaModel):
     def __init__(
         self,
@@ -2437,6 +2494,7 @@ class CreateRuleRequestRuleActionsTrafficMirrorConfig(TeaModel):
 class CreateRuleRequestRuleActions(TeaModel):
     def __init__(
         self,
+        cors_config: CreateRuleRequestRuleActionsCorsConfig = None,
         fixed_response_config: CreateRuleRequestRuleActionsFixedResponseConfig = None,
         forward_group_config: CreateRuleRequestRuleActionsForwardGroupConfig = None,
         insert_header_config: CreateRuleRequestRuleActionsInsertHeaderConfig = None,
@@ -2447,6 +2505,7 @@ class CreateRuleRequestRuleActions(TeaModel):
         traffic_mirror_config: CreateRuleRequestRuleActionsTrafficMirrorConfig = None,
         type: str = None,
     ):
+        self.cors_config = cors_config
         self.fixed_response_config = fixed_response_config
         self.forward_group_config = forward_group_config
         self.insert_header_config = insert_header_config
@@ -2458,6 +2517,8 @@ class CreateRuleRequestRuleActions(TeaModel):
         self.type = type
 
     def validate(self):
+        if self.cors_config:
+            self.cors_config.validate()
         if self.fixed_response_config:
             self.fixed_response_config.validate()
         if self.forward_group_config:
@@ -2479,6 +2540,8 @@ class CreateRuleRequestRuleActions(TeaModel):
             return _map
 
         result = dict()
+        if self.cors_config is not None:
+            result['CorsConfig'] = self.cors_config.to_map()
         if self.fixed_response_config is not None:
             result['FixedResponseConfig'] = self.fixed_response_config.to_map()
         if self.forward_group_config is not None:
@@ -2501,6 +2564,9 @@ class CreateRuleRequestRuleActions(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CorsConfig') is not None:
+            temp_model = CreateRuleRequestRuleActionsCorsConfig()
+            self.cors_config = temp_model.from_map(m['CorsConfig'])
         if m.get('FixedResponseConfig') is not None:
             temp_model = CreateRuleRequestRuleActionsFixedResponseConfig()
             self.fixed_response_config = temp_model.from_map(m['FixedResponseConfig'])
@@ -3058,6 +3124,63 @@ class CreateRuleResponse(TeaModel):
         return self
 
 
+class CreateRulesRequestRulesRuleActionsCorsConfig(TeaModel):
+    def __init__(
+        self,
+        allow_credentials: str = None,
+        allow_headers: List[str] = None,
+        allow_methods: List[str] = None,
+        allow_origin: List[str] = None,
+        expose_headers: List[str] = None,
+        max_age: int = None,
+    ):
+        self.allow_credentials = allow_credentials
+        self.allow_headers = allow_headers
+        self.allow_methods = allow_methods
+        self.allow_origin = allow_origin
+        self.expose_headers = expose_headers
+        self.max_age = max_age
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.allow_credentials is not None:
+            result['AllowCredentials'] = self.allow_credentials
+        if self.allow_headers is not None:
+            result['AllowHeaders'] = self.allow_headers
+        if self.allow_methods is not None:
+            result['AllowMethods'] = self.allow_methods
+        if self.allow_origin is not None:
+            result['AllowOrigin'] = self.allow_origin
+        if self.expose_headers is not None:
+            result['ExposeHeaders'] = self.expose_headers
+        if self.max_age is not None:
+            result['MaxAge'] = self.max_age
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllowCredentials') is not None:
+            self.allow_credentials = m.get('AllowCredentials')
+        if m.get('AllowHeaders') is not None:
+            self.allow_headers = m.get('AllowHeaders')
+        if m.get('AllowMethods') is not None:
+            self.allow_methods = m.get('AllowMethods')
+        if m.get('AllowOrigin') is not None:
+            self.allow_origin = m.get('AllowOrigin')
+        if m.get('ExposeHeaders') is not None:
+            self.expose_headers = m.get('ExposeHeaders')
+        if m.get('MaxAge') is not None:
+            self.max_age = m.get('MaxAge')
+        return self
+
+
 class CreateRulesRequestRulesRuleActionsFixedResponseConfig(TeaModel):
     def __init__(
         self,
@@ -3475,6 +3598,7 @@ class CreateRulesRequestRulesRuleActionsTrafficMirrorConfig(TeaModel):
 class CreateRulesRequestRulesRuleActions(TeaModel):
     def __init__(
         self,
+        cors_config: CreateRulesRequestRulesRuleActionsCorsConfig = None,
         fixed_response_config: CreateRulesRequestRulesRuleActionsFixedResponseConfig = None,
         forward_group_config: CreateRulesRequestRulesRuleActionsForwardGroupConfig = None,
         insert_header_config: CreateRulesRequestRulesRuleActionsInsertHeaderConfig = None,
@@ -3485,6 +3609,7 @@ class CreateRulesRequestRulesRuleActions(TeaModel):
         traffic_mirror_config: CreateRulesRequestRulesRuleActionsTrafficMirrorConfig = None,
         type: str = None,
     ):
+        self.cors_config = cors_config
         self.fixed_response_config = fixed_response_config
         self.forward_group_config = forward_group_config
         self.insert_header_config = insert_header_config
@@ -3496,6 +3621,8 @@ class CreateRulesRequestRulesRuleActions(TeaModel):
         self.type = type
 
     def validate(self):
+        if self.cors_config:
+            self.cors_config.validate()
         if self.fixed_response_config:
             self.fixed_response_config.validate()
         if self.forward_group_config:
@@ -3517,6 +3644,8 @@ class CreateRulesRequestRulesRuleActions(TeaModel):
             return _map
 
         result = dict()
+        if self.cors_config is not None:
+            result['CorsConfig'] = self.cors_config.to_map()
         if self.fixed_response_config is not None:
             result['FixedResponseConfig'] = self.fixed_response_config.to_map()
         if self.forward_group_config is not None:
@@ -3539,6 +3668,9 @@ class CreateRulesRequestRulesRuleActions(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CorsConfig') is not None:
+            temp_model = CreateRulesRequestRulesRuleActionsCorsConfig()
+            self.cors_config = temp_model.from_map(m['CorsConfig'])
         if m.get('FixedResponseConfig') is not None:
             temp_model = CreateRulesRequestRulesRuleActionsFixedResponseConfig()
             self.fixed_response_config = temp_model.from_map(m['FixedResponseConfig'])
@@ -11149,6 +11281,63 @@ class ListRulesRequest(TeaModel):
         return self
 
 
+class ListRulesResponseBodyRulesRuleActionsCorsConfig(TeaModel):
+    def __init__(
+        self,
+        allow_credentials: str = None,
+        allow_headers: List[str] = None,
+        allow_methods: List[str] = None,
+        allow_origin: List[str] = None,
+        expose_headers: List[str] = None,
+        max_age: int = None,
+    ):
+        self.allow_credentials = allow_credentials
+        self.allow_headers = allow_headers
+        self.allow_methods = allow_methods
+        self.allow_origin = allow_origin
+        self.expose_headers = expose_headers
+        self.max_age = max_age
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.allow_credentials is not None:
+            result['AllowCredentials'] = self.allow_credentials
+        if self.allow_headers is not None:
+            result['AllowHeaders'] = self.allow_headers
+        if self.allow_methods is not None:
+            result['AllowMethods'] = self.allow_methods
+        if self.allow_origin is not None:
+            result['AllowOrigin'] = self.allow_origin
+        if self.expose_headers is not None:
+            result['ExposeHeaders'] = self.expose_headers
+        if self.max_age is not None:
+            result['MaxAge'] = self.max_age
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllowCredentials') is not None:
+            self.allow_credentials = m.get('AllowCredentials')
+        if m.get('AllowHeaders') is not None:
+            self.allow_headers = m.get('AllowHeaders')
+        if m.get('AllowMethods') is not None:
+            self.allow_methods = m.get('AllowMethods')
+        if m.get('AllowOrigin') is not None:
+            self.allow_origin = m.get('AllowOrigin')
+        if m.get('ExposeHeaders') is not None:
+            self.expose_headers = m.get('ExposeHeaders')
+        if m.get('MaxAge') is not None:
+            self.max_age = m.get('MaxAge')
+        return self
+
+
 class ListRulesResponseBodyRulesRuleActionsFixedResponseConfig(TeaModel):
     def __init__(
         self,
@@ -11524,6 +11713,7 @@ class ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfig(TeaModel):
 class ListRulesResponseBodyRulesRuleActions(TeaModel):
     def __init__(
         self,
+        cors_config: ListRulesResponseBodyRulesRuleActionsCorsConfig = None,
         fixed_response_config: ListRulesResponseBodyRulesRuleActionsFixedResponseConfig = None,
         forward_group_config: ListRulesResponseBodyRulesRuleActionsForwardGroupConfig = None,
         insert_header_config: ListRulesResponseBodyRulesRuleActionsInsertHeaderConfig = None,
@@ -11534,6 +11724,7 @@ class ListRulesResponseBodyRulesRuleActions(TeaModel):
         traffic_mirror_config: ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfig = None,
         type: str = None,
     ):
+        self.cors_config = cors_config
         self.fixed_response_config = fixed_response_config
         self.forward_group_config = forward_group_config
         self.insert_header_config = insert_header_config
@@ -11545,6 +11736,8 @@ class ListRulesResponseBodyRulesRuleActions(TeaModel):
         self.type = type
 
     def validate(self):
+        if self.cors_config:
+            self.cors_config.validate()
         if self.fixed_response_config:
             self.fixed_response_config.validate()
         if self.forward_group_config:
@@ -11566,6 +11759,8 @@ class ListRulesResponseBodyRulesRuleActions(TeaModel):
             return _map
 
         result = dict()
+        if self.cors_config is not None:
+            result['CorsConfig'] = self.cors_config.to_map()
         if self.fixed_response_config is not None:
             result['FixedResponseConfig'] = self.fixed_response_config.to_map()
         if self.forward_group_config is not None:
@@ -11588,6 +11783,9 @@ class ListRulesResponseBodyRulesRuleActions(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CorsConfig') is not None:
+            temp_model = ListRulesResponseBodyRulesRuleActionsCorsConfig()
+            self.cors_config = temp_model.from_map(m['CorsConfig'])
         if m.get('FixedResponseConfig') is not None:
             temp_model = ListRulesResponseBodyRulesRuleActionsFixedResponseConfig()
             self.fixed_response_config = temp_model.from_map(m['FixedResponseConfig'])
@@ -16842,6 +17040,63 @@ class UpdateLoadBalancerZonesResponse(TeaModel):
         return self
 
 
+class UpdateRuleAttributeRequestRuleActionsCorsConfig(TeaModel):
+    def __init__(
+        self,
+        allow_credentials: str = None,
+        allow_headers: List[str] = None,
+        allow_methods: List[str] = None,
+        allow_origin: List[str] = None,
+        expose_headers: List[str] = None,
+        max_age: int = None,
+    ):
+        self.allow_credentials = allow_credentials
+        self.allow_headers = allow_headers
+        self.allow_methods = allow_methods
+        self.allow_origin = allow_origin
+        self.expose_headers = expose_headers
+        self.max_age = max_age
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.allow_credentials is not None:
+            result['AllowCredentials'] = self.allow_credentials
+        if self.allow_headers is not None:
+            result['AllowHeaders'] = self.allow_headers
+        if self.allow_methods is not None:
+            result['AllowMethods'] = self.allow_methods
+        if self.allow_origin is not None:
+            result['AllowOrigin'] = self.allow_origin
+        if self.expose_headers is not None:
+            result['ExposeHeaders'] = self.expose_headers
+        if self.max_age is not None:
+            result['MaxAge'] = self.max_age
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllowCredentials') is not None:
+            self.allow_credentials = m.get('AllowCredentials')
+        if m.get('AllowHeaders') is not None:
+            self.allow_headers = m.get('AllowHeaders')
+        if m.get('AllowMethods') is not None:
+            self.allow_methods = m.get('AllowMethods')
+        if m.get('AllowOrigin') is not None:
+            self.allow_origin = m.get('AllowOrigin')
+        if m.get('ExposeHeaders') is not None:
+            self.expose_headers = m.get('ExposeHeaders')
+        if m.get('MaxAge') is not None:
+            self.max_age = m.get('MaxAge')
+        return self
+
+
 class UpdateRuleAttributeRequestRuleActionsFixedResponseConfig(TeaModel):
     def __init__(
         self,
@@ -17259,6 +17514,7 @@ class UpdateRuleAttributeRequestRuleActionsTrafficMirrorConfig(TeaModel):
 class UpdateRuleAttributeRequestRuleActions(TeaModel):
     def __init__(
         self,
+        cors_config: UpdateRuleAttributeRequestRuleActionsCorsConfig = None,
         fixed_response_config: UpdateRuleAttributeRequestRuleActionsFixedResponseConfig = None,
         forward_group_config: UpdateRuleAttributeRequestRuleActionsForwardGroupConfig = None,
         insert_header_config: UpdateRuleAttributeRequestRuleActionsInsertHeaderConfig = None,
@@ -17269,6 +17525,7 @@ class UpdateRuleAttributeRequestRuleActions(TeaModel):
         traffic_mirror_config: UpdateRuleAttributeRequestRuleActionsTrafficMirrorConfig = None,
         type: str = None,
     ):
+        self.cors_config = cors_config
         self.fixed_response_config = fixed_response_config
         self.forward_group_config = forward_group_config
         self.insert_header_config = insert_header_config
@@ -17280,6 +17537,8 @@ class UpdateRuleAttributeRequestRuleActions(TeaModel):
         self.type = type
 
     def validate(self):
+        if self.cors_config:
+            self.cors_config.validate()
         if self.fixed_response_config:
             self.fixed_response_config.validate()
         if self.forward_group_config:
@@ -17301,6 +17560,8 @@ class UpdateRuleAttributeRequestRuleActions(TeaModel):
             return _map
 
         result = dict()
+        if self.cors_config is not None:
+            result['CorsConfig'] = self.cors_config.to_map()
         if self.fixed_response_config is not None:
             result['FixedResponseConfig'] = self.fixed_response_config.to_map()
         if self.forward_group_config is not None:
@@ -17323,6 +17584,9 @@ class UpdateRuleAttributeRequestRuleActions(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CorsConfig') is not None:
+            temp_model = UpdateRuleAttributeRequestRuleActionsCorsConfig()
+            self.cors_config = temp_model.from_map(m['CorsConfig'])
         if m.get('FixedResponseConfig') is not None:
             temp_model = UpdateRuleAttributeRequestRuleActionsFixedResponseConfig()
             self.fixed_response_config = temp_model.from_map(m['FixedResponseConfig'])
@@ -17874,6 +18138,63 @@ class UpdateRuleAttributeResponse(TeaModel):
         return self
 
 
+class UpdateRulesAttributeRequestRulesRuleActionsCorsConfig(TeaModel):
+    def __init__(
+        self,
+        allow_credentials: str = None,
+        allow_headers: List[str] = None,
+        allow_methods: List[str] = None,
+        allow_origin: List[str] = None,
+        expose_headers: List[str] = None,
+        max_age: int = None,
+    ):
+        self.allow_credentials = allow_credentials
+        self.allow_headers = allow_headers
+        self.allow_methods = allow_methods
+        self.allow_origin = allow_origin
+        self.expose_headers = expose_headers
+        self.max_age = max_age
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.allow_credentials is not None:
+            result['AllowCredentials'] = self.allow_credentials
+        if self.allow_headers is not None:
+            result['AllowHeaders'] = self.allow_headers
+        if self.allow_methods is not None:
+            result['AllowMethods'] = self.allow_methods
+        if self.allow_origin is not None:
+            result['AllowOrigin'] = self.allow_origin
+        if self.expose_headers is not None:
+            result['ExposeHeaders'] = self.expose_headers
+        if self.max_age is not None:
+            result['MaxAge'] = self.max_age
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllowCredentials') is not None:
+            self.allow_credentials = m.get('AllowCredentials')
+        if m.get('AllowHeaders') is not None:
+            self.allow_headers = m.get('AllowHeaders')
+        if m.get('AllowMethods') is not None:
+            self.allow_methods = m.get('AllowMethods')
+        if m.get('AllowOrigin') is not None:
+            self.allow_origin = m.get('AllowOrigin')
+        if m.get('ExposeHeaders') is not None:
+            self.expose_headers = m.get('ExposeHeaders')
+        if m.get('MaxAge') is not None:
+            self.max_age = m.get('MaxAge')
+        return self
+
+
 class UpdateRulesAttributeRequestRulesRuleActionsFixedResponseConfig(TeaModel):
     def __init__(
         self,
@@ -18324,6 +18645,7 @@ class UpdateRulesAttributeRequestRulesRuleActionsTrafficMirrorConfig(TeaModel):
 class UpdateRulesAttributeRequestRulesRuleActions(TeaModel):
     def __init__(
         self,
+        cors_config: UpdateRulesAttributeRequestRulesRuleActionsCorsConfig = None,
         fixed_response_config: UpdateRulesAttributeRequestRulesRuleActionsFixedResponseConfig = None,
         forward_group_config: UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfig = None,
         insert_header_config: UpdateRulesAttributeRequestRulesRuleActionsInsertHeaderConfig = None,
@@ -18335,6 +18657,7 @@ class UpdateRulesAttributeRequestRulesRuleActions(TeaModel):
         traffic_mirror_config: UpdateRulesAttributeRequestRulesRuleActionsTrafficMirrorConfig = None,
         type: str = None,
     ):
+        self.cors_config = cors_config
         self.fixed_response_config = fixed_response_config
         self.forward_group_config = forward_group_config
         self.insert_header_config = insert_header_config
@@ -18347,6 +18670,8 @@ class UpdateRulesAttributeRequestRulesRuleActions(TeaModel):
         self.type = type
 
     def validate(self):
+        if self.cors_config:
+            self.cors_config.validate()
         if self.fixed_response_config:
             self.fixed_response_config.validate()
         if self.forward_group_config:
@@ -18370,6 +18695,8 @@ class UpdateRulesAttributeRequestRulesRuleActions(TeaModel):
             return _map
 
         result = dict()
+        if self.cors_config is not None:
+            result['CorsConfig'] = self.cors_config.to_map()
         if self.fixed_response_config is not None:
             result['FixedResponseConfig'] = self.fixed_response_config.to_map()
         if self.forward_group_config is not None:
@@ -18394,6 +18721,9 @@ class UpdateRulesAttributeRequestRulesRuleActions(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CorsConfig') is not None:
+            temp_model = UpdateRulesAttributeRequestRulesRuleActionsCorsConfig()
+            self.cors_config = temp_model.from_map(m['CorsConfig'])
         if m.get('FixedResponseConfig') is not None:
             temp_model = UpdateRulesAttributeRequestRulesRuleActionsFixedResponseConfig()
             self.fixed_response_config = temp_model.from_map(m['FixedResponseConfig'])
