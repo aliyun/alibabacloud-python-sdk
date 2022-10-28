@@ -5476,11 +5476,19 @@ class Client(OpenApiClient):
 
     def query_figure_clusters_with_options(
         self,
-        request: imm_20200930_models.QueryFigureClustersRequest,
+        tmp_req: imm_20200930_models.QueryFigureClustersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.QueryFigureClustersResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.QueryFigureClustersShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.create_time_range):
+            request.create_time_range_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.create_time_range), 'CreateTimeRange', 'json')
+        if not UtilClient.is_unset(tmp_req.update_time_range):
+            request.update_time_range_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.update_time_range), 'UpdateTimeRange', 'json')
         query = {}
+        if not UtilClient.is_unset(request.create_time_range_shrink):
+            query['CreateTimeRange'] = request.create_time_range_shrink
         if not UtilClient.is_unset(request.custom_labels):
             query['CustomLabels'] = request.custom_labels
         if not UtilClient.is_unset(request.dataset_name):
@@ -5495,6 +5503,8 @@ class Client(OpenApiClient):
             query['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.sort):
             query['Sort'] = request.sort
+        if not UtilClient.is_unset(request.update_time_range_shrink):
+            query['UpdateTimeRange'] = request.update_time_range_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5516,11 +5526,19 @@ class Client(OpenApiClient):
 
     async def query_figure_clusters_with_options_async(
         self,
-        request: imm_20200930_models.QueryFigureClustersRequest,
+        tmp_req: imm_20200930_models.QueryFigureClustersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.QueryFigureClustersResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.QueryFigureClustersShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.create_time_range):
+            request.create_time_range_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.create_time_range), 'CreateTimeRange', 'json')
+        if not UtilClient.is_unset(tmp_req.update_time_range):
+            request.update_time_range_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.update_time_range), 'UpdateTimeRange', 'json')
         query = {}
+        if not UtilClient.is_unset(request.create_time_range_shrink):
+            query['CreateTimeRange'] = request.create_time_range_shrink
         if not UtilClient.is_unset(request.custom_labels):
             query['CustomLabels'] = request.custom_labels
         if not UtilClient.is_unset(request.dataset_name):
@@ -5535,6 +5553,8 @@ class Client(OpenApiClient):
             query['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.sort):
             query['Sort'] = request.sort
+        if not UtilClient.is_unset(request.update_time_range_shrink):
+            query['UpdateTimeRange'] = request.update_time_range_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

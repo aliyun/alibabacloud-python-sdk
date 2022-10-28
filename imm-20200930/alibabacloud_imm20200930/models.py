@@ -15740,6 +15740,7 @@ class MergeFigureClustersResponse(TeaModel):
 class QueryFigureClustersRequest(TeaModel):
     def __init__(
         self,
+        create_time_range: TimeRange = None,
         custom_labels: str = None,
         dataset_name: str = None,
         max_results: int = None,
@@ -15747,7 +15748,9 @@ class QueryFigureClustersRequest(TeaModel):
         order: str = None,
         project_name: str = None,
         sort: str = None,
+        update_time_range: TimeRange = None,
     ):
+        self.create_time_range = create_time_range
         self.custom_labels = custom_labels
         self.dataset_name = dataset_name
         self.max_results = max_results
@@ -15755,9 +15758,13 @@ class QueryFigureClustersRequest(TeaModel):
         self.order = order
         self.project_name = project_name
         self.sort = sort
+        self.update_time_range = update_time_range
 
     def validate(self):
-        pass
+        if self.create_time_range:
+            self.create_time_range.validate()
+        if self.update_time_range:
+            self.update_time_range.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -15765,6 +15772,8 @@ class QueryFigureClustersRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.create_time_range is not None:
+            result['CreateTimeRange'] = self.create_time_range.to_map()
         if self.custom_labels is not None:
             result['CustomLabels'] = self.custom_labels
         if self.dataset_name is not None:
@@ -15779,10 +15788,15 @@ class QueryFigureClustersRequest(TeaModel):
             result['ProjectName'] = self.project_name
         if self.sort is not None:
             result['Sort'] = self.sort
+        if self.update_time_range is not None:
+            result['UpdateTimeRange'] = self.update_time_range.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CreateTimeRange') is not None:
+            temp_model = TimeRange()
+            self.create_time_range = temp_model.from_map(m['CreateTimeRange'])
         if m.get('CustomLabels') is not None:
             self.custom_labels = m.get('CustomLabels')
         if m.get('DatasetName') is not None:
@@ -15797,6 +15811,84 @@ class QueryFigureClustersRequest(TeaModel):
             self.project_name = m.get('ProjectName')
         if m.get('Sort') is not None:
             self.sort = m.get('Sort')
+        if m.get('UpdateTimeRange') is not None:
+            temp_model = TimeRange()
+            self.update_time_range = temp_model.from_map(m['UpdateTimeRange'])
+        return self
+
+
+class QueryFigureClustersShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        create_time_range_shrink: str = None,
+        custom_labels: str = None,
+        dataset_name: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        order: str = None,
+        project_name: str = None,
+        sort: str = None,
+        update_time_range_shrink: str = None,
+    ):
+        self.create_time_range_shrink = create_time_range_shrink
+        self.custom_labels = custom_labels
+        self.dataset_name = dataset_name
+        self.max_results = max_results
+        self.next_token = next_token
+        self.order = order
+        self.project_name = project_name
+        self.sort = sort
+        self.update_time_range_shrink = update_time_range_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time_range_shrink is not None:
+            result['CreateTimeRange'] = self.create_time_range_shrink
+        if self.custom_labels is not None:
+            result['CustomLabels'] = self.custom_labels
+        if self.dataset_name is not None:
+            result['DatasetName'] = self.dataset_name
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.order is not None:
+            result['Order'] = self.order
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.sort is not None:
+            result['Sort'] = self.sort
+        if self.update_time_range_shrink is not None:
+            result['UpdateTimeRange'] = self.update_time_range_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTimeRange') is not None:
+            self.create_time_range_shrink = m.get('CreateTimeRange')
+        if m.get('CustomLabels') is not None:
+            self.custom_labels = m.get('CustomLabels')
+        if m.get('DatasetName') is not None:
+            self.dataset_name = m.get('DatasetName')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('Sort') is not None:
+            self.sort = m.get('Sort')
+        if m.get('UpdateTimeRange') is not None:
+            self.update_time_range_shrink = m.get('UpdateTimeRange')
         return self
 
 
@@ -17699,12 +17791,15 @@ class UpdateFigureClusterShrinkRequest(TeaModel):
 class UpdateFigureClusterResponseBody(TeaModel):
     def __init__(
         self,
+        figure_cluster: FigureCluster = None,
         request_id: str = None,
     ):
+        self.figure_cluster = figure_cluster
         self.request_id = request_id
 
     def validate(self):
-        pass
+        if self.figure_cluster:
+            self.figure_cluster.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -17712,12 +17807,17 @@ class UpdateFigureClusterResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.figure_cluster is not None:
+            result['FigureCluster'] = self.figure_cluster.to_map()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('FigureCluster') is not None:
+            temp_model = FigureCluster()
+            self.figure_cluster = temp_model.from_map(m['FigureCluster'])
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
