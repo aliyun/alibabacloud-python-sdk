@@ -597,56 +597,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_leads_list_page_with_options_async(request, runtime)
 
-    def get_main_part_list_by_user_id_with_options(
-        self,
-        runtime: util_models.RuntimeOptions,
-    ) -> imarketing_20220704_models.GetMainPartListByUserIdResponse:
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='GetMainPartListByUserId',
-            version='2022-07-04',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imarketing_20220704_models.GetMainPartListByUserIdResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_main_part_list_by_user_id_with_options_async(
-        self,
-        runtime: util_models.RuntimeOptions,
-    ) -> imarketing_20220704_models.GetMainPartListByUserIdResponse:
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='GetMainPartListByUserId',
-            version='2022-07-04',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imarketing_20220704_models.GetMainPartListByUserIdResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_main_part_list_by_user_id(self) -> imarketing_20220704_models.GetMainPartListByUserIdResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_main_part_list_by_user_id_with_options(runtime)
-
-    async def get_main_part_list_by_user_id_async(self) -> imarketing_20220704_models.GetMainPartListByUserIdResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_main_part_list_by_user_id_with_options_async(runtime)
-
     def get_main_part_page_with_options(
         self,
         request: imarketing_20220704_models.GetMainPartPageRequest,

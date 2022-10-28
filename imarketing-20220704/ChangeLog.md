@@ -1,3 +1,7 @@
+2022-10-28 Version: 5.0.4
+- Supported channel Id.
+
+
 2022-09-05 Version: 5.0.3
 - Supported channel Id.
 
