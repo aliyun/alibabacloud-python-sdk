@@ -163,7 +163,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.AddImageLabelsResponse:
         UtilClient.validate_model(request)
-        image_id = OpenApiUtilClient.get_encode_param(image_id)
         body = {}
         if not UtilClient.is_unset(request.labels):
             body['Labels'] = request.labels
@@ -175,7 +174,7 @@ class Client(OpenApiClient):
             action='AddImageLabels',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/images/{image_id}/labels',
+            pathname=f'/api/v1/images/{OpenApiUtilClient.get_encode_param(image_id)}/labels',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -195,7 +194,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.AddImageLabelsResponse:
         UtilClient.validate_model(request)
-        image_id = OpenApiUtilClient.get_encode_param(image_id)
         body = {}
         if not UtilClient.is_unset(request.labels):
             body['Labels'] = request.labels
@@ -207,7 +205,7 @@ class Client(OpenApiClient):
             action='AddImageLabels',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/images/{image_id}/labels',
+            pathname=f'/api/v1/images/{OpenApiUtilClient.get_encode_param(image_id)}/labels',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -247,9 +245,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.AddMemberRoleResponse:
-        workspace_id = OpenApiUtilClient.get_encode_param(workspace_id)
-        member_id = OpenApiUtilClient.get_encode_param(member_id)
-        role_name = OpenApiUtilClient.get_encode_param(role_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -257,7 +252,7 @@ class Client(OpenApiClient):
             action='AddMemberRole',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/workspaces/{workspace_id}/members/{member_id}/roles/{role_name}',
+            pathname=f'/api/v1/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}/members/{OpenApiUtilClient.get_encode_param(member_id)}/roles/{OpenApiUtilClient.get_encode_param(role_name)}',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -277,9 +272,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.AddMemberRoleResponse:
-        workspace_id = OpenApiUtilClient.get_encode_param(workspace_id)
-        member_id = OpenApiUtilClient.get_encode_param(member_id)
-        role_name = OpenApiUtilClient.get_encode_param(role_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -287,7 +279,7 @@ class Client(OpenApiClient):
             action='AddMemberRole',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/workspaces/{workspace_id}/members/{member_id}/roles/{role_name}',
+            pathname=f'/api/v1/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}/members/{OpenApiUtilClient.get_encode_param(member_id)}/roles/{OpenApiUtilClient.get_encode_param(role_name)}',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -296,102 +288,6 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             aiwork_space_20210204_models.AddMemberRoleResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def add_workspace_quota(
-        self,
-        workspace_id: str,
-        quota_id: str,
-        request: aiwork_space_20210204_models.AddWorkspaceQuotaRequest,
-    ) -> aiwork_space_20210204_models.AddWorkspaceQuotaResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.add_workspace_quota_with_options(workspace_id, quota_id, request, headers, runtime)
-
-    async def add_workspace_quota_async(
-        self,
-        workspace_id: str,
-        quota_id: str,
-        request: aiwork_space_20210204_models.AddWorkspaceQuotaRequest,
-    ) -> aiwork_space_20210204_models.AddWorkspaceQuotaResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.add_workspace_quota_with_options_async(workspace_id, quota_id, request, headers, runtime)
-
-    def add_workspace_quota_with_options(
-        self,
-        workspace_id: str,
-        quota_id: str,
-        request: aiwork_space_20210204_models.AddWorkspaceQuotaRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> aiwork_space_20210204_models.AddWorkspaceQuotaResponse:
-        UtilClient.validate_model(request)
-        workspace_id = OpenApiUtilClient.get_encode_param(workspace_id)
-        quota_id = OpenApiUtilClient.get_encode_param(quota_id)
-        body = {}
-        if not UtilClient.is_unset(request.mode):
-            body['Mode'] = request.mode
-        if not UtilClient.is_unset(request.product_code):
-            body['ProductCode'] = request.product_code
-        if not UtilClient.is_unset(request.quota_type):
-            body['QuotaType'] = request.quota_type
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='AddWorkspaceQuota',
-            version='2021-02-04',
-            protocol='HTTPS',
-            pathname=f'/api/v1/workspaces/[WorkspaceId]/quotas/[QuotaId]',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.AddWorkspaceQuotaResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def add_workspace_quota_with_options_async(
-        self,
-        workspace_id: str,
-        quota_id: str,
-        request: aiwork_space_20210204_models.AddWorkspaceQuotaRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> aiwork_space_20210204_models.AddWorkspaceQuotaResponse:
-        UtilClient.validate_model(request)
-        workspace_id = OpenApiUtilClient.get_encode_param(workspace_id)
-        quota_id = OpenApiUtilClient.get_encode_param(quota_id)
-        body = {}
-        if not UtilClient.is_unset(request.mode):
-            body['Mode'] = request.mode
-        if not UtilClient.is_unset(request.product_code):
-            body['ProductCode'] = request.product_code
-        if not UtilClient.is_unset(request.quota_type):
-            body['QuotaType'] = request.quota_type
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='AddWorkspaceQuota',
-            version='2021-02-04',
-            protocol='HTTPS',
-            pathname=f'/api/v1/workspaces/[WorkspaceId]/quotas/[QuotaId]',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.AddWorkspaceQuotaResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
@@ -649,7 +545,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.CreateDatasetLabelsResponse:
         UtilClient.validate_model(request)
-        dataset_id = OpenApiUtilClient.get_encode_param(dataset_id)
         body = {}
         if not UtilClient.is_unset(request.labels):
             body['Labels'] = request.labels
@@ -661,7 +556,7 @@ class Client(OpenApiClient):
             action='CreateDatasetLabels',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/datasets/{dataset_id}/labels',
+            pathname=f'/api/v1/datasets/{OpenApiUtilClient.get_encode_param(dataset_id)}/labels',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -681,7 +576,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.CreateDatasetLabelsResponse:
         UtilClient.validate_model(request)
-        dataset_id = OpenApiUtilClient.get_encode_param(dataset_id)
         body = {}
         if not UtilClient.is_unset(request.labels):
             body['Labels'] = request.labels
@@ -693,7 +587,7 @@ class Client(OpenApiClient):
             action='CreateDatasetLabels',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/datasets/{dataset_id}/labels',
+            pathname=f'/api/v1/datasets/{OpenApiUtilClient.get_encode_param(dataset_id)}/labels',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -702,90 +596,6 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             aiwork_space_20210204_models.CreateDatasetLabelsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def create_default_workspace(
-        self,
-        request: aiwork_space_20210204_models.CreateDefaultWorkspaceRequest,
-    ) -> aiwork_space_20210204_models.CreateDefaultWorkspaceResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.create_default_workspace_with_options(request, headers, runtime)
-
-    async def create_default_workspace_async(
-        self,
-        request: aiwork_space_20210204_models.CreateDefaultWorkspaceRequest,
-    ) -> aiwork_space_20210204_models.CreateDefaultWorkspaceResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.create_default_workspace_with_options_async(request, headers, runtime)
-
-    def create_default_workspace_with_options(
-        self,
-        request: aiwork_space_20210204_models.CreateDefaultWorkspaceRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> aiwork_space_20210204_models.CreateDefaultWorkspaceResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.description):
-            body['Description'] = request.description
-        if not UtilClient.is_unset(request.env_types):
-            body['EnvTypes'] = request.env_types
-        if not UtilClient.is_unset(request.resources):
-            body['Resources'] = request.resources
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='CreateDefaultWorkspace',
-            version='2021-02-04',
-            protocol='HTTPS',
-            pathname=f'/api/v1/defaultWorkspaces',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.CreateDefaultWorkspaceResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def create_default_workspace_with_options_async(
-        self,
-        request: aiwork_space_20210204_models.CreateDefaultWorkspaceRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> aiwork_space_20210204_models.CreateDefaultWorkspaceResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.description):
-            body['Description'] = request.description
-        if not UtilClient.is_unset(request.env_types):
-            body['EnvTypes'] = request.env_types
-        if not UtilClient.is_unset(request.resources):
-            body['Resources'] = request.resources
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='CreateDefaultWorkspace',
-            version='2021-02-04',
-            protocol='HTTPS',
-            pathname=f'/api/v1/defaultWorkspaces',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.CreateDefaultWorkspaceResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
@@ -815,7 +625,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.CreateMemberResponse:
         UtilClient.validate_model(request)
-        workspace_id = OpenApiUtilClient.get_encode_param(workspace_id)
         body = {}
         if not UtilClient.is_unset(request.members):
             body['Members'] = request.members
@@ -827,7 +636,7 @@ class Client(OpenApiClient):
             action='CreateMember',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/workspaces/{workspace_id}/members',
+            pathname=f'/api/v1/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}/members',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -847,7 +656,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.CreateMemberResponse:
         UtilClient.validate_model(request)
-        workspace_id = OpenApiUtilClient.get_encode_param(workspace_id)
         body = {}
         if not UtilClient.is_unset(request.members):
             body['Members'] = request.members
@@ -859,7 +667,7 @@ class Client(OpenApiClient):
             action='CreateMember',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/workspaces/{workspace_id}/members',
+            pathname=f'/api/v1/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}/members',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -989,7 +797,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.CreateModelLabelsResponse:
         UtilClient.validate_model(request)
-        model_id = OpenApiUtilClient.get_encode_param(model_id)
         body = {}
         if not UtilClient.is_unset(request.labels):
             body['Labels'] = request.labels
@@ -1001,7 +808,7 @@ class Client(OpenApiClient):
             action='CreateModelLabels',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/models/{model_id}/labels',
+            pathname=f'/api/v1/models/{OpenApiUtilClient.get_encode_param(model_id)}/labels',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -1021,7 +828,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.CreateModelLabelsResponse:
         UtilClient.validate_model(request)
-        model_id = OpenApiUtilClient.get_encode_param(model_id)
         body = {}
         if not UtilClient.is_unset(request.labels):
             body['Labels'] = request.labels
@@ -1033,7 +839,7 @@ class Client(OpenApiClient):
             action='CreateModelLabels',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/models/{model_id}/labels',
+            pathname=f'/api/v1/models/{OpenApiUtilClient.get_encode_param(model_id)}/labels',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -1071,7 +877,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.CreateModelVersionResponse:
         UtilClient.validate_model(request)
-        model_id = OpenApiUtilClient.get_encode_param(model_id)
         body = {}
         if not UtilClient.is_unset(request.format_type):
             body['FormatType'] = request.format_type
@@ -1083,6 +888,10 @@ class Client(OpenApiClient):
             body['Labels'] = request.labels
         if not UtilClient.is_unset(request.options):
             body['Options'] = request.options
+        if not UtilClient.is_unset(request.source_id):
+            body['SourceId'] = request.source_id
+        if not UtilClient.is_unset(request.source_type):
+            body['SourceType'] = request.source_type
         if not UtilClient.is_unset(request.uri):
             body['Uri'] = request.uri
         if not UtilClient.is_unset(request.version_description):
@@ -1097,7 +906,7 @@ class Client(OpenApiClient):
             action='CreateModelVersion',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/models/{model_id}/versions',
+            pathname=f'/api/v1/models/{OpenApiUtilClient.get_encode_param(model_id)}/versions',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -1117,7 +926,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.CreateModelVersionResponse:
         UtilClient.validate_model(request)
-        model_id = OpenApiUtilClient.get_encode_param(model_id)
         body = {}
         if not UtilClient.is_unset(request.format_type):
             body['FormatType'] = request.format_type
@@ -1129,6 +937,10 @@ class Client(OpenApiClient):
             body['Labels'] = request.labels
         if not UtilClient.is_unset(request.options):
             body['Options'] = request.options
+        if not UtilClient.is_unset(request.source_id):
+            body['SourceId'] = request.source_id
+        if not UtilClient.is_unset(request.source_type):
+            body['SourceType'] = request.source_type
         if not UtilClient.is_unset(request.uri):
             body['Uri'] = request.uri
         if not UtilClient.is_unset(request.version_description):
@@ -1143,7 +955,7 @@ class Client(OpenApiClient):
             action='CreateModelVersion',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/models/{model_id}/versions',
+            pathname=f'/api/v1/models/{OpenApiUtilClient.get_encode_param(model_id)}/versions',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -1184,8 +996,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.CreateModelVersionLabelsResponse:
         UtilClient.validate_model(request)
-        model_id = OpenApiUtilClient.get_encode_param(model_id)
-        version_name = OpenApiUtilClient.get_encode_param(version_name)
         body = {}
         if not UtilClient.is_unset(request.labels):
             body['Labels'] = request.labels
@@ -1197,7 +1007,7 @@ class Client(OpenApiClient):
             action='CreateModelVersionLabels',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/models/{model_id}/versions/{version_name}/labels',
+            pathname=f'/api/v1/models/{OpenApiUtilClient.get_encode_param(model_id)}/versions/{OpenApiUtilClient.get_encode_param(version_name)}/labels',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -1218,8 +1028,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.CreateModelVersionLabelsResponse:
         UtilClient.validate_model(request)
-        model_id = OpenApiUtilClient.get_encode_param(model_id)
-        version_name = OpenApiUtilClient.get_encode_param(version_name)
         body = {}
         if not UtilClient.is_unset(request.labels):
             body['Labels'] = request.labels
@@ -1231,7 +1039,7 @@ class Client(OpenApiClient):
             action='CreateModelVersionLabels',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/models/{model_id}/versions/{version_name}/labels',
+            pathname=f'/api/v1/models/{OpenApiUtilClient.get_encode_param(model_id)}/versions/{OpenApiUtilClient.get_encode_param(version_name)}/labels',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -1240,144 +1048,6 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             aiwork_space_20210204_models.CreateModelVersionLabelsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def create_product_orders(
-        self,
-        request: aiwork_space_20210204_models.CreateProductOrdersRequest,
-    ) -> aiwork_space_20210204_models.CreateProductOrdersResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.create_product_orders_with_options(request, headers, runtime)
-
-    async def create_product_orders_async(
-        self,
-        request: aiwork_space_20210204_models.CreateProductOrdersRequest,
-    ) -> aiwork_space_20210204_models.CreateProductOrdersResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.create_product_orders_with_options_async(request, headers, runtime)
-
-    def create_product_orders_with_options(
-        self,
-        request: aiwork_space_20210204_models.CreateProductOrdersRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> aiwork_space_20210204_models.CreateProductOrdersResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.auto_pay):
-            body['AutoPay'] = request.auto_pay
-        if not UtilClient.is_unset(request.products):
-            body['Products'] = request.products
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='CreateProductOrders',
-            version='2021-02-04',
-            protocol='HTTPS',
-            pathname=f'/api/v1/productorders',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.CreateProductOrdersResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def create_product_orders_with_options_async(
-        self,
-        request: aiwork_space_20210204_models.CreateProductOrdersRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> aiwork_space_20210204_models.CreateProductOrdersResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.auto_pay):
-            body['AutoPay'] = request.auto_pay
-        if not UtilClient.is_unset(request.products):
-            body['Products'] = request.products
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='CreateProductOrders',
-            version='2021-02-04',
-            protocol='HTTPS',
-            pathname=f'/api/v1/productorders',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.CreateProductOrdersResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def create_user(self) -> aiwork_space_20210204_models.CreateUserResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.create_user_with_options(headers, runtime)
-
-    async def create_user_async(self) -> aiwork_space_20210204_models.CreateUserResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.create_user_with_options_async(headers, runtime)
-
-    def create_user_with_options(
-        self,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> aiwork_space_20210204_models.CreateUserResponse:
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='CreateUser',
-            version='2021-02-04',
-            protocol='HTTPS',
-            pathname=f'/api/v1/users',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.CreateUserResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def create_user_with_options_async(
-        self,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> aiwork_space_20210204_models.CreateUserResponse:
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='CreateUser',
-            version='2021-02-04',
-            protocol='HTTPS',
-            pathname=f'/api/v1/users',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.CreateUserResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
@@ -1495,8 +1165,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.CreateWorkspaceResourceResponse:
         UtilClient.validate_model(request)
-        workspace_id = OpenApiUtilClient.get_encode_param(workspace_id)
         body = {}
+        if not UtilClient.is_unset(request.option):
+            body['Option'] = request.option
         if not UtilClient.is_unset(request.resources):
             body['Resources'] = request.resources
         req = open_api_models.OpenApiRequest(
@@ -1507,7 +1178,7 @@ class Client(OpenApiClient):
             action='CreateWorkspaceResource',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/workspaces/{workspace_id}/resources',
+            pathname=f'/api/v1/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}/resources',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -1527,8 +1198,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.CreateWorkspaceResourceResponse:
         UtilClient.validate_model(request)
-        workspace_id = OpenApiUtilClient.get_encode_param(workspace_id)
         body = {}
+        if not UtilClient.is_unset(request.option):
+            body['Option'] = request.option
         if not UtilClient.is_unset(request.resources):
             body['Resources'] = request.resources
         req = open_api_models.OpenApiRequest(
@@ -1539,7 +1211,7 @@ class Client(OpenApiClient):
             action='CreateWorkspaceResource',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/workspaces/{workspace_id}/resources',
+            pathname=f'/api/v1/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}/resources',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -1573,7 +1245,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.DeleteCodeSourceResponse:
-        code_source_id = OpenApiUtilClient.get_encode_param(code_source_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1581,7 +1252,7 @@ class Client(OpenApiClient):
             action='DeleteCodeSource',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/codesources/{code_source_id}',
+            pathname=f'/api/v1/codesources/{OpenApiUtilClient.get_encode_param(code_source_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1599,7 +1270,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.DeleteCodeSourceResponse:
-        code_source_id = OpenApiUtilClient.get_encode_param(code_source_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1607,7 +1277,7 @@ class Client(OpenApiClient):
             action='DeleteCodeSource',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/codesources/{code_source_id}',
+            pathname=f'/api/v1/codesources/{OpenApiUtilClient.get_encode_param(code_source_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1616,80 +1286,6 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             aiwork_space_20210204_models.DeleteCodeSourceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def delete_config(
-        self,
-        workspace_id: str,
-        config_key: str,
-    ) -> aiwork_space_20210204_models.DeleteConfigResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.delete_config_with_options(workspace_id, config_key, headers, runtime)
-
-    async def delete_config_async(
-        self,
-        workspace_id: str,
-        config_key: str,
-    ) -> aiwork_space_20210204_models.DeleteConfigResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.delete_config_with_options_async(workspace_id, config_key, headers, runtime)
-
-    def delete_config_with_options(
-        self,
-        workspace_id: str,
-        config_key: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> aiwork_space_20210204_models.DeleteConfigResponse:
-        workspace_id = OpenApiUtilClient.get_encode_param(workspace_id)
-        config_key = OpenApiUtilClient.get_encode_param(config_key)
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='DeleteConfig',
-            version='2021-02-04',
-            protocol='HTTPS',
-            pathname=f'/api/v1/workspaces/{workspace_id}/configs/{config_key}',
-            method='DELETE',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.DeleteConfigResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def delete_config_with_options_async(
-        self,
-        workspace_id: str,
-        config_key: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> aiwork_space_20210204_models.DeleteConfigResponse:
-        workspace_id = OpenApiUtilClient.get_encode_param(workspace_id)
-        config_key = OpenApiUtilClient.get_encode_param(config_key)
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='DeleteConfig',
-            version='2021-02-04',
-            protocol='HTTPS',
-            pathname=f'/api/v1/workspaces/{workspace_id}/configs/{config_key}',
-            method='DELETE',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.DeleteConfigResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
@@ -1715,7 +1311,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.DeleteDatasetResponse:
-        dataset_id = OpenApiUtilClient.get_encode_param(dataset_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1723,7 +1318,7 @@ class Client(OpenApiClient):
             action='DeleteDataset',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/datasets/{dataset_id}',
+            pathname=f'/api/v1/datasets/{OpenApiUtilClient.get_encode_param(dataset_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1741,7 +1336,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.DeleteDatasetResponse:
-        dataset_id = OpenApiUtilClient.get_encode_param(dataset_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1749,7 +1343,7 @@ class Client(OpenApiClient):
             action='DeleteDataset',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/datasets/{dataset_id}',
+            pathname=f'/api/v1/datasets/{OpenApiUtilClient.get_encode_param(dataset_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1787,10 +1381,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.DeleteDatasetLabelsResponse:
         UtilClient.validate_model(request)
-        dataset_id = OpenApiUtilClient.get_encode_param(dataset_id)
         query = {}
-        if not UtilClient.is_unset(request.keys):
-            query['Keys'] = request.keys
+        if not UtilClient.is_unset(request.label_keys):
+            query['LabelKeys'] = request.label_keys
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -1799,7 +1392,7 @@ class Client(OpenApiClient):
             action='DeleteDatasetLabels',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/datasets/{dataset_id}/labels',
+            pathname=f'/api/v1/datasets/{OpenApiUtilClient.get_encode_param(dataset_id)}/labels',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1819,10 +1412,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.DeleteDatasetLabelsResponse:
         UtilClient.validate_model(request)
-        dataset_id = OpenApiUtilClient.get_encode_param(dataset_id)
         query = {}
-        if not UtilClient.is_unset(request.keys):
-            query['Keys'] = request.keys
+        if not UtilClient.is_unset(request.label_keys):
+            query['LabelKeys'] = request.label_keys
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -1831,7 +1423,7 @@ class Client(OpenApiClient):
             action='DeleteDatasetLabels',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/datasets/{dataset_id}/labels',
+            pathname=f'/api/v1/datasets/{OpenApiUtilClient.get_encode_param(dataset_id)}/labels',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1869,7 +1461,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.DeleteMembersResponse:
         UtilClient.validate_model(request)
-        workspace_id = OpenApiUtilClient.get_encode_param(workspace_id)
         query = {}
         if not UtilClient.is_unset(request.member_ids):
             query['MemberIds'] = request.member_ids
@@ -1881,7 +1472,7 @@ class Client(OpenApiClient):
             action='DeleteMembers',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/workspaces/{workspace_id}/members',
+            pathname=f'/api/v1/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}/members',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1901,7 +1492,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.DeleteMembersResponse:
         UtilClient.validate_model(request)
-        workspace_id = OpenApiUtilClient.get_encode_param(workspace_id)
         query = {}
         if not UtilClient.is_unset(request.member_ids):
             query['MemberIds'] = request.member_ids
@@ -1913,7 +1503,7 @@ class Client(OpenApiClient):
             action='DeleteMembers',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/workspaces/{workspace_id}/members',
+            pathname=f'/api/v1/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}/members',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1947,7 +1537,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.DeleteModelResponse:
-        model_id = OpenApiUtilClient.get_encode_param(model_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1955,7 +1544,7 @@ class Client(OpenApiClient):
             action='DeleteModel',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/models/{model_id}',
+            pathname=f'/api/v1/models/{OpenApiUtilClient.get_encode_param(model_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1973,7 +1562,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.DeleteModelResponse:
-        model_id = OpenApiUtilClient.get_encode_param(model_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1981,7 +1569,7 @@ class Client(OpenApiClient):
             action='DeleteModel',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/models/{model_id}',
+            pathname=f'/api/v1/models/{OpenApiUtilClient.get_encode_param(model_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -2019,10 +1607,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.DeleteModelLabelsResponse:
         UtilClient.validate_model(request)
-        model_id = OpenApiUtilClient.get_encode_param(model_id)
         query = {}
-        if not UtilClient.is_unset(request.keys):
-            query['Keys'] = request.keys
+        if not UtilClient.is_unset(request.label_keys):
+            query['LabelKeys'] = request.label_keys
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -2031,7 +1618,7 @@ class Client(OpenApiClient):
             action='DeleteModelLabels',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/models/{model_id}/labels',
+            pathname=f'/api/v1/models/{OpenApiUtilClient.get_encode_param(model_id)}/labels',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -2051,10 +1638,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.DeleteModelLabelsResponse:
         UtilClient.validate_model(request)
-        model_id = OpenApiUtilClient.get_encode_param(model_id)
         query = {}
-        if not UtilClient.is_unset(request.keys):
-            query['Keys'] = request.keys
+        if not UtilClient.is_unset(request.label_keys):
+            query['LabelKeys'] = request.label_keys
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -2063,7 +1649,7 @@ class Client(OpenApiClient):
             action='DeleteModelLabels',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/models/{model_id}/labels',
+            pathname=f'/api/v1/models/{OpenApiUtilClient.get_encode_param(model_id)}/labels',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -2100,8 +1686,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.DeleteModelVersionResponse:
-        model_id = OpenApiUtilClient.get_encode_param(model_id)
-        version_name = OpenApiUtilClient.get_encode_param(version_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2109,7 +1693,7 @@ class Client(OpenApiClient):
             action='DeleteModelVersion',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/models/{model_id}/versions/{version_name}',
+            pathname=f'/api/v1/models/{OpenApiUtilClient.get_encode_param(model_id)}/versions/{OpenApiUtilClient.get_encode_param(version_name)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -2128,8 +1712,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.DeleteModelVersionResponse:
-        model_id = OpenApiUtilClient.get_encode_param(model_id)
-        version_name = OpenApiUtilClient.get_encode_param(version_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2137,7 +1719,7 @@ class Client(OpenApiClient):
             action='DeleteModelVersion',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/models/{model_id}/versions/{version_name}',
+            pathname=f'/api/v1/models/{OpenApiUtilClient.get_encode_param(model_id)}/versions/{OpenApiUtilClient.get_encode_param(version_name)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -2178,11 +1760,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.DeleteModelVersionLabelsResponse:
         UtilClient.validate_model(request)
-        model_id = OpenApiUtilClient.get_encode_param(model_id)
-        version_name = OpenApiUtilClient.get_encode_param(version_name)
         query = {}
-        if not UtilClient.is_unset(request.keys):
-            query['Keys'] = request.keys
+        if not UtilClient.is_unset(request.label_keys):
+            query['LabelKeys'] = request.label_keys
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -2191,7 +1771,7 @@ class Client(OpenApiClient):
             action='DeleteModelVersionLabels',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/models/{model_id}/versions/{version_name}/labels',
+            pathname=f'/api/v1/models/{OpenApiUtilClient.get_encode_param(model_id)}/versions/{OpenApiUtilClient.get_encode_param(version_name)}/labels',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -2212,11 +1792,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.DeleteModelVersionLabelsResponse:
         UtilClient.validate_model(request)
-        model_id = OpenApiUtilClient.get_encode_param(model_id)
-        version_name = OpenApiUtilClient.get_encode_param(version_name)
         query = {}
-        if not UtilClient.is_unset(request.keys):
-            query['Keys'] = request.keys
+        if not UtilClient.is_unset(request.label_keys):
+            query['LabelKeys'] = request.label_keys
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -2225,7 +1803,7 @@ class Client(OpenApiClient):
             action='DeleteModelVersionLabels',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/models/{model_id}/versions/{version_name}/labels',
+            pathname=f'/api/v1/models/{OpenApiUtilClient.get_encode_param(model_id)}/versions/{OpenApiUtilClient.get_encode_param(version_name)}/labels',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -2259,7 +1837,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.DeleteWorkspaceResponse:
-        workspace_id = OpenApiUtilClient.get_encode_param(workspace_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2267,7 +1844,7 @@ class Client(OpenApiClient):
             action='DeleteWorkspace',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/workspaces/{workspace_id}',
+            pathname=f'/api/v1/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -2285,7 +1862,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.DeleteWorkspaceResponse:
-        workspace_id = OpenApiUtilClient.get_encode_param(workspace_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2293,7 +1869,7 @@ class Client(OpenApiClient):
             action='DeleteWorkspace',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/workspaces/{workspace_id}',
+            pathname=f'/api/v1/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -2307,36 +1883,35 @@ class Client(OpenApiClient):
 
     def delete_workspace_resource(
         self,
-        resource_group_name: str,
         workspace_id: str,
         request: aiwork_space_20210204_models.DeleteWorkspaceResourceRequest,
     ) -> aiwork_space_20210204_models.DeleteWorkspaceResourceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_workspace_resource_with_options(resource_group_name, workspace_id, request, headers, runtime)
+        return self.delete_workspace_resource_with_options(workspace_id, request, headers, runtime)
 
     async def delete_workspace_resource_async(
         self,
-        resource_group_name: str,
         workspace_id: str,
         request: aiwork_space_20210204_models.DeleteWorkspaceResourceRequest,
     ) -> aiwork_space_20210204_models.DeleteWorkspaceResourceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_workspace_resource_with_options_async(resource_group_name, workspace_id, request, headers, runtime)
+        return await self.delete_workspace_resource_with_options_async(workspace_id, request, headers, runtime)
 
     def delete_workspace_resource_with_options(
         self,
-        resource_group_name: str,
         workspace_id: str,
         request: aiwork_space_20210204_models.DeleteWorkspaceResourceRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.DeleteWorkspaceResourceResponse:
         UtilClient.validate_model(request)
-        resource_group_name = OpenApiUtilClient.get_encode_param(resource_group_name)
-        workspace_id = OpenApiUtilClient.get_encode_param(workspace_id)
         query = {}
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.option):
+            query['Option'] = request.option
         if not UtilClient.is_unset(request.product_type):
             query['ProductType'] = request.product_type
         req = open_api_models.OpenApiRequest(
@@ -2347,7 +1922,7 @@ class Client(OpenApiClient):
             action='DeleteWorkspaceResource',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/workspaces/{workspace_id}/resources/{resource_group_name}',
+            pathname=f'/api/v1/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}/resources',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -2361,16 +1936,17 @@ class Client(OpenApiClient):
 
     async def delete_workspace_resource_with_options_async(
         self,
-        resource_group_name: str,
         workspace_id: str,
         request: aiwork_space_20210204_models.DeleteWorkspaceResourceRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.DeleteWorkspaceResourceResponse:
         UtilClient.validate_model(request)
-        resource_group_name = OpenApiUtilClient.get_encode_param(resource_group_name)
-        workspace_id = OpenApiUtilClient.get_encode_param(workspace_id)
         query = {}
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.option):
+            query['Option'] = request.option
         if not UtilClient.is_unset(request.product_type):
             query['ProductType'] = request.product_type
         req = open_api_models.OpenApiRequest(
@@ -2381,7 +1957,7 @@ class Client(OpenApiClient):
             action='DeleteWorkspaceResource',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/workspaces/{workspace_id}/resources/{resource_group_name}',
+            pathname=f'/api/v1/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}/resources',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -2415,7 +1991,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.GetCodeSourceResponse:
-        code_source_id = OpenApiUtilClient.get_encode_param(code_source_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2423,7 +1998,7 @@ class Client(OpenApiClient):
             action='GetCodeSource',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/codesources/{code_source_id}',
+            pathname=f'/api/v1/codesources/{OpenApiUtilClient.get_encode_param(code_source_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2441,7 +2016,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.GetCodeSourceResponse:
-        code_source_id = OpenApiUtilClient.get_encode_param(code_source_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2449,7 +2023,7 @@ class Client(OpenApiClient):
             action='GetCodeSource',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/codesources/{code_source_id}',
+            pathname=f'/api/v1/codesources/{OpenApiUtilClient.get_encode_param(code_source_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2458,82 +2032,6 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             aiwork_space_20210204_models.GetCodeSourceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_code_sources_statistics(
-        self,
-        request: aiwork_space_20210204_models.GetCodeSourcesStatisticsRequest,
-    ) -> aiwork_space_20210204_models.GetCodeSourcesStatisticsResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.get_code_sources_statistics_with_options(request, headers, runtime)
-
-    async def get_code_sources_statistics_async(
-        self,
-        request: aiwork_space_20210204_models.GetCodeSourcesStatisticsRequest,
-    ) -> aiwork_space_20210204_models.GetCodeSourcesStatisticsResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.get_code_sources_statistics_with_options_async(request, headers, runtime)
-
-    def get_code_sources_statistics_with_options(
-        self,
-        request: aiwork_space_20210204_models.GetCodeSourcesStatisticsRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> aiwork_space_20210204_models.GetCodeSourcesStatisticsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.workspace_id):
-            query['WorkspaceId'] = request.workspace_id
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetCodeSourcesStatistics',
-            version='2021-02-04',
-            protocol='HTTPS',
-            pathname=f'/api/v1/statistics/codesources',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.GetCodeSourcesStatisticsResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_code_sources_statistics_with_options_async(
-        self,
-        request: aiwork_space_20210204_models.GetCodeSourcesStatisticsRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> aiwork_space_20210204_models.GetCodeSourcesStatisticsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.workspace_id):
-            query['WorkspaceId'] = request.workspace_id
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetCodeSourcesStatistics',
-            version='2021-02-04',
-            protocol='HTTPS',
-            pathname=f'/api/v1/statistics/codesources',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.GetCodeSourcesStatisticsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
@@ -2559,7 +2057,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.GetDatasetResponse:
-        dataset_id = OpenApiUtilClient.get_encode_param(dataset_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2567,7 +2064,7 @@ class Client(OpenApiClient):
             action='GetDataset',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/datasets/{dataset_id}',
+            pathname=f'/api/v1/datasets/{OpenApiUtilClient.get_encode_param(dataset_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2585,7 +2082,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.GetDatasetResponse:
-        dataset_id = OpenApiUtilClient.get_encode_param(dataset_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2593,7 +2089,7 @@ class Client(OpenApiClient):
             action='GetDataset',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/datasets/{dataset_id}',
+            pathname=f'/api/v1/datasets/{OpenApiUtilClient.get_encode_param(dataset_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2602,82 +2098,6 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             aiwork_space_20210204_models.GetDatasetResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_datasets_statistics(
-        self,
-        request: aiwork_space_20210204_models.GetDatasetsStatisticsRequest,
-    ) -> aiwork_space_20210204_models.GetDatasetsStatisticsResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.get_datasets_statistics_with_options(request, headers, runtime)
-
-    async def get_datasets_statistics_async(
-        self,
-        request: aiwork_space_20210204_models.GetDatasetsStatisticsRequest,
-    ) -> aiwork_space_20210204_models.GetDatasetsStatisticsResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.get_datasets_statistics_with_options_async(request, headers, runtime)
-
-    def get_datasets_statistics_with_options(
-        self,
-        request: aiwork_space_20210204_models.GetDatasetsStatisticsRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> aiwork_space_20210204_models.GetDatasetsStatisticsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.workspace_id):
-            query['WorkspaceId'] = request.workspace_id
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetDatasetsStatistics',
-            version='2021-02-04',
-            protocol='HTTPS',
-            pathname=f'/api/v1/statistics/datasets',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.GetDatasetsStatisticsResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_datasets_statistics_with_options_async(
-        self,
-        request: aiwork_space_20210204_models.GetDatasetsStatisticsRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> aiwork_space_20210204_models.GetDatasetsStatisticsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.workspace_id):
-            query['WorkspaceId'] = request.workspace_id
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetDatasetsStatistics',
-            version='2021-02-04',
-            protocol='HTTPS',
-            pathname=f'/api/v1/statistics/datasets',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.GetDatasetsStatisticsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
@@ -2783,7 +2203,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.GetImageResponse:
         UtilClient.validate_model(request)
-        image_id = OpenApiUtilClient.get_encode_param(image_id)
         query = {}
         if not UtilClient.is_unset(request.verbose):
             query['Verbose'] = request.verbose
@@ -2795,7 +2214,7 @@ class Client(OpenApiClient):
             action='GetImage',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/images/{image_id}',
+            pathname=f'/api/v1/images/{OpenApiUtilClient.get_encode_param(image_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2815,7 +2234,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.GetImageResponse:
         UtilClient.validate_model(request)
-        image_id = OpenApiUtilClient.get_encode_param(image_id)
         query = {}
         if not UtilClient.is_unset(request.verbose):
             query['Verbose'] = request.verbose
@@ -2827,7 +2245,7 @@ class Client(OpenApiClient):
             action='GetImage',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/images/{image_id}',
+            pathname=f'/api/v1/images/{OpenApiUtilClient.get_encode_param(image_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2836,82 +2254,6 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             aiwork_space_20210204_models.GetImageResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_images_statistics(
-        self,
-        request: aiwork_space_20210204_models.GetImagesStatisticsRequest,
-    ) -> aiwork_space_20210204_models.GetImagesStatisticsResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.get_images_statistics_with_options(request, headers, runtime)
-
-    async def get_images_statistics_async(
-        self,
-        request: aiwork_space_20210204_models.GetImagesStatisticsRequest,
-    ) -> aiwork_space_20210204_models.GetImagesStatisticsResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.get_images_statistics_with_options_async(request, headers, runtime)
-
-    def get_images_statistics_with_options(
-        self,
-        request: aiwork_space_20210204_models.GetImagesStatisticsRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> aiwork_space_20210204_models.GetImagesStatisticsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.workspace_id):
-            query['WorkspaceId'] = request.workspace_id
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetImagesStatistics',
-            version='2021-02-04',
-            protocol='HTTPS',
-            pathname=f'/api/v1/statistics/images',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.GetImagesStatisticsResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_images_statistics_with_options_async(
-        self,
-        request: aiwork_space_20210204_models.GetImagesStatisticsRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> aiwork_space_20210204_models.GetImagesStatisticsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.workspace_id):
-            query['WorkspaceId'] = request.workspace_id
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetImagesStatistics',
-            version='2021-02-04',
-            protocol='HTTPS',
-            pathname=f'/api/v1/statistics/images',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.GetImagesStatisticsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
@@ -2941,7 +2283,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.GetMemberResponse:
         UtilClient.validate_model(request)
-        workspace_id = OpenApiUtilClient.get_encode_param(workspace_id)
         query = {}
         if not UtilClient.is_unset(request.user_id):
             query['UserId'] = request.user_id
@@ -2953,7 +2294,7 @@ class Client(OpenApiClient):
             action='GetMember',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/workspaces/{workspace_id}/member',
+            pathname=f'/api/v1/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}/member',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2973,7 +2314,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.GetMemberResponse:
         UtilClient.validate_model(request)
-        workspace_id = OpenApiUtilClient.get_encode_param(workspace_id)
         query = {}
         if not UtilClient.is_unset(request.user_id):
             query['UserId'] = request.user_id
@@ -2985,7 +2325,7 @@ class Client(OpenApiClient):
             action='GetMember',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/workspaces/{workspace_id}/member',
+            pathname=f'/api/v1/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}/member',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3019,7 +2359,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.GetModelResponse:
-        model_id = OpenApiUtilClient.get_encode_param(model_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3027,7 +2366,7 @@ class Client(OpenApiClient):
             action='GetModel',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/models/{model_id}',
+            pathname=f'/api/v1/models/{OpenApiUtilClient.get_encode_param(model_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3045,7 +2384,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.GetModelResponse:
-        model_id = OpenApiUtilClient.get_encode_param(model_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3053,7 +2391,7 @@ class Client(OpenApiClient):
             action='GetModel',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/models/{model_id}',
+            pathname=f'/api/v1/models/{OpenApiUtilClient.get_encode_param(model_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3090,8 +2428,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.GetModelVersionResponse:
-        model_id = OpenApiUtilClient.get_encode_param(model_id)
-        version_name = OpenApiUtilClient.get_encode_param(version_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3099,7 +2435,7 @@ class Client(OpenApiClient):
             action='GetModelVersion',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/models/{model_id}/versions/{version_name}',
+            pathname=f'/api/v1/models/{OpenApiUtilClient.get_encode_param(model_id)}/versions/{OpenApiUtilClient.get_encode_param(version_name)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3118,8 +2454,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.GetModelVersionResponse:
-        model_id = OpenApiUtilClient.get_encode_param(model_id)
-        version_name = OpenApiUtilClient.get_encode_param(version_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3127,7 +2461,7 @@ class Client(OpenApiClient):
             action='GetModelVersion',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/models/{model_id}/versions/{version_name}',
+            pathname=f'/api/v1/models/{OpenApiUtilClient.get_encode_param(model_id)}/versions/{OpenApiUtilClient.get_encode_param(version_name)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3168,8 +2502,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.GetPermissionResponse:
         UtilClient.validate_model(request)
-        workspace_id = OpenApiUtilClient.get_encode_param(workspace_id)
-        permission_code = OpenApiUtilClient.get_encode_param(permission_code)
         query = {}
         if not UtilClient.is_unset(request.accessibility):
             query['Accessibility'] = request.accessibility
@@ -3183,7 +2515,7 @@ class Client(OpenApiClient):
             action='GetPermission',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/workspaces/{workspace_id}/permissions/{permission_code}',
+            pathname=f'/api/v1/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}/permissions/{OpenApiUtilClient.get_encode_param(permission_code)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3204,8 +2536,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.GetPermissionResponse:
         UtilClient.validate_model(request)
-        workspace_id = OpenApiUtilClient.get_encode_param(workspace_id)
-        permission_code = OpenApiUtilClient.get_encode_param(permission_code)
         query = {}
         if not UtilClient.is_unset(request.accessibility):
             query['Accessibility'] = request.accessibility
@@ -3219,7 +2549,7 @@ class Client(OpenApiClient):
             action='GetPermission',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/workspaces/{workspace_id}/permissions/{permission_code}',
+            pathname=f'/api/v1/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}/permissions/{OpenApiUtilClient.get_encode_param(permission_code)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3228,82 +2558,6 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             aiwork_space_20210204_models.GetPermissionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_role_statistics(
-        self,
-        request: aiwork_space_20210204_models.GetRoleStatisticsRequest,
-    ) -> aiwork_space_20210204_models.GetRoleStatisticsResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.get_role_statistics_with_options(request, headers, runtime)
-
-    async def get_role_statistics_async(
-        self,
-        request: aiwork_space_20210204_models.GetRoleStatisticsRequest,
-    ) -> aiwork_space_20210204_models.GetRoleStatisticsResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.get_role_statistics_with_options_async(request, headers, runtime)
-
-    def get_role_statistics_with_options(
-        self,
-        request: aiwork_space_20210204_models.GetRoleStatisticsRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> aiwork_space_20210204_models.GetRoleStatisticsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.workspace_id):
-            query['WorkspaceId'] = request.workspace_id
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetRoleStatistics',
-            version='2021-02-04',
-            protocol='HTTPS',
-            pathname=f'/api/v1/statistics/roles',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.GetRoleStatisticsResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_role_statistics_with_options_async(
-        self,
-        request: aiwork_space_20210204_models.GetRoleStatisticsRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> aiwork_space_20210204_models.GetRoleStatisticsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.workspace_id):
-            query['WorkspaceId'] = request.workspace_id
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetRoleStatistics',
-            version='2021-02-04',
-            protocol='HTTPS',
-            pathname=f'/api/v1/statistics/roles',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.GetRoleStatisticsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
@@ -3333,7 +2587,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.GetWorkspaceResponse:
         UtilClient.validate_model(request)
-        workspace_id = OpenApiUtilClient.get_encode_param(workspace_id)
         query = {}
         if not UtilClient.is_unset(request.verbose):
             query['Verbose'] = request.verbose
@@ -3345,7 +2598,7 @@ class Client(OpenApiClient):
             action='GetWorkspace',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/workspaces/{workspace_id}',
+            pathname=f'/api/v1/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3365,7 +2618,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.GetWorkspaceResponse:
         UtilClient.validate_model(request)
-        workspace_id = OpenApiUtilClient.get_encode_param(workspace_id)
         query = {}
         if not UtilClient.is_unset(request.verbose):
             query['Verbose'] = request.verbose
@@ -3377,7 +2629,7 @@ class Client(OpenApiClient):
             action='GetWorkspace',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/workspaces/{workspace_id}',
+            pathname=f'/api/v1/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3485,88 +2737,6 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_configs(
-        self,
-        workspace_id: str,
-        request: aiwork_space_20210204_models.ListConfigsRequest,
-    ) -> aiwork_space_20210204_models.ListConfigsResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.list_configs_with_options(workspace_id, request, headers, runtime)
-
-    async def list_configs_async(
-        self,
-        workspace_id: str,
-        request: aiwork_space_20210204_models.ListConfigsRequest,
-    ) -> aiwork_space_20210204_models.ListConfigsResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.list_configs_with_options_async(workspace_id, request, headers, runtime)
-
-    def list_configs_with_options(
-        self,
-        workspace_id: str,
-        request: aiwork_space_20210204_models.ListConfigsRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> aiwork_space_20210204_models.ListConfigsResponse:
-        UtilClient.validate_model(request)
-        workspace_id = OpenApiUtilClient.get_encode_param(workspace_id)
-        query = {}
-        if not UtilClient.is_unset(request.config_keys):
-            query['ConfigKeys'] = request.config_keys
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListConfigs',
-            version='2021-02-04',
-            protocol='HTTPS',
-            pathname=f'/api/v1/workspaces/{workspace_id}/configs',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.ListConfigsResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def list_configs_with_options_async(
-        self,
-        workspace_id: str,
-        request: aiwork_space_20210204_models.ListConfigsRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> aiwork_space_20210204_models.ListConfigsResponse:
-        UtilClient.validate_model(request)
-        workspace_id = OpenApiUtilClient.get_encode_param(workspace_id)
-        query = {}
-        if not UtilClient.is_unset(request.config_keys):
-            query['ConfigKeys'] = request.config_keys
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListConfigs',
-            version='2021-02-04',
-            protocol='HTTPS',
-            pathname=f'/api/v1/workspaces/{workspace_id}/configs',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.ListConfigsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
     def list_datasets(
         self,
         request: aiwork_space_20210204_models.ListDatasetsRequest,
@@ -3595,10 +2765,8 @@ class Client(OpenApiClient):
             query['DataSourceTypes'] = request.data_source_types
         if not UtilClient.is_unset(request.data_types):
             query['DataTypes'] = request.data_types
-        if not UtilClient.is_unset(request.label_keys):
-            query['LabelKeys'] = request.label_keys
-        if not UtilClient.is_unset(request.label_values):
-            query['LabelValues'] = request.label_values
+        if not UtilClient.is_unset(request.label):
+            query['Label'] = request.label
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.order):
@@ -3645,10 +2813,8 @@ class Client(OpenApiClient):
             query['DataSourceTypes'] = request.data_source_types
         if not UtilClient.is_unset(request.data_types):
             query['DataTypes'] = request.data_types
-        if not UtilClient.is_unset(request.label_keys):
-            query['LabelKeys'] = request.label_keys
-        if not UtilClient.is_unset(request.label_values):
-            query['LabelValues'] = request.label_values
+        if not UtilClient.is_unset(request.label):
+            query['Label'] = request.label
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.order):
@@ -3680,150 +2846,6 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             aiwork_space_20210204_models.ListDatasetsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def list_features(
-        self,
-        request: aiwork_space_20210204_models.ListFeaturesRequest,
-    ) -> aiwork_space_20210204_models.ListFeaturesResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.list_features_with_options(request, headers, runtime)
-
-    async def list_features_async(
-        self,
-        request: aiwork_space_20210204_models.ListFeaturesRequest,
-    ) -> aiwork_space_20210204_models.ListFeaturesResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.list_features_with_options_async(request, headers, runtime)
-
-    def list_features_with_options(
-        self,
-        request: aiwork_space_20210204_models.ListFeaturesRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> aiwork_space_20210204_models.ListFeaturesResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.names):
-            query['Names'] = request.names
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListFeatures',
-            version='2021-02-04',
-            protocol='HTTPS',
-            pathname=f'/api/v1/features',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.ListFeaturesResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def list_features_with_options_async(
-        self,
-        request: aiwork_space_20210204_models.ListFeaturesRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> aiwork_space_20210204_models.ListFeaturesResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.names):
-            query['Names'] = request.names
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListFeatures',
-            version='2021-02-04',
-            protocol='HTTPS',
-            pathname=f'/api/v1/features',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.ListFeaturesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def list_global_permissions(
-        self,
-        workspace_id: str,
-    ) -> aiwork_space_20210204_models.ListGlobalPermissionsResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.list_global_permissions_with_options(workspace_id, headers, runtime)
-
-    async def list_global_permissions_async(
-        self,
-        workspace_id: str,
-    ) -> aiwork_space_20210204_models.ListGlobalPermissionsResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.list_global_permissions_with_options_async(workspace_id, headers, runtime)
-
-    def list_global_permissions_with_options(
-        self,
-        workspace_id: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> aiwork_space_20210204_models.ListGlobalPermissionsResponse:
-        workspace_id = OpenApiUtilClient.get_encode_param(workspace_id)
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='ListGlobalPermissions',
-            version='2021-02-04',
-            protocol='HTTPS',
-            pathname=f'/api/v1/permissions',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.ListGlobalPermissionsResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def list_global_permissions_with_options_async(
-        self,
-        workspace_id: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> aiwork_space_20210204_models.ListGlobalPermissionsResponse:
-        workspace_id = OpenApiUtilClient.get_encode_param(workspace_id)
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='ListGlobalPermissions',
-            version='2021-02-04',
-            protocol='HTTPS',
-            pathname=f'/api/v1/permissions',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.ListGlobalPermissionsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
@@ -3947,16 +2969,18 @@ class Client(OpenApiClient):
             query['Labels'] = request.labels
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
-        if not UtilClient.is_unset(request.operator_create):
-            query['OperatorCreate'] = request.operator_create
         if not UtilClient.is_unset(request.order):
             query['Order'] = request.order
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.parent_user_id):
+            query['ParentUserId'] = request.parent_user_id
         if not UtilClient.is_unset(request.sort_by):
             query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
         if not UtilClient.is_unset(request.verbose):
             query['Verbose'] = request.verbose
         if not UtilClient.is_unset(request.workspace_id):
@@ -3993,16 +3017,18 @@ class Client(OpenApiClient):
             query['Labels'] = request.labels
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
-        if not UtilClient.is_unset(request.operator_create):
-            query['OperatorCreate'] = request.operator_create
         if not UtilClient.is_unset(request.order):
             query['Order'] = request.order
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.parent_user_id):
+            query['ParentUserId'] = request.parent_user_id
         if not UtilClient.is_unset(request.sort_by):
             query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
         if not UtilClient.is_unset(request.verbose):
             query['Verbose'] = request.verbose
         if not UtilClient.is_unset(request.workspace_id):
@@ -4053,7 +3079,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.ListMembersResponse:
         UtilClient.validate_model(request)
-        workspace_id = OpenApiUtilClient.get_encode_param(workspace_id)
         query = {}
         if not UtilClient.is_unset(request.member_name):
             query['MemberName'] = request.member_name
@@ -4071,7 +3096,7 @@ class Client(OpenApiClient):
             action='ListMembers',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/workspaces/{workspace_id}/members',
+            pathname=f'/api/v1/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}/members',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4091,7 +3116,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.ListMembersResponse:
         UtilClient.validate_model(request)
-        workspace_id = OpenApiUtilClient.get_encode_param(workspace_id)
         query = {}
         if not UtilClient.is_unset(request.member_name):
             query['MemberName'] = request.member_name
@@ -4109,7 +3133,7 @@ class Client(OpenApiClient):
             action='ListMembers',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/workspaces/{workspace_id}/members',
+            pathname=f'/api/v1/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}/members',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4147,14 +3171,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.ListModelVersionsResponse:
         UtilClient.validate_model(request)
-        model_id = OpenApiUtilClient.get_encode_param(model_id)
         query = {}
         if not UtilClient.is_unset(request.format_type):
             query['FormatType'] = request.format_type
         if not UtilClient.is_unset(request.framework_type):
             query['FrameworkType'] = request.framework_type
-        if not UtilClient.is_unset(request.labels):
-            query['Labels'] = request.labels
+        if not UtilClient.is_unset(request.label):
+            query['Label'] = request.label
         if not UtilClient.is_unset(request.order):
             query['Order'] = request.order
         if not UtilClient.is_unset(request.page_number):
@@ -4163,8 +3186,12 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.sort_by):
             query['SortBy'] = request.sort_by
-        if not UtilClient.is_unset(request.versionl_name):
-            query['VersionlName'] = request.versionl_name
+        if not UtilClient.is_unset(request.source_id):
+            query['SourceId'] = request.source_id
+        if not UtilClient.is_unset(request.source_type):
+            query['SourceType'] = request.source_type
+        if not UtilClient.is_unset(request.version_name):
+            query['VersionName'] = request.version_name
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -4173,7 +3200,7 @@ class Client(OpenApiClient):
             action='ListModelVersions',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/models/{model_id}/versions',
+            pathname=f'/api/v1/models/{OpenApiUtilClient.get_encode_param(model_id)}/versions',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4193,14 +3220,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.ListModelVersionsResponse:
         UtilClient.validate_model(request)
-        model_id = OpenApiUtilClient.get_encode_param(model_id)
         query = {}
         if not UtilClient.is_unset(request.format_type):
             query['FormatType'] = request.format_type
         if not UtilClient.is_unset(request.framework_type):
             query['FrameworkType'] = request.framework_type
-        if not UtilClient.is_unset(request.labels):
-            query['Labels'] = request.labels
+        if not UtilClient.is_unset(request.label):
+            query['Label'] = request.label
         if not UtilClient.is_unset(request.order):
             query['Order'] = request.order
         if not UtilClient.is_unset(request.page_number):
@@ -4209,8 +3235,12 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.sort_by):
             query['SortBy'] = request.sort_by
-        if not UtilClient.is_unset(request.versionl_name):
-            query['VersionlName'] = request.versionl_name
+        if not UtilClient.is_unset(request.source_id):
+            query['SourceId'] = request.source_id
+        if not UtilClient.is_unset(request.source_type):
+            query['SourceType'] = request.source_type
+        if not UtilClient.is_unset(request.version_name):
+            query['VersionName'] = request.version_name
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -4219,7 +3249,7 @@ class Client(OpenApiClient):
             action='ListModelVersions',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/models/{model_id}/versions',
+            pathname=f'/api/v1/models/{OpenApiUtilClient.get_encode_param(model_id)}/versions',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4255,8 +3285,8 @@ class Client(OpenApiClient):
     ) -> aiwork_space_20210204_models.ListModelsResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.labels):
-            query['Labels'] = request.labels
+        if not UtilClient.is_unset(request.label):
+            query['Label'] = request.label
         if not UtilClient.is_unset(request.model_name):
             query['ModelName'] = request.model_name
         if not UtilClient.is_unset(request.order):
@@ -4297,8 +3327,8 @@ class Client(OpenApiClient):
     ) -> aiwork_space_20210204_models.ListModelsResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.labels):
-            query['Labels'] = request.labels
+        if not UtilClient.is_unset(request.label):
+            query['Label'] = request.label
         if not UtilClient.is_unset(request.model_name):
             query['ModelName'] = request.model_name
         if not UtilClient.is_unset(request.order):
@@ -4331,116 +3361,6 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_operation_logs(
-        self,
-        workspace_id: str,
-        request: aiwork_space_20210204_models.ListOperationLogsRequest,
-    ) -> aiwork_space_20210204_models.ListOperationLogsResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.list_operation_logs_with_options(workspace_id, request, headers, runtime)
-
-    async def list_operation_logs_async(
-        self,
-        workspace_id: str,
-        request: aiwork_space_20210204_models.ListOperationLogsRequest,
-    ) -> aiwork_space_20210204_models.ListOperationLogsResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.list_operation_logs_with_options_async(workspace_id, request, headers, runtime)
-
-    def list_operation_logs_with_options(
-        self,
-        workspace_id: str,
-        request: aiwork_space_20210204_models.ListOperationLogsRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> aiwork_space_20210204_models.ListOperationLogsResponse:
-        UtilClient.validate_model(request)
-        workspace_id = OpenApiUtilClient.get_encode_param(workspace_id)
-        query = {}
-        if not UtilClient.is_unset(request.entity_status):
-            query['EntityStatus'] = request.entity_status
-        if not UtilClient.is_unset(request.entity_types):
-            query['EntityTypes'] = request.entity_types
-        if not UtilClient.is_unset(request.operation_status):
-            query['OperationStatus'] = request.operation_status
-        if not UtilClient.is_unset(request.operations):
-            query['Operations'] = request.operations
-        if not UtilClient.is_unset(request.order):
-            query['Order'] = request.order
-        if not UtilClient.is_unset(request.page_number):
-            query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.sort_by):
-            query['SortBy'] = request.sort_by
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListOperationLogs',
-            version='2021-02-04',
-            protocol='HTTPS',
-            pathname=f'/api/v1/workspaces/{workspace_id}/logs',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.ListOperationLogsResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def list_operation_logs_with_options_async(
-        self,
-        workspace_id: str,
-        request: aiwork_space_20210204_models.ListOperationLogsRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> aiwork_space_20210204_models.ListOperationLogsResponse:
-        UtilClient.validate_model(request)
-        workspace_id = OpenApiUtilClient.get_encode_param(workspace_id)
-        query = {}
-        if not UtilClient.is_unset(request.entity_status):
-            query['EntityStatus'] = request.entity_status
-        if not UtilClient.is_unset(request.entity_types):
-            query['EntityTypes'] = request.entity_types
-        if not UtilClient.is_unset(request.operation_status):
-            query['OperationStatus'] = request.operation_status
-        if not UtilClient.is_unset(request.operations):
-            query['Operations'] = request.operations
-        if not UtilClient.is_unset(request.order):
-            query['Order'] = request.order
-        if not UtilClient.is_unset(request.page_number):
-            query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.sort_by):
-            query['SortBy'] = request.sort_by
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListOperationLogs',
-            version='2021-02-04',
-            protocol='HTTPS',
-            pathname=f'/api/v1/workspaces/{workspace_id}/logs',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.ListOperationLogsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
     def list_permissions(
         self,
         workspace_id: str,
@@ -4463,7 +3383,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.ListPermissionsResponse:
-        workspace_id = OpenApiUtilClient.get_encode_param(workspace_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4471,7 +3390,7 @@ class Client(OpenApiClient):
             action='ListPermissions',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/workspaces/{workspace_id}/permissions',
+            pathname=f'/api/v1/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}/permissions',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4489,7 +3408,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.ListPermissionsResponse:
-        workspace_id = OpenApiUtilClient.get_encode_param(workspace_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4497,7 +3415,7 @@ class Client(OpenApiClient):
             action='ListPermissions',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/workspaces/{workspace_id}/permissions',
+            pathname=f'/api/v1/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}/permissions',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4506,166 +3424,6 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             aiwork_space_20210204_models.ListPermissionsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def list_product_authorizations(
-        self,
-        request: aiwork_space_20210204_models.ListProductAuthorizationsRequest,
-    ) -> aiwork_space_20210204_models.ListProductAuthorizationsResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.list_product_authorizations_with_options(request, headers, runtime)
-
-    async def list_product_authorizations_async(
-        self,
-        request: aiwork_space_20210204_models.ListProductAuthorizationsRequest,
-    ) -> aiwork_space_20210204_models.ListProductAuthorizationsResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.list_product_authorizations_with_options_async(request, headers, runtime)
-
-    def list_product_authorizations_with_options(
-        self,
-        request: aiwork_space_20210204_models.ListProductAuthorizationsRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> aiwork_space_20210204_models.ListProductAuthorizationsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.ram_role_names):
-            query['RamRoleNames'] = request.ram_role_names
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListProductAuthorizations',
-            version='2021-02-04',
-            protocol='HTTPS',
-            pathname=f'/api/v1/productauthorizations',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.ListProductAuthorizationsResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def list_product_authorizations_with_options_async(
-        self,
-        request: aiwork_space_20210204_models.ListProductAuthorizationsRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> aiwork_space_20210204_models.ListProductAuthorizationsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.ram_role_names):
-            query['RamRoleNames'] = request.ram_role_names
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListProductAuthorizations',
-            version='2021-02-04',
-            protocol='HTTPS',
-            pathname=f'/api/v1/productauthorizations',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.ListProductAuthorizationsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def list_products(
-        self,
-        request: aiwork_space_20210204_models.ListProductsRequest,
-    ) -> aiwork_space_20210204_models.ListProductsResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.list_products_with_options(request, headers, runtime)
-
-    async def list_products_async(
-        self,
-        request: aiwork_space_20210204_models.ListProductsRequest,
-    ) -> aiwork_space_20210204_models.ListProductsResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.list_products_with_options_async(request, headers, runtime)
-
-    def list_products_with_options(
-        self,
-        request: aiwork_space_20210204_models.ListProductsRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> aiwork_space_20210204_models.ListProductsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.product_codes):
-            query['ProductCodes'] = request.product_codes
-        if not UtilClient.is_unset(request.service_codes):
-            query['ServiceCodes'] = request.service_codes
-        if not UtilClient.is_unset(request.verbose):
-            query['Verbose'] = request.verbose
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListProducts',
-            version='2021-02-04',
-            protocol='HTTPS',
-            pathname=f'/api/v1/products',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.ListProductsResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def list_products_with_options_async(
-        self,
-        request: aiwork_space_20210204_models.ListProductsRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> aiwork_space_20210204_models.ListProductsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.product_codes):
-            query['ProductCodes'] = request.product_codes
-        if not UtilClient.is_unset(request.service_codes):
-            query['ServiceCodes'] = request.service_codes
-        if not UtilClient.is_unset(request.verbose):
-            query['Verbose'] = request.verbose
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListProducts',
-            version='2021-02-04',
-            protocol='HTTPS',
-            pathname=f'/api/v1/products',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.ListProductsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
@@ -4769,6 +3527,8 @@ class Client(OpenApiClient):
     ) -> aiwork_space_20210204_models.ListResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
         if not UtilClient.is_unset(request.option):
             query['Option'] = request.option
         if not UtilClient.is_unset(request.page_number):
@@ -4777,14 +3537,12 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.product_types):
             query['ProductTypes'] = request.product_types
-        if not UtilClient.is_unset(request.resource_group_name):
-            query['ResourceGroupName'] = request.resource_group_name
         if not UtilClient.is_unset(request.resource_name):
             query['ResourceName'] = request.resource_name
+        if not UtilClient.is_unset(request.verbose):
+            query['Verbose'] = request.verbose
         if not UtilClient.is_unset(request.workspace_id):
             query['WorkspaceId'] = request.workspace_id
-        if not UtilClient.is_unset(request.workspace_ids):
-            query['WorkspaceIds'] = request.workspace_ids
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -4813,6 +3571,8 @@ class Client(OpenApiClient):
     ) -> aiwork_space_20210204_models.ListResourcesResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
         if not UtilClient.is_unset(request.option):
             query['Option'] = request.option
         if not UtilClient.is_unset(request.page_number):
@@ -4821,14 +3581,12 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.product_types):
             query['ProductTypes'] = request.product_types
-        if not UtilClient.is_unset(request.resource_group_name):
-            query['ResourceGroupName'] = request.resource_group_name
         if not UtilClient.is_unset(request.resource_name):
             query['ResourceName'] = request.resource_name
+        if not UtilClient.is_unset(request.verbose):
+            query['Verbose'] = request.verbose
         if not UtilClient.is_unset(request.workspace_id):
             query['WorkspaceId'] = request.workspace_id
-        if not UtilClient.is_unset(request.workspace_ids):
-            query['WorkspaceIds'] = request.workspace_ids
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -4846,98 +3604,6 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             aiwork_space_20210204_models.ListResourcesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def list_users(
-        self,
-        request: aiwork_space_20210204_models.ListUsersRequest,
-    ) -> aiwork_space_20210204_models.ListUsersResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.list_users_with_options(request, headers, runtime)
-
-    async def list_users_async(
-        self,
-        request: aiwork_space_20210204_models.ListUsersRequest,
-    ) -> aiwork_space_20210204_models.ListUsersResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.list_users_with_options_async(request, headers, runtime)
-
-    def list_users_with_options(
-        self,
-        request: aiwork_space_20210204_models.ListUsersRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> aiwork_space_20210204_models.ListUsersResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.account_types):
-            query['AccountTypes'] = request.account_types
-        if not UtilClient.is_unset(request.page_number):
-            query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.user_ids):
-            query['UserIds'] = request.user_ids
-        if not UtilClient.is_unset(request.user_name):
-            query['UserName'] = request.user_name
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListUsers',
-            version='2021-02-04',
-            protocol='HTTPS',
-            pathname=f'/api/v1/users',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.ListUsersResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def list_users_with_options_async(
-        self,
-        request: aiwork_space_20210204_models.ListUsersRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> aiwork_space_20210204_models.ListUsersResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.account_types):
-            query['AccountTypes'] = request.account_types
-        if not UtilClient.is_unset(request.page_number):
-            query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.user_ids):
-            query['UserIds'] = request.user_ids
-        if not UtilClient.is_unset(request.user_name):
-            query['UserName'] = request.user_name
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListUsers',
-            version='2021-02-04',
-            protocol='HTTPS',
-            pathname=f'/api/v1/users',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.ListUsersResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
@@ -4963,7 +3629,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.ListWorkspaceUsersResponse:
-        workspace_id = OpenApiUtilClient.get_encode_param(workspace_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4971,7 +3636,7 @@ class Client(OpenApiClient):
             action='ListWorkspaceUsers',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/workspaces/{workspace_id}/users',
+            pathname=f'/api/v1/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}/users',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4989,7 +3654,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.ListWorkspaceUsersResponse:
-        workspace_id = OpenApiUtilClient.get_encode_param(workspace_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4997,7 +3661,7 @@ class Client(OpenApiClient):
             action='ListWorkspaceUsers',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/workspaces/{workspace_id}/users',
+            pathname=f'/api/v1/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}/users',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5147,7 +3811,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.PublishCodeSourceResponse:
-        code_source_id = OpenApiUtilClient.get_encode_param(code_source_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -5155,7 +3818,7 @@ class Client(OpenApiClient):
             action='PublishCodeSource',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/codesources/{code_source_id}/publish',
+            pathname=f'/api/v1/codesources/{OpenApiUtilClient.get_encode_param(code_source_id)}/publish',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -5173,7 +3836,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.PublishCodeSourceResponse:
-        code_source_id = OpenApiUtilClient.get_encode_param(code_source_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -5181,7 +3843,7 @@ class Client(OpenApiClient):
             action='PublishCodeSource',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/codesources/{code_source_id}/publish',
+            pathname=f'/api/v1/codesources/{OpenApiUtilClient.get_encode_param(code_source_id)}/publish',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -5215,7 +3877,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.PublishDatasetResponse:
-        dataset_id = OpenApiUtilClient.get_encode_param(dataset_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -5223,7 +3884,7 @@ class Client(OpenApiClient):
             action='PublishDataset',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/datasets/{dataset_id}/publish',
+            pathname=f'/api/v1/datasets/{OpenApiUtilClient.get_encode_param(dataset_id)}/publish',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -5241,7 +3902,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.PublishDatasetResponse:
-        dataset_id = OpenApiUtilClient.get_encode_param(dataset_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -5249,7 +3909,7 @@ class Client(OpenApiClient):
             action='PublishDataset',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/datasets/{dataset_id}/publish',
+            pathname=f'/api/v1/datasets/{OpenApiUtilClient.get_encode_param(dataset_id)}/publish',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -5283,7 +3943,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.PublishImageResponse:
-        image_id = OpenApiUtilClient.get_encode_param(image_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -5291,7 +3950,7 @@ class Client(OpenApiClient):
             action='PublishImage',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/images/{image_id}/publish',
+            pathname=f'/api/v1/images/{OpenApiUtilClient.get_encode_param(image_id)}/publish',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -5309,7 +3968,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.PublishImageResponse:
-        image_id = OpenApiUtilClient.get_encode_param(image_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -5317,7 +3975,7 @@ class Client(OpenApiClient):
             action='PublishImage',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/images/{image_id}/publish',
+            pathname=f'/api/v1/images/{OpenApiUtilClient.get_encode_param(image_id)}/publish',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -5351,7 +4009,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.RemoveImageResponse:
-        image_id = OpenApiUtilClient.get_encode_param(image_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -5359,7 +4016,7 @@ class Client(OpenApiClient):
             action='RemoveImage',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/images/{image_id}',
+            pathname=f'/api/v1/images/{OpenApiUtilClient.get_encode_param(image_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -5377,7 +4034,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.RemoveImageResponse:
-        image_id = OpenApiUtilClient.get_encode_param(image_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -5385,7 +4041,7 @@ class Client(OpenApiClient):
             action='RemoveImage',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/images/{image_id}',
+            pathname=f'/api/v1/images/{OpenApiUtilClient.get_encode_param(image_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -5400,30 +4056,28 @@ class Client(OpenApiClient):
     def remove_image_labels(
         self,
         image_id: str,
-        label_key: str,
+        label_keys: str,
     ) -> aiwork_space_20210204_models.RemoveImageLabelsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.remove_image_labels_with_options(image_id, label_key, headers, runtime)
+        return self.remove_image_labels_with_options(image_id, label_keys, headers, runtime)
 
     async def remove_image_labels_async(
         self,
         image_id: str,
-        label_key: str,
+        label_keys: str,
     ) -> aiwork_space_20210204_models.RemoveImageLabelsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.remove_image_labels_with_options_async(image_id, label_key, headers, runtime)
+        return await self.remove_image_labels_with_options_async(image_id, label_keys, headers, runtime)
 
     def remove_image_labels_with_options(
         self,
         image_id: str,
-        label_key: str,
+        label_keys: str,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.RemoveImageLabelsResponse:
-        image_id = OpenApiUtilClient.get_encode_param(image_id)
-        label_key = OpenApiUtilClient.get_encode_param(label_key)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -5431,7 +4085,7 @@ class Client(OpenApiClient):
             action='RemoveImageLabels',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/images/{image_id}/labels/{label_key}',
+            pathname=f'/api/v1/images/{OpenApiUtilClient.get_encode_param(image_id)}/labels/{OpenApiUtilClient.get_encode_param(label_keys)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -5446,12 +4100,10 @@ class Client(OpenApiClient):
     async def remove_image_labels_with_options_async(
         self,
         image_id: str,
-        label_key: str,
+        label_keys: str,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.RemoveImageLabelsResponse:
-        image_id = OpenApiUtilClient.get_encode_param(image_id)
-        label_key = OpenApiUtilClient.get_encode_param(label_key)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -5459,7 +4111,7 @@ class Client(OpenApiClient):
             action='RemoveImageLabels',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/images/{image_id}/labels/{label_key}',
+            pathname=f'/api/v1/images/{OpenApiUtilClient.get_encode_param(image_id)}/labels/{OpenApiUtilClient.get_encode_param(label_keys)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -5499,9 +4151,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.RemoveMemberRoleResponse:
-        workspace_id = OpenApiUtilClient.get_encode_param(workspace_id)
-        member_id = OpenApiUtilClient.get_encode_param(member_id)
-        role_name = OpenApiUtilClient.get_encode_param(role_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -5509,7 +4158,7 @@ class Client(OpenApiClient):
             action='RemoveMemberRole',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/workspaces/{workspace_id}/members/{member_id}/roles/{role_name}',
+            pathname=f'/api/v1/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}/members/{OpenApiUtilClient.get_encode_param(member_id)}/roles/{OpenApiUtilClient.get_encode_param(role_name)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -5529,9 +4178,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.RemoveMemberRoleResponse:
-        workspace_id = OpenApiUtilClient.get_encode_param(workspace_id)
-        member_id = OpenApiUtilClient.get_encode_param(member_id)
-        role_name = OpenApiUtilClient.get_encode_param(role_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -5539,7 +4185,7 @@ class Client(OpenApiClient):
             action='RemoveMemberRole',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/workspaces/{workspace_id}/members/{member_id}/roles/{role_name}',
+            pathname=f'/api/v1/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}/members/{OpenApiUtilClient.get_encode_param(member_id)}/roles/{OpenApiUtilClient.get_encode_param(role_name)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -5548,162 +4194,6 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             aiwork_space_20210204_models.RemoveMemberRoleResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def remove_workspace_quota(
-        self,
-        workspace_id: str,
-        quota_id: str,
-    ) -> aiwork_space_20210204_models.RemoveWorkspaceQuotaResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.remove_workspace_quota_with_options(workspace_id, quota_id, headers, runtime)
-
-    async def remove_workspace_quota_async(
-        self,
-        workspace_id: str,
-        quota_id: str,
-    ) -> aiwork_space_20210204_models.RemoveWorkspaceQuotaResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.remove_workspace_quota_with_options_async(workspace_id, quota_id, headers, runtime)
-
-    def remove_workspace_quota_with_options(
-        self,
-        workspace_id: str,
-        quota_id: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> aiwork_space_20210204_models.RemoveWorkspaceQuotaResponse:
-        workspace_id = OpenApiUtilClient.get_encode_param(workspace_id)
-        quota_id = OpenApiUtilClient.get_encode_param(quota_id)
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='RemoveWorkspaceQuota',
-            version='2021-02-04',
-            protocol='HTTPS',
-            pathname=f'/api/v1/workspaces/{workspace_id}/quotas/{quota_id}',
-            method='DELETE',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.RemoveWorkspaceQuotaResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def remove_workspace_quota_with_options_async(
-        self,
-        workspace_id: str,
-        quota_id: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> aiwork_space_20210204_models.RemoveWorkspaceQuotaResponse:
-        workspace_id = OpenApiUtilClient.get_encode_param(workspace_id)
-        quota_id = OpenApiUtilClient.get_encode_param(quota_id)
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='RemoveWorkspaceQuota',
-            version='2021-02-04',
-            protocol='HTTPS',
-            pathname=f'/api/v1/workspaces/{workspace_id}/quotas/{quota_id}',
-            method='DELETE',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.RemoveWorkspaceQuotaResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def update_configs(
-        self,
-        workspace_id: str,
-        request: aiwork_space_20210204_models.UpdateConfigsRequest,
-    ) -> aiwork_space_20210204_models.UpdateConfigsResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.update_configs_with_options(workspace_id, request, headers, runtime)
-
-    async def update_configs_async(
-        self,
-        workspace_id: str,
-        request: aiwork_space_20210204_models.UpdateConfigsRequest,
-    ) -> aiwork_space_20210204_models.UpdateConfigsResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.update_configs_with_options_async(workspace_id, request, headers, runtime)
-
-    def update_configs_with_options(
-        self,
-        workspace_id: str,
-        request: aiwork_space_20210204_models.UpdateConfigsRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> aiwork_space_20210204_models.UpdateConfigsResponse:
-        UtilClient.validate_model(request)
-        workspace_id = OpenApiUtilClient.get_encode_param(workspace_id)
-        body = {}
-        if not UtilClient.is_unset(request.configs):
-            body['Configs'] = request.configs
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='UpdateConfigs',
-            version='2021-02-04',
-            protocol='HTTPS',
-            pathname=f'/api/v1/workspaces/{workspace_id}/configs',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.UpdateConfigsResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def update_configs_with_options_async(
-        self,
-        workspace_id: str,
-        request: aiwork_space_20210204_models.UpdateConfigsRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> aiwork_space_20210204_models.UpdateConfigsResponse:
-        UtilClient.validate_model(request)
-        workspace_id = OpenApiUtilClient.get_encode_param(workspace_id)
-        body = {}
-        if not UtilClient.is_unset(request.configs):
-            body['Configs'] = request.configs
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='UpdateConfigs',
-            version='2021-02-04',
-            protocol='HTTPS',
-            pathname=f'/api/v1/workspaces/{workspace_id}/configs',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            aiwork_space_20210204_models.UpdateConfigsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
@@ -5733,7 +4223,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.UpdateDatasetResponse:
         UtilClient.validate_model(request)
-        dataset_id = OpenApiUtilClient.get_encode_param(dataset_id)
         body = {}
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
@@ -5749,7 +4238,7 @@ class Client(OpenApiClient):
             action='UpdateDataset',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/datasets/{dataset_id}',
+            pathname=f'/api/v1/datasets/{OpenApiUtilClient.get_encode_param(dataset_id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -5769,7 +4258,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.UpdateDatasetResponse:
         UtilClient.validate_model(request)
-        dataset_id = OpenApiUtilClient.get_encode_param(dataset_id)
         body = {}
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
@@ -5785,7 +4273,7 @@ class Client(OpenApiClient):
             action='UpdateDataset',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/datasets/{dataset_id}',
+            pathname=f'/api/v1/datasets/{OpenApiUtilClient.get_encode_param(dataset_id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -5821,8 +4309,8 @@ class Client(OpenApiClient):
     ) -> aiwork_space_20210204_models.UpdateDefaultWorkspaceResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.default_workspace_id):
-            body['DefaultWorkspaceId'] = request.default_workspace_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -5851,8 +4339,8 @@ class Client(OpenApiClient):
     ) -> aiwork_space_20210204_models.UpdateDefaultWorkspaceResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.default_workspace_id):
-            body['DefaultWorkspaceId'] = request.default_workspace_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -5899,7 +4387,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.UpdateModelResponse:
         UtilClient.validate_model(request)
-        model_id = OpenApiUtilClient.get_encode_param(model_id)
         body = {}
         if not UtilClient.is_unset(request.accessibility):
             body['Accessibility'] = request.accessibility
@@ -5915,7 +4402,7 @@ class Client(OpenApiClient):
             action='UpdateModel',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/models/{model_id}',
+            pathname=f'/api/v1/models/{OpenApiUtilClient.get_encode_param(model_id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -5935,7 +4422,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.UpdateModelResponse:
         UtilClient.validate_model(request)
-        model_id = OpenApiUtilClient.get_encode_param(model_id)
         body = {}
         if not UtilClient.is_unset(request.accessibility):
             body['Accessibility'] = request.accessibility
@@ -5951,7 +4437,7 @@ class Client(OpenApiClient):
             action='UpdateModel',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/models/{model_id}',
+            pathname=f'/api/v1/models/{OpenApiUtilClient.get_encode_param(model_id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -5992,13 +4478,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.UpdateModelVersionResponse:
         UtilClient.validate_model(request)
-        model_id = OpenApiUtilClient.get_encode_param(model_id)
-        version_name = OpenApiUtilClient.get_encode_param(version_name)
         body = {}
         if not UtilClient.is_unset(request.inference_spec):
             body['InferenceSpec'] = request.inference_spec
         if not UtilClient.is_unset(request.options):
             body['Options'] = request.options
+        if not UtilClient.is_unset(request.source_id):
+            body['SourceId'] = request.source_id
+        if not UtilClient.is_unset(request.source_type):
+            body['SourceType'] = request.source_type
         if not UtilClient.is_unset(request.version_description):
             body['VersionDescription'] = request.version_description
         req = open_api_models.OpenApiRequest(
@@ -6009,7 +4497,7 @@ class Client(OpenApiClient):
             action='UpdateModelVersion',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/models/{model_id}/versions/{version_name}',
+            pathname=f'/api/v1/models/{OpenApiUtilClient.get_encode_param(model_id)}/versions/{OpenApiUtilClient.get_encode_param(version_name)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -6030,13 +4518,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.UpdateModelVersionResponse:
         UtilClient.validate_model(request)
-        model_id = OpenApiUtilClient.get_encode_param(model_id)
-        version_name = OpenApiUtilClient.get_encode_param(version_name)
         body = {}
         if not UtilClient.is_unset(request.inference_spec):
             body['InferenceSpec'] = request.inference_spec
         if not UtilClient.is_unset(request.options):
             body['Options'] = request.options
+        if not UtilClient.is_unset(request.source_id):
+            body['SourceId'] = request.source_id
+        if not UtilClient.is_unset(request.source_type):
+            body['SourceType'] = request.source_type
         if not UtilClient.is_unset(request.version_description):
             body['VersionDescription'] = request.version_description
         req = open_api_models.OpenApiRequest(
@@ -6047,7 +4537,7 @@ class Client(OpenApiClient):
             action='UpdateModelVersion',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/models/{model_id}/versions/{version_name}',
+            pathname=f'/api/v1/models/{OpenApiUtilClient.get_encode_param(model_id)}/versions/{OpenApiUtilClient.get_encode_param(version_name)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -6085,7 +4575,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.UpdateWorkspaceResponse:
         UtilClient.validate_model(request)
-        workspace_id = OpenApiUtilClient.get_encode_param(workspace_id)
         body = {}
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
@@ -6099,7 +4588,7 @@ class Client(OpenApiClient):
             action='UpdateWorkspace',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/workspaces/{workspace_id}',
+            pathname=f'/api/v1/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -6119,7 +4608,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.UpdateWorkspaceResponse:
         UtilClient.validate_model(request)
-        workspace_id = OpenApiUtilClient.get_encode_param(workspace_id)
         body = {}
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
@@ -6133,7 +4621,7 @@ class Client(OpenApiClient):
             action='UpdateWorkspace',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/workspaces/{workspace_id}',
+            pathname=f'/api/v1/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -6148,34 +4636,32 @@ class Client(OpenApiClient):
     def update_workspace_resource(
         self,
         workspace_id: str,
-        resource_group_name: str,
         request: aiwork_space_20210204_models.UpdateWorkspaceResourceRequest,
     ) -> aiwork_space_20210204_models.UpdateWorkspaceResourceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_workspace_resource_with_options(workspace_id, resource_group_name, request, headers, runtime)
+        return self.update_workspace_resource_with_options(workspace_id, request, headers, runtime)
 
     async def update_workspace_resource_async(
         self,
         workspace_id: str,
-        resource_group_name: str,
         request: aiwork_space_20210204_models.UpdateWorkspaceResourceRequest,
     ) -> aiwork_space_20210204_models.UpdateWorkspaceResourceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_workspace_resource_with_options_async(workspace_id, resource_group_name, request, headers, runtime)
+        return await self.update_workspace_resource_with_options_async(workspace_id, request, headers, runtime)
 
     def update_workspace_resource_with_options(
         self,
         workspace_id: str,
-        resource_group_name: str,
         request: aiwork_space_20210204_models.UpdateWorkspaceResourceRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.UpdateWorkspaceResourceResponse:
         UtilClient.validate_model(request)
-        workspace_id = OpenApiUtilClient.get_encode_param(workspace_id)
-        resource_group_name = OpenApiUtilClient.get_encode_param(resource_group_name)
+        query = {}
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
         body = {}
         if not UtilClient.is_unset(request.is_default):
             body['IsDefault'] = request.is_default
@@ -6183,13 +4669,14 @@ class Client(OpenApiClient):
             body['ProductType'] = request.product_type
         req = open_api_models.OpenApiRequest(
             headers=headers,
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateWorkspaceResource',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/workspaces/{workspace_id}/resources/{resource_group_name}',
+            pathname=f'/api/v1/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}/resources',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -6204,14 +4691,14 @@ class Client(OpenApiClient):
     async def update_workspace_resource_with_options_async(
         self,
         workspace_id: str,
-        resource_group_name: str,
         request: aiwork_space_20210204_models.UpdateWorkspaceResourceRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> aiwork_space_20210204_models.UpdateWorkspaceResourceResponse:
         UtilClient.validate_model(request)
-        workspace_id = OpenApiUtilClient.get_encode_param(workspace_id)
-        resource_group_name = OpenApiUtilClient.get_encode_param(resource_group_name)
+        query = {}
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
         body = {}
         if not UtilClient.is_unset(request.is_default):
             body['IsDefault'] = request.is_default
@@ -6219,13 +4706,14 @@ class Client(OpenApiClient):
             body['ProductType'] = request.product_type
         req = open_api_models.OpenApiRequest(
             headers=headers,
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateWorkspaceResource',
             version='2021-02-04',
             protocol='HTTPS',
-            pathname=f'/api/v1/workspaces/{workspace_id}/resources/{resource_group_name}',
+            pathname=f'/api/v1/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}/resources',
             method='PUT',
             auth_type='AK',
             style='ROA',

@@ -22,33 +22,19 @@ class CodeSourceItem(TeaModel):
         user_id: str = None,
         workspace_id: str = None,
     ):
-        # 表示代码是否是工作空间下公开的,可选值PRIVATE,PUBLIC
         self.accessibility = accessibility
-        # 代码分支
         self.code_branch = code_branch
-        # 代码Commit ID
         self.code_commit = code_commit
-        # 代码仓库地址
         self.code_repo = code_repo
-        # 访问代码仓库所用的AccessToken
         self.code_repo_access_token = code_repo_access_token
-        # 访问代码仓库的用户名
         self.code_repo_user_name = code_repo_user_name
-        # 代码源ID
         self.code_source_id = code_source_id
-        # 代码源详细描述
         self.description = description
-        # 代码源配置的名字
         self.display_name = display_name
-        # 创建时间
         self.gmt_create_time = gmt_create_time
-        # 修改时间
         self.gmt_modify_time = gmt_modify_time
-        # 代码Mount路径
         self.mount_path = mount_path
-        # 代码源配置的用户ID
         self.user_id = user_id
-        # 工作空间ID
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -123,15 +109,13 @@ class CodeSourceItem(TeaModel):
         return self
 
 
-class DatasetLabel(TeaModel):
+class Label(TeaModel):
     def __init__(
         self,
         key: str = None,
         value: str = None,
     ):
-        # Key
         self.key = key
-        # Value
         self.value = value
 
     def validate(self):
@@ -168,7 +152,7 @@ class Dataset(TeaModel):
         description: str = None,
         gmt_create_time: str = None,
         gmt_modified_time: str = None,
-        labels: List[DatasetLabel] = None,
+        labels: List[Label] = None,
         name: str = None,
         options: str = None,
         owner_id: str = None,
@@ -179,39 +163,22 @@ class Dataset(TeaModel):
         user_id: str = None,
         workspace_id: str = None,
     ):
-        # Accessibility
         self.accessibility = accessibility
-        # DataSourceType
         self.data_source_type = data_source_type
-        # DataType
         self.data_type = data_type
-        # Dataset Id
         self.dataset_id = dataset_id
-        # Description
         self.description = description
-        # GmtCreateTime
         self.gmt_create_time = gmt_create_time
-        # GmtModifiedTime
         self.gmt_modified_time = gmt_modified_time
-        # Labels
         self.labels = labels
-        # Name
         self.name = name
-        # Options
         self.options = options
-        # Owner Id
         self.owner_id = owner_id
-        # Property
         self.property = property
-        # SourceId
         self.source_id = source_id
-        # SourceType
         self.source_type = source_type
-        # Uri
         self.uri = uri
-        # User Id
         self.user_id = user_id
-        # WorkspaceId
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -283,7 +250,7 @@ class Dataset(TeaModel):
         self.labels = []
         if m.get('Labels') is not None:
             for k in m.get('Labels'):
-                temp_model = DatasetLabel()
+                temp_model = Label()
                 self.labels.append(temp_model.from_map(k))
         if m.get('Name') is not None:
             self.name = m.get('Name')
@@ -306,15 +273,13 @@ class Dataset(TeaModel):
         return self
 
 
-class Label(TeaModel):
+class DatasetLabel(TeaModel):
     def __init__(
         self,
         key: str = None,
         value: str = None,
     ):
-        # 标签的key
         self.key = key
-        # 标签的value
         self.value = value
 
     def validate(self):
@@ -352,34 +317,26 @@ class ModelVersion(TeaModel):
         labels: List[Label] = None,
         options: str = None,
         owner_id: str = None,
+        source_id: str = None,
+        source_type: str = None,
         uri: str = None,
         user_id: str = None,
         version_description: str = None,
         version_name: str = None,
     ):
-        # 模型格式
         self.format_type = format_type
-        # 模型框架
         self.framework_type = framework_type
-        # 创建时间
         self.gmt_create_time = gmt_create_time
-        # 最后更新时间
         self.gmt_modified_time = gmt_modified_time
-        # 下游配置
         self.inference_spec = inference_spec
-        # 标签列表
         self.labels = labels
-        # 扩展字段
         self.options = options
-        # 云账号ID
         self.owner_id = owner_id
-        # 版本的URI
+        self.source_id = source_id
+        self.source_type = source_type
         self.uri = uri
-        # 创建模型版本的用户ID
         self.user_id = user_id
-        # 版本的描述
         self.version_description = version_description
-        # 版本名，模型下唯一
         self.version_name = version_name
 
     def validate(self):
@@ -412,6 +369,10 @@ class ModelVersion(TeaModel):
             result['Options'] = self.options
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+        if self.source_id is not None:
+            result['SourceId'] = self.source_id
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
         if self.uri is not None:
             result['Uri'] = self.uri
         if self.user_id is not None:
@@ -443,6 +404,10 @@ class ModelVersion(TeaModel):
             self.options = m.get('Options')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+        if m.get('SourceId') is not None:
+            self.source_id = m.get('SourceId')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
         if m.get('Uri') is not None:
             self.uri = m.get('Uri')
         if m.get('UserId') is not None:
@@ -469,27 +434,16 @@ class Model(TeaModel):
         user_id: str = None,
         workspace_id: str = None,
     ):
-        # 可见性
         self.accessibility = accessibility
-        # 创建时间
         self.gmt_create_time = gmt_create_time
-        # 最后更新时间
         self.gmt_modified_time = gmt_modified_time
-        # 标签列表
         self.labels = labels
-        # 最新版本
         self.latest_version = latest_version
-        # 模型的描述
         self.model_description = model_description
-        # 模型ID
         self.model_id = model_id
-        # 模型名字
         self.model_name = model_name
-        # 云账号ID
         self.owner_id = owner_id
-        # 创建模型的用户ID
         self.user_id = user_id
-        # 工作空间ID
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -569,9 +523,7 @@ class AddImageRequestLabels(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # Key
         self.key = key
-        # Value
         self.value = value
 
     def validate(self):
@@ -608,17 +560,11 @@ class AddImageRequest(TeaModel):
         name: str = None,
         workspace_id: str = None,
     ):
-        # 可见性 Public 公有 Private 私有
         self.accessibility = accessibility
-        # 镜像描述
         self.description = description
-        # 镜像地址
         self.image_uri = image_uri
-        # 镜像标签，是个数组
         self.labels = labels
-        # 镜像名称
         self.name = name
-        # 工作空间id
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -675,9 +621,7 @@ class AddImageResponseBody(TeaModel):
         image_id: str = None,
         request_id: str = None,
     ):
-        # 镜像 id
         self.image_id = image_id
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -692,15 +636,15 @@ class AddImageResponseBody(TeaModel):
         if self.image_id is not None:
             result['ImageId'] = self.image_id
         if self.request_id is not None:
-            result['requestId'] = self.request_id
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('ImageId') is not None:
             self.image_id = m.get('ImageId')
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -754,9 +698,7 @@ class AddImageLabelsRequestLabels(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # Key
         self.key = key
-        # Value
         self.value = value
 
     def validate(self):
@@ -788,7 +730,6 @@ class AddImageLabelsRequest(TeaModel):
         self,
         labels: List[AddImageLabelsRequestLabels] = None,
     ):
-        # 标签
         self.labels = labels
 
     def validate(self):
@@ -824,7 +765,6 @@ class AddImageLabelsResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -837,13 +777,13 @@ class AddImageLabelsResponseBody(TeaModel):
 
         result = dict()
         if self.request_id is not None:
-            result['requestId'] = self.request_id
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -896,7 +836,6 @@ class AddMemberRoleResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # 请求 id
         self.request_id = request_id
 
     def validate(self):
@@ -963,120 +902,6 @@ class AddMemberRoleResponse(TeaModel):
         return self
 
 
-class AddWorkspaceQuotaRequest(TeaModel):
-    def __init__(
-        self,
-        mode: str = None,
-        product_code: str = None,
-        quota_type: str = None,
-    ):
-        # 模式  isolate 预付费  share 后付费  develop 开发模式
-        self.mode = mode
-        # 产品代码
-        self.product_code = product_code
-        # 产品类型，  支持PAI，MaxCompute，
-        self.quota_type = quota_type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.mode is not None:
-            result['Mode'] = self.mode
-        if self.product_code is not None:
-            result['ProductCode'] = self.product_code
-        if self.quota_type is not None:
-            result['QuotaType'] = self.quota_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Mode') is not None:
-            self.mode = m.get('Mode')
-        if m.get('ProductCode') is not None:
-            self.product_code = m.get('ProductCode')
-        if m.get('QuotaType') is not None:
-            self.quota_type = m.get('QuotaType')
-        return self
-
-
-class AddWorkspaceQuotaResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-    ):
-        # 请求 id
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class AddWorkspaceQuotaResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: AddWorkspaceQuotaResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = AddWorkspaceQuotaResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class CreateCodeSourceRequest(TeaModel):
     def __init__(
         self,
@@ -1090,23 +915,14 @@ class CreateCodeSourceRequest(TeaModel):
         mount_path: str = None,
         workspace_id: str = None,
     ):
-        # 代码是否是本工作空间内公开的，可选值PRIVATE、PUBLIC
         self.accessibility = accessibility
-        # 代码分支
         self.code_branch = code_branch
-        # 代码仓库地址
         self.code_repo = code_repo
-        # 代码仓库访问Token
         self.code_repo_access_token = code_repo_access_token
-        # 代码仓库的用户名
         self.code_repo_user_name = code_repo_user_name
-        # 代码源详细描述
         self.description = description
-        # 代码源配置名称
         self.display_name = display_name
-        # 代码本地挂载目录，默认挂载到/root/code/下
         self.mount_path = mount_path
-        # 工作空间ID
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -1167,9 +983,7 @@ class CreateCodeSourceResponseBody(TeaModel):
         code_source_id: str = None,
         request_id: str = None,
     ):
-        # 创建的代码源配置的ID
         self.code_source_id = code_source_id
-        # 请求ID
         self.request_id = request_id
 
     def validate(self):
@@ -1247,7 +1061,7 @@ class CreateDatasetRequest(TeaModel):
         data_source_type: str = None,
         data_type: str = None,
         description: str = None,
-        labels: List[DatasetLabel] = None,
+        labels: List[Label] = None,
         name: str = None,
         options: str = None,
         property: str = None,
@@ -1256,29 +1070,17 @@ class CreateDatasetRequest(TeaModel):
         uri: str = None,
         workspace_id: str = None,
     ):
-        # Accessibility
         self.accessibility = accessibility
-        # DataSourceType
         self.data_source_type = data_source_type
-        # DataType
         self.data_type = data_type
-        # Description
         self.description = description
-        # Labels
         self.labels = labels
-        # Name
         self.name = name
-        # Options
         self.options = options
-        # Property
         self.property = property
-        # SourceId
         self.source_id = source_id
-        # SourceType
         self.source_type = source_type
-        # Uri
         self.uri = uri
-        # WorkspaceId
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -1334,7 +1136,7 @@ class CreateDatasetRequest(TeaModel):
         self.labels = []
         if m.get('Labels') is not None:
             for k in m.get('Labels'):
-                temp_model = DatasetLabel()
+                temp_model = Label()
                 self.labels.append(temp_model.from_map(k))
         if m.get('Name') is not None:
             self.name = m.get('Name')
@@ -1360,7 +1162,6 @@ class CreateDatasetResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.dataset_id = dataset_id
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -1434,7 +1235,7 @@ class CreateDatasetResponse(TeaModel):
 class CreateDatasetLabelsRequest(TeaModel):
     def __init__(
         self,
-        labels: List[DatasetLabel] = None,
+        labels: List[Label] = None,
     ):
         self.labels = labels
 
@@ -1461,7 +1262,7 @@ class CreateDatasetLabelsRequest(TeaModel):
         self.labels = []
         if m.get('Labels') is not None:
             for k in m.get('Labels'):
-                temp_model = DatasetLabel()
+                temp_model = Label()
                 self.labels.append(temp_model.from_map(k))
         return self
 
@@ -1471,7 +1272,6 @@ class CreateDatasetLabelsResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -1538,172 +1338,13 @@ class CreateDatasetLabelsResponse(TeaModel):
         return self
 
 
-class CreateDefaultWorkspaceRequestResources(TeaModel):
-    def __init__(
-        self,
-        product_type: str = None,
-    ):
-        # 产品类型
-        self.product_type = product_type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.product_type is not None:
-            result['ProductType'] = self.product_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ProductType') is not None:
-            self.product_type = m.get('ProductType')
-        return self
-
-
-class CreateDefaultWorkspaceRequest(TeaModel):
-    def __init__(
-        self,
-        description: str = None,
-        env_types: List[str] = None,
-        resources: List[CreateDefaultWorkspaceRequestResources] = None,
-    ):
-        # 描述，最多80个字符
-        self.description = description
-        # 环境列表
-        self.env_types = env_types
-        # 资源
-        self.resources = resources
-
-    def validate(self):
-        if self.resources:
-            for k in self.resources:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.description is not None:
-            result['Description'] = self.description
-        if self.env_types is not None:
-            result['EnvTypes'] = self.env_types
-        result['Resources'] = []
-        if self.resources is not None:
-            for k in self.resources:
-                result['Resources'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Description') is not None:
-            self.description = m.get('Description')
-        if m.get('EnvTypes') is not None:
-            self.env_types = m.get('EnvTypes')
-        self.resources = []
-        if m.get('Resources') is not None:
-            for k in m.get('Resources'):
-                temp_model = CreateDefaultWorkspaceRequestResources()
-                self.resources.append(temp_model.from_map(k))
-        return self
-
-
-class CreateDefaultWorkspaceResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        workspace_id: str = None,
-    ):
-        # 请求 id
-        self.request_id = request_id
-        # 工作空间 id
-        self.workspace_id = workspace_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.workspace_id is not None:
-            result['WorkspaceId'] = self.workspace_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('WorkspaceId') is not None:
-            self.workspace_id = m.get('WorkspaceId')
-        return self
-
-
-class CreateDefaultWorkspaceResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: CreateDefaultWorkspaceResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = CreateDefaultWorkspaceResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class CreateMemberRequestMembers(TeaModel):
     def __init__(
         self,
         roles: List[str] = None,
         user_id: str = None,
     ):
-        # 角色列表
         self.roles = roles
-        # 用户 id
         self.user_id = user_id
 
     def validate(self):
@@ -1735,7 +1376,6 @@ class CreateMemberRequest(TeaModel):
         self,
         members: List[CreateMemberRequestMembers] = None,
     ):
-        # 用户列表
         self.members = members
 
     def validate(self):
@@ -1774,13 +1414,9 @@ class CreateMemberResponseBodyMembers(TeaModel):
         roles: List[str] = None,
         user_id: str = None,
     ):
-        # 成员显示名
         self.display_name = display_name
-        # 成员 id
         self.member_id = member_id
-        # 角色列表
         self.roles = roles
-        # 用户 id
         self.user_id = user_id
 
     def validate(self):
@@ -1821,9 +1457,7 @@ class CreateMemberResponseBody(TeaModel):
         members: List[CreateMemberResponseBodyMembers] = None,
         request_id: str = None,
     ):
-        # 成员列表
         self.members = members
-        # 请求 id
         self.request_id = request_id
 
     def validate(self):
@@ -1911,15 +1545,10 @@ class CreateModelRequest(TeaModel):
         model_name: str = None,
         workspace_id: str = None,
     ):
-        # Accessibility
         self.accessibility = accessibility
-        # Labels
         self.labels = labels
-        # ModelDescription
         self.model_description = model_description
-        # ModelName
         self.model_name = model_name
-        # WorkspaceId
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -1973,7 +1602,6 @@ class CreateModelResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.model_id = model_id
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -2084,7 +1712,6 @@ class CreateModelLabelsResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -2159,25 +1786,21 @@ class CreateModelVersionRequest(TeaModel):
         inference_spec: Dict[str, Any] = None,
         labels: List[Label] = None,
         options: str = None,
+        source_id: str = None,
+        source_type: str = None,
         uri: str = None,
         version_description: str = None,
         version_name: str = None,
     ):
-        # 模型类型
         self.format_type = format_type
-        # 模型框架
         self.framework_type = framework_type
-        # 描述如何应用于下游的推理应用
         self.inference_spec = inference_spec
-        # 标签
         self.labels = labels
-        # 扩展字段
         self.options = options
-        # 版本Uri
+        self.source_id = source_id
+        self.source_type = source_type
         self.uri = uri
-        # 版本描述
         self.version_description = version_description
-        # 模型版本，模型下唯一。
         self.version_name = version_name
 
     def validate(self):
@@ -2204,6 +1827,10 @@ class CreateModelVersionRequest(TeaModel):
                 result['Labels'].append(k.to_map() if k else None)
         if self.options is not None:
             result['Options'] = self.options
+        if self.source_id is not None:
+            result['SourceId'] = self.source_id
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
         if self.uri is not None:
             result['Uri'] = self.uri
         if self.version_description is not None:
@@ -2227,6 +1854,10 @@ class CreateModelVersionRequest(TeaModel):
                 self.labels.append(temp_model.from_map(k))
         if m.get('Options') is not None:
             self.options = m.get('Options')
+        if m.get('SourceId') is not None:
+            self.source_id = m.get('SourceId')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
         if m.get('Uri') is not None:
             self.uri = m.get('Uri')
         if m.get('VersionDescription') is not None:
@@ -2242,9 +1873,7 @@ class CreateModelVersionResponseBody(TeaModel):
         request_id: str = None,
         version_name: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
-        # 模型名称
         self.version_name = version_name
 
     def validate(self):
@@ -2320,7 +1949,6 @@ class CreateModelVersionLabelsRequest(TeaModel):
         self,
         labels: List[Label] = None,
     ):
-        # 版本标签
         self.labels = labels
 
     def validate(self):
@@ -2356,7 +1984,6 @@ class CreateModelVersionLabelsResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -2423,335 +2050,6 @@ class CreateModelVersionLabelsResponse(TeaModel):
         return self
 
 
-class CreateProductOrdersRequestProductsInstanceProperties(TeaModel):
-    def __init__(
-        self,
-        code: str = None,
-        name: str = None,
-        value: str = None,
-    ):
-        # 代号
-        self.code = code
-        # 名
-        self.name = name
-        # 值
-        self.value = value
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.value is not None:
-            result['Value'] = self.value
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('Value') is not None:
-            self.value = m.get('Value')
-        return self
-
-
-class CreateProductOrdersRequestProducts(TeaModel):
-    def __init__(
-        self,
-        auto_renew: bool = None,
-        charge_type: str = None,
-        duration: int = None,
-        instance_properties: List[CreateProductOrdersRequestProductsInstanceProperties] = None,
-        order_type: str = None,
-        pricing_cycle: str = None,
-        product_code: str = None,
-    ):
-        # 是否自动续费
-        self.auto_renew = auto_renew
-        # 付费类型
-        self.charge_type = charge_type
-        # 购买时长,与pricingCycle配合使用
-        self.duration = duration
-        # 实例属性信息
-        self.instance_properties = instance_properties
-        # 订单类型
-        self.order_type = order_type
-        # 计价单位
-        self.pricing_cycle = pricing_cycle
-        # 产品code
-        self.product_code = product_code
-
-    def validate(self):
-        if self.instance_properties:
-            for k in self.instance_properties:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.auto_renew is not None:
-            result['AutoRenew'] = self.auto_renew
-        if self.charge_type is not None:
-            result['ChargeType'] = self.charge_type
-        if self.duration is not None:
-            result['Duration'] = self.duration
-        result['InstanceProperties'] = []
-        if self.instance_properties is not None:
-            for k in self.instance_properties:
-                result['InstanceProperties'].append(k.to_map() if k else None)
-        if self.order_type is not None:
-            result['OrderType'] = self.order_type
-        if self.pricing_cycle is not None:
-            result['PricingCycle'] = self.pricing_cycle
-        if self.product_code is not None:
-            result['ProductCode'] = self.product_code
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AutoRenew') is not None:
-            self.auto_renew = m.get('AutoRenew')
-        if m.get('ChargeType') is not None:
-            self.charge_type = m.get('ChargeType')
-        if m.get('Duration') is not None:
-            self.duration = m.get('Duration')
-        self.instance_properties = []
-        if m.get('InstanceProperties') is not None:
-            for k in m.get('InstanceProperties'):
-                temp_model = CreateProductOrdersRequestProductsInstanceProperties()
-                self.instance_properties.append(temp_model.from_map(k))
-        if m.get('OrderType') is not None:
-            self.order_type = m.get('OrderType')
-        if m.get('PricingCycle') is not None:
-            self.pricing_cycle = m.get('PricingCycle')
-        if m.get('ProductCode') is not None:
-            self.product_code = m.get('ProductCode')
-        return self
-
-
-class CreateProductOrdersRequest(TeaModel):
-    def __init__(
-        self,
-        auto_pay: bool = None,
-        products: CreateProductOrdersRequestProducts = None,
-    ):
-        # 是否自动购买所有产品
-        self.auto_pay = auto_pay
-        # 逗号分隔的产品
-        self.products = products
-
-    def validate(self):
-        if self.products:
-            self.products.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.auto_pay is not None:
-            result['AutoPay'] = self.auto_pay
-        if self.products is not None:
-            result['Products'] = self.products.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AutoPay') is not None:
-            self.auto_pay = m.get('AutoPay')
-        if m.get('Products') is not None:
-            temp_model = CreateProductOrdersRequestProducts()
-            self.products = temp_model.from_map(m['Products'])
-        return self
-
-
-class CreateProductOrdersResponseBody(TeaModel):
-    def __init__(
-        self,
-        buy_product_request_id: str = None,
-        message: str = None,
-        order_id: str = None,
-        request_id: str = None,
-    ):
-        # 产品购买请求id
-        self.buy_product_request_id = buy_product_request_id
-        # 消息
-        self.message = message
-        # 订单id
-        self.order_id = order_id
-        # Id of the request
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.buy_product_request_id is not None:
-            result['BuyProductRequestId'] = self.buy_product_request_id
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.order_id is not None:
-            result['OrderId'] = self.order_id
-        if self.request_id is not None:
-            result['requestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('BuyProductRequestId') is not None:
-            self.buy_product_request_id = m.get('BuyProductRequestId')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('OrderId') is not None:
-            self.order_id = m.get('OrderId')
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
-        return self
-
-
-class CreateProductOrdersResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: CreateProductOrdersResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = CreateProductOrdersResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class CreateUserResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        user_id: str = None,
-    ):
-        # 请求 id
-        self.request_id = request_id
-        # 用户 id
-        self.user_id = user_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.user_id is not None:
-            result['UserId'] = self.user_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('UserId') is not None:
-            self.user_id = m.get('UserId')
-        return self
-
-
-class CreateUserResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: CreateUserResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = CreateUserResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class CreateWorkspaceRequest(TeaModel):
     def __init__(
         self,
@@ -2760,13 +2058,9 @@ class CreateWorkspaceRequest(TeaModel):
         env_types: List[str] = None,
         workspace_name: str = None,
     ):
-        # 描述，最多80个字符
         self.description = description
-        # 显示名称
         self.display_name = display_name
-        # 环境列表
         self.env_types = env_types
-        # 名字 3-23 个字符, 需要字母开头，只能包含字母下划线和数字，region内唯一
         self.workspace_name = workspace_name
 
     def validate(self):
@@ -2807,9 +2101,7 @@ class CreateWorkspaceResponseBody(TeaModel):
         request_id: str = None,
         workspace_id: str = None,
     ):
-        # 请求 id
         self.request_id = request_id
-        # 工作空间 id
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -2883,25 +2175,9 @@ class CreateWorkspaceResponse(TeaModel):
 class CreateWorkspaceResourceRequestResourcesQuotas(TeaModel):
     def __init__(
         self,
-        card_type: str = None,
-        mode: str = None,
-        name: str = None,
-        product_code: str = None,
-        quota_type: str = None,
-        spec: str = None,
+        id: str = None,
     ):
-        # 卡类型，支持cpu、gpu
-        self.card_type = card_type
-        # 模式 isolate 预付费 share 后付费 develop 开发模式
-        self.mode = mode
-        # 配额名称
-        self.name = name
-        # 商品 code
-        self.product_code = product_code
-        # 产品类型， 支持PAI，MaxCompute
-        self.quota_type = quota_type
-        # 规格描述
-        self.spec = spec
+        self.id = id
 
     def validate(self):
         pass
@@ -2912,34 +2188,14 @@ class CreateWorkspaceResourceRequestResourcesQuotas(TeaModel):
             return _map
 
         result = dict()
-        if self.card_type is not None:
-            result['CardType'] = self.card_type
-        if self.mode is not None:
-            result['Mode'] = self.mode
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.product_code is not None:
-            result['ProductCode'] = self.product_code
-        if self.quota_type is not None:
-            result['QuotaType'] = self.quota_type
-        if self.spec is not None:
-            result['Spec'] = self.spec
+        if self.id is not None:
+            result['Id'] = self.id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('CardType') is not None:
-            self.card_type = m.get('CardType')
-        if m.get('Mode') is not None:
-            self.mode = m.get('Mode')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('ProductCode') is not None:
-            self.product_code = m.get('ProductCode')
-        if m.get('QuotaType') is not None:
-            self.quota_type = m.get('QuotaType')
-        if m.get('Spec') is not None:
-            self.spec = m.get('Spec')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
         return self
 
 
@@ -2955,20 +2211,13 @@ class CreateWorkspaceResourceRequestResources(TeaModel):
         spec: str = None,
         workspace_id: str = None,
     ):
-        # 环境， 支持dev（开发）、prod（生产）
         self.env_type = env_type
-        # 分组名，主账户内唯一 一个 GroupName 下可能有一个 dev 资源和一个 prod 资源
         self.group_name = group_name
-        # 是否默认资源 每个类型都有一个默认的资源
         self.is_default = is_default
-        # 资源名 长度需要在3到27个字符 region内唯一
         self.name = name
-        # 产品类型， 支持PAI，MaxCompute
         self.product_type = product_type
         self.quotas = quotas
-        # 对于MaxCompute是个json，有如下key： Endpoint Project
         self.spec = spec
-        # 所属的工作空间 id
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -3030,9 +2279,10 @@ class CreateWorkspaceResourceRequestResources(TeaModel):
 class CreateWorkspaceResourceRequest(TeaModel):
     def __init__(
         self,
+        option: str = None,
         resources: List[CreateWorkspaceResourceRequestResources] = None,
     ):
-        # 资源列表
+        self.option = option
         self.resources = resources
 
     def validate(self):
@@ -3047,6 +2297,8 @@ class CreateWorkspaceResourceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.option is not None:
+            result['Option'] = self.option
         result['Resources'] = []
         if self.resources is not None:
             for k in self.resources:
@@ -3055,6 +2307,8 @@ class CreateWorkspaceResourceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Option') is not None:
+            self.option = m.get('Option')
         self.resources = []
         if m.get('Resources') is not None:
             for k in m.get('Resources'):
@@ -3068,7 +2322,6 @@ class CreateWorkspaceResourceResponseBodyResources(TeaModel):
         self,
         id: str = None,
     ):
-        # 资源Id
         self.id = id
 
     def validate(self):
@@ -3098,11 +2351,8 @@ class CreateWorkspaceResourceResponseBody(TeaModel):
         resources: List[CreateWorkspaceResourceResponseBodyResources] = None,
         total_count: int = None,
     ):
-        # 请求 id
         self.request_id = request_id
-        # 资源集合
         self.resources = resources
-        # 总数
         self.total_count = total_count
 
     def validate(self):
@@ -3191,7 +2441,6 @@ class DeleteCodeSourceResponseBody(TeaModel):
         code_source_id: str = None,
         request_id: str = None,
     ):
-        # 被删除的代码源配置ID
         self.code_source_id = code_source_id
         self.request_id = request_id
 
@@ -3263,84 +2512,11 @@ class DeleteCodeSourceResponse(TeaModel):
         return self
 
 
-class DeleteConfigResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-    ):
-        # Id of the request
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class DeleteConfigResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: DeleteConfigResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = DeleteConfigResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class DeleteDatasetResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -3410,9 +2586,9 @@ class DeleteDatasetResponse(TeaModel):
 class DeleteDatasetLabelsRequest(TeaModel):
     def __init__(
         self,
-        keys: str = None,
+        label_keys: str = None,
     ):
-        self.keys = keys
+        self.label_keys = label_keys
 
     def validate(self):
         pass
@@ -3423,14 +2599,14 @@ class DeleteDatasetLabelsRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.keys is not None:
-            result['Keys'] = self.keys
+        if self.label_keys is not None:
+            result['LabelKeys'] = self.label_keys
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Keys') is not None:
-            self.keys = m.get('Keys')
+        if m.get('LabelKeys') is not None:
+            self.label_keys = m.get('LabelKeys')
         return self
 
 
@@ -3439,7 +2615,6 @@ class DeleteDatasetLabelsResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -3511,7 +2686,6 @@ class DeleteMembersRequest(TeaModel):
         self,
         member_ids: str = None,
     ):
-        # 需要删除的成员 Id 列表，以逗号分隔
         self.member_ids = member_ids
 
     def validate(self):
@@ -3539,7 +2713,6 @@ class DeleteMembersResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # 请求 id
         self.request_id = request_id
 
     def validate(self):
@@ -3611,7 +2784,6 @@ class DeleteModelResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -3681,10 +2853,9 @@ class DeleteModelResponse(TeaModel):
 class DeleteModelLabelsRequest(TeaModel):
     def __init__(
         self,
-        keys: str = None,
+        label_keys: str = None,
     ):
-        # 需要删除的标签Keys
-        self.keys = keys
+        self.label_keys = label_keys
 
     def validate(self):
         pass
@@ -3695,14 +2866,14 @@ class DeleteModelLabelsRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.keys is not None:
-            result['Keys'] = self.keys
+        if self.label_keys is not None:
+            result['LabelKeys'] = self.label_keys
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Keys') is not None:
-            self.keys = m.get('Keys')
+        if m.get('LabelKeys') is not None:
+            self.label_keys = m.get('LabelKeys')
         return self
 
 
@@ -3711,7 +2882,6 @@ class DeleteModelLabelsResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -3783,7 +2953,6 @@ class DeleteModelVersionResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -3853,10 +3022,9 @@ class DeleteModelVersionResponse(TeaModel):
 class DeleteModelVersionLabelsRequest(TeaModel):
     def __init__(
         self,
-        keys: str = None,
+        label_keys: str = None,
     ):
-        # 版本标签Keys
-        self.keys = keys
+        self.label_keys = label_keys
 
     def validate(self):
         pass
@@ -3867,14 +3035,14 @@ class DeleteModelVersionLabelsRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.keys is not None:
-            result['Keys'] = self.keys
+        if self.label_keys is not None:
+            result['LabelKeys'] = self.label_keys
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Keys') is not None:
-            self.keys = m.get('Keys')
+        if m.get('LabelKeys') is not None:
+            self.label_keys = m.get('LabelKeys')
         return self
 
 
@@ -3883,7 +3051,6 @@ class DeleteModelVersionLabelsResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -3955,7 +3122,6 @@ class DeleteWorkspaceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -3968,13 +3134,13 @@ class DeleteWorkspaceResponseBody(TeaModel):
 
         result = dict()
         if self.request_id is not None:
-            result['requestId'] = self.request_id
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -4025,8 +3191,12 @@ class DeleteWorkspaceResponse(TeaModel):
 class DeleteWorkspaceResourceRequest(TeaModel):
     def __init__(
         self,
+        group_name: str = None,
+        option: str = None,
         product_type: str = None,
     ):
+        self.group_name = group_name
+        self.option = option
         self.product_type = product_type
 
     def validate(self):
@@ -4038,12 +3208,20 @@ class DeleteWorkspaceResourceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.option is not None:
+            result['Option'] = self.option
         if self.product_type is not None:
             result['ProductType'] = self.product_type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('Option') is not None:
+            self.option = m.get('Option')
         if m.get('ProductType') is not None:
             self.product_type = m.get('ProductType')
         return self
@@ -4054,7 +3232,6 @@ class DeleteWorkspaceResourceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -4067,13 +3244,13 @@ class DeleteWorkspaceResourceResponseBody(TeaModel):
 
         result = dict()
         if self.request_id is not None:
-            result['requestId'] = self.request_id
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -4140,35 +3317,20 @@ class GetCodeSourceResponseBody(TeaModel):
         user_id: str = None,
         workspace_id: str = None,
     ):
-        # 代码是否是本工作空间内公开的，可选值PRIVATE、PUBLIC
         self.accessibility = accessibility
-        # 代码仓库分支
         self.code_branch = code_branch
-        # 代码Commit
         self.code_commit = code_commit
-        # 代码仓库地址
         self.code_repo = code_repo
-        # 访问代码仓库的token
         self.code_repo_access_token = code_repo_access_token
-        # 代码仓库的用户名
         self.code_repo_user_name = code_repo_user_name
-        # 代码源配置ID
         self.code_source_id = code_source_id
-        # 详细描述
         self.description = description
-        # 代码源配置名字
         self.display_name = display_name
-        # 创建时间
         self.gmt_create_time = gmt_create_time
-        # 修改时间
         self.gmt_modify_time = gmt_modify_time
-        # 代码本地挂载目录，默认挂载到/root/code/下
         self.mount_path = mount_path
-        # 请求ID
         self.request_id = request_id
-        # 代码配置源的创建者ID
         self.user_id = user_id
-        # 工作空间ID
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -4291,113 +3453,6 @@ class GetCodeSourceResponse(TeaModel):
         return self
 
 
-class GetCodeSourcesStatisticsRequest(TeaModel):
-    def __init__(
-        self,
-        workspace_id: str = None,
-    ):
-        # 工作空间ID
-        self.workspace_id = workspace_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.workspace_id is not None:
-            result['WorkspaceId'] = self.workspace_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('WorkspaceId') is not None:
-            self.workspace_id = m.get('WorkspaceId')
-        return self
-
-
-class GetCodeSourcesStatisticsResponseBody(TeaModel):
-    def __init__(
-        self,
-        count: int = None,
-        request_id: str = None,
-    ):
-        # 此用户可以查看的代码的数目
-        self.count = count
-        # Id of the request
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.count is not None:
-            result['Count'] = self.count
-        if self.request_id is not None:
-            result['requestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Count') is not None:
-            self.count = m.get('Count')
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
-        return self
-
-
-class GetCodeSourcesStatisticsResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: GetCodeSourcesStatisticsResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = GetCodeSourcesStatisticsResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class GetDatasetResponseBody(TeaModel):
     def __init__(
         self,
@@ -4408,7 +3463,7 @@ class GetDatasetResponseBody(TeaModel):
         description: str = None,
         gmt_create_time: str = None,
         gmt_modified_time: str = None,
-        labels: List[DatasetLabel] = None,
+        labels: List[Label] = None,
         name: str = None,
         options: str = None,
         owner_id: str = None,
@@ -4432,7 +3487,6 @@ class GetDatasetResponseBody(TeaModel):
         self.options = options
         self.owner_id = owner_id
         self.property = property
-        # Id of the request
         self.request_id = request_id
         self.source_id = source_id
         self.source_type = source_type
@@ -4511,7 +3565,7 @@ class GetDatasetResponseBody(TeaModel):
         self.labels = []
         if m.get('Labels') is not None:
             for k in m.get('Labels'):
-                temp_model = DatasetLabel()
+                temp_model = Label()
                 self.labels.append(temp_model.from_map(k))
         if m.get('Name') is not None:
             self.name = m.get('Name')
@@ -4580,113 +3634,6 @@ class GetDatasetResponse(TeaModel):
         return self
 
 
-class GetDatasetsStatisticsRequest(TeaModel):
-    def __init__(
-        self,
-        workspace_id: str = None,
-    ):
-        # WorkspaceId
-        self.workspace_id = workspace_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.workspace_id is not None:
-            result['WorkspaceId'] = self.workspace_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('WorkspaceId') is not None:
-            self.workspace_id = m.get('WorkspaceId')
-        return self
-
-
-class GetDatasetsStatisticsResponseBody(TeaModel):
-    def __init__(
-        self,
-        count: int = None,
-        request_id: str = None,
-    ):
-        # Count
-        self.count = count
-        # Id of the request
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.count is not None:
-            result['Count'] = self.count
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Count') is not None:
-            self.count = m.get('Count')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class GetDatasetsStatisticsResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: GetDatasetsStatisticsResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = GetDatasetsStatisticsResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class GetDefaultWorkspaceRequest(TeaModel):
     def __init__(
         self,
@@ -4721,11 +3668,8 @@ class GetDefaultWorkspaceResponseBodyConditions(TeaModel):
         message: str = None,
         type: str = None,
     ):
-        # 返回码，正常是200，其他都是错误
         self.code = code
-        # 消息
         self.message = message
-        # 类型
         self.type = type
 
     def validate(self):
@@ -4763,11 +3707,8 @@ class GetDefaultWorkspaceResponseBodyOwner(TeaModel):
         user_kp: str = None,
         user_name: str = None,
     ):
-        # 用户id
         self.user_id = user_id
-        # 用户kp
         self.user_kp = user_kp
-        # 用户名
         self.user_name = user_name
 
     def validate(self):
@@ -4809,35 +3750,23 @@ class GetDefaultWorkspaceResponseBody(TeaModel):
         gmt_create_time: str = None,
         gmt_modified_time: str = None,
         owner: GetDefaultWorkspaceResponseBodyOwner = None,
+        request_id: str = None,
         status: str = None,
         workspace_id: str = None,
         workspace_name: str = None,
-        request_id: str = None,
     ):
-        # 任务详情 创建默认工作空间会有多个任务依次进行，如果一个任务未开始，不会显示在任务详情里。
         self.conditions = conditions
-        # 创建人
         self.creator = creator
-        # 描述
         self.description = description
-        # 显示名称
         self.display_name = display_name
-        # 环境，用作判断简单模式还是标准模式，含义见
         self.env_types = env_types
-        # 创建 UTC 时间，日期格式 iso8601
         self.gmt_create_time = gmt_create_time
-        # 修改 UTC 时间，日期格式 iso8601
         self.gmt_modified_time = gmt_modified_time
-        # 拥有者
         self.owner = owner
-        # 工作空间状态
-        self.status = status
-        # 工作空间 ID
-        self.workspace_id = workspace_id
-        # 项目空间名称， region 内唯一
-        self.workspace_name = workspace_name
-        # Id of the request
         self.request_id = request_id
+        self.status = status
+        self.workspace_id = workspace_id
+        self.workspace_name = workspace_name
 
     def validate(self):
         if self.conditions:
@@ -4871,14 +3800,14 @@ class GetDefaultWorkspaceResponseBody(TeaModel):
             result['GmtModifiedTime'] = self.gmt_modified_time
         if self.owner is not None:
             result['Owner'] = self.owner.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.status is not None:
             result['Status'] = self.status
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
         if self.workspace_name is not None:
             result['WorkspaceName'] = self.workspace_name
-        if self.request_id is not None:
-            result['requestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
@@ -4903,14 +3832,14 @@ class GetDefaultWorkspaceResponseBody(TeaModel):
         if m.get('Owner') is not None:
             temp_model = GetDefaultWorkspaceResponseBodyOwner()
             self.owner = temp_model.from_map(m['Owner'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
         if m.get('WorkspaceName') is not None:
             self.workspace_name = m.get('WorkspaceName')
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
         return self
 
 
@@ -4963,7 +3892,6 @@ class GetImageRequest(TeaModel):
         self,
         verbose: bool = None,
     ):
-        # 是否显示非必要信息：Labels
         self.verbose = verbose
 
     def validate(self):
@@ -4992,9 +3920,7 @@ class GetImageResponseBodyLabels(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # Key
         self.key = key
-        # Value
         self.value = value
 
     def validate(self):
@@ -5031,33 +3957,22 @@ class GetImageResponseBody(TeaModel):
         image_uri: str = None,
         labels: List[GetImageResponseBodyLabels] = None,
         name: str = None,
-        operator_create: str = None,
-        parent_operator_create: str = None,
-        workspace_id: str = None,
+        parent_user_id: str = None,
         request_id: str = None,
+        user_id: str = None,
+        workspace_id: str = None,
     ):
-        # 可见性
         self.accessibility = accessibility
-        # 描述
         self.description = description
-        # 创建 UTC 时间，日期格式 iso8601
         self.gmt_create_time = gmt_create_time
-        # 创建 UTC 时间，日期格式 iso8601
         self.gmt_modified_time = gmt_modified_time
-        # 镜像地址，包含版本号
         self.image_uri = image_uri
-        # 镜像标签
         self.labels = labels
-        # 镜像名称
         self.name = name
-        # 创建人
-        self.operator_create = operator_create
-        # 创建人父账户
-        self.parent_operator_create = parent_operator_create
-        # 工作空间id
-        self.workspace_id = workspace_id
-        # Id of the request
+        self.parent_user_id = parent_user_id
         self.request_id = request_id
+        self.user_id = user_id
+        self.workspace_id = workspace_id
 
     def validate(self):
         if self.labels:
@@ -5087,14 +4002,14 @@ class GetImageResponseBody(TeaModel):
                 result['Labels'].append(k.to_map() if k else None)
         if self.name is not None:
             result['Name'] = self.name
-        if self.operator_create is not None:
-            result['OperatorCreate'] = self.operator_create
-        if self.parent_operator_create is not None:
-            result['ParentOperatorCreate'] = self.parent_operator_create
+        if self.parent_user_id is not None:
+            result['ParentUserId'] = self.parent_user_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
-        if self.request_id is not None:
-            result['requestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
@@ -5116,14 +4031,14 @@ class GetImageResponseBody(TeaModel):
                 self.labels.append(temp_model.from_map(k))
         if m.get('Name') is not None:
             self.name = m.get('Name')
-        if m.get('OperatorCreate') is not None:
-            self.operator_create = m.get('OperatorCreate')
-        if m.get('ParentOperatorCreate') is not None:
-            self.parent_operator_create = m.get('ParentOperatorCreate')
+        if m.get('ParentUserId') is not None:
+            self.parent_user_id = m.get('ParentUserId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
         return self
 
 
@@ -5171,119 +4086,11 @@ class GetImageResponse(TeaModel):
         return self
 
 
-class GetImagesStatisticsRequest(TeaModel):
-    def __init__(
-        self,
-        workspace_id: str = None,
-    ):
-        # 工作空间id
-        self.workspace_id = workspace_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.workspace_id is not None:
-            result['WorkspaceId'] = self.workspace_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('WorkspaceId') is not None:
-            self.workspace_id = m.get('WorkspaceId')
-        return self
-
-
-class GetImagesStatisticsResponseBody(TeaModel):
-    def __init__(
-        self,
-        count: int = None,
-        request_id: str = None,
-    ):
-        # 镜像总数
-        self.count = count
-        # Id of the request
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.count is not None:
-            result['Count'] = self.count
-        if self.request_id is not None:
-            result['requestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Count') is not None:
-            self.count = m.get('Count')
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
-        return self
-
-
-class GetImagesStatisticsResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: GetImagesStatisticsResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = GetImagesStatisticsResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class GetMemberRequest(TeaModel):
     def __init__(
         self,
         user_id: str = None,
     ):
-        # 用户id
         self.user_id = user_id
 
     def validate(self):
@@ -5312,25 +4119,18 @@ class GetMemberResponseBody(TeaModel):
         display_name: str = None,
         gmt_create_time: str = None,
         member_id: str = None,
+        member_name: str = None,
+        request_id: str = None,
         roles: List[str] = None,
         user_id: str = None,
-        user_name: str = None,
-        request_id: str = None,
     ):
-        # 成员显示名
         self.display_name = display_name
-        # 创建 UTC 时间，日期格式 iso8601
         self.gmt_create_time = gmt_create_time
-        # 成员 id
         self.member_id = member_id
-        # 角色列表
-        self.roles = roles
-        # 用户 id
-        self.user_id = user_id
-        # 云账号用户名
-        self.user_name = user_name
-        # Id of the request
+        self.member_name = member_name
         self.request_id = request_id
+        self.roles = roles
+        self.user_id = user_id
 
     def validate(self):
         pass
@@ -5347,14 +4147,14 @@ class GetMemberResponseBody(TeaModel):
             result['GmtCreateTime'] = self.gmt_create_time
         if self.member_id is not None:
             result['MemberId'] = self.member_id
+        if self.member_name is not None:
+            result['MemberName'] = self.member_name
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.roles is not None:
             result['Roles'] = self.roles
         if self.user_id is not None:
             result['UserId'] = self.user_id
-        if self.user_name is not None:
-            result['UserName'] = self.user_name
-        if self.request_id is not None:
-            result['requestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
@@ -5365,14 +4165,14 @@ class GetMemberResponseBody(TeaModel):
             self.gmt_create_time = m.get('GmtCreateTime')
         if m.get('MemberId') is not None:
             self.member_id = m.get('MemberId')
+        if m.get('MemberName') is not None:
+            self.member_name = m.get('MemberName')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         if m.get('Roles') is not None:
             self.roles = m.get('Roles')
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')
-        if m.get('UserName') is not None:
-            self.user_name = m.get('UserName')
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
         return self
 
 
@@ -5436,29 +4236,17 @@ class GetModelResponseBody(TeaModel):
         user_id: str = None,
         workspace_id: str = None,
     ):
-        # 可见性
         self.accessibility = accessibility
-        # 创建时间
         self.gmt_create_time = gmt_create_time
-        # 最后更新时间
         self.gmt_modified_time = gmt_modified_time
-        # 模型的标签
         self.labels = labels
-        # 模型的最新版本
         self.latest_version = latest_version
-        # 模型描述
         self.model_description = model_description
-        # 模型ID
         self.model_id = model_id
-        # 模型名称
         self.model_name = model_name
-        # 云账号ID
         self.owner_id = owner_id
-        # Id of the request
         self.request_id = request_id
-        # 创建模型的用户ID
         self.user_id = user_id
-        # 工作空间ID
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -5592,36 +4380,27 @@ class GetModelVersionResponseBody(TeaModel):
         options: str = None,
         owner_id: str = None,
         request_id: str = None,
+        source_id: str = None,
+        source_type: str = None,
         uri: str = None,
         user_id: str = None,
         version_description: str = None,
         version_name: str = None,
     ):
-        # 模型格式
         self.format_type = format_type
-        # 模型框架
         self.framework_type = framework_type
-        # 创建时间
         self.gmt_create_time = gmt_create_time
-        # 最后更新时间
         self.gmt_modified_time = gmt_modified_time
-        # 下游部署配置
         self.inference_spec = inference_spec
-        # 模型版本标签
         self.labels = labels
-        # 扩展字段
         self.options = options
-        # 云账号ID
         self.owner_id = owner_id
-        # 请求ID
         self.request_id = request_id
-        # 模型Uri
+        self.source_id = source_id
+        self.source_type = source_type
         self.uri = uri
-        # 创建者ID
         self.user_id = user_id
-        # 版本描述
         self.version_description = version_description
-        # 版本名
         self.version_name = version_name
 
     def validate(self):
@@ -5656,6 +4435,10 @@ class GetModelVersionResponseBody(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.source_id is not None:
+            result['SourceId'] = self.source_id
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
         if self.uri is not None:
             result['Uri'] = self.uri
         if self.user_id is not None:
@@ -5689,6 +4472,10 @@ class GetModelVersionResponseBody(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('SourceId') is not None:
+            self.source_id = m.get('SourceId')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
         if m.get('Uri') is not None:
             self.uri = m.get('Uri')
         if m.get('UserId') is not None:
@@ -5750,9 +4537,7 @@ class GetPermissionRequest(TeaModel):
         accessibility: str = None,
         creator: str = None,
     ):
-        # 待鉴权实例的可见性 PUBLIC表示当前工作空间所有人都可以访问 PRIVATE表示只有Owner可以访问
         self.accessibility = accessibility
-        # 创建者
         self.creator = creator
 
     def validate(self):
@@ -5785,9 +4570,7 @@ class GetPermissionResponseBodyPermissionRules(TeaModel):
         accessibility: str = None,
         entity_access_type: str = None,
     ):
-        # 待鉴权实例的可见性 PUBLIC表示当前工作空间所有人都可以访问 PRIVATE表示只有Owner可以访问
         self.accessibility = accessibility
-        # 存取类型 CREATOR 代表能看自已创建的 OTHERS 代表可以看别人创建的 ALL代表所有
         self.entity_access_type = entity_access_type
 
     def validate(self):
@@ -5821,10 +4604,8 @@ class GetPermissionResponseBody(TeaModel):
         permission_rules: List[GetPermissionResponseBodyPermissionRules] = None,
         request_id: str = None,
     ):
-        # 权限
         self.permission_code = permission_code
         self.permission_rules = permission_rules
-        # 请求 id
         self.request_id = request_id
 
     def validate(self):
@@ -5903,163 +4684,6 @@ class GetPermissionResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetPermissionResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class GetRoleStatisticsRequest(TeaModel):
-    def __init__(
-        self,
-        workspace_id: str = None,
-    ):
-        # 工作空间 id
-        self.workspace_id = workspace_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.workspace_id is not None:
-            result['WorkspaceId'] = self.workspace_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('WorkspaceId') is not None:
-            self.workspace_id = m.get('WorkspaceId')
-        return self
-
-
-class GetRoleStatisticsResponseBodyRoles(TeaModel):
-    def __init__(
-        self,
-        member_size: int = None,
-        role_name: str = None,
-    ):
-        # 成员数量
-        self.member_size = member_size
-        # 角色名
-        self.role_name = role_name
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.member_size is not None:
-            result['MemberSize'] = self.member_size
-        if self.role_name is not None:
-            result['RoleName'] = self.role_name
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('MemberSize') is not None:
-            self.member_size = m.get('MemberSize')
-        if m.get('RoleName') is not None:
-            self.role_name = m.get('RoleName')
-        return self
-
-
-class GetRoleStatisticsResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        roles: List[GetRoleStatisticsResponseBodyRoles] = None,
-        total_count: int = None,
-    ):
-        # 请求 id
-        self.request_id = request_id
-        # 角色信息统计
-        self.roles = roles
-        # 总数
-        self.total_count = total_count
-
-    def validate(self):
-        if self.roles:
-            for k in self.roles:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        result['Roles'] = []
-        if self.roles is not None:
-            for k in self.roles:
-                result['Roles'].append(k.to_map() if k else None)
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        self.roles = []
-        if m.get('Roles') is not None:
-            for k in m.get('Roles'):
-                temp_model = GetRoleStatisticsResponseBodyRoles()
-                self.roles.append(temp_model.from_map(k))
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
-        return self
-
-
-class GetRoleStatisticsResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: GetRoleStatisticsResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = GetRoleStatisticsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -6154,32 +4778,19 @@ class GetWorkspaceResponseBody(TeaModel):
         workspace_id: str = None,
         workspace_name: str = None,
     ):
-        # 管理员账户
         self.admin_names = admin_names
-        # 创建人
         self.creator = creator
-        # 描述
         self.description = description
-        # 显示名称
         self.display_name = display_name
-        # 环境，用作判断简单模式还是标准模式
         self.env_types = env_types
-        # 附加信息
         self.extra_infos = extra_infos
-        # 创建 UTC 时间，日期格式 iso8601
         self.gmt_create_time = gmt_create_time
-        # 修改 UTC 时间，日期格式 iso8601
         self.gmt_modified_time = gmt_modified_time
-        # 是否为默认工作空间
         self.is_default = is_default
         self.owner = owner
-        # 请求 id
         self.request_id = request_id
-        # 工作空间状态
         self.status = status
-        # 工作空间 id
         self.workspace_id = workspace_id
-        # 项目空间名称， region 内唯一
         self.workspace_name = workspace_name
 
     def validate(self):
@@ -6310,17 +4921,11 @@ class ListCodeSourcesRequest(TeaModel):
         sort_by: str = None,
         workspace_id: str = None,
     ):
-        # 代码源显示名称，支持模糊匹配
         self.display_name = display_name
-        # 排序顺序, 枚举值 desc 或者 asc
         self.order = order
-        # 取第几页的数据
         self.page_number = page_number
-        # 分页大小
         self.page_size = page_size
-        # 用于排序的字段名，可选字段名："DisplayName" "GmtCreateTime" "GmtModifyTime"
         self.sort_by = sort_by
-        # 工作空间ID
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -6370,11 +4975,8 @@ class ListCodeSourcesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # 代码源配置列表
         self.code_sources = code_sources
-        # 请求Id
         self.request_id = request_id
-        # 符合过滤条件的代码源配置的总数量
         self.total_count = total_count
 
     def validate(self):
@@ -6457,170 +5059,12 @@ class ListCodeSourcesResponse(TeaModel):
         return self
 
 
-class ListConfigsRequest(TeaModel):
-    def __init__(
-        self,
-        config_keys: str = None,
-    ):
-        # 配置键
-        self.config_keys = config_keys
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.config_keys is not None:
-            result['ConfigKeys'] = self.config_keys
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ConfigKeys') is not None:
-            self.config_keys = m.get('ConfigKeys')
-        return self
-
-
-class ListConfigsResponseBodyConfigs(TeaModel):
-    def __init__(
-        self,
-        config_key: str = None,
-        config_value: str = None,
-    ):
-        # 配置键
-        self.config_key = config_key
-        # 配置值
-        self.config_value = config_value
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.config_key is not None:
-            result['ConfigKey'] = self.config_key
-        if self.config_value is not None:
-            result['ConfigValue'] = self.config_value
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ConfigKey') is not None:
-            self.config_key = m.get('ConfigKey')
-        if m.get('ConfigValue') is not None:
-            self.config_value = m.get('ConfigValue')
-        return self
-
-
-class ListConfigsResponseBody(TeaModel):
-    def __init__(
-        self,
-        configs: List[ListConfigsResponseBodyConfigs] = None,
-        request_id: str = None,
-        total_count: int = None,
-    ):
-        # 配置列表
-        self.configs = configs
-        # 请求ID
-        self.request_id = request_id
-        # 返回数量
-        self.total_count = total_count
-
-    def validate(self):
-        if self.configs:
-            for k in self.configs:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['Configs'] = []
-        if self.configs is not None:
-            for k in self.configs:
-                result['Configs'].append(k.to_map() if k else None)
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.configs = []
-        if m.get('Configs') is not None:
-            for k in m.get('Configs'):
-                temp_model = ListConfigsResponseBodyConfigs()
-                self.configs.append(temp_model.from_map(k))
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
-        return self
-
-
-class ListConfigsResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: ListConfigsResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = ListConfigsResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class ListDatasetsRequest(TeaModel):
     def __init__(
         self,
         data_source_types: str = None,
         data_types: str = None,
-        label_keys: str = None,
-        label_values: str = None,
+        label: str = None,
         name: str = None,
         order: str = None,
         page_number: int = None,
@@ -6631,15 +5075,13 @@ class ListDatasetsRequest(TeaModel):
     ):
         self.data_source_types = data_source_types
         self.data_types = data_types
-        self.label_keys = label_keys
-        self.label_values = label_values
+        self.label = label
         self.name = name
         self.order = order
         self.page_number = page_number
         self.page_size = page_size
         self.properties = properties
         self.source_types = source_types
-        # Workspace Id
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -6655,10 +5097,8 @@ class ListDatasetsRequest(TeaModel):
             result['DataSourceTypes'] = self.data_source_types
         if self.data_types is not None:
             result['DataTypes'] = self.data_types
-        if self.label_keys is not None:
-            result['LabelKeys'] = self.label_keys
-        if self.label_values is not None:
-            result['LabelValues'] = self.label_values
+        if self.label is not None:
+            result['Label'] = self.label
         if self.name is not None:
             result['Name'] = self.name
         if self.order is not None:
@@ -6681,10 +5121,8 @@ class ListDatasetsRequest(TeaModel):
             self.data_source_types = m.get('DataSourceTypes')
         if m.get('DataTypes') is not None:
             self.data_types = m.get('DataTypes')
-        if m.get('LabelKeys') is not None:
-            self.label_keys = m.get('LabelKeys')
-        if m.get('LabelValues') is not None:
-            self.label_values = m.get('LabelValues')
+        if m.get('Label') is not None:
+            self.label = m.get('Label')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('Order') is not None:
@@ -6710,7 +5148,6 @@ class ListDatasetsResponseBody(TeaModel):
         total_count: int = None,
     ):
         self.datasets = datasets
-        # Id of the request
         self.request_id = request_id
         self.total_count = total_count
 
@@ -6794,285 +5231,6 @@ class ListDatasetsResponse(TeaModel):
         return self
 
 
-class ListFeaturesRequest(TeaModel):
-    def __init__(
-        self,
-        names: str = None,
-    ):
-        # 特性名称，以逗号分隔
-        self.names = names
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.names is not None:
-            result['Names'] = self.names
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Names') is not None:
-            self.names = m.get('Names')
-        return self
-
-
-class ListFeaturesResponseBody(TeaModel):
-    def __init__(
-        self,
-        features: List[str] = None,
-        request_id: str = None,
-        total_count: int = None,
-    ):
-        # 特性列表
-        self.features = features
-        # Id of the request
-        self.request_id = request_id
-        # 特性总数
-        self.total_count = total_count
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.features is not None:
-            result['Features'] = self.features
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Features') is not None:
-            self.features = m.get('Features')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
-        return self
-
-
-class ListFeaturesResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: ListFeaturesResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = ListFeaturesResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class ListGlobalPermissionsResponseBodyPermissionsPermissionRules(TeaModel):
-    def __init__(
-        self,
-        accessibility: str = None,
-        entity_access_type: str = None,
-    ):
-        # 待鉴权实例的可见性 PUBLIC表示当前工作空间所有人都可以访问 PRIVATE表示只有Owner可以访问
-        self.accessibility = accessibility
-        # 存取类型 CREATOR 代表能看自已创建的 OTHERS 代表可以看别人创建的 ALL代表所有
-        self.entity_access_type = entity_access_type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.accessibility is not None:
-            result['Accessibility'] = self.accessibility
-        if self.entity_access_type is not None:
-            result['EntityAccessType'] = self.entity_access_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Accessibility') is not None:
-            self.accessibility = m.get('Accessibility')
-        if m.get('EntityAccessType') is not None:
-            self.entity_access_type = m.get('EntityAccessType')
-        return self
-
-
-class ListGlobalPermissionsResponseBodyPermissions(TeaModel):
-    def __init__(
-        self,
-        permission_code: str = None,
-        permission_rules: List[ListGlobalPermissionsResponseBodyPermissionsPermissionRules] = None,
-    ):
-        # PermissionCode
-        self.permission_code = permission_code
-        # PermissionRules
-        self.permission_rules = permission_rules
-
-    def validate(self):
-        if self.permission_rules:
-            for k in self.permission_rules:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.permission_code is not None:
-            result['PermissionCode'] = self.permission_code
-        result['PermissionRules'] = []
-        if self.permission_rules is not None:
-            for k in self.permission_rules:
-                result['PermissionRules'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('PermissionCode') is not None:
-            self.permission_code = m.get('PermissionCode')
-        self.permission_rules = []
-        if m.get('PermissionRules') is not None:
-            for k in m.get('PermissionRules'):
-                temp_model = ListGlobalPermissionsResponseBodyPermissionsPermissionRules()
-                self.permission_rules.append(temp_model.from_map(k))
-        return self
-
-
-class ListGlobalPermissionsResponseBody(TeaModel):
-    def __init__(
-        self,
-        permissions: List[ListGlobalPermissionsResponseBodyPermissions] = None,
-        request_id: str = None,
-    ):
-        # Permissions
-        self.permissions = permissions
-        # Id of the request
-        self.request_id = request_id
-
-    def validate(self):
-        if self.permissions:
-            for k in self.permissions:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['Permissions'] = []
-        if self.permissions is not None:
-            for k in self.permissions:
-                result['Permissions'].append(k.to_map() if k else None)
-        if self.request_id is not None:
-            result['requestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.permissions = []
-        if m.get('Permissions') is not None:
-            for k in m.get('Permissions'):
-                temp_model = ListGlobalPermissionsResponseBodyPermissions()
-                self.permissions.append(temp_model.from_map(k))
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
-        return self
-
-
-class ListGlobalPermissionsResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: ListGlobalPermissionsResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = ListGlobalPermissionsResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class ListImageLabelsRequest(TeaModel):
     def __init__(
         self,
@@ -7082,15 +5240,10 @@ class ListImageLabelsRequest(TeaModel):
         region: str = None,
         workspace_id: str = None,
     ):
-        # 镜像id
         self.image_id = image_id
-        # image过滤条件，获取满足条件的image的所有label
         self.label_filter = label_filter
-        # 标签列表，以逗号分隔
         self.label_keys = label_keys
-        # 地域
         self.region = region
-        # 工作空间id
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -7135,9 +5288,7 @@ class ListImageLabelsResponseBodyLabels(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # 键
         self.key = key
-        # 值
         self.value = value
 
     def validate(self):
@@ -7168,15 +5319,12 @@ class ListImageLabelsResponseBody(TeaModel):
     def __init__(
         self,
         labels: List[ListImageLabelsResponseBodyLabels] = None,
-        total_count: int = None,
         request_id: str = None,
+        total_count: int = None,
     ):
-        # 镜像标签
         self.labels = labels
-        # 符合过滤条件的数量
-        self.total_count = total_count
-        # Id of the request
         self.request_id = request_id
+        self.total_count = total_count
 
     def validate(self):
         if self.labels:
@@ -7194,10 +5342,10 @@ class ListImageLabelsResponseBody(TeaModel):
         if self.labels is not None:
             for k in self.labels:
                 result['Labels'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
-        if self.request_id is not None:
-            result['requestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
@@ -7207,10 +5355,10 @@ class ListImageLabelsResponseBody(TeaModel):
             for k in m.get('Labels'):
                 temp_model = ListImageLabelsResponseBodyLabels()
                 self.labels.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         if m.get('TotalCount') is not None:
             self.total_count = m.get('TotalCount')
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
         return self
 
 
@@ -7263,31 +5411,24 @@ class ListImagesRequest(TeaModel):
         self,
         labels: str = None,
         name: str = None,
-        operator_create: str = None,
         order: str = None,
         page_number: int = None,
         page_size: int = None,
+        parent_user_id: str = None,
         sort_by: str = None,
+        user_id: str = None,
         verbose: bool = None,
         workspace_id: str = None,
     ):
-        # 过滤值 以逗号分隔
         self.labels = labels
-        # 镜像名称，支持模糊搜索
         self.name = name
-        # 创建者
-        self.operator_create = operator_create
-        # 排序方向： ASC - 升序 DESC - 降序
         self.order = order
-        # 分页，从1开始，默认1
         self.page_number = page_number
-        # 页大小，默认20
         self.page_size = page_size
-        # 排序字段
+        self.parent_user_id = parent_user_id
         self.sort_by = sort_by
-        # 是否显示非必要信息：Labels
+        self.user_id = user_id
         self.verbose = verbose
-        # 工作空间id
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -7303,16 +5444,18 @@ class ListImagesRequest(TeaModel):
             result['Labels'] = self.labels
         if self.name is not None:
             result['Name'] = self.name
-        if self.operator_create is not None:
-            result['OperatorCreate'] = self.operator_create
         if self.order is not None:
             result['Order'] = self.order
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.parent_user_id is not None:
+            result['ParentUserId'] = self.parent_user_id
         if self.sort_by is not None:
             result['SortBy'] = self.sort_by
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
         if self.verbose is not None:
             result['Verbose'] = self.verbose
         if self.workspace_id is not None:
@@ -7325,16 +5468,18 @@ class ListImagesRequest(TeaModel):
             self.labels = m.get('Labels')
         if m.get('Name') is not None:
             self.name = m.get('Name')
-        if m.get('OperatorCreate') is not None:
-            self.operator_create = m.get('OperatorCreate')
         if m.get('Order') is not None:
             self.order = m.get('Order')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('ParentUserId') is not None:
+            self.parent_user_id = m.get('ParentUserId')
         if m.get('SortBy') is not None:
             self.sort_by = m.get('SortBy')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
         if m.get('Verbose') is not None:
             self.verbose = m.get('Verbose')
         if m.get('WorkspaceId') is not None:
@@ -7348,9 +5493,7 @@ class ListImagesResponseBodyImagesLabels(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # Key
         self.key = key
-        # Value
         self.value = value
 
     def validate(self):
@@ -7388,31 +5531,20 @@ class ListImagesResponseBodyImages(TeaModel):
         image_uri: str = None,
         labels: List[ListImagesResponseBodyImagesLabels] = None,
         name: str = None,
-        operator_create: str = None,
-        parent_operator_create: str = None,
+        parent_user_id: str = None,
+        user_id: str = None,
         workspace_id: str = None,
     ):
-        # 可见性
         self.accessibility = accessibility
-        # 镜像描述
         self.description = description
-        # 创建 UTC 时间，日期格式 iso8601
         self.gmt_create_time = gmt_create_time
-        # 修改时间
         self.gmt_modified_time = gmt_modified_time
-        # 镜像id
         self.image_id = image_id
-        # 镜像地址，包含版本号
         self.image_uri = image_uri
-        # 镜像标签，是个map
         self.labels = labels
-        # 镜像名称
         self.name = name
-        # 创建人
-        self.operator_create = operator_create
-        # 父创建人
-        self.parent_operator_create = parent_operator_create
-        # 工作空间id
+        self.parent_user_id = parent_user_id
+        self.user_id = user_id
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -7445,10 +5577,10 @@ class ListImagesResponseBodyImages(TeaModel):
                 result['Labels'].append(k.to_map() if k else None)
         if self.name is not None:
             result['Name'] = self.name
-        if self.operator_create is not None:
-            result['OperatorCreate'] = self.operator_create
-        if self.parent_operator_create is not None:
-            result['ParentOperatorCreate'] = self.parent_operator_create
+        if self.parent_user_id is not None:
+            result['ParentUserId'] = self.parent_user_id
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
         return result
@@ -7474,10 +5606,10 @@ class ListImagesResponseBodyImages(TeaModel):
                 self.labels.append(temp_model.from_map(k))
         if m.get('Name') is not None:
             self.name = m.get('Name')
-        if m.get('OperatorCreate') is not None:
-            self.operator_create = m.get('OperatorCreate')
-        if m.get('ParentOperatorCreate') is not None:
-            self.parent_operator_create = m.get('ParentOperatorCreate')
+        if m.get('ParentUserId') is not None:
+            self.parent_user_id = m.get('ParentUserId')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
         return self
@@ -7487,15 +5619,12 @@ class ListImagesResponseBody(TeaModel):
     def __init__(
         self,
         images: List[ListImagesResponseBodyImages] = None,
-        total_count: int = None,
         request_id: str = None,
+        total_count: int = None,
     ):
-        # 镜像列表
         self.images = images
-        # 总数
-        self.total_count = total_count
-        # Id of the request
         self.request_id = request_id
+        self.total_count = total_count
 
     def validate(self):
         if self.images:
@@ -7513,10 +5642,10 @@ class ListImagesResponseBody(TeaModel):
         if self.images is not None:
             for k in self.images:
                 result['Images'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
-        if self.request_id is not None:
-            result['requestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
@@ -7526,10 +5655,10 @@ class ListImagesResponseBody(TeaModel):
             for k in m.get('Images'):
                 temp_model = ListImagesResponseBodyImages()
                 self.images.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         if m.get('TotalCount') is not None:
             self.total_count = m.get('TotalCount')
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
         return self
 
 
@@ -7585,13 +5714,9 @@ class ListMembersRequest(TeaModel):
         page_size: int = None,
         roles: str = None,
     ):
-        # 成员名
         self.member_name = member_name
-        # 分页，从1开始，默认1
         self.page_number = page_number
-        # 页大小，默认20
         self.page_size = page_size
-        # Role 过滤列表，逗号分隔
         self.roles = roles
 
     def validate(self):
@@ -7632,22 +5757,16 @@ class ListMembersResponseBodyMembers(TeaModel):
         display_name: str = None,
         gmt_create_time: str = None,
         member_id: str = None,
+        member_name: str = None,
         roles: List[str] = None,
         user_id: str = None,
-        user_name: str = None,
     ):
-        # 成员显示名
         self.display_name = display_name
-        # 创建 UTC 时间，日期格式 iso8601
         self.gmt_create_time = gmt_create_time
-        # 成员 id
         self.member_id = member_id
-        # 角色列表
+        self.member_name = member_name
         self.roles = roles
-        # 用户 id
         self.user_id = user_id
-        # 云账号用户名
-        self.user_name = user_name
 
     def validate(self):
         pass
@@ -7664,12 +5783,12 @@ class ListMembersResponseBodyMembers(TeaModel):
             result['GmtCreateTime'] = self.gmt_create_time
         if self.member_id is not None:
             result['MemberId'] = self.member_id
+        if self.member_name is not None:
+            result['MemberName'] = self.member_name
         if self.roles is not None:
             result['Roles'] = self.roles
         if self.user_id is not None:
             result['UserId'] = self.user_id
-        if self.user_name is not None:
-            result['UserName'] = self.user_name
         return result
 
     def from_map(self, m: dict = None):
@@ -7680,12 +5799,12 @@ class ListMembersResponseBodyMembers(TeaModel):
             self.gmt_create_time = m.get('GmtCreateTime')
         if m.get('MemberId') is not None:
             self.member_id = m.get('MemberId')
+        if m.get('MemberName') is not None:
+            self.member_name = m.get('MemberName')
         if m.get('Roles') is not None:
             self.roles = m.get('Roles')
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')
-        if m.get('UserName') is not None:
-            self.user_name = m.get('UserName')
         return self
 
 
@@ -7696,11 +5815,8 @@ class ListMembersResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # 成员列表
         self.members = members
-        # 请求 id
         self.request_id = request_id
-        # 符合过滤条件的数量
         self.total_count = total_count
 
     def validate(self):
@@ -7788,29 +5904,25 @@ class ListModelVersionsRequest(TeaModel):
         self,
         format_type: str = None,
         framework_type: str = None,
-        labels: str = None,
+        label: str = None,
         order: str = None,
         page_number: int = None,
         page_size: int = None,
         sort_by: str = None,
-        versionl_name: str = None,
+        source_id: str = None,
+        source_type: str = None,
+        version_name: str = None,
     ):
-        # 模型格式类型
         self.format_type = format_type
-        # 模型框架
         self.framework_type = framework_type
-        # 标签
-        self.labels = labels
-        # 顺序
+        self.label = label
         self.order = order
-        # 页数
         self.page_number = page_number
-        # 每页大小
         self.page_size = page_size
-        # 排序依据
         self.sort_by = sort_by
-        # 模型版本名称
-        self.versionl_name = versionl_name
+        self.source_id = source_id
+        self.source_type = source_type
+        self.version_name = version_name
 
     def validate(self):
         pass
@@ -7825,8 +5937,8 @@ class ListModelVersionsRequest(TeaModel):
             result['FormatType'] = self.format_type
         if self.framework_type is not None:
             result['FrameworkType'] = self.framework_type
-        if self.labels is not None:
-            result['Labels'] = self.labels
+        if self.label is not None:
+            result['Label'] = self.label
         if self.order is not None:
             result['Order'] = self.order
         if self.page_number is not None:
@@ -7835,8 +5947,12 @@ class ListModelVersionsRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.sort_by is not None:
             result['SortBy'] = self.sort_by
-        if self.versionl_name is not None:
-            result['VersionlName'] = self.versionl_name
+        if self.source_id is not None:
+            result['SourceId'] = self.source_id
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+        if self.version_name is not None:
+            result['VersionName'] = self.version_name
         return result
 
     def from_map(self, m: dict = None):
@@ -7845,8 +5961,8 @@ class ListModelVersionsRequest(TeaModel):
             self.format_type = m.get('FormatType')
         if m.get('FrameworkType') is not None:
             self.framework_type = m.get('FrameworkType')
-        if m.get('Labels') is not None:
-            self.labels = m.get('Labels')
+        if m.get('Label') is not None:
+            self.label = m.get('Label')
         if m.get('Order') is not None:
             self.order = m.get('Order')
         if m.get('PageNumber') is not None:
@@ -7855,8 +5971,12 @@ class ListModelVersionsRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('SortBy') is not None:
             self.sort_by = m.get('SortBy')
-        if m.get('VersionlName') is not None:
-            self.versionl_name = m.get('VersionlName')
+        if m.get('SourceId') is not None:
+            self.source_id = m.get('SourceId')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
+        if m.get('VersionName') is not None:
+            self.version_name = m.get('VersionName')
         return self
 
 
@@ -7867,11 +5987,8 @@ class ListModelVersionsResponseBody(TeaModel):
         total_count: int = None,
         versions: List[ModelVersion] = None,
     ):
-        # Id of the request
         self.request_id = request_id
-        # 总数
         self.total_count = total_count
-        # 模型版本列表
         self.versions = versions
 
     def validate(self):
@@ -7957,7 +6074,7 @@ class ListModelVersionsResponse(TeaModel):
 class ListModelsRequest(TeaModel):
     def __init__(
         self,
-        labels: str = None,
+        label: str = None,
         model_name: str = None,
         order: str = None,
         page_number: int = None,
@@ -7965,19 +6082,12 @@ class ListModelsRequest(TeaModel):
         sort_by: str = None,
         workspace_id: str = None,
     ):
-        # 标签
-        self.labels = labels
-        # 模型名称
+        self.label = label
         self.model_name = model_name
-        # 顺序
         self.order = order
-        # 页数
         self.page_number = page_number
-        # 每页大小
         self.page_size = page_size
-        # 排序依据
         self.sort_by = sort_by
-        # 工作空间ID
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -7989,8 +6099,8 @@ class ListModelsRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.labels is not None:
-            result['Labels'] = self.labels
+        if self.label is not None:
+            result['Label'] = self.label
         if self.model_name is not None:
             result['ModelName'] = self.model_name
         if self.order is not None:
@@ -8007,8 +6117,8 @@ class ListModelsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Labels') is not None:
-            self.labels = m.get('Labels')
+        if m.get('Label') is not None:
+            self.label = m.get('Label')
         if m.get('ModelName') is not None:
             self.model_name = m.get('ModelName')
         if m.get('Order') is not None:
@@ -8031,11 +6141,8 @@ class ListModelsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # 模型列表
         self.models = models
-        # Id of the request
         self.request_id = request_id
-        # 总数
         self.total_count = total_count
 
     def validate(self):
@@ -8118,255 +6225,13 @@ class ListModelsResponse(TeaModel):
         return self
 
 
-class ListOperationLogsRequest(TeaModel):
-    def __init__(
-        self,
-        entity_status: str = None,
-        entity_types: str = None,
-        operation_status: str = None,
-        operations: str = None,
-        order: str = None,
-        page_number: int = None,
-        page_size: int = None,
-        sort_by: str = None,
-    ):
-        self.entity_status = entity_status
-        # 以逗号分隔的日志类型，包含 Resource
-        self.entity_types = entity_types
-        # 以逗号分隔的操作状态
-        self.operation_status = operation_status
-        # 以逗号分隔的操作
-        self.operations = operations
-        # 排序顺序， 顺序：ASC，倒序：DESC
-        self.order = order
-        # 当前页，页码从1开始
-        self.page_number = page_number
-        # 每页返回的输出数目
-        self.page_size = page_size
-        # 排序字段
-        self.sort_by = sort_by
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.entity_status is not None:
-            result['EntityStatus'] = self.entity_status
-        if self.entity_types is not None:
-            result['EntityTypes'] = self.entity_types
-        if self.operation_status is not None:
-            result['OperationStatus'] = self.operation_status
-        if self.operations is not None:
-            result['Operations'] = self.operations
-        if self.order is not None:
-            result['Order'] = self.order
-        if self.page_number is not None:
-            result['PageNumber'] = self.page_number
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        if self.sort_by is not None:
-            result['SortBy'] = self.sort_by
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('EntityStatus') is not None:
-            self.entity_status = m.get('EntityStatus')
-        if m.get('EntityTypes') is not None:
-            self.entity_types = m.get('EntityTypes')
-        if m.get('OperationStatus') is not None:
-            self.operation_status = m.get('OperationStatus')
-        if m.get('Operations') is not None:
-            self.operations = m.get('Operations')
-        if m.get('Order') is not None:
-            self.order = m.get('Order')
-        if m.get('PageNumber') is not None:
-            self.page_number = m.get('PageNumber')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        if m.get('SortBy') is not None:
-            self.sort_by = m.get('SortBy')
-        return self
-
-
-class ListOperationLogsResponseBodyLogs(TeaModel):
-    def __init__(
-        self,
-        entity_id: str = None,
-        entity_type: str = None,
-        gmt_create_time: str = None,
-        message: str = None,
-        operation: str = None,
-        operation_status: str = None,
-        operator: str = None,
-    ):
-        # 实体 id
-        self.entity_id = entity_id
-        # 实体类型，目前支持Resource
-        self.entity_type = entity_type
-        # 2021-01-30T12:51:33.028Z
-        self.gmt_create_time = gmt_create_time
-        # 日志
-        self.message = message
-        # 操作，目前支持Create, Update, SetDefault
-        self.operation = operation
-        # 操作状态，支持 Processing、Succeeded、Failed
-        self.operation_status = operation_status
-        # 操作人
-        self.operator = operator
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.entity_id is not None:
-            result['EntityId'] = self.entity_id
-        if self.entity_type is not None:
-            result['EntityType'] = self.entity_type
-        if self.gmt_create_time is not None:
-            result['GmtCreateTime'] = self.gmt_create_time
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.operation is not None:
-            result['Operation'] = self.operation
-        if self.operation_status is not None:
-            result['OperationStatus'] = self.operation_status
-        if self.operator is not None:
-            result['Operator'] = self.operator
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('EntityId') is not None:
-            self.entity_id = m.get('EntityId')
-        if m.get('EntityType') is not None:
-            self.entity_type = m.get('EntityType')
-        if m.get('GmtCreateTime') is not None:
-            self.gmt_create_time = m.get('GmtCreateTime')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('Operation') is not None:
-            self.operation = m.get('Operation')
-        if m.get('OperationStatus') is not None:
-            self.operation_status = m.get('OperationStatus')
-        if m.get('Operator') is not None:
-            self.operator = m.get('Operator')
-        return self
-
-
-class ListOperationLogsResponseBody(TeaModel):
-    def __init__(
-        self,
-        logs: List[ListOperationLogsResponseBodyLogs] = None,
-        request_id: str = None,
-        total_count: int = None,
-    ):
-        # 输出日志列表
-        self.logs = logs
-        # 请求 id
-        self.request_id = request_id
-        # 符合过滤条件的日志数量
-        self.total_count = total_count
-
-    def validate(self):
-        if self.logs:
-            for k in self.logs:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['Logs'] = []
-        if self.logs is not None:
-            for k in self.logs:
-                result['Logs'].append(k.to_map() if k else None)
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.logs = []
-        if m.get('Logs') is not None:
-            for k in m.get('Logs'):
-                temp_model = ListOperationLogsResponseBodyLogs()
-                self.logs.append(temp_model.from_map(k))
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
-        return self
-
-
-class ListOperationLogsResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: ListOperationLogsResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = ListOperationLogsResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class ListPermissionsResponseBodyPermissionsPermissionRules(TeaModel):
     def __init__(
         self,
         accessibility: str = None,
         entity_access_type: str = None,
     ):
-        # 待鉴权实例的可见性 PUBLIC表示当前工作空间所有人都可以访问 PRIVATE表示只有Owner可以访问
         self.accessibility = accessibility
-        # 存取类型 CREATOR 代表能看自已创建的 OTHERS 代表可以看别人创建的 ALL代表所有
         self.entity_access_type = entity_access_type
 
     def validate(self):
@@ -8399,7 +6264,6 @@ class ListPermissionsResponseBodyPermissions(TeaModel):
         permission_code: str = None,
         permission_rules: List[ListPermissionsResponseBodyPermissionsPermissionRules] = None,
     ):
-        # 权限 code
         self.permission_code = permission_code
         self.permission_rules = permission_rules
 
@@ -8442,11 +6306,8 @@ class ListPermissionsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # 权限列表
         self.permissions = permissions
-        # 请求 id
         self.request_id = request_id
-        # 符合过滤条件的数量
         self.total_count = total_count
 
     def validate(self):
@@ -8529,425 +6390,11 @@ class ListPermissionsResponse(TeaModel):
         return self
 
 
-class ListProductAuthorizationsRequest(TeaModel):
-    def __init__(
-        self,
-        ram_role_names: str = None,
-    ):
-        # 逗号分隔的角色名 AliyunODPSPAIDefaultRole,AliyunPAIAccessingOSSRole,AliyunPAIDLCAccessingOSSRole,AliyunPAIDLCDefaultRole,AliyunPAIDSWDefaultRole
-        self.ram_role_names = ram_role_names
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.ram_role_names is not None:
-            result['RamRoleNames'] = self.ram_role_names
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RamRoleNames') is not None:
-            self.ram_role_names = m.get('RamRoleNames')
-        return self
-
-
-class ListProductAuthorizationsResponseBodyAuthorizationDetails(TeaModel):
-    def __init__(
-        self,
-        authorization_url: str = None,
-        is_authorized: bool = None,
-        ram_role_arn: str = None,
-        ram_role_name: str = None,
-        ram_role_type: str = None,
-    ):
-        # 快捷授权的url， 假如IsAuthorized为false时有效
-        self.authorization_url = authorization_url
-        # 角色是否被授权
-        self.is_authorized = is_authorized
-        # RoleArn
-        self.ram_role_arn = ram_role_arn
-        # Role的名字
-        self.ram_role_name = ram_role_name
-        # Role的类型
-        self.ram_role_type = ram_role_type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.authorization_url is not None:
-            result['AuthorizationUrl'] = self.authorization_url
-        if self.is_authorized is not None:
-            result['IsAuthorized'] = self.is_authorized
-        if self.ram_role_arn is not None:
-            result['RamRoleARN'] = self.ram_role_arn
-        if self.ram_role_name is not None:
-            result['RamRoleName'] = self.ram_role_name
-        if self.ram_role_type is not None:
-            result['RamRoleType'] = self.ram_role_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AuthorizationUrl') is not None:
-            self.authorization_url = m.get('AuthorizationUrl')
-        if m.get('IsAuthorized') is not None:
-            self.is_authorized = m.get('IsAuthorized')
-        if m.get('RamRoleARN') is not None:
-            self.ram_role_arn = m.get('RamRoleARN')
-        if m.get('RamRoleName') is not None:
-            self.ram_role_name = m.get('RamRoleName')
-        if m.get('RamRoleType') is not None:
-            self.ram_role_type = m.get('RamRoleType')
-        return self
-
-
-class ListProductAuthorizationsResponseBody(TeaModel):
-    def __init__(
-        self,
-        authorization_details: List[ListProductAuthorizationsResponseBodyAuthorizationDetails] = None,
-        authorization_url: str = None,
-        request_id: str = None,
-    ):
-        # 角色列表
-        self.authorization_details = authorization_details
-        # 授权链接
-        self.authorization_url = authorization_url
-        # Id of the request
-        self.request_id = request_id
-
-    def validate(self):
-        if self.authorization_details:
-            for k in self.authorization_details:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['AuthorizationDetails'] = []
-        if self.authorization_details is not None:
-            for k in self.authorization_details:
-                result['AuthorizationDetails'].append(k.to_map() if k else None)
-        if self.authorization_url is not None:
-            result['AuthorizationUrl'] = self.authorization_url
-        if self.request_id is not None:
-            result['requestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.authorization_details = []
-        if m.get('AuthorizationDetails') is not None:
-            for k in m.get('AuthorizationDetails'):
-                temp_model = ListProductAuthorizationsResponseBodyAuthorizationDetails()
-                self.authorization_details.append(temp_model.from_map(k))
-        if m.get('AuthorizationUrl') is not None:
-            self.authorization_url = m.get('AuthorizationUrl')
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
-        return self
-
-
-class ListProductAuthorizationsResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: ListProductAuthorizationsResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = ListProductAuthorizationsResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class ListProductsRequest(TeaModel):
-    def __init__(
-        self,
-        product_codes: str = None,
-        service_codes: str = None,
-        verbose: bool = None,
-    ):
-        # 逗号分割的商品 code
-        self.product_codes = product_codes
-        # 逗号分割的服务 code
-        self.service_codes = service_codes
-        self.verbose = verbose
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.product_codes is not None:
-            result['ProductCodes'] = self.product_codes
-        if self.service_codes is not None:
-            result['ServiceCodes'] = self.service_codes
-        if self.verbose is not None:
-            result['Verbose'] = self.verbose
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ProductCodes') is not None:
-            self.product_codes = m.get('ProductCodes')
-        if m.get('ServiceCodes') is not None:
-            self.service_codes = m.get('ServiceCodes')
-        if m.get('Verbose') is not None:
-            self.verbose = m.get('Verbose')
-        return self
-
-
-class ListProductsResponseBodyProducts(TeaModel):
-    def __init__(
-        self,
-        has_permission_to_purchase: bool = None,
-        is_purchased: bool = None,
-        product_code: str = None,
-        purchase_url: str = None,
-    ):
-        # Whether user has permission to purchase
-        self.has_permission_to_purchase = has_permission_to_purchase
-        # 是否已购买
-        self.is_purchased = is_purchased
-        # 商品 code
-        self.product_code = product_code
-        # 购买链接
-        self.purchase_url = purchase_url
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.has_permission_to_purchase is not None:
-            result['HasPermissionToPurchase'] = self.has_permission_to_purchase
-        if self.is_purchased is not None:
-            result['IsPurchased'] = self.is_purchased
-        if self.product_code is not None:
-            result['ProductCode'] = self.product_code
-        if self.purchase_url is not None:
-            result['PurchaseUrl'] = self.purchase_url
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('HasPermissionToPurchase') is not None:
-            self.has_permission_to_purchase = m.get('HasPermissionToPurchase')
-        if m.get('IsPurchased') is not None:
-            self.is_purchased = m.get('IsPurchased')
-        if m.get('ProductCode') is not None:
-            self.product_code = m.get('ProductCode')
-        if m.get('PurchaseUrl') is not None:
-            self.purchase_url = m.get('PurchaseUrl')
-        return self
-
-
-class ListProductsResponseBodyServices(TeaModel):
-    def __init__(
-        self,
-        is_open: bool = None,
-        open_url: str = None,
-        service_code: str = None,
-    ):
-        # 是否开通
-        self.is_open = is_open
-        # 开通链接
-        self.open_url = open_url
-        # 服务Code
-        self.service_code = service_code
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.is_open is not None:
-            result['IsOpen'] = self.is_open
-        if self.open_url is not None:
-            result['OpenUrl'] = self.open_url
-        if self.service_code is not None:
-            result['ServiceCode'] = self.service_code
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('IsOpen') is not None:
-            self.is_open = m.get('IsOpen')
-        if m.get('OpenUrl') is not None:
-            self.open_url = m.get('OpenUrl')
-        if m.get('ServiceCode') is not None:
-            self.service_code = m.get('ServiceCode')
-        return self
-
-
-class ListProductsResponseBody(TeaModel):
-    def __init__(
-        self,
-        products: List[ListProductsResponseBodyProducts] = None,
-        request_id: str = None,
-        services: List[ListProductsResponseBodyServices] = None,
-    ):
-        # 产品列表
-        self.products = products
-        # 请求 id
-        self.request_id = request_id
-        # 服务列表
-        self.services = services
-
-    def validate(self):
-        if self.products:
-            for k in self.products:
-                if k:
-                    k.validate()
-        if self.services:
-            for k in self.services:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['Products'] = []
-        if self.products is not None:
-            for k in self.products:
-                result['Products'].append(k.to_map() if k else None)
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        result['Services'] = []
-        if self.services is not None:
-            for k in self.services:
-                result['Services'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.products = []
-        if m.get('Products') is not None:
-            for k in m.get('Products'):
-                temp_model = ListProductsResponseBodyProducts()
-                self.products.append(temp_model.from_map(k))
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        self.services = []
-        if m.get('Services') is not None:
-            for k in m.get('Services'):
-                temp_model = ListProductsResponseBodyServices()
-                self.services.append(temp_model.from_map(k))
-        return self
-
-
-class ListProductsResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: ListProductsResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = ListProductsResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class ListQuotasRequest(TeaModel):
     def __init__(
         self,
         name: str = None,
     ):
-        # 名字，支持模糊搜索
         self.name = name
 
     def validate(self):
@@ -8977,11 +6424,8 @@ class ListQuotasResponseBodyQuotasSpecs(TeaModel):
         type: str = None,
         value: str = None,
     ):
-        # 规格名
         self.name = name
-        # 类型，可为空
         self.type = type
-        # 规格描述
         self.value = value
 
     def validate(self):
@@ -9015,6 +6459,7 @@ class ListQuotasResponseBodyQuotasSpecs(TeaModel):
 class ListQuotasResponseBodyQuotas(TeaModel):
     def __init__(
         self,
+        display_name: str = None,
         id: str = None,
         mode: str = None,
         name: str = None,
@@ -9022,17 +6467,12 @@ class ListQuotasResponseBodyQuotas(TeaModel):
         quota_type: str = None,
         specs: List[ListQuotasResponseBodyQuotasSpecs] = None,
     ):
-        # quota的id
+        self.display_name = display_name
         self.id = id
-        # 模式  isolate 预付费  share 后付费  develop 开发模式
         self.mode = mode
-        # quota名字
         self.name = name
-        # 产品代码
         self.product_code = product_code
-        # 产品类型， 支持PAI，MaxCompute
         self.quota_type = quota_type
-        # 规格描述列表
         self.specs = specs
 
     def validate(self):
@@ -9047,6 +6487,8 @@ class ListQuotasResponseBodyQuotas(TeaModel):
             return _map
 
         result = dict()
+        if self.display_name is not None:
+            result['DisplayName'] = self.display_name
         if self.id is not None:
             result['Id'] = self.id
         if self.mode is not None:
@@ -9065,6 +6507,8 @@ class ListQuotasResponseBodyQuotas(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DisplayName') is not None:
+            self.display_name = m.get('DisplayName')
         if m.get('Id') is not None:
             self.id = m.get('Id')
         if m.get('Mode') is not None:
@@ -9090,11 +6534,8 @@ class ListQuotasResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # 配额列表
         self.quotas = quotas
-        # 请求 id
         self.request_id = request_id
-        # 符合过滤条件的数量
         self.total_count = total_count
 
     def validate(self):
@@ -9180,31 +6621,23 @@ class ListQuotasResponse(TeaModel):
 class ListResourcesRequest(TeaModel):
     def __init__(
         self,
+        group_name: str = None,
         option: str = None,
         page_number: int = None,
         page_size: int = None,
         product_types: str = None,
-        resource_group_name: str = None,
         resource_name: str = None,
+        verbose: bool = None,
         workspace_id: str = None,
-        workspace_ids: str = None,
     ):
-        # 选项，目前支持 ListResourceByWorkspace    列举某个工作空间的资源 GetResource                       获取所有工作空间下的资源 GetResourceGroup               获取所有工作空间下的资源组 ListResourceSummaryByWorkspaces  列举一组工作空间的资源汇总
+        self.group_name = group_name
         self.option = option
-        # 分页，从1开始，默认1
         self.page_number = page_number
-        # 页大小，默认20
         self.page_size = page_size
-        # 逗号分隔的产品类型，可选值 MaxCompute，DLC
         self.product_types = product_types
-        # 资源的group名字
-        self.resource_group_name = resource_group_name
-        # 资源的名字
         self.resource_name = resource_name
-        # 工作空间 id
+        self.verbose = verbose
         self.workspace_id = workspace_id
-        # 工作空间id列表，以逗号分隔
-        self.workspace_ids = workspace_ids
 
     def validate(self):
         pass
@@ -9215,6 +6648,8 @@ class ListResourcesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
         if self.option is not None:
             result['Option'] = self.option
         if self.page_number is not None:
@@ -9223,18 +6658,18 @@ class ListResourcesRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.product_types is not None:
             result['ProductTypes'] = self.product_types
-        if self.resource_group_name is not None:
-            result['ResourceGroupName'] = self.resource_group_name
         if self.resource_name is not None:
             result['ResourceName'] = self.resource_name
+        if self.verbose is not None:
+            result['Verbose'] = self.verbose
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
-        if self.workspace_ids is not None:
-            result['WorkspaceIds'] = self.workspace_ids
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
         if m.get('Option') is not None:
             self.option = m.get('Option')
         if m.get('PageNumber') is not None:
@@ -9243,14 +6678,12 @@ class ListResourcesRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('ProductTypes') is not None:
             self.product_types = m.get('ProductTypes')
-        if m.get('ResourceGroupName') is not None:
-            self.resource_group_name = m.get('ResourceGroupName')
         if m.get('ResourceName') is not None:
             self.resource_name = m.get('ResourceName')
+        if m.get('Verbose') is not None:
+            self.verbose = m.get('Verbose')
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
-        if m.get('WorkspaceIds') is not None:
-            self.workspace_ids = m.get('WorkspaceIds')
         return self
 
 
@@ -9260,9 +6693,7 @@ class ListResourcesResponseBodyResourcesQuotasSpecs(TeaModel):
         name: str = None,
         value: str = None,
     ):
-        # 规格名字
         self.name = name
-        # 规格描述
         self.value = value
 
     def validate(self):
@@ -9293,6 +6724,7 @@ class ListResourcesResponseBodyResourcesQuotas(TeaModel):
     def __init__(
         self,
         card_type: str = None,
+        display_name: str = None,
         id: str = None,
         mode: str = None,
         name: str = None,
@@ -9300,19 +6732,13 @@ class ListResourcesResponseBodyResourcesQuotas(TeaModel):
         quota_type: str = None,
         specs: List[ListResourcesResponseBodyResourcesQuotasSpecs] = None,
     ):
-        # 卡类型，支持cpu、gpu
         self.card_type = card_type
-        # 配额id
+        self.display_name = display_name
         self.id = id
-        # 模式 isolate 预付费 share 后付费 develop 开发模式
         self.mode = mode
-        # 配额名称
         self.name = name
-        # 商品 code
         self.product_code = product_code
-        # 产品类型， 支持PAI，MaxCompute
         self.quota_type = quota_type
-        # 规格描述列表
         self.specs = specs
 
     def validate(self):
@@ -9329,6 +6755,8 @@ class ListResourcesResponseBodyResourcesQuotas(TeaModel):
         result = dict()
         if self.card_type is not None:
             result['CardType'] = self.card_type
+        if self.display_name is not None:
+            result['DisplayName'] = self.display_name
         if self.id is not None:
             result['Id'] = self.id
         if self.mode is not None:
@@ -9349,6 +6777,8 @@ class ListResourcesResponseBodyResourcesQuotas(TeaModel):
         m = m or dict()
         if m.get('CardType') is not None:
             self.card_type = m.get('CardType')
+        if m.get('DisplayName') is not None:
+            self.display_name = m.get('DisplayName')
         if m.get('Id') is not None:
             self.id = m.get('Id')
         if m.get('Mode') is not None:
@@ -9367,84 +6797,34 @@ class ListResourcesResponseBodyResourcesQuotas(TeaModel):
         return self
 
 
-class ListResourcesResponseBodyResourcesResourceSummary(TeaModel):
-    def __init__(
-        self,
-        count: int = None,
-        product_type: str = None,
-    ):
-        # 资源个数
-        self.count = count
-        # 资源类型
-        self.product_type = product_type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.count is not None:
-            result['Count'] = self.count
-        if self.product_type is not None:
-            result['ProductType'] = self.product_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Count') is not None:
-            self.count = m.get('Count')
-        if m.get('ProductType') is not None:
-            self.product_type = m.get('ProductType')
-        return self
-
-
 class ListResourcesResponseBodyResources(TeaModel):
     def __init__(
         self,
         env_type: str = None,
         gmt_create_time: str = None,
         group_name: str = None,
+        id: str = None,
         is_default: bool = None,
         name: str = None,
         product_type: str = None,
         quotas: List[ListResourcesResponseBodyResourcesQuotas] = None,
-        resource_summary: List[ListResourcesResponseBodyResourcesResourceSummary] = None,
         spec: Dict[str, Any] = None,
         workspace_id: str = None,
-        id: str = None,
     ):
-        # 环境， 支持dev（开发）、prod（生产）
         self.env_type = env_type
-        # 创建 UTC 时间，日期格式 iso8601
         self.gmt_create_time = gmt_create_time
-        # 分组名，主账户内唯一 一个 GroupName 下可能有一个 dev 资源和一个 prod 资源
         self.group_name = group_name
-        # 是否默认资源 每个类型都有一个默认的资源
+        self.id = id
         self.is_default = is_default
-        # 资源名 长度需要在3到27个字符 region内唯一
         self.name = name
-        # 产品类型， 支持PAI，MaxCompute
         self.product_type = product_type
         self.quotas = quotas
-        self.resource_summary = resource_summary
-        # 对于MaxCompute是个json，有如下key： Endpoint Project
         self.spec = spec
-        # 所属的工作空间 id
         self.workspace_id = workspace_id
-        # 资源 id
-        self.id = id
 
     def validate(self):
         if self.quotas:
             for k in self.quotas:
-                if k:
-                    k.validate()
-        if self.resource_summary:
-            for k in self.resource_summary:
                 if k:
                     k.validate()
 
@@ -9460,6 +6840,8 @@ class ListResourcesResponseBodyResources(TeaModel):
             result['GmtCreateTime'] = self.gmt_create_time
         if self.group_name is not None:
             result['GroupName'] = self.group_name
+        if self.id is not None:
+            result['Id'] = self.id
         if self.is_default is not None:
             result['IsDefault'] = self.is_default
         if self.name is not None:
@@ -9470,16 +6852,10 @@ class ListResourcesResponseBodyResources(TeaModel):
         if self.quotas is not None:
             for k in self.quotas:
                 result['Quotas'].append(k.to_map() if k else None)
-        result['ResourceSummary'] = []
-        if self.resource_summary is not None:
-            for k in self.resource_summary:
-                result['ResourceSummary'].append(k.to_map() if k else None)
         if self.spec is not None:
             result['Spec'] = self.spec
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
-        if self.id is not None:
-            result['id'] = self.id
         return result
 
     def from_map(self, m: dict = None):
@@ -9490,6 +6866,8 @@ class ListResourcesResponseBodyResources(TeaModel):
             self.gmt_create_time = m.get('GmtCreateTime')
         if m.get('GroupName') is not None:
             self.group_name = m.get('GroupName')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
         if m.get('IsDefault') is not None:
             self.is_default = m.get('IsDefault')
         if m.get('Name') is not None:
@@ -9501,17 +6879,10 @@ class ListResourcesResponseBodyResources(TeaModel):
             for k in m.get('Quotas'):
                 temp_model = ListResourcesResponseBodyResourcesQuotas()
                 self.quotas.append(temp_model.from_map(k))
-        self.resource_summary = []
-        if m.get('ResourceSummary') is not None:
-            for k in m.get('ResourceSummary'):
-                temp_model = ListResourcesResponseBodyResourcesResourceSummary()
-                self.resource_summary.append(temp_model.from_map(k))
         if m.get('Spec') is not None:
             self.spec = m.get('Spec')
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
-        if m.get('id') is not None:
-            self.id = m.get('id')
         return self
 
 
@@ -9522,11 +6893,8 @@ class ListResourcesResponseBody(TeaModel):
         resources: List[ListResourcesResponseBodyResources] = None,
         total_count: int = None,
     ):
-        # 请求 id
         self.request_id = request_id
-        # 资源列表
         self.resources = resources
-        # 符合过滤条件的作业数量
         self.total_count = total_count
 
     def validate(self):
@@ -9609,207 +6977,13 @@ class ListResourcesResponse(TeaModel):
         return self
 
 
-class ListUsersRequest(TeaModel):
-    def __init__(
-        self,
-        account_types: str = None,
-        page_number: int = None,
-        page_size: int = None,
-        user_ids: str = None,
-        user_name: str = None,
-    ):
-        # 账户类型列表，以逗号分隔
-        self.account_types = account_types
-        # 分页，从1开始，默认1
-        self.page_number = page_number
-        # 页大小，默认20
-        self.page_size = page_size
-        # 用户 Id 列表，以逗号分隔
-        self.user_ids = user_ids
-        # 用户名
-        self.user_name = user_name
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.account_types is not None:
-            result['AccountTypes'] = self.account_types
-        if self.page_number is not None:
-            result['PageNumber'] = self.page_number
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        if self.user_ids is not None:
-            result['UserIds'] = self.user_ids
-        if self.user_name is not None:
-            result['UserName'] = self.user_name
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AccountTypes') is not None:
-            self.account_types = m.get('AccountTypes')
-        if m.get('PageNumber') is not None:
-            self.page_number = m.get('PageNumber')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        if m.get('UserIds') is not None:
-            self.user_ids = m.get('UserIds')
-        if m.get('UserName') is not None:
-            self.user_name = m.get('UserName')
-        return self
-
-
-class ListUsersResponseBodyUsers(TeaModel):
-    def __init__(
-        self,
-        display_name: str = None,
-        user_id: str = None,
-        user_name: str = None,
-    ):
-        # 用户显示名
-        self.display_name = display_name
-        # 用户 id
-        self.user_id = user_id
-        # 用户名
-        self.user_name = user_name
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.display_name is not None:
-            result['DisplayName'] = self.display_name
-        if self.user_id is not None:
-            result['UserId'] = self.user_id
-        if self.user_name is not None:
-            result['UserName'] = self.user_name
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DisplayName') is not None:
-            self.display_name = m.get('DisplayName')
-        if m.get('UserId') is not None:
-            self.user_id = m.get('UserId')
-        if m.get('UserName') is not None:
-            self.user_name = m.get('UserName')
-        return self
-
-
-class ListUsersResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        total_count: int = None,
-        users: List[ListUsersResponseBodyUsers] = None,
-    ):
-        # 请求 id
-        self.request_id = request_id
-        # 符合过滤条件的用户数量
-        self.total_count = total_count
-        # 用户列表
-        self.users = users
-
-    def validate(self):
-        if self.users:
-            for k in self.users:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
-        result['Users'] = []
-        if self.users is not None:
-            for k in self.users:
-                result['Users'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
-        self.users = []
-        if m.get('Users') is not None:
-            for k in m.get('Users'):
-                temp_model = ListUsersResponseBodyUsers()
-                self.users.append(temp_model.from_map(k))
-        return self
-
-
-class ListUsersResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: ListUsersResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = ListUsersResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class ListWorkspaceUsersResponseBodyUsers(TeaModel):
     def __init__(
         self,
         user_id: str = None,
         user_name: str = None,
     ):
-        # 用户 id
         self.user_id = user_id
-        # 用户名
         self.user_name = user_name
 
     def validate(self):
@@ -9843,11 +7017,8 @@ class ListWorkspaceUsersResponseBody(TeaModel):
         total_count: int = None,
         users: List[ListWorkspaceUsersResponseBodyUsers] = None,
     ):
-        # 请求 id
         self.request_id = request_id
-        # 符合过滤条件的用户数量
         self.total_count = total_count
-        # 用户列表
         self.users = users
 
     def validate(self):
@@ -9945,27 +7116,16 @@ class ListWorkspacesRequest(TeaModel):
         workspace_ids: str = None,
         workspace_name: str = None,
     ):
-        # GetWorkspaceFields的Field字段
         self.fields = fields
-        # 逗号分割的模块列表，目前填入PAI
         self.module_list = module_list
-        # 逗号分隔的选项
         self.option = option
-        # 排序方向： ASC - 升序 DESC - 降序
         self.order = order
-        # 分页，从1开始，默认1
         self.page_number = page_number
-        # 页大小，默认20
         self.page_size = page_size
-        # 排序字段：CreateTime
         self.sort_by = sort_by
-        # 状态
         self.status = status
-        # 是否显示详细信息，默认true
         self.verbose = verbose
-        # 工作空间id列表
         self.workspace_ids = workspace_ids
-        # 工作空间名字
         self.workspace_name = workspace_name
 
     def validate(self):
@@ -10043,27 +7203,16 @@ class ListWorkspacesResponseBodyWorkspaces(TeaModel):
         workspace_id: str = None,
         workspace_name: str = None,
     ):
-        # 管理员名字
         self.admin_names = admin_names
-        # 创建人
         self.creator = creator
-        # 描述
         self.description = description
-        # 环境，用作判断简单模式还是标准模式
         self.env_types = env_types
-        # 附加信息
         self.extra_infos = extra_infos
-        # 创建 UTC 时间，日期格式 iso8601
         self.gmt_create_time = gmt_create_time
-        # 修改 UTC 时间，日期格式 iso8601
         self.gmt_modified_time = gmt_modified_time
-        # 是否为默认工作空间
         self.is_default = is_default
-        # 工作空间状态
         self.status = status
-        # 工作空间 id
         self.workspace_id = workspace_id
-        # 工作空间名字
         self.workspace_name = workspace_name
 
     def validate(self):
@@ -10134,13 +7283,9 @@ class ListWorkspacesResponseBody(TeaModel):
         total_count: int = None,
         workspaces: List[ListWorkspacesResponseBodyWorkspaces] = None,
     ):
-        # 请求 id
         self.request_id = request_id
-        # 资源限制
         self.resource_limits = resource_limits
-        # 符合过滤条件的作业数量
         self.total_count = total_count
-        # 工作空间列表
         self.workspaces = workspaces
 
     def validate(self):
@@ -10233,7 +7378,6 @@ class PublishCodeSourceResponseBody(TeaModel):
         code_source_id: str = None,
         request_id: str = None,
     ):
-        # 被删除的代码源配置ID
         self.code_source_id = code_source_id
         self.request_id = request_id
 
@@ -10310,7 +7454,6 @@ class PublishDatasetResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -10383,9 +7526,7 @@ class PublishImageResponseBody(TeaModel):
         image_id: str = None,
         request_id: str = None,
     ):
-        # 镜像 id
         self.image_id = image_id
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -10400,15 +7541,15 @@ class PublishImageResponseBody(TeaModel):
         if self.image_id is not None:
             result['ImageId'] = self.image_id
         if self.request_id is not None:
-            result['requestId'] = self.request_id
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('ImageId') is not None:
             self.image_id = m.get('ImageId')
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -10461,7 +7602,6 @@ class RemoveImageResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -10474,13 +7614,13 @@ class RemoveImageResponseBody(TeaModel):
 
         result = dict()
         if self.request_id is not None:
-            result['requestId'] = self.request_id
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -10533,7 +7673,6 @@ class RemoveImageLabelsResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -10546,13 +7685,13 @@ class RemoveImageLabelsResponseBody(TeaModel):
 
         result = dict()
         if self.request_id is not None:
-            result['requestId'] = self.request_id
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -10605,7 +7744,6 @@ class RemoveMemberRoleResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # 请求 id
         self.request_id = request_id
 
     def validate(self):
@@ -10672,221 +7810,6 @@ class RemoveMemberRoleResponse(TeaModel):
         return self
 
 
-class RemoveWorkspaceQuotaResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-    ):
-        # 请求 id
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class RemoveWorkspaceQuotaResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: RemoveWorkspaceQuotaResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = RemoveWorkspaceQuotaResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class UpdateConfigsRequestConfigs(TeaModel):
-    def __init__(
-        self,
-        config_key: str = None,
-        config_value: str = None,
-    ):
-        # 配置键
-        self.config_key = config_key
-        # 配置值
-        self.config_value = config_value
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.config_key is not None:
-            result['ConfigKey'] = self.config_key
-        if self.config_value is not None:
-            result['ConfigValue'] = self.config_value
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ConfigKey') is not None:
-            self.config_key = m.get('ConfigKey')
-        if m.get('ConfigValue') is not None:
-            self.config_value = m.get('ConfigValue')
-        return self
-
-
-class UpdateConfigsRequest(TeaModel):
-    def __init__(
-        self,
-        configs: List[UpdateConfigsRequestConfigs] = None,
-    ):
-        # 配置列表
-        self.configs = configs
-
-    def validate(self):
-        if self.configs:
-            for k in self.configs:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['Configs'] = []
-        if self.configs is not None:
-            for k in self.configs:
-                result['Configs'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.configs = []
-        if m.get('Configs') is not None:
-            for k in m.get('Configs'):
-                temp_model = UpdateConfigsRequestConfigs()
-                self.configs.append(temp_model.from_map(k))
-        return self
-
-
-class UpdateConfigsResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-    ):
-        # Id of the request
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class UpdateConfigsResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: UpdateConfigsResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = UpdateConfigsResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class UpdateDatasetRequest(TeaModel):
     def __init__(
         self,
@@ -10931,7 +7854,6 @@ class UpdateDatasetResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -11001,10 +7923,9 @@ class UpdateDatasetResponse(TeaModel):
 class UpdateDefaultWorkspaceRequest(TeaModel):
     def __init__(
         self,
-        default_workspace_id: str = None,
+        workspace_id: str = None,
     ):
-        # 显示名称
-        self.default_workspace_id = default_workspace_id
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -11015,14 +7936,14 @@ class UpdateDefaultWorkspaceRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.default_workspace_id is not None:
-            result['DefaultWorkspaceId'] = self.default_workspace_id
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('DefaultWorkspaceId') is not None:
-            self.default_workspace_id = m.get('DefaultWorkspaceId')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
@@ -11031,7 +7952,6 @@ class UpdateDefaultWorkspaceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # 请求 id
         self.request_id = request_id
 
     def validate(self):
@@ -11105,11 +8025,8 @@ class UpdateModelRequest(TeaModel):
         model_description: str = None,
         model_name: str = None,
     ):
-        # 可见度
         self.accessibility = accessibility
-        # 模型描述
         self.model_description = model_description
-        # 模型名称
         self.model_name = model_name
 
     def validate(self):
@@ -11145,7 +8062,6 @@ class UpdateModelResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -11217,13 +8133,14 @@ class UpdateModelVersionRequest(TeaModel):
         self,
         inference_spec: Dict[str, Any] = None,
         options: str = None,
+        source_id: str = None,
+        source_type: str = None,
         version_description: str = None,
     ):
-        # 描述下游的推理应用
         self.inference_spec = inference_spec
-        # 扩展字段。
         self.options = options
-        # 模型版本描述
+        self.source_id = source_id
+        self.source_type = source_type
         self.version_description = version_description
 
     def validate(self):
@@ -11239,6 +8156,10 @@ class UpdateModelVersionRequest(TeaModel):
             result['InferenceSpec'] = self.inference_spec
         if self.options is not None:
             result['Options'] = self.options
+        if self.source_id is not None:
+            result['SourceId'] = self.source_id
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
         if self.version_description is not None:
             result['VersionDescription'] = self.version_description
         return result
@@ -11249,6 +8170,10 @@ class UpdateModelVersionRequest(TeaModel):
             self.inference_spec = m.get('InferenceSpec')
         if m.get('Options') is not None:
             self.options = m.get('Options')
+        if m.get('SourceId') is not None:
+            self.source_id = m.get('SourceId')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
         if m.get('VersionDescription') is not None:
             self.version_description = m.get('VersionDescription')
         return self
@@ -11259,7 +8184,6 @@ class UpdateModelVersionResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -11332,9 +8256,7 @@ class UpdateWorkspaceRequest(TeaModel):
         description: str = None,
         display_name: str = None,
     ):
-        # 描述
         self.description = description
-        # 显示名称
         self.display_name = display_name
 
     def validate(self):
@@ -11366,7 +8288,6 @@ class UpdateWorkspaceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # 请求 id
         self.request_id = request_id
 
     def validate(self):
@@ -11436,10 +8357,11 @@ class UpdateWorkspaceResponse(TeaModel):
 class UpdateWorkspaceResourceRequest(TeaModel):
     def __init__(
         self,
+        group_name: str = None,
         is_default: bool = None,
         product_type: str = None,
     ):
-        # 是否默认资源实例，目前只能填 true，不支持填 false
+        self.group_name = group_name
         self.is_default = is_default
         self.product_type = product_type
 
@@ -11452,6 +8374,8 @@ class UpdateWorkspaceResourceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
         if self.is_default is not None:
             result['IsDefault'] = self.is_default
         if self.product_type is not None:
@@ -11460,6 +8384,8 @@ class UpdateWorkspaceResourceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
         if m.get('IsDefault') is not None:
             self.is_default = m.get('IsDefault')
         if m.get('ProductType') is not None:
@@ -11472,7 +8398,6 @@ class UpdateWorkspaceResourceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # 请求 id
         self.request_id = request_id
 
     def validate(self):
