@@ -257,6 +257,114 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
+    def create_file(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.CreateFileRequest,
+    ) -> devops_20210625_models.CreateFileResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_file_with_options(repository_id, request, headers, runtime)
+
+    async def create_file_async(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.CreateFileRequest,
+    ) -> devops_20210625_models.CreateFileResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_file_with_options_async(repository_id, request, headers, runtime)
+
+    def create_file_with_options(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.CreateFileRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.CreateFileResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        body = {}
+        if not UtilClient.is_unset(request.branch_name):
+            body['branchName'] = request.branch_name
+        if not UtilClient.is_unset(request.commit_message):
+            body['commitMessage'] = request.commit_message
+        if not UtilClient.is_unset(request.content):
+            body['content'] = request.content
+        if not UtilClient.is_unset(request.encoding):
+            body['encoding'] = request.encoding
+        if not UtilClient.is_unset(request.file_path):
+            body['filePath'] = request.file_path
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateFile',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/repository/{OpenApiUtilClient.get_encode_param(repository_id)}/files',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.CreateFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_file_with_options_async(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.CreateFileRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.CreateFileResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        body = {}
+        if not UtilClient.is_unset(request.branch_name):
+            body['branchName'] = request.branch_name
+        if not UtilClient.is_unset(request.commit_message):
+            body['commitMessage'] = request.commit_message
+        if not UtilClient.is_unset(request.content):
+            body['content'] = request.content
+        if not UtilClient.is_unset(request.encoding):
+            body['encoding'] = request.encoding
+        if not UtilClient.is_unset(request.file_path):
+            body['filePath'] = request.file_path
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateFile',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/repository/{OpenApiUtilClient.get_encode_param(repository_id)}/files',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.CreateFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
     def create_flow_tag(
         self,
         organization_id: str,
@@ -1551,6 +1659,102 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
+    def delete_file(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.DeleteFileRequest,
+    ) -> devops_20210625_models.DeleteFileResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_file_with_options(repository_id, request, headers, runtime)
+
+    async def delete_file_async(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.DeleteFileRequest,
+    ) -> devops_20210625_models.DeleteFileResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_file_with_options_async(repository_id, request, headers, runtime)
+
+    def delete_file_with_options(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.DeleteFileRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.DeleteFileResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.branch_name):
+            query['branchName'] = request.branch_name
+        if not UtilClient.is_unset(request.commit_message):
+            query['commitMessage'] = request.commit_message
+        if not UtilClient.is_unset(request.file_path):
+            query['filePath'] = request.file_path
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteFile',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/repository/{OpenApiUtilClient.get_encode_param(repository_id)}/files/delete',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.DeleteFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_file_with_options_async(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.DeleteFileRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.DeleteFileResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.branch_name):
+            query['branchName'] = request.branch_name
+        if not UtilClient.is_unset(request.commit_message):
+            query['commitMessage'] = request.commit_message
+        if not UtilClient.is_unset(request.file_path):
+            query['filePath'] = request.file_path
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteFile',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/repository/{OpenApiUtilClient.get_encode_param(repository_id)}/files/delete',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.DeleteFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
     def delete_flow_tag(
         self,
         organization_id: str,
@@ -1981,6 +2185,98 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
+    def delete_repository(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.DeleteRepositoryRequest,
+    ) -> devops_20210625_models.DeleteRepositoryResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_repository_with_options(repository_id, request, headers, runtime)
+
+    async def delete_repository_async(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.DeleteRepositoryRequest,
+    ) -> devops_20210625_models.DeleteRepositoryResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_repository_with_options_async(repository_id, request, headers, runtime)
+
+    def delete_repository_with_options(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.DeleteRepositoryRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.DeleteRepositoryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        body = {}
+        if not UtilClient.is_unset(request.reason):
+            body['reason'] = request.reason
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteRepository',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/repository/{OpenApiUtilClient.get_encode_param(repository_id)}/remove',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.DeleteRepositoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_repository_with_options_async(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.DeleteRepositoryRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.DeleteRepositoryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        body = {}
+        if not UtilClient.is_unset(request.reason):
+            body['reason'] = request.reason
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteRepository',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/repository/{OpenApiUtilClient.get_encode_param(repository_id)}/remove',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.DeleteRepositoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
     def delete_resource_member(
         self,
         organization_id: str,
@@ -2364,6 +2660,106 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             devops_20210625_models.GetCustomFieldOptionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_file_blobs(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.GetFileBlobsRequest,
+    ) -> devops_20210625_models.GetFileBlobsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_file_blobs_with_options(repository_id, request, headers, runtime)
+
+    async def get_file_blobs_async(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.GetFileBlobsRequest,
+    ) -> devops_20210625_models.GetFileBlobsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_file_blobs_with_options_async(repository_id, request, headers, runtime)
+
+    def get_file_blobs_with_options(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.GetFileBlobsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.GetFileBlobsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.file_path):
+            query['filePath'] = request.file_path
+        if not UtilClient.is_unset(request.from_):
+            query['from'] = request.from_
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        if not UtilClient.is_unset(request.ref):
+            query['ref'] = request.ref
+        if not UtilClient.is_unset(request.to):
+            query['to'] = request.to
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetFileBlobs',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/repository/{OpenApiUtilClient.get_encode_param(repository_id)}/files/blobs',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.GetFileBlobsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_file_blobs_with_options_async(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.GetFileBlobsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.GetFileBlobsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.file_path):
+            query['filePath'] = request.file_path
+        if not UtilClient.is_unset(request.from_):
+            query['from'] = request.from_
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        if not UtilClient.is_unset(request.ref):
+            query['ref'] = request.ref
+        if not UtilClient.is_unset(request.to):
+            query['to'] = request.to
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetFileBlobs',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/repository/{OpenApiUtilClient.get_encode_param(repository_id)}/files/blobs',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.GetFileBlobsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
@@ -5491,6 +5887,102 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
+    def list_repository_tree(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.ListRepositoryTreeRequest,
+    ) -> devops_20210625_models.ListRepositoryTreeResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_repository_tree_with_options(repository_id, request, headers, runtime)
+
+    async def list_repository_tree_async(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.ListRepositoryTreeRequest,
+    ) -> devops_20210625_models.ListRepositoryTreeResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_repository_tree_with_options_async(repository_id, request, headers, runtime)
+
+    def list_repository_tree_with_options(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.ListRepositoryTreeRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ListRepositoryTreeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        if not UtilClient.is_unset(request.path):
+            query['path'] = request.path
+        if not UtilClient.is_unset(request.ref_name):
+            query['refName'] = request.ref_name
+        if not UtilClient.is_unset(request.type):
+            query['type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListRepositoryTree',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/repository/{OpenApiUtilClient.get_encode_param(repository_id)}/files/tree',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ListRepositoryTreeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_repository_tree_with_options_async(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.ListRepositoryTreeRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ListRepositoryTreeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        if not UtilClient.is_unset(request.path):
+            query['path'] = request.path
+        if not UtilClient.is_unset(request.ref_name):
+            query['refName'] = request.ref_name
+        if not UtilClient.is_unset(request.type):
+            query['type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListRepositoryTree',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/repository/{OpenApiUtilClient.get_encode_param(repository_id)}/files/tree',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ListRepositoryTreeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
     def list_repository_webhook(
         self,
         repository_id: str,
@@ -7619,6 +8111,118 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
+    def update_file(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.UpdateFileRequest,
+    ) -> devops_20210625_models.UpdateFileResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_file_with_options(repository_id, request, headers, runtime)
+
+    async def update_file_async(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.UpdateFileRequest,
+    ) -> devops_20210625_models.UpdateFileResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_file_with_options_async(repository_id, request, headers, runtime)
+
+    def update_file_with_options(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.UpdateFileRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.UpdateFileResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        body = {}
+        if not UtilClient.is_unset(request.branch_name):
+            body['branchName'] = request.branch_name
+        if not UtilClient.is_unset(request.commit_message):
+            body['commitMessage'] = request.commit_message
+        if not UtilClient.is_unset(request.content):
+            body['content'] = request.content
+        if not UtilClient.is_unset(request.encoding):
+            body['encoding'] = request.encoding
+        if not UtilClient.is_unset(request.new_path):
+            body['newPath'] = request.new_path
+        if not UtilClient.is_unset(request.old_path):
+            body['oldPath'] = request.old_path
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateFile',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/repository/{OpenApiUtilClient.get_encode_param(repository_id)}/files/update',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.UpdateFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_file_with_options_async(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.UpdateFileRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.UpdateFileResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        body = {}
+        if not UtilClient.is_unset(request.branch_name):
+            body['branchName'] = request.branch_name
+        if not UtilClient.is_unset(request.commit_message):
+            body['commitMessage'] = request.commit_message
+        if not UtilClient.is_unset(request.content):
+            body['content'] = request.content
+        if not UtilClient.is_unset(request.encoding):
+            body['encoding'] = request.encoding
+        if not UtilClient.is_unset(request.new_path):
+            body['newPath'] = request.new_path
+        if not UtilClient.is_unset(request.old_path):
+            body['oldPath'] = request.old_path
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateFile',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/repository/{OpenApiUtilClient.get_encode_param(repository_id)}/files/update',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.UpdateFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
     def update_flow_tag(
         self,
         organization_id: str,
@@ -8312,6 +8916,162 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             devops_20210625_models.UpdateProtectedBranchesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_repository(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.UpdateRepositoryRequest,
+    ) -> devops_20210625_models.UpdateRepositoryResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_repository_with_options(repository_id, request, headers, runtime)
+
+    async def update_repository_async(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.UpdateRepositoryRequest,
+    ) -> devops_20210625_models.UpdateRepositoryResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_repository_with_options_async(repository_id, request, headers, runtime)
+
+    def update_repository_with_options(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.UpdateRepositoryRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.UpdateRepositoryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        body = {}
+        if not UtilClient.is_unset(request.admin_setting_language):
+            body['adminSettingLanguage'] = request.admin_setting_language
+        if not UtilClient.is_unset(request.avatar):
+            body['avatar'] = request.avatar
+        if not UtilClient.is_unset(request.builds_enabled):
+            body['buildsEnabled'] = request.builds_enabled
+        if not UtilClient.is_unset(request.check_email):
+            body['checkEmail'] = request.check_email
+        if not UtilClient.is_unset(request.default_branch):
+            body['defaultBranch'] = request.default_branch
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.id):
+            body['id'] = request.id
+        if not UtilClient.is_unset(request.issues_enabled):
+            body['issuesEnabled'] = request.issues_enabled
+        if not UtilClient.is_unset(request.merge_requests_enabled):
+            body['mergeRequestsEnabled'] = request.merge_requests_enabled
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.open_clone_download_control):
+            body['openCloneDownloadControl'] = request.open_clone_download_control
+        if not UtilClient.is_unset(request.path):
+            body['path'] = request.path
+        if not UtilClient.is_unset(request.project_clone_download_method_list):
+            body['projectCloneDownloadMethodList'] = request.project_clone_download_method_list
+        if not UtilClient.is_unset(request.project_clone_download_role_list):
+            body['projectCloneDownloadRoleList'] = request.project_clone_download_role_list
+        if not UtilClient.is_unset(request.snippets_enabled):
+            body['snippetsEnabled'] = request.snippets_enabled
+        if not UtilClient.is_unset(request.visibility_level):
+            body['visibilityLevel'] = request.visibility_level
+        if not UtilClient.is_unset(request.wiki_enabled):
+            body['wikiEnabled'] = request.wiki_enabled
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateRepository',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/repository/{OpenApiUtilClient.get_encode_param(repository_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.UpdateRepositoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_repository_with_options_async(
+        self,
+        repository_id: str,
+        request: devops_20210625_models.UpdateRepositoryRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.UpdateRepositoryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_token):
+            query['accessToken'] = request.access_token
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        body = {}
+        if not UtilClient.is_unset(request.admin_setting_language):
+            body['adminSettingLanguage'] = request.admin_setting_language
+        if not UtilClient.is_unset(request.avatar):
+            body['avatar'] = request.avatar
+        if not UtilClient.is_unset(request.builds_enabled):
+            body['buildsEnabled'] = request.builds_enabled
+        if not UtilClient.is_unset(request.check_email):
+            body['checkEmail'] = request.check_email
+        if not UtilClient.is_unset(request.default_branch):
+            body['defaultBranch'] = request.default_branch
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.id):
+            body['id'] = request.id
+        if not UtilClient.is_unset(request.issues_enabled):
+            body['issuesEnabled'] = request.issues_enabled
+        if not UtilClient.is_unset(request.merge_requests_enabled):
+            body['mergeRequestsEnabled'] = request.merge_requests_enabled
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.open_clone_download_control):
+            body['openCloneDownloadControl'] = request.open_clone_download_control
+        if not UtilClient.is_unset(request.path):
+            body['path'] = request.path
+        if not UtilClient.is_unset(request.project_clone_download_method_list):
+            body['projectCloneDownloadMethodList'] = request.project_clone_download_method_list
+        if not UtilClient.is_unset(request.project_clone_download_role_list):
+            body['projectCloneDownloadRoleList'] = request.project_clone_download_role_list
+        if not UtilClient.is_unset(request.snippets_enabled):
+            body['snippetsEnabled'] = request.snippets_enabled
+        if not UtilClient.is_unset(request.visibility_level):
+            body['visibilityLevel'] = request.visibility_level
+        if not UtilClient.is_unset(request.wiki_enabled):
+            body['wikiEnabled'] = request.wiki_enabled
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateRepository',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/repository/{OpenApiUtilClient.get_encode_param(repository_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.UpdateRepositoryResponse(),
             await self.call_api_async(params, req, runtime)
         )
 

@@ -1,3 +1,6 @@
+2022-10-29 Version: 2.1.0
+- Add CreateWorkitemComment and change some API params.
+
 2022-10-25 Version: 1.1.31
 - Add UpdateProtectedBranches and change some API params.
 
