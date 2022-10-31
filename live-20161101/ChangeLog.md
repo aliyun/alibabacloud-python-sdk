@@ -1,3 +1,6 @@
+2022-10-31 Version: 1.0.3
+- Live pre sdk test.
+
 2021-05-07 Version: 1.0.2
 - Generated python 2016-11-01 for live.
 
