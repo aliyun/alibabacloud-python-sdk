@@ -1,3 +1,6 @@
+2022-10-31 Version: 2.1.1
+- Add CreateWorkitemComment and change some API params.
+
 2022-10-29 Version: 2.1.0
 - Add CreateWorkitemComment and change some API params.
 
