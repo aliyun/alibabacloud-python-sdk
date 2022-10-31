@@ -135,6 +135,186 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_dnsauthorization_rule_with_options_async(request, runtime)
 
+    def add_group_dns_authorization_rule_with_options(
+        self,
+        request: cc5g20220314_models.AddGroupDnsAuthorizationRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.AddGroupDnsAuthorizationRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.destination_ip):
+            query['DestinationIp'] = request.destination_ip
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.source_dnsip):
+            query['SourceDNSIp'] = request.source_dnsip
+        if not UtilClient.is_unset(request.wireless_cloud_connector_group_id):
+            query['WirelessCloudConnectorGroupId'] = request.wireless_cloud_connector_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddGroupDnsAuthorizationRule',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.AddGroupDnsAuthorizationRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_group_dns_authorization_rule_with_options_async(
+        self,
+        request: cc5g20220314_models.AddGroupDnsAuthorizationRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.AddGroupDnsAuthorizationRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.destination_ip):
+            query['DestinationIp'] = request.destination_ip
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.source_dnsip):
+            query['SourceDNSIp'] = request.source_dnsip
+        if not UtilClient.is_unset(request.wireless_cloud_connector_group_id):
+            query['WirelessCloudConnectorGroupId'] = request.wireless_cloud_connector_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddGroupDnsAuthorizationRule',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.AddGroupDnsAuthorizationRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_group_dns_authorization_rule(
+        self,
+        request: cc5g20220314_models.AddGroupDnsAuthorizationRuleRequest,
+    ) -> cc5g20220314_models.AddGroupDnsAuthorizationRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.add_group_dns_authorization_rule_with_options(request, runtime)
+
+    async def add_group_dns_authorization_rule_async(
+        self,
+        request: cc5g20220314_models.AddGroupDnsAuthorizationRuleRequest,
+    ) -> cc5g20220314_models.AddGroupDnsAuthorizationRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.add_group_dns_authorization_rule_with_options_async(request, runtime)
+
+    def add_wireless_cloud_connector_to_group_with_options(
+        self,
+        request: cc5g20220314_models.AddWirelessCloudConnectorToGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.AddWirelessCloudConnectorToGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.wireless_cloud_connector_group_id):
+            query['WirelessCloudConnectorGroupId'] = request.wireless_cloud_connector_group_id
+        if not UtilClient.is_unset(request.wireless_cloud_connector_ids):
+            query['WirelessCloudConnectorIds'] = request.wireless_cloud_connector_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddWirelessCloudConnectorToGroup',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.AddWirelessCloudConnectorToGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_wireless_cloud_connector_to_group_with_options_async(
+        self,
+        request: cc5g20220314_models.AddWirelessCloudConnectorToGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.AddWirelessCloudConnectorToGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.wireless_cloud_connector_group_id):
+            query['WirelessCloudConnectorGroupId'] = request.wireless_cloud_connector_group_id
+        if not UtilClient.is_unset(request.wireless_cloud_connector_ids):
+            query['WirelessCloudConnectorIds'] = request.wireless_cloud_connector_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddWirelessCloudConnectorToGroup',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.AddWirelessCloudConnectorToGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_wireless_cloud_connector_to_group(
+        self,
+        request: cc5g20220314_models.AddWirelessCloudConnectorToGroupRequest,
+    ) -> cc5g20220314_models.AddWirelessCloudConnectorToGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.add_wireless_cloud_connector_to_group_with_options(request, runtime)
+
+    async def add_wireless_cloud_connector_to_group_async(
+        self,
+        request: cc5g20220314_models.AddWirelessCloudConnectorToGroupRequest,
+    ) -> cc5g20220314_models.AddWirelessCloudConnectorToGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.add_wireless_cloud_connector_to_group_with_options_async(request, runtime)
+
     def attach_vpc_to_net_link_with_options(
         self,
         request: cc5g20220314_models.AttachVpcToNetLinkRequest,
@@ -449,6 +629,116 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_batch_operate_cards_task_with_options_async(request, runtime)
 
+    def create_group_authorization_rule_with_options(
+        self,
+        request: cc5g20220314_models.CreateGroupAuthorizationRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.CreateGroupAuthorizationRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.destination):
+            query['Destination'] = request.destination
+        if not UtilClient.is_unset(request.destination_port):
+            query['DestinationPort'] = request.destination_port
+        if not UtilClient.is_unset(request.destination_type):
+            query['DestinationType'] = request.destination_type
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.policy):
+            query['Policy'] = request.policy
+        if not UtilClient.is_unset(request.protocol):
+            query['Protocol'] = request.protocol
+        if not UtilClient.is_unset(request.source_cidr):
+            query['SourceCidr'] = request.source_cidr
+        if not UtilClient.is_unset(request.wireless_cloud_connector_group_id):
+            query['WirelessCloudConnectorGroupId'] = request.wireless_cloud_connector_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateGroupAuthorizationRule',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.CreateGroupAuthorizationRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_group_authorization_rule_with_options_async(
+        self,
+        request: cc5g20220314_models.CreateGroupAuthorizationRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.CreateGroupAuthorizationRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.destination):
+            query['Destination'] = request.destination
+        if not UtilClient.is_unset(request.destination_port):
+            query['DestinationPort'] = request.destination_port
+        if not UtilClient.is_unset(request.destination_type):
+            query['DestinationType'] = request.destination_type
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.policy):
+            query['Policy'] = request.policy
+        if not UtilClient.is_unset(request.protocol):
+            query['Protocol'] = request.protocol
+        if not UtilClient.is_unset(request.source_cidr):
+            query['SourceCidr'] = request.source_cidr
+        if not UtilClient.is_unset(request.wireless_cloud_connector_group_id):
+            query['WirelessCloudConnectorGroupId'] = request.wireless_cloud_connector_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateGroupAuthorizationRule',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.CreateGroupAuthorizationRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_group_authorization_rule(
+        self,
+        request: cc5g20220314_models.CreateGroupAuthorizationRuleRequest,
+    ) -> cc5g20220314_models.CreateGroupAuthorizationRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_group_authorization_rule_with_options(request, runtime)
+
+    async def create_group_authorization_rule_async(
+        self,
+        request: cc5g20220314_models.CreateGroupAuthorizationRuleRequest,
+    ) -> cc5g20220314_models.CreateGroupAuthorizationRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_group_authorization_rule_with_options_async(request, runtime)
+
     def create_io_tcloud_connector_backhaul_route_with_options(
         self,
         request: cc5g20220314_models.CreateIoTCloudConnectorBackhaulRouteRequest,
@@ -633,6 +923,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_wireless_cloud_connector_with_options_async(request, runtime)
 
+    def create_wireless_cloud_connector_group_with_options(
+        self,
+        request: cc5g20220314_models.CreateWirelessCloudConnectorGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.CreateWirelessCloudConnectorGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateWirelessCloudConnectorGroup',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.CreateWirelessCloudConnectorGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_wireless_cloud_connector_group_with_options_async(
+        self,
+        request: cc5g20220314_models.CreateWirelessCloudConnectorGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.CreateWirelessCloudConnectorGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateWirelessCloudConnectorGroup',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.CreateWirelessCloudConnectorGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_wireless_cloud_connector_group(
+        self,
+        request: cc5g20220314_models.CreateWirelessCloudConnectorGroupRequest,
+    ) -> cc5g20220314_models.CreateWirelessCloudConnectorGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_wireless_cloud_connector_group_with_options(request, runtime)
+
+    async def create_wireless_cloud_connector_group_async(
+        self,
+        request: cc5g20220314_models.CreateWirelessCloudConnectorGroupRequest,
+    ) -> cc5g20220314_models.CreateWirelessCloudConnectorGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_wireless_cloud_connector_group_with_options_async(request, runtime)
+
     def delete_authorization_rule_with_options(
         self,
         request: cc5g20220314_models.DeleteAuthorizationRuleRequest,
@@ -797,6 +1173,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_batch_operate_cards_task_with_options_async(request, runtime)
 
+    def delete_group_authorization_rule_with_options(
+        self,
+        request: cc5g20220314_models.DeleteGroupAuthorizationRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.DeleteGroupAuthorizationRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.authorization_rule_id):
+            query['AuthorizationRuleId'] = request.authorization_rule_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.wireless_cloud_connector_group_id):
+            query['WirelessCloudConnectorGroupId'] = request.wireless_cloud_connector_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteGroupAuthorizationRule',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.DeleteGroupAuthorizationRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_group_authorization_rule_with_options_async(
+        self,
+        request: cc5g20220314_models.DeleteGroupAuthorizationRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.DeleteGroupAuthorizationRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.authorization_rule_id):
+            query['AuthorizationRuleId'] = request.authorization_rule_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.wireless_cloud_connector_group_id):
+            query['WirelessCloudConnectorGroupId'] = request.wireless_cloud_connector_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteGroupAuthorizationRule',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.DeleteGroupAuthorizationRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_group_authorization_rule(
+        self,
+        request: cc5g20220314_models.DeleteGroupAuthorizationRuleRequest,
+    ) -> cc5g20220314_models.DeleteGroupAuthorizationRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_group_authorization_rule_with_options(request, runtime)
+
+    async def delete_group_authorization_rule_async(
+        self,
+        request: cc5g20220314_models.DeleteGroupAuthorizationRuleRequest,
+    ) -> cc5g20220314_models.DeleteGroupAuthorizationRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_group_authorization_rule_with_options_async(request, runtime)
+
     def delete_io_tcloud_connector_backhaul_route_with_options(
         self,
         request: cc5g20220314_models.DeleteIoTCloudConnectorBackhaulRouteRequest,
@@ -956,6 +1414,84 @@ class Client(OpenApiClient):
     ) -> cc5g20220314_models.DeleteWirelessCloudConnectorResponse:
         runtime = util_models.RuntimeOptions()
         return await self.delete_wireless_cloud_connector_with_options_async(request, runtime)
+
+    def delete_wireless_cloud_connector_group_with_options(
+        self,
+        request: cc5g20220314_models.DeleteWirelessCloudConnectorGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.DeleteWirelessCloudConnectorGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.wireless_cloud_connector_group_id):
+            query['WirelessCloudConnectorGroupId'] = request.wireless_cloud_connector_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteWirelessCloudConnectorGroup',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.DeleteWirelessCloudConnectorGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_wireless_cloud_connector_group_with_options_async(
+        self,
+        request: cc5g20220314_models.DeleteWirelessCloudConnectorGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.DeleteWirelessCloudConnectorGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.wireless_cloud_connector_group_id):
+            query['WirelessCloudConnectorGroupId'] = request.wireless_cloud_connector_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteWirelessCloudConnectorGroup',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.DeleteWirelessCloudConnectorGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_wireless_cloud_connector_group(
+        self,
+        request: cc5g20220314_models.DeleteWirelessCloudConnectorGroupRequest,
+    ) -> cc5g20220314_models.DeleteWirelessCloudConnectorGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_wireless_cloud_connector_group_with_options(request, runtime)
+
+    async def delete_wireless_cloud_connector_group_async(
+        self,
+        request: cc5g20220314_models.DeleteWirelessCloudConnectorGroupRequest,
+    ) -> cc5g20220314_models.DeleteWirelessCloudConnectorGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_wireless_cloud_connector_group_with_options_async(request, runtime)
 
     def detach_vpc_from_net_link_with_options(
         self,
@@ -1969,6 +2505,72 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_diagnose_info_for_single_card_with_options_async(request, runtime)
 
+    def list_group_authorization_rules_with_options(
+        self,
+        request: cc5g20220314_models.ListGroupAuthorizationRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.ListGroupAuthorizationRulesResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListGroupAuthorizationRules',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.ListGroupAuthorizationRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_group_authorization_rules_with_options_async(
+        self,
+        request: cc5g20220314_models.ListGroupAuthorizationRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.ListGroupAuthorizationRulesResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListGroupAuthorizationRules',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.ListGroupAuthorizationRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_group_authorization_rules(
+        self,
+        request: cc5g20220314_models.ListGroupAuthorizationRulesRequest,
+    ) -> cc5g20220314_models.ListGroupAuthorizationRulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_group_authorization_rules_with_options(request, runtime)
+
+    async def list_group_authorization_rules_async(
+        self,
+        request: cc5g20220314_models.ListGroupAuthorizationRulesRequest,
+    ) -> cc5g20220314_models.ListGroupAuthorizationRulesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_group_authorization_rules_with_options_async(request, runtime)
+
     def list_io_tcloud_connector_backhaul_route_with_options(
         self,
         request: cc5g20220314_models.ListIoTCloudConnectorBackhaulRouteRequest,
@@ -2166,6 +2768,72 @@ class Client(OpenApiClient):
     ) -> cc5g20220314_models.ListRegionsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_regions_with_options_async(request, runtime)
+
+    def list_wireless_cloud_connector_groups_with_options(
+        self,
+        request: cc5g20220314_models.ListWirelessCloudConnectorGroupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.ListWirelessCloudConnectorGroupsResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListWirelessCloudConnectorGroups',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.ListWirelessCloudConnectorGroupsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_wireless_cloud_connector_groups_with_options_async(
+        self,
+        request: cc5g20220314_models.ListWirelessCloudConnectorGroupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.ListWirelessCloudConnectorGroupsResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListWirelessCloudConnectorGroups',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.ListWirelessCloudConnectorGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_wireless_cloud_connector_groups(
+        self,
+        request: cc5g20220314_models.ListWirelessCloudConnectorGroupsRequest,
+    ) -> cc5g20220314_models.ListWirelessCloudConnectorGroupsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_wireless_cloud_connector_groups_with_options(request, runtime)
+
+    async def list_wireless_cloud_connector_groups_async(
+        self,
+        request: cc5g20220314_models.ListWirelessCloudConnectorGroupsRequest,
+    ) -> cc5g20220314_models.ListWirelessCloudConnectorGroupsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_wireless_cloud_connector_groups_with_options_async(request, runtime)
 
     def list_wireless_cloud_connectors_with_options(
         self,
@@ -2536,6 +3204,92 @@ class Client(OpenApiClient):
     ) -> cc5g20220314_models.OpenCc5gServiceResponse:
         runtime = util_models.RuntimeOptions()
         return await self.open_cc_5g_service_with_options_async(request, runtime)
+
+    def remove_wireless_cloud_connector_from_group_with_options(
+        self,
+        request: cc5g20220314_models.RemoveWirelessCloudConnectorFromGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.RemoveWirelessCloudConnectorFromGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.wireless_cloud_connector_group_id):
+            query['WirelessCloudConnectorGroupId'] = request.wireless_cloud_connector_group_id
+        if not UtilClient.is_unset(request.wireless_cloud_connector_ids):
+            query['WirelessCloudConnectorIds'] = request.wireless_cloud_connector_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RemoveWirelessCloudConnectorFromGroup',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.RemoveWirelessCloudConnectorFromGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def remove_wireless_cloud_connector_from_group_with_options_async(
+        self,
+        request: cc5g20220314_models.RemoveWirelessCloudConnectorFromGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.RemoveWirelessCloudConnectorFromGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.wireless_cloud_connector_group_id):
+            query['WirelessCloudConnectorGroupId'] = request.wireless_cloud_connector_group_id
+        if not UtilClient.is_unset(request.wireless_cloud_connector_ids):
+            query['WirelessCloudConnectorIds'] = request.wireless_cloud_connector_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RemoveWirelessCloudConnectorFromGroup',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.RemoveWirelessCloudConnectorFromGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def remove_wireless_cloud_connector_from_group(
+        self,
+        request: cc5g20220314_models.RemoveWirelessCloudConnectorFromGroupRequest,
+    ) -> cc5g20220314_models.RemoveWirelessCloudConnectorFromGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.remove_wireless_cloud_connector_from_group_with_options(request, runtime)
+
+    async def remove_wireless_cloud_connector_from_group_async(
+        self,
+        request: cc5g20220314_models.RemoveWirelessCloudConnectorFromGroupRequest,
+    ) -> cc5g20220314_models.RemoveWirelessCloudConnectorFromGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.remove_wireless_cloud_connector_from_group_with_options_async(request, runtime)
 
     def resume_cards_with_options(
         self,
@@ -3449,6 +4203,214 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_dnsauthorization_rule_with_options_async(request, runtime)
 
+    def update_group_authorization_rule_with_options(
+        self,
+        request: cc5g20220314_models.UpdateGroupAuthorizationRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.UpdateGroupAuthorizationRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.authorization_rule_id):
+            query['AuthorizationRuleId'] = request.authorization_rule_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.destination):
+            query['Destination'] = request.destination
+        if not UtilClient.is_unset(request.destination_port):
+            query['DestinationPort'] = request.destination_port
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.policy):
+            query['Policy'] = request.policy
+        if not UtilClient.is_unset(request.protocol):
+            query['Protocol'] = request.protocol
+        if not UtilClient.is_unset(request.source_cidr):
+            query['SourceCidr'] = request.source_cidr
+        if not UtilClient.is_unset(request.wireless_cloud_connector_group_id):
+            query['WirelessCloudConnectorGroupId'] = request.wireless_cloud_connector_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateGroupAuthorizationRule',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.UpdateGroupAuthorizationRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_group_authorization_rule_with_options_async(
+        self,
+        request: cc5g20220314_models.UpdateGroupAuthorizationRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.UpdateGroupAuthorizationRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.authorization_rule_id):
+            query['AuthorizationRuleId'] = request.authorization_rule_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.destination):
+            query['Destination'] = request.destination
+        if not UtilClient.is_unset(request.destination_port):
+            query['DestinationPort'] = request.destination_port
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.policy):
+            query['Policy'] = request.policy
+        if not UtilClient.is_unset(request.protocol):
+            query['Protocol'] = request.protocol
+        if not UtilClient.is_unset(request.source_cidr):
+            query['SourceCidr'] = request.source_cidr
+        if not UtilClient.is_unset(request.wireless_cloud_connector_group_id):
+            query['WirelessCloudConnectorGroupId'] = request.wireless_cloud_connector_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateGroupAuthorizationRule',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.UpdateGroupAuthorizationRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_group_authorization_rule(
+        self,
+        request: cc5g20220314_models.UpdateGroupAuthorizationRuleRequest,
+    ) -> cc5g20220314_models.UpdateGroupAuthorizationRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_group_authorization_rule_with_options(request, runtime)
+
+    async def update_group_authorization_rule_async(
+        self,
+        request: cc5g20220314_models.UpdateGroupAuthorizationRuleRequest,
+    ) -> cc5g20220314_models.UpdateGroupAuthorizationRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_group_authorization_rule_with_options_async(request, runtime)
+
+    def update_group_dns_authorization_rule_with_options(
+        self,
+        request: cc5g20220314_models.UpdateGroupDnsAuthorizationRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.UpdateGroupDnsAuthorizationRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.authorization_rule_id):
+            query['AuthorizationRuleId'] = request.authorization_rule_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.destination_ip):
+            query['DestinationIp'] = request.destination_ip
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.source_dnsip):
+            query['SourceDNSIp'] = request.source_dnsip
+        if not UtilClient.is_unset(request.wireless_cloud_connector_group_id):
+            query['WirelessCloudConnectorGroupId'] = request.wireless_cloud_connector_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateGroupDnsAuthorizationRule',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.UpdateGroupDnsAuthorizationRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_group_dns_authorization_rule_with_options_async(
+        self,
+        request: cc5g20220314_models.UpdateGroupDnsAuthorizationRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.UpdateGroupDnsAuthorizationRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.authorization_rule_id):
+            query['AuthorizationRuleId'] = request.authorization_rule_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.destination_ip):
+            query['DestinationIp'] = request.destination_ip
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.source_dnsip):
+            query['SourceDNSIp'] = request.source_dnsip
+        if not UtilClient.is_unset(request.wireless_cloud_connector_group_id):
+            query['WirelessCloudConnectorGroupId'] = request.wireless_cloud_connector_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateGroupDnsAuthorizationRule',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.UpdateGroupDnsAuthorizationRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_group_dns_authorization_rule(
+        self,
+        request: cc5g20220314_models.UpdateGroupDnsAuthorizationRuleRequest,
+    ) -> cc5g20220314_models.UpdateGroupDnsAuthorizationRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_group_dns_authorization_rule_with_options(request, runtime)
+
+    async def update_group_dns_authorization_rule_async(
+        self,
+        request: cc5g20220314_models.UpdateGroupDnsAuthorizationRuleRequest,
+    ) -> cc5g20220314_models.UpdateGroupDnsAuthorizationRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_group_dns_authorization_rule_with_options_async(request, runtime)
+
     def update_wireless_cloud_connector_with_options(
         self,
         request: cc5g20220314_models.UpdateWirelessCloudConnectorRequest,
@@ -3534,3 +4496,89 @@ class Client(OpenApiClient):
     ) -> cc5g20220314_models.UpdateWirelessCloudConnectorResponse:
         runtime = util_models.RuntimeOptions()
         return await self.update_wireless_cloud_connector_with_options_async(request, runtime)
+
+    def update_wireless_cloud_connector_group_with_options(
+        self,
+        request: cc5g20220314_models.UpdateWirelessCloudConnectorGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.UpdateWirelessCloudConnectorGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.wireless_cloud_connector_group_id):
+            query['WirelessCloudConnectorGroupId'] = request.wireless_cloud_connector_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateWirelessCloudConnectorGroup',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.UpdateWirelessCloudConnectorGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_wireless_cloud_connector_group_with_options_async(
+        self,
+        request: cc5g20220314_models.UpdateWirelessCloudConnectorGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cc5g20220314_models.UpdateWirelessCloudConnectorGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.wireless_cloud_connector_group_id):
+            query['WirelessCloudConnectorGroupId'] = request.wireless_cloud_connector_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateWirelessCloudConnectorGroup',
+            version='2022-03-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cc5g20220314_models.UpdateWirelessCloudConnectorGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_wireless_cloud_connector_group(
+        self,
+        request: cc5g20220314_models.UpdateWirelessCloudConnectorGroupRequest,
+    ) -> cc5g20220314_models.UpdateWirelessCloudConnectorGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_wireless_cloud_connector_group_with_options(request, runtime)
+
+    async def update_wireless_cloud_connector_group_async(
+        self,
+        request: cc5g20220314_models.UpdateWirelessCloudConnectorGroupRequest,
+    ) -> cc5g20220314_models.UpdateWirelessCloudConnectorGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_wireless_cloud_connector_group_with_options_async(request, runtime)
