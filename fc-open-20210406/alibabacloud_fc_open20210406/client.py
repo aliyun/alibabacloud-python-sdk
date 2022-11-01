@@ -218,7 +218,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.CreateAliasResponse:
         UtilClient.validate_model(request)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
         body = {}
         if not UtilClient.is_unset(request.additional_version_weight):
             body['additionalVersionWeight'] = request.additional_version_weight
@@ -249,7 +248,7 @@ class Client(OpenApiClient):
             action='CreateAlias',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/aliases',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/aliases',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -269,7 +268,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.CreateAliasResponse:
         UtilClient.validate_model(request)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
         body = {}
         if not UtilClient.is_unset(request.additional_version_weight):
             body['additionalVersionWeight'] = request.additional_version_weight
@@ -300,7 +298,7 @@ class Client(OpenApiClient):
             action='CreateAlias',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/aliases',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/aliases',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -448,12 +446,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.CreateFunctionResponse:
         UtilClient.validate_model(request)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
         body = {}
         if not UtilClient.is_unset(request.ca_port):
             body['caPort'] = request.ca_port
         if not UtilClient.is_unset(request.code):
             body['code'] = request.code
+        if not UtilClient.is_unset(request.cpu):
+            body['cpu'] = request.cpu
         if not UtilClient.is_unset(request.custom_container_config):
             body['customContainerConfig'] = request.custom_container_config
         if not UtilClient.is_unset(request.custom_dns):
@@ -464,6 +463,8 @@ class Client(OpenApiClient):
             body['customRuntimeConfig'] = request.custom_runtime_config
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
+        if not UtilClient.is_unset(request.disk_size):
+            body['diskSize'] = request.disk_size
         if not UtilClient.is_unset(request.environment_variables):
             body['environmentVariables'] = request.environment_variables
         if not UtilClient.is_unset(request.function_name):
@@ -509,7 +510,7 @@ class Client(OpenApiClient):
             action='CreateFunction',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/functions',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/functions',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -529,12 +530,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.CreateFunctionResponse:
         UtilClient.validate_model(request)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
         body = {}
         if not UtilClient.is_unset(request.ca_port):
             body['caPort'] = request.ca_port
         if not UtilClient.is_unset(request.code):
             body['code'] = request.code
+        if not UtilClient.is_unset(request.cpu):
+            body['cpu'] = request.cpu
         if not UtilClient.is_unset(request.custom_container_config):
             body['customContainerConfig'] = request.custom_container_config
         if not UtilClient.is_unset(request.custom_dns):
@@ -545,6 +547,8 @@ class Client(OpenApiClient):
             body['customRuntimeConfig'] = request.custom_runtime_config
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
+        if not UtilClient.is_unset(request.disk_size):
+            body['diskSize'] = request.disk_size
         if not UtilClient.is_unset(request.environment_variables):
             body['environmentVariables'] = request.environment_variables
         if not UtilClient.is_unset(request.function_name):
@@ -590,7 +594,7 @@ class Client(OpenApiClient):
             action='CreateFunction',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/functions',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/functions',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -628,7 +632,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.CreateLayerVersionResponse:
         UtilClient.validate_model(request)
-        layer_name = OpenApiUtilClient.get_encode_param(layer_name)
         body = {}
         if not UtilClient.is_unset(request.code):
             body['Code'] = request.code
@@ -653,7 +656,7 @@ class Client(OpenApiClient):
             action='CreateLayerVersion',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/layers/{layer_name}/versions',
+            pathname=f'/2021-04-06/layers/{OpenApiUtilClient.get_encode_param(layer_name)}/versions',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -673,7 +676,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.CreateLayerVersionResponse:
         UtilClient.validate_model(request)
-        layer_name = OpenApiUtilClient.get_encode_param(layer_name)
         body = {}
         if not UtilClient.is_unset(request.code):
             body['Code'] = request.code
@@ -698,7 +700,7 @@ class Client(OpenApiClient):
             action='CreateLayerVersion',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/layers/{layer_name}/versions',
+            pathname=f'/2021-04-06/layers/{OpenApiUtilClient.get_encode_param(layer_name)}/versions',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -865,8 +867,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.CreateTriggerResponse:
         UtilClient.validate_model(request)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
         body = {}
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
@@ -899,7 +899,7 @@ class Client(OpenApiClient):
             action='CreateTrigger',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/triggers',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}/triggers',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -920,8 +920,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.CreateTriggerResponse:
         UtilClient.validate_model(request)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
         body = {}
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
@@ -954,7 +952,7 @@ class Client(OpenApiClient):
             action='CreateTrigger',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/triggers',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}/triggers',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -992,7 +990,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.CreateVpcBindingResponse:
         UtilClient.validate_model(request)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
         body = {}
         if not UtilClient.is_unset(request.vpc_id):
             body['vpcId'] = request.vpc_id
@@ -1013,7 +1010,7 @@ class Client(OpenApiClient):
             action='CreateVpcBinding',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/bindings',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/bindings',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -1033,7 +1030,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.CreateVpcBindingResponse:
         UtilClient.validate_model(request)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
         body = {}
         if not UtilClient.is_unset(request.vpc_id):
             body['vpcId'] = request.vpc_id
@@ -1054,7 +1050,7 @@ class Client(OpenApiClient):
             action='CreateVpcBinding',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/bindings',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/bindings',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -1091,8 +1087,6 @@ class Client(OpenApiClient):
         headers: fc__open_20210406_models.DeleteAliasHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.DeleteAliasResponse:
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
-        alias_name = OpenApiUtilClient.get_encode_param(alias_name)
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -1111,7 +1105,7 @@ class Client(OpenApiClient):
             action='DeleteAlias',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/aliases/{alias_name}',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/aliases/{OpenApiUtilClient.get_encode_param(alias_name)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1130,8 +1124,6 @@ class Client(OpenApiClient):
         headers: fc__open_20210406_models.DeleteAliasHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.DeleteAliasResponse:
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
-        alias_name = OpenApiUtilClient.get_encode_param(alias_name)
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -1150,7 +1142,7 @@ class Client(OpenApiClient):
             action='DeleteAlias',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/aliases/{alias_name}',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/aliases/{OpenApiUtilClient.get_encode_param(alias_name)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1184,7 +1176,6 @@ class Client(OpenApiClient):
         headers: fc__open_20210406_models.DeleteCustomDomainHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.DeleteCustomDomainResponse:
-        domain_name = OpenApiUtilClient.get_encode_param(domain_name)
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -1201,7 +1192,7 @@ class Client(OpenApiClient):
             action='DeleteCustomDomain',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/custom-domains/{domain_name}',
+            pathname=f'/2021-04-06/custom-domains/{OpenApiUtilClient.get_encode_param(domain_name)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1219,7 +1210,6 @@ class Client(OpenApiClient):
         headers: fc__open_20210406_models.DeleteCustomDomainHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.DeleteCustomDomainResponse:
-        domain_name = OpenApiUtilClient.get_encode_param(domain_name)
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -1236,7 +1226,7 @@ class Client(OpenApiClient):
             action='DeleteCustomDomain',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/custom-domains/{domain_name}',
+            pathname=f'/2021-04-06/custom-domains/{OpenApiUtilClient.get_encode_param(domain_name)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1273,8 +1263,6 @@ class Client(OpenApiClient):
         headers: fc__open_20210406_models.DeleteFunctionHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.DeleteFunctionResponse:
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -1293,7 +1281,7 @@ class Client(OpenApiClient):
             action='DeleteFunction',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1312,8 +1300,6 @@ class Client(OpenApiClient):
         headers: fc__open_20210406_models.DeleteFunctionHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.DeleteFunctionResponse:
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -1332,7 +1318,7 @@ class Client(OpenApiClient):
             action='DeleteFunction',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1373,8 +1359,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.DeleteFunctionAsyncInvokeConfigResponse:
         UtilClient.validate_model(request)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
         query = {}
         if not UtilClient.is_unset(request.qualifier):
             query['qualifier'] = request.qualifier
@@ -1395,7 +1379,7 @@ class Client(OpenApiClient):
             action='DeleteFunctionAsyncInvokeConfig',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/async-invoke-config',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}/async-invoke-config',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1416,8 +1400,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.DeleteFunctionAsyncInvokeConfigResponse:
         UtilClient.validate_model(request)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
         query = {}
         if not UtilClient.is_unset(request.qualifier):
             query['qualifier'] = request.qualifier
@@ -1438,7 +1420,7 @@ class Client(OpenApiClient):
             action='DeleteFunctionAsyncInvokeConfig',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/async-invoke-config',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}/async-invoke-config',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1479,8 +1461,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.DeleteFunctionOnDemandConfigResponse:
         UtilClient.validate_model(request)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
         query = {}
         if not UtilClient.is_unset(request.qualifier):
             query['qualifier'] = request.qualifier
@@ -1503,7 +1483,7 @@ class Client(OpenApiClient):
             action='DeleteFunctionOnDemandConfig',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/on-demand-config',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}/on-demand-config',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1524,8 +1504,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.DeleteFunctionOnDemandConfigResponse:
         UtilClient.validate_model(request)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
         query = {}
         if not UtilClient.is_unset(request.qualifier):
             query['qualifier'] = request.qualifier
@@ -1548,7 +1526,7 @@ class Client(OpenApiClient):
             action='DeleteFunctionOnDemandConfig',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/on-demand-config',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}/on-demand-config',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1585,8 +1563,6 @@ class Client(OpenApiClient):
         headers: fc__open_20210406_models.DeleteLayerVersionHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.DeleteLayerVersionResponse:
-        layer_name = OpenApiUtilClient.get_encode_param(layer_name)
-        version = OpenApiUtilClient.get_encode_param(version)
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -1603,7 +1579,7 @@ class Client(OpenApiClient):
             action='DeleteLayerVersion',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/layers/{layer_name}/versions/{version}',
+            pathname=f'/2021-04-06/layers/{OpenApiUtilClient.get_encode_param(layer_name)}/versions/{OpenApiUtilClient.get_encode_param(version)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1622,8 +1598,6 @@ class Client(OpenApiClient):
         headers: fc__open_20210406_models.DeleteLayerVersionHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.DeleteLayerVersionResponse:
-        layer_name = OpenApiUtilClient.get_encode_param(layer_name)
-        version = OpenApiUtilClient.get_encode_param(version)
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -1640,7 +1614,7 @@ class Client(OpenApiClient):
             action='DeleteLayerVersion',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/layers/{layer_name}/versions/{version}',
+            pathname=f'/2021-04-06/layers/{OpenApiUtilClient.get_encode_param(layer_name)}/versions/{OpenApiUtilClient.get_encode_param(version)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1674,7 +1648,6 @@ class Client(OpenApiClient):
         headers: fc__open_20210406_models.DeleteServiceHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.DeleteServiceResponse:
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -1693,7 +1666,7 @@ class Client(OpenApiClient):
             action='DeleteService',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1711,7 +1684,6 @@ class Client(OpenApiClient):
         headers: fc__open_20210406_models.DeleteServiceHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.DeleteServiceResponse:
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -1730,7 +1702,7 @@ class Client(OpenApiClient):
             action='DeleteService',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1767,8 +1739,6 @@ class Client(OpenApiClient):
         headers: fc__open_20210406_models.DeleteServiceVersionHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.DeleteServiceVersionResponse:
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
-        version_id = OpenApiUtilClient.get_encode_param(version_id)
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -1785,7 +1755,7 @@ class Client(OpenApiClient):
             action='DeleteServiceVersion',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/versions/{version_id}',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/versions/{OpenApiUtilClient.get_encode_param(version_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1804,8 +1774,6 @@ class Client(OpenApiClient):
         headers: fc__open_20210406_models.DeleteServiceVersionHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.DeleteServiceVersionResponse:
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
-        version_id = OpenApiUtilClient.get_encode_param(version_id)
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -1822,7 +1790,7 @@ class Client(OpenApiClient):
             action='DeleteServiceVersion',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/versions/{version_id}',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/versions/{OpenApiUtilClient.get_encode_param(version_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1862,9 +1830,6 @@ class Client(OpenApiClient):
         headers: fc__open_20210406_models.DeleteTriggerHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.DeleteTriggerResponse:
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
-        trigger_name = OpenApiUtilClient.get_encode_param(trigger_name)
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -1883,7 +1848,7 @@ class Client(OpenApiClient):
             action='DeleteTrigger',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/triggers/{trigger_name}',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}/triggers/{OpenApiUtilClient.get_encode_param(trigger_name)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1903,9 +1868,6 @@ class Client(OpenApiClient):
         headers: fc__open_20210406_models.DeleteTriggerHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.DeleteTriggerResponse:
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
-        trigger_name = OpenApiUtilClient.get_encode_param(trigger_name)
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -1924,7 +1886,7 @@ class Client(OpenApiClient):
             action='DeleteTrigger',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/triggers/{trigger_name}',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}/triggers/{OpenApiUtilClient.get_encode_param(trigger_name)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1961,8 +1923,6 @@ class Client(OpenApiClient):
         headers: fc__open_20210406_models.DeleteVpcBindingHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.DeleteVpcBindingResponse:
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
-        vpc_id = OpenApiUtilClient.get_encode_param(vpc_id)
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -1979,7 +1939,7 @@ class Client(OpenApiClient):
             action='DeleteVpcBinding',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/bindings/{vpc_id}',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/bindings/{OpenApiUtilClient.get_encode_param(vpc_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1998,8 +1958,6 @@ class Client(OpenApiClient):
         headers: fc__open_20210406_models.DeleteVpcBindingHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.DeleteVpcBindingResponse:
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
-        vpc_id = OpenApiUtilClient.get_encode_param(vpc_id)
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -2016,7 +1974,7 @@ class Client(OpenApiClient):
             action='DeleteVpcBinding',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/bindings/{vpc_id}',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/bindings/{OpenApiUtilClient.get_encode_param(vpc_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -2060,9 +2018,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.DeregisterEventSourceResponse:
         UtilClient.validate_model(request)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
-        source_arn = OpenApiUtilClient.get_encode_param(source_arn)
         query = {}
         if not UtilClient.is_unset(request.qualifier):
             query['qualifier'] = request.qualifier
@@ -2083,7 +2038,7 @@ class Client(OpenApiClient):
             action='DeregisterEventSource',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/event-sources/{source_arn}',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}/event-sources/{OpenApiUtilClient.get_encode_param(source_arn)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -2105,9 +2060,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.DeregisterEventSourceResponse:
         UtilClient.validate_model(request)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
-        source_arn = OpenApiUtilClient.get_encode_param(source_arn)
         query = {}
         if not UtilClient.is_unset(request.qualifier):
             query['qualifier'] = request.qualifier
@@ -2128,7 +2080,7 @@ class Client(OpenApiClient):
             action='DeregisterEventSource',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/event-sources/{source_arn}',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}/event-sources/{OpenApiUtilClient.get_encode_param(source_arn)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -2241,8 +2193,6 @@ class Client(OpenApiClient):
         headers: fc__open_20210406_models.GetAliasHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.GetAliasResponse:
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
-        alias_name = OpenApiUtilClient.get_encode_param(alias_name)
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -2259,7 +2209,7 @@ class Client(OpenApiClient):
             action='GetAlias',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/aliases/{alias_name}',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/aliases/{OpenApiUtilClient.get_encode_param(alias_name)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2278,8 +2228,6 @@ class Client(OpenApiClient):
         headers: fc__open_20210406_models.GetAliasHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.GetAliasResponse:
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
-        alias_name = OpenApiUtilClient.get_encode_param(alias_name)
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -2296,7 +2244,7 @@ class Client(OpenApiClient):
             action='GetAlias',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/aliases/{alias_name}',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/aliases/{OpenApiUtilClient.get_encode_param(alias_name)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2330,7 +2278,6 @@ class Client(OpenApiClient):
         headers: fc__open_20210406_models.GetCustomDomainHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.GetCustomDomainResponse:
-        domain_name = OpenApiUtilClient.get_encode_param(domain_name)
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -2347,7 +2294,7 @@ class Client(OpenApiClient):
             action='GetCustomDomain',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/custom-domains/{domain_name}',
+            pathname=f'/2021-04-06/custom-domains/{OpenApiUtilClient.get_encode_param(domain_name)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2365,7 +2312,6 @@ class Client(OpenApiClient):
         headers: fc__open_20210406_models.GetCustomDomainHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.GetCustomDomainResponse:
-        domain_name = OpenApiUtilClient.get_encode_param(domain_name)
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -2382,7 +2328,7 @@ class Client(OpenApiClient):
             action='GetCustomDomain',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/custom-domains/{domain_name}',
+            pathname=f'/2021-04-06/custom-domains/{OpenApiUtilClient.get_encode_param(domain_name)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2423,8 +2369,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.GetFunctionResponse:
         UtilClient.validate_model(request)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
         query = {}
         if not UtilClient.is_unset(request.qualifier):
             query['qualifier'] = request.qualifier
@@ -2445,7 +2389,7 @@ class Client(OpenApiClient):
             action='GetFunction',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2466,8 +2410,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.GetFunctionResponse:
         UtilClient.validate_model(request)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
         query = {}
         if not UtilClient.is_unset(request.qualifier):
             query['qualifier'] = request.qualifier
@@ -2488,7 +2430,7 @@ class Client(OpenApiClient):
             action='GetFunction',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2529,8 +2471,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.GetFunctionAsyncInvokeConfigResponse:
         UtilClient.validate_model(request)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
         query = {}
         if not UtilClient.is_unset(request.qualifier):
             query['qualifier'] = request.qualifier
@@ -2551,7 +2491,7 @@ class Client(OpenApiClient):
             action='GetFunctionAsyncInvokeConfig',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/async-invoke-config',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}/async-invoke-config',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2572,8 +2512,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.GetFunctionAsyncInvokeConfigResponse:
         UtilClient.validate_model(request)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
         query = {}
         if not UtilClient.is_unset(request.qualifier):
             query['qualifier'] = request.qualifier
@@ -2594,7 +2532,7 @@ class Client(OpenApiClient):
             action='GetFunctionAsyncInvokeConfig',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/async-invoke-config',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}/async-invoke-config',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2635,8 +2573,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.GetFunctionCodeResponse:
         UtilClient.validate_model(request)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
         query = {}
         if not UtilClient.is_unset(request.qualifier):
             query['qualifier'] = request.qualifier
@@ -2657,7 +2593,7 @@ class Client(OpenApiClient):
             action='GetFunctionCode',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/code',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}/code',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2678,8 +2614,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.GetFunctionCodeResponse:
         UtilClient.validate_model(request)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
         query = {}
         if not UtilClient.is_unset(request.qualifier):
             query['qualifier'] = request.qualifier
@@ -2700,7 +2634,7 @@ class Client(OpenApiClient):
             action='GetFunctionCode',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/code',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}/code',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2741,8 +2675,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.GetFunctionOnDemandConfigResponse:
         UtilClient.validate_model(request)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
         query = {}
         if not UtilClient.is_unset(request.qualifier):
             query['qualifier'] = request.qualifier
@@ -2763,7 +2695,7 @@ class Client(OpenApiClient):
             action='GetFunctionOnDemandConfig',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/on-demand-config',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}/on-demand-config',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2784,8 +2716,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.GetFunctionOnDemandConfigResponse:
         UtilClient.validate_model(request)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
         query = {}
         if not UtilClient.is_unset(request.qualifier):
             query['qualifier'] = request.qualifier
@@ -2806,7 +2736,7 @@ class Client(OpenApiClient):
             action='GetFunctionOnDemandConfig',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/on-demand-config',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}/on-demand-config',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2843,8 +2773,6 @@ class Client(OpenApiClient):
         headers: fc__open_20210406_models.GetLayerVersionHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.GetLayerVersionResponse:
-        layer_name = OpenApiUtilClient.get_encode_param(layer_name)
-        version = OpenApiUtilClient.get_encode_param(version)
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -2861,7 +2789,7 @@ class Client(OpenApiClient):
             action='GetLayerVersion',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/layers/{layer_name}/versions/{version}',
+            pathname=f'/2021-04-06/layers/{OpenApiUtilClient.get_encode_param(layer_name)}/versions/{OpenApiUtilClient.get_encode_param(version)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2880,8 +2808,6 @@ class Client(OpenApiClient):
         headers: fc__open_20210406_models.GetLayerVersionHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.GetLayerVersionResponse:
-        layer_name = OpenApiUtilClient.get_encode_param(layer_name)
-        version = OpenApiUtilClient.get_encode_param(version)
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -2898,7 +2824,7 @@ class Client(OpenApiClient):
             action='GetLayerVersion',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/layers/{layer_name}/versions/{version}',
+            pathname=f'/2021-04-06/layers/{OpenApiUtilClient.get_encode_param(layer_name)}/versions/{OpenApiUtilClient.get_encode_param(version)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2939,8 +2865,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.GetProvisionConfigResponse:
         UtilClient.validate_model(request)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
         query = {}
         if not UtilClient.is_unset(request.qualifier):
             query['qualifier'] = request.qualifier
@@ -2961,7 +2885,7 @@ class Client(OpenApiClient):
             action='GetProvisionConfig',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/provision-config',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}/provision-config',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2982,8 +2906,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.GetProvisionConfigResponse:
         UtilClient.validate_model(request)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
         query = {}
         if not UtilClient.is_unset(request.qualifier):
             query['qualifier'] = request.qualifier
@@ -3004,7 +2926,7 @@ class Client(OpenApiClient):
             action='GetProvisionConfig',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/provision-config',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}/provision-config',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3136,7 +3058,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.GetServiceResponse:
         UtilClient.validate_model(request)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
         query = {}
         if not UtilClient.is_unset(request.qualifier):
             query['qualifier'] = request.qualifier
@@ -3157,7 +3078,7 @@ class Client(OpenApiClient):
             action='GetService',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3177,7 +3098,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.GetServiceResponse:
         UtilClient.validate_model(request)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
         query = {}
         if not UtilClient.is_unset(request.qualifier):
             query['qualifier'] = request.qualifier
@@ -3198,7 +3118,7 @@ class Client(OpenApiClient):
             action='GetService',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3242,9 +3162,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.GetStatefulAsyncInvocationResponse:
         UtilClient.validate_model(request)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
-        invocation_id = OpenApiUtilClient.get_encode_param(invocation_id)
         query = {}
         if not UtilClient.is_unset(request.qualifier):
             query['qualifier'] = request.qualifier
@@ -3271,7 +3188,7 @@ class Client(OpenApiClient):
             action='GetStatefulAsyncInvocation',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/stateful-async-invocations/{invocation_id}',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}/stateful-async-invocations/{OpenApiUtilClient.get_encode_param(invocation_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3293,9 +3210,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.GetStatefulAsyncInvocationResponse:
         UtilClient.validate_model(request)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
-        invocation_id = OpenApiUtilClient.get_encode_param(invocation_id)
         query = {}
         if not UtilClient.is_unset(request.qualifier):
             query['qualifier'] = request.qualifier
@@ -3322,7 +3236,7 @@ class Client(OpenApiClient):
             action='GetStatefulAsyncInvocation',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/stateful-async-invocations/{invocation_id}',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}/stateful-async-invocations/{OpenApiUtilClient.get_encode_param(invocation_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3362,9 +3276,6 @@ class Client(OpenApiClient):
         headers: fc__open_20210406_models.GetTriggerHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.GetTriggerResponse:
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
-        trigger_name = OpenApiUtilClient.get_encode_param(trigger_name)
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -3381,7 +3292,7 @@ class Client(OpenApiClient):
             action='GetTrigger',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/triggers/{trigger_name}',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}/triggers/{OpenApiUtilClient.get_encode_param(trigger_name)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3401,9 +3312,6 @@ class Client(OpenApiClient):
         headers: fc__open_20210406_models.GetTriggerHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.GetTriggerResponse:
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
-        trigger_name = OpenApiUtilClient.get_encode_param(trigger_name)
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -3420,7 +3328,7 @@ class Client(OpenApiClient):
             action='GetTrigger',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/triggers/{trigger_name}',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}/triggers/{OpenApiUtilClient.get_encode_param(trigger_name)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3461,8 +3369,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.InvokeFunctionResponse:
         UtilClient.validate_model(request)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
         query = {}
         if not UtilClient.is_unset(request.qualifier):
             query['qualifier'] = request.qualifier
@@ -3493,7 +3399,7 @@ class Client(OpenApiClient):
             action='InvokeFunction',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/invocations',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}/invocations',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -3514,8 +3420,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.InvokeFunctionResponse:
         UtilClient.validate_model(request)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
         query = {}
         if not UtilClient.is_unset(request.qualifier):
             query['qualifier'] = request.qualifier
@@ -3546,7 +3450,7 @@ class Client(OpenApiClient):
             action='InvokeFunction',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/invocations',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}/invocations',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -3584,7 +3488,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.ListAliasesResponse:
         UtilClient.validate_model(request)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
         query = {}
         if not UtilClient.is_unset(request.limit):
             query['limit'] = request.limit
@@ -3611,7 +3514,7 @@ class Client(OpenApiClient):
             action='ListAliases',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/aliases',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/aliases',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3631,7 +3534,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.ListAliasesResponse:
         UtilClient.validate_model(request)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
         query = {}
         if not UtilClient.is_unset(request.limit):
             query['limit'] = request.limit
@@ -3658,7 +3560,7 @@ class Client(OpenApiClient):
             action='ListAliases',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/aliases',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/aliases',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3805,8 +3707,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.ListEventSourcesResponse:
         UtilClient.validate_model(request)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
         query = {}
         if not UtilClient.is_unset(request.qualifier):
             query['qualifier'] = request.qualifier
@@ -3827,7 +3727,7 @@ class Client(OpenApiClient):
             action='ListEventSources',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/event-sources',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}/event-sources',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3848,8 +3748,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.ListEventSourcesResponse:
         UtilClient.validate_model(request)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
         query = {}
         if not UtilClient.is_unset(request.qualifier):
             query['qualifier'] = request.qualifier
@@ -3870,7 +3768,7 @@ class Client(OpenApiClient):
             action='ListEventSources',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/event-sources',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}/event-sources',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3911,8 +3809,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.ListFunctionAsyncInvokeConfigsResponse:
         UtilClient.validate_model(request)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
         query = {}
         if not UtilClient.is_unset(request.limit):
             query['limit'] = request.limit
@@ -3941,7 +3837,7 @@ class Client(OpenApiClient):
             action='ListFunctionAsyncInvokeConfigs',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/async-invoke-configs',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}/async-invoke-configs',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -3962,8 +3858,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.ListFunctionAsyncInvokeConfigsResponse:
         UtilClient.validate_model(request)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
         query = {}
         if not UtilClient.is_unset(request.limit):
             query['limit'] = request.limit
@@ -3992,7 +3886,7 @@ class Client(OpenApiClient):
             action='ListFunctionAsyncInvokeConfigs',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/async-invoke-configs',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}/async-invoke-configs',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4030,7 +3924,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.ListFunctionsResponse:
         UtilClient.validate_model(request)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
         query = {}
         if not UtilClient.is_unset(request.limit):
             query['limit'] = request.limit
@@ -4059,7 +3952,7 @@ class Client(OpenApiClient):
             action='ListFunctions',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/functions',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/functions',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4079,7 +3972,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.ListFunctionsResponse:
         UtilClient.validate_model(request)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
         query = {}
         if not UtilClient.is_unset(request.limit):
             query['limit'] = request.limit
@@ -4108,7 +4000,7 @@ class Client(OpenApiClient):
             action='ListFunctions',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/functions',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/functions',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4149,8 +4041,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.ListInstancesResponse:
         UtilClient.validate_model(request)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
         query = {}
         if not UtilClient.is_unset(request.instance_ids):
             query['instanceIds'] = request.instance_ids
@@ -4171,7 +4061,7 @@ class Client(OpenApiClient):
             action='ListInstances',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/instances',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}/instances',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4192,8 +4082,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.ListInstancesResponse:
         UtilClient.validate_model(request)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
         query = {}
         if not UtilClient.is_unset(request.instance_ids):
             query['instanceIds'] = request.instance_ids
@@ -4214,7 +4102,7 @@ class Client(OpenApiClient):
             action='ListInstances',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/instances',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}/instances',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4252,7 +4140,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.ListLayerVersionsResponse:
         UtilClient.validate_model(request)
-        layer_name = OpenApiUtilClient.get_encode_param(layer_name)
         query = {}
         if not UtilClient.is_unset(request.limit):
             query['limit'] = request.limit
@@ -4275,7 +4162,7 @@ class Client(OpenApiClient):
             action='ListLayerVersions',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/layers/{layer_name}/versions',
+            pathname=f'/2021-04-06/layers/{OpenApiUtilClient.get_encode_param(layer_name)}/versions',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4295,7 +4182,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.ListLayerVersionsResponse:
         UtilClient.validate_model(request)
-        layer_name = OpenApiUtilClient.get_encode_param(layer_name)
         query = {}
         if not UtilClient.is_unset(request.limit):
             query['limit'] = request.limit
@@ -4318,7 +4204,7 @@ class Client(OpenApiClient):
             action='ListLayerVersions',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/layers/{layer_name}/versions',
+            pathname=f'/2021-04-06/layers/{OpenApiUtilClient.get_encode_param(layer_name)}/versions',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4780,7 +4666,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.ListServiceVersionsResponse:
         UtilClient.validate_model(request)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
         query = {}
         if not UtilClient.is_unset(request.direction):
             query['direction'] = request.direction
@@ -4807,7 +4692,7 @@ class Client(OpenApiClient):
             action='ListServiceVersions',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/versions',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/versions',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4827,7 +4712,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.ListServiceVersionsResponse:
         UtilClient.validate_model(request)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
         query = {}
         if not UtilClient.is_unset(request.direction):
             query['direction'] = request.direction
@@ -4854,7 +4738,7 @@ class Client(OpenApiClient):
             action='ListServiceVersions',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/versions',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/versions',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5099,8 +4983,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.ListStatefulAsyncInvocationsResponse:
         UtilClient.validate_model(request)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
         query = {}
         if not UtilClient.is_unset(request.include_payload):
             query['includePayload'] = request.include_payload
@@ -5143,7 +5025,7 @@ class Client(OpenApiClient):
             action='ListStatefulAsyncInvocations',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/stateful-async-invocations',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}/stateful-async-invocations',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5164,8 +5046,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.ListStatefulAsyncInvocationsResponse:
         UtilClient.validate_model(request)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
         query = {}
         if not UtilClient.is_unset(request.include_payload):
             query['includePayload'] = request.include_payload
@@ -5208,7 +5088,7 @@ class Client(OpenApiClient):
             action='ListStatefulAsyncInvocations',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/stateful-async-invocations',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}/stateful-async-invocations',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5347,8 +5227,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.ListTriggersResponse:
         UtilClient.validate_model(request)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
         query = {}
         if not UtilClient.is_unset(request.limit):
             query['limit'] = request.limit
@@ -5375,7 +5253,7 @@ class Client(OpenApiClient):
             action='ListTriggers',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/triggers',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}/triggers',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5396,8 +5274,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.ListTriggersResponse:
         UtilClient.validate_model(request)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
         query = {}
         if not UtilClient.is_unset(request.limit):
             query['limit'] = request.limit
@@ -5424,7 +5300,7 @@ class Client(OpenApiClient):
             action='ListTriggers',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/triggers',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}/triggers',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5458,7 +5334,6 @@ class Client(OpenApiClient):
         headers: fc__open_20210406_models.ListVpcBindingsHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.ListVpcBindingsResponse:
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -5475,7 +5350,7 @@ class Client(OpenApiClient):
             action='ListVpcBindings',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/bindings',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/bindings',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5493,7 +5368,6 @@ class Client(OpenApiClient):
         headers: fc__open_20210406_models.ListVpcBindingsHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.ListVpcBindingsResponse:
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -5510,7 +5384,7 @@ class Client(OpenApiClient):
             action='ListVpcBindings',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/bindings',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/bindings',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5548,7 +5422,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.PublishServiceVersionResponse:
         UtilClient.validate_model(request)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
         body = {}
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
@@ -5571,7 +5444,7 @@ class Client(OpenApiClient):
             action='PublishServiceVersion',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/versions',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/versions',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -5591,7 +5464,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.PublishServiceVersionResponse:
         UtilClient.validate_model(request)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
         body = {}
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
@@ -5614,7 +5486,7 @@ class Client(OpenApiClient):
             action='PublishServiceVersion',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/versions',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/versions',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -5655,8 +5527,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.PutFunctionAsyncInvokeConfigResponse:
         UtilClient.validate_model(request)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
         query = {}
         if not UtilClient.is_unset(request.qualifier):
             query['qualifier'] = request.qualifier
@@ -5687,7 +5557,7 @@ class Client(OpenApiClient):
             action='PutFunctionAsyncInvokeConfig',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/async-invoke-config',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}/async-invoke-config',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -5708,8 +5578,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.PutFunctionAsyncInvokeConfigResponse:
         UtilClient.validate_model(request)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
         query = {}
         if not UtilClient.is_unset(request.qualifier):
             query['qualifier'] = request.qualifier
@@ -5740,7 +5608,7 @@ class Client(OpenApiClient):
             action='PutFunctionAsyncInvokeConfig',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/async-invoke-config',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}/async-invoke-config',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -5781,8 +5649,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.PutFunctionOnDemandConfigResponse:
         UtilClient.validate_model(request)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
         query = {}
         if not UtilClient.is_unset(request.qualifier):
             query['qualifier'] = request.qualifier
@@ -5809,7 +5675,7 @@ class Client(OpenApiClient):
             action='PutFunctionOnDemandConfig',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/on-demand-config',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}/on-demand-config',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -5830,8 +5696,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.PutFunctionOnDemandConfigResponse:
         UtilClient.validate_model(request)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
         query = {}
         if not UtilClient.is_unset(request.qualifier):
             query['qualifier'] = request.qualifier
@@ -5858,7 +5722,7 @@ class Client(OpenApiClient):
             action='PutFunctionOnDemandConfig',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/on-demand-config',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}/on-demand-config',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -5896,7 +5760,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.PutLayerACLResponse:
         UtilClient.validate_model(request)
-        layer_name = OpenApiUtilClient.get_encode_param(layer_name)
         query = {}
         if not UtilClient.is_unset(request.public):
             query['public'] = request.public
@@ -5917,7 +5780,7 @@ class Client(OpenApiClient):
             action='PutLayerACL',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/layers/{layer_name}/acl',
+            pathname=f'/2021-04-06/layers/{OpenApiUtilClient.get_encode_param(layer_name)}/acl',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -5937,7 +5800,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.PutLayerACLResponse:
         UtilClient.validate_model(request)
-        layer_name = OpenApiUtilClient.get_encode_param(layer_name)
         query = {}
         if not UtilClient.is_unset(request.public):
             query['public'] = request.public
@@ -5958,7 +5820,7 @@ class Client(OpenApiClient):
             action='PutLayerACL',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/layers/{layer_name}/acl',
+            pathname=f'/2021-04-06/layers/{OpenApiUtilClient.get_encode_param(layer_name)}/acl',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -5999,8 +5861,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.PutProvisionConfigResponse:
         UtilClient.validate_model(request)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
         query = {}
         if not UtilClient.is_unset(request.qualifier):
             query['qualifier'] = request.qualifier
@@ -6031,7 +5891,7 @@ class Client(OpenApiClient):
             action='PutProvisionConfig',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/provision-config',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}/provision-config',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -6052,8 +5912,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.PutProvisionConfigResponse:
         UtilClient.validate_model(request)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
         query = {}
         if not UtilClient.is_unset(request.qualifier):
             query['qualifier'] = request.qualifier
@@ -6084,7 +5942,7 @@ class Client(OpenApiClient):
             action='PutProvisionConfig',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/provision-config',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}/provision-config',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -6125,8 +5983,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.RegisterEventSourceResponse:
         UtilClient.validate_model(request)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
         query = {}
         if not UtilClient.is_unset(request.qualifier):
             query['qualifier'] = request.qualifier
@@ -6151,7 +6007,7 @@ class Client(OpenApiClient):
             action='RegisterEventSource',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/event-sources',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}/event-sources',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -6172,8 +6028,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.RegisterEventSourceResponse:
         UtilClient.validate_model(request)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
         query = {}
         if not UtilClient.is_unset(request.qualifier):
             query['qualifier'] = request.qualifier
@@ -6198,7 +6052,7 @@ class Client(OpenApiClient):
             action='RegisterEventSource',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/event-sources',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}/event-sources',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -6232,7 +6086,6 @@ class Client(OpenApiClient):
         headers: fc__open_20210406_models.ReleaseGPUInstanceHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.ReleaseGPUInstanceResponse:
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -6249,7 +6102,7 @@ class Client(OpenApiClient):
             action='ReleaseGPUInstance',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/gpuInstances/{instance_id}',
+            pathname=f'/2021-04-06/gpuInstances/{OpenApiUtilClient.get_encode_param(instance_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -6267,7 +6120,6 @@ class Client(OpenApiClient):
         headers: fc__open_20210406_models.ReleaseGPUInstanceHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.ReleaseGPUInstanceResponse:
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -6284,7 +6136,7 @@ class Client(OpenApiClient):
             action='ReleaseGPUInstance',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/gpuInstances/{instance_id}',
+            pathname=f'/2021-04-06/gpuInstances/{OpenApiUtilClient.get_encode_param(instance_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -6328,9 +6180,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.StopStatefulAsyncInvocationResponse:
         UtilClient.validate_model(request)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
-        invocation_id = OpenApiUtilClient.get_encode_param(invocation_id)
         query = {}
         if not UtilClient.is_unset(request.qualifier):
             query['qualifier'] = request.qualifier
@@ -6351,7 +6200,7 @@ class Client(OpenApiClient):
             action='StopStatefulAsyncInvocation',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/stateful-async-invocations/{invocation_id}',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}/stateful-async-invocations/{OpenApiUtilClient.get_encode_param(invocation_id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -6373,9 +6222,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.StopStatefulAsyncInvocationResponse:
         UtilClient.validate_model(request)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
-        invocation_id = OpenApiUtilClient.get_encode_param(invocation_id)
         query = {}
         if not UtilClient.is_unset(request.qualifier):
             query['qualifier'] = request.qualifier
@@ -6396,7 +6242,7 @@ class Client(OpenApiClient):
             action='StopStatefulAsyncInvocation',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/stateful-async-invocations/{invocation_id}',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}/stateful-async-invocations/{OpenApiUtilClient.get_encode_param(invocation_id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -6637,8 +6483,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.UpdateAliasResponse:
         UtilClient.validate_model(request)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
-        alias_name = OpenApiUtilClient.get_encode_param(alias_name)
         body = {}
         if not UtilClient.is_unset(request.additional_version_weight):
             body['additionalVersionWeight'] = request.additional_version_weight
@@ -6669,7 +6513,7 @@ class Client(OpenApiClient):
             action='UpdateAlias',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/aliases/{alias_name}',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/aliases/{OpenApiUtilClient.get_encode_param(alias_name)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -6690,8 +6534,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.UpdateAliasResponse:
         UtilClient.validate_model(request)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
-        alias_name = OpenApiUtilClient.get_encode_param(alias_name)
         body = {}
         if not UtilClient.is_unset(request.additional_version_weight):
             body['additionalVersionWeight'] = request.additional_version_weight
@@ -6722,7 +6564,7 @@ class Client(OpenApiClient):
             action='UpdateAlias',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/aliases/{alias_name}',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/aliases/{OpenApiUtilClient.get_encode_param(alias_name)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -6760,7 +6602,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.UpdateCustomDomainResponse:
         UtilClient.validate_model(request)
-        domain_name = OpenApiUtilClient.get_encode_param(domain_name)
         body = {}
         if not UtilClient.is_unset(request.cert_config):
             body['certConfig'] = request.cert_config
@@ -6787,7 +6628,7 @@ class Client(OpenApiClient):
             action='UpdateCustomDomain',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/custom-domains/{domain_name}',
+            pathname=f'/2021-04-06/custom-domains/{OpenApiUtilClient.get_encode_param(domain_name)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -6807,7 +6648,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.UpdateCustomDomainResponse:
         UtilClient.validate_model(request)
-        domain_name = OpenApiUtilClient.get_encode_param(domain_name)
         body = {}
         if not UtilClient.is_unset(request.cert_config):
             body['certConfig'] = request.cert_config
@@ -6834,7 +6674,7 @@ class Client(OpenApiClient):
             action='UpdateCustomDomain',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/custom-domains/{domain_name}',
+            pathname=f'/2021-04-06/custom-domains/{OpenApiUtilClient.get_encode_param(domain_name)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -6875,8 +6715,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.UpdateFunctionResponse:
         UtilClient.validate_model(request)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
         body = {}
         if not UtilClient.is_unset(request.instance_concurrency):
             body['InstanceConcurrency'] = request.instance_concurrency
@@ -6884,6 +6722,8 @@ class Client(OpenApiClient):
             body['caPort'] = request.ca_port
         if not UtilClient.is_unset(request.code):
             body['code'] = request.code
+        if not UtilClient.is_unset(request.cpu):
+            body['cpu'] = request.cpu
         if not UtilClient.is_unset(request.custom_container_config):
             body['customContainerConfig'] = request.custom_container_config
         if not UtilClient.is_unset(request.custom_dns):
@@ -6894,6 +6734,8 @@ class Client(OpenApiClient):
             body['customRuntimeConfig'] = request.custom_runtime_config
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
+        if not UtilClient.is_unset(request.disk_size):
+            body['diskSize'] = request.disk_size
         if not UtilClient.is_unset(request.environment_variables):
             body['environmentVariables'] = request.environment_variables
         if not UtilClient.is_unset(request.handler):
@@ -6937,7 +6779,7 @@ class Client(OpenApiClient):
             action='UpdateFunction',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -6958,8 +6800,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.UpdateFunctionResponse:
         UtilClient.validate_model(request)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
         body = {}
         if not UtilClient.is_unset(request.instance_concurrency):
             body['InstanceConcurrency'] = request.instance_concurrency
@@ -6967,6 +6807,8 @@ class Client(OpenApiClient):
             body['caPort'] = request.ca_port
         if not UtilClient.is_unset(request.code):
             body['code'] = request.code
+        if not UtilClient.is_unset(request.cpu):
+            body['cpu'] = request.cpu
         if not UtilClient.is_unset(request.custom_container_config):
             body['customContainerConfig'] = request.custom_container_config
         if not UtilClient.is_unset(request.custom_dns):
@@ -6977,6 +6819,8 @@ class Client(OpenApiClient):
             body['customRuntimeConfig'] = request.custom_runtime_config
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
+        if not UtilClient.is_unset(request.disk_size):
+            body['diskSize'] = request.disk_size
         if not UtilClient.is_unset(request.environment_variables):
             body['environmentVariables'] = request.environment_variables
         if not UtilClient.is_unset(request.handler):
@@ -7020,7 +6864,7 @@ class Client(OpenApiClient):
             action='UpdateFunction',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -7058,7 +6902,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.UpdateServiceResponse:
         UtilClient.validate_model(request)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
         body = {}
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
@@ -7095,7 +6938,7 @@ class Client(OpenApiClient):
             action='UpdateService',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -7115,7 +6958,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.UpdateServiceResponse:
         UtilClient.validate_model(request)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
         body = {}
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
@@ -7152,7 +6994,7 @@ class Client(OpenApiClient):
             action='UpdateService',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -7196,9 +7038,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.UpdateTriggerResponse:
         UtilClient.validate_model(request)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
-        trigger_name = OpenApiUtilClient.get_encode_param(trigger_name)
         body = {}
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
@@ -7227,7 +7066,7 @@ class Client(OpenApiClient):
             action='UpdateTrigger',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/triggers/{trigger_name}',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}/triggers/{OpenApiUtilClient.get_encode_param(trigger_name)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -7249,9 +7088,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.UpdateTriggerResponse:
         UtilClient.validate_model(request)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
-        function_name = OpenApiUtilClient.get_encode_param(function_name)
-        trigger_name = OpenApiUtilClient.get_encode_param(trigger_name)
         body = {}
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
@@ -7280,7 +7116,7 @@ class Client(OpenApiClient):
             action='UpdateTrigger',
             version='2021-04-06',
             protocol='HTTPS',
-            pathname=f'/2021-04-06/services/{service_name}/functions/{function_name}/triggers/{trigger_name}',
+            pathname=f'/2021-04-06/services/{OpenApiUtilClient.get_encode_param(service_name)}/functions/{OpenApiUtilClient.get_encode_param(function_name)}/triggers/{OpenApiUtilClient.get_encode_param(trigger_name)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
