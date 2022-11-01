@@ -10,7 +10,6 @@ from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_imagesearch20201214 import models as image_search_20201214_models
 from alibabacloud_tea_util import models as util_models
 from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
-from alibabacloud_tea_rpc import models as rpc_models
 from alibabacloud_openplatform20191219.client import Client as OpenPlatformClient
 from alibabacloud_openplatform20191219 import models as open_platform_models
 from alibabacloud_oss_sdk import models as oss_models
@@ -169,7 +168,7 @@ class Client(OpenApiClient):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
-        auth_config = rpc_models.Config(
+        auth_config = open_api_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             security_token=security_token,
@@ -200,28 +199,28 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(request, add_image_req)
         if not UtilClient.is_unset(request.pic_content_object):
             auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-            oss_config.access_key_id = auth_response.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_config.access_key_id = auth_response.body.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
             oss_client = OSSClient(oss_config)
             file_obj = file_form_models.FileField(
-                filename=auth_response.object_key,
+                filename=auth_response.body.object_key,
                 content=request.pic_content_object,
                 content_type=''
             )
             oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.access_key_id,
-                policy=auth_response.encoded_policy,
-                signature=auth_response.signature,
-                key=auth_response.object_key,
+                access_key_id=auth_response.body.access_key_id,
+                policy=auth_response.body.encoded_policy,
+                signature=auth_response.body.signature,
+                key=auth_response.body.object_key,
                 file=file_obj,
                 success_action_status='201'
             )
             upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.bucket,
+                bucket_name=auth_response.body.bucket,
                 header=oss_header
             )
             oss_client.post_object(upload_request, oss_runtime)
-            add_image_req.pic_content = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+            add_image_req.pic_content = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
         add_image_resp = self.add_image_with_options(add_image_req, runtime)
         return add_image_resp
 
@@ -240,7 +239,7 @@ class Client(OpenApiClient):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
-        auth_config = rpc_models.Config(
+        auth_config = open_api_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             security_token=security_token,
@@ -271,28 +270,28 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(request, add_image_req)
         if not UtilClient.is_unset(request.pic_content_object):
             auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-            oss_config.access_key_id = auth_response.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_config.access_key_id = auth_response.body.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
             oss_client = OSSClient(oss_config)
             file_obj = file_form_models.FileField(
-                filename=auth_response.object_key,
+                filename=auth_response.body.object_key,
                 content=request.pic_content_object,
                 content_type=''
             )
             oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.access_key_id,
-                policy=auth_response.encoded_policy,
-                signature=auth_response.signature,
-                key=auth_response.object_key,
+                access_key_id=auth_response.body.access_key_id,
+                policy=auth_response.body.encoded_policy,
+                signature=auth_response.body.signature,
+                key=auth_response.body.object_key,
                 file=file_obj,
                 success_action_status='201'
             )
             upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.bucket,
+                bucket_name=auth_response.body.bucket,
                 header=oss_header
             )
             await oss_client.post_object_async(upload_request, oss_runtime)
-            add_image_req.pic_content = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+            add_image_req.pic_content = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
         add_image_resp = await self.add_image_with_options_async(add_image_req, runtime)
         return add_image_resp
 
@@ -381,7 +380,8 @@ class Client(OpenApiClient):
     ) -> image_search_20201214_models.DetailResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -408,7 +408,8 @@ class Client(OpenApiClient):
     ) -> image_search_20201214_models.DetailResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -449,7 +450,8 @@ class Client(OpenApiClient):
     ) -> image_search_20201214_models.DumpMetaResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -476,7 +478,8 @@ class Client(OpenApiClient):
     ) -> image_search_20201214_models.DumpMetaResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -517,10 +520,14 @@ class Client(OpenApiClient):
     ) -> image_search_20201214_models.DumpMetaListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Id'] = request.id
-        query['InstanceName'] = request.instance_name
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -547,10 +554,14 @@ class Client(OpenApiClient):
     ) -> image_search_20201214_models.DumpMetaListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Id'] = request.id
-        query['InstanceName'] = request.instance_name
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -591,10 +602,14 @@ class Client(OpenApiClient):
     ) -> image_search_20201214_models.IncreaseInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['BucketName'] = request.bucket_name
-        query['CallbackAddress'] = request.callback_address
-        query['InstanceName'] = request.instance_name
-        query['Path'] = request.path
+        if not UtilClient.is_unset(request.bucket_name):
+            query['BucketName'] = request.bucket_name
+        if not UtilClient.is_unset(request.callback_address):
+            query['CallbackAddress'] = request.callback_address
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.path):
+            query['Path'] = request.path
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -621,10 +636,14 @@ class Client(OpenApiClient):
     ) -> image_search_20201214_models.IncreaseInstanceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['BucketName'] = request.bucket_name
-        query['CallbackAddress'] = request.callback_address
-        query['InstanceName'] = request.instance_name
-        query['Path'] = request.path
+        if not UtilClient.is_unset(request.bucket_name):
+            query['BucketName'] = request.bucket_name
+        if not UtilClient.is_unset(request.callback_address):
+            query['CallbackAddress'] = request.callback_address
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.path):
+            query['Path'] = request.path
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -665,12 +684,18 @@ class Client(OpenApiClient):
     ) -> image_search_20201214_models.IncreaseListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['BucketName'] = request.bucket_name
-        query['Id'] = request.id
-        query['InstanceName'] = request.instance_name
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['Path'] = request.path
+        if not UtilClient.is_unset(request.bucket_name):
+            query['BucketName'] = request.bucket_name
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.path):
+            query['Path'] = request.path
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -697,12 +722,18 @@ class Client(OpenApiClient):
     ) -> image_search_20201214_models.IncreaseListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['BucketName'] = request.bucket_name
-        query['Id'] = request.id
-        query['InstanceName'] = request.instance_name
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
-        query['Path'] = request.path
+        if not UtilClient.is_unset(request.bucket_name):
+            query['BucketName'] = request.bucket_name
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.path):
+            query['Path'] = request.path
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -943,7 +974,7 @@ class Client(OpenApiClient):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
-        auth_config = rpc_models.Config(
+        auth_config = open_api_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             security_token=security_token,
@@ -974,28 +1005,28 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(request, search_image_by_pic_req)
         if not UtilClient.is_unset(request.pic_content_object):
             auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-            oss_config.access_key_id = auth_response.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_config.access_key_id = auth_response.body.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
             oss_client = OSSClient(oss_config)
             file_obj = file_form_models.FileField(
-                filename=auth_response.object_key,
+                filename=auth_response.body.object_key,
                 content=request.pic_content_object,
                 content_type=''
             )
             oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.access_key_id,
-                policy=auth_response.encoded_policy,
-                signature=auth_response.signature,
-                key=auth_response.object_key,
+                access_key_id=auth_response.body.access_key_id,
+                policy=auth_response.body.encoded_policy,
+                signature=auth_response.body.signature,
+                key=auth_response.body.object_key,
                 file=file_obj,
                 success_action_status='201'
             )
             upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.bucket,
+                bucket_name=auth_response.body.bucket,
                 header=oss_header
             )
             oss_client.post_object(upload_request, oss_runtime)
-            search_image_by_pic_req.pic_content = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+            search_image_by_pic_req.pic_content = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
         search_image_by_pic_resp = self.search_image_by_pic_with_options(search_image_by_pic_req, runtime)
         return search_image_by_pic_resp
 
@@ -1014,7 +1045,7 @@ class Client(OpenApiClient):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
-        auth_config = rpc_models.Config(
+        auth_config = open_api_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             security_token=security_token,
@@ -1045,28 +1076,28 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(request, search_image_by_pic_req)
         if not UtilClient.is_unset(request.pic_content_object):
             auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-            oss_config.access_key_id = auth_response.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_config.access_key_id = auth_response.body.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
             oss_client = OSSClient(oss_config)
             file_obj = file_form_models.FileField(
-                filename=auth_response.object_key,
+                filename=auth_response.body.object_key,
                 content=request.pic_content_object,
                 content_type=''
             )
             oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.access_key_id,
-                policy=auth_response.encoded_policy,
-                signature=auth_response.signature,
-                key=auth_response.object_key,
+                access_key_id=auth_response.body.access_key_id,
+                policy=auth_response.body.encoded_policy,
+                signature=auth_response.body.signature,
+                key=auth_response.body.object_key,
                 file=file_obj,
                 success_action_status='201'
             )
             upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.bucket,
+                bucket_name=auth_response.body.bucket,
                 header=oss_header
             )
             await oss_client.post_object_async(upload_request, oss_runtime)
-            search_image_by_pic_req.pic_content = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+            search_image_by_pic_req.pic_content = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
         search_image_by_pic_resp = await self.search_image_by_pic_with_options_async(search_image_by_pic_req, runtime)
         return search_image_by_pic_resp
 

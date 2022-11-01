@@ -1,3 +1,7 @@
+2022-11-01 Version: 4.0.1
+- Support multi region.
+- Add Score parameter.
+
 2021-12-15 Version: 4.0.0
 - Support multi region.
 - Add Score parameter.

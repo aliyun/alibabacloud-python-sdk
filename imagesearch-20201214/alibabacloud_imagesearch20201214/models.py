@@ -88,30 +88,30 @@ class AddImageRequest(TeaModel):
 class AddImageAdvanceRequest(TeaModel):
     def __init__(
         self,
-        pic_content_object: BinaryIO = None,
         category_id: int = None,
         crop: bool = None,
         custom_content: str = None,
         instance_name: str = None,
         int_attr: int = None,
+        pic_content_object: BinaryIO = None,
         pic_name: str = None,
         product_id: str = None,
         region: str = None,
         str_attr: str = None,
     ):
-        self.pic_content_object = pic_content_object
         self.category_id = category_id
         self.crop = crop
         self.custom_content = custom_content
         self.instance_name = instance_name
         self.int_attr = int_attr
+        self.pic_content_object = pic_content_object
         self.pic_name = pic_name
         self.product_id = product_id
         self.region = region
         self.str_attr = str_attr
 
     def validate(self):
-        self.validate_required(self.pic_content_object, 'pic_content_object')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -119,8 +119,6 @@ class AddImageAdvanceRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.pic_content_object is not None:
-            result['PicContentObject'] = self.pic_content_object
         if self.category_id is not None:
             result['CategoryId'] = self.category_id
         if self.crop is not None:
@@ -131,6 +129,8 @@ class AddImageAdvanceRequest(TeaModel):
             result['InstanceName'] = self.instance_name
         if self.int_attr is not None:
             result['IntAttr'] = self.int_attr
+        if self.pic_content_object is not None:
+            result['PicContent'] = self.pic_content_object
         if self.pic_name is not None:
             result['PicName'] = self.pic_name
         if self.product_id is not None:
@@ -143,8 +143,6 @@ class AddImageAdvanceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('PicContentObject') is not None:
-            self.pic_content_object = m.get('PicContentObject')
         if m.get('CategoryId') is not None:
             self.category_id = m.get('CategoryId')
         if m.get('Crop') is not None:
@@ -155,6 +153,8 @@ class AddImageAdvanceRequest(TeaModel):
             self.instance_name = m.get('InstanceName')
         if m.get('IntAttr') is not None:
             self.int_attr = m.get('IntAttr')
+        if m.get('PicContent') is not None:
+            self.pic_content_object = m.get('PicContent')
         if m.get('PicName') is not None:
             self.pic_name = m.get('PicName')
         if m.get('ProductId') is not None:
@@ -256,13 +256,16 @@ class AddImageResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: AddImageResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -275,6 +278,8 @@ class AddImageResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -283,6 +288,8 @@ class AddImageResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = AddImageResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -412,13 +419,16 @@ class DeleteImageResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteImageResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -431,6 +441,8 @@ class DeleteImageResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -439,6 +451,8 @@ class DeleteImageResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteImageResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -586,13 +600,16 @@ class DetailResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DetailResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -605,6 +622,8 @@ class DetailResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -613,6 +632,8 @@ class DetailResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DetailResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -724,13 +745,16 @@ class DumpMetaResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DumpMetaResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -743,6 +767,8 @@ class DumpMetaResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -751,6 +777,8 @@ class DumpMetaResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DumpMetaResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -957,13 +985,16 @@ class DumpMetaListResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DumpMetaListResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -976,6 +1007,8 @@ class DumpMetaListResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -984,6 +1017,8 @@ class DumpMetaListResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DumpMetaListResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1113,13 +1148,16 @@ class IncreaseInstanceResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: IncreaseInstanceResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1132,6 +1170,8 @@ class IncreaseInstanceResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1140,6 +1180,8 @@ class IncreaseInstanceResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = IncreaseInstanceResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1405,13 +1447,16 @@ class IncreaseListResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: IncreaseListResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1424,6 +1469,8 @@ class IncreaseListResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1432,6 +1479,8 @@ class IncreaseListResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = IncreaseListResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1447,7 +1496,6 @@ class SearchImageByNameRequest(TeaModel):
         num: int = None,
         pic_name: str = None,
         product_id: str = None,
-        region_id: str = None,
         start: int = None,
     ):
         self.category_id = category_id
@@ -1456,7 +1504,6 @@ class SearchImageByNameRequest(TeaModel):
         self.num = num
         self.pic_name = pic_name
         self.product_id = product_id
-        self.region_id = region_id
         self.start = start
 
     def validate(self):
@@ -1480,8 +1527,6 @@ class SearchImageByNameRequest(TeaModel):
             result['PicName'] = self.pic_name
         if self.product_id is not None:
             result['ProductId'] = self.product_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.start is not None:
             result['Start'] = self.start
         return result
@@ -1500,8 +1545,6 @@ class SearchImageByNameRequest(TeaModel):
             self.pic_name = m.get('PicName')
         if m.get('ProductId') is not None:
             self.product_id = m.get('ProductId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('Start') is not None:
             self.start = m.get('Start')
         return self
@@ -1818,13 +1861,16 @@ class SearchImageByNameResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: SearchImageByNameResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1837,6 +1883,8 @@ class SearchImageByNameResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1845,6 +1893,8 @@ class SearchImageByNameResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SearchImageByNameResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1861,7 +1911,6 @@ class SearchImageByPicRequest(TeaModel):
         num: int = None,
         pic_content: str = None,
         region: str = None,
-        region_id: str = None,
         start: int = None,
     ):
         self.category_id = category_id
@@ -1871,7 +1920,6 @@ class SearchImageByPicRequest(TeaModel):
         self.num = num
         self.pic_content = pic_content
         self.region = region
-        self.region_id = region_id
         self.start = start
 
     def validate(self):
@@ -1897,8 +1945,6 @@ class SearchImageByPicRequest(TeaModel):
             result['PicContent'] = self.pic_content
         if self.region is not None:
             result['Region'] = self.region
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.start is not None:
             result['Start'] = self.start
         return result
@@ -1919,8 +1965,6 @@ class SearchImageByPicRequest(TeaModel):
             self.pic_content = m.get('PicContent')
         if m.get('Region') is not None:
             self.region = m.get('Region')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('Start') is not None:
             self.start = m.get('Start')
         return self
@@ -1929,28 +1973,26 @@ class SearchImageByPicRequest(TeaModel):
 class SearchImageByPicAdvanceRequest(TeaModel):
     def __init__(
         self,
-        pic_content_object: BinaryIO = None,
         category_id: int = None,
         crop: bool = None,
         filter: str = None,
         instance_name: str = None,
         num: int = None,
+        pic_content_object: BinaryIO = None,
         region: str = None,
-        region_id: str = None,
         start: int = None,
     ):
-        self.pic_content_object = pic_content_object
         self.category_id = category_id
         self.crop = crop
         self.filter = filter
         self.instance_name = instance_name
         self.num = num
+        self.pic_content_object = pic_content_object
         self.region = region
-        self.region_id = region_id
         self.start = start
 
     def validate(self):
-        self.validate_required(self.pic_content_object, 'pic_content_object')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -1958,8 +2000,6 @@ class SearchImageByPicAdvanceRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.pic_content_object is not None:
-            result['PicContentObject'] = self.pic_content_object
         if self.category_id is not None:
             result['CategoryId'] = self.category_id
         if self.crop is not None:
@@ -1970,18 +2010,16 @@ class SearchImageByPicAdvanceRequest(TeaModel):
             result['InstanceName'] = self.instance_name
         if self.num is not None:
             result['Num'] = self.num
+        if self.pic_content_object is not None:
+            result['PicContent'] = self.pic_content_object
         if self.region is not None:
             result['Region'] = self.region
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
         if self.start is not None:
             result['Start'] = self.start
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('PicContentObject') is not None:
-            self.pic_content_object = m.get('PicContentObject')
         if m.get('CategoryId') is not None:
             self.category_id = m.get('CategoryId')
         if m.get('Crop') is not None:
@@ -1992,10 +2030,10 @@ class SearchImageByPicAdvanceRequest(TeaModel):
             self.instance_name = m.get('InstanceName')
         if m.get('Num') is not None:
             self.num = m.get('Num')
+        if m.get('PicContent') is not None:
+            self.pic_content_object = m.get('PicContent')
         if m.get('Region') is not None:
             self.region = m.get('Region')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
         if m.get('Start') is not None:
             self.start = m.get('Start')
         return self
@@ -2312,13 +2350,16 @@ class SearchImageByPicResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: SearchImageByPicResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2331,6 +2372,8 @@ class SearchImageByPicResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2339,6 +2382,8 @@ class SearchImageByPicResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SearchImageByPicResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2411,7 +2456,6 @@ class UpdateImageResponseBody(TeaModel):
         success: bool = None,
     ):
         self.code = code
-        # Id of the request
         self.message = message
         self.request_id = request_id
         self.success = success
@@ -2452,13 +2496,16 @@ class UpdateImageResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: UpdateImageResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2471,6 +2518,8 @@ class UpdateImageResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2479,6 +2528,8 @@ class UpdateImageResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateImageResponseBody()
             self.body = temp_model.from_map(m['body'])
