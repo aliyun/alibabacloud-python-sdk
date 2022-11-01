@@ -922,11 +922,9 @@ class SegmentAnimalResponse(TeaModel):
 class SegmentBodyRequest(TeaModel):
     def __init__(
         self,
-        async_: bool = None,
         image_url: str = None,
         return_form: str = None,
     ):
-        self.async_ = async_
         self.image_url = image_url
         self.return_form = return_form
 
@@ -939,8 +937,6 @@ class SegmentBodyRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.async_ is not None:
-            result['Async'] = self.async_
         if self.image_url is not None:
             result['ImageURL'] = self.image_url
         if self.return_form is not None:
@@ -949,8 +945,6 @@ class SegmentBodyRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Async') is not None:
-            self.async_ = m.get('Async')
         if m.get('ImageURL') is not None:
             self.image_url = m.get('ImageURL')
         if m.get('ReturnForm') is not None:
@@ -961,11 +955,9 @@ class SegmentBodyRequest(TeaModel):
 class SegmentBodyAdvanceRequest(TeaModel):
     def __init__(
         self,
-        async_: bool = None,
         image_urlobject: BinaryIO = None,
         return_form: str = None,
     ):
-        self.async_ = async_
         self.image_urlobject = image_urlobject
         self.return_form = return_form
 
@@ -978,8 +970,6 @@ class SegmentBodyAdvanceRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.async_ is not None:
-            result['Async'] = self.async_
         if self.image_urlobject is not None:
             result['ImageURL'] = self.image_urlobject
         if self.return_form is not None:
@@ -988,8 +978,6 @@ class SegmentBodyAdvanceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Async') is not None:
-            self.async_ = m.get('Async')
         if m.get('ImageURL') is not None:
             self.image_urlobject = m.get('ImageURL')
         if m.get('ReturnForm') is not None:

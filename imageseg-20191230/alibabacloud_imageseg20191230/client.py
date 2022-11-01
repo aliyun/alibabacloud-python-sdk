@@ -1036,12 +1036,8 @@ class Client(OpenApiClient):
             query['ImageURL'] = request.image_url
         if not UtilClient.is_unset(request.return_form):
             query['ReturnForm'] = request.return_form
-        body = {}
-        if not UtilClient.is_unset(request.async_):
-            body['Async'] = request.async_
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SegmentBody',
@@ -1070,12 +1066,8 @@ class Client(OpenApiClient):
             query['ImageURL'] = request.image_url
         if not UtilClient.is_unset(request.return_form):
             query['ReturnForm'] = request.return_form
-        body = {}
-        if not UtilClient.is_unset(request.async_):
-            body['Async'] = request.async_
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SegmentBody',
