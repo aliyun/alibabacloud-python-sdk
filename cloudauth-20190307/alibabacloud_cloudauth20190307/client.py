@@ -1322,6 +1322,8 @@ class Client(OpenApiClient):
             query['SceneId'] = request.scene_id
         if not UtilClient.is_unset(request.user_id):
             query['UserId'] = request.user_id
+        if not UtilClient.is_unset(request.voluntary_customized_content):
+            query['VoluntaryCustomizedContent'] = request.voluntary_customized_content
         body = {}
         if not UtilClient.is_unset(request.auth_id):
             body['AuthId'] = request.auth_id
@@ -1396,6 +1398,8 @@ class Client(OpenApiClient):
             query['SceneId'] = request.scene_id
         if not UtilClient.is_unset(request.user_id):
             query['UserId'] = request.user_id
+        if not UtilClient.is_unset(request.voluntary_customized_content):
+            query['VoluntaryCustomizedContent'] = request.voluntary_customized_content
         body = {}
         if not UtilClient.is_unset(request.auth_id):
             body['AuthId'] = request.auth_id

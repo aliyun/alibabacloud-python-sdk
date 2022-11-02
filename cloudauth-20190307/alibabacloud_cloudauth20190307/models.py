@@ -2787,6 +2787,7 @@ class InitFaceVerifyRequest(TeaModel):
         return_url: str = None,
         scene_id: int = None,
         user_id: str = None,
+        voluntary_customized_content: str = None,
     ):
         self.auth_id = auth_id
         self.callback_token = callback_token
@@ -2811,6 +2812,7 @@ class InitFaceVerifyRequest(TeaModel):
         self.return_url = return_url
         self.scene_id = scene_id
         self.user_id = user_id
+        self.voluntary_customized_content = voluntary_customized_content
 
     def validate(self):
         pass
@@ -2867,6 +2869,8 @@ class InitFaceVerifyRequest(TeaModel):
             result['SceneId'] = self.scene_id
         if self.user_id is not None:
             result['UserId'] = self.user_id
+        if self.voluntary_customized_content is not None:
+            result['VoluntaryCustomizedContent'] = self.voluntary_customized_content
         return result
 
     def from_map(self, m: dict = None):
@@ -2917,6 +2921,8 @@ class InitFaceVerifyRequest(TeaModel):
             self.scene_id = m.get('SceneId')
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')
+        if m.get('VoluntaryCustomizedContent') is not None:
+            self.voluntary_customized_content = m.get('VoluntaryCustomizedContent')
         return self
 
 
