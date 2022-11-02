@@ -7228,6 +7228,45 @@ class DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatchesSidecarProxyRe
         return self
 
 
+class DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatchesTracing(TeaModel):
+    def __init__(
+        self,
+        custom_tags: Dict[str, Any] = None,
+        max_path_tag_length: int = None,
+        sampling: float = None,
+    ):
+        self.custom_tags = custom_tags
+        self.max_path_tag_length = max_path_tag_length
+        self.sampling = sampling
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.custom_tags is not None:
+            result['CustomTags'] = self.custom_tags
+        if self.max_path_tag_length is not None:
+            result['MaxPathTagLength'] = self.max_path_tag_length
+        if self.sampling is not None:
+            result['Sampling'] = self.sampling
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomTags') is not None:
+            self.custom_tags = m.get('CustomTags')
+        if m.get('MaxPathTagLength') is not None:
+            self.max_path_tag_length = m.get('MaxPathTagLength')
+        if m.get('Sampling') is not None:
+            self.sampling = m.get('Sampling')
+        return self
+
+
 class DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatches(TeaModel):
     def __init__(
         self,
@@ -7248,6 +7287,7 @@ class DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatches(TeaModel):
         sidecar_proxy_resource_limit: DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatchesSidecarProxyResourceLimit = None,
         sidecar_proxy_resource_request: DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatchesSidecarProxyResourceRequest = None,
         termination_drain_duration: str = None,
+        tracing: DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatchesTracing = None,
     ):
         self.concurrency = concurrency
         self.exclude_inbound_ports = exclude_inbound_ports
@@ -7266,6 +7306,7 @@ class DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatches(TeaModel):
         self.sidecar_proxy_resource_limit = sidecar_proxy_resource_limit
         self.sidecar_proxy_resource_request = sidecar_proxy_resource_request
         self.termination_drain_duration = termination_drain_duration
+        self.tracing = tracing
 
     def validate(self):
         if self.proxy_stats_matcher:
@@ -7278,6 +7319,8 @@ class DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatches(TeaModel):
             self.sidecar_proxy_resource_limit.validate()
         if self.sidecar_proxy_resource_request:
             self.sidecar_proxy_resource_request.validate()
+        if self.tracing:
+            self.tracing.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -7319,6 +7362,8 @@ class DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatches(TeaModel):
             result['SidecarProxyResourceRequest'] = self.sidecar_proxy_resource_request.to_map()
         if self.termination_drain_duration is not None:
             result['TerminationDrainDuration'] = self.termination_drain_duration
+        if self.tracing is not None:
+            result['Tracing'] = self.tracing.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -7362,6 +7407,9 @@ class DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatches(TeaModel):
             self.sidecar_proxy_resource_request = temp_model.from_map(m['SidecarProxyResourceRequest'])
         if m.get('TerminationDrainDuration') is not None:
             self.termination_drain_duration = m.get('TerminationDrainDuration')
+        if m.get('Tracing') is not None:
+            temp_model = DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatchesTracing()
+            self.tracing = temp_model.from_map(m['Tracing'])
         return self
 
 
@@ -17056,6 +17104,7 @@ class UpdateMeshFeatureRequest(TeaModel):
         cluster_spec: str = None,
         cni_enabled: bool = None,
         cni_exclude_namespaces: str = None,
+        concurrency: int = None,
         config_source_enabled: bool = None,
         config_source_nacos_id: str = None,
         customized_prometheus: bool = None,
@@ -17074,14 +17123,17 @@ class UpdateMeshFeatureRequest(TeaModel):
         filter_gateway_cluster_config: bool = None,
         gateway_apienabled: bool = None,
         global_rate_limit_enabled: bool = None,
+        hold_application_until_proxy_starts: bool = None,
         http_10enabled: bool = None,
         include_ipranges: str = None,
         include_inbound_ports: str = None,
+        include_outbound_ports: str = None,
         integrate_kiali: bool = None,
         kiali_enabled: bool = None,
         lifecycle: str = None,
         locality_lbconf: str = None,
         locality_load_balancing: bool = None,
+        log_level: str = None,
         mseenabled: bool = None,
         multi_buffer_enabled: bool = None,
         multi_buffer_poll_delay: str = None,
@@ -17110,6 +17162,7 @@ class UpdateMeshFeatureRequest(TeaModel):
         proxy_limit_memory: str = None,
         proxy_request_cpu: str = None,
         proxy_request_memory: str = None,
+        proxy_stats_matcher: str = None,
         redis_filter_enabled: bool = None,
         service_mesh_id: str = None,
         sidecar_injector_limit_cpu: str = None,
@@ -17120,6 +17173,8 @@ class UpdateMeshFeatureRequest(TeaModel):
         telemetry: bool = None,
         termination_drain_duration: str = None,
         thrift_filter_enabled: bool = None,
+        trace_custom_tags: str = None,
+        trace_max_path_tag_length: str = None,
         trace_sampling: float = None,
         tracing: bool = None,
         tracing_on_ext_zipkin_limit_cpu: str = None,
@@ -17143,6 +17198,7 @@ class UpdateMeshFeatureRequest(TeaModel):
         self.cluster_spec = cluster_spec
         self.cni_enabled = cni_enabled
         self.cni_exclude_namespaces = cni_exclude_namespaces
+        self.concurrency = concurrency
         self.config_source_enabled = config_source_enabled
         self.config_source_nacos_id = config_source_nacos_id
         self.customized_prometheus = customized_prometheus
@@ -17161,14 +17217,17 @@ class UpdateMeshFeatureRequest(TeaModel):
         self.filter_gateway_cluster_config = filter_gateway_cluster_config
         self.gateway_apienabled = gateway_apienabled
         self.global_rate_limit_enabled = global_rate_limit_enabled
+        self.hold_application_until_proxy_starts = hold_application_until_proxy_starts
         self.http_10enabled = http_10enabled
         self.include_ipranges = include_ipranges
         self.include_inbound_ports = include_inbound_ports
+        self.include_outbound_ports = include_outbound_ports
         self.integrate_kiali = integrate_kiali
         self.kiali_enabled = kiali_enabled
         self.lifecycle = lifecycle
         self.locality_lbconf = locality_lbconf
         self.locality_load_balancing = locality_load_balancing
+        self.log_level = log_level
         self.mseenabled = mseenabled
         self.multi_buffer_enabled = multi_buffer_enabled
         self.multi_buffer_poll_delay = multi_buffer_poll_delay
@@ -17197,6 +17256,7 @@ class UpdateMeshFeatureRequest(TeaModel):
         self.proxy_limit_memory = proxy_limit_memory
         self.proxy_request_cpu = proxy_request_cpu
         self.proxy_request_memory = proxy_request_memory
+        self.proxy_stats_matcher = proxy_stats_matcher
         self.redis_filter_enabled = redis_filter_enabled
         self.service_mesh_id = service_mesh_id
         self.sidecar_injector_limit_cpu = sidecar_injector_limit_cpu
@@ -17207,6 +17267,8 @@ class UpdateMeshFeatureRequest(TeaModel):
         self.telemetry = telemetry
         self.termination_drain_duration = termination_drain_duration
         self.thrift_filter_enabled = thrift_filter_enabled
+        self.trace_custom_tags = trace_custom_tags
+        self.trace_max_path_tag_length = trace_max_path_tag_length
         self.trace_sampling = trace_sampling
         self.tracing = tracing
         self.tracing_on_ext_zipkin_limit_cpu = tracing_on_ext_zipkin_limit_cpu
@@ -17254,6 +17316,8 @@ class UpdateMeshFeatureRequest(TeaModel):
             result['CniEnabled'] = self.cni_enabled
         if self.cni_exclude_namespaces is not None:
             result['CniExcludeNamespaces'] = self.cni_exclude_namespaces
+        if self.concurrency is not None:
+            result['Concurrency'] = self.concurrency
         if self.config_source_enabled is not None:
             result['ConfigSourceEnabled'] = self.config_source_enabled
         if self.config_source_nacos_id is not None:
@@ -17290,12 +17354,16 @@ class UpdateMeshFeatureRequest(TeaModel):
             result['GatewayAPIEnabled'] = self.gateway_apienabled
         if self.global_rate_limit_enabled is not None:
             result['GlobalRateLimitEnabled'] = self.global_rate_limit_enabled
+        if self.hold_application_until_proxy_starts is not None:
+            result['HoldApplicationUntilProxyStarts'] = self.hold_application_until_proxy_starts
         if self.http_10enabled is not None:
             result['Http10Enabled'] = self.http_10enabled
         if self.include_ipranges is not None:
             result['IncludeIPRanges'] = self.include_ipranges
         if self.include_inbound_ports is not None:
             result['IncludeInboundPorts'] = self.include_inbound_ports
+        if self.include_outbound_ports is not None:
+            result['IncludeOutboundPorts'] = self.include_outbound_ports
         if self.integrate_kiali is not None:
             result['IntegrateKiali'] = self.integrate_kiali
         if self.kiali_enabled is not None:
@@ -17306,6 +17374,8 @@ class UpdateMeshFeatureRequest(TeaModel):
             result['LocalityLBConf'] = self.locality_lbconf
         if self.locality_load_balancing is not None:
             result['LocalityLoadBalancing'] = self.locality_load_balancing
+        if self.log_level is not None:
+            result['LogLevel'] = self.log_level
         if self.mseenabled is not None:
             result['MSEEnabled'] = self.mseenabled
         if self.multi_buffer_enabled is not None:
@@ -17362,6 +17432,8 @@ class UpdateMeshFeatureRequest(TeaModel):
             result['ProxyRequestCPU'] = self.proxy_request_cpu
         if self.proxy_request_memory is not None:
             result['ProxyRequestMemory'] = self.proxy_request_memory
+        if self.proxy_stats_matcher is not None:
+            result['ProxyStatsMatcher'] = self.proxy_stats_matcher
         if self.redis_filter_enabled is not None:
             result['RedisFilterEnabled'] = self.redis_filter_enabled
         if self.service_mesh_id is not None:
@@ -17382,6 +17454,10 @@ class UpdateMeshFeatureRequest(TeaModel):
             result['TerminationDrainDuration'] = self.termination_drain_duration
         if self.thrift_filter_enabled is not None:
             result['ThriftFilterEnabled'] = self.thrift_filter_enabled
+        if self.trace_custom_tags is not None:
+            result['TraceCustomTags'] = self.trace_custom_tags
+        if self.trace_max_path_tag_length is not None:
+            result['TraceMaxPathTagLength'] = self.trace_max_path_tag_length
         if self.trace_sampling is not None:
             result['TraceSampling'] = self.trace_sampling
         if self.tracing is not None:
@@ -17430,6 +17506,8 @@ class UpdateMeshFeatureRequest(TeaModel):
             self.cni_enabled = m.get('CniEnabled')
         if m.get('CniExcludeNamespaces') is not None:
             self.cni_exclude_namespaces = m.get('CniExcludeNamespaces')
+        if m.get('Concurrency') is not None:
+            self.concurrency = m.get('Concurrency')
         if m.get('ConfigSourceEnabled') is not None:
             self.config_source_enabled = m.get('ConfigSourceEnabled')
         if m.get('ConfigSourceNacosID') is not None:
@@ -17466,12 +17544,16 @@ class UpdateMeshFeatureRequest(TeaModel):
             self.gateway_apienabled = m.get('GatewayAPIEnabled')
         if m.get('GlobalRateLimitEnabled') is not None:
             self.global_rate_limit_enabled = m.get('GlobalRateLimitEnabled')
+        if m.get('HoldApplicationUntilProxyStarts') is not None:
+            self.hold_application_until_proxy_starts = m.get('HoldApplicationUntilProxyStarts')
         if m.get('Http10Enabled') is not None:
             self.http_10enabled = m.get('Http10Enabled')
         if m.get('IncludeIPRanges') is not None:
             self.include_ipranges = m.get('IncludeIPRanges')
         if m.get('IncludeInboundPorts') is not None:
             self.include_inbound_ports = m.get('IncludeInboundPorts')
+        if m.get('IncludeOutboundPorts') is not None:
+            self.include_outbound_ports = m.get('IncludeOutboundPorts')
         if m.get('IntegrateKiali') is not None:
             self.integrate_kiali = m.get('IntegrateKiali')
         if m.get('KialiEnabled') is not None:
@@ -17482,6 +17564,8 @@ class UpdateMeshFeatureRequest(TeaModel):
             self.locality_lbconf = m.get('LocalityLBConf')
         if m.get('LocalityLoadBalancing') is not None:
             self.locality_load_balancing = m.get('LocalityLoadBalancing')
+        if m.get('LogLevel') is not None:
+            self.log_level = m.get('LogLevel')
         if m.get('MSEEnabled') is not None:
             self.mseenabled = m.get('MSEEnabled')
         if m.get('MultiBufferEnabled') is not None:
@@ -17538,6 +17622,8 @@ class UpdateMeshFeatureRequest(TeaModel):
             self.proxy_request_cpu = m.get('ProxyRequestCPU')
         if m.get('ProxyRequestMemory') is not None:
             self.proxy_request_memory = m.get('ProxyRequestMemory')
+        if m.get('ProxyStatsMatcher') is not None:
+            self.proxy_stats_matcher = m.get('ProxyStatsMatcher')
         if m.get('RedisFilterEnabled') is not None:
             self.redis_filter_enabled = m.get('RedisFilterEnabled')
         if m.get('ServiceMeshId') is not None:
@@ -17558,6 +17644,10 @@ class UpdateMeshFeatureRequest(TeaModel):
             self.termination_drain_duration = m.get('TerminationDrainDuration')
         if m.get('ThriftFilterEnabled') is not None:
             self.thrift_filter_enabled = m.get('ThriftFilterEnabled')
+        if m.get('TraceCustomTags') is not None:
+            self.trace_custom_tags = m.get('TraceCustomTags')
+        if m.get('TraceMaxPathTagLength') is not None:
+            self.trace_max_path_tag_length = m.get('TraceMaxPathTagLength')
         if m.get('TraceSampling') is not None:
             self.trace_sampling = m.get('TraceSampling')
         if m.get('Tracing') is not None:
@@ -17674,6 +17764,7 @@ class UpdateNamespaceScopeSidecarConfigRequest(TeaModel):
         sidecar_proxy_memory_resource_limit: str = None,
         sidecar_proxy_memory_resource_request: str = None,
         termination_drain_duration: str = None,
+        tracing: str = None,
     ):
         self.concurrency = concurrency
         self.exclude_ipranges = exclude_ipranges
@@ -17700,6 +17791,7 @@ class UpdateNamespaceScopeSidecarConfigRequest(TeaModel):
         self.sidecar_proxy_memory_resource_limit = sidecar_proxy_memory_resource_limit
         self.sidecar_proxy_memory_resource_request = sidecar_proxy_memory_resource_request
         self.termination_drain_duration = termination_drain_duration
+        self.tracing = tracing
 
     def validate(self):
         pass
@@ -17760,6 +17852,8 @@ class UpdateNamespaceScopeSidecarConfigRequest(TeaModel):
             result['SidecarProxyMemoryResourceRequest'] = self.sidecar_proxy_memory_resource_request
         if self.termination_drain_duration is not None:
             result['TerminationDrainDuration'] = self.termination_drain_duration
+        if self.tracing is not None:
+            result['Tracing'] = self.tracing
         return result
 
     def from_map(self, m: dict = None):
@@ -17814,6 +17908,8 @@ class UpdateNamespaceScopeSidecarConfigRequest(TeaModel):
             self.sidecar_proxy_memory_resource_request = m.get('SidecarProxyMemoryResourceRequest')
         if m.get('TerminationDrainDuration') is not None:
             self.termination_drain_duration = m.get('TerminationDrainDuration')
+        if m.get('Tracing') is not None:
+            self.tracing = m.get('Tracing')
         return self
 
 

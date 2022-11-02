@@ -6049,6 +6049,8 @@ class Client(OpenApiClient):
             body['CniEnabled'] = request.cni_enabled
         if not UtilClient.is_unset(request.cni_exclude_namespaces):
             body['CniExcludeNamespaces'] = request.cni_exclude_namespaces
+        if not UtilClient.is_unset(request.concurrency):
+            body['Concurrency'] = request.concurrency
         if not UtilClient.is_unset(request.config_source_enabled):
             body['ConfigSourceEnabled'] = request.config_source_enabled
         if not UtilClient.is_unset(request.config_source_nacos_id):
@@ -6085,12 +6087,16 @@ class Client(OpenApiClient):
             body['GatewayAPIEnabled'] = request.gateway_apienabled
         if not UtilClient.is_unset(request.global_rate_limit_enabled):
             body['GlobalRateLimitEnabled'] = request.global_rate_limit_enabled
+        if not UtilClient.is_unset(request.hold_application_until_proxy_starts):
+            body['HoldApplicationUntilProxyStarts'] = request.hold_application_until_proxy_starts
         if not UtilClient.is_unset(request.http_10enabled):
             body['Http10Enabled'] = request.http_10enabled
         if not UtilClient.is_unset(request.include_ipranges):
             body['IncludeIPRanges'] = request.include_ipranges
         if not UtilClient.is_unset(request.include_inbound_ports):
             body['IncludeInboundPorts'] = request.include_inbound_ports
+        if not UtilClient.is_unset(request.include_outbound_ports):
+            body['IncludeOutboundPorts'] = request.include_outbound_ports
         if not UtilClient.is_unset(request.integrate_kiali):
             body['IntegrateKiali'] = request.integrate_kiali
         if not UtilClient.is_unset(request.kiali_enabled):
@@ -6101,6 +6107,8 @@ class Client(OpenApiClient):
             body['LocalityLBConf'] = request.locality_lbconf
         if not UtilClient.is_unset(request.locality_load_balancing):
             body['LocalityLoadBalancing'] = request.locality_load_balancing
+        if not UtilClient.is_unset(request.log_level):
+            body['LogLevel'] = request.log_level
         if not UtilClient.is_unset(request.mseenabled):
             body['MSEEnabled'] = request.mseenabled
         if not UtilClient.is_unset(request.multi_buffer_enabled):
@@ -6157,6 +6165,8 @@ class Client(OpenApiClient):
             body['ProxyRequestCPU'] = request.proxy_request_cpu
         if not UtilClient.is_unset(request.proxy_request_memory):
             body['ProxyRequestMemory'] = request.proxy_request_memory
+        if not UtilClient.is_unset(request.proxy_stats_matcher):
+            body['ProxyStatsMatcher'] = request.proxy_stats_matcher
         if not UtilClient.is_unset(request.redis_filter_enabled):
             body['RedisFilterEnabled'] = request.redis_filter_enabled
         if not UtilClient.is_unset(request.service_mesh_id):
@@ -6177,6 +6187,10 @@ class Client(OpenApiClient):
             body['TerminationDrainDuration'] = request.termination_drain_duration
         if not UtilClient.is_unset(request.thrift_filter_enabled):
             body['ThriftFilterEnabled'] = request.thrift_filter_enabled
+        if not UtilClient.is_unset(request.trace_custom_tags):
+            body['TraceCustomTags'] = request.trace_custom_tags
+        if not UtilClient.is_unset(request.trace_max_path_tag_length):
+            body['TraceMaxPathTagLength'] = request.trace_max_path_tag_length
         if not UtilClient.is_unset(request.trace_sampling):
             body['TraceSampling'] = request.trace_sampling
         if not UtilClient.is_unset(request.tracing):
@@ -6247,6 +6261,8 @@ class Client(OpenApiClient):
             body['CniEnabled'] = request.cni_enabled
         if not UtilClient.is_unset(request.cni_exclude_namespaces):
             body['CniExcludeNamespaces'] = request.cni_exclude_namespaces
+        if not UtilClient.is_unset(request.concurrency):
+            body['Concurrency'] = request.concurrency
         if not UtilClient.is_unset(request.config_source_enabled):
             body['ConfigSourceEnabled'] = request.config_source_enabled
         if not UtilClient.is_unset(request.config_source_nacos_id):
@@ -6283,12 +6299,16 @@ class Client(OpenApiClient):
             body['GatewayAPIEnabled'] = request.gateway_apienabled
         if not UtilClient.is_unset(request.global_rate_limit_enabled):
             body['GlobalRateLimitEnabled'] = request.global_rate_limit_enabled
+        if not UtilClient.is_unset(request.hold_application_until_proxy_starts):
+            body['HoldApplicationUntilProxyStarts'] = request.hold_application_until_proxy_starts
         if not UtilClient.is_unset(request.http_10enabled):
             body['Http10Enabled'] = request.http_10enabled
         if not UtilClient.is_unset(request.include_ipranges):
             body['IncludeIPRanges'] = request.include_ipranges
         if not UtilClient.is_unset(request.include_inbound_ports):
             body['IncludeInboundPorts'] = request.include_inbound_ports
+        if not UtilClient.is_unset(request.include_outbound_ports):
+            body['IncludeOutboundPorts'] = request.include_outbound_ports
         if not UtilClient.is_unset(request.integrate_kiali):
             body['IntegrateKiali'] = request.integrate_kiali
         if not UtilClient.is_unset(request.kiali_enabled):
@@ -6299,6 +6319,8 @@ class Client(OpenApiClient):
             body['LocalityLBConf'] = request.locality_lbconf
         if not UtilClient.is_unset(request.locality_load_balancing):
             body['LocalityLoadBalancing'] = request.locality_load_balancing
+        if not UtilClient.is_unset(request.log_level):
+            body['LogLevel'] = request.log_level
         if not UtilClient.is_unset(request.mseenabled):
             body['MSEEnabled'] = request.mseenabled
         if not UtilClient.is_unset(request.multi_buffer_enabled):
@@ -6355,6 +6377,8 @@ class Client(OpenApiClient):
             body['ProxyRequestCPU'] = request.proxy_request_cpu
         if not UtilClient.is_unset(request.proxy_request_memory):
             body['ProxyRequestMemory'] = request.proxy_request_memory
+        if not UtilClient.is_unset(request.proxy_stats_matcher):
+            body['ProxyStatsMatcher'] = request.proxy_stats_matcher
         if not UtilClient.is_unset(request.redis_filter_enabled):
             body['RedisFilterEnabled'] = request.redis_filter_enabled
         if not UtilClient.is_unset(request.service_mesh_id):
@@ -6375,6 +6399,10 @@ class Client(OpenApiClient):
             body['TerminationDrainDuration'] = request.termination_drain_duration
         if not UtilClient.is_unset(request.thrift_filter_enabled):
             body['ThriftFilterEnabled'] = request.thrift_filter_enabled
+        if not UtilClient.is_unset(request.trace_custom_tags):
+            body['TraceCustomTags'] = request.trace_custom_tags
+        if not UtilClient.is_unset(request.trace_max_path_tag_length):
+            body['TraceMaxPathTagLength'] = request.trace_max_path_tag_length
         if not UtilClient.is_unset(request.trace_sampling):
             body['TraceSampling'] = request.trace_sampling
         if not UtilClient.is_unset(request.tracing):
@@ -6479,6 +6507,8 @@ class Client(OpenApiClient):
             body['SidecarProxyMemoryResourceRequest'] = request.sidecar_proxy_memory_resource_request
         if not UtilClient.is_unset(request.termination_drain_duration):
             body['TerminationDrainDuration'] = request.termination_drain_duration
+        if not UtilClient.is_unset(request.tracing):
+            body['Tracing'] = request.tracing
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -6555,6 +6585,8 @@ class Client(OpenApiClient):
             body['SidecarProxyMemoryResourceRequest'] = request.sidecar_proxy_memory_resource_request
         if not UtilClient.is_unset(request.termination_drain_duration):
             body['TerminationDrainDuration'] = request.termination_drain_duration
+        if not UtilClient.is_unset(request.tracing):
+            body['Tracing'] = request.tracing
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
