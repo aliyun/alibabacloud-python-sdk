@@ -953,6 +953,7 @@ class CreateAggregateConfigDeliveryChannelRequest(TeaModel):
         delivery_channel_name: str = None,
         delivery_channel_target_arn: str = None,
         delivery_channel_type: str = None,
+        delivery_snapshot_time: str = None,
         description: str = None,
         non_compliant_notification: bool = None,
         oversized_data_osstarget_arn: str = None,
@@ -965,6 +966,7 @@ class CreateAggregateConfigDeliveryChannelRequest(TeaModel):
         self.delivery_channel_name = delivery_channel_name
         self.delivery_channel_target_arn = delivery_channel_target_arn
         self.delivery_channel_type = delivery_channel_type
+        self.delivery_snapshot_time = delivery_snapshot_time
         self.description = description
         self.non_compliant_notification = non_compliant_notification
         self.oversized_data_osstarget_arn = oversized_data_osstarget_arn
@@ -994,6 +996,8 @@ class CreateAggregateConfigDeliveryChannelRequest(TeaModel):
             result['DeliveryChannelTargetArn'] = self.delivery_channel_target_arn
         if self.delivery_channel_type is not None:
             result['DeliveryChannelType'] = self.delivery_channel_type
+        if self.delivery_snapshot_time is not None:
+            result['DeliverySnapshotTime'] = self.delivery_snapshot_time
         if self.description is not None:
             result['Description'] = self.description
         if self.non_compliant_notification is not None:
@@ -1020,6 +1024,8 @@ class CreateAggregateConfigDeliveryChannelRequest(TeaModel):
             self.delivery_channel_target_arn = m.get('DeliveryChannelTargetArn')
         if m.get('DeliveryChannelType') is not None:
             self.delivery_channel_type = m.get('DeliveryChannelType')
+        if m.get('DeliverySnapshotTime') is not None:
+            self.delivery_snapshot_time = m.get('DeliverySnapshotTime')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('NonCompliantNotification') is not None:
@@ -2144,6 +2150,7 @@ class CreateConfigDeliveryChannelRequest(TeaModel):
         delivery_channel_name: str = None,
         delivery_channel_target_arn: str = None,
         delivery_channel_type: str = None,
+        delivery_snapshot_time: str = None,
         description: str = None,
         non_compliant_notification: bool = None,
         oversized_data_osstarget_arn: str = None,
@@ -2155,6 +2162,7 @@ class CreateConfigDeliveryChannelRequest(TeaModel):
         self.delivery_channel_name = delivery_channel_name
         self.delivery_channel_target_arn = delivery_channel_target_arn
         self.delivery_channel_type = delivery_channel_type
+        self.delivery_snapshot_time = delivery_snapshot_time
         self.description = description
         self.non_compliant_notification = non_compliant_notification
         self.oversized_data_osstarget_arn = oversized_data_osstarget_arn
@@ -2182,6 +2190,8 @@ class CreateConfigDeliveryChannelRequest(TeaModel):
             result['DeliveryChannelTargetArn'] = self.delivery_channel_target_arn
         if self.delivery_channel_type is not None:
             result['DeliveryChannelType'] = self.delivery_channel_type
+        if self.delivery_snapshot_time is not None:
+            result['DeliverySnapshotTime'] = self.delivery_snapshot_time
         if self.description is not None:
             result['Description'] = self.description
         if self.non_compliant_notification is not None:
@@ -2206,6 +2216,8 @@ class CreateConfigDeliveryChannelRequest(TeaModel):
             self.delivery_channel_target_arn = m.get('DeliveryChannelTargetArn')
         if m.get('DeliveryChannelType') is not None:
             self.delivery_channel_type = m.get('DeliveryChannelType')
+        if m.get('DeliverySnapshotTime') is not None:
+            self.delivery_snapshot_time = m.get('DeliverySnapshotTime')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('NonCompliantNotification') is not None:
@@ -5733,6 +5745,7 @@ class GetAggregateConfigDeliveryChannelResponseBodyDeliveryChannel(TeaModel):
         delivery_channel_name: str = None,
         delivery_channel_target_arn: str = None,
         delivery_channel_type: str = None,
+        delivery_snapshot_time: str = None,
         description: str = None,
         non_compliant_notification: bool = None,
         oversized_data_osstarget_arn: str = None,
@@ -5748,6 +5761,7 @@ class GetAggregateConfigDeliveryChannelResponseBodyDeliveryChannel(TeaModel):
         self.delivery_channel_name = delivery_channel_name
         self.delivery_channel_target_arn = delivery_channel_target_arn
         self.delivery_channel_type = delivery_channel_type
+        self.delivery_snapshot_time = delivery_snapshot_time
         self.description = description
         self.non_compliant_notification = non_compliant_notification
         self.oversized_data_osstarget_arn = oversized_data_osstarget_arn
@@ -5782,6 +5796,8 @@ class GetAggregateConfigDeliveryChannelResponseBodyDeliveryChannel(TeaModel):
             result['DeliveryChannelTargetArn'] = self.delivery_channel_target_arn
         if self.delivery_channel_type is not None:
             result['DeliveryChannelType'] = self.delivery_channel_type
+        if self.delivery_snapshot_time is not None:
+            result['DeliverySnapshotTime'] = self.delivery_snapshot_time
         if self.description is not None:
             result['Description'] = self.description
         if self.non_compliant_notification is not None:
@@ -5814,6 +5830,8 @@ class GetAggregateConfigDeliveryChannelResponseBodyDeliveryChannel(TeaModel):
             self.delivery_channel_target_arn = m.get('DeliveryChannelTargetArn')
         if m.get('DeliveryChannelType') is not None:
             self.delivery_channel_type = m.get('DeliveryChannelType')
+        if m.get('DeliverySnapshotTime') is not None:
+            self.delivery_snapshot_time = m.get('DeliverySnapshotTime')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('NonCompliantNotification') is not None:
@@ -9737,6 +9755,7 @@ class GetConfigDeliveryChannelResponseBodyDeliveryChannel(TeaModel):
         delivery_channel_name: str = None,
         delivery_channel_target_arn: str = None,
         delivery_channel_type: str = None,
+        delivery_snapshot_time: str = None,
         description: str = None,
         non_compliant_notification: bool = None,
         oversized_data_osstarget_arn: str = None,
@@ -9751,6 +9770,7 @@ class GetConfigDeliveryChannelResponseBodyDeliveryChannel(TeaModel):
         self.delivery_channel_name = delivery_channel_name
         self.delivery_channel_target_arn = delivery_channel_target_arn
         self.delivery_channel_type = delivery_channel_type
+        self.delivery_snapshot_time = delivery_snapshot_time
         self.description = description
         self.non_compliant_notification = non_compliant_notification
         self.oversized_data_osstarget_arn = oversized_data_osstarget_arn
@@ -9783,6 +9803,8 @@ class GetConfigDeliveryChannelResponseBodyDeliveryChannel(TeaModel):
             result['DeliveryChannelTargetArn'] = self.delivery_channel_target_arn
         if self.delivery_channel_type is not None:
             result['DeliveryChannelType'] = self.delivery_channel_type
+        if self.delivery_snapshot_time is not None:
+            result['DeliverySnapshotTime'] = self.delivery_snapshot_time
         if self.description is not None:
             result['Description'] = self.description
         if self.non_compliant_notification is not None:
@@ -9813,6 +9835,8 @@ class GetConfigDeliveryChannelResponseBodyDeliveryChannel(TeaModel):
             self.delivery_channel_target_arn = m.get('DeliveryChannelTargetArn')
         if m.get('DeliveryChannelType') is not None:
             self.delivery_channel_type = m.get('DeliveryChannelType')
+        if m.get('DeliverySnapshotTime') is not None:
+            self.delivery_snapshot_time = m.get('DeliverySnapshotTime')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('NonCompliantNotification') is not None:
@@ -13832,6 +13856,7 @@ class ListAggregateConfigDeliveryChannelsResponseBodyDeliveryChannels(TeaModel):
         delivery_channel_name: str = None,
         delivery_channel_target_arn: str = None,
         delivery_channel_type: str = None,
+        delivery_snapshot_time: str = None,
         description: str = None,
         non_compliant_notification: bool = None,
         oversized_data_osstarget_arn: str = None,
@@ -13847,6 +13872,7 @@ class ListAggregateConfigDeliveryChannelsResponseBodyDeliveryChannels(TeaModel):
         self.delivery_channel_name = delivery_channel_name
         self.delivery_channel_target_arn = delivery_channel_target_arn
         self.delivery_channel_type = delivery_channel_type
+        self.delivery_snapshot_time = delivery_snapshot_time
         self.description = description
         self.non_compliant_notification = non_compliant_notification
         self.oversized_data_osstarget_arn = oversized_data_osstarget_arn
@@ -13881,6 +13907,8 @@ class ListAggregateConfigDeliveryChannelsResponseBodyDeliveryChannels(TeaModel):
             result['DeliveryChannelTargetArn'] = self.delivery_channel_target_arn
         if self.delivery_channel_type is not None:
             result['DeliveryChannelType'] = self.delivery_channel_type
+        if self.delivery_snapshot_time is not None:
+            result['DeliverySnapshotTime'] = self.delivery_snapshot_time
         if self.description is not None:
             result['Description'] = self.description
         if self.non_compliant_notification is not None:
@@ -13913,6 +13941,8 @@ class ListAggregateConfigDeliveryChannelsResponseBodyDeliveryChannels(TeaModel):
             self.delivery_channel_target_arn = m.get('DeliveryChannelTargetArn')
         if m.get('DeliveryChannelType') is not None:
             self.delivery_channel_type = m.get('DeliveryChannelType')
+        if m.get('DeliverySnapshotTime') is not None:
+            self.delivery_snapshot_time = m.get('DeliverySnapshotTime')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('NonCompliantNotification') is not None:
@@ -14392,6 +14422,7 @@ class ListAggregateConfigRulesRequest(TeaModel):
         compliance_type: str = None,
         config_rule_name: str = None,
         config_rule_state: str = None,
+        keyword: str = None,
         page_number: int = None,
         page_size: int = None,
         risk_level: int = None,
@@ -14400,6 +14431,7 @@ class ListAggregateConfigRulesRequest(TeaModel):
         self.compliance_type = compliance_type
         self.config_rule_name = config_rule_name
         self.config_rule_state = config_rule_state
+        self.keyword = keyword
         self.page_number = page_number
         self.page_size = page_size
         self.risk_level = risk_level
@@ -14421,6 +14453,8 @@ class ListAggregateConfigRulesRequest(TeaModel):
             result['ConfigRuleName'] = self.config_rule_name
         if self.config_rule_state is not None:
             result['ConfigRuleState'] = self.config_rule_state
+        if self.keyword is not None:
+            result['Keyword'] = self.keyword
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -14439,6 +14473,8 @@ class ListAggregateConfigRulesRequest(TeaModel):
             self.config_rule_name = m.get('ConfigRuleName')
         if m.get('ConfigRuleState') is not None:
             self.config_rule_state = m.get('ConfigRuleState')
+        if m.get('Keyword') is not None:
+            self.keyword = m.get('Keyword')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
@@ -14904,6 +14940,7 @@ class ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDisc
         resource_status: str = None,
         resource_type: str = None,
         tags: str = None,
+        version: int = None,
     ):
         self.account_id = account_id
         self.region = region
@@ -14915,6 +14952,7 @@ class ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDisc
         self.resource_status = resource_status
         self.resource_type = resource_type
         self.tags = tags
+        self.version = version
 
     def validate(self):
         pass
@@ -14945,6 +14983,8 @@ class ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDisc
             result['ResourceType'] = self.resource_type
         if self.tags is not None:
             result['Tags'] = self.tags
+        if self.version is not None:
+            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -14969,6 +15009,8 @@ class ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDisc
             self.resource_type = m.get('ResourceType')
         if m.get('Tags') is not None:
             self.tags = m.get('Tags')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
         return self
 
 
@@ -15983,12 +16025,16 @@ class ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultCompli
     def __init__(
         self,
         config_rule_parameters: List[ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultCompliancePackTemplatesConfigRulesConfigRuleParameters] = None,
+        control_description: str = None,
+        control_id: str = None,
         description: str = None,
         managed_rule_identifier: str = None,
         managed_rule_name: str = None,
         risk_level: int = None,
     ):
         self.config_rule_parameters = config_rule_parameters
+        self.control_description = control_description
+        self.control_id = control_id
         self.description = description
         self.managed_rule_identifier = managed_rule_identifier
         self.managed_rule_name = managed_rule_name
@@ -16010,6 +16056,10 @@ class ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultCompli
         if self.config_rule_parameters is not None:
             for k in self.config_rule_parameters:
                 result['ConfigRuleParameters'].append(k.to_map() if k else None)
+        if self.control_description is not None:
+            result['ControlDescription'] = self.control_description
+        if self.control_id is not None:
+            result['ControlId'] = self.control_id
         if self.description is not None:
             result['Description'] = self.description
         if self.managed_rule_identifier is not None:
@@ -16027,6 +16077,10 @@ class ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultCompli
             for k in m.get('ConfigRuleParameters'):
                 temp_model = ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultCompliancePackTemplatesConfigRulesConfigRuleParameters()
                 self.config_rule_parameters.append(temp_model.from_map(k))
+        if m.get('ControlDescription') is not None:
+            self.control_description = m.get('ControlDescription')
+        if m.get('ControlId') is not None:
+            self.control_id = m.get('ControlId')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('ManagedRuleIdentifier') is not None:
@@ -16045,12 +16099,16 @@ class ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultCompli
         compliance_pack_template_name: str = None,
         config_rules: List[ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultCompliancePackTemplatesConfigRules] = None,
         description: str = None,
+        labels: str = None,
+        last_update: int = None,
         risk_level: int = None,
     ):
         self.compliance_pack_template_id = compliance_pack_template_id
         self.compliance_pack_template_name = compliance_pack_template_name
         self.config_rules = config_rules
         self.description = description
+        self.labels = labels
+        self.last_update = last_update
         self.risk_level = risk_level
 
     def validate(self):
@@ -16075,6 +16133,10 @@ class ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultCompli
                 result['ConfigRules'].append(k.to_map() if k else None)
         if self.description is not None:
             result['Description'] = self.description
+        if self.labels is not None:
+            result['Labels'] = self.labels
+        if self.last_update is not None:
+            result['LastUpdate'] = self.last_update
         if self.risk_level is not None:
             result['RiskLevel'] = self.risk_level
         return result
@@ -16092,6 +16154,10 @@ class ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultCompli
                 self.config_rules.append(temp_model.from_map(k))
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('Labels') is not None:
+            self.labels = m.get('Labels')
+        if m.get('LastUpdate') is not None:
+            self.last_update = m.get('LastUpdate')
         if m.get('RiskLevel') is not None:
             self.risk_level = m.get('RiskLevel')
         return self
@@ -16508,6 +16574,7 @@ class ListConfigDeliveryChannelsResponseBodyDeliveryChannels(TeaModel):
         delivery_channel_name: str = None,
         delivery_channel_target_arn: str = None,
         delivery_channel_type: str = None,
+        delivery_snapshot_time: str = None,
         description: str = None,
         non_compliant_notification: bool = None,
         oversized_data_osstarget_arn: str = None,
@@ -16522,6 +16589,7 @@ class ListConfigDeliveryChannelsResponseBodyDeliveryChannels(TeaModel):
         self.delivery_channel_name = delivery_channel_name
         self.delivery_channel_target_arn = delivery_channel_target_arn
         self.delivery_channel_type = delivery_channel_type
+        self.delivery_snapshot_time = delivery_snapshot_time
         self.description = description
         self.non_compliant_notification = non_compliant_notification
         self.oversized_data_osstarget_arn = oversized_data_osstarget_arn
@@ -16554,6 +16622,8 @@ class ListConfigDeliveryChannelsResponseBodyDeliveryChannels(TeaModel):
             result['DeliveryChannelTargetArn'] = self.delivery_channel_target_arn
         if self.delivery_channel_type is not None:
             result['DeliveryChannelType'] = self.delivery_channel_type
+        if self.delivery_snapshot_time is not None:
+            result['DeliverySnapshotTime'] = self.delivery_snapshot_time
         if self.description is not None:
             result['Description'] = self.description
         if self.non_compliant_notification is not None:
@@ -16584,6 +16654,8 @@ class ListConfigDeliveryChannelsResponseBodyDeliveryChannels(TeaModel):
             self.delivery_channel_target_arn = m.get('DeliveryChannelTargetArn')
         if m.get('DeliveryChannelType') is not None:
             self.delivery_channel_type = m.get('DeliveryChannelType')
+        if m.get('DeliverySnapshotTime') is not None:
+            self.delivery_snapshot_time = m.get('DeliverySnapshotTime')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('NonCompliantNotification') is not None:
@@ -17113,6 +17185,7 @@ class ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredRes
         resource_status: str = None,
         resource_type: str = None,
         tags: str = None,
+        version: int = None,
     ):
         self.account_id = account_id
         self.region = region
@@ -17123,6 +17196,7 @@ class ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredRes
         self.resource_status = resource_status
         self.resource_type = resource_type
         self.tags = tags
+        self.version = version
 
     def validate(self):
         pass
@@ -17151,6 +17225,8 @@ class ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredRes
             result['ResourceType'] = self.resource_type
         if self.tags is not None:
             result['Tags'] = self.tags
+        if self.version is not None:
+            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -17173,6 +17249,8 @@ class ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredRes
             self.resource_type = m.get('ResourceType')
         if m.get('Tags') is not None:
             self.tags = m.get('Tags')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
         return self
 
 
@@ -19942,6 +20020,7 @@ class UpdateAggregateConfigDeliveryChannelRequest(TeaModel):
         delivery_channel_id: str = None,
         delivery_channel_name: str = None,
         delivery_channel_target_arn: str = None,
+        delivery_snapshot_time: str = None,
         description: str = None,
         non_compliant_notification: bool = None,
         oversized_data_osstarget_arn: str = None,
@@ -19955,6 +20034,7 @@ class UpdateAggregateConfigDeliveryChannelRequest(TeaModel):
         self.delivery_channel_id = delivery_channel_id
         self.delivery_channel_name = delivery_channel_name
         self.delivery_channel_target_arn = delivery_channel_target_arn
+        self.delivery_snapshot_time = delivery_snapshot_time
         self.description = description
         self.non_compliant_notification = non_compliant_notification
         self.oversized_data_osstarget_arn = oversized_data_osstarget_arn
@@ -19985,6 +20065,8 @@ class UpdateAggregateConfigDeliveryChannelRequest(TeaModel):
             result['DeliveryChannelName'] = self.delivery_channel_name
         if self.delivery_channel_target_arn is not None:
             result['DeliveryChannelTargetArn'] = self.delivery_channel_target_arn
+        if self.delivery_snapshot_time is not None:
+            result['DeliverySnapshotTime'] = self.delivery_snapshot_time
         if self.description is not None:
             result['Description'] = self.description
         if self.non_compliant_notification is not None:
@@ -20013,6 +20095,8 @@ class UpdateAggregateConfigDeliveryChannelRequest(TeaModel):
             self.delivery_channel_name = m.get('DeliveryChannelName')
         if m.get('DeliveryChannelTargetArn') is not None:
             self.delivery_channel_target_arn = m.get('DeliveryChannelTargetArn')
+        if m.get('DeliverySnapshotTime') is not None:
+            self.delivery_snapshot_time = m.get('DeliverySnapshotTime')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('NonCompliantNotification') is not None:
@@ -21121,6 +21205,7 @@ class UpdateConfigDeliveryChannelRequest(TeaModel):
         delivery_channel_id: str = None,
         delivery_channel_name: str = None,
         delivery_channel_target_arn: str = None,
+        delivery_snapshot_time: str = None,
         description: str = None,
         non_compliant_notification: bool = None,
         oversized_data_osstarget_arn: str = None,
@@ -21133,6 +21218,7 @@ class UpdateConfigDeliveryChannelRequest(TeaModel):
         self.delivery_channel_id = delivery_channel_id
         self.delivery_channel_name = delivery_channel_name
         self.delivery_channel_target_arn = delivery_channel_target_arn
+        self.delivery_snapshot_time = delivery_snapshot_time
         self.description = description
         self.non_compliant_notification = non_compliant_notification
         self.oversized_data_osstarget_arn = oversized_data_osstarget_arn
@@ -21161,6 +21247,8 @@ class UpdateConfigDeliveryChannelRequest(TeaModel):
             result['DeliveryChannelName'] = self.delivery_channel_name
         if self.delivery_channel_target_arn is not None:
             result['DeliveryChannelTargetArn'] = self.delivery_channel_target_arn
+        if self.delivery_snapshot_time is not None:
+            result['DeliverySnapshotTime'] = self.delivery_snapshot_time
         if self.description is not None:
             result['Description'] = self.description
         if self.non_compliant_notification is not None:
@@ -21187,6 +21275,8 @@ class UpdateConfigDeliveryChannelRequest(TeaModel):
             self.delivery_channel_name = m.get('DeliveryChannelName')
         if m.get('DeliveryChannelTargetArn') is not None:
             self.delivery_channel_target_arn = m.get('DeliveryChannelTargetArn')
+        if m.get('DeliverySnapshotTime') is not None:
+            self.delivery_snapshot_time = m.get('DeliverySnapshotTime')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('NonCompliantNotification') is not None:

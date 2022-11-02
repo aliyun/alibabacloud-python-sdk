@@ -396,6 +396,8 @@ class Client(OpenApiClient):
             query['DeliveryChannelTargetArn'] = request.delivery_channel_target_arn
         if not UtilClient.is_unset(request.delivery_channel_type):
             query['DeliveryChannelType'] = request.delivery_channel_type
+        if not UtilClient.is_unset(request.delivery_snapshot_time):
+            query['DeliverySnapshotTime'] = request.delivery_snapshot_time
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.non_compliant_notification):
@@ -444,6 +446,8 @@ class Client(OpenApiClient):
             query['DeliveryChannelTargetArn'] = request.delivery_channel_target_arn
         if not UtilClient.is_unset(request.delivery_channel_type):
             query['DeliveryChannelType'] = request.delivery_channel_type
+        if not UtilClient.is_unset(request.delivery_snapshot_time):
+            query['DeliverySnapshotTime'] = request.delivery_snapshot_time
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.non_compliant_notification):
@@ -952,6 +956,8 @@ class Client(OpenApiClient):
             query['DeliveryChannelTargetArn'] = request.delivery_channel_target_arn
         if not UtilClient.is_unset(request.delivery_channel_type):
             query['DeliveryChannelType'] = request.delivery_channel_type
+        if not UtilClient.is_unset(request.delivery_snapshot_time):
+            query['DeliverySnapshotTime'] = request.delivery_snapshot_time
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.non_compliant_notification):
@@ -998,6 +1004,8 @@ class Client(OpenApiClient):
             query['DeliveryChannelTargetArn'] = request.delivery_channel_target_arn
         if not UtilClient.is_unset(request.delivery_channel_type):
             query['DeliveryChannelType'] = request.delivery_channel_type
+        if not UtilClient.is_unset(request.delivery_snapshot_time):
+            query['DeliverySnapshotTime'] = request.delivery_snapshot_time
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.non_compliant_notification):
@@ -5120,6 +5128,8 @@ class Client(OpenApiClient):
             query['ConfigRuleName'] = request.config_rule_name
         if not UtilClient.is_unset(request.config_rule_state):
             query['ConfigRuleState'] = request.config_rule_state
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -5160,6 +5170,8 @@ class Client(OpenApiClient):
             query['ConfigRuleName'] = request.config_rule_name
         if not UtilClient.is_unset(request.config_rule_state):
             query['ConfigRuleState'] = request.config_rule_state
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -7014,6 +7026,8 @@ class Client(OpenApiClient):
             query['DeliveryChannelName'] = request.delivery_channel_name
         if not UtilClient.is_unset(request.delivery_channel_target_arn):
             query['DeliveryChannelTargetArn'] = request.delivery_channel_target_arn
+        if not UtilClient.is_unset(request.delivery_snapshot_time):
+            query['DeliverySnapshotTime'] = request.delivery_snapshot_time
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.non_compliant_notification):
@@ -7064,6 +7078,8 @@ class Client(OpenApiClient):
             query['DeliveryChannelName'] = request.delivery_channel_name
         if not UtilClient.is_unset(request.delivery_channel_target_arn):
             query['DeliveryChannelTargetArn'] = request.delivery_channel_target_arn
+        if not UtilClient.is_unset(request.delivery_snapshot_time):
+            query['DeliverySnapshotTime'] = request.delivery_snapshot_time
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.non_compliant_notification):
@@ -7566,6 +7582,8 @@ class Client(OpenApiClient):
             query['DeliveryChannelName'] = request.delivery_channel_name
         if not UtilClient.is_unset(request.delivery_channel_target_arn):
             query['DeliveryChannelTargetArn'] = request.delivery_channel_target_arn
+        if not UtilClient.is_unset(request.delivery_snapshot_time):
+            query['DeliverySnapshotTime'] = request.delivery_snapshot_time
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.non_compliant_notification):
@@ -7614,6 +7632,8 @@ class Client(OpenApiClient):
             query['DeliveryChannelName'] = request.delivery_channel_name
         if not UtilClient.is_unset(request.delivery_channel_target_arn):
             query['DeliveryChannelTargetArn'] = request.delivery_channel_target_arn
+        if not UtilClient.is_unset(request.delivery_snapshot_time):
+            query['DeliverySnapshotTime'] = request.delivery_snapshot_time
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.non_compliant_notification):
