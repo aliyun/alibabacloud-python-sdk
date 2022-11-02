@@ -3066,6 +3066,7 @@ class GetJobInfoResponseBodyDataJobConfigInfo(TeaModel):
         jar_url: str = None,
         job_id: int = None,
         job_monitor_info: GetJobInfoResponseBodyDataJobConfigInfoJobMonitorInfo = None,
+        job_type: str = None,
         map_task_xattrs: GetJobInfoResponseBodyDataJobConfigInfoMapTaskXAttrs = None,
         max_attempt: int = None,
         max_concurrency: str = None,
@@ -3073,6 +3074,7 @@ class GetJobInfoResponseBodyDataJobConfigInfo(TeaModel):
         parameters: str = None,
         status: int = None,
         time_config: GetJobInfoResponseBodyDataJobConfigInfoTimeConfig = None,
+        xattrs: str = None,
     ):
         self.attempt_interval = attempt_interval
         self.class_name = class_name
@@ -3082,6 +3084,7 @@ class GetJobInfoResponseBodyDataJobConfigInfo(TeaModel):
         self.jar_url = jar_url
         self.job_id = job_id
         self.job_monitor_info = job_monitor_info
+        self.job_type = job_type
         self.map_task_xattrs = map_task_xattrs
         self.max_attempt = max_attempt
         self.max_concurrency = max_concurrency
@@ -3089,6 +3092,7 @@ class GetJobInfoResponseBodyDataJobConfigInfo(TeaModel):
         self.parameters = parameters
         self.status = status
         self.time_config = time_config
+        self.xattrs = xattrs
 
     def validate(self):
         if self.job_monitor_info:
@@ -3120,6 +3124,8 @@ class GetJobInfoResponseBodyDataJobConfigInfo(TeaModel):
             result['JobId'] = self.job_id
         if self.job_monitor_info is not None:
             result['JobMonitorInfo'] = self.job_monitor_info.to_map()
+        if self.job_type is not None:
+            result['JobType'] = self.job_type
         if self.map_task_xattrs is not None:
             result['MapTaskXAttrs'] = self.map_task_xattrs.to_map()
         if self.max_attempt is not None:
@@ -3134,6 +3140,8 @@ class GetJobInfoResponseBodyDataJobConfigInfo(TeaModel):
             result['Status'] = self.status
         if self.time_config is not None:
             result['TimeConfig'] = self.time_config.to_map()
+        if self.xattrs is not None:
+            result['XAttrs'] = self.xattrs
         return result
 
     def from_map(self, m: dict = None):
@@ -3155,6 +3163,8 @@ class GetJobInfoResponseBodyDataJobConfigInfo(TeaModel):
         if m.get('JobMonitorInfo') is not None:
             temp_model = GetJobInfoResponseBodyDataJobConfigInfoJobMonitorInfo()
             self.job_monitor_info = temp_model.from_map(m['JobMonitorInfo'])
+        if m.get('JobType') is not None:
+            self.job_type = m.get('JobType')
         if m.get('MapTaskXAttrs') is not None:
             temp_model = GetJobInfoResponseBodyDataJobConfigInfoMapTaskXAttrs()
             self.map_task_xattrs = temp_model.from_map(m['MapTaskXAttrs'])
@@ -3171,6 +3181,8 @@ class GetJobInfoResponseBodyDataJobConfigInfo(TeaModel):
         if m.get('TimeConfig') is not None:
             temp_model = GetJobInfoResponseBodyDataJobConfigInfoTimeConfig()
             self.time_config = temp_model.from_map(m['TimeConfig'])
+        if m.get('XAttrs') is not None:
+            self.xattrs = m.get('XAttrs')
         return self
 
 
@@ -5141,6 +5153,7 @@ class ListJobsResponseBodyDataJobs(TeaModel):
         jar_url: str = None,
         job_id: int = None,
         job_monitor_info: ListJobsResponseBodyDataJobsJobMonitorInfo = None,
+        job_type: str = None,
         map_task_xattrs: ListJobsResponseBodyDataJobsMapTaskXAttrs = None,
         max_attempt: int = None,
         max_concurrency: str = None,
@@ -5148,6 +5161,7 @@ class ListJobsResponseBodyDataJobs(TeaModel):
         parameters: str = None,
         status: int = None,
         time_config: ListJobsResponseBodyDataJobsTimeConfig = None,
+        xattrs: str = None,
     ):
         self.attempt_interval = attempt_interval
         self.class_name = class_name
@@ -5157,6 +5171,7 @@ class ListJobsResponseBodyDataJobs(TeaModel):
         self.jar_url = jar_url
         self.job_id = job_id
         self.job_monitor_info = job_monitor_info
+        self.job_type = job_type
         self.map_task_xattrs = map_task_xattrs
         self.max_attempt = max_attempt
         self.max_concurrency = max_concurrency
@@ -5164,6 +5179,7 @@ class ListJobsResponseBodyDataJobs(TeaModel):
         self.parameters = parameters
         self.status = status
         self.time_config = time_config
+        self.xattrs = xattrs
 
     def validate(self):
         if self.job_monitor_info:
@@ -5195,6 +5211,8 @@ class ListJobsResponseBodyDataJobs(TeaModel):
             result['JobId'] = self.job_id
         if self.job_monitor_info is not None:
             result['JobMonitorInfo'] = self.job_monitor_info.to_map()
+        if self.job_type is not None:
+            result['JobType'] = self.job_type
         if self.map_task_xattrs is not None:
             result['MapTaskXAttrs'] = self.map_task_xattrs.to_map()
         if self.max_attempt is not None:
@@ -5209,6 +5227,8 @@ class ListJobsResponseBodyDataJobs(TeaModel):
             result['Status'] = self.status
         if self.time_config is not None:
             result['TimeConfig'] = self.time_config.to_map()
+        if self.xattrs is not None:
+            result['XAttrs'] = self.xattrs
         return result
 
     def from_map(self, m: dict = None):
@@ -5230,6 +5250,8 @@ class ListJobsResponseBodyDataJobs(TeaModel):
         if m.get('JobMonitorInfo') is not None:
             temp_model = ListJobsResponseBodyDataJobsJobMonitorInfo()
             self.job_monitor_info = temp_model.from_map(m['JobMonitorInfo'])
+        if m.get('JobType') is not None:
+            self.job_type = m.get('JobType')
         if m.get('MapTaskXAttrs') is not None:
             temp_model = ListJobsResponseBodyDataJobsMapTaskXAttrs()
             self.map_task_xattrs = temp_model.from_map(m['MapTaskXAttrs'])
@@ -5246,6 +5268,8 @@ class ListJobsResponseBodyDataJobs(TeaModel):
         if m.get('TimeConfig') is not None:
             temp_model = ListJobsResponseBodyDataJobsTimeConfig()
             self.time_config = temp_model.from_map(m['TimeConfig'])
+        if m.get('XAttrs') is not None:
+            self.xattrs = m.get('XAttrs')
         return self
 
 
