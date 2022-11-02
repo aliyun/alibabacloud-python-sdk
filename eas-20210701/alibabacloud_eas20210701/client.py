@@ -245,8 +245,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.CreateResourceInstancesResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        resource_id = OpenApiUtilClient.get_encode_param(resource_id)
         body = {}
         if not UtilClient.is_unset(request.auto_renewal):
             body['AutoRenewal'] = request.auto_renewal
@@ -266,7 +264,7 @@ class Client(OpenApiClient):
             action='CreateResourceInstances',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/resources/{cluster_id}/{resource_id}/instances',
+            pathname=f'/api/v2/resources/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(resource_id)}/instances',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -287,8 +285,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.CreateResourceInstancesResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        resource_id = OpenApiUtilClient.get_encode_param(resource_id)
         body = {}
         if not UtilClient.is_unset(request.auto_renewal):
             body['AutoRenewal'] = request.auto_renewal
@@ -308,7 +304,7 @@ class Client(OpenApiClient):
             action='CreateResourceInstances',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/resources/{cluster_id}/{resource_id}/instances',
+            pathname=f'/api/v2/resources/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(resource_id)}/instances',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -349,8 +345,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.CreateResourceLogResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        resource_id = OpenApiUtilClient.get_encode_param(resource_id)
         body = {}
         if not UtilClient.is_unset(request.log_store):
             body['LogStore'] = request.log_store
@@ -364,7 +358,7 @@ class Client(OpenApiClient):
             action='CreateResourceLog',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/resources/{cluster_id}/{resource_id}/log',
+            pathname=f'/api/v2/resources/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(resource_id)}/log',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -385,8 +379,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.CreateResourceLogResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        resource_id = OpenApiUtilClient.get_encode_param(resource_id)
         body = {}
         if not UtilClient.is_unset(request.log_store):
             body['LogStore'] = request.log_store
@@ -400,7 +392,7 @@ class Client(OpenApiClient):
             action='CreateResourceLog',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/resources/{cluster_id}/{resource_id}/log',
+            pathname=f'/api/v2/resources/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(resource_id)}/log',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -511,15 +503,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.CreateServiceAutoScalerResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
         body = {}
         if not UtilClient.is_unset(request.max):
             body['max'] = request.max
         if not UtilClient.is_unset(request.min):
             body['min'] = request.min
-        if not UtilClient.is_unset(request.strategies):
-            body['strategies'] = request.strategies
+        if not UtilClient.is_unset(request.scale_strategies):
+            body['scaleStrategies'] = request.scale_strategies
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -528,7 +518,7 @@ class Client(OpenApiClient):
             action='CreateServiceAutoScaler',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/services/{cluster_id}/{service_name}/autoscaler',
+            pathname=f'/api/v2/services/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(service_name)}/autoscaler',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -549,15 +539,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.CreateServiceAutoScalerResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
         body = {}
         if not UtilClient.is_unset(request.max):
             body['max'] = request.max
         if not UtilClient.is_unset(request.min):
             body['min'] = request.min
-        if not UtilClient.is_unset(request.strategies):
-            body['strategies'] = request.strategies
+        if not UtilClient.is_unset(request.scale_strategies):
+            body['scaleStrategies'] = request.scale_strategies
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -566,7 +554,7 @@ class Client(OpenApiClient):
             action='CreateServiceAutoScaler',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/services/{cluster_id}/{service_name}/autoscaler',
+            pathname=f'/api/v2/services/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(service_name)}/autoscaler',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -607,8 +595,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.CreateServiceCronScalerResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
         body = {}
         if not UtilClient.is_unset(request.exclude_dates):
             body['ExcludeDates'] = request.exclude_dates
@@ -622,7 +608,7 @@ class Client(OpenApiClient):
             action='CreateServiceCronScaler',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/services/{cluster_id}/{service_name}/cronscaler',
+            pathname=f'/api/v2/services/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(service_name)}/cronscaler',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -643,8 +629,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.CreateServiceCronScalerResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
         body = {}
         if not UtilClient.is_unset(request.exclude_dates):
             body['ExcludeDates'] = request.exclude_dates
@@ -658,7 +642,7 @@ class Client(OpenApiClient):
             action='CreateServiceCronScaler',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/services/{cluster_id}/{service_name}/cronscaler',
+            pathname=f'/api/v2/services/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(service_name)}/cronscaler',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -699,8 +683,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.CreateServiceMirrorResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
         body = {}
         if not UtilClient.is_unset(request.ratio):
             body['Ratio'] = request.ratio
@@ -714,7 +696,7 @@ class Client(OpenApiClient):
             action='CreateServiceMirror',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/services/{cluster_id}/{service_name}/mirror',
+            pathname=f'/api/v2/services/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(service_name)}/mirror',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -735,8 +717,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.CreateServiceMirrorResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
         body = {}
         if not UtilClient.is_unset(request.ratio):
             body['Ratio'] = request.ratio
@@ -750,7 +730,7 @@ class Client(OpenApiClient):
             action='CreateServiceMirror',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/services/{cluster_id}/{service_name}/mirror',
+            pathname=f'/api/v2/services/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(service_name)}/mirror',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -787,8 +767,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DeleteBenchmarkTaskResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        task_name = OpenApiUtilClient.get_encode_param(task_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -796,7 +774,7 @@ class Client(OpenApiClient):
             action='DeleteBenchmarkTask',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/benchmark-tasks/{cluster_id}/{task_name}',
+            pathname=f'/api/v2/benchmark-tasks/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(task_name)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -815,8 +793,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DeleteBenchmarkTaskResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        task_name = OpenApiUtilClient.get_encode_param(task_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -824,7 +800,7 @@ class Client(OpenApiClient):
             action='DeleteBenchmarkTask',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/benchmark-tasks/{cluster_id}/{task_name}',
+            pathname=f'/api/v2/benchmark-tasks/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(task_name)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -861,8 +837,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DeleteResourceResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        resource_id = OpenApiUtilClient.get_encode_param(resource_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -870,7 +844,7 @@ class Client(OpenApiClient):
             action='DeleteResource',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/resources/{cluster_id}/{resource_id}',
+            pathname=f'/api/v2/resources/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(resource_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -889,8 +863,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DeleteResourceResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        resource_id = OpenApiUtilClient.get_encode_param(resource_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -898,7 +870,7 @@ class Client(OpenApiClient):
             action='DeleteResource',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/resources/{cluster_id}/{resource_id}',
+            pathname=f'/api/v2/resources/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(resource_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -935,8 +907,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DeleteResourceDLinkResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        resource_id = OpenApiUtilClient.get_encode_param(resource_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -944,7 +914,7 @@ class Client(OpenApiClient):
             action='DeleteResourceDLink',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/resources/{cluster_id}/{resource_id}/dlink',
+            pathname=f'/api/v2/resources/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(resource_id)}/dlink',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -963,8 +933,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DeleteResourceDLinkResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        resource_id = OpenApiUtilClient.get_encode_param(resource_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -972,7 +940,7 @@ class Client(OpenApiClient):
             action='DeleteResourceDLink',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/resources/{cluster_id}/{resource_id}/dlink',
+            pathname=f'/api/v2/resources/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(resource_id)}/dlink',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1013,8 +981,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DeleteResourceInstancesResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        resource_id = OpenApiUtilClient.get_encode_param(resource_id)
         query = {}
         if not UtilClient.is_unset(request.all_failed):
             query['AllFailed'] = request.all_failed
@@ -1028,7 +994,7 @@ class Client(OpenApiClient):
             action='DeleteResourceInstances',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/resources/{cluster_id}/{resource_id}/instances',
+            pathname=f'/api/v2/resources/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(resource_id)}/instances',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1049,8 +1015,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DeleteResourceInstancesResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        resource_id = OpenApiUtilClient.get_encode_param(resource_id)
         query = {}
         if not UtilClient.is_unset(request.all_failed):
             query['AllFailed'] = request.all_failed
@@ -1064,7 +1028,7 @@ class Client(OpenApiClient):
             action='DeleteResourceInstances',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/resources/{cluster_id}/{resource_id}/instances',
+            pathname=f'/api/v2/resources/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(resource_id)}/instances',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1101,8 +1065,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DeleteResourceLogResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        resource_id = OpenApiUtilClient.get_encode_param(resource_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1110,7 +1072,7 @@ class Client(OpenApiClient):
             action='DeleteResourceLog',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/resources/{cluster_id}/{resource_id}/log',
+            pathname=f'/api/v2/resources/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(resource_id)}/log',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1129,8 +1091,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DeleteResourceLogResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        resource_id = OpenApiUtilClient.get_encode_param(resource_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1138,7 +1098,7 @@ class Client(OpenApiClient):
             action='DeleteResourceLog',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/resources/{cluster_id}/{resource_id}/log',
+            pathname=f'/api/v2/resources/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(resource_id)}/log',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1175,8 +1135,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DeleteServiceResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1184,7 +1142,7 @@ class Client(OpenApiClient):
             action='DeleteService',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/services/{cluster_id}/{service_name}',
+            pathname=f'/api/v2/services/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(service_name)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1203,8 +1161,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DeleteServiceResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1212,7 +1168,7 @@ class Client(OpenApiClient):
             action='DeleteService',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/services/{cluster_id}/{service_name}',
+            pathname=f'/api/v2/services/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(service_name)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1249,8 +1205,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DeleteServiceAutoScalerResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1258,7 +1212,7 @@ class Client(OpenApiClient):
             action='DeleteServiceAutoScaler',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/services/{cluster_id}/{service_name}/autoscaler',
+            pathname=f'/api/v2/services/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(service_name)}/autoscaler',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1277,8 +1231,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DeleteServiceAutoScalerResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1286,7 +1238,7 @@ class Client(OpenApiClient):
             action='DeleteServiceAutoScaler',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/services/{cluster_id}/{service_name}/autoscaler',
+            pathname=f'/api/v2/services/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(service_name)}/autoscaler',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1323,8 +1275,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DeleteServiceCronScalerResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1332,7 +1282,7 @@ class Client(OpenApiClient):
             action='DeleteServiceCronScaler',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/services/{cluster_id}/{service_name}/cronscaler',
+            pathname=f'/api/v2/services/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(service_name)}/cronscaler',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1351,8 +1301,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DeleteServiceCronScalerResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1360,7 +1308,7 @@ class Client(OpenApiClient):
             action='DeleteServiceCronScaler',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/services/{cluster_id}/{service_name}/cronscaler',
+            pathname=f'/api/v2/services/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(service_name)}/cronscaler',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1401,8 +1349,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DeleteServiceInstancesResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
         query = {}
         if not UtilClient.is_unset(request.instance_list):
             query['InstanceList'] = request.instance_list
@@ -1414,7 +1360,7 @@ class Client(OpenApiClient):
             action='DeleteServiceInstances',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/services/{cluster_id}/{service_name}/instances',
+            pathname=f'/api/v2/services/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(service_name)}/instances',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1435,8 +1381,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DeleteServiceInstancesResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
         query = {}
         if not UtilClient.is_unset(request.instance_list):
             query['InstanceList'] = request.instance_list
@@ -1448,7 +1392,7 @@ class Client(OpenApiClient):
             action='DeleteServiceInstances',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/services/{cluster_id}/{service_name}/instances',
+            pathname=f'/api/v2/services/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(service_name)}/instances',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1485,8 +1429,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DeleteServiceMirrorResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1494,7 +1436,7 @@ class Client(OpenApiClient):
             action='DeleteServiceMirror',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/services/{cluster_id}/{service_name}/mirror',
+            pathname=f'/api/v2/services/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(service_name)}/mirror',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1513,8 +1455,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DeleteServiceMirrorResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1522,7 +1462,7 @@ class Client(OpenApiClient):
             action='DeleteServiceMirror',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/services/{cluster_id}/{service_name}/mirror',
+            pathname=f'/api/v2/services/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(service_name)}/mirror',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -1559,8 +1499,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DescribeBenchmarkTaskResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        task_name = OpenApiUtilClient.get_encode_param(task_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1568,7 +1506,7 @@ class Client(OpenApiClient):
             action='DescribeBenchmarkTask',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/benchmark-tasks/{cluster_id}/{task_name}',
+            pathname=f'/api/v2/benchmark-tasks/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(task_name)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1587,8 +1525,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DescribeBenchmarkTaskResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        task_name = OpenApiUtilClient.get_encode_param(task_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1596,7 +1532,7 @@ class Client(OpenApiClient):
             action='DescribeBenchmarkTask',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/benchmark-tasks/{cluster_id}/{task_name}',
+            pathname=f'/api/v2/benchmark-tasks/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(task_name)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1612,37 +1548,43 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         task_name: str,
+        request: eas_20210701_models.DescribeBenchmarkTaskReportRequest,
     ) -> eas_20210701_models.DescribeBenchmarkTaskReportResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_benchmark_task_report_with_options(cluster_id, task_name, headers, runtime)
+        return self.describe_benchmark_task_report_with_options(cluster_id, task_name, request, headers, runtime)
 
     async def describe_benchmark_task_report_async(
         self,
         cluster_id: str,
         task_name: str,
+        request: eas_20210701_models.DescribeBenchmarkTaskReportRequest,
     ) -> eas_20210701_models.DescribeBenchmarkTaskReportResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_benchmark_task_report_with_options_async(cluster_id, task_name, headers, runtime)
+        return await self.describe_benchmark_task_report_with_options_async(cluster_id, task_name, request, headers, runtime)
 
     def describe_benchmark_task_report_with_options(
         self,
         cluster_id: str,
         task_name: str,
+        request: eas_20210701_models.DescribeBenchmarkTaskReportRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DescribeBenchmarkTaskReportResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        task_name = OpenApiUtilClient.get_encode_param(task_name)
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.report_type):
+            query['ReportType'] = request.report_type
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeBenchmarkTaskReport',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/benchmark-tasks/{cluster_id}/{task_name}/report',
+            pathname=f'/api/v2/benchmark-tasks/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(task_name)}/report',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1658,19 +1600,23 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         task_name: str,
+        request: eas_20210701_models.DescribeBenchmarkTaskReportRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DescribeBenchmarkTaskReportResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        task_name = OpenApiUtilClient.get_encode_param(task_name)
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.report_type):
+            query['ReportType'] = request.report_type
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeBenchmarkTaskReport',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/benchmark-tasks/{cluster_id}/{task_name}/report',
+            pathname=f'/api/v2/benchmark-tasks/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(task_name)}/report',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1679,6 +1625,76 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             eas_20210701_models.DescribeBenchmarkTaskReportResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_group(
+        self,
+        cluster_id: str,
+        group_name: str,
+    ) -> eas_20210701_models.DescribeGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.describe_group_with_options(cluster_id, group_name, headers, runtime)
+
+    async def describe_group_async(
+        self,
+        cluster_id: str,
+        group_name: str,
+    ) -> eas_20210701_models.DescribeGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.describe_group_with_options_async(cluster_id, group_name, headers, runtime)
+
+    def describe_group_with_options(
+        self,
+        cluster_id: str,
+        group_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.DescribeGroupResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DescribeGroup',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/groups/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(group_name)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.DescribeGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_group_with_options_async(
+        self,
+        cluster_id: str,
+        group_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.DescribeGroupResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DescribeGroup',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/groups/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(group_name)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.DescribeGroupResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
@@ -1707,8 +1723,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DescribeResourceResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        resource_id = OpenApiUtilClient.get_encode_param(resource_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1716,7 +1730,7 @@ class Client(OpenApiClient):
             action='DescribeResource',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/resources/{cluster_id}/{resource_id}',
+            pathname=f'/api/v2/resources/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(resource_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1735,8 +1749,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DescribeResourceResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        resource_id = OpenApiUtilClient.get_encode_param(resource_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1744,7 +1756,7 @@ class Client(OpenApiClient):
             action='DescribeResource',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/resources/{cluster_id}/{resource_id}',
+            pathname=f'/api/v2/resources/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(resource_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1781,8 +1793,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DescribeResourceDLinkResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        resource_id = OpenApiUtilClient.get_encode_param(resource_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1790,7 +1800,7 @@ class Client(OpenApiClient):
             action='DescribeResourceDLink',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/resources/{cluster_id}/{resource_id}/dlink',
+            pathname=f'/api/v2/resources/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(resource_id)}/dlink',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1809,8 +1819,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DescribeResourceDLinkResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        resource_id = OpenApiUtilClient.get_encode_param(resource_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1818,7 +1826,7 @@ class Client(OpenApiClient):
             action='DescribeResourceDLink',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/resources/{cluster_id}/{resource_id}/dlink',
+            pathname=f'/api/v2/resources/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(resource_id)}/dlink',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1855,8 +1863,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DescribeResourceLogResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        resource_id = OpenApiUtilClient.get_encode_param(resource_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1864,7 +1870,7 @@ class Client(OpenApiClient):
             action='DescribeResourceLog',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/resources/{cluster_id}/{resource_id}/log',
+            pathname=f'/api/v2/resources/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(resource_id)}/log',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1883,8 +1889,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DescribeResourceLogResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        resource_id = OpenApiUtilClient.get_encode_param(resource_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1892,7 +1896,7 @@ class Client(OpenApiClient):
             action='DescribeResourceLog',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/resources/{cluster_id}/{resource_id}/log',
+            pathname=f'/api/v2/resources/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(resource_id)}/log',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1929,8 +1933,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DescribeServiceResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1938,7 +1940,7 @@ class Client(OpenApiClient):
             action='DescribeService',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/services/{cluster_id}/{service_name}',
+            pathname=f'/api/v2/services/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(service_name)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1957,8 +1959,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DescribeServiceResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1966,7 +1966,7 @@ class Client(OpenApiClient):
             action='DescribeService',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/services/{cluster_id}/{service_name}',
+            pathname=f'/api/v2/services/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(service_name)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2003,8 +2003,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DescribeServiceAutoScalerResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2012,7 +2010,7 @@ class Client(OpenApiClient):
             action='DescribeServiceAutoScaler',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/services/{cluster_id}/{service_name}/autoscaler',
+            pathname=f'/api/v2/services/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(service_name)}/autoscaler',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2031,8 +2029,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DescribeServiceAutoScalerResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2040,7 +2036,7 @@ class Client(OpenApiClient):
             action='DescribeServiceAutoScaler',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/services/{cluster_id}/{service_name}/autoscaler',
+            pathname=f'/api/v2/services/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(service_name)}/autoscaler',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2077,8 +2073,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DescribeServiceCronScalerResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2086,7 +2080,7 @@ class Client(OpenApiClient):
             action='DescribeServiceCronScaler',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/services/{cluster_id}/{service_name}/cronscaler',
+            pathname=f'/api/v2/services/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(service_name)}/cronscaler',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2105,8 +2099,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DescribeServiceCronScalerResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2114,7 +2106,7 @@ class Client(OpenApiClient):
             action='DescribeServiceCronScaler',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/services/{cluster_id}/{service_name}/cronscaler',
+            pathname=f'/api/v2/services/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(service_name)}/cronscaler',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2123,6 +2115,102 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             eas_20210701_models.DescribeServiceCronScalerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_service_event(
+        self,
+        cluster_id: str,
+        service_name: str,
+        request: eas_20210701_models.DescribeServiceEventRequest,
+    ) -> eas_20210701_models.DescribeServiceEventResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.describe_service_event_with_options(cluster_id, service_name, request, headers, runtime)
+
+    async def describe_service_event_async(
+        self,
+        cluster_id: str,
+        service_name: str,
+        request: eas_20210701_models.DescribeServiceEventRequest,
+    ) -> eas_20210701_models.DescribeServiceEventResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.describe_service_event_with_options_async(cluster_id, service_name, request, headers, runtime)
+
+    def describe_service_event_with_options(
+        self,
+        cluster_id: str,
+        service_name: str,
+        request: eas_20210701_models.DescribeServiceEventRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.DescribeServiceEventResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.page_num):
+            query['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeServiceEvent',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/services/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(service_name)}/events',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.DescribeServiceEventResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_service_event_with_options_async(
+        self,
+        cluster_id: str,
+        service_name: str,
+        request: eas_20210701_models.DescribeServiceEventRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.DescribeServiceEventResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.page_num):
+            query['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeServiceEvent',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/services/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(service_name)}/events',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.DescribeServiceEventResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
@@ -2155,8 +2243,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DescribeServiceLogResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
         query = {}
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
@@ -2178,7 +2264,7 @@ class Client(OpenApiClient):
             action='DescribeServiceLog',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/services/{cluster_id}/{service_name}/logs',
+            pathname=f'/api/v2/services/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(service_name)}/logs',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2199,8 +2285,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DescribeServiceLogResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
         query = {}
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
@@ -2222,7 +2306,7 @@ class Client(OpenApiClient):
             action='DescribeServiceLog',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/services/{cluster_id}/{service_name}/logs',
+            pathname=f'/api/v2/services/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(service_name)}/logs',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2259,8 +2343,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DescribeServiceMirrorResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2268,7 +2350,7 @@ class Client(OpenApiClient):
             action='DescribeServiceMirror',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/services/{cluster_id}/{service_name}/mirror',
+            pathname=f'/api/v2/services/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(service_name)}/mirror',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2287,8 +2369,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DescribeServiceMirrorResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2296,7 +2376,7 @@ class Client(OpenApiClient):
             action='DescribeServiceMirror',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/services/{cluster_id}/{service_name}/mirror',
+            pathname=f'/api/v2/services/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(service_name)}/mirror',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2308,23 +2388,41 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_benchmark_task(self) -> eas_20210701_models.ListBenchmarkTaskResponse:
+    def list_benchmark_task(
+        self,
+        request: eas_20210701_models.ListBenchmarkTaskRequest,
+    ) -> eas_20210701_models.ListBenchmarkTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_benchmark_task_with_options(headers, runtime)
+        return self.list_benchmark_task_with_options(request, headers, runtime)
 
-    async def list_benchmark_task_async(self) -> eas_20210701_models.ListBenchmarkTaskResponse:
+    async def list_benchmark_task_async(
+        self,
+        request: eas_20210701_models.ListBenchmarkTaskRequest,
+    ) -> eas_20210701_models.ListBenchmarkTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_benchmark_task_with_options_async(headers, runtime)
+        return await self.list_benchmark_task_with_options_async(request, headers, runtime)
 
     def list_benchmark_task_with_options(
         self,
+        request: eas_20210701_models.ListBenchmarkTaskRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.ListBenchmarkTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.fileter):
+            query['Fileter'] = request.fileter
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.service_name):
+            query['ServiceName'] = request.service_name
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListBenchmarkTask',
@@ -2344,11 +2442,23 @@ class Client(OpenApiClient):
 
     async def list_benchmark_task_with_options_async(
         self,
+        request: eas_20210701_models.ListBenchmarkTaskRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.ListBenchmarkTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.fileter):
+            query['Fileter'] = request.fileter
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.service_name):
+            query['ServiceName'] = request.service_name
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListBenchmarkTask',
@@ -2363,6 +2473,90 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             eas_20210701_models.ListBenchmarkTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_groups(
+        self,
+        request: eas_20210701_models.ListGroupsRequest,
+    ) -> eas_20210701_models.ListGroupsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_groups_with_options(request, headers, runtime)
+
+    async def list_groups_async(
+        self,
+        request: eas_20210701_models.ListGroupsRequest,
+    ) -> eas_20210701_models.ListGroupsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_groups_with_options_async(request, headers, runtime)
+
+    def list_groups_with_options(
+        self,
+        request: eas_20210701_models.ListGroupsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.ListGroupsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.filter):
+            query['Filter'] = request.filter
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListGroups',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/groups',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.ListGroupsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_groups_with_options_async(
+        self,
+        request: eas_20210701_models.ListGroupsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.ListGroupsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.filter):
+            query['Filter'] = request.filter
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListGroups',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/groups',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.ListGroupsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
@@ -2398,9 +2592,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.ListResourceInstanceWorkerResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        resource_id = OpenApiUtilClient.get_encode_param(resource_id)
-        instance_name = OpenApiUtilClient.get_encode_param(instance_name)
         query = {}
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
@@ -2414,7 +2605,7 @@ class Client(OpenApiClient):
             action='ListResourceInstanceWorker',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/resources/{cluster_id}/{resource_id}/instance/{instance_name}/workers',
+            pathname=f'/api/v2/resources/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(resource_id)}/instance/{OpenApiUtilClient.get_encode_param(instance_name)}/workers',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2436,9 +2627,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.ListResourceInstanceWorkerResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        resource_id = OpenApiUtilClient.get_encode_param(resource_id)
-        instance_name = OpenApiUtilClient.get_encode_param(instance_name)
         query = {}
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
@@ -2452,7 +2640,7 @@ class Client(OpenApiClient):
             action='ListResourceInstanceWorker',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/resources/{cluster_id}/{resource_id}/instance/{instance_name}/workers',
+            pathname=f'/api/v2/resources/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(resource_id)}/instance/{OpenApiUtilClient.get_encode_param(instance_name)}/workers',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2493,8 +2681,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.ListResourceInstancesResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        resource_id = OpenApiUtilClient.get_encode_param(resource_id)
         query = {}
         if not UtilClient.is_unset(request.charge_type):
             query['ChargeType'] = request.charge_type
@@ -2510,7 +2696,7 @@ class Client(OpenApiClient):
             action='ListResourceInstances',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/resources/{cluster_id}/{resource_id}/instances',
+            pathname=f'/api/v2/resources/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(resource_id)}/instances',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2531,8 +2717,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.ListResourceInstancesResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        resource_id = OpenApiUtilClient.get_encode_param(resource_id)
         query = {}
         if not UtilClient.is_unset(request.charge_type):
             query['ChargeType'] = request.charge_type
@@ -2548,7 +2732,7 @@ class Client(OpenApiClient):
             action='ListResourceInstances',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/resources/{cluster_id}/{resource_id}/instances',
+            pathname=f'/api/v2/resources/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(resource_id)}/instances',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2589,8 +2773,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.ListResourceServicesResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        resource_id = OpenApiUtilClient.get_encode_param(resource_id)
         query = {}
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
@@ -2604,7 +2786,7 @@ class Client(OpenApiClient):
             action='ListResourceServices',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/resources/{cluster_id}/{resource_id}/services',
+            pathname=f'/api/v2/resources/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(resource_id)}/services',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2625,8 +2807,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.ListResourceServicesResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        resource_id = OpenApiUtilClient.get_encode_param(resource_id)
         query = {}
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
@@ -2640,7 +2820,7 @@ class Client(OpenApiClient):
             action='ListResourceServices',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/resources/{cluster_id}/{resource_id}/services',
+            pathname=f'/api/v2/resources/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(resource_id)}/services',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2761,8 +2941,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.ListServiceInstancesResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
         query = {}
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
@@ -2776,7 +2954,7 @@ class Client(OpenApiClient):
             action='ListServiceInstances',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/services/{cluster_id}/{service_name}/instances',
+            pathname=f'/api/v2/services/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(service_name)}/instances',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2797,8 +2975,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.ListServiceInstancesResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
         query = {}
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
@@ -2812,7 +2988,7 @@ class Client(OpenApiClient):
             action='ListServiceInstances',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/services/{cluster_id}/{service_name}/instances',
+            pathname=f'/api/v2/services/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(service_name)}/instances',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2821,6 +2997,94 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             eas_20210701_models.ListServiceInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_service_versions(
+        self,
+        cluster_id: str,
+        service_name: str,
+        request: eas_20210701_models.ListServiceVersionsRequest,
+    ) -> eas_20210701_models.ListServiceVersionsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_service_versions_with_options(cluster_id, service_name, request, headers, runtime)
+
+    async def list_service_versions_async(
+        self,
+        cluster_id: str,
+        service_name: str,
+        request: eas_20210701_models.ListServiceVersionsRequest,
+    ) -> eas_20210701_models.ListServiceVersionsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_service_versions_with_options_async(cluster_id, service_name, request, headers, runtime)
+
+    def list_service_versions_with_options(
+        self,
+        cluster_id: str,
+        service_name: str,
+        request: eas_20210701_models.ListServiceVersionsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.ListServiceVersionsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListServiceVersions',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/services/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(service_name)}/versions',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.ListServiceVersionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_service_versions_with_options_async(
+        self,
+        cluster_id: str,
+        service_name: str,
+        request: eas_20210701_models.ListServiceVersionsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.ListServiceVersionsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListServiceVersions',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/services/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(service_name)}/versions',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.ListServiceVersionsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
@@ -2850,6 +3114,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.filter):
             query['Filter'] = request.filter
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
         if not UtilClient.is_unset(request.order):
             query['Order'] = request.order
         if not UtilClient.is_unset(request.page_number):
@@ -2888,6 +3154,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.filter):
             query['Filter'] = request.filter
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
         if not UtilClient.is_unset(request.order):
             query['Order'] = request.order
         if not UtilClient.is_unset(request.page_number):
@@ -2945,8 +3213,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.ReleaseServiceResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
         body = {}
         if not UtilClient.is_unset(request.traffic_state):
             body['TrafficState'] = request.traffic_state
@@ -2960,7 +3226,7 @@ class Client(OpenApiClient):
             action='ReleaseService',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/services/{cluster_id}/{service_name}/release',
+            pathname=f'/api/v2/services/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(service_name)}/release',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -2981,8 +3247,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.ReleaseServiceResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
         body = {}
         if not UtilClient.is_unset(request.traffic_state):
             body['TrafficState'] = request.traffic_state
@@ -2996,7 +3260,7 @@ class Client(OpenApiClient):
             action='ReleaseService',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/services/{cluster_id}/{service_name}/release',
+            pathname=f'/api/v2/services/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(service_name)}/release',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -3033,8 +3297,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.StartBenchmarkTaskResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        task_name = OpenApiUtilClient.get_encode_param(task_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3042,7 +3304,7 @@ class Client(OpenApiClient):
             action='StartBenchmarkTask',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/benchmark-tasks/{cluster_id}/{task_name}/start',
+            pathname=f'/api/v2/benchmark-tasks/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(task_name)}/start',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -3061,8 +3323,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.StartBenchmarkTaskResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        task_name = OpenApiUtilClient.get_encode_param(task_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3070,7 +3330,7 @@ class Client(OpenApiClient):
             action='StartBenchmarkTask',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/benchmark-tasks/{cluster_id}/{task_name}/start',
+            pathname=f'/api/v2/benchmark-tasks/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(task_name)}/start',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -3107,8 +3367,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.StartServiceResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3116,7 +3374,7 @@ class Client(OpenApiClient):
             action='StartService',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/services/{cluster_id}/{service_name}/start',
+            pathname=f'/api/v2/services/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(service_name)}/start',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -3135,8 +3393,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.StartServiceResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3144,7 +3400,7 @@ class Client(OpenApiClient):
             action='StartService',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/services/{cluster_id}/{service_name}/start',
+            pathname=f'/api/v2/services/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(service_name)}/start',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -3181,8 +3437,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.StopBenchmarkTaskResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        task_name = OpenApiUtilClient.get_encode_param(task_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3190,7 +3444,7 @@ class Client(OpenApiClient):
             action='StopBenchmarkTask',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/benchmark-tasks/{cluster_id}/{task_name}/stop',
+            pathname=f'/api/v2/benchmark-tasks/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(task_name)}/stop',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -3209,8 +3463,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.StopBenchmarkTaskResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        task_name = OpenApiUtilClient.get_encode_param(task_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3218,7 +3470,7 @@ class Client(OpenApiClient):
             action='StopBenchmarkTask',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/benchmark-tasks/{cluster_id}/{task_name}/stop',
+            pathname=f'/api/v2/benchmark-tasks/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(task_name)}/stop',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -3255,8 +3507,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.StopServiceResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3264,7 +3514,7 @@ class Client(OpenApiClient):
             action='StopService',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/services/{cluster_id}/{service_name}/stop',
+            pathname=f'/api/v2/services/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(service_name)}/stop',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -3283,8 +3533,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.StopServiceResponse:
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3292,7 +3540,7 @@ class Client(OpenApiClient):
             action='StopService',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/services/{cluster_id}/{service_name}/stop',
+            pathname=f'/api/v2/services/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(service_name)}/stop',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -3333,8 +3581,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.UpdateBenchmarkTaskResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        task_name = OpenApiUtilClient.get_encode_param(task_name)
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=request.body
@@ -3343,7 +3589,7 @@ class Client(OpenApiClient):
             action='UpdateBenchmarkTask',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/benchmark-tasks/{cluster_id}/{task_name}',
+            pathname=f'/api/v2/benchmark-tasks/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(task_name)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -3364,8 +3610,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.UpdateBenchmarkTaskResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        task_name = OpenApiUtilClient.get_encode_param(task_name)
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=request.body
@@ -3374,7 +3618,7 @@ class Client(OpenApiClient):
             action='UpdateBenchmarkTask',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/benchmark-tasks/{cluster_id}/{task_name}',
+            pathname=f'/api/v2/benchmark-tasks/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(task_name)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -3415,8 +3659,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.UpdateResourceResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        resource_id = OpenApiUtilClient.get_encode_param(resource_id)
         body = {}
         if not UtilClient.is_unset(request.resource_name):
             body['ResourceName'] = request.resource_name
@@ -3428,7 +3670,7 @@ class Client(OpenApiClient):
             action='UpdateResource',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/resources/{cluster_id}/{resource_id}',
+            pathname=f'/api/v2/resources/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(resource_id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -3449,8 +3691,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.UpdateResourceResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        resource_id = OpenApiUtilClient.get_encode_param(resource_id)
         body = {}
         if not UtilClient.is_unset(request.resource_name):
             body['ResourceName'] = request.resource_name
@@ -3462,7 +3702,7 @@ class Client(OpenApiClient):
             action='UpdateResource',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/resources/{cluster_id}/{resource_id}',
+            pathname=f'/api/v2/resources/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(resource_id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -3503,8 +3743,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.UpdateResourceDLinkResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        resource_id = OpenApiUtilClient.get_encode_param(resource_id)
         body = {}
         if not UtilClient.is_unset(request.destination_cidrs):
             body['DestinationCIDRs'] = request.destination_cidrs
@@ -3522,7 +3760,7 @@ class Client(OpenApiClient):
             action='UpdateResourceDLink',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/resources/{cluster_id}/{resource_id}/dlink',
+            pathname=f'/api/v2/resources/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(resource_id)}/dlink',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -3543,8 +3781,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.UpdateResourceDLinkResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        resource_id = OpenApiUtilClient.get_encode_param(resource_id)
         body = {}
         if not UtilClient.is_unset(request.destination_cidrs):
             body['DestinationCIDRs'] = request.destination_cidrs
@@ -3562,7 +3798,7 @@ class Client(OpenApiClient):
             action='UpdateResourceDLink',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/resources/{cluster_id}/{resource_id}/dlink',
+            pathname=f'/api/v2/resources/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(resource_id)}/dlink',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -3603,8 +3839,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.UpdateServiceResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=request.body
@@ -3613,7 +3847,7 @@ class Client(OpenApiClient):
             action='UpdateService',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/services/{cluster_id}/{service_name}',
+            pathname=f'/api/v2/services/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(service_name)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -3634,8 +3868,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.UpdateServiceResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=request.body
@@ -3644,7 +3876,7 @@ class Client(OpenApiClient):
             action='UpdateService',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/services/{cluster_id}/{service_name}',
+            pathname=f'/api/v2/services/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(service_name)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -3685,15 +3917,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.UpdateServiceAutoScalerResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
         body = {}
         if not UtilClient.is_unset(request.max):
             body['max'] = request.max
         if not UtilClient.is_unset(request.min):
             body['min'] = request.min
-        if not UtilClient.is_unset(request.strategies):
-            body['strategies'] = request.strategies
+        if not UtilClient.is_unset(request.scale_strategies):
+            body['scaleStrategies'] = request.scale_strategies
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -3702,7 +3932,7 @@ class Client(OpenApiClient):
             action='UpdateServiceAutoScaler',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/services/{cluster_id}/{service_name}/autoscaler',
+            pathname=f'/api/v2/services/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(service_name)}/autoscaler',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -3723,15 +3953,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.UpdateServiceAutoScalerResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
         body = {}
         if not UtilClient.is_unset(request.max):
             body['max'] = request.max
         if not UtilClient.is_unset(request.min):
             body['min'] = request.min
-        if not UtilClient.is_unset(request.strategies):
-            body['strategies'] = request.strategies
+        if not UtilClient.is_unset(request.scale_strategies):
+            body['scaleStrategies'] = request.scale_strategies
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -3740,7 +3968,7 @@ class Client(OpenApiClient):
             action='UpdateServiceAutoScaler',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/services/{cluster_id}/{service_name}/autoscaler',
+            pathname=f'/api/v2/services/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(service_name)}/autoscaler',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -3781,8 +4009,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.UpdateServiceCronScalerResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
         body = {}
         if not UtilClient.is_unset(request.exclude_dates):
             body['ExcludeDates'] = request.exclude_dates
@@ -3796,7 +4022,7 @@ class Client(OpenApiClient):
             action='UpdateServiceCronScaler',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/services/{cluster_id}/{service_name}/cronscaler',
+            pathname=f'/api/v2/services/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(service_name)}/cronscaler',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -3817,8 +4043,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.UpdateServiceCronScalerResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
         body = {}
         if not UtilClient.is_unset(request.exclude_dates):
             body['ExcludeDates'] = request.exclude_dates
@@ -3832,7 +4056,7 @@ class Client(OpenApiClient):
             action='UpdateServiceCronScaler',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/services/{cluster_id}/{service_name}/cronscaler',
+            pathname=f'/api/v2/services/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(service_name)}/cronscaler',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -3873,8 +4097,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.UpdateServiceMirrorResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
         body = {}
         if not UtilClient.is_unset(request.ratio):
             body['Ratio'] = request.ratio
@@ -3888,7 +4110,7 @@ class Client(OpenApiClient):
             action='UpdateServiceMirror',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/services/{cluster_id}/{service_name}/mirror',
+            pathname=f'/api/v2/services/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(service_name)}/mirror',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -3909,8 +4131,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.UpdateServiceMirrorResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
         body = {}
         if not UtilClient.is_unset(request.ratio):
             body['Ratio'] = request.ratio
@@ -3924,7 +4144,7 @@ class Client(OpenApiClient):
             action='UpdateServiceMirror',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/services/{cluster_id}/{service_name}/mirror',
+            pathname=f'/api/v2/services/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(service_name)}/mirror',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -3965,8 +4185,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.UpdateServiceVersionResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
         body = {}
         if not UtilClient.is_unset(request.version):
             body['Version'] = request.version
@@ -3978,7 +4196,7 @@ class Client(OpenApiClient):
             action='UpdateServiceVersion',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/services/{cluster_id}/{service_name}/version',
+            pathname=f'/api/v2/services/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(service_name)}/version',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -3999,8 +4217,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.UpdateServiceVersionResponse:
         UtilClient.validate_model(request)
-        cluster_id = OpenApiUtilClient.get_encode_param(cluster_id)
-        service_name = OpenApiUtilClient.get_encode_param(service_name)
         body = {}
         if not UtilClient.is_unset(request.version):
             body['Version'] = request.version
@@ -4012,7 +4228,7 @@ class Client(OpenApiClient):
             action='UpdateServiceVersion',
             version='2021-07-01',
             protocol='HTTPS',
-            pathname=f'/api/v2/services/{cluster_id}/{service_name}/version',
+            pathname=f'/api/v2/services/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(service_name)}/version',
             method='PUT',
             auth_type='AK',
             style='ROA',
