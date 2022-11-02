@@ -228,12 +228,14 @@ class CustomContainerConfig(TeaModel):
         command: str = None,
         image: str = None,
         instance_id: str = None,
+        web_server_mode: bool = None,
     ):
         self.acceleration_type = acceleration_type
         self.args = args
         self.command = command
         self.image = image
         self.instance_id = instance_id
+        self.web_server_mode = web_server_mode
 
     def validate(self):
         pass
@@ -254,6 +256,8 @@ class CustomContainerConfig(TeaModel):
             result['image'] = self.image
         if self.instance_id is not None:
             result['instanceID'] = self.instance_id
+        if self.web_server_mode is not None:
+            result['webServerMode'] = self.web_server_mode
         return result
 
     def from_map(self, m: dict = None):
@@ -268,6 +272,8 @@ class CustomContainerConfig(TeaModel):
             self.image = m.get('image')
         if m.get('instanceID') is not None:
             self.instance_id = m.get('instanceID')
+        if m.get('webServerMode') is not None:
+            self.web_server_mode = m.get('webServerMode')
         return self
 
 
@@ -280,6 +286,7 @@ class CustomContainerConfigInfo(TeaModel):
         command: str = None,
         image: str = None,
         instance_id: str = None,
+        web_server_mode: bool = None,
     ):
         self.acceleration_info = acceleration_info
         self.acceleration_type = acceleration_type
@@ -287,6 +294,7 @@ class CustomContainerConfigInfo(TeaModel):
         self.command = command
         self.image = image
         self.instance_id = instance_id
+        self.web_server_mode = web_server_mode
 
     def validate(self):
         if self.acceleration_info:
@@ -310,6 +318,8 @@ class CustomContainerConfigInfo(TeaModel):
             result['image'] = self.image
         if self.instance_id is not None:
             result['instanceID'] = self.instance_id
+        if self.web_server_mode is not None:
+            result['webServerMode'] = self.web_server_mode
         return result
 
     def from_map(self, m: dict = None):
@@ -327,6 +337,8 @@ class CustomContainerConfigInfo(TeaModel):
             self.image = m.get('image')
         if m.get('instanceID') is not None:
             self.instance_id = m.get('instanceID')
+        if m.get('webServerMode') is not None:
+            self.web_server_mode = m.get('webServerMode')
         return self
 
 
