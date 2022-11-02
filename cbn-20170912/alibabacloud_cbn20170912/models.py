@@ -1437,6 +1437,7 @@ class CreateCenBandwidthPackageRequest(TeaModel):
         pricing_cycle: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        service_type: str = None,
     ):
         self.auto_pay = auto_pay
         self.auto_renew = auto_renew
@@ -1454,6 +1455,7 @@ class CreateCenBandwidthPackageRequest(TeaModel):
         self.pricing_cycle = pricing_cycle
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.service_type = service_type
 
     def validate(self):
         pass
@@ -1496,6 +1498,8 @@ class CreateCenBandwidthPackageRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        if self.service_type is not None:
+            result['ServiceType'] = self.service_type
         return result
 
     def from_map(self, m: dict = None):
@@ -1532,6 +1536,8 @@ class CreateCenBandwidthPackageRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('ServiceType') is not None:
+            self.service_type = m.get('ServiceType')
         return self
 
 
@@ -8483,6 +8489,7 @@ class DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPa
         reservation_bandwidth: str = None,
         reservation_internet_charge_type: str = None,
         reservation_order_type: str = None,
+        service_type: str = None,
         status: str = None,
     ):
         self.bandwidth = bandwidth
@@ -8504,6 +8511,7 @@ class DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPa
         self.reservation_bandwidth = reservation_bandwidth
         self.reservation_internet_charge_type = reservation_internet_charge_type
         self.reservation_order_type = reservation_order_type
+        self.service_type = service_type
         self.status = status
 
     def validate(self):
@@ -8556,6 +8564,8 @@ class DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPa
             result['ReservationInternetChargeType'] = self.reservation_internet_charge_type
         if self.reservation_order_type is not None:
             result['ReservationOrderType'] = self.reservation_order_type
+        if self.service_type is not None:
+            result['ServiceType'] = self.service_type
         if self.status is not None:
             result['Status'] = self.status
         return result
@@ -8602,6 +8612,8 @@ class DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPa
             self.reservation_internet_charge_type = m.get('ReservationInternetChargeType')
         if m.get('ReservationOrderType') is not None:
             self.reservation_order_type = m.get('ReservationOrderType')
+        if m.get('ServiceType') is not None:
+            self.service_type = m.get('ServiceType')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         return self
@@ -18188,6 +18200,7 @@ class ListTransitRouterMulticastGroupsRequest(TeaModel):
     def __init__(
         self,
         client_token: str = None,
+        connect_peer_ids: List[str] = None,
         group_ip_address: str = None,
         max_results: int = None,
         next_token: str = None,
@@ -18203,6 +18216,7 @@ class ListTransitRouterMulticastGroupsRequest(TeaModel):
         v_switch_ids: List[str] = None,
     ):
         self.client_token = client_token
+        self.connect_peer_ids = connect_peer_ids
         self.group_ip_address = group_ip_address
         self.max_results = max_results
         self.next_token = next_token
@@ -18228,6 +18242,8 @@ class ListTransitRouterMulticastGroupsRequest(TeaModel):
         result = dict()
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+        if self.connect_peer_ids is not None:
+            result['ConnectPeerIds'] = self.connect_peer_ids
         if self.group_ip_address is not None:
             result['GroupIpAddress'] = self.group_ip_address
         if self.max_results is not None:
@@ -18260,6 +18276,8 @@ class ListTransitRouterMulticastGroupsRequest(TeaModel):
         m = m or dict()
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+        if m.get('ConnectPeerIds') is not None:
+            self.connect_peer_ids = m.get('ConnectPeerIds')
         if m.get('GroupIpAddress') is not None:
             self.group_ip_address = m.get('GroupIpAddress')
         if m.get('MaxResults') is not None:
@@ -18795,6 +18813,8 @@ class ListTransitRouterPeerAttachmentsResponse(TeaModel):
 class ListTransitRouterPrefixListAssociationRequest(TeaModel):
     def __init__(
         self,
+        next_hop: str = None,
+        next_hop_type: str = None,
         owner_account: str = None,
         owner_id: int = None,
         owner_uid: int = None,
@@ -18807,6 +18827,8 @@ class ListTransitRouterPrefixListAssociationRequest(TeaModel):
         transit_router_id: str = None,
         transit_router_table_id: str = None,
     ):
+        self.next_hop = next_hop
+        self.next_hop_type = next_hop_type
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.owner_uid = owner_uid
@@ -18828,6 +18850,10 @@ class ListTransitRouterPrefixListAssociationRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.next_hop is not None:
+            result['NextHop'] = self.next_hop
+        if self.next_hop_type is not None:
+            result['NextHopType'] = self.next_hop_type
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
@@ -18854,6 +18880,10 @@ class ListTransitRouterPrefixListAssociationRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('NextHop') is not None:
+            self.next_hop = m.get('NextHop')
+        if m.get('NextHopType') is not None:
+            self.next_hop_type = m.get('NextHopType')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
@@ -19142,6 +19172,8 @@ class ListTransitRouterRouteEntriesResponseBodyTransitRouterRouteEntries(TeaMode
     def __init__(
         self,
         create_time: str = None,
+        operational_mode: bool = None,
+        tag: str = None,
         transit_router_route_entry_description: str = None,
         transit_router_route_entry_destination_cidr_block: str = None,
         transit_router_route_entry_id: str = None,
@@ -19152,6 +19184,8 @@ class ListTransitRouterRouteEntriesResponseBodyTransitRouterRouteEntries(TeaMode
         transit_router_route_entry_type: str = None,
     ):
         self.create_time = create_time
+        self.operational_mode = operational_mode
+        self.tag = tag
         self.transit_router_route_entry_description = transit_router_route_entry_description
         self.transit_router_route_entry_destination_cidr_block = transit_router_route_entry_destination_cidr_block
         self.transit_router_route_entry_id = transit_router_route_entry_id
@@ -19172,6 +19206,10 @@ class ListTransitRouterRouteEntriesResponseBodyTransitRouterRouteEntries(TeaMode
         result = dict()
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.operational_mode is not None:
+            result['OperationalMode'] = self.operational_mode
+        if self.tag is not None:
+            result['Tag'] = self.tag
         if self.transit_router_route_entry_description is not None:
             result['TransitRouterRouteEntryDescription'] = self.transit_router_route_entry_description
         if self.transit_router_route_entry_destination_cidr_block is not None:
@@ -19194,6 +19232,10 @@ class ListTransitRouterRouteEntriesResponseBodyTransitRouterRouteEntries(TeaMode
         m = m or dict()
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('OperationalMode') is not None:
+            self.operational_mode = m.get('OperationalMode')
+        if m.get('Tag') is not None:
+            self.tag = m.get('Tag')
         if m.get('TransitRouterRouteEntryDescription') is not None:
             self.transit_router_route_entry_description = m.get('TransitRouterRouteEntryDescription')
         if m.get('TransitRouterRouteEntryDestinationCidrBlock') is not None:
@@ -20717,7 +20759,7 @@ class ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachments(TeaMod
         self,
         auto_publish_route_enabled: bool = None,
         creation_time: str = None,
-        resource_type: int = None,
+        resource_type: str = None,
         status: str = None,
         transit_router_attachment_description: str = None,
         transit_router_attachment_id: str = None,
@@ -20991,6 +21033,57 @@ class ListTransitRoutersRequest(TeaModel):
         return self
 
 
+class ListTransitRoutersResponseBodyTransitRoutersTransitRouterCidrList(TeaModel):
+    def __init__(
+        self,
+        cidr: str = None,
+        description: str = None,
+        name: str = None,
+        publish_cidr_route: bool = None,
+        transit_router_cidr_id: str = None,
+    ):
+        self.cidr = cidr
+        self.description = description
+        self.name = name
+        self.publish_cidr_route = publish_cidr_route
+        self.transit_router_cidr_id = transit_router_cidr_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cidr is not None:
+            result['Cidr'] = self.cidr
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.publish_cidr_route is not None:
+            result['PublishCidrRoute'] = self.publish_cidr_route
+        if self.transit_router_cidr_id is not None:
+            result['TransitRouterCidrId'] = self.transit_router_cidr_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cidr') is not None:
+            self.cidr = m.get('Cidr')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('PublishCidrRoute') is not None:
+            self.publish_cidr_route = m.get('PublishCidrRoute')
+        if m.get('TransitRouterCidrId') is not None:
+            self.transit_router_cidr_id = m.get('TransitRouterCidrId')
+        return self
+
+
 class ListTransitRoutersResponseBodyTransitRouters(TeaModel):
     def __init__(
         self,
@@ -21000,6 +21093,7 @@ class ListTransitRoutersResponseBodyTransitRouters(TeaModel):
         region_id: str = None,
         status: str = None,
         support_multicast: bool = None,
+        transit_router_cidr_list: List[ListTransitRoutersResponseBodyTransitRoutersTransitRouterCidrList] = None,
         transit_router_description: str = None,
         transit_router_id: str = None,
         transit_router_name: str = None,
@@ -21011,13 +21105,17 @@ class ListTransitRoutersResponseBodyTransitRouters(TeaModel):
         self.region_id = region_id
         self.status = status
         self.support_multicast = support_multicast
+        self.transit_router_cidr_list = transit_router_cidr_list
         self.transit_router_description = transit_router_description
         self.transit_router_id = transit_router_id
         self.transit_router_name = transit_router_name
         self.type = type
 
     def validate(self):
-        pass
+        if self.transit_router_cidr_list:
+            for k in self.transit_router_cidr_list:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -21037,6 +21135,10 @@ class ListTransitRoutersResponseBodyTransitRouters(TeaModel):
             result['Status'] = self.status
         if self.support_multicast is not None:
             result['SupportMulticast'] = self.support_multicast
+        result['TransitRouterCidrList'] = []
+        if self.transit_router_cidr_list is not None:
+            for k in self.transit_router_cidr_list:
+                result['TransitRouterCidrList'].append(k.to_map() if k else None)
         if self.transit_router_description is not None:
             result['TransitRouterDescription'] = self.transit_router_description
         if self.transit_router_id is not None:
@@ -21061,6 +21163,11 @@ class ListTransitRoutersResponseBodyTransitRouters(TeaModel):
             self.status = m.get('Status')
         if m.get('SupportMulticast') is not None:
             self.support_multicast = m.get('SupportMulticast')
+        self.transit_router_cidr_list = []
+        if m.get('TransitRouterCidrList') is not None:
+            for k in m.get('TransitRouterCidrList'):
+                temp_model = ListTransitRoutersResponseBodyTransitRoutersTransitRouterCidrList()
+                self.transit_router_cidr_list.append(temp_model.from_map(k))
         if m.get('TransitRouterDescription') is not None:
             self.transit_router_description = m.get('TransitRouterDescription')
         if m.get('TransitRouterId') is not None:
@@ -21458,6 +21565,7 @@ class ModifyCenBandwidthPackageSpecRequest(TeaModel):
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        service_type: str = None,
     ):
         self.bandwidth = bandwidth
         self.cen_bandwidth_package_id = cen_bandwidth_package_id
@@ -21465,6 +21573,7 @@ class ModifyCenBandwidthPackageSpecRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.service_type = service_type
 
     def validate(self):
         pass
@@ -21487,6 +21596,8 @@ class ModifyCenBandwidthPackageSpecRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        if self.service_type is not None:
+            result['ServiceType'] = self.service_type
         return result
 
     def from_map(self, m: dict = None):
@@ -21503,6 +21614,8 @@ class ModifyCenBandwidthPackageSpecRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('ServiceType') is not None:
+            self.service_type = m.get('ServiceType')
         return self
 
 

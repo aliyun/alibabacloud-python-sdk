@@ -950,6 +950,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.service_type):
+            query['ServiceType'] = request.service_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1008,6 +1010,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.service_type):
+            query['ServiceType'] = request.service_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9222,6 +9226,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.connect_peer_ids):
+            query['ConnectPeerIds'] = request.connect_peer_ids
         if not UtilClient.is_unset(request.group_ip_address):
             query['GroupIpAddress'] = request.group_ip_address
         if not UtilClient.is_unset(request.max_results):
@@ -9276,6 +9282,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.connect_peer_ids):
+            query['ConnectPeerIds'] = request.connect_peer_ids
         if not UtilClient.is_unset(request.group_ip_address):
             query['GroupIpAddress'] = request.group_ip_address
         if not UtilClient.is_unset(request.max_results):
@@ -9448,6 +9456,10 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.ListTransitRouterPrefixListAssociationResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.next_hop):
+            query['NextHop'] = request.next_hop
+        if not UtilClient.is_unset(request.next_hop_type):
+            query['NextHopType'] = request.next_hop_type
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -9496,6 +9508,10 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.ListTransitRouterPrefixListAssociationResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.next_hop):
+            query['NextHop'] = request.next_hop
+        if not UtilClient.is_unset(request.next_hop_type):
+            query['NextHopType'] = request.next_hop_type
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -10598,6 +10614,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.service_type):
+            query['ServiceType'] = request.service_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -10636,6 +10654,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.service_type):
+            query['ServiceType'] = request.service_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
