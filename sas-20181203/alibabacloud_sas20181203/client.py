@@ -505,12 +505,8 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.CheckUserHasEcsResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.current_page):
-            query['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -537,12 +533,8 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.CheckUserHasEcsResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.current_page):
-            query['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -10677,6 +10669,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.alarm_unique_info):
             query['AlarmUniqueInfo'] = request.alarm_unique_info
+        if not UtilClient.is_unset(request.assets_type_list):
+            query['AssetsTypeList'] = request.assets_type_list
         if not UtilClient.is_unset(request.cluster_id):
             query['ClusterId'] = request.cluster_id
         if not UtilClient.is_unset(request.container_field_name):
@@ -10761,6 +10755,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.alarm_unique_info):
             query['AlarmUniqueInfo'] = request.alarm_unique_info
+        if not UtilClient.is_unset(request.assets_type_list):
+            query['AssetsTypeList'] = request.assets_type_list
         if not UtilClient.is_unset(request.cluster_id):
             query['ClusterId'] = request.cluster_id
         if not UtilClient.is_unset(request.container_field_name):
