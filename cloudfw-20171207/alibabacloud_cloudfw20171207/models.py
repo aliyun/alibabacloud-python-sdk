@@ -8319,7 +8319,6 @@ class ModifyControlPolicyRequest(TeaModel):
         destination_type: str = None,
         direction: str = None,
         lang: str = None,
-        message_type: str = None,
         proto: str = None,
         release: str = None,
         source: str = None,
@@ -8338,7 +8337,6 @@ class ModifyControlPolicyRequest(TeaModel):
         self.destination_type = destination_type
         self.direction = direction
         self.lang = lang
-        self.message_type = message_type
         self.proto = proto
         self.release = release
         self.source = source
@@ -8378,8 +8376,6 @@ class ModifyControlPolicyRequest(TeaModel):
             result['Direction'] = self.direction
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.message_type is not None:
-            result['MessageType'] = self.message_type
         if self.proto is not None:
             result['Proto'] = self.proto
         if self.release is not None:
@@ -8418,8 +8414,6 @@ class ModifyControlPolicyRequest(TeaModel):
             self.direction = m.get('Direction')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('MessageType') is not None:
-            self.message_type = m.get('MessageType')
         if m.get('Proto') is not None:
             self.proto = m.get('Proto')
         if m.get('Release') is not None:

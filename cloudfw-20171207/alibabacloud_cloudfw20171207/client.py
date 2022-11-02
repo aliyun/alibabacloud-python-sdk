@@ -3328,8 +3328,6 @@ class Client(OpenApiClient):
             query['Direction'] = request.direction
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.message_type):
-            query['MessageType'] = request.message_type
         if not UtilClient.is_unset(request.proto):
             query['Proto'] = request.proto
         if not UtilClient.is_unset(request.release):
@@ -3390,8 +3388,6 @@ class Client(OpenApiClient):
             query['Direction'] = request.direction
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.message_type):
-            query['MessageType'] = request.message_type
         if not UtilClient.is_unset(request.proto):
             query['Proto'] = request.proto
         if not UtilClient.is_unset(request.release):
