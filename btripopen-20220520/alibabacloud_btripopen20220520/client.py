@@ -1999,6 +1999,8 @@ class Client(OpenApiClient):
     ) -> btrip_open_20220520_models.CorpTokenResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.app_secret):
+            query['app_secret'] = request.app_secret
         if not UtilClient.is_unset(request.corp_id):
             query['corp_id'] = request.corp_id
         if not UtilClient.is_unset(request.type):
@@ -2036,6 +2038,8 @@ class Client(OpenApiClient):
     ) -> btrip_open_20220520_models.CorpTokenResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.app_secret):
+            query['app_secret'] = request.app_secret
         if not UtilClient.is_unset(request.corp_id):
             query['corp_id'] = request.corp_id
         if not UtilClient.is_unset(request.type):

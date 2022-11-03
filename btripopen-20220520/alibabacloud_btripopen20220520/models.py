@@ -7884,9 +7884,11 @@ class CorpTokenHeaders(TeaModel):
 class CorpTokenRequest(TeaModel):
     def __init__(
         self,
+        app_secret: str = None,
         corp_id: str = None,
         type: int = None,
     ):
+        self.app_secret = app_secret
         self.corp_id = corp_id
         self.type = type
 
@@ -7899,6 +7901,8 @@ class CorpTokenRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.app_secret is not None:
+            result['app_secret'] = self.app_secret
         if self.corp_id is not None:
             result['corp_id'] = self.corp_id
         if self.type is not None:
@@ -7907,6 +7911,8 @@ class CorpTokenRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('app_secret') is not None:
+            self.app_secret = m.get('app_secret')
         if m.get('corp_id') is not None:
             self.corp_id = m.get('corp_id')
         if m.get('type') is not None:

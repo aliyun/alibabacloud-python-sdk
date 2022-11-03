@@ -1,3 +1,6 @@
+2022-11-03 Version: 1.0.27
+- Update CorpToken,allow sk.
+
 2022-10-21 Version: 1.0.26
 - Update map struct.
 
