@@ -31226,6 +31226,384 @@ class OpenApiGatewayServiceResponse(TeaModel):
         return self
 
 
+class QueryRequestLogsRequest(TeaModel):
+    def __init__(
+        self,
+        request_log_id: str = None,
+        security_token: str = None,
+    ):
+        self.request_log_id = request_log_id
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_log_id is not None:
+            result['RequestLogId'] = self.request_log_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestLogId') is not None:
+            self.request_log_id = m.get('RequestLogId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class QueryRequestLogsResponseBodyRequestLogsRequestLog(TeaModel):
+    def __init__(
+        self,
+        api_id: str = None,
+        api_name: str = None,
+        client_ip: int = None,
+        client_nonce: str = None,
+        consumer_app_id: str = None,
+        consumer_app_key: str = None,
+        custom_trace_id: str = None,
+        domain: str = None,
+        error_code: str = None,
+        error_message: str = None,
+        exception: str = None,
+        group_id: str = None,
+        group_name: str = None,
+        http_method: str = None,
+        http_path: str = None,
+        initial_request_id: str = None,
+        instance_id: str = None,
+        jwt_claims: str = None,
+        region: str = None,
+        request_body: str = None,
+        request_headers: str = None,
+        request_id: str = None,
+        request_protocol: str = None,
+        request_query_string: str = None,
+        request_size: str = None,
+        request_time: str = None,
+        response_body: str = None,
+        response_headers: str = None,
+        response_size: str = None,
+        service_latency: str = None,
+        stage_id: str = None,
+        stage_name: str = None,
+        status_code: str = None,
+        total_latency: str = None,
+        plugin: str = None,
+    ):
+        self.api_id = api_id
+        self.api_name = api_name
+        self.client_ip = client_ip
+        self.client_nonce = client_nonce
+        self.consumer_app_id = consumer_app_id
+        self.consumer_app_key = consumer_app_key
+        self.custom_trace_id = custom_trace_id
+        self.domain = domain
+        self.error_code = error_code
+        self.error_message = error_message
+        self.exception = exception
+        self.group_id = group_id
+        self.group_name = group_name
+        self.http_method = http_method
+        self.http_path = http_path
+        self.initial_request_id = initial_request_id
+        self.instance_id = instance_id
+        self.jwt_claims = jwt_claims
+        self.region = region
+        self.request_body = request_body
+        self.request_headers = request_headers
+        self.request_id = request_id
+        self.request_protocol = request_protocol
+        self.request_query_string = request_query_string
+        self.request_size = request_size
+        self.request_time = request_time
+        self.response_body = response_body
+        self.response_headers = response_headers
+        self.response_size = response_size
+        self.service_latency = service_latency
+        self.stage_id = stage_id
+        self.stage_name = stage_name
+        self.status_code = status_code
+        self.total_latency = total_latency
+        self.plugin = plugin
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.api_id is not None:
+            result['ApiId'] = self.api_id
+        if self.api_name is not None:
+            result['ApiName'] = self.api_name
+        if self.client_ip is not None:
+            result['ClientIp'] = self.client_ip
+        if self.client_nonce is not None:
+            result['ClientNonce'] = self.client_nonce
+        if self.consumer_app_id is not None:
+            result['ConsumerAppId'] = self.consumer_app_id
+        if self.consumer_app_key is not None:
+            result['ConsumerAppKey'] = self.consumer_app_key
+        if self.custom_trace_id is not None:
+            result['CustomTraceId'] = self.custom_trace_id
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.exception is not None:
+            result['Exception'] = self.exception
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.http_method is not None:
+            result['HttpMethod'] = self.http_method
+        if self.http_path is not None:
+            result['HttpPath'] = self.http_path
+        if self.initial_request_id is not None:
+            result['InitialRequestId'] = self.initial_request_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.jwt_claims is not None:
+            result['JwtClaims'] = self.jwt_claims
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.request_body is not None:
+            result['RequestBody'] = self.request_body
+        if self.request_headers is not None:
+            result['RequestHeaders'] = self.request_headers
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.request_protocol is not None:
+            result['RequestProtocol'] = self.request_protocol
+        if self.request_query_string is not None:
+            result['RequestQueryString'] = self.request_query_string
+        if self.request_size is not None:
+            result['RequestSize'] = self.request_size
+        if self.request_time is not None:
+            result['RequestTime'] = self.request_time
+        if self.response_body is not None:
+            result['ResponseBody'] = self.response_body
+        if self.response_headers is not None:
+            result['ResponseHeaders'] = self.response_headers
+        if self.response_size is not None:
+            result['ResponseSize'] = self.response_size
+        if self.service_latency is not None:
+            result['ServiceLatency'] = self.service_latency
+        if self.stage_id is not None:
+            result['StageId'] = self.stage_id
+        if self.stage_name is not None:
+            result['StageName'] = self.stage_name
+        if self.status_code is not None:
+            result['StatusCode'] = self.status_code
+        if self.total_latency is not None:
+            result['TotalLatency'] = self.total_latency
+        if self.plugin is not None:
+            result['plugin'] = self.plugin
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApiId') is not None:
+            self.api_id = m.get('ApiId')
+        if m.get('ApiName') is not None:
+            self.api_name = m.get('ApiName')
+        if m.get('ClientIp') is not None:
+            self.client_ip = m.get('ClientIp')
+        if m.get('ClientNonce') is not None:
+            self.client_nonce = m.get('ClientNonce')
+        if m.get('ConsumerAppId') is not None:
+            self.consumer_app_id = m.get('ConsumerAppId')
+        if m.get('ConsumerAppKey') is not None:
+            self.consumer_app_key = m.get('ConsumerAppKey')
+        if m.get('CustomTraceId') is not None:
+            self.custom_trace_id = m.get('CustomTraceId')
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('Exception') is not None:
+            self.exception = m.get('Exception')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('HttpMethod') is not None:
+            self.http_method = m.get('HttpMethod')
+        if m.get('HttpPath') is not None:
+            self.http_path = m.get('HttpPath')
+        if m.get('InitialRequestId') is not None:
+            self.initial_request_id = m.get('InitialRequestId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('JwtClaims') is not None:
+            self.jwt_claims = m.get('JwtClaims')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('RequestBody') is not None:
+            self.request_body = m.get('RequestBody')
+        if m.get('RequestHeaders') is not None:
+            self.request_headers = m.get('RequestHeaders')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('RequestProtocol') is not None:
+            self.request_protocol = m.get('RequestProtocol')
+        if m.get('RequestQueryString') is not None:
+            self.request_query_string = m.get('RequestQueryString')
+        if m.get('RequestSize') is not None:
+            self.request_size = m.get('RequestSize')
+        if m.get('RequestTime') is not None:
+            self.request_time = m.get('RequestTime')
+        if m.get('ResponseBody') is not None:
+            self.response_body = m.get('ResponseBody')
+        if m.get('ResponseHeaders') is not None:
+            self.response_headers = m.get('ResponseHeaders')
+        if m.get('ResponseSize') is not None:
+            self.response_size = m.get('ResponseSize')
+        if m.get('ServiceLatency') is not None:
+            self.service_latency = m.get('ServiceLatency')
+        if m.get('StageId') is not None:
+            self.stage_id = m.get('StageId')
+        if m.get('StageName') is not None:
+            self.stage_name = m.get('StageName')
+        if m.get('StatusCode') is not None:
+            self.status_code = m.get('StatusCode')
+        if m.get('TotalLatency') is not None:
+            self.total_latency = m.get('TotalLatency')
+        if m.get('plugin') is not None:
+            self.plugin = m.get('plugin')
+        return self
+
+
+class QueryRequestLogsResponseBodyRequestLogs(TeaModel):
+    def __init__(
+        self,
+        request_log: List[QueryRequestLogsResponseBodyRequestLogsRequestLog] = None,
+    ):
+        self.request_log = request_log
+
+    def validate(self):
+        if self.request_log:
+            for k in self.request_log:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['RequestLog'] = []
+        if self.request_log is not None:
+            for k in self.request_log:
+                result['RequestLog'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.request_log = []
+        if m.get('RequestLog') is not None:
+            for k in m.get('RequestLog'):
+                temp_model = QueryRequestLogsResponseBodyRequestLogsRequestLog()
+                self.request_log.append(temp_model.from_map(k))
+        return self
+
+
+class QueryRequestLogsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        request_logs: QueryRequestLogsResponseBodyRequestLogs = None,
+    ):
+        self.request_id = request_id
+        self.request_logs = request_logs
+
+    def validate(self):
+        if self.request_logs:
+            self.request_logs.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.request_logs is not None:
+            result['RequestLogs'] = self.request_logs.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('RequestLogs') is not None:
+            temp_model = QueryRequestLogsResponseBodyRequestLogs()
+            self.request_logs = temp_model.from_map(m['RequestLogs'])
+        return self
+
+
+class QueryRequestLogsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryRequestLogsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryRequestLogsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ReactivateDomainRequest(TeaModel):
     def __init__(
         self,
