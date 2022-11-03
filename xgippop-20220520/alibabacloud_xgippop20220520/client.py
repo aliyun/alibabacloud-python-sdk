@@ -132,6 +132,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.change_application_info_with_options_async(request, runtime)
 
+    def charge_flow_with_options(
+        self,
+        request: xgip_pop_20220520_models.ChargeFlowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xgip_pop_20220520_models.ChargeFlowResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.item_code):
+            query['ItemCode'] = request.item_code
+        if not UtilClient.is_unset(request.mobile):
+            query['Mobile'] = request.mobile
+        if not UtilClient.is_unset(request.uid):
+            query['UId'] = request.uid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ChargeFlow',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xgip_pop_20220520_models.ChargeFlowResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def charge_flow_with_options_async(
+        self,
+        request: xgip_pop_20220520_models.ChargeFlowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xgip_pop_20220520_models.ChargeFlowResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.item_code):
+            query['ItemCode'] = request.item_code
+        if not UtilClient.is_unset(request.mobile):
+            query['Mobile'] = request.mobile
+        if not UtilClient.is_unset(request.uid):
+            query['UId'] = request.uid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ChargeFlow',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xgip_pop_20220520_models.ChargeFlowResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def charge_flow(
+        self,
+        request: xgip_pop_20220520_models.ChargeFlowRequest,
+    ) -> xgip_pop_20220520_models.ChargeFlowResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.charge_flow_with_options(request, runtime)
+
+    async def charge_flow_async(
+        self,
+        request: xgip_pop_20220520_models.ChargeFlowRequest,
+    ) -> xgip_pop_20220520_models.ChargeFlowResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.charge_flow_with_options_async(request, runtime)
+
     def create_application_info_with_options(
         self,
         request: xgip_pop_20220520_models.CreateApplicationInfoRequest,
@@ -598,6 +680,138 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_free_flow_usage_statistic_with_options_async(request, runtime)
 
+    def get_inventory_info_with_options(
+        self,
+        request: xgip_pop_20220520_models.GetInventoryInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xgip_pop_20220520_models.GetInventoryInfoResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetInventoryInfo',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xgip_pop_20220520_models.GetInventoryInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_inventory_info_with_options_async(
+        self,
+        request: xgip_pop_20220520_models.GetInventoryInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xgip_pop_20220520_models.GetInventoryInfoResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetInventoryInfo',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xgip_pop_20220520_models.GetInventoryInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_inventory_info(
+        self,
+        request: xgip_pop_20220520_models.GetInventoryInfoRequest,
+    ) -> xgip_pop_20220520_models.GetInventoryInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_inventory_info_with_options(request, runtime)
+
+    async def get_inventory_info_async(
+        self,
+        request: xgip_pop_20220520_models.GetInventoryInfoRequest,
+    ) -> xgip_pop_20220520_models.GetInventoryInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_inventory_info_with_options_async(request, runtime)
+
+    def get_item_inst_list_with_options(
+        self,
+        request: xgip_pop_20220520_models.GetItemInstListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xgip_pop_20220520_models.GetItemInstListResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetItemInstList',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xgip_pop_20220520_models.GetItemInstListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_item_inst_list_with_options_async(
+        self,
+        request: xgip_pop_20220520_models.GetItemInstListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xgip_pop_20220520_models.GetItemInstListResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetItemInstList',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xgip_pop_20220520_models.GetItemInstListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_item_inst_list(
+        self,
+        request: xgip_pop_20220520_models.GetItemInstListRequest,
+    ) -> xgip_pop_20220520_models.GetItemInstListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_item_inst_list_with_options(request, runtime)
+
+    async def get_item_inst_list_async(
+        self,
+        request: xgip_pop_20220520_models.GetItemInstListRequest,
+    ) -> xgip_pop_20220520_models.GetItemInstListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_item_inst_list_with_options_async(request, runtime)
+
     def get_item_list_with_options(
         self,
         request: xgip_pop_20220520_models.GetItemListRequest,
@@ -729,6 +943,56 @@ class Client(OpenApiClient):
     ) -> xgip_pop_20220520_models.GetOrderFreeFlowProductStatusResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_order_free_flow_product_status_with_options_async(request, runtime)
+
+    def get_order_item_list_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> xgip_pop_20220520_models.GetOrderItemListResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='GetOrderItemList',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xgip_pop_20220520_models.GetOrderItemListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_order_item_list_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> xgip_pop_20220520_models.GetOrderItemListResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='GetOrderItemList',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xgip_pop_20220520_models.GetOrderItemListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_order_item_list(self) -> xgip_pop_20220520_models.GetOrderItemListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_order_item_list_with_options(runtime)
+
+    async def get_order_item_list_async(self) -> xgip_pop_20220520_models.GetOrderItemListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_order_item_list_with_options_async(runtime)
 
     def get_qos_flow_usage_with_options(
         self,
@@ -1488,6 +1752,72 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.order_qos_product_with_options_async(request, runtime)
 
+    def query_order_list_with_options(
+        self,
+        request: xgip_pop_20220520_models.QueryOrderListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xgip_pop_20220520_models.QueryOrderListResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryOrderList',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xgip_pop_20220520_models.QueryOrderListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_order_list_with_options_async(
+        self,
+        request: xgip_pop_20220520_models.QueryOrderListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xgip_pop_20220520_models.QueryOrderListResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryOrderList',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xgip_pop_20220520_models.QueryOrderListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_order_list(
+        self,
+        request: xgip_pop_20220520_models.QueryOrderListRequest,
+    ) -> xgip_pop_20220520_models.QueryOrderListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_order_list_with_options(request, runtime)
+
+    async def query_order_list_async(
+        self,
+        request: xgip_pop_20220520_models.QueryOrderListRequest,
+    ) -> xgip_pop_20220520_models.QueryOrderListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_order_list_with_options_async(request, runtime)
+
     def save_application_info_with_options(
         self,
         request: xgip_pop_20220520_models.SaveApplicationInfoRequest,
@@ -1577,6 +1907,228 @@ class Client(OpenApiClient):
     ) -> xgip_pop_20220520_models.SaveApplicationInfoResponse:
         runtime = util_models.RuntimeOptions()
         return await self.save_application_info_with_options_async(request, runtime)
+
+    def sdk_charge_flow_with_options(
+        self,
+        request: xgip_pop_20220520_models.SdkChargeFlowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xgip_pop_20220520_models.SdkChargeFlowResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.channel_code):
+            query['ChannelCode'] = request.channel_code
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.item_code):
+            query['ItemCode'] = request.item_code
+        if not UtilClient.is_unset(request.mobile):
+            query['Mobile'] = request.mobile
+        if not UtilClient.is_unset(request.out_biz_no):
+            query['OutBizNo'] = request.out_biz_no
+        if not UtilClient.is_unset(request.uid):
+            query['UId'] = request.uid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SdkChargeFlow',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xgip_pop_20220520_models.SdkChargeFlowResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def sdk_charge_flow_with_options_async(
+        self,
+        request: xgip_pop_20220520_models.SdkChargeFlowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xgip_pop_20220520_models.SdkChargeFlowResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.channel_code):
+            query['ChannelCode'] = request.channel_code
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.item_code):
+            query['ItemCode'] = request.item_code
+        if not UtilClient.is_unset(request.mobile):
+            query['Mobile'] = request.mobile
+        if not UtilClient.is_unset(request.out_biz_no):
+            query['OutBizNo'] = request.out_biz_no
+        if not UtilClient.is_unset(request.uid):
+            query['UId'] = request.uid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SdkChargeFlow',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xgip_pop_20220520_models.SdkChargeFlowResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def sdk_charge_flow(
+        self,
+        request: xgip_pop_20220520_models.SdkChargeFlowRequest,
+    ) -> xgip_pop_20220520_models.SdkChargeFlowResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.sdk_charge_flow_with_options(request, runtime)
+
+    async def sdk_charge_flow_async(
+        self,
+        request: xgip_pop_20220520_models.SdkChargeFlowRequest,
+    ) -> xgip_pop_20220520_models.SdkChargeFlowResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.sdk_charge_flow_with_options_async(request, runtime)
+
+    def sdk_get_inventory_info_with_options(
+        self,
+        request: xgip_pop_20220520_models.SdkGetInventoryInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xgip_pop_20220520_models.SdkGetInventoryInfoResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SdkGetInventoryInfo',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xgip_pop_20220520_models.SdkGetInventoryInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def sdk_get_inventory_info_with_options_async(
+        self,
+        request: xgip_pop_20220520_models.SdkGetInventoryInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xgip_pop_20220520_models.SdkGetInventoryInfoResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SdkGetInventoryInfo',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xgip_pop_20220520_models.SdkGetInventoryInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def sdk_get_inventory_info(
+        self,
+        request: xgip_pop_20220520_models.SdkGetInventoryInfoRequest,
+    ) -> xgip_pop_20220520_models.SdkGetInventoryInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.sdk_get_inventory_info_with_options(request, runtime)
+
+    async def sdk_get_inventory_info_async(
+        self,
+        request: xgip_pop_20220520_models.SdkGetInventoryInfoRequest,
+    ) -> xgip_pop_20220520_models.SdkGetInventoryInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.sdk_get_inventory_info_with_options_async(request, runtime)
+
+    def sdk_get_item_inst_list_with_options(
+        self,
+        request: xgip_pop_20220520_models.SdkGetItemInstListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xgip_pop_20220520_models.SdkGetItemInstListResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SdkGetItemInstList',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xgip_pop_20220520_models.SdkGetItemInstListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def sdk_get_item_inst_list_with_options_async(
+        self,
+        request: xgip_pop_20220520_models.SdkGetItemInstListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xgip_pop_20220520_models.SdkGetItemInstListResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SdkGetItemInstList',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xgip_pop_20220520_models.SdkGetItemInstListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def sdk_get_item_inst_list(
+        self,
+        request: xgip_pop_20220520_models.SdkGetItemInstListRequest,
+    ) -> xgip_pop_20220520_models.SdkGetItemInstListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.sdk_get_item_inst_list_with_options(request, runtime)
+
+    async def sdk_get_item_inst_list_async(
+        self,
+        request: xgip_pop_20220520_models.SdkGetItemInstListRequest,
+    ) -> xgip_pop_20220520_models.SdkGetItemInstListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.sdk_get_item_inst_list_with_options_async(request, runtime)
 
     def sdk_order_qos_product_with_options(
         self,
@@ -1839,6 +2391,72 @@ class Client(OpenApiClient):
     ) -> xgip_pop_20220520_models.ValidControllerAuthorResponse:
         runtime = util_models.RuntimeOptions()
         return await self.valid_controller_author_with_options_async(request, runtime)
+
+    def valid_flow_with_options(
+        self,
+        request: xgip_pop_20220520_models.ValidFlowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xgip_pop_20220520_models.ValidFlowResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ValidFlow',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xgip_pop_20220520_models.ValidFlowResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def valid_flow_with_options_async(
+        self,
+        request: xgip_pop_20220520_models.ValidFlowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xgip_pop_20220520_models.ValidFlowResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ValidFlow',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xgip_pop_20220520_models.ValidFlowResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def valid_flow(
+        self,
+        request: xgip_pop_20220520_models.ValidFlowRequest,
+    ) -> xgip_pop_20220520_models.ValidFlowResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.valid_flow_with_options(request, runtime)
+
+    async def valid_flow_async(
+        self,
+        request: xgip_pop_20220520_models.ValidFlowRequest,
+    ) -> xgip_pop_20220520_models.ValidFlowResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.valid_flow_with_options_async(request, runtime)
 
     def validate_status_with_options(
         self,
