@@ -510,6 +510,320 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_certificate_with_csr_request_with_options_async(request, runtime)
 
+    def create_whcertificate_with_extension_with_options(
+        self,
+        request: cas_20200407_models.CreateWHCertificateWithExtensionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.CreateWHCertificateWithExtensionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.after_time):
+            query['AfterTime'] = request.after_time
+        if not UtilClient.is_unset(request.algorithm_key_size):
+            query['AlgorithmKeySize'] = request.algorithm_key_size
+        if not UtilClient.is_unset(request.alias_name):
+            query['AliasName'] = request.alias_name
+        if not UtilClient.is_unset(request.append_crl):
+            query['AppendCrl'] = request.append_crl
+        if not UtilClient.is_unset(request.basic_constraints_critical):
+            query['BasicConstraintsCritical'] = request.basic_constraints_critical
+        if not UtilClient.is_unset(request.before_time):
+            query['BeforeTime'] = request.before_time
+        if not UtilClient.is_unset(request.cert_type):
+            query['CertType'] = request.cert_type
+        if not UtilClient.is_unset(request.common_name):
+            query['CommonName'] = request.common_name
+        if not UtilClient.is_unset(request.country_code):
+            query['CountryCode'] = request.country_code
+        if not UtilClient.is_unset(request.csr_pem_string):
+            query['CsrPemString'] = request.csr_pem_string
+        if not UtilClient.is_unset(request.locality):
+            query['Locality'] = request.locality
+        if not UtilClient.is_unset(request.organization):
+            query['Organization'] = request.organization
+        if not UtilClient.is_unset(request.organization_unit):
+            query['OrganizationUnit'] = request.organization_unit
+        if not UtilClient.is_unset(request.parent_identifier):
+            query['ParentIdentifier'] = request.parent_identifier
+        if not UtilClient.is_unset(request.sans):
+            query['Sans'] = request.sans
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateWHCertificateWithExtension',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.CreateWHCertificateWithExtensionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_whcertificate_with_extension_with_options_async(
+        self,
+        request: cas_20200407_models.CreateWHCertificateWithExtensionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.CreateWHCertificateWithExtensionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.after_time):
+            query['AfterTime'] = request.after_time
+        if not UtilClient.is_unset(request.algorithm_key_size):
+            query['AlgorithmKeySize'] = request.algorithm_key_size
+        if not UtilClient.is_unset(request.alias_name):
+            query['AliasName'] = request.alias_name
+        if not UtilClient.is_unset(request.append_crl):
+            query['AppendCrl'] = request.append_crl
+        if not UtilClient.is_unset(request.basic_constraints_critical):
+            query['BasicConstraintsCritical'] = request.basic_constraints_critical
+        if not UtilClient.is_unset(request.before_time):
+            query['BeforeTime'] = request.before_time
+        if not UtilClient.is_unset(request.cert_type):
+            query['CertType'] = request.cert_type
+        if not UtilClient.is_unset(request.common_name):
+            query['CommonName'] = request.common_name
+        if not UtilClient.is_unset(request.country_code):
+            query['CountryCode'] = request.country_code
+        if not UtilClient.is_unset(request.csr_pem_string):
+            query['CsrPemString'] = request.csr_pem_string
+        if not UtilClient.is_unset(request.locality):
+            query['Locality'] = request.locality
+        if not UtilClient.is_unset(request.organization):
+            query['Organization'] = request.organization
+        if not UtilClient.is_unset(request.organization_unit):
+            query['OrganizationUnit'] = request.organization_unit
+        if not UtilClient.is_unset(request.parent_identifier):
+            query['ParentIdentifier'] = request.parent_identifier
+        if not UtilClient.is_unset(request.sans):
+            query['Sans'] = request.sans
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateWHCertificateWithExtension',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.CreateWHCertificateWithExtensionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_whcertificate_with_extension(
+        self,
+        request: cas_20200407_models.CreateWHCertificateWithExtensionRequest,
+    ) -> cas_20200407_models.CreateWHCertificateWithExtensionResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_whcertificate_with_extension_with_options(request, runtime)
+
+    async def create_whcertificate_with_extension_async(
+        self,
+        request: cas_20200407_models.CreateWHCertificateWithExtensionRequest,
+    ) -> cas_20200407_models.CreateWHCertificateWithExtensionResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_whcertificate_with_extension_with_options_async(request, runtime)
+
+    def create_whclient_certificate_with_options(
+        self,
+        request: cas_20200407_models.CreateWHClientCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.CreateWHClientCertificateResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.after_time):
+            query['AfterTime'] = request.after_time
+        if not UtilClient.is_unset(request.algorithm):
+            query['Algorithm'] = request.algorithm
+        if not UtilClient.is_unset(request.before_time):
+            query['BeforeTime'] = request.before_time
+        if not UtilClient.is_unset(request.common_name):
+            query['CommonName'] = request.common_name
+        if not UtilClient.is_unset(request.csr):
+            query['Csr'] = request.csr
+        if not UtilClient.is_unset(request.days):
+            query['Days'] = request.days
+        if not UtilClient.is_unset(request.parent_identifier):
+            query['ParentIdentifier'] = request.parent_identifier
+        if not UtilClient.is_unset(request.san_type):
+            query['SanType'] = request.san_type
+        if not UtilClient.is_unset(request.san_value):
+            query['SanValue'] = request.san_value
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateWHClientCertificate',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.CreateWHClientCertificateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_whclient_certificate_with_options_async(
+        self,
+        request: cas_20200407_models.CreateWHClientCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.CreateWHClientCertificateResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.after_time):
+            query['AfterTime'] = request.after_time
+        if not UtilClient.is_unset(request.algorithm):
+            query['Algorithm'] = request.algorithm
+        if not UtilClient.is_unset(request.before_time):
+            query['BeforeTime'] = request.before_time
+        if not UtilClient.is_unset(request.common_name):
+            query['CommonName'] = request.common_name
+        if not UtilClient.is_unset(request.csr):
+            query['Csr'] = request.csr
+        if not UtilClient.is_unset(request.days):
+            query['Days'] = request.days
+        if not UtilClient.is_unset(request.parent_identifier):
+            query['ParentIdentifier'] = request.parent_identifier
+        if not UtilClient.is_unset(request.san_type):
+            query['SanType'] = request.san_type
+        if not UtilClient.is_unset(request.san_value):
+            query['SanValue'] = request.san_value
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateWHClientCertificate',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.CreateWHClientCertificateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_whclient_certificate(
+        self,
+        request: cas_20200407_models.CreateWHClientCertificateRequest,
+    ) -> cas_20200407_models.CreateWHClientCertificateResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_whclient_certificate_with_options(request, runtime)
+
+    async def create_whclient_certificate_async(
+        self,
+        request: cas_20200407_models.CreateWHClientCertificateRequest,
+    ) -> cas_20200407_models.CreateWHClientCertificateResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_whclient_certificate_with_options_async(request, runtime)
+
+    def decrypt_with_options(
+        self,
+        request: cas_20200407_models.DecryptRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.DecryptResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.algorithm):
+            query['Algorithm'] = request.algorithm
+        if not UtilClient.is_unset(request.cert_identifier):
+            query['CertIdentifier'] = request.cert_identifier
+        if not UtilClient.is_unset(request.ciphertext_blob):
+            query['CiphertextBlob'] = request.ciphertext_blob
+        if not UtilClient.is_unset(request.message_type):
+            query['MessageType'] = request.message_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='Decrypt',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.DecryptResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def decrypt_with_options_async(
+        self,
+        request: cas_20200407_models.DecryptRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.DecryptResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.algorithm):
+            query['Algorithm'] = request.algorithm
+        if not UtilClient.is_unset(request.cert_identifier):
+            query['CertIdentifier'] = request.cert_identifier
+        if not UtilClient.is_unset(request.ciphertext_blob):
+            query['CiphertextBlob'] = request.ciphertext_blob
+        if not UtilClient.is_unset(request.message_type):
+            query['MessageType'] = request.message_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='Decrypt',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.DecryptResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def decrypt(
+        self,
+        request: cas_20200407_models.DecryptRequest,
+    ) -> cas_20200407_models.DecryptResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.decrypt_with_options(request, runtime)
+
+    async def decrypt_async(
+        self,
+        request: cas_20200407_models.DecryptRequest,
+    ) -> cas_20200407_models.DecryptResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.decrypt_with_options_async(request, runtime)
+
     def delete_certificate_request_with_options(
         self,
         request: cas_20200407_models.DeleteCertificateRequestRequest,
@@ -789,6 +1103,88 @@ class Client(OpenApiClient):
     ) -> cas_20200407_models.DescribePackageStateResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_package_state_with_options_async(request, runtime)
+
+    def encrypt_with_options(
+        self,
+        request: cas_20200407_models.EncryptRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.EncryptResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.algorithm):
+            query['Algorithm'] = request.algorithm
+        if not UtilClient.is_unset(request.cert_identifier):
+            query['CertIdentifier'] = request.cert_identifier
+        if not UtilClient.is_unset(request.message_type):
+            query['MessageType'] = request.message_type
+        if not UtilClient.is_unset(request.plaintext):
+            query['Plaintext'] = request.plaintext
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='Encrypt',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.EncryptResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def encrypt_with_options_async(
+        self,
+        request: cas_20200407_models.EncryptRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.EncryptResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.algorithm):
+            query['Algorithm'] = request.algorithm
+        if not UtilClient.is_unset(request.cert_identifier):
+            query['CertIdentifier'] = request.cert_identifier
+        if not UtilClient.is_unset(request.message_type):
+            query['MessageType'] = request.message_type
+        if not UtilClient.is_unset(request.plaintext):
+            query['Plaintext'] = request.plaintext
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='Encrypt',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.EncryptResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def encrypt(
+        self,
+        request: cas_20200407_models.EncryptRequest,
+    ) -> cas_20200407_models.EncryptResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.encrypt_with_options(request, runtime)
+
+    async def encrypt_async(
+        self,
+        request: cas_20200407_models.EncryptRequest,
+    ) -> cas_20200407_models.EncryptResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.encrypt_with_options_async(request, runtime)
 
     def list_cert_with_options(
         self,
@@ -1121,6 +1517,76 @@ class Client(OpenApiClient):
     ) -> cas_20200407_models.RenewCertificateOrderForPackageRequestResponse:
         runtime = util_models.RuntimeOptions()
         return await self.renew_certificate_order_for_package_request_with_options_async(request, runtime)
+
+    def revoke_whclient_certificate_with_options(
+        self,
+        request: cas_20200407_models.RevokeWHClientCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.RevokeWHClientCertificateResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.identifier):
+            query['Identifier'] = request.identifier
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RevokeWHClientCertificate',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.RevokeWHClientCertificateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def revoke_whclient_certificate_with_options_async(
+        self,
+        request: cas_20200407_models.RevokeWHClientCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.RevokeWHClientCertificateResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.identifier):
+            query['Identifier'] = request.identifier
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RevokeWHClientCertificate',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.RevokeWHClientCertificateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def revoke_whclient_certificate(
+        self,
+        request: cas_20200407_models.RevokeWHClientCertificateRequest,
+    ) -> cas_20200407_models.RevokeWHClientCertificateResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.revoke_whclient_certificate_with_options(request, runtime)
+
+    async def revoke_whclient_certificate_async(
+        self,
+        request: cas_20200407_models.RevokeWHClientCertificateRequest,
+    ) -> cas_20200407_models.RevokeWHClientCertificateResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.revoke_whclient_certificate_with_options_async(request, runtime)
 
     def sign_with_options(
         self,
