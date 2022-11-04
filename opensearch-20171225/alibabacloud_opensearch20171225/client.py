@@ -5341,11 +5341,15 @@ class Client(OpenApiClient):
 
     def list_app_groups_with_options(
         self,
-        request: open_search_20171225_models.ListAppGroupsRequest,
+        tmp_req: open_search_20171225_models.ListAppGroupsRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListAppGroupsResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = open_search_20171225_models.ListAppGroupsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'tags', 'json')
         query = {}
         if not UtilClient.is_unset(request.instance_id):
             query['instanceId'] = request.instance_id
@@ -5359,6 +5363,8 @@ class Client(OpenApiClient):
             query['resourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.sort_by):
             query['sortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['tags'] = request.tags_shrink
         if not UtilClient.is_unset(request.type):
             query['type'] = request.type
         req = open_api_models.OpenApiRequest(
@@ -5383,11 +5389,15 @@ class Client(OpenApiClient):
 
     async def list_app_groups_with_options_async(
         self,
-        request: open_search_20171225_models.ListAppGroupsRequest,
+        tmp_req: open_search_20171225_models.ListAppGroupsRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListAppGroupsResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = open_search_20171225_models.ListAppGroupsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'tags', 'json')
         query = {}
         if not UtilClient.is_unset(request.instance_id):
             query['instanceId'] = request.instance_id
@@ -5401,6 +5411,8 @@ class Client(OpenApiClient):
             query['resourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.sort_by):
             query['sortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['tags'] = request.tags_shrink
         if not UtilClient.is_unset(request.type):
             query['type'] = request.type
         req = open_api_models.OpenApiRequest(

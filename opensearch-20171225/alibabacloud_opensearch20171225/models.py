@@ -9724,6 +9724,39 @@ class ListAppGroupMetricsResponse(TeaModel):
         return self
 
 
+class ListAppGroupsRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['key'] = self.key
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('key') is not None:
+            self.key = m.get('key')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
 class ListAppGroupsRequest(TeaModel):
     def __init__(
         self,
@@ -9733,6 +9766,7 @@ class ListAppGroupsRequest(TeaModel):
         page_size: int = None,
         resource_group_id: str = None,
         sort_by: int = None,
+        tags: List[ListAppGroupsRequestTags] = None,
         type: str = None,
     ):
         self.instance_id = instance_id
@@ -9741,6 +9775,84 @@ class ListAppGroupsRequest(TeaModel):
         self.page_size = page_size
         self.resource_group_id = resource_group_id
         self.sort_by = sort_by
+        self.tags = tags
+        self.type = type
+
+    def validate(self):
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.name is not None:
+            result['name'] = self.name
+        if self.page_number is not None:
+            result['pageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.resource_group_id is not None:
+            result['resourceGroupId'] = self.resource_group_id
+        if self.sort_by is not None:
+            result['sortBy'] = self.sort_by
+        result['tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['tags'].append(k.to_map() if k else None)
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('pageNumber') is not None:
+            self.page_number = m.get('pageNumber')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('resourceGroupId') is not None:
+            self.resource_group_id = m.get('resourceGroupId')
+        if m.get('sortBy') is not None:
+            self.sort_by = m.get('sortBy')
+        self.tags = []
+        if m.get('tags') is not None:
+            for k in m.get('tags'):
+                temp_model = ListAppGroupsRequestTags()
+                self.tags.append(temp_model.from_map(k))
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class ListAppGroupsShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        name: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        resource_group_id: str = None,
+        sort_by: int = None,
+        tags_shrink: str = None,
+        type: str = None,
+    ):
+        self.instance_id = instance_id
+        self.name = name
+        self.page_number = page_number
+        self.page_size = page_size
+        self.resource_group_id = resource_group_id
+        self.sort_by = sort_by
+        self.tags_shrink = tags_shrink
         self.type = type
 
     def validate(self):
@@ -9764,6 +9876,8 @@ class ListAppGroupsRequest(TeaModel):
             result['resourceGroupId'] = self.resource_group_id
         if self.sort_by is not None:
             result['sortBy'] = self.sort_by
+        if self.tags_shrink is not None:
+            result['tags'] = self.tags_shrink
         if self.type is not None:
             result['type'] = self.type
         return result
@@ -9782,6 +9896,8 @@ class ListAppGroupsRequest(TeaModel):
             self.resource_group_id = m.get('resourceGroupId')
         if m.get('sortBy') is not None:
             self.sort_by = m.get('sortBy')
+        if m.get('tags') is not None:
+            self.tags_shrink = m.get('tags')
         if m.get('type') is not None:
             self.type = m.get('type')
         return self

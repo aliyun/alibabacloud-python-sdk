@@ -1,3 +1,6 @@
+2022-11-04 Version: 1.1.2
+- Add Tag API.
+
 2022-09-29 Version: 1.1.1
 - Add Tag API.
 
