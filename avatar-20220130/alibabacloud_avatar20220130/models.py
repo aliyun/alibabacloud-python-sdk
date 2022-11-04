@@ -2500,10 +2500,12 @@ class SubmitTextTo3DAvatarVideoTaskRequestApp(TeaModel):
 class SubmitTextTo3DAvatarVideoTaskRequestVideoInfo(TeaModel):
     def __init__(
         self,
+        background_image_url: str = None,
         is_alpha: bool = None,
         is_subtitles: bool = None,
         resolution: int = None,
     ):
+        self.background_image_url = background_image_url
         self.is_alpha = is_alpha
         self.is_subtitles = is_subtitles
         self.resolution = resolution
@@ -2517,6 +2519,8 @@ class SubmitTextTo3DAvatarVideoTaskRequestVideoInfo(TeaModel):
             return _map
 
         result = dict()
+        if self.background_image_url is not None:
+            result['BackgroundImageUrl'] = self.background_image_url
         if self.is_alpha is not None:
             result['IsAlpha'] = self.is_alpha
         if self.is_subtitles is not None:
@@ -2527,6 +2531,8 @@ class SubmitTextTo3DAvatarVideoTaskRequestVideoInfo(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BackgroundImageUrl') is not None:
+            self.background_image_url = m.get('BackgroundImageUrl')
         if m.get('IsAlpha') is not None:
             self.is_alpha = m.get('IsAlpha')
         if m.get('IsSubtitles') is not None:
