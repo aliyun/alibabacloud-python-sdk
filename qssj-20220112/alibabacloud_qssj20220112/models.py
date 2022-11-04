@@ -82,7 +82,6 @@ class GetAgeDistributionResponseBody(TeaModel):
         self.code = code
         self.data = data
         self.message = message
-        # Id of the request
         self.request_id = request_id
         self.success_response = success_response
 
@@ -237,7 +236,6 @@ class GetAllTrendCategoryResponseBody(TeaModel):
         self.code = code
         self.data = data
         self.message = message
-        # Id of the request
         self.request_id = request_id
         self.success_response = success_response
 
@@ -665,7 +663,6 @@ class GetCrowdReginResponseBody(TeaModel):
         self.code = code
         self.data = data
         self.message = message
-        # Id of the request
         self.request_id = request_id
         self.success_response = success_response
 
@@ -1268,7 +1265,6 @@ class GetSexRatioResponseBody(TeaModel):
         self.code = code
         self.data = data
         self.message = message
-        # Id of the request
         self.request_id = request_id
         self.success_response = success_response
 
@@ -1420,7 +1416,6 @@ class GetStoreSalesVolumeTopResponseBody(TeaModel):
         self.code = code
         self.data = data
         self.message = message
-        # Id of the request
         self.request_id = request_id
         self.success_response = success_response
 
@@ -1578,7 +1573,6 @@ class GetStoreSearchTopResponseBody(TeaModel):
         self.code = code
         self.data = data
         self.message = message
-        # Id of the request
         self.request_id = request_id
         self.success_response = success_response
 
@@ -1674,11 +1668,12 @@ class GetStyleTopRequest(TeaModel):
     def __init__(
         self,
         cate_ids: str = None,
+        page_index: int = None,
         sort_order: int = None,
         time_display: int = None,
     ):
-        # A short description of struct
         self.cate_ids = cate_ids
+        self.page_index = page_index
         self.sort_order = sort_order
         self.time_display = time_display
 
@@ -1693,6 +1688,8 @@ class GetStyleTopRequest(TeaModel):
         result = dict()
         if self.cate_ids is not None:
             result['CateIds'] = self.cate_ids
+        if self.page_index is not None:
+            result['PageIndex'] = self.page_index
         if self.sort_order is not None:
             result['SortOrder'] = self.sort_order
         if self.time_display is not None:
@@ -1703,6 +1700,8 @@ class GetStyleTopRequest(TeaModel):
         m = m or dict()
         if m.get('CateIds') is not None:
             self.cate_ids = m.get('CateIds')
+        if m.get('PageIndex') is not None:
+            self.page_index = m.get('PageIndex')
         if m.get('SortOrder') is not None:
             self.sort_order = m.get('SortOrder')
         if m.get('TimeDisplay') is not None:
@@ -1713,6 +1712,7 @@ class GetStyleTopRequest(TeaModel):
 class GetStyleTopResponseBodyData(TeaModel):
     def __init__(
         self,
+        buyer_tags: str = None,
         cate_name: str = None,
         color: str = None,
         images: List[str] = None,
@@ -1723,6 +1723,7 @@ class GetStyleTopResponseBodyData(TeaModel):
         style: str = None,
         title: str = None,
     ):
+        self.buyer_tags = buyer_tags
         self.cate_name = cate_name
         self.color = color
         self.images = images
@@ -1742,6 +1743,8 @@ class GetStyleTopResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.buyer_tags is not None:
+            result['BuyerTags'] = self.buyer_tags
         if self.cate_name is not None:
             result['CateName'] = self.cate_name
         if self.color is not None:
@@ -1764,6 +1767,8 @@ class GetStyleTopResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BuyerTags') is not None:
+            self.buyer_tags = m.get('BuyerTags')
         if m.get('CateName') is not None:
             self.cate_name = m.get('CateName')
         if m.get('Color') is not None:
@@ -1794,7 +1799,6 @@ class GetStyleTopResponseBody(TeaModel):
         request_id: str = None,
         success_response: str = None,
     ):
-        # Id of the request
         self.code = code
         self.data = data
         self.message = message
@@ -2044,7 +2048,6 @@ class GetTrendImageDetailResponseBody(TeaModel):
         self.code = code
         self.data = data
         self.message = message
-        # Id of the request
         self.request_id = request_id
         self.success_response = success_response
 
@@ -2226,7 +2229,6 @@ class GetTrendImageListResponseBody(TeaModel):
         self.code = code
         self.data = data
         self.message = message
-        # Id of the request
         self.request_id = request_id
         self.success_response = success_response
 
@@ -2426,7 +2428,6 @@ class GetTrendIndexResponseBody(TeaModel):
         self.code = code
         self.data = data
         self.message = message
-        # Id of the request
         self.request_id = request_id
         self.success_response = success_response
 
@@ -2590,7 +2591,6 @@ class GetTrendSearchRecordResponseBody(TeaModel):
         self.code = code
         self.data = data
         self.message = message
-        # Id of the request
         self.request_id = request_id
         self.success_response = success_response
 
@@ -2760,7 +2760,6 @@ class GetTrendStatisticResponseBody(TeaModel):
         self.code = code
         self.data = data
         self.message = message
-        # Id of the request
         self.request_id = request_id
         self.success_response = success_response
 
