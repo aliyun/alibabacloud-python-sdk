@@ -1,3 +1,6 @@
+2022-11-04 Version: 2.0.21
+- Release ScreenEC.
+
 2022-10-17 Version: 2.0.20
 - Release ScreenEC.
 

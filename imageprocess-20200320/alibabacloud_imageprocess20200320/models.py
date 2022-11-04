@@ -3171,9 +3171,17 @@ class DetectSkinDiseaseAdvanceRequest(TeaModel):
 class DetectSkinDiseaseResponseBodyData(TeaModel):
     def __init__(
         self,
+        body_part: str = None,
+        image_quality: float = None,
+        image_type: str = None,
         results: Dict[str, Any] = None,
+        results_english: Dict[str, Any] = None,
     ):
+        self.body_part = body_part
+        self.image_quality = image_quality
+        self.image_type = image_type
         self.results = results
+        self.results_english = results_english
 
     def validate(self):
         pass
@@ -3184,14 +3192,30 @@ class DetectSkinDiseaseResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.body_part is not None:
+            result['BodyPart'] = self.body_part
+        if self.image_quality is not None:
+            result['ImageQuality'] = self.image_quality
+        if self.image_type is not None:
+            result['ImageType'] = self.image_type
         if self.results is not None:
             result['Results'] = self.results
+        if self.results_english is not None:
+            result['ResultsEnglish'] = self.results_english
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BodyPart') is not None:
+            self.body_part = m.get('BodyPart')
+        if m.get('ImageQuality') is not None:
+            self.image_quality = m.get('ImageQuality')
+        if m.get('ImageType') is not None:
+            self.image_type = m.get('ImageType')
         if m.get('Results') is not None:
             self.results = m.get('Results')
+        if m.get('ResultsEnglish') is not None:
+            self.results_english = m.get('ResultsEnglish')
         return self
 
 
