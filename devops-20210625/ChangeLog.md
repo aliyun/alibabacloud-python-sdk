@@ -1,3 +1,6 @@
+2022-11-07 Version: 2.1.2
+- Add codeup related API,  13 in total.
+
 2022-10-31 Version: 2.1.1
 - Add CreateWorkitemComment and change some API params.
 
