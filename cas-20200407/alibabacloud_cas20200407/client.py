@@ -537,6 +537,8 @@ class Client(OpenApiClient):
             query['CountryCode'] = request.country_code
         if not UtilClient.is_unset(request.csr_pem_string):
             query['CsrPemString'] = request.csr_pem_string
+        if not UtilClient.is_unset(request.immediately):
+            query['Immediately'] = request.immediately
         if not UtilClient.is_unset(request.locality):
             query['Locality'] = request.locality
         if not UtilClient.is_unset(request.organization):
@@ -595,6 +597,8 @@ class Client(OpenApiClient):
             query['CountryCode'] = request.country_code
         if not UtilClient.is_unset(request.csr_pem_string):
             query['CsrPemString'] = request.csr_pem_string
+        if not UtilClient.is_unset(request.immediately):
+            query['Immediately'] = request.immediately
         if not UtilClient.is_unset(request.locality):
             query['Locality'] = request.locality
         if not UtilClient.is_unset(request.organization):
@@ -655,16 +659,32 @@ class Client(OpenApiClient):
             query['BeforeTime'] = request.before_time
         if not UtilClient.is_unset(request.common_name):
             query['CommonName'] = request.common_name
+        if not UtilClient.is_unset(request.country):
+            query['Country'] = request.country
         if not UtilClient.is_unset(request.csr):
             query['Csr'] = request.csr
         if not UtilClient.is_unset(request.days):
             query['Days'] = request.days
+        if not UtilClient.is_unset(request.immediately):
+            query['Immediately'] = request.immediately
+        if not UtilClient.is_unset(request.locality):
+            query['Locality'] = request.locality
+        if not UtilClient.is_unset(request.months):
+            query['Months'] = request.months
+        if not UtilClient.is_unset(request.organization):
+            query['Organization'] = request.organization
+        if not UtilClient.is_unset(request.organization_unit):
+            query['OrganizationUnit'] = request.organization_unit
         if not UtilClient.is_unset(request.parent_identifier):
             query['ParentIdentifier'] = request.parent_identifier
         if not UtilClient.is_unset(request.san_type):
             query['SanType'] = request.san_type
         if not UtilClient.is_unset(request.san_value):
             query['SanValue'] = request.san_value
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
+        if not UtilClient.is_unset(request.years):
+            query['Years'] = request.years
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -699,16 +719,32 @@ class Client(OpenApiClient):
             query['BeforeTime'] = request.before_time
         if not UtilClient.is_unset(request.common_name):
             query['CommonName'] = request.common_name
+        if not UtilClient.is_unset(request.country):
+            query['Country'] = request.country
         if not UtilClient.is_unset(request.csr):
             query['Csr'] = request.csr
         if not UtilClient.is_unset(request.days):
             query['Days'] = request.days
+        if not UtilClient.is_unset(request.immediately):
+            query['Immediately'] = request.immediately
+        if not UtilClient.is_unset(request.locality):
+            query['Locality'] = request.locality
+        if not UtilClient.is_unset(request.months):
+            query['Months'] = request.months
+        if not UtilClient.is_unset(request.organization):
+            query['Organization'] = request.organization
+        if not UtilClient.is_unset(request.organization_unit):
+            query['OrganizationUnit'] = request.organization_unit
         if not UtilClient.is_unset(request.parent_identifier):
             query['ParentIdentifier'] = request.parent_identifier
         if not UtilClient.is_unset(request.san_type):
             query['SanType'] = request.san_type
         if not UtilClient.is_unset(request.san_value):
             query['SanValue'] = request.san_value
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
+        if not UtilClient.is_unset(request.years):
+            query['Years'] = request.years
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
