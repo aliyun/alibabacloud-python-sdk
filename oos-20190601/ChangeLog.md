@@ -1,3 +1,9 @@
+2022-11-07 Version: 1.0.5
+- Update StartExecution add Parameter TemplateURL.
+   Update StartExecution Parameter TemplateName to optional.
+   Update ValidateTemplateContent add Parameter TemplateURL.
+   Update ValidateTemplateContent Parameter TemplateConten to optional.
+
 2022-09-15 Version: 1.0.4
 - Update CreateSecret Parameter Tags Type.
 

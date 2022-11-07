@@ -479,6 +479,132 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_application_group_with_options_async(request, runtime)
 
+    def create_ops_item_with_options(
+        self,
+        tmp_req: oos_20190601_models.CreateOpsItemRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.CreateOpsItemResponse:
+        UtilClient.validate_model(tmp_req)
+        request = oos_20190601_models.CreateOpsItemShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.category):
+            query['Category'] = request.category
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dedup_string):
+            query['DedupString'] = request.dedup_string
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resources):
+            query['Resources'] = request.resources
+        if not UtilClient.is_unset(request.severity):
+            query['Severity'] = request.severity
+        if not UtilClient.is_unset(request.solutions):
+            query['Solutions'] = request.solutions
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateOpsItem',
+            version='2019-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.CreateOpsItemResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_ops_item_with_options_async(
+        self,
+        tmp_req: oos_20190601_models.CreateOpsItemRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.CreateOpsItemResponse:
+        UtilClient.validate_model(tmp_req)
+        request = oos_20190601_models.CreateOpsItemShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.category):
+            query['Category'] = request.category
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dedup_string):
+            query['DedupString'] = request.dedup_string
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resources):
+            query['Resources'] = request.resources
+        if not UtilClient.is_unset(request.severity):
+            query['Severity'] = request.severity
+        if not UtilClient.is_unset(request.solutions):
+            query['Solutions'] = request.solutions
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateOpsItem',
+            version='2019-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.CreateOpsItemResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_ops_item(
+        self,
+        request: oos_20190601_models.CreateOpsItemRequest,
+    ) -> oos_20190601_models.CreateOpsItemResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_ops_item_with_options(request, runtime)
+
+    async def create_ops_item_async(
+        self,
+        request: oos_20190601_models.CreateOpsItemRequest,
+    ) -> oos_20190601_models.CreateOpsItemResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_ops_item_with_options_async(request, runtime)
+
     def create_parameter_with_options(
         self,
         tmp_req: oos_20190601_models.CreateParameterRequest,
@@ -2245,6 +2371,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_inventory_schema_with_options_async(request, runtime)
 
+    def get_ops_item_with_options(
+        self,
+        request: oos_20190601_models.GetOpsItemRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.GetOpsItemResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ops_item_id):
+            query['OpsItemId'] = request.ops_item_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetOpsItem',
+            version='2019-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.GetOpsItemResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_ops_item_with_options_async(
+        self,
+        request: oos_20190601_models.GetOpsItemRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.GetOpsItemResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ops_item_id):
+            query['OpsItemId'] = request.ops_item_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetOpsItem',
+            version='2019-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.GetOpsItemResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_ops_item(
+        self,
+        request: oos_20190601_models.GetOpsItemRequest,
+    ) -> oos_20190601_models.GetOpsItemResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_ops_item_with_options(request, runtime)
+
+    async def get_ops_item_async(
+        self,
+        request: oos_20190601_models.GetOpsItemRequest,
+    ) -> oos_20190601_models.GetOpsItemResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_ops_item_with_options_async(request, runtime)
+
     def get_parameter_with_options(
         self,
         request: oos_20190601_models.GetParameterRequest,
@@ -3062,6 +3262,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_id):
             query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_product):
+            query['ResourceProduct'] = request.resource_product
         if not UtilClient.is_unset(request.resource_type):
             query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
@@ -3104,6 +3306,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_id):
             query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_product):
+            query['ResourceProduct'] = request.resource_product
         if not UtilClient.is_unset(request.resource_type):
             query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
@@ -3820,6 +4024,108 @@ class Client(OpenApiClient):
     ) -> oos_20190601_models.ListInventoryEntriesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_inventory_entries_with_options_async(request, runtime)
+
+    def list_ops_items_with_options(
+        self,
+        tmp_req: oos_20190601_models.ListOpsItemsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.ListOpsItemsResponse:
+        UtilClient.validate_model(tmp_req)
+        request = oos_20190601_models.ListOpsItemsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.resource_tags):
+            request.resource_tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_tags, 'ResourceTags', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.filter):
+            query['Filter'] = request.filter
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_tags_shrink):
+            query['ResourceTags'] = request.resource_tags_shrink
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListOpsItems',
+            version='2019-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.ListOpsItemsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_ops_items_with_options_async(
+        self,
+        tmp_req: oos_20190601_models.ListOpsItemsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.ListOpsItemsResponse:
+        UtilClient.validate_model(tmp_req)
+        request = oos_20190601_models.ListOpsItemsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.resource_tags):
+            request.resource_tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_tags, 'ResourceTags', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.filter):
+            query['Filter'] = request.filter
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_tags_shrink):
+            query['ResourceTags'] = request.resource_tags_shrink
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListOpsItems',
+            version='2019-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.ListOpsItemsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_ops_items(
+        self,
+        request: oos_20190601_models.ListOpsItemsRequest,
+    ) -> oos_20190601_models.ListOpsItemsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_ops_items_with_options(request, runtime)
+
+    async def list_ops_items_async(
+        self,
+        request: oos_20190601_models.ListOpsItemsRequest,
+    ) -> oos_20190601_models.ListOpsItemsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_ops_items_with_options_async(request, runtime)
 
     def list_parameter_versions_with_options(
         self,
@@ -5522,6 +5828,8 @@ class Client(OpenApiClient):
             query['TemplateContent'] = request.template_content
         if not UtilClient.is_unset(request.template_name):
             query['TemplateName'] = request.template_name
+        if not UtilClient.is_unset(request.template_url):
+            query['TemplateURL'] = request.template_url
         if not UtilClient.is_unset(request.template_version):
             query['TemplateVersion'] = request.template_version
         req = open_api_models.OpenApiRequest(
@@ -5578,6 +5886,8 @@ class Client(OpenApiClient):
             query['TemplateContent'] = request.template_content
         if not UtilClient.is_unset(request.template_name):
             query['TemplateName'] = request.template_name
+        if not UtilClient.is_unset(request.template_url):
+            query['TemplateURL'] = request.template_url
         if not UtilClient.is_unset(request.template_version):
             query['TemplateVersion'] = request.template_version
         req = open_api_models.OpenApiRequest(
@@ -6145,6 +6455,140 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_execution_with_options_async(request, runtime)
 
+    def update_ops_item_with_options(
+        self,
+        tmp_req: oos_20190601_models.UpdateOpsItemRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.UpdateOpsItemResponse:
+        UtilClient.validate_model(tmp_req)
+        request = oos_20190601_models.UpdateOpsItemShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.category):
+            query['Category'] = request.category
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dedup_string):
+            query['DedupString'] = request.dedup_string
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.ops_item_id):
+            query['OpsItemId'] = request.ops_item_id
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resources):
+            query['Resources'] = request.resources
+        if not UtilClient.is_unset(request.severity):
+            query['Severity'] = request.severity
+        if not UtilClient.is_unset(request.solutions):
+            query['Solutions'] = request.solutions
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateOpsItem',
+            version='2019-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.UpdateOpsItemResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_ops_item_with_options_async(
+        self,
+        tmp_req: oos_20190601_models.UpdateOpsItemRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.UpdateOpsItemResponse:
+        UtilClient.validate_model(tmp_req)
+        request = oos_20190601_models.UpdateOpsItemShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.category):
+            query['Category'] = request.category
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dedup_string):
+            query['DedupString'] = request.dedup_string
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.ops_item_id):
+            query['OpsItemId'] = request.ops_item_id
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resources):
+            query['Resources'] = request.resources
+        if not UtilClient.is_unset(request.severity):
+            query['Severity'] = request.severity
+        if not UtilClient.is_unset(request.solutions):
+            query['Solutions'] = request.solutions
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateOpsItem',
+            version='2019-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.UpdateOpsItemResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_ops_item(
+        self,
+        request: oos_20190601_models.UpdateOpsItemRequest,
+    ) -> oos_20190601_models.UpdateOpsItemResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_ops_item_with_options(request, runtime)
+
+    async def update_ops_item_async(
+        self,
+        request: oos_20190601_models.UpdateOpsItemRequest,
+    ) -> oos_20190601_models.UpdateOpsItemResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_ops_item_with_options_async(request, runtime)
+
     def update_parameter_with_options(
         self,
         request: oos_20190601_models.UpdateParameterRequest,
@@ -6650,6 +7094,8 @@ class Client(OpenApiClient):
             query['Content'] = request.content
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.template_url):
+            query['TemplateURL'] = request.template_url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6680,6 +7126,8 @@ class Client(OpenApiClient):
             query['Content'] = request.content
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.template_url):
+            query['TemplateURL'] = request.template_url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

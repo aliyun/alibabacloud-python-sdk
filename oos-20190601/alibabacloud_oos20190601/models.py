@@ -813,6 +813,406 @@ class CreateApplicationGroupResponse(TeaModel):
         return self
 
 
+class CreateOpsItemRequest(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+        client_token: str = None,
+        dedup_string: str = None,
+        description: str = None,
+        priority: int = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        resources: str = None,
+        severity: str = None,
+        solutions: str = None,
+        source: str = None,
+        tags: Dict[str, Any] = None,
+        title: str = None,
+    ):
+        self.category = category
+        self.client_token = client_token
+        self.dedup_string = dedup_string
+        self.description = description
+        self.priority = priority
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.resources = resources
+        self.severity = severity
+        self.solutions = solutions
+        self.source = source
+        self.tags = tags
+        self.title = title
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dedup_string is not None:
+            result['DedupString'] = self.dedup_string
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.resources is not None:
+            result['Resources'] = self.resources
+        if self.severity is not None:
+            result['Severity'] = self.severity
+        if self.solutions is not None:
+            result['Solutions'] = self.solutions
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.tags is not None:
+            result['Tags'] = self.tags
+        if self.title is not None:
+            result['Title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DedupString') is not None:
+            self.dedup_string = m.get('DedupString')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('Resources') is not None:
+            self.resources = m.get('Resources')
+        if m.get('Severity') is not None:
+            self.severity = m.get('Severity')
+        if m.get('Solutions') is not None:
+            self.solutions = m.get('Solutions')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        return self
+
+
+class CreateOpsItemShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+        client_token: str = None,
+        dedup_string: str = None,
+        description: str = None,
+        priority: int = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        resources: str = None,
+        severity: str = None,
+        solutions: str = None,
+        source: str = None,
+        tags_shrink: str = None,
+        title: str = None,
+    ):
+        self.category = category
+        self.client_token = client_token
+        self.dedup_string = dedup_string
+        self.description = description
+        self.priority = priority
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.resources = resources
+        self.severity = severity
+        self.solutions = solutions
+        self.source = source
+        self.tags_shrink = tags_shrink
+        self.title = title
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dedup_string is not None:
+            result['DedupString'] = self.dedup_string
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.resources is not None:
+            result['Resources'] = self.resources
+        if self.severity is not None:
+            result['Severity'] = self.severity
+        if self.solutions is not None:
+            result['Solutions'] = self.solutions
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.tags_shrink is not None:
+            result['Tags'] = self.tags_shrink
+        if self.title is not None:
+            result['Title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DedupString') is not None:
+            self.dedup_string = m.get('DedupString')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('Resources') is not None:
+            self.resources = m.get('Resources')
+        if m.get('Severity') is not None:
+            self.severity = m.get('Severity')
+        if m.get('Solutions') is not None:
+            self.solutions = m.get('Solutions')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('Tags') is not None:
+            self.tags_shrink = m.get('Tags')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        return self
+
+
+class CreateOpsItemResponseBodyOpsItem(TeaModel):
+    def __init__(
+        self,
+        attributes: str = None,
+        category: str = None,
+        create_date: str = None,
+        created_by: str = None,
+        description: str = None,
+        last_modified_by: str = None,
+        ops_item_id: str = None,
+        priority: int = None,
+        resource_group_id: str = None,
+        resources: str = None,
+        severity: str = None,
+        solutions: str = None,
+        source: str = None,
+        status: str = None,
+        tags: Dict[str, Any] = None,
+        title: str = None,
+        update_date: str = None,
+    ):
+        self.attributes = attributes
+        self.category = category
+        self.create_date = create_date
+        self.created_by = created_by
+        self.description = description
+        self.last_modified_by = last_modified_by
+        self.ops_item_id = ops_item_id
+        self.priority = priority
+        self.resource_group_id = resource_group_id
+        self.resources = resources
+        self.severity = severity
+        self.solutions = solutions
+        self.source = source
+        self.status = status
+        self.tags = tags
+        self.title = title
+        self.update_date = update_date
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.attributes is not None:
+            result['Attributes'] = self.attributes
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.create_date is not None:
+            result['CreateDate'] = self.create_date
+        if self.created_by is not None:
+            result['CreatedBy'] = self.created_by
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.last_modified_by is not None:
+            result['LastModifiedBy'] = self.last_modified_by
+        if self.ops_item_id is not None:
+            result['OpsItemId'] = self.ops_item_id
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.resources is not None:
+            result['Resources'] = self.resources
+        if self.severity is not None:
+            result['Severity'] = self.severity
+        if self.solutions is not None:
+            result['Solutions'] = self.solutions
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.tags is not None:
+            result['Tags'] = self.tags
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.update_date is not None:
+            result['UpdateDate'] = self.update_date
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Attributes') is not None:
+            self.attributes = m.get('Attributes')
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('CreateDate') is not None:
+            self.create_date = m.get('CreateDate')
+        if m.get('CreatedBy') is not None:
+            self.created_by = m.get('CreatedBy')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('LastModifiedBy') is not None:
+            self.last_modified_by = m.get('LastModifiedBy')
+        if m.get('OpsItemId') is not None:
+            self.ops_item_id = m.get('OpsItemId')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('Resources') is not None:
+            self.resources = m.get('Resources')
+        if m.get('Severity') is not None:
+            self.severity = m.get('Severity')
+        if m.get('Solutions') is not None:
+            self.solutions = m.get('Solutions')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('UpdateDate') is not None:
+            self.update_date = m.get('UpdateDate')
+        return self
+
+
+class CreateOpsItemResponseBody(TeaModel):
+    def __init__(
+        self,
+        ops_item: CreateOpsItemResponseBodyOpsItem = None,
+        request_id: str = None,
+    ):
+        self.ops_item = ops_item
+        self.request_id = request_id
+
+    def validate(self):
+        if self.ops_item:
+            self.ops_item.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ops_item is not None:
+            result['OpsItem'] = self.ops_item.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OpsItem') is not None:
+            temp_model = CreateOpsItemResponseBodyOpsItem()
+            self.ops_item = temp_model.from_map(m['OpsItem'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateOpsItemResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateOpsItemResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateOpsItemResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateParameterRequest(TeaModel):
     def __init__(
         self,
@@ -4558,6 +4958,247 @@ class GetInventorySchemaResponse(TeaModel):
         return self
 
 
+class GetOpsItemRequest(TeaModel):
+    def __init__(
+        self,
+        ops_item_id: str = None,
+        region_id: str = None,
+    ):
+        self.ops_item_id = ops_item_id
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ops_item_id is not None:
+            result['OpsItemId'] = self.ops_item_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OpsItemId') is not None:
+            self.ops_item_id = m.get('OpsItemId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class GetOpsItemResponseBodyOpsItem(TeaModel):
+    def __init__(
+        self,
+        attributes: Dict[str, Any] = None,
+        category: str = None,
+        create_by: str = None,
+        create_date: str = None,
+        dedup_string: str = None,
+        description: str = None,
+        last_modified_by: str = None,
+        ops_item_id: str = None,
+        priority: int = None,
+        resource_group_id: str = None,
+        resources: List[str] = None,
+        severity: str = None,
+        solutions: List[Dict[str, Any]] = None,
+        source: str = None,
+        status: str = None,
+        tags: Dict[str, Any] = None,
+        title: str = None,
+        update_date: str = None,
+    ):
+        self.attributes = attributes
+        self.category = category
+        self.create_by = create_by
+        self.create_date = create_date
+        self.dedup_string = dedup_string
+        self.description = description
+        self.last_modified_by = last_modified_by
+        self.ops_item_id = ops_item_id
+        self.priority = priority
+        self.resource_group_id = resource_group_id
+        self.resources = resources
+        self.severity = severity
+        self.solutions = solutions
+        self.source = source
+        self.status = status
+        self.tags = tags
+        self.title = title
+        self.update_date = update_date
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.attributes is not None:
+            result['Attributes'] = self.attributes
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.create_by is not None:
+            result['CreateBy'] = self.create_by
+        if self.create_date is not None:
+            result['CreateDate'] = self.create_date
+        if self.dedup_string is not None:
+            result['DedupString'] = self.dedup_string
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.last_modified_by is not None:
+            result['LastModifiedBy'] = self.last_modified_by
+        if self.ops_item_id is not None:
+            result['OpsItemId'] = self.ops_item_id
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.resources is not None:
+            result['Resources'] = self.resources
+        if self.severity is not None:
+            result['Severity'] = self.severity
+        if self.solutions is not None:
+            result['Solutions'] = self.solutions
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.tags is not None:
+            result['Tags'] = self.tags
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.update_date is not None:
+            result['UpdateDate'] = self.update_date
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Attributes') is not None:
+            self.attributes = m.get('Attributes')
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('CreateBy') is not None:
+            self.create_by = m.get('CreateBy')
+        if m.get('CreateDate') is not None:
+            self.create_date = m.get('CreateDate')
+        if m.get('DedupString') is not None:
+            self.dedup_string = m.get('DedupString')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('LastModifiedBy') is not None:
+            self.last_modified_by = m.get('LastModifiedBy')
+        if m.get('OpsItemId') is not None:
+            self.ops_item_id = m.get('OpsItemId')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('Resources') is not None:
+            self.resources = m.get('Resources')
+        if m.get('Severity') is not None:
+            self.severity = m.get('Severity')
+        if m.get('Solutions') is not None:
+            self.solutions = m.get('Solutions')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('UpdateDate') is not None:
+            self.update_date = m.get('UpdateDate')
+        return self
+
+
+class GetOpsItemResponseBody(TeaModel):
+    def __init__(
+        self,
+        ops_item: GetOpsItemResponseBodyOpsItem = None,
+        request_id: str = None,
+    ):
+        self.ops_item = ops_item
+        self.request_id = request_id
+
+    def validate(self):
+        if self.ops_item:
+            self.ops_item.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ops_item is not None:
+            result['OpsItem'] = self.ops_item.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OpsItem') is not None:
+            temp_model = GetOpsItemResponseBodyOpsItem()
+            self.ops_item = temp_model.from_map(m['OpsItem'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetOpsItemResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetOpsItemResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetOpsItemResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetParameterRequest(TeaModel):
     def __init__(
         self,
@@ -6822,6 +7463,7 @@ class ListApplicationGroupsRequest(TeaModel):
         product: str = None,
         region_id: str = None,
         resource_id: str = None,
+        resource_product: str = None,
         resource_type: str = None,
     ):
         self.application_name = application_name
@@ -6831,6 +7473,7 @@ class ListApplicationGroupsRequest(TeaModel):
         self.product = product
         self.region_id = region_id
         self.resource_id = resource_id
+        self.resource_product = resource_product
         self.resource_type = resource_type
 
     def validate(self):
@@ -6856,6 +7499,8 @@ class ListApplicationGroupsRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.resource_id is not None:
             result['ResourceId'] = self.resource_id
+        if self.resource_product is not None:
+            result['ResourceProduct'] = self.resource_product
         if self.resource_type is not None:
             result['ResourceType'] = self.resource_type
         return result
@@ -6876,6 +7521,8 @@ class ListApplicationGroupsRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('ResourceId') is not None:
             self.resource_id = m.get('ResourceId')
+        if m.get('ResourceProduct') is not None:
+            self.resource_product = m.get('ResourceProduct')
         if m.get('ResourceType') is not None:
             self.resource_type = m.get('ResourceType')
         return self
@@ -9027,6 +9674,404 @@ class ListInventoryEntriesResponse(TeaModel):
         return self
 
 
+class ListOpsItemsRequestFilter(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        operator: str = None,
+        value: List[str] = None,
+    ):
+        self.name = name
+        self.operator = operator
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.operator is not None:
+            result['Operator'] = self.operator
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Operator') is not None:
+            self.operator = m.get('Operator')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListOpsItemsRequest(TeaModel):
+    def __init__(
+        self,
+        filter: List[ListOpsItemsRequestFilter] = None,
+        max_results: int = None,
+        next_token: str = None,
+        region_id: str = None,
+        resource_tags: Dict[str, Any] = None,
+        tags: Dict[str, Any] = None,
+    ):
+        self.filter = filter
+        self.max_results = max_results
+        self.next_token = next_token
+        self.region_id = region_id
+        self.resource_tags = resource_tags
+        self.tags = tags
+
+    def validate(self):
+        if self.filter:
+            for k in self.filter:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Filter'] = []
+        if self.filter is not None:
+            for k in self.filter:
+                result['Filter'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_tags is not None:
+            result['ResourceTags'] = self.resource_tags
+        if self.tags is not None:
+            result['Tags'] = self.tags
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.filter = []
+        if m.get('Filter') is not None:
+            for k in m.get('Filter'):
+                temp_model = ListOpsItemsRequestFilter()
+                self.filter.append(temp_model.from_map(k))
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceTags') is not None:
+            self.resource_tags = m.get('ResourceTags')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
+        return self
+
+
+class ListOpsItemsShrinkRequestFilter(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        operator: str = None,
+        value: List[str] = None,
+    ):
+        self.name = name
+        self.operator = operator
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.operator is not None:
+            result['Operator'] = self.operator
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Operator') is not None:
+            self.operator = m.get('Operator')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListOpsItemsShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        filter: List[ListOpsItemsShrinkRequestFilter] = None,
+        max_results: int = None,
+        next_token: str = None,
+        region_id: str = None,
+        resource_tags_shrink: str = None,
+        tags_shrink: str = None,
+    ):
+        self.filter = filter
+        self.max_results = max_results
+        self.next_token = next_token
+        self.region_id = region_id
+        self.resource_tags_shrink = resource_tags_shrink
+        self.tags_shrink = tags_shrink
+
+    def validate(self):
+        if self.filter:
+            for k in self.filter:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Filter'] = []
+        if self.filter is not None:
+            for k in self.filter:
+                result['Filter'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_tags_shrink is not None:
+            result['ResourceTags'] = self.resource_tags_shrink
+        if self.tags_shrink is not None:
+            result['Tags'] = self.tags_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.filter = []
+        if m.get('Filter') is not None:
+            for k in m.get('Filter'):
+                temp_model = ListOpsItemsShrinkRequestFilter()
+                self.filter.append(temp_model.from_map(k))
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceTags') is not None:
+            self.resource_tags_shrink = m.get('ResourceTags')
+        if m.get('Tags') is not None:
+            self.tags_shrink = m.get('Tags')
+        return self
+
+
+class ListOpsItemsResponseBodyOpsItems(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+        create_date: str = None,
+        ops_item_id: str = None,
+        priority: int = None,
+        resources: List[str] = None,
+        severity: str = None,
+        source: str = None,
+        status: str = None,
+        tags: Dict[str, Any] = None,
+        title: str = None,
+        update_date: str = None,
+    ):
+        self.category = category
+        self.create_date = create_date
+        self.ops_item_id = ops_item_id
+        self.priority = priority
+        self.resources = resources
+        self.severity = severity
+        self.source = source
+        self.status = status
+        self.tags = tags
+        self.title = title
+        self.update_date = update_date
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.create_date is not None:
+            result['CreateDate'] = self.create_date
+        if self.ops_item_id is not None:
+            result['OpsItemId'] = self.ops_item_id
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.resources is not None:
+            result['Resources'] = self.resources
+        if self.severity is not None:
+            result['Severity'] = self.severity
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.tags is not None:
+            result['Tags'] = self.tags
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.update_date is not None:
+            result['UpdateDate'] = self.update_date
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('CreateDate') is not None:
+            self.create_date = m.get('CreateDate')
+        if m.get('OpsItemId') is not None:
+            self.ops_item_id = m.get('OpsItemId')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('Resources') is not None:
+            self.resources = m.get('Resources')
+        if m.get('Severity') is not None:
+            self.severity = m.get('Severity')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('UpdateDate') is not None:
+            self.update_date = m.get('UpdateDate')
+        return self
+
+
+class ListOpsItemsResponseBody(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        ops_items: List[ListOpsItemsResponseBodyOpsItems] = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        self.ops_items = ops_items
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.ops_items:
+            for k in self.ops_items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        result['OpsItems'] = []
+        if self.ops_items is not None:
+            for k in self.ops_items:
+                result['OpsItems'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        self.ops_items = []
+        if m.get('OpsItems') is not None:
+            for k in m.get('OpsItems'):
+                temp_model = ListOpsItemsResponseBodyOpsItems()
+                self.ops_items.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListOpsItemsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListOpsItemsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListOpsItemsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListParameterVersionsRequest(TeaModel):
     def __init__(
         self,
@@ -10905,9 +11950,11 @@ class ListStateConfigurationsResponseBodyStateConfigurations(TeaModel):
 class ListStateConfigurationsResponseBody(TeaModel):
     def __init__(
         self,
+        next_token: str = None,
         request_id: str = None,
         state_configurations: List[ListStateConfigurationsResponseBodyStateConfigurations] = None,
     ):
+        self.next_token = next_token
         self.request_id = request_id
         self.state_configurations = state_configurations
 
@@ -10923,6 +11970,8 @@ class ListStateConfigurationsResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         result['StateConfigurations'] = []
@@ -10933,6 +11982,8 @@ class ListStateConfigurationsResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         self.state_configurations = []
@@ -13294,6 +14345,7 @@ class StartExecutionRequest(TeaModel):
         tags: Dict[str, Any] = None,
         template_content: str = None,
         template_name: str = None,
+        template_url: str = None,
         template_version: str = None,
     ):
         self.client_token = client_token
@@ -13308,6 +14360,7 @@ class StartExecutionRequest(TeaModel):
         self.tags = tags
         self.template_content = template_content
         self.template_name = template_name
+        self.template_url = template_url
         self.template_version = template_version
 
     def validate(self):
@@ -13343,6 +14396,8 @@ class StartExecutionRequest(TeaModel):
             result['TemplateContent'] = self.template_content
         if self.template_name is not None:
             result['TemplateName'] = self.template_name
+        if self.template_url is not None:
+            result['TemplateURL'] = self.template_url
         if self.template_version is not None:
             result['TemplateVersion'] = self.template_version
         return result
@@ -13373,6 +14428,8 @@ class StartExecutionRequest(TeaModel):
             self.template_content = m.get('TemplateContent')
         if m.get('TemplateName') is not None:
             self.template_name = m.get('TemplateName')
+        if m.get('TemplateURL') is not None:
+            self.template_url = m.get('TemplateURL')
         if m.get('TemplateVersion') is not None:
             self.template_version = m.get('TemplateVersion')
         return self
@@ -13393,6 +14450,7 @@ class StartExecutionShrinkRequest(TeaModel):
         tags_shrink: str = None,
         template_content: str = None,
         template_name: str = None,
+        template_url: str = None,
         template_version: str = None,
     ):
         self.client_token = client_token
@@ -13407,6 +14465,7 @@ class StartExecutionShrinkRequest(TeaModel):
         self.tags_shrink = tags_shrink
         self.template_content = template_content
         self.template_name = template_name
+        self.template_url = template_url
         self.template_version = template_version
 
     def validate(self):
@@ -13442,6 +14501,8 @@ class StartExecutionShrinkRequest(TeaModel):
             result['TemplateContent'] = self.template_content
         if self.template_name is not None:
             result['TemplateName'] = self.template_name
+        if self.template_url is not None:
+            result['TemplateURL'] = self.template_url
         if self.template_version is not None:
             result['TemplateVersion'] = self.template_version
         return result
@@ -13472,6 +14533,8 @@ class StartExecutionShrinkRequest(TeaModel):
             self.template_content = m.get('TemplateContent')
         if m.get('TemplateName') is not None:
             self.template_name = m.get('TemplateName')
+        if m.get('TemplateURL') is not None:
+            self.template_url = m.get('TemplateURL')
         if m.get('TemplateVersion') is not None:
             self.template_version = m.get('TemplateVersion')
         return self
@@ -14755,6 +15818,430 @@ class UpdateExecutionResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateExecutionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateOpsItemRequest(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+        client_token: str = None,
+        dedup_string: str = None,
+        description: str = None,
+        ops_item_id: str = None,
+        priority: int = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        resources: str = None,
+        severity: str = None,
+        solutions: str = None,
+        source: str = None,
+        status: str = None,
+        tags: Dict[str, Any] = None,
+        title: str = None,
+    ):
+        self.category = category
+        self.client_token = client_token
+        self.dedup_string = dedup_string
+        self.description = description
+        self.ops_item_id = ops_item_id
+        self.priority = priority
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.resources = resources
+        self.severity = severity
+        self.solutions = solutions
+        self.source = source
+        self.status = status
+        self.tags = tags
+        self.title = title
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dedup_string is not None:
+            result['DedupString'] = self.dedup_string
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.ops_item_id is not None:
+            result['OpsItemId'] = self.ops_item_id
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.resources is not None:
+            result['Resources'] = self.resources
+        if self.severity is not None:
+            result['Severity'] = self.severity
+        if self.solutions is not None:
+            result['Solutions'] = self.solutions
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.tags is not None:
+            result['Tags'] = self.tags
+        if self.title is not None:
+            result['Title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DedupString') is not None:
+            self.dedup_string = m.get('DedupString')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('OpsItemId') is not None:
+            self.ops_item_id = m.get('OpsItemId')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('Resources') is not None:
+            self.resources = m.get('Resources')
+        if m.get('Severity') is not None:
+            self.severity = m.get('Severity')
+        if m.get('Solutions') is not None:
+            self.solutions = m.get('Solutions')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        return self
+
+
+class UpdateOpsItemShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+        client_token: str = None,
+        dedup_string: str = None,
+        description: str = None,
+        ops_item_id: str = None,
+        priority: int = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        resources: str = None,
+        severity: str = None,
+        solutions: str = None,
+        source: str = None,
+        status: str = None,
+        tags_shrink: str = None,
+        title: str = None,
+    ):
+        self.category = category
+        self.client_token = client_token
+        self.dedup_string = dedup_string
+        self.description = description
+        self.ops_item_id = ops_item_id
+        self.priority = priority
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.resources = resources
+        self.severity = severity
+        self.solutions = solutions
+        self.source = source
+        self.status = status
+        self.tags_shrink = tags_shrink
+        self.title = title
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dedup_string is not None:
+            result['DedupString'] = self.dedup_string
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.ops_item_id is not None:
+            result['OpsItemId'] = self.ops_item_id
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.resources is not None:
+            result['Resources'] = self.resources
+        if self.severity is not None:
+            result['Severity'] = self.severity
+        if self.solutions is not None:
+            result['Solutions'] = self.solutions
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.tags_shrink is not None:
+            result['Tags'] = self.tags_shrink
+        if self.title is not None:
+            result['Title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DedupString') is not None:
+            self.dedup_string = m.get('DedupString')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('OpsItemId') is not None:
+            self.ops_item_id = m.get('OpsItemId')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('Resources') is not None:
+            self.resources = m.get('Resources')
+        if m.get('Severity') is not None:
+            self.severity = m.get('Severity')
+        if m.get('Solutions') is not None:
+            self.solutions = m.get('Solutions')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Tags') is not None:
+            self.tags_shrink = m.get('Tags')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        return self
+
+
+class UpdateOpsItemResponseBodyOpsItem(TeaModel):
+    def __init__(
+        self,
+        attributes: str = None,
+        category: str = None,
+        create_date: str = None,
+        created_by: str = None,
+        description: str = None,
+        last_modified_by: str = None,
+        ops_item_id: str = None,
+        priority: int = None,
+        resource_group_id: str = None,
+        resources: List[str] = None,
+        severity: str = None,
+        solutions: List[str] = None,
+        source: str = None,
+        status: str = None,
+        tags: Dict[str, Any] = None,
+        title: str = None,
+        update_date: str = None,
+    ):
+        self.attributes = attributes
+        self.category = category
+        self.create_date = create_date
+        self.created_by = created_by
+        self.description = description
+        self.last_modified_by = last_modified_by
+        self.ops_item_id = ops_item_id
+        self.priority = priority
+        self.resource_group_id = resource_group_id
+        self.resources = resources
+        self.severity = severity
+        self.solutions = solutions
+        self.source = source
+        self.status = status
+        self.tags = tags
+        self.title = title
+        self.update_date = update_date
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.attributes is not None:
+            result['Attributes'] = self.attributes
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.create_date is not None:
+            result['CreateDate'] = self.create_date
+        if self.created_by is not None:
+            result['CreatedBy'] = self.created_by
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.last_modified_by is not None:
+            result['LastModifiedBy'] = self.last_modified_by
+        if self.ops_item_id is not None:
+            result['OpsItemId'] = self.ops_item_id
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.resources is not None:
+            result['Resources'] = self.resources
+        if self.severity is not None:
+            result['Severity'] = self.severity
+        if self.solutions is not None:
+            result['Solutions'] = self.solutions
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.tags is not None:
+            result['Tags'] = self.tags
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.update_date is not None:
+            result['UpdateDate'] = self.update_date
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Attributes') is not None:
+            self.attributes = m.get('Attributes')
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('CreateDate') is not None:
+            self.create_date = m.get('CreateDate')
+        if m.get('CreatedBy') is not None:
+            self.created_by = m.get('CreatedBy')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('LastModifiedBy') is not None:
+            self.last_modified_by = m.get('LastModifiedBy')
+        if m.get('OpsItemId') is not None:
+            self.ops_item_id = m.get('OpsItemId')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('Resources') is not None:
+            self.resources = m.get('Resources')
+        if m.get('Severity') is not None:
+            self.severity = m.get('Severity')
+        if m.get('Solutions') is not None:
+            self.solutions = m.get('Solutions')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('UpdateDate') is not None:
+            self.update_date = m.get('UpdateDate')
+        return self
+
+
+class UpdateOpsItemResponseBody(TeaModel):
+    def __init__(
+        self,
+        ops_item: UpdateOpsItemResponseBodyOpsItem = None,
+        request_id: str = None,
+    ):
+        self.ops_item = ops_item
+        self.request_id = request_id
+
+    def validate(self):
+        if self.ops_item:
+            self.ops_item.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ops_item is not None:
+            result['OpsItem'] = self.ops_item.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OpsItem') is not None:
+            temp_model = UpdateOpsItemResponseBodyOpsItem()
+            self.ops_item = temp_model.from_map(m['OpsItem'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateOpsItemResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateOpsItemResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateOpsItemResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -16170,9 +17657,11 @@ class ValidateTemplateContentRequest(TeaModel):
         self,
         content: str = None,
         region_id: str = None,
+        template_url: str = None,
     ):
         self.content = content
         self.region_id = region_id
+        self.template_url = template_url
 
     def validate(self):
         pass
@@ -16187,6 +17676,8 @@ class ValidateTemplateContentRequest(TeaModel):
             result['Content'] = self.content
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.template_url is not None:
+            result['TemplateURL'] = self.template_url
         return result
 
     def from_map(self, m: dict = None):
@@ -16195,6 +17686,8 @@ class ValidateTemplateContentRequest(TeaModel):
             self.content = m.get('Content')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('TemplateURL') is not None:
+            self.template_url = m.get('TemplateURL')
         return self
 
 
