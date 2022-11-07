@@ -873,6 +873,7 @@ class AddGatewayRequest(TeaModel):
         name: str = None,
         region: str = None,
         replica: int = None,
+        resource_group_id: str = None,
         slb_spec: str = None,
         spec: str = None,
         tag: List[AddGatewayRequestTag] = None,
@@ -890,6 +891,7 @@ class AddGatewayRequest(TeaModel):
         self.name = name
         self.region = region
         self.replica = replica
+        self.resource_group_id = resource_group_id
         self.slb_spec = slb_spec
         self.spec = spec
         self.tag = tag
@@ -928,6 +930,8 @@ class AddGatewayRequest(TeaModel):
             result['Region'] = self.region
         if self.replica is not None:
             result['Replica'] = self.replica
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.slb_spec is not None:
             result['SlbSpec'] = self.slb_spec
         if self.spec is not None:
@@ -966,6 +970,8 @@ class AddGatewayRequest(TeaModel):
             self.region = m.get('Region')
         if m.get('Replica') is not None:
             self.replica = m.get('Replica')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SlbSpec') is not None:
             self.slb_spec = m.get('SlbSpec')
         if m.get('Spec') is not None:
@@ -10348,6 +10354,7 @@ class GetGatewayResponseBodyData(TeaModel):
         primary_user: str = None,
         region: str = None,
         replica: int = None,
+        resource_group_id: str = None,
         security_group: str = None,
         spec: str = None,
         status: int = None,
@@ -10370,6 +10377,7 @@ class GetGatewayResponseBodyData(TeaModel):
         self.primary_user = primary_user
         self.region = region
         self.replica = replica
+        self.resource_group_id = resource_group_id
         self.security_group = security_group
         self.spec = spec
         self.status = status
@@ -10417,6 +10425,8 @@ class GetGatewayResponseBodyData(TeaModel):
             result['Region'] = self.region
         if self.replica is not None:
             result['Replica'] = self.replica
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.security_group is not None:
             result['SecurityGroup'] = self.security_group
         if self.spec is not None:
@@ -10464,6 +10474,8 @@ class GetGatewayResponseBodyData(TeaModel):
             self.region = m.get('Region')
         if m.get('Replica') is not None:
             self.replica = m.get('Replica')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SecurityGroup') is not None:
             self.security_group = m.get('SecurityGroup')
         if m.get('Spec') is not None:
@@ -19478,6 +19490,7 @@ class ListGatewayRequestFilterParams(TeaModel):
         instance_id: str = None,
         mse_tag: str = None,
         name: str = None,
+        resource_group_id: str = None,
         vpc: str = None,
     ):
         self.gateway_type = gateway_type
@@ -19485,6 +19498,7 @@ class ListGatewayRequestFilterParams(TeaModel):
         self.instance_id = instance_id
         self.mse_tag = mse_tag
         self.name = name
+        self.resource_group_id = resource_group_id
         self.vpc = vpc
 
     def validate(self):
@@ -19506,6 +19520,8 @@ class ListGatewayRequestFilterParams(TeaModel):
             result['MseTag'] = self.mse_tag
         if self.name is not None:
             result['Name'] = self.name
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.vpc is not None:
             result['Vpc'] = self.vpc
         return result
@@ -19522,6 +19538,8 @@ class ListGatewayRequestFilterParams(TeaModel):
             self.mse_tag = m.get('MseTag')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Vpc') is not None:
             self.vpc = m.get('Vpc')
         return self
@@ -19845,6 +19863,7 @@ class ListGatewayResponseBodyDataResult(TeaModel):
         primary_user: str = None,
         region: str = None,
         replica: int = None,
+        resource_group_id: str = None,
         roll_back: bool = None,
         slb: List[ListGatewayResponseBodyDataResultSlb] = None,
         spec: str = None,
@@ -19877,6 +19896,7 @@ class ListGatewayResponseBodyDataResult(TeaModel):
         self.primary_user = primary_user
         self.region = region
         self.replica = replica
+        self.resource_group_id = resource_group_id
         self.roll_back = roll_back
         self.slb = slb
         self.spec = spec
@@ -19951,6 +19971,8 @@ class ListGatewayResponseBodyDataResult(TeaModel):
             result['Region'] = self.region
         if self.replica is not None:
             result['Replica'] = self.replica
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.roll_back is not None:
             result['RollBack'] = self.roll_back
         result['Slb'] = []
@@ -20023,6 +20045,8 @@ class ListGatewayResponseBodyDataResult(TeaModel):
             self.region = m.get('Region')
         if m.get('Replica') is not None:
             self.replica = m.get('Replica')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('RollBack') is not None:
             self.roll_back = m.get('RollBack')
         self.slb = []
