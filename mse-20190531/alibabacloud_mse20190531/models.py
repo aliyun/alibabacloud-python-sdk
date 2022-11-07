@@ -5716,6 +5716,620 @@ class CreateNacosServiceResponse(TeaModel):
         return self
 
 
+class CreateOrUpdateSwimmingLaneRequestEntryRulesRestItems(TeaModel):
+    def __init__(
+        self,
+        cond: str = None,
+        datum: str = None,
+        divisor: int = None,
+        name: str = None,
+        name_list: List[str] = None,
+        operator: str = None,
+        rate: int = None,
+        remainder: int = None,
+        type: str = None,
+        value: str = None,
+    ):
+        self.cond = cond
+        self.datum = datum
+        self.divisor = divisor
+        self.name = name
+        self.name_list = name_list
+        self.operator = operator
+        self.rate = rate
+        self.remainder = remainder
+        self.type = type
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cond is not None:
+            result['Cond'] = self.cond
+        if self.datum is not None:
+            result['Datum'] = self.datum
+        if self.divisor is not None:
+            result['Divisor'] = self.divisor
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.name_list is not None:
+            result['NameList'] = self.name_list
+        if self.operator is not None:
+            result['Operator'] = self.operator
+        if self.rate is not None:
+            result['Rate'] = self.rate
+        if self.remainder is not None:
+            result['Remainder'] = self.remainder
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cond') is not None:
+            self.cond = m.get('Cond')
+        if m.get('Datum') is not None:
+            self.datum = m.get('Datum')
+        if m.get('Divisor') is not None:
+            self.divisor = m.get('Divisor')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('NameList') is not None:
+            self.name_list = m.get('NameList')
+        if m.get('Operator') is not None:
+            self.operator = m.get('Operator')
+        if m.get('Rate') is not None:
+            self.rate = m.get('Rate')
+        if m.get('Remainder') is not None:
+            self.remainder = m.get('Remainder')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class CreateOrUpdateSwimmingLaneRequestEntryRules(TeaModel):
+    def __init__(
+        self,
+        condition: str = None,
+        enable: bool = None,
+        path: str = None,
+        paths: List[str] = None,
+        priority: int = None,
+        rest_items: List[CreateOrUpdateSwimmingLaneRequestEntryRulesRestItems] = None,
+    ):
+        self.condition = condition
+        self.enable = enable
+        self.path = path
+        self.paths = paths
+        self.priority = priority
+        self.rest_items = rest_items
+
+    def validate(self):
+        if self.rest_items:
+            for k in self.rest_items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.condition is not None:
+            result['Condition'] = self.condition
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        if self.path is not None:
+            result['Path'] = self.path
+        if self.paths is not None:
+            result['Paths'] = self.paths
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        result['RestItems'] = []
+        if self.rest_items is not None:
+            for k in self.rest_items:
+                result['RestItems'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Condition') is not None:
+            self.condition = m.get('Condition')
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        if m.get('Path') is not None:
+            self.path = m.get('Path')
+        if m.get('Paths') is not None:
+            self.paths = m.get('Paths')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        self.rest_items = []
+        if m.get('RestItems') is not None:
+            for k in m.get('RestItems'):
+                temp_model = CreateOrUpdateSwimmingLaneRequestEntryRulesRestItems()
+                self.rest_items.append(temp_model.from_map(k))
+        return self
+
+
+class CreateOrUpdateSwimmingLaneRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        enable: bool = None,
+        enable_rules: bool = None,
+        entry_rule: str = None,
+        entry_rules: List[CreateOrUpdateSwimmingLaneRequestEntryRules] = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        group_id: int = None,
+        id: int = None,
+        license_key: str = None,
+        name: str = None,
+        region_id: str = None,
+        source: str = None,
+        status: int = None,
+        tag: str = None,
+        user_id: str = None,
+    ):
+        self.accept_language = accept_language
+        self.enable = enable
+        self.enable_rules = enable_rules
+        self.entry_rule = entry_rule
+        self.entry_rules = entry_rules
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.group_id = group_id
+        self.id = id
+        self.license_key = license_key
+        self.name = name
+        self.region_id = region_id
+        self.source = source
+        self.status = status
+        self.tag = tag
+        self.user_id = user_id
+
+    def validate(self):
+        if self.entry_rules:
+            for k in self.entry_rules:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        if self.enable_rules is not None:
+            result['EnableRules'] = self.enable_rules
+        if self.entry_rule is not None:
+            result['EntryRule'] = self.entry_rule
+        result['EntryRules'] = []
+        if self.entry_rules is not None:
+            for k in self.entry_rules:
+                result['EntryRules'].append(k.to_map() if k else None)
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.license_key is not None:
+            result['LicenseKey'] = self.license_key
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.tag is not None:
+            result['Tag'] = self.tag
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        if m.get('EnableRules') is not None:
+            self.enable_rules = m.get('EnableRules')
+        if m.get('EntryRule') is not None:
+            self.entry_rule = m.get('EntryRule')
+        self.entry_rules = []
+        if m.get('EntryRules') is not None:
+            for k in m.get('EntryRules'):
+                temp_model = CreateOrUpdateSwimmingLaneRequestEntryRules()
+                self.entry_rules.append(temp_model.from_map(k))
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('LicenseKey') is not None:
+            self.license_key = m.get('LicenseKey')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Tag') is not None:
+            self.tag = m.get('Tag')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class CreateOrUpdateSwimmingLaneResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: Any = None,
+        dynamic_message: str = None,
+        error_code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.dynamic_message = dynamic_message
+        self.error_code = error_code
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.dynamic_message is not None:
+            result['DynamicMessage'] = self.dynamic_message
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('DynamicMessage') is not None:
+            self.dynamic_message = m.get('DynamicMessage')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateOrUpdateSwimmingLaneResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateOrUpdateSwimmingLaneResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateOrUpdateSwimmingLaneResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateOrUpdateSwimmingLaneGroupRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        app_ids: str = None,
+        db_gray_enable: bool = None,
+        enable: bool = None,
+        entry_app: str = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        id: int = None,
+        license_key: str = None,
+        message_queue_filter_side: str = None,
+        message_queue_gray_enable: bool = None,
+        name: str = None,
+        region: str = None,
+        source: str = None,
+        status: int = None,
+        user_id: str = None,
+    ):
+        self.accept_language = accept_language
+        self.app_ids = app_ids
+        self.db_gray_enable = db_gray_enable
+        self.enable = enable
+        self.entry_app = entry_app
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.id = id
+        self.license_key = license_key
+        self.message_queue_filter_side = message_queue_filter_side
+        self.message_queue_gray_enable = message_queue_gray_enable
+        self.name = name
+        self.region = region
+        self.source = source
+        self.status = status
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.app_ids is not None:
+            result['AppIds'] = self.app_ids
+        if self.db_gray_enable is not None:
+            result['DbGrayEnable'] = self.db_gray_enable
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        if self.entry_app is not None:
+            result['EntryApp'] = self.entry_app
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.license_key is not None:
+            result['LicenseKey'] = self.license_key
+        if self.message_queue_filter_side is not None:
+            result['MessageQueueFilterSide'] = self.message_queue_filter_side
+        if self.message_queue_gray_enable is not None:
+            result['MessageQueueGrayEnable'] = self.message_queue_gray_enable
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('AppIds') is not None:
+            self.app_ids = m.get('AppIds')
+        if m.get('DbGrayEnable') is not None:
+            self.db_gray_enable = m.get('DbGrayEnable')
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        if m.get('EntryApp') is not None:
+            self.entry_app = m.get('EntryApp')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('LicenseKey') is not None:
+            self.license_key = m.get('LicenseKey')
+        if m.get('MessageQueueFilterSide') is not None:
+            self.message_queue_filter_side = m.get('MessageQueueFilterSide')
+        if m.get('MessageQueueGrayEnable') is not None:
+            self.message_queue_gray_enable = m.get('MessageQueueGrayEnable')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class CreateOrUpdateSwimmingLaneGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: Any = None,
+        dynamic_message: str = None,
+        error_code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.dynamic_message = dynamic_message
+        self.error_code = error_code
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.dynamic_message is not None:
+            result['DynamicMessage'] = self.dynamic_message
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('DynamicMessage') is not None:
+            self.dynamic_message = m.get('DynamicMessage')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateOrUpdateSwimmingLaneGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateOrUpdateSwimmingLaneGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateOrUpdateSwimmingLaneGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateZnodeRequest(TeaModel):
     def __init__(
         self,

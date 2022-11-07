@@ -2232,6 +2232,266 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_nacos_service_with_options_async(request, runtime)
 
+    def create_or_update_swimming_lane_with_options(
+        self,
+        request: mse_20190531_models.CreateOrUpdateSwimmingLaneRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.CreateOrUpdateSwimmingLaneResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.enable_rules):
+            query['EnableRules'] = request.enable_rules
+        if not UtilClient.is_unset(request.entry_rule):
+            query['EntryRule'] = request.entry_rule
+        if not UtilClient.is_unset(request.entry_rules):
+            query['EntryRules'] = request.entry_rules
+        if not UtilClient.is_unset(request.gmt_create):
+            query['GmtCreate'] = request.gmt_create
+        if not UtilClient.is_unset(request.gmt_modified):
+            query['GmtModified'] = request.gmt_modified
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.license_key):
+            query['LicenseKey'] = request.license_key
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateOrUpdateSwimmingLane',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.CreateOrUpdateSwimmingLaneResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_or_update_swimming_lane_with_options_async(
+        self,
+        request: mse_20190531_models.CreateOrUpdateSwimmingLaneRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.CreateOrUpdateSwimmingLaneResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.enable_rules):
+            query['EnableRules'] = request.enable_rules
+        if not UtilClient.is_unset(request.entry_rule):
+            query['EntryRule'] = request.entry_rule
+        if not UtilClient.is_unset(request.entry_rules):
+            query['EntryRules'] = request.entry_rules
+        if not UtilClient.is_unset(request.gmt_create):
+            query['GmtCreate'] = request.gmt_create
+        if not UtilClient.is_unset(request.gmt_modified):
+            query['GmtModified'] = request.gmt_modified
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.license_key):
+            query['LicenseKey'] = request.license_key
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateOrUpdateSwimmingLane',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.CreateOrUpdateSwimmingLaneResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_or_update_swimming_lane(
+        self,
+        request: mse_20190531_models.CreateOrUpdateSwimmingLaneRequest,
+    ) -> mse_20190531_models.CreateOrUpdateSwimmingLaneResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_or_update_swimming_lane_with_options(request, runtime)
+
+    async def create_or_update_swimming_lane_async(
+        self,
+        request: mse_20190531_models.CreateOrUpdateSwimmingLaneRequest,
+    ) -> mse_20190531_models.CreateOrUpdateSwimmingLaneResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_or_update_swimming_lane_with_options_async(request, runtime)
+
+    def create_or_update_swimming_lane_group_with_options(
+        self,
+        request: mse_20190531_models.CreateOrUpdateSwimmingLaneGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.CreateOrUpdateSwimmingLaneGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.app_ids):
+            query['AppIds'] = request.app_ids
+        if not UtilClient.is_unset(request.db_gray_enable):
+            query['DbGrayEnable'] = request.db_gray_enable
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.entry_app):
+            query['EntryApp'] = request.entry_app
+        if not UtilClient.is_unset(request.gmt_create):
+            query['GmtCreate'] = request.gmt_create
+        if not UtilClient.is_unset(request.gmt_modified):
+            query['GmtModified'] = request.gmt_modified
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.license_key):
+            query['LicenseKey'] = request.license_key
+        if not UtilClient.is_unset(request.message_queue_filter_side):
+            query['MessageQueueFilterSide'] = request.message_queue_filter_side
+        if not UtilClient.is_unset(request.message_queue_gray_enable):
+            query['MessageQueueGrayEnable'] = request.message_queue_gray_enable
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateOrUpdateSwimmingLaneGroup',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.CreateOrUpdateSwimmingLaneGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_or_update_swimming_lane_group_with_options_async(
+        self,
+        request: mse_20190531_models.CreateOrUpdateSwimmingLaneGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.CreateOrUpdateSwimmingLaneGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.app_ids):
+            query['AppIds'] = request.app_ids
+        if not UtilClient.is_unset(request.db_gray_enable):
+            query['DbGrayEnable'] = request.db_gray_enable
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.entry_app):
+            query['EntryApp'] = request.entry_app
+        if not UtilClient.is_unset(request.gmt_create):
+            query['GmtCreate'] = request.gmt_create
+        if not UtilClient.is_unset(request.gmt_modified):
+            query['GmtModified'] = request.gmt_modified
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.license_key):
+            query['LicenseKey'] = request.license_key
+        if not UtilClient.is_unset(request.message_queue_filter_side):
+            query['MessageQueueFilterSide'] = request.message_queue_filter_side
+        if not UtilClient.is_unset(request.message_queue_gray_enable):
+            query['MessageQueueGrayEnable'] = request.message_queue_gray_enable
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateOrUpdateSwimmingLaneGroup',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.CreateOrUpdateSwimmingLaneGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_or_update_swimming_lane_group(
+        self,
+        request: mse_20190531_models.CreateOrUpdateSwimmingLaneGroupRequest,
+    ) -> mse_20190531_models.CreateOrUpdateSwimmingLaneGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_or_update_swimming_lane_group_with_options(request, runtime)
+
+    async def create_or_update_swimming_lane_group_async(
+        self,
+        request: mse_20190531_models.CreateOrUpdateSwimmingLaneGroupRequest,
+    ) -> mse_20190531_models.CreateOrUpdateSwimmingLaneGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_or_update_swimming_lane_group_with_options_async(request, runtime)
+
     def create_znode_with_options(
         self,
         request: mse_20190531_models.CreateZnodeRequest,

@@ -1,3 +1,6 @@
+2022-11-07 Version: 3.0.44
+- Supported MSE Gateway For ResourceGroup.
+
 2022-11-07 Version: 3.0.43
 - Supported MSE Gateway For ResourceGroup.
 
