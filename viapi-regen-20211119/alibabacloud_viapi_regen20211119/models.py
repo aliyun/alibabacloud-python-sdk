@@ -180,6 +180,7 @@ class CreateLabelsetRequest(TeaModel):
         description: str = None,
         name: str = None,
         object_key: str = None,
+        pre_label_id: int = None,
         tag_settings: str = None,
         tag_user_list: str = None,
         type: str = None,
@@ -189,6 +190,7 @@ class CreateLabelsetRequest(TeaModel):
         self.description = description
         self.name = name
         self.object_key = object_key
+        self.pre_label_id = pre_label_id
         self.tag_settings = tag_settings
         self.tag_user_list = tag_user_list
         self.type = type
@@ -211,6 +213,8 @@ class CreateLabelsetRequest(TeaModel):
             result['Name'] = self.name
         if self.object_key is not None:
             result['ObjectKey'] = self.object_key
+        if self.pre_label_id is not None:
+            result['PreLabelId'] = self.pre_label_id
         if self.tag_settings is not None:
             result['TagSettings'] = self.tag_settings
         if self.tag_user_list is not None:
@@ -231,6 +235,8 @@ class CreateLabelsetRequest(TeaModel):
             self.name = m.get('Name')
         if m.get('ObjectKey') is not None:
             self.object_key = m.get('ObjectKey')
+        if m.get('PreLabelId') is not None:
+            self.pre_label_id = m.get('PreLabelId')
         if m.get('TagSettings') is not None:
             self.tag_settings = m.get('TagSettings')
         if m.get('TagUserList') is not None:
@@ -738,18 +744,20 @@ class CreateTrainTaskRequest(TeaModel):
     def __init__(
         self,
         advanced_parameters: str = None,
-        dataset_id: int = None,
+        dataset_ids: str = None,
         description: str = None,
-        label_id: int = None,
+        label_ids: str = None,
         name: str = None,
+        pre_train_task_id: int = None,
         train_mode: str = None,
         workspace_id: int = None,
     ):
         self.advanced_parameters = advanced_parameters
-        self.dataset_id = dataset_id
+        self.dataset_ids = dataset_ids
         self.description = description
-        self.label_id = label_id
+        self.label_ids = label_ids
         self.name = name
+        self.pre_train_task_id = pre_train_task_id
         self.train_mode = train_mode
         self.workspace_id = workspace_id
 
@@ -764,14 +772,16 @@ class CreateTrainTaskRequest(TeaModel):
         result = dict()
         if self.advanced_parameters is not None:
             result['AdvancedParameters'] = self.advanced_parameters
-        if self.dataset_id is not None:
-            result['DatasetId'] = self.dataset_id
+        if self.dataset_ids is not None:
+            result['DatasetIds'] = self.dataset_ids
         if self.description is not None:
             result['Description'] = self.description
-        if self.label_id is not None:
-            result['LabelId'] = self.label_id
+        if self.label_ids is not None:
+            result['LabelIds'] = self.label_ids
         if self.name is not None:
             result['Name'] = self.name
+        if self.pre_train_task_id is not None:
+            result['PreTrainTaskId'] = self.pre_train_task_id
         if self.train_mode is not None:
             result['TrainMode'] = self.train_mode
         if self.workspace_id is not None:
@@ -782,14 +792,16 @@ class CreateTrainTaskRequest(TeaModel):
         m = m or dict()
         if m.get('AdvancedParameters') is not None:
             self.advanced_parameters = m.get('AdvancedParameters')
-        if m.get('DatasetId') is not None:
-            self.dataset_id = m.get('DatasetId')
+        if m.get('DatasetIds') is not None:
+            self.dataset_ids = m.get('DatasetIds')
         if m.get('Description') is not None:
             self.description = m.get('Description')
-        if m.get('LabelId') is not None:
-            self.label_id = m.get('LabelId')
+        if m.get('LabelIds') is not None:
+            self.label_ids = m.get('LabelIds')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('PreTrainTaskId') is not None:
+            self.pre_train_task_id = m.get('PreTrainTaskId')
         if m.get('TrainMode') is not None:
             self.train_mode = m.get('TrainMode')
         if m.get('WorkspaceId') is not None:
@@ -810,6 +822,8 @@ class CreateTrainTaskResponseBodyData(TeaModel):
         label_name: str = None,
         model_effect: str = None,
         model_id: int = None,
+        rely_on_task_id: int = None,
+        rely_on_task_name: str = None,
         task_name: str = None,
         train_mode: str = None,
         train_status: str = None,
@@ -824,6 +838,8 @@ class CreateTrainTaskResponseBodyData(TeaModel):
         self.label_name = label_name
         self.model_effect = model_effect
         self.model_id = model_id
+        self.rely_on_task_id = rely_on_task_id
+        self.rely_on_task_name = rely_on_task_name
         self.task_name = task_name
         self.train_mode = train_mode
         self.train_status = train_status
@@ -857,6 +873,10 @@ class CreateTrainTaskResponseBodyData(TeaModel):
             result['ModelEffect'] = self.model_effect
         if self.model_id is not None:
             result['ModelId'] = self.model_id
+        if self.rely_on_task_id is not None:
+            result['RelyOnTaskId'] = self.rely_on_task_id
+        if self.rely_on_task_name is not None:
+            result['RelyOnTaskName'] = self.rely_on_task_name
         if self.task_name is not None:
             result['TaskName'] = self.task_name
         if self.train_mode is not None:
@@ -887,6 +907,10 @@ class CreateTrainTaskResponseBodyData(TeaModel):
             self.model_effect = m.get('ModelEffect')
         if m.get('ModelId') is not None:
             self.model_id = m.get('ModelId')
+        if m.get('RelyOnTaskId') is not None:
+            self.rely_on_task_id = m.get('RelyOnTaskId')
+        if m.get('RelyOnTaskName') is not None:
+            self.rely_on_task_name = m.get('RelyOnTaskName')
         if m.get('TaskName') is not None:
             self.task_name = m.get('TaskName')
         if m.get('TrainMode') is not None:
@@ -1187,7 +1211,7 @@ class CustomizeClassifyImageAdvanceRequest(TeaModel):
         self.service_id = service_id
 
     def validate(self):
-        self.validate_required(self.image_url_object, 'image_url_object')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -1196,15 +1220,15 @@ class CustomizeClassifyImageAdvanceRequest(TeaModel):
 
         result = dict()
         if self.image_url_object is not None:
-            result['ImageUrlObject'] = self.image_url_object
+            result['ImageUrl'] = self.image_url_object
         if self.service_id is not None:
             result['ServiceId'] = self.service_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ImageUrlObject') is not None:
-            self.image_url_object = m.get('ImageUrlObject')
+        if m.get('ImageUrl') is not None:
+            self.image_url_object = m.get('ImageUrl')
         if m.get('ServiceId') is not None:
             self.service_id = m.get('ServiceId')
         return self
@@ -1365,7 +1389,7 @@ class CustomizeDetectImageAdvanceRequest(TeaModel):
         self.service_id = service_id
 
     def validate(self):
-        self.validate_required(self.image_url_object, 'image_url_object')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -1374,15 +1398,15 @@ class CustomizeDetectImageAdvanceRequest(TeaModel):
 
         result = dict()
         if self.image_url_object is not None:
-            result['ImageUrlObject'] = self.image_url_object
+            result['ImageUrl'] = self.image_url_object
         if self.service_id is not None:
             result['ServiceId'] = self.service_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ImageUrlObject') is not None:
-            self.image_url_object = m.get('ImageUrlObject')
+        if m.get('ImageUrl') is not None:
+            self.image_url_object = m.get('ImageUrl')
         if m.get('ServiceId') is not None:
             self.service_id = m.get('ServiceId')
         return self
@@ -1631,7 +1655,7 @@ class CustomizeInstanceSegmentImageAdvanceRequest(TeaModel):
         self.service_id = service_id
 
     def validate(self):
-        self.validate_required(self.image_url_object, 'image_url_object')
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -1640,15 +1664,15 @@ class CustomizeInstanceSegmentImageAdvanceRequest(TeaModel):
 
         result = dict()
         if self.image_url_object is not None:
-            result['ImageUrlObject'] = self.image_url_object
+            result['ImageUrl'] = self.image_url_object
         if self.service_id is not None:
             result['ServiceId'] = self.service_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ImageUrlObject') is not None:
-            self.image_url_object = m.get('ImageUrlObject')
+        if m.get('ImageUrl') is not None:
+            self.image_url_object = m.get('ImageUrl')
         if m.get('ServiceId') is not None:
             self.service_id = m.get('ServiceId')
         return self
@@ -1980,8 +2004,10 @@ class DebugServiceRequest(TeaModel):
 class DebugServiceResponseBody(TeaModel):
     def __init__(
         self,
+        data: str = None,
         request_id: str = None,
     ):
+        self.data = data
         self.request_id = request_id
 
     def validate(self):
@@ -1993,12 +2019,16 @@ class DebugServiceResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -2044,6 +2074,163 @@ class DebugServiceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DebugServiceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteDataReflowDataRequest(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        service_id: int = None,
+    ):
+        self.id = id
+        self.service_id = service_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.service_id is not None:
+            result['ServiceId'] = self.service_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ServiceId') is not None:
+            self.service_id = m.get('ServiceId')
+        return self
+
+
+class DeleteDataReflowDataResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        gmt_modified: int = None,
+        id: int = None,
+        service_id: int = None,
+        status: str = None,
+    ):
+        self.gmt_modified = gmt_modified
+        self.id = id
+        self.service_id = service_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.service_id is not None:
+            result['ServiceId'] = self.service_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ServiceId') is not None:
+            self.service_id = m.get('ServiceId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DeleteDataReflowDataResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: DeleteDataReflowDataResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = DeleteDataReflowDataResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteDataReflowDataResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteDataReflowDataResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteDataReflowDataResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3026,6 +3213,145 @@ class DeleteWorkspaceResponse(TeaModel):
         return self
 
 
+class DisableDataReflowRequest(TeaModel):
+    def __init__(
+        self,
+        service_id: int = None,
+    ):
+        self.service_id = service_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.service_id is not None:
+            result['ServiceId'] = self.service_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ServiceId') is not None:
+            self.service_id = m.get('ServiceId')
+        return self
+
+
+class DisableDataReflowResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        enable_data_reflow_flag: bool = None,
+        service_id: int = None,
+    ):
+        self.enable_data_reflow_flag = enable_data_reflow_flag
+        self.service_id = service_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable_data_reflow_flag is not None:
+            result['EnableDataReflowFlag'] = self.enable_data_reflow_flag
+        if self.service_id is not None:
+            result['ServiceId'] = self.service_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnableDataReflowFlag') is not None:
+            self.enable_data_reflow_flag = m.get('EnableDataReflowFlag')
+        if m.get('ServiceId') is not None:
+            self.service_id = m.get('ServiceId')
+        return self
+
+
+class DisableDataReflowResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: DisableDataReflowResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = DisableDataReflowResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DisableDataReflowResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DisableDataReflowResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DisableDataReflowResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DownloadFileNameListRequest(TeaModel):
     def __init__(
         self,
@@ -3294,6 +3620,332 @@ class DownloadLabelFileResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DownloadLabelFileResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class EnableDataReflowRequest(TeaModel):
+    def __init__(
+        self,
+        data_reflow_oss_path: str = None,
+        data_reflow_rate: int = None,
+        service_id: int = None,
+    ):
+        self.data_reflow_oss_path = data_reflow_oss_path
+        self.data_reflow_rate = data_reflow_rate
+        self.service_id = service_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_reflow_oss_path is not None:
+            result['DataReflowOssPath'] = self.data_reflow_oss_path
+        if self.data_reflow_rate is not None:
+            result['DataReflowRate'] = self.data_reflow_rate
+        if self.service_id is not None:
+            result['ServiceId'] = self.service_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataReflowOssPath') is not None:
+            self.data_reflow_oss_path = m.get('DataReflowOssPath')
+        if m.get('DataReflowRate') is not None:
+            self.data_reflow_rate = m.get('DataReflowRate')
+        if m.get('ServiceId') is not None:
+            self.service_id = m.get('ServiceId')
+        return self
+
+
+class EnableDataReflowResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        data_reflow_oss_path: str = None,
+        data_reflow_rate: int = None,
+        enable_data_reflow_flag: bool = None,
+        service_id: int = None,
+    ):
+        self.data_reflow_oss_path = data_reflow_oss_path
+        self.data_reflow_rate = data_reflow_rate
+        self.enable_data_reflow_flag = enable_data_reflow_flag
+        self.service_id = service_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_reflow_oss_path is not None:
+            result['DataReflowOssPath'] = self.data_reflow_oss_path
+        if self.data_reflow_rate is not None:
+            result['DataReflowRate'] = self.data_reflow_rate
+        if self.enable_data_reflow_flag is not None:
+            result['EnableDataReflowFlag'] = self.enable_data_reflow_flag
+        if self.service_id is not None:
+            result['ServiceId'] = self.service_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataReflowOssPath') is not None:
+            self.data_reflow_oss_path = m.get('DataReflowOssPath')
+        if m.get('DataReflowRate') is not None:
+            self.data_reflow_rate = m.get('DataReflowRate')
+        if m.get('EnableDataReflowFlag') is not None:
+            self.enable_data_reflow_flag = m.get('EnableDataReflowFlag')
+        if m.get('ServiceId') is not None:
+            self.service_id = m.get('ServiceId')
+        return self
+
+
+class EnableDataReflowResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: EnableDataReflowResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = EnableDataReflowResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class EnableDataReflowResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: EnableDataReflowResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = EnableDataReflowResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ExportDataReflowDataListRequest(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+        end_time: int = None,
+        file_type: str = None,
+        image_name: str = None,
+        service_id: int = None,
+        start_time: int = None,
+    ):
+        self.category = category
+        self.end_time = end_time
+        self.file_type = file_type
+        self.image_name = image_name
+        self.service_id = service_id
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.file_type is not None:
+            result['FileType'] = self.file_type
+        if self.image_name is not None:
+            result['ImageName'] = self.image_name
+        if self.service_id is not None:
+            result['ServiceId'] = self.service_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('FileType') is not None:
+            self.file_type = m.get('FileType')
+        if m.get('ImageName') is not None:
+            self.image_name = m.get('ImageName')
+        if m.get('ServiceId') is not None:
+            self.service_id = m.get('ServiceId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class ExportDataReflowDataListResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        oss_http_url: str = None,
+    ):
+        self.oss_http_url = oss_http_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.oss_http_url is not None:
+            result['OssHttpUrl'] = self.oss_http_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OssHttpUrl') is not None:
+            self.oss_http_url = m.get('OssHttpUrl')
+        return self
+
+
+class ExportDataReflowDataListResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: ExportDataReflowDataListResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = ExportDataReflowDataListResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ExportDataReflowDataListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ExportDataReflowDataListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ExportDataReflowDataListResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3769,6 +4421,9 @@ class GetLabelsetResponseBodyData(TeaModel):
         label_type: str = None,
         name: str = None,
         status: str = None,
+        sub_task_package_size: str = None,
+        tag_user_list: str = None,
+        tags: str = None,
         total: int = None,
     ):
         self.description = description
@@ -3777,6 +4432,9 @@ class GetLabelsetResponseBodyData(TeaModel):
         self.label_type = label_type
         self.name = name
         self.status = status
+        self.sub_task_package_size = sub_task_package_size
+        self.tag_user_list = tag_user_list
+        self.tags = tags
         self.total = total
 
     def validate(self):
@@ -3800,6 +4458,12 @@ class GetLabelsetResponseBodyData(TeaModel):
             result['Name'] = self.name
         if self.status is not None:
             result['Status'] = self.status
+        if self.sub_task_package_size is not None:
+            result['SubTaskPackageSize'] = self.sub_task_package_size
+        if self.tag_user_list is not None:
+            result['TagUserList'] = self.tag_user_list
+        if self.tags is not None:
+            result['Tags'] = self.tags
         if self.total is not None:
             result['Total'] = self.total
         return result
@@ -3818,6 +4482,12 @@ class GetLabelsetResponseBodyData(TeaModel):
             self.name = m.get('Name')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('SubTaskPackageSize') is not None:
+            self.sub_task_package_size = m.get('SubTaskPackageSize')
+        if m.get('TagUserList') is not None:
+            self.tag_user_list = m.get('TagUserList')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
         if m.get('Total') is not None:
             self.total = m.get('Total')
         return self
@@ -3929,9 +4599,55 @@ class GetServiceRequest(TeaModel):
         return self
 
 
+class GetServiceResponseBodyDataDataReflowInfo(TeaModel):
+    def __init__(
+        self,
+        data_reflow_count: int = None,
+        data_reflow_oss_path: str = None,
+        data_reflow_rate: int = None,
+        enable_data_reflow_flag: bool = None,
+    ):
+        self.data_reflow_count = data_reflow_count
+        self.data_reflow_oss_path = data_reflow_oss_path
+        self.data_reflow_rate = data_reflow_rate
+        self.enable_data_reflow_flag = enable_data_reflow_flag
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_reflow_count is not None:
+            result['DataReflowCount'] = self.data_reflow_count
+        if self.data_reflow_oss_path is not None:
+            result['DataReflowOssPath'] = self.data_reflow_oss_path
+        if self.data_reflow_rate is not None:
+            result['DataReflowRate'] = self.data_reflow_rate
+        if self.enable_data_reflow_flag is not None:
+            result['EnableDataReflowFlag'] = self.enable_data_reflow_flag
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataReflowCount') is not None:
+            self.data_reflow_count = m.get('DataReflowCount')
+        if m.get('DataReflowOssPath') is not None:
+            self.data_reflow_oss_path = m.get('DataReflowOssPath')
+        if m.get('DataReflowRate') is not None:
+            self.data_reflow_rate = m.get('DataReflowRate')
+        if m.get('EnableDataReflowFlag') is not None:
+            self.enable_data_reflow_flag = m.get('EnableDataReflowFlag')
+        return self
+
+
 class GetServiceResponseBodyData(TeaModel):
     def __init__(
         self,
+        data_reflow_info: GetServiceResponseBodyDataDataReflowInfo = None,
         errorcodes: str = None,
         gmt_create: int = None,
         id: int = None,
@@ -3944,6 +4660,7 @@ class GetServiceResponseBodyData(TeaModel):
         service_name: str = None,
         status: str = None,
     ):
+        self.data_reflow_info = data_reflow_info
         self.errorcodes = errorcodes
         self.gmt_create = gmt_create
         self.id = id
@@ -3957,7 +4674,8 @@ class GetServiceResponseBodyData(TeaModel):
         self.status = status
 
     def validate(self):
-        pass
+        if self.data_reflow_info:
+            self.data_reflow_info.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -3965,6 +4683,8 @@ class GetServiceResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.data_reflow_info is not None:
+            result['DataReflowInfo'] = self.data_reflow_info.to_map()
         if self.errorcodes is not None:
             result['Errorcodes'] = self.errorcodes
         if self.gmt_create is not None:
@@ -3991,6 +4711,9 @@ class GetServiceResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DataReflowInfo') is not None:
+            temp_model = GetServiceResponseBodyDataDataReflowInfo()
+            self.data_reflow_info = temp_model.from_map(m['DataReflowInfo'])
         if m.get('Errorcodes') is not None:
             self.errorcodes = m.get('Errorcodes')
         if m.get('GmtCreate') is not None:
@@ -4922,6 +5645,199 @@ class GetWorkspaceResponse(TeaModel):
         return self
 
 
+class ListDataReflowDatasRequest(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+        current_page: int = None,
+        end_time: int = None,
+        image_name: str = None,
+        page_size: int = None,
+        service_id: int = None,
+        start_time: int = None,
+    ):
+        self.category = category
+        self.current_page = current_page
+        self.end_time = end_time
+        self.image_name = image_name
+        self.page_size = page_size
+        self.service_id = service_id
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.image_name is not None:
+            result['ImageName'] = self.image_name
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.service_id is not None:
+            result['ServiceId'] = self.service_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('ImageName') is not None:
+            self.image_name = m.get('ImageName')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ServiceId') is not None:
+            self.service_id = m.get('ServiceId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class ListDataReflowDatasResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        elements: List[Dict[str, Any]] = None,
+        page_size: int = None,
+        total_count: int = None,
+        total_page: int = None,
+    ):
+        self.current_page = current_page
+        self.elements = elements
+        self.page_size = page_size
+        self.total_count = total_count
+        self.total_page = total_page
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.elements is not None:
+            result['Elements'] = self.elements
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.total_page is not None:
+            result['TotalPage'] = self.total_page
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('Elements') is not None:
+            self.elements = m.get('Elements')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('TotalPage') is not None:
+            self.total_page = m.get('TotalPage')
+        return self
+
+
+class ListDataReflowDatasResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: ListDataReflowDatasResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = ListDataReflowDatasResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListDataReflowDatasResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListDataReflowDatasResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListDataReflowDatasResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListDatasetDatasRequest(TeaModel):
     def __init__(
         self,
@@ -5270,6 +6186,7 @@ class ListLabelsetDatasRequest(TeaModel):
     def __init__(
         self,
         current_page: int = None,
+        is_abandon: bool = None,
         label_id: int = None,
         name: str = None,
         operation: str = None,
@@ -5277,6 +6194,7 @@ class ListLabelsetDatasRequest(TeaModel):
         value: str = None,
     ):
         self.current_page = current_page
+        self.is_abandon = is_abandon
         self.label_id = label_id
         self.name = name
         self.operation = operation
@@ -5294,6 +6212,8 @@ class ListLabelsetDatasRequest(TeaModel):
         result = dict()
         if self.current_page is not None:
             result['CurrentPage'] = self.current_page
+        if self.is_abandon is not None:
+            result['IsAbandon'] = self.is_abandon
         if self.label_id is not None:
             result['LabelId'] = self.label_id
         if self.name is not None:
@@ -5310,6 +6230,8 @@ class ListLabelsetDatasRequest(TeaModel):
         m = m or dict()
         if m.get('CurrentPage') is not None:
             self.current_page = m.get('CurrentPage')
+        if m.get('IsAbandon') is not None:
+            self.is_abandon = m.get('IsAbandon')
         if m.get('LabelId') is not None:
             self.label_id = m.get('LabelId')
         if m.get('Name') is not None:
@@ -5459,10 +6381,12 @@ class ListLabelsetsRequest(TeaModel):
         current_page: int = None,
         dataset_id: int = None,
         page_size: int = None,
+        status: str = None,
     ):
         self.current_page = current_page
         self.dataset_id = dataset_id
         self.page_size = page_size
+        self.status = status
 
     def validate(self):
         pass
@@ -5479,6 +6403,8 @@ class ListLabelsetsRequest(TeaModel):
             result['DatasetId'] = self.dataset_id
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.status is not None:
+            result['Status'] = self.status
         return result
 
     def from_map(self, m: dict = None):
@@ -5489,6 +6415,8 @@ class ListLabelsetsRequest(TeaModel):
             self.dataset_id = m.get('DatasetId')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         return self
 
 
@@ -5808,10 +6736,12 @@ class ListTrainTasksRequest(TeaModel):
         self,
         current_page: int = None,
         page_size: int = None,
+        status: str = None,
         workspace_id: int = None,
     ):
         self.current_page = current_page
         self.page_size = page_size
+        self.status = status
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -5827,6 +6757,8 @@ class ListTrainTasksRequest(TeaModel):
             result['CurrentPage'] = self.current_page
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.status is not None:
+            result['Status'] = self.status
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
         return result
@@ -5837,6 +6769,8 @@ class ListTrainTasksRequest(TeaModel):
             self.current_page = m.get('CurrentPage')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
         return self
@@ -6507,9 +7441,11 @@ class StartTrainTaskRequest(TeaModel):
         self,
         force_start_flag: bool = None,
         id: int = None,
+        rely_on_task_id: int = None,
     ):
         self.force_start_flag = force_start_flag
         self.id = id
+        self.rely_on_task_id = rely_on_task_id
 
     def validate(self):
         pass
@@ -6524,6 +7460,8 @@ class StartTrainTaskRequest(TeaModel):
             result['ForceStartFlag'] = self.force_start_flag
         if self.id is not None:
             result['Id'] = self.id
+        if self.rely_on_task_id is not None:
+            result['RelyOnTaskId'] = self.rely_on_task_id
         return result
 
     def from_map(self, m: dict = None):
@@ -6532,6 +7470,8 @@ class StartTrainTaskRequest(TeaModel):
             self.force_start_flag = m.get('ForceStartFlag')
         if m.get('Id') is not None:
             self.id = m.get('Id')
+        if m.get('RelyOnTaskId') is not None:
+            self.rely_on_task_id = m.get('RelyOnTaskId')
         return self
 
 
@@ -7239,12 +8179,14 @@ class UpdateLabelsetRequest(TeaModel):
         id: int = None,
         name: str = None,
         object_key: str = None,
+        tag_user_list: str = None,
         user_oss_url: str = None,
     ):
         self.description = description
         self.id = id
         self.name = name
         self.object_key = object_key
+        self.tag_user_list = tag_user_list
         self.user_oss_url = user_oss_url
 
     def validate(self):
@@ -7264,6 +8206,8 @@ class UpdateLabelsetRequest(TeaModel):
             result['Name'] = self.name
         if self.object_key is not None:
             result['ObjectKey'] = self.object_key
+        if self.tag_user_list is not None:
+            result['TagUserList'] = self.tag_user_list
         if self.user_oss_url is not None:
             result['UserOssUrl'] = self.user_oss_url
         return result
@@ -7278,6 +8222,8 @@ class UpdateLabelsetRequest(TeaModel):
             self.name = m.get('Name')
         if m.get('ObjectKey') is not None:
             self.object_key = m.get('ObjectKey')
+        if m.get('TagUserList') is not None:
+            self.tag_user_list = m.get('TagUserList')
         if m.get('UserOssUrl') is not None:
             self.user_oss_url = m.get('UserOssUrl')
         return self
@@ -7598,14 +8544,24 @@ class UpdateTrainTaskRequest(TeaModel):
     def __init__(
         self,
         advanced_parameters: str = None,
+        dataset_ids: str = None,
         description: str = None,
         id: int = None,
+        label_ids: str = None,
         name: str = None,
+        pre_train_task_flag: bool = None,
+        pre_train_task_id: int = None,
+        train_mode: str = None,
     ):
         self.advanced_parameters = advanced_parameters
+        self.dataset_ids = dataset_ids
         self.description = description
         self.id = id
+        self.label_ids = label_ids
         self.name = name
+        self.pre_train_task_flag = pre_train_task_flag
+        self.pre_train_task_id = pre_train_task_id
+        self.train_mode = train_mode
 
     def validate(self):
         pass
@@ -7618,24 +8574,44 @@ class UpdateTrainTaskRequest(TeaModel):
         result = dict()
         if self.advanced_parameters is not None:
             result['AdvancedParameters'] = self.advanced_parameters
+        if self.dataset_ids is not None:
+            result['DatasetIds'] = self.dataset_ids
         if self.description is not None:
             result['Description'] = self.description
         if self.id is not None:
             result['Id'] = self.id
+        if self.label_ids is not None:
+            result['LabelIds'] = self.label_ids
         if self.name is not None:
             result['Name'] = self.name
+        if self.pre_train_task_flag is not None:
+            result['PreTrainTaskFlag'] = self.pre_train_task_flag
+        if self.pre_train_task_id is not None:
+            result['PreTrainTaskId'] = self.pre_train_task_id
+        if self.train_mode is not None:
+            result['TrainMode'] = self.train_mode
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('AdvancedParameters') is not None:
             self.advanced_parameters = m.get('AdvancedParameters')
+        if m.get('DatasetIds') is not None:
+            self.dataset_ids = m.get('DatasetIds')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('Id') is not None:
             self.id = m.get('Id')
+        if m.get('LabelIds') is not None:
+            self.label_ids = m.get('LabelIds')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('PreTrainTaskFlag') is not None:
+            self.pre_train_task_flag = m.get('PreTrainTaskFlag')
+        if m.get('PreTrainTaskId') is not None:
+            self.pre_train_task_id = m.get('PreTrainTaskId')
+        if m.get('TrainMode') is not None:
+            self.train_mode = m.get('TrainMode')
         return self
 
 

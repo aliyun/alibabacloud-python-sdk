@@ -10,7 +10,6 @@ from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_viapi_regen20211119 import models as viapi_regen_20211119_models
 from alibabacloud_tea_util import models as util_models
 from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
-from alibabacloud_tea_rpc import models as rpc_models
 from alibabacloud_openplatform20191219.client import Client as OpenPlatformClient
 from alibabacloud_openplatform20191219 import models as open_platform_models
 from alibabacloud_oss_sdk import models as oss_models
@@ -202,6 +201,8 @@ class Client(OpenApiClient):
             body['Name'] = request.name
         if not UtilClient.is_unset(request.object_key):
             body['ObjectKey'] = request.object_key
+        if not UtilClient.is_unset(request.pre_label_id):
+            body['PreLabelId'] = request.pre_label_id
         if not UtilClient.is_unset(request.tag_settings):
             body['TagSettings'] = request.tag_settings
         if not UtilClient.is_unset(request.tag_user_list):
@@ -244,6 +245,8 @@ class Client(OpenApiClient):
             body['Name'] = request.name
         if not UtilClient.is_unset(request.object_key):
             body['ObjectKey'] = request.object_key
+        if not UtilClient.is_unset(request.pre_label_id):
+            body['PreLabelId'] = request.pre_label_id
         if not UtilClient.is_unset(request.tag_settings):
             body['TagSettings'] = request.tag_settings
         if not UtilClient.is_unset(request.tag_user_list):
@@ -450,14 +453,16 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.advanced_parameters):
             body['AdvancedParameters'] = request.advanced_parameters
-        if not UtilClient.is_unset(request.dataset_id):
-            body['DatasetId'] = request.dataset_id
+        if not UtilClient.is_unset(request.dataset_ids):
+            body['DatasetIds'] = request.dataset_ids
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
-        if not UtilClient.is_unset(request.label_id):
-            body['LabelId'] = request.label_id
+        if not UtilClient.is_unset(request.label_ids):
+            body['LabelIds'] = request.label_ids
         if not UtilClient.is_unset(request.name):
             body['Name'] = request.name
+        if not UtilClient.is_unset(request.pre_train_task_id):
+            body['PreTrainTaskId'] = request.pre_train_task_id
         if not UtilClient.is_unset(request.train_mode):
             body['TrainMode'] = request.train_mode
         if not UtilClient.is_unset(request.workspace_id):
@@ -490,14 +495,16 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.advanced_parameters):
             body['AdvancedParameters'] = request.advanced_parameters
-        if not UtilClient.is_unset(request.dataset_id):
-            body['DatasetId'] = request.dataset_id
+        if not UtilClient.is_unset(request.dataset_ids):
+            body['DatasetIds'] = request.dataset_ids
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
-        if not UtilClient.is_unset(request.label_id):
-            body['LabelId'] = request.label_id
+        if not UtilClient.is_unset(request.label_ids):
+            body['LabelIds'] = request.label_ids
         if not UtilClient.is_unset(request.name):
             body['Name'] = request.name
+        if not UtilClient.is_unset(request.pre_train_task_id):
+            body['PreTrainTaskId'] = request.pre_train_task_id
         if not UtilClient.is_unset(request.train_mode):
             body['TrainMode'] = request.train_mode
         if not UtilClient.is_unset(request.workspace_id):
@@ -702,7 +709,7 @@ class Client(OpenApiClient):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
-        auth_config = rpc_models.Config(
+        auth_config = open_api_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             security_token=security_token,
@@ -733,28 +740,28 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(request, customize_classify_image_req)
         if not UtilClient.is_unset(request.image_url_object):
             auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-            oss_config.access_key_id = auth_response.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_config.access_key_id = auth_response.body.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
             oss_client = OSSClient(oss_config)
             file_obj = file_form_models.FileField(
-                filename=auth_response.object_key,
+                filename=auth_response.body.object_key,
                 content=request.image_url_object,
                 content_type=''
             )
             oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.access_key_id,
-                policy=auth_response.encoded_policy,
-                signature=auth_response.signature,
-                key=auth_response.object_key,
+                access_key_id=auth_response.body.access_key_id,
+                policy=auth_response.body.encoded_policy,
+                signature=auth_response.body.signature,
+                key=auth_response.body.object_key,
                 file=file_obj,
                 success_action_status='201'
             )
             upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.bucket,
+                bucket_name=auth_response.body.bucket,
                 header=oss_header
             )
             oss_client.post_object(upload_request, oss_runtime)
-            customize_classify_image_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+            customize_classify_image_req.image_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
         customize_classify_image_resp = self.customize_classify_image_with_options(customize_classify_image_req, runtime)
         return customize_classify_image_resp
 
@@ -773,7 +780,7 @@ class Client(OpenApiClient):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
-        auth_config = rpc_models.Config(
+        auth_config = open_api_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             security_token=security_token,
@@ -804,28 +811,28 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(request, customize_classify_image_req)
         if not UtilClient.is_unset(request.image_url_object):
             auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-            oss_config.access_key_id = auth_response.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_config.access_key_id = auth_response.body.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
             oss_client = OSSClient(oss_config)
             file_obj = file_form_models.FileField(
-                filename=auth_response.object_key,
+                filename=auth_response.body.object_key,
                 content=request.image_url_object,
                 content_type=''
             )
             oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.access_key_id,
-                policy=auth_response.encoded_policy,
-                signature=auth_response.signature,
-                key=auth_response.object_key,
+                access_key_id=auth_response.body.access_key_id,
+                policy=auth_response.body.encoded_policy,
+                signature=auth_response.body.signature,
+                key=auth_response.body.object_key,
                 file=file_obj,
                 success_action_status='201'
             )
             upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.bucket,
+                bucket_name=auth_response.body.bucket,
                 header=oss_header
             )
             await oss_client.post_object_async(upload_request, oss_runtime)
-            customize_classify_image_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+            customize_classify_image_req.image_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
         customize_classify_image_resp = await self.customize_classify_image_with_options_async(customize_classify_image_req, runtime)
         return customize_classify_image_resp
 
@@ -918,7 +925,7 @@ class Client(OpenApiClient):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
-        auth_config = rpc_models.Config(
+        auth_config = open_api_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             security_token=security_token,
@@ -949,28 +956,28 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(request, customize_detect_image_req)
         if not UtilClient.is_unset(request.image_url_object):
             auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-            oss_config.access_key_id = auth_response.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_config.access_key_id = auth_response.body.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
             oss_client = OSSClient(oss_config)
             file_obj = file_form_models.FileField(
-                filename=auth_response.object_key,
+                filename=auth_response.body.object_key,
                 content=request.image_url_object,
                 content_type=''
             )
             oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.access_key_id,
-                policy=auth_response.encoded_policy,
-                signature=auth_response.signature,
-                key=auth_response.object_key,
+                access_key_id=auth_response.body.access_key_id,
+                policy=auth_response.body.encoded_policy,
+                signature=auth_response.body.signature,
+                key=auth_response.body.object_key,
                 file=file_obj,
                 success_action_status='201'
             )
             upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.bucket,
+                bucket_name=auth_response.body.bucket,
                 header=oss_header
             )
             oss_client.post_object(upload_request, oss_runtime)
-            customize_detect_image_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+            customize_detect_image_req.image_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
         customize_detect_image_resp = self.customize_detect_image_with_options(customize_detect_image_req, runtime)
         return customize_detect_image_resp
 
@@ -989,7 +996,7 @@ class Client(OpenApiClient):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
-        auth_config = rpc_models.Config(
+        auth_config = open_api_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             security_token=security_token,
@@ -1020,28 +1027,28 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(request, customize_detect_image_req)
         if not UtilClient.is_unset(request.image_url_object):
             auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-            oss_config.access_key_id = auth_response.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_config.access_key_id = auth_response.body.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
             oss_client = OSSClient(oss_config)
             file_obj = file_form_models.FileField(
-                filename=auth_response.object_key,
+                filename=auth_response.body.object_key,
                 content=request.image_url_object,
                 content_type=''
             )
             oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.access_key_id,
-                policy=auth_response.encoded_policy,
-                signature=auth_response.signature,
-                key=auth_response.object_key,
+                access_key_id=auth_response.body.access_key_id,
+                policy=auth_response.body.encoded_policy,
+                signature=auth_response.body.signature,
+                key=auth_response.body.object_key,
                 file=file_obj,
                 success_action_status='201'
             )
             upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.bucket,
+                bucket_name=auth_response.body.bucket,
                 header=oss_header
             )
             await oss_client.post_object_async(upload_request, oss_runtime)
-            customize_detect_image_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+            customize_detect_image_req.image_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
         customize_detect_image_resp = await self.customize_detect_image_with_options_async(customize_detect_image_req, runtime)
         return customize_detect_image_resp
 
@@ -1134,7 +1141,7 @@ class Client(OpenApiClient):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
-        auth_config = rpc_models.Config(
+        auth_config = open_api_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             security_token=security_token,
@@ -1165,28 +1172,28 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(request, customize_instance_segment_image_req)
         if not UtilClient.is_unset(request.image_url_object):
             auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-            oss_config.access_key_id = auth_response.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_config.access_key_id = auth_response.body.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
             oss_client = OSSClient(oss_config)
             file_obj = file_form_models.FileField(
-                filename=auth_response.object_key,
+                filename=auth_response.body.object_key,
                 content=request.image_url_object,
                 content_type=''
             )
             oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.access_key_id,
-                policy=auth_response.encoded_policy,
-                signature=auth_response.signature,
-                key=auth_response.object_key,
+                access_key_id=auth_response.body.access_key_id,
+                policy=auth_response.body.encoded_policy,
+                signature=auth_response.body.signature,
+                key=auth_response.body.object_key,
                 file=file_obj,
                 success_action_status='201'
             )
             upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.bucket,
+                bucket_name=auth_response.body.bucket,
                 header=oss_header
             )
             oss_client.post_object(upload_request, oss_runtime)
-            customize_instance_segment_image_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+            customize_instance_segment_image_req.image_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
         customize_instance_segment_image_resp = self.customize_instance_segment_image_with_options(customize_instance_segment_image_req, runtime)
         return customize_instance_segment_image_resp
 
@@ -1205,7 +1212,7 @@ class Client(OpenApiClient):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
-        auth_config = rpc_models.Config(
+        auth_config = open_api_models.Config(
             access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             security_token=security_token,
@@ -1236,28 +1243,28 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(request, customize_instance_segment_image_req)
         if not UtilClient.is_unset(request.image_url_object):
             auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-            oss_config.access_key_id = auth_response.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.endpoint, auth_response.use_accelerate, self._endpoint_type)
+            oss_config.access_key_id = auth_response.body.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
             oss_client = OSSClient(oss_config)
             file_obj = file_form_models.FileField(
-                filename=auth_response.object_key,
+                filename=auth_response.body.object_key,
                 content=request.image_url_object,
                 content_type=''
             )
             oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.access_key_id,
-                policy=auth_response.encoded_policy,
-                signature=auth_response.signature,
-                key=auth_response.object_key,
+                access_key_id=auth_response.body.access_key_id,
+                policy=auth_response.body.encoded_policy,
+                signature=auth_response.body.signature,
+                key=auth_response.body.object_key,
                 file=file_obj,
                 success_action_status='201'
             )
             upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.bucket,
+                bucket_name=auth_response.body.bucket,
                 header=oss_header
             )
             await oss_client.post_object_async(upload_request, oss_runtime)
-            customize_instance_segment_image_req.image_url = f'http://{auth_response.bucket}.{auth_response.endpoint}/{auth_response.object_key}'
+            customize_instance_segment_image_req.image_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
         customize_instance_segment_image_resp = await self.customize_instance_segment_image_with_options_async(customize_instance_segment_image_req, runtime)
         return customize_instance_segment_image_resp
 
@@ -1334,6 +1341,80 @@ class Client(OpenApiClient):
     ) -> viapi_regen_20211119_models.DebugServiceResponse:
         runtime = util_models.RuntimeOptions()
         return await self.debug_service_with_options_async(request, runtime)
+
+    def delete_data_reflow_data_with_options(
+        self,
+        request: viapi_regen_20211119_models.DeleteDataReflowDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.DeleteDataReflowDataResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        if not UtilClient.is_unset(request.service_id):
+            body['ServiceId'] = request.service_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteDataReflowData',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.DeleteDataReflowDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_data_reflow_data_with_options_async(
+        self,
+        request: viapi_regen_20211119_models.DeleteDataReflowDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.DeleteDataReflowDataResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        if not UtilClient.is_unset(request.service_id):
+            body['ServiceId'] = request.service_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteDataReflowData',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.DeleteDataReflowDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_data_reflow_data(
+        self,
+        request: viapi_regen_20211119_models.DeleteDataReflowDataRequest,
+    ) -> viapi_regen_20211119_models.DeleteDataReflowDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_data_reflow_data_with_options(request, runtime)
+
+    async def delete_data_reflow_data_async(
+        self,
+        request: viapi_regen_20211119_models.DeleteDataReflowDataRequest,
+    ) -> viapi_regen_20211119_models.DeleteDataReflowDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_data_reflow_data_with_options_async(request, runtime)
 
     def delete_dataset_with_options(
         self,
@@ -1759,6 +1840,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_workspace_with_options_async(request, runtime)
 
+    def disable_data_reflow_with_options(
+        self,
+        request: viapi_regen_20211119_models.DisableDataReflowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.DisableDataReflowResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.service_id):
+            body['ServiceId'] = request.service_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DisableDataReflow',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.DisableDataReflowResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def disable_data_reflow_with_options_async(
+        self,
+        request: viapi_regen_20211119_models.DisableDataReflowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.DisableDataReflowResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.service_id):
+            body['ServiceId'] = request.service_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DisableDataReflow',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.DisableDataReflowResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def disable_data_reflow(
+        self,
+        request: viapi_regen_20211119_models.DisableDataReflowRequest,
+    ) -> viapi_regen_20211119_models.DisableDataReflowResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.disable_data_reflow_with_options(request, runtime)
+
+    async def disable_data_reflow_async(
+        self,
+        request: viapi_regen_20211119_models.DisableDataReflowRequest,
+    ) -> viapi_regen_20211119_models.DisableDataReflowResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.disable_data_reflow_with_options_async(request, runtime)
+
     def download_file_name_list_with_options(
         self,
         request: viapi_regen_20211119_models.DownloadFileNameListRequest,
@@ -1902,6 +2053,174 @@ class Client(OpenApiClient):
     ) -> viapi_regen_20211119_models.DownloadLabelFileResponse:
         runtime = util_models.RuntimeOptions()
         return await self.download_label_file_with_options_async(request, runtime)
+
+    def enable_data_reflow_with_options(
+        self,
+        request: viapi_regen_20211119_models.EnableDataReflowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.EnableDataReflowResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.data_reflow_oss_path):
+            body['DataReflowOssPath'] = request.data_reflow_oss_path
+        if not UtilClient.is_unset(request.data_reflow_rate):
+            body['DataReflowRate'] = request.data_reflow_rate
+        if not UtilClient.is_unset(request.service_id):
+            body['ServiceId'] = request.service_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='EnableDataReflow',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.EnableDataReflowResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_data_reflow_with_options_async(
+        self,
+        request: viapi_regen_20211119_models.EnableDataReflowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.EnableDataReflowResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.data_reflow_oss_path):
+            body['DataReflowOssPath'] = request.data_reflow_oss_path
+        if not UtilClient.is_unset(request.data_reflow_rate):
+            body['DataReflowRate'] = request.data_reflow_rate
+        if not UtilClient.is_unset(request.service_id):
+            body['ServiceId'] = request.service_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='EnableDataReflow',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.EnableDataReflowResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_data_reflow(
+        self,
+        request: viapi_regen_20211119_models.EnableDataReflowRequest,
+    ) -> viapi_regen_20211119_models.EnableDataReflowResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.enable_data_reflow_with_options(request, runtime)
+
+    async def enable_data_reflow_async(
+        self,
+        request: viapi_regen_20211119_models.EnableDataReflowRequest,
+    ) -> viapi_regen_20211119_models.EnableDataReflowResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.enable_data_reflow_with_options_async(request, runtime)
+
+    def export_data_reflow_data_list_with_options(
+        self,
+        request: viapi_regen_20211119_models.ExportDataReflowDataListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.ExportDataReflowDataListResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.category):
+            body['Category'] = request.category
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.file_type):
+            body['FileType'] = request.file_type
+        if not UtilClient.is_unset(request.image_name):
+            body['ImageName'] = request.image_name
+        if not UtilClient.is_unset(request.service_id):
+            body['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExportDataReflowDataList',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.ExportDataReflowDataListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def export_data_reflow_data_list_with_options_async(
+        self,
+        request: viapi_regen_20211119_models.ExportDataReflowDataListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.ExportDataReflowDataListResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.category):
+            body['Category'] = request.category
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.file_type):
+            body['FileType'] = request.file_type
+        if not UtilClient.is_unset(request.image_name):
+            body['ImageName'] = request.image_name
+        if not UtilClient.is_unset(request.service_id):
+            body['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExportDataReflowDataList',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.ExportDataReflowDataListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def export_data_reflow_data_list(
+        self,
+        request: viapi_regen_20211119_models.ExportDataReflowDataListRequest,
+    ) -> viapi_regen_20211119_models.ExportDataReflowDataListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.export_data_reflow_data_list_with_options(request, runtime)
+
+    async def export_data_reflow_data_list_async(
+        self,
+        request: viapi_regen_20211119_models.ExportDataReflowDataListRequest,
+    ) -> viapi_regen_20211119_models.ExportDataReflowDataListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.export_data_reflow_data_list_with_options_async(request, runtime)
 
     def get_dataset_with_options(
         self,
@@ -2611,6 +2930,100 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_workspace_with_options_async(request, runtime)
 
+    def list_data_reflow_datas_with_options(
+        self,
+        request: viapi_regen_20211119_models.ListDataReflowDatasRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.ListDataReflowDatasResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.category):
+            body['Category'] = request.category
+        if not UtilClient.is_unset(request.current_page):
+            body['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.image_name):
+            body['ImageName'] = request.image_name
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.service_id):
+            body['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListDataReflowDatas',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.ListDataReflowDatasResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_data_reflow_datas_with_options_async(
+        self,
+        request: viapi_regen_20211119_models.ListDataReflowDatasRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.ListDataReflowDatasResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.category):
+            body['Category'] = request.category
+        if not UtilClient.is_unset(request.current_page):
+            body['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.image_name):
+            body['ImageName'] = request.image_name
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.service_id):
+            body['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListDataReflowDatas',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.ListDataReflowDatasResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_data_reflow_datas(
+        self,
+        request: viapi_regen_20211119_models.ListDataReflowDatasRequest,
+    ) -> viapi_regen_20211119_models.ListDataReflowDatasResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_data_reflow_datas_with_options(request, runtime)
+
+    async def list_data_reflow_datas_async(
+        self,
+        request: viapi_regen_20211119_models.ListDataReflowDatasRequest,
+    ) -> viapi_regen_20211119_models.ListDataReflowDatasResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_data_reflow_datas_with_options_async(request, runtime)
+
     def list_dataset_datas_with_options(
         self,
         request: viapi_regen_20211119_models.ListDatasetDatasRequest,
@@ -2780,6 +3193,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.current_page):
             body['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.is_abandon):
+            body['IsAbandon'] = request.is_abandon
         if not UtilClient.is_unset(request.label_id):
             body['LabelId'] = request.label_id
         if not UtilClient.is_unset(request.name):
@@ -2818,6 +3233,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.current_page):
             body['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.is_abandon):
+            body['IsAbandon'] = request.is_abandon
         if not UtilClient.is_unset(request.label_id):
             body['LabelId'] = request.label_id
         if not UtilClient.is_unset(request.name):
@@ -2874,6 +3291,8 @@ class Client(OpenApiClient):
             body['DatasetId'] = request.dataset_id
         if not UtilClient.is_unset(request.page_size):
             body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -2906,6 +3325,8 @@ class Client(OpenApiClient):
             body['DatasetId'] = request.dataset_id
         if not UtilClient.is_unset(request.page_size):
             body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -3036,6 +3457,8 @@ class Client(OpenApiClient):
             body['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.page_size):
             body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -3068,6 +3491,8 @@ class Client(OpenApiClient):
             body['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.page_size):
             body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -3336,6 +3761,8 @@ class Client(OpenApiClient):
             body['ForceStartFlag'] = request.force_start_flag
         if not UtilClient.is_unset(request.id):
             body['Id'] = request.id
+        if not UtilClient.is_unset(request.rely_on_task_id):
+            body['RelyOnTaskId'] = request.rely_on_task_id
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -3366,6 +3793,8 @@ class Client(OpenApiClient):
             body['ForceStartFlag'] = request.force_start_flag
         if not UtilClient.is_unset(request.id):
             body['Id'] = request.id
+        if not UtilClient.is_unset(request.rely_on_task_id):
+            body['RelyOnTaskId'] = request.rely_on_task_id
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -3632,6 +4061,8 @@ class Client(OpenApiClient):
             body['Name'] = request.name
         if not UtilClient.is_unset(request.object_key):
             body['ObjectKey'] = request.object_key
+        if not UtilClient.is_unset(request.tag_user_list):
+            body['TagUserList'] = request.tag_user_list
         if not UtilClient.is_unset(request.user_oss_url):
             body['UserOssUrl'] = request.user_oss_url
         req = open_api_models.OpenApiRequest(
@@ -3668,6 +4099,8 @@ class Client(OpenApiClient):
             body['Name'] = request.name
         if not UtilClient.is_unset(request.object_key):
             body['ObjectKey'] = request.object_key
+        if not UtilClient.is_unset(request.tag_user_list):
+            body['TagUserList'] = request.tag_user_list
         if not UtilClient.is_unset(request.user_oss_url):
             body['UserOssUrl'] = request.user_oss_url
         req = open_api_models.OpenApiRequest(
@@ -3798,12 +4231,22 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.advanced_parameters):
             body['AdvancedParameters'] = request.advanced_parameters
+        if not UtilClient.is_unset(request.dataset_ids):
+            body['DatasetIds'] = request.dataset_ids
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
         if not UtilClient.is_unset(request.id):
             body['Id'] = request.id
+        if not UtilClient.is_unset(request.label_ids):
+            body['LabelIds'] = request.label_ids
         if not UtilClient.is_unset(request.name):
             body['Name'] = request.name
+        if not UtilClient.is_unset(request.pre_train_task_flag):
+            body['PreTrainTaskFlag'] = request.pre_train_task_flag
+        if not UtilClient.is_unset(request.pre_train_task_id):
+            body['PreTrainTaskId'] = request.pre_train_task_id
+        if not UtilClient.is_unset(request.train_mode):
+            body['TrainMode'] = request.train_mode
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -3832,12 +4275,22 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.advanced_parameters):
             body['AdvancedParameters'] = request.advanced_parameters
+        if not UtilClient.is_unset(request.dataset_ids):
+            body['DatasetIds'] = request.dataset_ids
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
         if not UtilClient.is_unset(request.id):
             body['Id'] = request.id
+        if not UtilClient.is_unset(request.label_ids):
+            body['LabelIds'] = request.label_ids
         if not UtilClient.is_unset(request.name):
             body['Name'] = request.name
+        if not UtilClient.is_unset(request.pre_train_task_flag):
+            body['PreTrainTaskFlag'] = request.pre_train_task_flag
+        if not UtilClient.is_unset(request.pre_train_task_id):
+            body['PreTrainTaskId'] = request.pre_train_task_id
+        if not UtilClient.is_unset(request.train_mode):
+            body['TrainMode'] = request.train_mode
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
