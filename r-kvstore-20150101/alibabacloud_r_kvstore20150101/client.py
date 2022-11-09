@@ -107,16 +107,12 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.read_only_count):
-            query['ReadOnlyCount'] = request.read_only_count
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
-        if not UtilClient.is_unset(request.shard_class):
-            query['ShardClass'] = request.shard_class
         if not UtilClient.is_unset(request.shard_count):
             query['ShardCount'] = request.shard_count
         if not UtilClient.is_unset(request.source_biz):
@@ -159,16 +155,12 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.read_only_count):
-            query['ReadOnlyCount'] = request.read_only_count
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
-        if not UtilClient.is_unset(request.shard_class):
-            query['ShardClass'] = request.shard_class
         if not UtilClient.is_unset(request.shard_count):
             query['ShardCount'] = request.shard_count
         if not UtilClient.is_unset(request.source_biz):
@@ -929,6 +921,8 @@ class Client(OpenApiClient):
             query['Port'] = request.port
         if not UtilClient.is_unset(request.private_ip_address):
             query['PrivateIpAddress'] = request.private_ip_address
+        if not UtilClient.is_unset(request.read_only_count):
+            query['ReadOnlyCount'] = request.read_only_count
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
@@ -1029,6 +1023,8 @@ class Client(OpenApiClient):
             query['Port'] = request.port
         if not UtilClient.is_unset(request.private_ip_address):
             query['PrivateIpAddress'] = request.private_ip_address
+        if not UtilClient.is_unset(request.read_only_count):
+            query['ReadOnlyCount'] = request.read_only_count
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
@@ -1257,6 +1253,8 @@ class Client(OpenApiClient):
             query['Period'] = request.period
         if not UtilClient.is_unset(request.private_ip_address):
             query['PrivateIpAddress'] = request.private_ip_address
+        if not UtilClient.is_unset(request.read_only_count):
+            query['ReadOnlyCount'] = request.read_only_count
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
@@ -1349,6 +1347,8 @@ class Client(OpenApiClient):
             query['Period'] = request.period
         if not UtilClient.is_unset(request.private_ip_address):
             query['PrivateIpAddress'] = request.private_ip_address
+        if not UtilClient.is_unset(request.read_only_count):
+            query['ReadOnlyCount'] = request.read_only_count
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
@@ -1613,8 +1613,6 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.read_only_count):
-            query['ReadOnlyCount'] = request.read_only_count
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -1657,8 +1655,6 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.read_only_count):
-            query['ReadOnlyCount'] = request.read_only_count
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -1794,23 +1790,15 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_accounts_with_options_async(request, runtime)
 
-    def describe_active_operation_tasks_with_options(
+    def describe_active_operation_task_with_options(
         self,
-        request: r_kvstore_20150101_models.DescribeActiveOperationTasksRequest,
+        request: r_kvstore_20150101_models.DescribeActiveOperationTaskRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> r_kvstore_20150101_models.DescribeActiveOperationTasksResponse:
+    ) -> r_kvstore_20150101_models.DescribeActiveOperationTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.allow_cancel):
-            query['AllowCancel'] = request.allow_cancel
-        if not UtilClient.is_unset(request.allow_change):
-            query['AllowChange'] = request.allow_change
-        if not UtilClient.is_unset(request.change_level):
-            query['ChangeLevel'] = request.change_level
-        if not UtilClient.is_unset(request.db_type):
-            query['DbType'] = request.db_type
-        if not UtilClient.is_unset(request.ins_name):
-            query['InsName'] = request.ins_name
+        if not UtilClient.is_unset(request.is_history):
+            query['IsHistory'] = request.is_history
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -1819,23 +1807,21 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.product_id):
-            query['ProductId'] = request.product_id
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
-        if not UtilClient.is_unset(request.status):
-            query['Status'] = request.status
         if not UtilClient.is_unset(request.task_type):
             query['TaskType'] = request.task_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='DescribeActiveOperationTasks',
+            action='DescribeActiveOperationTask',
             version='2015-01-01',
             protocol='HTTPS',
             pathname='/',
@@ -1846,27 +1832,19 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeActiveOperationTasksResponse(),
+            r_kvstore_20150101_models.DescribeActiveOperationTaskResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def describe_active_operation_tasks_with_options_async(
+    async def describe_active_operation_task_with_options_async(
         self,
-        request: r_kvstore_20150101_models.DescribeActiveOperationTasksRequest,
+        request: r_kvstore_20150101_models.DescribeActiveOperationTaskRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> r_kvstore_20150101_models.DescribeActiveOperationTasksResponse:
+    ) -> r_kvstore_20150101_models.DescribeActiveOperationTaskResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.allow_cancel):
-            query['AllowCancel'] = request.allow_cancel
-        if not UtilClient.is_unset(request.allow_change):
-            query['AllowChange'] = request.allow_change
-        if not UtilClient.is_unset(request.change_level):
-            query['ChangeLevel'] = request.change_level
-        if not UtilClient.is_unset(request.db_type):
-            query['DbType'] = request.db_type
-        if not UtilClient.is_unset(request.ins_name):
-            query['InsName'] = request.ins_name
+        if not UtilClient.is_unset(request.is_history):
+            query['IsHistory'] = request.is_history
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -1875,23 +1853,21 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.product_id):
-            query['ProductId'] = request.product_id
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
-        if not UtilClient.is_unset(request.status):
-            query['Status'] = request.status
         if not UtilClient.is_unset(request.task_type):
             query['TaskType'] = request.task_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='DescribeActiveOperationTasks',
+            action='DescribeActiveOperationTask',
             version='2015-01-01',
             protocol='HTTPS',
             pathname='/',
@@ -1902,23 +1878,23 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            r_kvstore_20150101_models.DescribeActiveOperationTasksResponse(),
+            r_kvstore_20150101_models.DescribeActiveOperationTaskResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_active_operation_tasks(
+    def describe_active_operation_task(
         self,
-        request: r_kvstore_20150101_models.DescribeActiveOperationTasksRequest,
-    ) -> r_kvstore_20150101_models.DescribeActiveOperationTasksResponse:
+        request: r_kvstore_20150101_models.DescribeActiveOperationTaskRequest,
+    ) -> r_kvstore_20150101_models.DescribeActiveOperationTaskResponse:
         runtime = util_models.RuntimeOptions()
-        return self.describe_active_operation_tasks_with_options(request, runtime)
+        return self.describe_active_operation_task_with_options(request, runtime)
 
-    async def describe_active_operation_tasks_async(
+    async def describe_active_operation_task_async(
         self,
-        request: r_kvstore_20150101_models.DescribeActiveOperationTasksRequest,
-    ) -> r_kvstore_20150101_models.DescribeActiveOperationTasksResponse:
+        request: r_kvstore_20150101_models.DescribeActiveOperationTaskRequest,
+    ) -> r_kvstore_20150101_models.DescribeActiveOperationTaskResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.describe_active_operation_tasks_with_options_async(request, runtime)
+        return await self.describe_active_operation_task_with_options_async(request, runtime)
 
     def describe_audit_log_config_with_options(
         self,
@@ -2797,10 +2773,6 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.page_number):
-            query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -2839,10 +2811,6 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.page_number):
-            query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -4639,6 +4607,112 @@ class Client(OpenApiClient):
     ) -> r_kvstore_20150101_models.DescribeMonitorItemsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_monitor_items_with_options_async(request, runtime)
+
+    def describe_parameter_modification_history_with_options(
+        self,
+        request: r_kvstore_20150101_models.DescribeParameterModificationHistoryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.DescribeParameterModificationHistoryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.node_id):
+            query['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.parameter_name):
+            query['ParameterName'] = request.parameter_name
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeParameterModificationHistory',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeParameterModificationHistoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_parameter_modification_history_with_options_async(
+        self,
+        request: r_kvstore_20150101_models.DescribeParameterModificationHistoryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.DescribeParameterModificationHistoryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.node_id):
+            query['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.parameter_name):
+            query['ParameterName'] = request.parameter_name
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeParameterModificationHistory',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeParameterModificationHistoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_parameter_modification_history(
+        self,
+        request: r_kvstore_20150101_models.DescribeParameterModificationHistoryRequest,
+    ) -> r_kvstore_20150101_models.DescribeParameterModificationHistoryResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_parameter_modification_history_with_options(request, runtime)
+
+    async def describe_parameter_modification_history_async(
+        self,
+        request: r_kvstore_20150101_models.DescribeParameterModificationHistoryRequest,
+    ) -> r_kvstore_20150101_models.DescribeParameterModificationHistoryResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_parameter_modification_history_with_options_async(request, runtime)
 
     def describe_parameter_templates_with_options(
         self,
@@ -6732,17 +6806,15 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_account_password_with_options_async(request, runtime)
 
-    def modify_active_operation_tasks_with_options(
+    def modify_active_operation_task_with_options(
         self,
-        request: r_kvstore_20150101_models.ModifyActiveOperationTasksRequest,
+        request: r_kvstore_20150101_models.ModifyActiveOperationTaskRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> r_kvstore_20150101_models.ModifyActiveOperationTasksResponse:
+    ) -> r_kvstore_20150101_models.ModifyActiveOperationTaskResponse:
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ids):
             query['Ids'] = request.ids
-        if not UtilClient.is_unset(request.immediate_start):
-            query['ImmediateStart'] = request.immediate_start
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -6759,7 +6831,7 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='ModifyActiveOperationTasks',
+            action='ModifyActiveOperationTask',
             version='2015-01-01',
             protocol='HTTPS',
             pathname='/',
@@ -6770,21 +6842,19 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            r_kvstore_20150101_models.ModifyActiveOperationTasksResponse(),
+            r_kvstore_20150101_models.ModifyActiveOperationTaskResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def modify_active_operation_tasks_with_options_async(
+    async def modify_active_operation_task_with_options_async(
         self,
-        request: r_kvstore_20150101_models.ModifyActiveOperationTasksRequest,
+        request: r_kvstore_20150101_models.ModifyActiveOperationTaskRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> r_kvstore_20150101_models.ModifyActiveOperationTasksResponse:
+    ) -> r_kvstore_20150101_models.ModifyActiveOperationTaskResponse:
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ids):
             query['Ids'] = request.ids
-        if not UtilClient.is_unset(request.immediate_start):
-            query['ImmediateStart'] = request.immediate_start
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -6801,7 +6871,7 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='ModifyActiveOperationTasks',
+            action='ModifyActiveOperationTask',
             version='2015-01-01',
             protocol='HTTPS',
             pathname='/',
@@ -6812,23 +6882,23 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            r_kvstore_20150101_models.ModifyActiveOperationTasksResponse(),
+            r_kvstore_20150101_models.ModifyActiveOperationTaskResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def modify_active_operation_tasks(
+    def modify_active_operation_task(
         self,
-        request: r_kvstore_20150101_models.ModifyActiveOperationTasksRequest,
-    ) -> r_kvstore_20150101_models.ModifyActiveOperationTasksResponse:
+        request: r_kvstore_20150101_models.ModifyActiveOperationTaskRequest,
+    ) -> r_kvstore_20150101_models.ModifyActiveOperationTaskResponse:
         runtime = util_models.RuntimeOptions()
-        return self.modify_active_operation_tasks_with_options(request, runtime)
+        return self.modify_active_operation_task_with_options(request, runtime)
 
-    async def modify_active_operation_tasks_async(
+    async def modify_active_operation_task_async(
         self,
-        request: r_kvstore_20150101_models.ModifyActiveOperationTasksRequest,
-    ) -> r_kvstore_20150101_models.ModifyActiveOperationTasksResponse:
+        request: r_kvstore_20150101_models.ModifyActiveOperationTaskRequest,
+    ) -> r_kvstore_20150101_models.ModifyActiveOperationTaskResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.modify_active_operation_tasks_with_options_async(request, runtime)
+        return await self.modify_active_operation_task_with_options_async(request, runtime)
 
     def modify_audit_log_config_with_options(
         self,
@@ -7957,6 +8027,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.shard_count):
+            query['ShardCount'] = request.shard_count
         if not UtilClient.is_unset(request.source_biz):
             query['SourceBiz'] = request.source_biz
         req = open_api_models.OpenApiRequest(
@@ -8019,6 +8091,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.shard_count):
+            query['ShardCount'] = request.shard_count
         if not UtilClient.is_unset(request.source_biz):
             query['SourceBiz'] = request.source_biz
         req = open_api_models.OpenApiRequest(
@@ -8351,124 +8425,6 @@ class Client(OpenApiClient):
     ) -> r_kvstore_20150101_models.ModifyIntranetAttributeResponse:
         runtime = util_models.RuntimeOptions()
         return await self.modify_intranet_attribute_with_options_async(request, runtime)
-
-    def modify_node_spec_with_options(
-        self,
-        request: r_kvstore_20150101_models.ModifyNodeSpecRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> r_kvstore_20150101_models.ModifyNodeSpecResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.auto_pay):
-            query['AutoPay'] = request.auto_pay
-        if not UtilClient.is_unset(request.business_info):
-            query['BusinessInfo'] = request.business_info
-        if not UtilClient.is_unset(request.coupon_no):
-            query['CouponNo'] = request.coupon_no
-        if not UtilClient.is_unset(request.instance_class):
-            query['InstanceClass'] = request.instance_class
-        if not UtilClient.is_unset(request.instance_id):
-            query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.node_id):
-            query['NodeId'] = request.node_id
-        if not UtilClient.is_unset(request.order_type):
-            query['OrderType'] = request.order_type
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.security_token):
-            query['SecurityToken'] = request.security_token
-        if not UtilClient.is_unset(request.switch_time_mode):
-            query['SwitchTimeMode'] = request.switch_time_mode
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ModifyNodeSpec',
-            version='2015-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ModifyNodeSpecResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def modify_node_spec_with_options_async(
-        self,
-        request: r_kvstore_20150101_models.ModifyNodeSpecRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> r_kvstore_20150101_models.ModifyNodeSpecResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.auto_pay):
-            query['AutoPay'] = request.auto_pay
-        if not UtilClient.is_unset(request.business_info):
-            query['BusinessInfo'] = request.business_info
-        if not UtilClient.is_unset(request.coupon_no):
-            query['CouponNo'] = request.coupon_no
-        if not UtilClient.is_unset(request.instance_class):
-            query['InstanceClass'] = request.instance_class
-        if not UtilClient.is_unset(request.instance_id):
-            query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.node_id):
-            query['NodeId'] = request.node_id
-        if not UtilClient.is_unset(request.order_type):
-            query['OrderType'] = request.order_type
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.security_token):
-            query['SecurityToken'] = request.security_token
-        if not UtilClient.is_unset(request.switch_time_mode):
-            query['SwitchTimeMode'] = request.switch_time_mode
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ModifyNodeSpec',
-            version='2015-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            r_kvstore_20150101_models.ModifyNodeSpecResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def modify_node_spec(
-        self,
-        request: r_kvstore_20150101_models.ModifyNodeSpecRequest,
-    ) -> r_kvstore_20150101_models.ModifyNodeSpecResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.modify_node_spec_with_options(request, runtime)
-
-    async def modify_node_spec_async(
-        self,
-        request: r_kvstore_20150101_models.ModifyNodeSpecRequest,
-    ) -> r_kvstore_20150101_models.ModifyNodeSpecResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.modify_node_spec_with_options_async(request, runtime)
 
     def modify_resource_group_with_options(
         self,
@@ -10083,12 +10039,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.auto_pay):
             query['AutoPay'] = request.auto_pay
-        if not UtilClient.is_unset(request.business_info):
-            query['BusinessInfo'] = request.business_info
         if not UtilClient.is_unset(request.charge_type):
             query['ChargeType'] = request.charge_type
-        if not UtilClient.is_unset(request.coupon_no):
-            query['CouponNo'] = request.coupon_no
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.owner_account):
@@ -10131,12 +10083,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.auto_pay):
             query['AutoPay'] = request.auto_pay
-        if not UtilClient.is_unset(request.business_info):
-            query['BusinessInfo'] = request.business_info
         if not UtilClient.is_unset(request.charge_type):
             query['ChargeType'] = request.charge_type
-        if not UtilClient.is_unset(request.coupon_no):
-            query['CouponNo'] = request.coupon_no
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.owner_account):
