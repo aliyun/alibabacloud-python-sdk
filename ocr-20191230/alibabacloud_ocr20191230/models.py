@@ -8216,6 +8216,68 @@ class RecognizeQrCodeRequest(TeaModel):
         return self
 
 
+class RecognizeQrCodeAdvanceRequestTasks(TeaModel):
+    def __init__(
+        self,
+        image_urlobject: BinaryIO = None,
+    ):
+        self.image_urlobject = image_urlobject
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_urlobject is not None:
+            result['ImageURL'] = self.image_urlobject
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageURL') is not None:
+            self.image_urlobject = m.get('ImageURL')
+        return self
+
+
+class RecognizeQrCodeAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        tasks: List[RecognizeQrCodeAdvanceRequestTasks] = None,
+    ):
+        self.tasks = tasks
+
+    def validate(self):
+        if self.tasks:
+            for k in self.tasks:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Tasks'] = []
+        if self.tasks is not None:
+            for k in self.tasks:
+                result['Tasks'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.tasks = []
+        if m.get('Tasks') is not None:
+            for k in m.get('Tasks'):
+                temp_model = RecognizeQrCodeAdvanceRequestTasks()
+                self.tasks.append(temp_model.from_map(k))
+        return self
+
+
 class RecognizeQrCodeResponseBodyDataElementsResults(TeaModel):
     def __init__(
         self,
