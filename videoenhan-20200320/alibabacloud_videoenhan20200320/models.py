@@ -2226,6 +2226,140 @@ class GenerateVideoRequest(TeaModel):
         return self
 
 
+class GenerateVideoAdvanceRequestFileList(TeaModel):
+    def __init__(
+        self,
+        file_name: str = None,
+        file_url_object: BinaryIO = None,
+        type: str = None,
+    ):
+        self.file_name = file_name
+        self.file_url_object = file_url_object
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.file_url_object is not None:
+            result['FileUrl'] = self.file_url_object
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('FileUrl') is not None:
+            self.file_url_object = m.get('FileUrl')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class GenerateVideoAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        duration: float = None,
+        duration_adaption: bool = None,
+        file_list: List[GenerateVideoAdvanceRequestFileList] = None,
+        height: int = None,
+        mute: bool = None,
+        puzzle_effect: bool = None,
+        scene: str = None,
+        smart_effect: bool = None,
+        style: str = None,
+        transition_style: str = None,
+        width: int = None,
+    ):
+        self.duration = duration
+        self.duration_adaption = duration_adaption
+        self.file_list = file_list
+        self.height = height
+        self.mute = mute
+        self.puzzle_effect = puzzle_effect
+        self.scene = scene
+        self.smart_effect = smart_effect
+        self.style = style
+        self.transition_style = transition_style
+        self.width = width
+
+    def validate(self):
+        if self.file_list:
+            for k in self.file_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        if self.duration_adaption is not None:
+            result['DurationAdaption'] = self.duration_adaption
+        result['FileList'] = []
+        if self.file_list is not None:
+            for k in self.file_list:
+                result['FileList'].append(k.to_map() if k else None)
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.mute is not None:
+            result['Mute'] = self.mute
+        if self.puzzle_effect is not None:
+            result['PuzzleEffect'] = self.puzzle_effect
+        if self.scene is not None:
+            result['Scene'] = self.scene
+        if self.smart_effect is not None:
+            result['SmartEffect'] = self.smart_effect
+        if self.style is not None:
+            result['Style'] = self.style
+        if self.transition_style is not None:
+            result['TransitionStyle'] = self.transition_style
+        if self.width is not None:
+            result['Width'] = self.width
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        if m.get('DurationAdaption') is not None:
+            self.duration_adaption = m.get('DurationAdaption')
+        self.file_list = []
+        if m.get('FileList') is not None:
+            for k in m.get('FileList'):
+                temp_model = GenerateVideoAdvanceRequestFileList()
+                self.file_list.append(temp_model.from_map(k))
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Mute') is not None:
+            self.mute = m.get('Mute')
+        if m.get('PuzzleEffect') is not None:
+            self.puzzle_effect = m.get('PuzzleEffect')
+        if m.get('Scene') is not None:
+            self.scene = m.get('Scene')
+        if m.get('SmartEffect') is not None:
+            self.smart_effect = m.get('SmartEffect')
+        if m.get('Style') is not None:
+            self.style = m.get('Style')
+        if m.get('TransitionStyle') is not None:
+            self.transition_style = m.get('TransitionStyle')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        return self
+
+
 class GenerateVideoResponseBodyData(TeaModel):
     def __init__(
         self,
