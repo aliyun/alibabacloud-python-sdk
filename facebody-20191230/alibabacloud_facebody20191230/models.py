@@ -5219,6 +5219,74 @@ class DetectLivingFaceRequest(TeaModel):
         return self
 
 
+class DetectLivingFaceAdvanceRequestTasks(TeaModel):
+    def __init__(
+        self,
+        image_data: bytes = None,
+        image_urlobject: BinaryIO = None,
+    ):
+        self.image_data = image_data
+        self.image_urlobject = image_urlobject
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_data is not None:
+            result['ImageData'] = self.image_data
+        if self.image_urlobject is not None:
+            result['ImageURL'] = self.image_urlobject
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageData') is not None:
+            self.image_data = m.get('ImageData')
+        if m.get('ImageURL') is not None:
+            self.image_urlobject = m.get('ImageURL')
+        return self
+
+
+class DetectLivingFaceAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        tasks: List[DetectLivingFaceAdvanceRequestTasks] = None,
+    ):
+        self.tasks = tasks
+
+    def validate(self):
+        if self.tasks:
+            for k in self.tasks:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Tasks'] = []
+        if self.tasks is not None:
+            for k in self.tasks:
+                result['Tasks'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.tasks = []
+        if m.get('Tasks') is not None:
+            for k in m.get('Tasks'):
+                temp_model = DetectLivingFaceAdvanceRequestTasks()
+                self.tasks.append(temp_model.from_map(k))
+        return self
+
+
 class DetectLivingFaceResponseBodyDataElementsResultsFrames(TeaModel):
     def __init__(
         self,
@@ -9208,10 +9276,8 @@ class GetFaceEntityResponse(TeaModel):
 class GetRealPersonVerificationResultRequest(TeaModel):
     def __init__(
         self,
-        material_hash: str = None,
         verification_token: str = None,
     ):
-        self.material_hash = material_hash
         self.verification_token = verification_token
 
     def validate(self):
@@ -9223,16 +9289,12 @@ class GetRealPersonVerificationResultRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.material_hash is not None:
-            result['MaterialHash'] = self.material_hash
         if self.verification_token is not None:
             result['VerificationToken'] = self.verification_token
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('MaterialHash') is not None:
-            self.material_hash = m.get('MaterialHash')
         if m.get('VerificationToken') is not None:
             self.verification_token = m.get('VerificationToken')
         return self
@@ -9241,12 +9303,8 @@ class GetRealPersonVerificationResultRequest(TeaModel):
 class GetRealPersonVerificationResultResponseBodyData(TeaModel):
     def __init__(
         self,
-        identity_info: str = None,
-        material_match: str = None,
         passed: bool = None,
     ):
-        self.identity_info = identity_info
-        self.material_match = material_match
         self.passed = passed
 
     def validate(self):
@@ -9258,20 +9316,12 @@ class GetRealPersonVerificationResultResponseBodyData(TeaModel):
             return _map
 
         result = dict()
-        if self.identity_info is not None:
-            result['IdentityInfo'] = self.identity_info
-        if self.material_match is not None:
-            result['MaterialMatch'] = self.material_match
         if self.passed is not None:
             result['Passed'] = self.passed
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('IdentityInfo') is not None:
-            self.identity_info = m.get('IdentityInfo')
-        if m.get('MaterialMatch') is not None:
-            self.material_match = m.get('MaterialMatch')
         if m.get('Passed') is not None:
             self.passed = m.get('Passed')
         return self
@@ -12433,6 +12483,92 @@ class RecognizeActionRequest(TeaModel):
         return self
 
 
+class RecognizeActionAdvanceRequestURLList(TeaModel):
+    def __init__(
+        self,
+        urlobject: BinaryIO = None,
+        image_data: bytes = None,
+    ):
+        self.urlobject = urlobject
+        self.image_data = image_data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.urlobject is not None:
+            result['URL'] = self.urlobject
+        if self.image_data is not None:
+            result['imageData'] = self.image_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('URL') is not None:
+            self.urlobject = m.get('URL')
+        if m.get('imageData') is not None:
+            self.image_data = m.get('imageData')
+        return self
+
+
+class RecognizeActionAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        type: int = None,
+        urllist: List[RecognizeActionAdvanceRequestURLList] = None,
+        video_data: bytes = None,
+        video_url: str = None,
+    ):
+        self.type = type
+        self.urllist = urllist
+        self.video_data = video_data
+        self.video_url = video_url
+
+    def validate(self):
+        if self.urllist:
+            for k in self.urllist:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.type is not None:
+            result['Type'] = self.type
+        result['URLList'] = []
+        if self.urllist is not None:
+            for k in self.urllist:
+                result['URLList'].append(k.to_map() if k else None)
+        if self.video_data is not None:
+            result['VideoData'] = self.video_data
+        if self.video_url is not None:
+            result['VideoUrl'] = self.video_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        self.urllist = []
+        if m.get('URLList') is not None:
+            for k in m.get('URLList'):
+                temp_model = RecognizeActionAdvanceRequestURLList()
+                self.urllist.append(temp_model.from_map(k))
+        if m.get('VideoData') is not None:
+            self.video_data = m.get('VideoData')
+        if m.get('VideoUrl') is not None:
+            self.video_url = m.get('VideoUrl')
+        return self
+
+
 class RecognizeActionResponseBodyDataElementsBoxes(TeaModel):
     def __init__(
         self,
@@ -13598,6 +13734,74 @@ class RecognizePublicFaceRequest(TeaModel):
         return self
 
 
+class RecognizePublicFaceAdvanceRequestTask(TeaModel):
+    def __init__(
+        self,
+        image_data: bytes = None,
+        image_urlobject: BinaryIO = None,
+    ):
+        self.image_data = image_data
+        self.image_urlobject = image_urlobject
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_data is not None:
+            result['ImageData'] = self.image_data
+        if self.image_urlobject is not None:
+            result['ImageURL'] = self.image_urlobject
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageData') is not None:
+            self.image_data = m.get('ImageData')
+        if m.get('ImageURL') is not None:
+            self.image_urlobject = m.get('ImageURL')
+        return self
+
+
+class RecognizePublicFaceAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        task: List[RecognizePublicFaceAdvanceRequestTask] = None,
+    ):
+        self.task = task
+
+    def validate(self):
+        if self.task:
+            for k in self.task:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Task'] = []
+        if self.task is not None:
+            for k in self.task:
+                result['Task'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.task = []
+        if m.get('Task') is not None:
+            for k in m.get('Task'):
+                temp_model = RecognizePublicFaceAdvanceRequestTask()
+                self.task.append(temp_model.from_map(k))
+        return self
+
+
 class RecognizePublicFaceResponseBodyDataElementsResultsSubResultsFaces(TeaModel):
     def __init__(
         self,
@@ -14356,6 +14560,92 @@ class SearchBodyTraceRequest(TeaModel):
         if m.get('Images') is not None:
             for k in m.get('Images'):
                 temp_model = SearchBodyTraceRequestImages()
+                self.images.append(temp_model.from_map(k))
+        if m.get('Limit') is not None:
+            self.limit = m.get('Limit')
+        if m.get('MinScore') is not None:
+            self.min_score = m.get('MinScore')
+        return self
+
+
+class SearchBodyTraceAdvanceRequestImages(TeaModel):
+    def __init__(
+        self,
+        image_data: bytes = None,
+        image_urlobject: BinaryIO = None,
+    ):
+        self.image_data = image_data
+        self.image_urlobject = image_urlobject
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_data is not None:
+            result['ImageData'] = self.image_data
+        if self.image_urlobject is not None:
+            result['ImageURL'] = self.image_urlobject
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageData') is not None:
+            self.image_data = m.get('ImageData')
+        if m.get('ImageURL') is not None:
+            self.image_urlobject = m.get('ImageURL')
+        return self
+
+
+class SearchBodyTraceAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        db_id: int = None,
+        images: List[SearchBodyTraceAdvanceRequestImages] = None,
+        limit: int = None,
+        min_score: float = None,
+    ):
+        self.db_id = db_id
+        self.images = images
+        self.limit = limit
+        self.min_score = min_score
+
+    def validate(self):
+        if self.images:
+            for k in self.images:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.db_id is not None:
+            result['DbId'] = self.db_id
+        result['Images'] = []
+        if self.images is not None:
+            for k in self.images:
+                result['Images'].append(k.to_map() if k else None)
+        if self.limit is not None:
+            result['Limit'] = self.limit
+        if self.min_score is not None:
+            result['MinScore'] = self.min_score
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DbId') is not None:
+            self.db_id = m.get('DbId')
+        self.images = []
+        if m.get('Images') is not None:
+            for k in m.get('Images'):
+                temp_model = SearchBodyTraceAdvanceRequestImages()
                 self.images.append(temp_model.from_map(k))
         if m.get('Limit') is not None:
             self.limit = m.get('Limit')
