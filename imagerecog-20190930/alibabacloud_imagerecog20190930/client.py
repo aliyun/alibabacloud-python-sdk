@@ -16,6 +16,7 @@ from alibabacloud_oss_sdk import models as oss_models
 from alibabacloud_tea_fileform import models as file_form_models
 from alibabacloud_oss_util import models as ossutil_models
 from alibabacloud_oss_sdk.client import Client as OSSClient
+from alibabacloud_darabonba_number.client import Client as NumberClient
 
 
 class Client(OpenApiClient):
@@ -1674,6 +1675,158 @@ class Client(OpenApiClient):
     ) -> imagerecog_20190930_models.RecognizeLogoResponse:
         runtime = util_models.RuntimeOptions()
         return await self.recognize_logo_with_options_async(request, runtime)
+
+    def recognize_logo_advance(
+        self,
+        request: imagerecog_20190930_models.RecognizeLogoAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imagerecog_20190930_models.RecognizeLogoResponse:
+        # Step 0: init client
+        access_key_id = self._credential.get_access_key_id()
+        access_key_secret = self._credential.get_access_key_secret()
+        security_token = self._credential.get_security_token()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = open_api_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='imagerecog',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = None
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        recognize_logo_req = imagerecog_20190930_models.RecognizeLogoRequest()
+        OpenApiUtilClient.convert(request, recognize_logo_req)
+        if not UtilClient.is_unset(request.tasks):
+            i = 0
+            for item_0 in request.tasks:
+                if not UtilClient.is_unset(item_0.image_urlobject):
+                    auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+                    oss_config.access_key_id = auth_response.body.access_key_id
+                    oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
+                    oss_client = OSSClient(oss_config)
+                    file_obj = file_form_models.FileField(
+                        filename=auth_response.body.object_key,
+                        content=item_0.image_urlobject,
+                        content_type=''
+                    )
+                    oss_header = oss_models.PostObjectRequestHeader(
+                        access_key_id=auth_response.body.access_key_id,
+                        policy=auth_response.body.encoded_policy,
+                        signature=auth_response.body.signature,
+                        key=auth_response.body.object_key,
+                        file=file_obj,
+                        success_action_status='201'
+                    )
+                    upload_request = oss_models.PostObjectRequest(
+                        bucket_name=auth_response.body.bucket,
+                        header=oss_header
+                    )
+                    oss_client.post_object(upload_request, oss_runtime)
+                    tmp = recognize_logo_req.tasks[i]
+                    tmp.image_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+                    i = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i), NumberClient.itol(1)))
+        recognize_logo_resp = self.recognize_logo_with_options(recognize_logo_req, runtime)
+        return recognize_logo_resp
+
+    async def recognize_logo_advance_async(
+        self,
+        request: imagerecog_20190930_models.RecognizeLogoAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imagerecog_20190930_models.RecognizeLogoResponse:
+        # Step 0: init client
+        access_key_id = await self._credential.get_access_key_id_async()
+        access_key_secret = await self._credential.get_access_key_secret_async()
+        security_token = await self._credential.get_security_token_async()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.is_unset(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = open_api_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='imagerecog',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = None
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        recognize_logo_req = imagerecog_20190930_models.RecognizeLogoRequest()
+        OpenApiUtilClient.convert(request, recognize_logo_req)
+        if not UtilClient.is_unset(request.tasks):
+            i = 0
+            for item_0 in request.tasks:
+                if not UtilClient.is_unset(item_0.image_urlobject):
+                    auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
+                    oss_config.access_key_id = auth_response.body.access_key_id
+                    oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
+                    oss_client = OSSClient(oss_config)
+                    file_obj = file_form_models.FileField(
+                        filename=auth_response.body.object_key,
+                        content=item_0.image_urlobject,
+                        content_type=''
+                    )
+                    oss_header = oss_models.PostObjectRequestHeader(
+                        access_key_id=auth_response.body.access_key_id,
+                        policy=auth_response.body.encoded_policy,
+                        signature=auth_response.body.signature,
+                        key=auth_response.body.object_key,
+                        file=file_obj,
+                        success_action_status='201'
+                    )
+                    upload_request = oss_models.PostObjectRequest(
+                        bucket_name=auth_response.body.bucket,
+                        header=oss_header
+                    )
+                    await oss_client.post_object_async(upload_request, oss_runtime)
+                    tmp = recognize_logo_req.tasks[i]
+                    tmp.image_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+                    i = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i), NumberClient.itol(1)))
+        recognize_logo_resp = await self.recognize_logo_with_options_async(recognize_logo_req, runtime)
+        return recognize_logo_resp
 
     def recognize_scene_with_options(
         self,

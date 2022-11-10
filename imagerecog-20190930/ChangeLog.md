@@ -1,3 +1,6 @@
+2022-11-10 Version: 2.0.7
+- Update TaggingAdImage.
+
 2022-10-17 Version: 2.0.6
 - Update TaggingAdImage.
 
