@@ -1910,6 +1910,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.disable_data_reflow_with_options_async(request, runtime)
 
+    def download_dataset_with_options(
+        self,
+        request: viapi_regen_20211119_models.DownloadDatasetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.DownloadDatasetResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dataset_id):
+            body['DatasetId'] = request.dataset_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DownloadDataset',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.DownloadDatasetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def download_dataset_with_options_async(
+        self,
+        request: viapi_regen_20211119_models.DownloadDatasetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.DownloadDatasetResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dataset_id):
+            body['DatasetId'] = request.dataset_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DownloadDataset',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.DownloadDatasetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def download_dataset(
+        self,
+        request: viapi_regen_20211119_models.DownloadDatasetRequest,
+    ) -> viapi_regen_20211119_models.DownloadDatasetResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.download_dataset_with_options(request, runtime)
+
+    async def download_dataset_async(
+        self,
+        request: viapi_regen_20211119_models.DownloadDatasetRequest,
+    ) -> viapi_regen_20211119_models.DownloadDatasetResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.download_dataset_with_options_async(request, runtime)
+
     def download_file_name_list_with_options(
         self,
         request: viapi_regen_20211119_models.DownloadFileNameListRequest,
@@ -2571,6 +2641,186 @@ class Client(OpenApiClient):
     ) -> viapi_regen_20211119_models.GetServiceResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_service_with_options_async(request, runtime)
+
+    def get_service_invoke_with_options(
+        self,
+        tmp_req: viapi_regen_20211119_models.GetServiceInvokeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.GetServiceInvokeResponse:
+        UtilClient.validate_model(tmp_req)
+        request = viapi_regen_20211119_models.GetServiceInvokeShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.caller_parent_id_list):
+            request.caller_parent_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.caller_parent_id_list, 'CallerParentIdList', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.caller_parent_id_list_shrink):
+            body['CallerParentIdList'] = request.caller_parent_id_list_shrink
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetServiceInvoke',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.GetServiceInvokeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_service_invoke_with_options_async(
+        self,
+        tmp_req: viapi_regen_20211119_models.GetServiceInvokeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.GetServiceInvokeResponse:
+        UtilClient.validate_model(tmp_req)
+        request = viapi_regen_20211119_models.GetServiceInvokeShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.caller_parent_id_list):
+            request.caller_parent_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.caller_parent_id_list, 'CallerParentIdList', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.caller_parent_id_list_shrink):
+            body['CallerParentIdList'] = request.caller_parent_id_list_shrink
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetServiceInvoke',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.GetServiceInvokeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_service_invoke(
+        self,
+        request: viapi_regen_20211119_models.GetServiceInvokeRequest,
+    ) -> viapi_regen_20211119_models.GetServiceInvokeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_service_invoke_with_options(request, runtime)
+
+    async def get_service_invoke_async(
+        self,
+        request: viapi_regen_20211119_models.GetServiceInvokeRequest,
+    ) -> viapi_regen_20211119_models.GetServiceInvokeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_service_invoke_with_options_async(request, runtime)
+
+    def get_service_qps_with_options(
+        self,
+        tmp_req: viapi_regen_20211119_models.GetServiceQpsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.GetServiceQpsResponse:
+        UtilClient.validate_model(tmp_req)
+        request = viapi_regen_20211119_models.GetServiceQpsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.caller_parent_id_list):
+            request.caller_parent_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.caller_parent_id_list, 'CallerParentIdList', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.caller_parent_id_list_shrink):
+            body['CallerParentIdList'] = request.caller_parent_id_list_shrink
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetServiceQps',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.GetServiceQpsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_service_qps_with_options_async(
+        self,
+        tmp_req: viapi_regen_20211119_models.GetServiceQpsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.GetServiceQpsResponse:
+        UtilClient.validate_model(tmp_req)
+        request = viapi_regen_20211119_models.GetServiceQpsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.caller_parent_id_list):
+            request.caller_parent_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.caller_parent_id_list, 'CallerParentIdList', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.caller_parent_id_list_shrink):
+            body['CallerParentIdList'] = request.caller_parent_id_list_shrink
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetServiceQps',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.GetServiceQpsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_service_qps(
+        self,
+        request: viapi_regen_20211119_models.GetServiceQpsRequest,
+    ) -> viapi_regen_20211119_models.GetServiceQpsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_service_qps_with_options(request, runtime)
+
+    async def get_service_qps_async(
+        self,
+        request: viapi_regen_20211119_models.GetServiceQpsRequest,
+    ) -> viapi_regen_20211119_models.GetServiceQpsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_service_qps_with_options_async(request, runtime)
 
     def get_train_model_with_options(
         self,
