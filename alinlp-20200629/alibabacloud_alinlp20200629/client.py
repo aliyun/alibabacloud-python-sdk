@@ -41,6 +41,154 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def a_dclock_with_options(
+        self,
+        request: alinlp_20200629_models.ADClockRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alinlp_20200629_models.ADClockResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.params):
+            body['Params'] = request.params
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ADClock',
+            version='2020-06-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alinlp_20200629_models.ADClockResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def a_dclock_with_options_async(
+        self,
+        request: alinlp_20200629_models.ADClockRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alinlp_20200629_models.ADClockResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.params):
+            body['Params'] = request.params
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ADClock',
+            version='2020-06-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alinlp_20200629_models.ADClockResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def a_dclock(
+        self,
+        request: alinlp_20200629_models.ADClockRequest,
+    ) -> alinlp_20200629_models.ADClockResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.a_dclock_with_options(request, runtime)
+
+    async def a_dclock_async(
+        self,
+        request: alinlp_20200629_models.ADClockRequest,
+    ) -> alinlp_20200629_models.ADClockResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.a_dclock_with_options_async(request, runtime)
+
+    def a_dmmuwith_options(
+        self,
+        request: alinlp_20200629_models.ADMMURequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alinlp_20200629_models.ADMMUResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.params):
+            body['Params'] = request.params
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ADMMU',
+            version='2020-06-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alinlp_20200629_models.ADMMUResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def a_dmmuwith_options_async(
+        self,
+        request: alinlp_20200629_models.ADMMURequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alinlp_20200629_models.ADMMUResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.params):
+            body['Params'] = request.params
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ADMMU',
+            version='2020-06-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alinlp_20200629_models.ADMMUResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def a_dmmu(
+        self,
+        request: alinlp_20200629_models.ADMMURequest,
+    ) -> alinlp_20200629_models.ADMMUResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.a_dmmuwith_options(request, runtime)
+
+    async def a_dmmu_async(
+        self,
+        request: alinlp_20200629_models.ADMMURequest,
+    ) -> alinlp_20200629_models.ADMMUResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.a_dmmuwith_options_async(request, runtime)
+
     def get_brand_ch_ecom_with_options(
         self,
         request: alinlp_20200629_models.GetBrandChEcomRequest,
@@ -804,6 +952,8 @@ class Client(OpenApiClient):
     ) -> alinlp_20200629_models.GetKeywordChEcomResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.api_version):
+            body['ApiVersion'] = request.api_version
         if not UtilClient.is_unset(request.service_code):
             body['ServiceCode'] = request.service_code
         if not UtilClient.is_unset(request.text):
@@ -834,6 +984,8 @@ class Client(OpenApiClient):
     ) -> alinlp_20200629_models.GetKeywordChEcomResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.api_version):
+            body['ApiVersion'] = request.api_version
         if not UtilClient.is_unset(request.service_code):
             body['ServiceCode'] = request.service_code
         if not UtilClient.is_unset(request.text):
@@ -3361,6 +3513,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_ws_customized_sea_general_with_options_async(request, runtime)
 
+    def insert_custom_with_options(
+        self,
+        request: alinlp_20200629_models.InsertCustomRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alinlp_20200629_models.InsertCustomResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.api_id):
+            body['ApiId'] = request.api_id
+        if not UtilClient.is_unset(request.custom_file_name):
+            body['CustomFileName'] = request.custom_file_name
+        if not UtilClient.is_unset(request.custom_url):
+            body['CustomUrl'] = request.custom_url
+        if not UtilClient.is_unset(request.reg_file_name):
+            body['RegFileName'] = request.reg_file_name
+        if not UtilClient.is_unset(request.reg_url):
+            body['RegUrl'] = request.reg_url
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='InsertCustom',
+            version='2020-06-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alinlp_20200629_models.InsertCustomResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def insert_custom_with_options_async(
+        self,
+        request: alinlp_20200629_models.InsertCustomRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alinlp_20200629_models.InsertCustomResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.api_id):
+            body['ApiId'] = request.api_id
+        if not UtilClient.is_unset(request.custom_file_name):
+            body['CustomFileName'] = request.custom_file_name
+        if not UtilClient.is_unset(request.custom_url):
+            body['CustomUrl'] = request.custom_url
+        if not UtilClient.is_unset(request.reg_file_name):
+            body['RegFileName'] = request.reg_file_name
+        if not UtilClient.is_unset(request.reg_url):
+            body['RegUrl'] = request.reg_url
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='InsertCustom',
+            version='2020-06-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alinlp_20200629_models.InsertCustomResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def insert_custom(
+        self,
+        request: alinlp_20200629_models.InsertCustomRequest,
+    ) -> alinlp_20200629_models.InsertCustomResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.insert_custom_with_options(request, runtime)
+
+    async def insert_custom_async(
+        self,
+        request: alinlp_20200629_models.InsertCustomRequest,
+    ) -> alinlp_20200629_models.InsertCustomResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.insert_custom_with_options_async(request, runtime)
+
     def open_alinlp_service_with_options(
         self,
         runtime: util_models.RuntimeOptions,
@@ -3410,3 +3652,93 @@ class Client(OpenApiClient):
     async def open_alinlp_service_async(self) -> alinlp_20200629_models.OpenAlinlpServiceResponse:
         runtime = util_models.RuntimeOptions()
         return await self.open_alinlp_service_with_options_async(runtime)
+
+    def update_custom_with_options(
+        self,
+        request: alinlp_20200629_models.UpdateCustomRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alinlp_20200629_models.UpdateCustomResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.custom_file_name):
+            body['CustomFileName'] = request.custom_file_name
+        if not UtilClient.is_unset(request.custom_id):
+            body['CustomId'] = request.custom_id
+        if not UtilClient.is_unset(request.custom_url):
+            body['CustomUrl'] = request.custom_url
+        if not UtilClient.is_unset(request.reg_file_name):
+            body['RegFileName'] = request.reg_file_name
+        if not UtilClient.is_unset(request.reg_url):
+            body['RegUrl'] = request.reg_url
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateCustom',
+            version='2020-06-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alinlp_20200629_models.UpdateCustomResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_custom_with_options_async(
+        self,
+        request: alinlp_20200629_models.UpdateCustomRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alinlp_20200629_models.UpdateCustomResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.custom_file_name):
+            body['CustomFileName'] = request.custom_file_name
+        if not UtilClient.is_unset(request.custom_id):
+            body['CustomId'] = request.custom_id
+        if not UtilClient.is_unset(request.custom_url):
+            body['CustomUrl'] = request.custom_url
+        if not UtilClient.is_unset(request.reg_file_name):
+            body['RegFileName'] = request.reg_file_name
+        if not UtilClient.is_unset(request.reg_url):
+            body['RegUrl'] = request.reg_url
+        if not UtilClient.is_unset(request.service_code):
+            body['ServiceCode'] = request.service_code
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateCustom',
+            version='2020-06-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alinlp_20200629_models.UpdateCustomResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_custom(
+        self,
+        request: alinlp_20200629_models.UpdateCustomRequest,
+    ) -> alinlp_20200629_models.UpdateCustomResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_custom_with_options(request, runtime)
+
+    async def update_custom_async(
+        self,
+        request: alinlp_20200629_models.UpdateCustomRequest,
+    ) -> alinlp_20200629_models.UpdateCustomResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_custom_with_options_async(request, runtime)
