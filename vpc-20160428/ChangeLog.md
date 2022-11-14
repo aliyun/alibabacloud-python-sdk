@@ -1,3 +1,13 @@
+2022-11-14 Version: 2.0.11
+- Supplementary error code mapping.
+- Exposed unassociate ipv6 cidr param.
+- Support Eip bind IpAddress.
+- Supported query prefix list out add regionId.
+- Support clearBgpAuthKey for ModifyBgpGroupAttribute.
+- Add errorcode.
+- CreateNatIpCidr natIpCidr must set.
+- Fixed bugs for stsToken for DescribeEcGrantRelation.
+
 2022-09-20 Version: 2.0.10
 - DescribeSnatTableEntries DescribeSnatTableEntries ListFullnatEntries support query --by natGatewayId.
 

@@ -1740,6 +1740,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1790,6 +1792,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4278,8 +4282,6 @@ class Client(OpenApiClient):
     ) -> vpc_20160428_models.CreateDhcpOptionsSetResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.boot_file_name):
-            query['BootFileName'] = request.boot_file_name
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dhcp_options_set_description):
@@ -4306,8 +4308,6 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.tftpserver_name):
-            query['TFTPServerName'] = request.tftpserver_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4334,8 +4334,6 @@ class Client(OpenApiClient):
     ) -> vpc_20160428_models.CreateDhcpOptionsSetResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.boot_file_name):
-            query['BootFileName'] = request.boot_file_name
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dhcp_options_set_description):
@@ -4362,8 +4360,6 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.tftpserver_name):
-            query['TFTPServerName'] = request.tftpserver_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4558,6 +4554,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.resource_type):
             query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.traffic_path):
+            query['TrafficPath'] = request.traffic_path
         if not UtilClient.is_unset(request.traffic_type):
             query['TrafficType'] = request.traffic_type
         req = open_api_models.OpenApiRequest(
@@ -4610,6 +4608,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.resource_type):
             query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.traffic_path):
+            query['TrafficPath'] = request.traffic_path
         if not UtilClient.is_unset(request.traffic_type):
             query['TrafficType'] = request.traffic_type
         req = open_api_models.OpenApiRequest(
@@ -6854,6 +6854,100 @@ class Client(OpenApiClient):
     ) -> vpc_20160428_models.CreatePublicIpAddressPoolResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_public_ip_address_pool_with_options_async(request, runtime)
+
+    def create_route_entries_with_options(
+        self,
+        request: vpc_20160428_models.CreateRouteEntriesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.CreateRouteEntriesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.route_entries):
+            query['RouteEntries'] = request.route_entries
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateRouteEntries',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.CreateRouteEntriesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_route_entries_with_options_async(
+        self,
+        request: vpc_20160428_models.CreateRouteEntriesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.CreateRouteEntriesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.route_entries):
+            query['RouteEntries'] = request.route_entries
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateRouteEntries',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.CreateRouteEntriesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_route_entries(
+        self,
+        request: vpc_20160428_models.CreateRouteEntriesRequest,
+    ) -> vpc_20160428_models.CreateRouteEntriesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_route_entries_with_options(request, runtime)
+
+    async def create_route_entries_async(
+        self,
+        request: vpc_20160428_models.CreateRouteEntriesRequest,
+    ) -> vpc_20160428_models.CreateRouteEntriesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_route_entries_with_options_async(request, runtime)
 
     def create_route_entry_with_options(
         self,
@@ -9428,6 +9522,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
         if not UtilClient.is_unset(request.publish_vpc):
             query['PublishVpc'] = request.publish_vpc
         if not UtilClient.is_unset(request.region_id):
@@ -9482,6 +9578,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
         if not UtilClient.is_unset(request.publish_vpc):
             query['PublishVpc'] = request.publish_vpc
         if not UtilClient.is_unset(request.region_id):
@@ -12321,6 +12419,100 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_public_ip_address_pool_cidr_block_with_options_async(request, runtime)
 
+    def delete_route_entries_with_options(
+        self,
+        request: vpc_20160428_models.DeleteRouteEntriesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.DeleteRouteEntriesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.route_entries):
+            query['RouteEntries'] = request.route_entries
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteRouteEntries',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.DeleteRouteEntriesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_route_entries_with_options_async(
+        self,
+        request: vpc_20160428_models.DeleteRouteEntriesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.DeleteRouteEntriesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.route_entries):
+            query['RouteEntries'] = request.route_entries
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteRouteEntries',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.DeleteRouteEntriesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_route_entries(
+        self,
+        request: vpc_20160428_models.DeleteRouteEntriesRequest,
+    ) -> vpc_20160428_models.DeleteRouteEntriesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_route_entries_with_options(request, runtime)
+
+    async def delete_route_entries_async(
+        self,
+        request: vpc_20160428_models.DeleteRouteEntriesRequest,
+    ) -> vpc_20160428_models.DeleteRouteEntriesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_route_entries_with_options_async(request, runtime)
+
     def delete_route_entry_with_options(
         self,
         request: vpc_20160428_models.DeleteRouteEntryRequest,
@@ -14164,6 +14356,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -14214,6 +14408,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -15182,6 +15378,92 @@ class Client(OpenApiClient):
     ) -> vpc_20160428_models.DescribeCustomerGatewaysResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_customer_gateways_with_options_async(request, runtime)
+
+    def describe_ec_grant_relation_with_options(
+        self,
+        request: vpc_20160428_models.DescribeEcGrantRelationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.DescribeEcGrantRelationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_type):
+            query['InstanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.vbr_region_no):
+            query['VbrRegionNo'] = request.vbr_region_no
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeEcGrantRelation',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.DescribeEcGrantRelationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_ec_grant_relation_with_options_async(
+        self,
+        request: vpc_20160428_models.DescribeEcGrantRelationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.DescribeEcGrantRelationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_type):
+            query['InstanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.vbr_region_no):
+            query['VbrRegionNo'] = request.vbr_region_no
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeEcGrantRelation',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.DescribeEcGrantRelationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_ec_grant_relation(
+        self,
+        request: vpc_20160428_models.DescribeEcGrantRelationRequest,
+    ) -> vpc_20160428_models.DescribeEcGrantRelationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_ec_grant_relation_with_options(request, runtime)
+
+    async def describe_ec_grant_relation_async(
+        self,
+        request: vpc_20160428_models.DescribeEcGrantRelationRequest,
+    ) -> vpc_20160428_models.DescribeEcGrantRelationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_ec_grant_relation_with_options_async(request, runtime)
 
     def describe_eip_addresses_with_options(
         self,
@@ -17996,6 +18278,8 @@ class Client(OpenApiClient):
     ) -> vpc_20160428_models.DescribeRouteEntryListResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.dest_cidr_block_list):
+            query['DestCidrBlockList'] = request.dest_cidr_block_list
         if not UtilClient.is_unset(request.destination_cidr_block):
             query['DestinationCidrBlock'] = request.destination_cidr_block
         if not UtilClient.is_unset(request.ip_version):
@@ -18028,6 +18312,8 @@ class Client(OpenApiClient):
             query['RouteEntryType'] = request.route_entry_type
         if not UtilClient.is_unset(request.route_table_id):
             query['RouteTableId'] = request.route_table_id
+        if not UtilClient.is_unset(request.service_type):
+            query['ServiceType'] = request.service_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -18054,6 +18340,8 @@ class Client(OpenApiClient):
     ) -> vpc_20160428_models.DescribeRouteEntryListResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.dest_cidr_block_list):
+            query['DestCidrBlockList'] = request.dest_cidr_block_list
         if not UtilClient.is_unset(request.destination_cidr_block):
             query['DestinationCidrBlock'] = request.destination_cidr_block
         if not UtilClient.is_unset(request.ip_version):
@@ -18086,6 +18374,8 @@ class Client(OpenApiClient):
             query['RouteEntryType'] = request.route_entry_type
         if not UtilClient.is_unset(request.route_table_id):
             query['RouteTableId'] = request.route_table_id
+        if not UtilClient.is_unset(request.service_type):
+            query['ServiceType'] = request.service_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -19596,6 +19886,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.filter):
             query['Filter'] = request.filter
+        if not UtilClient.is_unset(request.include_cross_account_vbr):
+            query['IncludeCrossAccountVbr'] = request.include_cross_account_vbr
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.page_number):
@@ -19636,6 +19928,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.filter):
             query['Filter'] = request.filter
+        if not UtilClient.is_unset(request.include_cross_account_vbr):
+            query['IncludeCrossAccountVbr'] = request.include_cross_account_vbr
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.page_number):
@@ -22965,6 +23259,104 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_vpc_prefix_list_entries_with_options_async(request, runtime)
 
+    def get_vpc_route_entry_summary_with_options(
+        self,
+        request: vpc_20160428_models.GetVpcRouteEntrySummaryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.GetVpcRouteEntrySummaryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.route_entry_type):
+            query['RouteEntryType'] = request.route_entry_type
+        if not UtilClient.is_unset(request.route_table_id):
+            query['RouteTableId'] = request.route_table_id
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetVpcRouteEntrySummary',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.GetVpcRouteEntrySummaryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_vpc_route_entry_summary_with_options_async(
+        self,
+        request: vpc_20160428_models.GetVpcRouteEntrySummaryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.GetVpcRouteEntrySummaryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.route_entry_type):
+            query['RouteEntryType'] = request.route_entry_type
+        if not UtilClient.is_unset(request.route_table_id):
+            query['RouteTableId'] = request.route_table_id
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetVpcRouteEntrySummary',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.GetVpcRouteEntrySummaryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_vpc_route_entry_summary(
+        self,
+        request: vpc_20160428_models.GetVpcRouteEntrySummaryRequest,
+    ) -> vpc_20160428_models.GetVpcRouteEntrySummaryResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_vpc_route_entry_summary_with_options(request, runtime)
+
+    async def get_vpc_route_entry_summary_async(
+        self,
+        request: vpc_20160428_models.GetVpcRouteEntrySummaryRequest,
+    ) -> vpc_20160428_models.GetVpcRouteEntrySummaryResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_vpc_route_entry_summary_with_options_async(request, runtime)
+
     def grant_instance_to_cen_with_options(
         self,
         request: vpc_20160428_models.GrantInstanceToCenRequest,
@@ -25128,6 +25520,8 @@ class Client(OpenApiClient):
             query['AuthKey'] = request.auth_key
         if not UtilClient.is_unset(request.bgp_group_id):
             query['BgpGroupId'] = request.bgp_group_id
+        if not UtilClient.is_unset(request.clear_auth_key):
+            query['ClearAuthKey'] = request.clear_auth_key
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.description):
@@ -25178,6 +25572,8 @@ class Client(OpenApiClient):
             query['AuthKey'] = request.auth_key
         if not UtilClient.is_unset(request.bgp_group_id):
             query['BgpGroupId'] = request.bgp_group_id
+        if not UtilClient.is_unset(request.clear_auth_key):
+            query['ClearAuthKey'] = request.clear_auth_key
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.description):
@@ -27650,6 +28046,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.eip_bind_mode):
+            query['EipBindMode'] = request.eip_bind_mode
         if not UtilClient.is_unset(request.icmp_reply_enabled):
             query['IcmpReplyEnabled'] = request.icmp_reply_enabled
         if not UtilClient.is_unset(request.name):
@@ -27694,6 +28092,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.eip_bind_mode):
+            query['EipBindMode'] = request.eip_bind_mode
         if not UtilClient.is_unset(request.icmp_reply_enabled):
             query['IcmpReplyEnabled'] = request.icmp_reply_enabled
         if not UtilClient.is_unset(request.name):
@@ -30161,6 +30561,246 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_vpn_gateway_attribute_with_options_async(request, runtime)
 
+    def modify_vpn_pbr_route_entry_attribute_with_options(
+        self,
+        request: vpc_20160428_models.ModifyVpnPbrRouteEntryAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.ModifyVpnPbrRouteEntryAttributeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.new_priority):
+            query['NewPriority'] = request.new_priority
+        if not UtilClient.is_unset(request.new_weight):
+            query['NewWeight'] = request.new_weight
+        if not UtilClient.is_unset(request.next_hop):
+            query['NextHop'] = request.next_hop
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.route_dest):
+            query['RouteDest'] = request.route_dest
+        if not UtilClient.is_unset(request.route_source):
+            query['RouteSource'] = request.route_source
+        if not UtilClient.is_unset(request.vpn_gateway_id):
+            query['VpnGatewayId'] = request.vpn_gateway_id
+        if not UtilClient.is_unset(request.weight):
+            query['Weight'] = request.weight
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyVpnPbrRouteEntryAttribute',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.ModifyVpnPbrRouteEntryAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_vpn_pbr_route_entry_attribute_with_options_async(
+        self,
+        request: vpc_20160428_models.ModifyVpnPbrRouteEntryAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.ModifyVpnPbrRouteEntryAttributeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.new_priority):
+            query['NewPriority'] = request.new_priority
+        if not UtilClient.is_unset(request.new_weight):
+            query['NewWeight'] = request.new_weight
+        if not UtilClient.is_unset(request.next_hop):
+            query['NextHop'] = request.next_hop
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.route_dest):
+            query['RouteDest'] = request.route_dest
+        if not UtilClient.is_unset(request.route_source):
+            query['RouteSource'] = request.route_source
+        if not UtilClient.is_unset(request.vpn_gateway_id):
+            query['VpnGatewayId'] = request.vpn_gateway_id
+        if not UtilClient.is_unset(request.weight):
+            query['Weight'] = request.weight
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyVpnPbrRouteEntryAttribute',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.ModifyVpnPbrRouteEntryAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_vpn_pbr_route_entry_attribute(
+        self,
+        request: vpc_20160428_models.ModifyVpnPbrRouteEntryAttributeRequest,
+    ) -> vpc_20160428_models.ModifyVpnPbrRouteEntryAttributeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_vpn_pbr_route_entry_attribute_with_options(request, runtime)
+
+    async def modify_vpn_pbr_route_entry_attribute_async(
+        self,
+        request: vpc_20160428_models.ModifyVpnPbrRouteEntryAttributeRequest,
+    ) -> vpc_20160428_models.ModifyVpnPbrRouteEntryAttributeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_vpn_pbr_route_entry_attribute_with_options_async(request, runtime)
+
+    def modify_vpn_pbr_route_entry_priority_with_options(
+        self,
+        request: vpc_20160428_models.ModifyVpnPbrRouteEntryPriorityRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.ModifyVpnPbrRouteEntryPriorityResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.new_priority):
+            query['NewPriority'] = request.new_priority
+        if not UtilClient.is_unset(request.next_hop):
+            query['NextHop'] = request.next_hop
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.route_dest):
+            query['RouteDest'] = request.route_dest
+        if not UtilClient.is_unset(request.route_source):
+            query['RouteSource'] = request.route_source
+        if not UtilClient.is_unset(request.vpn_gateway_id):
+            query['VpnGatewayId'] = request.vpn_gateway_id
+        if not UtilClient.is_unset(request.weight):
+            query['Weight'] = request.weight
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyVpnPbrRouteEntryPriority',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.ModifyVpnPbrRouteEntryPriorityResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_vpn_pbr_route_entry_priority_with_options_async(
+        self,
+        request: vpc_20160428_models.ModifyVpnPbrRouteEntryPriorityRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.ModifyVpnPbrRouteEntryPriorityResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.new_priority):
+            query['NewPriority'] = request.new_priority
+        if not UtilClient.is_unset(request.next_hop):
+            query['NextHop'] = request.next_hop
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.route_dest):
+            query['RouteDest'] = request.route_dest
+        if not UtilClient.is_unset(request.route_source):
+            query['RouteSource'] = request.route_source
+        if not UtilClient.is_unset(request.vpn_gateway_id):
+            query['VpnGatewayId'] = request.vpn_gateway_id
+        if not UtilClient.is_unset(request.weight):
+            query['Weight'] = request.weight
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyVpnPbrRouteEntryPriority',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.ModifyVpnPbrRouteEntryPriorityResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_vpn_pbr_route_entry_priority(
+        self,
+        request: vpc_20160428_models.ModifyVpnPbrRouteEntryPriorityRequest,
+    ) -> vpc_20160428_models.ModifyVpnPbrRouteEntryPriorityResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_vpn_pbr_route_entry_priority_with_options(request, runtime)
+
+    async def modify_vpn_pbr_route_entry_priority_async(
+        self,
+        request: vpc_20160428_models.ModifyVpnPbrRouteEntryPriorityRequest,
+    ) -> vpc_20160428_models.ModifyVpnPbrRouteEntryPriorityResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_vpn_pbr_route_entry_priority_with_options_async(request, runtime)
+
     def modify_vpn_pbr_route_entry_weight_with_options(
         self,
         request: vpc_20160428_models.ModifyVpnPbrRouteEntryWeightRequest,
@@ -30180,6 +30820,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -30232,6 +30874,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -33018,6 +33662,8 @@ class Client(OpenApiClient):
     ) -> vpc_20160428_models.UnassociateVpcCidrBlockResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.ipv_6cidr_block):
+            query['IPv6CidrBlock'] = request.ipv_6cidr_block
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -33060,6 +33706,8 @@ class Client(OpenApiClient):
     ) -> vpc_20160428_models.UnassociateVpcCidrBlockResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.ipv_6cidr_block):
+            query['IPv6CidrBlock'] = request.ipv_6cidr_block
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -33218,8 +33866,6 @@ class Client(OpenApiClient):
     ) -> vpc_20160428_models.UpdateDhcpOptionsSetAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.boot_file_name):
-            query['BootFileName'] = request.boot_file_name
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dhcp_options_set_description):
@@ -33248,8 +33894,6 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.tftpserver_name):
-            query['TFTPServerName'] = request.tftpserver_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -33276,8 +33920,6 @@ class Client(OpenApiClient):
     ) -> vpc_20160428_models.UpdateDhcpOptionsSetAttributeResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.boot_file_name):
-            query['BootFileName'] = request.boot_file_name
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dhcp_options_set_description):
@@ -33306,8 +33948,6 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.tftpserver_name):
-            query['TFTPServerName'] = request.tftpserver_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
