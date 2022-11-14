@@ -175,7 +175,7 @@ class Client(OpenApiClient):
         request = pai_studio_20220112_models.CreateAlgorithmVersionShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.algorithm_spec):
-            request.algorithm_spec_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.algorithm_spec), 'AlgorithmSpec', 'json')
+            request.algorithm_spec_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.algorithm_spec, 'AlgorithmSpec', 'json')
         body = {}
         if not UtilClient.is_unset(request.algorithm_spec_shrink):
             body['AlgorithmSpec'] = request.algorithm_spec_shrink
@@ -211,7 +211,7 @@ class Client(OpenApiClient):
         request = pai_studio_20220112_models.CreateAlgorithmVersionShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.algorithm_spec):
-            request.algorithm_spec_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.algorithm_spec), 'AlgorithmSpec', 'json')
+            request.algorithm_spec_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.algorithm_spec, 'AlgorithmSpec', 'json')
         body = {}
         if not UtilClient.is_unset(request.algorithm_spec_shrink):
             body['AlgorithmSpec'] = request.algorithm_spec_shrink
@@ -2279,7 +2279,7 @@ class Client(OpenApiClient):
         request = pai_studio_20220112_models.UpdateAlgorithmVersionShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.algorithm_spec):
-            request.algorithm_spec_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.algorithm_spec), 'AlgorithmSpec', 'json')
+            request.algorithm_spec_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.algorithm_spec, 'AlgorithmSpec', 'json')
         body = {}
         if not UtilClient.is_unset(request.algorithm_spec_shrink):
             body['AlgorithmSpec'] = request.algorithm_spec_shrink
@@ -2315,7 +2315,7 @@ class Client(OpenApiClient):
         request = pai_studio_20220112_models.UpdateAlgorithmVersionShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.algorithm_spec):
-            request.algorithm_spec_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.algorithm_spec), 'AlgorithmSpec', 'json')
+            request.algorithm_spec_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.algorithm_spec, 'AlgorithmSpec', 'json')
         body = {}
         if not UtilClient.is_unset(request.algorithm_spec_shrink):
             body['AlgorithmSpec'] = request.algorithm_spec_shrink
