@@ -62,6 +62,10 @@ class Client(OpenApiClient):
             body['Inputs'] = request.inputs_shrink
         if not UtilClient.is_unset(request.job_name):
             body['JobName'] = request.job_name
+        if not UtilClient.is_unset(request.model_project_id):
+            body['ModelProjectId'] = request.model_project_id
+        if not UtilClient.is_unset(request.model_version):
+            body['ModelVersion'] = request.model_version
         if not UtilClient.is_unset(request.project_id):
             body['ProjectId'] = request.project_id
         if not UtilClient.is_unset(request.shape_data_id):
@@ -108,6 +112,10 @@ class Client(OpenApiClient):
             body['Inputs'] = request.inputs_shrink
         if not UtilClient.is_unset(request.job_name):
             body['JobName'] = request.job_name
+        if not UtilClient.is_unset(request.model_project_id):
+            body['ModelProjectId'] = request.model_project_id
+        if not UtilClient.is_unset(request.model_version):
+            body['ModelVersion'] = request.model_version
         if not UtilClient.is_unset(request.project_id):
             body['ProjectId'] = request.project_id
         if not UtilClient.is_unset(request.shape_data_id):

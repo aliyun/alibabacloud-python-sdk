@@ -7,9 +7,10 @@ from typing import List, Dict
 class CreateAIJobRequestInputsDes(TeaModel):
     def __init__(
         self,
+        band_no: str = None,
         data_id: str = None,
     ):
-        # 数据的DataId
+        self.band_no = band_no
         self.data_id = data_id
 
     def validate(self):
@@ -21,12 +22,16 @@ class CreateAIJobRequestInputsDes(TeaModel):
             return _map
 
         result = dict()
+        if self.band_no is not None:
+            result['BandNo'] = self.band_no
         if self.data_id is not None:
             result['DataId'] = self.data_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BandNo') is not None:
+            self.band_no = m.get('BandNo')
         if m.get('DataId') is not None:
             self.data_id = m.get('DataId')
         return self
@@ -35,9 +40,10 @@ class CreateAIJobRequestInputsDes(TeaModel):
 class CreateAIJobRequestInputsSrc(TeaModel):
     def __init__(
         self,
+        band_no: str = None,
         data_id: str = None,
     ):
-        # 数据的DataId
+        self.band_no = band_no
         self.data_id = data_id
 
     def validate(self):
@@ -49,12 +55,16 @@ class CreateAIJobRequestInputsSrc(TeaModel):
             return _map
 
         result = dict()
+        if self.band_no is not None:
+            result['BandNo'] = self.band_no
         if self.data_id is not None:
             result['DataId'] = self.data_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BandNo') is not None:
+            self.band_no = m.get('BandNo')
         if m.get('DataId') is not None:
             self.data_id = m.get('DataId')
         return self
@@ -68,9 +78,7 @@ class CreateAIJobRequestInputs(TeaModel):
         src: CreateAIJobRequestInputsSrc = None,
     ):
         self.des = des
-        # 输入序号
         self.idx = idx
-        # 第一张图片
         self.src = src
 
     def validate(self):
@@ -114,36 +122,21 @@ class CreateAIJobRequest(TeaModel):
         confidence: float = None,
         inputs: List[CreateAIJobRequestInputs] = None,
         job_name: str = None,
+        model_project_id: int = None,
+        model_version: str = None,
         project_id: int = None,
         shape_data_id: str = None,
         shape_wkt: str = None,
     ):
-        # 算法名称，对应枚举：building_extraction, "建筑物提取"
-        # greenhouse_extraction, "大棚提取"
-        # land_cover_classification, "地物分类"
-        # pv_plant, "光伏电厂识别"
-        # barrage, "拦河坝识别"
-        # construction_change, "通用变化检测"
-        # multiclass, "变化多分类"
-        # farmland_extraction_remote_sensing, "地块提取"
-        # sar_water, "sar水体提取"
-        # building_change, "建筑物变化检测"
-        # farmland_change, "农田变化检测"
-        # remove_cloud_haze, "去云雾处理"
         self.app = app
-        # 过滤阈值，选择图斑过滤面积，小于此面积不提取
         self.area_threshold = area_threshold
-        # 置信度，选择识别目标的置信度，0-100
         self.confidence = confidence
-        # 待分析数据列表
         self.inputs = inputs
-        # 任务名称
         self.job_name = job_name
-        # 项目Id
+        self.model_project_id = model_project_id
+        self.model_version = model_version
         self.project_id = project_id
-        # 区域选择，对应区域shapeId
         self.shape_data_id = shape_data_id
-        # 区域选择，wkt格式
         self.shape_wkt = shape_wkt
 
     def validate(self):
@@ -170,6 +163,10 @@ class CreateAIJobRequest(TeaModel):
                 result['Inputs'].append(k.to_map() if k else None)
         if self.job_name is not None:
             result['JobName'] = self.job_name
+        if self.model_project_id is not None:
+            result['ModelProjectId'] = self.model_project_id
+        if self.model_version is not None:
+            result['ModelVersion'] = self.model_version
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
         if self.shape_data_id is not None:
@@ -193,6 +190,10 @@ class CreateAIJobRequest(TeaModel):
                 self.inputs.append(temp_model.from_map(k))
         if m.get('JobName') is not None:
             self.job_name = m.get('JobName')
+        if m.get('ModelProjectId') is not None:
+            self.model_project_id = m.get('ModelProjectId')
+        if m.get('ModelVersion') is not None:
+            self.model_version = m.get('ModelVersion')
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
         if m.get('ShapeDataId') is not None:
@@ -210,36 +211,21 @@ class CreateAIJobShrinkRequest(TeaModel):
         confidence: float = None,
         inputs_shrink: str = None,
         job_name: str = None,
+        model_project_id: int = None,
+        model_version: str = None,
         project_id: int = None,
         shape_data_id: str = None,
         shape_wkt: str = None,
     ):
-        # 算法名称，对应枚举：building_extraction, "建筑物提取"
-        # greenhouse_extraction, "大棚提取"
-        # land_cover_classification, "地物分类"
-        # pv_plant, "光伏电厂识别"
-        # barrage, "拦河坝识别"
-        # construction_change, "通用变化检测"
-        # multiclass, "变化多分类"
-        # farmland_extraction_remote_sensing, "地块提取"
-        # sar_water, "sar水体提取"
-        # building_change, "建筑物变化检测"
-        # farmland_change, "农田变化检测"
-        # remove_cloud_haze, "去云雾处理"
         self.app = app
-        # 过滤阈值，选择图斑过滤面积，小于此面积不提取
         self.area_threshold = area_threshold
-        # 置信度，选择识别目标的置信度，0-100
         self.confidence = confidence
-        # 待分析数据列表
         self.inputs_shrink = inputs_shrink
-        # 任务名称
         self.job_name = job_name
-        # 项目Id
+        self.model_project_id = model_project_id
+        self.model_version = model_version
         self.project_id = project_id
-        # 区域选择，对应区域shapeId
         self.shape_data_id = shape_data_id
-        # 区域选择，wkt格式
         self.shape_wkt = shape_wkt
 
     def validate(self):
@@ -261,6 +247,10 @@ class CreateAIJobShrinkRequest(TeaModel):
             result['Inputs'] = self.inputs_shrink
         if self.job_name is not None:
             result['JobName'] = self.job_name
+        if self.model_project_id is not None:
+            result['ModelProjectId'] = self.model_project_id
+        if self.model_version is not None:
+            result['ModelVersion'] = self.model_version
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
         if self.shape_data_id is not None:
@@ -281,6 +271,10 @@ class CreateAIJobShrinkRequest(TeaModel):
             self.inputs_shrink = m.get('Inputs')
         if m.get('JobName') is not None:
             self.job_name = m.get('JobName')
+        if m.get('ModelProjectId') is not None:
+            self.model_project_id = m.get('ModelProjectId')
+        if m.get('ModelVersion') is not None:
+            self.model_version = m.get('ModelVersion')
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
         if m.get('ShapeDataId') is not None:
@@ -431,7 +425,6 @@ class DeleteJobsRequest(TeaModel):
         self,
         job_ids: List[int] = None,
     ):
-        # 任务Id
         self.job_ids = job_ids
 
     def validate(self):
@@ -459,7 +452,6 @@ class DeleteJobsShrinkRequest(TeaModel):
         self,
         job_ids_shrink: str = None,
     ):
-        # 任务Id
         self.job_ids_shrink = job_ids_shrink
 
     def validate(self):
@@ -566,7 +558,6 @@ class DownloadDataRequest(TeaModel):
         data_id: str = None,
     ):
         self.band_no = band_no
-        # 需要下载数据的DataId
         self.data_id = data_id
 
     def validate(self):
@@ -693,7 +684,6 @@ class GetJobsRequest(TeaModel):
         self,
         job_ids: List[int] = None,
     ):
-        # 任务Id
         self.job_ids = job_ids
 
     def validate(self):
@@ -721,7 +711,6 @@ class GetJobsShrinkRequest(TeaModel):
         self,
         job_ids_shrink: str = None,
     ):
-        # 任务Id
         self.job_ids_shrink = job_ids_shrink
 
     def validate(self):
@@ -752,6 +741,7 @@ class GetJobsResponseBodyList(TeaModel):
         job_name: str = None,
         job_type: int = None,
         out_data_id: int = None,
+        out_data_type: int = None,
         out_date_type: int = None,
         progress: str = None,
         request_id: str = None,
@@ -763,6 +753,7 @@ class GetJobsResponseBodyList(TeaModel):
         self.job_name = job_name
         self.job_type = job_type
         self.out_data_id = out_data_id
+        self.out_data_type = out_data_type
         self.out_date_type = out_date_type
         self.progress = progress
         self.request_id = request_id
@@ -788,6 +779,8 @@ class GetJobsResponseBodyList(TeaModel):
             result['JobType'] = self.job_type
         if self.out_data_id is not None:
             result['OutDataId'] = self.out_data_id
+        if self.out_data_type is not None:
+            result['OutDataType'] = self.out_data_type
         if self.out_date_type is not None:
             result['OutDateType'] = self.out_date_type
         if self.progress is not None:
@@ -812,6 +805,8 @@ class GetJobsResponseBodyList(TeaModel):
             self.job_type = m.get('JobType')
         if m.get('OutDataId') is not None:
             self.out_data_id = m.get('OutDataId')
+        if m.get('OutDataType') is not None:
+            self.out_data_type = m.get('OutDataType')
         if m.get('OutDateType') is not None:
             self.out_date_type = m.get('OutDateType')
         if m.get('Progress') is not None:
@@ -922,34 +917,13 @@ class ListDatasRequest(TeaModel):
         region_wkt: str = None,
         source_type_list: List[str] = None,
     ):
-        # 云量上限
         self.cloudage_max = cloudage_max
-        # 云量下限，注意modis数据云量为0
         self.cloudage_min = cloudage_min
-        # 结束日期，例如"2020-06-01"
         self.date_end = date_end
-        # 开始日期，例如"2020-01-01"
         self.date_start = date_start
-        # 页码
         self.page_number = page_number
-        # 每页数量
         self.page_size = page_size
-        # 区域选择，wkt格式
         self.region_wkt = region_wkt
-        # 星源，可多选，枚举值如下：LANDSAT_LC08_C02_T1_L2
-        # LANDSAT_LC09_C02_T1_L2
-        # LANDSAT_LE07_E02_T1_L2
-        # LANDSAT_LT05_T02_T1_L2
-        # SENTINEL_GRD
-        # SENTINEL_MSIL2A
-        # MODIS_MCD12Q1_006
-        # MODIS_MCD15A3H_006
-        # MODIS_MOD14A2_006
-        # MODIS_MOD13Q1_006
-        # MODIS_MOD17A2H_006
-        # MODIS_MOD17A3HGF_006
-        # MODIS_MCD64A1_006
-        # MODIS_MOD11A1_006
         self.source_type_list = source_type_list
 
     def validate(self):
@@ -1012,34 +986,13 @@ class ListDatasShrinkRequest(TeaModel):
         region_wkt: str = None,
         source_type_list_shrink: str = None,
     ):
-        # 云量上限
         self.cloudage_max = cloudage_max
-        # 云量下限，注意modis数据云量为0
         self.cloudage_min = cloudage_min
-        # 结束日期，例如"2020-06-01"
         self.date_end = date_end
-        # 开始日期，例如"2020-01-01"
         self.date_start = date_start
-        # 页码
         self.page_number = page_number
-        # 每页数量
         self.page_size = page_size
-        # 区域选择，wkt格式
         self.region_wkt = region_wkt
-        # 星源，可多选，枚举值如下：LANDSAT_LC08_C02_T1_L2
-        # LANDSAT_LC09_C02_T1_L2
-        # LANDSAT_LE07_E02_T1_L2
-        # LANDSAT_LT05_T02_T1_L2
-        # SENTINEL_GRD
-        # SENTINEL_MSIL2A
-        # MODIS_MCD12Q1_006
-        # MODIS_MCD15A3H_006
-        # MODIS_MOD14A2_006
-        # MODIS_MOD13Q1_006
-        # MODIS_MOD17A2H_006
-        # MODIS_MOD17A3HGF_006
-        # MODIS_MCD64A1_006
-        # MODIS_MOD11A1_006
         self.source_type_list_shrink = source_type_list_shrink
 
     def validate(self):
@@ -1361,19 +1314,12 @@ class ListUserRasterDatasRequest(TeaModel):
         resolution: float = None,
         upload_date: str = None,
     ):
-        # 采集日期
         self.acquisition_date = acquisition_date
-        # 来源类型，个人上传：personal，任务结果：result
         self.from_type = from_type
-        # 名称
         self.name = name
-        # 页码
         self.page_number = page_number
-        # 每页数量
         self.page_size = page_size
-        # 分辨率
         self.resolution = resolution
-        # 上传日期
         self.upload_date = upload_date
 
     def validate(self):
@@ -1689,15 +1635,10 @@ class ListUserVectorDatasRequest(TeaModel):
         page_size: int = None,
         upload_date: str = None,
     ):
-        # 来源类型，个人上传：personal，任务结果：result
         self.from_type = from_type
-        # 名称
         self.name = name
-        # 页码
         self.page_number = page_number
-        # 每页数量
         self.page_size = page_size
-        # 上传日期
         self.upload_date = upload_date
 
     def validate(self):

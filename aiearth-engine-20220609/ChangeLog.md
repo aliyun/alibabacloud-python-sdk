@@ -1,3 +1,6 @@
+2022-11-15 Version: 1.0.3
+- Added customized_model support.
+
 2022-07-19 Version: 1.0.2
 添加任务提交api
 
