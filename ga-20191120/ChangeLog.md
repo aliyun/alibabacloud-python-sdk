@@ -1,3 +1,6 @@
+2022-11-15 Version: 1.0.15
+- Update ReplaceBandwidthPackage Api.
+
 2022-10-29 Version: 1.0.14
 - Update Basic Ga Api.
 
