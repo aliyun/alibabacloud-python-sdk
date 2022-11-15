@@ -28287,18 +28287,10 @@ class QueryClusterSpecificationResponseBodyData(TeaModel):
         self,
         cluster_specification_name: str = None,
         cpu_capacity: str = None,
-        disk_capacity: str = None,
-        instance_count: str = None,
-        max_con: str = None,
-        max_tps: str = None,
         memory_capacity: str = None,
     ):
         self.cluster_specification_name = cluster_specification_name
         self.cpu_capacity = cpu_capacity
-        self.disk_capacity = disk_capacity
-        self.instance_count = instance_count
-        self.max_con = max_con
-        self.max_tps = max_tps
         self.memory_capacity = memory_capacity
 
     def validate(self):
@@ -28314,14 +28306,6 @@ class QueryClusterSpecificationResponseBodyData(TeaModel):
             result['ClusterSpecificationName'] = self.cluster_specification_name
         if self.cpu_capacity is not None:
             result['CpuCapacity'] = self.cpu_capacity
-        if self.disk_capacity is not None:
-            result['DiskCapacity'] = self.disk_capacity
-        if self.instance_count is not None:
-            result['InstanceCount'] = self.instance_count
-        if self.max_con is not None:
-            result['MaxCon'] = self.max_con
-        if self.max_tps is not None:
-            result['MaxTps'] = self.max_tps
         if self.memory_capacity is not None:
             result['MemoryCapacity'] = self.memory_capacity
         return result
@@ -28332,14 +28316,6 @@ class QueryClusterSpecificationResponseBodyData(TeaModel):
             self.cluster_specification_name = m.get('ClusterSpecificationName')
         if m.get('CpuCapacity') is not None:
             self.cpu_capacity = m.get('CpuCapacity')
-        if m.get('DiskCapacity') is not None:
-            self.disk_capacity = m.get('DiskCapacity')
-        if m.get('InstanceCount') is not None:
-            self.instance_count = m.get('InstanceCount')
-        if m.get('MaxCon') is not None:
-            self.max_con = m.get('MaxCon')
-        if m.get('MaxTps') is not None:
-            self.max_tps = m.get('MaxTps')
         if m.get('MemoryCapacity') is not None:
             self.memory_capacity = m.get('MemoryCapacity')
         return self
