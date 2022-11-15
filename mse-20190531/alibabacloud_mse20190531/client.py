@@ -483,13 +483,13 @@ class Client(OpenApiClient):
         request = mse_20190531_models.AddGatewayRouteShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.direct_response_json):
-            request.direct_response_jsonshrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.direct_response_json), 'DirectResponseJSON', 'json')
+            request.direct_response_jsonshrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.direct_response_json, 'DirectResponseJSON', 'json')
         if not UtilClient.is_unset(tmp_req.fallback_services):
             request.fallback_services_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.fallback_services, 'FallbackServices', 'json')
         if not UtilClient.is_unset(tmp_req.predicates):
-            request.predicates_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.predicates), 'Predicates', 'json')
+            request.predicates_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.predicates, 'Predicates', 'json')
         if not UtilClient.is_unset(tmp_req.redirect_json):
-            request.redirect_jsonshrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.redirect_json), 'RedirectJSON', 'json')
+            request.redirect_jsonshrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.redirect_json, 'RedirectJSON', 'json')
         if not UtilClient.is_unset(tmp_req.services):
             request.services_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.services, 'Services', 'json')
         query = {}
@@ -551,13 +551,13 @@ class Client(OpenApiClient):
         request = mse_20190531_models.AddGatewayRouteShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.direct_response_json):
-            request.direct_response_jsonshrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.direct_response_json), 'DirectResponseJSON', 'json')
+            request.direct_response_jsonshrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.direct_response_json, 'DirectResponseJSON', 'json')
         if not UtilClient.is_unset(tmp_req.fallback_services):
             request.fallback_services_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.fallback_services, 'FallbackServices', 'json')
         if not UtilClient.is_unset(tmp_req.predicates):
-            request.predicates_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.predicates), 'Predicates', 'json')
+            request.predicates_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.predicates, 'Predicates', 'json')
         if not UtilClient.is_unset(tmp_req.redirect_json):
-            request.redirect_jsonshrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.redirect_json), 'RedirectJSON', 'json')
+            request.redirect_jsonshrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.redirect_json, 'RedirectJSON', 'json')
         if not UtilClient.is_unset(tmp_req.services):
             request.services_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.services, 'Services', 'json')
         query = {}
@@ -1101,7 +1101,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.group_list):
             request.group_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.group_list, 'GroupList', 'json')
         if not UtilClient.is_unset(tmp_req.ingress_options_request):
-            request.ingress_options_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.ingress_options_request), 'IngressOptionsRequest', 'json')
+            request.ingress_options_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ingress_options_request, 'IngressOptionsRequest', 'json')
         if not UtilClient.is_unset(tmp_req.path_list):
             request.path_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.path_list, 'PathList', 'json')
         query = {}
@@ -1153,7 +1153,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.group_list):
             request.group_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.group_list, 'GroupList', 'json')
         if not UtilClient.is_unset(tmp_req.ingress_options_request):
-            request.ingress_options_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.ingress_options_request), 'IngressOptionsRequest', 'json')
+            request.ingress_options_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ingress_options_request, 'IngressOptionsRequest', 'json')
         if not UtilClient.is_unset(tmp_req.path_list):
             request.path_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.path_list, 'PathList', 'json')
         query = {}
@@ -4312,6 +4312,100 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_application_list_with_options_async(request, runtime)
 
+    def get_application_list_with_metircs_with_options(
+        self,
+        request: mse_20190531_models.GetApplicationListWithMetircsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.GetApplicationListWithMetircsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetApplicationListWithMetircs',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.GetApplicationListWithMetircsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_application_list_with_metircs_with_options_async(
+        self,
+        request: mse_20190531_models.GetApplicationListWithMetircsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.GetApplicationListWithMetircsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetApplicationListWithMetircs',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.GetApplicationListWithMetircsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_application_list_with_metircs(
+        self,
+        request: mse_20190531_models.GetApplicationListWithMetircsRequest,
+    ) -> mse_20190531_models.GetApplicationListWithMetircsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_application_list_with_metircs_with_options(request, runtime)
+
+    async def get_application_list_with_metircs_async(
+        self,
+        request: mse_20190531_models.GetApplicationListWithMetircsRequest,
+    ) -> mse_20190531_models.GetApplicationListWithMetircsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_application_list_with_metircs_with_options_async(request, runtime)
+
     def get_black_white_list_with_options(
         self,
         request: mse_20190531_models.GetBlackWhiteListRequest,
@@ -7047,7 +7141,7 @@ class Client(OpenApiClient):
         request = mse_20190531_models.ListGatewayShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.filter_params):
-            request.filter_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.filter_params), 'FilterParams', 'json')
+            request.filter_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.filter_params, 'FilterParams', 'json')
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
@@ -7089,7 +7183,7 @@ class Client(OpenApiClient):
         request = mse_20190531_models.ListGatewayShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.filter_params):
-            request.filter_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.filter_params), 'FilterParams', 'json')
+            request.filter_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.filter_params, 'FilterParams', 'json')
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
@@ -7223,7 +7317,7 @@ class Client(OpenApiClient):
         request = mse_20190531_models.ListGatewayRouteShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.filter_params):
-            request.filter_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.filter_params), 'FilterParams', 'json')
+            request.filter_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.filter_params, 'FilterParams', 'json')
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
@@ -7265,7 +7359,7 @@ class Client(OpenApiClient):
         request = mse_20190531_models.ListGatewayRouteShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.filter_params):
-            request.filter_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.filter_params), 'FilterParams', 'json')
+            request.filter_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.filter_params, 'FilterParams', 'json')
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
@@ -7321,7 +7415,7 @@ class Client(OpenApiClient):
         request = mse_20190531_models.ListGatewayServiceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.filter_params):
-            request.filter_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.filter_params), 'FilterParams', 'json')
+            request.filter_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.filter_params, 'FilterParams', 'json')
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
@@ -7363,7 +7457,7 @@ class Client(OpenApiClient):
         request = mse_20190531_models.ListGatewayServiceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.filter_params):
-            request.filter_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.filter_params), 'FilterParams', 'json')
+            request.filter_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.filter_params, 'FilterParams', 'json')
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
@@ -10973,7 +11067,7 @@ class Client(OpenApiClient):
         request = mse_20190531_models.UpdateGatewayOptionShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.gateway_option):
-            request.gateway_option_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.gateway_option), 'GatewayOption', 'json')
+            request.gateway_option_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.gateway_option, 'GatewayOption', 'json')
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
@@ -11011,7 +11105,7 @@ class Client(OpenApiClient):
         request = mse_20190531_models.UpdateGatewayOptionShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.gateway_option):
-            request.gateway_option_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.gateway_option), 'GatewayOption', 'json')
+            request.gateway_option_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.gateway_option, 'GatewayOption', 'json')
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
@@ -11063,13 +11157,13 @@ class Client(OpenApiClient):
         request = mse_20190531_models.UpdateGatewayRouteShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.direct_response_json):
-            request.direct_response_jsonshrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.direct_response_json), 'DirectResponseJSON', 'json')
+            request.direct_response_jsonshrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.direct_response_json, 'DirectResponseJSON', 'json')
         if not UtilClient.is_unset(tmp_req.fallback_services):
             request.fallback_services_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.fallback_services, 'FallbackServices', 'json')
         if not UtilClient.is_unset(tmp_req.predicates):
-            request.predicates_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.predicates), 'Predicates', 'json')
+            request.predicates_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.predicates, 'Predicates', 'json')
         if not UtilClient.is_unset(tmp_req.redirect_json):
-            request.redirect_jsonshrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.redirect_json), 'RedirectJSON', 'json')
+            request.redirect_jsonshrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.redirect_json, 'RedirectJSON', 'json')
         if not UtilClient.is_unset(tmp_req.services):
             request.services_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.services, 'Services', 'json')
         query = {}
@@ -11131,13 +11225,13 @@ class Client(OpenApiClient):
         request = mse_20190531_models.UpdateGatewayRouteShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.direct_response_json):
-            request.direct_response_jsonshrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.direct_response_json), 'DirectResponseJSON', 'json')
+            request.direct_response_jsonshrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.direct_response_json, 'DirectResponseJSON', 'json')
         if not UtilClient.is_unset(tmp_req.fallback_services):
             request.fallback_services_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.fallback_services, 'FallbackServices', 'json')
         if not UtilClient.is_unset(tmp_req.predicates):
-            request.predicates_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.predicates), 'Predicates', 'json')
+            request.predicates_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.predicates, 'Predicates', 'json')
         if not UtilClient.is_unset(tmp_req.redirect_json):
-            request.redirect_jsonshrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.redirect_json), 'RedirectJSON', 'json')
+            request.redirect_jsonshrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.redirect_json, 'RedirectJSON', 'json')
         if not UtilClient.is_unset(tmp_req.services):
             request.services_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.services, 'Services', 'json')
         query = {}
@@ -11213,7 +11307,7 @@ class Client(OpenApiClient):
         request = mse_20190531_models.UpdateGatewayRouteCORSShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.cors_json):
-            request.cors_jsonshrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.cors_json), 'CorsJSON', 'json')
+            request.cors_jsonshrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.cors_json, 'CorsJSON', 'json')
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
@@ -11253,7 +11347,7 @@ class Client(OpenApiClient):
         request = mse_20190531_models.UpdateGatewayRouteCORSShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.cors_json):
-            request.cors_jsonshrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.cors_json), 'CorsJSON', 'json')
+            request.cors_jsonshrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.cors_json, 'CorsJSON', 'json')
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
@@ -11479,7 +11573,7 @@ class Client(OpenApiClient):
         request = mse_20190531_models.UpdateGatewayRouteRetryShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.retry_json):
-            request.retry_jsonshrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.retry_json), 'RetryJSON', 'json')
+            request.retry_jsonshrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.retry_json, 'RetryJSON', 'json')
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
@@ -11519,7 +11613,7 @@ class Client(OpenApiClient):
         request = mse_20190531_models.UpdateGatewayRouteRetryShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.retry_json):
-            request.retry_jsonshrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.retry_json), 'RetryJSON', 'json')
+            request.retry_jsonshrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.retry_json, 'RetryJSON', 'json')
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
@@ -11573,7 +11667,7 @@ class Client(OpenApiClient):
         request = mse_20190531_models.UpdateGatewayRouteTimeoutShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.timeout_json):
-            request.timeout_jsonshrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.timeout_json), 'TimeoutJSON', 'json')
+            request.timeout_jsonshrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.timeout_json, 'TimeoutJSON', 'json')
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
@@ -11613,7 +11707,7 @@ class Client(OpenApiClient):
         request = mse_20190531_models.UpdateGatewayRouteTimeoutShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.timeout_json):
-            request.timeout_jsonshrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.timeout_json), 'TimeoutJSON', 'json')
+            request.timeout_jsonshrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.timeout_json, 'TimeoutJSON', 'json')
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
@@ -11749,7 +11843,7 @@ class Client(OpenApiClient):
         request = mse_20190531_models.UpdateGatewayServiceTrafficPolicyShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.gateway_traffic_policy):
-            request.gateway_traffic_policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.gateway_traffic_policy), 'GatewayTrafficPolicy', 'json')
+            request.gateway_traffic_policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.gateway_traffic_policy, 'GatewayTrafficPolicy', 'json')
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
@@ -11789,7 +11883,7 @@ class Client(OpenApiClient):
         request = mse_20190531_models.UpdateGatewayServiceTrafficPolicyShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.gateway_traffic_policy):
-            request.gateway_traffic_policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.gateway_traffic_policy), 'GatewayTrafficPolicy', 'json')
+            request.gateway_traffic_policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.gateway_traffic_policy, 'GatewayTrafficPolicy', 'json')
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
@@ -12803,7 +12897,7 @@ class Client(OpenApiClient):
         request = mse_20190531_models.UpdateServiceSourceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.ingress_options_request):
-            request.ingress_options_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.ingress_options_request), 'IngressOptionsRequest', 'json')
+            request.ingress_options_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ingress_options_request, 'IngressOptionsRequest', 'json')
         if not UtilClient.is_unset(tmp_req.path_list):
             request.path_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.path_list, 'PathList', 'json')
         query = {}
@@ -12855,7 +12949,7 @@ class Client(OpenApiClient):
         request = mse_20190531_models.UpdateServiceSourceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.ingress_options_request):
-            request.ingress_options_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.ingress_options_request), 'IngressOptionsRequest', 'json')
+            request.ingress_options_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ingress_options_request, 'IngressOptionsRequest', 'json')
         if not UtilClient.is_unset(tmp_req.path_list):
             request.path_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.path_list, 'PathList', 'json')
         query = {}

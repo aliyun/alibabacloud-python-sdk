@@ -1,3 +1,6 @@
+2022-11-15 Version: 3.0.45
+- Support MSE and AHAS integrated.
+
 2022-11-07 Version: 3.0.44
 - Supported MSE Gateway For ResourceGroup.
 
