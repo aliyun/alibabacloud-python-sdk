@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import List, Dict, Any
+from typing import List, Dict
 
 
 class AddDirectionalCardRequest(TeaModel):
@@ -3136,6 +3136,8 @@ class ListOrderResponseBodyDataList(TeaModel):
     def __init__(
         self,
         ali_fee: str = None,
+        apn_name: str = None,
+        apn_region: str = None,
         billing_cycle: str = None,
         buy_num: int = None,
         card_pay_count: int = None,
@@ -3156,9 +3158,12 @@ class ListOrderResponseBodyDataList(TeaModel):
         pool_capacity: str = None,
         pool_capacity_unit: str = None,
         pool_no: str = None,
+        resource_quantity: int = None,
         vendor: str = None,
     ):
         self.ali_fee = ali_fee
+        self.apn_name = apn_name
+        self.apn_region = apn_region
         self.billing_cycle = billing_cycle
         self.buy_num = buy_num
         self.card_pay_count = card_pay_count
@@ -3179,6 +3184,7 @@ class ListOrderResponseBodyDataList(TeaModel):
         self.pool_capacity = pool_capacity
         self.pool_capacity_unit = pool_capacity_unit
         self.pool_no = pool_no
+        self.resource_quantity = resource_quantity
         self.vendor = vendor
 
     def validate(self):
@@ -3193,6 +3199,10 @@ class ListOrderResponseBodyDataList(TeaModel):
         result = dict()
         if self.ali_fee is not None:
             result['AliFee'] = self.ali_fee
+        if self.apn_name is not None:
+            result['ApnName'] = self.apn_name
+        if self.apn_region is not None:
+            result['ApnRegion'] = self.apn_region
         if self.billing_cycle is not None:
             result['BillingCycle'] = self.billing_cycle
         if self.buy_num is not None:
@@ -3233,6 +3243,8 @@ class ListOrderResponseBodyDataList(TeaModel):
             result['PoolCapacityUnit'] = self.pool_capacity_unit
         if self.pool_no is not None:
             result['PoolNo'] = self.pool_no
+        if self.resource_quantity is not None:
+            result['ResourceQuantity'] = self.resource_quantity
         if self.vendor is not None:
             result['Vendor'] = self.vendor
         return result
@@ -3241,6 +3253,10 @@ class ListOrderResponseBodyDataList(TeaModel):
         m = m or dict()
         if m.get('AliFee') is not None:
             self.ali_fee = m.get('AliFee')
+        if m.get('ApnName') is not None:
+            self.apn_name = m.get('ApnName')
+        if m.get('ApnRegion') is not None:
+            self.apn_region = m.get('ApnRegion')
         if m.get('BillingCycle') is not None:
             self.billing_cycle = m.get('BillingCycle')
         if m.get('BuyNum') is not None:
@@ -3282,6 +3298,8 @@ class ListOrderResponseBodyDataList(TeaModel):
             self.pool_capacity_unit = m.get('PoolCapacityUnit')
         if m.get('PoolNo') is not None:
             self.pool_no = m.get('PoolNo')
+        if m.get('ResourceQuantity') is not None:
+            self.resource_quantity = m.get('ResourceQuantity')
         if m.get('Vendor') is not None:
             self.vendor = m.get('Vendor')
         return self
@@ -3453,7 +3471,7 @@ class RebindResumeSingleCardRequest(TeaModel):
     def __init__(
         self,
         iccid: str = None,
-        opt_msisdns: Dict[str, Any] = None,
+        opt_msisdns: List[str] = None,
     ):
         self.iccid = iccid
         self.opt_msisdns = opt_msisdns
@@ -3819,7 +3837,7 @@ class ResumeSingleCardRequest(TeaModel):
     def __init__(
         self,
         iccid: str = None,
-        opt_msisdns: Dict[str, Any] = None,
+        opt_msisdns: List[str] = None,
     ):
         self.iccid = iccid
         self.opt_msisdns = opt_msisdns
@@ -4126,7 +4144,7 @@ class StopSingleCardRequest(TeaModel):
     def __init__(
         self,
         iccid: str = None,
-        opt_msisdns: Dict[str, Any] = None,
+        opt_msisdns: List[str] = None,
     ):
         self.iccid = iccid
         self.opt_msisdns = opt_msisdns
