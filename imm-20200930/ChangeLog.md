@@ -1,3 +1,7 @@
+2022-11-15 Version: 1.28.9
+- Add story location.
+- Support location date clustering.
+
 2022-11-15 Version: 1.28.8
 - Set GetDetectVideoLabelsResult to private.
 - Set CreateDetectVideoLabelsTask to private.

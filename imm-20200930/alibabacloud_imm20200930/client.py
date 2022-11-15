@@ -1196,6 +1196,108 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_dataset_with_options_async(request, runtime)
 
+    def create_detect_video_labels_task_with_options(
+        self,
+        tmp_req: imm_20200930_models.CreateDetectVideoLabelsTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.CreateDetectVideoLabelsTaskResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.CreateDetectVideoLabelsTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.credential_config):
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.credential_config_shrink):
+            query['CredentialConfig'] = request.credential_config_shrink
+        if not UtilClient.is_unset(request.notify_topic_name):
+            query['NotifyTopicName'] = request.notify_topic_name
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.source_uri):
+            query['SourceURI'] = request.source_uri
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDetectVideoLabelsTask',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.CreateDetectVideoLabelsTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_detect_video_labels_task_with_options_async(
+        self,
+        tmp_req: imm_20200930_models.CreateDetectVideoLabelsTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.CreateDetectVideoLabelsTaskResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.CreateDetectVideoLabelsTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.credential_config):
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.credential_config_shrink):
+            query['CredentialConfig'] = request.credential_config_shrink
+        if not UtilClient.is_unset(request.notify_topic_name):
+            query['NotifyTopicName'] = request.notify_topic_name
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.source_uri):
+            query['SourceURI'] = request.source_uri
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDetectVideoLabelsTask',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.CreateDetectVideoLabelsTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_detect_video_labels_task(
+        self,
+        request: imm_20200930_models.CreateDetectVideoLabelsTaskRequest,
+    ) -> imm_20200930_models.CreateDetectVideoLabelsTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_detect_video_labels_task_with_options(request, runtime)
+
+    async def create_detect_video_labels_task_async(
+        self,
+        request: imm_20200930_models.CreateDetectVideoLabelsTaskRequest,
+    ) -> imm_20200930_models.CreateDetectVideoLabelsTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_detect_video_labels_task_with_options_async(request, runtime)
+
     def create_figure_clustering_task_with_options(
         self,
         tmp_req: imm_20200930_models.CreateFigureClusteringTaskRequest,
@@ -1994,6 +2096,116 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_image_to_pdftask_with_options_async(request, runtime)
 
+    def create_location_date_clustering_task_with_options(
+        self,
+        tmp_req: imm_20200930_models.CreateLocationDateClusteringTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.CreateLocationDateClusteringTaskResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.CreateLocationDateClusteringTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.date_options):
+            request.date_options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.date_options, 'DateOptions', 'json')
+        if not UtilClient.is_unset(tmp_req.location_options):
+            request.location_options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.location_options, 'LocationOptions', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.date_options_shrink):
+            query['DateOptions'] = request.date_options_shrink
+        if not UtilClient.is_unset(request.location_options_shrink):
+            query['LocationOptions'] = request.location_options_shrink
+        if not UtilClient.is_unset(request.notify_topic_name):
+            query['NotifyTopicName'] = request.notify_topic_name
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateLocationDateClusteringTask',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.CreateLocationDateClusteringTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_location_date_clustering_task_with_options_async(
+        self,
+        tmp_req: imm_20200930_models.CreateLocationDateClusteringTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.CreateLocationDateClusteringTaskResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.CreateLocationDateClusteringTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.date_options):
+            request.date_options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.date_options, 'DateOptions', 'json')
+        if not UtilClient.is_unset(tmp_req.location_options):
+            request.location_options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.location_options, 'LocationOptions', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.date_options_shrink):
+            query['DateOptions'] = request.date_options_shrink
+        if not UtilClient.is_unset(request.location_options_shrink):
+            query['LocationOptions'] = request.location_options_shrink
+        if not UtilClient.is_unset(request.notify_topic_name):
+            query['NotifyTopicName'] = request.notify_topic_name
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateLocationDateClusteringTask',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.CreateLocationDateClusteringTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_location_date_clustering_task(
+        self,
+        request: imm_20200930_models.CreateLocationDateClusteringTaskRequest,
+    ) -> imm_20200930_models.CreateLocationDateClusteringTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_location_date_clustering_task_with_options(request, runtime)
+
+    async def create_location_date_clustering_task_async(
+        self,
+        request: imm_20200930_models.CreateLocationDateClusteringTaskRequest,
+    ) -> imm_20200930_models.CreateLocationDateClusteringTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_location_date_clustering_task_with_options_async(request, runtime)
+
     def create_media_convert_task_with_options(
         self,
         tmp_req: imm_20200930_models.CreateMediaConvertTaskRequest,
@@ -2577,6 +2789,108 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.CreateStoryResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_story_with_options_async(request, runtime)
+
+    def create_video_label_classification_task_with_options(
+        self,
+        tmp_req: imm_20200930_models.CreateVideoLabelClassificationTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.CreateVideoLabelClassificationTaskResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.CreateVideoLabelClassificationTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.credential_config):
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.credential_config_shrink):
+            query['CredentialConfig'] = request.credential_config_shrink
+        if not UtilClient.is_unset(request.notify_topic_name):
+            query['NotifyTopicName'] = request.notify_topic_name
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.source_uri):
+            query['SourceURI'] = request.source_uri
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateVideoLabelClassificationTask',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.CreateVideoLabelClassificationTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_video_label_classification_task_with_options_async(
+        self,
+        tmp_req: imm_20200930_models.CreateVideoLabelClassificationTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.CreateVideoLabelClassificationTaskResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.CreateVideoLabelClassificationTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.credential_config):
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.credential_config_shrink):
+            query['CredentialConfig'] = request.credential_config_shrink
+        if not UtilClient.is_unset(request.notify_topic_name):
+            query['NotifyTopicName'] = request.notify_topic_name
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.source_uri):
+            query['SourceURI'] = request.source_uri
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateVideoLabelClassificationTask',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.CreateVideoLabelClassificationTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_video_label_classification_task(
+        self,
+        request: imm_20200930_models.CreateVideoLabelClassificationTaskRequest,
+    ) -> imm_20200930_models.CreateVideoLabelClassificationTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_video_label_classification_task_with_options(request, runtime)
+
+    async def create_video_label_classification_task_async(
+        self,
+        request: imm_20200930_models.CreateVideoLabelClassificationTaskRequest,
+    ) -> imm_20200930_models.CreateVideoLabelClassificationTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_video_label_classification_task_with_options_async(request, runtime)
 
     def create_video_moderation_task_with_options(
         self,
@@ -4697,6 +5011,84 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.GetTaskResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_task_with_options_async(request, runtime)
+
+    def get_video_label_classification_result_with_options(
+        self,
+        request: imm_20200930_models.GetVideoLabelClassificationResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.GetVideoLabelClassificationResultResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetVideoLabelClassificationResult',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.GetVideoLabelClassificationResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_video_label_classification_result_with_options_async(
+        self,
+        request: imm_20200930_models.GetVideoLabelClassificationResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.GetVideoLabelClassificationResultResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetVideoLabelClassificationResult',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.GetVideoLabelClassificationResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_video_label_classification_result(
+        self,
+        request: imm_20200930_models.GetVideoLabelClassificationResultRequest,
+    ) -> imm_20200930_models.GetVideoLabelClassificationResultResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_video_label_classification_result_with_options(request, runtime)
+
+    async def get_video_label_classification_result_async(
+        self,
+        request: imm_20200930_models.GetVideoLabelClassificationResultRequest,
+    ) -> imm_20200930_models.GetVideoLabelClassificationResultResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_video_label_classification_result_with_options_async(request, runtime)
 
     def get_video_playlist_with_options(
         self,

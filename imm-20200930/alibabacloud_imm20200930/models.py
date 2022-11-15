@@ -5873,6 +5873,205 @@ class CreateDatasetResponse(TeaModel):
         return self
 
 
+class CreateDetectVideoLabelsTaskRequest(TeaModel):
+    def __init__(
+        self,
+        credential_config: CredentialConfig = None,
+        notify_topic_name: str = None,
+        project_name: str = None,
+        source_uri: str = None,
+        tags: Dict[str, Any] = None,
+        user_data: str = None,
+    ):
+        self.credential_config = credential_config
+        self.notify_topic_name = notify_topic_name
+        self.project_name = project_name
+        self.source_uri = source_uri
+        self.tags = tags
+        self.user_data = user_data
+
+    def validate(self):
+        if self.credential_config:
+            self.credential_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.credential_config is not None:
+            result['CredentialConfig'] = self.credential_config.to_map()
+        if self.notify_topic_name is not None:
+            result['NotifyTopicName'] = self.notify_topic_name
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.source_uri is not None:
+            result['SourceURI'] = self.source_uri
+        if self.tags is not None:
+            result['Tags'] = self.tags
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CredentialConfig') is not None:
+            temp_model = CredentialConfig()
+            self.credential_config = temp_model.from_map(m['CredentialConfig'])
+        if m.get('NotifyTopicName') is not None:
+            self.notify_topic_name = m.get('NotifyTopicName')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('SourceURI') is not None:
+            self.source_uri = m.get('SourceURI')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        return self
+
+
+class CreateDetectVideoLabelsTaskShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        credential_config_shrink: str = None,
+        notify_topic_name: str = None,
+        project_name: str = None,
+        source_uri: str = None,
+        tags_shrink: str = None,
+        user_data: str = None,
+    ):
+        self.credential_config_shrink = credential_config_shrink
+        self.notify_topic_name = notify_topic_name
+        self.project_name = project_name
+        self.source_uri = source_uri
+        self.tags_shrink = tags_shrink
+        self.user_data = user_data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.credential_config_shrink is not None:
+            result['CredentialConfig'] = self.credential_config_shrink
+        if self.notify_topic_name is not None:
+            result['NotifyTopicName'] = self.notify_topic_name
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.source_uri is not None:
+            result['SourceURI'] = self.source_uri
+        if self.tags_shrink is not None:
+            result['Tags'] = self.tags_shrink
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CredentialConfig') is not None:
+            self.credential_config_shrink = m.get('CredentialConfig')
+        if m.get('NotifyTopicName') is not None:
+            self.notify_topic_name = m.get('NotifyTopicName')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('SourceURI') is not None:
+            self.source_uri = m.get('SourceURI')
+        if m.get('Tags') is not None:
+            self.tags_shrink = m.get('Tags')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        return self
+
+
+class CreateDetectVideoLabelsTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        event_id: str = None,
+        request_id: str = None,
+        task_id: str = None,
+    ):
+        self.event_id = event_id
+        self.request_id = request_id
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.event_id is not None:
+            result['EventId'] = self.event_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EventId') is not None:
+            self.event_id = m.get('EventId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class CreateDetectVideoLabelsTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateDetectVideoLabelsTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateDetectVideoLabelsTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateFigureClusteringTaskRequest(TeaModel):
     def __init__(
         self,
@@ -7648,6 +7847,286 @@ class CreateImageToPDFTaskResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateImageToPDFTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateLocationDateClusteringTaskRequestDateOptions(TeaModel):
+    def __init__(
+        self,
+        gap_days: int = None,
+        max_days: int = None,
+        min_days: int = None,
+    ):
+        self.gap_days = gap_days
+        self.max_days = max_days
+        self.min_days = min_days
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.gap_days is not None:
+            result['GapDays'] = self.gap_days
+        if self.max_days is not None:
+            result['MaxDays'] = self.max_days
+        if self.min_days is not None:
+            result['MinDays'] = self.min_days
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GapDays') is not None:
+            self.gap_days = m.get('GapDays')
+        if m.get('MaxDays') is not None:
+            self.max_days = m.get('MaxDays')
+        if m.get('MinDays') is not None:
+            self.min_days = m.get('MinDays')
+        return self
+
+
+class CreateLocationDateClusteringTaskRequestLocationOptions(TeaModel):
+    def __init__(
+        self,
+        location_date_cluster_levels: List[str] = None,
+    ):
+        self.location_date_cluster_levels = location_date_cluster_levels
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.location_date_cluster_levels is not None:
+            result['LocationDateClusterLevels'] = self.location_date_cluster_levels
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LocationDateClusterLevels') is not None:
+            self.location_date_cluster_levels = m.get('LocationDateClusterLevels')
+        return self
+
+
+class CreateLocationDateClusteringTaskRequest(TeaModel):
+    def __init__(
+        self,
+        dataset_name: str = None,
+        date_options: CreateLocationDateClusteringTaskRequestDateOptions = None,
+        location_options: CreateLocationDateClusteringTaskRequestLocationOptions = None,
+        notify_topic_name: str = None,
+        project_name: str = None,
+        tags: Dict[str, Any] = None,
+        user_data: str = None,
+    ):
+        self.dataset_name = dataset_name
+        self.date_options = date_options
+        self.location_options = location_options
+        self.notify_topic_name = notify_topic_name
+        self.project_name = project_name
+        self.tags = tags
+        self.user_data = user_data
+
+    def validate(self):
+        if self.date_options:
+            self.date_options.validate()
+        if self.location_options:
+            self.location_options.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dataset_name is not None:
+            result['DatasetName'] = self.dataset_name
+        if self.date_options is not None:
+            result['DateOptions'] = self.date_options.to_map()
+        if self.location_options is not None:
+            result['LocationOptions'] = self.location_options.to_map()
+        if self.notify_topic_name is not None:
+            result['NotifyTopicName'] = self.notify_topic_name
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.tags is not None:
+            result['Tags'] = self.tags
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DatasetName') is not None:
+            self.dataset_name = m.get('DatasetName')
+        if m.get('DateOptions') is not None:
+            temp_model = CreateLocationDateClusteringTaskRequestDateOptions()
+            self.date_options = temp_model.from_map(m['DateOptions'])
+        if m.get('LocationOptions') is not None:
+            temp_model = CreateLocationDateClusteringTaskRequestLocationOptions()
+            self.location_options = temp_model.from_map(m['LocationOptions'])
+        if m.get('NotifyTopicName') is not None:
+            self.notify_topic_name = m.get('NotifyTopicName')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        return self
+
+
+class CreateLocationDateClusteringTaskShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        dataset_name: str = None,
+        date_options_shrink: str = None,
+        location_options_shrink: str = None,
+        notify_topic_name: str = None,
+        project_name: str = None,
+        tags_shrink: str = None,
+        user_data: str = None,
+    ):
+        self.dataset_name = dataset_name
+        self.date_options_shrink = date_options_shrink
+        self.location_options_shrink = location_options_shrink
+        self.notify_topic_name = notify_topic_name
+        self.project_name = project_name
+        self.tags_shrink = tags_shrink
+        self.user_data = user_data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dataset_name is not None:
+            result['DatasetName'] = self.dataset_name
+        if self.date_options_shrink is not None:
+            result['DateOptions'] = self.date_options_shrink
+        if self.location_options_shrink is not None:
+            result['LocationOptions'] = self.location_options_shrink
+        if self.notify_topic_name is not None:
+            result['NotifyTopicName'] = self.notify_topic_name
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.tags_shrink is not None:
+            result['Tags'] = self.tags_shrink
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DatasetName') is not None:
+            self.dataset_name = m.get('DatasetName')
+        if m.get('DateOptions') is not None:
+            self.date_options_shrink = m.get('DateOptions')
+        if m.get('LocationOptions') is not None:
+            self.location_options_shrink = m.get('LocationOptions')
+        if m.get('NotifyTopicName') is not None:
+            self.notify_topic_name = m.get('NotifyTopicName')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('Tags') is not None:
+            self.tags_shrink = m.get('Tags')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        return self
+
+
+class CreateLocationDateClusteringTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        event_id: str = None,
+        request_id: str = None,
+        task_id: str = None,
+    ):
+        self.event_id = event_id
+        self.request_id = request_id
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.event_id is not None:
+            result['EventId'] = self.event_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EventId') is not None:
+            self.event_id = m.get('EventId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class CreateLocationDateClusteringTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateLocationDateClusteringTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateLocationDateClusteringTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -9904,6 +10383,205 @@ class CreateStoryResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateStoryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateVideoLabelClassificationTaskRequest(TeaModel):
+    def __init__(
+        self,
+        credential_config: CredentialConfig = None,
+        notify_topic_name: str = None,
+        project_name: str = None,
+        source_uri: str = None,
+        tags: Dict[str, Any] = None,
+        user_data: str = None,
+    ):
+        self.credential_config = credential_config
+        self.notify_topic_name = notify_topic_name
+        self.project_name = project_name
+        self.source_uri = source_uri
+        self.tags = tags
+        self.user_data = user_data
+
+    def validate(self):
+        if self.credential_config:
+            self.credential_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.credential_config is not None:
+            result['CredentialConfig'] = self.credential_config.to_map()
+        if self.notify_topic_name is not None:
+            result['NotifyTopicName'] = self.notify_topic_name
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.source_uri is not None:
+            result['SourceURI'] = self.source_uri
+        if self.tags is not None:
+            result['Tags'] = self.tags
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CredentialConfig') is not None:
+            temp_model = CredentialConfig()
+            self.credential_config = temp_model.from_map(m['CredentialConfig'])
+        if m.get('NotifyTopicName') is not None:
+            self.notify_topic_name = m.get('NotifyTopicName')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('SourceURI') is not None:
+            self.source_uri = m.get('SourceURI')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        return self
+
+
+class CreateVideoLabelClassificationTaskShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        credential_config_shrink: str = None,
+        notify_topic_name: str = None,
+        project_name: str = None,
+        source_uri: str = None,
+        tags_shrink: str = None,
+        user_data: str = None,
+    ):
+        self.credential_config_shrink = credential_config_shrink
+        self.notify_topic_name = notify_topic_name
+        self.project_name = project_name
+        self.source_uri = source_uri
+        self.tags_shrink = tags_shrink
+        self.user_data = user_data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.credential_config_shrink is not None:
+            result['CredentialConfig'] = self.credential_config_shrink
+        if self.notify_topic_name is not None:
+            result['NotifyTopicName'] = self.notify_topic_name
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.source_uri is not None:
+            result['SourceURI'] = self.source_uri
+        if self.tags_shrink is not None:
+            result['Tags'] = self.tags_shrink
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CredentialConfig') is not None:
+            self.credential_config_shrink = m.get('CredentialConfig')
+        if m.get('NotifyTopicName') is not None:
+            self.notify_topic_name = m.get('NotifyTopicName')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('SourceURI') is not None:
+            self.source_uri = m.get('SourceURI')
+        if m.get('Tags') is not None:
+            self.tags_shrink = m.get('Tags')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        return self
+
+
+class CreateVideoLabelClassificationTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        event_id: str = None,
+        request_id: str = None,
+        task_id: str = None,
+    ):
+        self.event_id = event_id
+        self.request_id = request_id
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.event_id is not None:
+            result['EventId'] = self.event_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EventId') is not None:
+            self.event_id = m.get('EventId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class CreateVideoLabelClassificationTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateVideoLabelClassificationTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateVideoLabelClassificationTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -13692,6 +14370,190 @@ class GetTaskResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetVideoLabelClassificationResultRequest(TeaModel):
+    def __init__(
+        self,
+        project_name: str = None,
+        task_id: str = None,
+        task_type: str = None,
+    ):
+        self.project_name = project_name
+        self.task_id = task_id
+        self.task_type = task_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.task_type is not None:
+            result['TaskType'] = self.task_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TaskType') is not None:
+            self.task_type = m.get('TaskType')
+        return self
+
+
+class GetVideoLabelClassificationResultResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        end_time: str = None,
+        event_id: str = None,
+        labels: List[Label] = None,
+        message: str = None,
+        project_name: str = None,
+        request_id: str = None,
+        start_time: str = None,
+        status: str = None,
+        task_id: str = None,
+        task_type: str = None,
+        user_data: str = None,
+    ):
+        self.code = code
+        self.end_time = end_time
+        self.event_id = event_id
+        self.labels = labels
+        self.message = message
+        self.project_name = project_name
+        self.request_id = request_id
+        self.start_time = start_time
+        self.status = status
+        self.task_id = task_id
+        self.task_type = task_type
+        self.user_data = user_data
+
+    def validate(self):
+        if self.labels:
+            for k in self.labels:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.event_id is not None:
+            result['EventId'] = self.event_id
+        result['Labels'] = []
+        if self.labels is not None:
+            for k in self.labels:
+                result['Labels'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.task_type is not None:
+            result['TaskType'] = self.task_type
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('EventId') is not None:
+            self.event_id = m.get('EventId')
+        self.labels = []
+        if m.get('Labels') is not None:
+            for k in m.get('Labels'):
+                temp_model = Label()
+                self.labels.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TaskType') is not None:
+            self.task_type = m.get('TaskType')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        return self
+
+
+class GetVideoLabelClassificationResultResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetVideoLabelClassificationResultResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetVideoLabelClassificationResultResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
