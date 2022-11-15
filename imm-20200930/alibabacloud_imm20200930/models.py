@@ -67,6 +67,57 @@ class Address(TeaModel):
         return self
 
 
+class AddressForStory(TeaModel):
+    def __init__(
+        self,
+        city: str = None,
+        country: str = None,
+        district: str = None,
+        province: str = None,
+        township: str = None,
+    ):
+        self.city = city
+        self.country = country
+        self.district = district
+        self.province = province
+        self.township = township
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.city is not None:
+            result['City'] = self.city
+        if self.country is not None:
+            result['Country'] = self.country
+        if self.district is not None:
+            result['District'] = self.district
+        if self.province is not None:
+            result['Province'] = self.province
+        if self.township is not None:
+            result['Township'] = self.township
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('City') is not None:
+            self.city = m.get('City')
+        if m.get('Country') is not None:
+            self.country = m.get('Country')
+        if m.get('District') is not None:
+            self.district = m.get('District')
+        if m.get('Province') is not None:
+            self.province = m.get('Province')
+        if m.get('Township') is not None:
+            self.township = m.get('Township')
+        return self
+
+
 class AssumeRoleChainNode(TeaModel):
     def __init__(
         self,
@@ -2542,6 +2593,95 @@ class KeyValuePair(TeaModel):
         return self
 
 
+class LocationDateCluster(TeaModel):
+    def __init__(
+        self,
+        addresses: List[Address] = None,
+        create_time: str = None,
+        custom_id: str = None,
+        custom_labels: Dict[str, Any] = None,
+        location_date_cluster_end_time: str = None,
+        location_date_cluster_level: str = None,
+        location_date_cluster_start_time: str = None,
+        object_id: str = None,
+        title: str = None,
+        update_time: str = None,
+    ):
+        self.addresses = addresses
+        self.create_time = create_time
+        self.custom_id = custom_id
+        self.custom_labels = custom_labels
+        self.location_date_cluster_end_time = location_date_cluster_end_time
+        self.location_date_cluster_level = location_date_cluster_level
+        self.location_date_cluster_start_time = location_date_cluster_start_time
+        self.object_id = object_id
+        self.title = title
+        self.update_time = update_time
+
+    def validate(self):
+        if self.addresses:
+            for k in self.addresses:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Addresses'] = []
+        if self.addresses is not None:
+            for k in self.addresses:
+                result['Addresses'].append(k.to_map() if k else None)
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.custom_id is not None:
+            result['CustomId'] = self.custom_id
+        if self.custom_labels is not None:
+            result['CustomLabels'] = self.custom_labels
+        if self.location_date_cluster_end_time is not None:
+            result['LocationDateClusterEndTime'] = self.location_date_cluster_end_time
+        if self.location_date_cluster_level is not None:
+            result['LocationDateClusterLevel'] = self.location_date_cluster_level
+        if self.location_date_cluster_start_time is not None:
+            result['LocationDateClusterStartTime'] = self.location_date_cluster_start_time
+        if self.object_id is not None:
+            result['ObjectId'] = self.object_id
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.addresses = []
+        if m.get('Addresses') is not None:
+            for k in m.get('Addresses'):
+                temp_model = Address()
+                self.addresses.append(temp_model.from_map(k))
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CustomId') is not None:
+            self.custom_id = m.get('CustomId')
+        if m.get('CustomLabels') is not None:
+            self.custom_labels = m.get('CustomLabels')
+        if m.get('LocationDateClusterEndTime') is not None:
+            self.location_date_cluster_end_time = m.get('LocationDateClusterEndTime')
+        if m.get('LocationDateClusterLevel') is not None:
+            self.location_date_cluster_level = m.get('LocationDateClusterLevel')
+        if m.get('LocationDateClusterStartTime') is not None:
+            self.location_date_cluster_start_time = m.get('LocationDateClusterStartTime')
+        if m.get('ObjectId') is not None:
+            self.object_id = m.get('ObjectId')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
 class OctreeOption(TeaModel):
     def __init__(
         self,
@@ -2867,6 +3007,7 @@ class SimpleQuery(TeaModel):
 class Story(TeaModel):
     def __init__(
         self,
+        addresses: List[Address] = None,
         cover: File = None,
         create_time: str = None,
         custom_id: str = None,
@@ -2885,6 +3026,7 @@ class Story(TeaModel):
         story_type: str = None,
         update_time: str = None,
     ):
+        self.addresses = addresses
         self.cover = cover
         self.create_time = create_time
         self.custom_id = custom_id
@@ -2904,6 +3046,10 @@ class Story(TeaModel):
         self.update_time = update_time
 
     def validate(self):
+        if self.addresses:
+            for k in self.addresses:
+                if k:
+                    k.validate()
         if self.cover:
             self.cover.validate()
         if self.files:
@@ -2917,6 +3063,10 @@ class Story(TeaModel):
             return _map
 
         result = dict()
+        result['Addresses'] = []
+        if self.addresses is not None:
+            for k in self.addresses:
+                result['Addresses'].append(k.to_map() if k else None)
         if self.cover is not None:
             result['Cover'] = self.cover.to_map()
         if self.create_time is not None:
@@ -2957,6 +3107,11 @@ class Story(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.addresses = []
+        if m.get('Addresses') is not None:
+            for k in m.get('Addresses'):
+                temp_model = Address()
+                self.addresses.append(temp_model.from_map(k))
         if m.get('Cover') is not None:
             temp_model = File()
             self.cover = temp_model.from_map(m['Cover'])
@@ -4678,6 +4833,217 @@ class BatchUpdateFileMetaResponse(TeaModel):
         return self
 
 
+class CreateArchiveFileInspectionTaskRequest(TeaModel):
+    def __init__(
+        self,
+        credential_config: CredentialConfig = None,
+        notify_topic_name: str = None,
+        password: str = None,
+        project_name: str = None,
+        source_uri: str = None,
+        target_uri: str = None,
+        user_data: str = None,
+    ):
+        self.credential_config = credential_config
+        self.notify_topic_name = notify_topic_name
+        self.password = password
+        self.project_name = project_name
+        self.source_uri = source_uri
+        self.target_uri = target_uri
+        self.user_data = user_data
+
+    def validate(self):
+        if self.credential_config:
+            self.credential_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.credential_config is not None:
+            result['CredentialConfig'] = self.credential_config.to_map()
+        if self.notify_topic_name is not None:
+            result['NotifyTopicName'] = self.notify_topic_name
+        if self.password is not None:
+            result['Password'] = self.password
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.source_uri is not None:
+            result['SourceURI'] = self.source_uri
+        if self.target_uri is not None:
+            result['TargetURI'] = self.target_uri
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CredentialConfig') is not None:
+            temp_model = CredentialConfig()
+            self.credential_config = temp_model.from_map(m['CredentialConfig'])
+        if m.get('NotifyTopicName') is not None:
+            self.notify_topic_name = m.get('NotifyTopicName')
+        if m.get('Password') is not None:
+            self.password = m.get('Password')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('SourceURI') is not None:
+            self.source_uri = m.get('SourceURI')
+        if m.get('TargetURI') is not None:
+            self.target_uri = m.get('TargetURI')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        return self
+
+
+class CreateArchiveFileInspectionTaskShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        credential_config_shrink: str = None,
+        notify_topic_name: str = None,
+        password: str = None,
+        project_name: str = None,
+        source_uri: str = None,
+        target_uri: str = None,
+        user_data: str = None,
+    ):
+        self.credential_config_shrink = credential_config_shrink
+        self.notify_topic_name = notify_topic_name
+        self.password = password
+        self.project_name = project_name
+        self.source_uri = source_uri
+        self.target_uri = target_uri
+        self.user_data = user_data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.credential_config_shrink is not None:
+            result['CredentialConfig'] = self.credential_config_shrink
+        if self.notify_topic_name is not None:
+            result['NotifyTopicName'] = self.notify_topic_name
+        if self.password is not None:
+            result['Password'] = self.password
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.source_uri is not None:
+            result['SourceURI'] = self.source_uri
+        if self.target_uri is not None:
+            result['TargetURI'] = self.target_uri
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CredentialConfig') is not None:
+            self.credential_config_shrink = m.get('CredentialConfig')
+        if m.get('NotifyTopicName') is not None:
+            self.notify_topic_name = m.get('NotifyTopicName')
+        if m.get('Password') is not None:
+            self.password = m.get('Password')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('SourceURI') is not None:
+            self.source_uri = m.get('SourceURI')
+        if m.get('TargetURI') is not None:
+            self.target_uri = m.get('TargetURI')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        return self
+
+
+class CreateArchiveFileInspectionTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        event_id: str = None,
+        request_id: str = None,
+        task_id: str = None,
+    ):
+        self.event_id = event_id
+        self.request_id = request_id
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.event_id is not None:
+            result['EventId'] = self.event_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EventId') is not None:
+            self.event_id = m.get('EventId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class CreateArchiveFileInspectionTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateArchiveFileInspectionTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateArchiveFileInspectionTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateBindingRequest(TeaModel):
     def __init__(
         self,
@@ -5507,205 +5873,6 @@ class CreateDatasetResponse(TeaModel):
         return self
 
 
-class CreateDetectVideoLabelsTaskRequest(TeaModel):
-    def __init__(
-        self,
-        credential_config: CredentialConfig = None,
-        notify_topic_name: str = None,
-        project_name: str = None,
-        source_uri: str = None,
-        tags: Dict[str, Any] = None,
-        user_data: str = None,
-    ):
-        self.credential_config = credential_config
-        self.notify_topic_name = notify_topic_name
-        self.project_name = project_name
-        self.source_uri = source_uri
-        self.tags = tags
-        self.user_data = user_data
-
-    def validate(self):
-        if self.credential_config:
-            self.credential_config.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.credential_config is not None:
-            result['CredentialConfig'] = self.credential_config.to_map()
-        if self.notify_topic_name is not None:
-            result['NotifyTopicName'] = self.notify_topic_name
-        if self.project_name is not None:
-            result['ProjectName'] = self.project_name
-        if self.source_uri is not None:
-            result['SourceURI'] = self.source_uri
-        if self.tags is not None:
-            result['Tags'] = self.tags
-        if self.user_data is not None:
-            result['UserData'] = self.user_data
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('CredentialConfig') is not None:
-            temp_model = CredentialConfig()
-            self.credential_config = temp_model.from_map(m['CredentialConfig'])
-        if m.get('NotifyTopicName') is not None:
-            self.notify_topic_name = m.get('NotifyTopicName')
-        if m.get('ProjectName') is not None:
-            self.project_name = m.get('ProjectName')
-        if m.get('SourceURI') is not None:
-            self.source_uri = m.get('SourceURI')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
-        if m.get('UserData') is not None:
-            self.user_data = m.get('UserData')
-        return self
-
-
-class CreateDetectVideoLabelsTaskShrinkRequest(TeaModel):
-    def __init__(
-        self,
-        credential_config_shrink: str = None,
-        notify_topic_name: str = None,
-        project_name: str = None,
-        source_uri: str = None,
-        tags_shrink: str = None,
-        user_data: str = None,
-    ):
-        self.credential_config_shrink = credential_config_shrink
-        self.notify_topic_name = notify_topic_name
-        self.project_name = project_name
-        self.source_uri = source_uri
-        self.tags_shrink = tags_shrink
-        self.user_data = user_data
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.credential_config_shrink is not None:
-            result['CredentialConfig'] = self.credential_config_shrink
-        if self.notify_topic_name is not None:
-            result['NotifyTopicName'] = self.notify_topic_name
-        if self.project_name is not None:
-            result['ProjectName'] = self.project_name
-        if self.source_uri is not None:
-            result['SourceURI'] = self.source_uri
-        if self.tags_shrink is not None:
-            result['Tags'] = self.tags_shrink
-        if self.user_data is not None:
-            result['UserData'] = self.user_data
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('CredentialConfig') is not None:
-            self.credential_config_shrink = m.get('CredentialConfig')
-        if m.get('NotifyTopicName') is not None:
-            self.notify_topic_name = m.get('NotifyTopicName')
-        if m.get('ProjectName') is not None:
-            self.project_name = m.get('ProjectName')
-        if m.get('SourceURI') is not None:
-            self.source_uri = m.get('SourceURI')
-        if m.get('Tags') is not None:
-            self.tags_shrink = m.get('Tags')
-        if m.get('UserData') is not None:
-            self.user_data = m.get('UserData')
-        return self
-
-
-class CreateDetectVideoLabelsTaskResponseBody(TeaModel):
-    def __init__(
-        self,
-        event_id: str = None,
-        request_id: str = None,
-        task_id: str = None,
-    ):
-        self.event_id = event_id
-        self.request_id = request_id
-        self.task_id = task_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.event_id is not None:
-            result['EventId'] = self.event_id
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.task_id is not None:
-            result['TaskId'] = self.task_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('EventId') is not None:
-            self.event_id = m.get('EventId')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('TaskId') is not None:
-            self.task_id = m.get('TaskId')
-        return self
-
-
-class CreateDetectVideoLabelsTaskResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: CreateDetectVideoLabelsTaskResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = CreateDetectVideoLabelsTaskResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class CreateFigureClusteringTaskRequest(TeaModel):
     def __init__(
         self,
@@ -6373,6 +6540,265 @@ class CreateFileCompressionTaskResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateFileCompressionTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateFileUncompressionTaskRequestTarget(TeaModel):
+    def __init__(
+        self,
+        manifest_uri: str = None,
+        uri: str = None,
+    ):
+        self.manifest_uri = manifest_uri
+        self.uri = uri
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.manifest_uri is not None:
+            result['ManifestURI'] = self.manifest_uri
+        if self.uri is not None:
+            result['URI'] = self.uri
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ManifestURI') is not None:
+            self.manifest_uri = m.get('ManifestURI')
+        if m.get('URI') is not None:
+            self.uri = m.get('URI')
+        return self
+
+
+class CreateFileUncompressionTaskRequest(TeaModel):
+    def __init__(
+        self,
+        credential_config: CredentialConfig = None,
+        notify_topic_name: str = None,
+        password: str = None,
+        project_name: str = None,
+        selected_files: List[str] = None,
+        source_uri: str = None,
+        target: CreateFileUncompressionTaskRequestTarget = None,
+        user_data: str = None,
+    ):
+        self.credential_config = credential_config
+        self.notify_topic_name = notify_topic_name
+        self.password = password
+        self.project_name = project_name
+        self.selected_files = selected_files
+        self.source_uri = source_uri
+        self.target = target
+        self.user_data = user_data
+
+    def validate(self):
+        if self.credential_config:
+            self.credential_config.validate()
+        if self.target:
+            self.target.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.credential_config is not None:
+            result['CredentialConfig'] = self.credential_config.to_map()
+        if self.notify_topic_name is not None:
+            result['NotifyTopicName'] = self.notify_topic_name
+        if self.password is not None:
+            result['Password'] = self.password
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.selected_files is not None:
+            result['SelectedFiles'] = self.selected_files
+        if self.source_uri is not None:
+            result['SourceURI'] = self.source_uri
+        if self.target is not None:
+            result['Target'] = self.target.to_map()
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CredentialConfig') is not None:
+            temp_model = CredentialConfig()
+            self.credential_config = temp_model.from_map(m['CredentialConfig'])
+        if m.get('NotifyTopicName') is not None:
+            self.notify_topic_name = m.get('NotifyTopicName')
+        if m.get('Password') is not None:
+            self.password = m.get('Password')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('SelectedFiles') is not None:
+            self.selected_files = m.get('SelectedFiles')
+        if m.get('SourceURI') is not None:
+            self.source_uri = m.get('SourceURI')
+        if m.get('Target') is not None:
+            temp_model = CreateFileUncompressionTaskRequestTarget()
+            self.target = temp_model.from_map(m['Target'])
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        return self
+
+
+class CreateFileUncompressionTaskShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        credential_config_shrink: str = None,
+        notify_topic_name: str = None,
+        password: str = None,
+        project_name: str = None,
+        selected_files_shrink: str = None,
+        source_uri: str = None,
+        target_shrink: str = None,
+        user_data: str = None,
+    ):
+        self.credential_config_shrink = credential_config_shrink
+        self.notify_topic_name = notify_topic_name
+        self.password = password
+        self.project_name = project_name
+        self.selected_files_shrink = selected_files_shrink
+        self.source_uri = source_uri
+        self.target_shrink = target_shrink
+        self.user_data = user_data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.credential_config_shrink is not None:
+            result['CredentialConfig'] = self.credential_config_shrink
+        if self.notify_topic_name is not None:
+            result['NotifyTopicName'] = self.notify_topic_name
+        if self.password is not None:
+            result['Password'] = self.password
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.selected_files_shrink is not None:
+            result['SelectedFiles'] = self.selected_files_shrink
+        if self.source_uri is not None:
+            result['SourceURI'] = self.source_uri
+        if self.target_shrink is not None:
+            result['Target'] = self.target_shrink
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CredentialConfig') is not None:
+            self.credential_config_shrink = m.get('CredentialConfig')
+        if m.get('NotifyTopicName') is not None:
+            self.notify_topic_name = m.get('NotifyTopicName')
+        if m.get('Password') is not None:
+            self.password = m.get('Password')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('SelectedFiles') is not None:
+            self.selected_files_shrink = m.get('SelectedFiles')
+        if m.get('SourceURI') is not None:
+            self.source_uri = m.get('SourceURI')
+        if m.get('Target') is not None:
+            self.target_shrink = m.get('Target')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        return self
+
+
+class CreateFileUncompressionTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        event_id: str = None,
+        request_id: str = None,
+        task_id: str = None,
+    ):
+        self.event_id = event_id
+        self.request_id = request_id
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.event_id is not None:
+            result['EventId'] = self.event_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EventId') is not None:
+            self.event_id = m.get('EventId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class CreateFileUncompressionTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateFileUncompressionTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateFileUncompressionTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -9166,6 +9592,7 @@ class CreateProjectResponse(TeaModel):
 class CreateStoryRequest(TeaModel):
     def __init__(
         self,
+        address: AddressForStory = None,
         custom_id: str = None,
         custom_labels: Dict[str, Any] = None,
         dataset_name: str = None,
@@ -9182,6 +9609,7 @@ class CreateStoryRequest(TeaModel):
         tags: Dict[str, Any] = None,
         user_data: str = None,
     ):
+        self.address = address
         self.custom_id = custom_id
         self.custom_labels = custom_labels
         self.dataset_name = dataset_name
@@ -9199,7 +9627,8 @@ class CreateStoryRequest(TeaModel):
         self.user_data = user_data
 
     def validate(self):
-        pass
+        if self.address:
+            self.address.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -9207,6 +9636,8 @@ class CreateStoryRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.address is not None:
+            result['Address'] = self.address.to_map()
         if self.custom_id is not None:
             result['CustomId'] = self.custom_id
         if self.custom_labels is not None:
@@ -9241,6 +9672,9 @@ class CreateStoryRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Address') is not None:
+            temp_model = AddressForStory()
+            self.address = temp_model.from_map(m['Address'])
         if m.get('CustomId') is not None:
             self.custom_id = m.get('CustomId')
         if m.get('CustomLabels') is not None:
@@ -9277,6 +9711,7 @@ class CreateStoryRequest(TeaModel):
 class CreateStoryShrinkRequest(TeaModel):
     def __init__(
         self,
+        address_shrink: str = None,
         custom_id: str = None,
         custom_labels_shrink: str = None,
         dataset_name: str = None,
@@ -9293,6 +9728,7 @@ class CreateStoryShrinkRequest(TeaModel):
         tags_shrink: str = None,
         user_data: str = None,
     ):
+        self.address_shrink = address_shrink
         self.custom_id = custom_id
         self.custom_labels_shrink = custom_labels_shrink
         self.dataset_name = dataset_name
@@ -9318,6 +9754,8 @@ class CreateStoryShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.address_shrink is not None:
+            result['Address'] = self.address_shrink
         if self.custom_id is not None:
             result['CustomId'] = self.custom_id
         if self.custom_labels_shrink is not None:
@@ -9352,6 +9790,8 @@ class CreateStoryShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Address') is not None:
+            self.address_shrink = m.get('Address')
         if m.get('CustomId') is not None:
             self.custom_id = m.get('CustomId')
         if m.get('CustomLabels') is not None:
@@ -10041,6 +10481,116 @@ class DeleteFileMetaResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteFileMetaResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteLocationDateClusterRequest(TeaModel):
+    def __init__(
+        self,
+        dataset_name: str = None,
+        object_id: str = None,
+        project_name: str = None,
+    ):
+        self.dataset_name = dataset_name
+        self.object_id = object_id
+        self.project_name = project_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dataset_name is not None:
+            result['DatasetName'] = self.dataset_name
+        if self.object_id is not None:
+            result['ObjectId'] = self.object_id
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DatasetName') is not None:
+            self.dataset_name = m.get('DatasetName')
+        if m.get('ObjectId') is not None:
+            self.object_id = m.get('ObjectId')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        return self
+
+
+class DeleteLocationDateClusterResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteLocationDateClusterResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteLocationDateClusterResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteLocationDateClusterResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -15983,6 +16533,333 @@ class QueryFigureClustersResponse(TeaModel):
         return self
 
 
+class QueryLocationDateClustersRequest(TeaModel):
+    def __init__(
+        self,
+        address: Address = None,
+        create_time_range: TimeRange = None,
+        custom_labels: str = None,
+        dataset_name: str = None,
+        location_date_cluster_end_time_range: TimeRange = None,
+        location_date_cluster_levels: List[str] = None,
+        location_date_cluster_start_time_range: TimeRange = None,
+        max_results: int = None,
+        next_token: str = None,
+        object_id: str = None,
+        order: str = None,
+        project_name: str = None,
+        sort: str = None,
+        title: str = None,
+        update_time_range: TimeRange = None,
+    ):
+        self.address = address
+        self.create_time_range = create_time_range
+        self.custom_labels = custom_labels
+        self.dataset_name = dataset_name
+        self.location_date_cluster_end_time_range = location_date_cluster_end_time_range
+        self.location_date_cluster_levels = location_date_cluster_levels
+        self.location_date_cluster_start_time_range = location_date_cluster_start_time_range
+        self.max_results = max_results
+        self.next_token = next_token
+        self.object_id = object_id
+        self.order = order
+        self.project_name = project_name
+        self.sort = sort
+        self.title = title
+        self.update_time_range = update_time_range
+
+    def validate(self):
+        if self.address:
+            self.address.validate()
+        if self.create_time_range:
+            self.create_time_range.validate()
+        if self.location_date_cluster_end_time_range:
+            self.location_date_cluster_end_time_range.validate()
+        if self.location_date_cluster_start_time_range:
+            self.location_date_cluster_start_time_range.validate()
+        if self.update_time_range:
+            self.update_time_range.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address is not None:
+            result['Address'] = self.address.to_map()
+        if self.create_time_range is not None:
+            result['CreateTimeRange'] = self.create_time_range.to_map()
+        if self.custom_labels is not None:
+            result['CustomLabels'] = self.custom_labels
+        if self.dataset_name is not None:
+            result['DatasetName'] = self.dataset_name
+        if self.location_date_cluster_end_time_range is not None:
+            result['LocationDateClusterEndTimeRange'] = self.location_date_cluster_end_time_range.to_map()
+        if self.location_date_cluster_levels is not None:
+            result['LocationDateClusterLevels'] = self.location_date_cluster_levels
+        if self.location_date_cluster_start_time_range is not None:
+            result['LocationDateClusterStartTimeRange'] = self.location_date_cluster_start_time_range.to_map()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.object_id is not None:
+            result['ObjectId'] = self.object_id
+        if self.order is not None:
+            result['Order'] = self.order
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.sort is not None:
+            result['Sort'] = self.sort
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.update_time_range is not None:
+            result['UpdateTimeRange'] = self.update_time_range.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Address') is not None:
+            temp_model = Address()
+            self.address = temp_model.from_map(m['Address'])
+        if m.get('CreateTimeRange') is not None:
+            temp_model = TimeRange()
+            self.create_time_range = temp_model.from_map(m['CreateTimeRange'])
+        if m.get('CustomLabels') is not None:
+            self.custom_labels = m.get('CustomLabels')
+        if m.get('DatasetName') is not None:
+            self.dataset_name = m.get('DatasetName')
+        if m.get('LocationDateClusterEndTimeRange') is not None:
+            temp_model = TimeRange()
+            self.location_date_cluster_end_time_range = temp_model.from_map(m['LocationDateClusterEndTimeRange'])
+        if m.get('LocationDateClusterLevels') is not None:
+            self.location_date_cluster_levels = m.get('LocationDateClusterLevels')
+        if m.get('LocationDateClusterStartTimeRange') is not None:
+            temp_model = TimeRange()
+            self.location_date_cluster_start_time_range = temp_model.from_map(m['LocationDateClusterStartTimeRange'])
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('ObjectId') is not None:
+            self.object_id = m.get('ObjectId')
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('Sort') is not None:
+            self.sort = m.get('Sort')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('UpdateTimeRange') is not None:
+            temp_model = TimeRange()
+            self.update_time_range = temp_model.from_map(m['UpdateTimeRange'])
+        return self
+
+
+class QueryLocationDateClustersShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        address_shrink: str = None,
+        create_time_range_shrink: str = None,
+        custom_labels: str = None,
+        dataset_name: str = None,
+        location_date_cluster_end_time_range_shrink: str = None,
+        location_date_cluster_levels_shrink: str = None,
+        location_date_cluster_start_time_range_shrink: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        object_id: str = None,
+        order: str = None,
+        project_name: str = None,
+        sort: str = None,
+        title: str = None,
+        update_time_range_shrink: str = None,
+    ):
+        self.address_shrink = address_shrink
+        self.create_time_range_shrink = create_time_range_shrink
+        self.custom_labels = custom_labels
+        self.dataset_name = dataset_name
+        self.location_date_cluster_end_time_range_shrink = location_date_cluster_end_time_range_shrink
+        self.location_date_cluster_levels_shrink = location_date_cluster_levels_shrink
+        self.location_date_cluster_start_time_range_shrink = location_date_cluster_start_time_range_shrink
+        self.max_results = max_results
+        self.next_token = next_token
+        self.object_id = object_id
+        self.order = order
+        self.project_name = project_name
+        self.sort = sort
+        self.title = title
+        self.update_time_range_shrink = update_time_range_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address_shrink is not None:
+            result['Address'] = self.address_shrink
+        if self.create_time_range_shrink is not None:
+            result['CreateTimeRange'] = self.create_time_range_shrink
+        if self.custom_labels is not None:
+            result['CustomLabels'] = self.custom_labels
+        if self.dataset_name is not None:
+            result['DatasetName'] = self.dataset_name
+        if self.location_date_cluster_end_time_range_shrink is not None:
+            result['LocationDateClusterEndTimeRange'] = self.location_date_cluster_end_time_range_shrink
+        if self.location_date_cluster_levels_shrink is not None:
+            result['LocationDateClusterLevels'] = self.location_date_cluster_levels_shrink
+        if self.location_date_cluster_start_time_range_shrink is not None:
+            result['LocationDateClusterStartTimeRange'] = self.location_date_cluster_start_time_range_shrink
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.object_id is not None:
+            result['ObjectId'] = self.object_id
+        if self.order is not None:
+            result['Order'] = self.order
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.sort is not None:
+            result['Sort'] = self.sort
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.update_time_range_shrink is not None:
+            result['UpdateTimeRange'] = self.update_time_range_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Address') is not None:
+            self.address_shrink = m.get('Address')
+        if m.get('CreateTimeRange') is not None:
+            self.create_time_range_shrink = m.get('CreateTimeRange')
+        if m.get('CustomLabels') is not None:
+            self.custom_labels = m.get('CustomLabels')
+        if m.get('DatasetName') is not None:
+            self.dataset_name = m.get('DatasetName')
+        if m.get('LocationDateClusterEndTimeRange') is not None:
+            self.location_date_cluster_end_time_range_shrink = m.get('LocationDateClusterEndTimeRange')
+        if m.get('LocationDateClusterLevels') is not None:
+            self.location_date_cluster_levels_shrink = m.get('LocationDateClusterLevels')
+        if m.get('LocationDateClusterStartTimeRange') is not None:
+            self.location_date_cluster_start_time_range_shrink = m.get('LocationDateClusterStartTimeRange')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('ObjectId') is not None:
+            self.object_id = m.get('ObjectId')
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('Sort') is not None:
+            self.sort = m.get('Sort')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('UpdateTimeRange') is not None:
+            self.update_time_range_shrink = m.get('UpdateTimeRange')
+        return self
+
+
+class QueryLocationDateClustersResponseBody(TeaModel):
+    def __init__(
+        self,
+        location_date_clusters: List[LocationDateCluster] = None,
+        next_token: str = None,
+        request_id: str = None,
+    ):
+        self.location_date_clusters = location_date_clusters
+        self.next_token = next_token
+        self.request_id = request_id
+
+    def validate(self):
+        if self.location_date_clusters:
+            for k in self.location_date_clusters:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['LocationDateClusters'] = []
+        if self.location_date_clusters is not None:
+            for k in self.location_date_clusters:
+                result['LocationDateClusters'].append(k.to_map() if k else None)
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.location_date_clusters = []
+        if m.get('LocationDateClusters') is not None:
+            for k in m.get('LocationDateClusters'):
+                temp_model = LocationDateCluster()
+                self.location_date_clusters.append(temp_model.from_map(k))
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class QueryLocationDateClustersResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryLocationDateClustersResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryLocationDateClustersResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class QueryStoriesRequest(TeaModel):
     def __init__(
         self,
@@ -18014,6 +18891,191 @@ class UpdateFileMetaResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateFileMetaResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateLocationDateClusterRequest(TeaModel):
+    def __init__(
+        self,
+        custom_id: str = None,
+        custom_labels: Dict[str, Any] = None,
+        dataset_name: str = None,
+        object_id: str = None,
+        project_name: str = None,
+        title: str = None,
+    ):
+        self.custom_id = custom_id
+        self.custom_labels = custom_labels
+        self.dataset_name = dataset_name
+        self.object_id = object_id
+        self.project_name = project_name
+        self.title = title
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.custom_id is not None:
+            result['CustomId'] = self.custom_id
+        if self.custom_labels is not None:
+            result['CustomLabels'] = self.custom_labels
+        if self.dataset_name is not None:
+            result['DatasetName'] = self.dataset_name
+        if self.object_id is not None:
+            result['ObjectId'] = self.object_id
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.title is not None:
+            result['Title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomId') is not None:
+            self.custom_id = m.get('CustomId')
+        if m.get('CustomLabels') is not None:
+            self.custom_labels = m.get('CustomLabels')
+        if m.get('DatasetName') is not None:
+            self.dataset_name = m.get('DatasetName')
+        if m.get('ObjectId') is not None:
+            self.object_id = m.get('ObjectId')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        return self
+
+
+class UpdateLocationDateClusterShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        custom_id: str = None,
+        custom_labels_shrink: str = None,
+        dataset_name: str = None,
+        object_id: str = None,
+        project_name: str = None,
+        title: str = None,
+    ):
+        self.custom_id = custom_id
+        self.custom_labels_shrink = custom_labels_shrink
+        self.dataset_name = dataset_name
+        self.object_id = object_id
+        self.project_name = project_name
+        self.title = title
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.custom_id is not None:
+            result['CustomId'] = self.custom_id
+        if self.custom_labels_shrink is not None:
+            result['CustomLabels'] = self.custom_labels_shrink
+        if self.dataset_name is not None:
+            result['DatasetName'] = self.dataset_name
+        if self.object_id is not None:
+            result['ObjectId'] = self.object_id
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.title is not None:
+            result['Title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomId') is not None:
+            self.custom_id = m.get('CustomId')
+        if m.get('CustomLabels') is not None:
+            self.custom_labels_shrink = m.get('CustomLabels')
+        if m.get('DatasetName') is not None:
+            self.dataset_name = m.get('DatasetName')
+        if m.get('ObjectId') is not None:
+            self.object_id = m.get('ObjectId')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        return self
+
+
+class UpdateLocationDateClusterResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateLocationDateClusterResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateLocationDateClusterResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateLocationDateClusterResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

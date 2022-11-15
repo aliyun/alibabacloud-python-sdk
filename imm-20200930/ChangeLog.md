@@ -1,3 +1,8 @@
+2022-11-15 Version: 1.28.8
+- Set GetDetectVideoLabelsResult to private.
+- Set CreateDetectVideoLabelsTask to private.
+- Add location for story.
+
 2022-10-28 Version: 1.28.7
 - Support Compression.
 

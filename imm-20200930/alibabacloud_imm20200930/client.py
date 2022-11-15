@@ -53,7 +53,7 @@ class Client(OpenApiClient):
         request = imm_20200930_models.AddImageMosaicShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.credential_config):
-            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
         if not UtilClient.is_unset(tmp_req.targets):
             request.targets_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.targets, 'Targets', 'json')
         query = {}
@@ -99,7 +99,7 @@ class Client(OpenApiClient):
         request = imm_20200930_models.AddImageMosaicShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.credential_config):
-            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
         if not UtilClient.is_unset(tmp_req.targets):
             request.targets_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.targets, 'Targets', 'json')
         query = {}
@@ -662,6 +662,108 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.batch_update_file_meta_with_options_async(request, runtime)
 
+    def create_archive_file_inspection_task_with_options(
+        self,
+        tmp_req: imm_20200930_models.CreateArchiveFileInspectionTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.CreateArchiveFileInspectionTaskResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.CreateArchiveFileInspectionTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.credential_config):
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.credential_config_shrink):
+            query['CredentialConfig'] = request.credential_config_shrink
+        if not UtilClient.is_unset(request.notify_topic_name):
+            query['NotifyTopicName'] = request.notify_topic_name
+        if not UtilClient.is_unset(request.password):
+            query['Password'] = request.password
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.source_uri):
+            query['SourceURI'] = request.source_uri
+        if not UtilClient.is_unset(request.target_uri):
+            query['TargetURI'] = request.target_uri
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateArchiveFileInspectionTask',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.CreateArchiveFileInspectionTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_archive_file_inspection_task_with_options_async(
+        self,
+        tmp_req: imm_20200930_models.CreateArchiveFileInspectionTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.CreateArchiveFileInspectionTaskResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.CreateArchiveFileInspectionTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.credential_config):
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.credential_config_shrink):
+            query['CredentialConfig'] = request.credential_config_shrink
+        if not UtilClient.is_unset(request.notify_topic_name):
+            query['NotifyTopicName'] = request.notify_topic_name
+        if not UtilClient.is_unset(request.password):
+            query['Password'] = request.password
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.source_uri):
+            query['SourceURI'] = request.source_uri
+        if not UtilClient.is_unset(request.target_uri):
+            query['TargetURI'] = request.target_uri
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateArchiveFileInspectionTask',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.CreateArchiveFileInspectionTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_archive_file_inspection_task(
+        self,
+        request: imm_20200930_models.CreateArchiveFileInspectionTaskRequest,
+    ) -> imm_20200930_models.CreateArchiveFileInspectionTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_archive_file_inspection_task_with_options(request, runtime)
+
+    async def create_archive_file_inspection_task_async(
+        self,
+        request: imm_20200930_models.CreateArchiveFileInspectionTaskRequest,
+    ) -> imm_20200930_models.CreateArchiveFileInspectionTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_archive_file_inspection_task_with_options_async(request, runtime)
+
     def create_binding_with_options(
         self,
         request: imm_20200930_models.CreateBindingRequest,
@@ -749,11 +851,11 @@ class Client(OpenApiClient):
         request = imm_20200930_models.CreateCompressPointCloudTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.credential_config):
-            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
         if not UtilClient.is_unset(tmp_req.kdtree_option):
-            request.kdtree_option_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.kdtree_option), 'KdtreeOption', 'json')
+            request.kdtree_option_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.kdtree_option, 'KdtreeOption', 'json')
         if not UtilClient.is_unset(tmp_req.octree_option):
-            request.octree_option_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.octree_option), 'OctreeOption', 'json')
+            request.octree_option_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.octree_option, 'OctreeOption', 'json')
         if not UtilClient.is_unset(tmp_req.point_cloud_fields):
             request.point_cloud_fields_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.point_cloud_fields, 'PointCloudFields', 'json')
         if not UtilClient.is_unset(tmp_req.tags):
@@ -811,11 +913,11 @@ class Client(OpenApiClient):
         request = imm_20200930_models.CreateCompressPointCloudTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.credential_config):
-            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
         if not UtilClient.is_unset(tmp_req.kdtree_option):
-            request.kdtree_option_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.kdtree_option), 'KdtreeOption', 'json')
+            request.kdtree_option_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.kdtree_option, 'KdtreeOption', 'json')
         if not UtilClient.is_unset(tmp_req.octree_option):
-            request.octree_option_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.octree_option), 'OctreeOption', 'json')
+            request.octree_option_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.octree_option, 'OctreeOption', 'json')
         if not UtilClient.is_unset(tmp_req.point_cloud_fields):
             request.point_cloud_fields_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.point_cloud_fields, 'PointCloudFields', 'json')
         if not UtilClient.is_unset(tmp_req.tags):
@@ -887,7 +989,7 @@ class Client(OpenApiClient):
         request = imm_20200930_models.CreateCustomizedStoryShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.cover):
-            request.cover_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.cover), 'Cover', 'json')
+            request.cover_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.cover, 'Cover', 'json')
         if not UtilClient.is_unset(tmp_req.custom_labels):
             request.custom_labels_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.custom_labels, 'CustomLabels', 'json')
         if not UtilClient.is_unset(tmp_req.files):
@@ -937,7 +1039,7 @@ class Client(OpenApiClient):
         request = imm_20200930_models.CreateCustomizedStoryShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.cover):
-            request.cover_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.cover), 'Cover', 'json')
+            request.cover_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.cover, 'Cover', 'json')
         if not UtilClient.is_unset(tmp_req.custom_labels):
             request.custom_labels_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.custom_labels, 'CustomLabels', 'json')
         if not UtilClient.is_unset(tmp_req.files):
@@ -1093,108 +1195,6 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.CreateDatasetResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_dataset_with_options_async(request, runtime)
-
-    def create_detect_video_labels_task_with_options(
-        self,
-        tmp_req: imm_20200930_models.CreateDetectVideoLabelsTaskRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imm_20200930_models.CreateDetectVideoLabelsTaskResponse:
-        UtilClient.validate_model(tmp_req)
-        request = imm_20200930_models.CreateDetectVideoLabelsTaskShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.credential_config):
-            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
-        if not UtilClient.is_unset(tmp_req.tags):
-            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
-        query = {}
-        if not UtilClient.is_unset(request.credential_config_shrink):
-            query['CredentialConfig'] = request.credential_config_shrink
-        if not UtilClient.is_unset(request.notify_topic_name):
-            query['NotifyTopicName'] = request.notify_topic_name
-        if not UtilClient.is_unset(request.project_name):
-            query['ProjectName'] = request.project_name
-        if not UtilClient.is_unset(request.source_uri):
-            query['SourceURI'] = request.source_uri
-        if not UtilClient.is_unset(request.tags_shrink):
-            query['Tags'] = request.tags_shrink
-        if not UtilClient.is_unset(request.user_data):
-            query['UserData'] = request.user_data
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CreateDetectVideoLabelsTask',
-            version='2020-09-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imm_20200930_models.CreateDetectVideoLabelsTaskResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def create_detect_video_labels_task_with_options_async(
-        self,
-        tmp_req: imm_20200930_models.CreateDetectVideoLabelsTaskRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> imm_20200930_models.CreateDetectVideoLabelsTaskResponse:
-        UtilClient.validate_model(tmp_req)
-        request = imm_20200930_models.CreateDetectVideoLabelsTaskShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.credential_config):
-            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
-        if not UtilClient.is_unset(tmp_req.tags):
-            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
-        query = {}
-        if not UtilClient.is_unset(request.credential_config_shrink):
-            query['CredentialConfig'] = request.credential_config_shrink
-        if not UtilClient.is_unset(request.notify_topic_name):
-            query['NotifyTopicName'] = request.notify_topic_name
-        if not UtilClient.is_unset(request.project_name):
-            query['ProjectName'] = request.project_name
-        if not UtilClient.is_unset(request.source_uri):
-            query['SourceURI'] = request.source_uri
-        if not UtilClient.is_unset(request.tags_shrink):
-            query['Tags'] = request.tags_shrink
-        if not UtilClient.is_unset(request.user_data):
-            query['UserData'] = request.user_data
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CreateDetectVideoLabelsTask',
-            version='2020-09-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            imm_20200930_models.CreateDetectVideoLabelsTaskResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def create_detect_video_labels_task(
-        self,
-        request: imm_20200930_models.CreateDetectVideoLabelsTaskRequest,
-    ) -> imm_20200930_models.CreateDetectVideoLabelsTaskResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.create_detect_video_labels_task_with_options(request, runtime)
-
-    async def create_detect_video_labels_task_async(
-        self,
-        request: imm_20200930_models.CreateDetectVideoLabelsTaskRequest,
-    ) -> imm_20200930_models.CreateDetectVideoLabelsTaskResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.create_detect_video_labels_task_with_options_async(request, runtime)
 
     def create_figure_clustering_task_with_options(
         self,
@@ -1401,7 +1401,7 @@ class Client(OpenApiClient):
         request = imm_20200930_models.CreateFileCompressionTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.credential_config):
-            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
         if not UtilClient.is_unset(tmp_req.sources):
             request.sources_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sources, 'Sources', 'json')
         query = {}
@@ -1451,7 +1451,7 @@ class Client(OpenApiClient):
         request = imm_20200930_models.CreateFileCompressionTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.credential_config):
-            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
         if not UtilClient.is_unset(tmp_req.sources):
             request.sources_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sources, 'Sources', 'json')
         query = {}
@@ -1506,6 +1506,120 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_file_compression_task_with_options_async(request, runtime)
 
+    def create_file_uncompression_task_with_options(
+        self,
+        tmp_req: imm_20200930_models.CreateFileUncompressionTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.CreateFileUncompressionTaskResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.CreateFileUncompressionTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.credential_config):
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.selected_files):
+            request.selected_files_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.selected_files, 'SelectedFiles', 'json')
+        if not UtilClient.is_unset(tmp_req.target):
+            request.target_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.target, 'Target', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.credential_config_shrink):
+            query['CredentialConfig'] = request.credential_config_shrink
+        if not UtilClient.is_unset(request.notify_topic_name):
+            query['NotifyTopicName'] = request.notify_topic_name
+        if not UtilClient.is_unset(request.password):
+            query['Password'] = request.password
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.selected_files_shrink):
+            query['SelectedFiles'] = request.selected_files_shrink
+        if not UtilClient.is_unset(request.source_uri):
+            query['SourceURI'] = request.source_uri
+        if not UtilClient.is_unset(request.target_shrink):
+            query['Target'] = request.target_shrink
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateFileUncompressionTask',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.CreateFileUncompressionTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_file_uncompression_task_with_options_async(
+        self,
+        tmp_req: imm_20200930_models.CreateFileUncompressionTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.CreateFileUncompressionTaskResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.CreateFileUncompressionTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.credential_config):
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.selected_files):
+            request.selected_files_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.selected_files, 'SelectedFiles', 'json')
+        if not UtilClient.is_unset(tmp_req.target):
+            request.target_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.target, 'Target', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.credential_config_shrink):
+            query['CredentialConfig'] = request.credential_config_shrink
+        if not UtilClient.is_unset(request.notify_topic_name):
+            query['NotifyTopicName'] = request.notify_topic_name
+        if not UtilClient.is_unset(request.password):
+            query['Password'] = request.password
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.selected_files_shrink):
+            query['SelectedFiles'] = request.selected_files_shrink
+        if not UtilClient.is_unset(request.source_uri):
+            query['SourceURI'] = request.source_uri
+        if not UtilClient.is_unset(request.target_shrink):
+            query['Target'] = request.target_shrink
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateFileUncompressionTask',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.CreateFileUncompressionTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_file_uncompression_task(
+        self,
+        request: imm_20200930_models.CreateFileUncompressionTaskRequest,
+    ) -> imm_20200930_models.CreateFileUncompressionTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_file_uncompression_task_with_options(request, runtime)
+
+    async def create_file_uncompression_task_async(
+        self,
+        request: imm_20200930_models.CreateFileUncompressionTaskRequest,
+    ) -> imm_20200930_models.CreateFileUncompressionTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_file_uncompression_task_with_options_async(request, runtime)
+
     def create_image_moderation_task_with_options(
         self,
         tmp_req: imm_20200930_models.CreateImageModerationTaskRequest,
@@ -1515,7 +1629,7 @@ class Client(OpenApiClient):
         request = imm_20200930_models.CreateImageModerationTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.credential_config):
-            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
         if not UtilClient.is_unset(tmp_req.scenes):
             request.scenes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.scenes, 'Scenes', 'json')
         if not UtilClient.is_unset(tmp_req.tags):
@@ -1569,7 +1683,7 @@ class Client(OpenApiClient):
         request = imm_20200930_models.CreateImageModerationTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.credential_config):
-            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
         if not UtilClient.is_unset(tmp_req.scenes):
             request.scenes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.scenes, 'Scenes', 'json')
         if not UtilClient.is_unset(tmp_req.tags):
@@ -1637,7 +1751,7 @@ class Client(OpenApiClient):
         request = imm_20200930_models.CreateImageSplicingTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.credential_config):
-            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
         if not UtilClient.is_unset(tmp_req.sources):
             request.sources_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sources, 'Sources', 'json')
         if not UtilClient.is_unset(tmp_req.tags):
@@ -1701,7 +1815,7 @@ class Client(OpenApiClient):
         request = imm_20200930_models.CreateImageSplicingTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.credential_config):
-            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
         if not UtilClient.is_unset(tmp_req.sources):
             request.sources_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sources, 'Sources', 'json')
         if not UtilClient.is_unset(tmp_req.tags):
@@ -1779,7 +1893,7 @@ class Client(OpenApiClient):
         request = imm_20200930_models.CreateImageToPDFTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.credential_config):
-            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
         if not UtilClient.is_unset(tmp_req.sources):
             request.sources_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sources, 'Sources', 'json')
         if not UtilClient.is_unset(tmp_req.tags):
@@ -1827,7 +1941,7 @@ class Client(OpenApiClient):
         request = imm_20200930_models.CreateImageToPDFTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.credential_config):
-            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
         if not UtilClient.is_unset(tmp_req.sources):
             request.sources_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sources, 'Sources', 'json')
         if not UtilClient.is_unset(tmp_req.tags):
@@ -1889,7 +2003,7 @@ class Client(OpenApiClient):
         request = imm_20200930_models.CreateMediaConvertTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.credential_config):
-            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
         if not UtilClient.is_unset(tmp_req.sources):
             request.sources_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sources, 'Sources', 'json')
         if not UtilClient.is_unset(tmp_req.tags):
@@ -1939,7 +2053,7 @@ class Client(OpenApiClient):
         request = imm_20200930_models.CreateMediaConvertTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.credential_config):
-            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
         if not UtilClient.is_unset(tmp_req.sources):
             request.sources_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sources, 'Sources', 'json')
         if not UtilClient.is_unset(tmp_req.tags):
@@ -2003,11 +2117,11 @@ class Client(OpenApiClient):
         request = imm_20200930_models.CreateOfficeConversionTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.credential_config):
-            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
         if not UtilClient.is_unset(tmp_req.tags):
             request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         if not UtilClient.is_unset(tmp_req.trim_policy):
-            request.trim_policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.trim_policy), 'TrimPolicy', 'json')
+            request.trim_policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.trim_policy, 'TrimPolicy', 'json')
         query = {}
         if not UtilClient.is_unset(request.credential_config_shrink):
             query['CredentialConfig'] = request.credential_config_shrink
@@ -2099,11 +2213,11 @@ class Client(OpenApiClient):
         request = imm_20200930_models.CreateOfficeConversionTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.credential_config):
-            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
         if not UtilClient.is_unset(tmp_req.tags):
             request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         if not UtilClient.is_unset(tmp_req.trim_policy):
-            request.trim_policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.trim_policy), 'TrimPolicy', 'json')
+            request.trim_policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.trim_policy, 'TrimPolicy', 'json')
         query = {}
         if not UtilClient.is_unset(request.credential_config_shrink):
             query['CredentialConfig'] = request.credential_config_shrink
@@ -2322,6 +2436,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.CreateStoryShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.address):
+            request.address_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.address, 'Address', 'json')
         if not UtilClient.is_unset(tmp_req.custom_labels):
             request.custom_labels_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.custom_labels, 'CustomLabels', 'json')
         if not UtilClient.is_unset(tmp_req.tags):
@@ -2332,6 +2448,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.user_data):
             query['UserData'] = request.user_data
         body = {}
+        if not UtilClient.is_unset(request.address_shrink):
+            body['Address'] = request.address_shrink
         if not UtilClient.is_unset(request.custom_id):
             body['CustomId'] = request.custom_id
         if not UtilClient.is_unset(request.custom_labels_shrink):
@@ -2386,6 +2504,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.CreateStoryShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.address):
+            request.address_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.address, 'Address', 'json')
         if not UtilClient.is_unset(tmp_req.custom_labels):
             request.custom_labels_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.custom_labels, 'CustomLabels', 'json')
         if not UtilClient.is_unset(tmp_req.tags):
@@ -2396,6 +2516,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.user_data):
             query['UserData'] = request.user_data
         body = {}
+        if not UtilClient.is_unset(request.address_shrink):
+            body['Address'] = request.address_shrink
         if not UtilClient.is_unset(request.custom_id):
             body['CustomId'] = request.custom_id
         if not UtilClient.is_unset(request.custom_labels_shrink):
@@ -2465,7 +2587,7 @@ class Client(OpenApiClient):
         request = imm_20200930_models.CreateVideoModerationTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.credential_config):
-            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
         if not UtilClient.is_unset(tmp_req.scenes):
             request.scenes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.scenes, 'Scenes', 'json')
         if not UtilClient.is_unset(tmp_req.tags):
@@ -2519,7 +2641,7 @@ class Client(OpenApiClient):
         request = imm_20200930_models.CreateVideoModerationTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.credential_config):
-            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
         if not UtilClient.is_unset(tmp_req.scenes):
             request.scenes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.scenes, 'Scenes', 'json')
         if not UtilClient.is_unset(tmp_req.tags):
@@ -2812,6 +2934,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_file_meta_with_options_async(request, runtime)
 
+    def delete_location_date_cluster_with_options(
+        self,
+        request: imm_20200930_models.DeleteLocationDateClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.DeleteLocationDateClusterResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        body = {}
+        if not UtilClient.is_unset(request.object_id):
+            body['ObjectId'] = request.object_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteLocationDateCluster',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.DeleteLocationDateClusterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_location_date_cluster_with_options_async(
+        self,
+        request: imm_20200930_models.DeleteLocationDateClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.DeleteLocationDateClusterResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        body = {}
+        if not UtilClient.is_unset(request.object_id):
+            body['ObjectId'] = request.object_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteLocationDateCluster',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.DeleteLocationDateClusterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_location_date_cluster(
+        self,
+        request: imm_20200930_models.DeleteLocationDateClusterRequest,
+    ) -> imm_20200930_models.DeleteLocationDateClusterResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_location_date_cluster_with_options(request, runtime)
+
+    async def delete_location_date_cluster_async(
+        self,
+        request: imm_20200930_models.DeleteLocationDateClusterRequest,
+    ) -> imm_20200930_models.DeleteLocationDateClusterResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_location_date_cluster_with_options_async(request, runtime)
+
     def delete_project_with_options(
         self,
         request: imm_20200930_models.DeleteProjectRequest,
@@ -3039,7 +3243,7 @@ class Client(OpenApiClient):
         request = imm_20200930_models.DetectImageBodiesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.credential_config):
-            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
         query = {}
         if not UtilClient.is_unset(request.credential_config_shrink):
             query['CredentialConfig'] = request.credential_config_shrink
@@ -3077,7 +3281,7 @@ class Client(OpenApiClient):
         request = imm_20200930_models.DetectImageBodiesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.credential_config):
-            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
         query = {}
         if not UtilClient.is_unset(request.credential_config_shrink):
             query['CredentialConfig'] = request.credential_config_shrink
@@ -3129,7 +3333,7 @@ class Client(OpenApiClient):
         request = imm_20200930_models.DetectImageCodesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.credential_config):
-            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
         query = {}
         if not UtilClient.is_unset(request.credential_config_shrink):
             query['CredentialConfig'] = request.credential_config_shrink
@@ -3165,7 +3369,7 @@ class Client(OpenApiClient):
         request = imm_20200930_models.DetectImageCodesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.credential_config):
-            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
         query = {}
         if not UtilClient.is_unset(request.credential_config_shrink):
             query['CredentialConfig'] = request.credential_config_shrink
@@ -3215,7 +3419,7 @@ class Client(OpenApiClient):
         request = imm_20200930_models.DetectImageCroppingShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.credential_config):
-            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
         query = {}
         if not UtilClient.is_unset(request.aspect_ratios):
             query['AspectRatios'] = request.aspect_ratios
@@ -3253,7 +3457,7 @@ class Client(OpenApiClient):
         request = imm_20200930_models.DetectImageCroppingShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.credential_config):
-            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
         query = {}
         if not UtilClient.is_unset(request.aspect_ratios):
             query['AspectRatios'] = request.aspect_ratios
@@ -3305,7 +3509,7 @@ class Client(OpenApiClient):
         request = imm_20200930_models.DetectImageFacesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.credential_config):
-            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
         query = {}
         if not UtilClient.is_unset(request.credential_config_shrink):
             query['CredentialConfig'] = request.credential_config_shrink
@@ -3341,7 +3545,7 @@ class Client(OpenApiClient):
         request = imm_20200930_models.DetectImageFacesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.credential_config):
-            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
         query = {}
         if not UtilClient.is_unset(request.credential_config_shrink):
             query['CredentialConfig'] = request.credential_config_shrink
@@ -3391,7 +3595,7 @@ class Client(OpenApiClient):
         request = imm_20200930_models.DetectImageLabelsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.credential_config):
-            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
         query = {}
         if not UtilClient.is_unset(request.credential_config_shrink):
             query['CredentialConfig'] = request.credential_config_shrink
@@ -3429,7 +3633,7 @@ class Client(OpenApiClient):
         request = imm_20200930_models.DetectImageLabelsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.credential_config):
-            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
         query = {}
         if not UtilClient.is_unset(request.credential_config_shrink):
             query['CredentialConfig'] = request.credential_config_shrink
@@ -3481,7 +3685,7 @@ class Client(OpenApiClient):
         request = imm_20200930_models.DetectImageScoreShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.credential_config):
-            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
         query = {}
         if not UtilClient.is_unset(request.credential_config_shrink):
             query['CredentialConfig'] = request.credential_config_shrink
@@ -3517,7 +3721,7 @@ class Client(OpenApiClient):
         request = imm_20200930_models.DetectImageScoreShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.credential_config):
-            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
         query = {}
         if not UtilClient.is_unset(request.credential_config_shrink):
             query['CredentialConfig'] = request.credential_config_shrink
@@ -4117,7 +4321,7 @@ class Client(OpenApiClient):
         request = imm_20200930_models.GetMediaMetaShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.credential_config):
-            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
         query = {}
         if not UtilClient.is_unset(request.credential_config_shrink):
             query['CredentialConfig'] = request.credential_config_shrink
@@ -4153,7 +4357,7 @@ class Client(OpenApiClient):
         request = imm_20200930_models.GetMediaMetaShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.credential_config):
-            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
         query = {}
         if not UtilClient.is_unset(request.credential_config_shrink):
             query['CredentialConfig'] = request.credential_config_shrink
@@ -4503,7 +4707,7 @@ class Client(OpenApiClient):
         request = imm_20200930_models.GetVideoPlaylistShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.credential_config):
-            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
         if not UtilClient.is_unset(tmp_req.source_subtitles):
             request.source_subtitles_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_subtitles, 'SourceSubtitles', 'json')
         if not UtilClient.is_unset(tmp_req.tags):
@@ -4557,7 +4761,7 @@ class Client(OpenApiClient):
         request = imm_20200930_models.GetVideoPlaylistShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.credential_config):
-            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
         if not UtilClient.is_unset(tmp_req.source_subtitles):
             request.source_subtitles_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_subtitles, 'SourceSubtitles', 'json')
         if not UtilClient.is_unset(tmp_req.tags):
@@ -4625,13 +4829,13 @@ class Client(OpenApiClient):
         request = imm_20200930_models.GetWebofficeURLShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.credential_config):
-            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
         if not UtilClient.is_unset(tmp_req.permission):
-            request.permission_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.permission), 'Permission', 'json')
+            request.permission_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.permission, 'Permission', 'json')
         if not UtilClient.is_unset(tmp_req.user):
-            request.user_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user), 'User', 'json')
+            request.user_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user, 'User', 'json')
         if not UtilClient.is_unset(tmp_req.watermark):
-            request.watermark_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.watermark), 'Watermark', 'json')
+            request.watermark_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.watermark, 'Watermark', 'json')
         query = {}
         if not UtilClient.is_unset(request.cache_preview):
             query['CachePreview'] = request.cache_preview
@@ -4691,13 +4895,13 @@ class Client(OpenApiClient):
         request = imm_20200930_models.GetWebofficeURLShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.credential_config):
-            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
         if not UtilClient.is_unset(tmp_req.permission):
-            request.permission_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.permission), 'Permission', 'json')
+            request.permission_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.permission, 'Permission', 'json')
         if not UtilClient.is_unset(tmp_req.user):
-            request.user_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.user), 'User', 'json')
+            request.user_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user, 'User', 'json')
         if not UtilClient.is_unset(tmp_req.watermark):
-            request.watermark_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.watermark), 'Watermark', 'json')
+            request.watermark_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.watermark, 'Watermark', 'json')
         query = {}
         if not UtilClient.is_unset(request.cache_preview):
             query['CachePreview'] = request.cache_preview
@@ -4771,7 +4975,7 @@ class Client(OpenApiClient):
         request = imm_20200930_models.IndexFileMetaShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.file):
-            request.file_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.file), 'File', 'json')
+            request.file_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.file, 'File', 'json')
         query = {}
         if not UtilClient.is_unset(request.dataset_name):
             query['DatasetName'] = request.dataset_name
@@ -4809,7 +5013,7 @@ class Client(OpenApiClient):
         request = imm_20200930_models.IndexFileMetaShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.file):
-            request.file_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.file), 'File', 'json')
+            request.file_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.file, 'File', 'json')
         query = {}
         if not UtilClient.is_unset(request.dataset_name):
             query['DatasetName'] = request.dataset_name
@@ -5173,9 +5377,9 @@ class Client(OpenApiClient):
         request = imm_20200930_models.ListTasksShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.end_time_range):
-            request.end_time_range_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.end_time_range), 'EndTimeRange', 'json')
+            request.end_time_range_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.end_time_range, 'EndTimeRange', 'json')
         if not UtilClient.is_unset(tmp_req.start_time_range):
-            request.start_time_range_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.start_time_range), 'StartTimeRange', 'json')
+            request.start_time_range_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.start_time_range, 'StartTimeRange', 'json')
         if not UtilClient.is_unset(tmp_req.task_types):
             request.task_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.task_types, 'TaskTypes', 'json')
         query = {}
@@ -5227,9 +5431,9 @@ class Client(OpenApiClient):
         request = imm_20200930_models.ListTasksShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.end_time_range):
-            request.end_time_range_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.end_time_range), 'EndTimeRange', 'json')
+            request.end_time_range_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.end_time_range, 'EndTimeRange', 'json')
         if not UtilClient.is_unset(tmp_req.start_time_range):
-            request.start_time_range_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.start_time_range), 'StartTimeRange', 'json')
+            request.start_time_range_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.start_time_range, 'StartTimeRange', 'json')
         if not UtilClient.is_unset(tmp_req.task_types):
             request.task_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.task_types, 'TaskTypes', 'json')
         query = {}
@@ -5295,7 +5499,7 @@ class Client(OpenApiClient):
         request = imm_20200930_models.LiveTranscodingShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.credential_config):
-            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
         query = {}
         if not UtilClient.is_unset(request.credential_config_shrink):
             query['CredentialConfig'] = request.credential_config_shrink
@@ -5333,7 +5537,7 @@ class Client(OpenApiClient):
         request = imm_20200930_models.LiveTranscodingShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.credential_config):
-            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
         query = {}
         if not UtilClient.is_unset(request.credential_config_shrink):
             query['CredentialConfig'] = request.credential_config_shrink
@@ -5483,9 +5687,9 @@ class Client(OpenApiClient):
         request = imm_20200930_models.QueryFigureClustersShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.create_time_range):
-            request.create_time_range_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.create_time_range), 'CreateTimeRange', 'json')
+            request.create_time_range_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.create_time_range, 'CreateTimeRange', 'json')
         if not UtilClient.is_unset(tmp_req.update_time_range):
-            request.update_time_range_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.update_time_range), 'UpdateTimeRange', 'json')
+            request.update_time_range_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.update_time_range, 'UpdateTimeRange', 'json')
         query = {}
         if not UtilClient.is_unset(request.create_time_range_shrink):
             query['CreateTimeRange'] = request.create_time_range_shrink
@@ -5533,9 +5737,9 @@ class Client(OpenApiClient):
         request = imm_20200930_models.QueryFigureClustersShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.create_time_range):
-            request.create_time_range_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.create_time_range), 'CreateTimeRange', 'json')
+            request.create_time_range_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.create_time_range, 'CreateTimeRange', 'json')
         if not UtilClient.is_unset(tmp_req.update_time_range):
-            request.update_time_range_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.update_time_range), 'UpdateTimeRange', 'json')
+            request.update_time_range_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.update_time_range, 'UpdateTimeRange', 'json')
         query = {}
         if not UtilClient.is_unset(request.create_time_range_shrink):
             query['CreateTimeRange'] = request.create_time_range_shrink
@@ -5588,6 +5792,160 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_figure_clusters_with_options_async(request, runtime)
 
+    def query_location_date_clusters_with_options(
+        self,
+        tmp_req: imm_20200930_models.QueryLocationDateClustersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.QueryLocationDateClustersResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.QueryLocationDateClustersShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.address):
+            request.address_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.address, 'Address', 'json')
+        if not UtilClient.is_unset(tmp_req.create_time_range):
+            request.create_time_range_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.create_time_range, 'CreateTimeRange', 'json')
+        if not UtilClient.is_unset(tmp_req.location_date_cluster_end_time_range):
+            request.location_date_cluster_end_time_range_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.location_date_cluster_end_time_range, 'LocationDateClusterEndTimeRange', 'json')
+        if not UtilClient.is_unset(tmp_req.location_date_cluster_levels):
+            request.location_date_cluster_levels_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.location_date_cluster_levels, 'LocationDateClusterLevels', 'json')
+        if not UtilClient.is_unset(tmp_req.location_date_cluster_start_time_range):
+            request.location_date_cluster_start_time_range_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.location_date_cluster_start_time_range, 'LocationDateClusterStartTimeRange', 'json')
+        if not UtilClient.is_unset(tmp_req.update_time_range):
+            request.update_time_range_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.update_time_range, 'UpdateTimeRange', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.address_shrink):
+            query['Address'] = request.address_shrink
+        if not UtilClient.is_unset(request.create_time_range_shrink):
+            query['CreateTimeRange'] = request.create_time_range_shrink
+        if not UtilClient.is_unset(request.custom_labels):
+            query['CustomLabels'] = request.custom_labels
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.location_date_cluster_end_time_range_shrink):
+            query['LocationDateClusterEndTimeRange'] = request.location_date_cluster_end_time_range_shrink
+        if not UtilClient.is_unset(request.location_date_cluster_levels_shrink):
+            query['LocationDateClusterLevels'] = request.location_date_cluster_levels_shrink
+        if not UtilClient.is_unset(request.location_date_cluster_start_time_range_shrink):
+            query['LocationDateClusterStartTimeRange'] = request.location_date_cluster_start_time_range_shrink
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.object_id):
+            query['ObjectId'] = request.object_id
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.sort):
+            query['Sort'] = request.sort
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        if not UtilClient.is_unset(request.update_time_range_shrink):
+            query['UpdateTimeRange'] = request.update_time_range_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryLocationDateClusters',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.QueryLocationDateClustersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_location_date_clusters_with_options_async(
+        self,
+        tmp_req: imm_20200930_models.QueryLocationDateClustersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.QueryLocationDateClustersResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.QueryLocationDateClustersShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.address):
+            request.address_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.address, 'Address', 'json')
+        if not UtilClient.is_unset(tmp_req.create_time_range):
+            request.create_time_range_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.create_time_range, 'CreateTimeRange', 'json')
+        if not UtilClient.is_unset(tmp_req.location_date_cluster_end_time_range):
+            request.location_date_cluster_end_time_range_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.location_date_cluster_end_time_range, 'LocationDateClusterEndTimeRange', 'json')
+        if not UtilClient.is_unset(tmp_req.location_date_cluster_levels):
+            request.location_date_cluster_levels_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.location_date_cluster_levels, 'LocationDateClusterLevels', 'json')
+        if not UtilClient.is_unset(tmp_req.location_date_cluster_start_time_range):
+            request.location_date_cluster_start_time_range_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.location_date_cluster_start_time_range, 'LocationDateClusterStartTimeRange', 'json')
+        if not UtilClient.is_unset(tmp_req.update_time_range):
+            request.update_time_range_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.update_time_range, 'UpdateTimeRange', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.address_shrink):
+            query['Address'] = request.address_shrink
+        if not UtilClient.is_unset(request.create_time_range_shrink):
+            query['CreateTimeRange'] = request.create_time_range_shrink
+        if not UtilClient.is_unset(request.custom_labels):
+            query['CustomLabels'] = request.custom_labels
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.location_date_cluster_end_time_range_shrink):
+            query['LocationDateClusterEndTimeRange'] = request.location_date_cluster_end_time_range_shrink
+        if not UtilClient.is_unset(request.location_date_cluster_levels_shrink):
+            query['LocationDateClusterLevels'] = request.location_date_cluster_levels_shrink
+        if not UtilClient.is_unset(request.location_date_cluster_start_time_range_shrink):
+            query['LocationDateClusterStartTimeRange'] = request.location_date_cluster_start_time_range_shrink
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.object_id):
+            query['ObjectId'] = request.object_id
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.sort):
+            query['Sort'] = request.sort
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        if not UtilClient.is_unset(request.update_time_range_shrink):
+            query['UpdateTimeRange'] = request.update_time_range_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryLocationDateClusters',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.QueryLocationDateClustersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_location_date_clusters(
+        self,
+        request: imm_20200930_models.QueryLocationDateClustersRequest,
+    ) -> imm_20200930_models.QueryLocationDateClustersResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_location_date_clusters_with_options(request, runtime)
+
+    async def query_location_date_clusters_async(
+        self,
+        request: imm_20200930_models.QueryLocationDateClustersRequest,
+    ) -> imm_20200930_models.QueryLocationDateClustersResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_location_date_clusters_with_options_async(request, runtime)
+
     def query_stories_with_options(
         self,
         tmp_req: imm_20200930_models.QueryStoriesRequest,
@@ -5597,13 +5955,13 @@ class Client(OpenApiClient):
         request = imm_20200930_models.QueryStoriesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.create_time_range):
-            request.create_time_range_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.create_time_range), 'CreateTimeRange', 'json')
+            request.create_time_range_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.create_time_range, 'CreateTimeRange', 'json')
         if not UtilClient.is_unset(tmp_req.figure_cluster_ids):
             request.figure_cluster_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.figure_cluster_ids, 'FigureClusterIds', 'json')
         if not UtilClient.is_unset(tmp_req.story_end_time_range):
-            request.story_end_time_range_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.story_end_time_range), 'StoryEndTimeRange', 'json')
+            request.story_end_time_range_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.story_end_time_range, 'StoryEndTimeRange', 'json')
         if not UtilClient.is_unset(tmp_req.story_start_time_range):
-            request.story_start_time_range_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.story_start_time_range), 'StoryStartTimeRange', 'json')
+            request.story_start_time_range_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.story_start_time_range, 'StoryStartTimeRange', 'json')
         query = {}
         if not UtilClient.is_unset(request.create_time_range_shrink):
             query['CreateTimeRange'] = request.create_time_range_shrink
@@ -5665,13 +6023,13 @@ class Client(OpenApiClient):
         request = imm_20200930_models.QueryStoriesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.create_time_range):
-            request.create_time_range_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.create_time_range), 'CreateTimeRange', 'json')
+            request.create_time_range_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.create_time_range, 'CreateTimeRange', 'json')
         if not UtilClient.is_unset(tmp_req.figure_cluster_ids):
             request.figure_cluster_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.figure_cluster_ids, 'FigureClusterIds', 'json')
         if not UtilClient.is_unset(tmp_req.story_end_time_range):
-            request.story_end_time_range_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.story_end_time_range), 'StoryEndTimeRange', 'json')
+            request.story_end_time_range_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.story_end_time_range, 'StoryEndTimeRange', 'json')
         if not UtilClient.is_unset(tmp_req.story_start_time_range):
-            request.story_start_time_range_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.story_start_time_range), 'StoryStartTimeRange', 'json')
+            request.story_start_time_range_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.story_start_time_range, 'StoryStartTimeRange', 'json')
         query = {}
         if not UtilClient.is_unset(request.create_time_range_shrink):
             query['CreateTimeRange'] = request.create_time_range_shrink
@@ -5747,7 +6105,7 @@ class Client(OpenApiClient):
         request = imm_20200930_models.RefreshWebofficeTokenShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.credential_config):
-            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
         query = {}
         if not UtilClient.is_unset(request.access_token):
             query['AccessToken'] = request.access_token
@@ -5785,7 +6143,7 @@ class Client(OpenApiClient):
         request = imm_20200930_models.RefreshWebofficeTokenShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.credential_config):
-            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.credential_config), 'CredentialConfig', 'json')
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
         query = {}
         if not UtilClient.is_unset(request.access_token):
             query['AccessToken'] = request.access_token
@@ -6093,7 +6451,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.aggregations):
             request.aggregations_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.aggregations, 'Aggregations', 'json')
         if not UtilClient.is_unset(tmp_req.query):
-            request.query_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.query), 'Query', 'json')
+            request.query_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.query, 'Query', 'json')
         if not UtilClient.is_unset(tmp_req.with_fields):
             request.with_fields_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.with_fields, 'WithFields', 'json')
         query = {}
@@ -6145,7 +6503,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.aggregations):
             request.aggregations_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.aggregations, 'Aggregations', 'json')
         if not UtilClient.is_unset(tmp_req.query):
-            request.query_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.query), 'Query', 'json')
+            request.query_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.query, 'Query', 'json')
         if not UtilClient.is_unset(tmp_req.with_fields):
             request.with_fields_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.with_fields, 'WithFields', 'json')
         query = {}
@@ -6393,7 +6751,7 @@ class Client(OpenApiClient):
         request = imm_20200930_models.UpdateFigureClusterShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.figure_cluster):
-            request.figure_cluster_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.figure_cluster), 'FigureCluster', 'json')
+            request.figure_cluster_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.figure_cluster, 'FigureCluster', 'json')
         query = {}
         if not UtilClient.is_unset(request.dataset_name):
             query['DatasetName'] = request.dataset_name
@@ -6429,7 +6787,7 @@ class Client(OpenApiClient):
         request = imm_20200930_models.UpdateFigureClusterShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.figure_cluster):
-            request.figure_cluster_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.figure_cluster), 'FigureCluster', 'json')
+            request.figure_cluster_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.figure_cluster, 'FigureCluster', 'json')
         query = {}
         if not UtilClient.is_unset(request.dataset_name):
             query['DatasetName'] = request.dataset_name
@@ -6479,7 +6837,7 @@ class Client(OpenApiClient):
         request = imm_20200930_models.UpdateFileMetaShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.file):
-            request.file_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.file), 'File', 'json')
+            request.file_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.file, 'File', 'json')
         query = {}
         if not UtilClient.is_unset(request.dataset_name):
             query['DatasetName'] = request.dataset_name
@@ -6515,7 +6873,7 @@ class Client(OpenApiClient):
         request = imm_20200930_models.UpdateFileMetaShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.file):
-            request.file_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.file), 'File', 'json')
+            request.file_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.file, 'File', 'json')
         query = {}
         if not UtilClient.is_unset(request.dataset_name):
             query['DatasetName'] = request.dataset_name
@@ -6555,6 +6913,104 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.UpdateFileMetaResponse:
         runtime = util_models.RuntimeOptions()
         return await self.update_file_meta_with_options_async(request, runtime)
+
+    def update_location_date_cluster_with_options(
+        self,
+        tmp_req: imm_20200930_models.UpdateLocationDateClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.UpdateLocationDateClusterResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.UpdateLocationDateClusterShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.custom_labels):
+            request.custom_labels_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.custom_labels, 'CustomLabels', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.custom_id):
+            query['CustomId'] = request.custom_id
+        if not UtilClient.is_unset(request.custom_labels_shrink):
+            query['CustomLabels'] = request.custom_labels_shrink
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.object_id):
+            query['ObjectId'] = request.object_id
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateLocationDateCluster',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.UpdateLocationDateClusterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_location_date_cluster_with_options_async(
+        self,
+        tmp_req: imm_20200930_models.UpdateLocationDateClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.UpdateLocationDateClusterResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.UpdateLocationDateClusterShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.custom_labels):
+            request.custom_labels_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.custom_labels, 'CustomLabels', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.custom_id):
+            query['CustomId'] = request.custom_id
+        if not UtilClient.is_unset(request.custom_labels_shrink):
+            query['CustomLabels'] = request.custom_labels_shrink
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.object_id):
+            query['ObjectId'] = request.object_id
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateLocationDateCluster',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.UpdateLocationDateClusterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_location_date_cluster(
+        self,
+        request: imm_20200930_models.UpdateLocationDateClusterRequest,
+    ) -> imm_20200930_models.UpdateLocationDateClusterResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_location_date_cluster_with_options(request, runtime)
+
+    async def update_location_date_cluster_async(
+        self,
+        request: imm_20200930_models.UpdateLocationDateClusterRequest,
+    ) -> imm_20200930_models.UpdateLocationDateClusterResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_location_date_cluster_with_options_async(request, runtime)
 
     def update_project_with_options(
         self,
@@ -6679,7 +7135,7 @@ class Client(OpenApiClient):
         request = imm_20200930_models.UpdateStoryShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.cover):
-            request.cover_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.cover), 'Cover', 'json')
+            request.cover_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.cover, 'Cover', 'json')
         if not UtilClient.is_unset(tmp_req.custom_labels):
             request.custom_labels_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.custom_labels, 'CustomLabels', 'json')
         body = {}
@@ -6725,7 +7181,7 @@ class Client(OpenApiClient):
         request = imm_20200930_models.UpdateStoryShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.cover):
-            request.cover_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.cover), 'Cover', 'json')
+            request.cover_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.cover, 'Cover', 'json')
         if not UtilClient.is_unset(tmp_req.custom_labels):
             request.custom_labels_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.custom_labels, 'CustomLabels', 'json')
         body = {}
