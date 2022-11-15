@@ -1,3 +1,6 @@
+2022-11-15 Version: 1.0.68
+- Supports for 5GConnection .
+
 2022-11-03 Version: 1.0.67
 - Supports for 5GConnection .
 

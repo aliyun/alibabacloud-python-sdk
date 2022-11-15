@@ -139,12 +139,18 @@ class Client(OpenApiClient):
     ) -> xgip_pop_20220520_models.ChargeFlowResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.channel_code):
+            query['ChannelCode'] = request.channel_code
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.item_code):
             query['ItemCode'] = request.item_code
         if not UtilClient.is_unset(request.mobile):
             query['Mobile'] = request.mobile
+        if not UtilClient.is_unset(request.order_time):
+            query['OrderTime'] = request.order_time
+        if not UtilClient.is_unset(request.out_biz_no):
+            query['OutBizNo'] = request.out_biz_no
         if not UtilClient.is_unset(request.uid):
             query['UId'] = request.uid
         req = open_api_models.OpenApiRequest(
@@ -173,12 +179,18 @@ class Client(OpenApiClient):
     ) -> xgip_pop_20220520_models.ChargeFlowResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.channel_code):
+            query['ChannelCode'] = request.channel_code
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.item_code):
             query['ItemCode'] = request.item_code
         if not UtilClient.is_unset(request.mobile):
             query['Mobile'] = request.mobile
+        if not UtilClient.is_unset(request.order_time):
+            query['OrderTime'] = request.order_time
+        if not UtilClient.is_unset(request.out_biz_no):
+            query['OutBizNo'] = request.out_biz_no
         if not UtilClient.is_unset(request.uid):
             query['UId'] = request.uid
         req = open_api_models.OpenApiRequest(
@@ -1908,96 +1920,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.save_application_info_with_options_async(request, runtime)
 
-    def sdk_charge_flow_with_options(
-        self,
-        request: xgip_pop_20220520_models.SdkChargeFlowRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> xgip_pop_20220520_models.SdkChargeFlowResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.channel_code):
-            query['ChannelCode'] = request.channel_code
-        if not UtilClient.is_unset(request.instance_id):
-            query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.item_code):
-            query['ItemCode'] = request.item_code
-        if not UtilClient.is_unset(request.mobile):
-            query['Mobile'] = request.mobile
-        if not UtilClient.is_unset(request.out_biz_no):
-            query['OutBizNo'] = request.out_biz_no
-        if not UtilClient.is_unset(request.uid):
-            query['UId'] = request.uid
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='SdkChargeFlow',
-            version='2022-05-20',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            xgip_pop_20220520_models.SdkChargeFlowResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def sdk_charge_flow_with_options_async(
-        self,
-        request: xgip_pop_20220520_models.SdkChargeFlowRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> xgip_pop_20220520_models.SdkChargeFlowResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.channel_code):
-            query['ChannelCode'] = request.channel_code
-        if not UtilClient.is_unset(request.instance_id):
-            query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.item_code):
-            query['ItemCode'] = request.item_code
-        if not UtilClient.is_unset(request.mobile):
-            query['Mobile'] = request.mobile
-        if not UtilClient.is_unset(request.out_biz_no):
-            query['OutBizNo'] = request.out_biz_no
-        if not UtilClient.is_unset(request.uid):
-            query['UId'] = request.uid
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='SdkChargeFlow',
-            version='2022-05-20',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            xgip_pop_20220520_models.SdkChargeFlowResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def sdk_charge_flow(
-        self,
-        request: xgip_pop_20220520_models.SdkChargeFlowRequest,
-    ) -> xgip_pop_20220520_models.SdkChargeFlowResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.sdk_charge_flow_with_options(request, runtime)
-
-    async def sdk_charge_flow_async(
-        self,
-        request: xgip_pop_20220520_models.SdkChargeFlowRequest,
-    ) -> xgip_pop_20220520_models.SdkChargeFlowResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.sdk_charge_flow_with_options_async(request, runtime)
-
     def sdk_get_inventory_info_with_options(
         self,
         request: xgip_pop_20220520_models.SdkGetInventoryInfoRequest,
@@ -2063,72 +1985,6 @@ class Client(OpenApiClient):
     ) -> xgip_pop_20220520_models.SdkGetInventoryInfoResponse:
         runtime = util_models.RuntimeOptions()
         return await self.sdk_get_inventory_info_with_options_async(request, runtime)
-
-    def sdk_get_item_inst_list_with_options(
-        self,
-        request: xgip_pop_20220520_models.SdkGetItemInstListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> xgip_pop_20220520_models.SdkGetItemInstListResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='SdkGetItemInstList',
-            version='2022-05-20',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            xgip_pop_20220520_models.SdkGetItemInstListResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def sdk_get_item_inst_list_with_options_async(
-        self,
-        request: xgip_pop_20220520_models.SdkGetItemInstListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> xgip_pop_20220520_models.SdkGetItemInstListResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='SdkGetItemInstList',
-            version='2022-05-20',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            xgip_pop_20220520_models.SdkGetItemInstListResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def sdk_get_item_inst_list(
-        self,
-        request: xgip_pop_20220520_models.SdkGetItemInstListRequest,
-    ) -> xgip_pop_20220520_models.SdkGetItemInstListResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.sdk_get_item_inst_list_with_options(request, runtime)
-
-    async def sdk_get_item_inst_list_async(
-        self,
-        request: xgip_pop_20220520_models.SdkGetItemInstListRequest,
-    ) -> xgip_pop_20220520_models.SdkGetItemInstListResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.sdk_get_item_inst_list_with_options_async(request, runtime)
 
     def sdk_order_qos_product_with_options(
         self,

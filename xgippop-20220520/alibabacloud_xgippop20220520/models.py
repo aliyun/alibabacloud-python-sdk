@@ -159,14 +159,20 @@ class ChangeApplicationInfoResponse(TeaModel):
 class ChargeFlowRequest(TeaModel):
     def __init__(
         self,
+        channel_code: str = None,
         instance_id: str = None,
         item_code: str = None,
         mobile: str = None,
+        order_time: str = None,
+        out_biz_no: str = None,
         uid: int = None,
     ):
+        self.channel_code = channel_code
         self.instance_id = instance_id
         self.item_code = item_code
         self.mobile = mobile
+        self.order_time = order_time
+        self.out_biz_no = out_biz_no
         self.uid = uid
 
     def validate(self):
@@ -178,24 +184,36 @@ class ChargeFlowRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.channel_code is not None:
+            result['ChannelCode'] = self.channel_code
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.item_code is not None:
             result['ItemCode'] = self.item_code
         if self.mobile is not None:
             result['Mobile'] = self.mobile
+        if self.order_time is not None:
+            result['OrderTime'] = self.order_time
+        if self.out_biz_no is not None:
+            result['OutBizNo'] = self.out_biz_no
         if self.uid is not None:
             result['UId'] = self.uid
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ChannelCode') is not None:
+            self.channel_code = m.get('ChannelCode')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('ItemCode') is not None:
             self.item_code = m.get('ItemCode')
         if m.get('Mobile') is not None:
             self.mobile = m.get('Mobile')
+        if m.get('OrderTime') is not None:
+            self.order_time = m.get('OrderTime')
+        if m.get('OutBizNo') is not None:
+            self.out_biz_no = m.get('OutBizNo')
         if m.get('UId') is not None:
             self.uid = m.get('UId')
         return self
@@ -204,12 +222,14 @@ class ChargeFlowRequest(TeaModel):
 class ChargeFlowResponseBodyData(TeaModel):
     def __init__(
         self,
+        biz_code: str = None,
+        customer_flow_order_id: str = None,
         customer_flow_request_id: str = None,
-        mobile: str = None,
-        status: bool = None,
+        status: str = None,
     ):
+        self.biz_code = biz_code
+        self.customer_flow_order_id = customer_flow_order_id
         self.customer_flow_request_id = customer_flow_request_id
-        self.mobile = mobile
         self.status = status
 
     def validate(self):
@@ -221,20 +241,24 @@ class ChargeFlowResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.biz_code is not None:
+            result['BizCode'] = self.biz_code
+        if self.customer_flow_order_id is not None:
+            result['CustomerFlowOrderId'] = self.customer_flow_order_id
         if self.customer_flow_request_id is not None:
             result['CustomerFlowRequestId'] = self.customer_flow_request_id
-        if self.mobile is not None:
-            result['Mobile'] = self.mobile
         if self.status is not None:
             result['Status'] = self.status
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BizCode') is not None:
+            self.biz_code = m.get('BizCode')
+        if m.get('CustomerFlowOrderId') is not None:
+            self.customer_flow_order_id = m.get('CustomerFlowOrderId')
         if m.get('CustomerFlowRequestId') is not None:
             self.customer_flow_request_id = m.get('CustomerFlowRequestId')
-        if m.get('Mobile') is not None:
-            self.mobile = m.get('Mobile')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         return self
@@ -1971,6 +1995,7 @@ class GetItemInstListRequest(TeaModel):
         item_code: str = None,
         mobile: str = None,
         page_size: int = None,
+        status: str = None,
         uid: int = None,
     ):
         self.current = current
@@ -1978,6 +2003,7 @@ class GetItemInstListRequest(TeaModel):
         self.item_code = item_code
         self.mobile = mobile
         self.page_size = page_size
+        self.status = status
         self.uid = uid
 
     def validate(self):
@@ -1999,6 +2025,8 @@ class GetItemInstListRequest(TeaModel):
             result['Mobile'] = self.mobile
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.status is not None:
+            result['Status'] = self.status
         if self.uid is not None:
             result['UId'] = self.uid
         return result
@@ -2015,6 +2043,8 @@ class GetItemInstListRequest(TeaModel):
             self.mobile = m.get('Mobile')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         if m.get('UId') is not None:
             self.uid = m.get('UId')
         return self
@@ -4924,6 +4954,8 @@ class QueryOrderListRequest(TeaModel):
         instance_id: str = None,
         item_code: str = None,
         mobile: str = None,
+        order_time: str = None,
+        out_biz_no: str = None,
         page_size: int = None,
         uid: int = None,
     ):
@@ -4931,6 +4963,8 @@ class QueryOrderListRequest(TeaModel):
         self.instance_id = instance_id
         self.item_code = item_code
         self.mobile = mobile
+        self.order_time = order_time
+        self.out_biz_no = out_biz_no
         self.page_size = page_size
         self.uid = uid
 
@@ -4951,6 +4985,10 @@ class QueryOrderListRequest(TeaModel):
             result['ItemCode'] = self.item_code
         if self.mobile is not None:
             result['Mobile'] = self.mobile
+        if self.order_time is not None:
+            result['OrderTime'] = self.order_time
+        if self.out_biz_no is not None:
+            result['OutBizNo'] = self.out_biz_no
         if self.page_size is not None:
             result['PageSize'] = self.page_size
         if self.uid is not None:
@@ -4967,6 +5005,10 @@ class QueryOrderListRequest(TeaModel):
             self.item_code = m.get('ItemCode')
         if m.get('Mobile') is not None:
             self.mobile = m.get('Mobile')
+        if m.get('OrderTime') is not None:
+            self.order_time = m.get('OrderTime')
+        if m.get('OutBizNo') is not None:
+            self.out_biz_no = m.get('OutBizNo')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
         if m.get('UId') is not None:
@@ -4983,6 +5025,7 @@ class QueryOrderListResponseBodyDataList(TeaModel):
         operator: str = None,
         order_id: str = None,
         order_time: str = None,
+        out_biz_no: str = None,
         product_id: str = None,
         product_name: str = None,
         status: str = None,
@@ -4993,6 +5036,7 @@ class QueryOrderListResponseBodyDataList(TeaModel):
         self.operator = operator
         self.order_id = order_id
         self.order_time = order_time
+        self.out_biz_no = out_biz_no
         self.product_id = product_id
         self.product_name = product_name
         self.status = status
@@ -5018,6 +5062,8 @@ class QueryOrderListResponseBodyDataList(TeaModel):
             result['OrderId'] = self.order_id
         if self.order_time is not None:
             result['OrderTime'] = self.order_time
+        if self.out_biz_no is not None:
+            result['OutBizNo'] = self.out_biz_no
         if self.product_id is not None:
             result['ProductId'] = self.product_id
         if self.product_name is not None:
@@ -5040,6 +5086,8 @@ class QueryOrderListResponseBodyDataList(TeaModel):
             self.order_id = m.get('OrderId')
         if m.get('OrderTime') is not None:
             self.order_time = m.get('OrderTime')
+        if m.get('OutBizNo') is not None:
+            self.out_biz_no = m.get('OutBizNo')
         if m.get('ProductId') is not None:
             self.product_id = m.get('ProductId')
         if m.get('ProductName') is not None:
@@ -5387,217 +5435,6 @@ class SaveApplicationInfoResponse(TeaModel):
         return self
 
 
-class SdkChargeFlowRequest(TeaModel):
-    def __init__(
-        self,
-        channel_code: str = None,
-        instance_id: str = None,
-        item_code: str = None,
-        mobile: str = None,
-        out_biz_no: str = None,
-        uid: int = None,
-    ):
-        self.channel_code = channel_code
-        self.instance_id = instance_id
-        self.item_code = item_code
-        self.mobile = mobile
-        self.out_biz_no = out_biz_no
-        self.uid = uid
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.channel_code is not None:
-            result['ChannelCode'] = self.channel_code
-        if self.instance_id is not None:
-            result['InstanceId'] = self.instance_id
-        if self.item_code is not None:
-            result['ItemCode'] = self.item_code
-        if self.mobile is not None:
-            result['Mobile'] = self.mobile
-        if self.out_biz_no is not None:
-            result['OutBizNo'] = self.out_biz_no
-        if self.uid is not None:
-            result['UId'] = self.uid
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ChannelCode') is not None:
-            self.channel_code = m.get('ChannelCode')
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
-        if m.get('ItemCode') is not None:
-            self.item_code = m.get('ItemCode')
-        if m.get('Mobile') is not None:
-            self.mobile = m.get('Mobile')
-        if m.get('OutBizNo') is not None:
-            self.out_biz_no = m.get('OutBizNo')
-        if m.get('UId') is not None:
-            self.uid = m.get('UId')
-        return self
-
-
-class SdkChargeFlowResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        code: str = None,
-        message: str = None,
-        mobile: str = None,
-        request_id: str = None,
-        success: bool = None,
-    ):
-        self.code = code
-        self.message = message
-        self.mobile = mobile
-        self.request_id = request_id
-        self.success = success
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.mobile is not None:
-            result['Mobile'] = self.mobile
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('Mobile') is not None:
-            self.mobile = m.get('Mobile')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        return self
-
-
-class SdkChargeFlowResponseBody(TeaModel):
-    def __init__(
-        self,
-        code: str = None,
-        data: SdkChargeFlowResponseBodyData = None,
-        message: str = None,
-        request_id: str = None,
-        rt: int = None,
-        success: bool = None,
-    ):
-        self.code = code
-        self.data = data
-        self.message = message
-        self.request_id = request_id
-        self.rt = rt
-        self.success = success
-
-    def validate(self):
-        if self.data:
-            self.data.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.rt is not None:
-            result['Rt'] = self.rt
-        if self.success is not None:
-            result['Success'] = self.success
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Data') is not None:
-            temp_model = SdkChargeFlowResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Rt') is not None:
-            self.rt = m.get('Rt')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        return self
-
-
-class SdkChargeFlowResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: SdkChargeFlowResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = SdkChargeFlowResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class SdkGetInventoryInfoRequest(TeaModel):
     def __init__(
         self,
@@ -5793,318 +5630,6 @@ class SdkGetInventoryInfoResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SdkGetInventoryInfoResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class SdkGetItemInstListRequest(TeaModel):
-    def __init__(
-        self,
-        channel_code: str = None,
-        current: int = None,
-        instance_id: str = None,
-        item_code: str = None,
-        mobile: str = None,
-        out_biz_no: str = None,
-        page_size: int = None,
-        uid: int = None,
-    ):
-        self.channel_code = channel_code
-        self.current = current
-        self.instance_id = instance_id
-        self.item_code = item_code
-        self.mobile = mobile
-        self.out_biz_no = out_biz_no
-        self.page_size = page_size
-        self.uid = uid
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.channel_code is not None:
-            result['ChannelCode'] = self.channel_code
-        if self.current is not None:
-            result['Current'] = self.current
-        if self.instance_id is not None:
-            result['InstanceId'] = self.instance_id
-        if self.item_code is not None:
-            result['ItemCode'] = self.item_code
-        if self.mobile is not None:
-            result['Mobile'] = self.mobile
-        if self.out_biz_no is not None:
-            result['OutBizNo'] = self.out_biz_no
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        if self.uid is not None:
-            result['UId'] = self.uid
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ChannelCode') is not None:
-            self.channel_code = m.get('ChannelCode')
-        if m.get('Current') is not None:
-            self.current = m.get('Current')
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
-        if m.get('ItemCode') is not None:
-            self.item_code = m.get('ItemCode')
-        if m.get('Mobile') is not None:
-            self.mobile = m.get('Mobile')
-        if m.get('OutBizNo') is not None:
-            self.out_biz_no = m.get('OutBizNo')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        if m.get('UId') is not None:
-            self.uid = m.get('UId')
-        return self
-
-
-class SdkGetItemInstListResponseBodyDataList(TeaModel):
-    def __init__(
-        self,
-        create_time: str = None,
-        expire_time: str = None,
-        instance_id: str = None,
-        product_id: str = None,
-        product_name: str = None,
-        status: int = None,
-    ):
-        self.create_time = create_time
-        self.expire_time = expire_time
-        self.instance_id = instance_id
-        self.product_id = product_id
-        self.product_name = product_name
-        self.status = status
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.create_time is not None:
-            result['CreateTime'] = self.create_time
-        if self.expire_time is not None:
-            result['ExpireTime'] = self.expire_time
-        if self.instance_id is not None:
-            result['InstanceId'] = self.instance_id
-        if self.product_id is not None:
-            result['ProductId'] = self.product_id
-        if self.product_name is not None:
-            result['ProductName'] = self.product_name
-        if self.status is not None:
-            result['Status'] = self.status
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('CreateTime') is not None:
-            self.create_time = m.get('CreateTime')
-        if m.get('ExpireTime') is not None:
-            self.expire_time = m.get('ExpireTime')
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
-        if m.get('ProductId') is not None:
-            self.product_id = m.get('ProductId')
-        if m.get('ProductName') is not None:
-            self.product_name = m.get('ProductName')
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        return self
-
-
-class SdkGetItemInstListResponseBodyDataPageInfo(TeaModel):
-    def __init__(
-        self,
-        current: int = None,
-        page_size: int = None,
-        total: int = None,
-    ):
-        self.current = current
-        self.page_size = page_size
-        self.total = total
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.current is not None:
-            result['Current'] = self.current
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        if self.total is not None:
-            result['Total'] = self.total
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Current') is not None:
-            self.current = m.get('Current')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        if m.get('Total') is not None:
-            self.total = m.get('Total')
-        return self
-
-
-class SdkGetItemInstListResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        list: List[SdkGetItemInstListResponseBodyDataList] = None,
-        page_info: SdkGetItemInstListResponseBodyDataPageInfo = None,
-    ):
-        self.list = list
-        self.page_info = page_info
-
-    def validate(self):
-        if self.list:
-            for k in self.list:
-                if k:
-                    k.validate()
-        if self.page_info:
-            self.page_info.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['List'] = []
-        if self.list is not None:
-            for k in self.list:
-                result['List'].append(k.to_map() if k else None)
-        if self.page_info is not None:
-            result['PageInfo'] = self.page_info.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.list = []
-        if m.get('List') is not None:
-            for k in m.get('List'):
-                temp_model = SdkGetItemInstListResponseBodyDataList()
-                self.list.append(temp_model.from_map(k))
-        if m.get('PageInfo') is not None:
-            temp_model = SdkGetItemInstListResponseBodyDataPageInfo()
-            self.page_info = temp_model.from_map(m['PageInfo'])
-        return self
-
-
-class SdkGetItemInstListResponseBody(TeaModel):
-    def __init__(
-        self,
-        code: str = None,
-        data: SdkGetItemInstListResponseBodyData = None,
-        message: str = None,
-        request_id: str = None,
-        rt: int = None,
-        success: bool = None,
-    ):
-        self.code = code
-        self.data = data
-        self.message = message
-        self.request_id = request_id
-        self.rt = rt
-        self.success = success
-
-    def validate(self):
-        if self.data:
-            self.data.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.rt is not None:
-            result['Rt'] = self.rt
-        if self.success is not None:
-            result['Success'] = self.success
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Data') is not None:
-            temp_model = SdkGetItemInstListResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Rt') is not None:
-            self.rt = m.get('Rt')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        return self
-
-
-class SdkGetItemInstListResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: SdkGetItemInstListResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = SdkGetItemInstListResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
