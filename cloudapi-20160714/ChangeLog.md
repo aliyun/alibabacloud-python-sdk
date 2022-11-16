@@ -1,3 +1,6 @@
+2022-11-16 Version: 2.2.11
+- Add ImportOAS.
+
 2022-11-03 Version: 2.2.10
 - Add QueryRequestLogs.
 

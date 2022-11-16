@@ -9663,6 +9663,116 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.enable_instance_access_control_with_options_async(request, runtime)
 
+    def import_oaswith_options(
+        self,
+        request: cloud_api20160714_models.ImportOASRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.ImportOASResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auth_type):
+            query['AuthType'] = request.auth_type
+        if not UtilClient.is_unset(request.backend_name):
+            query['BackendName'] = request.backend_name
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.ignore_warning):
+            query['IgnoreWarning'] = request.ignore_warning
+        if not UtilClient.is_unset(request.oasversion):
+            query['OASVersion'] = request.oasversion
+        if not UtilClient.is_unset(request.overwrite):
+            query['Overwrite'] = request.overwrite
+        if not UtilClient.is_unset(request.request_mode):
+            query['RequestMode'] = request.request_mode
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.skip_dry_run):
+            query['SkipDryRun'] = request.skip_dry_run
+        body = {}
+        if not UtilClient.is_unset(request.data):
+            body['Data'] = request.data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ImportOAS',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_api20160714_models.ImportOASResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def import_oaswith_options_async(
+        self,
+        request: cloud_api20160714_models.ImportOASRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.ImportOASResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auth_type):
+            query['AuthType'] = request.auth_type
+        if not UtilClient.is_unset(request.backend_name):
+            query['BackendName'] = request.backend_name
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.ignore_warning):
+            query['IgnoreWarning'] = request.ignore_warning
+        if not UtilClient.is_unset(request.oasversion):
+            query['OASVersion'] = request.oasversion
+        if not UtilClient.is_unset(request.overwrite):
+            query['Overwrite'] = request.overwrite
+        if not UtilClient.is_unset(request.request_mode):
+            query['RequestMode'] = request.request_mode
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.skip_dry_run):
+            query['SkipDryRun'] = request.skip_dry_run
+        body = {}
+        if not UtilClient.is_unset(request.data):
+            body['Data'] = request.data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ImportOAS',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_api20160714_models.ImportOASResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def import_oas(
+        self,
+        request: cloud_api20160714_models.ImportOASRequest,
+    ) -> cloud_api20160714_models.ImportOASResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.import_oaswith_options(request, runtime)
+
+    async def import_oas_async(
+        self,
+        request: cloud_api20160714_models.ImportOASRequest,
+    ) -> cloud_api20160714_models.ImportOASResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.import_oaswith_options_async(request, runtime)
+
     def import_swagger_with_options(
         self,
         tmp_req: cloud_api20160714_models.ImportSwaggerRequest,

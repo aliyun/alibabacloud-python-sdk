@@ -27583,6 +27583,579 @@ class EnableInstanceAccessControlResponse(TeaModel):
         return self
 
 
+class ImportOASRequest(TeaModel):
+    def __init__(
+        self,
+        auth_type: str = None,
+        backend_name: str = None,
+        data: str = None,
+        group_id: str = None,
+        ignore_warning: bool = None,
+        oasversion: str = None,
+        overwrite: bool = None,
+        request_mode: str = None,
+        security_token: str = None,
+        skip_dry_run: bool = None,
+    ):
+        self.auth_type = auth_type
+        self.backend_name = backend_name
+        self.data = data
+        self.group_id = group_id
+        self.ignore_warning = ignore_warning
+        self.oasversion = oasversion
+        self.overwrite = overwrite
+        self.request_mode = request_mode
+        self.security_token = security_token
+        self.skip_dry_run = skip_dry_run
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auth_type is not None:
+            result['AuthType'] = self.auth_type
+        if self.backend_name is not None:
+            result['BackendName'] = self.backend_name
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.ignore_warning is not None:
+            result['IgnoreWarning'] = self.ignore_warning
+        if self.oasversion is not None:
+            result['OASVersion'] = self.oasversion
+        if self.overwrite is not None:
+            result['Overwrite'] = self.overwrite
+        if self.request_mode is not None:
+            result['RequestMode'] = self.request_mode
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.skip_dry_run is not None:
+            result['SkipDryRun'] = self.skip_dry_run
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthType') is not None:
+            self.auth_type = m.get('AuthType')
+        if m.get('BackendName') is not None:
+            self.backend_name = m.get('BackendName')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('IgnoreWarning') is not None:
+            self.ignore_warning = m.get('IgnoreWarning')
+        if m.get('OASVersion') is not None:
+            self.oasversion = m.get('OASVersion')
+        if m.get('Overwrite') is not None:
+            self.overwrite = m.get('Overwrite')
+        if m.get('RequestMode') is not None:
+            self.request_mode = m.get('RequestMode')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('SkipDryRun') is not None:
+            self.skip_dry_run = m.get('SkipDryRun')
+        return self
+
+
+class ImportOASResponseBodyErrorMessages(TeaModel):
+    def __init__(
+        self,
+        error_message: List[str] = None,
+    ):
+        self.error_message = error_message
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        return self
+
+
+class ImportOASResponseBodyFailedApisFailedApi(TeaModel):
+    def __init__(
+        self,
+        error_msg: str = None,
+        http_method: str = None,
+        path: str = None,
+    ):
+        self.error_msg = error_msg
+        self.http_method = http_method
+        self.path = path
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_msg is not None:
+            result['ErrorMsg'] = self.error_msg
+        if self.http_method is not None:
+            result['HttpMethod'] = self.http_method
+        if self.path is not None:
+            result['Path'] = self.path
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorMsg') is not None:
+            self.error_msg = m.get('ErrorMsg')
+        if m.get('HttpMethod') is not None:
+            self.http_method = m.get('HttpMethod')
+        if m.get('Path') is not None:
+            self.path = m.get('Path')
+        return self
+
+
+class ImportOASResponseBodyFailedApis(TeaModel):
+    def __init__(
+        self,
+        failed_api: List[ImportOASResponseBodyFailedApisFailedApi] = None,
+    ):
+        self.failed_api = failed_api
+
+    def validate(self):
+        if self.failed_api:
+            for k in self.failed_api:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['FailedApi'] = []
+        if self.failed_api is not None:
+            for k in self.failed_api:
+                result['FailedApi'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.failed_api = []
+        if m.get('FailedApi') is not None:
+            for k in m.get('FailedApi'):
+                temp_model = ImportOASResponseBodyFailedApisFailedApi()
+                self.failed_api.append(temp_model.from_map(k))
+        return self
+
+
+class ImportOASResponseBodyFailedModelsFailedModel(TeaModel):
+    def __init__(
+        self,
+        error_msg: str = None,
+        group_id: str = None,
+        model_name: str = None,
+    ):
+        self.error_msg = error_msg
+        self.group_id = group_id
+        self.model_name = model_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_msg is not None:
+            result['ErrorMsg'] = self.error_msg
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.model_name is not None:
+            result['ModelName'] = self.model_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorMsg') is not None:
+            self.error_msg = m.get('ErrorMsg')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('ModelName') is not None:
+            self.model_name = m.get('ModelName')
+        return self
+
+
+class ImportOASResponseBodyFailedModels(TeaModel):
+    def __init__(
+        self,
+        failed_model: List[ImportOASResponseBodyFailedModelsFailedModel] = None,
+    ):
+        self.failed_model = failed_model
+
+    def validate(self):
+        if self.failed_model:
+            for k in self.failed_model:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['FailedModel'] = []
+        if self.failed_model is not None:
+            for k in self.failed_model:
+                result['FailedModel'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.failed_model = []
+        if m.get('FailedModel') is not None:
+            for k in m.get('FailedModel'):
+                temp_model = ImportOASResponseBodyFailedModelsFailedModel()
+                self.failed_model.append(temp_model.from_map(k))
+        return self
+
+
+class ImportOASResponseBodySuccessApisSuccessApi(TeaModel):
+    def __init__(
+        self,
+        api_id: str = None,
+        api_operation: str = None,
+        http_method: str = None,
+        path: str = None,
+    ):
+        self.api_id = api_id
+        self.api_operation = api_operation
+        self.http_method = http_method
+        self.path = path
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.api_id is not None:
+            result['ApiId'] = self.api_id
+        if self.api_operation is not None:
+            result['ApiOperation'] = self.api_operation
+        if self.http_method is not None:
+            result['HttpMethod'] = self.http_method
+        if self.path is not None:
+            result['Path'] = self.path
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApiId') is not None:
+            self.api_id = m.get('ApiId')
+        if m.get('ApiOperation') is not None:
+            self.api_operation = m.get('ApiOperation')
+        if m.get('HttpMethod') is not None:
+            self.http_method = m.get('HttpMethod')
+        if m.get('Path') is not None:
+            self.path = m.get('Path')
+        return self
+
+
+class ImportOASResponseBodySuccessApis(TeaModel):
+    def __init__(
+        self,
+        success_api: List[ImportOASResponseBodySuccessApisSuccessApi] = None,
+    ):
+        self.success_api = success_api
+
+    def validate(self):
+        if self.success_api:
+            for k in self.success_api:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['SuccessApi'] = []
+        if self.success_api is not None:
+            for k in self.success_api:
+                result['SuccessApi'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.success_api = []
+        if m.get('SuccessApi') is not None:
+            for k in m.get('SuccessApi'):
+                temp_model = ImportOASResponseBodySuccessApisSuccessApi()
+                self.success_api.append(temp_model.from_map(k))
+        return self
+
+
+class ImportOASResponseBodySuccessModelsSuccessModel(TeaModel):
+    def __init__(
+        self,
+        group_id: str = None,
+        model_name: str = None,
+        model_operation: str = None,
+        model_uid: str = None,
+    ):
+        self.group_id = group_id
+        self.model_name = model_name
+        self.model_operation = model_operation
+        self.model_uid = model_uid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.model_name is not None:
+            result['ModelName'] = self.model_name
+        if self.model_operation is not None:
+            result['ModelOperation'] = self.model_operation
+        if self.model_uid is not None:
+            result['ModelUid'] = self.model_uid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('ModelName') is not None:
+            self.model_name = m.get('ModelName')
+        if m.get('ModelOperation') is not None:
+            self.model_operation = m.get('ModelOperation')
+        if m.get('ModelUid') is not None:
+            self.model_uid = m.get('ModelUid')
+        return self
+
+
+class ImportOASResponseBodySuccessModels(TeaModel):
+    def __init__(
+        self,
+        success_model: List[ImportOASResponseBodySuccessModelsSuccessModel] = None,
+    ):
+        self.success_model = success_model
+
+    def validate(self):
+        if self.success_model:
+            for k in self.success_model:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['SuccessModel'] = []
+        if self.success_model is not None:
+            for k in self.success_model:
+                result['SuccessModel'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.success_model = []
+        if m.get('SuccessModel') is not None:
+            for k in m.get('SuccessModel'):
+                temp_model = ImportOASResponseBodySuccessModelsSuccessModel()
+                self.success_model.append(temp_model.from_map(k))
+        return self
+
+
+class ImportOASResponseBodyWarningMessages(TeaModel):
+    def __init__(
+        self,
+        warning_message: List[str] = None,
+    ):
+        self.warning_message = warning_message
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.warning_message is not None:
+            result['WarningMessage'] = self.warning_message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('WarningMessage') is not None:
+            self.warning_message = m.get('WarningMessage')
+        return self
+
+
+class ImportOASResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_messages: ImportOASResponseBodyErrorMessages = None,
+        failed_apis: ImportOASResponseBodyFailedApis = None,
+        failed_models: ImportOASResponseBodyFailedModels = None,
+        operation_id: str = None,
+        request_id: str = None,
+        success_apis: ImportOASResponseBodySuccessApis = None,
+        success_models: ImportOASResponseBodySuccessModels = None,
+        warning_messages: ImportOASResponseBodyWarningMessages = None,
+    ):
+        self.error_messages = error_messages
+        self.failed_apis = failed_apis
+        self.failed_models = failed_models
+        self.operation_id = operation_id
+        self.request_id = request_id
+        self.success_apis = success_apis
+        self.success_models = success_models
+        self.warning_messages = warning_messages
+
+    def validate(self):
+        if self.error_messages:
+            self.error_messages.validate()
+        if self.failed_apis:
+            self.failed_apis.validate()
+        if self.failed_models:
+            self.failed_models.validate()
+        if self.success_apis:
+            self.success_apis.validate()
+        if self.success_models:
+            self.success_models.validate()
+        if self.warning_messages:
+            self.warning_messages.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_messages is not None:
+            result['ErrorMessages'] = self.error_messages.to_map()
+        if self.failed_apis is not None:
+            result['FailedApis'] = self.failed_apis.to_map()
+        if self.failed_models is not None:
+            result['FailedModels'] = self.failed_models.to_map()
+        if self.operation_id is not None:
+            result['OperationId'] = self.operation_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success_apis is not None:
+            result['SuccessApis'] = self.success_apis.to_map()
+        if self.success_models is not None:
+            result['SuccessModels'] = self.success_models.to_map()
+        if self.warning_messages is not None:
+            result['WarningMessages'] = self.warning_messages.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorMessages') is not None:
+            temp_model = ImportOASResponseBodyErrorMessages()
+            self.error_messages = temp_model.from_map(m['ErrorMessages'])
+        if m.get('FailedApis') is not None:
+            temp_model = ImportOASResponseBodyFailedApis()
+            self.failed_apis = temp_model.from_map(m['FailedApis'])
+        if m.get('FailedModels') is not None:
+            temp_model = ImportOASResponseBodyFailedModels()
+            self.failed_models = temp_model.from_map(m['FailedModels'])
+        if m.get('OperationId') is not None:
+            self.operation_id = m.get('OperationId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SuccessApis') is not None:
+            temp_model = ImportOASResponseBodySuccessApis()
+            self.success_apis = temp_model.from_map(m['SuccessApis'])
+        if m.get('SuccessModels') is not None:
+            temp_model = ImportOASResponseBodySuccessModels()
+            self.success_models = temp_model.from_map(m['SuccessModels'])
+        if m.get('WarningMessages') is not None:
+            temp_model = ImportOASResponseBodyWarningMessages()
+            self.warning_messages = temp_model.from_map(m['WarningMessages'])
+        return self
+
+
+class ImportOASResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ImportOASResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ImportOASResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ImportSwaggerRequest(TeaModel):
     def __init__(
         self,
