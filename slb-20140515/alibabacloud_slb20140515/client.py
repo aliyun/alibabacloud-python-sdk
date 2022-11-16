@@ -1411,6 +1411,8 @@ class Client(OpenApiClient):
             query['HealthCheckDomain'] = request.health_check_domain
         if not UtilClient.is_unset(request.health_check_http_code):
             query['HealthCheckHttpCode'] = request.health_check_http_code
+        if not UtilClient.is_unset(request.health_check_switch):
+            query['HealthCheckSwitch'] = request.health_check_switch
         if not UtilClient.is_unset(request.health_check_type):
             query['HealthCheckType'] = request.health_check_type
         if not UtilClient.is_unset(request.health_check_uri):
@@ -1497,6 +1499,8 @@ class Client(OpenApiClient):
             query['HealthCheckDomain'] = request.health_check_domain
         if not UtilClient.is_unset(request.health_check_http_code):
             query['HealthCheckHttpCode'] = request.health_check_http_code
+        if not UtilClient.is_unset(request.health_check_switch):
+            query['HealthCheckSwitch'] = request.health_check_switch
         if not UtilClient.is_unset(request.health_check_type):
             query['HealthCheckType'] = request.health_check_type
         if not UtilClient.is_unset(request.health_check_uri):
@@ -1587,6 +1591,8 @@ class Client(OpenApiClient):
             query['HealthCheckConnectPort'] = request.health_check_connect_port
         if not UtilClient.is_unset(request.health_check_connect_timeout):
             query['HealthCheckConnectTimeout'] = request.health_check_connect_timeout
+        if not UtilClient.is_unset(request.health_check_switch):
+            query['HealthCheckSwitch'] = request.health_check_switch
         if not UtilClient.is_unset(request.healthy_threshold):
             query['HealthyThreshold'] = request.healthy_threshold
         if not UtilClient.is_unset(request.listener_port):
@@ -1661,6 +1667,8 @@ class Client(OpenApiClient):
             query['HealthCheckConnectPort'] = request.health_check_connect_port
         if not UtilClient.is_unset(request.health_check_connect_timeout):
             query['HealthCheckConnectTimeout'] = request.health_check_connect_timeout
+        if not UtilClient.is_unset(request.health_check_switch):
+            query['HealthCheckSwitch'] = request.health_check_switch
         if not UtilClient.is_unset(request.healthy_threshold):
             query['HealthyThreshold'] = request.healthy_threshold
         if not UtilClient.is_unset(request.listener_port):
@@ -3229,6 +3237,112 @@ class Client(OpenApiClient):
     ) -> slb_20140515_models.DescribeAccessControlListsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_access_control_lists_with_options_async(request, runtime)
+
+    def describe_access_logs_download_attribute_with_options(
+        self,
+        request: slb_20140515_models.DescribeAccessLogsDownloadAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> slb_20140515_models.DescribeAccessLogsDownloadAttributeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.log_type):
+            query['LogType'] = request.log_type
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAccessLogsDownloadAttribute',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            slb_20140515_models.DescribeAccessLogsDownloadAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_access_logs_download_attribute_with_options_async(
+        self,
+        request: slb_20140515_models.DescribeAccessLogsDownloadAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> slb_20140515_models.DescribeAccessLogsDownloadAttributeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.log_type):
+            query['LogType'] = request.log_type
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAccessLogsDownloadAttribute',
+            version='2014-05-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            slb_20140515_models.DescribeAccessLogsDownloadAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_access_logs_download_attribute(
+        self,
+        request: slb_20140515_models.DescribeAccessLogsDownloadAttributeRequest,
+    ) -> slb_20140515_models.DescribeAccessLogsDownloadAttributeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_access_logs_download_attribute_with_options(request, runtime)
+
+    async def describe_access_logs_download_attribute_async(
+        self,
+        request: slb_20140515_models.DescribeAccessLogsDownloadAttributeRequest,
+    ) -> slb_20140515_models.DescribeAccessLogsDownloadAttributeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_access_logs_download_attribute_with_options_async(request, runtime)
 
     def describe_available_resource_with_options(
         self,
@@ -7991,6 +8105,8 @@ class Client(OpenApiClient):
             query['HealthCheckHttpCode'] = request.health_check_http_code
         if not UtilClient.is_unset(request.health_check_interval):
             query['HealthCheckInterval'] = request.health_check_interval
+        if not UtilClient.is_unset(request.health_check_switch):
+            query['HealthCheckSwitch'] = request.health_check_switch
         if not UtilClient.is_unset(request.health_check_type):
             query['HealthCheckType'] = request.health_check_type
         if not UtilClient.is_unset(request.health_check_uri):
@@ -8081,6 +8197,8 @@ class Client(OpenApiClient):
             query['HealthCheckHttpCode'] = request.health_check_http_code
         if not UtilClient.is_unset(request.health_check_interval):
             query['HealthCheckInterval'] = request.health_check_interval
+        if not UtilClient.is_unset(request.health_check_switch):
+            query['HealthCheckSwitch'] = request.health_check_switch
         if not UtilClient.is_unset(request.health_check_type):
             query['HealthCheckType'] = request.health_check_type
         if not UtilClient.is_unset(request.health_check_uri):
@@ -8175,6 +8293,8 @@ class Client(OpenApiClient):
             query['HealthCheckConnectTimeout'] = request.health_check_connect_timeout
         if not UtilClient.is_unset(request.health_check_interval):
             query['HealthCheckInterval'] = request.health_check_interval
+        if not UtilClient.is_unset(request.health_check_switch):
+            query['HealthCheckSwitch'] = request.health_check_switch
         if not UtilClient.is_unset(request.healthy_threshold):
             query['HealthyThreshold'] = request.healthy_threshold
         if not UtilClient.is_unset(request.listener_port):
@@ -8251,6 +8371,8 @@ class Client(OpenApiClient):
             query['HealthCheckConnectTimeout'] = request.health_check_connect_timeout
         if not UtilClient.is_unset(request.health_check_interval):
             query['HealthCheckInterval'] = request.health_check_interval
+        if not UtilClient.is_unset(request.health_check_switch):
+            query['HealthCheckSwitch'] = request.health_check_switch
         if not UtilClient.is_unset(request.healthy_threshold):
             query['HealthyThreshold'] = request.healthy_threshold
         if not UtilClient.is_unset(request.listener_port):
