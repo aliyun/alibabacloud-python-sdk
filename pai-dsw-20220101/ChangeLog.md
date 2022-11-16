@@ -1,3 +1,6 @@
+2022-11-16 Version: 1.1.29
+- Support for updating instance.
+
 2022-10-20 Version: 1.1.28
 - DSW lifecycle sdk generate.
 

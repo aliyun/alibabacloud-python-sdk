@@ -1886,8 +1886,26 @@ class Client(OpenApiClient):
     ) -> pai_dsw_20220101_models.UpdateInstanceResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.accessibility):
+            body['Accessibility'] = request.accessibility
+        if not UtilClient.is_unset(request.datasets):
+            body['Datasets'] = request.datasets
+        if not UtilClient.is_unset(request.disassociate_datasets):
+            body['DisassociateDatasets'] = request.disassociate_datasets
+        if not UtilClient.is_unset(request.disassociate_vpc):
+            body['DisassociateVpc'] = request.disassociate_vpc
+        if not UtilClient.is_unset(request.ecs_spec):
+            body['EcsSpec'] = request.ecs_spec
+        if not UtilClient.is_unset(request.image_id):
+            body['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageUrl'] = request.image_url
         if not UtilClient.is_unset(request.instance_name):
             body['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.requested_resource):
+            body['RequestedResource'] = request.requested_resource
+        if not UtilClient.is_unset(request.user_vpc):
+            body['UserVpc'] = request.user_vpc
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -1917,8 +1935,26 @@ class Client(OpenApiClient):
     ) -> pai_dsw_20220101_models.UpdateInstanceResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.accessibility):
+            body['Accessibility'] = request.accessibility
+        if not UtilClient.is_unset(request.datasets):
+            body['Datasets'] = request.datasets
+        if not UtilClient.is_unset(request.disassociate_datasets):
+            body['DisassociateDatasets'] = request.disassociate_datasets
+        if not UtilClient.is_unset(request.disassociate_vpc):
+            body['DisassociateVpc'] = request.disassociate_vpc
+        if not UtilClient.is_unset(request.ecs_spec):
+            body['EcsSpec'] = request.ecs_spec
+        if not UtilClient.is_unset(request.image_id):
+            body['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.image_url):
+            body['ImageUrl'] = request.image_url
         if not UtilClient.is_unset(request.instance_name):
             body['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.requested_resource):
+            body['RequestedResource'] = request.requested_resource
+        if not UtilClient.is_unset(request.user_vpc):
+            body['UserVpc'] = request.user_vpc
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)

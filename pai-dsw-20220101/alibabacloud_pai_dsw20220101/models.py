@@ -4659,12 +4659,14 @@ class StopInstanceResponse(TeaModel):
         return self
 
 
-class UpdateInstanceRequest(TeaModel):
+class UpdateInstanceRequestDatasets(TeaModel):
     def __init__(
         self,
-        instance_name: str = None,
+        dataset_id: str = None,
+        mount_path: str = None,
     ):
-        self.instance_name = instance_name
+        self.dataset_id = dataset_id
+        self.mount_path = mount_path
 
     def validate(self):
         pass
@@ -4675,14 +4677,203 @@ class UpdateInstanceRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.instance_name is not None:
-            result['InstanceName'] = self.instance_name
+        if self.dataset_id is not None:
+            result['DatasetId'] = self.dataset_id
+        if self.mount_path is not None:
+            result['MountPath'] = self.mount_path
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DatasetId') is not None:
+            self.dataset_id = m.get('DatasetId')
+        if m.get('MountPath') is not None:
+            self.mount_path = m.get('MountPath')
+        return self
+
+
+class UpdateInstanceRequestRequestedResource(TeaModel):
+    def __init__(
+        self,
+        cpu: str = None,
+        gpu: str = None,
+        gputype: str = None,
+        memory: str = None,
+        shared_memory: str = None,
+    ):
+        self.cpu = cpu
+        self.gpu = gpu
+        self.gputype = gputype
+        self.memory = memory
+        self.shared_memory = shared_memory
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cpu is not None:
+            result['CPU'] = self.cpu
+        if self.gpu is not None:
+            result['GPU'] = self.gpu
+        if self.gputype is not None:
+            result['GPUType'] = self.gputype
+        if self.memory is not None:
+            result['Memory'] = self.memory
+        if self.shared_memory is not None:
+            result['SharedMemory'] = self.shared_memory
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CPU') is not None:
+            self.cpu = m.get('CPU')
+        if m.get('GPU') is not None:
+            self.gpu = m.get('GPU')
+        if m.get('GPUType') is not None:
+            self.gputype = m.get('GPUType')
+        if m.get('Memory') is not None:
+            self.memory = m.get('Memory')
+        if m.get('SharedMemory') is not None:
+            self.shared_memory = m.get('SharedMemory')
+        return self
+
+
+class UpdateInstanceRequestUserVpc(TeaModel):
+    def __init__(
+        self,
+        security_group_id: str = None,
+        v_switch_id: str = None,
+        vpc_id: str = None,
+    ):
+        self.security_group_id = security_group_id
+        self.v_switch_id = v_switch_id
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
+class UpdateInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        accessibility: str = None,
+        datasets: List[UpdateInstanceRequestDatasets] = None,
+        disassociate_datasets: bool = None,
+        disassociate_vpc: bool = None,
+        ecs_spec: str = None,
+        image_id: str = None,
+        image_url: str = None,
+        instance_name: str = None,
+        requested_resource: UpdateInstanceRequestRequestedResource = None,
+        user_vpc: UpdateInstanceRequestUserVpc = None,
+    ):
+        self.accessibility = accessibility
+        self.datasets = datasets
+        self.disassociate_datasets = disassociate_datasets
+        self.disassociate_vpc = disassociate_vpc
+        self.ecs_spec = ecs_spec
+        self.image_id = image_id
+        self.image_url = image_url
+        self.instance_name = instance_name
+        self.requested_resource = requested_resource
+        self.user_vpc = user_vpc
+
+    def validate(self):
+        if self.datasets:
+            for k in self.datasets:
+                if k:
+                    k.validate()
+        if self.requested_resource:
+            self.requested_resource.validate()
+        if self.user_vpc:
+            self.user_vpc.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accessibility is not None:
+            result['Accessibility'] = self.accessibility
+        result['Datasets'] = []
+        if self.datasets is not None:
+            for k in self.datasets:
+                result['Datasets'].append(k.to_map() if k else None)
+        if self.disassociate_datasets is not None:
+            result['DisassociateDatasets'] = self.disassociate_datasets
+        if self.disassociate_vpc is not None:
+            result['DisassociateVpc'] = self.disassociate_vpc
+        if self.ecs_spec is not None:
+            result['EcsSpec'] = self.ecs_spec
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
+        if self.image_url is not None:
+            result['ImageUrl'] = self.image_url
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.requested_resource is not None:
+            result['RequestedResource'] = self.requested_resource.to_map()
+        if self.user_vpc is not None:
+            result['UserVpc'] = self.user_vpc.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Accessibility') is not None:
+            self.accessibility = m.get('Accessibility')
+        self.datasets = []
+        if m.get('Datasets') is not None:
+            for k in m.get('Datasets'):
+                temp_model = UpdateInstanceRequestDatasets()
+                self.datasets.append(temp_model.from_map(k))
+        if m.get('DisassociateDatasets') is not None:
+            self.disassociate_datasets = m.get('DisassociateDatasets')
+        if m.get('DisassociateVpc') is not None:
+            self.disassociate_vpc = m.get('DisassociateVpc')
+        if m.get('EcsSpec') is not None:
+            self.ecs_spec = m.get('EcsSpec')
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
+        if m.get('ImageUrl') is not None:
+            self.image_url = m.get('ImageUrl')
         if m.get('InstanceName') is not None:
             self.instance_name = m.get('InstanceName')
+        if m.get('RequestedResource') is not None:
+            temp_model = UpdateInstanceRequestRequestedResource()
+            self.requested_resource = temp_model.from_map(m['RequestedResource'])
+        if m.get('UserVpc') is not None:
+            temp_model = UpdateInstanceRequestUserVpc()
+            self.user_vpc = temp_model.from_map(m['UserVpc'])
         return self
 
 
