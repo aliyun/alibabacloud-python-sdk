@@ -5320,17 +5320,66 @@ class DetectLivingFaceResponseBodyDataElementsResultsFrames(TeaModel):
         return self
 
 
+class DetectLivingFaceResponseBodyDataElementsResultsRect(TeaModel):
+    def __init__(
+        self,
+        height: int = None,
+        left: int = None,
+        top: int = None,
+        width: int = None,
+    ):
+        self.height = height
+        self.left = left
+        self.top = top
+        self.width = width
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.left is not None:
+            result['Left'] = self.left
+        if self.top is not None:
+            result['Top'] = self.top
+        if self.width is not None:
+            result['Width'] = self.width
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Left') is not None:
+            self.left = m.get('Left')
+        if m.get('Top') is not None:
+            self.top = m.get('Top')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        return self
+
+
 class DetectLivingFaceResponseBodyDataElementsResults(TeaModel):
     def __init__(
         self,
         frames: List[DetectLivingFaceResponseBodyDataElementsResultsFrames] = None,
         label: str = None,
+        message_tips: str = None,
         rate: float = None,
+        rect: DetectLivingFaceResponseBodyDataElementsResultsRect = None,
         suggestion: str = None,
     ):
         self.frames = frames
         self.label = label
+        self.message_tips = message_tips
         self.rate = rate
+        self.rect = rect
         self.suggestion = suggestion
 
     def validate(self):
@@ -5338,6 +5387,8 @@ class DetectLivingFaceResponseBodyDataElementsResults(TeaModel):
             for k in self.frames:
                 if k:
                     k.validate()
+        if self.rect:
+            self.rect.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -5351,8 +5402,12 @@ class DetectLivingFaceResponseBodyDataElementsResults(TeaModel):
                 result['Frames'].append(k.to_map() if k else None)
         if self.label is not None:
             result['Label'] = self.label
+        if self.message_tips is not None:
+            result['MessageTips'] = self.message_tips
         if self.rate is not None:
             result['Rate'] = self.rate
+        if self.rect is not None:
+            result['Rect'] = self.rect.to_map()
         if self.suggestion is not None:
             result['Suggestion'] = self.suggestion
         return result
@@ -5366,8 +5421,13 @@ class DetectLivingFaceResponseBodyDataElementsResults(TeaModel):
                 self.frames.append(temp_model.from_map(k))
         if m.get('Label') is not None:
             self.label = m.get('Label')
+        if m.get('MessageTips') is not None:
+            self.message_tips = m.get('MessageTips')
         if m.get('Rate') is not None:
             self.rate = m.get('Rate')
+        if m.get('Rect') is not None:
+            temp_model = DetectLivingFaceResponseBodyDataElementsResultsRect()
+            self.rect = temp_model.from_map(m['Rect'])
         if m.get('Suggestion') is not None:
             self.suggestion = m.get('Suggestion')
         return self
@@ -5376,10 +5436,12 @@ class DetectLivingFaceResponseBodyDataElementsResults(TeaModel):
 class DetectLivingFaceResponseBodyDataElements(TeaModel):
     def __init__(
         self,
+        face_number: int = None,
         image_url: str = None,
         results: List[DetectLivingFaceResponseBodyDataElementsResults] = None,
         task_id: str = None,
     ):
+        self.face_number = face_number
         self.image_url = image_url
         self.results = results
         self.task_id = task_id
@@ -5396,6 +5458,8 @@ class DetectLivingFaceResponseBodyDataElements(TeaModel):
             return _map
 
         result = dict()
+        if self.face_number is not None:
+            result['FaceNumber'] = self.face_number
         if self.image_url is not None:
             result['ImageURL'] = self.image_url
         result['Results'] = []
@@ -5408,6 +5472,8 @@ class DetectLivingFaceResponseBodyDataElements(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('FaceNumber') is not None:
+            self.face_number = m.get('FaceNumber')
         if m.get('ImageURL') is not None:
             self.image_url = m.get('ImageURL')
         self.results = []
@@ -7199,431 +7265,6 @@ class ExtractPedestrianFeatureAttrResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ExtractPedestrianFeatureAttrResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class ExtractPedestrianFeatureAttributeRequestUrlList(TeaModel):
-    def __init__(
-        self,
-        url: str = None,
-    ):
-        self.url = url
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.url is not None:
-            result['Url'] = self.url
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Url') is not None:
-            self.url = m.get('Url')
-        return self
-
-
-class ExtractPedestrianFeatureAttributeRequest(TeaModel):
-    def __init__(
-        self,
-        image_url: str = None,
-        mode: str = None,
-        url_list: List[ExtractPedestrianFeatureAttributeRequestUrlList] = None,
-    ):
-        self.image_url = image_url
-        self.mode = mode
-        self.url_list = url_list
-
-    def validate(self):
-        if self.url_list:
-            for k in self.url_list:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.image_url is not None:
-            result['ImageURL'] = self.image_url
-        if self.mode is not None:
-            result['Mode'] = self.mode
-        result['UrlList'] = []
-        if self.url_list is not None:
-            for k in self.url_list:
-                result['UrlList'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ImageURL') is not None:
-            self.image_url = m.get('ImageURL')
-        if m.get('Mode') is not None:
-            self.mode = m.get('Mode')
-        self.url_list = []
-        if m.get('UrlList') is not None:
-            for k in m.get('UrlList'):
-                temp_model = ExtractPedestrianFeatureAttributeRequestUrlList()
-                self.url_list.append(temp_model.from_map(k))
-        return self
-
-
-class ExtractPedestrianFeatureAttributeResponseBodyDataElements(TeaModel):
-    def __init__(
-        self,
-        age: str = None,
-        age_score: float = None,
-        feature: str = None,
-        gender: str = None,
-        gender_score: float = None,
-        hair: str = None,
-        hair_score: float = None,
-        lower_color: str = None,
-        lower_color_score: float = None,
-        lower_type: str = None,
-        lower_type_score: float = None,
-        obj_type: str = None,
-        obj_type_score: float = None,
-        quality_score: float = None,
-        upper_color: str = None,
-        upper_color_score: float = None,
-        upper_type: str = None,
-        upper_type_score: float = None,
-    ):
-        self.age = age
-        self.age_score = age_score
-        self.feature = feature
-        self.gender = gender
-        self.gender_score = gender_score
-        self.hair = hair
-        self.hair_score = hair_score
-        self.lower_color = lower_color
-        self.lower_color_score = lower_color_score
-        self.lower_type = lower_type
-        self.lower_type_score = lower_type_score
-        self.obj_type = obj_type
-        self.obj_type_score = obj_type_score
-        self.quality_score = quality_score
-        self.upper_color = upper_color
-        self.upper_color_score = upper_color_score
-        self.upper_type = upper_type
-        self.upper_type_score = upper_type_score
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.age is not None:
-            result['Age'] = self.age
-        if self.age_score is not None:
-            result['AgeScore'] = self.age_score
-        if self.feature is not None:
-            result['Feature'] = self.feature
-        if self.gender is not None:
-            result['Gender'] = self.gender
-        if self.gender_score is not None:
-            result['GenderScore'] = self.gender_score
-        if self.hair is not None:
-            result['Hair'] = self.hair
-        if self.hair_score is not None:
-            result['HairScore'] = self.hair_score
-        if self.lower_color is not None:
-            result['LowerColor'] = self.lower_color
-        if self.lower_color_score is not None:
-            result['LowerColorScore'] = self.lower_color_score
-        if self.lower_type is not None:
-            result['LowerType'] = self.lower_type
-        if self.lower_type_score is not None:
-            result['LowerTypeScore'] = self.lower_type_score
-        if self.obj_type is not None:
-            result['ObjType'] = self.obj_type
-        if self.obj_type_score is not None:
-            result['ObjTypeScore'] = self.obj_type_score
-        if self.quality_score is not None:
-            result['QualityScore'] = self.quality_score
-        if self.upper_color is not None:
-            result['UpperColor'] = self.upper_color
-        if self.upper_color_score is not None:
-            result['UpperColorScore'] = self.upper_color_score
-        if self.upper_type is not None:
-            result['UpperType'] = self.upper_type
-        if self.upper_type_score is not None:
-            result['UpperTypeScore'] = self.upper_type_score
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Age') is not None:
-            self.age = m.get('Age')
-        if m.get('AgeScore') is not None:
-            self.age_score = m.get('AgeScore')
-        if m.get('Feature') is not None:
-            self.feature = m.get('Feature')
-        if m.get('Gender') is not None:
-            self.gender = m.get('Gender')
-        if m.get('GenderScore') is not None:
-            self.gender_score = m.get('GenderScore')
-        if m.get('Hair') is not None:
-            self.hair = m.get('Hair')
-        if m.get('HairScore') is not None:
-            self.hair_score = m.get('HairScore')
-        if m.get('LowerColor') is not None:
-            self.lower_color = m.get('LowerColor')
-        if m.get('LowerColorScore') is not None:
-            self.lower_color_score = m.get('LowerColorScore')
-        if m.get('LowerType') is not None:
-            self.lower_type = m.get('LowerType')
-        if m.get('LowerTypeScore') is not None:
-            self.lower_type_score = m.get('LowerTypeScore')
-        if m.get('ObjType') is not None:
-            self.obj_type = m.get('ObjType')
-        if m.get('ObjTypeScore') is not None:
-            self.obj_type_score = m.get('ObjTypeScore')
-        if m.get('QualityScore') is not None:
-            self.quality_score = m.get('QualityScore')
-        if m.get('UpperColor') is not None:
-            self.upper_color = m.get('UpperColor')
-        if m.get('UpperColorScore') is not None:
-            self.upper_color_score = m.get('UpperColorScore')
-        if m.get('UpperType') is not None:
-            self.upper_type = m.get('UpperType')
-        if m.get('UpperTypeScore') is not None:
-            self.upper_type_score = m.get('UpperTypeScore')
-        return self
-
-
-class ExtractPedestrianFeatureAttributeResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        age: str = None,
-        age_score: float = None,
-        elements: List[ExtractPedestrianFeatureAttributeResponseBodyDataElements] = None,
-        feature: str = None,
-        gender: str = None,
-        gender_score: float = None,
-        hair: str = None,
-        hair_score: float = None,
-        lower_color: str = None,
-        lower_color_score: float = None,
-        lower_type: str = None,
-        lower_type_score: float = None,
-        obj_type: str = None,
-        obj_type_score: float = None,
-        quality_score: float = None,
-        upper_color: str = None,
-        upper_color_score: float = None,
-        upper_type: str = None,
-        upper_type_score: float = None,
-    ):
-        self.age = age
-        self.age_score = age_score
-        self.elements = elements
-        self.feature = feature
-        self.gender = gender
-        self.gender_score = gender_score
-        self.hair = hair
-        self.hair_score = hair_score
-        self.lower_color = lower_color
-        self.lower_color_score = lower_color_score
-        self.lower_type = lower_type
-        self.lower_type_score = lower_type_score
-        self.obj_type = obj_type
-        self.obj_type_score = obj_type_score
-        self.quality_score = quality_score
-        self.upper_color = upper_color
-        self.upper_color_score = upper_color_score
-        self.upper_type = upper_type
-        self.upper_type_score = upper_type_score
-
-    def validate(self):
-        if self.elements:
-            for k in self.elements:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.age is not None:
-            result['Age'] = self.age
-        if self.age_score is not None:
-            result['AgeScore'] = self.age_score
-        result['Elements'] = []
-        if self.elements is not None:
-            for k in self.elements:
-                result['Elements'].append(k.to_map() if k else None)
-        if self.feature is not None:
-            result['Feature'] = self.feature
-        if self.gender is not None:
-            result['Gender'] = self.gender
-        if self.gender_score is not None:
-            result['GenderScore'] = self.gender_score
-        if self.hair is not None:
-            result['Hair'] = self.hair
-        if self.hair_score is not None:
-            result['HairScore'] = self.hair_score
-        if self.lower_color is not None:
-            result['LowerColor'] = self.lower_color
-        if self.lower_color_score is not None:
-            result['LowerColorScore'] = self.lower_color_score
-        if self.lower_type is not None:
-            result['LowerType'] = self.lower_type
-        if self.lower_type_score is not None:
-            result['LowerTypeScore'] = self.lower_type_score
-        if self.obj_type is not None:
-            result['ObjType'] = self.obj_type
-        if self.obj_type_score is not None:
-            result['ObjTypeScore'] = self.obj_type_score
-        if self.quality_score is not None:
-            result['QualityScore'] = self.quality_score
-        if self.upper_color is not None:
-            result['UpperColor'] = self.upper_color
-        if self.upper_color_score is not None:
-            result['UpperColorScore'] = self.upper_color_score
-        if self.upper_type is not None:
-            result['UpperType'] = self.upper_type
-        if self.upper_type_score is not None:
-            result['UpperTypeScore'] = self.upper_type_score
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Age') is not None:
-            self.age = m.get('Age')
-        if m.get('AgeScore') is not None:
-            self.age_score = m.get('AgeScore')
-        self.elements = []
-        if m.get('Elements') is not None:
-            for k in m.get('Elements'):
-                temp_model = ExtractPedestrianFeatureAttributeResponseBodyDataElements()
-                self.elements.append(temp_model.from_map(k))
-        if m.get('Feature') is not None:
-            self.feature = m.get('Feature')
-        if m.get('Gender') is not None:
-            self.gender = m.get('Gender')
-        if m.get('GenderScore') is not None:
-            self.gender_score = m.get('GenderScore')
-        if m.get('Hair') is not None:
-            self.hair = m.get('Hair')
-        if m.get('HairScore') is not None:
-            self.hair_score = m.get('HairScore')
-        if m.get('LowerColor') is not None:
-            self.lower_color = m.get('LowerColor')
-        if m.get('LowerColorScore') is not None:
-            self.lower_color_score = m.get('LowerColorScore')
-        if m.get('LowerType') is not None:
-            self.lower_type = m.get('LowerType')
-        if m.get('LowerTypeScore') is not None:
-            self.lower_type_score = m.get('LowerTypeScore')
-        if m.get('ObjType') is not None:
-            self.obj_type = m.get('ObjType')
-        if m.get('ObjTypeScore') is not None:
-            self.obj_type_score = m.get('ObjTypeScore')
-        if m.get('QualityScore') is not None:
-            self.quality_score = m.get('QualityScore')
-        if m.get('UpperColor') is not None:
-            self.upper_color = m.get('UpperColor')
-        if m.get('UpperColorScore') is not None:
-            self.upper_color_score = m.get('UpperColorScore')
-        if m.get('UpperType') is not None:
-            self.upper_type = m.get('UpperType')
-        if m.get('UpperTypeScore') is not None:
-            self.upper_type_score = m.get('UpperTypeScore')
-        return self
-
-
-class ExtractPedestrianFeatureAttributeResponseBody(TeaModel):
-    def __init__(
-        self,
-        data: ExtractPedestrianFeatureAttributeResponseBodyData = None,
-        request_id: str = None,
-    ):
-        self.data = data
-        self.request_id = request_id
-
-    def validate(self):
-        if self.data:
-            self.data.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Data') is not None:
-            temp_model = ExtractPedestrianFeatureAttributeResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class ExtractPedestrianFeatureAttributeResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: ExtractPedestrianFeatureAttributeResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = ExtractPedestrianFeatureAttributeResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
