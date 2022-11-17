@@ -1053,6 +1053,102 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
+    def get_lifecycle(
+        self,
+        instance_id: str,
+        request: pai_dsw_20220101_models.GetLifecycleRequest,
+    ) -> pai_dsw_20220101_models.GetLifecycleResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_lifecycle_with_options(instance_id, request, headers, runtime)
+
+    async def get_lifecycle_async(
+        self,
+        instance_id: str,
+        request: pai_dsw_20220101_models.GetLifecycleRequest,
+    ) -> pai_dsw_20220101_models.GetLifecycleResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_lifecycle_with_options_async(instance_id, request, headers, runtime)
+
+    def get_lifecycle_with_options(
+        self,
+        instance_id: str,
+        request: pai_dsw_20220101_models.GetLifecycleRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_dsw_20220101_models.GetLifecycleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.session_number):
+            query['SessionNumber'] = request.session_number
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetLifecycle',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/lifecycle',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.GetLifecycleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_lifecycle_with_options_async(
+        self,
+        instance_id: str,
+        request: pai_dsw_20220101_models.GetLifecycleRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_dsw_20220101_models.GetLifecycleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.session_number):
+            query['SessionNumber'] = request.session_number
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetLifecycle',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/lifecycle',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.GetLifecycleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
     def get_token(
         self,
         request: pai_dsw_20220101_models.GetTokenRequest,

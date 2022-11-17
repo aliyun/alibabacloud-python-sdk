@@ -2533,6 +2533,218 @@ class GetInstanceSnapshotResponse(TeaModel):
         return self
 
 
+class GetLifecycleRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        limit: int = None,
+        order: str = None,
+        session_number: int = None,
+        start_time: str = None,
+    ):
+        self.end_time = end_time
+        self.limit = limit
+        self.order = order
+        self.session_number = session_number
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.limit is not None:
+            result['Limit'] = self.limit
+        if self.order is not None:
+            result['Order'] = self.order
+        if self.session_number is not None:
+            result['SessionNumber'] = self.session_number
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Limit') is not None:
+            self.limit = m.get('Limit')
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
+        if m.get('SessionNumber') is not None:
+            self.session_number = m.get('SessionNumber')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class GetLifecycleResponseBodyLifecycle(TeaModel):
+    def __init__(
+        self,
+        status: str = None,
+        reason_code: str = None,
+        reason_message: str = None,
+        gmt_create_time: str = None,
+    ):
+        self.status = status
+        self.reason_code = reason_code
+        self.reason_message = reason_message
+        self.gmt_create_time = gmt_create_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.reason_code is not None:
+            result['ReasonCode'] = self.reason_code
+        if self.reason_message is not None:
+            result['ReasonMessage'] = self.reason_message
+        if self.gmt_create_time is not None:
+            result['GmtCreateTime'] = self.gmt_create_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('ReasonCode') is not None:
+            self.reason_code = m.get('ReasonCode')
+        if m.get('ReasonMessage') is not None:
+            self.reason_message = m.get('ReasonMessage')
+        if m.get('GmtCreateTime') is not None:
+            self.gmt_create_time = m.get('GmtCreateTime')
+        return self
+
+
+class GetLifecycleResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        lifecycle: List[List[GetLifecycleResponseBodyLifecycle]] = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        total_count: int = None,
+    ):
+        self.code = code
+        self.lifecycle = lifecycle
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.total_count = total_count
+
+    def validate(self):
+        if self.lifecycle:
+            for k in self.lifecycle:
+                for k1 in k:
+                    if k1:
+                        k1.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Lifecycle'] = []
+        if self.lifecycle is not None:
+            for k in self.lifecycle:
+                l1 = []
+                for k1 in k:
+                    l1.append(k1.to_map() if k1 else None)
+                result['lifecycle'].append(l1)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.lifecycle = []
+        if m.get('Lifecycle') is not None:
+            for k in m.get('Lifecycle'):
+                l1 = []
+                for k1 in k:
+                    temp_model = GetLifecycleResponseBodyLifecycle()
+                    l1.append(temp_model.from_map(k1))
+                self.lifecycle.append(l1)
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class GetLifecycleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetLifecycleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetLifecycleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetTokenRequest(TeaModel):
     def __init__(
         self,

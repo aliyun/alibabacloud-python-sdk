@@ -1,3 +1,6 @@
+2022-11-17 Version: 1.1.30
+- Support Lifecycle.
+
 2022-11-16 Version: 1.1.29
 - Support for updating instance.
 
