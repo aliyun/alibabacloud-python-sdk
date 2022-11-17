@@ -21,7 +21,7 @@ class Client(OpenApiClient):
         config: open_api_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
         self.check_config(config)
         self._endpoint = self.get_endpoint('oceanbasepro', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -372,15 +372,15 @@ class Client(OpenApiClient):
         request = ocean_base_pro_20190901_models.CreateOmsOpenAPIProjectShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.dest_config):
-            request.dest_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.dest_config), 'DestConfig', 'json')
+            request.dest_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dest_config, 'DestConfig', 'json')
         if not UtilClient.is_unset(tmp_req.label_ids):
             request.label_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.label_ids, 'LabelIds', 'json')
         if not UtilClient.is_unset(tmp_req.source_config):
-            request.source_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.source_config), 'SourceConfig', 'json')
+            request.source_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_config, 'SourceConfig', 'json')
         if not UtilClient.is_unset(tmp_req.transfer_mapping):
-            request.transfer_mapping_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.transfer_mapping), 'TransferMapping', 'json')
+            request.transfer_mapping_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.transfer_mapping, 'TransferMapping', 'json')
         if not UtilClient.is_unset(tmp_req.transfer_step_config):
-            request.transfer_step_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.transfer_step_config), 'TransferStepConfig', 'json')
+            request.transfer_step_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.transfer_step_config, 'TransferStepConfig', 'json')
         body = {}
         if not UtilClient.is_unset(request.business_name):
             body['BusinessName'] = request.business_name
@@ -430,15 +430,15 @@ class Client(OpenApiClient):
         request = ocean_base_pro_20190901_models.CreateOmsOpenAPIProjectShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.dest_config):
-            request.dest_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.dest_config), 'DestConfig', 'json')
+            request.dest_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dest_config, 'DestConfig', 'json')
         if not UtilClient.is_unset(tmp_req.label_ids):
             request.label_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.label_ids, 'LabelIds', 'json')
         if not UtilClient.is_unset(tmp_req.source_config):
-            request.source_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.source_config), 'SourceConfig', 'json')
+            request.source_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_config, 'SourceConfig', 'json')
         if not UtilClient.is_unset(tmp_req.transfer_mapping):
-            request.transfer_mapping_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.transfer_mapping), 'TransferMapping', 'json')
+            request.transfer_mapping_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.transfer_mapping, 'TransferMapping', 'json')
         if not UtilClient.is_unset(tmp_req.transfer_step_config):
-            request.transfer_step_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.transfer_step_config), 'TransferStepConfig', 'json')
+            request.transfer_step_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.transfer_step_config, 'TransferStepConfig', 'json')
         body = {}
         if not UtilClient.is_unset(request.business_name):
             body['BusinessName'] = request.business_name

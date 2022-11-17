@@ -285,7 +285,7 @@ class CreateInstanceResponseBodyData(TeaModel):
 class CreateInstanceResponseBody(TeaModel):
     def __init__(
         self,
-        data: List[CreateInstanceResponseBodyData] = None,
+        data: CreateInstanceResponseBodyData = None,
         request_id: str = None,
     ):
         self.data = data
@@ -293,9 +293,7 @@ class CreateInstanceResponseBody(TeaModel):
 
     def validate(self):
         if self.data:
-            for k in self.data:
-                if k:
-                    k.validate()
+            self.data.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -303,21 +301,17 @@ class CreateInstanceResponseBody(TeaModel):
             return _map
 
         result = dict()
-        result['Data'] = []
         if self.data is not None:
-            for k in self.data:
-                result['Data'].append(k.to_map() if k else None)
+            result['Data'] = self.data.to_map()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        self.data = []
         if m.get('Data') is not None:
-            for k in m.get('Data'):
-                temp_model = CreateInstanceResponseBodyData()
-                self.data.append(temp_model.from_map(k))
+            temp_model = CreateInstanceResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
