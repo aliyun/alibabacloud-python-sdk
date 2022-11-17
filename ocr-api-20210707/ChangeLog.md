@@ -1,3 +1,6 @@
+2022-11-17 Version: 1.1.11
+- RecognizeInternationalBusinessLicense.
+
 2022-09-30 Version: 1.1.10
 - InternationalIdcard.
 
