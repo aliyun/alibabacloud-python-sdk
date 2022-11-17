@@ -2965,6 +2965,7 @@ class CreateRuleRequest(TeaModel):
     def __init__(
         self,
         client_token: str = None,
+        direction: str = None,
         dry_run: bool = None,
         listener_id: str = None,
         priority: int = None,
@@ -2973,6 +2974,7 @@ class CreateRuleRequest(TeaModel):
         rule_name: str = None,
     ):
         self.client_token = client_token
+        self.direction = direction
         self.dry_run = dry_run
         self.listener_id = listener_id
         self.priority = priority
@@ -2998,6 +3000,8 @@ class CreateRuleRequest(TeaModel):
         result = dict()
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+        if self.direction is not None:
+            result['Direction'] = self.direction
         if self.dry_run is not None:
             result['DryRun'] = self.dry_run
         if self.listener_id is not None:
@@ -3020,6 +3024,8 @@ class CreateRuleRequest(TeaModel):
         m = m or dict()
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+        if m.get('Direction') is not None:
+            self.direction = m.get('Direction')
         if m.get('DryRun') is not None:
             self.dry_run = m.get('DryRun')
         if m.get('ListenerId') is not None:
@@ -11233,12 +11239,14 @@ class ListLoadBalancersResponse(TeaModel):
 class ListRulesRequest(TeaModel):
     def __init__(
         self,
+        direction: str = None,
         listener_ids: List[str] = None,
         load_balancer_ids: List[str] = None,
         max_results: int = None,
         next_token: str = None,
         rule_ids: List[str] = None,
     ):
+        self.direction = direction
         self.listener_ids = listener_ids
         self.load_balancer_ids = load_balancer_ids
         self.max_results = max_results
@@ -11254,6 +11262,8 @@ class ListRulesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.direction is not None:
+            result['Direction'] = self.direction
         if self.listener_ids is not None:
             result['ListenerIds'] = self.listener_ids
         if self.load_balancer_ids is not None:
@@ -11268,6 +11278,8 @@ class ListRulesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Direction') is not None:
+            self.direction = m.get('Direction')
         if m.get('ListenerIds') is not None:
             self.listener_ids = m.get('ListenerIds')
         if m.get('LoadBalancerIds') is not None:

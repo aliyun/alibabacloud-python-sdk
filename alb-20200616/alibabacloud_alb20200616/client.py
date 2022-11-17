@@ -1006,6 +1006,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
         if not UtilClient.is_unset(request.dry_run):
             query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.listener_id):
@@ -1046,6 +1048,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
         if not UtilClient.is_unset(request.dry_run):
             query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.listener_id):
@@ -3682,6 +3686,8 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.ListRulesResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
         if not UtilClient.is_unset(request.listener_ids):
             query['ListenerIds'] = request.listener_ids
         if not UtilClient.is_unset(request.load_balancer_ids):
@@ -3718,6 +3724,8 @@ class Client(OpenApiClient):
     ) -> alb_20200616_models.ListRulesResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
         if not UtilClient.is_unset(request.listener_ids):
             query['ListenerIds'] = request.listener_ids
         if not UtilClient.is_unset(request.load_balancer_ids):
