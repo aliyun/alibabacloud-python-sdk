@@ -1,3 +1,6 @@
+2022-11-17 Version: 1.1.7
+- Update BatchDescribeCdnIpInfo.
+
 2022-10-27 Version: 1.1.6
 - Add BatchDescribeCdnIpInfo.
 
