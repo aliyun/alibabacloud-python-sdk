@@ -27892,6 +27892,216 @@ class DescribeDcdnsecServiceResponse(TeaModel):
         return self
 
 
+class DescribeRDDomainConfigRequest(TeaModel):
+    def __init__(
+        self,
+        domain_name: str = None,
+        function_name: str = None,
+    ):
+        self.domain_name = domain_name
+        self.function_name = function_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.function_name is not None:
+            result['FunctionName'] = self.function_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('FunctionName') is not None:
+            self.function_name = m.get('FunctionName')
+        return self
+
+
+class DescribeRDDomainConfigResponseBodyDomainConfigsFunctionArgs(TeaModel):
+    def __init__(
+        self,
+        arg_name: str = None,
+        arg_value: str = None,
+    ):
+        self.arg_name = arg_name
+        self.arg_value = arg_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.arg_name is not None:
+            result['ArgName'] = self.arg_name
+        if self.arg_value is not None:
+            result['ArgValue'] = self.arg_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ArgName') is not None:
+            self.arg_name = m.get('ArgName')
+        if m.get('ArgValue') is not None:
+            self.arg_value = m.get('ArgValue')
+        return self
+
+
+class DescribeRDDomainConfigResponseBodyDomainConfigs(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        function_args: List[DescribeRDDomainConfigResponseBodyDomainConfigsFunctionArgs] = None,
+        function_name: str = None,
+        parent_id: str = None,
+        status: str = None,
+    ):
+        self.config_id = config_id
+        self.function_args = function_args
+        self.function_name = function_name
+        self.parent_id = parent_id
+        self.status = status
+
+    def validate(self):
+        if self.function_args:
+            for k in self.function_args:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        result['FunctionArgs'] = []
+        if self.function_args is not None:
+            for k in self.function_args:
+                result['FunctionArgs'].append(k.to_map() if k else None)
+        if self.function_name is not None:
+            result['FunctionName'] = self.function_name
+        if self.parent_id is not None:
+            result['ParentId'] = self.parent_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        self.function_args = []
+        if m.get('FunctionArgs') is not None:
+            for k in m.get('FunctionArgs'):
+                temp_model = DescribeRDDomainConfigResponseBodyDomainConfigsFunctionArgs()
+                self.function_args.append(temp_model.from_map(k))
+        if m.get('FunctionName') is not None:
+            self.function_name = m.get('FunctionName')
+        if m.get('ParentId') is not None:
+            self.parent_id = m.get('ParentId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DescribeRDDomainConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        domain_configs: List[DescribeRDDomainConfigResponseBodyDomainConfigs] = None,
+        request_id: str = None,
+    ):
+        self.domain_configs = domain_configs
+        self.request_id = request_id
+
+    def validate(self):
+        if self.domain_configs:
+            for k in self.domain_configs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DomainConfigs'] = []
+        if self.domain_configs is not None:
+            for k in self.domain_configs:
+                result['DomainConfigs'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.domain_configs = []
+        if m.get('DomainConfigs') is not None:
+            for k in m.get('DomainConfigs'):
+                temp_model = DescribeRDDomainConfigResponseBodyDomainConfigs()
+                self.domain_configs.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeRDDomainConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeRDDomainConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeRDDomainConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeRoutineRequest(TeaModel):
     def __init__(
         self,
