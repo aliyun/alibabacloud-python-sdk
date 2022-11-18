@@ -7149,7 +7149,9 @@ class DescribeEngineVersionResponseBody(TeaModel):
         enable_upgrade_minor_version: bool = None,
         engine: str = None,
         is_latest_version: bool = None,
-        is_redis_compatible_version: bool = None,
+        is_new_sslmode: str = None,
+        is_redis_compatible_version: str = None,
+        is_sslenable: str = None,
         major_version: str = None,
         minor_version: str = None,
         proxy_minor_version: str = None,
@@ -7161,7 +7163,9 @@ class DescribeEngineVersionResponseBody(TeaModel):
         self.enable_upgrade_minor_version = enable_upgrade_minor_version
         self.engine = engine
         self.is_latest_version = is_latest_version
+        self.is_new_sslmode = is_new_sslmode
         self.is_redis_compatible_version = is_redis_compatible_version
+        self.is_sslenable = is_sslenable
         self.major_version = major_version
         self.minor_version = minor_version
         self.proxy_minor_version = proxy_minor_version
@@ -7187,8 +7191,12 @@ class DescribeEngineVersionResponseBody(TeaModel):
             result['Engine'] = self.engine
         if self.is_latest_version is not None:
             result['IsLatestVersion'] = self.is_latest_version
+        if self.is_new_sslmode is not None:
+            result['IsNewSSLMode'] = self.is_new_sslmode
         if self.is_redis_compatible_version is not None:
             result['IsRedisCompatibleVersion'] = self.is_redis_compatible_version
+        if self.is_sslenable is not None:
+            result['IsSSLEnable'] = self.is_sslenable
         if self.major_version is not None:
             result['MajorVersion'] = self.major_version
         if self.minor_version is not None:
@@ -7213,8 +7221,12 @@ class DescribeEngineVersionResponseBody(TeaModel):
             self.engine = m.get('Engine')
         if m.get('IsLatestVersion') is not None:
             self.is_latest_version = m.get('IsLatestVersion')
+        if m.get('IsNewSSLMode') is not None:
+            self.is_new_sslmode = m.get('IsNewSSLMode')
         if m.get('IsRedisCompatibleVersion') is not None:
             self.is_redis_compatible_version = m.get('IsRedisCompatibleVersion')
+        if m.get('IsSSLEnable') is not None:
+            self.is_sslenable = m.get('IsSSLEnable')
         if m.get('MajorVersion') is not None:
             self.major_version = m.get('MajorVersion')
         if m.get('MinorVersion') is not None:

@@ -1,3 +1,6 @@
+2022-11-18 Version: 2.20.7
+- Update python sdk.
+
 2022-11-09 Version: 2.20.6
 - Update python sdk.
 
