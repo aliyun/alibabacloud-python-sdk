@@ -48,11 +48,12 @@ class Client(OpenApiClient):
     ) -> easy_gene_20210315_models.AbortRunResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RunId'] = request.run_id
-        query['Workspace'] = request.workspace
+        if not UtilClient.is_unset(request.run_id):
+            query['RunId'] = request.run_id
+        if not UtilClient.is_unset(request.workspace):
+            query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AbortRun',
@@ -62,7 +63,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -77,11 +78,12 @@ class Client(OpenApiClient):
     ) -> easy_gene_20210315_models.AbortRunResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RunId'] = request.run_id
-        query['Workspace'] = request.workspace
+        if not UtilClient.is_unset(request.run_id):
+            query['RunId'] = request.run_id
+        if not UtilClient.is_unset(request.workspace):
+            query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AbortRun',
@@ -91,7 +93,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -120,11 +122,12 @@ class Client(OpenApiClient):
     ) -> easy_gene_20210315_models.AbortSubmissionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['SubmissionId'] = request.submission_id
-        query['Workspace'] = request.workspace
+        if not UtilClient.is_unset(request.submission_id):
+            query['SubmissionId'] = request.submission_id
+        if not UtilClient.is_unset(request.workspace):
+            query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AbortSubmission',
@@ -134,7 +137,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -149,11 +152,12 @@ class Client(OpenApiClient):
     ) -> easy_gene_20210315_models.AbortSubmissionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['SubmissionId'] = request.submission_id
-        query['Workspace'] = request.workspace
+        if not UtilClient.is_unset(request.submission_id):
+            query['SubmissionId'] = request.submission_id
+        if not UtilClient.is_unset(request.workspace):
+            query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AbortSubmission',
@@ -163,7 +167,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -192,12 +196,14 @@ class Client(OpenApiClient):
     ) -> easy_gene_20210315_models.CopyPublicEntityResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Dataset'] = request.dataset
-        query['EntityType'] = request.entity_type
-        query['Workspace'] = request.workspace
+        if not UtilClient.is_unset(request.dataset):
+            query['Dataset'] = request.dataset
+        if not UtilClient.is_unset(request.entity_type):
+            query['EntityType'] = request.entity_type
+        if not UtilClient.is_unset(request.workspace):
+            query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CopyPublicEntity',
@@ -207,7 +213,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -222,12 +228,14 @@ class Client(OpenApiClient):
     ) -> easy_gene_20210315_models.CopyPublicEntityResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Dataset'] = request.dataset
-        query['EntityType'] = request.entity_type
-        query['Workspace'] = request.workspace
+        if not UtilClient.is_unset(request.dataset):
+            query['Dataset'] = request.dataset
+        if not UtilClient.is_unset(request.entity_type):
+            query['EntityType'] = request.entity_type
+        if not UtilClient.is_unset(request.workspace):
+            query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CopyPublicEntity',
@@ -237,7 +245,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -272,19 +280,38 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.dependencies):
             request.dependencies_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dependencies, 'Dependencies', 'json')
         query = {}
-        query['AppName'] = request.app_name
-        query['AppType'] = request.app_type
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['Labels'] = request.labels
-        query['Language'] = request.language
-        query['LanguageVersion'] = request.language_version
-        query['Path'] = request.path
-        query['RevisionComment'] = request.revision_comment
-        query['Workspace'] = request.workspace
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.app_type):
+            query['AppType'] = request.app_type
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.labels):
+            query['Labels'] = request.labels
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
+        if not UtilClient.is_unset(request.language_version):
+            query['LanguageVersion'] = request.language_version
+        if not UtilClient.is_unset(request.path):
+            query['Path'] = request.path
+        if not UtilClient.is_unset(request.revision_comment):
+            query['RevisionComment'] = request.revision_comment
+        if not UtilClient.is_unset(request.workspace):
+            query['Workspace'] = request.workspace
+        body = {}
+        if not UtilClient.is_unset(request.configs_shrink):
+            body['Configs'] = request.configs_shrink
+        if not UtilClient.is_unset(request.definition):
+            body['Definition'] = request.definition
+        if not UtilClient.is_unset(request.dependencies_shrink):
+            body['Dependencies'] = request.dependencies_shrink
+        if not UtilClient.is_unset(request.documentation):
+            body['Documentation'] = request.documentation
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateApp',
@@ -315,19 +342,38 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.dependencies):
             request.dependencies_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dependencies, 'Dependencies', 'json')
         query = {}
-        query['AppName'] = request.app_name
-        query['AppType'] = request.app_type
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['Labels'] = request.labels
-        query['Language'] = request.language
-        query['LanguageVersion'] = request.language_version
-        query['Path'] = request.path
-        query['RevisionComment'] = request.revision_comment
-        query['Workspace'] = request.workspace
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.app_type):
+            query['AppType'] = request.app_type
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.labels):
+            query['Labels'] = request.labels
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
+        if not UtilClient.is_unset(request.language_version):
+            query['LanguageVersion'] = request.language_version
+        if not UtilClient.is_unset(request.path):
+            query['Path'] = request.path
+        if not UtilClient.is_unset(request.revision_comment):
+            query['RevisionComment'] = request.revision_comment
+        if not UtilClient.is_unset(request.workspace):
+            query['Workspace'] = request.workspace
+        body = {}
+        if not UtilClient.is_unset(request.configs_shrink):
+            body['Configs'] = request.configs_shrink
+        if not UtilClient.is_unset(request.definition):
+            body['Definition'] = request.definition
+        if not UtilClient.is_unset(request.dependencies_shrink):
+            body['Dependencies'] = request.dependencies_shrink
+        if not UtilClient.is_unset(request.documentation):
+            body['Documentation'] = request.documentation
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateApp',
@@ -370,12 +416,18 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.entity_items):
             request.entity_items_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.entity_items, 'EntityItems', 'json')
         query = {}
-        query['ClientToken'] = request.client_token
-        query['EntityType'] = request.entity_type
-        query['Workspace'] = request.workspace
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.entity_type):
+            query['EntityType'] = request.entity_type
+        if not UtilClient.is_unset(request.workspace):
+            query['Workspace'] = request.workspace
+        body = {}
+        if not UtilClient.is_unset(request.entity_items_shrink):
+            body['EntityItems'] = request.entity_items_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateEntity',
@@ -404,12 +456,18 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.entity_items):
             request.entity_items_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.entity_items, 'EntityItems', 'json')
         query = {}
-        query['ClientToken'] = request.client_token
-        query['EntityType'] = request.entity_type
-        query['Workspace'] = request.workspace
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.entity_type):
+            query['EntityType'] = request.entity_type
+        if not UtilClient.is_unset(request.workspace):
+            query['Workspace'] = request.workspace
+        body = {}
+        if not UtilClient.is_unset(request.entity_items_shrink):
+            body['EntityItems'] = request.entity_items_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateEntity',
@@ -450,23 +508,36 @@ class Client(OpenApiClient):
         request = easy_gene_20210315_models.CreateRunShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.execute_options):
-            request.execute_options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.execute_options), 'ExecuteOptions', 'json')
+            request.execute_options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.execute_options, 'ExecuteOptions', 'json')
         query = {}
-        query['AppName'] = request.app_name
-        query['AppRevision'] = request.app_revision
-        query['ClientToken'] = request.client_token
-        query['DefaultRuntime'] = request.default_runtime
-        query['Description'] = request.description
-        query['ExecuteDirectory'] = request.execute_directory
-        query['ExecuteOptions'] = request.execute_options_shrink
-        query['Inputs'] = request.inputs
-        query['Labels'] = request.labels
-        query['OutputFolder'] = request.output_folder
-        query['RunName'] = request.run_name
-        query['Workspace'] = request.workspace
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.app_revision):
+            query['AppRevision'] = request.app_revision
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.default_runtime):
+            query['DefaultRuntime'] = request.default_runtime
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.execute_directory):
+            query['ExecuteDirectory'] = request.execute_directory
+        if not UtilClient.is_unset(request.execute_options_shrink):
+            query['ExecuteOptions'] = request.execute_options_shrink
+        if not UtilClient.is_unset(request.inputs):
+            query['Inputs'] = request.inputs
+        if not UtilClient.is_unset(request.labels):
+            query['Labels'] = request.labels
+        if not UtilClient.is_unset(request.output_folder):
+            query['OutputFolder'] = request.output_folder
+        if not UtilClient.is_unset(request.role):
+            query['Role'] = request.role
+        if not UtilClient.is_unset(request.run_name):
+            query['RunName'] = request.run_name
+        if not UtilClient.is_unset(request.workspace):
+            query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateRun',
@@ -476,7 +547,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -493,23 +564,36 @@ class Client(OpenApiClient):
         request = easy_gene_20210315_models.CreateRunShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.execute_options):
-            request.execute_options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.execute_options), 'ExecuteOptions', 'json')
+            request.execute_options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.execute_options, 'ExecuteOptions', 'json')
         query = {}
-        query['AppName'] = request.app_name
-        query['AppRevision'] = request.app_revision
-        query['ClientToken'] = request.client_token
-        query['DefaultRuntime'] = request.default_runtime
-        query['Description'] = request.description
-        query['ExecuteDirectory'] = request.execute_directory
-        query['ExecuteOptions'] = request.execute_options_shrink
-        query['Inputs'] = request.inputs
-        query['Labels'] = request.labels
-        query['OutputFolder'] = request.output_folder
-        query['RunName'] = request.run_name
-        query['Workspace'] = request.workspace
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.app_revision):
+            query['AppRevision'] = request.app_revision
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.default_runtime):
+            query['DefaultRuntime'] = request.default_runtime
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.execute_directory):
+            query['ExecuteDirectory'] = request.execute_directory
+        if not UtilClient.is_unset(request.execute_options_shrink):
+            query['ExecuteOptions'] = request.execute_options_shrink
+        if not UtilClient.is_unset(request.inputs):
+            query['Inputs'] = request.inputs
+        if not UtilClient.is_unset(request.labels):
+            query['Labels'] = request.labels
+        if not UtilClient.is_unset(request.output_folder):
+            query['OutputFolder'] = request.output_folder
+        if not UtilClient.is_unset(request.role):
+            query['Role'] = request.role
+        if not UtilClient.is_unset(request.run_name):
+            query['RunName'] = request.run_name
+        if not UtilClient.is_unset(request.workspace):
+            query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateRun',
@@ -519,7 +603,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -552,21 +636,32 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.entity_names):
             request.entity_names_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.entity_names, 'EntityNames', 'json')
         query = {}
-        query['AppName'] = request.app_name
-        query['ClientToken'] = request.client_token
-        query['DefaultRuntime'] = request.default_runtime
-        query['EntityNames'] = request.entity_names_shrink
-        query['EntityType'] = request.entity_type
-        query['ExecuteDirectory'] = request.execute_directory
-        query['ExecuteOptions'] = request.execute_options
-        query['Inputs'] = request.inputs
-        query['OutputFolder'] = request.output_folder
-        query['Outputs'] = request.outputs
-        query['Revision'] = request.revision
-        query['Workspace'] = request.workspace
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.default_runtime):
+            query['DefaultRuntime'] = request.default_runtime
+        if not UtilClient.is_unset(request.entity_names_shrink):
+            query['EntityNames'] = request.entity_names_shrink
+        if not UtilClient.is_unset(request.entity_type):
+            query['EntityType'] = request.entity_type
+        if not UtilClient.is_unset(request.execute_directory):
+            query['ExecuteDirectory'] = request.execute_directory
+        if not UtilClient.is_unset(request.execute_options):
+            query['ExecuteOptions'] = request.execute_options
+        if not UtilClient.is_unset(request.inputs):
+            query['Inputs'] = request.inputs
+        if not UtilClient.is_unset(request.output_folder):
+            query['OutputFolder'] = request.output_folder
+        if not UtilClient.is_unset(request.outputs):
+            query['Outputs'] = request.outputs
+        if not UtilClient.is_unset(request.revision):
+            query['Revision'] = request.revision
+        if not UtilClient.is_unset(request.workspace):
+            query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateSubmission',
@@ -576,7 +671,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -595,21 +690,32 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.entity_names):
             request.entity_names_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.entity_names, 'EntityNames', 'json')
         query = {}
-        query['AppName'] = request.app_name
-        query['ClientToken'] = request.client_token
-        query['DefaultRuntime'] = request.default_runtime
-        query['EntityNames'] = request.entity_names_shrink
-        query['EntityType'] = request.entity_type
-        query['ExecuteDirectory'] = request.execute_directory
-        query['ExecuteOptions'] = request.execute_options
-        query['Inputs'] = request.inputs
-        query['OutputFolder'] = request.output_folder
-        query['Outputs'] = request.outputs
-        query['Revision'] = request.revision
-        query['Workspace'] = request.workspace
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.default_runtime):
+            query['DefaultRuntime'] = request.default_runtime
+        if not UtilClient.is_unset(request.entity_names_shrink):
+            query['EntityNames'] = request.entity_names_shrink
+        if not UtilClient.is_unset(request.entity_type):
+            query['EntityType'] = request.entity_type
+        if not UtilClient.is_unset(request.execute_directory):
+            query['ExecuteDirectory'] = request.execute_directory
+        if not UtilClient.is_unset(request.execute_options):
+            query['ExecuteOptions'] = request.execute_options
+        if not UtilClient.is_unset(request.inputs):
+            query['Inputs'] = request.inputs
+        if not UtilClient.is_unset(request.output_folder):
+            query['OutputFolder'] = request.output_folder
+        if not UtilClient.is_unset(request.outputs):
+            query['Outputs'] = request.outputs
+        if not UtilClient.is_unset(request.revision):
+            query['Revision'] = request.revision
+        if not UtilClient.is_unset(request.workspace):
+            query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateSubmission',
@@ -619,7 +725,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -654,17 +760,30 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.outputs_expression):
             request.outputs_expression_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.outputs_expression, 'OutputsExpression', 'json')
         query = {}
-        query['AppName'] = request.app_name
-        query['AppRevision'] = request.app_revision
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['Labels'] = request.labels
-        query['RootEntity'] = request.root_entity
-        query['TemplateName'] = request.template_name
-        query['Workspace'] = request.workspace
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.app_revision):
+            query['AppRevision'] = request.app_revision
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.labels):
+            query['Labels'] = request.labels
+        if not UtilClient.is_unset(request.root_entity):
+            query['RootEntity'] = request.root_entity
+        if not UtilClient.is_unset(request.template_name):
+            query['TemplateName'] = request.template_name
+        if not UtilClient.is_unset(request.workspace):
+            query['Workspace'] = request.workspace
+        body = {}
+        if not UtilClient.is_unset(request.inputs_expression_shrink):
+            body['InputsExpression'] = request.inputs_expression_shrink
+        if not UtilClient.is_unset(request.outputs_expression_shrink):
+            body['OutputsExpression'] = request.outputs_expression_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateTemplate',
@@ -695,17 +814,30 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.outputs_expression):
             request.outputs_expression_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.outputs_expression, 'OutputsExpression', 'json')
         query = {}
-        query['AppName'] = request.app_name
-        query['AppRevision'] = request.app_revision
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['Labels'] = request.labels
-        query['RootEntity'] = request.root_entity
-        query['TemplateName'] = request.template_name
-        query['Workspace'] = request.workspace
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.app_revision):
+            query['AppRevision'] = request.app_revision
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.labels):
+            query['Labels'] = request.labels
+        if not UtilClient.is_unset(request.root_entity):
+            query['RootEntity'] = request.root_entity
+        if not UtilClient.is_unset(request.template_name):
+            query['TemplateName'] = request.template_name
+        if not UtilClient.is_unset(request.workspace):
+            query['Workspace'] = request.workspace
+        body = {}
+        if not UtilClient.is_unset(request.inputs_expression_shrink):
+            body['InputsExpression'] = request.inputs_expression_shrink
+        if not UtilClient.is_unset(request.outputs_expression_shrink):
+            body['OutputsExpression'] = request.outputs_expression_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateTemplate',
@@ -744,16 +876,22 @@ class Client(OpenApiClient):
     ) -> easy_gene_20210315_models.CreateWorkspaceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['JobLifecycle'] = request.job_lifecycle
-        query['Labels'] = request.labels
-        query['Role'] = request.role
-        query['Storage'] = request.storage
-        query['Workspace'] = request.workspace
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.job_lifecycle):
+            query['JobLifecycle'] = request.job_lifecycle
+        if not UtilClient.is_unset(request.labels):
+            query['Labels'] = request.labels
+        if not UtilClient.is_unset(request.role):
+            query['Role'] = request.role
+        if not UtilClient.is_unset(request.storage):
+            query['Storage'] = request.storage
+        if not UtilClient.is_unset(request.workspace):
+            query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateWorkspace',
@@ -763,7 +901,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -778,16 +916,22 @@ class Client(OpenApiClient):
     ) -> easy_gene_20210315_models.CreateWorkspaceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['ClientToken'] = request.client_token
-        query['Description'] = request.description
-        query['JobLifecycle'] = request.job_lifecycle
-        query['Labels'] = request.labels
-        query['Role'] = request.role
-        query['Storage'] = request.storage
-        query['Workspace'] = request.workspace
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.job_lifecycle):
+            query['JobLifecycle'] = request.job_lifecycle
+        if not UtilClient.is_unset(request.labels):
+            query['Labels'] = request.labels
+        if not UtilClient.is_unset(request.role):
+            query['Role'] = request.role
+        if not UtilClient.is_unset(request.storage):
+            query['Storage'] = request.storage
+        if not UtilClient.is_unset(request.workspace):
+            query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateWorkspace',
@@ -797,7 +941,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -826,12 +970,14 @@ class Client(OpenApiClient):
     ) -> easy_gene_20210315_models.DeleteAppResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppName'] = request.app_name
-        query['Revision'] = request.revision
-        query['Workspace'] = request.workspace
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.revision):
+            query['Revision'] = request.revision
+        if not UtilClient.is_unset(request.workspace):
+            query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteApp',
@@ -841,7 +987,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -856,12 +1002,14 @@ class Client(OpenApiClient):
     ) -> easy_gene_20210315_models.DeleteAppResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppName'] = request.app_name
-        query['Revision'] = request.revision
-        query['Workspace'] = request.workspace
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.revision):
+            query['Revision'] = request.revision
+        if not UtilClient.is_unset(request.workspace):
+            query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteApp',
@@ -871,7 +1019,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -904,12 +1052,14 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.entity_names):
             request.entity_names_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.entity_names, 'EntityNames', 'json')
         query = {}
-        query['EntityNames'] = request.entity_names_shrink
-        query['EntityType'] = request.entity_type
-        query['Workspace'] = request.workspace
+        if not UtilClient.is_unset(request.entity_names_shrink):
+            query['EntityNames'] = request.entity_names_shrink
+        if not UtilClient.is_unset(request.entity_type):
+            query['EntityType'] = request.entity_type
+        if not UtilClient.is_unset(request.workspace):
+            query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteEntityItems',
@@ -919,7 +1069,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -938,12 +1088,14 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.entity_names):
             request.entity_names_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.entity_names, 'EntityNames', 'json')
         query = {}
-        query['EntityNames'] = request.entity_names_shrink
-        query['EntityType'] = request.entity_type
-        query['Workspace'] = request.workspace
+        if not UtilClient.is_unset(request.entity_names_shrink):
+            query['EntityNames'] = request.entity_names_shrink
+        if not UtilClient.is_unset(request.entity_type):
+            query['EntityType'] = request.entity_type
+        if not UtilClient.is_unset(request.workspace):
+            query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteEntityItems',
@@ -953,7 +1105,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -982,11 +1134,12 @@ class Client(OpenApiClient):
     ) -> easy_gene_20210315_models.DeleteRunResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RunId'] = request.run_id
-        query['Workspace'] = request.workspace
+        if not UtilClient.is_unset(request.run_id):
+            query['RunId'] = request.run_id
+        if not UtilClient.is_unset(request.workspace):
+            query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteRun',
@@ -996,7 +1149,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1011,11 +1164,12 @@ class Client(OpenApiClient):
     ) -> easy_gene_20210315_models.DeleteRunResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['RunId'] = request.run_id
-        query['Workspace'] = request.workspace
+        if not UtilClient.is_unset(request.run_id):
+            query['RunId'] = request.run_id
+        if not UtilClient.is_unset(request.workspace):
+            query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteRun',
@@ -1025,7 +1179,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1054,11 +1208,12 @@ class Client(OpenApiClient):
     ) -> easy_gene_20210315_models.DeleteSubmissionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['SubmissionId'] = request.submission_id
-        query['Workspace'] = request.workspace
+        if not UtilClient.is_unset(request.submission_id):
+            query['SubmissionId'] = request.submission_id
+        if not UtilClient.is_unset(request.workspace):
+            query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteSubmission',
@@ -1068,7 +1223,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1083,11 +1238,12 @@ class Client(OpenApiClient):
     ) -> easy_gene_20210315_models.DeleteSubmissionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['SubmissionId'] = request.submission_id
-        query['Workspace'] = request.workspace
+        if not UtilClient.is_unset(request.submission_id):
+            query['SubmissionId'] = request.submission_id
+        if not UtilClient.is_unset(request.workspace):
+            query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteSubmission',
@@ -1097,7 +1253,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1126,11 +1282,12 @@ class Client(OpenApiClient):
     ) -> easy_gene_20210315_models.DeleteTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['TemplateName'] = request.template_name
-        query['Workspace'] = request.workspace
+        if not UtilClient.is_unset(request.template_name):
+            query['TemplateName'] = request.template_name
+        if not UtilClient.is_unset(request.workspace):
+            query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteTemplate',
@@ -1140,7 +1297,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1155,11 +1312,12 @@ class Client(OpenApiClient):
     ) -> easy_gene_20210315_models.DeleteTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['TemplateName'] = request.template_name
-        query['Workspace'] = request.workspace
+        if not UtilClient.is_unset(request.template_name):
+            query['TemplateName'] = request.template_name
+        if not UtilClient.is_unset(request.workspace):
+            query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteTemplate',
@@ -1169,7 +1327,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1198,10 +1356,10 @@ class Client(OpenApiClient):
     ) -> easy_gene_20210315_models.DeleteWorkspaceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Workspace'] = request.workspace
+        if not UtilClient.is_unset(request.workspace):
+            query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteWorkspace',
@@ -1211,7 +1369,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1226,10 +1384,10 @@ class Client(OpenApiClient):
     ) -> easy_gene_20210315_models.DeleteWorkspaceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Workspace'] = request.workspace
+        if not UtilClient.is_unset(request.workspace):
+            query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteWorkspace',
@@ -1239,7 +1397,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1272,12 +1430,14 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.entity_names):
             request.entity_names_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.entity_names, 'EntityNames', 'json')
         query = {}
-        query['EntityNames'] = request.entity_names_shrink
-        query['EntityType'] = request.entity_type
-        query['Workspace'] = request.workspace
+        if not UtilClient.is_unset(request.entity_names_shrink):
+            query['EntityNames'] = request.entity_names_shrink
+        if not UtilClient.is_unset(request.entity_type):
+            query['EntityType'] = request.entity_type
+        if not UtilClient.is_unset(request.workspace):
+            query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DownloadEntity',
@@ -1287,7 +1447,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1306,12 +1466,14 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.entity_names):
             request.entity_names_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.entity_names, 'EntityNames', 'json')
         query = {}
-        query['EntityNames'] = request.entity_names_shrink
-        query['EntityType'] = request.entity_type
-        query['Workspace'] = request.workspace
+        if not UtilClient.is_unset(request.entity_names_shrink):
+            query['EntityNames'] = request.entity_names_shrink
+        if not UtilClient.is_unset(request.entity_type):
+            query['EntityType'] = request.entity_type
+        if not UtilClient.is_unset(request.workspace):
+            query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DownloadEntity',
@@ -1321,7 +1483,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1350,12 +1512,14 @@ class Client(OpenApiClient):
     ) -> easy_gene_20210315_models.GetAppResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppName'] = request.app_name
-        query['Revision'] = request.revision
-        query['Workspace'] = request.workspace
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.revision):
+            query['Revision'] = request.revision
+        if not UtilClient.is_unset(request.workspace):
+            query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetApp',
@@ -1365,7 +1529,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1380,12 +1544,14 @@ class Client(OpenApiClient):
     ) -> easy_gene_20210315_models.GetAppResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppName'] = request.app_name
-        query['Revision'] = request.revision
-        query['Workspace'] = request.workspace
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.revision):
+            query['Revision'] = request.revision
+        if not UtilClient.is_unset(request.workspace):
+            query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetApp',
@@ -1395,7 +1561,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1424,11 +1590,12 @@ class Client(OpenApiClient):
     ) -> easy_gene_20210315_models.GetEntityResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EntityType'] = request.entity_type
-        query['Workspace'] = request.workspace
+        if not UtilClient.is_unset(request.entity_type):
+            query['EntityType'] = request.entity_type
+        if not UtilClient.is_unset(request.workspace):
+            query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetEntity',
@@ -1438,7 +1605,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1453,11 +1620,12 @@ class Client(OpenApiClient):
     ) -> easy_gene_20210315_models.GetEntityResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EntityType'] = request.entity_type
-        query['Workspace'] = request.workspace
+        if not UtilClient.is_unset(request.entity_type):
+            query['EntityType'] = request.entity_type
+        if not UtilClient.is_unset(request.workspace):
+            query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetEntity',
@@ -1467,7 +1635,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1511,7 +1679,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1541,7 +1709,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1585,7 +1753,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1615,7 +1783,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1655,7 +1823,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1681,7 +1849,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1721,7 +1889,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1747,7 +1915,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1787,7 +1955,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1813,7 +1981,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1842,11 +2010,12 @@ class Client(OpenApiClient):
     ) -> easy_gene_20210315_models.GetTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['TemplateName'] = request.template_name
-        query['Workspace'] = request.workspace
+        if not UtilClient.is_unset(request.template_name):
+            query['TemplateName'] = request.template_name
+        if not UtilClient.is_unset(request.workspace):
+            query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetTemplate',
@@ -1856,7 +2025,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1871,11 +2040,12 @@ class Client(OpenApiClient):
     ) -> easy_gene_20210315_models.GetTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['TemplateName'] = request.template_name
-        query['Workspace'] = request.workspace
+        if not UtilClient.is_unset(request.template_name):
+            query['TemplateName'] = request.template_name
+        if not UtilClient.is_unset(request.workspace):
+            query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetTemplate',
@@ -1885,7 +2055,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1914,10 +2084,10 @@ class Client(OpenApiClient):
     ) -> easy_gene_20210315_models.GetWorkspaceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Workspace'] = request.workspace
+        if not UtilClient.is_unset(request.workspace):
+            query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetWorkspace',
@@ -1927,7 +2097,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1942,10 +2112,10 @@ class Client(OpenApiClient):
     ) -> easy_gene_20210315_models.GetWorkspaceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Workspace'] = request.workspace
+        if not UtilClient.is_unset(request.workspace):
+            query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetWorkspace',
@@ -1955,7 +2125,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -1984,12 +2154,14 @@ class Client(OpenApiClient):
     ) -> easy_gene_20210315_models.ImportAppResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppName'] = request.app_name
-        query['Source'] = request.source
-        query['Workspace'] = request.workspace
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.workspace):
+            query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ImportApp',
@@ -1999,7 +2171,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2014,12 +2186,14 @@ class Client(OpenApiClient):
     ) -> easy_gene_20210315_models.ImportAppResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppName'] = request.app_name
-        query['Source'] = request.source
-        query['Workspace'] = request.workspace
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.workspace):
+            query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ImportApp',
@@ -2029,7 +2203,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2058,14 +2232,18 @@ class Client(OpenApiClient):
     ) -> easy_gene_20210315_models.InstallGlobalAppResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppName'] = request.app_name
-        query['InstalledAppName'] = request.installed_app_name
-        query['NamespaceName'] = request.namespace_name
-        query['Source'] = request.source
-        query['Workspace'] = request.workspace
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.installed_app_name):
+            query['InstalledAppName'] = request.installed_app_name
+        if not UtilClient.is_unset(request.namespace_name):
+            query['NamespaceName'] = request.namespace_name
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.workspace):
+            query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='InstallGlobalApp',
@@ -2075,7 +2253,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2090,14 +2268,18 @@ class Client(OpenApiClient):
     ) -> easy_gene_20210315_models.InstallGlobalAppResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppName'] = request.app_name
-        query['InstalledAppName'] = request.installed_app_name
-        query['NamespaceName'] = request.namespace_name
-        query['Source'] = request.source
-        query['Workspace'] = request.workspace
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.installed_app_name):
+            query['InstalledAppName'] = request.installed_app_name
+        if not UtilClient.is_unset(request.namespace_name):
+            query['NamespaceName'] = request.namespace_name
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.workspace):
+            query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='InstallGlobalApp',
@@ -2107,7 +2289,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2136,19 +2318,28 @@ class Client(OpenApiClient):
     ) -> easy_gene_20210315_models.ListAppsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppType'] = request.app_type
-        query['IsReversed'] = request.is_reversed
-        query['LabelSelector'] = request.label_selector
-        query['Language'] = request.language
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['OrderBy'] = request.order_by
-        query['Scope'] = request.scope
-        query['Search'] = request.search
-        query['Workspace'] = request.workspace
+        if not UtilClient.is_unset(request.app_type):
+            query['AppType'] = request.app_type
+        if not UtilClient.is_unset(request.is_reversed):
+            query['IsReversed'] = request.is_reversed
+        if not UtilClient.is_unset(request.label_selector):
+            query['LabelSelector'] = request.label_selector
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not UtilClient.is_unset(request.scope):
+            query['Scope'] = request.scope
+        if not UtilClient.is_unset(request.search):
+            query['Search'] = request.search
+        if not UtilClient.is_unset(request.workspace):
+            query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListApps',
@@ -2158,7 +2349,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2173,19 +2364,28 @@ class Client(OpenApiClient):
     ) -> easy_gene_20210315_models.ListAppsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AppType'] = request.app_type
-        query['IsReversed'] = request.is_reversed
-        query['LabelSelector'] = request.label_selector
-        query['Language'] = request.language
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['OrderBy'] = request.order_by
-        query['Scope'] = request.scope
-        query['Search'] = request.search
-        query['Workspace'] = request.workspace
+        if not UtilClient.is_unset(request.app_type):
+            query['AppType'] = request.app_type
+        if not UtilClient.is_unset(request.is_reversed):
+            query['IsReversed'] = request.is_reversed
+        if not UtilClient.is_unset(request.label_selector):
+            query['LabelSelector'] = request.label_selector
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not UtilClient.is_unset(request.scope):
+            query['Scope'] = request.scope
+        if not UtilClient.is_unset(request.search):
+            query['Search'] = request.search
+        if not UtilClient.is_unset(request.workspace):
+            query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListApps',
@@ -2195,7 +2395,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2235,7 +2435,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2261,7 +2461,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2301,7 +2501,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2327,7 +2527,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2367,7 +2567,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2393,7 +2593,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2422,16 +2622,22 @@ class Client(OpenApiClient):
     ) -> easy_gene_20210315_models.ListEntityItemsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EntityType'] = request.entity_type
-        query['IsReversed'] = request.is_reversed
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['OrderBy'] = request.order_by
-        query['Search'] = request.search
-        query['Workspace'] = request.workspace
+        if not UtilClient.is_unset(request.entity_type):
+            query['EntityType'] = request.entity_type
+        if not UtilClient.is_unset(request.is_reversed):
+            query['IsReversed'] = request.is_reversed
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not UtilClient.is_unset(request.search):
+            query['Search'] = request.search
+        if not UtilClient.is_unset(request.workspace):
+            query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListEntityItems',
@@ -2441,7 +2647,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2456,16 +2662,22 @@ class Client(OpenApiClient):
     ) -> easy_gene_20210315_models.ListEntityItemsResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EntityType'] = request.entity_type
-        query['IsReversed'] = request.is_reversed
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['OrderBy'] = request.order_by
-        query['Search'] = request.search
-        query['Workspace'] = request.workspace
+        if not UtilClient.is_unset(request.entity_type):
+            query['EntityType'] = request.entity_type
+        if not UtilClient.is_unset(request.is_reversed):
+            query['IsReversed'] = request.is_reversed
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not UtilClient.is_unset(request.search):
+            query['Search'] = request.search
+        if not UtilClient.is_unset(request.workspace):
+            query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListEntityItems',
@@ -2475,7 +2687,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2515,7 +2727,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2541,7 +2753,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2581,7 +2793,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2607,7 +2819,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2647,7 +2859,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2673,7 +2885,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2713,7 +2925,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2739,7 +2951,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2779,7 +2991,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2805,7 +3017,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2840,7 +3052,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2861,7 +3073,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2895,7 +3107,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2921,7 +3133,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2961,7 +3173,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -2987,7 +3199,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3016,16 +3228,22 @@ class Client(OpenApiClient):
     ) -> easy_gene_20210315_models.ListTemplatesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['IsReversed'] = request.is_reversed
-        query['LabelSelector'] = request.label_selector
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['OrderBy'] = request.order_by
-        query['Search'] = request.search
-        query['Workspace'] = request.workspace
+        if not UtilClient.is_unset(request.is_reversed):
+            query['IsReversed'] = request.is_reversed
+        if not UtilClient.is_unset(request.label_selector):
+            query['LabelSelector'] = request.label_selector
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not UtilClient.is_unset(request.search):
+            query['Search'] = request.search
+        if not UtilClient.is_unset(request.workspace):
+            query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListTemplates',
@@ -3035,7 +3253,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3050,16 +3268,22 @@ class Client(OpenApiClient):
     ) -> easy_gene_20210315_models.ListTemplatesResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['IsReversed'] = request.is_reversed
-        query['LabelSelector'] = request.label_selector
-        query['MaxResults'] = request.max_results
-        query['NextToken'] = request.next_token
-        query['OrderBy'] = request.order_by
-        query['Search'] = request.search
-        query['Workspace'] = request.workspace
+        if not UtilClient.is_unset(request.is_reversed):
+            query['IsReversed'] = request.is_reversed
+        if not UtilClient.is_unset(request.label_selector):
+            query['LabelSelector'] = request.label_selector
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not UtilClient.is_unset(request.search):
+            query['Search'] = request.search
+        if not UtilClient.is_unset(request.workspace):
+            query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListTemplates',
@@ -3069,7 +3293,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3109,7 +3333,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3135,7 +3359,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3175,7 +3399,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3201,7 +3425,7 @@ class Client(OpenApiClient):
             method='GET',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3230,11 +3454,12 @@ class Client(OpenApiClient):
     ) -> easy_gene_20210315_models.ResumeSubmissionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['SubmissionId'] = request.submission_id
-        query['Workspace'] = request.workspace
+        if not UtilClient.is_unset(request.submission_id):
+            query['SubmissionId'] = request.submission_id
+        if not UtilClient.is_unset(request.workspace):
+            query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ResumeSubmission',
@@ -3244,7 +3469,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3259,11 +3484,12 @@ class Client(OpenApiClient):
     ) -> easy_gene_20210315_models.ResumeSubmissionResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['SubmissionId'] = request.submission_id
-        query['Workspace'] = request.workspace
+        if not UtilClient.is_unset(request.submission_id):
+            query['SubmissionId'] = request.submission_id
+        if not UtilClient.is_unset(request.workspace):
+            query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ResumeSubmission',
@@ -3273,7 +3499,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3306,11 +3532,16 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.entity_items):
             request.entity_items_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.entity_items, 'EntityItems', 'json')
         query = {}
-        query['EntityType'] = request.entity_type
-        query['Workspace'] = request.workspace
+        if not UtilClient.is_unset(request.entity_type):
+            query['EntityType'] = request.entity_type
+        if not UtilClient.is_unset(request.workspace):
+            query['Workspace'] = request.workspace
+        body = {}
+        if not UtilClient.is_unset(request.entity_items_shrink):
+            body['EntityItems'] = request.entity_items_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateEntity',
@@ -3339,11 +3570,16 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.entity_items):
             request.entity_items_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.entity_items, 'EntityItems', 'json')
         query = {}
-        query['EntityType'] = request.entity_type
-        query['Workspace'] = request.workspace
+        if not UtilClient.is_unset(request.entity_type):
+            query['EntityType'] = request.entity_type
+        if not UtilClient.is_unset(request.workspace):
+            query['Workspace'] = request.workspace
+        body = {}
+        if not UtilClient.is_unset(request.entity_items_shrink):
+            body['EntityItems'] = request.entity_items_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateEntity',
@@ -3386,11 +3622,16 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.entity_items):
             request.entity_items_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.entity_items, 'EntityItems', 'json')
         query = {}
-        query['EntityType'] = request.entity_type
-        query['Workspace'] = request.workspace
+        if not UtilClient.is_unset(request.entity_type):
+            query['EntityType'] = request.entity_type
+        if not UtilClient.is_unset(request.workspace):
+            query['Workspace'] = request.workspace
+        body = {}
+        if not UtilClient.is_unset(request.entity_items_shrink):
+            body['EntityItems'] = request.entity_items_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateEntityItems',
@@ -3419,11 +3660,16 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.entity_items):
             request.entity_items_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.entity_items, 'EntityItems', 'json')
         query = {}
-        query['EntityType'] = request.entity_type
-        query['Workspace'] = request.workspace
+        if not UtilClient.is_unset(request.entity_type):
+            query['EntityType'] = request.entity_type
+        if not UtilClient.is_unset(request.workspace):
+            query['Workspace'] = request.workspace
+        body = {}
+        if not UtilClient.is_unset(request.entity_items_shrink):
+            body['EntityItems'] = request.entity_items_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateEntityItems',
@@ -3468,14 +3714,24 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.outputs_expression):
             request.outputs_expression_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.outputs_expression, 'OutputsExpression', 'json')
         query = {}
-        query['Description'] = request.description
-        query['Labels'] = request.labels
-        query['RootEntity'] = request.root_entity
-        query['TemplateName'] = request.template_name
-        query['Workspace'] = request.workspace
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.labels):
+            query['Labels'] = request.labels
+        if not UtilClient.is_unset(request.root_entity):
+            query['RootEntity'] = request.root_entity
+        if not UtilClient.is_unset(request.template_name):
+            query['TemplateName'] = request.template_name
+        if not UtilClient.is_unset(request.workspace):
+            query['Workspace'] = request.workspace
+        body = {}
+        if not UtilClient.is_unset(request.inputs_expression_shrink):
+            body['InputsExpression'] = request.inputs_expression_shrink
+        if not UtilClient.is_unset(request.outputs_expression_shrink):
+            body['OutputsExpression'] = request.outputs_expression_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateTemplate',
@@ -3506,14 +3762,24 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.outputs_expression):
             request.outputs_expression_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.outputs_expression, 'OutputsExpression', 'json')
         query = {}
-        query['Description'] = request.description
-        query['Labels'] = request.labels
-        query['RootEntity'] = request.root_entity
-        query['TemplateName'] = request.template_name
-        query['Workspace'] = request.workspace
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.labels):
+            query['Labels'] = request.labels
+        if not UtilClient.is_unset(request.root_entity):
+            query['RootEntity'] = request.root_entity
+        if not UtilClient.is_unset(request.template_name):
+            query['TemplateName'] = request.template_name
+        if not UtilClient.is_unset(request.workspace):
+            query['Workspace'] = request.workspace
+        body = {}
+        if not UtilClient.is_unset(request.inputs_expression_shrink):
+            body['InputsExpression'] = request.inputs_expression_shrink
+        if not UtilClient.is_unset(request.outputs_expression_shrink):
+            body['OutputsExpression'] = request.outputs_expression_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateTemplate',
@@ -3552,14 +3818,18 @@ class Client(OpenApiClient):
     ) -> easy_gene_20210315_models.UpdateWorkspaceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Description'] = request.description
-        query['JobLifecycle'] = request.job_lifecycle
-        query['Labels'] = request.labels
-        query['Role'] = request.role
-        query['Workspace'] = request.workspace
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.job_lifecycle):
+            query['JobLifecycle'] = request.job_lifecycle
+        if not UtilClient.is_unset(request.labels):
+            query['Labels'] = request.labels
+        if not UtilClient.is_unset(request.role):
+            query['Role'] = request.role
+        if not UtilClient.is_unset(request.workspace):
+            query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateWorkspace',
@@ -3569,7 +3839,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3584,14 +3854,18 @@ class Client(OpenApiClient):
     ) -> easy_gene_20210315_models.UpdateWorkspaceResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Description'] = request.description
-        query['JobLifecycle'] = request.job_lifecycle
-        query['Labels'] = request.labels
-        query['Role'] = request.role
-        query['Workspace'] = request.workspace
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.job_lifecycle):
+            query['JobLifecycle'] = request.job_lifecycle
+        if not UtilClient.is_unset(request.labels):
+            query['Labels'] = request.labels
+        if not UtilClient.is_unset(request.role):
+            query['Role'] = request.role
+        if not UtilClient.is_unset(request.workspace):
+            query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateWorkspace',
@@ -3601,7 +3875,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3630,11 +3904,12 @@ class Client(OpenApiClient):
     ) -> easy_gene_20210315_models.UploadEntityResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EntityCSVFile'] = request.entity_csvfile
-        query['Workspace'] = request.workspace
+        if not UtilClient.is_unset(request.entity_csvfile):
+            query['EntityCSVFile'] = request.entity_csvfile
+        if not UtilClient.is_unset(request.workspace):
+            query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UploadEntity',
@@ -3644,7 +3919,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -3659,11 +3934,12 @@ class Client(OpenApiClient):
     ) -> easy_gene_20210315_models.UploadEntityResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EntityCSVFile'] = request.entity_csvfile
-        query['Workspace'] = request.workspace
+        if not UtilClient.is_unset(request.entity_csvfile):
+            query['EntityCSVFile'] = request.entity_csvfile
+        if not UtilClient.is_unset(request.workspace):
+            query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UploadEntity',
@@ -3673,7 +3949,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
