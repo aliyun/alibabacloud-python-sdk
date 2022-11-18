@@ -41,10 +41,10 @@ class ChangeSkyAdvanceRequest(TeaModel):
     def __init__(
         self,
         image_urlobject: BinaryIO = None,
-        replace_image_url: str = None,
+        replace_image_urlobject: BinaryIO = None,
     ):
         self.image_urlobject = image_urlobject
-        self.replace_image_url = replace_image_url
+        self.replace_image_urlobject = replace_image_urlobject
 
     def validate(self):
         pass
@@ -57,8 +57,8 @@ class ChangeSkyAdvanceRequest(TeaModel):
         result = dict()
         if self.image_urlobject is not None:
             result['ImageURL'] = self.image_urlobject
-        if self.replace_image_url is not None:
-            result['ReplaceImageURL'] = self.replace_image_url
+        if self.replace_image_urlobject is not None:
+            result['ReplaceImageURL'] = self.replace_image_urlobject
         return result
 
     def from_map(self, m: dict = None):
@@ -66,7 +66,7 @@ class ChangeSkyAdvanceRequest(TeaModel):
         if m.get('ImageURL') is not None:
             self.image_urlobject = m.get('ImageURL')
         if m.get('ReplaceImageURL') is not None:
-            self.replace_image_url = m.get('ReplaceImageURL')
+            self.replace_image_urlobject = m.get('ReplaceImageURL')
         return self
 
 
