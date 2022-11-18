@@ -3343,32 +3343,27 @@ class Client(OpenApiClient):
 
     def get_video_preview_play_meta(
         self,
-        domain_id: str,
         request: pds_20220301_models.GetVideoPreviewPlayMetaRequest,
     ) -> pds_20220301_models.GetVideoPreviewPlayMetaResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_video_preview_play_meta_with_options(domain_id, request, headers, runtime)
+        return self.get_video_preview_play_meta_with_options(request, headers, runtime)
 
     async def get_video_preview_play_meta_async(
         self,
-        domain_id: str,
         request: pds_20220301_models.GetVideoPreviewPlayMetaRequest,
     ) -> pds_20220301_models.GetVideoPreviewPlayMetaResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_video_preview_play_meta_with_options_async(domain_id, request, headers, runtime)
+        return await self.get_video_preview_play_meta_with_options_async(request, headers, runtime)
 
     def get_video_preview_play_meta_with_options(
         self,
-        domain_id: str,
         request: pds_20220301_models.GetVideoPreviewPlayMetaRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.GetVideoPreviewPlayMetaResponse:
         UtilClient.validate_model(request)
-        host_map = {}
-        host_map['domain_id'] = domain_id
         body = {}
         if not UtilClient.is_unset(request.category):
             body['category'] = request.category
@@ -3379,7 +3374,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.share_id):
             body['share_id'] = request.share_id
         req = open_api_models.OpenApiRequest(
-            host_map=host_map,
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -3401,14 +3395,11 @@ class Client(OpenApiClient):
 
     async def get_video_preview_play_meta_with_options_async(
         self,
-        domain_id: str,
         request: pds_20220301_models.GetVideoPreviewPlayMetaRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.GetVideoPreviewPlayMetaResponse:
         UtilClient.validate_model(request)
-        host_map = {}
-        host_map['domain_id'] = domain_id
         body = {}
         if not UtilClient.is_unset(request.category):
             body['category'] = request.category
@@ -3419,7 +3410,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.share_id):
             body['share_id'] = request.share_id
         req = open_api_models.OpenApiRequest(
-            host_map=host_map,
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )

@@ -1,3 +1,6 @@
+2022-11-18 Version: 1.0.6
+- Add get media meta interface
+
 2022-11-18 Version: 1.0.5
 - Add get media meta interface
 
