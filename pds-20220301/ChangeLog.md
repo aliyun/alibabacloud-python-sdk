@@ -1,3 +1,6 @@
+2022-11-18 Version: 1.0.5
+- Add get media meta interface
+
 2022-08-29 Version: 1.0.4
 - 新增异步任务接口
 

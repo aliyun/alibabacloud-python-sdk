@@ -3008,8 +3008,6 @@ class CreateFileRequest(TeaModel):
         parent_file_id: str = None,
         part_info_list: List[CreateFileRequestPartInfoList] = None,
         pre_hash: str = None,
-        proof_code: str = None,
-        proof_version: str = None,
         share_id: str = None,
         size: int = None,
         type: str = None,
@@ -3032,8 +3030,6 @@ class CreateFileRequest(TeaModel):
         self.parent_file_id = parent_file_id
         self.part_info_list = part_info_list
         self.pre_hash = pre_hash
-        self.proof_code = proof_code
-        self.proof_version = proof_version
         self.share_id = share_id
         self.size = size
         self.type = type
@@ -3094,10 +3090,6 @@ class CreateFileRequest(TeaModel):
                 result['part_info_list'].append(k.to_map() if k else None)
         if self.pre_hash is not None:
             result['pre_hash'] = self.pre_hash
-        if self.proof_code is not None:
-            result['proof_code'] = self.proof_code
-        if self.proof_version is not None:
-            result['proof_version'] = self.proof_version
         if self.share_id is not None:
             result['share_id'] = self.share_id
         if self.size is not None:
@@ -3150,10 +3142,6 @@ class CreateFileRequest(TeaModel):
                 self.part_info_list.append(temp_model.from_map(k))
         if m.get('pre_hash') is not None:
             self.pre_hash = m.get('pre_hash')
-        if m.get('proof_code') is not None:
-            self.proof_code = m.get('proof_code')
-        if m.get('proof_version') is not None:
-            self.proof_version = m.get('proof_version')
         if m.get('share_id') is not None:
             self.share_id = m.get('share_id')
         if m.get('size') is not None:
@@ -3409,7 +3397,7 @@ class CreateShareLinkRequest(TeaModel):
         download_limit: int = None,
         drive_id: str = None,
         expiration: str = None,
-        file_id_list: str = None,
+        file_id_list: List[str] = None,
         preview_limit: int = None,
         save_limit: int = None,
         share_name: str = None,
@@ -6480,7 +6468,7 @@ class GetVideoPreviewPlayInfoRequest(TeaModel):
         category: str = None,
         drive_id: str = None,
         file_id: str = None,
-        get_without_url: str = None,
+        get_without_url: bool = None,
         share_id: str = None,
         template_id: str = None,
     ):
@@ -11265,172 +11253,6 @@ class UpdateUserResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = User()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class WalkFileRequest(TeaModel):
-    def __init__(
-        self,
-        category: str = None,
-        drive_id: str = None,
-        fields: str = None,
-        limit: int = None,
-        marker: str = None,
-        order_by: str = None,
-        order_direction: str = None,
-        parent_file_id: str = None,
-        status: str = None,
-        type: str = None,
-    ):
-        self.category = category
-        self.drive_id = drive_id
-        self.fields = fields
-        self.limit = limit
-        self.marker = marker
-        self.order_by = order_by
-        self.order_direction = order_direction
-        self.parent_file_id = parent_file_id
-        self.status = status
-        self.type = type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.category is not None:
-            result['category'] = self.category
-        if self.drive_id is not None:
-            result['drive_id'] = self.drive_id
-        if self.fields is not None:
-            result['fields'] = self.fields
-        if self.limit is not None:
-            result['limit'] = self.limit
-        if self.marker is not None:
-            result['marker'] = self.marker
-        if self.order_by is not None:
-            result['order_by'] = self.order_by
-        if self.order_direction is not None:
-            result['order_direction'] = self.order_direction
-        if self.parent_file_id is not None:
-            result['parent_file_id'] = self.parent_file_id
-        if self.status is not None:
-            result['status'] = self.status
-        if self.type is not None:
-            result['type'] = self.type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('category') is not None:
-            self.category = m.get('category')
-        if m.get('drive_id') is not None:
-            self.drive_id = m.get('drive_id')
-        if m.get('fields') is not None:
-            self.fields = m.get('fields')
-        if m.get('limit') is not None:
-            self.limit = m.get('limit')
-        if m.get('marker') is not None:
-            self.marker = m.get('marker')
-        if m.get('order_by') is not None:
-            self.order_by = m.get('order_by')
-        if m.get('order_direction') is not None:
-            self.order_direction = m.get('order_direction')
-        if m.get('parent_file_id') is not None:
-            self.parent_file_id = m.get('parent_file_id')
-        if m.get('status') is not None:
-            self.status = m.get('status')
-        if m.get('type') is not None:
-            self.type = m.get('type')
-        return self
-
-
-class WalkFileResponseBody(TeaModel):
-    def __init__(
-        self,
-        items: List[File] = None,
-        next_marker: str = None,
-    ):
-        self.items = items
-        self.next_marker = next_marker
-
-    def validate(self):
-        if self.items:
-            for k in self.items:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['items'] = []
-        if self.items is not None:
-            for k in self.items:
-                result['items'].append(k.to_map() if k else None)
-        if self.next_marker is not None:
-            result['next_marker'] = self.next_marker
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.items = []
-        if m.get('items') is not None:
-            for k in m.get('items'):
-                temp_model = File()
-                self.items.append(temp_model.from_map(k))
-        if m.get('next_marker') is not None:
-            self.next_marker = m.get('next_marker')
-        return self
-
-
-class WalkFileResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: WalkFileResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = WalkFileResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

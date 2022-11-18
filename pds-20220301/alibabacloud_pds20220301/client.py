@@ -701,10 +701,6 @@ class Client(OpenApiClient):
             body['part_info_list'] = request.part_info_list
         if not UtilClient.is_unset(request.pre_hash):
             body['pre_hash'] = request.pre_hash
-        if not UtilClient.is_unset(request.proof_code):
-            body['proof_code'] = request.proof_code
-        if not UtilClient.is_unset(request.proof_version):
-            body['proof_version'] = request.proof_version
         if not UtilClient.is_unset(request.share_id):
             body['share_id'] = request.share_id
         if not UtilClient.is_unset(request.size):
@@ -775,10 +771,6 @@ class Client(OpenApiClient):
             body['part_info_list'] = request.part_info_list
         if not UtilClient.is_unset(request.pre_hash):
             body['pre_hash'] = request.pre_hash
-        if not UtilClient.is_unset(request.proof_code):
-            body['proof_code'] = request.proof_code
-        if not UtilClient.is_unset(request.proof_version):
-            body['proof_version'] = request.proof_version
         if not UtilClient.is_unset(request.share_id):
             body['share_id'] = request.share_id
         if not UtilClient.is_unset(request.size):
@@ -6696,117 +6688,5 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             pds_20220301_models.UpdateUserResponse(),
-            await self.execute_async(params, req, runtime)
-        )
-
-    def walk_file(
-        self,
-        request: pds_20220301_models.WalkFileRequest,
-    ) -> pds_20220301_models.WalkFileResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.walk_file_with_options(request, headers, runtime)
-
-    async def walk_file_async(
-        self,
-        request: pds_20220301_models.WalkFileRequest,
-    ) -> pds_20220301_models.WalkFileResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.walk_file_with_options_async(request, headers, runtime)
-
-    def walk_file_with_options(
-        self,
-        request: pds_20220301_models.WalkFileRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> pds_20220301_models.WalkFileResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.category):
-            body['category'] = request.category
-        if not UtilClient.is_unset(request.drive_id):
-            body['drive_id'] = request.drive_id
-        if not UtilClient.is_unset(request.fields):
-            body['fields'] = request.fields
-        if not UtilClient.is_unset(request.limit):
-            body['limit'] = request.limit
-        if not UtilClient.is_unset(request.marker):
-            body['marker'] = request.marker
-        if not UtilClient.is_unset(request.order_by):
-            body['order_by'] = request.order_by
-        if not UtilClient.is_unset(request.order_direction):
-            body['order_direction'] = request.order_direction
-        if not UtilClient.is_unset(request.parent_file_id):
-            body['parent_file_id'] = request.parent_file_id
-        if not UtilClient.is_unset(request.status):
-            body['status'] = request.status
-        if not UtilClient.is_unset(request.type):
-            body['type'] = request.type
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='WalkFile',
-            version='2022-03-01',
-            protocol='HTTPS',
-            pathname=f'/v2/file/walk',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            pds_20220301_models.WalkFileResponse(),
-            self.execute(params, req, runtime)
-        )
-
-    async def walk_file_with_options_async(
-        self,
-        request: pds_20220301_models.WalkFileRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> pds_20220301_models.WalkFileResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.category):
-            body['category'] = request.category
-        if not UtilClient.is_unset(request.drive_id):
-            body['drive_id'] = request.drive_id
-        if not UtilClient.is_unset(request.fields):
-            body['fields'] = request.fields
-        if not UtilClient.is_unset(request.limit):
-            body['limit'] = request.limit
-        if not UtilClient.is_unset(request.marker):
-            body['marker'] = request.marker
-        if not UtilClient.is_unset(request.order_by):
-            body['order_by'] = request.order_by
-        if not UtilClient.is_unset(request.order_direction):
-            body['order_direction'] = request.order_direction
-        if not UtilClient.is_unset(request.parent_file_id):
-            body['parent_file_id'] = request.parent_file_id
-        if not UtilClient.is_unset(request.status):
-            body['status'] = request.status
-        if not UtilClient.is_unset(request.type):
-            body['type'] = request.type
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='WalkFile',
-            version='2022-03-01',
-            protocol='HTTPS',
-            pathname=f'/v2/file/walk',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            pds_20220301_models.WalkFileResponse(),
             await self.execute_async(params, req, runtime)
         )
