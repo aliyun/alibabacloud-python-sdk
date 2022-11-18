@@ -1,3 +1,6 @@
+2022-11-18 Version: 2.0.9
+- Add GetQuotaTip api.
+
 2022-09-05 Version: 2.0.8
 - Create and update order support to buy partition.
 
