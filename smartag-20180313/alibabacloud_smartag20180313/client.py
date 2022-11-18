@@ -477,6 +477,112 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_dnat_entry_with_options_async(request, runtime)
 
+    def add_smart_access_gateway_dns_forward_with_options(
+        self,
+        request: smartag_20180313_models.AddSmartAccessGatewayDnsForwardRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> smartag_20180313_models.AddSmartAccessGatewayDnsForwardResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.master_ip):
+            query['MasterIp'] = request.master_ip
+        if not UtilClient.is_unset(request.mode):
+            query['Mode'] = request.mode
+        if not UtilClient.is_unset(request.outbound_port_index):
+            query['OutboundPortIndex'] = request.outbound_port_index
+        if not UtilClient.is_unset(request.outbound_port_name):
+            query['OutboundPortName'] = request.outbound_port_name
+        if not UtilClient.is_unset(request.outbound_port_type):
+            query['OutboundPortType'] = request.outbound_port_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sag_ins_id):
+            query['SagInsId'] = request.sag_ins_id
+        if not UtilClient.is_unset(request.sag_sn):
+            query['SagSn'] = request.sag_sn
+        if not UtilClient.is_unset(request.slave_ip):
+            query['SlaveIp'] = request.slave_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddSmartAccessGatewayDnsForward',
+            version='2018-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            smartag_20180313_models.AddSmartAccessGatewayDnsForwardResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_smart_access_gateway_dns_forward_with_options_async(
+        self,
+        request: smartag_20180313_models.AddSmartAccessGatewayDnsForwardRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> smartag_20180313_models.AddSmartAccessGatewayDnsForwardResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.master_ip):
+            query['MasterIp'] = request.master_ip
+        if not UtilClient.is_unset(request.mode):
+            query['Mode'] = request.mode
+        if not UtilClient.is_unset(request.outbound_port_index):
+            query['OutboundPortIndex'] = request.outbound_port_index
+        if not UtilClient.is_unset(request.outbound_port_name):
+            query['OutboundPortName'] = request.outbound_port_name
+        if not UtilClient.is_unset(request.outbound_port_type):
+            query['OutboundPortType'] = request.outbound_port_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sag_ins_id):
+            query['SagInsId'] = request.sag_ins_id
+        if not UtilClient.is_unset(request.sag_sn):
+            query['SagSn'] = request.sag_sn
+        if not UtilClient.is_unset(request.slave_ip):
+            query['SlaveIp'] = request.slave_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddSmartAccessGatewayDnsForward',
+            version='2018-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            smartag_20180313_models.AddSmartAccessGatewayDnsForwardResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_smart_access_gateway_dns_forward(
+        self,
+        request: smartag_20180313_models.AddSmartAccessGatewayDnsForwardRequest,
+    ) -> smartag_20180313_models.AddSmartAccessGatewayDnsForwardResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.add_smart_access_gateway_dns_forward_with_options(request, runtime)
+
+    async def add_smart_access_gateway_dns_forward_async(
+        self,
+        request: smartag_20180313_models.AddSmartAccessGatewayDnsForwardRequest,
+    ) -> smartag_20180313_models.AddSmartAccessGatewayDnsForwardResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.add_smart_access_gateway_dns_forward_with_options_async(request, runtime)
+
     def add_snat_entry_with_options(
         self,
         request: smartag_20180313_models.AddSnatEntryRequest,
@@ -856,6 +962,92 @@ class Client(OpenApiClient):
     ) -> smartag_20180313_models.AssociateQosResponse:
         runtime = util_models.RuntimeOptions()
         return await self.associate_qos_with_options_async(request, runtime)
+
+    def associate_smart_agwith_application_bandwidth_package_with_options(
+        self,
+        request: smartag_20180313_models.AssociateSmartAGWithApplicationBandwidthPackageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> smartag_20180313_models.AssociateSmartAGWithApplicationBandwidthPackageResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_bandwidth_package_id):
+            query['ApplicationBandwidthPackageId'] = request.application_bandwidth_package_id
+        if not UtilClient.is_unset(request.associate_configs):
+            query['AssociateConfigs'] = request.associate_configs
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AssociateSmartAGWithApplicationBandwidthPackage',
+            version='2018-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            smartag_20180313_models.AssociateSmartAGWithApplicationBandwidthPackageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def associate_smart_agwith_application_bandwidth_package_with_options_async(
+        self,
+        request: smartag_20180313_models.AssociateSmartAGWithApplicationBandwidthPackageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> smartag_20180313_models.AssociateSmartAGWithApplicationBandwidthPackageResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_bandwidth_package_id):
+            query['ApplicationBandwidthPackageId'] = request.application_bandwidth_package_id
+        if not UtilClient.is_unset(request.associate_configs):
+            query['AssociateConfigs'] = request.associate_configs
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AssociateSmartAGWithApplicationBandwidthPackage',
+            version='2018-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            smartag_20180313_models.AssociateSmartAGWithApplicationBandwidthPackageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def associate_smart_agwith_application_bandwidth_package(
+        self,
+        request: smartag_20180313_models.AssociateSmartAGWithApplicationBandwidthPackageRequest,
+    ) -> smartag_20180313_models.AssociateSmartAGWithApplicationBandwidthPackageResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.associate_smart_agwith_application_bandwidth_package_with_options(request, runtime)
+
+    async def associate_smart_agwith_application_bandwidth_package_async(
+        self,
+        request: smartag_20180313_models.AssociateSmartAGWithApplicationBandwidthPackageRequest,
+    ) -> smartag_20180313_models.AssociateSmartAGWithApplicationBandwidthPackageResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.associate_smart_agwith_application_bandwidth_package_with_options_async(request, runtime)
 
     def bind_serial_number_with_options(
         self,
@@ -1342,6 +1534,8 @@ class Client(OpenApiClient):
     ) -> smartag_20180313_models.CreateACLResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.acl_type):
+            query['AclType'] = request.acl_type
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.owner_account):
@@ -1380,6 +1574,8 @@ class Client(OpenApiClient):
     ) -> smartag_20180313_models.CreateACLResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.acl_type):
+            query['AclType'] = request.acl_type
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.owner_account):
@@ -1876,6 +2072,116 @@ class Client(OpenApiClient):
     ) -> smartag_20180313_models.CreateHealthCheckResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_health_check_with_options_async(request, runtime)
+
+    def create_probe_task_with_options(
+        self,
+        request: smartag_20180313_models.CreateProbeTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> smartag_20180313_models.CreateProbeTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.packet_number):
+            query['PacketNumber'] = request.packet_number
+        if not UtilClient.is_unset(request.port):
+            query['Port'] = request.port
+        if not UtilClient.is_unset(request.probe_task_source_address):
+            query['ProbeTaskSourceAddress'] = request.probe_task_source_address
+        if not UtilClient.is_unset(request.protocol):
+            query['Protocol'] = request.protocol
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sag_id):
+            query['SagId'] = request.sag_id
+        if not UtilClient.is_unset(request.sn):
+            query['Sn'] = request.sn
+        if not UtilClient.is_unset(request.task_name):
+            query['TaskName'] = request.task_name
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateProbeTask',
+            version='2018-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            smartag_20180313_models.CreateProbeTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_probe_task_with_options_async(
+        self,
+        request: smartag_20180313_models.CreateProbeTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> smartag_20180313_models.CreateProbeTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.packet_number):
+            query['PacketNumber'] = request.packet_number
+        if not UtilClient.is_unset(request.port):
+            query['Port'] = request.port
+        if not UtilClient.is_unset(request.probe_task_source_address):
+            query['ProbeTaskSourceAddress'] = request.probe_task_source_address
+        if not UtilClient.is_unset(request.protocol):
+            query['Protocol'] = request.protocol
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sag_id):
+            query['SagId'] = request.sag_id
+        if not UtilClient.is_unset(request.sn):
+            query['Sn'] = request.sn
+        if not UtilClient.is_unset(request.task_name):
+            query['TaskName'] = request.task_name
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateProbeTask',
+            version='2018-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            smartag_20180313_models.CreateProbeTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_probe_task(
+        self,
+        request: smartag_20180313_models.CreateProbeTaskRequest,
+    ) -> smartag_20180313_models.CreateProbeTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_probe_task_with_options(request, runtime)
+
+    async def create_probe_task_async(
+        self,
+        request: smartag_20180313_models.CreateProbeTaskRequest,
+    ) -> smartag_20180313_models.CreateProbeTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_probe_task_with_options_async(request, runtime)
 
     def create_qos_with_options(
         self,
@@ -2454,6 +2760,92 @@ class Client(OpenApiClient):
     ) -> smartag_20180313_models.CreateSagStaticRouteResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_sag_static_route_with_options_async(request, runtime)
+
+    def create_service_address_with_options(
+        self,
+        request: smartag_20180313_models.CreateServiceAddressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> smartag_20180313_models.CreateServiceAddressResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.address):
+            query['Address'] = request.address
+        if not UtilClient.is_unset(request.address_type):
+            query['AddressType'] = request.address_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sag_id):
+            query['SagId'] = request.sag_id
+        if not UtilClient.is_unset(request.sn):
+            query['Sn'] = request.sn
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateServiceAddress',
+            version='2018-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            smartag_20180313_models.CreateServiceAddressResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_service_address_with_options_async(
+        self,
+        request: smartag_20180313_models.CreateServiceAddressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> smartag_20180313_models.CreateServiceAddressResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.address):
+            query['Address'] = request.address
+        if not UtilClient.is_unset(request.address_type):
+            query['AddressType'] = request.address_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sag_id):
+            query['SagId'] = request.sag_id
+        if not UtilClient.is_unset(request.sn):
+            query['Sn'] = request.sn
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateServiceAddress',
+            version='2018-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            smartag_20180313_models.CreateServiceAddressResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_service_address(
+        self,
+        request: smartag_20180313_models.CreateServiceAddressRequest,
+    ) -> smartag_20180313_models.CreateServiceAddressResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_service_address_with_options(request, runtime)
+
+    async def create_service_address_async(
+        self,
+        request: smartag_20180313_models.CreateServiceAddressRequest,
+    ) -> smartag_20180313_models.CreateServiceAddressResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_service_address_with_options_async(request, runtime)
 
     def create_smart_access_gateway_with_options(
         self,
@@ -3561,6 +3953,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_health_check_with_options_async(request, runtime)
 
+    def delete_probe_task_with_options(
+        self,
+        request: smartag_20180313_models.DeleteProbeTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> smartag_20180313_models.DeleteProbeTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.probe_task_id):
+            query['ProbeTaskId'] = request.probe_task_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sag_id):
+            query['SagId'] = request.sag_id
+        if not UtilClient.is_unset(request.sn):
+            query['Sn'] = request.sn
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteProbeTask',
+            version='2018-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            smartag_20180313_models.DeleteProbeTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_probe_task_with_options_async(
+        self,
+        request: smartag_20180313_models.DeleteProbeTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> smartag_20180313_models.DeleteProbeTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.probe_task_id):
+            query['ProbeTaskId'] = request.probe_task_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sag_id):
+            query['SagId'] = request.sag_id
+        if not UtilClient.is_unset(request.sn):
+            query['Sn'] = request.sn
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteProbeTask',
+            version='2018-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            smartag_20180313_models.DeleteProbeTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_probe_task(
+        self,
+        request: smartag_20180313_models.DeleteProbeTaskRequest,
+    ) -> smartag_20180313_models.DeleteProbeTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_probe_task_with_options(request, runtime)
+
+    async def delete_probe_task_async(
+        self,
+        request: smartag_20180313_models.DeleteProbeTaskRequest,
+    ) -> smartag_20180313_models.DeleteProbeTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_probe_task_with_options_async(request, runtime)
+
     def delete_qos_with_options(
         self,
         request: smartag_20180313_models.DeleteQosRequest,
@@ -4149,6 +4623,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_sag_static_route_with_options_async(request, runtime)
 
+    def delete_service_address_with_options(
+        self,
+        request: smartag_20180313_models.DeleteServiceAddressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> smartag_20180313_models.DeleteServiceAddressResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.address):
+            query['Address'] = request.address
+        if not UtilClient.is_unset(request.address_type):
+            query['AddressType'] = request.address_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sag_id):
+            query['SagId'] = request.sag_id
+        if not UtilClient.is_unset(request.sn):
+            query['Sn'] = request.sn
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteServiceAddress',
+            version='2018-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            smartag_20180313_models.DeleteServiceAddressResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_service_address_with_options_async(
+        self,
+        request: smartag_20180313_models.DeleteServiceAddressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> smartag_20180313_models.DeleteServiceAddressResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.address):
+            query['Address'] = request.address
+        if not UtilClient.is_unset(request.address_type):
+            query['AddressType'] = request.address_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sag_id):
+            query['SagId'] = request.sag_id
+        if not UtilClient.is_unset(request.sn):
+            query['Sn'] = request.sn
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteServiceAddress',
+            version='2018-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            smartag_20180313_models.DeleteServiceAddressResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_service_address(
+        self,
+        request: smartag_20180313_models.DeleteServiceAddressRequest,
+    ) -> smartag_20180313_models.DeleteServiceAddressResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_service_address_with_options(request, runtime)
+
+    async def delete_service_address_async(
+        self,
+        request: smartag_20180313_models.DeleteServiceAddressRequest,
+    ) -> smartag_20180313_models.DeleteServiceAddressResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_service_address_with_options_async(request, runtime)
+
     def delete_smart_access_gateway_with_options(
         self,
         request: smartag_20180313_models.DeleteSmartAccessGatewayRequest,
@@ -4320,6 +4880,88 @@ class Client(OpenApiClient):
     ) -> smartag_20180313_models.DeleteSmartAccessGatewayClientUserResponse:
         runtime = util_models.RuntimeOptions()
         return await self.delete_smart_access_gateway_client_user_with_options_async(request, runtime)
+
+    def delete_smart_access_gateway_dns_forward_with_options(
+        self,
+        request: smartag_20180313_models.DeleteSmartAccessGatewayDnsForwardRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> smartag_20180313_models.DeleteSmartAccessGatewayDnsForwardResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sag_ins_id):
+            query['SagInsId'] = request.sag_ins_id
+        if not UtilClient.is_unset(request.sag_sn):
+            query['SagSn'] = request.sag_sn
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteSmartAccessGatewayDnsForward',
+            version='2018-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            smartag_20180313_models.DeleteSmartAccessGatewayDnsForwardResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_smart_access_gateway_dns_forward_with_options_async(
+        self,
+        request: smartag_20180313_models.DeleteSmartAccessGatewayDnsForwardRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> smartag_20180313_models.DeleteSmartAccessGatewayDnsForwardResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sag_ins_id):
+            query['SagInsId'] = request.sag_ins_id
+        if not UtilClient.is_unset(request.sag_sn):
+            query['SagSn'] = request.sag_sn
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteSmartAccessGatewayDnsForward',
+            version='2018-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            smartag_20180313_models.DeleteSmartAccessGatewayDnsForwardResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_smart_access_gateway_dns_forward(
+        self,
+        request: smartag_20180313_models.DeleteSmartAccessGatewayDnsForwardRequest,
+    ) -> smartag_20180313_models.DeleteSmartAccessGatewayDnsForwardResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_smart_access_gateway_dns_forward_with_options(request, runtime)
+
+    async def delete_smart_access_gateway_dns_forward_async(
+        self,
+        request: smartag_20180313_models.DeleteSmartAccessGatewayDnsForwardRequest,
+    ) -> smartag_20180313_models.DeleteSmartAccessGatewayDnsForwardResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_smart_access_gateway_dns_forward_with_options_async(request, runtime)
 
     def delete_snat_entry_with_options(
         self,
@@ -4534,6 +5176,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.acl_ids):
             query['AclIds'] = request.acl_ids
+        if not UtilClient.is_unset(request.acl_type):
+            query['AclType'] = request.acl_type
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.owner_account):
@@ -4578,6 +5222,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.acl_ids):
             query['AclIds'] = request.acl_ids
+        if not UtilClient.is_unset(request.acl_type):
+            query['AclType'] = request.acl_type
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.owner_account):
@@ -8902,6 +9548,8 @@ class Client(OpenApiClient):
             query['AclIds'] = request.acl_ids
         if not UtilClient.is_unset(request.associated_ccn_id):
             query['AssociatedCcnId'] = request.associated_ccn_id
+        if not UtilClient.is_unset(request.associated_ccn_name):
+            query['AssociatedCcnName'] = request.associated_ccn_name
         if not UtilClient.is_unset(request.business_state):
             query['BusinessState'] = request.business_state
         if not UtilClient.is_unset(request.can_associate_qos):
@@ -8972,6 +9620,8 @@ class Client(OpenApiClient):
             query['AclIds'] = request.acl_ids
         if not UtilClient.is_unset(request.associated_ccn_id):
             query['AssociatedCcnId'] = request.associated_ccn_id
+        if not UtilClient.is_unset(request.associated_ccn_name):
+            query['AssociatedCcnName'] = request.associated_ccn_name
         if not UtilClient.is_unset(request.business_state):
             query['BusinessState'] = request.business_state
         if not UtilClient.is_unset(request.can_associate_qos):
@@ -10177,6 +10827,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.discribe_smart_access_gateway_diagnosis_report_with_options_async(request, runtime)
 
+    def dissociate_smart_agfrom_application_bandwidth_package_with_options(
+        self,
+        request: smartag_20180313_models.DissociateSmartAGFromApplicationBandwidthPackageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> smartag_20180313_models.DissociateSmartAGFromApplicationBandwidthPackageResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_bandwidth_package_id):
+            query['ApplicationBandwidthPackageId'] = request.application_bandwidth_package_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.smart_agid):
+            query['SmartAGId'] = request.smart_agid
+        if not UtilClient.is_unset(request.smart_agid_list):
+            query['SmartAGIdList'] = request.smart_agid_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DissociateSmartAGFromApplicationBandwidthPackage',
+            version='2018-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            smartag_20180313_models.DissociateSmartAGFromApplicationBandwidthPackageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def dissociate_smart_agfrom_application_bandwidth_package_with_options_async(
+        self,
+        request: smartag_20180313_models.DissociateSmartAGFromApplicationBandwidthPackageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> smartag_20180313_models.DissociateSmartAGFromApplicationBandwidthPackageResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_bandwidth_package_id):
+            query['ApplicationBandwidthPackageId'] = request.application_bandwidth_package_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.smart_agid):
+            query['SmartAGId'] = request.smart_agid
+        if not UtilClient.is_unset(request.smart_agid_list):
+            query['SmartAGIdList'] = request.smart_agid_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DissociateSmartAGFromApplicationBandwidthPackage',
+            version='2018-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            smartag_20180313_models.DissociateSmartAGFromApplicationBandwidthPackageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def dissociate_smart_agfrom_application_bandwidth_package(
+        self,
+        request: smartag_20180313_models.DissociateSmartAGFromApplicationBandwidthPackageRequest,
+    ) -> smartag_20180313_models.DissociateSmartAGFromApplicationBandwidthPackageResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.dissociate_smart_agfrom_application_bandwidth_package_with_options(request, runtime)
+
+    async def dissociate_smart_agfrom_application_bandwidth_package_async(
+        self,
+        request: smartag_20180313_models.DissociateSmartAGFromApplicationBandwidthPackageRequest,
+    ) -> smartag_20180313_models.DissociateSmartAGFromApplicationBandwidthPackageResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.dissociate_smart_agfrom_application_bandwidth_package_with_options_async(request, runtime)
+
     def downgrade_smart_access_gateway_with_options(
         self,
         request: smartag_20180313_models.DowngradeSmartAccessGatewayRequest,
@@ -10650,6 +11390,80 @@ class Client(OpenApiClient):
     ) -> smartag_20180313_models.GetAclAttributeResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_acl_attribute_with_options_async(request, runtime)
+
+    def get_advanced_monitor_state_with_options(
+        self,
+        request: smartag_20180313_models.GetAdvancedMonitorStateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> smartag_20180313_models.GetAdvancedMonitorStateResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sag_id):
+            query['SagId'] = request.sag_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAdvancedMonitorState',
+            version='2018-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            smartag_20180313_models.GetAdvancedMonitorStateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_advanced_monitor_state_with_options_async(
+        self,
+        request: smartag_20180313_models.GetAdvancedMonitorStateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> smartag_20180313_models.GetAdvancedMonitorStateResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sag_id):
+            query['SagId'] = request.sag_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAdvancedMonitorState',
+            version='2018-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            smartag_20180313_models.GetAdvancedMonitorStateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_advanced_monitor_state(
+        self,
+        request: smartag_20180313_models.GetAdvancedMonitorStateRequest,
+    ) -> smartag_20180313_models.GetAdvancedMonitorStateResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_advanced_monitor_state_with_options(request, runtime)
+
+    async def get_advanced_monitor_state_async(
+        self,
+        request: smartag_20180313_models.GetAdvancedMonitorStateRequest,
+    ) -> smartag_20180313_models.GetAdvancedMonitorStateResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_advanced_monitor_state_with_options_async(request, runtime)
 
     def get_cloud_connect_network_use_limit_with_options(
         self,
@@ -11575,6 +12389,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_access_points_with_options_async(request, runtime)
 
+    def list_available_service_address_with_options(
+        self,
+        request: smartag_20180313_models.ListAvailableServiceAddressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> smartag_20180313_models.ListAvailableServiceAddressResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.address_type):
+            query['AddressType'] = request.address_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sag_id):
+            query['SagId'] = request.sag_id
+        if not UtilClient.is_unset(request.sn):
+            query['Sn'] = request.sn
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAvailableServiceAddress',
+            version='2018-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            smartag_20180313_models.ListAvailableServiceAddressResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_available_service_address_with_options_async(
+        self,
+        request: smartag_20180313_models.ListAvailableServiceAddressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> smartag_20180313_models.ListAvailableServiceAddressResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.address_type):
+            query['AddressType'] = request.address_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sag_id):
+            query['SagId'] = request.sag_id
+        if not UtilClient.is_unset(request.sn):
+            query['Sn'] = request.sn
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAvailableServiceAddress',
+            version='2018-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            smartag_20180313_models.ListAvailableServiceAddressResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_available_service_address(
+        self,
+        request: smartag_20180313_models.ListAvailableServiceAddressRequest,
+    ) -> smartag_20180313_models.ListAvailableServiceAddressResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_available_service_address_with_options(request, runtime)
+
+    async def list_available_service_address_async(
+        self,
+        request: smartag_20180313_models.ListAvailableServiceAddressRequest,
+    ) -> smartag_20180313_models.ListAvailableServiceAddressResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_available_service_address_with_options_async(request, runtime)
+
     def list_dpi_config_error_with_options(
         self,
         request: smartag_20180313_models.ListDpiConfigErrorRequest,
@@ -11958,6 +12854,108 @@ class Client(OpenApiClient):
     ) -> smartag_20180313_models.ListEnterpriseCodeResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_enterprise_code_with_options_async(request, runtime)
+
+    def list_probe_task_with_options(
+        self,
+        request: smartag_20180313_models.ListProbeTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> smartag_20180313_models.ListProbeTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.probe_task_id):
+            query['ProbeTaskId'] = request.probe_task_id
+        if not UtilClient.is_unset(request.protocol):
+            query['Protocol'] = request.protocol
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sag_id):
+            query['SagId'] = request.sag_id
+        if not UtilClient.is_unset(request.sag_name):
+            query['SagName'] = request.sag_name
+        if not UtilClient.is_unset(request.sn):
+            query['Sn'] = request.sn
+        if not UtilClient.is_unset(request.task_name):
+            query['TaskName'] = request.task_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListProbeTask',
+            version='2018-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            smartag_20180313_models.ListProbeTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_probe_task_with_options_async(
+        self,
+        request: smartag_20180313_models.ListProbeTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> smartag_20180313_models.ListProbeTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.probe_task_id):
+            query['ProbeTaskId'] = request.probe_task_id
+        if not UtilClient.is_unset(request.protocol):
+            query['Protocol'] = request.protocol
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sag_id):
+            query['SagId'] = request.sag_id
+        if not UtilClient.is_unset(request.sag_name):
+            query['SagName'] = request.sag_name
+        if not UtilClient.is_unset(request.sn):
+            query['Sn'] = request.sn
+        if not UtilClient.is_unset(request.task_name):
+            query['TaskName'] = request.task_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListProbeTask',
+            version='2018-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            smartag_20180313_models.ListProbeTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_probe_task(
+        self,
+        request: smartag_20180313_models.ListProbeTaskRequest,
+    ) -> smartag_20180313_models.ListProbeTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_probe_task_with_options(request, runtime)
+
+    async def list_probe_task_async(
+        self,
+        request: smartag_20180313_models.ListProbeTaskRequest,
+    ) -> smartag_20180313_models.ListProbeTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_probe_task_with_options_async(request, runtime)
 
     def list_smart_agapi_unsupported_feature_with_options(
         self,
@@ -15252,12 +16250,16 @@ class Client(OpenApiClient):
             query['CidrBlock'] = request.cidr_block
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.enable_software_connection_audit):
+            query['EnableSoftwareConnectionAudit'] = request.enable_software_connection_audit
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.position):
+            query['Position'] = request.position
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -15300,12 +16302,16 @@ class Client(OpenApiClient):
             query['CidrBlock'] = request.cidr_block
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.enable_software_connection_audit):
+            query['EnableSoftwareConnectionAudit'] = request.enable_software_connection_audit
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.position):
+            query['Position'] = request.position
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -16319,6 +17325,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.roam_client_user_with_options_async(request, runtime)
 
+    def set_advanced_monitor_state_with_options(
+        self,
+        request: smartag_20180313_models.SetAdvancedMonitorStateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> smartag_20180313_models.SetAdvancedMonitorStateResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sag_id):
+            query['SagId'] = request.sag_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetAdvancedMonitorState',
+            version='2018-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            smartag_20180313_models.SetAdvancedMonitorStateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_advanced_monitor_state_with_options_async(
+        self,
+        request: smartag_20180313_models.SetAdvancedMonitorStateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> smartag_20180313_models.SetAdvancedMonitorStateResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sag_id):
+            query['SagId'] = request.sag_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetAdvancedMonitorState',
+            version='2018-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            smartag_20180313_models.SetAdvancedMonitorStateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_advanced_monitor_state(
+        self,
+        request: smartag_20180313_models.SetAdvancedMonitorStateRequest,
+    ) -> smartag_20180313_models.SetAdvancedMonitorStateResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.set_advanced_monitor_state_with_options(request, runtime)
+
+    async def set_advanced_monitor_state_async(
+        self,
+        request: smartag_20180313_models.SetAdvancedMonitorStateRequest,
+    ) -> smartag_20180313_models.SetAdvancedMonitorStateResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.set_advanced_monitor_state_with_options_async(request, runtime)
+
     def synchronize_smart_agweb_config_with_options(
         self,
         request: smartag_20180313_models.SynchronizeSmartAGWebConfigRequest,
@@ -16879,6 +17963,120 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_enterprise_code_with_options_async(request, runtime)
 
+    def update_probe_task_with_options(
+        self,
+        request: smartag_20180313_models.UpdateProbeTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> smartag_20180313_models.UpdateProbeTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.address_type):
+            query['AddressType'] = request.address_type
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.packet_number):
+            query['PacketNumber'] = request.packet_number
+        if not UtilClient.is_unset(request.port):
+            query['Port'] = request.port
+        if not UtilClient.is_unset(request.probe_task_id):
+            query['ProbeTaskId'] = request.probe_task_id
+        if not UtilClient.is_unset(request.probe_task_source_address):
+            query['ProbeTaskSourceAddress'] = request.probe_task_source_address
+        if not UtilClient.is_unset(request.protocol):
+            query['Protocol'] = request.protocol
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sag_id):
+            query['SagId'] = request.sag_id
+        if not UtilClient.is_unset(request.sn):
+            query['Sn'] = request.sn
+        if not UtilClient.is_unset(request.task_name):
+            query['TaskName'] = request.task_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateProbeTask',
+            version='2018-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            smartag_20180313_models.UpdateProbeTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_probe_task_with_options_async(
+        self,
+        request: smartag_20180313_models.UpdateProbeTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> smartag_20180313_models.UpdateProbeTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.address_type):
+            query['AddressType'] = request.address_type
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.packet_number):
+            query['PacketNumber'] = request.packet_number
+        if not UtilClient.is_unset(request.port):
+            query['Port'] = request.port
+        if not UtilClient.is_unset(request.probe_task_id):
+            query['ProbeTaskId'] = request.probe_task_id
+        if not UtilClient.is_unset(request.probe_task_source_address):
+            query['ProbeTaskSourceAddress'] = request.probe_task_source_address
+        if not UtilClient.is_unset(request.protocol):
+            query['Protocol'] = request.protocol
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sag_id):
+            query['SagId'] = request.sag_id
+        if not UtilClient.is_unset(request.sn):
+            query['Sn'] = request.sn
+        if not UtilClient.is_unset(request.task_name):
+            query['TaskName'] = request.task_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateProbeTask',
+            version='2018-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            smartag_20180313_models.UpdateProbeTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_probe_task(
+        self,
+        request: smartag_20180313_models.UpdateProbeTaskRequest,
+    ) -> smartag_20180313_models.UpdateProbeTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_probe_task_with_options(request, runtime)
+
+    async def update_probe_task_async(
+        self,
+        request: smartag_20180313_models.UpdateProbeTaskRequest,
+    ) -> smartag_20180313_models.UpdateProbeTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_probe_task_with_options_async(request, runtime)
+
     def update_smart_agaccess_point_with_options(
         self,
         request: smartag_20180313_models.UpdateSmartAGAccessPointRequest,
@@ -17157,6 +18355,826 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_smart_agenterprise_code_with_options_async(request, runtime)
 
+    def update_smart_aguser_accelerate_config_with_options(
+        self,
+        request: smartag_20180313_models.UpdateSmartAGUserAccelerateConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> smartag_20180313_models.UpdateSmartAGUserAccelerateConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bandwidth):
+            query['Bandwidth'] = request.bandwidth
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.smart_agid):
+            query['SmartAGId'] = request.smart_agid
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateSmartAGUserAccelerateConfig',
+            version='2018-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            smartag_20180313_models.UpdateSmartAGUserAccelerateConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_smart_aguser_accelerate_config_with_options_async(
+        self,
+        request: smartag_20180313_models.UpdateSmartAGUserAccelerateConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> smartag_20180313_models.UpdateSmartAGUserAccelerateConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bandwidth):
+            query['Bandwidth'] = request.bandwidth
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.smart_agid):
+            query['SmartAGId'] = request.smart_agid
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateSmartAGUserAccelerateConfig',
+            version='2018-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            smartag_20180313_models.UpdateSmartAGUserAccelerateConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_smart_aguser_accelerate_config(
+        self,
+        request: smartag_20180313_models.UpdateSmartAGUserAccelerateConfigRequest,
+    ) -> smartag_20180313_models.UpdateSmartAGUserAccelerateConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_smart_aguser_accelerate_config_with_options(request, runtime)
+
+    async def update_smart_aguser_accelerate_config_async(
+        self,
+        request: smartag_20180313_models.UpdateSmartAGUserAccelerateConfigRequest,
+    ) -> smartag_20180313_models.UpdateSmartAGUserAccelerateConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_smart_aguser_accelerate_config_with_options_async(request, runtime)
+
+    def update_smart_access_gateway_admin_password_with_options(
+        self,
+        request: smartag_20180313_models.UpdateSmartAccessGatewayAdminPasswordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> smartag_20180313_models.UpdateSmartAccessGatewayAdminPasswordResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cross_account):
+            query['CrossAccount'] = request.cross_account
+        if not UtilClient.is_unset(request.password):
+            query['Password'] = request.password
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_uid):
+            query['ResourceUid'] = request.resource_uid
+        if not UtilClient.is_unset(request.sag_ins_id):
+            query['SagInsId'] = request.sag_ins_id
+        if not UtilClient.is_unset(request.sag_sn):
+            query['SagSn'] = request.sag_sn
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateSmartAccessGatewayAdminPassword',
+            version='2018-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            smartag_20180313_models.UpdateSmartAccessGatewayAdminPasswordResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_smart_access_gateway_admin_password_with_options_async(
+        self,
+        request: smartag_20180313_models.UpdateSmartAccessGatewayAdminPasswordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> smartag_20180313_models.UpdateSmartAccessGatewayAdminPasswordResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cross_account):
+            query['CrossAccount'] = request.cross_account
+        if not UtilClient.is_unset(request.password):
+            query['Password'] = request.password
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_uid):
+            query['ResourceUid'] = request.resource_uid
+        if not UtilClient.is_unset(request.sag_ins_id):
+            query['SagInsId'] = request.sag_ins_id
+        if not UtilClient.is_unset(request.sag_sn):
+            query['SagSn'] = request.sag_sn
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateSmartAccessGatewayAdminPassword',
+            version='2018-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            smartag_20180313_models.UpdateSmartAccessGatewayAdminPasswordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_smart_access_gateway_admin_password(
+        self,
+        request: smartag_20180313_models.UpdateSmartAccessGatewayAdminPasswordRequest,
+    ) -> smartag_20180313_models.UpdateSmartAccessGatewayAdminPasswordResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_smart_access_gateway_admin_password_with_options(request, runtime)
+
+    async def update_smart_access_gateway_admin_password_async(
+        self,
+        request: smartag_20180313_models.UpdateSmartAccessGatewayAdminPasswordRequest,
+    ) -> smartag_20180313_models.UpdateSmartAccessGatewayAdminPasswordResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_smart_access_gateway_admin_password_with_options_async(request, runtime)
+
+    def update_smart_access_gateway_bgp_route_with_options(
+        self,
+        request: smartag_20180313_models.UpdateSmartAccessGatewayBgpRouteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> smartag_20180313_models.UpdateSmartAccessGatewayBgpRouteResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cross_account):
+            query['CrossAccount'] = request.cross_account
+        if not UtilClient.is_unset(request.hold_time):
+            query['HoldTime'] = request.hold_time
+        if not UtilClient.is_unset(request.keep_alive):
+            query['KeepAlive'] = request.keep_alive
+        if not UtilClient.is_unset(request.local_as):
+            query['LocalAs'] = request.local_as
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_uid):
+            query['ResourceUid'] = request.resource_uid
+        if not UtilClient.is_unset(request.router_id):
+            query['RouterId'] = request.router_id
+        if not UtilClient.is_unset(request.sag_ins_id):
+            query['SagInsId'] = request.sag_ins_id
+        if not UtilClient.is_unset(request.sag_sn):
+            query['SagSn'] = request.sag_sn
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateSmartAccessGatewayBgpRoute',
+            version='2018-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            smartag_20180313_models.UpdateSmartAccessGatewayBgpRouteResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_smart_access_gateway_bgp_route_with_options_async(
+        self,
+        request: smartag_20180313_models.UpdateSmartAccessGatewayBgpRouteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> smartag_20180313_models.UpdateSmartAccessGatewayBgpRouteResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cross_account):
+            query['CrossAccount'] = request.cross_account
+        if not UtilClient.is_unset(request.hold_time):
+            query['HoldTime'] = request.hold_time
+        if not UtilClient.is_unset(request.keep_alive):
+            query['KeepAlive'] = request.keep_alive
+        if not UtilClient.is_unset(request.local_as):
+            query['LocalAs'] = request.local_as
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_uid):
+            query['ResourceUid'] = request.resource_uid
+        if not UtilClient.is_unset(request.router_id):
+            query['RouterId'] = request.router_id
+        if not UtilClient.is_unset(request.sag_ins_id):
+            query['SagInsId'] = request.sag_ins_id
+        if not UtilClient.is_unset(request.sag_sn):
+            query['SagSn'] = request.sag_sn
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateSmartAccessGatewayBgpRoute',
+            version='2018-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            smartag_20180313_models.UpdateSmartAccessGatewayBgpRouteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_smart_access_gateway_bgp_route(
+        self,
+        request: smartag_20180313_models.UpdateSmartAccessGatewayBgpRouteRequest,
+    ) -> smartag_20180313_models.UpdateSmartAccessGatewayBgpRouteResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_smart_access_gateway_bgp_route_with_options(request, runtime)
+
+    async def update_smart_access_gateway_bgp_route_async(
+        self,
+        request: smartag_20180313_models.UpdateSmartAccessGatewayBgpRouteRequest,
+    ) -> smartag_20180313_models.UpdateSmartAccessGatewayBgpRouteResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_smart_access_gateway_bgp_route_with_options_async(request, runtime)
+
+    def update_smart_access_gateway_dns_with_options(
+        self,
+        request: smartag_20180313_models.UpdateSmartAccessGatewayDnsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> smartag_20180313_models.UpdateSmartAccessGatewayDnsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cross_account):
+            query['CrossAccount'] = request.cross_account
+        if not UtilClient.is_unset(request.master_dns):
+            query['MasterDns'] = request.master_dns
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_uid):
+            query['ResourceUid'] = request.resource_uid
+        if not UtilClient.is_unset(request.sag_ins_id):
+            query['SagInsId'] = request.sag_ins_id
+        if not UtilClient.is_unset(request.sag_sn):
+            query['SagSn'] = request.sag_sn
+        if not UtilClient.is_unset(request.slave_dns):
+            query['SlaveDns'] = request.slave_dns
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateSmartAccessGatewayDns',
+            version='2018-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            smartag_20180313_models.UpdateSmartAccessGatewayDnsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_smart_access_gateway_dns_with_options_async(
+        self,
+        request: smartag_20180313_models.UpdateSmartAccessGatewayDnsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> smartag_20180313_models.UpdateSmartAccessGatewayDnsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cross_account):
+            query['CrossAccount'] = request.cross_account
+        if not UtilClient.is_unset(request.master_dns):
+            query['MasterDns'] = request.master_dns
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_uid):
+            query['ResourceUid'] = request.resource_uid
+        if not UtilClient.is_unset(request.sag_ins_id):
+            query['SagInsId'] = request.sag_ins_id
+        if not UtilClient.is_unset(request.sag_sn):
+            query['SagSn'] = request.sag_sn
+        if not UtilClient.is_unset(request.slave_dns):
+            query['SlaveDns'] = request.slave_dns
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateSmartAccessGatewayDns',
+            version='2018-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            smartag_20180313_models.UpdateSmartAccessGatewayDnsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_smart_access_gateway_dns(
+        self,
+        request: smartag_20180313_models.UpdateSmartAccessGatewayDnsRequest,
+    ) -> smartag_20180313_models.UpdateSmartAccessGatewayDnsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_smart_access_gateway_dns_with_options(request, runtime)
+
+    async def update_smart_access_gateway_dns_async(
+        self,
+        request: smartag_20180313_models.UpdateSmartAccessGatewayDnsRequest,
+    ) -> smartag_20180313_models.UpdateSmartAccessGatewayDnsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_smart_access_gateway_dns_with_options_async(request, runtime)
+
+    def update_smart_access_gateway_dns_forward_with_options(
+        self,
+        request: smartag_20180313_models.UpdateSmartAccessGatewayDnsForwardRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> smartag_20180313_models.UpdateSmartAccessGatewayDnsForwardResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.master_ip):
+            query['MasterIp'] = request.master_ip
+        if not UtilClient.is_unset(request.mode):
+            query['Mode'] = request.mode
+        if not UtilClient.is_unset(request.outbound_port_index):
+            query['OutboundPortIndex'] = request.outbound_port_index
+        if not UtilClient.is_unset(request.outbound_port_name):
+            query['OutboundPortName'] = request.outbound_port_name
+        if not UtilClient.is_unset(request.outbound_port_type):
+            query['OutboundPortType'] = request.outbound_port_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sag_ins_id):
+            query['SagInsId'] = request.sag_ins_id
+        if not UtilClient.is_unset(request.sag_sn):
+            query['SagSn'] = request.sag_sn
+        if not UtilClient.is_unset(request.slave_ip):
+            query['SlaveIp'] = request.slave_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateSmartAccessGatewayDnsForward',
+            version='2018-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            smartag_20180313_models.UpdateSmartAccessGatewayDnsForwardResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_smart_access_gateway_dns_forward_with_options_async(
+        self,
+        request: smartag_20180313_models.UpdateSmartAccessGatewayDnsForwardRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> smartag_20180313_models.UpdateSmartAccessGatewayDnsForwardResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.master_ip):
+            query['MasterIp'] = request.master_ip
+        if not UtilClient.is_unset(request.mode):
+            query['Mode'] = request.mode
+        if not UtilClient.is_unset(request.outbound_port_index):
+            query['OutboundPortIndex'] = request.outbound_port_index
+        if not UtilClient.is_unset(request.outbound_port_name):
+            query['OutboundPortName'] = request.outbound_port_name
+        if not UtilClient.is_unset(request.outbound_port_type):
+            query['OutboundPortType'] = request.outbound_port_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sag_ins_id):
+            query['SagInsId'] = request.sag_ins_id
+        if not UtilClient.is_unset(request.sag_sn):
+            query['SagSn'] = request.sag_sn
+        if not UtilClient.is_unset(request.slave_ip):
+            query['SlaveIp'] = request.slave_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateSmartAccessGatewayDnsForward',
+            version='2018-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            smartag_20180313_models.UpdateSmartAccessGatewayDnsForwardResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_smart_access_gateway_dns_forward(
+        self,
+        request: smartag_20180313_models.UpdateSmartAccessGatewayDnsForwardRequest,
+    ) -> smartag_20180313_models.UpdateSmartAccessGatewayDnsForwardResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_smart_access_gateway_dns_forward_with_options(request, runtime)
+
+    async def update_smart_access_gateway_dns_forward_async(
+        self,
+        request: smartag_20180313_models.UpdateSmartAccessGatewayDnsForwardRequest,
+    ) -> smartag_20180313_models.UpdateSmartAccessGatewayDnsForwardResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_smart_access_gateway_dns_forward_with_options_async(request, runtime)
+
+    def update_smart_access_gateway_global_route_protocol_with_options(
+        self,
+        request: smartag_20180313_models.UpdateSmartAccessGatewayGlobalRouteProtocolRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> smartag_20180313_models.UpdateSmartAccessGatewayGlobalRouteProtocolResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cross_account):
+            query['CrossAccount'] = request.cross_account
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_uid):
+            query['ResourceUid'] = request.resource_uid
+        if not UtilClient.is_unset(request.route_protocol):
+            query['RouteProtocol'] = request.route_protocol
+        if not UtilClient.is_unset(request.sag_ins_id):
+            query['SagInsId'] = request.sag_ins_id
+        if not UtilClient.is_unset(request.sag_sn):
+            query['SagSn'] = request.sag_sn
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateSmartAccessGatewayGlobalRouteProtocol',
+            version='2018-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            smartag_20180313_models.UpdateSmartAccessGatewayGlobalRouteProtocolResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_smart_access_gateway_global_route_protocol_with_options_async(
+        self,
+        request: smartag_20180313_models.UpdateSmartAccessGatewayGlobalRouteProtocolRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> smartag_20180313_models.UpdateSmartAccessGatewayGlobalRouteProtocolResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cross_account):
+            query['CrossAccount'] = request.cross_account
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_uid):
+            query['ResourceUid'] = request.resource_uid
+        if not UtilClient.is_unset(request.route_protocol):
+            query['RouteProtocol'] = request.route_protocol
+        if not UtilClient.is_unset(request.sag_ins_id):
+            query['SagInsId'] = request.sag_ins_id
+        if not UtilClient.is_unset(request.sag_sn):
+            query['SagSn'] = request.sag_sn
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateSmartAccessGatewayGlobalRouteProtocol',
+            version='2018-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            smartag_20180313_models.UpdateSmartAccessGatewayGlobalRouteProtocolResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_smart_access_gateway_global_route_protocol(
+        self,
+        request: smartag_20180313_models.UpdateSmartAccessGatewayGlobalRouteProtocolRequest,
+    ) -> smartag_20180313_models.UpdateSmartAccessGatewayGlobalRouteProtocolResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_smart_access_gateway_global_route_protocol_with_options(request, runtime)
+
+    async def update_smart_access_gateway_global_route_protocol_async(
+        self,
+        request: smartag_20180313_models.UpdateSmartAccessGatewayGlobalRouteProtocolRequest,
+    ) -> smartag_20180313_models.UpdateSmartAccessGatewayGlobalRouteProtocolResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_smart_access_gateway_global_route_protocol_with_options_async(request, runtime)
+
+    def update_smart_access_gateway_ospf_route_with_options(
+        self,
+        request: smartag_20180313_models.UpdateSmartAccessGatewayOspfRouteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> smartag_20180313_models.UpdateSmartAccessGatewayOspfRouteResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.area_id):
+            query['AreaId'] = request.area_id
+        if not UtilClient.is_unset(request.authentication_type):
+            query['AuthenticationType'] = request.authentication_type
+        if not UtilClient.is_unset(request.cross_account):
+            query['CrossAccount'] = request.cross_account
+        if not UtilClient.is_unset(request.dead_time):
+            query['DeadTime'] = request.dead_time
+        if not UtilClient.is_unset(request.hello_time):
+            query['HelloTime'] = request.hello_time
+        if not UtilClient.is_unset(request.interface_name):
+            query['InterfaceName'] = request.interface_name
+        if not UtilClient.is_unset(request.md_5key):
+            query['Md5Key'] = request.md_5key
+        if not UtilClient.is_unset(request.md_5key_id):
+            query['Md5KeyId'] = request.md_5key_id
+        if not UtilClient.is_unset(request.networks):
+            query['Networks'] = request.networks
+        if not UtilClient.is_unset(request.ospf_cost):
+            query['OspfCost'] = request.ospf_cost
+        if not UtilClient.is_unset(request.ospf_network_type):
+            query['OspfNetworkType'] = request.ospf_network_type
+        if not UtilClient.is_unset(request.password):
+            query['Password'] = request.password
+        if not UtilClient.is_unset(request.redistribute_protocol):
+            query['RedistributeProtocol'] = request.redistribute_protocol
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_uid):
+            query['ResourceUid'] = request.resource_uid
+        if not UtilClient.is_unset(request.router_id):
+            query['RouterId'] = request.router_id
+        if not UtilClient.is_unset(request.sag_ins_id):
+            query['SagInsId'] = request.sag_ins_id
+        if not UtilClient.is_unset(request.sag_sn):
+            query['SagSn'] = request.sag_sn
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateSmartAccessGatewayOspfRoute',
+            version='2018-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            smartag_20180313_models.UpdateSmartAccessGatewayOspfRouteResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_smart_access_gateway_ospf_route_with_options_async(
+        self,
+        request: smartag_20180313_models.UpdateSmartAccessGatewayOspfRouteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> smartag_20180313_models.UpdateSmartAccessGatewayOspfRouteResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.area_id):
+            query['AreaId'] = request.area_id
+        if not UtilClient.is_unset(request.authentication_type):
+            query['AuthenticationType'] = request.authentication_type
+        if not UtilClient.is_unset(request.cross_account):
+            query['CrossAccount'] = request.cross_account
+        if not UtilClient.is_unset(request.dead_time):
+            query['DeadTime'] = request.dead_time
+        if not UtilClient.is_unset(request.hello_time):
+            query['HelloTime'] = request.hello_time
+        if not UtilClient.is_unset(request.interface_name):
+            query['InterfaceName'] = request.interface_name
+        if not UtilClient.is_unset(request.md_5key):
+            query['Md5Key'] = request.md_5key
+        if not UtilClient.is_unset(request.md_5key_id):
+            query['Md5KeyId'] = request.md_5key_id
+        if not UtilClient.is_unset(request.networks):
+            query['Networks'] = request.networks
+        if not UtilClient.is_unset(request.ospf_cost):
+            query['OspfCost'] = request.ospf_cost
+        if not UtilClient.is_unset(request.ospf_network_type):
+            query['OspfNetworkType'] = request.ospf_network_type
+        if not UtilClient.is_unset(request.password):
+            query['Password'] = request.password
+        if not UtilClient.is_unset(request.redistribute_protocol):
+            query['RedistributeProtocol'] = request.redistribute_protocol
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_uid):
+            query['ResourceUid'] = request.resource_uid
+        if not UtilClient.is_unset(request.router_id):
+            query['RouterId'] = request.router_id
+        if not UtilClient.is_unset(request.sag_ins_id):
+            query['SagInsId'] = request.sag_ins_id
+        if not UtilClient.is_unset(request.sag_sn):
+            query['SagSn'] = request.sag_sn
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateSmartAccessGatewayOspfRoute',
+            version='2018-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            smartag_20180313_models.UpdateSmartAccessGatewayOspfRouteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_smart_access_gateway_ospf_route(
+        self,
+        request: smartag_20180313_models.UpdateSmartAccessGatewayOspfRouteRequest,
+    ) -> smartag_20180313_models.UpdateSmartAccessGatewayOspfRouteResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_smart_access_gateway_ospf_route_with_options(request, runtime)
+
+    async def update_smart_access_gateway_ospf_route_async(
+        self,
+        request: smartag_20180313_models.UpdateSmartAccessGatewayOspfRouteRequest,
+    ) -> smartag_20180313_models.UpdateSmartAccessGatewayOspfRouteResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_smart_access_gateway_ospf_route_with_options_async(request, runtime)
+
+    def update_smart_access_gateway_port_route_protocol_with_options(
+        self,
+        request: smartag_20180313_models.UpdateSmartAccessGatewayPortRouteProtocolRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> smartag_20180313_models.UpdateSmartAccessGatewayPortRouteProtocolResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cross_account):
+            query['CrossAccount'] = request.cross_account
+        if not UtilClient.is_unset(request.port_name):
+            query['PortName'] = request.port_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.remote_as):
+            query['RemoteAs'] = request.remote_as
+        if not UtilClient.is_unset(request.remote_ip):
+            query['RemoteIp'] = request.remote_ip
+        if not UtilClient.is_unset(request.resource_uid):
+            query['ResourceUid'] = request.resource_uid
+        if not UtilClient.is_unset(request.route_protocol):
+            query['RouteProtocol'] = request.route_protocol
+        if not UtilClient.is_unset(request.sag_ins_id):
+            query['SagInsId'] = request.sag_ins_id
+        if not UtilClient.is_unset(request.sag_sn):
+            query['SagSn'] = request.sag_sn
+        if not UtilClient.is_unset(request.vlan):
+            query['Vlan'] = request.vlan
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateSmartAccessGatewayPortRouteProtocol',
+            version='2018-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            smartag_20180313_models.UpdateSmartAccessGatewayPortRouteProtocolResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_smart_access_gateway_port_route_protocol_with_options_async(
+        self,
+        request: smartag_20180313_models.UpdateSmartAccessGatewayPortRouteProtocolRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> smartag_20180313_models.UpdateSmartAccessGatewayPortRouteProtocolResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cross_account):
+            query['CrossAccount'] = request.cross_account
+        if not UtilClient.is_unset(request.port_name):
+            query['PortName'] = request.port_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.remote_as):
+            query['RemoteAs'] = request.remote_as
+        if not UtilClient.is_unset(request.remote_ip):
+            query['RemoteIp'] = request.remote_ip
+        if not UtilClient.is_unset(request.resource_uid):
+            query['ResourceUid'] = request.resource_uid
+        if not UtilClient.is_unset(request.route_protocol):
+            query['RouteProtocol'] = request.route_protocol
+        if not UtilClient.is_unset(request.sag_ins_id):
+            query['SagInsId'] = request.sag_ins_id
+        if not UtilClient.is_unset(request.sag_sn):
+            query['SagSn'] = request.sag_sn
+        if not UtilClient.is_unset(request.vlan):
+            query['Vlan'] = request.vlan
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateSmartAccessGatewayPortRouteProtocol',
+            version='2018-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            smartag_20180313_models.UpdateSmartAccessGatewayPortRouteProtocolResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_smart_access_gateway_port_route_protocol(
+        self,
+        request: smartag_20180313_models.UpdateSmartAccessGatewayPortRouteProtocolRequest,
+    ) -> smartag_20180313_models.UpdateSmartAccessGatewayPortRouteProtocolResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_smart_access_gateway_port_route_protocol_with_options(request, runtime)
+
+    async def update_smart_access_gateway_port_route_protocol_async(
+        self,
+        request: smartag_20180313_models.UpdateSmartAccessGatewayPortRouteProtocolRequest,
+    ) -> smartag_20180313_models.UpdateSmartAccessGatewayPortRouteProtocolResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_smart_access_gateway_port_route_protocol_with_options_async(request, runtime)
+
     def update_smart_access_gateway_version_with_options(
         self,
         request: smartag_20180313_models.UpdateSmartAccessGatewayVersionRequest,
@@ -17258,6 +19276,96 @@ class Client(OpenApiClient):
     ) -> smartag_20180313_models.UpdateSmartAccessGatewayVersionResponse:
         runtime = util_models.RuntimeOptions()
         return await self.update_smart_access_gateway_version_with_options_async(request, runtime)
+
+    def update_smart_access_gateway_wan_snat_with_options(
+        self,
+        request: smartag_20180313_models.UpdateSmartAccessGatewayWanSnatRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> smartag_20180313_models.UpdateSmartAccessGatewayWanSnatResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cross_account):
+            query['CrossAccount'] = request.cross_account
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_uid):
+            query['ResourceUid'] = request.resource_uid
+        if not UtilClient.is_unset(request.sag_ins_id):
+            query['SagInsId'] = request.sag_ins_id
+        if not UtilClient.is_unset(request.sag_sn):
+            query['SagSn'] = request.sag_sn
+        if not UtilClient.is_unset(request.snat):
+            query['Snat'] = request.snat
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateSmartAccessGatewayWanSnat',
+            version='2018-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            smartag_20180313_models.UpdateSmartAccessGatewayWanSnatResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_smart_access_gateway_wan_snat_with_options_async(
+        self,
+        request: smartag_20180313_models.UpdateSmartAccessGatewayWanSnatRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> smartag_20180313_models.UpdateSmartAccessGatewayWanSnatResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cross_account):
+            query['CrossAccount'] = request.cross_account
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_uid):
+            query['ResourceUid'] = request.resource_uid
+        if not UtilClient.is_unset(request.sag_ins_id):
+            query['SagInsId'] = request.sag_ins_id
+        if not UtilClient.is_unset(request.sag_sn):
+            query['SagSn'] = request.sag_sn
+        if not UtilClient.is_unset(request.snat):
+            query['Snat'] = request.snat
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateSmartAccessGatewayWanSnat',
+            version='2018-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            smartag_20180313_models.UpdateSmartAccessGatewayWanSnatResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_smart_access_gateway_wan_snat(
+        self,
+        request: smartag_20180313_models.UpdateSmartAccessGatewayWanSnatRequest,
+    ) -> smartag_20180313_models.UpdateSmartAccessGatewayWanSnatResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_smart_access_gateway_wan_snat_with_options(request, runtime)
+
+    async def update_smart_access_gateway_wan_snat_async(
+        self,
+        request: smartag_20180313_models.UpdateSmartAccessGatewayWanSnatRequest,
+    ) -> smartag_20180313_models.UpdateSmartAccessGatewayWanSnatResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_smart_access_gateway_wan_snat_with_options_async(request, runtime)
 
     def upgrade_smart_access_gateway_with_options(
         self,
@@ -17458,3 +19566,683 @@ class Client(OpenApiClient):
     ) -> smartag_20180313_models.UpgradeSmartAccessGatewaySoftwareResponse:
         runtime = util_models.RuntimeOptions()
         return await self.upgrade_smart_access_gateway_software_with_options_async(request, runtime)
+
+    def view_smart_access_gateway_bgp_route_with_options(
+        self,
+        request: smartag_20180313_models.ViewSmartAccessGatewayBgpRouteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> smartag_20180313_models.ViewSmartAccessGatewayBgpRouteResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cross_account):
+            query['CrossAccount'] = request.cross_account
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_uid):
+            query['ResourceUid'] = request.resource_uid
+        if not UtilClient.is_unset(request.sag_ins_id):
+            query['SagInsId'] = request.sag_ins_id
+        if not UtilClient.is_unset(request.sag_sn):
+            query['SagSn'] = request.sag_sn
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ViewSmartAccessGatewayBgpRoute',
+            version='2018-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            smartag_20180313_models.ViewSmartAccessGatewayBgpRouteResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def view_smart_access_gateway_bgp_route_with_options_async(
+        self,
+        request: smartag_20180313_models.ViewSmartAccessGatewayBgpRouteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> smartag_20180313_models.ViewSmartAccessGatewayBgpRouteResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cross_account):
+            query['CrossAccount'] = request.cross_account
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_uid):
+            query['ResourceUid'] = request.resource_uid
+        if not UtilClient.is_unset(request.sag_ins_id):
+            query['SagInsId'] = request.sag_ins_id
+        if not UtilClient.is_unset(request.sag_sn):
+            query['SagSn'] = request.sag_sn
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ViewSmartAccessGatewayBgpRoute',
+            version='2018-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            smartag_20180313_models.ViewSmartAccessGatewayBgpRouteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def view_smart_access_gateway_bgp_route(
+        self,
+        request: smartag_20180313_models.ViewSmartAccessGatewayBgpRouteRequest,
+    ) -> smartag_20180313_models.ViewSmartAccessGatewayBgpRouteResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.view_smart_access_gateway_bgp_route_with_options(request, runtime)
+
+    async def view_smart_access_gateway_bgp_route_async(
+        self,
+        request: smartag_20180313_models.ViewSmartAccessGatewayBgpRouteRequest,
+    ) -> smartag_20180313_models.ViewSmartAccessGatewayBgpRouteResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.view_smart_access_gateway_bgp_route_with_options_async(request, runtime)
+
+    def view_smart_access_gateway_dns_with_options(
+        self,
+        request: smartag_20180313_models.ViewSmartAccessGatewayDnsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> smartag_20180313_models.ViewSmartAccessGatewayDnsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cross_account):
+            query['CrossAccount'] = request.cross_account
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_uid):
+            query['ResourceUid'] = request.resource_uid
+        if not UtilClient.is_unset(request.sag_ins_id):
+            query['SagInsId'] = request.sag_ins_id
+        if not UtilClient.is_unset(request.sag_sn):
+            query['SagSn'] = request.sag_sn
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ViewSmartAccessGatewayDns',
+            version='2018-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            smartag_20180313_models.ViewSmartAccessGatewayDnsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def view_smart_access_gateway_dns_with_options_async(
+        self,
+        request: smartag_20180313_models.ViewSmartAccessGatewayDnsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> smartag_20180313_models.ViewSmartAccessGatewayDnsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cross_account):
+            query['CrossAccount'] = request.cross_account
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_uid):
+            query['ResourceUid'] = request.resource_uid
+        if not UtilClient.is_unset(request.sag_ins_id):
+            query['SagInsId'] = request.sag_ins_id
+        if not UtilClient.is_unset(request.sag_sn):
+            query['SagSn'] = request.sag_sn
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ViewSmartAccessGatewayDns',
+            version='2018-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            smartag_20180313_models.ViewSmartAccessGatewayDnsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def view_smart_access_gateway_dns(
+        self,
+        request: smartag_20180313_models.ViewSmartAccessGatewayDnsRequest,
+    ) -> smartag_20180313_models.ViewSmartAccessGatewayDnsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.view_smart_access_gateway_dns_with_options(request, runtime)
+
+    async def view_smart_access_gateway_dns_async(
+        self,
+        request: smartag_20180313_models.ViewSmartAccessGatewayDnsRequest,
+    ) -> smartag_20180313_models.ViewSmartAccessGatewayDnsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.view_smart_access_gateway_dns_with_options_async(request, runtime)
+
+    def view_smart_access_gateway_dns_forwards_with_options(
+        self,
+        request: smartag_20180313_models.ViewSmartAccessGatewayDnsForwardsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> smartag_20180313_models.ViewSmartAccessGatewayDnsForwardsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sag_ins_id):
+            query['SagInsId'] = request.sag_ins_id
+        if not UtilClient.is_unset(request.sag_sn):
+            query['SagSn'] = request.sag_sn
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ViewSmartAccessGatewayDnsForwards',
+            version='2018-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            smartag_20180313_models.ViewSmartAccessGatewayDnsForwardsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def view_smart_access_gateway_dns_forwards_with_options_async(
+        self,
+        request: smartag_20180313_models.ViewSmartAccessGatewayDnsForwardsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> smartag_20180313_models.ViewSmartAccessGatewayDnsForwardsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sag_ins_id):
+            query['SagInsId'] = request.sag_ins_id
+        if not UtilClient.is_unset(request.sag_sn):
+            query['SagSn'] = request.sag_sn
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ViewSmartAccessGatewayDnsForwards',
+            version='2018-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            smartag_20180313_models.ViewSmartAccessGatewayDnsForwardsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def view_smart_access_gateway_dns_forwards(
+        self,
+        request: smartag_20180313_models.ViewSmartAccessGatewayDnsForwardsRequest,
+    ) -> smartag_20180313_models.ViewSmartAccessGatewayDnsForwardsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.view_smart_access_gateway_dns_forwards_with_options(request, runtime)
+
+    async def view_smart_access_gateway_dns_forwards_async(
+        self,
+        request: smartag_20180313_models.ViewSmartAccessGatewayDnsForwardsRequest,
+    ) -> smartag_20180313_models.ViewSmartAccessGatewayDnsForwardsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.view_smart_access_gateway_dns_forwards_with_options_async(request, runtime)
+
+    def view_smart_access_gateway_global_route_protocol_with_options(
+        self,
+        request: smartag_20180313_models.ViewSmartAccessGatewayGlobalRouteProtocolRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> smartag_20180313_models.ViewSmartAccessGatewayGlobalRouteProtocolResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cross_account):
+            query['CrossAccount'] = request.cross_account
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_uid):
+            query['ResourceUid'] = request.resource_uid
+        if not UtilClient.is_unset(request.sag_ins_id):
+            query['SagInsId'] = request.sag_ins_id
+        if not UtilClient.is_unset(request.sag_sn):
+            query['SagSn'] = request.sag_sn
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ViewSmartAccessGatewayGlobalRouteProtocol',
+            version='2018-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            smartag_20180313_models.ViewSmartAccessGatewayGlobalRouteProtocolResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def view_smart_access_gateway_global_route_protocol_with_options_async(
+        self,
+        request: smartag_20180313_models.ViewSmartAccessGatewayGlobalRouteProtocolRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> smartag_20180313_models.ViewSmartAccessGatewayGlobalRouteProtocolResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cross_account):
+            query['CrossAccount'] = request.cross_account
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_uid):
+            query['ResourceUid'] = request.resource_uid
+        if not UtilClient.is_unset(request.sag_ins_id):
+            query['SagInsId'] = request.sag_ins_id
+        if not UtilClient.is_unset(request.sag_sn):
+            query['SagSn'] = request.sag_sn
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ViewSmartAccessGatewayGlobalRouteProtocol',
+            version='2018-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            smartag_20180313_models.ViewSmartAccessGatewayGlobalRouteProtocolResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def view_smart_access_gateway_global_route_protocol(
+        self,
+        request: smartag_20180313_models.ViewSmartAccessGatewayGlobalRouteProtocolRequest,
+    ) -> smartag_20180313_models.ViewSmartAccessGatewayGlobalRouteProtocolResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.view_smart_access_gateway_global_route_protocol_with_options(request, runtime)
+
+    async def view_smart_access_gateway_global_route_protocol_async(
+        self,
+        request: smartag_20180313_models.ViewSmartAccessGatewayGlobalRouteProtocolRequest,
+    ) -> smartag_20180313_models.ViewSmartAccessGatewayGlobalRouteProtocolResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.view_smart_access_gateway_global_route_protocol_with_options_async(request, runtime)
+
+    def view_smart_access_gateway_ospf_route_with_options(
+        self,
+        request: smartag_20180313_models.ViewSmartAccessGatewayOspfRouteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> smartag_20180313_models.ViewSmartAccessGatewayOspfRouteResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cross_account):
+            query['CrossAccount'] = request.cross_account
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_uid):
+            query['ResourceUid'] = request.resource_uid
+        if not UtilClient.is_unset(request.sag_ins_id):
+            query['SagInsId'] = request.sag_ins_id
+        if not UtilClient.is_unset(request.sag_sn):
+            query['SagSn'] = request.sag_sn
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ViewSmartAccessGatewayOspfRoute',
+            version='2018-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            smartag_20180313_models.ViewSmartAccessGatewayOspfRouteResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def view_smart_access_gateway_ospf_route_with_options_async(
+        self,
+        request: smartag_20180313_models.ViewSmartAccessGatewayOspfRouteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> smartag_20180313_models.ViewSmartAccessGatewayOspfRouteResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cross_account):
+            query['CrossAccount'] = request.cross_account
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_uid):
+            query['ResourceUid'] = request.resource_uid
+        if not UtilClient.is_unset(request.sag_ins_id):
+            query['SagInsId'] = request.sag_ins_id
+        if not UtilClient.is_unset(request.sag_sn):
+            query['SagSn'] = request.sag_sn
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ViewSmartAccessGatewayOspfRoute',
+            version='2018-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            smartag_20180313_models.ViewSmartAccessGatewayOspfRouteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def view_smart_access_gateway_ospf_route(
+        self,
+        request: smartag_20180313_models.ViewSmartAccessGatewayOspfRouteRequest,
+    ) -> smartag_20180313_models.ViewSmartAccessGatewayOspfRouteResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.view_smart_access_gateway_ospf_route_with_options(request, runtime)
+
+    async def view_smart_access_gateway_ospf_route_async(
+        self,
+        request: smartag_20180313_models.ViewSmartAccessGatewayOspfRouteRequest,
+    ) -> smartag_20180313_models.ViewSmartAccessGatewayOspfRouteResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.view_smart_access_gateway_ospf_route_with_options_async(request, runtime)
+
+    def view_smart_access_gateway_port_route_protocol_with_options(
+        self,
+        request: smartag_20180313_models.ViewSmartAccessGatewayPortRouteProtocolRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> smartag_20180313_models.ViewSmartAccessGatewayPortRouteProtocolResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cross_account):
+            query['CrossAccount'] = request.cross_account
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_uid):
+            query['ResourceUid'] = request.resource_uid
+        if not UtilClient.is_unset(request.sag_ins_id):
+            query['SagInsId'] = request.sag_ins_id
+        if not UtilClient.is_unset(request.sag_sn):
+            query['SagSn'] = request.sag_sn
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ViewSmartAccessGatewayPortRouteProtocol',
+            version='2018-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            smartag_20180313_models.ViewSmartAccessGatewayPortRouteProtocolResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def view_smart_access_gateway_port_route_protocol_with_options_async(
+        self,
+        request: smartag_20180313_models.ViewSmartAccessGatewayPortRouteProtocolRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> smartag_20180313_models.ViewSmartAccessGatewayPortRouteProtocolResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cross_account):
+            query['CrossAccount'] = request.cross_account
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_uid):
+            query['ResourceUid'] = request.resource_uid
+        if not UtilClient.is_unset(request.sag_ins_id):
+            query['SagInsId'] = request.sag_ins_id
+        if not UtilClient.is_unset(request.sag_sn):
+            query['SagSn'] = request.sag_sn
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ViewSmartAccessGatewayPortRouteProtocol',
+            version='2018-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            smartag_20180313_models.ViewSmartAccessGatewayPortRouteProtocolResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def view_smart_access_gateway_port_route_protocol(
+        self,
+        request: smartag_20180313_models.ViewSmartAccessGatewayPortRouteProtocolRequest,
+    ) -> smartag_20180313_models.ViewSmartAccessGatewayPortRouteProtocolResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.view_smart_access_gateway_port_route_protocol_with_options(request, runtime)
+
+    async def view_smart_access_gateway_port_route_protocol_async(
+        self,
+        request: smartag_20180313_models.ViewSmartAccessGatewayPortRouteProtocolRequest,
+    ) -> smartag_20180313_models.ViewSmartAccessGatewayPortRouteProtocolResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.view_smart_access_gateway_port_route_protocol_with_options_async(request, runtime)
+
+    def view_smart_access_gateway_routes_with_options(
+        self,
+        request: smartag_20180313_models.ViewSmartAccessGatewayRoutesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> smartag_20180313_models.ViewSmartAccessGatewayRoutesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cross_account):
+            query['CrossAccount'] = request.cross_account
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_uid):
+            query['ResourceUid'] = request.resource_uid
+        if not UtilClient.is_unset(request.sag_ins_id):
+            query['SagInsId'] = request.sag_ins_id
+        if not UtilClient.is_unset(request.sag_sn):
+            query['SagSn'] = request.sag_sn
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ViewSmartAccessGatewayRoutes',
+            version='2018-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            smartag_20180313_models.ViewSmartAccessGatewayRoutesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def view_smart_access_gateway_routes_with_options_async(
+        self,
+        request: smartag_20180313_models.ViewSmartAccessGatewayRoutesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> smartag_20180313_models.ViewSmartAccessGatewayRoutesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cross_account):
+            query['CrossAccount'] = request.cross_account
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_uid):
+            query['ResourceUid'] = request.resource_uid
+        if not UtilClient.is_unset(request.sag_ins_id):
+            query['SagInsId'] = request.sag_ins_id
+        if not UtilClient.is_unset(request.sag_sn):
+            query['SagSn'] = request.sag_sn
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ViewSmartAccessGatewayRoutes',
+            version='2018-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            smartag_20180313_models.ViewSmartAccessGatewayRoutesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def view_smart_access_gateway_routes(
+        self,
+        request: smartag_20180313_models.ViewSmartAccessGatewayRoutesRequest,
+    ) -> smartag_20180313_models.ViewSmartAccessGatewayRoutesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.view_smart_access_gateway_routes_with_options(request, runtime)
+
+    async def view_smart_access_gateway_routes_async(
+        self,
+        request: smartag_20180313_models.ViewSmartAccessGatewayRoutesRequest,
+    ) -> smartag_20180313_models.ViewSmartAccessGatewayRoutesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.view_smart_access_gateway_routes_with_options_async(request, runtime)
+
+    def view_smart_access_gateway_wan_snat_with_options(
+        self,
+        request: smartag_20180313_models.ViewSmartAccessGatewayWanSnatRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> smartag_20180313_models.ViewSmartAccessGatewayWanSnatResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cross_account):
+            query['CrossAccount'] = request.cross_account
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_uid):
+            query['ResourceUid'] = request.resource_uid
+        if not UtilClient.is_unset(request.sag_ins_id):
+            query['SagInsId'] = request.sag_ins_id
+        if not UtilClient.is_unset(request.sag_sn):
+            query['SagSn'] = request.sag_sn
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ViewSmartAccessGatewayWanSnat',
+            version='2018-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            smartag_20180313_models.ViewSmartAccessGatewayWanSnatResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def view_smart_access_gateway_wan_snat_with_options_async(
+        self,
+        request: smartag_20180313_models.ViewSmartAccessGatewayWanSnatRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> smartag_20180313_models.ViewSmartAccessGatewayWanSnatResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cross_account):
+            query['CrossAccount'] = request.cross_account
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_uid):
+            query['ResourceUid'] = request.resource_uid
+        if not UtilClient.is_unset(request.sag_ins_id):
+            query['SagInsId'] = request.sag_ins_id
+        if not UtilClient.is_unset(request.sag_sn):
+            query['SagSn'] = request.sag_sn
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ViewSmartAccessGatewayWanSnat',
+            version='2018-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            smartag_20180313_models.ViewSmartAccessGatewayWanSnatResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def view_smart_access_gateway_wan_snat(
+        self,
+        request: smartag_20180313_models.ViewSmartAccessGatewayWanSnatRequest,
+    ) -> smartag_20180313_models.ViewSmartAccessGatewayWanSnatResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.view_smart_access_gateway_wan_snat_with_options(request, runtime)
+
+    async def view_smart_access_gateway_wan_snat_async(
+        self,
+        request: smartag_20180313_models.ViewSmartAccessGatewayWanSnatRequest,
+    ) -> smartag_20180313_models.ViewSmartAccessGatewayWanSnatResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.view_smart_access_gateway_wan_snat_with_options_async(request, runtime)

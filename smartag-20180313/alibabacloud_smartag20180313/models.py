@@ -92,13 +92,16 @@ class ActivateSmartAccessGatewayResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ActivateSmartAccessGatewayResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -111,6 +114,8 @@ class ActivateSmartAccessGatewayResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -119,6 +124,8 @@ class ActivateSmartAccessGatewayResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ActivateSmartAccessGatewayResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -213,13 +220,16 @@ class ActiveFlowLogResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ActiveFlowLogResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -232,6 +242,8 @@ class ActiveFlowLogResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -240,6 +252,8 @@ class ActiveFlowLogResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ActiveFlowLogResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -567,13 +581,16 @@ class AddACLRuleResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: AddACLRuleResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -586,6 +603,8 @@ class AddACLRuleResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -594,6 +613,8 @@ class AddACLRuleResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = AddACLRuleResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -730,13 +751,16 @@ class AddDnatEntryResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: AddDnatEntryResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -749,6 +773,8 @@ class AddDnatEntryResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -757,8 +783,263 @@ class AddDnatEntryResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = AddDnatEntryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class AddSmartAccessGatewayDnsForwardRequest(TeaModel):
+    def __init__(
+        self,
+        domain: str = None,
+        master_ip: str = None,
+        mode: str = None,
+        outbound_port_index: str = None,
+        outbound_port_name: str = None,
+        outbound_port_type: str = None,
+        region_id: str = None,
+        sag_ins_id: str = None,
+        sag_sn: str = None,
+        slave_ip: str = None,
+    ):
+        self.domain = domain
+        self.master_ip = master_ip
+        self.mode = mode
+        self.outbound_port_index = outbound_port_index
+        self.outbound_port_name = outbound_port_name
+        self.outbound_port_type = outbound_port_type
+        self.region_id = region_id
+        self.sag_ins_id = sag_ins_id
+        self.sag_sn = sag_sn
+        self.slave_ip = slave_ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.master_ip is not None:
+            result['MasterIp'] = self.master_ip
+        if self.mode is not None:
+            result['Mode'] = self.mode
+        if self.outbound_port_index is not None:
+            result['OutboundPortIndex'] = self.outbound_port_index
+        if self.outbound_port_name is not None:
+            result['OutboundPortName'] = self.outbound_port_name
+        if self.outbound_port_type is not None:
+            result['OutboundPortType'] = self.outbound_port_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.sag_ins_id is not None:
+            result['SagInsId'] = self.sag_ins_id
+        if self.sag_sn is not None:
+            result['SagSn'] = self.sag_sn
+        if self.slave_ip is not None:
+            result['SlaveIp'] = self.slave_ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('MasterIp') is not None:
+            self.master_ip = m.get('MasterIp')
+        if m.get('Mode') is not None:
+            self.mode = m.get('Mode')
+        if m.get('OutboundPortIndex') is not None:
+            self.outbound_port_index = m.get('OutboundPortIndex')
+        if m.get('OutboundPortName') is not None:
+            self.outbound_port_name = m.get('OutboundPortName')
+        if m.get('OutboundPortType') is not None:
+            self.outbound_port_type = m.get('OutboundPortType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SagInsId') is not None:
+            self.sag_ins_id = m.get('SagInsId')
+        if m.get('SagSn') is not None:
+            self.sag_sn = m.get('SagSn')
+        if m.get('SlaveIp') is not None:
+            self.slave_ip = m.get('SlaveIp')
+        return self
+
+
+class AddSmartAccessGatewayDnsForwardResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        domain: str = None,
+        instance_id: str = None,
+        master_ip: str = None,
+        mode: str = None,
+        outbound_port_index: int = None,
+        outbound_port_name: str = None,
+        outbound_port_type: str = None,
+        slave_ip: str = None,
+    ):
+        self.domain = domain
+        self.instance_id = instance_id
+        self.master_ip = master_ip
+        self.mode = mode
+        self.outbound_port_index = outbound_port_index
+        self.outbound_port_name = outbound_port_name
+        self.outbound_port_type = outbound_port_type
+        self.slave_ip = slave_ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.master_ip is not None:
+            result['MasterIp'] = self.master_ip
+        if self.mode is not None:
+            result['Mode'] = self.mode
+        if self.outbound_port_index is not None:
+            result['OutboundPortIndex'] = self.outbound_port_index
+        if self.outbound_port_name is not None:
+            result['OutboundPortName'] = self.outbound_port_name
+        if self.outbound_port_type is not None:
+            result['OutboundPortType'] = self.outbound_port_type
+        if self.slave_ip is not None:
+            result['SlaveIp'] = self.slave_ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('MasterIp') is not None:
+            self.master_ip = m.get('MasterIp')
+        if m.get('Mode') is not None:
+            self.mode = m.get('Mode')
+        if m.get('OutboundPortIndex') is not None:
+            self.outbound_port_index = m.get('OutboundPortIndex')
+        if m.get('OutboundPortName') is not None:
+            self.outbound_port_name = m.get('OutboundPortName')
+        if m.get('OutboundPortType') is not None:
+            self.outbound_port_type = m.get('OutboundPortType')
+        if m.get('SlaveIp') is not None:
+            self.slave_ip = m.get('SlaveIp')
+        return self
+
+
+class AddSmartAccessGatewayDnsForwardResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: AddSmartAccessGatewayDnsForwardResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = AddSmartAccessGatewayDnsForwardResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class AddSmartAccessGatewayDnsForwardResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AddSmartAccessGatewayDnsForwardResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AddSmartAccessGatewayDnsForwardResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -869,13 +1150,16 @@ class AddSnatEntryResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: AddSnatEntryResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -888,6 +1172,8 @@ class AddSnatEntryResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -896,6 +1182,8 @@ class AddSnatEntryResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = AddSnatEntryResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -996,13 +1284,16 @@ class AssociateACLResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: AssociateACLResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1015,6 +1306,8 @@ class AssociateACLResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1023,6 +1316,8 @@ class AssociateACLResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = AssociateACLResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1123,13 +1418,16 @@ class AssociateFlowLogResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: AssociateFlowLogResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1142,6 +1440,8 @@ class AssociateFlowLogResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1150,6 +1450,8 @@ class AssociateFlowLogResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = AssociateFlowLogResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1250,13 +1552,16 @@ class AssociateQosResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: AssociateQosResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1269,6 +1574,8 @@ class AssociateQosResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1277,8 +1584,173 @@ class AssociateQosResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = AssociateQosResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class AssociateSmartAGWithApplicationBandwidthPackageRequestAssociateConfigs(TeaModel):
+    def __init__(
+        self,
+        bandwidth: int = None,
+        smart_agid: str = None,
+    ):
+        self.bandwidth = bandwidth
+        self.smart_agid = smart_agid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bandwidth is not None:
+            result['Bandwidth'] = self.bandwidth
+        if self.smart_agid is not None:
+            result['SmartAGId'] = self.smart_agid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bandwidth') is not None:
+            self.bandwidth = m.get('Bandwidth')
+        if m.get('SmartAGId') is not None:
+            self.smart_agid = m.get('SmartAGId')
+        return self
+
+
+class AssociateSmartAGWithApplicationBandwidthPackageRequest(TeaModel):
+    def __init__(
+        self,
+        application_bandwidth_package_id: str = None,
+        associate_configs: List[AssociateSmartAGWithApplicationBandwidthPackageRequestAssociateConfigs] = None,
+        client_token: str = None,
+        dry_run: bool = None,
+        region_id: str = None,
+    ):
+        self.application_bandwidth_package_id = application_bandwidth_package_id
+        self.associate_configs = associate_configs
+        self.client_token = client_token
+        self.dry_run = dry_run
+        self.region_id = region_id
+
+    def validate(self):
+        if self.associate_configs:
+            for k in self.associate_configs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_bandwidth_package_id is not None:
+            result['ApplicationBandwidthPackageId'] = self.application_bandwidth_package_id
+        result['AssociateConfigs'] = []
+        if self.associate_configs is not None:
+            for k in self.associate_configs:
+                result['AssociateConfigs'].append(k.to_map() if k else None)
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationBandwidthPackageId') is not None:
+            self.application_bandwidth_package_id = m.get('ApplicationBandwidthPackageId')
+        self.associate_configs = []
+        if m.get('AssociateConfigs') is not None:
+            for k in m.get('AssociateConfigs'):
+                temp_model = AssociateSmartAGWithApplicationBandwidthPackageRequestAssociateConfigs()
+                self.associate_configs.append(temp_model.from_map(k))
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class AssociateSmartAGWithApplicationBandwidthPackageResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class AssociateSmartAGWithApplicationBandwidthPackageResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AssociateSmartAGWithApplicationBandwidthPackageResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AssociateSmartAGWithApplicationBandwidthPackageResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -1377,13 +1849,16 @@ class BindSerialNumberResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: BindSerialNumberResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1396,6 +1871,8 @@ class BindSerialNumberResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1404,6 +1881,8 @@ class BindSerialNumberResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = BindSerialNumberResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1510,13 +1989,16 @@ class BindSmartAccessGatewayResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: BindSmartAccessGatewayResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1529,6 +2011,8 @@ class BindSmartAccessGatewayResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1537,6 +2021,8 @@ class BindSmartAccessGatewayResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = BindSmartAccessGatewayResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1649,13 +2135,16 @@ class BindVbrResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: BindVbrResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1668,6 +2157,8 @@ class BindVbrResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1676,6 +2167,8 @@ class BindVbrResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = BindVbrResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1776,13 +2269,16 @@ class ClearSagCipherResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ClearSagCipherResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1795,6 +2291,8 @@ class ClearSagCipherResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1803,6 +2301,8 @@ class ClearSagCipherResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ClearSagCipherResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1897,13 +2397,16 @@ class ClearSagRouteableAddressResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ClearSagRouteableAddressResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -1916,6 +2419,8 @@ class ClearSagRouteableAddressResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1924,6 +2429,8 @@ class ClearSagRouteableAddressResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ClearSagRouteableAddressResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1933,6 +2440,7 @@ class ClearSagRouteableAddressResponse(TeaModel):
 class CreateACLRequest(TeaModel):
     def __init__(
         self,
+        acl_type: str = None,
         name: str = None,
         owner_account: str = None,
         owner_id: int = None,
@@ -1940,6 +2448,7 @@ class CreateACLRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        self.acl_type = acl_type
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -1956,6 +2465,8 @@ class CreateACLRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.acl_type is not None:
+            result['AclType'] = self.acl_type
         if self.name is not None:
             result['Name'] = self.name
         if self.owner_account is not None:
@@ -1972,6 +2483,8 @@ class CreateACLRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AclType') is not None:
+            self.acl_type = m.get('AclType')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('OwnerAccount') is not None:
@@ -1991,10 +2504,12 @@ class CreateACLResponseBody(TeaModel):
     def __init__(
         self,
         acl_id: str = None,
+        acl_type: str = None,
         request_id: str = None,
         resource_group_id: str = None,
     ):
         self.acl_id = acl_id
+        self.acl_type = acl_type
         self.request_id = request_id
         self.resource_group_id = resource_group_id
 
@@ -2009,6 +2524,8 @@ class CreateACLResponseBody(TeaModel):
         result = dict()
         if self.acl_id is not None:
             result['AclId'] = self.acl_id
+        if self.acl_type is not None:
+            result['AclType'] = self.acl_type
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.resource_group_id is not None:
@@ -2019,6 +2536,8 @@ class CreateACLResponseBody(TeaModel):
         m = m or dict()
         if m.get('AclId') is not None:
             self.acl_id = m.get('AclId')
+        if m.get('AclType') is not None:
+            self.acl_type = m.get('AclType')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('ResourceGroupId') is not None:
@@ -2030,13 +2549,16 @@ class CreateACLResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreateACLResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2049,6 +2571,8 @@ class CreateACLResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2057,6 +2581,8 @@ class CreateACLResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateACLResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2211,13 +2737,16 @@ class CreateCloudConnectNetworkResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreateCloudConnectNetworkResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2230,6 +2759,8 @@ class CreateCloudConnectNetworkResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2238,6 +2769,8 @@ class CreateCloudConnectNetworkResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateCloudConnectNetworkResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2314,13 +2847,16 @@ class CreateEnterpriseCodeResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreateEnterpriseCodeResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2333,6 +2869,8 @@ class CreateEnterpriseCodeResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2341,6 +2879,8 @@ class CreateEnterpriseCodeResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateEnterpriseCodeResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2507,13 +3047,16 @@ class CreateFlowLogResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreateFlowLogResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2526,6 +3069,8 @@ class CreateFlowLogResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2534,6 +3079,8 @@ class CreateFlowLogResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateFlowLogResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2712,13 +3259,16 @@ class CreateHealthCheckResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreateHealthCheckResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2731,6 +3281,8 @@ class CreateHealthCheckResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2739,8 +3291,186 @@ class CreateHealthCheckResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateHealthCheckResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateProbeTaskRequest(TeaModel):
+    def __init__(
+        self,
+        domain: str = None,
+        enable: bool = None,
+        packet_number: int = None,
+        port: int = None,
+        probe_task_source_address: str = None,
+        protocol: str = None,
+        region_id: str = None,
+        sag_id: str = None,
+        sn: str = None,
+        task_name: str = None,
+        type: str = None,
+    ):
+        self.domain = domain
+        self.enable = enable
+        self.packet_number = packet_number
+        self.port = port
+        self.probe_task_source_address = probe_task_source_address
+        self.protocol = protocol
+        self.region_id = region_id
+        self.sag_id = sag_id
+        self.sn = sn
+        self.task_name = task_name
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        if self.packet_number is not None:
+            result['PacketNumber'] = self.packet_number
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.probe_task_source_address is not None:
+            result['ProbeTaskSourceAddress'] = self.probe_task_source_address
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.sag_id is not None:
+            result['SagId'] = self.sag_id
+        if self.sn is not None:
+            result['Sn'] = self.sn
+        if self.task_name is not None:
+            result['TaskName'] = self.task_name
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        if m.get('PacketNumber') is not None:
+            self.packet_number = m.get('PacketNumber')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('ProbeTaskSourceAddress') is not None:
+            self.probe_task_source_address = m.get('ProbeTaskSourceAddress')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SagId') is not None:
+            self.sag_id = m.get('SagId')
+        if m.get('Sn') is not None:
+            self.sn = m.get('Sn')
+        if m.get('TaskName') is not None:
+            self.task_name = m.get('TaskName')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class CreateProbeTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateProbeTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateProbeTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateProbeTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2851,13 +3581,16 @@ class CreateQosResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreateQosResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -2870,6 +3603,8 @@ class CreateQosResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2878,6 +3613,8 @@ class CreateQosResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateQosResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -3086,13 +3823,16 @@ class CreateQosCarResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreateQosCarResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -3105,6 +3845,8 @@ class CreateQosCarResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3113,6 +3855,8 @@ class CreateQosCarResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateQosCarResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -3422,13 +4166,16 @@ class CreateQosPolicyResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreateQosPolicyResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -3441,6 +4188,8 @@ class CreateQosPolicyResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3449,6 +4198,8 @@ class CreateQosPolicyResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateQosPolicyResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -3573,13 +4324,16 @@ class CreateSagExpressConnectInterfaceResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreateSagExpressConnectInterfaceResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -3592,6 +4346,8 @@ class CreateSagExpressConnectInterfaceResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3600,6 +4356,8 @@ class CreateSagExpressConnectInterfaceResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateSagExpressConnectInterfaceResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -3724,13 +4482,16 @@ class CreateSagStaticRouteResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreateSagStaticRouteResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -3743,6 +4504,8 @@ class CreateSagStaticRouteResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -3751,8 +4514,144 @@ class CreateSagStaticRouteResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateSagStaticRouteResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateServiceAddressRequest(TeaModel):
+    def __init__(
+        self,
+        address: str = None,
+        address_type: str = None,
+        region_id: str = None,
+        sag_id: str = None,
+        sn: str = None,
+    ):
+        self.address = address
+        self.address_type = address_type
+        self.region_id = region_id
+        self.sag_id = sag_id
+        self.sn = sn
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address is not None:
+            result['Address'] = self.address
+        if self.address_type is not None:
+            result['AddressType'] = self.address_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.sag_id is not None:
+            result['SagId'] = self.sag_id
+        if self.sn is not None:
+            result['Sn'] = self.sn
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Address') is not None:
+            self.address = m.get('Address')
+        if m.get('AddressType') is not None:
+            self.address_type = m.get('AddressType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SagId') is not None:
+            self.sag_id = m.get('SagId')
+        if m.get('Sn') is not None:
+            self.sn = m.get('Sn')
+        return self
+
+
+class CreateServiceAddressResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateServiceAddressResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateServiceAddressResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateServiceAddressResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -4001,13 +4900,16 @@ class CreateSmartAccessGatewayResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreateSmartAccessGatewayResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -4020,6 +4922,8 @@ class CreateSmartAccessGatewayResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -4028,6 +4932,8 @@ class CreateSmartAccessGatewayResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateSmartAccessGatewayResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -4176,13 +5082,16 @@ class CreateSmartAccessGatewayClientUserResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreateSmartAccessGatewayClientUserResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -4195,6 +5104,8 @@ class CreateSmartAccessGatewayClientUserResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -4203,6 +5114,8 @@ class CreateSmartAccessGatewayClientUserResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateSmartAccessGatewayClientUserResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -4339,13 +5252,16 @@ class CreateSmartAccessGatewaySoftwareResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreateSmartAccessGatewaySoftwareResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -4358,6 +5274,8 @@ class CreateSmartAccessGatewaySoftwareResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -4366,6 +5284,8 @@ class CreateSmartAccessGatewaySoftwareResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateSmartAccessGatewaySoftwareResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -4460,13 +5380,16 @@ class DeactiveFlowLogResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeactiveFlowLogResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -4479,6 +5402,8 @@ class DeactiveFlowLogResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -4487,6 +5412,8 @@ class DeactiveFlowLogResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeactiveFlowLogResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -4581,13 +5508,16 @@ class DeleteACLResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteACLResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -4600,6 +5530,8 @@ class DeleteACLResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -4608,6 +5540,8 @@ class DeleteACLResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteACLResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -4708,13 +5642,16 @@ class DeleteACLRuleResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteACLRuleResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -4727,6 +5664,8 @@ class DeleteACLRuleResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -4735,6 +5674,8 @@ class DeleteACLRuleResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteACLRuleResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -4829,13 +5770,16 @@ class DeleteCloudConnectNetworkResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteCloudConnectNetworkResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -4848,6 +5792,8 @@ class DeleteCloudConnectNetworkResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -4856,6 +5802,8 @@ class DeleteCloudConnectNetworkResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteCloudConnectNetworkResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -4956,13 +5904,16 @@ class DeleteDnatEntryResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteDnatEntryResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -4975,6 +5926,8 @@ class DeleteDnatEntryResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -4983,6 +5936,8 @@ class DeleteDnatEntryResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteDnatEntryResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -5059,13 +6014,16 @@ class DeleteEnterpriseCodeResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteEnterpriseCodeResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -5078,6 +6036,8 @@ class DeleteEnterpriseCodeResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -5086,6 +6046,8 @@ class DeleteEnterpriseCodeResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteEnterpriseCodeResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -5180,13 +6142,16 @@ class DeleteFlowLogResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteFlowLogResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -5199,6 +6164,8 @@ class DeleteFlowLogResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -5207,6 +6174,8 @@ class DeleteFlowLogResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteFlowLogResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -5301,13 +6270,16 @@ class DeleteHealthCheckResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteHealthCheckResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -5320,6 +6292,8 @@ class DeleteHealthCheckResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -5328,8 +6302,138 @@ class DeleteHealthCheckResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteHealthCheckResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteProbeTaskRequest(TeaModel):
+    def __init__(
+        self,
+        probe_task_id: str = None,
+        region_id: str = None,
+        sag_id: str = None,
+        sn: str = None,
+    ):
+        self.probe_task_id = probe_task_id
+        self.region_id = region_id
+        self.sag_id = sag_id
+        self.sn = sn
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.probe_task_id is not None:
+            result['ProbeTaskId'] = self.probe_task_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.sag_id is not None:
+            result['SagId'] = self.sag_id
+        if self.sn is not None:
+            result['Sn'] = self.sn
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProbeTaskId') is not None:
+            self.probe_task_id = m.get('ProbeTaskId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SagId') is not None:
+            self.sag_id = m.get('SagId')
+        if m.get('Sn') is not None:
+            self.sn = m.get('Sn')
+        return self
+
+
+class DeleteProbeTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteProbeTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteProbeTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteProbeTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -5422,13 +6526,16 @@ class DeleteQosResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteQosResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -5441,6 +6548,8 @@ class DeleteQosResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -5449,6 +6558,8 @@ class DeleteQosResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteQosResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -5549,13 +6660,16 @@ class DeleteQosCarResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteQosCarResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -5568,6 +6682,8 @@ class DeleteQosCarResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -5576,6 +6692,8 @@ class DeleteQosCarResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteQosCarResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -5676,13 +6794,16 @@ class DeleteQosPolicyResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteQosPolicyResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -5695,6 +6816,8 @@ class DeleteQosPolicyResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -5703,6 +6826,8 @@ class DeleteQosPolicyResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteQosPolicyResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -5815,13 +6940,16 @@ class DeleteRouteDistributionStrategyResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteRouteDistributionStrategyResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -5834,6 +6962,8 @@ class DeleteRouteDistributionStrategyResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -5842,6 +6972,8 @@ class DeleteRouteDistributionStrategyResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteRouteDistributionStrategyResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -5954,13 +7086,16 @@ class DeleteSagExpressConnectInterfaceResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteSagExpressConnectInterfaceResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -5973,6 +7108,8 @@ class DeleteSagExpressConnectInterfaceResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -5981,6 +7118,8 @@ class DeleteSagExpressConnectInterfaceResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteSagExpressConnectInterfaceResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -6099,13 +7238,16 @@ class DeleteSagStaticRouteResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteSagStaticRouteResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -6118,6 +7260,8 @@ class DeleteSagStaticRouteResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -6126,8 +7270,144 @@ class DeleteSagStaticRouteResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteSagStaticRouteResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteServiceAddressRequest(TeaModel):
+    def __init__(
+        self,
+        address: str = None,
+        address_type: str = None,
+        region_id: str = None,
+        sag_id: str = None,
+        sn: str = None,
+    ):
+        self.address = address
+        self.address_type = address_type
+        self.region_id = region_id
+        self.sag_id = sag_id
+        self.sn = sn
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address is not None:
+            result['Address'] = self.address
+        if self.address_type is not None:
+            result['AddressType'] = self.address_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.sag_id is not None:
+            result['SagId'] = self.sag_id
+        if self.sn is not None:
+            result['Sn'] = self.sn
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Address') is not None:
+            self.address = m.get('Address')
+        if m.get('AddressType') is not None:
+            self.address_type = m.get('AddressType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SagId') is not None:
+            self.sag_id = m.get('SagId')
+        if m.get('Sn') is not None:
+            self.sn = m.get('Sn')
+        return self
+
+
+class DeleteServiceAddressResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteServiceAddressResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteServiceAddressResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteServiceAddressResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -6202,13 +7482,16 @@ class DeleteSmartAccessGatewayResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteSmartAccessGatewayResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -6221,6 +7504,8 @@ class DeleteSmartAccessGatewayResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -6229,6 +7514,8 @@ class DeleteSmartAccessGatewayResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteSmartAccessGatewayResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -6329,13 +7616,16 @@ class DeleteSmartAccessGatewayClientUserResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteSmartAccessGatewayClientUserResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -6348,6 +7638,8 @@ class DeleteSmartAccessGatewayClientUserResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -6356,8 +7648,150 @@ class DeleteSmartAccessGatewayClientUserResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteSmartAccessGatewayClientUserResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteSmartAccessGatewayDnsForwardRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        region_id: str = None,
+        sag_ins_id: str = None,
+        sag_sn: str = None,
+    ):
+        self.instance_id = instance_id
+        self.region_id = region_id
+        self.sag_ins_id = sag_ins_id
+        self.sag_sn = sag_sn
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.sag_ins_id is not None:
+            result['SagInsId'] = self.sag_ins_id
+        if self.sag_sn is not None:
+            result['SagSn'] = self.sag_sn
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SagInsId') is not None:
+            self.sag_ins_id = m.get('SagInsId')
+        if m.get('SagSn') is not None:
+            self.sag_sn = m.get('SagSn')
+        return self
+
+
+class DeleteSmartAccessGatewayDnsForwardResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.code = code
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteSmartAccessGatewayDnsForwardResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteSmartAccessGatewayDnsForwardResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteSmartAccessGatewayDnsForwardResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -6456,13 +7890,16 @@ class DeleteSnatEntryResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteSnatEntryResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -6475,6 +7912,8 @@ class DeleteSnatEntryResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -6483,6 +7922,8 @@ class DeleteSnatEntryResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteSnatEntryResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -6634,6 +8075,7 @@ class DescribeACLAttributeResponseBodyAcrsAcr(TeaModel):
     def __init__(
         self,
         acl_id: str = None,
+        acl_type: str = None,
         acr_id: str = None,
         description: str = None,
         dest_cidr: str = None,
@@ -6651,6 +8093,7 @@ class DescribeACLAttributeResponseBodyAcrsAcr(TeaModel):
         type: str = None,
     ):
         self.acl_id = acl_id
+        self.acl_type = acl_type
         self.acr_id = acr_id
         self.description = description
         self.dest_cidr = dest_cidr
@@ -6681,6 +8124,8 @@ class DescribeACLAttributeResponseBodyAcrsAcr(TeaModel):
         result = dict()
         if self.acl_id is not None:
             result['AclId'] = self.acl_id
+        if self.acl_type is not None:
+            result['AclType'] = self.acl_type
         if self.acr_id is not None:
             result['AcrId'] = self.acr_id
         if self.description is not None:
@@ -6717,6 +8162,8 @@ class DescribeACLAttributeResponseBodyAcrsAcr(TeaModel):
         m = m or dict()
         if m.get('AclId') is not None:
             self.acl_id = m.get('AclId')
+        if m.get('AclType') is not None:
+            self.acl_type = m.get('AclType')
         if m.get('AcrId') is not None:
             self.acr_id = m.get('AcrId')
         if m.get('Description') is not None:
@@ -6844,13 +8291,16 @@ class DescribeACLAttributeResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeACLAttributeResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -6863,6 +8313,8 @@ class DescribeACLAttributeResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -6871,6 +8323,8 @@ class DescribeACLAttributeResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeACLAttributeResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -6881,6 +8335,7 @@ class DescribeACLsRequest(TeaModel):
     def __init__(
         self,
         acl_ids: str = None,
+        acl_type: str = None,
         name: str = None,
         owner_account: str = None,
         owner_id: int = None,
@@ -6891,6 +8346,7 @@ class DescribeACLsRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         self.acl_ids = acl_ids
+        self.acl_type = acl_type
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -6911,6 +8367,8 @@ class DescribeACLsRequest(TeaModel):
         result = dict()
         if self.acl_ids is not None:
             result['AclIds'] = self.acl_ids
+        if self.acl_type is not None:
+            result['AclType'] = self.acl_type
         if self.name is not None:
             result['Name'] = self.name
         if self.owner_account is not None:
@@ -6933,6 +8391,8 @@ class DescribeACLsRequest(TeaModel):
         m = m or dict()
         if m.get('AclIds') is not None:
             self.acl_ids = m.get('AclIds')
+        if m.get('AclType') is not None:
+            self.acl_type = m.get('AclType')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('OwnerAccount') is not None:
@@ -6956,11 +8416,13 @@ class DescribeACLsResponseBodyAclsAcl(TeaModel):
     def __init__(
         self,
         acl_id: str = None,
+        acl_type: str = None,
         name: str = None,
         resource_group_id: str = None,
         sag_count: str = None,
     ):
         self.acl_id = acl_id
+        self.acl_type = acl_type
         self.name = name
         self.resource_group_id = resource_group_id
         self.sag_count = sag_count
@@ -6976,6 +8438,8 @@ class DescribeACLsResponseBodyAclsAcl(TeaModel):
         result = dict()
         if self.acl_id is not None:
             result['AclId'] = self.acl_id
+        if self.acl_type is not None:
+            result['AclType'] = self.acl_type
         if self.name is not None:
             result['Name'] = self.name
         if self.resource_group_id is not None:
@@ -6988,6 +8452,8 @@ class DescribeACLsResponseBodyAclsAcl(TeaModel):
         m = m or dict()
         if m.get('AclId') is not None:
             self.acl_id = m.get('AclId')
+        if m.get('AclType') is not None:
+            self.acl_type = m.get('AclType')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('ResourceGroupId') is not None:
@@ -7089,13 +8555,16 @@ class DescribeACLsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeACLsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -7108,6 +8577,8 @@ class DescribeACLsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -7116,6 +8587,8 @@ class DescribeACLsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeACLsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -7340,13 +8813,16 @@ class DescribeBindableSmartAccessGatewaysResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeBindableSmartAccessGatewaysResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -7359,6 +8835,8 @@ class DescribeBindableSmartAccessGatewaysResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -7367,6 +8845,8 @@ class DescribeBindableSmartAccessGatewaysResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeBindableSmartAccessGatewaysResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -7473,13 +8953,16 @@ class DescribeClientUserDNSResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeClientUserDNSResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -7492,6 +8975,8 @@ class DescribeClientUserDNSResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -7500,6 +8985,8 @@ class DescribeClientUserDNSResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeClientUserDNSResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -7889,13 +9376,16 @@ class DescribeCloudConnectNetworksResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeCloudConnectNetworksResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -7908,6 +9398,8 @@ class DescribeCloudConnectNetworksResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -7916,6 +9408,8 @@ class DescribeCloudConnectNetworksResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeCloudConnectNetworksResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -8064,13 +9558,16 @@ class DescribeDeviceAutoUpgradePolicyResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeDeviceAutoUpgradePolicyResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -8083,6 +9580,8 @@ class DescribeDeviceAutoUpgradePolicyResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -8091,6 +9590,8 @@ class DescribeDeviceAutoUpgradePolicyResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeDeviceAutoUpgradePolicyResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -8333,13 +9834,16 @@ class DescribeDnatEntriesResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeDnatEntriesResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -8352,6 +9856,8 @@ class DescribeDnatEntriesResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -8360,6 +9866,8 @@ class DescribeDnatEntriesResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeDnatEntriesResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -8566,13 +10074,16 @@ class DescribeFlowLogSagsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeFlowLogSagsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -8585,6 +10096,8 @@ class DescribeFlowLogSagsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -8593,6 +10106,8 @@ class DescribeFlowLogSagsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeFlowLogSagsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -8895,13 +10410,16 @@ class DescribeFlowLogsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeFlowLogsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -8914,6 +10432,8 @@ class DescribeFlowLogsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -8922,6 +10442,8 @@ class DescribeFlowLogsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeFlowLogsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -9164,13 +10686,16 @@ class DescribeGrantRulesResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeGrantRulesResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -9183,6 +10708,8 @@ class DescribeGrantRulesResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -9191,6 +10718,8 @@ class DescribeGrantRulesResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeGrantRulesResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -9415,13 +10944,16 @@ class DescribeGrantSagRulesResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeGrantSagRulesResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -9434,6 +10966,8 @@ class DescribeGrantSagRulesResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -9442,6 +10976,8 @@ class DescribeGrantSagRulesResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeGrantSagRulesResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -9684,13 +11220,16 @@ class DescribeGrantSagVbrRulesResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeGrantSagVbrRulesResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -9703,6 +11242,8 @@ class DescribeGrantSagVbrRulesResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -9711,6 +11252,8 @@ class DescribeGrantSagVbrRulesResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeGrantSagVbrRulesResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -9907,13 +11450,16 @@ class DescribeHealthCheckAttributeResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeHealthCheckAttributeResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -9926,6 +11472,8 @@ class DescribeHealthCheckAttributeResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -9934,6 +11482,8 @@ class DescribeHealthCheckAttributeResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeHealthCheckAttributeResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -10236,13 +11786,16 @@ class DescribeHealthChecksResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeHealthChecksResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -10255,6 +11808,8 @@ class DescribeHealthChecksResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -10263,6 +11818,8 @@ class DescribeHealthChecksResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeHealthChecksResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -10535,13 +12092,16 @@ class DescribeQosCarsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeQosCarsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -10554,6 +12114,8 @@ class DescribeQosCarsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -10562,6 +12124,8 @@ class DescribeQosCarsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeQosCarsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -10911,13 +12475,16 @@ class DescribeQosPoliciesResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeQosPoliciesResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -10930,6 +12497,8 @@ class DescribeQosPoliciesResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -10938,6 +12507,8 @@ class DescribeQosPoliciesResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeQosPoliciesResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -11168,13 +12739,16 @@ class DescribeQosesResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeQosesResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -11187,6 +12761,8 @@ class DescribeQosesResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -11195,6 +12771,8 @@ class DescribeQosesResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeQosesResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -11365,13 +12943,16 @@ class DescribeRegionsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeRegionsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -11384,6 +12965,8 @@ class DescribeRegionsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -11392,6 +12975,8 @@ class DescribeRegionsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeRegionsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -11652,13 +13237,16 @@ class DescribeRouteDistributionStrategiesResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeRouteDistributionStrategiesResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -11671,6 +13259,8 @@ class DescribeRouteDistributionStrategiesResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -11679,6 +13269,8 @@ class DescribeRouteDistributionStrategiesResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeRouteDistributionStrategiesResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -11833,13 +13425,16 @@ class DescribeSAGDeviceInfoResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeSAGDeviceInfoResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -11852,6 +13447,8 @@ class DescribeSAGDeviceInfoResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -11860,6 +13457,8 @@ class DescribeSAGDeviceInfoResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeSAGDeviceInfoResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -11972,13 +13571,16 @@ class DescribeSagCurrentDnsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeSagCurrentDnsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -11991,6 +13593,8 @@ class DescribeSagCurrentDnsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -11999,6 +13603,8 @@ class DescribeSagCurrentDnsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeSagCurrentDnsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -12152,13 +13758,16 @@ class DescribeSagDropTopNResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeSagDropTopNResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -12171,6 +13780,8 @@ class DescribeSagDropTopNResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -12179,6 +13790,8 @@ class DescribeSagDropTopNResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeSagDropTopNResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -12398,13 +14011,16 @@ class DescribeSagExpressConnectInterfaceListResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeSagExpressConnectInterfaceListResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -12417,6 +14033,8 @@ class DescribeSagExpressConnectInterfaceListResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -12425,6 +14043,8 @@ class DescribeSagExpressConnectInterfaceListResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeSagExpressConnectInterfaceListResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -12590,13 +14210,16 @@ class DescribeSagGlobalRouteProtocolResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeSagGlobalRouteProtocolResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -12609,6 +14232,8 @@ class DescribeSagGlobalRouteProtocolResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -12617,6 +14242,8 @@ class DescribeSagGlobalRouteProtocolResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeSagGlobalRouteProtocolResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -12830,13 +14457,16 @@ class DescribeSagHaResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeSagHaResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -12849,6 +14479,8 @@ class DescribeSagHaResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -12857,6 +14489,8 @@ class DescribeSagHaResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeSagHaResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -13094,13 +14728,16 @@ class DescribeSagLanListResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeSagLanListResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -13113,6 +14750,8 @@ class DescribeSagLanListResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -13121,6 +14760,8 @@ class DescribeSagLanListResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeSagLanListResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -13298,13 +14939,16 @@ class DescribeSagManagementPortResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeSagManagementPortResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -13317,6 +14961,8 @@ class DescribeSagManagementPortResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -13325,6 +14971,8 @@ class DescribeSagManagementPortResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeSagManagementPortResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -13495,13 +15143,16 @@ class DescribeSagOnlineClientStatisticsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeSagOnlineClientStatisticsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -13514,6 +15165,8 @@ class DescribeSagOnlineClientStatisticsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -13522,6 +15175,8 @@ class DescribeSagOnlineClientStatisticsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeSagOnlineClientStatisticsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -13741,13 +15396,16 @@ class DescribeSagPortListResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeSagPortListResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -13760,6 +15418,8 @@ class DescribeSagPortListResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -13768,6 +15428,8 @@ class DescribeSagPortListResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeSagPortListResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -14005,13 +15667,16 @@ class DescribeSagPortRouteProtocolListResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeSagPortRouteProtocolListResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -14024,6 +15689,8 @@ class DescribeSagPortRouteProtocolListResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -14032,6 +15699,8 @@ class DescribeSagPortRouteProtocolListResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeSagPortRouteProtocolListResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -14232,13 +15901,16 @@ class DescribeSagRemoteAccessResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeSagRemoteAccessResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -14251,6 +15923,8 @@ class DescribeSagRemoteAccessResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -14259,6 +15933,8 @@ class DescribeSagRemoteAccessResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeSagRemoteAccessResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -14430,13 +16106,16 @@ class DescribeSagRouteListResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeSagRouteListResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -14449,6 +16128,8 @@ class DescribeSagRouteListResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -14457,6 +16138,8 @@ class DescribeSagRouteListResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeSagRouteListResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -14640,13 +16323,16 @@ class DescribeSagRouteProtocolBgpResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeSagRouteProtocolBgpResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -14659,6 +16345,8 @@ class DescribeSagRouteProtocolBgpResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -14667,6 +16355,8 @@ class DescribeSagRouteProtocolBgpResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeSagRouteProtocolBgpResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -14874,13 +16564,16 @@ class DescribeSagRouteProtocolOspfResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeSagRouteProtocolOspfResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -14893,6 +16586,8 @@ class DescribeSagRouteProtocolOspfResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -14901,6 +16596,8 @@ class DescribeSagRouteProtocolOspfResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeSagRouteProtocolOspfResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -15120,13 +16817,16 @@ class DescribeSagStaticRouteListResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeSagStaticRouteListResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -15139,6 +16839,8 @@ class DescribeSagStaticRouteListResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -15147,6 +16849,8 @@ class DescribeSagStaticRouteListResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeSagStaticRouteListResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -15300,13 +17004,16 @@ class DescribeSagTrafficTopNResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeSagTrafficTopNResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -15319,6 +17026,8 @@ class DescribeSagTrafficTopNResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -15327,6 +17036,8 @@ class DescribeSagTrafficTopNResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeSagTrafficTopNResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -15498,13 +17209,16 @@ class DescribeSagUserDnsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeSagUserDnsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -15517,6 +17231,8 @@ class DescribeSagUserDnsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -15525,6 +17241,8 @@ class DescribeSagUserDnsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeSagUserDnsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -15678,13 +17396,16 @@ class DescribeSagVbrRelationsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeSagVbrRelationsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -15697,6 +17418,8 @@ class DescribeSagVbrRelationsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -15705,6 +17428,8 @@ class DescribeSagVbrRelationsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeSagVbrRelationsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -15841,13 +17566,16 @@ class DescribeSagWan4GResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeSagWan4GResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -15860,6 +17588,8 @@ class DescribeSagWan4GResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -15868,6 +17598,8 @@ class DescribeSagWan4GResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeSagWan4GResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -16129,13 +17861,16 @@ class DescribeSagWanListResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeSagWanListResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -16148,6 +17883,8 @@ class DescribeSagWanListResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -16156,6 +17893,8 @@ class DescribeSagWanListResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeSagWanListResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -16321,13 +18060,16 @@ class DescribeSagWanSnatResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeSagWanSnatResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -16340,6 +18082,8 @@ class DescribeSagWanSnatResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -16348,6 +18092,8 @@ class DescribeSagWanSnatResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeSagWanSnatResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -16555,13 +18301,16 @@ class DescribeSagWifiResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeSagWifiResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -16574,6 +18323,8 @@ class DescribeSagWifiResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -16582,6 +18333,8 @@ class DescribeSagWifiResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeSagWifiResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -16836,6 +18589,33 @@ class DescribeSmartAccessGatewayAttributeResponseBodyFlowLogIds(TeaModel):
         return self
 
 
+class DescribeSmartAccessGatewayAttributeResponseBodyIRIds(TeaModel):
+    def __init__(
+        self,
+        irid: List[str] = None,
+    ):
+        self.irid = irid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.irid is not None:
+            result['IRId'] = self.irid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IRId') is not None:
+            self.irid = m.get('IRId')
+        return self
+
+
 class DescribeSmartAccessGatewayAttributeResponseBodyLinksLink(TeaModel):
     def __init__(
         self,
@@ -16994,14 +18774,17 @@ class DescribeSmartAccessGatewayAttributeResponseBody(TeaModel):
         description: str = None,
         devices: DescribeSmartAccessGatewayAttributeResponseBodyDevices = None,
         enable_optimization: bool = None,
+        enable_software_connection_audit: bool = None,
         end_time: int = None,
         flow_log_ids: DescribeSmartAccessGatewayAttributeResponseBodyFlowLogIds = None,
+        irids: DescribeSmartAccessGatewayAttributeResponseBodyIRIds = None,
         instance_type: str = None,
         ipsec_status: str = None,
         links: DescribeSmartAccessGatewayAttributeResponseBodyLinks = None,
         max_bandwidth: str = None,
         name: str = None,
         optimization_type: bool = None,
+        position: str = None,
         qos_ids: DescribeSmartAccessGatewayAttributeResponseBodyQosIds = None,
         request_id: str = None,
         reseller_instance_id: str = None,
@@ -17036,14 +18819,17 @@ class DescribeSmartAccessGatewayAttributeResponseBody(TeaModel):
         self.description = description
         self.devices = devices
         self.enable_optimization = enable_optimization
+        self.enable_software_connection_audit = enable_software_connection_audit
         self.end_time = end_time
         self.flow_log_ids = flow_log_ids
+        self.irids = irids
         self.instance_type = instance_type
         self.ipsec_status = ipsec_status
         self.links = links
         self.max_bandwidth = max_bandwidth
         self.name = name
         self.optimization_type = optimization_type
+        self.position = position
         self.qos_ids = qos_ids
         self.request_id = request_id
         self.reseller_instance_id = reseller_instance_id
@@ -17069,6 +18855,8 @@ class DescribeSmartAccessGatewayAttributeResponseBody(TeaModel):
             self.devices.validate()
         if self.flow_log_ids:
             self.flow_log_ids.validate()
+        if self.irids:
+            self.irids.validate()
         if self.links:
             self.links.validate()
         if self.qos_ids:
@@ -17116,10 +18904,14 @@ class DescribeSmartAccessGatewayAttributeResponseBody(TeaModel):
             result['Devices'] = self.devices.to_map()
         if self.enable_optimization is not None:
             result['EnableOptimization'] = self.enable_optimization
+        if self.enable_software_connection_audit is not None:
+            result['EnableSoftwareConnectionAudit'] = self.enable_software_connection_audit
         if self.end_time is not None:
             result['EndTime'] = self.end_time
         if self.flow_log_ids is not None:
             result['FlowLogIds'] = self.flow_log_ids.to_map()
+        if self.irids is not None:
+            result['IRIds'] = self.irids.to_map()
         if self.instance_type is not None:
             result['InstanceType'] = self.instance_type
         if self.ipsec_status is not None:
@@ -17132,6 +18924,8 @@ class DescribeSmartAccessGatewayAttributeResponseBody(TeaModel):
             result['Name'] = self.name
         if self.optimization_type is not None:
             result['OptimizationType'] = self.optimization_type
+        if self.position is not None:
+            result['Position'] = self.position
         if self.qos_ids is not None:
             result['QosIds'] = self.qos_ids.to_map()
         if self.request_id is not None:
@@ -17205,11 +18999,16 @@ class DescribeSmartAccessGatewayAttributeResponseBody(TeaModel):
             self.devices = temp_model.from_map(m['Devices'])
         if m.get('EnableOptimization') is not None:
             self.enable_optimization = m.get('EnableOptimization')
+        if m.get('EnableSoftwareConnectionAudit') is not None:
+            self.enable_software_connection_audit = m.get('EnableSoftwareConnectionAudit')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
         if m.get('FlowLogIds') is not None:
             temp_model = DescribeSmartAccessGatewayAttributeResponseBodyFlowLogIds()
             self.flow_log_ids = temp_model.from_map(m['FlowLogIds'])
+        if m.get('IRIds') is not None:
+            temp_model = DescribeSmartAccessGatewayAttributeResponseBodyIRIds()
+            self.irids = temp_model.from_map(m['IRIds'])
         if m.get('InstanceType') is not None:
             self.instance_type = m.get('InstanceType')
         if m.get('IpsecStatus') is not None:
@@ -17223,6 +19022,8 @@ class DescribeSmartAccessGatewayAttributeResponseBody(TeaModel):
             self.name = m.get('Name')
         if m.get('OptimizationType') is not None:
             self.optimization_type = m.get('OptimizationType')
+        if m.get('Position') is not None:
+            self.position = m.get('Position')
         if m.get('QosIds') is not None:
             temp_model = DescribeSmartAccessGatewayAttributeResponseBodyQosIds()
             self.qos_ids = temp_model.from_map(m['QosIds'])
@@ -17261,13 +19062,16 @@ class DescribeSmartAccessGatewayAttributeResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeSmartAccessGatewayAttributeResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -17280,6 +19084,8 @@ class DescribeSmartAccessGatewayAttributeResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -17288,6 +19094,8 @@ class DescribeSmartAccessGatewayAttributeResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeSmartAccessGatewayAttributeResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -17530,13 +19338,16 @@ class DescribeSmartAccessGatewayClientUsersResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeSmartAccessGatewayClientUsersResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -17549,6 +19360,8 @@ class DescribeSmartAccessGatewayClientUsersResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -17557,6 +19370,8 @@ class DescribeSmartAccessGatewayClientUsersResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeSmartAccessGatewayClientUsersResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -17781,13 +19596,16 @@ class DescribeSmartAccessGatewayHaResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeSmartAccessGatewayHaResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -17800,6 +19618,8 @@ class DescribeSmartAccessGatewayHaResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -17808,6 +19628,8 @@ class DescribeSmartAccessGatewayHaResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeSmartAccessGatewayHaResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -18002,13 +19824,16 @@ class DescribeSmartAccessGatewayVersionsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeSmartAccessGatewayVersionsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -18021,6 +19846,8 @@ class DescribeSmartAccessGatewayVersionsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -18029,6 +19856,8 @@ class DescribeSmartAccessGatewayVersionsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeSmartAccessGatewayVersionsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -18040,6 +19869,7 @@ class DescribeSmartAccessGatewaysRequest(TeaModel):
         self,
         acl_ids: str = None,
         associated_ccn_id: str = None,
+        associated_ccn_name: str = None,
         business_state: str = None,
         can_associate_qos: bool = None,
         hardware_type: str = None,
@@ -18063,6 +19893,7 @@ class DescribeSmartAccessGatewaysRequest(TeaModel):
     ):
         self.acl_ids = acl_ids
         self.associated_ccn_id = associated_ccn_id
+        self.associated_ccn_name = associated_ccn_name
         self.business_state = business_state
         self.can_associate_qos = can_associate_qos
         self.hardware_type = hardware_type
@@ -18097,6 +19928,8 @@ class DescribeSmartAccessGatewaysRequest(TeaModel):
             result['AclIds'] = self.acl_ids
         if self.associated_ccn_id is not None:
             result['AssociatedCcnId'] = self.associated_ccn_id
+        if self.associated_ccn_name is not None:
+            result['AssociatedCcnName'] = self.associated_ccn_name
         if self.business_state is not None:
             result['BusinessState'] = self.business_state
         if self.can_associate_qos is not None:
@@ -18145,6 +19978,8 @@ class DescribeSmartAccessGatewaysRequest(TeaModel):
             self.acl_ids = m.get('AclIds')
         if m.get('AssociatedCcnId') is not None:
             self.associated_ccn_id = m.get('AssociatedCcnId')
+        if m.get('AssociatedCcnName') is not None:
+            self.associated_ccn_name = m.get('AssociatedCcnName')
         if m.get('BusinessState') is not None:
             self.business_state = m.get('BusinessState')
         if m.get('CanAssociateQos') is not None:
@@ -18310,15 +20145,20 @@ class DescribeSmartAccessGatewaysResponseBodySmartAccessGatewaysSmartAccessGatew
         description: str = None,
         dpi_monitor_status: str = None,
         dpi_status: str = None,
+        enable_advanced_monitor: bool = None,
+        enable_software_connection_audit: bool = None,
         end_time: int = None,
         enterprise_code: str = None,
         hardware_version: str = None,
+        irids: str = None,
         idaas_application_id: str = None,
         idaas_id: str = None,
         ipsec_status: str = None,
+        isp: str = None,
         links: DescribeSmartAccessGatewaysResponseBodySmartAccessGatewaysSmartAccessGatewayLinks = None,
         max_bandwidth: str = None,
         name: str = None,
+        position: str = None,
         qos_ids: str = None,
         reseller_instance_id: str = None,
         reseller_uid: str = None,
@@ -18350,15 +20190,20 @@ class DescribeSmartAccessGatewaysResponseBodySmartAccessGatewaysSmartAccessGatew
         self.description = description
         self.dpi_monitor_status = dpi_monitor_status
         self.dpi_status = dpi_status
+        self.enable_advanced_monitor = enable_advanced_monitor
+        self.enable_software_connection_audit = enable_software_connection_audit
         self.end_time = end_time
         self.enterprise_code = enterprise_code
         self.hardware_version = hardware_version
+        self.irids = irids
         self.idaas_application_id = idaas_application_id
         self.idaas_id = idaas_id
         self.ipsec_status = ipsec_status
+        self.isp = isp
         self.links = links
         self.max_bandwidth = max_bandwidth
         self.name = name
+        self.position = position
         self.qos_ids = qos_ids
         self.reseller_instance_id = reseller_instance_id
         self.reseller_uid = reseller_uid
@@ -18415,24 +20260,34 @@ class DescribeSmartAccessGatewaysResponseBodySmartAccessGatewaysSmartAccessGatew
             result['DpiMonitorStatus'] = self.dpi_monitor_status
         if self.dpi_status is not None:
             result['DpiStatus'] = self.dpi_status
+        if self.enable_advanced_monitor is not None:
+            result['EnableAdvancedMonitor'] = self.enable_advanced_monitor
+        if self.enable_software_connection_audit is not None:
+            result['EnableSoftwareConnectionAudit'] = self.enable_software_connection_audit
         if self.end_time is not None:
             result['EndTime'] = self.end_time
         if self.enterprise_code is not None:
             result['EnterpriseCode'] = self.enterprise_code
         if self.hardware_version is not None:
             result['HardwareVersion'] = self.hardware_version
+        if self.irids is not None:
+            result['IRIds'] = self.irids
         if self.idaas_application_id is not None:
             result['IdaasApplicationId'] = self.idaas_application_id
         if self.idaas_id is not None:
             result['IdaasId'] = self.idaas_id
         if self.ipsec_status is not None:
             result['IpsecStatus'] = self.ipsec_status
+        if self.isp is not None:
+            result['Isp'] = self.isp
         if self.links is not None:
             result['Links'] = self.links.to_map()
         if self.max_bandwidth is not None:
             result['MaxBandwidth'] = self.max_bandwidth
         if self.name is not None:
             result['Name'] = self.name
+        if self.position is not None:
+            result['Position'] = self.position
         if self.qos_ids is not None:
             result['QosIds'] = self.qos_ids
         if self.reseller_instance_id is not None:
@@ -18497,18 +20352,26 @@ class DescribeSmartAccessGatewaysResponseBodySmartAccessGatewaysSmartAccessGatew
             self.dpi_monitor_status = m.get('DpiMonitorStatus')
         if m.get('DpiStatus') is not None:
             self.dpi_status = m.get('DpiStatus')
+        if m.get('EnableAdvancedMonitor') is not None:
+            self.enable_advanced_monitor = m.get('EnableAdvancedMonitor')
+        if m.get('EnableSoftwareConnectionAudit') is not None:
+            self.enable_software_connection_audit = m.get('EnableSoftwareConnectionAudit')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
         if m.get('EnterpriseCode') is not None:
             self.enterprise_code = m.get('EnterpriseCode')
         if m.get('HardwareVersion') is not None:
             self.hardware_version = m.get('HardwareVersion')
+        if m.get('IRIds') is not None:
+            self.irids = m.get('IRIds')
         if m.get('IdaasApplicationId') is not None:
             self.idaas_application_id = m.get('IdaasApplicationId')
         if m.get('IdaasId') is not None:
             self.idaas_id = m.get('IdaasId')
         if m.get('IpsecStatus') is not None:
             self.ipsec_status = m.get('IpsecStatus')
+        if m.get('Isp') is not None:
+            self.isp = m.get('Isp')
         if m.get('Links') is not None:
             temp_model = DescribeSmartAccessGatewaysResponseBodySmartAccessGatewaysSmartAccessGatewayLinks()
             self.links = temp_model.from_map(m['Links'])
@@ -18516,6 +20379,8 @@ class DescribeSmartAccessGatewaysResponseBodySmartAccessGatewaysSmartAccessGatew
             self.max_bandwidth = m.get('MaxBandwidth')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('Position') is not None:
+            self.position = m.get('Position')
         if m.get('QosIds') is not None:
             self.qos_ids = m.get('QosIds')
         if m.get('ResellerInstanceId') is not None:
@@ -18641,13 +20506,16 @@ class DescribeSmartAccessGatewaysResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeSmartAccessGatewaysResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -18660,6 +20528,8 @@ class DescribeSmartAccessGatewaysResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -18668,6 +20538,8 @@ class DescribeSmartAccessGatewaysResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeSmartAccessGatewaysResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -18880,13 +20752,16 @@ class DescribeSnatEntriesResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeSnatEntriesResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -18899,6 +20774,8 @@ class DescribeSnatEntriesResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -18907,6 +20784,8 @@ class DescribeSnatEntriesResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeSnatEntriesResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -19083,13 +20962,16 @@ class DescribeUnbindFlowLogSagsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeUnbindFlowLogSagsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -19102,6 +20984,8 @@ class DescribeUnbindFlowLogSagsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -19110,6 +20994,8 @@ class DescribeUnbindFlowLogSagsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeUnbindFlowLogSagsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -19292,13 +21178,16 @@ class DescribeUserFlowStatisticsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeUserFlowStatisticsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -19311,6 +21200,8 @@ class DescribeUserFlowStatisticsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -19319,6 +21210,8 @@ class DescribeUserFlowStatisticsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeUserFlowStatisticsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -19495,13 +21388,16 @@ class DescribeUserOnlineClientStatisticsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeUserOnlineClientStatisticsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -19514,6 +21410,8 @@ class DescribeUserOnlineClientStatisticsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -19522,6 +21420,8 @@ class DescribeUserOnlineClientStatisticsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeUserOnlineClientStatisticsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -19698,13 +21598,16 @@ class DescribeUserOnlineClientsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeUserOnlineClientsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -19717,6 +21620,8 @@ class DescribeUserOnlineClientsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -19725,6 +21630,8 @@ class DescribeUserOnlineClientsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeUserOnlineClientsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -19825,13 +21732,16 @@ class DiagnoseSmartAccessGatewayResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DiagnoseSmartAccessGatewayResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -19844,6 +21754,8 @@ class DiagnoseSmartAccessGatewayResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -19852,6 +21764,8 @@ class DiagnoseSmartAccessGatewayResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DiagnoseSmartAccessGatewayResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -19958,13 +21872,16 @@ class DisableSmartAGDpiMonitorResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DisableSmartAGDpiMonitorResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -19977,6 +21894,8 @@ class DisableSmartAGDpiMonitorResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -19985,6 +21904,8 @@ class DisableSmartAGDpiMonitorResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DisableSmartAGDpiMonitorResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -20085,13 +22006,16 @@ class DisableSmartAccessGatewayUserResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DisableSmartAccessGatewayUserResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -20104,6 +22028,8 @@ class DisableSmartAccessGatewayUserResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -20112,6 +22038,8 @@ class DisableSmartAccessGatewayUserResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DisableSmartAccessGatewayUserResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -20212,13 +22140,16 @@ class DisassociateACLResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DisassociateACLResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -20231,6 +22162,8 @@ class DisassociateACLResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -20239,6 +22172,8 @@ class DisassociateACLResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DisassociateACLResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -20339,13 +22274,16 @@ class DisassociateFlowLogResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DisassociateFlowLogResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -20358,6 +22296,8 @@ class DisassociateFlowLogResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -20366,6 +22306,8 @@ class DisassociateFlowLogResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DisassociateFlowLogResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -20466,13 +22408,16 @@ class DisassociateQosResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DisassociateQosResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -20485,6 +22430,8 @@ class DisassociateQosResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -20493,6 +22440,8 @@ class DisassociateQosResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DisassociateQosResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -21099,13 +23048,16 @@ class DiscribeSmartAccessGatewayDiagnosisReportResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DiscribeSmartAccessGatewayDiagnosisReportResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -21118,6 +23070,8 @@ class DiscribeSmartAccessGatewayDiagnosisReportResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -21126,8 +23080,138 @@ class DiscribeSmartAccessGatewayDiagnosisReportResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DiscribeSmartAccessGatewayDiagnosisReportResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DissociateSmartAGFromApplicationBandwidthPackageRequest(TeaModel):
+    def __init__(
+        self,
+        application_bandwidth_package_id: str = None,
+        client_token: str = None,
+        dry_run: bool = None,
+        region_id: str = None,
+        smart_agid: str = None,
+        smart_agid_list: List[str] = None,
+    ):
+        self.application_bandwidth_package_id = application_bandwidth_package_id
+        self.client_token = client_token
+        self.dry_run = dry_run
+        self.region_id = region_id
+        self.smart_agid = smart_agid
+        self.smart_agid_list = smart_agid_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_bandwidth_package_id is not None:
+            result['ApplicationBandwidthPackageId'] = self.application_bandwidth_package_id
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.smart_agid is not None:
+            result['SmartAGId'] = self.smart_agid
+        if self.smart_agid_list is not None:
+            result['SmartAGIdList'] = self.smart_agid_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationBandwidthPackageId') is not None:
+            self.application_bandwidth_package_id = m.get('ApplicationBandwidthPackageId')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SmartAGId') is not None:
+            self.smart_agid = m.get('SmartAGId')
+        if m.get('SmartAGIdList') is not None:
+            self.smart_agid_list = m.get('SmartAGIdList')
+        return self
+
+
+class DissociateSmartAGFromApplicationBandwidthPackageResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DissociateSmartAGFromApplicationBandwidthPackageResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DissociateSmartAGFromApplicationBandwidthPackageResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DissociateSmartAGFromApplicationBandwidthPackageResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -21238,13 +23322,16 @@ class DowngradeSmartAccessGatewayResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DowngradeSmartAccessGatewayResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -21257,6 +23344,8 @@ class DowngradeSmartAccessGatewayResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -21265,6 +23354,8 @@ class DowngradeSmartAccessGatewayResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DowngradeSmartAccessGatewayResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -21383,13 +23474,16 @@ class DowngradeSmartAccessGatewaySoftwareResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DowngradeSmartAccessGatewaySoftwareResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -21402,6 +23496,8 @@ class DowngradeSmartAccessGatewaySoftwareResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -21410,6 +23506,8 @@ class DowngradeSmartAccessGatewaySoftwareResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DowngradeSmartAccessGatewaySoftwareResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -21528,13 +23626,16 @@ class EnableSmartAGDpiMonitorResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: EnableSmartAGDpiMonitorResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -21547,6 +23648,8 @@ class EnableSmartAGDpiMonitorResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -21555,6 +23658,8 @@ class EnableSmartAGDpiMonitorResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = EnableSmartAGDpiMonitorResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -21655,13 +23760,16 @@ class EnableSmartAccessGatewayUserResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: EnableSmartAccessGatewayUserResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -21674,6 +23782,8 @@ class EnableSmartAccessGatewayUserResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -21682,6 +23792,8 @@ class EnableSmartAccessGatewayUserResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = EnableSmartAccessGatewayUserResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -21770,13 +23882,16 @@ class GetAclAttributeResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetAclAttributeResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -21789,6 +23904,8 @@ class GetAclAttributeResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -21797,8 +23914,167 @@ class GetAclAttributeResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetAclAttributeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetAdvancedMonitorStateRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        sag_id: str = None,
+    ):
+        self.region_id = region_id
+        self.sag_id = sag_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.sag_id is not None:
+            result['SagId'] = self.sag_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SagId') is not None:
+            self.sag_id = m.get('SagId')
+        return self
+
+
+class GetAdvancedMonitorStateResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        enable: bool = None,
+    ):
+        self.enable = enable
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        return self
+
+
+class GetAdvancedMonitorStateResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[GetAdvancedMonitorStateResponseBodyData] = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = GetAdvancedMonitorStateResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetAdvancedMonitorStateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetAdvancedMonitorStateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetAdvancedMonitorStateResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -21897,13 +24173,16 @@ class GetCloudConnectNetworkUseLimitResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetCloudConnectNetworkUseLimitResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -21916,6 +24195,8 @@ class GetCloudConnectNetworkUseLimitResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -21924,6 +24205,8 @@ class GetCloudConnectNetworkUseLimitResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetCloudConnectNetworkUseLimitResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -22203,13 +24486,16 @@ class GetQosAttributeResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetQosAttributeResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -22222,6 +24508,8 @@ class GetQosAttributeResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -22230,6 +24518,8 @@ class GetQosAttributeResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetQosAttributeResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -22354,13 +24644,16 @@ class GetSmartAGDpiAttributeResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetSmartAGDpiAttributeResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -22373,6 +24666,8 @@ class GetSmartAGDpiAttributeResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -22381,6 +24676,8 @@ class GetSmartAGDpiAttributeResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetSmartAGDpiAttributeResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -22481,13 +24778,16 @@ class GetSmartAccessGatewayUseLimitResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetSmartAccessGatewayUseLimitResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -22500,6 +24800,8 @@ class GetSmartAccessGatewayUseLimitResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -22508,6 +24810,8 @@ class GetSmartAccessGatewayUseLimitResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetSmartAccessGatewayUseLimitResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -22620,13 +24924,16 @@ class GrantInstanceToCbnResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GrantInstanceToCbnResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -22639,6 +24946,8 @@ class GrantInstanceToCbnResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -22647,6 +24956,8 @@ class GrantInstanceToCbnResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GrantInstanceToCbnResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -22765,13 +25076,16 @@ class GrantSagInstanceToCcnResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GrantSagInstanceToCcnResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -22784,6 +25098,8 @@ class GrantSagInstanceToCcnResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -22792,6 +25108,8 @@ class GrantSagInstanceToCcnResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GrantSagInstanceToCcnResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -22910,13 +25228,16 @@ class GrantSagInstanceToVbrResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GrantSagInstanceToVbrResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -22929,6 +25250,8 @@ class GrantSagInstanceToVbrResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -22937,6 +25260,8 @@ class GrantSagInstanceToVbrResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GrantSagInstanceToVbrResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -23037,13 +25362,16 @@ class KickOutClientsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: KickOutClientsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -23056,6 +25384,8 @@ class KickOutClientsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -23064,6 +25394,8 @@ class KickOutClientsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = KickOutClientsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -23211,13 +25543,16 @@ class ListAccessPointNetworkQualitiesResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ListAccessPointNetworkQualitiesResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -23230,6 +25565,8 @@ class ListAccessPointNetworkQualitiesResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -23238,6 +25575,8 @@ class ListAccessPointNetworkQualitiesResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListAccessPointNetworkQualitiesResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -23415,13 +25754,16 @@ class ListAccessPointsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ListAccessPointsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -23434,6 +25776,8 @@ class ListAccessPointsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -23442,8 +25786,185 @@ class ListAccessPointsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListAccessPointsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListAvailableServiceAddressRequest(TeaModel):
+    def __init__(
+        self,
+        address_type: str = None,
+        region_id: str = None,
+        sag_id: str = None,
+        sn: str = None,
+    ):
+        self.address_type = address_type
+        self.region_id = region_id
+        self.sag_id = sag_id
+        self.sn = sn
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address_type is not None:
+            result['AddressType'] = self.address_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.sag_id is not None:
+            result['SagId'] = self.sag_id
+        if self.sn is not None:
+            result['Sn'] = self.sn
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AddressType') is not None:
+            self.address_type = m.get('AddressType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SagId') is not None:
+            self.sag_id = m.get('SagId')
+        if m.get('Sn') is not None:
+            self.sn = m.get('Sn')
+        return self
+
+
+class ListAvailableServiceAddressResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        address: str = None,
+        address_type: str = None,
+    ):
+        self.address = address
+        self.address_type = address_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address is not None:
+            result['Address'] = self.address
+        if self.address_type is not None:
+            result['AddressType'] = self.address_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Address') is not None:
+            self.address = m.get('Address')
+        if m.get('AddressType') is not None:
+            self.address_type = m.get('AddressType')
+        return self
+
+
+class ListAvailableServiceAddressResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[ListAvailableServiceAddressResponseBodyData] = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = ListAvailableServiceAddressResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListAvailableServiceAddressResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListAvailableServiceAddressResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListAvailableServiceAddressResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -23660,13 +26181,16 @@ class ListDpiConfigErrorResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ListDpiConfigErrorResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -23679,6 +26203,8 @@ class ListDpiConfigErrorResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -23687,6 +26213,8 @@ class ListDpiConfigErrorResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListDpiConfigErrorResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -23870,13 +26398,16 @@ class ListDpiGroupsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ListDpiGroupsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -23889,6 +26420,8 @@ class ListDpiGroupsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -23897,6 +26430,8 @@ class ListDpiGroupsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListDpiGroupsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -24092,13 +26627,16 @@ class ListDpiSignaturesResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ListDpiSignaturesResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -24111,6 +26649,8 @@ class ListDpiSignaturesResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -24119,6 +26659,8 @@ class ListDpiSignaturesResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListDpiSignaturesResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -24272,13 +26814,16 @@ class ListEnterpriseCodeResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ListEnterpriseCodeResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -24291,6 +26836,8 @@ class ListEnterpriseCodeResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -24299,8 +26846,299 @@ class ListEnterpriseCodeResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListEnterpriseCodeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListProbeTaskRequest(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        probe_task_id: str = None,
+        protocol: str = None,
+        region_id: str = None,
+        sag_id: str = None,
+        sag_name: str = None,
+        sn: str = None,
+        task_name: str = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        self.probe_task_id = probe_task_id
+        self.protocol = protocol
+        self.region_id = region_id
+        self.sag_id = sag_id
+        self.sag_name = sag_name
+        self.sn = sn
+        self.task_name = task_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.probe_task_id is not None:
+            result['ProbeTaskId'] = self.probe_task_id
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.sag_id is not None:
+            result['SagId'] = self.sag_id
+        if self.sag_name is not None:
+            result['SagName'] = self.sag_name
+        if self.sn is not None:
+            result['Sn'] = self.sn
+        if self.task_name is not None:
+            result['TaskName'] = self.task_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ProbeTaskId') is not None:
+            self.probe_task_id = m.get('ProbeTaskId')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SagId') is not None:
+            self.sag_id = m.get('SagId')
+        if m.get('SagName') is not None:
+            self.sag_name = m.get('SagName')
+        if m.get('Sn') is not None:
+            self.sn = m.get('Sn')
+        if m.get('TaskName') is not None:
+            self.task_name = m.get('TaskName')
+        return self
+
+
+class ListProbeTaskResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        domain: str = None,
+        enable: bool = None,
+        gmt_create: str = None,
+        gmt_modify: str = None,
+        packet_number: int = None,
+        port: int = None,
+        probe_task_id: str = None,
+        probe_task_source_address: str = None,
+        protocol: str = None,
+        sag_id: str = None,
+        sn: str = None,
+        task_name: str = None,
+        type: str = None,
+    ):
+        self.domain = domain
+        self.enable = enable
+        self.gmt_create = gmt_create
+        self.gmt_modify = gmt_modify
+        self.packet_number = packet_number
+        self.port = port
+        self.probe_task_id = probe_task_id
+        self.probe_task_source_address = probe_task_source_address
+        self.protocol = protocol
+        self.sag_id = sag_id
+        self.sn = sn
+        self.task_name = task_name
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modify is not None:
+            result['GmtModify'] = self.gmt_modify
+        if self.packet_number is not None:
+            result['PacketNumber'] = self.packet_number
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.probe_task_id is not None:
+            result['ProbeTaskId'] = self.probe_task_id
+        if self.probe_task_source_address is not None:
+            result['ProbeTaskSourceAddress'] = self.probe_task_source_address
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        if self.sag_id is not None:
+            result['SagId'] = self.sag_id
+        if self.sn is not None:
+            result['Sn'] = self.sn
+        if self.task_name is not None:
+            result['TaskName'] = self.task_name
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModify') is not None:
+            self.gmt_modify = m.get('GmtModify')
+        if m.get('PacketNumber') is not None:
+            self.packet_number = m.get('PacketNumber')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('ProbeTaskId') is not None:
+            self.probe_task_id = m.get('ProbeTaskId')
+        if m.get('ProbeTaskSourceAddress') is not None:
+            self.probe_task_source_address = m.get('ProbeTaskSourceAddress')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        if m.get('SagId') is not None:
+            self.sag_id = m.get('SagId')
+        if m.get('Sn') is not None:
+            self.sn = m.get('Sn')
+        if m.get('TaskName') is not None:
+            self.task_name = m.get('TaskName')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ListProbeTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[ListProbeTaskResponseBodyData] = None,
+        message: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = ListProbeTaskResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListProbeTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListProbeTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListProbeTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -24446,13 +27284,16 @@ class ListSmartAGApiUnsupportedFeatureResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ListSmartAGApiUnsupportedFeatureResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -24465,6 +27306,8 @@ class ListSmartAGApiUnsupportedFeatureResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -24473,6 +27316,8 @@ class ListSmartAGApiUnsupportedFeatureResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListSmartAGApiUnsupportedFeatureResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -24668,13 +27513,16 @@ class ListSmartAGByAccessPointResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ListSmartAGByAccessPointResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -24687,6 +27535,8 @@ class ListSmartAGByAccessPointResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -24695,6 +27545,8 @@ class ListSmartAGByAccessPointResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListSmartAGByAccessPointResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -24795,13 +27647,16 @@ class ModifyACLResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ModifyACLResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -24814,6 +27669,8 @@ class ModifyACLResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -24822,6 +27679,8 @@ class ModifyACLResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyACLResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -25149,13 +28008,16 @@ class ModifyACLRuleResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ModifyACLRuleResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -25168,6 +28030,8 @@ class ModifyACLRuleResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -25176,6 +28040,8 @@ class ModifyACLRuleResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyACLRuleResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -25282,13 +28148,16 @@ class ModifyClientUserDNSResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ModifyClientUserDNSResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -25301,6 +28170,8 @@ class ModifyClientUserDNSResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -25309,6 +28180,8 @@ class ModifyClientUserDNSResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyClientUserDNSResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -25427,13 +28300,16 @@ class ModifyCloudConnectNetworkResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ModifyCloudConnectNetworkResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -25446,6 +28322,8 @@ class ModifyCloudConnectNetworkResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -25454,6 +28332,8 @@ class ModifyCloudConnectNetworkResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyCloudConnectNetworkResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -25584,13 +28464,16 @@ class ModifyDeviceAutoUpgradePolicyResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ModifyDeviceAutoUpgradePolicyResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -25603,6 +28486,8 @@ class ModifyDeviceAutoUpgradePolicyResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -25611,6 +28496,8 @@ class ModifyDeviceAutoUpgradePolicyResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyDeviceAutoUpgradePolicyResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -25771,13 +28658,16 @@ class ModifyFlowLogAttributeResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ModifyFlowLogAttributeResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -25790,6 +28680,8 @@ class ModifyFlowLogAttributeResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -25798,6 +28690,8 @@ class ModifyFlowLogAttributeResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyFlowLogAttributeResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -25976,13 +28870,16 @@ class ModifyHealthCheckResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ModifyHealthCheckResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -25995,6 +28892,8 @@ class ModifyHealthCheckResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -26003,6 +28902,8 @@ class ModifyHealthCheckResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyHealthCheckResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -26109,13 +29010,16 @@ class ModifyQosResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ModifyQosResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -26128,6 +29032,8 @@ class ModifyQosResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -26136,6 +29042,8 @@ class ModifyQosResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyQosResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -26290,13 +29198,16 @@ class ModifyQosCarResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ModifyQosCarResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -26309,6 +29220,8 @@ class ModifyQosCarResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -26317,6 +29230,8 @@ class ModifyQosCarResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyQosCarResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -26489,13 +29404,16 @@ class ModifyQosPolicyResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ModifyQosPolicyResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -26508,6 +29426,8 @@ class ModifyQosPolicyResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -26516,6 +29436,8 @@ class ModifyQosPolicyResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyQosPolicyResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -26640,13 +29562,16 @@ class ModifyRouteDistributionStrategyResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ModifyRouteDistributionStrategyResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -26659,6 +29584,8 @@ class ModifyRouteDistributionStrategyResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -26667,6 +29594,8 @@ class ModifyRouteDistributionStrategyResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyRouteDistributionStrategyResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -26773,13 +29702,16 @@ class ModifySAGAdminPasswordResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ModifySAGAdminPasswordResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -26792,6 +29724,8 @@ class ModifySAGAdminPasswordResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -26800,6 +29734,8 @@ class ModifySAGAdminPasswordResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifySAGAdminPasswordResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -26924,13 +29860,16 @@ class ModifySagExpressConnectInterfaceResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ModifySagExpressConnectInterfaceResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -26943,6 +29882,8 @@ class ModifySagExpressConnectInterfaceResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -26951,6 +29892,8 @@ class ModifySagExpressConnectInterfaceResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifySagExpressConnectInterfaceResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -27057,13 +30000,16 @@ class ModifySagGlobalRouteProtocolResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ModifySagGlobalRouteProtocolResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -27076,6 +30022,8 @@ class ModifySagGlobalRouteProtocolResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -27084,6 +30032,8 @@ class ModifySagGlobalRouteProtocolResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifySagGlobalRouteProtocolResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -27202,13 +30152,16 @@ class ModifySagHaResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ModifySagHaResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -27221,6 +30174,8 @@ class ModifySagHaResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -27229,6 +30184,8 @@ class ModifySagHaResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifySagHaResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -27371,13 +30328,16 @@ class ModifySagLanResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ModifySagLanResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -27390,6 +30350,8 @@ class ModifySagLanResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -27398,6 +30360,8 @@ class ModifySagLanResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifySagLanResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -27516,13 +30480,16 @@ class ModifySagManagementPortResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ModifySagManagementPortResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -27535,6 +30502,8 @@ class ModifySagManagementPortResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -27543,6 +30512,8 @@ class ModifySagManagementPortResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifySagManagementPortResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -27655,13 +30626,16 @@ class ModifySagPortRoleResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ModifySagPortRoleResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -27674,6 +30648,8 @@ class ModifySagPortRoleResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -27682,6 +30658,8 @@ class ModifySagPortRoleResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifySagPortRoleResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -27812,13 +30790,16 @@ class ModifySagPortRouteProtocolResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ModifySagPortRouteProtocolResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -27831,6 +30812,8 @@ class ModifySagPortRouteProtocolResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -27839,6 +30822,8 @@ class ModifySagPortRouteProtocolResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifySagPortRouteProtocolResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -27969,13 +30954,16 @@ class ModifySagRemoteAccessResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ModifySagRemoteAccessResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -27988,6 +30976,8 @@ class ModifySagRemoteAccessResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -27996,6 +30986,8 @@ class ModifySagRemoteAccessResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifySagRemoteAccessResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -28120,13 +31112,16 @@ class ModifySagRouteProtocolBgpResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ModifySagRouteProtocolBgpResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -28139,6 +31134,8 @@ class ModifySagRouteProtocolBgpResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -28147,6 +31144,8 @@ class ModifySagRouteProtocolBgpResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifySagRouteProtocolBgpResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -28295,13 +31294,16 @@ class ModifySagRouteProtocolOspfResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ModifySagRouteProtocolOspfResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -28314,6 +31316,8 @@ class ModifySagRouteProtocolOspfResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -28322,6 +31326,8 @@ class ModifySagRouteProtocolOspfResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifySagRouteProtocolOspfResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -28446,13 +31452,16 @@ class ModifySagStaticRouteResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ModifySagStaticRouteResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -28465,6 +31474,8 @@ class ModifySagStaticRouteResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -28473,6 +31484,8 @@ class ModifySagStaticRouteResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifySagStaticRouteResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -28585,13 +31598,16 @@ class ModifySagUserDnsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ModifySagUserDnsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -28604,6 +31620,8 @@ class ModifySagUserDnsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -28612,6 +31630,8 @@ class ModifySagUserDnsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifySagUserDnsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -28778,13 +31798,16 @@ class ModifySagWanResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ModifySagWanResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -28797,6 +31820,8 @@ class ModifySagWanResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -28805,6 +31830,8 @@ class ModifySagWanResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifySagWanResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -28911,13 +31938,16 @@ class ModifySagWanSnatResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ModifySagWanSnatResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -28930,6 +31960,8 @@ class ModifySagWanSnatResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -28938,6 +31970,8 @@ class ModifySagWanSnatResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifySagWanSnatResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -29092,13 +32126,16 @@ class ModifySagWifiResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ModifySagWifiResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -29111,6 +32148,8 @@ class ModifySagWifiResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -29119,6 +32158,8 @@ class ModifySagWifiResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifySagWifiResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -29130,9 +32171,11 @@ class ModifySmartAccessGatewayRequest(TeaModel):
         self,
         cidr_block: str = None,
         description: str = None,
+        enable_software_connection_audit: bool = None,
         name: str = None,
         owner_account: str = None,
         owner_id: int = None,
+        position: str = None,
         region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
@@ -29142,9 +32185,11 @@ class ModifySmartAccessGatewayRequest(TeaModel):
     ):
         self.cidr_block = cidr_block
         self.description = description
+        self.enable_software_connection_audit = enable_software_connection_audit
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
+        self.position = position
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -29165,12 +32210,16 @@ class ModifySmartAccessGatewayRequest(TeaModel):
             result['CidrBlock'] = self.cidr_block
         if self.description is not None:
             result['Description'] = self.description
+        if self.enable_software_connection_audit is not None:
+            result['EnableSoftwareConnectionAudit'] = self.enable_software_connection_audit
         if self.name is not None:
             result['Name'] = self.name
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+        if self.position is not None:
+            result['Position'] = self.position
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_owner_account is not None:
@@ -29191,12 +32240,16 @@ class ModifySmartAccessGatewayRequest(TeaModel):
             self.cidr_block = m.get('CidrBlock')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('EnableSoftwareConnectionAudit') is not None:
+            self.enable_software_connection_audit = m.get('EnableSoftwareConnectionAudit')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+        if m.get('Position') is not None:
+            self.position = m.get('Position')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceOwnerAccount') is not None:
@@ -29243,13 +32296,16 @@ class ModifySmartAccessGatewayResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ModifySmartAccessGatewayResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -29262,6 +32318,8 @@ class ModifySmartAccessGatewayResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -29270,6 +32328,8 @@ class ModifySmartAccessGatewayResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifySmartAccessGatewayResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -29406,13 +32466,16 @@ class ModifySmartAccessGatewayClientUserResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ModifySmartAccessGatewayClientUserResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -29425,6 +32488,8 @@ class ModifySmartAccessGatewayClientUserResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -29433,6 +32498,8 @@ class ModifySmartAccessGatewayClientUserResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifySmartAccessGatewayClientUserResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -29539,13 +32606,16 @@ class ModifySmartAccessGatewayUpBandwidthResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ModifySmartAccessGatewayUpBandwidthResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -29558,6 +32628,8 @@ class ModifySmartAccessGatewayUpBandwidthResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -29566,6 +32638,8 @@ class ModifySmartAccessGatewayUpBandwidthResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifySmartAccessGatewayUpBandwidthResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -29672,13 +32746,16 @@ class MoveResourceGroupResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: MoveResourceGroupResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -29691,6 +32768,8 @@ class MoveResourceGroupResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -29699,6 +32778,8 @@ class MoveResourceGroupResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = MoveResourceGroupResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -29799,13 +32880,16 @@ class ProbeAccessPointNetworkQualityResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ProbeAccessPointNetworkQualityResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -29818,6 +32902,8 @@ class ProbeAccessPointNetworkQualityResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -29826,6 +32912,8 @@ class ProbeAccessPointNetworkQualityResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ProbeAccessPointNetworkQualityResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -29926,13 +33014,16 @@ class RebootSmartAccessGatewayResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: RebootSmartAccessGatewayResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -29945,6 +33036,8 @@ class RebootSmartAccessGatewayResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -29953,6 +33046,8 @@ class RebootSmartAccessGatewayResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = RebootSmartAccessGatewayResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -30059,13 +33154,16 @@ class ResetSmartAccessGatewayClientUserPasswordResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ResetSmartAccessGatewayClientUserPasswordResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -30078,6 +33176,8 @@ class ResetSmartAccessGatewayClientUserPasswordResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -30086,6 +33186,8 @@ class ResetSmartAccessGatewayClientUserPasswordResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ResetSmartAccessGatewayClientUserPasswordResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -30186,13 +33288,16 @@ class RevokeInstanceFromCbnResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: RevokeInstanceFromCbnResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -30205,6 +33310,8 @@ class RevokeInstanceFromCbnResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -30213,6 +33320,8 @@ class RevokeInstanceFromCbnResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = RevokeInstanceFromCbnResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -30313,13 +33422,16 @@ class RevokeInstanceFromVbrResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: RevokeInstanceFromVbrResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -30332,6 +33444,8 @@ class RevokeInstanceFromVbrResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -30340,6 +33454,8 @@ class RevokeInstanceFromVbrResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = RevokeInstanceFromVbrResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -30440,13 +33556,16 @@ class RevokeSagInstanceFromCcnResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: RevokeSagInstanceFromCcnResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -30459,6 +33578,8 @@ class RevokeSagInstanceFromCcnResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -30467,6 +33588,8 @@ class RevokeSagInstanceFromCcnResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = RevokeSagInstanceFromCcnResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -30579,13 +33702,16 @@ class RoamClientUserResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: RoamClientUserResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -30598,6 +33724,8 @@ class RoamClientUserResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -30606,8 +33734,132 @@ class RoamClientUserResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = RoamClientUserResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SetAdvancedMonitorStateRequest(TeaModel):
+    def __init__(
+        self,
+        enable: bool = None,
+        region_id: str = None,
+        sag_id: str = None,
+    ):
+        self.enable = enable
+        self.region_id = region_id
+        self.sag_id = sag_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.sag_id is not None:
+            result['SagId'] = self.sag_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SagId') is not None:
+            self.sag_id = m.get('SagId')
+        return self
+
+
+class SetAdvancedMonitorStateResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class SetAdvancedMonitorStateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SetAdvancedMonitorStateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SetAdvancedMonitorStateResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -30706,13 +33958,16 @@ class SynchronizeSmartAGWebConfigResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: SynchronizeSmartAGWebConfigResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -30725,6 +33980,8 @@ class SynchronizeSmartAGWebConfigResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -30733,6 +33990,8 @@ class SynchronizeSmartAGWebConfigResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SynchronizeSmartAGWebConfigResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -30833,13 +34092,16 @@ class UnbindSerialNumberResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: UnbindSerialNumberResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -30852,6 +34114,8 @@ class UnbindSerialNumberResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -30860,6 +34124,8 @@ class UnbindSerialNumberResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UnbindSerialNumberResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -30966,13 +34232,16 @@ class UnbindSmartAccessGatewayResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: UnbindSmartAccessGatewayResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -30985,6 +34254,8 @@ class UnbindSmartAccessGatewayResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -30993,6 +34264,8 @@ class UnbindSmartAccessGatewayResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UnbindSmartAccessGatewayResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -31105,13 +34378,16 @@ class UnbindVbrResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: UnbindVbrResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -31124,6 +34400,8 @@ class UnbindVbrResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -31132,6 +34410,8 @@ class UnbindVbrResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UnbindVbrResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -31226,13 +34506,16 @@ class UnlockSmartAccessGatewayResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: UnlockSmartAccessGatewayResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -31245,6 +34528,8 @@ class UnlockSmartAccessGatewayResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -31253,6 +34538,8 @@ class UnlockSmartAccessGatewayResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UnlockSmartAccessGatewayResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -31335,13 +34622,16 @@ class UpdateEnterpriseCodeResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: UpdateEnterpriseCodeResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -31354,6 +34644,8 @@ class UpdateEnterpriseCodeResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -31362,8 +34654,186 @@ class UpdateEnterpriseCodeResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateEnterpriseCodeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateProbeTaskRequest(TeaModel):
+    def __init__(
+        self,
+        address_type: str = None,
+        domain: str = None,
+        enable: bool = None,
+        packet_number: int = None,
+        port: int = None,
+        probe_task_id: str = None,
+        probe_task_source_address: str = None,
+        protocol: str = None,
+        region_id: str = None,
+        sag_id: str = None,
+        sn: str = None,
+        task_name: str = None,
+    ):
+        self.address_type = address_type
+        self.domain = domain
+        self.enable = enable
+        self.packet_number = packet_number
+        self.port = port
+        self.probe_task_id = probe_task_id
+        self.probe_task_source_address = probe_task_source_address
+        self.protocol = protocol
+        self.region_id = region_id
+        self.sag_id = sag_id
+        self.sn = sn
+        self.task_name = task_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address_type is not None:
+            result['AddressType'] = self.address_type
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        if self.packet_number is not None:
+            result['PacketNumber'] = self.packet_number
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.probe_task_id is not None:
+            result['ProbeTaskId'] = self.probe_task_id
+        if self.probe_task_source_address is not None:
+            result['ProbeTaskSourceAddress'] = self.probe_task_source_address
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.sag_id is not None:
+            result['SagId'] = self.sag_id
+        if self.sn is not None:
+            result['Sn'] = self.sn
+        if self.task_name is not None:
+            result['TaskName'] = self.task_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AddressType') is not None:
+            self.address_type = m.get('AddressType')
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        if m.get('PacketNumber') is not None:
+            self.packet_number = m.get('PacketNumber')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('ProbeTaskId') is not None:
+            self.probe_task_id = m.get('ProbeTaskId')
+        if m.get('ProbeTaskSourceAddress') is not None:
+            self.probe_task_source_address = m.get('ProbeTaskSourceAddress')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SagId') is not None:
+            self.sag_id = m.get('SagId')
+        if m.get('Sn') is not None:
+            self.sn = m.get('Sn')
+        if m.get('TaskName') is not None:
+            self.task_name = m.get('TaskName')
+        return self
+
+
+class UpdateProbeTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateProbeTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateProbeTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateProbeTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -31462,13 +34932,16 @@ class UpdateSmartAGAccessPointResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: UpdateSmartAGAccessPointResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -31481,6 +34954,8 @@ class UpdateSmartAGAccessPointResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -31489,6 +34964,8 @@ class UpdateSmartAGAccessPointResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateSmartAGAccessPointResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -31601,13 +35078,16 @@ class UpdateSmartAGDpiAttributeResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: UpdateSmartAGDpiAttributeResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -31620,6 +35100,8 @@ class UpdateSmartAGDpiAttributeResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -31628,6 +35110,8 @@ class UpdateSmartAGDpiAttributeResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateSmartAGDpiAttributeResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -31710,13 +35194,16 @@ class UpdateSmartAGEnterpriseCodeResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: UpdateSmartAGEnterpriseCodeResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -31729,6 +35216,8 @@ class UpdateSmartAGEnterpriseCodeResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -31737,8 +35226,1316 @@ class UpdateSmartAGEnterpriseCodeResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateSmartAGEnterpriseCodeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateSmartAGUserAccelerateConfigRequest(TeaModel):
+    def __init__(
+        self,
+        bandwidth: int = None,
+        client_token: str = None,
+        dry_run: bool = None,
+        region_id: str = None,
+        smart_agid: str = None,
+        user_name: str = None,
+    ):
+        self.bandwidth = bandwidth
+        self.client_token = client_token
+        self.dry_run = dry_run
+        self.region_id = region_id
+        self.smart_agid = smart_agid
+        self.user_name = user_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bandwidth is not None:
+            result['Bandwidth'] = self.bandwidth
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.smart_agid is not None:
+            result['SmartAGId'] = self.smart_agid
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bandwidth') is not None:
+            self.bandwidth = m.get('Bandwidth')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SmartAGId') is not None:
+            self.smart_agid = m.get('SmartAGId')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
+        return self
+
+
+class UpdateSmartAGUserAccelerateConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateSmartAGUserAccelerateConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateSmartAGUserAccelerateConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateSmartAGUserAccelerateConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateSmartAccessGatewayAdminPasswordRequest(TeaModel):
+    def __init__(
+        self,
+        cross_account: bool = None,
+        password: str = None,
+        region_id: str = None,
+        resource_uid: str = None,
+        sag_ins_id: str = None,
+        sag_sn: str = None,
+    ):
+        self.cross_account = cross_account
+        self.password = password
+        self.region_id = region_id
+        self.resource_uid = resource_uid
+        self.sag_ins_id = sag_ins_id
+        self.sag_sn = sag_sn
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cross_account is not None:
+            result['CrossAccount'] = self.cross_account
+        if self.password is not None:
+            result['Password'] = self.password
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_uid is not None:
+            result['ResourceUid'] = self.resource_uid
+        if self.sag_ins_id is not None:
+            result['SagInsId'] = self.sag_ins_id
+        if self.sag_sn is not None:
+            result['SagSn'] = self.sag_sn
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CrossAccount') is not None:
+            self.cross_account = m.get('CrossAccount')
+        if m.get('Password') is not None:
+            self.password = m.get('Password')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceUid') is not None:
+            self.resource_uid = m.get('ResourceUid')
+        if m.get('SagInsId') is not None:
+            self.sag_ins_id = m.get('SagInsId')
+        if m.get('SagSn') is not None:
+            self.sag_sn = m.get('SagSn')
+        return self
+
+
+class UpdateSmartAccessGatewayAdminPasswordResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateSmartAccessGatewayAdminPasswordResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateSmartAccessGatewayAdminPasswordResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateSmartAccessGatewayAdminPasswordResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateSmartAccessGatewayBgpRouteRequest(TeaModel):
+    def __init__(
+        self,
+        cross_account: bool = None,
+        hold_time: int = None,
+        keep_alive: int = None,
+        local_as: int = None,
+        region_id: str = None,
+        resource_uid: str = None,
+        router_id: str = None,
+        sag_ins_id: str = None,
+        sag_sn: str = None,
+    ):
+        self.cross_account = cross_account
+        self.hold_time = hold_time
+        self.keep_alive = keep_alive
+        self.local_as = local_as
+        self.region_id = region_id
+        self.resource_uid = resource_uid
+        self.router_id = router_id
+        self.sag_ins_id = sag_ins_id
+        self.sag_sn = sag_sn
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cross_account is not None:
+            result['CrossAccount'] = self.cross_account
+        if self.hold_time is not None:
+            result['HoldTime'] = self.hold_time
+        if self.keep_alive is not None:
+            result['KeepAlive'] = self.keep_alive
+        if self.local_as is not None:
+            result['LocalAs'] = self.local_as
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_uid is not None:
+            result['ResourceUid'] = self.resource_uid
+        if self.router_id is not None:
+            result['RouterId'] = self.router_id
+        if self.sag_ins_id is not None:
+            result['SagInsId'] = self.sag_ins_id
+        if self.sag_sn is not None:
+            result['SagSn'] = self.sag_sn
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CrossAccount') is not None:
+            self.cross_account = m.get('CrossAccount')
+        if m.get('HoldTime') is not None:
+            self.hold_time = m.get('HoldTime')
+        if m.get('KeepAlive') is not None:
+            self.keep_alive = m.get('KeepAlive')
+        if m.get('LocalAs') is not None:
+            self.local_as = m.get('LocalAs')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceUid') is not None:
+            self.resource_uid = m.get('ResourceUid')
+        if m.get('RouterId') is not None:
+            self.router_id = m.get('RouterId')
+        if m.get('SagInsId') is not None:
+            self.sag_ins_id = m.get('SagInsId')
+        if m.get('SagSn') is not None:
+            self.sag_sn = m.get('SagSn')
+        return self
+
+
+class UpdateSmartAccessGatewayBgpRouteResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateSmartAccessGatewayBgpRouteResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateSmartAccessGatewayBgpRouteResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateSmartAccessGatewayBgpRouteResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateSmartAccessGatewayDnsRequest(TeaModel):
+    def __init__(
+        self,
+        cross_account: bool = None,
+        master_dns: str = None,
+        region_id: str = None,
+        resource_uid: str = None,
+        sag_ins_id: str = None,
+        sag_sn: str = None,
+        slave_dns: str = None,
+    ):
+        self.cross_account = cross_account
+        self.master_dns = master_dns
+        self.region_id = region_id
+        self.resource_uid = resource_uid
+        self.sag_ins_id = sag_ins_id
+        self.sag_sn = sag_sn
+        self.slave_dns = slave_dns
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cross_account is not None:
+            result['CrossAccount'] = self.cross_account
+        if self.master_dns is not None:
+            result['MasterDns'] = self.master_dns
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_uid is not None:
+            result['ResourceUid'] = self.resource_uid
+        if self.sag_ins_id is not None:
+            result['SagInsId'] = self.sag_ins_id
+        if self.sag_sn is not None:
+            result['SagSn'] = self.sag_sn
+        if self.slave_dns is not None:
+            result['SlaveDns'] = self.slave_dns
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CrossAccount') is not None:
+            self.cross_account = m.get('CrossAccount')
+        if m.get('MasterDns') is not None:
+            self.master_dns = m.get('MasterDns')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceUid') is not None:
+            self.resource_uid = m.get('ResourceUid')
+        if m.get('SagInsId') is not None:
+            self.sag_ins_id = m.get('SagInsId')
+        if m.get('SagSn') is not None:
+            self.sag_sn = m.get('SagSn')
+        if m.get('SlaveDns') is not None:
+            self.slave_dns = m.get('SlaveDns')
+        return self
+
+
+class UpdateSmartAccessGatewayDnsResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateSmartAccessGatewayDnsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateSmartAccessGatewayDnsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateSmartAccessGatewayDnsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateSmartAccessGatewayDnsForwardRequest(TeaModel):
+    def __init__(
+        self,
+        domain: str = None,
+        instance_id: str = None,
+        master_ip: str = None,
+        mode: str = None,
+        outbound_port_index: int = None,
+        outbound_port_name: str = None,
+        outbound_port_type: str = None,
+        region_id: str = None,
+        sag_ins_id: str = None,
+        sag_sn: str = None,
+        slave_ip: str = None,
+    ):
+        self.domain = domain
+        self.instance_id = instance_id
+        self.master_ip = master_ip
+        self.mode = mode
+        self.outbound_port_index = outbound_port_index
+        self.outbound_port_name = outbound_port_name
+        self.outbound_port_type = outbound_port_type
+        self.region_id = region_id
+        self.sag_ins_id = sag_ins_id
+        self.sag_sn = sag_sn
+        self.slave_ip = slave_ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.master_ip is not None:
+            result['MasterIp'] = self.master_ip
+        if self.mode is not None:
+            result['Mode'] = self.mode
+        if self.outbound_port_index is not None:
+            result['OutboundPortIndex'] = self.outbound_port_index
+        if self.outbound_port_name is not None:
+            result['OutboundPortName'] = self.outbound_port_name
+        if self.outbound_port_type is not None:
+            result['OutboundPortType'] = self.outbound_port_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.sag_ins_id is not None:
+            result['SagInsId'] = self.sag_ins_id
+        if self.sag_sn is not None:
+            result['SagSn'] = self.sag_sn
+        if self.slave_ip is not None:
+            result['SlaveIp'] = self.slave_ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('MasterIp') is not None:
+            self.master_ip = m.get('MasterIp')
+        if m.get('Mode') is not None:
+            self.mode = m.get('Mode')
+        if m.get('OutboundPortIndex') is not None:
+            self.outbound_port_index = m.get('OutboundPortIndex')
+        if m.get('OutboundPortName') is not None:
+            self.outbound_port_name = m.get('OutboundPortName')
+        if m.get('OutboundPortType') is not None:
+            self.outbound_port_type = m.get('OutboundPortType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SagInsId') is not None:
+            self.sag_ins_id = m.get('SagInsId')
+        if m.get('SagSn') is not None:
+            self.sag_sn = m.get('SagSn')
+        if m.get('SlaveIp') is not None:
+            self.slave_ip = m.get('SlaveIp')
+        return self
+
+
+class UpdateSmartAccessGatewayDnsForwardResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.code = code
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateSmartAccessGatewayDnsForwardResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateSmartAccessGatewayDnsForwardResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateSmartAccessGatewayDnsForwardResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateSmartAccessGatewayGlobalRouteProtocolRequest(TeaModel):
+    def __init__(
+        self,
+        cross_account: bool = None,
+        region_id: str = None,
+        resource_uid: str = None,
+        route_protocol: str = None,
+        sag_ins_id: str = None,
+        sag_sn: str = None,
+    ):
+        self.cross_account = cross_account
+        self.region_id = region_id
+        self.resource_uid = resource_uid
+        self.route_protocol = route_protocol
+        self.sag_ins_id = sag_ins_id
+        self.sag_sn = sag_sn
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cross_account is not None:
+            result['CrossAccount'] = self.cross_account
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_uid is not None:
+            result['ResourceUid'] = self.resource_uid
+        if self.route_protocol is not None:
+            result['RouteProtocol'] = self.route_protocol
+        if self.sag_ins_id is not None:
+            result['SagInsId'] = self.sag_ins_id
+        if self.sag_sn is not None:
+            result['SagSn'] = self.sag_sn
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CrossAccount') is not None:
+            self.cross_account = m.get('CrossAccount')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceUid') is not None:
+            self.resource_uid = m.get('ResourceUid')
+        if m.get('RouteProtocol') is not None:
+            self.route_protocol = m.get('RouteProtocol')
+        if m.get('SagInsId') is not None:
+            self.sag_ins_id = m.get('SagInsId')
+        if m.get('SagSn') is not None:
+            self.sag_sn = m.get('SagSn')
+        return self
+
+
+class UpdateSmartAccessGatewayGlobalRouteProtocolResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateSmartAccessGatewayGlobalRouteProtocolResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateSmartAccessGatewayGlobalRouteProtocolResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateSmartAccessGatewayGlobalRouteProtocolResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateSmartAccessGatewayOspfRouteRequest(TeaModel):
+    def __init__(
+        self,
+        area_id: int = None,
+        authentication_type: str = None,
+        cross_account: bool = None,
+        dead_time: int = None,
+        hello_time: int = None,
+        interface_name: str = None,
+        md_5key: str = None,
+        md_5key_id: int = None,
+        networks: str = None,
+        ospf_cost: int = None,
+        ospf_network_type: str = None,
+        password: str = None,
+        redistribute_protocol: str = None,
+        region_id: str = None,
+        resource_uid: str = None,
+        router_id: str = None,
+        sag_ins_id: str = None,
+        sag_sn: str = None,
+    ):
+        self.area_id = area_id
+        self.authentication_type = authentication_type
+        self.cross_account = cross_account
+        self.dead_time = dead_time
+        self.hello_time = hello_time
+        self.interface_name = interface_name
+        self.md_5key = md_5key
+        self.md_5key_id = md_5key_id
+        self.networks = networks
+        self.ospf_cost = ospf_cost
+        self.ospf_network_type = ospf_network_type
+        self.password = password
+        self.redistribute_protocol = redistribute_protocol
+        self.region_id = region_id
+        self.resource_uid = resource_uid
+        self.router_id = router_id
+        self.sag_ins_id = sag_ins_id
+        self.sag_sn = sag_sn
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.area_id is not None:
+            result['AreaId'] = self.area_id
+        if self.authentication_type is not None:
+            result['AuthenticationType'] = self.authentication_type
+        if self.cross_account is not None:
+            result['CrossAccount'] = self.cross_account
+        if self.dead_time is not None:
+            result['DeadTime'] = self.dead_time
+        if self.hello_time is not None:
+            result['HelloTime'] = self.hello_time
+        if self.interface_name is not None:
+            result['InterfaceName'] = self.interface_name
+        if self.md_5key is not None:
+            result['Md5Key'] = self.md_5key
+        if self.md_5key_id is not None:
+            result['Md5KeyId'] = self.md_5key_id
+        if self.networks is not None:
+            result['Networks'] = self.networks
+        if self.ospf_cost is not None:
+            result['OspfCost'] = self.ospf_cost
+        if self.ospf_network_type is not None:
+            result['OspfNetworkType'] = self.ospf_network_type
+        if self.password is not None:
+            result['Password'] = self.password
+        if self.redistribute_protocol is not None:
+            result['RedistributeProtocol'] = self.redistribute_protocol
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_uid is not None:
+            result['ResourceUid'] = self.resource_uid
+        if self.router_id is not None:
+            result['RouterId'] = self.router_id
+        if self.sag_ins_id is not None:
+            result['SagInsId'] = self.sag_ins_id
+        if self.sag_sn is not None:
+            result['SagSn'] = self.sag_sn
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AreaId') is not None:
+            self.area_id = m.get('AreaId')
+        if m.get('AuthenticationType') is not None:
+            self.authentication_type = m.get('AuthenticationType')
+        if m.get('CrossAccount') is not None:
+            self.cross_account = m.get('CrossAccount')
+        if m.get('DeadTime') is not None:
+            self.dead_time = m.get('DeadTime')
+        if m.get('HelloTime') is not None:
+            self.hello_time = m.get('HelloTime')
+        if m.get('InterfaceName') is not None:
+            self.interface_name = m.get('InterfaceName')
+        if m.get('Md5Key') is not None:
+            self.md_5key = m.get('Md5Key')
+        if m.get('Md5KeyId') is not None:
+            self.md_5key_id = m.get('Md5KeyId')
+        if m.get('Networks') is not None:
+            self.networks = m.get('Networks')
+        if m.get('OspfCost') is not None:
+            self.ospf_cost = m.get('OspfCost')
+        if m.get('OspfNetworkType') is not None:
+            self.ospf_network_type = m.get('OspfNetworkType')
+        if m.get('Password') is not None:
+            self.password = m.get('Password')
+        if m.get('RedistributeProtocol') is not None:
+            self.redistribute_protocol = m.get('RedistributeProtocol')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceUid') is not None:
+            self.resource_uid = m.get('ResourceUid')
+        if m.get('RouterId') is not None:
+            self.router_id = m.get('RouterId')
+        if m.get('SagInsId') is not None:
+            self.sag_ins_id = m.get('SagInsId')
+        if m.get('SagSn') is not None:
+            self.sag_sn = m.get('SagSn')
+        return self
+
+
+class UpdateSmartAccessGatewayOspfRouteResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateSmartAccessGatewayOspfRouteResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateSmartAccessGatewayOspfRouteResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateSmartAccessGatewayOspfRouteResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateSmartAccessGatewayPortRouteProtocolRequest(TeaModel):
+    def __init__(
+        self,
+        cross_account: bool = None,
+        port_name: str = None,
+        region_id: str = None,
+        remote_as: str = None,
+        remote_ip: str = None,
+        resource_uid: str = None,
+        route_protocol: str = None,
+        sag_ins_id: str = None,
+        sag_sn: str = None,
+        vlan: str = None,
+    ):
+        self.cross_account = cross_account
+        self.port_name = port_name
+        self.region_id = region_id
+        self.remote_as = remote_as
+        self.remote_ip = remote_ip
+        self.resource_uid = resource_uid
+        self.route_protocol = route_protocol
+        self.sag_ins_id = sag_ins_id
+        self.sag_sn = sag_sn
+        self.vlan = vlan
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cross_account is not None:
+            result['CrossAccount'] = self.cross_account
+        if self.port_name is not None:
+            result['PortName'] = self.port_name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.remote_as is not None:
+            result['RemoteAs'] = self.remote_as
+        if self.remote_ip is not None:
+            result['RemoteIp'] = self.remote_ip
+        if self.resource_uid is not None:
+            result['ResourceUid'] = self.resource_uid
+        if self.route_protocol is not None:
+            result['RouteProtocol'] = self.route_protocol
+        if self.sag_ins_id is not None:
+            result['SagInsId'] = self.sag_ins_id
+        if self.sag_sn is not None:
+            result['SagSn'] = self.sag_sn
+        if self.vlan is not None:
+            result['Vlan'] = self.vlan
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CrossAccount') is not None:
+            self.cross_account = m.get('CrossAccount')
+        if m.get('PortName') is not None:
+            self.port_name = m.get('PortName')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('RemoteAs') is not None:
+            self.remote_as = m.get('RemoteAs')
+        if m.get('RemoteIp') is not None:
+            self.remote_ip = m.get('RemoteIp')
+        if m.get('ResourceUid') is not None:
+            self.resource_uid = m.get('ResourceUid')
+        if m.get('RouteProtocol') is not None:
+            self.route_protocol = m.get('RouteProtocol')
+        if m.get('SagInsId') is not None:
+            self.sag_ins_id = m.get('SagInsId')
+        if m.get('SagSn') is not None:
+            self.sag_sn = m.get('SagSn')
+        if m.get('Vlan') is not None:
+            self.vlan = m.get('Vlan')
+        return self
+
+
+class UpdateSmartAccessGatewayPortRouteProtocolResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateSmartAccessGatewayPortRouteProtocolResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateSmartAccessGatewayPortRouteProtocolResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateSmartAccessGatewayPortRouteProtocolResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -31849,13 +36646,16 @@ class UpdateSmartAccessGatewayVersionResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: UpdateSmartAccessGatewayVersionResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -31868,6 +36668,8 @@ class UpdateSmartAccessGatewayVersionResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -31876,8 +36678,156 @@ class UpdateSmartAccessGatewayVersionResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateSmartAccessGatewayVersionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateSmartAccessGatewayWanSnatRequest(TeaModel):
+    def __init__(
+        self,
+        cross_account: bool = None,
+        region_id: str = None,
+        resource_uid: str = None,
+        sag_ins_id: str = None,
+        sag_sn: str = None,
+        snat: str = None,
+    ):
+        self.cross_account = cross_account
+        self.region_id = region_id
+        self.resource_uid = resource_uid
+        self.sag_ins_id = sag_ins_id
+        self.sag_sn = sag_sn
+        self.snat = snat
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cross_account is not None:
+            result['CrossAccount'] = self.cross_account
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_uid is not None:
+            result['ResourceUid'] = self.resource_uid
+        if self.sag_ins_id is not None:
+            result['SagInsId'] = self.sag_ins_id
+        if self.sag_sn is not None:
+            result['SagSn'] = self.sag_sn
+        if self.snat is not None:
+            result['Snat'] = self.snat
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CrossAccount') is not None:
+            self.cross_account = m.get('CrossAccount')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceUid') is not None:
+            self.resource_uid = m.get('ResourceUid')
+        if m.get('SagInsId') is not None:
+            self.sag_ins_id = m.get('SagInsId')
+        if m.get('SagSn') is not None:
+            self.sag_sn = m.get('SagSn')
+        if m.get('Snat') is not None:
+            self.snat = m.get('Snat')
+        return self
+
+
+class UpdateSmartAccessGatewayWanSnatResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateSmartAccessGatewayWanSnatResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateSmartAccessGatewayWanSnatResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateSmartAccessGatewayWanSnatResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -31988,13 +36938,16 @@ class UpgradeSmartAccessGatewayResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: UpgradeSmartAccessGatewayResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -32007,6 +36960,8 @@ class UpgradeSmartAccessGatewayResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -32015,6 +36970,8 @@ class UpgradeSmartAccessGatewayResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpgradeSmartAccessGatewayResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -32133,13 +37090,16 @@ class UpgradeSmartAccessGatewaySoftwareResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: UpgradeSmartAccessGatewaySoftwareResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -32152,6 +37112,8 @@ class UpgradeSmartAccessGatewaySoftwareResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -32160,8 +37122,1686 @@ class UpgradeSmartAccessGatewaySoftwareResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpgradeSmartAccessGatewaySoftwareResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ViewSmartAccessGatewayBgpRouteRequest(TeaModel):
+    def __init__(
+        self,
+        cross_account: bool = None,
+        region_id: str = None,
+        resource_uid: str = None,
+        sag_ins_id: str = None,
+        sag_sn: str = None,
+    ):
+        self.cross_account = cross_account
+        self.region_id = region_id
+        self.resource_uid = resource_uid
+        self.sag_ins_id = sag_ins_id
+        self.sag_sn = sag_sn
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cross_account is not None:
+            result['CrossAccount'] = self.cross_account
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_uid is not None:
+            result['ResourceUid'] = self.resource_uid
+        if self.sag_ins_id is not None:
+            result['SagInsId'] = self.sag_ins_id
+        if self.sag_sn is not None:
+            result['SagSn'] = self.sag_sn
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CrossAccount') is not None:
+            self.cross_account = m.get('CrossAccount')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceUid') is not None:
+            self.resource_uid = m.get('ResourceUid')
+        if m.get('SagInsId') is not None:
+            self.sag_ins_id = m.get('SagInsId')
+        if m.get('SagSn') is not None:
+            self.sag_sn = m.get('SagSn')
+        return self
+
+
+class ViewSmartAccessGatewayBgpRouteResponseBodyTaskStates(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        error_code: str = None,
+        error_message: str = None,
+        state: str = None,
+    ):
+        self.create_time = create_time
+        self.error_code = error_code
+        self.error_message = error_message
+        self.state = state
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.state is not None:
+            result['State'] = self.state
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        return self
+
+
+class ViewSmartAccessGatewayBgpRouteResponseBody(TeaModel):
+    def __init__(
+        self,
+        hold_time: int = None,
+        keep_alive: int = None,
+        local_as: int = None,
+        request_id: str = None,
+        router_id: str = None,
+        task_states: List[ViewSmartAccessGatewayBgpRouteResponseBodyTaskStates] = None,
+    ):
+        self.hold_time = hold_time
+        self.keep_alive = keep_alive
+        self.local_as = local_as
+        self.request_id = request_id
+        self.router_id = router_id
+        self.task_states = task_states
+
+    def validate(self):
+        if self.task_states:
+            for k in self.task_states:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.hold_time is not None:
+            result['HoldTime'] = self.hold_time
+        if self.keep_alive is not None:
+            result['KeepAlive'] = self.keep_alive
+        if self.local_as is not None:
+            result['LocalAs'] = self.local_as
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.router_id is not None:
+            result['RouterId'] = self.router_id
+        result['TaskStates'] = []
+        if self.task_states is not None:
+            for k in self.task_states:
+                result['TaskStates'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HoldTime') is not None:
+            self.hold_time = m.get('HoldTime')
+        if m.get('KeepAlive') is not None:
+            self.keep_alive = m.get('KeepAlive')
+        if m.get('LocalAs') is not None:
+            self.local_as = m.get('LocalAs')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('RouterId') is not None:
+            self.router_id = m.get('RouterId')
+        self.task_states = []
+        if m.get('TaskStates') is not None:
+            for k in m.get('TaskStates'):
+                temp_model = ViewSmartAccessGatewayBgpRouteResponseBodyTaskStates()
+                self.task_states.append(temp_model.from_map(k))
+        return self
+
+
+class ViewSmartAccessGatewayBgpRouteResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ViewSmartAccessGatewayBgpRouteResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ViewSmartAccessGatewayBgpRouteResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ViewSmartAccessGatewayDnsRequest(TeaModel):
+    def __init__(
+        self,
+        cross_account: bool = None,
+        region_id: str = None,
+        resource_uid: str = None,
+        sag_ins_id: str = None,
+        sag_sn: str = None,
+    ):
+        self.cross_account = cross_account
+        self.region_id = region_id
+        self.resource_uid = resource_uid
+        self.sag_ins_id = sag_ins_id
+        self.sag_sn = sag_sn
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cross_account is not None:
+            result['CrossAccount'] = self.cross_account
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_uid is not None:
+            result['ResourceUid'] = self.resource_uid
+        if self.sag_ins_id is not None:
+            result['SagInsId'] = self.sag_ins_id
+        if self.sag_sn is not None:
+            result['SagSn'] = self.sag_sn
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CrossAccount') is not None:
+            self.cross_account = m.get('CrossAccount')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceUid') is not None:
+            self.resource_uid = m.get('ResourceUid')
+        if m.get('SagInsId') is not None:
+            self.sag_ins_id = m.get('SagInsId')
+        if m.get('SagSn') is not None:
+            self.sag_sn = m.get('SagSn')
+        return self
+
+
+class ViewSmartAccessGatewayDnsResponseBodyTaskStates(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        error_code: str = None,
+        error_message: str = None,
+        state: str = None,
+    ):
+        self.create_time = create_time
+        self.error_code = error_code
+        self.error_message = error_message
+        self.state = state
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.state is not None:
+            result['State'] = self.state
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        return self
+
+
+class ViewSmartAccessGatewayDnsResponseBody(TeaModel):
+    def __init__(
+        self,
+        master_dns: str = None,
+        request_id: str = None,
+        slave_dns: str = None,
+        task_states: List[ViewSmartAccessGatewayDnsResponseBodyTaskStates] = None,
+    ):
+        self.master_dns = master_dns
+        self.request_id = request_id
+        self.slave_dns = slave_dns
+        self.task_states = task_states
+
+    def validate(self):
+        if self.task_states:
+            for k in self.task_states:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.master_dns is not None:
+            result['MasterDns'] = self.master_dns
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.slave_dns is not None:
+            result['SlaveDns'] = self.slave_dns
+        result['TaskStates'] = []
+        if self.task_states is not None:
+            for k in self.task_states:
+                result['TaskStates'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MasterDns') is not None:
+            self.master_dns = m.get('MasterDns')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SlaveDns') is not None:
+            self.slave_dns = m.get('SlaveDns')
+        self.task_states = []
+        if m.get('TaskStates') is not None:
+            for k in m.get('TaskStates'):
+                temp_model = ViewSmartAccessGatewayDnsResponseBodyTaskStates()
+                self.task_states.append(temp_model.from_map(k))
+        return self
+
+
+class ViewSmartAccessGatewayDnsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ViewSmartAccessGatewayDnsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ViewSmartAccessGatewayDnsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ViewSmartAccessGatewayDnsForwardsRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        sag_ins_id: str = None,
+        sag_sn: str = None,
+    ):
+        self.region_id = region_id
+        self.sag_ins_id = sag_ins_id
+        self.sag_sn = sag_sn
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.sag_ins_id is not None:
+            result['SagInsId'] = self.sag_ins_id
+        if self.sag_sn is not None:
+            result['SagSn'] = self.sag_sn
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SagInsId') is not None:
+            self.sag_ins_id = m.get('SagInsId')
+        if m.get('SagSn') is not None:
+            self.sag_sn = m.get('SagSn')
+        return self
+
+
+class ViewSmartAccessGatewayDnsForwardsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        domain: str = None,
+        instance_id: str = None,
+        master_ip: str = None,
+        mode: str = None,
+        outbound_port_index: int = None,
+        outbound_port_name: str = None,
+        outbound_port_type: str = None,
+        slave_ip: str = None,
+    ):
+        self.domain = domain
+        self.instance_id = instance_id
+        self.master_ip = master_ip
+        self.mode = mode
+        self.outbound_port_index = outbound_port_index
+        self.outbound_port_name = outbound_port_name
+        self.outbound_port_type = outbound_port_type
+        self.slave_ip = slave_ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.master_ip is not None:
+            result['MasterIp'] = self.master_ip
+        if self.mode is not None:
+            result['Mode'] = self.mode
+        if self.outbound_port_index is not None:
+            result['OutboundPortIndex'] = self.outbound_port_index
+        if self.outbound_port_name is not None:
+            result['OutboundPortName'] = self.outbound_port_name
+        if self.outbound_port_type is not None:
+            result['OutboundPortType'] = self.outbound_port_type
+        if self.slave_ip is not None:
+            result['SlaveIp'] = self.slave_ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('MasterIp') is not None:
+            self.master_ip = m.get('MasterIp')
+        if m.get('Mode') is not None:
+            self.mode = m.get('Mode')
+        if m.get('OutboundPortIndex') is not None:
+            self.outbound_port_index = m.get('OutboundPortIndex')
+        if m.get('OutboundPortName') is not None:
+            self.outbound_port_name = m.get('OutboundPortName')
+        if m.get('OutboundPortType') is not None:
+            self.outbound_port_type = m.get('OutboundPortType')
+        if m.get('SlaveIp') is not None:
+            self.slave_ip = m.get('SlaveIp')
+        return self
+
+
+class ViewSmartAccessGatewayDnsForwardsResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        count: int = None,
+        data: List[ViewSmartAccessGatewayDnsForwardsResponseBodyData] = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.count = count
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.count is not None:
+            result['Count'] = self.count
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = ViewSmartAccessGatewayDnsForwardsResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ViewSmartAccessGatewayDnsForwardsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ViewSmartAccessGatewayDnsForwardsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ViewSmartAccessGatewayDnsForwardsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ViewSmartAccessGatewayGlobalRouteProtocolRequest(TeaModel):
+    def __init__(
+        self,
+        cross_account: bool = None,
+        region_id: str = None,
+        resource_uid: str = None,
+        sag_ins_id: str = None,
+        sag_sn: str = None,
+    ):
+        self.cross_account = cross_account
+        self.region_id = region_id
+        self.resource_uid = resource_uid
+        self.sag_ins_id = sag_ins_id
+        self.sag_sn = sag_sn
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cross_account is not None:
+            result['CrossAccount'] = self.cross_account
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_uid is not None:
+            result['ResourceUid'] = self.resource_uid
+        if self.sag_ins_id is not None:
+            result['SagInsId'] = self.sag_ins_id
+        if self.sag_sn is not None:
+            result['SagSn'] = self.sag_sn
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CrossAccount') is not None:
+            self.cross_account = m.get('CrossAccount')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceUid') is not None:
+            self.resource_uid = m.get('ResourceUid')
+        if m.get('SagInsId') is not None:
+            self.sag_ins_id = m.get('SagInsId')
+        if m.get('SagSn') is not None:
+            self.sag_sn = m.get('SagSn')
+        return self
+
+
+class ViewSmartAccessGatewayGlobalRouteProtocolResponseBodyTaskStates(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        error_code: str = None,
+        error_message: str = None,
+        state: str = None,
+    ):
+        self.create_time = create_time
+        self.error_code = error_code
+        self.error_message = error_message
+        self.state = state
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.state is not None:
+            result['State'] = self.state
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        return self
+
+
+class ViewSmartAccessGatewayGlobalRouteProtocolResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        route_protocol: str = None,
+        task_states: List[ViewSmartAccessGatewayGlobalRouteProtocolResponseBodyTaskStates] = None,
+    ):
+        self.request_id = request_id
+        self.route_protocol = route_protocol
+        self.task_states = task_states
+
+    def validate(self):
+        if self.task_states:
+            for k in self.task_states:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.route_protocol is not None:
+            result['RouteProtocol'] = self.route_protocol
+        result['TaskStates'] = []
+        if self.task_states is not None:
+            for k in self.task_states:
+                result['TaskStates'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('RouteProtocol') is not None:
+            self.route_protocol = m.get('RouteProtocol')
+        self.task_states = []
+        if m.get('TaskStates') is not None:
+            for k in m.get('TaskStates'):
+                temp_model = ViewSmartAccessGatewayGlobalRouteProtocolResponseBodyTaskStates()
+                self.task_states.append(temp_model.from_map(k))
+        return self
+
+
+class ViewSmartAccessGatewayGlobalRouteProtocolResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ViewSmartAccessGatewayGlobalRouteProtocolResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ViewSmartAccessGatewayGlobalRouteProtocolResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ViewSmartAccessGatewayOspfRouteRequest(TeaModel):
+    def __init__(
+        self,
+        cross_account: bool = None,
+        region_id: str = None,
+        resource_uid: str = None,
+        sag_ins_id: str = None,
+        sag_sn: str = None,
+    ):
+        self.cross_account = cross_account
+        self.region_id = region_id
+        self.resource_uid = resource_uid
+        self.sag_ins_id = sag_ins_id
+        self.sag_sn = sag_sn
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cross_account is not None:
+            result['CrossAccount'] = self.cross_account
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_uid is not None:
+            result['ResourceUid'] = self.resource_uid
+        if self.sag_ins_id is not None:
+            result['SagInsId'] = self.sag_ins_id
+        if self.sag_sn is not None:
+            result['SagSn'] = self.sag_sn
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CrossAccount') is not None:
+            self.cross_account = m.get('CrossAccount')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceUid') is not None:
+            self.resource_uid = m.get('ResourceUid')
+        if m.get('SagInsId') is not None:
+            self.sag_ins_id = m.get('SagInsId')
+        if m.get('SagSn') is not None:
+            self.sag_sn = m.get('SagSn')
+        return self
+
+
+class ViewSmartAccessGatewayOspfRouteResponseBodyTaskStates(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        error_code: str = None,
+        error_message: str = None,
+        state: str = None,
+    ):
+        self.create_time = create_time
+        self.error_code = error_code
+        self.error_message = error_message
+        self.state = state
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.state is not None:
+            result['State'] = self.state
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        return self
+
+
+class ViewSmartAccessGatewayOspfRouteResponseBody(TeaModel):
+    def __init__(
+        self,
+        area_id: int = None,
+        authentication_type: str = None,
+        dead_time: int = None,
+        hello_time: int = None,
+        md_5key: str = None,
+        md_5key_id: int = None,
+        request_id: str = None,
+        router_id: str = None,
+        task_states: List[ViewSmartAccessGatewayOspfRouteResponseBodyTaskStates] = None,
+    ):
+        self.area_id = area_id
+        self.authentication_type = authentication_type
+        self.dead_time = dead_time
+        self.hello_time = hello_time
+        self.md_5key = md_5key
+        self.md_5key_id = md_5key_id
+        self.request_id = request_id
+        self.router_id = router_id
+        self.task_states = task_states
+
+    def validate(self):
+        if self.task_states:
+            for k in self.task_states:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.area_id is not None:
+            result['AreaId'] = self.area_id
+        if self.authentication_type is not None:
+            result['AuthenticationType'] = self.authentication_type
+        if self.dead_time is not None:
+            result['DeadTime'] = self.dead_time
+        if self.hello_time is not None:
+            result['HelloTime'] = self.hello_time
+        if self.md_5key is not None:
+            result['Md5Key'] = self.md_5key
+        if self.md_5key_id is not None:
+            result['Md5KeyId'] = self.md_5key_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.router_id is not None:
+            result['RouterId'] = self.router_id
+        result['TaskStates'] = []
+        if self.task_states is not None:
+            for k in self.task_states:
+                result['TaskStates'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AreaId') is not None:
+            self.area_id = m.get('AreaId')
+        if m.get('AuthenticationType') is not None:
+            self.authentication_type = m.get('AuthenticationType')
+        if m.get('DeadTime') is not None:
+            self.dead_time = m.get('DeadTime')
+        if m.get('HelloTime') is not None:
+            self.hello_time = m.get('HelloTime')
+        if m.get('Md5Key') is not None:
+            self.md_5key = m.get('Md5Key')
+        if m.get('Md5KeyId') is not None:
+            self.md_5key_id = m.get('Md5KeyId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('RouterId') is not None:
+            self.router_id = m.get('RouterId')
+        self.task_states = []
+        if m.get('TaskStates') is not None:
+            for k in m.get('TaskStates'):
+                temp_model = ViewSmartAccessGatewayOspfRouteResponseBodyTaskStates()
+                self.task_states.append(temp_model.from_map(k))
+        return self
+
+
+class ViewSmartAccessGatewayOspfRouteResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ViewSmartAccessGatewayOspfRouteResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ViewSmartAccessGatewayOspfRouteResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ViewSmartAccessGatewayPortRouteProtocolRequest(TeaModel):
+    def __init__(
+        self,
+        cross_account: bool = None,
+        region_id: str = None,
+        resource_uid: str = None,
+        sag_ins_id: str = None,
+        sag_sn: str = None,
+    ):
+        self.cross_account = cross_account
+        self.region_id = region_id
+        self.resource_uid = resource_uid
+        self.sag_ins_id = sag_ins_id
+        self.sag_sn = sag_sn
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cross_account is not None:
+            result['CrossAccount'] = self.cross_account
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_uid is not None:
+            result['ResourceUid'] = self.resource_uid
+        if self.sag_ins_id is not None:
+            result['SagInsId'] = self.sag_ins_id
+        if self.sag_sn is not None:
+            result['SagSn'] = self.sag_sn
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CrossAccount') is not None:
+            self.cross_account = m.get('CrossAccount')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceUid') is not None:
+            self.resource_uid = m.get('ResourceUid')
+        if m.get('SagInsId') is not None:
+            self.sag_ins_id = m.get('SagInsId')
+        if m.get('SagSn') is not None:
+            self.sag_sn = m.get('SagSn')
+        return self
+
+
+class ViewSmartAccessGatewayPortRouteProtocolResponseBodyPorts(TeaModel):
+    def __init__(
+        self,
+        neighbor_ip: str = None,
+        port_name: str = None,
+        remote_as: str = None,
+        remote_ip: str = None,
+        route_protocol: str = None,
+        status: str = None,
+        vlan: str = None,
+    ):
+        self.neighbor_ip = neighbor_ip
+        self.port_name = port_name
+        self.remote_as = remote_as
+        self.remote_ip = remote_ip
+        self.route_protocol = route_protocol
+        self.status = status
+        self.vlan = vlan
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.neighbor_ip is not None:
+            result['NeighborIp'] = self.neighbor_ip
+        if self.port_name is not None:
+            result['PortName'] = self.port_name
+        if self.remote_as is not None:
+            result['RemoteAs'] = self.remote_as
+        if self.remote_ip is not None:
+            result['RemoteIp'] = self.remote_ip
+        if self.route_protocol is not None:
+            result['RouteProtocol'] = self.route_protocol
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.vlan is not None:
+            result['Vlan'] = self.vlan
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NeighborIp') is not None:
+            self.neighbor_ip = m.get('NeighborIp')
+        if m.get('PortName') is not None:
+            self.port_name = m.get('PortName')
+        if m.get('RemoteAs') is not None:
+            self.remote_as = m.get('RemoteAs')
+        if m.get('RemoteIp') is not None:
+            self.remote_ip = m.get('RemoteIp')
+        if m.get('RouteProtocol') is not None:
+            self.route_protocol = m.get('RouteProtocol')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Vlan') is not None:
+            self.vlan = m.get('Vlan')
+        return self
+
+
+class ViewSmartAccessGatewayPortRouteProtocolResponseBodyTaskStates(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        error_code: str = None,
+        error_message: str = None,
+        state: str = None,
+    ):
+        self.create_time = create_time
+        self.error_code = error_code
+        self.error_message = error_message
+        self.state = state
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.state is not None:
+            result['State'] = self.state
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        return self
+
+
+class ViewSmartAccessGatewayPortRouteProtocolResponseBody(TeaModel):
+    def __init__(
+        self,
+        ports: List[ViewSmartAccessGatewayPortRouteProtocolResponseBodyPorts] = None,
+        request_id: str = None,
+        task_states: List[ViewSmartAccessGatewayPortRouteProtocolResponseBodyTaskStates] = None,
+    ):
+        self.ports = ports
+        self.request_id = request_id
+        self.task_states = task_states
+
+    def validate(self):
+        if self.ports:
+            for k in self.ports:
+                if k:
+                    k.validate()
+        if self.task_states:
+            for k in self.task_states:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Ports'] = []
+        if self.ports is not None:
+            for k in self.ports:
+                result['Ports'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['TaskStates'] = []
+        if self.task_states is not None:
+            for k in self.task_states:
+                result['TaskStates'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.ports = []
+        if m.get('Ports') is not None:
+            for k in m.get('Ports'):
+                temp_model = ViewSmartAccessGatewayPortRouteProtocolResponseBodyPorts()
+                self.ports.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.task_states = []
+        if m.get('TaskStates') is not None:
+            for k in m.get('TaskStates'):
+                temp_model = ViewSmartAccessGatewayPortRouteProtocolResponseBodyTaskStates()
+                self.task_states.append(temp_model.from_map(k))
+        return self
+
+
+class ViewSmartAccessGatewayPortRouteProtocolResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ViewSmartAccessGatewayPortRouteProtocolResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ViewSmartAccessGatewayPortRouteProtocolResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ViewSmartAccessGatewayRoutesRequest(TeaModel):
+    def __init__(
+        self,
+        cross_account: bool = None,
+        region_id: str = None,
+        resource_uid: str = None,
+        sag_ins_id: str = None,
+        sag_sn: str = None,
+    ):
+        self.cross_account = cross_account
+        self.region_id = region_id
+        self.resource_uid = resource_uid
+        self.sag_ins_id = sag_ins_id
+        self.sag_sn = sag_sn
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cross_account is not None:
+            result['CrossAccount'] = self.cross_account
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_uid is not None:
+            result['ResourceUid'] = self.resource_uid
+        if self.sag_ins_id is not None:
+            result['SagInsId'] = self.sag_ins_id
+        if self.sag_sn is not None:
+            result['SagSn'] = self.sag_sn
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CrossAccount') is not None:
+            self.cross_account = m.get('CrossAccount')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceUid') is not None:
+            self.resource_uid = m.get('ResourceUid')
+        if m.get('SagInsId') is not None:
+            self.sag_ins_id = m.get('SagInsId')
+        if m.get('SagSn') is not None:
+            self.sag_sn = m.get('SagSn')
+        return self
+
+
+class ViewSmartAccessGatewayRoutesResponseBodyRoutes(TeaModel):
+    def __init__(
+        self,
+        conflict_cidrs: List[str] = None,
+        cost: str = None,
+        dst: str = None,
+        idx: int = None,
+        nexthop: str = None,
+        role: str = None,
+        type: str = None,
+    ):
+        self.conflict_cidrs = conflict_cidrs
+        self.cost = cost
+        self.dst = dst
+        self.idx = idx
+        self.nexthop = nexthop
+        self.role = role
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.conflict_cidrs is not None:
+            result['ConflictCidrs'] = self.conflict_cidrs
+        if self.cost is not None:
+            result['Cost'] = self.cost
+        if self.dst is not None:
+            result['Dst'] = self.dst
+        if self.idx is not None:
+            result['Idx'] = self.idx
+        if self.nexthop is not None:
+            result['Nexthop'] = self.nexthop
+        if self.role is not None:
+            result['Role'] = self.role
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConflictCidrs') is not None:
+            self.conflict_cidrs = m.get('ConflictCidrs')
+        if m.get('Cost') is not None:
+            self.cost = m.get('Cost')
+        if m.get('Dst') is not None:
+            self.dst = m.get('Dst')
+        if m.get('Idx') is not None:
+            self.idx = m.get('Idx')
+        if m.get('Nexthop') is not None:
+            self.nexthop = m.get('Nexthop')
+        if m.get('Role') is not None:
+            self.role = m.get('Role')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ViewSmartAccessGatewayRoutesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        routes: List[ViewSmartAccessGatewayRoutesResponseBodyRoutes] = None,
+    ):
+        self.request_id = request_id
+        self.routes = routes
+
+    def validate(self):
+        if self.routes:
+            for k in self.routes:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Routes'] = []
+        if self.routes is not None:
+            for k in self.routes:
+                result['Routes'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.routes = []
+        if m.get('Routes') is not None:
+            for k in m.get('Routes'):
+                temp_model = ViewSmartAccessGatewayRoutesResponseBodyRoutes()
+                self.routes.append(temp_model.from_map(k))
+        return self
+
+
+class ViewSmartAccessGatewayRoutesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ViewSmartAccessGatewayRoutesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ViewSmartAccessGatewayRoutesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ViewSmartAccessGatewayWanSnatRequest(TeaModel):
+    def __init__(
+        self,
+        cross_account: bool = None,
+        region_id: str = None,
+        resource_uid: str = None,
+        sag_ins_id: str = None,
+        sag_sn: str = None,
+    ):
+        self.cross_account = cross_account
+        self.region_id = region_id
+        self.resource_uid = resource_uid
+        self.sag_ins_id = sag_ins_id
+        self.sag_sn = sag_sn
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cross_account is not None:
+            result['CrossAccount'] = self.cross_account
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_uid is not None:
+            result['ResourceUid'] = self.resource_uid
+        if self.sag_ins_id is not None:
+            result['SagInsId'] = self.sag_ins_id
+        if self.sag_sn is not None:
+            result['SagSn'] = self.sag_sn
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CrossAccount') is not None:
+            self.cross_account = m.get('CrossAccount')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceUid') is not None:
+            self.resource_uid = m.get('ResourceUid')
+        if m.get('SagInsId') is not None:
+            self.sag_ins_id = m.get('SagInsId')
+        if m.get('SagSn') is not None:
+            self.sag_sn = m.get('SagSn')
+        return self
+
+
+class ViewSmartAccessGatewayWanSnatResponseBodyTaskStates(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        error_code: str = None,
+        error_message: str = None,
+        state: str = None,
+    ):
+        self.create_time = create_time
+        self.error_code = error_code
+        self.error_message = error_message
+        self.state = state
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.state is not None:
+            result['State'] = self.state
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        return self
+
+
+class ViewSmartAccessGatewayWanSnatResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        snat: str = None,
+        task_states: List[ViewSmartAccessGatewayWanSnatResponseBodyTaskStates] = None,
+    ):
+        self.request_id = request_id
+        self.snat = snat
+        self.task_states = task_states
+
+    def validate(self):
+        if self.task_states:
+            for k in self.task_states:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.snat is not None:
+            result['Snat'] = self.snat
+        result['TaskStates'] = []
+        if self.task_states is not None:
+            for k in self.task_states:
+                result['TaskStates'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Snat') is not None:
+            self.snat = m.get('Snat')
+        self.task_states = []
+        if m.get('TaskStates') is not None:
+            for k in m.get('TaskStates'):
+                temp_model = ViewSmartAccessGatewayWanSnatResponseBodyTaskStates()
+                self.task_states.append(temp_model.from_map(k))
+        return self
+
+
+class ViewSmartAccessGatewayWanSnatResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ViewSmartAccessGatewayWanSnatResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ViewSmartAccessGatewayWanSnatResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
