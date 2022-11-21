@@ -1545,12 +1545,16 @@ class DescribeDiskReplicaGroupsRequest(TeaModel):
         group_ids: str = None,
         max_results: int = None,
         next_token: str = None,
+        page_number: int = None,
+        page_size: int = None,
         region_id: str = None,
         site: str = None,
     ):
         self.group_ids = group_ids
         self.max_results = max_results
         self.next_token = next_token
+        self.page_number = page_number
+        self.page_size = page_size
         self.region_id = region_id
         self.site = site
 
@@ -1569,6 +1573,10 @@ class DescribeDiskReplicaGroupsRequest(TeaModel):
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
             result['NextToken'] = self.next_token
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.site is not None:
@@ -1583,6 +1591,10 @@ class DescribeDiskReplicaGroupsRequest(TeaModel):
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('Site') is not None:
@@ -1723,12 +1735,18 @@ class DescribeDiskReplicaGroupsResponseBody(TeaModel):
     def __init__(
         self,
         next_token: str = None,
+        page_number: int = None,
+        page_size: int = None,
         replica_groups: List[DescribeDiskReplicaGroupsResponseBodyReplicaGroups] = None,
         request_id: str = None,
+        total_count: int = None,
     ):
         self.next_token = next_token
+        self.page_number = page_number
+        self.page_size = page_size
         self.replica_groups = replica_groups
         self.request_id = request_id
+        self.total_count = total_count
 
     def validate(self):
         if self.replica_groups:
@@ -1744,18 +1762,28 @@ class DescribeDiskReplicaGroupsResponseBody(TeaModel):
         result = dict()
         if self.next_token is not None:
             result['NextToken'] = self.next_token
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
         result['ReplicaGroups'] = []
         if self.replica_groups is not None:
             for k in self.replica_groups:
                 result['ReplicaGroups'].append(k.to_map() if k else None)
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
         self.replica_groups = []
         if m.get('ReplicaGroups') is not None:
             for k in m.get('ReplicaGroups'):
@@ -1763,6 +1791,8 @@ class DescribeDiskReplicaGroupsResponseBody(TeaModel):
                 self.replica_groups.append(temp_model.from_map(k))
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         return self
 
 

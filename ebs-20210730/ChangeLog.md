@@ -1,3 +1,6 @@
+2022-11-21 Version: 1.3.12
+- Describe group support pageNumber pageSize.
+
 2022-09-15 Version: 1.3.11
 - DescribeDiskReplicaPairProgress to public.
 - Add Tag API.
