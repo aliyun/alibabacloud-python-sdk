@@ -1,3 +1,6 @@
+2022-11-21 Version: 2.0.0
+- Incompatible changes, some of dependencies paths should be altered to v2 paths.
+
 2022-11-02 Version: 1.1.13
 - Add webServerMode to CustomContainerConfig and CustomContainerConfigInfo.
 
