@@ -14235,7 +14235,7 @@ class CreateVpcGatewayEndpointResponse(TeaModel):
         return self
 
 
-class CreateVpcPrefixListRequestPrefixListEntrys(TeaModel):
+class CreateVpcPrefixListRequestPrefixListEntries(TeaModel):
     def __init__(
         self,
         cidr: str = None,
@@ -14278,7 +14278,7 @@ class CreateVpcPrefixListRequest(TeaModel):
         owner_account: str = None,
         owner_id: int = None,
         prefix_list_description: str = None,
-        prefix_list_entrys: List[CreateVpcPrefixListRequestPrefixListEntrys] = None,
+        prefix_list_entries: List[CreateVpcPrefixListRequestPrefixListEntries] = None,
         prefix_list_name: str = None,
         region_id: str = None,
         resource_owner_account: str = None,
@@ -14291,15 +14291,15 @@ class CreateVpcPrefixListRequest(TeaModel):
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.prefix_list_description = prefix_list_description
-        self.prefix_list_entrys = prefix_list_entrys
+        self.prefix_list_entries = prefix_list_entries
         self.prefix_list_name = prefix_list_name
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
 
     def validate(self):
-        if self.prefix_list_entrys:
-            for k in self.prefix_list_entrys:
+        if self.prefix_list_entries:
+            for k in self.prefix_list_entries:
                 if k:
                     k.validate()
 
@@ -14323,10 +14323,10 @@ class CreateVpcPrefixListRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.prefix_list_description is not None:
             result['PrefixListDescription'] = self.prefix_list_description
-        result['PrefixListEntrys'] = []
-        if self.prefix_list_entrys is not None:
-            for k in self.prefix_list_entrys:
-                result['PrefixListEntrys'].append(k.to_map() if k else None)
+        result['PrefixListEntries'] = []
+        if self.prefix_list_entries is not None:
+            for k in self.prefix_list_entries:
+                result['PrefixListEntries'].append(k.to_map() if k else None)
         if self.prefix_list_name is not None:
             result['PrefixListName'] = self.prefix_list_name
         if self.region_id is not None:
@@ -14353,11 +14353,11 @@ class CreateVpcPrefixListRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('PrefixListDescription') is not None:
             self.prefix_list_description = m.get('PrefixListDescription')
-        self.prefix_list_entrys = []
-        if m.get('PrefixListEntrys') is not None:
-            for k in m.get('PrefixListEntrys'):
-                temp_model = CreateVpcPrefixListRequestPrefixListEntrys()
-                self.prefix_list_entrys.append(temp_model.from_map(k))
+        self.prefix_list_entries = []
+        if m.get('PrefixListEntries') is not None:
+            for k in m.get('PrefixListEntries'):
+                temp_model = CreateVpcPrefixListRequestPrefixListEntries()
+                self.prefix_list_entries.append(temp_model.from_map(k))
         if m.get('PrefixListName') is not None:
             self.prefix_list_name = m.get('PrefixListName')
         if m.get('RegionId') is not None:
@@ -39979,6 +39979,7 @@ class DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSetVirtualBorde
         activation_time: str = None,
         associated_cens: DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSetVirtualBorderRouterTypeAssociatedCens = None,
         associated_physical_connections: DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSetVirtualBorderRouterTypeAssociatedPhysicalConnections = None,
+        bandwidth: int = None,
         circuit_code: str = None,
         cloud_box_instance_id: str = None,
         creation_time: str = None,
@@ -40014,6 +40015,7 @@ class DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSetVirtualBorde
         self.activation_time = activation_time
         self.associated_cens = associated_cens
         self.associated_physical_connections = associated_physical_connections
+        self.bandwidth = bandwidth
         self.circuit_code = circuit_code
         self.cloud_box_instance_id = cloud_box_instance_id
         self.creation_time = creation_time
@@ -40065,6 +40067,8 @@ class DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSetVirtualBorde
             result['AssociatedCens'] = self.associated_cens.to_map()
         if self.associated_physical_connections is not None:
             result['AssociatedPhysicalConnections'] = self.associated_physical_connections.to_map()
+        if self.bandwidth is not None:
+            result['Bandwidth'] = self.bandwidth
         if self.circuit_code is not None:
             result['CircuitCode'] = self.circuit_code
         if self.cloud_box_instance_id is not None:
@@ -40139,6 +40143,8 @@ class DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSetVirtualBorde
         if m.get('AssociatedPhysicalConnections') is not None:
             temp_model = DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSetVirtualBorderRouterTypeAssociatedPhysicalConnections()
             self.associated_physical_connections = temp_model.from_map(m['AssociatedPhysicalConnections'])
+        if m.get('Bandwidth') is not None:
+            self.bandwidth = m.get('Bandwidth')
         if m.get('CircuitCode') is not None:
             self.circuit_code = m.get('CircuitCode')
         if m.get('CloudBoxInstanceId') is not None:

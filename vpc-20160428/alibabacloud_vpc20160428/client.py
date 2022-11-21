@@ -8898,8 +8898,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.prefix_list_description):
             query['PrefixListDescription'] = request.prefix_list_description
-        if not UtilClient.is_unset(request.prefix_list_entrys):
-            query['PrefixListEntrys'] = request.prefix_list_entrys
+        if not UtilClient.is_unset(request.prefix_list_entries):
+            query['PrefixListEntries'] = request.prefix_list_entries
         if not UtilClient.is_unset(request.prefix_list_name):
             query['PrefixListName'] = request.prefix_list_name
         if not UtilClient.is_unset(request.region_id):
@@ -8948,8 +8948,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.prefix_list_description):
             query['PrefixListDescription'] = request.prefix_list_description
-        if not UtilClient.is_unset(request.prefix_list_entrys):
-            query['PrefixListEntrys'] = request.prefix_list_entrys
+        if not UtilClient.is_unset(request.prefix_list_entries):
+            query['PrefixListEntries'] = request.prefix_list_entries
         if not UtilClient.is_unset(request.prefix_list_name):
             query['PrefixListName'] = request.prefix_list_name
         if not UtilClient.is_unset(request.region_id):

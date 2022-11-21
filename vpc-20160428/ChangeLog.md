@@ -1,3 +1,11 @@
+2022-11-21 Version: 2.0.12
+- ResponseLog true.
+- Support bandwidth.
+- Fix error code translation error.
+- Repair error code English translation.
+- Changes the param NextToken of ListDhcpOptionsSet to optional in API docs.
+- Fixed CreateVpcPrefixList paramer name invalid.
+
 2022-11-14 Version: 2.0.11
 - Supplementary error code mapping.
 - Exposed unassociate ipv6 cidr param.
