@@ -322,80 +322,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_favorite_public_media_with_options_async(request, runtime)
 
-    def add_media_marks_with_options(
-        self,
-        request: ice20201109_models.AddMediaMarksRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.AddMediaMarksResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.media_id):
-            query['MediaId'] = request.media_id
-        if not UtilClient.is_unset(request.media_marks):
-            query['MediaMarks'] = request.media_marks
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='AddMediaMarks',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.AddMediaMarksResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def add_media_marks_with_options_async(
-        self,
-        request: ice20201109_models.AddMediaMarksRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.AddMediaMarksResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.media_id):
-            query['MediaId'] = request.media_id
-        if not UtilClient.is_unset(request.media_marks):
-            query['MediaMarks'] = request.media_marks
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='AddMediaMarks',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.AddMediaMarksResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def add_media_marks(
-        self,
-        request: ice20201109_models.AddMediaMarksRequest,
-    ) -> ice20201109_models.AddMediaMarksResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.add_media_marks_with_options(request, runtime)
-
-    async def add_media_marks_async(
-        self,
-        request: ice20201109_models.AddMediaMarksRequest,
-    ) -> ice20201109_models.AddMediaMarksResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.add_media_marks_with_options_async(request, runtime)
-
     def add_template_with_options(
         self,
         request: ice20201109_models.AddTemplateRequest,
@@ -411,6 +337,8 @@ class Client(OpenApiClient):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.preview_media):
             query['PreviewMedia'] = request.preview_media
+        if not UtilClient.is_unset(request.related_mediaids):
+            query['RelatedMediaids'] = request.related_mediaids
         if not UtilClient.is_unset(request.source):
             query['Source'] = request.source
         if not UtilClient.is_unset(request.status):
@@ -451,6 +379,8 @@ class Client(OpenApiClient):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.preview_media):
             query['PreviewMedia'] = request.preview_media
+        if not UtilClient.is_unset(request.related_mediaids):
+            query['RelatedMediaids'] = request.related_mediaids
         if not UtilClient.is_unset(request.source):
             query['Source'] = request.source
         if not UtilClient.is_unset(request.status):
@@ -564,92 +494,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.batch_get_media_infos_with_options_async(request, runtime)
 
-    def cancel_dnajob_with_options(
-        self,
-        request: ice20201109_models.CancelDNAJobRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.CancelDNAJobResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.job_id):
-            query['JobId'] = request.job_id
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CancelDNAJob',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.CancelDNAJobResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def cancel_dnajob_with_options_async(
-        self,
-        request: ice20201109_models.CancelDNAJobRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.CancelDNAJobResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.job_id):
-            query['JobId'] = request.job_id
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CancelDNAJob',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.CancelDNAJobResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def cancel_dnajob(
-        self,
-        request: ice20201109_models.CancelDNAJobRequest,
-    ) -> ice20201109_models.CancelDNAJobResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.cancel_dnajob_with_options(request, runtime)
-
-    async def cancel_dnajob_async(
-        self,
-        request: ice20201109_models.CancelDNAJobRequest,
-    ) -> ice20201109_models.CancelDNAJobResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.cancel_dnajob_with_options_async(request, runtime)
-
     def cancel_favorite_public_media_with_options(
         self,
         request: ice20201109_models.CancelFavoritePublicMediaRequest,
@@ -719,150 +563,6 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.CancelFavoritePublicMediaResponse:
         runtime = util_models.RuntimeOptions()
         return await self.cancel_favorite_public_media_with_options_async(request, runtime)
-
-    def cancel_url_upload_jobs_with_options(
-        self,
-        request: ice20201109_models.CancelUrlUploadJobsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.CancelUrlUploadJobsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.job_ids):
-            query['JobIds'] = request.job_ids
-        if not UtilClient.is_unset(request.upload_urls):
-            query['UploadUrls'] = request.upload_urls
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CancelUrlUploadJobs',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.CancelUrlUploadJobsResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def cancel_url_upload_jobs_with_options_async(
-        self,
-        request: ice20201109_models.CancelUrlUploadJobsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.CancelUrlUploadJobsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.job_ids):
-            query['JobIds'] = request.job_ids
-        if not UtilClient.is_unset(request.upload_urls):
-            query['UploadUrls'] = request.upload_urls
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CancelUrlUploadJobs',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.CancelUrlUploadJobsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def cancel_url_upload_jobs(
-        self,
-        request: ice20201109_models.CancelUrlUploadJobsRequest,
-    ) -> ice20201109_models.CancelUrlUploadJobsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.cancel_url_upload_jobs_with_options(request, runtime)
-
-    async def cancel_url_upload_jobs_async(
-        self,
-        request: ice20201109_models.CancelUrlUploadJobsRequest,
-    ) -> ice20201109_models.CancelUrlUploadJobsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.cancel_url_upload_jobs_with_options_async(request, runtime)
-
-    def convert_to_feediting_project_with_options(
-        self,
-        request: ice20201109_models.ConvertToFEEditingProjectRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.ConvertToFEEditingProjectResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.project_id):
-            query['ProjectId'] = request.project_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ConvertToFEEditingProject',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.ConvertToFEEditingProjectResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def convert_to_feediting_project_with_options_async(
-        self,
-        request: ice20201109_models.ConvertToFEEditingProjectRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.ConvertToFEEditingProjectResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.project_id):
-            query['ProjectId'] = request.project_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ConvertToFEEditingProject',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.ConvertToFEEditingProjectResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def convert_to_feediting_project(
-        self,
-        request: ice20201109_models.ConvertToFEEditingProjectRequest,
-    ) -> ice20201109_models.ConvertToFEEditingProjectResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.convert_to_feediting_project_with_options(request, runtime)
-
-    async def convert_to_feediting_project_async(
-        self,
-        request: ice20201109_models.ConvertToFEEditingProjectRequest,
-    ) -> ice20201109_models.ConvertToFEEditingProjectResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.convert_to_feediting_project_with_options_async(request, runtime)
 
     def create_audit_with_options(
         self,
@@ -1019,100 +719,6 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.CreateCustomTemplateResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_custom_template_with_options_async(request, runtime)
-
-    def create_dnadbwith_options(
-        self,
-        request: ice20201109_models.CreateDNADBRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.CreateDNADBResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.description):
-            query['Description'] = request.description
-        if not UtilClient.is_unset(request.model):
-            query['Model'] = request.model
-        if not UtilClient.is_unset(request.name):
-            query['Name'] = request.name
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CreateDNADB',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.CreateDNADBResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def create_dnadbwith_options_async(
-        self,
-        request: ice20201109_models.CreateDNADBRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.CreateDNADBResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.description):
-            query['Description'] = request.description
-        if not UtilClient.is_unset(request.model):
-            query['Model'] = request.model
-        if not UtilClient.is_unset(request.name):
-            query['Name'] = request.name
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CreateDNADB',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.CreateDNADBResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def create_dnadb(
-        self,
-        request: ice20201109_models.CreateDNADBRequest,
-    ) -> ice20201109_models.CreateDNADBResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.create_dnadbwith_options(request, runtime)
-
-    async def create_dnadb_async(
-        self,
-        request: ice20201109_models.CreateDNADBRequest,
-    ) -> ice20201109_models.CreateDNADBResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.create_dnadbwith_options_async(request, runtime)
 
     def create_editing_project_with_options(
         self,
@@ -1389,7 +995,7 @@ class Client(OpenApiClient):
         request = ice20201109_models.CreateLiveTranscodeTemplateShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.template_config):
-            request.template_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.template_config), 'TemplateConfig', 'json')
+            request.template_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.template_config, 'TemplateConfig', 'json')
         query = {}
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
@@ -1425,7 +1031,7 @@ class Client(OpenApiClient):
         request = ice20201109_models.CreateLiveTranscodeTemplateShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.template_config):
-            request.template_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.template_config), 'TemplateConfig', 'json')
+            request.template_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.template_config, 'TemplateConfig', 'json')
         query = {}
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
@@ -1863,182 +1469,6 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.DeleteCustomTemplateResponse:
         runtime = util_models.RuntimeOptions()
         return await self.delete_custom_template_with_options_async(request, runtime)
-
-    def delete_dnadbwith_options(
-        self,
-        request: ice20201109_models.DeleteDNADBRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.DeleteDNADBResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.dbid):
-            query['DBId'] = request.dbid
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DeleteDNADB',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.DeleteDNADBResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def delete_dnadbwith_options_async(
-        self,
-        request: ice20201109_models.DeleteDNADBRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.DeleteDNADBResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.dbid):
-            query['DBId'] = request.dbid
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DeleteDNADB',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.DeleteDNADBResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def delete_dnadb(
-        self,
-        request: ice20201109_models.DeleteDNADBRequest,
-    ) -> ice20201109_models.DeleteDNADBResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.delete_dnadbwith_options(request, runtime)
-
-    async def delete_dnadb_async(
-        self,
-        request: ice20201109_models.DeleteDNADBRequest,
-    ) -> ice20201109_models.DeleteDNADBResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.delete_dnadbwith_options_async(request, runtime)
-
-    def delete_dnafiles_with_options(
-        self,
-        request: ice20201109_models.DeleteDNAFilesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.DeleteDNAFilesResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.dbid):
-            query['DBId'] = request.dbid
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.primary_keys):
-            query['PrimaryKeys'] = request.primary_keys
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DeleteDNAFiles',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.DeleteDNAFilesResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def delete_dnafiles_with_options_async(
-        self,
-        request: ice20201109_models.DeleteDNAFilesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.DeleteDNAFilesResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.dbid):
-            query['DBId'] = request.dbid
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.primary_keys):
-            query['PrimaryKeys'] = request.primary_keys
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DeleteDNAFiles',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.DeleteDNAFilesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def delete_dnafiles(
-        self,
-        request: ice20201109_models.DeleteDNAFilesRequest,
-    ) -> ice20201109_models.DeleteDNAFilesResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.delete_dnafiles_with_options(request, runtime)
-
-    async def delete_dnafiles_async(
-        self,
-        request: ice20201109_models.DeleteDNAFilesRequest,
-    ) -> ice20201109_models.DeleteDNAFilesResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.delete_dnafiles_with_options_async(request, runtime)
 
     def delete_editing_project_materials_with_options(
         self,
@@ -2706,150 +2136,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_media_infos_with_options_async(request, runtime)
 
-    def delete_media_marks_with_options(
-        self,
-        request: ice20201109_models.DeleteMediaMarksRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.DeleteMediaMarksResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.media_id):
-            query['MediaId'] = request.media_id
-        if not UtilClient.is_unset(request.media_mark_ids):
-            query['MediaMarkIds'] = request.media_mark_ids
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DeleteMediaMarks',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.DeleteMediaMarksResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def delete_media_marks_with_options_async(
-        self,
-        request: ice20201109_models.DeleteMediaMarksRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.DeleteMediaMarksResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.media_id):
-            query['MediaId'] = request.media_id
-        if not UtilClient.is_unset(request.media_mark_ids):
-            query['MediaMarkIds'] = request.media_mark_ids
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DeleteMediaMarks',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.DeleteMediaMarksResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def delete_media_marks(
-        self,
-        request: ice20201109_models.DeleteMediaMarksRequest,
-    ) -> ice20201109_models.DeleteMediaMarksResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.delete_media_marks_with_options(request, runtime)
-
-    async def delete_media_marks_async(
-        self,
-        request: ice20201109_models.DeleteMediaMarksRequest,
-    ) -> ice20201109_models.DeleteMediaMarksResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.delete_media_marks_with_options_async(request, runtime)
-
-    def delete_media_producing_jobs_with_options(
-        self,
-        request: ice20201109_models.DeleteMediaProducingJobsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.DeleteMediaProducingJobsResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.job_ids):
-            body['JobIds'] = request.job_ids
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DeleteMediaProducingJobs',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.DeleteMediaProducingJobsResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def delete_media_producing_jobs_with_options_async(
-        self,
-        request: ice20201109_models.DeleteMediaProducingJobsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.DeleteMediaProducingJobsResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.job_ids):
-            body['JobIds'] = request.job_ids
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DeleteMediaProducingJobs',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.DeleteMediaProducingJobsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def delete_media_producing_jobs(
-        self,
-        request: ice20201109_models.DeleteMediaProducingJobsRequest,
-    ) -> ice20201109_models.DeleteMediaProducingJobsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.delete_media_producing_jobs_with_options(request, runtime)
-
-    async def delete_media_producing_jobs_async(
-        self,
-        request: ice20201109_models.DeleteMediaProducingJobsRequest,
-    ) -> ice20201109_models.DeleteMediaProducingJobsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.delete_media_producing_jobs_with_options_async(request, runtime)
-
     def delete_pipeline_with_options(
         self,
         request: ice20201109_models.DeletePipelineRequest,
@@ -3203,646 +2489,6 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.DescribeFilterConfigsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_filter_configs_with_options_async(request, runtime)
-
-    def describe_live_pub_experience_metric_data_with_options(
-        self,
-        request: ice20201109_models.DescribeLivePubExperienceMetricDataRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.DescribeLivePubExperienceMetricDataResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.begin_ts):
-            query['BeginTs'] = request.begin_ts
-        if not UtilClient.is_unset(request.domain):
-            query['Domain'] = request.domain
-        if not UtilClient.is_unset(request.end_ts):
-            query['EndTs'] = request.end_ts
-        if not UtilClient.is_unset(request.metric_type):
-            query['MetricType'] = request.metric_type
-        if not UtilClient.is_unset(request.os):
-            query['Os'] = request.os
-        if not UtilClient.is_unset(request.pub_protocol):
-            query['PubProtocol'] = request.pub_protocol
-        if not UtilClient.is_unset(request.terminal_type):
-            query['TerminalType'] = request.terminal_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeLivePubExperienceMetricData',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.DescribeLivePubExperienceMetricDataResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_live_pub_experience_metric_data_with_options_async(
-        self,
-        request: ice20201109_models.DescribeLivePubExperienceMetricDataRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.DescribeLivePubExperienceMetricDataResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.begin_ts):
-            query['BeginTs'] = request.begin_ts
-        if not UtilClient.is_unset(request.domain):
-            query['Domain'] = request.domain
-        if not UtilClient.is_unset(request.end_ts):
-            query['EndTs'] = request.end_ts
-        if not UtilClient.is_unset(request.metric_type):
-            query['MetricType'] = request.metric_type
-        if not UtilClient.is_unset(request.os):
-            query['Os'] = request.os
-        if not UtilClient.is_unset(request.pub_protocol):
-            query['PubProtocol'] = request.pub_protocol
-        if not UtilClient.is_unset(request.terminal_type):
-            query['TerminalType'] = request.terminal_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeLivePubExperienceMetricData',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.DescribeLivePubExperienceMetricDataResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_live_pub_experience_metric_data(
-        self,
-        request: ice20201109_models.DescribeLivePubExperienceMetricDataRequest,
-    ) -> ice20201109_models.DescribeLivePubExperienceMetricDataResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_live_pub_experience_metric_data_with_options(request, runtime)
-
-    async def describe_live_pub_experience_metric_data_async(
-        self,
-        request: ice20201109_models.DescribeLivePubExperienceMetricDataRequest,
-    ) -> ice20201109_models.DescribeLivePubExperienceMetricDataResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_live_pub_experience_metric_data_with_options_async(request, runtime)
-
-    def describe_live_pub_list_with_options(
-        self,
-        request: ice20201109_models.DescribeLivePubListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.DescribeLivePubListResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.begin_ts):
-            query['BeginTs'] = request.begin_ts
-        if not UtilClient.is_unset(request.domain):
-            query['Domain'] = request.domain
-        if not UtilClient.is_unset(request.end_ts):
-            query['EndTs'] = request.end_ts
-        if not UtilClient.is_unset(request.metric_type):
-            query['MetricType'] = request.metric_type
-        if not UtilClient.is_unset(request.os):
-            query['Os'] = request.os
-        if not UtilClient.is_unset(request.page_num):
-            query['PageNum'] = request.page_num
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.pub_protocol):
-            query['PubProtocol'] = request.pub_protocol
-        if not UtilClient.is_unset(request.terminal_type):
-            query['TerminalType'] = request.terminal_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeLivePubList',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.DescribeLivePubListResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_live_pub_list_with_options_async(
-        self,
-        request: ice20201109_models.DescribeLivePubListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.DescribeLivePubListResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.begin_ts):
-            query['BeginTs'] = request.begin_ts
-        if not UtilClient.is_unset(request.domain):
-            query['Domain'] = request.domain
-        if not UtilClient.is_unset(request.end_ts):
-            query['EndTs'] = request.end_ts
-        if not UtilClient.is_unset(request.metric_type):
-            query['MetricType'] = request.metric_type
-        if not UtilClient.is_unset(request.os):
-            query['Os'] = request.os
-        if not UtilClient.is_unset(request.page_num):
-            query['PageNum'] = request.page_num
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.pub_protocol):
-            query['PubProtocol'] = request.pub_protocol
-        if not UtilClient.is_unset(request.terminal_type):
-            query['TerminalType'] = request.terminal_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeLivePubList',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.DescribeLivePubListResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_live_pub_list(
-        self,
-        request: ice20201109_models.DescribeLivePubListRequest,
-    ) -> ice20201109_models.DescribeLivePubListResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_live_pub_list_with_options(request, runtime)
-
-    async def describe_live_pub_list_async(
-        self,
-        request: ice20201109_models.DescribeLivePubListRequest,
-    ) -> ice20201109_models.DescribeLivePubListResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_live_pub_list_with_options_async(request, runtime)
-
-    def describe_live_pub_metric_data_with_options(
-        self,
-        request: ice20201109_models.DescribeLivePubMetricDataRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.DescribeLivePubMetricDataResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.begin_ts):
-            query['BeginTs'] = request.begin_ts
-        if not UtilClient.is_unset(request.domain):
-            query['Domain'] = request.domain
-        if not UtilClient.is_unset(request.end_ts):
-            query['EndTs'] = request.end_ts
-        if not UtilClient.is_unset(request.experience_level):
-            query['ExperienceLevel'] = request.experience_level
-        if not UtilClient.is_unset(request.metric_type):
-            query['MetricType'] = request.metric_type
-        if not UtilClient.is_unset(request.os):
-            query['Os'] = request.os
-        if not UtilClient.is_unset(request.pub_protocol):
-            query['PubProtocol'] = request.pub_protocol
-        if not UtilClient.is_unset(request.sdk_version):
-            query['SdkVersion'] = request.sdk_version
-        if not UtilClient.is_unset(request.stream_name):
-            query['StreamName'] = request.stream_name
-        if not UtilClient.is_unset(request.terminal_type):
-            query['TerminalType'] = request.terminal_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeLivePubMetricData',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.DescribeLivePubMetricDataResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_live_pub_metric_data_with_options_async(
-        self,
-        request: ice20201109_models.DescribeLivePubMetricDataRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.DescribeLivePubMetricDataResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.begin_ts):
-            query['BeginTs'] = request.begin_ts
-        if not UtilClient.is_unset(request.domain):
-            query['Domain'] = request.domain
-        if not UtilClient.is_unset(request.end_ts):
-            query['EndTs'] = request.end_ts
-        if not UtilClient.is_unset(request.experience_level):
-            query['ExperienceLevel'] = request.experience_level
-        if not UtilClient.is_unset(request.metric_type):
-            query['MetricType'] = request.metric_type
-        if not UtilClient.is_unset(request.os):
-            query['Os'] = request.os
-        if not UtilClient.is_unset(request.pub_protocol):
-            query['PubProtocol'] = request.pub_protocol
-        if not UtilClient.is_unset(request.sdk_version):
-            query['SdkVersion'] = request.sdk_version
-        if not UtilClient.is_unset(request.stream_name):
-            query['StreamName'] = request.stream_name
-        if not UtilClient.is_unset(request.terminal_type):
-            query['TerminalType'] = request.terminal_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeLivePubMetricData',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.DescribeLivePubMetricDataResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_live_pub_metric_data(
-        self,
-        request: ice20201109_models.DescribeLivePubMetricDataRequest,
-    ) -> ice20201109_models.DescribeLivePubMetricDataResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_live_pub_metric_data_with_options(request, runtime)
-
-    async def describe_live_pub_metric_data_async(
-        self,
-        request: ice20201109_models.DescribeLivePubMetricDataRequest,
-    ) -> ice20201109_models.DescribeLivePubMetricDataResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_live_pub_metric_data_with_options_async(request, runtime)
-
-    def describe_live_sub_experience_metric_data_with_options(
-        self,
-        request: ice20201109_models.DescribeLiveSubExperienceMetricDataRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.DescribeLiveSubExperienceMetricDataResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.app_name):
-            query['AppName'] = request.app_name
-        if not UtilClient.is_unset(request.begin_ts):
-            query['BeginTs'] = request.begin_ts
-        if not UtilClient.is_unset(request.end_ts):
-            query['EndTs'] = request.end_ts
-        if not UtilClient.is_unset(request.experience_level):
-            query['ExperienceLevel'] = request.experience_level
-        if not UtilClient.is_unset(request.metric_type):
-            query['MetricType'] = request.metric_type
-        if not UtilClient.is_unset(request.os):
-            query['Os'] = request.os
-        if not UtilClient.is_unset(request.sub_protocol):
-            query['SubProtocol'] = request.sub_protocol
-        if not UtilClient.is_unset(request.terminal_type):
-            query['TerminalType'] = request.terminal_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeLiveSubExperienceMetricData',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.DescribeLiveSubExperienceMetricDataResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_live_sub_experience_metric_data_with_options_async(
-        self,
-        request: ice20201109_models.DescribeLiveSubExperienceMetricDataRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.DescribeLiveSubExperienceMetricDataResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.app_name):
-            query['AppName'] = request.app_name
-        if not UtilClient.is_unset(request.begin_ts):
-            query['BeginTs'] = request.begin_ts
-        if not UtilClient.is_unset(request.end_ts):
-            query['EndTs'] = request.end_ts
-        if not UtilClient.is_unset(request.experience_level):
-            query['ExperienceLevel'] = request.experience_level
-        if not UtilClient.is_unset(request.metric_type):
-            query['MetricType'] = request.metric_type
-        if not UtilClient.is_unset(request.os):
-            query['Os'] = request.os
-        if not UtilClient.is_unset(request.sub_protocol):
-            query['SubProtocol'] = request.sub_protocol
-        if not UtilClient.is_unset(request.terminal_type):
-            query['TerminalType'] = request.terminal_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeLiveSubExperienceMetricData',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.DescribeLiveSubExperienceMetricDataResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_live_sub_experience_metric_data(
-        self,
-        request: ice20201109_models.DescribeLiveSubExperienceMetricDataRequest,
-    ) -> ice20201109_models.DescribeLiveSubExperienceMetricDataResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_live_sub_experience_metric_data_with_options(request, runtime)
-
-    async def describe_live_sub_experience_metric_data_async(
-        self,
-        request: ice20201109_models.DescribeLiveSubExperienceMetricDataRequest,
-    ) -> ice20201109_models.DescribeLiveSubExperienceMetricDataResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_live_sub_experience_metric_data_with_options_async(request, runtime)
-
-    def describe_live_sub_list_with_options(
-        self,
-        request: ice20201109_models.DescribeLiveSubListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.DescribeLiveSubListResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.app_name):
-            query['AppName'] = request.app_name
-        if not UtilClient.is_unset(request.begin_ts):
-            query['BeginTs'] = request.begin_ts
-        if not UtilClient.is_unset(request.definition):
-            query['Definition'] = request.definition
-        if not UtilClient.is_unset(request.end_ts):
-            query['EndTs'] = request.end_ts
-        if not UtilClient.is_unset(request.experience_level):
-            query['ExperienceLevel'] = request.experience_level
-        if not UtilClient.is_unset(request.item_configs):
-            query['ItemConfigs'] = request.item_configs
-        if not UtilClient.is_unset(request.metric_type):
-            query['MetricType'] = request.metric_type
-        if not UtilClient.is_unset(request.network):
-            query['Network'] = request.network
-        if not UtilClient.is_unset(request.os):
-            query['Os'] = request.os
-        if not UtilClient.is_unset(request.page_no):
-            query['PageNo'] = request.page_no
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.stream_name):
-            query['StreamName'] = request.stream_name
-        if not UtilClient.is_unset(request.sub_protocol):
-            query['SubProtocol'] = request.sub_protocol
-        if not UtilClient.is_unset(request.terminal_type):
-            query['TerminalType'] = request.terminal_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeLiveSubList',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.DescribeLiveSubListResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_live_sub_list_with_options_async(
-        self,
-        request: ice20201109_models.DescribeLiveSubListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.DescribeLiveSubListResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.app_name):
-            query['AppName'] = request.app_name
-        if not UtilClient.is_unset(request.begin_ts):
-            query['BeginTs'] = request.begin_ts
-        if not UtilClient.is_unset(request.definition):
-            query['Definition'] = request.definition
-        if not UtilClient.is_unset(request.end_ts):
-            query['EndTs'] = request.end_ts
-        if not UtilClient.is_unset(request.experience_level):
-            query['ExperienceLevel'] = request.experience_level
-        if not UtilClient.is_unset(request.item_configs):
-            query['ItemConfigs'] = request.item_configs
-        if not UtilClient.is_unset(request.metric_type):
-            query['MetricType'] = request.metric_type
-        if not UtilClient.is_unset(request.network):
-            query['Network'] = request.network
-        if not UtilClient.is_unset(request.os):
-            query['Os'] = request.os
-        if not UtilClient.is_unset(request.page_no):
-            query['PageNo'] = request.page_no
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.stream_name):
-            query['StreamName'] = request.stream_name
-        if not UtilClient.is_unset(request.sub_protocol):
-            query['SubProtocol'] = request.sub_protocol
-        if not UtilClient.is_unset(request.terminal_type):
-            query['TerminalType'] = request.terminal_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeLiveSubList',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.DescribeLiveSubListResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_live_sub_list(
-        self,
-        request: ice20201109_models.DescribeLiveSubListRequest,
-    ) -> ice20201109_models.DescribeLiveSubListResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_live_sub_list_with_options(request, runtime)
-
-    async def describe_live_sub_list_async(
-        self,
-        request: ice20201109_models.DescribeLiveSubListRequest,
-    ) -> ice20201109_models.DescribeLiveSubListResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_live_sub_list_with_options_async(request, runtime)
-
-    def describe_live_sub_metric_data_with_options(
-        self,
-        request: ice20201109_models.DescribeLiveSubMetricDataRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.DescribeLiveSubMetricDataResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.app_name):
-            query['AppName'] = request.app_name
-        if not UtilClient.is_unset(request.begin_ts):
-            query['BeginTs'] = request.begin_ts
-        if not UtilClient.is_unset(request.definition):
-            query['Definition'] = request.definition
-        if not UtilClient.is_unset(request.end_ts):
-            query['EndTs'] = request.end_ts
-        if not UtilClient.is_unset(request.experience_level):
-            query['ExperienceLevel'] = request.experience_level
-        if not UtilClient.is_unset(request.item_configs):
-            query['ItemConfigs'] = request.item_configs
-        if not UtilClient.is_unset(request.metric_type):
-            query['MetricType'] = request.metric_type
-        if not UtilClient.is_unset(request.network):
-            query['Network'] = request.network
-        if not UtilClient.is_unset(request.os):
-            query['Os'] = request.os
-        if not UtilClient.is_unset(request.sdk_version):
-            query['SdkVersion'] = request.sdk_version
-        if not UtilClient.is_unset(request.stream_name):
-            query['StreamName'] = request.stream_name
-        if not UtilClient.is_unset(request.sub_protocol):
-            query['SubProtocol'] = request.sub_protocol
-        if not UtilClient.is_unset(request.terminal_type):
-            query['TerminalType'] = request.terminal_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeLiveSubMetricData',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.DescribeLiveSubMetricDataResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_live_sub_metric_data_with_options_async(
-        self,
-        request: ice20201109_models.DescribeLiveSubMetricDataRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.DescribeLiveSubMetricDataResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.app_name):
-            query['AppName'] = request.app_name
-        if not UtilClient.is_unset(request.begin_ts):
-            query['BeginTs'] = request.begin_ts
-        if not UtilClient.is_unset(request.definition):
-            query['Definition'] = request.definition
-        if not UtilClient.is_unset(request.end_ts):
-            query['EndTs'] = request.end_ts
-        if not UtilClient.is_unset(request.experience_level):
-            query['ExperienceLevel'] = request.experience_level
-        if not UtilClient.is_unset(request.item_configs):
-            query['ItemConfigs'] = request.item_configs
-        if not UtilClient.is_unset(request.metric_type):
-            query['MetricType'] = request.metric_type
-        if not UtilClient.is_unset(request.network):
-            query['Network'] = request.network
-        if not UtilClient.is_unset(request.os):
-            query['Os'] = request.os
-        if not UtilClient.is_unset(request.sdk_version):
-            query['SdkVersion'] = request.sdk_version
-        if not UtilClient.is_unset(request.stream_name):
-            query['StreamName'] = request.stream_name
-        if not UtilClient.is_unset(request.sub_protocol):
-            query['SubProtocol'] = request.sub_protocol
-        if not UtilClient.is_unset(request.terminal_type):
-            query['TerminalType'] = request.terminal_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeLiveSubMetricData',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.DescribeLiveSubMetricDataResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_live_sub_metric_data(
-        self,
-        request: ice20201109_models.DescribeLiveSubMetricDataRequest,
-    ) -> ice20201109_models.DescribeLiveSubMetricDataResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_live_sub_metric_data_with_options(request, runtime)
-
-    async def describe_live_sub_metric_data_async(
-        self,
-        request: ice20201109_models.DescribeLiveSubMetricDataRequest,
-    ) -> ice20201109_models.DescribeLiveSubMetricDataResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_live_sub_metric_data_with_options_async(request, runtime)
 
     def describe_meter_ice_edit_usage_with_options(
         self,
@@ -5756,76 +4402,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_query_configs_with_options_async(request, runtime)
 
-    def download_resource_by_resource_ids_with_options(
-        self,
-        request: ice20201109_models.DownloadResourceByResourceIdsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.DownloadResourceByResourceIdsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.resource_ids):
-            query['ResourceIds'] = request.resource_ids
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DownloadResourceByResourceIds',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.DownloadResourceByResourceIdsResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def download_resource_by_resource_ids_with_options_async(
-        self,
-        request: ice20201109_models.DownloadResourceByResourceIdsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.DownloadResourceByResourceIdsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.resource_ids):
-            query['ResourceIds'] = request.resource_ids
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DownloadResourceByResourceIds',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.DownloadResourceByResourceIdsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def download_resource_by_resource_ids(
-        self,
-        request: ice20201109_models.DownloadResourceByResourceIdsRequest,
-    ) -> ice20201109_models.DownloadResourceByResourceIdsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.download_resource_by_resource_ids_with_options(request, runtime)
-
-    async def download_resource_by_resource_ids_async(
-        self,
-        request: ice20201109_models.DownloadResourceByResourceIdsRequest,
-    ) -> ice20201109_models.DownloadResourceByResourceIdsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.download_resource_by_resource_ids_with_options_async(request, runtime)
-
     def get_categories_with_options(
         self,
         request: ice20201109_models.GetCategoriesRequest,
@@ -6119,8 +4695,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.project_id):
             query['ProjectId'] = request.project_id
-        if not UtilClient.is_unset(request.request_source):
-            query['RequestSource'] = request.request_source
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6149,8 +4723,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.project_id):
             query['ProjectId'] = request.project_id
-        if not UtilClient.is_unset(request.request_source):
-            query['RequestSource'] = request.request_source
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6844,154 +5416,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_live_transcode_template_with_options_async(request, runtime)
 
-    def get_media_audit_result_with_options(
-        self,
-        request: ice20201109_models.GetMediaAuditResultRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.GetMediaAuditResultResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.app_id):
-            query['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.media_id):
-            query['MediaId'] = request.media_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetMediaAuditResult',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.GetMediaAuditResultResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_media_audit_result_with_options_async(
-        self,
-        request: ice20201109_models.GetMediaAuditResultRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.GetMediaAuditResultResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.app_id):
-            query['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.media_id):
-            query['MediaId'] = request.media_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetMediaAuditResult',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.GetMediaAuditResultResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_media_audit_result(
-        self,
-        request: ice20201109_models.GetMediaAuditResultRequest,
-    ) -> ice20201109_models.GetMediaAuditResultResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_media_audit_result_with_options(request, runtime)
-
-    async def get_media_audit_result_async(
-        self,
-        request: ice20201109_models.GetMediaAuditResultRequest,
-    ) -> ice20201109_models.GetMediaAuditResultResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_media_audit_result_with_options_async(request, runtime)
-
-    def get_media_audit_result_detail_with_options(
-        self,
-        request: ice20201109_models.GetMediaAuditResultDetailRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.GetMediaAuditResultDetailResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.app_id):
-            query['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.media_id):
-            query['MediaId'] = request.media_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetMediaAuditResultDetail',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.GetMediaAuditResultDetailResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_media_audit_result_detail_with_options_async(
-        self,
-        request: ice20201109_models.GetMediaAuditResultDetailRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.GetMediaAuditResultDetailResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.app_id):
-            query['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.media_id):
-            query['MediaId'] = request.media_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetMediaAuditResultDetail',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.GetMediaAuditResultDetailResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_media_audit_result_detail(
-        self,
-        request: ice20201109_models.GetMediaAuditResultDetailRequest,
-    ) -> ice20201109_models.GetMediaAuditResultDetailResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_media_audit_result_detail_with_options(request, runtime)
-
-    async def get_media_audit_result_detail_async(
-        self,
-        request: ice20201109_models.GetMediaAuditResultDetailRequest,
-    ) -> ice20201109_models.GetMediaAuditResultDetailResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_media_audit_result_detail_with_options_async(request, runtime)
-
     def get_media_info_with_options(
         self,
         request: ice20201109_models.GetMediaInfoRequest,
@@ -7139,80 +5563,6 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.GetMediaInfoJobResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_media_info_job_with_options_async(request, runtime)
-
-    def get_media_marks_with_options(
-        self,
-        request: ice20201109_models.GetMediaMarksRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.GetMediaMarksResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.media_id):
-            query['MediaId'] = request.media_id
-        if not UtilClient.is_unset(request.media_mark_ids):
-            query['MediaMarkIds'] = request.media_mark_ids
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetMediaMarks',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.GetMediaMarksResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_media_marks_with_options_async(
-        self,
-        request: ice20201109_models.GetMediaMarksRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.GetMediaMarksResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.media_id):
-            query['MediaId'] = request.media_id
-        if not UtilClient.is_unset(request.media_mark_ids):
-            query['MediaMarkIds'] = request.media_mark_ids
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetMediaMarks',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.GetMediaMarksResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_media_marks(
-        self,
-        request: ice20201109_models.GetMediaMarksRequest,
-    ) -> ice20201109_models.GetMediaMarksResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_media_marks_with_options(request, runtime)
-
-    async def get_media_marks_async(
-        self,
-        request: ice20201109_models.GetMediaMarksRequest,
-    ) -> ice20201109_models.GetMediaMarksResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_media_marks_with_options_async(request, runtime)
 
     def get_media_producing_job_with_options(
         self,
@@ -7427,6 +5777,8 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.GetPlayInfoResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.input_url):
+            query['InputURL'] = request.input_url
         if not UtilClient.is_unset(request.media_id):
             query['MediaId'] = request.media_id
         req = open_api_models.OpenApiRequest(
@@ -7455,6 +5807,8 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.GetPlayInfoResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.input_url):
+            query['InputURL'] = request.input_url
         if not UtilClient.is_unset(request.media_id):
             query['MediaId'] = request.media_id
         req = open_api_models.OpenApiRequest(
@@ -8007,8 +6361,8 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.GetTranscodeJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.job_id):
-            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.parent_job_id):
+            query['ParentJobId'] = request.parent_job_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8035,8 +6389,8 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.GetTranscodeJobResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.job_id):
-            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.parent_job_id):
+            query['ParentJobId'] = request.parent_job_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8311,186 +6665,6 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.ListCustomTemplatesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_custom_templates_with_options_async(request, runtime)
-
-    def list_dnadbwith_options(
-        self,
-        request: ice20201109_models.ListDNADBRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.ListDNADBResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.dbids):
-            query['DBIds'] = request.dbids
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListDNADB',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.ListDNADBResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def list_dnadbwith_options_async(
-        self,
-        request: ice20201109_models.ListDNADBRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.ListDNADBResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.dbids):
-            query['DBIds'] = request.dbids
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListDNADB',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.ListDNADBResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def list_dnadb(
-        self,
-        request: ice20201109_models.ListDNADBRequest,
-    ) -> ice20201109_models.ListDNADBResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.list_dnadbwith_options(request, runtime)
-
-    async def list_dnadb_async(
-        self,
-        request: ice20201109_models.ListDNADBRequest,
-    ) -> ice20201109_models.ListDNADBResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.list_dnadbwith_options_async(request, runtime)
-
-    def list_dnafiles_with_options(
-        self,
-        request: ice20201109_models.ListDNAFilesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.ListDNAFilesResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.dbid):
-            query['DBId'] = request.dbid
-        if not UtilClient.is_unset(request.next_page_token):
-            query['NextPageToken'] = request.next_page_token
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListDNAFiles',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.ListDNAFilesResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def list_dnafiles_with_options_async(
-        self,
-        request: ice20201109_models.ListDNAFilesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.ListDNAFilesResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.dbid):
-            query['DBId'] = request.dbid
-        if not UtilClient.is_unset(request.next_page_token):
-            query['NextPageToken'] = request.next_page_token
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListDNAFiles',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.ListDNAFilesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def list_dnafiles(
-        self,
-        request: ice20201109_models.ListDNAFilesRequest,
-    ) -> ice20201109_models.ListDNAFilesResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.list_dnafiles_with_options(request, runtime)
-
-    async def list_dnafiles_async(
-        self,
-        request: ice20201109_models.ListDNAFilesRequest,
-    ) -> ice20201109_models.ListDNAFilesResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.list_dnafiles_with_options_async(request, runtime)
 
     def list_dynamic_image_jobs_with_options(
         self,
@@ -9374,80 +7548,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_media_info_jobs_with_options_async(request, runtime)
 
-    def list_media_marks_with_options(
-        self,
-        request: ice20201109_models.ListMediaMarksRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.ListMediaMarksResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.media_id):
-            query['MediaId'] = request.media_id
-        if not UtilClient.is_unset(request.media_mark_ids):
-            query['MediaMarkIds'] = request.media_mark_ids
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListMediaMarks',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.ListMediaMarksResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def list_media_marks_with_options_async(
-        self,
-        request: ice20201109_models.ListMediaMarksRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.ListMediaMarksResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.media_id):
-            query['MediaId'] = request.media_id
-        if not UtilClient.is_unset(request.media_mark_ids):
-            query['MediaMarkIds'] = request.media_mark_ids
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListMediaMarks',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.ListMediaMarksResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def list_media_marks(
-        self,
-        request: ice20201109_models.ListMediaMarksRequest,
-    ) -> ice20201109_models.ListMediaMarksResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.list_media_marks_with_options(request, runtime)
-
-    async def list_media_marks_async(
-        self,
-        request: ice20201109_models.ListMediaMarksRequest,
-    ) -> ice20201109_models.ListMediaMarksResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.list_media_marks_with_options_async(request, runtime)
-
     def list_package_jobs_with_options(
         self,
         request: ice20201109_models.ListPackageJobsRequest,
@@ -10059,14 +8159,14 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.end_of_create_time):
             query['EndOfCreateTime'] = request.end_of_create_time
-        if not UtilClient.is_unset(request.job_id):
-            query['JobId'] = request.job_id
         if not UtilClient.is_unset(request.next_page_token):
             query['NextPageToken'] = request.next_page_token
         if not UtilClient.is_unset(request.order_by):
             query['OrderBy'] = request.order_by
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.parent_job_id):
+            query['ParentJobId'] = request.parent_job_id
         if not UtilClient.is_unset(request.start_of_create_time):
             query['StartOfCreateTime'] = request.start_of_create_time
         if not UtilClient.is_unset(request.status):
@@ -10099,14 +8199,14 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.end_of_create_time):
             query['EndOfCreateTime'] = request.end_of_create_time
-        if not UtilClient.is_unset(request.job_id):
-            query['JobId'] = request.job_id
         if not UtilClient.is_unset(request.next_page_token):
             query['NextPageToken'] = request.next_page_token
         if not UtilClient.is_unset(request.order_by):
             query['OrderBy'] = request.order_by
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.parent_job_id):
+            query['ParentJobId'] = request.parent_job_id
         if not UtilClient.is_unset(request.start_of_create_time):
             query['StartOfCreateTime'] = request.start_of_create_time
         if not UtilClient.is_unset(request.status):
@@ -10143,248 +8243,6 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.ListTranscodeJobsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_transcode_jobs_with_options_async(request, runtime)
-
-    def notify_pre_oss_upload_complete_with_options(
-        self,
-        request: ice20201109_models.NotifyPreOssUploadCompleteRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.NotifyPreOssUploadCompleteResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.file_name):
-            query['FileName'] = request.file_name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='NotifyPreOssUploadComplete',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.NotifyPreOssUploadCompleteResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def notify_pre_oss_upload_complete_with_options_async(
-        self,
-        request: ice20201109_models.NotifyPreOssUploadCompleteRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.NotifyPreOssUploadCompleteResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.file_name):
-            query['FileName'] = request.file_name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='NotifyPreOssUploadComplete',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.NotifyPreOssUploadCompleteResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def notify_pre_oss_upload_complete(
-        self,
-        request: ice20201109_models.NotifyPreOssUploadCompleteRequest,
-    ) -> ice20201109_models.NotifyPreOssUploadCompleteResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.notify_pre_oss_upload_complete_with_options(request, runtime)
-
-    async def notify_pre_oss_upload_complete_async(
-        self,
-        request: ice20201109_models.NotifyPreOssUploadCompleteRequest,
-    ) -> ice20201109_models.NotifyPreOssUploadCompleteResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.notify_pre_oss_upload_complete_with_options_async(request, runtime)
-
-    def query_censor_job_list_with_options(
-        self,
-        request: ice20201109_models.QueryCensorJobListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.QueryCensorJobListResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.job_ids):
-            query['JobIds'] = request.job_ids
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='QueryCensorJobList',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.QueryCensorJobListResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def query_censor_job_list_with_options_async(
-        self,
-        request: ice20201109_models.QueryCensorJobListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.QueryCensorJobListResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.job_ids):
-            query['JobIds'] = request.job_ids
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='QueryCensorJobList',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.QueryCensorJobListResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def query_censor_job_list(
-        self,
-        request: ice20201109_models.QueryCensorJobListRequest,
-    ) -> ice20201109_models.QueryCensorJobListResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.query_censor_job_list_with_options(request, runtime)
-
-    async def query_censor_job_list_async(
-        self,
-        request: ice20201109_models.QueryCensorJobListRequest,
-    ) -> ice20201109_models.QueryCensorJobListResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.query_censor_job_list_with_options_async(request, runtime)
-
-    def query_dnajob_list_with_options(
-        self,
-        request: ice20201109_models.QueryDNAJobListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.QueryDNAJobListResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.job_ids):
-            query['JobIds'] = request.job_ids
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='QueryDNAJobList',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.QueryDNAJobListResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def query_dnajob_list_with_options_async(
-        self,
-        request: ice20201109_models.QueryDNAJobListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.QueryDNAJobListResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.job_ids):
-            query['JobIds'] = request.job_ids
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='QueryDNAJobList',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.QueryDNAJobListResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def query_dnajob_list(
-        self,
-        request: ice20201109_models.QueryDNAJobListRequest,
-    ) -> ice20201109_models.QueryDNAJobListResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.query_dnajob_list_with_options(request, runtime)
-
-    async def query_dnajob_list_async(
-        self,
-        request: ice20201109_models.QueryDNAJobListRequest,
-    ) -> ice20201109_models.QueryDNAJobListResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.query_dnajob_list_with_options_async(request, runtime)
 
     def query_iproduction_job_with_options(
         self,
@@ -10553,6 +8411,116 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.QueryMediaCensorJobDetailResponse:
         runtime = util_models.RuntimeOptions()
         return await self.query_media_censor_job_detail_with_options_async(request, runtime)
+
+    def query_media_censor_job_list_with_options(
+        self,
+        request: ice20201109_models.QueryMediaCensorJobListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.QueryMediaCensorJobListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_of_job_created_time_range):
+            query['EndOfJobCreatedTimeRange'] = request.end_of_job_created_time_range
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
+        if not UtilClient.is_unset(request.maximum_page_size):
+            query['MaximumPageSize'] = request.maximum_page_size
+        if not UtilClient.is_unset(request.next_page_token):
+            query['NextPageToken'] = request.next_page_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.start_of_job_created_time_range):
+            query['StartOfJobCreatedTimeRange'] = request.start_of_job_created_time_range
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryMediaCensorJobList',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.QueryMediaCensorJobListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_media_censor_job_list_with_options_async(
+        self,
+        request: ice20201109_models.QueryMediaCensorJobListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.QueryMediaCensorJobListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_of_job_created_time_range):
+            query['EndOfJobCreatedTimeRange'] = request.end_of_job_created_time_range
+        if not UtilClient.is_unset(request.job_ids):
+            query['JobIds'] = request.job_ids
+        if not UtilClient.is_unset(request.maximum_page_size):
+            query['MaximumPageSize'] = request.maximum_page_size
+        if not UtilClient.is_unset(request.next_page_token):
+            query['NextPageToken'] = request.next_page_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.start_of_job_created_time_range):
+            query['StartOfJobCreatedTimeRange'] = request.start_of_job_created_time_range
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryMediaCensorJobList',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.QueryMediaCensorJobListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_media_censor_job_list(
+        self,
+        request: ice20201109_models.QueryMediaCensorJobListRequest,
+    ) -> ice20201109_models.QueryMediaCensorJobListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_media_censor_job_list_with_options(request, runtime)
+
+    async def query_media_censor_job_list_async(
+        self,
+        request: ice20201109_models.QueryMediaCensorJobListRequest,
+    ) -> ice20201109_models.QueryMediaCensorJobListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_media_censor_job_list_with_options_async(request, runtime)
 
     def query_smarttag_job_with_options(
         self,
@@ -11754,238 +9722,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.submit_audio_produce_job_with_options_async(request, runtime)
 
-    def submit_batch_media_producing_job_with_options(
-        self,
-        request: ice20201109_models.SubmitBatchMediaProducingJobRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.SubmitBatchMediaProducingJobResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.client_token):
-            query['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.clips_param):
-            query['ClipsParam'] = request.clips_param
-        if not UtilClient.is_unset(request.editing_produce_config):
-            query['EditingProduceConfig'] = request.editing_produce_config
-        if not UtilClient.is_unset(request.job_title):
-            query['JobTitle'] = request.job_title
-        if not UtilClient.is_unset(request.output_media_config):
-            query['OutputMediaConfig'] = request.output_media_config
-        if not UtilClient.is_unset(request.output_media_target):
-            query['OutputMediaTarget'] = request.output_media_target
-        if not UtilClient.is_unset(request.output_num):
-            query['OutputNum'] = request.output_num
-        if not UtilClient.is_unset(request.project_metadata):
-            query['ProjectMetadata'] = request.project_metadata
-        if not UtilClient.is_unset(request.source):
-            query['Source'] = request.source
-        if not UtilClient.is_unset(request.submit_by):
-            query['SubmitBy'] = request.submit_by
-        if not UtilClient.is_unset(request.template_id):
-            query['TemplateId'] = request.template_id
-        if not UtilClient.is_unset(request.user_data):
-            query['UserData'] = request.user_data
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='SubmitBatchMediaProducingJob',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.SubmitBatchMediaProducingJobResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def submit_batch_media_producing_job_with_options_async(
-        self,
-        request: ice20201109_models.SubmitBatchMediaProducingJobRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.SubmitBatchMediaProducingJobResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.client_token):
-            query['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.clips_param):
-            query['ClipsParam'] = request.clips_param
-        if not UtilClient.is_unset(request.editing_produce_config):
-            query['EditingProduceConfig'] = request.editing_produce_config
-        if not UtilClient.is_unset(request.job_title):
-            query['JobTitle'] = request.job_title
-        if not UtilClient.is_unset(request.output_media_config):
-            query['OutputMediaConfig'] = request.output_media_config
-        if not UtilClient.is_unset(request.output_media_target):
-            query['OutputMediaTarget'] = request.output_media_target
-        if not UtilClient.is_unset(request.output_num):
-            query['OutputNum'] = request.output_num
-        if not UtilClient.is_unset(request.project_metadata):
-            query['ProjectMetadata'] = request.project_metadata
-        if not UtilClient.is_unset(request.source):
-            query['Source'] = request.source
-        if not UtilClient.is_unset(request.submit_by):
-            query['SubmitBy'] = request.submit_by
-        if not UtilClient.is_unset(request.template_id):
-            query['TemplateId'] = request.template_id
-        if not UtilClient.is_unset(request.user_data):
-            query['UserData'] = request.user_data
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='SubmitBatchMediaProducingJob',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.SubmitBatchMediaProducingJobResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def submit_batch_media_producing_job(
-        self,
-        request: ice20201109_models.SubmitBatchMediaProducingJobRequest,
-    ) -> ice20201109_models.SubmitBatchMediaProducingJobResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.submit_batch_media_producing_job_with_options(request, runtime)
-
-    async def submit_batch_media_producing_job_async(
-        self,
-        request: ice20201109_models.SubmitBatchMediaProducingJobRequest,
-    ) -> ice20201109_models.SubmitBatchMediaProducingJobResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.submit_batch_media_producing_job_with_options_async(request, runtime)
-
-    def submit_dnajob_with_options(
-        self,
-        tmp_req: ice20201109_models.SubmitDNAJobRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.SubmitDNAJobResponse:
-        UtilClient.validate_model(tmp_req)
-        request = ice20201109_models.SubmitDNAJobShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.input):
-            request.input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.input), 'Input', 'json')
-        query = {}
-        if not UtilClient.is_unset(request.config):
-            query['Config'] = request.config
-        if not UtilClient.is_unset(request.dbid):
-            query['DBId'] = request.dbid
-        if not UtilClient.is_unset(request.input_shrink):
-            query['Input'] = request.input_shrink
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.pipeline_id):
-            query['PipelineId'] = request.pipeline_id
-        if not UtilClient.is_unset(request.primary_key):
-            query['PrimaryKey'] = request.primary_key
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.template_id):
-            query['TemplateId'] = request.template_id
-        if not UtilClient.is_unset(request.user_data):
-            query['UserData'] = request.user_data
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='SubmitDNAJob',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.SubmitDNAJobResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def submit_dnajob_with_options_async(
-        self,
-        tmp_req: ice20201109_models.SubmitDNAJobRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.SubmitDNAJobResponse:
-        UtilClient.validate_model(tmp_req)
-        request = ice20201109_models.SubmitDNAJobShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.input):
-            request.input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.input), 'Input', 'json')
-        query = {}
-        if not UtilClient.is_unset(request.config):
-            query['Config'] = request.config
-        if not UtilClient.is_unset(request.dbid):
-            query['DBId'] = request.dbid
-        if not UtilClient.is_unset(request.input_shrink):
-            query['Input'] = request.input_shrink
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.pipeline_id):
-            query['PipelineId'] = request.pipeline_id
-        if not UtilClient.is_unset(request.primary_key):
-            query['PrimaryKey'] = request.primary_key
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.template_id):
-            query['TemplateId'] = request.template_id
-        if not UtilClient.is_unset(request.user_data):
-            query['UserData'] = request.user_data
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='SubmitDNAJob',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.SubmitDNAJobResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def submit_dnajob(
-        self,
-        request: ice20201109_models.SubmitDNAJobRequest,
-    ) -> ice20201109_models.SubmitDNAJobResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.submit_dnajob_with_options(request, runtime)
-
-    async def submit_dnajob_async(
-        self,
-        request: ice20201109_models.SubmitDNAJobRequest,
-    ) -> ice20201109_models.SubmitDNAJobResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.submit_dnajob_with_options_async(request, runtime)
-
     def submit_dynamic_chart_job_with_options(
         self,
         request: ice20201109_models.SubmitDynamicChartJobRequest,
@@ -12113,13 +9849,13 @@ class Client(OpenApiClient):
         request = ice20201109_models.SubmitDynamicImageJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.input):
-            request.input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.input), 'Input', 'json')
+            request.input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.input, 'Input', 'json')
         if not UtilClient.is_unset(tmp_req.output):
-            request.output_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.output), 'Output', 'json')
+            request.output_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.output, 'Output', 'json')
         if not UtilClient.is_unset(tmp_req.schedule_config):
-            request.schedule_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.schedule_config), 'ScheduleConfig', 'json')
+            request.schedule_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.schedule_config, 'ScheduleConfig', 'json')
         if not UtilClient.is_unset(tmp_req.template_config):
-            request.template_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.template_config), 'TemplateConfig', 'json')
+            request.template_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.template_config, 'TemplateConfig', 'json')
         query = {}
         if not UtilClient.is_unset(request.input_shrink):
             query['Input'] = request.input_shrink
@@ -12161,13 +9897,13 @@ class Client(OpenApiClient):
         request = ice20201109_models.SubmitDynamicImageJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.input):
-            request.input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.input), 'Input', 'json')
+            request.input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.input, 'Input', 'json')
         if not UtilClient.is_unset(tmp_req.output):
-            request.output_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.output), 'Output', 'json')
+            request.output_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.output, 'Output', 'json')
         if not UtilClient.is_unset(tmp_req.schedule_config):
-            request.schedule_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.schedule_config), 'ScheduleConfig', 'json')
+            request.schedule_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.schedule_config, 'ScheduleConfig', 'json')
         if not UtilClient.is_unset(tmp_req.template_config):
-            request.template_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.template_config), 'TemplateConfig', 'json')
+            request.template_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.template_config, 'TemplateConfig', 'json')
         query = {}
         if not UtilClient.is_unset(request.input_shrink):
             query['Input'] = request.input_shrink
@@ -12223,11 +9959,11 @@ class Client(OpenApiClient):
         request = ice20201109_models.SubmitIProductionJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.input):
-            request.input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.input), 'Input', 'json')
+            request.input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.input, 'Input', 'json')
         if not UtilClient.is_unset(tmp_req.output):
-            request.output_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.output), 'Output', 'json')
+            request.output_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.output, 'Output', 'json')
         if not UtilClient.is_unset(tmp_req.schedule_config):
-            request.schedule_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.schedule_config), 'ScheduleConfig', 'json')
+            request.schedule_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.schedule_config, 'ScheduleConfig', 'json')
         query = {}
         if not UtilClient.is_unset(request.function_name):
             query['FunctionName'] = request.function_name
@@ -12273,11 +10009,11 @@ class Client(OpenApiClient):
         request = ice20201109_models.SubmitIProductionJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.input):
-            request.input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.input), 'Input', 'json')
+            request.input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.input, 'Input', 'json')
         if not UtilClient.is_unset(tmp_req.output):
-            request.output_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.output), 'Output', 'json')
+            request.output_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.output, 'Output', 'json')
         if not UtilClient.is_unset(tmp_req.schedule_config):
-            request.schedule_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.schedule_config), 'ScheduleConfig', 'json')
+            request.schedule_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.schedule_config, 'ScheduleConfig', 'json')
         query = {}
         if not UtilClient.is_unset(request.function_name):
             query['FunctionName'] = request.function_name
@@ -12431,9 +10167,9 @@ class Client(OpenApiClient):
         request = ice20201109_models.SubmitLiveRecordJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.record_output):
-            request.record_output_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.record_output), 'RecordOutput', 'json')
+            request.record_output_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.record_output, 'RecordOutput', 'json')
         if not UtilClient.is_unset(tmp_req.stream_input):
-            request.stream_input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.stream_input), 'StreamInput', 'json')
+            request.stream_input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.stream_input, 'StreamInput', 'json')
         body = {}
         if not UtilClient.is_unset(request.name):
             body['Name'] = request.name
@@ -12473,9 +10209,9 @@ class Client(OpenApiClient):
         request = ice20201109_models.SubmitLiveRecordJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.record_output):
-            request.record_output_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.record_output), 'RecordOutput', 'json')
+            request.record_output_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.record_output, 'RecordOutput', 'json')
         if not UtilClient.is_unset(tmp_req.stream_input):
-            request.stream_input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.stream_input), 'StreamInput', 'json')
+            request.stream_input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.stream_input, 'StreamInput', 'json')
         body = {}
         if not UtilClient.is_unset(request.name):
             body['Name'] = request.name
@@ -12529,9 +10265,9 @@ class Client(OpenApiClient):
         request = ice20201109_models.SubmitLiveSnapshotJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.snapshot_output):
-            request.snapshot_output_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.snapshot_output), 'SnapshotOutput', 'json')
+            request.snapshot_output_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.snapshot_output, 'SnapshotOutput', 'json')
         if not UtilClient.is_unset(tmp_req.stream_input):
-            request.stream_input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.stream_input), 'StreamInput', 'json')
+            request.stream_input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.stream_input, 'StreamInput', 'json')
         body = {}
         if not UtilClient.is_unset(request.callback_url):
             body['CallbackUrl'] = request.callback_url
@@ -12571,9 +10307,9 @@ class Client(OpenApiClient):
         request = ice20201109_models.SubmitLiveSnapshotJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.snapshot_output):
-            request.snapshot_output_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.snapshot_output), 'SnapshotOutput', 'json')
+            request.snapshot_output_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.snapshot_output, 'SnapshotOutput', 'json')
         if not UtilClient.is_unset(tmp_req.stream_input):
-            request.stream_input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.stream_input), 'StreamInput', 'json')
+            request.stream_input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.stream_input, 'StreamInput', 'json')
         body = {}
         if not UtilClient.is_unset(request.callback_url):
             body['CallbackUrl'] = request.callback_url
@@ -12627,11 +10363,11 @@ class Client(OpenApiClient):
         request = ice20201109_models.SubmitLiveTranscodeJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.stream_input):
-            request.stream_input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.stream_input), 'StreamInput', 'json')
+            request.stream_input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.stream_input, 'StreamInput', 'json')
         if not UtilClient.is_unset(tmp_req.timed_config):
-            request.timed_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.timed_config), 'TimedConfig', 'json')
+            request.timed_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.timed_config, 'TimedConfig', 'json')
         if not UtilClient.is_unset(tmp_req.transcode_output):
-            request.transcode_output_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.transcode_output), 'TranscodeOutput', 'json')
+            request.transcode_output_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.transcode_output, 'TranscodeOutput', 'json')
         query = {}
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
@@ -12673,11 +10409,11 @@ class Client(OpenApiClient):
         request = ice20201109_models.SubmitLiveTranscodeJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.stream_input):
-            request.stream_input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.stream_input), 'StreamInput', 'json')
+            request.stream_input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.stream_input, 'StreamInput', 'json')
         if not UtilClient.is_unset(tmp_req.timed_config):
-            request.timed_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.timed_config), 'TimedConfig', 'json')
+            request.timed_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.timed_config, 'TimedConfig', 'json')
         if not UtilClient.is_unset(tmp_req.transcode_output):
-            request.transcode_output_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.transcode_output), 'TranscodeOutput', 'json')
+            request.transcode_output_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.transcode_output, 'TranscodeOutput', 'json')
         query = {}
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
@@ -12733,9 +10469,9 @@ class Client(OpenApiClient):
         request = ice20201109_models.SubmitMediaCensorJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.input):
-            request.input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.input), 'Input', 'json')
+            request.input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.input, 'Input', 'json')
         if not UtilClient.is_unset(tmp_req.schedule_config):
-            request.schedule_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.schedule_config), 'ScheduleConfig', 'json')
+            request.schedule_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.schedule_config, 'ScheduleConfig', 'json')
         query = {}
         if not UtilClient.is_unset(request.barrages):
             query['Barrages'] = request.barrages
@@ -12785,9 +10521,9 @@ class Client(OpenApiClient):
         request = ice20201109_models.SubmitMediaCensorJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.input):
-            request.input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.input), 'Input', 'json')
+            request.input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.input, 'Input', 'json')
         if not UtilClient.is_unset(tmp_req.schedule_config):
-            request.schedule_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.schedule_config), 'ScheduleConfig', 'json')
+            request.schedule_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.schedule_config, 'ScheduleConfig', 'json')
         query = {}
         if not UtilClient.is_unset(request.barrages):
             query['Barrages'] = request.barrages
@@ -12851,9 +10587,9 @@ class Client(OpenApiClient):
         request = ice20201109_models.SubmitMediaInfoJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.input):
-            request.input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.input), 'Input', 'json')
+            request.input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.input, 'Input', 'json')
         if not UtilClient.is_unset(tmp_req.schedule_config):
-            request.schedule_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.schedule_config), 'ScheduleConfig', 'json')
+            request.schedule_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.schedule_config, 'ScheduleConfig', 'json')
         query = {}
         if not UtilClient.is_unset(request.input_shrink):
             query['Input'] = request.input_shrink
@@ -12891,9 +10627,9 @@ class Client(OpenApiClient):
         request = ice20201109_models.SubmitMediaInfoJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.input):
-            request.input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.input), 'Input', 'json')
+            request.input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.input, 'Input', 'json')
         if not UtilClient.is_unset(tmp_req.schedule_config):
-            request.schedule_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.schedule_config), 'ScheduleConfig', 'json')
+            request.schedule_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.schedule_config, 'ScheduleConfig', 'json')
         query = {}
         if not UtilClient.is_unset(request.input_shrink):
             query['Input'] = request.input_shrink
@@ -13057,9 +10793,9 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.inputs):
             request.inputs_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.inputs, 'Inputs', 'json')
         if not UtilClient.is_unset(tmp_req.output):
-            request.output_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.output), 'Output', 'json')
+            request.output_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.output, 'Output', 'json')
         if not UtilClient.is_unset(tmp_req.schedule_config):
-            request.schedule_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.schedule_config), 'ScheduleConfig', 'json')
+            request.schedule_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.schedule_config, 'ScheduleConfig', 'json')
         query = {}
         if not UtilClient.is_unset(request.inputs_shrink):
             query['Inputs'] = request.inputs_shrink
@@ -13101,9 +10837,9 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.inputs):
             request.inputs_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.inputs, 'Inputs', 'json')
         if not UtilClient.is_unset(tmp_req.output):
-            request.output_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.output), 'Output', 'json')
+            request.output_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.output, 'Output', 'json')
         if not UtilClient.is_unset(tmp_req.schedule_config):
-            request.schedule_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.schedule_config), 'ScheduleConfig', 'json')
+            request.schedule_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.schedule_config, 'ScheduleConfig', 'json')
         query = {}
         if not UtilClient.is_unset(request.inputs_shrink):
             query['Inputs'] = request.inputs_shrink
@@ -13157,9 +10893,9 @@ class Client(OpenApiClient):
         request = ice20201109_models.SubmitSmarttagJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.input):
-            request.input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.input), 'Input', 'json')
+            request.input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.input, 'Input', 'json')
         if not UtilClient.is_unset(tmp_req.schedule_config):
-            request.schedule_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.schedule_config), 'ScheduleConfig', 'json')
+            request.schedule_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.schedule_config, 'ScheduleConfig', 'json')
         query = {}
         if not UtilClient.is_unset(request.content):
             query['Content'] = request.content
@@ -13209,9 +10945,9 @@ class Client(OpenApiClient):
         request = ice20201109_models.SubmitSmarttagJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.input):
-            request.input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.input), 'Input', 'json')
+            request.input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.input, 'Input', 'json')
         if not UtilClient.is_unset(tmp_req.schedule_config):
-            request.schedule_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.schedule_config), 'ScheduleConfig', 'json')
+            request.schedule_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.schedule_config, 'ScheduleConfig', 'json')
         query = {}
         if not UtilClient.is_unset(request.content):
             query['Content'] = request.content
@@ -13275,13 +11011,13 @@ class Client(OpenApiClient):
         request = ice20201109_models.SubmitSnapshotJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.input):
-            request.input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.input), 'Input', 'json')
+            request.input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.input, 'Input', 'json')
         if not UtilClient.is_unset(tmp_req.output):
-            request.output_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.output), 'Output', 'json')
+            request.output_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.output, 'Output', 'json')
         if not UtilClient.is_unset(tmp_req.schedule_config):
-            request.schedule_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.schedule_config), 'ScheduleConfig', 'json')
+            request.schedule_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.schedule_config, 'ScheduleConfig', 'json')
         if not UtilClient.is_unset(tmp_req.template_config):
-            request.template_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.template_config), 'TemplateConfig', 'json')
+            request.template_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.template_config, 'TemplateConfig', 'json')
         query = {}
         if not UtilClient.is_unset(request.input_shrink):
             query['Input'] = request.input_shrink
@@ -13323,13 +11059,13 @@ class Client(OpenApiClient):
         request = ice20201109_models.SubmitSnapshotJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.input):
-            request.input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.input), 'Input', 'json')
+            request.input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.input, 'Input', 'json')
         if not UtilClient.is_unset(tmp_req.output):
-            request.output_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.output), 'Output', 'json')
+            request.output_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.output, 'Output', 'json')
         if not UtilClient.is_unset(tmp_req.schedule_config):
-            request.schedule_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.schedule_config), 'ScheduleConfig', 'json')
+            request.schedule_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.schedule_config, 'ScheduleConfig', 'json')
         if not UtilClient.is_unset(tmp_req.template_config):
-            request.template_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.template_config), 'TemplateConfig', 'json')
+            request.template_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.template_config, 'TemplateConfig', 'json')
         query = {}
         if not UtilClient.is_unset(request.input_shrink):
             query['Input'] = request.input_shrink
@@ -13483,9 +11219,9 @@ class Client(OpenApiClient):
         request = ice20201109_models.SubmitSyncMediaInfoJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.input):
-            request.input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.input), 'Input', 'json')
+            request.input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.input, 'Input', 'json')
         if not UtilClient.is_unset(tmp_req.schedule_config):
-            request.schedule_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.schedule_config), 'ScheduleConfig', 'json')
+            request.schedule_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.schedule_config, 'ScheduleConfig', 'json')
         query = {}
         if not UtilClient.is_unset(request.input_shrink):
             query['Input'] = request.input_shrink
@@ -13523,9 +11259,9 @@ class Client(OpenApiClient):
         request = ice20201109_models.SubmitSyncMediaInfoJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.input):
-            request.input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.input), 'Input', 'json')
+            request.input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.input, 'Input', 'json')
         if not UtilClient.is_unset(tmp_req.schedule_config):
-            request.schedule_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.schedule_config), 'ScheduleConfig', 'json')
+            request.schedule_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.schedule_config, 'ScheduleConfig', 'json')
         query = {}
         if not UtilClient.is_unset(request.input_shrink):
             query['Input'] = request.input_shrink
@@ -13581,7 +11317,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.output_group):
             request.output_group_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.output_group, 'OutputGroup', 'json')
         if not UtilClient.is_unset(tmp_req.schedule_config):
-            request.schedule_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.schedule_config), 'ScheduleConfig', 'json')
+            request.schedule_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.schedule_config, 'ScheduleConfig', 'json')
         query = {}
         if not UtilClient.is_unset(request.input_group_shrink):
             query['InputGroup'] = request.input_group_shrink
@@ -13625,7 +11361,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.output_group):
             request.output_group_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.output_group, 'OutputGroup', 'json')
         if not UtilClient.is_unset(tmp_req.schedule_config):
-            request.schedule_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.schedule_config), 'ScheduleConfig', 'json')
+            request.schedule_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.schedule_config, 'ScheduleConfig', 'json')
         query = {}
         if not UtilClient.is_unset(request.input_group_shrink):
             query['InputGroup'] = request.input_group_shrink
@@ -14101,11 +11837,11 @@ class Client(OpenApiClient):
         request = ice20201109_models.UpdateLiveTranscodeJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.stream_input):
-            request.stream_input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.stream_input), 'StreamInput', 'json')
+            request.stream_input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.stream_input, 'StreamInput', 'json')
         if not UtilClient.is_unset(tmp_req.timed_config):
-            request.timed_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.timed_config), 'TimedConfig', 'json')
+            request.timed_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.timed_config, 'TimedConfig', 'json')
         if not UtilClient.is_unset(tmp_req.transcode_output):
-            request.transcode_output_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.transcode_output), 'TranscodeOutput', 'json')
+            request.transcode_output_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.transcode_output, 'TranscodeOutput', 'json')
         query = {}
         if not UtilClient.is_unset(request.job_id):
             query['JobId'] = request.job_id
@@ -14145,11 +11881,11 @@ class Client(OpenApiClient):
         request = ice20201109_models.UpdateLiveTranscodeJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.stream_input):
-            request.stream_input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.stream_input), 'StreamInput', 'json')
+            request.stream_input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.stream_input, 'StreamInput', 'json')
         if not UtilClient.is_unset(tmp_req.timed_config):
-            request.timed_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.timed_config), 'TimedConfig', 'json')
+            request.timed_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.timed_config, 'TimedConfig', 'json')
         if not UtilClient.is_unset(tmp_req.transcode_output):
-            request.transcode_output_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.transcode_output), 'TranscodeOutput', 'json')
+            request.transcode_output_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.transcode_output, 'TranscodeOutput', 'json')
         query = {}
         if not UtilClient.is_unset(request.job_id):
             query['JobId'] = request.job_id
@@ -14203,7 +11939,7 @@ class Client(OpenApiClient):
         request = ice20201109_models.UpdateLiveTranscodeTemplateShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.template_config):
-            request.template_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.template_config), 'TemplateConfig', 'json')
+            request.template_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.template_config, 'TemplateConfig', 'json')
         query = {}
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
@@ -14239,7 +11975,7 @@ class Client(OpenApiClient):
         request = ice20201109_models.UpdateLiveTranscodeTemplateShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.template_config):
-            request.template_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.template_config), 'TemplateConfig', 'json')
+            request.template_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.template_config, 'TemplateConfig', 'json')
         query = {}
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
@@ -14393,80 +12129,6 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.UpdateMediaInfoResponse:
         runtime = util_models.RuntimeOptions()
         return await self.update_media_info_with_options_async(request, runtime)
-
-    def update_media_marks_with_options(
-        self,
-        request: ice20201109_models.UpdateMediaMarksRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.UpdateMediaMarksResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.media_id):
-            query['MediaId'] = request.media_id
-        if not UtilClient.is_unset(request.media_marks):
-            query['MediaMarks'] = request.media_marks
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='UpdateMediaMarks',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.UpdateMediaMarksResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def update_media_marks_with_options_async(
-        self,
-        request: ice20201109_models.UpdateMediaMarksRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ice20201109_models.UpdateMediaMarksResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.media_id):
-            query['MediaId'] = request.media_id
-        if not UtilClient.is_unset(request.media_marks):
-            query['MediaMarks'] = request.media_marks
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='UpdateMediaMarks',
-            version='2020-11-09',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ice20201109_models.UpdateMediaMarksResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def update_media_marks(
-        self,
-        request: ice20201109_models.UpdateMediaMarksRequest,
-    ) -> ice20201109_models.UpdateMediaMarksResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.update_media_marks_with_options(request, runtime)
-
-    async def update_media_marks_async(
-        self,
-        request: ice20201109_models.UpdateMediaMarksRequest,
-    ) -> ice20201109_models.UpdateMediaMarksResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.update_media_marks_with_options_async(request, runtime)
 
     def update_pipeline_with_options(
         self,

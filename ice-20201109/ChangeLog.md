@@ -1,3 +1,6 @@
+2022-11-21 Version: 1.3.3
+- Add QueryMediaCensorJobList.
+
 2022-09-22 Version: 1.3.2
 - SubmitLiveEditingJob response add VodMediaId.
 
