@@ -1,3 +1,8 @@
+2022-11-21 Version: 1.14.19
+- RunasUserPassword is not required in CreateJobFile.
+- RunasUserPassword not required in SubmitJob.
+- Add new api GetJobLog.
+
 2022-11-16 Version: 1.14.18
 - RunasUserPassword is not required in CreateJobFile.
 - RunasUserPassword not required in SubmitJob.
