@@ -1,3 +1,12 @@
+2022-11-22 Version: 3.0.47
+- Support riskNotice switch.
+- Change some segment to read only.
+- Supported For Gateway RegExp Test.
+- No change.
+- Fixed Docs For These API.
+- Adjust timeout.
+- Change some segment from optional to necessary.
+
 2022-11-15 Version: 3.0.46
 - MSE.
 - Fixed Describe For These API.
