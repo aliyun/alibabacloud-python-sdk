@@ -4598,6 +4598,8 @@ class Client(OpenApiClient):
             query['DirectoryId'] = request.directory_id
         if not UtilClient.is_unset(request.mfaauthentication_settings):
             query['MFAAuthenticationSettings'] = request.mfaauthentication_settings
+        if not UtilClient.is_unset(request.operation_for_risk_login):
+            query['OperationForRiskLogin'] = request.operation_for_risk_login
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4628,6 +4630,8 @@ class Client(OpenApiClient):
             query['DirectoryId'] = request.directory_id
         if not UtilClient.is_unset(request.mfaauthentication_settings):
             query['MFAAuthenticationSettings'] = request.mfaauthentication_settings
+        if not UtilClient.is_unset(request.operation_for_risk_login):
+            query['OperationForRiskLogin'] = request.operation_for_risk_login
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

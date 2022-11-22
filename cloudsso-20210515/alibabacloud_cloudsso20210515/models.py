@@ -9643,9 +9643,11 @@ class UpdateMFAAuthenticationSettingsRequest(TeaModel):
         self,
         directory_id: str = None,
         mfaauthentication_settings: str = None,
+        operation_for_risk_login: str = None,
     ):
         self.directory_id = directory_id
         self.mfaauthentication_settings = mfaauthentication_settings
+        self.operation_for_risk_login = operation_for_risk_login
 
     def validate(self):
         pass
@@ -9660,6 +9662,8 @@ class UpdateMFAAuthenticationSettingsRequest(TeaModel):
             result['DirectoryId'] = self.directory_id
         if self.mfaauthentication_settings is not None:
             result['MFAAuthenticationSettings'] = self.mfaauthentication_settings
+        if self.operation_for_risk_login is not None:
+            result['OperationForRiskLogin'] = self.operation_for_risk_login
         return result
 
     def from_map(self, m: dict = None):
@@ -9668,6 +9672,8 @@ class UpdateMFAAuthenticationSettingsRequest(TeaModel):
             self.directory_id = m.get('DirectoryId')
         if m.get('MFAAuthenticationSettings') is not None:
             self.mfaauthentication_settings = m.get('MFAAuthenticationSettings')
+        if m.get('OperationForRiskLogin') is not None:
+            self.operation_for_risk_login = m.get('OperationForRiskLogin')
         return self
 
 
