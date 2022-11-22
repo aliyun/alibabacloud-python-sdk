@@ -1,3 +1,6 @@
+2022-11-22 Version: 3.2.14
+- The Tags parameter is supported in the ListStackGroups, ListTemplateScratches and CreateTemplateScratch API.
+
 2022-10-28 Version: 3.2.13
 - Add ApiForCreation in the return value ServiceProvisions-RoleProvision-Roles of GetServiceProvisions API.
 - The Tags parameter is supported in the CreateTemplate and CreateStackGroup API.
