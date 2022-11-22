@@ -1241,7 +1241,7 @@ class Client(OpenApiClient):
         request = rds_20140815_models.CloneDBInstanceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.serverless_config):
-            request.serverless_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.serverless_config), 'ServerlessConfig', 'json')
+            request.serverless_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.serverless_config, 'ServerlessConfig', 'json')
         query = {}
         if not UtilClient.is_unset(request.backup_id):
             query['BackupId'] = request.backup_id
@@ -1319,7 +1319,7 @@ class Client(OpenApiClient):
         request = rds_20140815_models.CloneDBInstanceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.serverless_config):
-            request.serverless_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.serverless_config), 'ServerlessConfig', 'json')
+            request.serverless_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.serverless_config, 'ServerlessConfig', 'json')
         query = {}
         if not UtilClient.is_unset(request.backup_id):
             query['BackupId'] = request.backup_id
@@ -2155,7 +2155,7 @@ class Client(OpenApiClient):
         request = rds_20140815_models.CreateDBInstanceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.serverless_config):
-            request.serverless_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.serverless_config), 'ServerlessConfig', 'json')
+            request.serverless_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.serverless_config, 'ServerlessConfig', 'json')
         query = {}
         if not UtilClient.is_unset(request.amount):
             query['Amount'] = request.amount
@@ -2171,6 +2171,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.connection_mode):
             query['ConnectionMode'] = request.connection_mode
+        if not UtilClient.is_unset(request.connection_string):
+            query['ConnectionString'] = request.connection_string
         if not UtilClient.is_unset(request.create_strategy):
             query['CreateStrategy'] = request.create_strategy
         if not UtilClient.is_unset(request.dbinstance_class):
@@ -2281,7 +2283,7 @@ class Client(OpenApiClient):
         request = rds_20140815_models.CreateDBInstanceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.serverless_config):
-            request.serverless_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.serverless_config), 'ServerlessConfig', 'json')
+            request.serverless_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.serverless_config, 'ServerlessConfig', 'json')
         query = {}
         if not UtilClient.is_unset(request.amount):
             query['Amount'] = request.amount
@@ -2297,6 +2299,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.connection_mode):
             query['ConnectionMode'] = request.connection_mode
+        if not UtilClient.is_unset(request.connection_string):
+            query['ConnectionString'] = request.connection_string
         if not UtilClient.is_unset(request.create_strategy):
             query['CreateStrategy'] = request.create_strategy
         if not UtilClient.is_unset(request.dbinstance_class):
@@ -2411,6 +2415,218 @@ class Client(OpenApiClient):
     ) -> rds_20140815_models.CreateDBInstanceResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_dbinstance_with_options_async(request, runtime)
+
+    def create_dbinstance_endpoint_with_options(
+        self,
+        tmp_req: rds_20140815_models.CreateDBInstanceEndpointRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.CreateDBInstanceEndpointResponse:
+        UtilClient.validate_model(tmp_req)
+        request = rds_20140815_models.CreateDBInstanceEndpointShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.node_items):
+            request.node_items_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.node_items, 'NodeItems', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.connection_string_prefix):
+            query['ConnectionStringPrefix'] = request.connection_string_prefix
+        if not UtilClient.is_unset(request.dbinstance_endpoint_description):
+            query['DBInstanceEndpointDescription'] = request.dbinstance_endpoint_description
+        if not UtilClient.is_unset(request.dbinstance_endpoint_type):
+            query['DBInstanceEndpointType'] = request.dbinstance_endpoint_type
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.node_items_shrink):
+            query['NodeItems'] = request.node_items_shrink
+        if not UtilClient.is_unset(request.port):
+            query['Port'] = request.port
+        if not UtilClient.is_unset(request.private_ip_address):
+            query['PrivateIpAddress'] = request.private_ip_address
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDBInstanceEndpoint',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.CreateDBInstanceEndpointResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_dbinstance_endpoint_with_options_async(
+        self,
+        tmp_req: rds_20140815_models.CreateDBInstanceEndpointRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.CreateDBInstanceEndpointResponse:
+        UtilClient.validate_model(tmp_req)
+        request = rds_20140815_models.CreateDBInstanceEndpointShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.node_items):
+            request.node_items_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.node_items, 'NodeItems', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.connection_string_prefix):
+            query['ConnectionStringPrefix'] = request.connection_string_prefix
+        if not UtilClient.is_unset(request.dbinstance_endpoint_description):
+            query['DBInstanceEndpointDescription'] = request.dbinstance_endpoint_description
+        if not UtilClient.is_unset(request.dbinstance_endpoint_type):
+            query['DBInstanceEndpointType'] = request.dbinstance_endpoint_type
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.node_items_shrink):
+            query['NodeItems'] = request.node_items_shrink
+        if not UtilClient.is_unset(request.port):
+            query['Port'] = request.port
+        if not UtilClient.is_unset(request.private_ip_address):
+            query['PrivateIpAddress'] = request.private_ip_address
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDBInstanceEndpoint',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.CreateDBInstanceEndpointResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_dbinstance_endpoint(
+        self,
+        request: rds_20140815_models.CreateDBInstanceEndpointRequest,
+    ) -> rds_20140815_models.CreateDBInstanceEndpointResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_dbinstance_endpoint_with_options(request, runtime)
+
+    async def create_dbinstance_endpoint_async(
+        self,
+        request: rds_20140815_models.CreateDBInstanceEndpointRequest,
+    ) -> rds_20140815_models.CreateDBInstanceEndpointResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_dbinstance_endpoint_with_options_async(request, runtime)
+
+    def create_dbinstance_endpoint_address_with_options(
+        self,
+        request: rds_20140815_models.CreateDBInstanceEndpointAddressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.CreateDBInstanceEndpointAddressResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.connection_string_prefix):
+            query['ConnectionStringPrefix'] = request.connection_string_prefix
+        if not UtilClient.is_unset(request.dbinstance_endpoint_id):
+            query['DBInstanceEndpointId'] = request.dbinstance_endpoint_id
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.ip_type):
+            query['IpType'] = request.ip_type
+        if not UtilClient.is_unset(request.port):
+            query['Port'] = request.port
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDBInstanceEndpointAddress',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.CreateDBInstanceEndpointAddressResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_dbinstance_endpoint_address_with_options_async(
+        self,
+        request: rds_20140815_models.CreateDBInstanceEndpointAddressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.CreateDBInstanceEndpointAddressResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.connection_string_prefix):
+            query['ConnectionStringPrefix'] = request.connection_string_prefix
+        if not UtilClient.is_unset(request.dbinstance_endpoint_id):
+            query['DBInstanceEndpointId'] = request.dbinstance_endpoint_id
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.ip_type):
+            query['IpType'] = request.ip_type
+        if not UtilClient.is_unset(request.port):
+            query['Port'] = request.port
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDBInstanceEndpointAddress',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.CreateDBInstanceEndpointAddressResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_dbinstance_endpoint_address(
+        self,
+        request: rds_20140815_models.CreateDBInstanceEndpointAddressRequest,
+    ) -> rds_20140815_models.CreateDBInstanceEndpointAddressResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_dbinstance_endpoint_address_with_options(request, runtime)
+
+    async def create_dbinstance_endpoint_address_async(
+        self,
+        request: rds_20140815_models.CreateDBInstanceEndpointAddressRequest,
+    ) -> rds_20140815_models.CreateDBInstanceEndpointAddressResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_dbinstance_endpoint_address_with_options_async(request, runtime)
 
     def create_dbproxy_endpoint_address_with_options(
         self,
@@ -4344,6 +4560,178 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_dbinstance_with_options_async(request, runtime)
 
+    def delete_dbinstance_endpoint_with_options(
+        self,
+        request: rds_20140815_models.DeleteDBInstanceEndpointRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DeleteDBInstanceEndpointResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbinstance_endpoint_id):
+            query['DBInstanceEndpointId'] = request.dbinstance_endpoint_id
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDBInstanceEndpoint',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DeleteDBInstanceEndpointResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_dbinstance_endpoint_with_options_async(
+        self,
+        request: rds_20140815_models.DeleteDBInstanceEndpointRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DeleteDBInstanceEndpointResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbinstance_endpoint_id):
+            query['DBInstanceEndpointId'] = request.dbinstance_endpoint_id
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDBInstanceEndpoint',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DeleteDBInstanceEndpointResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_dbinstance_endpoint(
+        self,
+        request: rds_20140815_models.DeleteDBInstanceEndpointRequest,
+    ) -> rds_20140815_models.DeleteDBInstanceEndpointResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_dbinstance_endpoint_with_options(request, runtime)
+
+    async def delete_dbinstance_endpoint_async(
+        self,
+        request: rds_20140815_models.DeleteDBInstanceEndpointRequest,
+    ) -> rds_20140815_models.DeleteDBInstanceEndpointResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_dbinstance_endpoint_with_options_async(request, runtime)
+
+    def delete_dbinstance_endpoint_address_with_options(
+        self,
+        request: rds_20140815_models.DeleteDBInstanceEndpointAddressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DeleteDBInstanceEndpointAddressResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        body = {}
+        if not UtilClient.is_unset(request.connection_string):
+            body['ConnectionString'] = request.connection_string
+        if not UtilClient.is_unset(request.dbinstance_endpoint_id):
+            body['DBInstanceEndpointId'] = request.dbinstance_endpoint_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteDBInstanceEndpointAddress',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DeleteDBInstanceEndpointAddressResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_dbinstance_endpoint_address_with_options_async(
+        self,
+        request: rds_20140815_models.DeleteDBInstanceEndpointAddressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DeleteDBInstanceEndpointAddressResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        body = {}
+        if not UtilClient.is_unset(request.connection_string):
+            body['ConnectionString'] = request.connection_string
+        if not UtilClient.is_unset(request.dbinstance_endpoint_id):
+            body['DBInstanceEndpointId'] = request.dbinstance_endpoint_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteDBInstanceEndpointAddress',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DeleteDBInstanceEndpointAddressResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_dbinstance_endpoint_address(
+        self,
+        request: rds_20140815_models.DeleteDBInstanceEndpointAddressRequest,
+    ) -> rds_20140815_models.DeleteDBInstanceEndpointAddressResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_dbinstance_endpoint_address_with_options(request, runtime)
+
+    async def delete_dbinstance_endpoint_address_async(
+        self,
+        request: rds_20140815_models.DeleteDBInstanceEndpointAddressRequest,
+    ) -> rds_20140815_models.DeleteDBInstanceEndpointAddressResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_dbinstance_endpoint_address_with_options_async(request, runtime)
+
     def delete_dbproxy_endpoint_address_with_options(
         self,
         request: rds_20140815_models.DeleteDBProxyEndpointAddressRequest,
@@ -4681,6 +5069,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.db_instance_id):
+            query['DbInstanceId'] = request.db_instance_id
         if not UtilClient.is_unset(request.engine):
             query['Engine'] = request.engine
         if not UtilClient.is_unset(request.owner_id):
@@ -4723,6 +5113,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.db_instance_id):
+            query['DbInstanceId'] = request.db_instance_id
         if not UtilClient.is_unset(request.engine):
             query['Engine'] = request.engine
         if not UtilClient.is_unset(request.owner_id):
@@ -7454,6 +7846,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbinstance_encryption_key_with_options_async(request, runtime)
 
+    def describe_dbinstance_endpoints_with_options(
+        self,
+        request: rds_20140815_models.DescribeDBInstanceEndpointsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DescribeDBInstanceEndpointsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbinstance_endpoint_id):
+            query['DBInstanceEndpointId'] = request.dbinstance_endpoint_id
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBInstanceEndpoints',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DescribeDBInstanceEndpointsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dbinstance_endpoints_with_options_async(
+        self,
+        request: rds_20140815_models.DescribeDBInstanceEndpointsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DescribeDBInstanceEndpointsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbinstance_endpoint_id):
+            query['DBInstanceEndpointId'] = request.dbinstance_endpoint_id
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBInstanceEndpoints',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DescribeDBInstanceEndpointsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dbinstance_endpoints(
+        self,
+        request: rds_20140815_models.DescribeDBInstanceEndpointsRequest,
+    ) -> rds_20140815_models.DescribeDBInstanceEndpointsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dbinstance_endpoints_with_options(request, runtime)
+
+    async def describe_dbinstance_endpoints_async(
+        self,
+        request: rds_20140815_models.DescribeDBInstanceEndpointsRequest,
+    ) -> rds_20140815_models.DescribeDBInstanceEndpointsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dbinstance_endpoints_with_options_async(request, runtime)
+
     def describe_dbinstance_haconfig_with_options(
         self,
         request: rds_20140815_models.DescribeDBInstanceHAConfigRequest,
@@ -8097,6 +8571,8 @@ class Client(OpenApiClient):
             query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.key):
             query['Key'] = request.key
+        if not UtilClient.is_unset(request.node_id):
+            query['NodeId'] = request.node_id
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.start_time):
@@ -8133,6 +8609,8 @@ class Client(OpenApiClient):
             query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.key):
             query['Key'] = request.key
+        if not UtilClient.is_unset(request.node_id):
+            query['NodeId'] = request.node_id
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.start_time):
@@ -10650,230 +11128,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_haswitch_config_with_options_async(request, runtime)
 
-    def describe_history_tasks_with_options(
-        self,
-        request: rds_20140815_models.DescribeHistoryTasksRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rds_20140815_models.DescribeHistoryTasksResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.from_exec_time):
-            query['FromExecTime'] = request.from_exec_time
-        if not UtilClient.is_unset(request.from_start_time):
-            query['FromStartTime'] = request.from_start_time
-        if not UtilClient.is_unset(request.instance_id):
-            query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.instance_type):
-            query['InstanceType'] = request.instance_type
-        if not UtilClient.is_unset(request.page_number):
-            query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.security_token):
-            query['SecurityToken'] = request.security_token
-        if not UtilClient.is_unset(request.status):
-            query['Status'] = request.status
-        if not UtilClient.is_unset(request.task_id):
-            query['TaskId'] = request.task_id
-        if not UtilClient.is_unset(request.task_type):
-            query['TaskType'] = request.task_type
-        if not UtilClient.is_unset(request.to_exec_time):
-            query['ToExecTime'] = request.to_exec_time
-        if not UtilClient.is_unset(request.to_start_time):
-            query['ToStartTime'] = request.to_start_time
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeHistoryTasks',
-            version='2014-08-15',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            rds_20140815_models.DescribeHistoryTasksResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_history_tasks_with_options_async(
-        self,
-        request: rds_20140815_models.DescribeHistoryTasksRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rds_20140815_models.DescribeHistoryTasksResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.from_exec_time):
-            query['FromExecTime'] = request.from_exec_time
-        if not UtilClient.is_unset(request.from_start_time):
-            query['FromStartTime'] = request.from_start_time
-        if not UtilClient.is_unset(request.instance_id):
-            query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.instance_type):
-            query['InstanceType'] = request.instance_type
-        if not UtilClient.is_unset(request.page_number):
-            query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.security_token):
-            query['SecurityToken'] = request.security_token
-        if not UtilClient.is_unset(request.status):
-            query['Status'] = request.status
-        if not UtilClient.is_unset(request.task_id):
-            query['TaskId'] = request.task_id
-        if not UtilClient.is_unset(request.task_type):
-            query['TaskType'] = request.task_type
-        if not UtilClient.is_unset(request.to_exec_time):
-            query['ToExecTime'] = request.to_exec_time
-        if not UtilClient.is_unset(request.to_start_time):
-            query['ToStartTime'] = request.to_start_time
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeHistoryTasks',
-            version='2014-08-15',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            rds_20140815_models.DescribeHistoryTasksResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_history_tasks(
-        self,
-        request: rds_20140815_models.DescribeHistoryTasksRequest,
-    ) -> rds_20140815_models.DescribeHistoryTasksResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_history_tasks_with_options(request, runtime)
-
-    async def describe_history_tasks_async(
-        self,
-        request: rds_20140815_models.DescribeHistoryTasksRequest,
-    ) -> rds_20140815_models.DescribeHistoryTasksResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_history_tasks_with_options_async(request, runtime)
-
-    def describe_history_tasks_stat_with_options(
-        self,
-        request: rds_20140815_models.DescribeHistoryTasksStatRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rds_20140815_models.DescribeHistoryTasksStatResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.from_exec_time):
-            query['FromExecTime'] = request.from_exec_time
-        if not UtilClient.is_unset(request.from_start_time):
-            query['FromStartTime'] = request.from_start_time
-        if not UtilClient.is_unset(request.instance_id):
-            query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.security_token):
-            query['SecurityToken'] = request.security_token
-        if not UtilClient.is_unset(request.status):
-            query['Status'] = request.status
-        if not UtilClient.is_unset(request.task_id):
-            query['TaskId'] = request.task_id
-        if not UtilClient.is_unset(request.task_type):
-            query['TaskType'] = request.task_type
-        if not UtilClient.is_unset(request.to_exec_time):
-            query['ToExecTime'] = request.to_exec_time
-        if not UtilClient.is_unset(request.to_start_time):
-            query['ToStartTime'] = request.to_start_time
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeHistoryTasksStat',
-            version='2014-08-15',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            rds_20140815_models.DescribeHistoryTasksStatResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_history_tasks_stat_with_options_async(
-        self,
-        request: rds_20140815_models.DescribeHistoryTasksStatRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rds_20140815_models.DescribeHistoryTasksStatResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.from_exec_time):
-            query['FromExecTime'] = request.from_exec_time
-        if not UtilClient.is_unset(request.from_start_time):
-            query['FromStartTime'] = request.from_start_time
-        if not UtilClient.is_unset(request.instance_id):
-            query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.security_token):
-            query['SecurityToken'] = request.security_token
-        if not UtilClient.is_unset(request.status):
-            query['Status'] = request.status
-        if not UtilClient.is_unset(request.task_id):
-            query['TaskId'] = request.task_id
-        if not UtilClient.is_unset(request.task_type):
-            query['TaskType'] = request.task_type
-        if not UtilClient.is_unset(request.to_exec_time):
-            query['ToExecTime'] = request.to_exec_time
-        if not UtilClient.is_unset(request.to_start_time):
-            query['ToStartTime'] = request.to_start_time
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeHistoryTasksStat',
-            version='2014-08-15',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            rds_20140815_models.DescribeHistoryTasksStatResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_history_tasks_stat(
-        self,
-        request: rds_20140815_models.DescribeHistoryTasksStatRequest,
-    ) -> rds_20140815_models.DescribeHistoryTasksStatResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_history_tasks_stat_with_options(request, runtime)
-
-    async def describe_history_tasks_stat_async(
-        self,
-        request: rds_20140815_models.DescribeHistoryTasksStatRequest,
-    ) -> rds_20140815_models.DescribeHistoryTasksStatResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_history_tasks_stat_with_options_async(request, runtime)
-
     def describe_instance_auto_renewal_attribute_with_options(
         self,
         request: rds_20140815_models.DescribeInstanceAutoRenewalAttributeRequest,
@@ -12412,10 +12666,14 @@ class Client(OpenApiClient):
 
     def describe_price_with_options(
         self,
-        request: rds_20140815_models.DescribePriceRequest,
+        tmp_req: rds_20140815_models.DescribePriceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribePriceResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = rds_20140815_models.DescribePriceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.dbnode):
+            request.dbnode_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dbnode, 'DBNode', 'json')
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
@@ -12429,6 +12687,8 @@ class Client(OpenApiClient):
             query['DBInstanceStorage'] = request.dbinstance_storage
         if not UtilClient.is_unset(request.dbinstance_storage_type):
             query['DBInstanceStorageType'] = request.dbinstance_storage_type
+        if not UtilClient.is_unset(request.dbnode_shrink):
+            query['DBNode'] = request.dbnode_shrink
         if not UtilClient.is_unset(request.engine):
             query['Engine'] = request.engine
         if not UtilClient.is_unset(request.engine_version):
@@ -12478,10 +12738,14 @@ class Client(OpenApiClient):
 
     async def describe_price_with_options_async(
         self,
-        request: rds_20140815_models.DescribePriceRequest,
+        tmp_req: rds_20140815_models.DescribePriceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribePriceResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = rds_20140815_models.DescribePriceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.dbnode):
+            request.dbnode_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dbnode, 'DBNode', 'json')
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
@@ -12495,6 +12759,8 @@ class Client(OpenApiClient):
             query['DBInstanceStorage'] = request.dbinstance_storage
         if not UtilClient.is_unset(request.dbinstance_storage_type):
             query['DBInstanceStorageType'] = request.dbinstance_storage_type
+        if not UtilClient.is_unset(request.dbnode_shrink):
+            query['DBNode'] = request.dbnode_shrink
         if not UtilClient.is_unset(request.engine):
             query['Engine'] = request.engine
         if not UtilClient.is_unset(request.engine_version):
@@ -13633,6 +13899,8 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.db_instance_id):
+            query['DbInstanceId'] = request.db_instance_id
         if not UtilClient.is_unset(request.engine):
             query['Engine'] = request.engine
         if not UtilClient.is_unset(request.owner_account):
@@ -13679,6 +13947,8 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.db_instance_id):
+            query['DbInstanceId'] = request.db_instance_id
         if not UtilClient.is_unset(request.engine):
             query['Engine'] = request.engine
         if not UtilClient.is_unset(request.owner_account):
@@ -16373,6 +16643,8 @@ class Client(OpenApiClient):
             query['DBInstanceId'] = request.dbinstance_id
         if not UtilClient.is_unset(request.enable_backup_log):
             query['EnableBackupLog'] = request.enable_backup_log
+        if not UtilClient.is_unset(request.enable_increment_data_backup):
+            query['EnableIncrementDataBackup'] = request.enable_increment_data_backup
         if not UtilClient.is_unset(request.high_space_usage_protection):
             query['HighSpaceUsageProtection'] = request.high_space_usage_protection
         if not UtilClient.is_unset(request.local_log_retention_hours):
@@ -16449,6 +16721,8 @@ class Client(OpenApiClient):
             query['DBInstanceId'] = request.dbinstance_id
         if not UtilClient.is_unset(request.enable_backup_log):
             query['EnableBackupLog'] = request.enable_backup_log
+        if not UtilClient.is_unset(request.enable_increment_data_backup):
+            query['EnableIncrementDataBackup'] = request.enable_increment_data_backup
         if not UtilClient.is_unset(request.high_space_usage_protection):
             query['HighSpaceUsageProtection'] = request.high_space_usage_protection
         if not UtilClient.is_unset(request.local_log_retention_hours):
@@ -17247,6 +17521,210 @@ class Client(OpenApiClient):
     ) -> rds_20140815_models.ModifyDBInstanceDescriptionResponse:
         runtime = util_models.RuntimeOptions()
         return await self.modify_dbinstance_description_with_options_async(request, runtime)
+
+    def modify_dbinstance_endpoint_with_options(
+        self,
+        tmp_req: rds_20140815_models.ModifyDBInstanceEndpointRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.ModifyDBInstanceEndpointResponse:
+        UtilClient.validate_model(tmp_req)
+        request = rds_20140815_models.ModifyDBInstanceEndpointShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.node_items):
+            request.node_items_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.node_items, 'NodeItems', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbinstance_endpoint_description):
+            query['DBInstanceEndpointDescription'] = request.dbinstance_endpoint_description
+        if not UtilClient.is_unset(request.dbinstance_endpoint_id):
+            query['DBInstanceEndpointId'] = request.dbinstance_endpoint_id
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.node_items_shrink):
+            query['NodeItems'] = request.node_items_shrink
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBInstanceEndpoint',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.ModifyDBInstanceEndpointResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_dbinstance_endpoint_with_options_async(
+        self,
+        tmp_req: rds_20140815_models.ModifyDBInstanceEndpointRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.ModifyDBInstanceEndpointResponse:
+        UtilClient.validate_model(tmp_req)
+        request = rds_20140815_models.ModifyDBInstanceEndpointShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.node_items):
+            request.node_items_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.node_items, 'NodeItems', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbinstance_endpoint_description):
+            query['DBInstanceEndpointDescription'] = request.dbinstance_endpoint_description
+        if not UtilClient.is_unset(request.dbinstance_endpoint_id):
+            query['DBInstanceEndpointId'] = request.dbinstance_endpoint_id
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.node_items_shrink):
+            query['NodeItems'] = request.node_items_shrink
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBInstanceEndpoint',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.ModifyDBInstanceEndpointResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_dbinstance_endpoint(
+        self,
+        request: rds_20140815_models.ModifyDBInstanceEndpointRequest,
+    ) -> rds_20140815_models.ModifyDBInstanceEndpointResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_dbinstance_endpoint_with_options(request, runtime)
+
+    async def modify_dbinstance_endpoint_async(
+        self,
+        request: rds_20140815_models.ModifyDBInstanceEndpointRequest,
+    ) -> rds_20140815_models.ModifyDBInstanceEndpointResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_dbinstance_endpoint_with_options_async(request, runtime)
+
+    def modify_dbinstance_endpoint_address_with_options(
+        self,
+        request: rds_20140815_models.ModifyDBInstanceEndpointAddressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.ModifyDBInstanceEndpointAddressResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.connection_string):
+            query['ConnectionString'] = request.connection_string
+        if not UtilClient.is_unset(request.connection_string_prefix):
+            query['ConnectionStringPrefix'] = request.connection_string_prefix
+        if not UtilClient.is_unset(request.dbinstance_endpoint_id):
+            query['DBInstanceEndpointId'] = request.dbinstance_endpoint_id
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.port):
+            query['Port'] = request.port
+        if not UtilClient.is_unset(request.private_ip_address):
+            query['PrivateIpAddress'] = request.private_ip_address
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBInstanceEndpointAddress',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.ModifyDBInstanceEndpointAddressResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_dbinstance_endpoint_address_with_options_async(
+        self,
+        request: rds_20140815_models.ModifyDBInstanceEndpointAddressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.ModifyDBInstanceEndpointAddressResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.connection_string):
+            query['ConnectionString'] = request.connection_string
+        if not UtilClient.is_unset(request.connection_string_prefix):
+            query['ConnectionStringPrefix'] = request.connection_string_prefix
+        if not UtilClient.is_unset(request.dbinstance_endpoint_id):
+            query['DBInstanceEndpointId'] = request.dbinstance_endpoint_id
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.port):
+            query['Port'] = request.port
+        if not UtilClient.is_unset(request.private_ip_address):
+            query['PrivateIpAddress'] = request.private_ip_address
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBInstanceEndpointAddress',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.ModifyDBInstanceEndpointAddressResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_dbinstance_endpoint_address(
+        self,
+        request: rds_20140815_models.ModifyDBInstanceEndpointAddressRequest,
+    ) -> rds_20140815_models.ModifyDBInstanceEndpointAddressResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_dbinstance_endpoint_address_with_options(request, runtime)
+
+    async def modify_dbinstance_endpoint_address_async(
+        self,
+        request: rds_20140815_models.ModifyDBInstanceEndpointAddressRequest,
+    ) -> rds_20140815_models.ModifyDBInstanceEndpointAddressResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_dbinstance_endpoint_address_with_options_async(request, runtime)
 
     def modify_dbinstance_haconfig_with_options(
         self,
@@ -18139,7 +18617,7 @@ class Client(OpenApiClient):
         request = rds_20140815_models.ModifyDBInstanceSpecShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.serverless_configuration):
-            request.serverless_configuration_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.serverless_configuration), 'ServerlessConfiguration', 'json')
+            request.serverless_configuration_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.serverless_configuration, 'ServerlessConfiguration', 'json')
         query = {}
         if not UtilClient.is_unset(request.category):
             query['Category'] = request.category
@@ -18209,7 +18687,7 @@ class Client(OpenApiClient):
         request = rds_20140815_models.ModifyDBInstanceSpecShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.serverless_configuration):
-            request.serverless_configuration_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.serverless_configuration), 'ServerlessConfiguration', 'json')
+            request.serverless_configuration_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.serverless_configuration, 'ServerlessConfiguration', 'json')
         query = {}
         if not UtilClient.is_unset(request.category):
             query['Category'] = request.category
@@ -18299,6 +18777,8 @@ class Client(OpenApiClient):
             query['DBName'] = request.dbname
         if not UtilClient.is_unset(request.encryption_key):
             query['EncryptionKey'] = request.encryption_key
+        if not UtilClient.is_unset(request.is_rotate):
+            query['IsRotate'] = request.is_rotate
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -18349,6 +18829,8 @@ class Client(OpenApiClient):
             query['DBName'] = request.dbname
         if not UtilClient.is_unset(request.encryption_key):
             query['EncryptionKey'] = request.encryption_key
+        if not UtilClient.is_unset(request.is_rotate):
+            query['IsRotate'] = request.is_rotate
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
