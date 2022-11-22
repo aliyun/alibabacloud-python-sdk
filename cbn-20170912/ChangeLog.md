@@ -1,3 +1,9 @@
+2022-11-22 Version: 1.0.22
+- Update ListTransitRouterMulticastGroups offline parameter ConnectPeerId.
+- Update CreateCenBandwidthPackage offline parameter ServiceType.
+- Update ModifyCenBandwidthPackageSpec offline parameter ServiceType.
+- Update DescribeCenBandwidthPackages offline parameter ServiceType.
+
 2022-11-02 Version: 1.0.21
 - Update ListTransitRouterPrefixListAssociation support NextHop and NextHopType filter.
 - Update ListTransitRouterPrefixListAssociation support TransitRouterRouteTableId  filter.

@@ -1272,6 +1272,39 @@ class CheckTransitRouterServiceResponse(TeaModel):
         return self
 
 
+class CreateCenRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateCenRequest(TeaModel):
     def __init__(
         self,
@@ -1283,6 +1316,7 @@ class CreateCenRequest(TeaModel):
         protection_level: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        tag: List[CreateCenRequestTag] = None,
     ):
         self.client_token = client_token
         self.description = description
@@ -1292,9 +1326,13 @@ class CreateCenRequest(TeaModel):
         self.protection_level = protection_level
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.tag = tag
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1318,6 +1356,10 @@ class CreateCenRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -1338,6 +1380,11 @@ class CreateCenRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateCenRequestTag()
+                self.tag.append(temp_model.from_map(k))
         return self
 
 
@@ -1418,6 +1465,39 @@ class CreateCenResponse(TeaModel):
         return self
 
 
+class CreateCenBandwidthPackageRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateCenBandwidthPackageRequest(TeaModel):
     def __init__(
         self,
@@ -1437,7 +1517,7 @@ class CreateCenBandwidthPackageRequest(TeaModel):
         pricing_cycle: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        service_type: str = None,
+        tag: List[CreateCenBandwidthPackageRequestTag] = None,
     ):
         self.auto_pay = auto_pay
         self.auto_renew = auto_renew
@@ -1455,10 +1535,13 @@ class CreateCenBandwidthPackageRequest(TeaModel):
         self.pricing_cycle = pricing_cycle
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.service_type = service_type
+        self.tag = tag
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1498,8 +1581,10 @@ class CreateCenBandwidthPackageRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.service_type is not None:
-            result['ServiceType'] = self.service_type
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -1536,8 +1621,11 @@ class CreateCenBandwidthPackageRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('ServiceType') is not None:
-            self.service_type = m.get('ServiceType')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateCenBandwidthPackageRequestTag()
+                self.tag.append(temp_model.from_map(k))
         return self
 
 
@@ -3368,6 +3456,39 @@ class CreateTransitRouterMulticastDomainResponse(TeaModel):
         return self
 
 
+class CreateTransitRouterPeerAttachmentRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateTransitRouterPeerAttachmentRequest(TeaModel):
     def __init__(
         self,
@@ -3385,6 +3506,7 @@ class CreateTransitRouterPeerAttachmentRequest(TeaModel):
         region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        tag: List[CreateTransitRouterPeerAttachmentRequestTag] = None,
         transit_router_attachment_description: str = None,
         transit_router_attachment_name: str = None,
         transit_router_id: str = None,
@@ -3403,12 +3525,16 @@ class CreateTransitRouterPeerAttachmentRequest(TeaModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.tag = tag
         self.transit_router_attachment_description = transit_router_attachment_description
         self.transit_router_attachment_name = transit_router_attachment_name
         self.transit_router_id = transit_router_id
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -3444,6 +3570,10 @@ class CreateTransitRouterPeerAttachmentRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         if self.transit_router_attachment_description is not None:
             result['TransitRouterAttachmentDescription'] = self.transit_router_attachment_description
         if self.transit_router_attachment_name is not None:
@@ -3482,6 +3612,11 @@ class CreateTransitRouterPeerAttachmentRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateTransitRouterPeerAttachmentRequestTag()
+                self.tag.append(temp_model.from_map(k))
         if m.get('TransitRouterAttachmentDescription') is not None:
             self.transit_router_attachment_description = m.get('TransitRouterAttachmentDescription')
         if m.get('TransitRouterAttachmentName') is not None:
@@ -4060,6 +4195,39 @@ class CreateTransitRouterRouteTableResponse(TeaModel):
         return self
 
 
+class CreateTransitRouterVbrAttachmentRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateTransitRouterVbrAttachmentRequest(TeaModel):
     def __init__(
         self,
@@ -4072,6 +4240,7 @@ class CreateTransitRouterVbrAttachmentRequest(TeaModel):
         region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        tag: List[CreateTransitRouterVbrAttachmentRequestTag] = None,
         transit_router_attachment_description: str = None,
         transit_router_attachment_name: str = None,
         transit_router_id: str = None,
@@ -4087,6 +4256,7 @@ class CreateTransitRouterVbrAttachmentRequest(TeaModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.tag = tag
         self.transit_router_attachment_description = transit_router_attachment_description
         self.transit_router_attachment_name = transit_router_attachment_name
         self.transit_router_id = transit_router_id
@@ -4094,7 +4264,10 @@ class CreateTransitRouterVbrAttachmentRequest(TeaModel):
         self.vbr_owner_id = vbr_owner_id
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -4120,6 +4293,10 @@ class CreateTransitRouterVbrAttachmentRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         if self.transit_router_attachment_description is not None:
             result['TransitRouterAttachmentDescription'] = self.transit_router_attachment_description
         if self.transit_router_attachment_name is not None:
@@ -4152,6 +4329,11 @@ class CreateTransitRouterVbrAttachmentRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateTransitRouterVbrAttachmentRequestTag()
+                self.tag.append(temp_model.from_map(k))
         if m.get('TransitRouterAttachmentDescription') is not None:
             self.transit_router_attachment_description = m.get('TransitRouterAttachmentDescription')
         if m.get('TransitRouterAttachmentName') is not None:
@@ -4242,6 +4424,39 @@ class CreateTransitRouterVbrAttachmentResponse(TeaModel):
         return self
 
 
+class CreateTransitRouterVpcAttachmentRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateTransitRouterVpcAttachmentRequestZoneMappings(TeaModel):
     def __init__(
         self,
@@ -4287,6 +4502,7 @@ class CreateTransitRouterVpcAttachmentRequest(TeaModel):
         region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        tag: List[CreateTransitRouterVpcAttachmentRequestTag] = None,
         transit_router_attachment_description: str = None,
         transit_router_attachment_name: str = None,
         transit_router_id: str = None,
@@ -4303,6 +4519,7 @@ class CreateTransitRouterVpcAttachmentRequest(TeaModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.tag = tag
         self.transit_router_attachment_description = transit_router_attachment_description
         self.transit_router_attachment_name = transit_router_attachment_name
         self.transit_router_id = transit_router_id
@@ -4311,6 +4528,10 @@ class CreateTransitRouterVpcAttachmentRequest(TeaModel):
         self.zone_mappings = zone_mappings
 
     def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
         if self.zone_mappings:
             for k in self.zone_mappings:
                 if k:
@@ -4340,6 +4561,10 @@ class CreateTransitRouterVpcAttachmentRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         if self.transit_router_attachment_description is not None:
             result['TransitRouterAttachmentDescription'] = self.transit_router_attachment_description
         if self.transit_router_attachment_name is not None:
@@ -4376,6 +4601,11 @@ class CreateTransitRouterVpcAttachmentRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateTransitRouterVpcAttachmentRequestTag()
+                self.tag.append(temp_model.from_map(k))
         if m.get('TransitRouterAttachmentDescription') is not None:
             self.transit_router_attachment_description = m.get('TransitRouterAttachmentDescription')
         if m.get('TransitRouterAttachmentName') is not None:
@@ -4471,6 +4701,39 @@ class CreateTransitRouterVpcAttachmentResponse(TeaModel):
         return self
 
 
+class CreateTransitRouterVpnAttachmentRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateTransitRouterVpnAttachmentRequestZone(TeaModel):
     def __init__(
         self,
@@ -4511,6 +4774,7 @@ class CreateTransitRouterVpnAttachmentRequest(TeaModel):
         region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        tag: List[CreateTransitRouterVpnAttachmentRequestTag] = None,
         transit_router_attachment_description: str = None,
         transit_router_attachment_name: str = None,
         transit_router_id: str = None,
@@ -4528,6 +4792,7 @@ class CreateTransitRouterVpnAttachmentRequest(TeaModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.tag = tag
         self.transit_router_attachment_description = transit_router_attachment_description
         self.transit_router_attachment_name = transit_router_attachment_name
         self.transit_router_id = transit_router_id
@@ -4536,6 +4801,10 @@ class CreateTransitRouterVpnAttachmentRequest(TeaModel):
         self.zone = zone
 
     def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
         if self.zone:
             for k in self.zone:
                 if k:
@@ -4567,6 +4836,10 @@ class CreateTransitRouterVpnAttachmentRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         if self.transit_router_attachment_description is not None:
             result['TransitRouterAttachmentDescription'] = self.transit_router_attachment_description
         if self.transit_router_attachment_name is not None:
@@ -4605,6 +4878,11 @@ class CreateTransitRouterVpnAttachmentRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateTransitRouterVpnAttachmentRequestTag()
+                self.tag.append(temp_model.from_map(k))
         if m.get('TransitRouterAttachmentDescription') is not None:
             self.transit_router_attachment_description = m.get('TransitRouterAttachmentDescription')
         if m.get('TransitRouterAttachmentName') is not None:
@@ -8489,7 +8767,6 @@ class DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPa
         reservation_bandwidth: str = None,
         reservation_internet_charge_type: str = None,
         reservation_order_type: str = None,
-        service_type: str = None,
         status: str = None,
     ):
         self.bandwidth = bandwidth
@@ -8511,7 +8788,6 @@ class DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPa
         self.reservation_bandwidth = reservation_bandwidth
         self.reservation_internet_charge_type = reservation_internet_charge_type
         self.reservation_order_type = reservation_order_type
-        self.service_type = service_type
         self.status = status
 
     def validate(self):
@@ -8564,8 +8840,6 @@ class DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPa
             result['ReservationInternetChargeType'] = self.reservation_internet_charge_type
         if self.reservation_order_type is not None:
             result['ReservationOrderType'] = self.reservation_order_type
-        if self.service_type is not None:
-            result['ServiceType'] = self.service_type
         if self.status is not None:
             result['Status'] = self.status
         return result
@@ -8612,8 +8886,6 @@ class DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPa
             self.reservation_internet_charge_type = m.get('ReservationInternetChargeType')
         if m.get('ReservationOrderType') is not None:
             self.reservation_order_type = m.get('ReservationOrderType')
-        if m.get('ServiceType') is not None:
-            self.service_type = m.get('ServiceType')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         return self
@@ -11782,158 +12054,6 @@ class DescribeCenVbrHealthCheckResponse(TeaModel):
         return self
 
 
-class DescribeCenVpcFlowStatisticSwitchRequest(TeaModel):
-    def __init__(
-        self,
-        cen_id: str = None,
-        owner_account: str = None,
-        owner_id: int = None,
-        region_id: str = None,
-        resource_owner_account: str = None,
-        resource_owner_id: int = None,
-    ):
-        self.cen_id = cen_id
-        self.owner_account = owner_account
-        self.owner_id = owner_id
-        self.region_id = region_id
-        self.resource_owner_account = resource_owner_account
-        self.resource_owner_id = resource_owner_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.cen_id is not None:
-            result['CenId'] = self.cen_id
-        if self.owner_account is not None:
-            result['OwnerAccount'] = self.owner_account
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
-        if self.resource_owner_account is not None:
-            result['ResourceOwnerAccount'] = self.resource_owner_account
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('CenId') is not None:
-            self.cen_id = m.get('CenId')
-        if m.get('OwnerAccount') is not None:
-            self.owner_account = m.get('OwnerAccount')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
-        if m.get('ResourceOwnerAccount') is not None:
-            self.resource_owner_account = m.get('ResourceOwnerAccount')
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
-        return self
-
-
-class DescribeCenVpcFlowStatisticSwitchResponseBody(TeaModel):
-    def __init__(
-        self,
-        cen_id: str = None,
-        invalid_date: str = None,
-        region_id: str = None,
-        request_id: str = None,
-        state: str = None,
-    ):
-        self.cen_id = cen_id
-        self.invalid_date = invalid_date
-        self.region_id = region_id
-        self.request_id = request_id
-        self.state = state
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.cen_id is not None:
-            result['CenId'] = self.cen_id
-        if self.invalid_date is not None:
-            result['InvalidDate'] = self.invalid_date
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.state is not None:
-            result['State'] = self.state
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('CenId') is not None:
-            self.cen_id = m.get('CenId')
-        if m.get('InvalidDate') is not None:
-            self.invalid_date = m.get('InvalidDate')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('State') is not None:
-            self.state = m.get('State')
-        return self
-
-
-class DescribeCenVpcFlowStatisticSwitchResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: DescribeCenVpcFlowStatisticSwitchResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = DescribeCenVpcFlowStatisticSwitchResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class DescribeCensRequestFilter(TeaModel):
     def __init__(
         self,
@@ -14879,140 +14999,6 @@ class DisableCenVbrHealthCheckResponse(TeaModel):
         return self
 
 
-class DisableCenVpcFlowStatisticRequest(TeaModel):
-    def __init__(
-        self,
-        cen_id: str = None,
-        client_token: str = None,
-        owner_account: str = None,
-        owner_id: int = None,
-        region_id: str = None,
-        resource_owner_account: str = None,
-        resource_owner_id: int = None,
-    ):
-        self.cen_id = cen_id
-        self.client_token = client_token
-        self.owner_account = owner_account
-        self.owner_id = owner_id
-        self.region_id = region_id
-        self.resource_owner_account = resource_owner_account
-        self.resource_owner_id = resource_owner_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.cen_id is not None:
-            result['CenId'] = self.cen_id
-        if self.client_token is not None:
-            result['ClientToken'] = self.client_token
-        if self.owner_account is not None:
-            result['OwnerAccount'] = self.owner_account
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
-        if self.resource_owner_account is not None:
-            result['ResourceOwnerAccount'] = self.resource_owner_account
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('CenId') is not None:
-            self.cen_id = m.get('CenId')
-        if m.get('ClientToken') is not None:
-            self.client_token = m.get('ClientToken')
-        if m.get('OwnerAccount') is not None:
-            self.owner_account = m.get('OwnerAccount')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
-        if m.get('ResourceOwnerAccount') is not None:
-            self.resource_owner_account = m.get('ResourceOwnerAccount')
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
-        return self
-
-
-class DisableCenVpcFlowStatisticResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-    ):
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class DisableCenVpcFlowStatisticResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: DisableCenVpcFlowStatisticResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = DisableCenVpcFlowStatisticResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class DisableTransitRouterRouteTablePropagationRequest(TeaModel):
     def __init__(
         self,
@@ -15605,146 +15591,6 @@ class EnableCenVbrHealthCheckResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = EnableCenVbrHealthCheckResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class EnableCenVpcFlowStatisticRequest(TeaModel):
-    def __init__(
-        self,
-        cen_id: str = None,
-        client_token: str = None,
-        days: int = None,
-        owner_account: str = None,
-        owner_id: int = None,
-        region_id: str = None,
-        resource_owner_account: str = None,
-        resource_owner_id: int = None,
-    ):
-        self.cen_id = cen_id
-        self.client_token = client_token
-        self.days = days
-        self.owner_account = owner_account
-        self.owner_id = owner_id
-        self.region_id = region_id
-        self.resource_owner_account = resource_owner_account
-        self.resource_owner_id = resource_owner_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.cen_id is not None:
-            result['CenId'] = self.cen_id
-        if self.client_token is not None:
-            result['ClientToken'] = self.client_token
-        if self.days is not None:
-            result['Days'] = self.days
-        if self.owner_account is not None:
-            result['OwnerAccount'] = self.owner_account
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
-        if self.resource_owner_account is not None:
-            result['ResourceOwnerAccount'] = self.resource_owner_account
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('CenId') is not None:
-            self.cen_id = m.get('CenId')
-        if m.get('ClientToken') is not None:
-            self.client_token = m.get('ClientToken')
-        if m.get('Days') is not None:
-            self.days = m.get('Days')
-        if m.get('OwnerAccount') is not None:
-            self.owner_account = m.get('OwnerAccount')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
-        if m.get('ResourceOwnerAccount') is not None:
-            self.resource_owner_account = m.get('ResourceOwnerAccount')
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
-        return self
-
-
-class EnableCenVpcFlowStatisticResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-    ):
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class EnableCenVpcFlowStatisticResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: EnableCenVpcFlowStatisticResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = EnableCenVpcFlowStatisticResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -16809,6 +16655,7 @@ class ListTagResourcesRequest(TeaModel):
         owner_account: str = None,
         owner_id: int = None,
         page_size: int = None,
+        region_id: str = None,
         resource_id: List[str] = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
@@ -16819,6 +16666,7 @@ class ListTagResourcesRequest(TeaModel):
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.page_size = page_size
+        self.region_id = region_id
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -16845,6 +16693,8 @@ class ListTagResourcesRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.resource_id is not None:
             result['ResourceId'] = self.resource_id
         if self.resource_owner_account is not None:
@@ -16869,6 +16719,8 @@ class ListTagResourcesRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('ResourceId') is not None:
             self.resource_id = m.get('ResourceId')
         if m.get('ResourceOwnerAccount') is not None:
@@ -18200,7 +18052,6 @@ class ListTransitRouterMulticastGroupsRequest(TeaModel):
     def __init__(
         self,
         client_token: str = None,
-        connect_peer_ids: List[str] = None,
         group_ip_address: str = None,
         max_results: int = None,
         next_token: str = None,
@@ -18216,7 +18067,6 @@ class ListTransitRouterMulticastGroupsRequest(TeaModel):
         v_switch_ids: List[str] = None,
     ):
         self.client_token = client_token
-        self.connect_peer_ids = connect_peer_ids
         self.group_ip_address = group_ip_address
         self.max_results = max_results
         self.next_token = next_token
@@ -18242,8 +18092,6 @@ class ListTransitRouterMulticastGroupsRequest(TeaModel):
         result = dict()
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
-        if self.connect_peer_ids is not None:
-            result['ConnectPeerIds'] = self.connect_peer_ids
         if self.group_ip_address is not None:
             result['GroupIpAddress'] = self.group_ip_address
         if self.max_results is not None:
@@ -18276,8 +18124,6 @@ class ListTransitRouterMulticastGroupsRequest(TeaModel):
         m = m or dict()
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
-        if m.get('ConnectPeerIds') is not None:
-            self.connect_peer_ids = m.get('ConnectPeerIds')
         if m.get('GroupIpAddress') is not None:
             self.group_ip_address = m.get('GroupIpAddress')
         if m.get('MaxResults') is not None:
@@ -18509,6 +18355,39 @@ class ListTransitRouterMulticastGroupsResponse(TeaModel):
         return self
 
 
+class ListTransitRouterPeerAttachmentsRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class ListTransitRouterPeerAttachmentsRequest(TeaModel):
     def __init__(
         self,
@@ -18520,6 +18399,7 @@ class ListTransitRouterPeerAttachmentsRequest(TeaModel):
         region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        tag: List[ListTransitRouterPeerAttachmentsRequestTag] = None,
         transit_router_attachment_id: str = None,
         transit_router_id: str = None,
     ):
@@ -18531,11 +18411,15 @@ class ListTransitRouterPeerAttachmentsRequest(TeaModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.tag = tag
         self.transit_router_attachment_id = transit_router_attachment_id
         self.transit_router_id = transit_router_id
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -18559,6 +18443,10 @@ class ListTransitRouterPeerAttachmentsRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         if self.transit_router_attachment_id is not None:
             result['TransitRouterAttachmentId'] = self.transit_router_attachment_id
         if self.transit_router_id is not None:
@@ -18583,10 +18471,48 @@ class ListTransitRouterPeerAttachmentsRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = ListTransitRouterPeerAttachmentsRequestTag()
+                self.tag.append(temp_model.from_map(k))
         if m.get('TransitRouterAttachmentId') is not None:
             self.transit_router_attachment_id = m.get('TransitRouterAttachmentId')
         if m.get('TransitRouterId') is not None:
             self.transit_router_id = m.get('TransitRouterId')
+        return self
+
+
+class ListTransitRouterPeerAttachmentsResponseBodyTransitRouterAttachmentsTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
         return self
 
 
@@ -18605,6 +18531,7 @@ class ListTransitRouterPeerAttachmentsResponseBodyTransitRouterAttachments(TeaMo
         region_id: str = None,
         resource_type: str = None,
         status: str = None,
+        tags: List[ListTransitRouterPeerAttachmentsResponseBodyTransitRouterAttachmentsTags] = None,
         transit_router_attachment_description: str = None,
         transit_router_attachment_id: str = None,
         transit_router_attachment_name: str = None,
@@ -18622,13 +18549,17 @@ class ListTransitRouterPeerAttachmentsResponseBodyTransitRouterAttachments(TeaMo
         self.region_id = region_id
         self.resource_type = resource_type
         self.status = status
+        self.tags = tags
         self.transit_router_attachment_description = transit_router_attachment_description
         self.transit_router_attachment_id = transit_router_attachment_id
         self.transit_router_attachment_name = transit_router_attachment_name
         self.transit_router_id = transit_router_id
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -18660,6 +18591,10 @@ class ListTransitRouterPeerAttachmentsResponseBodyTransitRouterAttachments(TeaMo
             result['ResourceType'] = self.resource_type
         if self.status is not None:
             result['Status'] = self.status
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.transit_router_attachment_description is not None:
             result['TransitRouterAttachmentDescription'] = self.transit_router_attachment_description
         if self.transit_router_attachment_id is not None:
@@ -18696,6 +18631,11 @@ class ListTransitRouterPeerAttachmentsResponseBodyTransitRouterAttachments(TeaMo
             self.resource_type = m.get('ResourceType')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListTransitRouterPeerAttachmentsResponseBodyTransitRouterAttachmentsTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('TransitRouterAttachmentDescription') is not None:
             self.transit_router_attachment_description = m.get('TransitRouterAttachmentDescription')
         if m.get('TransitRouterAttachmentId') is not None:
@@ -20051,6 +19991,39 @@ class ListTransitRouterRouteTablesResponse(TeaModel):
         return self
 
 
+class ListTransitRouterVbrAttachmentsRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class ListTransitRouterVbrAttachmentsRequest(TeaModel):
     def __init__(
         self,
@@ -20062,6 +20035,7 @@ class ListTransitRouterVbrAttachmentsRequest(TeaModel):
         region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        tag: List[ListTransitRouterVbrAttachmentsRequestTag] = None,
         transit_router_attachment_id: str = None,
         transit_router_id: str = None,
     ):
@@ -20073,11 +20047,15 @@ class ListTransitRouterVbrAttachmentsRequest(TeaModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.tag = tag
         self.transit_router_attachment_id = transit_router_attachment_id
         self.transit_router_id = transit_router_id
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -20101,6 +20079,10 @@ class ListTransitRouterVbrAttachmentsRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         if self.transit_router_attachment_id is not None:
             result['TransitRouterAttachmentId'] = self.transit_router_attachment_id
         if self.transit_router_id is not None:
@@ -20125,10 +20107,48 @@ class ListTransitRouterVbrAttachmentsRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = ListTransitRouterVbrAttachmentsRequestTag()
+                self.tag.append(temp_model.from_map(k))
         if m.get('TransitRouterAttachmentId') is not None:
             self.transit_router_attachment_id = m.get('TransitRouterAttachmentId')
         if m.get('TransitRouterId') is not None:
             self.transit_router_id = m.get('TransitRouterId')
+        return self
+
+
+class ListTransitRouterVbrAttachmentsResponseBodyTransitRouterAttachmentsTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
         return self
 
 
@@ -20139,6 +20159,7 @@ class ListTransitRouterVbrAttachmentsResponseBodyTransitRouterAttachments(TeaMod
         creation_time: str = None,
         resource_type: str = None,
         status: str = None,
+        tags: List[ListTransitRouterVbrAttachmentsResponseBodyTransitRouterAttachmentsTags] = None,
         transit_router_attachment_description: str = None,
         transit_router_attachment_id: str = None,
         transit_router_attachment_name: str = None,
@@ -20151,6 +20172,7 @@ class ListTransitRouterVbrAttachmentsResponseBodyTransitRouterAttachments(TeaMod
         self.creation_time = creation_time
         self.resource_type = resource_type
         self.status = status
+        self.tags = tags
         self.transit_router_attachment_description = transit_router_attachment_description
         self.transit_router_attachment_id = transit_router_attachment_id
         self.transit_router_attachment_name = transit_router_attachment_name
@@ -20160,7 +20182,10 @@ class ListTransitRouterVbrAttachmentsResponseBodyTransitRouterAttachments(TeaMod
         self.vbr_region_id = vbr_region_id
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -20176,6 +20201,10 @@ class ListTransitRouterVbrAttachmentsResponseBodyTransitRouterAttachments(TeaMod
             result['ResourceType'] = self.resource_type
         if self.status is not None:
             result['Status'] = self.status
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.transit_router_attachment_description is not None:
             result['TransitRouterAttachmentDescription'] = self.transit_router_attachment_description
         if self.transit_router_attachment_id is not None:
@@ -20202,6 +20231,11 @@ class ListTransitRouterVbrAttachmentsResponseBodyTransitRouterAttachments(TeaMod
             self.resource_type = m.get('ResourceType')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListTransitRouterVbrAttachmentsResponseBodyTransitRouterAttachmentsTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('TransitRouterAttachmentDescription') is not None:
             self.transit_router_attachment_description = m.get('TransitRouterAttachmentDescription')
         if m.get('TransitRouterAttachmentId') is not None:
@@ -20322,6 +20356,39 @@ class ListTransitRouterVbrAttachmentsResponse(TeaModel):
         return self
 
 
+class ListTransitRouterVpcAttachmentsRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class ListTransitRouterVpcAttachmentsRequest(TeaModel):
     def __init__(
         self,
@@ -20333,6 +20400,7 @@ class ListTransitRouterVpcAttachmentsRequest(TeaModel):
         region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        tag: List[ListTransitRouterVpcAttachmentsRequestTag] = None,
         transit_router_attachment_id: str = None,
         transit_router_id: str = None,
     ):
@@ -20344,11 +20412,15 @@ class ListTransitRouterVpcAttachmentsRequest(TeaModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.tag = tag
         self.transit_router_attachment_id = transit_router_attachment_id
         self.transit_router_id = transit_router_id
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -20372,6 +20444,10 @@ class ListTransitRouterVpcAttachmentsRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         if self.transit_router_attachment_id is not None:
             result['TransitRouterAttachmentId'] = self.transit_router_attachment_id
         if self.transit_router_id is not None:
@@ -20396,10 +20472,48 @@ class ListTransitRouterVpcAttachmentsRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = ListTransitRouterVpcAttachmentsRequestTag()
+                self.tag.append(temp_model.from_map(k))
         if m.get('TransitRouterAttachmentId') is not None:
             self.transit_router_attachment_id = m.get('TransitRouterAttachmentId')
         if m.get('TransitRouterId') is not None:
             self.transit_router_id = m.get('TransitRouterId')
+        return self
+
+
+class ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachmentsTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
         return self
 
 
@@ -20449,6 +20563,7 @@ class ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachments(TeaMod
         creation_time: str = None,
         resource_type: str = None,
         status: str = None,
+        tags: List[ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachmentsTags] = None,
         transit_router_attachment_description: str = None,
         transit_router_attachment_id: str = None,
         transit_router_attachment_name: str = None,
@@ -20462,6 +20577,7 @@ class ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachments(TeaMod
         self.creation_time = creation_time
         self.resource_type = resource_type
         self.status = status
+        self.tags = tags
         self.transit_router_attachment_description = transit_router_attachment_description
         self.transit_router_attachment_id = transit_router_attachment_id
         self.transit_router_attachment_name = transit_router_attachment_name
@@ -20472,6 +20588,10 @@ class ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachments(TeaMod
         self.zone_mappings = zone_mappings
 
     def validate(self):
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
         if self.zone_mappings:
             for k in self.zone_mappings:
                 if k:
@@ -20491,6 +20611,10 @@ class ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachments(TeaMod
             result['ResourceType'] = self.resource_type
         if self.status is not None:
             result['Status'] = self.status
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.transit_router_attachment_description is not None:
             result['TransitRouterAttachmentDescription'] = self.transit_router_attachment_description
         if self.transit_router_attachment_id is not None:
@@ -20521,6 +20645,11 @@ class ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachments(TeaMod
             self.resource_type = m.get('ResourceType')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachmentsTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('TransitRouterAttachmentDescription') is not None:
             self.transit_router_attachment_description = m.get('TransitRouterAttachmentDescription')
         if m.get('TransitRouterAttachmentId') is not None:
@@ -20646,6 +20775,39 @@ class ListTransitRouterVpcAttachmentsResponse(TeaModel):
         return self
 
 
+class ListTransitRouterVpnAttachmentsRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class ListTransitRouterVpnAttachmentsRequest(TeaModel):
     def __init__(
         self,
@@ -20657,6 +20819,7 @@ class ListTransitRouterVpnAttachmentsRequest(TeaModel):
         region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        tag: List[ListTransitRouterVpnAttachmentsRequestTag] = None,
         transit_router_attachment_id: str = None,
         transit_router_id: str = None,
     ):
@@ -20668,11 +20831,15 @@ class ListTransitRouterVpnAttachmentsRequest(TeaModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.tag = tag
         self.transit_router_attachment_id = transit_router_attachment_id
         self.transit_router_id = transit_router_id
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -20696,6 +20863,10 @@ class ListTransitRouterVpnAttachmentsRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         if self.transit_router_attachment_id is not None:
             result['TransitRouterAttachmentId'] = self.transit_router_attachment_id
         if self.transit_router_id is not None:
@@ -20720,10 +20891,48 @@ class ListTransitRouterVpnAttachmentsRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = ListTransitRouterVpnAttachmentsRequestTag()
+                self.tag.append(temp_model.from_map(k))
         if m.get('TransitRouterAttachmentId') is not None:
             self.transit_router_attachment_id = m.get('TransitRouterAttachmentId')
         if m.get('TransitRouterId') is not None:
             self.transit_router_id = m.get('TransitRouterId')
+        return self
+
+
+class ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachmentsTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
         return self
 
 
@@ -20761,6 +20970,7 @@ class ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachments(TeaMod
         creation_time: str = None,
         resource_type: str = None,
         status: str = None,
+        tags: List[ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachmentsTags] = None,
         transit_router_attachment_description: str = None,
         transit_router_attachment_id: str = None,
         transit_router_attachment_name: str = None,
@@ -20774,6 +20984,7 @@ class ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachments(TeaMod
         self.creation_time = creation_time
         self.resource_type = resource_type
         self.status = status
+        self.tags = tags
         self.transit_router_attachment_description = transit_router_attachment_description
         self.transit_router_attachment_id = transit_router_attachment_id
         self.transit_router_attachment_name = transit_router_attachment_name
@@ -20784,6 +20995,10 @@ class ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachments(TeaMod
         self.zones = zones
 
     def validate(self):
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
         if self.zones:
             for k in self.zones:
                 if k:
@@ -20803,6 +21018,10 @@ class ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachments(TeaMod
             result['ResourceType'] = self.resource_type
         if self.status is not None:
             result['Status'] = self.status
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.transit_router_attachment_description is not None:
             result['TransitRouterAttachmentDescription'] = self.transit_router_attachment_description
         if self.transit_router_attachment_id is not None:
@@ -20833,6 +21052,11 @@ class ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachments(TeaMod
             self.resource_type = m.get('ResourceType')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachmentsTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('TransitRouterAttachmentDescription') is not None:
             self.transit_router_attachment_description = m.get('TransitRouterAttachmentDescription')
         if m.get('TransitRouterAttachmentId') is not None:
@@ -21565,7 +21789,6 @@ class ModifyCenBandwidthPackageSpecRequest(TeaModel):
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        service_type: str = None,
     ):
         self.bandwidth = bandwidth
         self.cen_bandwidth_package_id = cen_bandwidth_package_id
@@ -21573,7 +21796,6 @@ class ModifyCenBandwidthPackageSpecRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.service_type = service_type
 
     def validate(self):
         pass
@@ -21596,8 +21818,6 @@ class ModifyCenBandwidthPackageSpecRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.service_type is not None:
-            result['ServiceType'] = self.service_type
         return result
 
     def from_map(self, m: dict = None):
@@ -21614,8 +21834,6 @@ class ModifyCenBandwidthPackageSpecRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('ServiceType') is not None:
-            self.service_type = m.get('ServiceType')
         return self
 
 
@@ -24044,6 +24262,7 @@ class TagResourcesRequest(TeaModel):
         self,
         owner_account: str = None,
         owner_id: int = None,
+        region_id: str = None,
         resource_id: List[str] = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
@@ -24052,6 +24271,7 @@ class TagResourcesRequest(TeaModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
+        self.region_id = region_id
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -24074,6 +24294,8 @@ class TagResourcesRequest(TeaModel):
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.resource_id is not None:
             result['ResourceId'] = self.resource_id
         if self.resource_owner_account is not None:
@@ -24094,6 +24316,8 @@ class TagResourcesRequest(TeaModel):
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('ResourceId') is not None:
             self.resource_id = m.get('ResourceId')
         if m.get('ResourceOwnerAccount') is not None:
@@ -24577,6 +24801,7 @@ class UntagResourcesRequest(TeaModel):
         all: bool = None,
         owner_account: str = None,
         owner_id: int = None,
+        region_id: str = None,
         resource_id: List[str] = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
@@ -24586,6 +24811,7 @@ class UntagResourcesRequest(TeaModel):
         self.all = all
         self.owner_account = owner_account
         self.owner_id = owner_id
+        self.region_id = region_id
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -24607,6 +24833,8 @@ class UntagResourcesRequest(TeaModel):
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.resource_id is not None:
             result['ResourceId'] = self.resource_id
         if self.resource_owner_account is not None:
@@ -24627,6 +24855,8 @@ class UntagResourcesRequest(TeaModel):
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('ResourceId') is not None:
             self.resource_id = m.get('ResourceId')
         if m.get('ResourceOwnerAccount') is not None:
