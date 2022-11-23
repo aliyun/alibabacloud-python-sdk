@@ -8745,6 +8745,7 @@ class GetTemplateParameterConstraintsRequest(TeaModel):
         client_token: str = None,
         parameters: List[GetTemplateParameterConstraintsRequestParameters] = None,
         parameters_key_filter: List[str] = None,
+        parameters_order: List[str] = None,
         region_id: str = None,
         template_body: str = None,
         template_id: str = None,
@@ -8754,6 +8755,7 @@ class GetTemplateParameterConstraintsRequest(TeaModel):
         self.client_token = client_token
         self.parameters = parameters
         self.parameters_key_filter = parameters_key_filter
+        self.parameters_order = parameters_order
         self.region_id = region_id
         self.template_body = template_body
         self.template_id = template_id
@@ -8780,6 +8782,8 @@ class GetTemplateParameterConstraintsRequest(TeaModel):
                 result['Parameters'].append(k.to_map() if k else None)
         if self.parameters_key_filter is not None:
             result['ParametersKeyFilter'] = self.parameters_key_filter
+        if self.parameters_order is not None:
+            result['ParametersOrder'] = self.parameters_order
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.template_body is not None:
@@ -8803,6 +8807,8 @@ class GetTemplateParameterConstraintsRequest(TeaModel):
                 self.parameters.append(temp_model.from_map(k))
         if m.get('ParametersKeyFilter') is not None:
             self.parameters_key_filter = m.get('ParametersKeyFilter')
+        if m.get('ParametersOrder') is not None:
+            self.parameters_order = m.get('ParametersOrder')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('TemplateBody') is not None:
@@ -8855,6 +8861,7 @@ class GetTemplateParameterConstraintsShrinkRequest(TeaModel):
         client_token: str = None,
         parameters: List[GetTemplateParameterConstraintsShrinkRequestParameters] = None,
         parameters_key_filter_shrink: str = None,
+        parameters_order_shrink: str = None,
         region_id: str = None,
         template_body: str = None,
         template_id: str = None,
@@ -8864,6 +8871,7 @@ class GetTemplateParameterConstraintsShrinkRequest(TeaModel):
         self.client_token = client_token
         self.parameters = parameters
         self.parameters_key_filter_shrink = parameters_key_filter_shrink
+        self.parameters_order_shrink = parameters_order_shrink
         self.region_id = region_id
         self.template_body = template_body
         self.template_id = template_id
@@ -8890,6 +8898,8 @@ class GetTemplateParameterConstraintsShrinkRequest(TeaModel):
                 result['Parameters'].append(k.to_map() if k else None)
         if self.parameters_key_filter_shrink is not None:
             result['ParametersKeyFilter'] = self.parameters_key_filter_shrink
+        if self.parameters_order_shrink is not None:
+            result['ParametersOrder'] = self.parameters_order_shrink
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.template_body is not None:
@@ -8913,6 +8923,8 @@ class GetTemplateParameterConstraintsShrinkRequest(TeaModel):
                 self.parameters.append(temp_model.from_map(k))
         if m.get('ParametersKeyFilter') is not None:
             self.parameters_key_filter_shrink = m.get('ParametersKeyFilter')
+        if m.get('ParametersOrder') is not None:
+            self.parameters_order_shrink = m.get('ParametersOrder')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('TemplateBody') is not None:
@@ -17507,9 +17519,11 @@ class ValidateTemplateResponseBodyOutputs(TeaModel):
     def __init__(
         self,
         description: str = None,
+        label: str = None,
         output_key: str = None,
     ):
         self.description = description
+        self.label = label
         self.output_key = output_key
 
     def validate(self):
@@ -17523,6 +17537,8 @@ class ValidateTemplateResponseBodyOutputs(TeaModel):
         result = dict()
         if self.description is not None:
             result['Description'] = self.description
+        if self.label is not None:
+            result['Label'] = self.label
         if self.output_key is not None:
             result['OutputKey'] = self.output_key
         return result
@@ -17531,6 +17547,8 @@ class ValidateTemplateResponseBodyOutputs(TeaModel):
         m = m or dict()
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('Label') is not None:
+            self.label = m.get('Label')
         if m.get('OutputKey') is not None:
             self.output_key = m.get('OutputKey')
         return self

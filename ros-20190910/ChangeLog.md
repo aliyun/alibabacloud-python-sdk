@@ -1,3 +1,7 @@
+2022-11-23 Version: 3.2.15
+- The reponse of ValidateTemplate supports Outputs Label.
+- Added ParametersOrder parameter to the GetTemplateParameterConstraints API.
+
 2022-11-22 Version: 3.2.14
 - The Tags parameter is supported in the ListStackGroups, ListTemplateScratches and CreateTemplateScratch API.
 
