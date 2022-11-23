@@ -3477,6 +3477,223 @@ class QueryAuditResultResponse(TeaModel):
         return self
 
 
+class ReportImpressionRequest(TeaModel):
+    def __init__(
+        self,
+        impressionlink: str = None,
+    ):
+        self.impressionlink = impressionlink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.impressionlink is not None:
+            result['Impressionlink'] = self.impressionlink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Impressionlink') is not None:
+            self.impressionlink = m.get('Impressionlink')
+        return self
+
+
+class ReportImpressionResponseBodyHeader(TeaModel):
+    def __init__(
+        self,
+        cost_time: int = None,
+        rpc_id: str = None,
+        trace_id: str = None,
+        version: str = None,
+    ):
+        self.cost_time = cost_time
+        self.rpc_id = rpc_id
+        self.trace_id = trace_id
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cost_time is not None:
+            result['CostTime'] = self.cost_time
+        if self.rpc_id is not None:
+            result['RpcId'] = self.rpc_id
+        if self.trace_id is not None:
+            result['TraceId'] = self.trace_id
+        if self.version is not None:
+            result['Version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CostTime') is not None:
+            self.cost_time = m.get('CostTime')
+        if m.get('RpcId') is not None:
+            self.rpc_id = m.get('RpcId')
+        if m.get('TraceId') is not None:
+            self.trace_id = m.get('TraceId')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        return self
+
+
+class ReportImpressionResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        bidid: str = None,
+        success: bool = None,
+    ):
+        self.bidid = bidid
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bidid is not None:
+            result['Bidid'] = self.bidid
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bidid') is not None:
+            self.bidid = m.get('Bidid')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ReportImpressionResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_msg: str = None,
+        ext: Dict[str, str] = None,
+        header: ReportImpressionResponseBodyHeader = None,
+        request_id: str = None,
+        result: ReportImpressionResponseBodyResult = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_msg = error_msg
+        self.ext = ext
+        self.header = header
+        self.request_id = request_id
+        self.result = result
+        self.success = success
+
+    def validate(self):
+        if self.header:
+            self.header.validate()
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_msg is not None:
+            result['ErrorMsg'] = self.error_msg
+        if self.ext is not None:
+            result['Ext'] = self.ext
+        if self.header is not None:
+            result['Header'] = self.header.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMsg') is not None:
+            self.error_msg = m.get('ErrorMsg')
+        if m.get('Ext') is not None:
+            self.ext = m.get('Ext')
+        if m.get('Header') is not None:
+            temp_model = ReportImpressionResponseBodyHeader()
+            self.header = temp_model.from_map(m['Header'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            temp_model = ReportImpressionResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ReportImpressionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ReportImpressionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ReportImpressionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class SendSmsRequest(TeaModel):
     def __init__(
         self,
