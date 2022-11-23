@@ -1,3 +1,7 @@
+2022-11-23 Version: 5.0.5
+- 媒体上报事件接口.
+
+
 2022-10-28 Version: 5.0.4
 - Supported channel Id.
 
