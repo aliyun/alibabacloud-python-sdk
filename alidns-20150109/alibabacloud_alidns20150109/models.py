@@ -23423,6 +23423,7 @@ class DescribeSubDomainRecordsResponseBodyDomainRecordsRecord(TeaModel):
         priority: int = None,
         rr: str = None,
         record_id: str = None,
+        remark: str = None,
         status: str = None,
         ttl: int = None,
         type: str = None,
@@ -23435,6 +23436,7 @@ class DescribeSubDomainRecordsResponseBodyDomainRecordsRecord(TeaModel):
         self.priority = priority
         self.rr = rr
         self.record_id = record_id
+        self.remark = remark
         self.status = status
         self.ttl = ttl
         self.type = type
@@ -23462,6 +23464,8 @@ class DescribeSubDomainRecordsResponseBodyDomainRecordsRecord(TeaModel):
             result['RR'] = self.rr
         if self.record_id is not None:
             result['RecordId'] = self.record_id
+        if self.remark is not None:
+            result['Remark'] = self.remark
         if self.status is not None:
             result['Status'] = self.status
         if self.ttl is not None:
@@ -23488,6 +23492,8 @@ class DescribeSubDomainRecordsResponseBodyDomainRecordsRecord(TeaModel):
             self.rr = m.get('RR')
         if m.get('RecordId') is not None:
             self.record_id = m.get('RecordId')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('TTL') is not None:
