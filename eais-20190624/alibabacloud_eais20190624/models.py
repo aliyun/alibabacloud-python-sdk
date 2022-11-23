@@ -1052,6 +1052,7 @@ class DescribeEaisResponseBodyInstancesInstance(TeaModel):
         jupyter_url: str = None,
         region_id: str = None,
         security_group_id: str = None,
+        start_time: str = None,
         status: str = None,
         tags: DescribeEaisResponseBodyInstancesInstanceTags = None,
         v_switch_id: str = None,
@@ -1069,6 +1070,7 @@ class DescribeEaisResponseBodyInstancesInstance(TeaModel):
         self.jupyter_url = jupyter_url
         self.region_id = region_id
         self.security_group_id = security_group_id
+        self.start_time = start_time
         self.status = status
         self.tags = tags
         self.v_switch_id = v_switch_id
@@ -1108,6 +1110,8 @@ class DescribeEaisResponseBodyInstancesInstance(TeaModel):
             result['RegionId'] = self.region_id
         if self.security_group_id is not None:
             result['SecurityGroupId'] = self.security_group_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
         if self.status is not None:
             result['Status'] = self.status
         if self.tags is not None:
@@ -1144,6 +1148,8 @@ class DescribeEaisResponseBodyInstancesInstance(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('SecurityGroupId') is not None:
             self.security_group_id = m.get('SecurityGroupId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('Tags') is not None:
