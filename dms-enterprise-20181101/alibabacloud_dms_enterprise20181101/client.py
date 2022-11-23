@@ -936,7 +936,7 @@ class Client(OpenApiClient):
         request = dms_enterprise_20181101_models.CreateDataCorrectOrderShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.param):
-            request.param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.param), 'Param', 'json')
+            request.param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.param, 'Param', 'json')
         if not UtilClient.is_unset(tmp_req.related_user_list):
             request.related_user_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.related_user_list, 'RelatedUserList', 'json')
         query = {}
@@ -978,7 +978,7 @@ class Client(OpenApiClient):
         request = dms_enterprise_20181101_models.CreateDataCorrectOrderShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.param):
-            request.param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.param), 'Param', 'json')
+            request.param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.param, 'Param', 'json')
         if not UtilClient.is_unset(tmp_req.related_user_list):
             request.related_user_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.related_user_list, 'RelatedUserList', 'json')
         query = {}
@@ -1034,7 +1034,7 @@ class Client(OpenApiClient):
         request = dms_enterprise_20181101_models.CreateDataCronClearOrderShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.param):
-            request.param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.param), 'Param', 'json')
+            request.param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.param, 'Param', 'json')
         if not UtilClient.is_unset(tmp_req.related_user_list):
             request.related_user_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.related_user_list, 'RelatedUserList', 'json')
         query = {}
@@ -1076,7 +1076,7 @@ class Client(OpenApiClient):
         request = dms_enterprise_20181101_models.CreateDataCronClearOrderShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.param):
-            request.param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.param), 'Param', 'json')
+            request.param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.param, 'Param', 'json')
         if not UtilClient.is_unset(tmp_req.related_user_list):
             request.related_user_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.related_user_list, 'RelatedUserList', 'json')
         query = {}
@@ -1132,7 +1132,7 @@ class Client(OpenApiClient):
         request = dms_enterprise_20181101_models.CreateDataImportOrderShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.param):
-            request.param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.param), 'Param', 'json')
+            request.param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.param, 'Param', 'json')
         if not UtilClient.is_unset(tmp_req.related_user_list):
             request.related_user_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.related_user_list, 'RelatedUserList', 'json')
         query = {}
@@ -1174,7 +1174,7 @@ class Client(OpenApiClient):
         request = dms_enterprise_20181101_models.CreateDataImportOrderShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.param):
-            request.param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.param), 'Param', 'json')
+            request.param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.param, 'Param', 'json')
         if not UtilClient.is_unset(tmp_req.related_user_list):
             request.related_user_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.related_user_list, 'RelatedUserList', 'json')
         query = {}
@@ -1230,7 +1230,7 @@ class Client(OpenApiClient):
         request = dms_enterprise_20181101_models.CreateFreeLockCorrectOrderShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.param):
-            request.param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.param), 'Param', 'json')
+            request.param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.param, 'Param', 'json')
         if not UtilClient.is_unset(tmp_req.related_user_list):
             request.related_user_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.related_user_list, 'RelatedUserList', 'json')
         query = {}
@@ -1272,7 +1272,7 @@ class Client(OpenApiClient):
         request = dms_enterprise_20181101_models.CreateFreeLockCorrectOrderShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.param):
-            request.param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.param), 'Param', 'json')
+            request.param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.param, 'Param', 'json')
         if not UtilClient.is_unset(tmp_req.related_user_list):
             request.related_user_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.related_user_list, 'RelatedUserList', 'json')
         query = {}
@@ -1872,7 +1872,7 @@ class Client(OpenApiClient):
         request = dms_enterprise_20181101_models.CreateSQLReviewOrderShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.param):
-            request.param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.param), 'Param', 'json')
+            request.param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.param, 'Param', 'json')
         if not UtilClient.is_unset(tmp_req.related_user_list):
             request.related_user_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.related_user_list, 'RelatedUserList', 'json')
         query = {}
@@ -1912,7 +1912,7 @@ class Client(OpenApiClient):
         request = dms_enterprise_20181101_models.CreateSQLReviewOrderShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.param):
-            request.param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.param), 'Param', 'json')
+            request.param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.param, 'Param', 'json')
         if not UtilClient.is_unset(tmp_req.related_user_list):
             request.related_user_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.related_user_list, 'RelatedUserList', 'json')
         query = {}
@@ -2126,7 +2126,7 @@ class Client(OpenApiClient):
         request = dms_enterprise_20181101_models.CreateStructSyncOrderShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.param):
-            request.param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.param), 'Param', 'json')
+            request.param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.param, 'Param', 'json')
         if not UtilClient.is_unset(tmp_req.related_user_list):
             request.related_user_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.related_user_list, 'RelatedUserList', 'json')
         query = {}
@@ -2168,7 +2168,7 @@ class Client(OpenApiClient):
         request = dms_enterprise_20181101_models.CreateStructSyncOrderShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.param):
-            request.param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.param), 'Param', 'json')
+            request.param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.param, 'Param', 'json')
         if not UtilClient.is_unset(tmp_req.related_user_list):
             request.related_user_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.related_user_list, 'RelatedUserList', 'json')
         query = {}
@@ -2486,7 +2486,7 @@ class Client(OpenApiClient):
         request = dms_enterprise_20181101_models.CreateUploadOSSFileJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.upload_target):
-            request.upload_target_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.upload_target), 'UploadTarget', 'json')
+            request.upload_target_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.upload_target, 'UploadTarget', 'json')
         query = {}
         if not UtilClient.is_unset(request.file_name):
             query['FileName'] = request.file_name
@@ -2524,7 +2524,7 @@ class Client(OpenApiClient):
         request = dms_enterprise_20181101_models.CreateUploadOSSFileJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.upload_target):
-            request.upload_target_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.upload_target), 'UploadTarget', 'json')
+            request.upload_target_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.upload_target, 'UploadTarget', 'json')
         query = {}
         if not UtilClient.is_unset(request.file_name):
             query['FileName'] = request.file_name
@@ -4443,6 +4443,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_data_correct_order_detail_with_options_async(request, runtime)
 
+    def get_data_correct_rollback_file_with_options(
+        self,
+        request: dms_enterprise_20181101_models.GetDataCorrectRollbackFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetDataCorrectRollbackFileResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataCorrectRollbackFile',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetDataCorrectRollbackFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_data_correct_rollback_file_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.GetDataCorrectRollbackFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetDataCorrectRollbackFileResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataCorrectRollbackFile',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetDataCorrectRollbackFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_data_correct_rollback_file(
+        self,
+        request: dms_enterprise_20181101_models.GetDataCorrectRollbackFileRequest,
+    ) -> dms_enterprise_20181101_models.GetDataCorrectRollbackFileResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_data_correct_rollback_file_with_options(request, runtime)
+
+    async def get_data_correct_rollback_file_async(
+        self,
+        request: dms_enterprise_20181101_models.GetDataCorrectRollbackFileRequest,
+    ) -> dms_enterprise_20181101_models.GetDataCorrectRollbackFileResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_data_correct_rollback_file_with_options_async(request, runtime)
+
     def get_data_correct_sqlfile_with_options(
         self,
         request: dms_enterprise_20181101_models.GetDataCorrectSQLFileRequest,
@@ -4590,6 +4664,80 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetDataCorrectTaskDetailResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_data_correct_task_detail_with_options_async(request, runtime)
+
+    def get_data_cron_clear_config_with_options(
+        self,
+        request: dms_enterprise_20181101_models.GetDataCronClearConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetDataCronClearConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataCronClearConfig',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetDataCronClearConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_data_cron_clear_config_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.GetDataCronClearConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetDataCronClearConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataCronClearConfig',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetDataCronClearConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_data_cron_clear_config(
+        self,
+        request: dms_enterprise_20181101_models.GetDataCronClearConfigRequest,
+    ) -> dms_enterprise_20181101_models.GetDataCronClearConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_data_cron_clear_config_with_options(request, runtime)
+
+    async def get_data_cron_clear_config_async(
+        self,
+        request: dms_enterprise_20181101_models.GetDataCronClearConfigRequest,
+    ) -> dms_enterprise_20181101_models.GetDataCronClearConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_data_cron_clear_config_with_options_async(request, runtime)
 
     def get_data_cron_clear_task_detail_list_with_options(
         self,
@@ -5452,6 +5600,80 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.GetOpLogResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_op_log_with_options_async(request, runtime)
+
+    def get_order_attachment_file_with_options(
+        self,
+        request: dms_enterprise_20181101_models.GetOrderAttachmentFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetOrderAttachmentFileResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetOrderAttachmentFile',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetOrderAttachmentFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_order_attachment_file_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.GetOrderAttachmentFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetOrderAttachmentFileResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetOrderAttachmentFile',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetOrderAttachmentFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_order_attachment_file(
+        self,
+        request: dms_enterprise_20181101_models.GetOrderAttachmentFileRequest,
+    ) -> dms_enterprise_20181101_models.GetOrderAttachmentFileResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_order_attachment_file_with_options(request, runtime)
+
+    async def get_order_attachment_file_async(
+        self,
+        request: dms_enterprise_20181101_models.GetOrderAttachmentFileRequest,
+    ) -> dms_enterprise_20181101_models.GetOrderAttachmentFileResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_order_attachment_file_with_options_async(request, runtime)
 
     def get_order_base_info_with_options(
         self,
@@ -9482,7 +9704,7 @@ class Client(OpenApiClient):
         request = dms_enterprise_20181101_models.ListSQLReviewOriginSQLShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.order_action_detail):
-            request.order_action_detail_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.order_action_detail), 'OrderActionDetail', 'json')
+            request.order_action_detail_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.order_action_detail, 'OrderActionDetail', 'json')
         query = {}
         if not UtilClient.is_unset(request.order_action_detail_shrink):
             query['OrderActionDetail'] = request.order_action_detail_shrink
@@ -9518,7 +9740,7 @@ class Client(OpenApiClient):
         request = dms_enterprise_20181101_models.ListSQLReviewOriginSQLShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.order_action_detail):
-            request.order_action_detail_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.order_action_detail), 'OrderActionDetail', 'json')
+            request.order_action_detail_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.order_action_detail, 'OrderActionDetail', 'json')
         query = {}
         if not UtilClient.is_unset(request.order_action_detail_shrink):
             query['OrderActionDetail'] = request.order_action_detail_shrink

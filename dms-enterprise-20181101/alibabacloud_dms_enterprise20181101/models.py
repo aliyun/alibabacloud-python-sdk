@@ -10314,6 +10314,134 @@ class GetDataCorrectOrderDetailResponse(TeaModel):
         return self
 
 
+class GetDataCorrectRollbackFileRequest(TeaModel):
+    def __init__(
+        self,
+        order_id: int = None,
+        tid: int = None,
+    ):
+        self.order_id = order_id
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class GetDataCorrectRollbackFileResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        file_url: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.file_url = file_url
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.file_url is not None:
+            result['FileUrl'] = self.file_url
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('FileUrl') is not None:
+            self.file_url = m.get('FileUrl')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetDataCorrectRollbackFileResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetDataCorrectRollbackFileResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetDataCorrectRollbackFileResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetDataCorrectSQLFileRequest(TeaModel):
     def __init__(
         self,
@@ -10613,6 +10741,205 @@ class GetDataCorrectTaskDetailResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetDataCorrectTaskDetailResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetDataCronClearConfigRequest(TeaModel):
+    def __init__(
+        self,
+        order_id: int = None,
+        tid: int = None,
+    ):
+        self.order_id = order_id
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class GetDataCronClearConfigResponseBodyDataCronClearConfig(TeaModel):
+    def __init__(
+        self,
+        cron_call_times: str = None,
+        cron_format: str = None,
+        cron_last_call_start_time: str = None,
+        cron_next_call_time: str = None,
+        cron_status: str = None,
+        current_clear_task_count: int = None,
+        duration: str = None,
+        optimize_table_after_every_clear_times: int = None,
+    ):
+        self.cron_call_times = cron_call_times
+        self.cron_format = cron_format
+        self.cron_last_call_start_time = cron_last_call_start_time
+        self.cron_next_call_time = cron_next_call_time
+        self.cron_status = cron_status
+        self.current_clear_task_count = current_clear_task_count
+        self.duration = duration
+        self.optimize_table_after_every_clear_times = optimize_table_after_every_clear_times
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cron_call_times is not None:
+            result['CronCallTimes'] = self.cron_call_times
+        if self.cron_format is not None:
+            result['CronFormat'] = self.cron_format
+        if self.cron_last_call_start_time is not None:
+            result['CronLastCallStartTime'] = self.cron_last_call_start_time
+        if self.cron_next_call_time is not None:
+            result['CronNextCallTime'] = self.cron_next_call_time
+        if self.cron_status is not None:
+            result['CronStatus'] = self.cron_status
+        if self.current_clear_task_count is not None:
+            result['CurrentClearTaskCount'] = self.current_clear_task_count
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        if self.optimize_table_after_every_clear_times is not None:
+            result['OptimizeTableAfterEveryClearTimes'] = self.optimize_table_after_every_clear_times
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CronCallTimes') is not None:
+            self.cron_call_times = m.get('CronCallTimes')
+        if m.get('CronFormat') is not None:
+            self.cron_format = m.get('CronFormat')
+        if m.get('CronLastCallStartTime') is not None:
+            self.cron_last_call_start_time = m.get('CronLastCallStartTime')
+        if m.get('CronNextCallTime') is not None:
+            self.cron_next_call_time = m.get('CronNextCallTime')
+        if m.get('CronStatus') is not None:
+            self.cron_status = m.get('CronStatus')
+        if m.get('CurrentClearTaskCount') is not None:
+            self.current_clear_task_count = m.get('CurrentClearTaskCount')
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        if m.get('OptimizeTableAfterEveryClearTimes') is not None:
+            self.optimize_table_after_every_clear_times = m.get('OptimizeTableAfterEveryClearTimes')
+        return self
+
+
+class GetDataCronClearConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        data_cron_clear_config: GetDataCronClearConfigResponseBodyDataCronClearConfig = None,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data_cron_clear_config = data_cron_clear_config
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data_cron_clear_config:
+            self.data_cron_clear_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_cron_clear_config is not None:
+            result['DataCronClearConfig'] = self.data_cron_clear_config.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataCronClearConfig') is not None:
+            temp_model = GetDataCronClearConfigResponseBodyDataCronClearConfig()
+            self.data_cron_clear_config = temp_model.from_map(m['DataCronClearConfig'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetDataCronClearConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetDataCronClearConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetDataCronClearConfigResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -13409,6 +13736,134 @@ class GetOpLogResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetOpLogResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetOrderAttachmentFileRequest(TeaModel):
+    def __init__(
+        self,
+        order_id: int = None,
+        tid: int = None,
+    ):
+        self.order_id = order_id
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class GetOrderAttachmentFileResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        file_url: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.file_url = file_url
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.file_url is not None:
+            result['FileUrl'] = self.file_url
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('FileUrl') is not None:
+            self.file_url = m.get('FileUrl')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetOrderAttachmentFileResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetOrderAttachmentFileResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetOrderAttachmentFileResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -28473,12 +28928,14 @@ class ListStandardGroupsResponseBodyStandardGroupList(TeaModel):
         self,
         db_type: str = None,
         description: str = None,
+        group_id: int = None,
         group_mode: str = None,
         group_name: str = None,
         last_mender_id: int = None,
     ):
         self.db_type = db_type
         self.description = description
+        self.group_id = group_id
         self.group_mode = group_mode
         self.group_name = group_name
         self.last_mender_id = last_mender_id
@@ -28496,6 +28953,8 @@ class ListStandardGroupsResponseBodyStandardGroupList(TeaModel):
             result['DbType'] = self.db_type
         if self.description is not None:
             result['Description'] = self.description
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
         if self.group_mode is not None:
             result['GroupMode'] = self.group_mode
         if self.group_name is not None:
@@ -28510,6 +28969,8 @@ class ListStandardGroupsResponseBodyStandardGroupList(TeaModel):
             self.db_type = m.get('DbType')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
         if m.get('GroupMode') is not None:
             self.group_mode = m.get('GroupMode')
         if m.get('GroupName') is not None:
