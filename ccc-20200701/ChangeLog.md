@@ -1,3 +1,6 @@
+2022-11-23 Version: 2.7.0
+- Supported ListRealtimeAgentStates outboundScenario filed.
+
 2022-04-26 Version: 2.4.1
 - Support to pass variables to authentication IVR.
 

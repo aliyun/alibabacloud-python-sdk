@@ -139,6 +139,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.abort_campaign_with_options_async(request, runtime)
 
+    def add_cases_with_options(
+        self,
+        tmp_req: ccc20200701_models.AddCasesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.AddCasesResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ccc20200701_models.AddCasesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.case_list):
+            request.case_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.case_list, 'CaseList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.campaign_id):
+            query['CampaignId'] = request.campaign_id
+        if not UtilClient.is_unset(request.case_list_shrink):
+            query['CaseList'] = request.case_list_shrink
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddCases',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.AddCasesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_cases_with_options_async(
+        self,
+        tmp_req: ccc20200701_models.AddCasesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.AddCasesResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ccc20200701_models.AddCasesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.case_list):
+            request.case_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.case_list, 'CaseList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.campaign_id):
+            query['CampaignId'] = request.campaign_id
+        if not UtilClient.is_unset(request.case_list_shrink):
+            query['CaseList'] = request.case_list_shrink
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddCases',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.AddCasesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_cases(
+        self,
+        request: ccc20200701_models.AddCasesRequest,
+    ) -> ccc20200701_models.AddCasesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.add_cases_with_options(request, runtime)
+
+    async def add_cases_async(
+        self,
+        request: ccc20200701_models.AddCasesRequest,
+    ) -> ccc20200701_models.AddCasesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.add_cases_with_options_async(request, runtime)
+
     def add_numbers_to_skill_group_with_options(
         self,
         request: ccc20200701_models.AddNumbersToSkillGroupRequest,
@@ -1303,6 +1389,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.complete_attended_transfer_with_options_async(request, runtime)
 
+    def create_audio_file_with_options(
+        self,
+        request: ccc20200701_models.CreateAudioFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.CreateAudioFileResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.audio_file_name):
+            query['AudioFileName'] = request.audio_file_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.oss_file_key):
+            query['OssFileKey'] = request.oss_file_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAudioFile',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.CreateAudioFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_audio_file_with_options_async(
+        self,
+        request: ccc20200701_models.CreateAudioFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.CreateAudioFileResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.audio_file_name):
+            query['AudioFileName'] = request.audio_file_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.oss_file_key):
+            query['OssFileKey'] = request.oss_file_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAudioFile',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.CreateAudioFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_audio_file(
+        self,
+        request: ccc20200701_models.CreateAudioFileRequest,
+    ) -> ccc20200701_models.CreateAudioFileResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_audio_file_with_options(request, runtime)
+
+    async def create_audio_file_async(
+        self,
+        request: ccc20200701_models.CreateAudioFileRequest,
+    ) -> ccc20200701_models.CreateAudioFileResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_audio_file_with_options_async(request, runtime)
+
     def create_call_tags_with_options(
         self,
         request: ccc20200701_models.CreateCallTagsRequest,
@@ -1859,6 +2027,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_user_with_options_async(request, runtime)
 
+    def delete_audio_file_with_options(
+        self,
+        request: ccc20200701_models.DeleteAudioFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.DeleteAudioFileResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.audio_resource_id):
+            query['AudioResourceId'] = request.audio_resource_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAudioFile',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.DeleteAudioFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_audio_file_with_options_async(
+        self,
+        request: ccc20200701_models.DeleteAudioFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.DeleteAudioFileResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.audio_resource_id):
+            query['AudioResourceId'] = request.audio_resource_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAudioFile',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.DeleteAudioFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_audio_file(
+        self,
+        request: ccc20200701_models.DeleteAudioFileRequest,
+    ) -> ccc20200701_models.DeleteAudioFileResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_audio_file_with_options(request, runtime)
+
+    async def delete_audio_file_async(
+        self,
+        request: ccc20200701_models.DeleteAudioFileRequest,
+    ) -> ccc20200701_models.DeleteAudioFileResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_audio_file_with_options_async(request, runtime)
+
     def delete_call_tag_with_options(
         self,
         request: ccc20200701_models.DeleteCallTagRequest,
@@ -2085,6 +2327,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_skill_group_with_options_async(request, runtime)
 
+    def end_conference_with_options(
+        self,
+        request: ccc20200701_models.EndConferenceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.EndConferenceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EndConference',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.EndConferenceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def end_conference_with_options_async(
+        self,
+        request: ccc20200701_models.EndConferenceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.EndConferenceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EndConference',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.EndConferenceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def end_conference(
+        self,
+        request: ccc20200701_models.EndConferenceRequest,
+    ) -> ccc20200701_models.EndConferenceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.end_conference_with_options(request, runtime)
+
+    async def end_conference_async(
+        self,
+        request: ccc20200701_models.EndConferenceRequest,
+    ) -> ccc20200701_models.EndConferenceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.end_conference_with_options_async(request, runtime)
+
     def export_custom_call_tagging_with_options(
         self,
         request: ccc20200701_models.ExportCustomCallTaggingRequest,
@@ -2232,6 +2552,228 @@ class Client(OpenApiClient):
     ) -> ccc20200701_models.ExportDoNotCallNumbersResponse:
         runtime = util_models.RuntimeOptions()
         return await self.export_do_not_call_numbers_with_options_async(request, runtime)
+
+    def get_audio_file_with_options(
+        self,
+        request: ccc20200701_models.GetAudioFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.GetAudioFileResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.audio_resource_id):
+            query['AudioResourceId'] = request.audio_resource_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAudioFile',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.GetAudioFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_audio_file_with_options_async(
+        self,
+        request: ccc20200701_models.GetAudioFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.GetAudioFileResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.audio_resource_id):
+            query['AudioResourceId'] = request.audio_resource_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAudioFile',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.GetAudioFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_audio_file(
+        self,
+        request: ccc20200701_models.GetAudioFileRequest,
+    ) -> ccc20200701_models.GetAudioFileResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_audio_file_with_options(request, runtime)
+
+    async def get_audio_file_async(
+        self,
+        request: ccc20200701_models.GetAudioFileRequest,
+    ) -> ccc20200701_models.GetAudioFileResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_audio_file_with_options_async(request, runtime)
+
+    def get_audio_file_download_url_with_options(
+        self,
+        request: ccc20200701_models.GetAudioFileDownloadUrlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.GetAudioFileDownloadUrlResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.audio_resource_id):
+            query['AudioResourceId'] = request.audio_resource_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAudioFileDownloadUrl',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.GetAudioFileDownloadUrlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_audio_file_download_url_with_options_async(
+        self,
+        request: ccc20200701_models.GetAudioFileDownloadUrlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.GetAudioFileDownloadUrlResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.audio_resource_id):
+            query['AudioResourceId'] = request.audio_resource_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAudioFileDownloadUrl',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.GetAudioFileDownloadUrlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_audio_file_download_url(
+        self,
+        request: ccc20200701_models.GetAudioFileDownloadUrlRequest,
+    ) -> ccc20200701_models.GetAudioFileDownloadUrlResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_audio_file_download_url_with_options(request, runtime)
+
+    async def get_audio_file_download_url_async(
+        self,
+        request: ccc20200701_models.GetAudioFileDownloadUrlRequest,
+    ) -> ccc20200701_models.GetAudioFileDownloadUrlResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_audio_file_download_url_with_options_async(request, runtime)
+
+    def get_audio_file_upload_parameters_with_options(
+        self,
+        request: ccc20200701_models.GetAudioFileUploadParametersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.GetAudioFileUploadParametersResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.audio_file_name):
+            query['AudioFileName'] = request.audio_file_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAudioFileUploadParameters',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.GetAudioFileUploadParametersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_audio_file_upload_parameters_with_options_async(
+        self,
+        request: ccc20200701_models.GetAudioFileUploadParametersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.GetAudioFileUploadParametersResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.audio_file_name):
+            query['AudioFileName'] = request.audio_file_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAudioFileUploadParameters',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.GetAudioFileUploadParametersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_audio_file_upload_parameters(
+        self,
+        request: ccc20200701_models.GetAudioFileUploadParametersRequest,
+    ) -> ccc20200701_models.GetAudioFileUploadParametersResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_audio_file_upload_parameters_with_options(request, runtime)
+
+    async def get_audio_file_upload_parameters_async(
+        self,
+        request: ccc20200701_models.GetAudioFileUploadParametersRequest,
+    ) -> ccc20200701_models.GetAudioFileUploadParametersResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_audio_file_upload_parameters_with_options_async(request, runtime)
 
     def get_call_detail_record_with_options(
         self,
@@ -2454,6 +2996,80 @@ class Client(OpenApiClient):
     ) -> ccc20200701_models.GetCaseFileUploadUrlResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_case_file_upload_url_with_options_async(request, runtime)
+
+    def get_conversation_detail_with_options(
+        self,
+        request: ccc20200701_models.GetConversationDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.GetConversationDetailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.contact_id):
+            query['ContactId'] = request.contact_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetConversationDetail',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.GetConversationDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_conversation_detail_with_options_async(
+        self,
+        request: ccc20200701_models.GetConversationDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.GetConversationDetailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.contact_id):
+            query['ContactId'] = request.contact_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetConversationDetail',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.GetConversationDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_conversation_detail(
+        self,
+        request: ccc20200701_models.GetConversationDetailRequest,
+    ) -> ccc20200701_models.GetConversationDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_conversation_detail_with_options(request, runtime)
+
+    async def get_conversation_detail_async(
+        self,
+        request: ccc20200701_models.GetConversationDetailRequest,
+    ) -> ccc20200701_models.GetConversationDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_conversation_detail_with_options_async(request, runtime)
 
     def get_do_not_call_file_upload_parameters_with_options(
         self,
@@ -3553,6 +4169,72 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_turn_server_list_with_options_async(request, runtime)
 
+    def get_upload_audio_data_params_with_options(
+        self,
+        request: ccc20200701_models.GetUploadAudioDataParamsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.GetUploadAudioDataParamsResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetUploadAudioDataParams',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.GetUploadAudioDataParamsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_upload_audio_data_params_with_options_async(
+        self,
+        request: ccc20200701_models.GetUploadAudioDataParamsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.GetUploadAudioDataParamsResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetUploadAudioDataParams',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.GetUploadAudioDataParamsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_upload_audio_data_params(
+        self,
+        request: ccc20200701_models.GetUploadAudioDataParamsRequest,
+    ) -> ccc20200701_models.GetUploadAudioDataParamsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_upload_audio_data_params_with_options(request, runtime)
+
+    async def get_upload_audio_data_params_async(
+        self,
+        request: ccc20200701_models.GetUploadAudioDataParamsRequest,
+    ) -> ccc20200701_models.GetUploadAudioDataParamsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_upload_audio_data_params_with_options_async(request, runtime)
+
     def get_user_with_options(
         self,
         request: ccc20200701_models.GetUserRequest,
@@ -3630,6 +4312,80 @@ class Client(OpenApiClient):
     ) -> ccc20200701_models.GetUserResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_user_with_options_async(request, runtime)
+
+    def get_voicemail_recording_with_options(
+        self,
+        request: ccc20200701_models.GetVoicemailRecordingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.GetVoicemailRecordingResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.contact_id):
+            query['ContactId'] = request.contact_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetVoicemailRecording',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.GetVoicemailRecordingResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_voicemail_recording_with_options_async(
+        self,
+        request: ccc20200701_models.GetVoicemailRecordingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.GetVoicemailRecordingResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.contact_id):
+            query['ContactId'] = request.contact_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetVoicemailRecording',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.GetVoicemailRecordingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_voicemail_recording(
+        self,
+        request: ccc20200701_models.GetVoicemailRecordingRequest,
+    ) -> ccc20200701_models.GetVoicemailRecordingResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_voicemail_recording_with_options(request, runtime)
+
+    async def get_voicemail_recording_async(
+        self,
+        request: ccc20200701_models.GetVoicemailRecordingRequest,
+    ) -> ccc20200701_models.GetVoicemailRecordingResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_voicemail_recording_with_options_async(request, runtime)
 
     def hold_call_with_options(
         self,
@@ -4414,6 +5170,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.agent_ids):
             query['AgentIds'] = request.agent_ids
+        if not UtilClient.is_unset(request.exclude_offline_users):
+            query['ExcludeOfflineUsers'] = request.exclude_offline_users
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.page_number):
@@ -4452,6 +5210,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.agent_ids):
             query['AgentIds'] = request.agent_ids
+        if not UtilClient.is_unset(request.exclude_offline_users):
+            query['ExcludeOfflineUsers'] = request.exclude_offline_users
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.page_number):
@@ -4626,6 +5386,84 @@ class Client(OpenApiClient):
     ) -> ccc20200701_models.ListAttemptsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_attempts_with_options_async(request, runtime)
+
+    def list_audio_files_with_options(
+        self,
+        request: ccc20200701_models.ListAudioFilesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.ListAudioFilesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAudioFiles',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.ListAudioFilesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_audio_files_with_options_async(
+        self,
+        request: ccc20200701_models.ListAudioFilesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.ListAudioFilesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAudioFiles',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.ListAudioFilesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_audio_files(
+        self,
+        request: ccc20200701_models.ListAudioFilesRequest,
+    ) -> ccc20200701_models.ListAudioFilesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_audio_files_with_options(request, runtime)
+
+    async def list_audio_files_async(
+        self,
+        request: ccc20200701_models.ListAudioFilesRequest,
+    ) -> ccc20200701_models.ListAudioFilesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_audio_files_with_options_async(request, runtime)
 
     def list_brief_skill_groups_with_options(
         self,
@@ -6273,6 +7111,276 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_ivr_tracking_details_with_options_async(request, runtime)
 
+    def list_legacy_agent_event_logs_with_options(
+        self,
+        request: ccc20200701_models.ListLegacyAgentEventLogsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.ListLegacyAgentEventLogsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_id):
+            query['AgentId'] = request.agent_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListLegacyAgentEventLogs',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.ListLegacyAgentEventLogsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_legacy_agent_event_logs_with_options_async(
+        self,
+        request: ccc20200701_models.ListLegacyAgentEventLogsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.ListLegacyAgentEventLogsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_id):
+            query['AgentId'] = request.agent_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListLegacyAgentEventLogs',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.ListLegacyAgentEventLogsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_legacy_agent_event_logs(
+        self,
+        request: ccc20200701_models.ListLegacyAgentEventLogsRequest,
+    ) -> ccc20200701_models.ListLegacyAgentEventLogsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_legacy_agent_event_logs_with_options(request, runtime)
+
+    async def list_legacy_agent_event_logs_async(
+        self,
+        request: ccc20200701_models.ListLegacyAgentEventLogsRequest,
+    ) -> ccc20200701_models.ListLegacyAgentEventLogsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_legacy_agent_event_logs_with_options_async(request, runtime)
+
+    def list_legacy_agent_status_logs_with_options(
+        self,
+        request: ccc20200701_models.ListLegacyAgentStatusLogsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.ListLegacyAgentStatusLogsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_id):
+            query['AgentId'] = request.agent_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListLegacyAgentStatusLogs',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.ListLegacyAgentStatusLogsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_legacy_agent_status_logs_with_options_async(
+        self,
+        request: ccc20200701_models.ListLegacyAgentStatusLogsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.ListLegacyAgentStatusLogsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_id):
+            query['AgentId'] = request.agent_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListLegacyAgentStatusLogs',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.ListLegacyAgentStatusLogsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_legacy_agent_status_logs(
+        self,
+        request: ccc20200701_models.ListLegacyAgentStatusLogsRequest,
+    ) -> ccc20200701_models.ListLegacyAgentStatusLogsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_legacy_agent_status_logs_with_options(request, runtime)
+
+    async def list_legacy_agent_status_logs_async(
+        self,
+        request: ccc20200701_models.ListLegacyAgentStatusLogsRequest,
+    ) -> ccc20200701_models.ListLegacyAgentStatusLogsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_legacy_agent_status_logs_with_options_async(request, runtime)
+
+    def list_legacy_queue_event_logs_with_options(
+        self,
+        request: ccc20200701_models.ListLegacyQueueEventLogsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.ListLegacyQueueEventLogsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.skill_group_id):
+            query['SkillGroupId'] = request.skill_group_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListLegacyQueueEventLogs',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.ListLegacyQueueEventLogsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_legacy_queue_event_logs_with_options_async(
+        self,
+        request: ccc20200701_models.ListLegacyQueueEventLogsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.ListLegacyQueueEventLogsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.skill_group_id):
+            query['SkillGroupId'] = request.skill_group_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListLegacyQueueEventLogs',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.ListLegacyQueueEventLogsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_legacy_queue_event_logs(
+        self,
+        request: ccc20200701_models.ListLegacyQueueEventLogsRequest,
+    ) -> ccc20200701_models.ListLegacyQueueEventLogsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_legacy_queue_event_logs_with_options(request, runtime)
+
+    async def list_legacy_queue_event_logs_async(
+        self,
+        request: ccc20200701_models.ListLegacyQueueEventLogsRequest,
+    ) -> ccc20200701_models.ListLegacyQueueEventLogsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_legacy_queue_event_logs_with_options_async(request, runtime)
+
     def list_mono_recordings_with_options(
         self,
         request: ccc20200701_models.ListMonoRecordingsRequest,
@@ -6942,14 +8050,22 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.agent_name):
             query['AgentName'] = request.agent_name
+        if not UtilClient.is_unset(request.call_type_list):
+            query['CallTypeList'] = request.call_type_list
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.outbound_scenario):
+            query['OutboundScenario'] = request.outbound_scenario
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.query):
+            query['Query'] = request.query
         if not UtilClient.is_unset(request.skill_group_id):
             query['SkillGroupId'] = request.skill_group_id
+        if not UtilClient.is_unset(request.work_mode_list):
+            query['WorkModeList'] = request.work_mode_list
         body = {}
         if not UtilClient.is_unset(request.agent_id_list):
             body['AgentIdList'] = request.agent_id_list
@@ -6984,14 +8100,22 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.agent_name):
             query['AgentName'] = request.agent_name
+        if not UtilClient.is_unset(request.call_type_list):
+            query['CallTypeList'] = request.call_type_list
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.outbound_scenario):
+            query['OutboundScenario'] = request.outbound_scenario
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.query):
+            query['Query'] = request.query
         if not UtilClient.is_unset(request.skill_group_id):
             query['SkillGroupId'] = request.skill_group_id
+        if not UtilClient.is_unset(request.work_mode_list):
+            query['WorkModeList'] = request.work_mode_list
         body = {}
         if not UtilClient.is_unset(request.agent_id_list):
             body['AgentIdList'] = request.agent_id_list
@@ -7280,154 +8404,6 @@ class Client(OpenApiClient):
     ) -> ccc20200701_models.ListRolesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_roles_with_options_async(request, runtime)
-
-    def list_sip_call_records_with_options(
-        self,
-        request: ccc20200701_models.ListSipCallRecordsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ccc20200701_models.ListSipCallRecordsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.contact_id_list):
-            query['ContactIdList'] = request.contact_id_list
-        if not UtilClient.is_unset(request.instance_id):
-            query['InstanceId'] = request.instance_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListSipCallRecords',
-            version='2020-07-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ccc20200701_models.ListSipCallRecordsResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def list_sip_call_records_with_options_async(
-        self,
-        request: ccc20200701_models.ListSipCallRecordsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ccc20200701_models.ListSipCallRecordsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.contact_id_list):
-            query['ContactIdList'] = request.contact_id_list
-        if not UtilClient.is_unset(request.instance_id):
-            query['InstanceId'] = request.instance_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListSipCallRecords',
-            version='2020-07-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ccc20200701_models.ListSipCallRecordsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def list_sip_call_records(
-        self,
-        request: ccc20200701_models.ListSipCallRecordsRequest,
-    ) -> ccc20200701_models.ListSipCallRecordsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.list_sip_call_records_with_options(request, runtime)
-
-    async def list_sip_call_records_async(
-        self,
-        request: ccc20200701_models.ListSipCallRecordsRequest,
-    ) -> ccc20200701_models.ListSipCallRecordsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.list_sip_call_records_with_options_async(request, runtime)
-
-    def list_sip_traces_with_options(
-        self,
-        request: ccc20200701_models.ListSipTracesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ccc20200701_models.ListSipTracesResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.call_id):
-            query['CallId'] = request.call_id
-        if not UtilClient.is_unset(request.instance_id):
-            query['InstanceId'] = request.instance_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListSipTraces',
-            version='2020-07-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ccc20200701_models.ListSipTracesResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def list_sip_traces_with_options_async(
-        self,
-        request: ccc20200701_models.ListSipTracesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ccc20200701_models.ListSipTracesResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.call_id):
-            query['CallId'] = request.call_id
-        if not UtilClient.is_unset(request.instance_id):
-            query['InstanceId'] = request.instance_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListSipTraces',
-            version='2020-07-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ccc20200701_models.ListSipTracesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def list_sip_traces(
-        self,
-        request: ccc20200701_models.ListSipTracesRequest,
-    ) -> ccc20200701_models.ListSipTracesResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.list_sip_traces_with_options(request, runtime)
-
-    async def list_sip_traces_async(
-        self,
-        request: ccc20200701_models.ListSipTracesRequest,
-    ) -> ccc20200701_models.ListSipTracesResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.list_sip_traces_with_options_async(request, runtime)
 
     def list_skill_group_states_with_options(
         self,
@@ -7740,8 +8716,6 @@ class Client(OpenApiClient):
     ) -> ccc20200701_models.ListUnassignedNumbersResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.instance_id):
-            query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -7774,8 +8748,6 @@ class Client(OpenApiClient):
     ) -> ccc20200701_models.ListUnassignedNumbersResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.instance_id):
-            query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -8084,6 +9056,92 @@ class Client(OpenApiClient):
     ) -> ccc20200701_models.MakeCallResponse:
         runtime = util_models.RuntimeOptions()
         return await self.make_call_with_options_async(request, runtime)
+
+    def modify_audio_file_with_options(
+        self,
+        request: ccc20200701_models.ModifyAudioFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.ModifyAudioFileResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.audio_file_name):
+            query['AudioFileName'] = request.audio_file_name
+        if not UtilClient.is_unset(request.audio_resource_id):
+            query['AudioResourceId'] = request.audio_resource_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.oss_file_key):
+            query['OssFileKey'] = request.oss_file_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyAudioFile',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.ModifyAudioFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_audio_file_with_options_async(
+        self,
+        request: ccc20200701_models.ModifyAudioFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.ModifyAudioFileResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.audio_file_name):
+            query['AudioFileName'] = request.audio_file_name
+        if not UtilClient.is_unset(request.audio_resource_id):
+            query['AudioResourceId'] = request.audio_resource_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.oss_file_key):
+            query['OssFileKey'] = request.oss_file_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyAudioFile',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.ModifyAudioFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_audio_file(
+        self,
+        request: ccc20200701_models.ModifyAudioFileRequest,
+    ) -> ccc20200701_models.ModifyAudioFileResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_audio_file_with_options(request, runtime)
+
+    async def modify_audio_file_async(
+        self,
+        request: ccc20200701_models.ModifyAudioFileRequest,
+    ) -> ccc20200701_models.ModifyAudioFileResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_audio_file_with_options_async(request, runtime)
 
     def modify_custom_call_tagging_with_options(
         self,
@@ -10161,6 +11219,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.reset_user_password_with_options_async(request, runtime)
 
+    def restore_archived_recordings_with_options(
+        self,
+        request: ccc20200701_models.RestoreArchivedRecordingsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.RestoreArchivedRecordingsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.contact_ids):
+            query['ContactIds'] = request.contact_ids
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RestoreArchivedRecordings',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.RestoreArchivedRecordingsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def restore_archived_recordings_with_options_async(
+        self,
+        request: ccc20200701_models.RestoreArchivedRecordingsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.RestoreArchivedRecordingsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.contact_ids):
+            query['ContactIds'] = request.contact_ids
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RestoreArchivedRecordings',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.RestoreArchivedRecordingsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def restore_archived_recordings(
+        self,
+        request: ccc20200701_models.RestoreArchivedRecordingsRequest,
+    ) -> ccc20200701_models.RestoreArchivedRecordingsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.restore_archived_recordings_with_options(request, runtime)
+
+    async def restore_archived_recordings_async(
+        self,
+        request: ccc20200701_models.RestoreArchivedRecordingsRequest,
+    ) -> ccc20200701_models.RestoreArchivedRecordingsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.restore_archived_recordings_with_options_async(request, runtime)
+
     def resume_campaign_with_options(
         self,
         request: ccc20200701_models.ResumeCampaignRequest,
@@ -11033,6 +12165,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.start_back_2back_call_with_options_async(request, runtime)
 
+    def start_conference_with_options(
+        self,
+        request: ccc20200701_models.StartConferenceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.StartConferenceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.participant_list_json):
+            query['ParticipantListJson'] = request.participant_list_json
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
+        if not UtilClient.is_unset(request.timeout_seconds):
+            query['TimeoutSeconds'] = request.timeout_seconds
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartConference',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.StartConferenceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def start_conference_with_options_async(
+        self,
+        request: ccc20200701_models.StartConferenceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.StartConferenceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.participant_list_json):
+            query['ParticipantListJson'] = request.participant_list_json
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
+        if not UtilClient.is_unset(request.timeout_seconds):
+            query['TimeoutSeconds'] = request.timeout_seconds
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartConference',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.StartConferenceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def start_conference(
+        self,
+        request: ccc20200701_models.StartConferenceRequest,
+    ) -> ccc20200701_models.StartConferenceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.start_conference_with_options(request, runtime)
+
+    async def start_conference_async(
+        self,
+        request: ccc20200701_models.StartConferenceRequest,
+    ) -> ccc20200701_models.StartConferenceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.start_conference_with_options_async(request, runtime)
+
     def start_predictive_call_with_options(
         self,
         request: ccc20200701_models.StartPredictiveCallRequest,
@@ -11135,6 +12353,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.start_predictive_call_with_options_async(request, runtime)
 
+    def start_privacy_call_with_options(
+        self,
+        request: ccc20200701_models.StartPrivacyCallRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.StartPrivacyCallResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.callee):
+            query['Callee'] = request.callee
+        if not UtilClient.is_unset(request.caller):
+            query['Caller'] = request.caller
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartPrivacyCall',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.StartPrivacyCallResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def start_privacy_call_with_options_async(
+        self,
+        request: ccc20200701_models.StartPrivacyCallRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.StartPrivacyCallResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.callee):
+            query['Callee'] = request.callee
+        if not UtilClient.is_unset(request.caller):
+            query['Caller'] = request.caller
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartPrivacyCall',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.StartPrivacyCallResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def start_privacy_call(
+        self,
+        request: ccc20200701_models.StartPrivacyCallRequest,
+    ) -> ccc20200701_models.StartPrivacyCallResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.start_privacy_call_with_options(request, runtime)
+
+    async def start_privacy_call_async(
+        self,
+        request: ccc20200701_models.StartPrivacyCallRequest,
+    ) -> ccc20200701_models.StartPrivacyCallResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.start_privacy_call_with_options_async(request, runtime)
+
     def submit_campaign_with_options(
         self,
         request: ccc20200701_models.SubmitCampaignRequest,
@@ -11208,6 +12508,88 @@ class Client(OpenApiClient):
     ) -> ccc20200701_models.SubmitCampaignResponse:
         runtime = util_models.RuntimeOptions()
         return await self.submit_campaign_with_options_async(request, runtime)
+
+    def switch_to_conference_with_options(
+        self,
+        request: ccc20200701_models.SwitchToConferenceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.SwitchToConferenceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_id):
+            query['DeviceId'] = request.device_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SwitchToConference',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.SwitchToConferenceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def switch_to_conference_with_options_async(
+        self,
+        request: ccc20200701_models.SwitchToConferenceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.SwitchToConferenceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_id):
+            query['DeviceId'] = request.device_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SwitchToConference',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.SwitchToConferenceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def switch_to_conference(
+        self,
+        request: ccc20200701_models.SwitchToConferenceRequest,
+    ) -> ccc20200701_models.SwitchToConferenceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.switch_to_conference_with_options(request, runtime)
+
+    async def switch_to_conference_async(
+        self,
+        request: ccc20200701_models.SwitchToConferenceRequest,
+    ) -> ccc20200701_models.SwitchToConferenceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.switch_to_conference_with_options_async(request, runtime)
 
     def take_break_with_options(
         self,
