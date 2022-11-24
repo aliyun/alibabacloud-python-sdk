@@ -51,6 +51,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.cluster_id):
             body['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.ignore_namespace_check):
+            body['IgnoreNamespaceCheck'] = request.ignore_namespace_check
         if not UtilClient.is_unset(request.service_mesh_id):
             body['ServiceMeshId'] = request.service_mesh_id
         req = open_api_models.OpenApiRequest(
@@ -81,6 +83,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.cluster_id):
             body['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.ignore_namespace_check):
+            body['IgnoreNamespaceCheck'] = request.ignore_namespace_check
         if not UtilClient.is_unset(request.service_mesh_id):
             body['ServiceMeshId'] = request.service_mesh_id
         req = open_api_models.OpenApiRequest(
@@ -469,7 +473,7 @@ class Client(OpenApiClient):
         request = servicemesh_20200111_models.CreateIstioGatewayRoutesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.gateway_route):
-            request.gateway_route_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.gateway_route), 'GatewayRoute', 'json')
+            request.gateway_route_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.gateway_route, 'GatewayRoute', 'json')
         body = {}
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
@@ -511,7 +515,7 @@ class Client(OpenApiClient):
         request = servicemesh_20200111_models.CreateIstioGatewayRoutesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.gateway_route):
-            request.gateway_route_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.gateway_route), 'GatewayRoute', 'json')
+            request.gateway_route_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.gateway_route, 'GatewayRoute', 'json')
         body = {}
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
@@ -625,6 +629,16 @@ class Client(OpenApiClient):
             body['ExcludeInboundPorts'] = request.exclude_inbound_ports
         if not UtilClient.is_unset(request.exclude_outbound_ports):
             body['ExcludeOutboundPorts'] = request.exclude_outbound_ports
+        if not UtilClient.is_unset(request.existing_ca_cert):
+            body['ExistingCaCert'] = request.existing_ca_cert
+        if not UtilClient.is_unset(request.existing_ca_key):
+            body['ExistingCaKey'] = request.existing_ca_key
+        if not UtilClient.is_unset(request.existing_ca_type):
+            body['ExistingCaType'] = request.existing_ca_type
+        if not UtilClient.is_unset(request.existing_root_ca_cert):
+            body['ExistingRootCaCert'] = request.existing_root_ca_cert
+        if not UtilClient.is_unset(request.existing_root_ca_key):
+            body['ExistingRootCaKey'] = request.existing_root_ca_key
         if not UtilClient.is_unset(request.filter_gateway_cluster_config):
             body['FilterGatewayClusterConfig'] = request.filter_gateway_cluster_config
         if not UtilClient.is_unset(request.gateway_apienabled):
@@ -691,6 +705,8 @@ class Client(OpenApiClient):
             body['TraceSampling'] = request.trace_sampling
         if not UtilClient.is_unset(request.tracing):
             body['Tracing'] = request.tracing
+        if not UtilClient.is_unset(request.use_existing_ca):
+            body['UseExistingCA'] = request.use_existing_ca
         if not UtilClient.is_unset(request.v_switches):
             body['VSwitches'] = request.v_switches
         if not UtilClient.is_unset(request.vpc_id):
@@ -783,6 +799,16 @@ class Client(OpenApiClient):
             body['ExcludeInboundPorts'] = request.exclude_inbound_ports
         if not UtilClient.is_unset(request.exclude_outbound_ports):
             body['ExcludeOutboundPorts'] = request.exclude_outbound_ports
+        if not UtilClient.is_unset(request.existing_ca_cert):
+            body['ExistingCaCert'] = request.existing_ca_cert
+        if not UtilClient.is_unset(request.existing_ca_key):
+            body['ExistingCaKey'] = request.existing_ca_key
+        if not UtilClient.is_unset(request.existing_ca_type):
+            body['ExistingCaType'] = request.existing_ca_type
+        if not UtilClient.is_unset(request.existing_root_ca_cert):
+            body['ExistingRootCaCert'] = request.existing_root_ca_cert
+        if not UtilClient.is_unset(request.existing_root_ca_key):
+            body['ExistingRootCaKey'] = request.existing_root_ca_key
         if not UtilClient.is_unset(request.filter_gateway_cluster_config):
             body['FilterGatewayClusterConfig'] = request.filter_gateway_cluster_config
         if not UtilClient.is_unset(request.gateway_apienabled):
@@ -849,6 +875,8 @@ class Client(OpenApiClient):
             body['TraceSampling'] = request.trace_sampling
         if not UtilClient.is_unset(request.tracing):
             body['Tracing'] = request.tracing
+        if not UtilClient.is_unset(request.use_existing_ca):
+            body['UseExistingCA'] = request.use_existing_ca
         if not UtilClient.is_unset(request.v_switches):
             body['VSwitches'] = request.v_switches
         if not UtilClient.is_unset(request.vpc_id):
@@ -2879,6 +2907,56 @@ class Client(OpenApiClient):
     ) -> servicemesh_20200111_models.DescribeIstioGatewayRoutesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_istio_gateway_routes_with_options_async(request, runtime)
+
+    def describe_metadata_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicemesh_20200111_models.DescribeMetadataResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribeMetadata',
+            version='2020-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicemesh_20200111_models.DescribeMetadataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_metadata_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicemesh_20200111_models.DescribeMetadataResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribeMetadata',
+            version='2020-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicemesh_20200111_models.DescribeMetadataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_metadata(self) -> servicemesh_20200111_models.DescribeMetadataResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_metadata_with_options(runtime)
+
+    async def describe_metadata_async(self) -> servicemesh_20200111_models.DescribeMetadataResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_metadata_with_options_async(runtime)
 
     def describe_namespace_scope_sidecar_config_with_options(
         self,
@@ -5279,6 +5357,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.cluster_id):
             body['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.reserve_namespace):
+            body['ReserveNamespace'] = request.reserve_namespace
         if not UtilClient.is_unset(request.service_mesh_id):
             body['ServiceMeshId'] = request.service_mesh_id
         req = open_api_models.OpenApiRequest(
@@ -5309,6 +5389,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.cluster_id):
             body['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.reserve_namespace):
+            body['ReserveNamespace'] = request.reserve_namespace
         if not UtilClient.is_unset(request.service_mesh_id):
             body['ServiceMeshId'] = request.service_mesh_id
         req = open_api_models.OpenApiRequest(
@@ -5735,7 +5817,7 @@ class Client(OpenApiClient):
         request = servicemesh_20200111_models.UpdateIstioGatewayRoutesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.gateway_route):
-            request.gateway_route_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.gateway_route), 'GatewayRoute', 'json')
+            request.gateway_route_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.gateway_route, 'GatewayRoute', 'json')
         body = {}
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
@@ -5777,7 +5859,7 @@ class Client(OpenApiClient):
         request = servicemesh_20200111_models.UpdateIstioGatewayRoutesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.gateway_route):
-            request.gateway_route_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.gateway_route), 'GatewayRoute', 'json')
+            request.gateway_route_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.gateway_route, 'GatewayRoute', 'json')
         body = {}
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
@@ -5823,6 +5905,88 @@ class Client(OpenApiClient):
     ) -> servicemesh_20200111_models.UpdateIstioGatewayRoutesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.update_istio_gateway_routes_with_options_async(request, runtime)
+
+    def update_istio_injection_config_with_options(
+        self,
+        request: servicemesh_20200111_models.UpdateIstioInjectionConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicemesh_20200111_models.UpdateIstioInjectionConfigResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.enable_istio_injection):
+            body['EnableIstioInjection'] = request.enable_istio_injection
+        if not UtilClient.is_unset(request.enable_sidecar_set_injection):
+            body['EnableSidecarSetInjection'] = request.enable_sidecar_set_injection
+        if not UtilClient.is_unset(request.namespace):
+            body['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.service_mesh_id):
+            body['ServiceMeshId'] = request.service_mesh_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateIstioInjectionConfig',
+            version='2020-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicemesh_20200111_models.UpdateIstioInjectionConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_istio_injection_config_with_options_async(
+        self,
+        request: servicemesh_20200111_models.UpdateIstioInjectionConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicemesh_20200111_models.UpdateIstioInjectionConfigResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.enable_istio_injection):
+            body['EnableIstioInjection'] = request.enable_istio_injection
+        if not UtilClient.is_unset(request.enable_sidecar_set_injection):
+            body['EnableSidecarSetInjection'] = request.enable_sidecar_set_injection
+        if not UtilClient.is_unset(request.namespace):
+            body['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.service_mesh_id):
+            body['ServiceMeshId'] = request.service_mesh_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateIstioInjectionConfig',
+            version='2020-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicemesh_20200111_models.UpdateIstioInjectionConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_istio_injection_config(
+        self,
+        request: servicemesh_20200111_models.UpdateIstioInjectionConfigRequest,
+    ) -> servicemesh_20200111_models.UpdateIstioInjectionConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_istio_injection_config_with_options(request, runtime)
+
+    async def update_istio_injection_config_async(
+        self,
+        request: servicemesh_20200111_models.UpdateIstioInjectionConfigRequest,
+    ) -> servicemesh_20200111_models.UpdateIstioInjectionConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_istio_injection_config_with_options_async(request, runtime)
 
     def update_istio_route_additional_status_with_options(
         self,

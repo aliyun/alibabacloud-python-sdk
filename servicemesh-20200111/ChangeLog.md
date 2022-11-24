@@ -1,3 +1,6 @@
+2022-11-24 Version: 2.0.25
+- Update ASM APIs.
+
 2022-11-02 Version: 2.0.24
 - UpdateMeshFetaure support additional global Sidecar config.
 

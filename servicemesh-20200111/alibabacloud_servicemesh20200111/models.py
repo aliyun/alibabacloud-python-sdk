@@ -176,9 +176,11 @@ class AddClusterIntoServiceMeshRequest(TeaModel):
     def __init__(
         self,
         cluster_id: str = None,
+        ignore_namespace_check: bool = None,
         service_mesh_id: str = None,
     ):
         self.cluster_id = cluster_id
+        self.ignore_namespace_check = ignore_namespace_check
         self.service_mesh_id = service_mesh_id
 
     def validate(self):
@@ -192,6 +194,8 @@ class AddClusterIntoServiceMeshRequest(TeaModel):
         result = dict()
         if self.cluster_id is not None:
             result['ClusterId'] = self.cluster_id
+        if self.ignore_namespace_check is not None:
+            result['IgnoreNamespaceCheck'] = self.ignore_namespace_check
         if self.service_mesh_id is not None:
             result['ServiceMeshId'] = self.service_mesh_id
         return result
@@ -200,6 +204,8 @@ class AddClusterIntoServiceMeshRequest(TeaModel):
         m = m or dict()
         if m.get('ClusterId') is not None:
             self.cluster_id = m.get('ClusterId')
+        if m.get('IgnoreNamespaceCheck') is not None:
+            self.ignore_namespace_check = m.get('IgnoreNamespaceCheck')
         if m.get('ServiceMeshId') is not None:
             self.service_mesh_id = m.get('ServiceMeshId')
         return self
@@ -1850,6 +1856,11 @@ class CreateServiceMeshRequest(TeaModel):
         exclude_ipranges: str = None,
         exclude_inbound_ports: str = None,
         exclude_outbound_ports: str = None,
+        existing_ca_cert: str = None,
+        existing_ca_key: str = None,
+        existing_ca_type: str = None,
+        existing_root_ca_cert: str = None,
+        existing_root_ca_key: str = None,
         filter_gateway_cluster_config: bool = None,
         gateway_apienabled: bool = None,
         global_rate_limit_enabled: bool = None,
@@ -1883,6 +1894,7 @@ class CreateServiceMeshRequest(TeaModel):
         thrift_filter_enabled: bool = None,
         trace_sampling: float = None,
         tracing: bool = None,
+        use_existing_ca: bool = None,
         v_switches: str = None,
         vpc_id: str = None,
         web_assembly_filter_enabled: bool = None,
@@ -1917,6 +1929,11 @@ class CreateServiceMeshRequest(TeaModel):
         self.exclude_ipranges = exclude_ipranges
         self.exclude_inbound_ports = exclude_inbound_ports
         self.exclude_outbound_ports = exclude_outbound_ports
+        self.existing_ca_cert = existing_ca_cert
+        self.existing_ca_key = existing_ca_key
+        self.existing_ca_type = existing_ca_type
+        self.existing_root_ca_cert = existing_root_ca_cert
+        self.existing_root_ca_key = existing_root_ca_key
         self.filter_gateway_cluster_config = filter_gateway_cluster_config
         self.gateway_apienabled = gateway_apienabled
         self.global_rate_limit_enabled = global_rate_limit_enabled
@@ -1950,6 +1967,7 @@ class CreateServiceMeshRequest(TeaModel):
         self.thrift_filter_enabled = thrift_filter_enabled
         self.trace_sampling = trace_sampling
         self.tracing = tracing
+        self.use_existing_ca = use_existing_ca
         self.v_switches = v_switches
         self.vpc_id = vpc_id
         self.web_assembly_filter_enabled = web_assembly_filter_enabled
@@ -2023,6 +2041,16 @@ class CreateServiceMeshRequest(TeaModel):
             result['ExcludeInboundPorts'] = self.exclude_inbound_ports
         if self.exclude_outbound_ports is not None:
             result['ExcludeOutboundPorts'] = self.exclude_outbound_ports
+        if self.existing_ca_cert is not None:
+            result['ExistingCaCert'] = self.existing_ca_cert
+        if self.existing_ca_key is not None:
+            result['ExistingCaKey'] = self.existing_ca_key
+        if self.existing_ca_type is not None:
+            result['ExistingCaType'] = self.existing_ca_type
+        if self.existing_root_ca_cert is not None:
+            result['ExistingRootCaCert'] = self.existing_root_ca_cert
+        if self.existing_root_ca_key is not None:
+            result['ExistingRootCaKey'] = self.existing_root_ca_key
         if self.filter_gateway_cluster_config is not None:
             result['FilterGatewayClusterConfig'] = self.filter_gateway_cluster_config
         if self.gateway_apienabled is not None:
@@ -2089,6 +2117,8 @@ class CreateServiceMeshRequest(TeaModel):
             result['TraceSampling'] = self.trace_sampling
         if self.tracing is not None:
             result['Tracing'] = self.tracing
+        if self.use_existing_ca is not None:
+            result['UseExistingCA'] = self.use_existing_ca
         if self.v_switches is not None:
             result['VSwitches'] = self.v_switches
         if self.vpc_id is not None:
@@ -2159,6 +2189,16 @@ class CreateServiceMeshRequest(TeaModel):
             self.exclude_inbound_ports = m.get('ExcludeInboundPorts')
         if m.get('ExcludeOutboundPorts') is not None:
             self.exclude_outbound_ports = m.get('ExcludeOutboundPorts')
+        if m.get('ExistingCaCert') is not None:
+            self.existing_ca_cert = m.get('ExistingCaCert')
+        if m.get('ExistingCaKey') is not None:
+            self.existing_ca_key = m.get('ExistingCaKey')
+        if m.get('ExistingCaType') is not None:
+            self.existing_ca_type = m.get('ExistingCaType')
+        if m.get('ExistingRootCaCert') is not None:
+            self.existing_root_ca_cert = m.get('ExistingRootCaCert')
+        if m.get('ExistingRootCaKey') is not None:
+            self.existing_root_ca_key = m.get('ExistingRootCaKey')
         if m.get('FilterGatewayClusterConfig') is not None:
             self.filter_gateway_cluster_config = m.get('FilterGatewayClusterConfig')
         if m.get('GatewayAPIEnabled') is not None:
@@ -2225,6 +2265,8 @@ class CreateServiceMeshRequest(TeaModel):
             self.trace_sampling = m.get('TraceSampling')
         if m.get('Tracing') is not None:
             self.tracing = m.get('Tracing')
+        if m.get('UseExistingCA') is not None:
+            self.use_existing_ca = m.get('UseExistingCA')
         if m.get('VSwitches') is not None:
             self.v_switches = m.get('VSwitches')
         if m.get('VpcId') is not None:
@@ -7020,6 +7062,189 @@ class DescribeIstioGatewayRoutesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeIstioGatewayRoutesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeMetadataResponseBodyMetaDataProEdition(TeaModel):
+    def __init__(
+        self,
+        current_version: str = None,
+        version_crds: List[Dict[str, Any]] = None,
+        version_registry: List[Dict[str, Any]] = None,
+        versions: List[str] = None,
+    ):
+        self.current_version = current_version
+        self.version_crds = version_crds
+        self.version_registry = version_registry
+        self.versions = versions
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_version is not None:
+            result['CurrentVersion'] = self.current_version
+        if self.version_crds is not None:
+            result['VersionCrds'] = self.version_crds
+        if self.version_registry is not None:
+            result['VersionRegistry'] = self.version_registry
+        if self.versions is not None:
+            result['Versions'] = self.versions
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentVersion') is not None:
+            self.current_version = m.get('CurrentVersion')
+        if m.get('VersionCrds') is not None:
+            self.version_crds = m.get('VersionCrds')
+        if m.get('VersionRegistry') is not None:
+            self.version_registry = m.get('VersionRegistry')
+        if m.get('Versions') is not None:
+            self.versions = m.get('Versions')
+        return self
+
+
+class DescribeMetadataResponseBodyMetaData(TeaModel):
+    def __init__(
+        self,
+        current_version: str = None,
+        pro_edition: DescribeMetadataResponseBodyMetaDataProEdition = None,
+        regions: List[str] = None,
+        version_crds: List[Dict[str, Any]] = None,
+        version_registry: List[Dict[str, Any]] = None,
+        versions: List[str] = None,
+    ):
+        self.current_version = current_version
+        self.pro_edition = pro_edition
+        self.regions = regions
+        self.version_crds = version_crds
+        self.version_registry = version_registry
+        self.versions = versions
+
+    def validate(self):
+        if self.pro_edition:
+            self.pro_edition.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_version is not None:
+            result['CurrentVersion'] = self.current_version
+        if self.pro_edition is not None:
+            result['ProEdition'] = self.pro_edition.to_map()
+        if self.regions is not None:
+            result['Regions'] = self.regions
+        if self.version_crds is not None:
+            result['VersionCrds'] = self.version_crds
+        if self.version_registry is not None:
+            result['VersionRegistry'] = self.version_registry
+        if self.versions is not None:
+            result['Versions'] = self.versions
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentVersion') is not None:
+            self.current_version = m.get('CurrentVersion')
+        if m.get('ProEdition') is not None:
+            temp_model = DescribeMetadataResponseBodyMetaDataProEdition()
+            self.pro_edition = temp_model.from_map(m['ProEdition'])
+        if m.get('Regions') is not None:
+            self.regions = m.get('Regions')
+        if m.get('VersionCrds') is not None:
+            self.version_crds = m.get('VersionCrds')
+        if m.get('VersionRegistry') is not None:
+            self.version_registry = m.get('VersionRegistry')
+        if m.get('Versions') is not None:
+            self.versions = m.get('Versions')
+        return self
+
+
+class DescribeMetadataResponseBody(TeaModel):
+    def __init__(
+        self,
+        meta_data: DescribeMetadataResponseBodyMetaData = None,
+        request_id: str = None,
+    ):
+        self.meta_data = meta_data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.meta_data:
+            self.meta_data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.meta_data is not None:
+            result['MetaData'] = self.meta_data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MetaData') is not None:
+            temp_model = DescribeMetadataResponseBodyMetaData()
+            self.meta_data = temp_model.from_map(m['MetaData'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeMetadataResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeMetadataResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeMetadataResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -15141,9 +15366,11 @@ class RemoveClusterFromServiceMeshRequest(TeaModel):
     def __init__(
         self,
         cluster_id: str = None,
+        reserve_namespace: bool = None,
         service_mesh_id: str = None,
     ):
         self.cluster_id = cluster_id
+        self.reserve_namespace = reserve_namespace
         self.service_mesh_id = service_mesh_id
 
     def validate(self):
@@ -15157,6 +15384,8 @@ class RemoveClusterFromServiceMeshRequest(TeaModel):
         result = dict()
         if self.cluster_id is not None:
             result['ClusterId'] = self.cluster_id
+        if self.reserve_namespace is not None:
+            result['ReserveNamespace'] = self.reserve_namespace
         if self.service_mesh_id is not None:
             result['ServiceMeshId'] = self.service_mesh_id
         return result
@@ -15165,6 +15394,8 @@ class RemoveClusterFromServiceMeshRequest(TeaModel):
         m = m or dict()
         if m.get('ClusterId') is not None:
             self.cluster_id = m.get('ClusterId')
+        if m.get('ReserveNamespace') is not None:
+            self.reserve_namespace = m.get('ReserveNamespace')
         if m.get('ServiceMeshId') is not None:
             self.service_mesh_id = m.get('ServiceMeshId')
         return self
@@ -16820,6 +17051,122 @@ class UpdateIstioGatewayRoutesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateIstioGatewayRoutesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateIstioInjectionConfigRequest(TeaModel):
+    def __init__(
+        self,
+        enable_istio_injection: bool = None,
+        enable_sidecar_set_injection: bool = None,
+        namespace: str = None,
+        service_mesh_id: str = None,
+    ):
+        self.enable_istio_injection = enable_istio_injection
+        self.enable_sidecar_set_injection = enable_sidecar_set_injection
+        self.namespace = namespace
+        self.service_mesh_id = service_mesh_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable_istio_injection is not None:
+            result['EnableIstioInjection'] = self.enable_istio_injection
+        if self.enable_sidecar_set_injection is not None:
+            result['EnableSidecarSetInjection'] = self.enable_sidecar_set_injection
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.service_mesh_id is not None:
+            result['ServiceMeshId'] = self.service_mesh_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnableIstioInjection') is not None:
+            self.enable_istio_injection = m.get('EnableIstioInjection')
+        if m.get('EnableSidecarSetInjection') is not None:
+            self.enable_sidecar_set_injection = m.get('EnableSidecarSetInjection')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('ServiceMeshId') is not None:
+            self.service_mesh_id = m.get('ServiceMeshId')
+        return self
+
+
+class UpdateIstioInjectionConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateIstioInjectionConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateIstioInjectionConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateIstioInjectionConfigResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
