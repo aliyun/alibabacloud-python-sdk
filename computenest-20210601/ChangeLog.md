@@ -1,3 +1,6 @@
+2022-11-24 Version: 1.2.1
+- Support setting name of service instance.
+
 2021-12-28 Version: 1.2.0
 - Generate SDK for service instance APIs.
 
