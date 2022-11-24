@@ -8601,3 +8601,95 @@ class Client(OpenApiClient):
             cs20151215_models.UpgradeClusterAddonsResponse(),
             await self.call_api_async(params, req, runtime)
         )
+
+    def upgrade_cluster_nodepool(
+        self,
+        cluster_id: str,
+        nodepool_id: str,
+        request: cs20151215_models.UpgradeClusterNodepoolRequest,
+    ) -> cs20151215_models.UpgradeClusterNodepoolResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.upgrade_cluster_nodepool_with_options(cluster_id, nodepool_id, request, headers, runtime)
+
+    async def upgrade_cluster_nodepool_async(
+        self,
+        cluster_id: str,
+        nodepool_id: str,
+        request: cs20151215_models.UpgradeClusterNodepoolRequest,
+    ) -> cs20151215_models.UpgradeClusterNodepoolResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.upgrade_cluster_nodepool_with_options_async(cluster_id, nodepool_id, request, headers, runtime)
+
+    def upgrade_cluster_nodepool_with_options(
+        self,
+        cluster_id: str,
+        nodepool_id: str,
+        request: cs20151215_models.UpgradeClusterNodepoolRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.UpgradeClusterNodepoolResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_id):
+            body['image_id'] = request.image_id
+        if not UtilClient.is_unset(request.kubernetes_version):
+            body['kubernetes_version'] = request.kubernetes_version
+        if not UtilClient.is_unset(request.runtime_version):
+            body['runtime_version'] = request.runtime_version
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpgradeClusterNodepool',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/nodepools/{OpenApiUtilClient.get_encode_param(nodepool_id)}/upgrade',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.UpgradeClusterNodepoolResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def upgrade_cluster_nodepool_with_options_async(
+        self,
+        cluster_id: str,
+        nodepool_id: str,
+        request: cs20151215_models.UpgradeClusterNodepoolRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.UpgradeClusterNodepoolResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_id):
+            body['image_id'] = request.image_id
+        if not UtilClient.is_unset(request.kubernetes_version):
+            body['kubernetes_version'] = request.kubernetes_version
+        if not UtilClient.is_unset(request.runtime_version):
+            body['runtime_version'] = request.runtime_version
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpgradeClusterNodepool',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/nodepools/{OpenApiUtilClient.get_encode_param(nodepool_id)}/upgrade',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.UpgradeClusterNodepoolResponse(),
+            await self.call_api_async(params, req, runtime)
+        )

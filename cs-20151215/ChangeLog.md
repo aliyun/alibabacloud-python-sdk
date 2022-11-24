@@ -1,3 +1,6 @@
+2022-11-24 Version: 3.0.20
+- Update DescribeUserQuota.
+
 2022-09-26 Version: 3.0.19
 - Update CreateCluster.
 

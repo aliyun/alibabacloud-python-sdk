@@ -9364,6 +9364,7 @@ class DescribeKubernetesVersionMetadataResponseBodyImages(TeaModel):
         image_type: str = None,
         os_type: str = None,
         image_category: str = None,
+        architecture: str = None,
     ):
         self.image_id = image_id
         self.image_name = image_name
@@ -9372,6 +9373,7 @@ class DescribeKubernetesVersionMetadataResponseBodyImages(TeaModel):
         self.image_type = image_type
         self.os_type = os_type
         self.image_category = image_category
+        self.architecture = architecture
 
     def validate(self):
         pass
@@ -9396,6 +9398,8 @@ class DescribeKubernetesVersionMetadataResponseBodyImages(TeaModel):
             result['os_type'] = self.os_type
         if self.image_category is not None:
             result['image_category'] = self.image_category
+        if self.architecture is not None:
+            result['architecture'] = self.architecture
         return result
 
     def from_map(self, m: dict = None):
@@ -9414,6 +9418,8 @@ class DescribeKubernetesVersionMetadataResponseBodyImages(TeaModel):
             self.os_type = m.get('os_type')
         if m.get('image_category') is not None:
             self.image_category = m.get('image_category')
+        if m.get('architecture') is not None:
+            self.architecture = m.get('architecture')
         return self
 
 
@@ -11693,6 +11699,45 @@ class DescribeUserPermissionResponse(TeaModel):
         return self
 
 
+class DescribeUserQuotaResponseBodyEdgeImprovedNodepoolQuota(TeaModel):
+    def __init__(
+        self,
+        bandwidth: int = None,
+        count: int = None,
+        period: int = None,
+    ):
+        self.bandwidth = bandwidth
+        self.count = count
+        self.period = period
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bandwidth is not None:
+            result['bandwidth'] = self.bandwidth
+        if self.count is not None:
+            result['count'] = self.count
+        if self.period is not None:
+            result['period'] = self.period
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('bandwidth') is not None:
+            self.bandwidth = m.get('bandwidth')
+        if m.get('count') is not None:
+            self.count = m.get('count')
+        if m.get('period') is not None:
+            self.period = m.get('period')
+        return self
+
+
 class DescribeUserQuotaResponseBody(TeaModel):
     def __init__(
         self,
@@ -11700,16 +11745,19 @@ class DescribeUserQuotaResponseBody(TeaModel):
         ask_cluster_quota: int = None,
         cluster_nodepool_quota: int = None,
         cluster_quota: int = None,
+        edge_improved_nodepool_quota: DescribeUserQuotaResponseBodyEdgeImprovedNodepoolQuota = None,
         node_quota: int = None,
     ):
         self.amk_cluster_quota = amk_cluster_quota
         self.ask_cluster_quota = ask_cluster_quota
         self.cluster_nodepool_quota = cluster_nodepool_quota
         self.cluster_quota = cluster_quota
+        self.edge_improved_nodepool_quota = edge_improved_nodepool_quota
         self.node_quota = node_quota
 
     def validate(self):
-        pass
+        if self.edge_improved_nodepool_quota:
+            self.edge_improved_nodepool_quota.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -11725,6 +11773,8 @@ class DescribeUserQuotaResponseBody(TeaModel):
             result['cluster_nodepool_quota'] = self.cluster_nodepool_quota
         if self.cluster_quota is not None:
             result['cluster_quota'] = self.cluster_quota
+        if self.edge_improved_nodepool_quota is not None:
+            result['edge_improved_nodepool_quota'] = self.edge_improved_nodepool_quota.to_map()
         if self.node_quota is not None:
             result['node_quota'] = self.node_quota
         return result
@@ -11739,6 +11789,9 @@ class DescribeUserQuotaResponseBody(TeaModel):
             self.cluster_nodepool_quota = m.get('cluster_nodepool_quota')
         if m.get('cluster_quota') is not None:
             self.cluster_quota = m.get('cluster_quota')
+        if m.get('edge_improved_nodepool_quota') is not None:
+            temp_model = DescribeUserQuotaResponseBodyEdgeImprovedNodepoolQuota()
+            self.edge_improved_nodepool_quota = temp_model.from_map(m['edge_improved_nodepool_quota'])
         if m.get('node_quota') is not None:
             self.node_quota = m.get('node_quota')
         return self
@@ -16913,6 +16966,116 @@ class UpgradeClusterAddonsResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('statusCode') is not None:
             self.status_code = m.get('statusCode')
+        return self
+
+
+class UpgradeClusterNodepoolRequest(TeaModel):
+    def __init__(
+        self,
+        image_id: str = None,
+        kubernetes_version: str = None,
+        runtime_version: str = None,
+    ):
+        self.image_id = image_id
+        self.kubernetes_version = kubernetes_version
+        self.runtime_version = runtime_version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_id is not None:
+            result['image_id'] = self.image_id
+        if self.kubernetes_version is not None:
+            result['kubernetes_version'] = self.kubernetes_version
+        if self.runtime_version is not None:
+            result['runtime_version'] = self.runtime_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('image_id') is not None:
+            self.image_id = m.get('image_id')
+        if m.get('kubernetes_version') is not None:
+            self.kubernetes_version = m.get('kubernetes_version')
+        if m.get('runtime_version') is not None:
+            self.runtime_version = m.get('runtime_version')
+        return self
+
+
+class UpgradeClusterNodepoolResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpgradeClusterNodepoolResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpgradeClusterNodepoolResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpgradeClusterNodepoolResponseBody()
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
