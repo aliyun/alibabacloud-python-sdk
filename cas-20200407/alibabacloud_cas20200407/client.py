@@ -866,6 +866,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_pcacert_with_options_async(request, runtime)
 
+    def delete_user_certificate_with_options(
+        self,
+        request: cas_20200407_models.DeleteUserCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.DeleteUserCertificateResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cert_id):
+            query['CertId'] = request.cert_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteUserCertificate',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.DeleteUserCertificateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_user_certificate_with_options_async(
+        self,
+        request: cas_20200407_models.DeleteUserCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.DeleteUserCertificateResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cert_id):
+            query['CertId'] = request.cert_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteUserCertificate',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.DeleteUserCertificateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_user_certificate(
+        self,
+        request: cas_20200407_models.DeleteUserCertificateRequest,
+    ) -> cas_20200407_models.DeleteUserCertificateResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_user_certificate_with_options(request, runtime)
+
+    async def delete_user_certificate_async(
+        self,
+        request: cas_20200407_models.DeleteUserCertificateRequest,
+    ) -> cas_20200407_models.DeleteUserCertificateResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_user_certificate_with_options_async(request, runtime)
+
     def describe_certificate_state_with_options(
         self,
         request: cas_20200407_models.DescribeCertificateStateRequest,
@@ -1137,6 +1207,76 @@ class Client(OpenApiClient):
     async def get_cert_warehouse_quota_async(self) -> cas_20200407_models.GetCertWarehouseQuotaResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_cert_warehouse_quota_with_options_async(runtime)
+
+    def get_user_certificate_detail_with_options(
+        self,
+        request: cas_20200407_models.GetUserCertificateDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.GetUserCertificateDetailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cert_id):
+            query['CertId'] = request.cert_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetUserCertificateDetail',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.GetUserCertificateDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_user_certificate_detail_with_options_async(
+        self,
+        request: cas_20200407_models.GetUserCertificateDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.GetUserCertificateDetailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cert_id):
+            query['CertId'] = request.cert_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetUserCertificateDetail',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.GetUserCertificateDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_user_certificate_detail(
+        self,
+        request: cas_20200407_models.GetUserCertificateDetailRequest,
+    ) -> cas_20200407_models.GetUserCertificateDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_user_certificate_detail_with_options(request, runtime)
+
+    async def get_user_certificate_detail_async(
+        self,
+        request: cas_20200407_models.GetUserCertificateDetailRequest,
+    ) -> cas_20200407_models.GetUserCertificateDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_user_certificate_detail_with_options_async(request, runtime)
 
     def list_cert_with_options(
         self,
@@ -1707,6 +1847,100 @@ class Client(OpenApiClient):
     ) -> cas_20200407_models.UploadPCACertResponse:
         runtime = util_models.RuntimeOptions()
         return await self.upload_pcacert_with_options_async(request, runtime)
+
+    def upload_user_certificate_with_options(
+        self,
+        request: cas_20200407_models.UploadUserCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.UploadUserCertificateResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cert):
+            query['Cert'] = request.cert
+        if not UtilClient.is_unset(request.encrypt_cert):
+            query['EncryptCert'] = request.encrypt_cert
+        if not UtilClient.is_unset(request.encrypt_private_key):
+            query['EncryptPrivateKey'] = request.encrypt_private_key
+        if not UtilClient.is_unset(request.key):
+            query['Key'] = request.key
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.sign_cert):
+            query['SignCert'] = request.sign_cert
+        if not UtilClient.is_unset(request.sign_private_key):
+            query['SignPrivateKey'] = request.sign_private_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UploadUserCertificate',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.UploadUserCertificateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def upload_user_certificate_with_options_async(
+        self,
+        request: cas_20200407_models.UploadUserCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200407_models.UploadUserCertificateResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cert):
+            query['Cert'] = request.cert
+        if not UtilClient.is_unset(request.encrypt_cert):
+            query['EncryptCert'] = request.encrypt_cert
+        if not UtilClient.is_unset(request.encrypt_private_key):
+            query['EncryptPrivateKey'] = request.encrypt_private_key
+        if not UtilClient.is_unset(request.key):
+            query['Key'] = request.key
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.sign_cert):
+            query['SignCert'] = request.sign_cert
+        if not UtilClient.is_unset(request.sign_private_key):
+            query['SignPrivateKey'] = request.sign_private_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UploadUserCertificate',
+            version='2020-04-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200407_models.UploadUserCertificateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def upload_user_certificate(
+        self,
+        request: cas_20200407_models.UploadUserCertificateRequest,
+    ) -> cas_20200407_models.UploadUserCertificateResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.upload_user_certificate_with_options(request, runtime)
+
+    async def upload_user_certificate_async(
+        self,
+        request: cas_20200407_models.UploadUserCertificateRequest,
+    ) -> cas_20200407_models.UploadUserCertificateResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.upload_user_certificate_with_options_async(request, runtime)
 
     def verify_with_options(
         self,
