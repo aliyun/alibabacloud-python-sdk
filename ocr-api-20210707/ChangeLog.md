@@ -1,3 +1,6 @@
+2022-11-24 Version: 1.1.12
+- RecognizeIdcard, VerifyBusinessLicense, VerifyVATInvoice.
+
 2022-11-17 Version: 1.1.11
 - RecognizeInternationalBusinessLicense.
 
