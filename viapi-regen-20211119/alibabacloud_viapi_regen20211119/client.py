@@ -104,6 +104,76 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def check_dataset_oss_bucket_corswith_options(
+        self,
+        request: viapi_regen_20211119_models.CheckDatasetOssBucketCORSRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.CheckDatasetOssBucketCORSResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.labelset_id):
+            body['LabelsetId'] = request.labelset_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CheckDatasetOssBucketCORS',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.CheckDatasetOssBucketCORSResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_dataset_oss_bucket_corswith_options_async(
+        self,
+        request: viapi_regen_20211119_models.CheckDatasetOssBucketCORSRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.CheckDatasetOssBucketCORSResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.labelset_id):
+            body['LabelsetId'] = request.labelset_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CheckDatasetOssBucketCORS',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.CheckDatasetOssBucketCORSResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_dataset_oss_bucket_cors(
+        self,
+        request: viapi_regen_20211119_models.CheckDatasetOssBucketCORSRequest,
+    ) -> viapi_regen_20211119_models.CheckDatasetOssBucketCORSResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.check_dataset_oss_bucket_corswith_options(request, runtime)
+
+    async def check_dataset_oss_bucket_cors_async(
+        self,
+        request: viapi_regen_20211119_models.CheckDatasetOssBucketCORSRequest,
+    ) -> viapi_regen_20211119_models.CheckDatasetOssBucketCORSResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.check_dataset_oss_bucket_corswith_options_async(request, runtime)
+
     def create_dataset_with_options(
         self,
         request: viapi_regen_20211119_models.CreateDatasetRequest,
@@ -3109,6 +3179,56 @@ class Client(OpenApiClient):
     ) -> viapi_regen_20211119_models.GetUploadPolicyResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_upload_policy_with_options_async(request, runtime)
+
+    def get_user_info_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.GetUserInfoResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='GetUserInfo',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.GetUserInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_user_info_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> viapi_regen_20211119_models.GetUserInfoResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='GetUserInfo',
+            version='2021-11-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            viapi_regen_20211119_models.GetUserInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_user_info(self) -> viapi_regen_20211119_models.GetUserInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_user_info_with_options(runtime)
+
+    async def get_user_info_async(self) -> viapi_regen_20211119_models.GetUserInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_user_info_with_options_async(runtime)
 
     def get_workspace_with_options(
         self,
