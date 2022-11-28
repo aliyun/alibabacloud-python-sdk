@@ -1,3 +1,11 @@
+2022-11-28 Version: 3.0.48
+- Change timeout of GetApplicationList.
+- Update timeout for DeleteGateway.
+- Update timeout for AddGateway.
+- Update GetKubernetesSource.
+- Change some segment read only.
+- Supported For Zk Track.
+
 2022-11-22 Version: 3.0.47
 - Support riskNotice switch.
 - Change some segment to read only.

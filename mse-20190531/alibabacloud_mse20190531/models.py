@@ -14405,9 +14405,11 @@ class GetKubernetesSourceRequest(TeaModel):
         self,
         accept_language: str = None,
         gateway_unique_id: str = None,
+        vpc_id: str = None,
     ):
         self.accept_language = accept_language
         self.gateway_unique_id = gateway_unique_id
+        self.vpc_id = vpc_id
 
     def validate(self):
         pass
@@ -14422,6 +14424,8 @@ class GetKubernetesSourceRequest(TeaModel):
             result['AcceptLanguage'] = self.accept_language
         if self.gateway_unique_id is not None:
             result['GatewayUniqueId'] = self.gateway_unique_id
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
         return result
 
     def from_map(self, m: dict = None):
@@ -14430,6 +14434,8 @@ class GetKubernetesSourceRequest(TeaModel):
             self.accept_language = m.get('AcceptLanguage')
         if m.get('GatewayUniqueId') is not None:
             self.gateway_unique_id = m.get('GatewayUniqueId')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
         return self
 
 
@@ -26156,6 +26162,319 @@ class ListTagResourcesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListTagResourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListZkTrackRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        end_ts: int = None,
+        instance_id: str = None,
+        page_num: int = None,
+        page_size: int = None,
+        path: str = None,
+        request_pars: str = None,
+        reverse: bool = None,
+        session_id: str = None,
+        start_ts: int = None,
+    ):
+        self.accept_language = accept_language
+        self.end_ts = end_ts
+        self.instance_id = instance_id
+        self.page_num = page_num
+        self.page_size = page_size
+        self.path = path
+        self.request_pars = request_pars
+        self.reverse = reverse
+        self.session_id = session_id
+        self.start_ts = start_ts
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.end_ts is not None:
+            result['EndTs'] = self.end_ts
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.page_num is not None:
+            result['PageNum'] = self.page_num
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.path is not None:
+            result['Path'] = self.path
+        if self.request_pars is not None:
+            result['RequestPars'] = self.request_pars
+        if self.reverse is not None:
+            result['Reverse'] = self.reverse
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        if self.start_ts is not None:
+            result['StartTs'] = self.start_ts
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('EndTs') is not None:
+            self.end_ts = m.get('EndTs')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('PageNum') is not None:
+            self.page_num = m.get('PageNum')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Path') is not None:
+            self.path = m.get('Path')
+        if m.get('RequestPars') is not None:
+            self.request_pars = m.get('RequestPars')
+        if m.get('Reverse') is not None:
+            self.reverse = m.get('Reverse')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        if m.get('StartTs') is not None:
+            self.start_ts = m.get('StartTs')
+        return self
+
+
+class ListZkTrackResponseBodyTraces(TeaModel):
+    def __init__(
+        self,
+        acl: str = None,
+        data_type: str = None,
+        event_type: str = None,
+        finished: bool = None,
+        log_date: str = None,
+        multi_size: int = None,
+        op_type: str = None,
+        path: str = None,
+        result: str = None,
+        session_id: str = None,
+        timestamp: str = None,
+        trace_type: str = None,
+        ttl: int = None,
+        watch: bool = None,
+    ):
+        self.acl = acl
+        self.data_type = data_type
+        self.event_type = event_type
+        self.finished = finished
+        self.log_date = log_date
+        self.multi_size = multi_size
+        self.op_type = op_type
+        self.path = path
+        self.result = result
+        self.session_id = session_id
+        self.timestamp = timestamp
+        self.trace_type = trace_type
+        self.ttl = ttl
+        self.watch = watch
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.acl is not None:
+            result['Acl'] = self.acl
+        if self.data_type is not None:
+            result['DataType'] = self.data_type
+        if self.event_type is not None:
+            result['EventType'] = self.event_type
+        if self.finished is not None:
+            result['Finished'] = self.finished
+        if self.log_date is not None:
+            result['LogDate'] = self.log_date
+        if self.multi_size is not None:
+            result['MultiSize'] = self.multi_size
+        if self.op_type is not None:
+            result['OpType'] = self.op_type
+        if self.path is not None:
+            result['Path'] = self.path
+        if self.result is not None:
+            result['Result'] = self.result
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        if self.timestamp is not None:
+            result['Timestamp'] = self.timestamp
+        if self.trace_type is not None:
+            result['TraceType'] = self.trace_type
+        if self.ttl is not None:
+            result['Ttl'] = self.ttl
+        if self.watch is not None:
+            result['Watch'] = self.watch
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Acl') is not None:
+            self.acl = m.get('Acl')
+        if m.get('DataType') is not None:
+            self.data_type = m.get('DataType')
+        if m.get('EventType') is not None:
+            self.event_type = m.get('EventType')
+        if m.get('Finished') is not None:
+            self.finished = m.get('Finished')
+        if m.get('LogDate') is not None:
+            self.log_date = m.get('LogDate')
+        if m.get('MultiSize') is not None:
+            self.multi_size = m.get('MultiSize')
+        if m.get('OpType') is not None:
+            self.op_type = m.get('OpType')
+        if m.get('Path') is not None:
+            self.path = m.get('Path')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        if m.get('Timestamp') is not None:
+            self.timestamp = m.get('Timestamp')
+        if m.get('TraceType') is not None:
+            self.trace_type = m.get('TraceType')
+        if m.get('Ttl') is not None:
+            self.ttl = m.get('Ttl')
+        if m.get('Watch') is not None:
+            self.watch = m.get('Watch')
+        return self
+
+
+class ListZkTrackResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        http_code: str = None,
+        message: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        success: bool = None,
+        total_count: int = None,
+        traces: List[ListZkTrackResponseBodyTraces] = None,
+    ):
+        self.error_code = error_code
+        self.http_code = http_code
+        self.message = message
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.success = success
+        self.total_count = total_count
+        self.traces = traces
+
+    def validate(self):
+        if self.traces:
+            for k in self.traces:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.http_code is not None:
+            result['HttpCode'] = self.http_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        result['Traces'] = []
+        if self.traces is not None:
+            for k in self.traces:
+                result['Traces'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('HttpCode') is not None:
+            self.http_code = m.get('HttpCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        self.traces = []
+        if m.get('Traces') is not None:
+            for k in m.get('Traces'):
+                temp_model = ListZkTrackResponseBodyTraces()
+                self.traces.append(temp_model.from_map(k))
+        return self
+
+
+class ListZkTrackResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListZkTrackResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListZkTrackResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
