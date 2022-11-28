@@ -1714,6 +1714,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.transit_router_attachment_id):
             query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
         req = open_api_models.OpenApiRequest(
@@ -1766,6 +1768,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.transit_router_attachment_id):
             query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
         req = open_api_models.OpenApiRequest(
@@ -1917,10 +1921,14 @@ class Client(OpenApiClient):
 
     def create_transit_router_with_options(
         self,
-        request: cbn_20170912_models.CreateTransitRouterRequest,
+        tmp_req: cbn_20170912_models.CreateTransitRouterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.CreateTransitRouterResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = cbn_20170912_models.CreateTransitRouterShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.transit_router_cidr_list):
+            request.transit_router_cidr_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.transit_router_cidr_list, 'TransitRouterCidrList', 'json')
         query = {}
         if not UtilClient.is_unset(request.cen_id):
             query['CenId'] = request.cen_id
@@ -1940,6 +1948,10 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.support_multicast):
             query['SupportMulticast'] = request.support_multicast
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.transit_router_cidr_list_shrink):
+            query['TransitRouterCidrList'] = request.transit_router_cidr_list_shrink
         if not UtilClient.is_unset(request.transit_router_description):
             query['TransitRouterDescription'] = request.transit_router_description
         if not UtilClient.is_unset(request.transit_router_name):
@@ -1965,10 +1977,14 @@ class Client(OpenApiClient):
 
     async def create_transit_router_with_options_async(
         self,
-        request: cbn_20170912_models.CreateTransitRouterRequest,
+        tmp_req: cbn_20170912_models.CreateTransitRouterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.CreateTransitRouterResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = cbn_20170912_models.CreateTransitRouterShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.transit_router_cidr_list):
+            request.transit_router_cidr_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.transit_router_cidr_list, 'TransitRouterCidrList', 'json')
         query = {}
         if not UtilClient.is_unset(request.cen_id):
             query['CenId'] = request.cen_id
@@ -1988,6 +2004,10 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.support_multicast):
             query['SupportMulticast'] = request.support_multicast
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.transit_router_cidr_list_shrink):
+            query['TransitRouterCidrList'] = request.transit_router_cidr_list_shrink
         if not UtilClient.is_unset(request.transit_router_description):
             query['TransitRouterDescription'] = request.transit_router_description
         if not UtilClient.is_unset(request.transit_router_name):
@@ -2025,6 +2045,120 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_transit_router_with_options_async(request, runtime)
 
+    def create_transit_router_cidr_with_options(
+        self,
+        request: cbn_20170912_models.CreateTransitRouterCidrRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cbn_20170912_models.CreateTransitRouterCidrResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cidr):
+            query['Cidr'] = request.cidr
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.publish_cidr_route):
+            query['PublishCidrRoute'] = request.publish_cidr_route
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_id):
+            query['TransitRouterId'] = request.transit_router_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateTransitRouterCidr',
+            version='2017-09-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cbn_20170912_models.CreateTransitRouterCidrResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_transit_router_cidr_with_options_async(
+        self,
+        request: cbn_20170912_models.CreateTransitRouterCidrRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cbn_20170912_models.CreateTransitRouterCidrResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cidr):
+            query['Cidr'] = request.cidr
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.publish_cidr_route):
+            query['PublishCidrRoute'] = request.publish_cidr_route
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_id):
+            query['TransitRouterId'] = request.transit_router_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateTransitRouterCidr',
+            version='2017-09-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cbn_20170912_models.CreateTransitRouterCidrResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_transit_router_cidr(
+        self,
+        request: cbn_20170912_models.CreateTransitRouterCidrRequest,
+    ) -> cbn_20170912_models.CreateTransitRouterCidrResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_transit_router_cidr_with_options(request, runtime)
+
+    async def create_transit_router_cidr_async(
+        self,
+        request: cbn_20170912_models.CreateTransitRouterCidrRequest,
+    ) -> cbn_20170912_models.CreateTransitRouterCidrResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_transit_router_cidr_with_options_async(request, runtime)
+
     def create_transit_router_multicast_domain_with_options(
         self,
         request: cbn_20170912_models.CreateTransitRouterMulticastDomainRequest,
@@ -2048,6 +2182,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.transit_router_id):
             query['TransitRouterId'] = request.transit_router_id
         if not UtilClient.is_unset(request.transit_router_multicast_domain_description):
@@ -2096,6 +2232,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.transit_router_id):
             query['TransitRouterId'] = request.transit_router_id
         if not UtilClient.is_unset(request.transit_router_multicast_domain_description):
@@ -2524,6 +2662,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.transit_router_id):
             query['TransitRouterId'] = request.transit_router_id
         if not UtilClient.is_unset(request.transit_router_route_table_description):
@@ -2568,6 +2708,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.transit_router_id):
             query['TransitRouterId'] = request.transit_router_id
         if not UtilClient.is_unset(request.transit_router_route_table_description):
@@ -4152,6 +4294,108 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.DeleteTransitRouterResponse:
         runtime = util_models.RuntimeOptions()
         return await self.delete_transit_router_with_options_async(request, runtime)
+
+    def delete_transit_router_cidr_with_options(
+        self,
+        request: cbn_20170912_models.DeleteTransitRouterCidrRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cbn_20170912_models.DeleteTransitRouterCidrResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_cidr_id):
+            query['TransitRouterCidrId'] = request.transit_router_cidr_id
+        if not UtilClient.is_unset(request.transit_router_id):
+            query['TransitRouterId'] = request.transit_router_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteTransitRouterCidr',
+            version='2017-09-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cbn_20170912_models.DeleteTransitRouterCidrResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_transit_router_cidr_with_options_async(
+        self,
+        request: cbn_20170912_models.DeleteTransitRouterCidrRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cbn_20170912_models.DeleteTransitRouterCidrResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_cidr_id):
+            query['TransitRouterCidrId'] = request.transit_router_cidr_id
+        if not UtilClient.is_unset(request.transit_router_id):
+            query['TransitRouterId'] = request.transit_router_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteTransitRouterCidr',
+            version='2017-09-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cbn_20170912_models.DeleteTransitRouterCidrResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_transit_router_cidr(
+        self,
+        request: cbn_20170912_models.DeleteTransitRouterCidrRequest,
+    ) -> cbn_20170912_models.DeleteTransitRouterCidrResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_transit_router_cidr_with_options(request, runtime)
+
+    async def delete_transit_router_cidr_async(
+        self,
+        request: cbn_20170912_models.DeleteTransitRouterCidrRequest,
+    ) -> cbn_20170912_models.DeleteTransitRouterCidrResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_transit_router_cidr_with_options_async(request, runtime)
 
     def delete_transit_router_multicast_domain_with_options(
         self,
@@ -6484,6 +6728,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6540,6 +6786,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8633,6 +8881,238 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_transit_router_available_resource_with_options_async(request, runtime)
 
+    def list_transit_router_cidr_with_options(
+        self,
+        request: cbn_20170912_models.ListTransitRouterCidrRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cbn_20170912_models.ListTransitRouterCidrResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_cidr_id):
+            query['TransitRouterCidrId'] = request.transit_router_cidr_id
+        if not UtilClient.is_unset(request.transit_router_id):
+            query['TransitRouterId'] = request.transit_router_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTransitRouterCidr',
+            version='2017-09-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cbn_20170912_models.ListTransitRouterCidrResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_transit_router_cidr_with_options_async(
+        self,
+        request: cbn_20170912_models.ListTransitRouterCidrRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cbn_20170912_models.ListTransitRouterCidrResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_cidr_id):
+            query['TransitRouterCidrId'] = request.transit_router_cidr_id
+        if not UtilClient.is_unset(request.transit_router_id):
+            query['TransitRouterId'] = request.transit_router_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTransitRouterCidr',
+            version='2017-09-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cbn_20170912_models.ListTransitRouterCidrResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_transit_router_cidr(
+        self,
+        request: cbn_20170912_models.ListTransitRouterCidrRequest,
+    ) -> cbn_20170912_models.ListTransitRouterCidrResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_transit_router_cidr_with_options(request, runtime)
+
+    async def list_transit_router_cidr_async(
+        self,
+        request: cbn_20170912_models.ListTransitRouterCidrRequest,
+    ) -> cbn_20170912_models.ListTransitRouterCidrResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_transit_router_cidr_with_options_async(request, runtime)
+
+    def list_transit_router_cidr_allocation_with_options(
+        self,
+        request: cbn_20170912_models.ListTransitRouterCidrAllocationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cbn_20170912_models.ListTransitRouterCidrAllocationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.attachment_id):
+            query['AttachmentId'] = request.attachment_id
+        if not UtilClient.is_unset(request.attachment_name):
+            query['AttachmentName'] = request.attachment_name
+        if not UtilClient.is_unset(request.cidr):
+            query['Cidr'] = request.cidr
+        if not UtilClient.is_unset(request.cidr_block):
+            query['CidrBlock'] = request.cidr_block
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dedicated_owner_id):
+            query['DedicatedOwnerId'] = request.dedicated_owner_id
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_cidr_id):
+            query['TransitRouterCidrId'] = request.transit_router_cidr_id
+        if not UtilClient.is_unset(request.transit_router_id):
+            query['TransitRouterId'] = request.transit_router_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTransitRouterCidrAllocation',
+            version='2017-09-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cbn_20170912_models.ListTransitRouterCidrAllocationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_transit_router_cidr_allocation_with_options_async(
+        self,
+        request: cbn_20170912_models.ListTransitRouterCidrAllocationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cbn_20170912_models.ListTransitRouterCidrAllocationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.attachment_id):
+            query['AttachmentId'] = request.attachment_id
+        if not UtilClient.is_unset(request.attachment_name):
+            query['AttachmentName'] = request.attachment_name
+        if not UtilClient.is_unset(request.cidr):
+            query['Cidr'] = request.cidr
+        if not UtilClient.is_unset(request.cidr_block):
+            query['CidrBlock'] = request.cidr_block
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dedicated_owner_id):
+            query['DedicatedOwnerId'] = request.dedicated_owner_id
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_cidr_id):
+            query['TransitRouterCidrId'] = request.transit_router_cidr_id
+        if not UtilClient.is_unset(request.transit_router_id):
+            query['TransitRouterId'] = request.transit_router_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTransitRouterCidrAllocation',
+            version='2017-09-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cbn_20170912_models.ListTransitRouterCidrAllocationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_transit_router_cidr_allocation(
+        self,
+        request: cbn_20170912_models.ListTransitRouterCidrAllocationRequest,
+    ) -> cbn_20170912_models.ListTransitRouterCidrAllocationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_transit_router_cidr_allocation_with_options(request, runtime)
+
+    async def list_transit_router_cidr_allocation_async(
+        self,
+        request: cbn_20170912_models.ListTransitRouterCidrAllocationRequest,
+    ) -> cbn_20170912_models.ListTransitRouterCidrAllocationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_transit_router_cidr_allocation_with_options_async(request, runtime)
+
     def list_transit_router_multicast_domain_associations_with_options(
         self,
         request: cbn_20170912_models.ListTransitRouterMulticastDomainAssociationsRequest,
@@ -8874,6 +9354,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.transit_router_id):
             query['TransitRouterId'] = request.transit_router_id
         if not UtilClient.is_unset(request.transit_router_multicast_domain_id):
@@ -8922,6 +9404,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.transit_router_id):
             query['TransitRouterId'] = request.transit_router_id
         if not UtilClient.is_unset(request.transit_router_multicast_domain_id):
@@ -9634,6 +10118,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.transit_router_id):
             query['TransitRouterId'] = request.transit_router_id
         if not UtilClient.is_unset(request.transit_router_route_table_ids):
@@ -9682,6 +10168,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.transit_router_id):
             query['TransitRouterId'] = request.transit_router_id
         if not UtilClient.is_unset(request.transit_router_route_table_ids):
@@ -10078,6 +10566,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.transit_router_id):
             query['TransitRouterId'] = request.transit_router_id
         req = open_api_models.OpenApiRequest(
@@ -10122,6 +10612,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.transit_router_id):
             query['TransitRouterId'] = request.transit_router_id
         req = open_api_models.OpenApiRequest(
@@ -10738,6 +11230,124 @@ class Client(OpenApiClient):
     ) -> cbn_20170912_models.ModifyFlowLogAttributeResponse:
         runtime = util_models.RuntimeOptions()
         return await self.modify_flow_log_attribute_with_options_async(request, runtime)
+
+    def modify_transit_router_cidr_with_options(
+        self,
+        request: cbn_20170912_models.ModifyTransitRouterCidrRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cbn_20170912_models.ModifyTransitRouterCidrResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cidr):
+            query['Cidr'] = request.cidr
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.publish_cidr_route):
+            query['PublishCidrRoute'] = request.publish_cidr_route
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_cidr_id):
+            query['TransitRouterCidrId'] = request.transit_router_cidr_id
+        if not UtilClient.is_unset(request.transit_router_id):
+            query['TransitRouterId'] = request.transit_router_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyTransitRouterCidr',
+            version='2017-09-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cbn_20170912_models.ModifyTransitRouterCidrResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_transit_router_cidr_with_options_async(
+        self,
+        request: cbn_20170912_models.ModifyTransitRouterCidrRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cbn_20170912_models.ModifyTransitRouterCidrResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cidr):
+            query['Cidr'] = request.cidr
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.publish_cidr_route):
+            query['PublishCidrRoute'] = request.publish_cidr_route
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.transit_router_cidr_id):
+            query['TransitRouterCidrId'] = request.transit_router_cidr_id
+        if not UtilClient.is_unset(request.transit_router_id):
+            query['TransitRouterId'] = request.transit_router_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyTransitRouterCidr',
+            version='2017-09-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cbn_20170912_models.ModifyTransitRouterCidrResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_transit_router_cidr(
+        self,
+        request: cbn_20170912_models.ModifyTransitRouterCidrRequest,
+    ) -> cbn_20170912_models.ModifyTransitRouterCidrResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_transit_router_cidr_with_options(request, runtime)
+
+    async def modify_transit_router_cidr_async(
+        self,
+        request: cbn_20170912_models.ModifyTransitRouterCidrRequest,
+    ) -> cbn_20170912_models.ModifyTransitRouterCidrResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_transit_router_cidr_with_options_async(request, runtime)
 
     def modify_transit_router_multicast_domain_with_options(
         self,
