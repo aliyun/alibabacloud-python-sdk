@@ -1,3 +1,6 @@
+2022-11-28 Version: 1.0.9
+- SubmitTextTo2DAvatarVideoTask add new params.
+
 2022-11-04 Version: 1.0.8
 - QueryRunningInstance add sessionId param.
 
