@@ -1,3 +1,6 @@
+2022-11-28 Version: 1.0.28
+- Update Hotel and Car Order detail.
+
 2022-11-03 Version: 1.0.27
 - Update CorpToken,allow sk.
 
