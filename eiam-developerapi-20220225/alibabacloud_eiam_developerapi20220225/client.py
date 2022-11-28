@@ -71,8 +71,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_developerapi_20220225_models.CreateOrganizationalUnitResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        application_id = OpenApiUtilClient.get_encode_param(application_id)
         body = {}
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
@@ -95,7 +93,7 @@ class Client(OpenApiClient):
             action='CreateOrganizationalUnit',
             version='2022-02-25',
             protocol='HTTPS',
-            pathname=f'/v2/{instance_id}/{application_id}/organizationalUnits',
+            pathname=f'/v2/{OpenApiUtilClient.get_encode_param(instance_id)}/{OpenApiUtilClient.get_encode_param(application_id)}/organizationalUnits',
             method='POST',
             auth_type='Anonymous',
             style='ROA',
@@ -116,8 +114,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_developerapi_20220225_models.CreateOrganizationalUnitResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        application_id = OpenApiUtilClient.get_encode_param(application_id)
         body = {}
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
@@ -140,7 +136,7 @@ class Client(OpenApiClient):
             action='CreateOrganizationalUnit',
             version='2022-02-25',
             protocol='HTTPS',
-            pathname=f'/v2/{instance_id}/{application_id}/organizationalUnits',
+            pathname=f'/v2/{OpenApiUtilClient.get_encode_param(instance_id)}/{OpenApiUtilClient.get_encode_param(application_id)}/organizationalUnits',
             method='POST',
             auth_type='Anonymous',
             style='ROA',
@@ -181,9 +177,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_developerapi_20220225_models.CreateUserResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        application_id = OpenApiUtilClient.get_encode_param(application_id)
         body = {}
+        if not UtilClient.is_unset(request.custom_fields):
+            body['customFields'] = request.custom_fields
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
         if not UtilClient.is_unset(request.display_name):
@@ -194,6 +190,8 @@ class Client(OpenApiClient):
             body['emailVerified'] = request.email_verified
         if not UtilClient.is_unset(request.password):
             body['password'] = request.password
+        if not UtilClient.is_unset(request.password_initialization_config):
+            body['passwordInitializationConfig'] = request.password_initialization_config
         if not UtilClient.is_unset(request.phone_number):
             body['phoneNumber'] = request.phone_number
         if not UtilClient.is_unset(request.phone_number_verified):
@@ -219,7 +217,7 @@ class Client(OpenApiClient):
             action='CreateUser',
             version='2022-02-25',
             protocol='HTTPS',
-            pathname=f'/v2/{instance_id}/{application_id}/users',
+            pathname=f'/v2/{OpenApiUtilClient.get_encode_param(instance_id)}/{OpenApiUtilClient.get_encode_param(application_id)}/users',
             method='POST',
             auth_type='Anonymous',
             style='ROA',
@@ -240,9 +238,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_developerapi_20220225_models.CreateUserResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        application_id = OpenApiUtilClient.get_encode_param(application_id)
         body = {}
+        if not UtilClient.is_unset(request.custom_fields):
+            body['customFields'] = request.custom_fields
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
         if not UtilClient.is_unset(request.display_name):
@@ -253,6 +251,8 @@ class Client(OpenApiClient):
             body['emailVerified'] = request.email_verified
         if not UtilClient.is_unset(request.password):
             body['password'] = request.password
+        if not UtilClient.is_unset(request.password_initialization_config):
+            body['passwordInitializationConfig'] = request.password_initialization_config
         if not UtilClient.is_unset(request.phone_number):
             body['phoneNumber'] = request.phone_number
         if not UtilClient.is_unset(request.phone_number_verified):
@@ -278,7 +278,7 @@ class Client(OpenApiClient):
             action='CreateUser',
             version='2022-02-25',
             protocol='HTTPS',
-            pathname=f'/v2/{instance_id}/{application_id}/users',
+            pathname=f'/v2/{OpenApiUtilClient.get_encode_param(instance_id)}/{OpenApiUtilClient.get_encode_param(application_id)}/users',
             method='POST',
             auth_type='Anonymous',
             style='ROA',
@@ -318,9 +318,6 @@ class Client(OpenApiClient):
         headers: eiam_developerapi_20220225_models.DeleteOrganizationalUnitHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> eiam_developerapi_20220225_models.DeleteOrganizationalUnitResponse:
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        application_id = OpenApiUtilClient.get_encode_param(application_id)
-        organizational_unit_id = OpenApiUtilClient.get_encode_param(organizational_unit_id)
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -333,7 +330,7 @@ class Client(OpenApiClient):
             action='DeleteOrganizationalUnit',
             version='2022-02-25',
             protocol='HTTPS',
-            pathname=f'/v2/{instance_id}/{application_id}/organizationalUnits/{organizational_unit_id}',
+            pathname=f'/v2/{OpenApiUtilClient.get_encode_param(instance_id)}/{OpenApiUtilClient.get_encode_param(application_id)}/organizationalUnits/{OpenApiUtilClient.get_encode_param(organizational_unit_id)}',
             method='DELETE',
             auth_type='Anonymous',
             style='ROA',
@@ -353,9 +350,6 @@ class Client(OpenApiClient):
         headers: eiam_developerapi_20220225_models.DeleteOrganizationalUnitHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> eiam_developerapi_20220225_models.DeleteOrganizationalUnitResponse:
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        application_id = OpenApiUtilClient.get_encode_param(application_id)
-        organizational_unit_id = OpenApiUtilClient.get_encode_param(organizational_unit_id)
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -368,7 +362,7 @@ class Client(OpenApiClient):
             action='DeleteOrganizationalUnit',
             version='2022-02-25',
             protocol='HTTPS',
-            pathname=f'/v2/{instance_id}/{application_id}/organizationalUnits/{organizational_unit_id}',
+            pathname=f'/v2/{OpenApiUtilClient.get_encode_param(instance_id)}/{OpenApiUtilClient.get_encode_param(application_id)}/organizationalUnits/{OpenApiUtilClient.get_encode_param(organizational_unit_id)}',
             method='DELETE',
             auth_type='Anonymous',
             style='ROA',
@@ -408,9 +402,6 @@ class Client(OpenApiClient):
         headers: eiam_developerapi_20220225_models.DeleteUserHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> eiam_developerapi_20220225_models.DeleteUserResponse:
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        application_id = OpenApiUtilClient.get_encode_param(application_id)
-        user_id = OpenApiUtilClient.get_encode_param(user_id)
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -423,7 +414,7 @@ class Client(OpenApiClient):
             action='DeleteUser',
             version='2022-02-25',
             protocol='HTTPS',
-            pathname=f'/v2/{instance_id}/{application_id}/users/{user_id}',
+            pathname=f'/v2/{OpenApiUtilClient.get_encode_param(instance_id)}/{OpenApiUtilClient.get_encode_param(application_id)}/users/{OpenApiUtilClient.get_encode_param(user_id)}',
             method='DELETE',
             auth_type='Anonymous',
             style='ROA',
@@ -443,9 +434,6 @@ class Client(OpenApiClient):
         headers: eiam_developerapi_20220225_models.DeleteUserHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> eiam_developerapi_20220225_models.DeleteUserResponse:
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        application_id = OpenApiUtilClient.get_encode_param(application_id)
-        user_id = OpenApiUtilClient.get_encode_param(user_id)
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -458,7 +446,7 @@ class Client(OpenApiClient):
             action='DeleteUser',
             version='2022-02-25',
             protocol='HTTPS',
-            pathname=f'/v2/{instance_id}/{application_id}/users/{user_id}',
+            pathname=f'/v2/{OpenApiUtilClient.get_encode_param(instance_id)}/{OpenApiUtilClient.get_encode_param(application_id)}/users/{OpenApiUtilClient.get_encode_param(user_id)}',
             method='DELETE',
             auth_type='Anonymous',
             style='ROA',
@@ -467,6 +455,174 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             eiam_developerapi_20220225_models.DeleteUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def disable_user(
+        self,
+        instance_id: str,
+        application_id: str,
+        user_id: str,
+    ) -> eiam_developerapi_20220225_models.DisableUserResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = eiam_developerapi_20220225_models.DisableUserHeaders()
+        return self.disable_user_with_options(instance_id, application_id, user_id, headers, runtime)
+
+    async def disable_user_async(
+        self,
+        instance_id: str,
+        application_id: str,
+        user_id: str,
+    ) -> eiam_developerapi_20220225_models.DisableUserResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = eiam_developerapi_20220225_models.DisableUserHeaders()
+        return await self.disable_user_with_options_async(instance_id, application_id, user_id, headers, runtime)
+
+    def disable_user_with_options(
+        self,
+        instance_id: str,
+        application_id: str,
+        user_id: str,
+        headers: eiam_developerapi_20220225_models.DisableUserHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_developerapi_20220225_models.DisableUserResponse:
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers
+        )
+        params = open_api_models.Params(
+            action='DisableUser',
+            version='2022-02-25',
+            protocol='HTTPS',
+            pathname=f'/v2/{OpenApiUtilClient.get_encode_param(instance_id)}/{OpenApiUtilClient.get_encode_param(application_id)}/users/{OpenApiUtilClient.get_encode_param(user_id)}/actions/disable',
+            method='POST',
+            auth_type='Anonymous',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            eiam_developerapi_20220225_models.DisableUserResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def disable_user_with_options_async(
+        self,
+        instance_id: str,
+        application_id: str,
+        user_id: str,
+        headers: eiam_developerapi_20220225_models.DisableUserHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_developerapi_20220225_models.DisableUserResponse:
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers
+        )
+        params = open_api_models.Params(
+            action='DisableUser',
+            version='2022-02-25',
+            protocol='HTTPS',
+            pathname=f'/v2/{OpenApiUtilClient.get_encode_param(instance_id)}/{OpenApiUtilClient.get_encode_param(application_id)}/users/{OpenApiUtilClient.get_encode_param(user_id)}/actions/disable',
+            method='POST',
+            auth_type='Anonymous',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            eiam_developerapi_20220225_models.DisableUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_user(
+        self,
+        instance_id: str,
+        application_id: str,
+        user_id: str,
+    ) -> eiam_developerapi_20220225_models.EnableUserResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = eiam_developerapi_20220225_models.EnableUserHeaders()
+        return self.enable_user_with_options(instance_id, application_id, user_id, headers, runtime)
+
+    async def enable_user_async(
+        self,
+        instance_id: str,
+        application_id: str,
+        user_id: str,
+    ) -> eiam_developerapi_20220225_models.EnableUserResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = eiam_developerapi_20220225_models.EnableUserHeaders()
+        return await self.enable_user_with_options_async(instance_id, application_id, user_id, headers, runtime)
+
+    def enable_user_with_options(
+        self,
+        instance_id: str,
+        application_id: str,
+        user_id: str,
+        headers: eiam_developerapi_20220225_models.EnableUserHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_developerapi_20220225_models.EnableUserResponse:
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers
+        )
+        params = open_api_models.Params(
+            action='EnableUser',
+            version='2022-02-25',
+            protocol='HTTPS',
+            pathname=f'/v2/{OpenApiUtilClient.get_encode_param(instance_id)}/{OpenApiUtilClient.get_encode_param(application_id)}/users/{OpenApiUtilClient.get_encode_param(user_id)}/actions/enable',
+            method='POST',
+            auth_type='Anonymous',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            eiam_developerapi_20220225_models.EnableUserResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_user_with_options_async(
+        self,
+        instance_id: str,
+        application_id: str,
+        user_id: str,
+        headers: eiam_developerapi_20220225_models.EnableUserHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_developerapi_20220225_models.EnableUserResponse:
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers
+        )
+        params = open_api_models.Params(
+            action='EnableUser',
+            version='2022-02-25',
+            protocol='HTTPS',
+            pathname=f'/v2/{OpenApiUtilClient.get_encode_param(instance_id)}/{OpenApiUtilClient.get_encode_param(application_id)}/users/{OpenApiUtilClient.get_encode_param(user_id)}/actions/enable',
+            method='POST',
+            auth_type='Anonymous',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            eiam_developerapi_20220225_models.EnableUserResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
@@ -499,8 +655,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_developerapi_20220225_models.GenerateDeviceCodeResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        application_id = OpenApiUtilClient.get_encode_param(application_id)
         query = {}
         if not UtilClient.is_unset(request.scope):
             query['scope'] = request.scope
@@ -512,7 +666,7 @@ class Client(OpenApiClient):
             action='GenerateDeviceCode',
             version='2022-02-25',
             protocol='HTTPS',
-            pathname=f'/v2/{instance_id}/{application_id}/oauth2/device/code',
+            pathname=f'/v2/{OpenApiUtilClient.get_encode_param(instance_id)}/{OpenApiUtilClient.get_encode_param(application_id)}/oauth2/device/code',
             method='POST',
             auth_type='Anonymous',
             style='ROA',
@@ -533,8 +687,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_developerapi_20220225_models.GenerateDeviceCodeResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        application_id = OpenApiUtilClient.get_encode_param(application_id)
         query = {}
         if not UtilClient.is_unset(request.scope):
             query['scope'] = request.scope
@@ -546,7 +698,7 @@ class Client(OpenApiClient):
             action='GenerateDeviceCode',
             version='2022-02-25',
             protocol='HTTPS',
-            pathname=f'/v2/{instance_id}/{application_id}/oauth2/device/code',
+            pathname=f'/v2/{OpenApiUtilClient.get_encode_param(instance_id)}/{OpenApiUtilClient.get_encode_param(application_id)}/oauth2/device/code',
             method='POST',
             auth_type='Anonymous',
             style='ROA',
@@ -587,8 +739,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_developerapi_20220225_models.GenerateTokenResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        application_id = OpenApiUtilClient.get_encode_param(application_id)
         query = {}
         if not UtilClient.is_unset(request.client_id):
             query['client_id'] = request.client_id
@@ -622,7 +772,7 @@ class Client(OpenApiClient):
             action='GenerateToken',
             version='2022-02-25',
             protocol='HTTPS',
-            pathname=f'/v2/{instance_id}/{application_id}/oauth2/token',
+            pathname=f'/v2/{OpenApiUtilClient.get_encode_param(instance_id)}/{OpenApiUtilClient.get_encode_param(application_id)}/oauth2/token',
             method='POST',
             auth_type='Anonymous',
             style='ROA',
@@ -643,8 +793,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_developerapi_20220225_models.GenerateTokenResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        application_id = OpenApiUtilClient.get_encode_param(application_id)
         query = {}
         if not UtilClient.is_unset(request.client_id):
             query['client_id'] = request.client_id
@@ -678,7 +826,7 @@ class Client(OpenApiClient):
             action='GenerateToken',
             version='2022-02-25',
             protocol='HTTPS',
-            pathname=f'/v2/{instance_id}/{application_id}/oauth2/token',
+            pathname=f'/v2/{OpenApiUtilClient.get_encode_param(instance_id)}/{OpenApiUtilClient.get_encode_param(application_id)}/oauth2/token',
             method='POST',
             auth_type='Anonymous',
             style='ROA',
@@ -715,8 +863,6 @@ class Client(OpenApiClient):
         headers: eiam_developerapi_20220225_models.GetApplicationProvisioningScopeHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> eiam_developerapi_20220225_models.GetApplicationProvisioningScopeResponse:
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        application_id = OpenApiUtilClient.get_encode_param(application_id)
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -729,7 +875,7 @@ class Client(OpenApiClient):
             action='GetApplicationProvisioningScope',
             version='2022-02-25',
             protocol='HTTPS',
-            pathname=f'/v2/{instance_id}/{application_id}/provisioningScope',
+            pathname=f'/v2/{OpenApiUtilClient.get_encode_param(instance_id)}/{OpenApiUtilClient.get_encode_param(application_id)}/provisioningScope',
             method='GET',
             auth_type='Anonymous',
             style='ROA',
@@ -748,8 +894,6 @@ class Client(OpenApiClient):
         headers: eiam_developerapi_20220225_models.GetApplicationProvisioningScopeHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> eiam_developerapi_20220225_models.GetApplicationProvisioningScopeResponse:
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        application_id = OpenApiUtilClient.get_encode_param(application_id)
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -762,7 +906,7 @@ class Client(OpenApiClient):
             action='GetApplicationProvisioningScope',
             version='2022-02-25',
             protocol='HTTPS',
-            pathname=f'/v2/{instance_id}/{application_id}/provisioningScope',
+            pathname=f'/v2/{OpenApiUtilClient.get_encode_param(instance_id)}/{OpenApiUtilClient.get_encode_param(application_id)}/provisioningScope',
             method='GET',
             auth_type='Anonymous',
             style='ROA',
@@ -802,9 +946,6 @@ class Client(OpenApiClient):
         headers: eiam_developerapi_20220225_models.GetOrganizationalUnitHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> eiam_developerapi_20220225_models.GetOrganizationalUnitResponse:
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        application_id = OpenApiUtilClient.get_encode_param(application_id)
-        organizational_unit_id = OpenApiUtilClient.get_encode_param(organizational_unit_id)
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -817,7 +958,7 @@ class Client(OpenApiClient):
             action='GetOrganizationalUnit',
             version='2022-02-25',
             protocol='HTTPS',
-            pathname=f'/v2/{instance_id}/{application_id}/organizationalUnits/{organizational_unit_id}',
+            pathname=f'/v2/{OpenApiUtilClient.get_encode_param(instance_id)}/{OpenApiUtilClient.get_encode_param(application_id)}/organizationalUnits/{OpenApiUtilClient.get_encode_param(organizational_unit_id)}',
             method='GET',
             auth_type='Anonymous',
             style='ROA',
@@ -837,9 +978,6 @@ class Client(OpenApiClient):
         headers: eiam_developerapi_20220225_models.GetOrganizationalUnitHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> eiam_developerapi_20220225_models.GetOrganizationalUnitResponse:
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        application_id = OpenApiUtilClient.get_encode_param(application_id)
-        organizational_unit_id = OpenApiUtilClient.get_encode_param(organizational_unit_id)
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -852,7 +990,7 @@ class Client(OpenApiClient):
             action='GetOrganizationalUnit',
             version='2022-02-25',
             protocol='HTTPS',
-            pathname=f'/v2/{instance_id}/{application_id}/organizationalUnits/{organizational_unit_id}',
+            pathname=f'/v2/{OpenApiUtilClient.get_encode_param(instance_id)}/{OpenApiUtilClient.get_encode_param(application_id)}/organizationalUnits/{OpenApiUtilClient.get_encode_param(organizational_unit_id)}',
             method='GET',
             auth_type='Anonymous',
             style='ROA',
@@ -893,8 +1031,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_developerapi_20220225_models.GetOrganizationalUnitIdByExternalIdResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        application_id = OpenApiUtilClient.get_encode_param(application_id)
         body = {}
         if not UtilClient.is_unset(request.organizational_unit_external_id):
             body['organizationalUnitExternalId'] = request.organizational_unit_external_id
@@ -915,7 +1051,7 @@ class Client(OpenApiClient):
             action='GetOrganizationalUnitIdByExternalId',
             version='2022-02-25',
             protocol='HTTPS',
-            pathname=f'/v2/{instance_id}/{application_id}/organizationalUnits/_/actions/getOrganizationalUnitIdByExternalId',
+            pathname=f'/v2/{OpenApiUtilClient.get_encode_param(instance_id)}/{OpenApiUtilClient.get_encode_param(application_id)}/organizationalUnits/_/actions/getOrganizationalUnitIdByExternalId',
             method='POST',
             auth_type='Anonymous',
             style='ROA',
@@ -936,8 +1072,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_developerapi_20220225_models.GetOrganizationalUnitIdByExternalIdResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        application_id = OpenApiUtilClient.get_encode_param(application_id)
         body = {}
         if not UtilClient.is_unset(request.organizational_unit_external_id):
             body['organizationalUnitExternalId'] = request.organizational_unit_external_id
@@ -958,7 +1092,7 @@ class Client(OpenApiClient):
             action='GetOrganizationalUnitIdByExternalId',
             version='2022-02-25',
             protocol='HTTPS',
-            pathname=f'/v2/{instance_id}/{application_id}/organizationalUnits/_/actions/getOrganizationalUnitIdByExternalId',
+            pathname=f'/v2/{OpenApiUtilClient.get_encode_param(instance_id)}/{OpenApiUtilClient.get_encode_param(application_id)}/organizationalUnits/_/actions/getOrganizationalUnitIdByExternalId',
             method='POST',
             auth_type='Anonymous',
             style='ROA',
@@ -998,9 +1132,6 @@ class Client(OpenApiClient):
         headers: eiam_developerapi_20220225_models.GetUserHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> eiam_developerapi_20220225_models.GetUserResponse:
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        application_id = OpenApiUtilClient.get_encode_param(application_id)
-        user_id = OpenApiUtilClient.get_encode_param(user_id)
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -1013,7 +1144,7 @@ class Client(OpenApiClient):
             action='GetUser',
             version='2022-02-25',
             protocol='HTTPS',
-            pathname=f'/v2/{instance_id}/{application_id}/users/{user_id}',
+            pathname=f'/v2/{OpenApiUtilClient.get_encode_param(instance_id)}/{OpenApiUtilClient.get_encode_param(application_id)}/users/{OpenApiUtilClient.get_encode_param(user_id)}',
             method='GET',
             auth_type='Anonymous',
             style='ROA',
@@ -1033,9 +1164,6 @@ class Client(OpenApiClient):
         headers: eiam_developerapi_20220225_models.GetUserHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> eiam_developerapi_20220225_models.GetUserResponse:
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        application_id = OpenApiUtilClient.get_encode_param(application_id)
-        user_id = OpenApiUtilClient.get_encode_param(user_id)
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -1048,7 +1176,7 @@ class Client(OpenApiClient):
             action='GetUser',
             version='2022-02-25',
             protocol='HTTPS',
-            pathname=f'/v2/{instance_id}/{application_id}/users/{user_id}',
+            pathname=f'/v2/{OpenApiUtilClient.get_encode_param(instance_id)}/{OpenApiUtilClient.get_encode_param(application_id)}/users/{OpenApiUtilClient.get_encode_param(user_id)}',
             method='GET',
             auth_type='Anonymous',
             style='ROA',
@@ -1089,8 +1217,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_developerapi_20220225_models.GetUserIdByEmailResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        application_id = OpenApiUtilClient.get_encode_param(application_id)
         body = {}
         if not UtilClient.is_unset(request.email):
             body['email'] = request.email
@@ -1107,7 +1233,7 @@ class Client(OpenApiClient):
             action='GetUserIdByEmail',
             version='2022-02-25',
             protocol='HTTPS',
-            pathname=f'/v2/{instance_id}/{application_id}/users/_/actions/getUserIdByEmail',
+            pathname=f'/v2/{OpenApiUtilClient.get_encode_param(instance_id)}/{OpenApiUtilClient.get_encode_param(application_id)}/users/_/actions/getUserIdByEmail',
             method='POST',
             auth_type='Anonymous',
             style='ROA',
@@ -1128,8 +1254,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_developerapi_20220225_models.GetUserIdByEmailResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        application_id = OpenApiUtilClient.get_encode_param(application_id)
         body = {}
         if not UtilClient.is_unset(request.email):
             body['email'] = request.email
@@ -1146,7 +1270,7 @@ class Client(OpenApiClient):
             action='GetUserIdByEmail',
             version='2022-02-25',
             protocol='HTTPS',
-            pathname=f'/v2/{instance_id}/{application_id}/users/_/actions/getUserIdByEmail',
+            pathname=f'/v2/{OpenApiUtilClient.get_encode_param(instance_id)}/{OpenApiUtilClient.get_encode_param(application_id)}/users/_/actions/getUserIdByEmail',
             method='POST',
             auth_type='Anonymous',
             style='ROA',
@@ -1187,8 +1311,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_developerapi_20220225_models.GetUserIdByPhoneNumberResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        application_id = OpenApiUtilClient.get_encode_param(application_id)
         body = {}
         if not UtilClient.is_unset(request.phone_number):
             body['phoneNumber'] = request.phone_number
@@ -1205,7 +1327,7 @@ class Client(OpenApiClient):
             action='GetUserIdByPhoneNumber',
             version='2022-02-25',
             protocol='HTTPS',
-            pathname=f'/v2/{instance_id}/{application_id}/users/_/actions/getUserIdByPhoneNumber',
+            pathname=f'/v2/{OpenApiUtilClient.get_encode_param(instance_id)}/{OpenApiUtilClient.get_encode_param(application_id)}/users/_/actions/getUserIdByPhoneNumber',
             method='POST',
             auth_type='Anonymous',
             style='ROA',
@@ -1226,8 +1348,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_developerapi_20220225_models.GetUserIdByPhoneNumberResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        application_id = OpenApiUtilClient.get_encode_param(application_id)
         body = {}
         if not UtilClient.is_unset(request.phone_number):
             body['phoneNumber'] = request.phone_number
@@ -1244,7 +1364,7 @@ class Client(OpenApiClient):
             action='GetUserIdByPhoneNumber',
             version='2022-02-25',
             protocol='HTTPS',
-            pathname=f'/v2/{instance_id}/{application_id}/users/_/actions/getUserIdByPhoneNumber',
+            pathname=f'/v2/{OpenApiUtilClient.get_encode_param(instance_id)}/{OpenApiUtilClient.get_encode_param(application_id)}/users/_/actions/getUserIdByPhoneNumber',
             method='POST',
             auth_type='Anonymous',
             style='ROA',
@@ -1285,8 +1405,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_developerapi_20220225_models.GetUserIdByUserExternalIdResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        application_id = OpenApiUtilClient.get_encode_param(application_id)
         body = {}
         if not UtilClient.is_unset(request.user_external_id):
             body['userExternalId'] = request.user_external_id
@@ -1307,7 +1425,7 @@ class Client(OpenApiClient):
             action='GetUserIdByUserExternalId',
             version='2022-02-25',
             protocol='HTTPS',
-            pathname=f'/v2/{instance_id}/{application_id}/users/_/actions/getUserIdByExternalId',
+            pathname=f'/v2/{OpenApiUtilClient.get_encode_param(instance_id)}/{OpenApiUtilClient.get_encode_param(application_id)}/users/_/actions/getUserIdByExternalId',
             method='POST',
             auth_type='Anonymous',
             style='ROA',
@@ -1328,8 +1446,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_developerapi_20220225_models.GetUserIdByUserExternalIdResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        application_id = OpenApiUtilClient.get_encode_param(application_id)
         body = {}
         if not UtilClient.is_unset(request.user_external_id):
             body['userExternalId'] = request.user_external_id
@@ -1350,7 +1466,7 @@ class Client(OpenApiClient):
             action='GetUserIdByUserExternalId',
             version='2022-02-25',
             protocol='HTTPS',
-            pathname=f'/v2/{instance_id}/{application_id}/users/_/actions/getUserIdByExternalId',
+            pathname=f'/v2/{OpenApiUtilClient.get_encode_param(instance_id)}/{OpenApiUtilClient.get_encode_param(application_id)}/users/_/actions/getUserIdByExternalId',
             method='POST',
             auth_type='Anonymous',
             style='ROA',
@@ -1391,8 +1507,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_developerapi_20220225_models.GetUserIdByUsernameResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        application_id = OpenApiUtilClient.get_encode_param(application_id)
         body = {}
         if not UtilClient.is_unset(request.username):
             body['username'] = request.username
@@ -1409,7 +1523,7 @@ class Client(OpenApiClient):
             action='GetUserIdByUsername',
             version='2022-02-25',
             protocol='HTTPS',
-            pathname=f'/v2/{instance_id}/{application_id}/users/_/actions/getUserIdByUsername',
+            pathname=f'/v2/{OpenApiUtilClient.get_encode_param(instance_id)}/{OpenApiUtilClient.get_encode_param(application_id)}/users/_/actions/getUserIdByUsername',
             method='POST',
             auth_type='Anonymous',
             style='ROA',
@@ -1430,8 +1544,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_developerapi_20220225_models.GetUserIdByUsernameResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        application_id = OpenApiUtilClient.get_encode_param(application_id)
         body = {}
         if not UtilClient.is_unset(request.username):
             body['username'] = request.username
@@ -1448,7 +1560,7 @@ class Client(OpenApiClient):
             action='GetUserIdByUsername',
             version='2022-02-25',
             protocol='HTTPS',
-            pathname=f'/v2/{instance_id}/{application_id}/users/_/actions/getUserIdByUsername',
+            pathname=f'/v2/{OpenApiUtilClient.get_encode_param(instance_id)}/{OpenApiUtilClient.get_encode_param(application_id)}/users/_/actions/getUserIdByUsername',
             method='POST',
             auth_type='Anonymous',
             style='ROA',
@@ -1485,8 +1597,6 @@ class Client(OpenApiClient):
         headers: eiam_developerapi_20220225_models.GetUserInfoHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> eiam_developerapi_20220225_models.GetUserInfoResponse:
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        application_id = OpenApiUtilClient.get_encode_param(application_id)
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -1499,7 +1609,7 @@ class Client(OpenApiClient):
             action='GetUserInfo',
             version='2022-02-25',
             protocol='HTTPS',
-            pathname=f'/v2/{instance_id}/{application_id}/oauth2/userinfo',
+            pathname=f'/v2/{OpenApiUtilClient.get_encode_param(instance_id)}/{OpenApiUtilClient.get_encode_param(application_id)}/oauth2/userinfo',
             method='GET',
             auth_type='Anonymous',
             style='ROA',
@@ -1518,8 +1628,6 @@ class Client(OpenApiClient):
         headers: eiam_developerapi_20220225_models.GetUserInfoHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> eiam_developerapi_20220225_models.GetUserInfoResponse:
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        application_id = OpenApiUtilClient.get_encode_param(application_id)
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -1532,7 +1640,7 @@ class Client(OpenApiClient):
             action='GetUserInfo',
             version='2022-02-25',
             protocol='HTTPS',
-            pathname=f'/v2/{instance_id}/{application_id}/oauth2/userinfo',
+            pathname=f'/v2/{OpenApiUtilClient.get_encode_param(instance_id)}/{OpenApiUtilClient.get_encode_param(application_id)}/oauth2/userinfo',
             method='GET',
             auth_type='Anonymous',
             style='ROA',
@@ -1572,9 +1680,6 @@ class Client(OpenApiClient):
         headers: eiam_developerapi_20220225_models.ListOrganizationalUnitParentIdsHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> eiam_developerapi_20220225_models.ListOrganizationalUnitParentIdsResponse:
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        application_id = OpenApiUtilClient.get_encode_param(application_id)
-        organizational_unit_id = OpenApiUtilClient.get_encode_param(organizational_unit_id)
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -1587,7 +1692,7 @@ class Client(OpenApiClient):
             action='ListOrganizationalUnitParentIds',
             version='2022-02-25',
             protocol='HTTPS',
-            pathname=f'/v2/{instance_id}/{application_id}/organizationalUnits/{organizational_unit_id}/parentIds',
+            pathname=f'/v2/{OpenApiUtilClient.get_encode_param(instance_id)}/{OpenApiUtilClient.get_encode_param(application_id)}/organizationalUnits/{OpenApiUtilClient.get_encode_param(organizational_unit_id)}/parentIds',
             method='GET',
             auth_type='Anonymous',
             style='ROA',
@@ -1607,9 +1712,6 @@ class Client(OpenApiClient):
         headers: eiam_developerapi_20220225_models.ListOrganizationalUnitParentIdsHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> eiam_developerapi_20220225_models.ListOrganizationalUnitParentIdsResponse:
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        application_id = OpenApiUtilClient.get_encode_param(application_id)
-        organizational_unit_id = OpenApiUtilClient.get_encode_param(organizational_unit_id)
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -1622,7 +1724,7 @@ class Client(OpenApiClient):
             action='ListOrganizationalUnitParentIds',
             version='2022-02-25',
             protocol='HTTPS',
-            pathname=f'/v2/{instance_id}/{application_id}/organizationalUnits/{organizational_unit_id}/parentIds',
+            pathname=f'/v2/{OpenApiUtilClient.get_encode_param(instance_id)}/{OpenApiUtilClient.get_encode_param(application_id)}/organizationalUnits/{OpenApiUtilClient.get_encode_param(organizational_unit_id)}/parentIds',
             method='GET',
             auth_type='Anonymous',
             style='ROA',
@@ -1663,8 +1765,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_developerapi_20220225_models.ListOrganizationalUnitsResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        application_id = OpenApiUtilClient.get_encode_param(application_id)
         query = {}
         if not UtilClient.is_unset(request.page_number):
             query['pageNumber'] = request.page_number
@@ -1685,7 +1785,7 @@ class Client(OpenApiClient):
             action='ListOrganizationalUnits',
             version='2022-02-25',
             protocol='HTTPS',
-            pathname=f'/v2/{instance_id}/{application_id}/organizationalUnits',
+            pathname=f'/v2/{OpenApiUtilClient.get_encode_param(instance_id)}/{OpenApiUtilClient.get_encode_param(application_id)}/organizationalUnits',
             method='GET',
             auth_type='Anonymous',
             style='ROA',
@@ -1706,8 +1806,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_developerapi_20220225_models.ListOrganizationalUnitsResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        application_id = OpenApiUtilClient.get_encode_param(application_id)
         query = {}
         if not UtilClient.is_unset(request.page_number):
             query['pageNumber'] = request.page_number
@@ -1728,7 +1826,7 @@ class Client(OpenApiClient):
             action='ListOrganizationalUnits',
             version='2022-02-25',
             protocol='HTTPS',
-            pathname=f'/v2/{instance_id}/{application_id}/organizationalUnits',
+            pathname=f'/v2/{OpenApiUtilClient.get_encode_param(instance_id)}/{OpenApiUtilClient.get_encode_param(application_id)}/organizationalUnits',
             method='GET',
             auth_type='Anonymous',
             style='ROA',
@@ -1769,8 +1867,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_developerapi_20220225_models.ListUsersResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        application_id = OpenApiUtilClient.get_encode_param(application_id)
         query = {}
         if not UtilClient.is_unset(request.organizational_unit_id):
             query['organizationalUnitId'] = request.organizational_unit_id
@@ -1791,7 +1887,7 @@ class Client(OpenApiClient):
             action='ListUsers',
             version='2022-02-25',
             protocol='HTTPS',
-            pathname=f'/v2/{instance_id}/{application_id}/users',
+            pathname=f'/v2/{OpenApiUtilClient.get_encode_param(instance_id)}/{OpenApiUtilClient.get_encode_param(application_id)}/users',
             method='GET',
             auth_type='Anonymous',
             style='ROA',
@@ -1812,8 +1908,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_developerapi_20220225_models.ListUsersResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        application_id = OpenApiUtilClient.get_encode_param(application_id)
         query = {}
         if not UtilClient.is_unset(request.organizational_unit_id):
             query['organizationalUnitId'] = request.organizational_unit_id
@@ -1834,7 +1928,7 @@ class Client(OpenApiClient):
             action='ListUsers',
             version='2022-02-25',
             protocol='HTTPS',
-            pathname=f'/v2/{instance_id}/{application_id}/users',
+            pathname=f'/v2/{OpenApiUtilClient.get_encode_param(instance_id)}/{OpenApiUtilClient.get_encode_param(application_id)}/users',
             method='GET',
             auth_type='Anonymous',
             style='ROA',
@@ -1878,9 +1972,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_developerapi_20220225_models.PatchOrganizationalUnitResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        application_id = OpenApiUtilClient.get_encode_param(application_id)
-        organizational_unit_id = OpenApiUtilClient.get_encode_param(organizational_unit_id)
         body = {}
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
@@ -1899,7 +1990,7 @@ class Client(OpenApiClient):
             action='PatchOrganizationalUnit',
             version='2022-02-25',
             protocol='HTTPS',
-            pathname=f'/v2/{instance_id}/{application_id}/organizationalUnits/{organizational_unit_id}',
+            pathname=f'/v2/{OpenApiUtilClient.get_encode_param(instance_id)}/{OpenApiUtilClient.get_encode_param(application_id)}/organizationalUnits/{OpenApiUtilClient.get_encode_param(organizational_unit_id)}',
             method='PATCH',
             auth_type='Anonymous',
             style='ROA',
@@ -1921,9 +2012,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_developerapi_20220225_models.PatchOrganizationalUnitResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        application_id = OpenApiUtilClient.get_encode_param(application_id)
-        organizational_unit_id = OpenApiUtilClient.get_encode_param(organizational_unit_id)
         body = {}
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
@@ -1942,7 +2030,7 @@ class Client(OpenApiClient):
             action='PatchOrganizationalUnit',
             version='2022-02-25',
             protocol='HTTPS',
-            pathname=f'/v2/{instance_id}/{application_id}/organizationalUnits/{organizational_unit_id}',
+            pathname=f'/v2/{OpenApiUtilClient.get_encode_param(instance_id)}/{OpenApiUtilClient.get_encode_param(application_id)}/organizationalUnits/{OpenApiUtilClient.get_encode_param(organizational_unit_id)}',
             method='PATCH',
             auth_type='Anonymous',
             style='ROA',
@@ -1986,10 +2074,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_developerapi_20220225_models.PatchUserResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        application_id = OpenApiUtilClient.get_encode_param(application_id)
-        user_id = OpenApiUtilClient.get_encode_param(user_id)
         body = {}
+        if not UtilClient.is_unset(request.custom_fields):
+            body['customFields'] = request.custom_fields
         if not UtilClient.is_unset(request.display_name):
             body['displayName'] = request.display_name
         if not UtilClient.is_unset(request.email):
@@ -2017,7 +2104,7 @@ class Client(OpenApiClient):
             action='PatchUser',
             version='2022-02-25',
             protocol='HTTPS',
-            pathname=f'/v2/{instance_id}/{application_id}/users/{user_id}',
+            pathname=f'/v2/{OpenApiUtilClient.get_encode_param(instance_id)}/{OpenApiUtilClient.get_encode_param(application_id)}/users/{OpenApiUtilClient.get_encode_param(user_id)}',
             method='PATCH',
             auth_type='Anonymous',
             style='ROA',
@@ -2039,10 +2126,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_developerapi_20220225_models.PatchUserResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        application_id = OpenApiUtilClient.get_encode_param(application_id)
-        user_id = OpenApiUtilClient.get_encode_param(user_id)
         body = {}
+        if not UtilClient.is_unset(request.custom_fields):
+            body['customFields'] = request.custom_fields
         if not UtilClient.is_unset(request.display_name):
             body['displayName'] = request.display_name
         if not UtilClient.is_unset(request.email):
@@ -2070,7 +2156,7 @@ class Client(OpenApiClient):
             action='PatchUser',
             version='2022-02-25',
             protocol='HTTPS',
-            pathname=f'/v2/{instance_id}/{application_id}/users/{user_id}',
+            pathname=f'/v2/{OpenApiUtilClient.get_encode_param(instance_id)}/{OpenApiUtilClient.get_encode_param(application_id)}/users/{OpenApiUtilClient.get_encode_param(user_id)}',
             method='PATCH',
             auth_type='Anonymous',
             style='ROA',
@@ -2111,8 +2197,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_developerapi_20220225_models.RevokeTokenResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        application_id = OpenApiUtilClient.get_encode_param(application_id)
         query = {}
         if not UtilClient.is_unset(request.client_id):
             query['client_id'] = request.client_id
@@ -2130,7 +2214,7 @@ class Client(OpenApiClient):
             action='RevokeToken',
             version='2022-02-25',
             protocol='HTTPS',
-            pathname=f'/v2/{instance_id}/{application_id}/oauth2/revoke',
+            pathname=f'/v2/{OpenApiUtilClient.get_encode_param(instance_id)}/{OpenApiUtilClient.get_encode_param(application_id)}/oauth2/revoke',
             method='POST',
             auth_type='Anonymous',
             style='ROA',
@@ -2151,8 +2235,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_developerapi_20220225_models.RevokeTokenResponse:
         UtilClient.validate_model(request)
-        instance_id = OpenApiUtilClient.get_encode_param(instance_id)
-        application_id = OpenApiUtilClient.get_encode_param(application_id)
         query = {}
         if not UtilClient.is_unset(request.client_id):
             query['client_id'] = request.client_id
@@ -2170,7 +2252,7 @@ class Client(OpenApiClient):
             action='RevokeToken',
             version='2022-02-25',
             protocol='HTTPS',
-            pathname=f'/v2/{instance_id}/{application_id}/oauth2/revoke',
+            pathname=f'/v2/{OpenApiUtilClient.get_encode_param(instance_id)}/{OpenApiUtilClient.get_encode_param(application_id)}/oauth2/revoke',
             method='POST',
             auth_type='Anonymous',
             style='ROA',

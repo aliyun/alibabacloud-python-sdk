@@ -186,32 +186,14 @@ class CreateUserHeaders(TeaModel):
         return self
 
 
-class CreateUserRequest(TeaModel):
+class CreateUserRequestCustomFields(TeaModel):
     def __init__(
         self,
-        description: str = None,
-        display_name: str = None,
-        email: str = None,
-        email_verified: bool = None,
-        password: str = None,
-        phone_number: str = None,
-        phone_number_verified: bool = None,
-        phone_region: str = None,
-        primary_organizational_unit_id: str = None,
-        user_external_id: str = None,
-        username: str = None,
+        field_name: str = None,
+        field_value: str = None,
     ):
-        self.description = description
-        self.display_name = display_name
-        self.email = email
-        self.email_verified = email_verified
-        self.password = password
-        self.phone_number = phone_number
-        self.phone_number_verified = phone_number_verified
-        self.phone_region = phone_region
-        self.primary_organizational_unit_id = primary_organizational_unit_id
-        self.user_external_id = user_external_id
-        self.username = username
+        self.field_name = field_name
+        self.field_value = field_value
 
     def validate(self):
         pass
@@ -222,6 +204,115 @@ class CreateUserRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.field_name is not None:
+            result['fieldName'] = self.field_name
+        if self.field_value is not None:
+            result['fieldValue'] = self.field_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('fieldName') is not None:
+            self.field_name = m.get('fieldName')
+        if m.get('fieldValue') is not None:
+            self.field_value = m.get('fieldValue')
+        return self
+
+
+class CreateUserRequestPasswordInitializationConfig(TeaModel):
+    def __init__(
+        self,
+        password_forced_update_status: str = None,
+        password_initialization_policy_priority: str = None,
+        password_initialization_type: str = None,
+        user_notification_channels: List[str] = None,
+    ):
+        self.password_forced_update_status = password_forced_update_status
+        self.password_initialization_policy_priority = password_initialization_policy_priority
+        self.password_initialization_type = password_initialization_type
+        self.user_notification_channels = user_notification_channels
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.password_forced_update_status is not None:
+            result['passwordForcedUpdateStatus'] = self.password_forced_update_status
+        if self.password_initialization_policy_priority is not None:
+            result['passwordInitializationPolicyPriority'] = self.password_initialization_policy_priority
+        if self.password_initialization_type is not None:
+            result['passwordInitializationType'] = self.password_initialization_type
+        if self.user_notification_channels is not None:
+            result['userNotificationChannels'] = self.user_notification_channels
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('passwordForcedUpdateStatus') is not None:
+            self.password_forced_update_status = m.get('passwordForcedUpdateStatus')
+        if m.get('passwordInitializationPolicyPriority') is not None:
+            self.password_initialization_policy_priority = m.get('passwordInitializationPolicyPriority')
+        if m.get('passwordInitializationType') is not None:
+            self.password_initialization_type = m.get('passwordInitializationType')
+        if m.get('userNotificationChannels') is not None:
+            self.user_notification_channels = m.get('userNotificationChannels')
+        return self
+
+
+class CreateUserRequest(TeaModel):
+    def __init__(
+        self,
+        custom_fields: List[CreateUserRequestCustomFields] = None,
+        description: str = None,
+        display_name: str = None,
+        email: str = None,
+        email_verified: bool = None,
+        password: str = None,
+        password_initialization_config: CreateUserRequestPasswordInitializationConfig = None,
+        phone_number: str = None,
+        phone_number_verified: bool = None,
+        phone_region: str = None,
+        primary_organizational_unit_id: str = None,
+        user_external_id: str = None,
+        username: str = None,
+    ):
+        self.custom_fields = custom_fields
+        self.description = description
+        self.display_name = display_name
+        self.email = email
+        self.email_verified = email_verified
+        self.password = password
+        self.password_initialization_config = password_initialization_config
+        self.phone_number = phone_number
+        self.phone_number_verified = phone_number_verified
+        self.phone_region = phone_region
+        self.primary_organizational_unit_id = primary_organizational_unit_id
+        self.user_external_id = user_external_id
+        self.username = username
+
+    def validate(self):
+        if self.custom_fields:
+            for k in self.custom_fields:
+                if k:
+                    k.validate()
+        if self.password_initialization_config:
+            self.password_initialization_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['customFields'] = []
+        if self.custom_fields is not None:
+            for k in self.custom_fields:
+                result['customFields'].append(k.to_map() if k else None)
         if self.description is not None:
             result['description'] = self.description
         if self.display_name is not None:
@@ -232,6 +323,8 @@ class CreateUserRequest(TeaModel):
             result['emailVerified'] = self.email_verified
         if self.password is not None:
             result['password'] = self.password
+        if self.password_initialization_config is not None:
+            result['passwordInitializationConfig'] = self.password_initialization_config.to_map()
         if self.phone_number is not None:
             result['phoneNumber'] = self.phone_number
         if self.phone_number_verified is not None:
@@ -248,6 +341,11 @@ class CreateUserRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.custom_fields = []
+        if m.get('customFields') is not None:
+            for k in m.get('customFields'):
+                temp_model = CreateUserRequestCustomFields()
+                self.custom_fields.append(temp_model.from_map(k))
         if m.get('description') is not None:
             self.description = m.get('description')
         if m.get('displayName') is not None:
@@ -258,6 +356,9 @@ class CreateUserRequest(TeaModel):
             self.email_verified = m.get('emailVerified')
         if m.get('password') is not None:
             self.password = m.get('password')
+        if m.get('passwordInitializationConfig') is not None:
+            temp_model = CreateUserRequestPasswordInitializationConfig()
+            self.password_initialization_config = temp_model.from_map(m['passwordInitializationConfig'])
         if m.get('phoneNumber') is not None:
             self.phone_number = m.get('phoneNumber')
         if m.get('phoneNumberVerified') is not None:
@@ -445,6 +546,140 @@ class DeleteUserHeaders(TeaModel):
 
 
 class DeleteUserResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        return self
+
+
+class DisableUserHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        authorization: str = None,
+    ):
+        self.common_headers = common_headers
+        self.authorization = authorization
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.authorization is not None:
+            result['Authorization'] = self.authorization
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('Authorization') is not None:
+            self.authorization = m.get('Authorization')
+        return self
+
+
+class DisableUserResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        return self
+
+
+class EnableUserHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        authorization: str = None,
+    ):
+        self.common_headers = common_headers
+        self.authorization = authorization
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.authorization is not None:
+            result['Authorization'] = self.authorization
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('Authorization') is not None:
+            self.authorization = m.get('Authorization')
+        return self
+
+
+class EnableUserResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
@@ -1244,6 +1479,39 @@ class GetUserHeaders(TeaModel):
         return self
 
 
+class GetUserResponseBodyCustomFields(TeaModel):
+    def __init__(
+        self,
+        field_name: str = None,
+        field_value: str = None,
+    ):
+        self.field_name = field_name
+        self.field_value = field_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.field_name is not None:
+            result['fieldName'] = self.field_name
+        if self.field_value is not None:
+            result['fieldValue'] = self.field_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('fieldName') is not None:
+            self.field_name = m.get('fieldName')
+        if m.get('fieldValue') is not None:
+            self.field_value = m.get('fieldValue')
+        return self
+
+
 class GetUserResponseBodyOrganizationalUnits(TeaModel):
     def __init__(
         self,
@@ -1288,6 +1556,7 @@ class GetUserResponseBody(TeaModel):
         self,
         account_expire_time: int = None,
         create_time: int = None,
+        custom_fields: List[GetUserResponseBodyCustomFields] = None,
         description: str = None,
         display_name: str = None,
         email: str = None,
@@ -1295,6 +1564,7 @@ class GetUserResponseBody(TeaModel):
         instance_id: str = None,
         lock_expire_time: int = None,
         organizational_units: List[GetUserResponseBodyOrganizationalUnits] = None,
+        password_set: bool = None,
         phone_number: str = None,
         phone_number_verified: bool = None,
         phone_region: str = None,
@@ -1310,6 +1580,7 @@ class GetUserResponseBody(TeaModel):
     ):
         self.account_expire_time = account_expire_time
         self.create_time = create_time
+        self.custom_fields = custom_fields
         self.description = description
         self.display_name = display_name
         self.email = email
@@ -1317,6 +1588,7 @@ class GetUserResponseBody(TeaModel):
         self.instance_id = instance_id
         self.lock_expire_time = lock_expire_time
         self.organizational_units = organizational_units
+        self.password_set = password_set
         self.phone_number = phone_number
         self.phone_number_verified = phone_number_verified
         self.phone_region = phone_region
@@ -1331,6 +1603,10 @@ class GetUserResponseBody(TeaModel):
         self.username = username
 
     def validate(self):
+        if self.custom_fields:
+            for k in self.custom_fields:
+                if k:
+                    k.validate()
         if self.organizational_units:
             for k in self.organizational_units:
                 if k:
@@ -1346,6 +1622,10 @@ class GetUserResponseBody(TeaModel):
             result['accountExpireTime'] = self.account_expire_time
         if self.create_time is not None:
             result['createTime'] = self.create_time
+        result['customFields'] = []
+        if self.custom_fields is not None:
+            for k in self.custom_fields:
+                result['customFields'].append(k.to_map() if k else None)
         if self.description is not None:
             result['description'] = self.description
         if self.display_name is not None:
@@ -1362,6 +1642,8 @@ class GetUserResponseBody(TeaModel):
         if self.organizational_units is not None:
             for k in self.organizational_units:
                 result['organizationalUnits'].append(k.to_map() if k else None)
+        if self.password_set is not None:
+            result['passwordSet'] = self.password_set
         if self.phone_number is not None:
             result['phoneNumber'] = self.phone_number
         if self.phone_number_verified is not None:
@@ -1394,6 +1676,11 @@ class GetUserResponseBody(TeaModel):
             self.account_expire_time = m.get('accountExpireTime')
         if m.get('createTime') is not None:
             self.create_time = m.get('createTime')
+        self.custom_fields = []
+        if m.get('customFields') is not None:
+            for k in m.get('customFields'):
+                temp_model = GetUserResponseBodyCustomFields()
+                self.custom_fields.append(temp_model.from_map(k))
         if m.get('description') is not None:
             self.description = m.get('description')
         if m.get('displayName') is not None:
@@ -1411,6 +1698,8 @@ class GetUserResponseBody(TeaModel):
             for k in m.get('organizationalUnits'):
                 temp_model = GetUserResponseBodyOrganizationalUnits()
                 self.organizational_units.append(temp_model.from_map(k))
+        if m.get('passwordSet') is not None:
+            self.password_set = m.get('passwordSet')
         if m.get('phoneNumber') is not None:
             self.phone_number = m.get('phoneNumber')
         if m.get('phoneNumberVerified') is not None:
@@ -2517,6 +2806,7 @@ class ListUsersResponseBodyData(TeaModel):
         email_verified: bool = None,
         instance_id: str = None,
         lock_expire_time: int = None,
+        password_set: bool = None,
         phone_number: str = None,
         phone_number_verified: bool = None,
         phone_region: str = None,
@@ -2537,6 +2827,7 @@ class ListUsersResponseBodyData(TeaModel):
         self.email_verified = email_verified
         self.instance_id = instance_id
         self.lock_expire_time = lock_expire_time
+        self.password_set = password_set
         self.phone_number = phone_number
         self.phone_number_verified = phone_number_verified
         self.phone_region = phone_region
@@ -2574,6 +2865,8 @@ class ListUsersResponseBodyData(TeaModel):
             result['instanceId'] = self.instance_id
         if self.lock_expire_time is not None:
             result['lockExpireTime'] = self.lock_expire_time
+        if self.password_set is not None:
+            result['passwordSet'] = self.password_set
         if self.phone_number is not None:
             result['phoneNumber'] = self.phone_number
         if self.phone_number_verified is not None:
@@ -2616,6 +2909,8 @@ class ListUsersResponseBodyData(TeaModel):
             self.instance_id = m.get('instanceId')
         if m.get('lockExpireTime') is not None:
             self.lock_expire_time = m.get('lockExpireTime')
+        if m.get('passwordSet') is not None:
+            self.password_set = m.get('passwordSet')
         if m.get('phoneNumber') is not None:
             self.phone_number = m.get('phoneNumber')
         if m.get('phoneNumberVerified') is not None:
@@ -2859,24 +3154,16 @@ class PatchUserHeaders(TeaModel):
         return self
 
 
-class PatchUserRequest(TeaModel):
+class PatchUserRequestCustomFields(TeaModel):
     def __init__(
         self,
-        display_name: str = None,
-        email: str = None,
-        email_verified: bool = None,
-        phone_number: str = None,
-        phone_number_verified: bool = None,
-        phone_region: str = None,
-        username: str = None,
+        field_name: str = None,
+        field_value: str = None,
+        operator: str = None,
     ):
-        self.display_name = display_name
-        self.email = email
-        self.email_verified = email_verified
-        self.phone_number = phone_number
-        self.phone_number_verified = phone_number_verified
-        self.phone_region = phone_region
-        self.username = username
+        self.field_name = field_name
+        self.field_value = field_value
+        self.operator = operator
 
     def validate(self):
         pass
@@ -2887,6 +3174,62 @@ class PatchUserRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.field_name is not None:
+            result['fieldName'] = self.field_name
+        if self.field_value is not None:
+            result['fieldValue'] = self.field_value
+        if self.operator is not None:
+            result['operator'] = self.operator
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('fieldName') is not None:
+            self.field_name = m.get('fieldName')
+        if m.get('fieldValue') is not None:
+            self.field_value = m.get('fieldValue')
+        if m.get('operator') is not None:
+            self.operator = m.get('operator')
+        return self
+
+
+class PatchUserRequest(TeaModel):
+    def __init__(
+        self,
+        custom_fields: List[PatchUserRequestCustomFields] = None,
+        display_name: str = None,
+        email: str = None,
+        email_verified: bool = None,
+        phone_number: str = None,
+        phone_number_verified: bool = None,
+        phone_region: str = None,
+        username: str = None,
+    ):
+        self.custom_fields = custom_fields
+        self.display_name = display_name
+        self.email = email
+        self.email_verified = email_verified
+        self.phone_number = phone_number
+        self.phone_number_verified = phone_number_verified
+        self.phone_region = phone_region
+        self.username = username
+
+    def validate(self):
+        if self.custom_fields:
+            for k in self.custom_fields:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['customFields'] = []
+        if self.custom_fields is not None:
+            for k in self.custom_fields:
+                result['customFields'].append(k.to_map() if k else None)
         if self.display_name is not None:
             result['displayName'] = self.display_name
         if self.email is not None:
@@ -2905,6 +3248,11 @@ class PatchUserRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.custom_fields = []
+        if m.get('customFields') is not None:
+            for k in m.get('customFields'):
+                temp_model = PatchUserRequestCustomFields()
+                self.custom_fields.append(temp_model.from_map(k))
         if m.get('displayName') is not None:
             self.display_name = m.get('displayName')
         if m.get('email') is not None:
