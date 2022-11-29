@@ -92,104 +92,6 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
-    def create_certificate_with_extension_with_options(
-        self,
-        request: cas_20200630_models.CreateCertificateWithExtensionRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.CreateCertificateWithExtensionResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['AfterTime'] = request.after_time
-        query['AlgorithmKeySize'] = request.algorithm_key_size
-        query['AliasName'] = request.alias_name
-        query['AppendCrl'] = request.append_crl
-        query['BasicConstraintsCritical'] = request.basic_constraints_critical
-        query['BeforeTime'] = request.before_time
-        query['CertType'] = request.cert_type
-        query['CommonName'] = request.common_name
-        query['CountryCode'] = request.country_code
-        query['CsrPemString'] = request.csr_pem_string
-        query['Locality'] = request.locality
-        query['Organization'] = request.organization
-        query['OrganizationUnit'] = request.organization_unit
-        query['ParentIdentifier'] = request.parent_identifier
-        query['Sans'] = request.sans
-        query['State'] = request.state
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CreateCertificateWithExtension',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cas_20200630_models.CreateCertificateWithExtensionResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def create_certificate_with_extension_with_options_async(
-        self,
-        request: cas_20200630_models.CreateCertificateWithExtensionRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.CreateCertificateWithExtensionResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['AfterTime'] = request.after_time
-        query['AlgorithmKeySize'] = request.algorithm_key_size
-        query['AliasName'] = request.alias_name
-        query['AppendCrl'] = request.append_crl
-        query['BasicConstraintsCritical'] = request.basic_constraints_critical
-        query['BeforeTime'] = request.before_time
-        query['CertType'] = request.cert_type
-        query['CommonName'] = request.common_name
-        query['CountryCode'] = request.country_code
-        query['CsrPemString'] = request.csr_pem_string
-        query['Locality'] = request.locality
-        query['Organization'] = request.organization
-        query['OrganizationUnit'] = request.organization_unit
-        query['ParentIdentifier'] = request.parent_identifier
-        query['Sans'] = request.sans
-        query['State'] = request.state
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CreateCertificateWithExtension',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cas_20200630_models.CreateCertificateWithExtensionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def create_certificate_with_extension(
-        self,
-        request: cas_20200630_models.CreateCertificateWithExtensionRequest,
-    ) -> cas_20200630_models.CreateCertificateWithExtensionResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.create_certificate_with_extension_with_options(request, runtime)
-
-    async def create_certificate_with_extension_async(
-        self,
-        request: cas_20200630_models.CreateCertificateWithExtensionRequest,
-    ) -> cas_20200630_models.CreateCertificateWithExtensionResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.create_certificate_with_extension_with_options_async(request, runtime)
-
     def create_client_certificate_with_options(
         self,
         request: cas_20200630_models.CreateClientCertificateRequest,
@@ -197,14 +99,40 @@ class Client(OpenApiClient):
     ) -> cas_20200630_models.CreateClientCertificateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AfterTime'] = request.after_time
-        query['Algorithm'] = request.algorithm
-        query['BeforeTime'] = request.before_time
-        query['CommonName'] = request.common_name
-        query['Days'] = request.days
-        query['ParentIdentifier'] = request.parent_identifier
-        query['SanType'] = request.san_type
-        query['SanValue'] = request.san_value
+        if not UtilClient.is_unset(request.after_time):
+            query['AfterTime'] = request.after_time
+        if not UtilClient.is_unset(request.algorithm):
+            query['Algorithm'] = request.algorithm
+        if not UtilClient.is_unset(request.before_time):
+            query['BeforeTime'] = request.before_time
+        if not UtilClient.is_unset(request.common_name):
+            query['CommonName'] = request.common_name
+        if not UtilClient.is_unset(request.country):
+            query['Country'] = request.country
+        if not UtilClient.is_unset(request.csr):
+            query['Csr'] = request.csr
+        if not UtilClient.is_unset(request.days):
+            query['Days'] = request.days
+        if not UtilClient.is_unset(request.immediately):
+            query['Immediately'] = request.immediately
+        if not UtilClient.is_unset(request.locality):
+            query['Locality'] = request.locality
+        if not UtilClient.is_unset(request.months):
+            query['Months'] = request.months
+        if not UtilClient.is_unset(request.organization):
+            query['Organization'] = request.organization
+        if not UtilClient.is_unset(request.organization_unit):
+            query['OrganizationUnit'] = request.organization_unit
+        if not UtilClient.is_unset(request.parent_identifier):
+            query['ParentIdentifier'] = request.parent_identifier
+        if not UtilClient.is_unset(request.san_type):
+            query['SanType'] = request.san_type
+        if not UtilClient.is_unset(request.san_value):
+            query['SanValue'] = request.san_value
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
+        if not UtilClient.is_unset(request.years):
+            query['Years'] = request.years
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -231,14 +159,40 @@ class Client(OpenApiClient):
     ) -> cas_20200630_models.CreateClientCertificateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AfterTime'] = request.after_time
-        query['Algorithm'] = request.algorithm
-        query['BeforeTime'] = request.before_time
-        query['CommonName'] = request.common_name
-        query['Days'] = request.days
-        query['ParentIdentifier'] = request.parent_identifier
-        query['SanType'] = request.san_type
-        query['SanValue'] = request.san_value
+        if not UtilClient.is_unset(request.after_time):
+            query['AfterTime'] = request.after_time
+        if not UtilClient.is_unset(request.algorithm):
+            query['Algorithm'] = request.algorithm
+        if not UtilClient.is_unset(request.before_time):
+            query['BeforeTime'] = request.before_time
+        if not UtilClient.is_unset(request.common_name):
+            query['CommonName'] = request.common_name
+        if not UtilClient.is_unset(request.country):
+            query['Country'] = request.country
+        if not UtilClient.is_unset(request.csr):
+            query['Csr'] = request.csr
+        if not UtilClient.is_unset(request.days):
+            query['Days'] = request.days
+        if not UtilClient.is_unset(request.immediately):
+            query['Immediately'] = request.immediately
+        if not UtilClient.is_unset(request.locality):
+            query['Locality'] = request.locality
+        if not UtilClient.is_unset(request.months):
+            query['Months'] = request.months
+        if not UtilClient.is_unset(request.organization):
+            query['Organization'] = request.organization
+        if not UtilClient.is_unset(request.organization_unit):
+            query['OrganizationUnit'] = request.organization_unit
+        if not UtilClient.is_unset(request.parent_identifier):
+            query['ParentIdentifier'] = request.parent_identifier
+        if not UtilClient.is_unset(request.san_type):
+            query['SanType'] = request.san_type
+        if not UtilClient.is_unset(request.san_value):
+            query['SanValue'] = request.san_value
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
+        if not UtilClient.is_unset(request.years):
+            query['Years'] = request.years
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -279,13 +233,42 @@ class Client(OpenApiClient):
     ) -> cas_20200630_models.CreateClientCertificateWithCsrResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AfterTime'] = request.after_time
-        query['BeforeTime'] = request.before_time
-        query['Csr'] = request.csr
-        query['Days'] = request.days
-        query['ParentIdentifier'] = request.parent_identifier
-        query['SanType'] = request.san_type
-        query['SanValue'] = request.san_value
+        if not UtilClient.is_unset(request.after_time):
+            query['AfterTime'] = request.after_time
+        if not UtilClient.is_unset(request.algorithm):
+            query['Algorithm'] = request.algorithm
+        if not UtilClient.is_unset(request.before_time):
+            query['BeforeTime'] = request.before_time
+        if not UtilClient.is_unset(request.common_name):
+            query['CommonName'] = request.common_name
+        if not UtilClient.is_unset(request.country):
+            query['Country'] = request.country
+        if not UtilClient.is_unset(request.csr):
+            query['Csr'] = request.csr
+        if not UtilClient.is_unset(request.csr_1):
+            query['Csr1'] = request.csr_1
+        if not UtilClient.is_unset(request.days):
+            query['Days'] = request.days
+        if not UtilClient.is_unset(request.immediately):
+            query['Immediately'] = request.immediately
+        if not UtilClient.is_unset(request.locality):
+            query['Locality'] = request.locality
+        if not UtilClient.is_unset(request.months):
+            query['Months'] = request.months
+        if not UtilClient.is_unset(request.organization):
+            query['Organization'] = request.organization
+        if not UtilClient.is_unset(request.organization_unit):
+            query['OrganizationUnit'] = request.organization_unit
+        if not UtilClient.is_unset(request.parent_identifier):
+            query['ParentIdentifier'] = request.parent_identifier
+        if not UtilClient.is_unset(request.san_type):
+            query['SanType'] = request.san_type
+        if not UtilClient.is_unset(request.san_value):
+            query['SanValue'] = request.san_value
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
+        if not UtilClient.is_unset(request.years):
+            query['Years'] = request.years
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -312,13 +295,42 @@ class Client(OpenApiClient):
     ) -> cas_20200630_models.CreateClientCertificateWithCsrResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AfterTime'] = request.after_time
-        query['BeforeTime'] = request.before_time
-        query['Csr'] = request.csr
-        query['Days'] = request.days
-        query['ParentIdentifier'] = request.parent_identifier
-        query['SanType'] = request.san_type
-        query['SanValue'] = request.san_value
+        if not UtilClient.is_unset(request.after_time):
+            query['AfterTime'] = request.after_time
+        if not UtilClient.is_unset(request.algorithm):
+            query['Algorithm'] = request.algorithm
+        if not UtilClient.is_unset(request.before_time):
+            query['BeforeTime'] = request.before_time
+        if not UtilClient.is_unset(request.common_name):
+            query['CommonName'] = request.common_name
+        if not UtilClient.is_unset(request.country):
+            query['Country'] = request.country
+        if not UtilClient.is_unset(request.csr):
+            query['Csr'] = request.csr
+        if not UtilClient.is_unset(request.csr_1):
+            query['Csr1'] = request.csr_1
+        if not UtilClient.is_unset(request.days):
+            query['Days'] = request.days
+        if not UtilClient.is_unset(request.immediately):
+            query['Immediately'] = request.immediately
+        if not UtilClient.is_unset(request.locality):
+            query['Locality'] = request.locality
+        if not UtilClient.is_unset(request.months):
+            query['Months'] = request.months
+        if not UtilClient.is_unset(request.organization):
+            query['Organization'] = request.organization
+        if not UtilClient.is_unset(request.organization_unit):
+            query['OrganizationUnit'] = request.organization_unit
+        if not UtilClient.is_unset(request.parent_identifier):
+            query['ParentIdentifier'] = request.parent_identifier
+        if not UtilClient.is_unset(request.san_type):
+            query['SanType'] = request.san_type
+        if not UtilClient.is_unset(request.san_value):
+            query['SanValue'] = request.san_value
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
+        if not UtilClient.is_unset(request.years):
+            query['Years'] = request.years
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -359,7 +371,8 @@ class Client(OpenApiClient):
     ) -> cas_20200630_models.CreateRevokeClientCertificateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Identifier'] = request.identifier
+        if not UtilClient.is_unset(request.identifier):
+            query['Identifier'] = request.identifier
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -386,7 +399,8 @@ class Client(OpenApiClient):
     ) -> cas_20200630_models.CreateRevokeClientCertificateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Identifier'] = request.identifier
+        if not UtilClient.is_unset(request.identifier):
+            query['Identifier'] = request.identifier
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -427,14 +441,22 @@ class Client(OpenApiClient):
     ) -> cas_20200630_models.CreateRootCACertificateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Algorithm'] = request.algorithm
-        query['CommonName'] = request.common_name
-        query['CountryCode'] = request.country_code
-        query['Locality'] = request.locality
-        query['Organization'] = request.organization
-        query['OrganizationUnit'] = request.organization_unit
-        query['State'] = request.state
-        query['Years'] = request.years
+        if not UtilClient.is_unset(request.algorithm):
+            query['Algorithm'] = request.algorithm
+        if not UtilClient.is_unset(request.common_name):
+            query['CommonName'] = request.common_name
+        if not UtilClient.is_unset(request.country_code):
+            query['CountryCode'] = request.country_code
+        if not UtilClient.is_unset(request.locality):
+            query['Locality'] = request.locality
+        if not UtilClient.is_unset(request.organization):
+            query['Organization'] = request.organization
+        if not UtilClient.is_unset(request.organization_unit):
+            query['OrganizationUnit'] = request.organization_unit
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
+        if not UtilClient.is_unset(request.years):
+            query['Years'] = request.years
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -461,14 +483,22 @@ class Client(OpenApiClient):
     ) -> cas_20200630_models.CreateRootCACertificateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Algorithm'] = request.algorithm
-        query['CommonName'] = request.common_name
-        query['CountryCode'] = request.country_code
-        query['Locality'] = request.locality
-        query['Organization'] = request.organization
-        query['OrganizationUnit'] = request.organization_unit
-        query['State'] = request.state
-        query['Years'] = request.years
+        if not UtilClient.is_unset(request.algorithm):
+            query['Algorithm'] = request.algorithm
+        if not UtilClient.is_unset(request.common_name):
+            query['CommonName'] = request.common_name
+        if not UtilClient.is_unset(request.country_code):
+            query['CountryCode'] = request.country_code
+        if not UtilClient.is_unset(request.locality):
+            query['Locality'] = request.locality
+        if not UtilClient.is_unset(request.organization):
+            query['Organization'] = request.organization
+        if not UtilClient.is_unset(request.organization_unit):
+            query['OrganizationUnit'] = request.organization_unit
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
+        if not UtilClient.is_unset(request.years):
+            query['Years'] = request.years
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -509,13 +539,38 @@ class Client(OpenApiClient):
     ) -> cas_20200630_models.CreateServerCertificateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AfterTime'] = request.after_time
-        query['Algorithm'] = request.algorithm
-        query['BeforeTime'] = request.before_time
-        query['CommonName'] = request.common_name
-        query['Days'] = request.days
-        query['Domain'] = request.domain
-        query['ParentIdentifier'] = request.parent_identifier
+        if not UtilClient.is_unset(request.after_time):
+            query['AfterTime'] = request.after_time
+        if not UtilClient.is_unset(request.algorithm):
+            query['Algorithm'] = request.algorithm
+        if not UtilClient.is_unset(request.before_time):
+            query['BeforeTime'] = request.before_time
+        if not UtilClient.is_unset(request.common_name):
+            query['CommonName'] = request.common_name
+        if not UtilClient.is_unset(request.country):
+            query['Country'] = request.country
+        if not UtilClient.is_unset(request.csr):
+            query['Csr'] = request.csr
+        if not UtilClient.is_unset(request.days):
+            query['Days'] = request.days
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.immediately):
+            query['Immediately'] = request.immediately
+        if not UtilClient.is_unset(request.locality):
+            query['Locality'] = request.locality
+        if not UtilClient.is_unset(request.months):
+            query['Months'] = request.months
+        if not UtilClient.is_unset(request.organization):
+            query['Organization'] = request.organization
+        if not UtilClient.is_unset(request.organization_unit):
+            query['OrganizationUnit'] = request.organization_unit
+        if not UtilClient.is_unset(request.parent_identifier):
+            query['ParentIdentifier'] = request.parent_identifier
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
+        if not UtilClient.is_unset(request.years):
+            query['Years'] = request.years
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -542,13 +597,38 @@ class Client(OpenApiClient):
     ) -> cas_20200630_models.CreateServerCertificateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AfterTime'] = request.after_time
-        query['Algorithm'] = request.algorithm
-        query['BeforeTime'] = request.before_time
-        query['CommonName'] = request.common_name
-        query['Days'] = request.days
-        query['Domain'] = request.domain
-        query['ParentIdentifier'] = request.parent_identifier
+        if not UtilClient.is_unset(request.after_time):
+            query['AfterTime'] = request.after_time
+        if not UtilClient.is_unset(request.algorithm):
+            query['Algorithm'] = request.algorithm
+        if not UtilClient.is_unset(request.before_time):
+            query['BeforeTime'] = request.before_time
+        if not UtilClient.is_unset(request.common_name):
+            query['CommonName'] = request.common_name
+        if not UtilClient.is_unset(request.country):
+            query['Country'] = request.country
+        if not UtilClient.is_unset(request.csr):
+            query['Csr'] = request.csr
+        if not UtilClient.is_unset(request.days):
+            query['Days'] = request.days
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.immediately):
+            query['Immediately'] = request.immediately
+        if not UtilClient.is_unset(request.locality):
+            query['Locality'] = request.locality
+        if not UtilClient.is_unset(request.months):
+            query['Months'] = request.months
+        if not UtilClient.is_unset(request.organization):
+            query['Organization'] = request.organization
+        if not UtilClient.is_unset(request.organization_unit):
+            query['OrganizationUnit'] = request.organization_unit
+        if not UtilClient.is_unset(request.parent_identifier):
+            query['ParentIdentifier'] = request.parent_identifier
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
+        if not UtilClient.is_unset(request.years):
+            query['Years'] = request.years
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -589,12 +669,40 @@ class Client(OpenApiClient):
     ) -> cas_20200630_models.CreateServerCertificateWithCsrResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AfterTime'] = request.after_time
-        query['BeforeTime'] = request.before_time
-        query['Csr'] = request.csr
-        query['Days'] = request.days
-        query['Domain'] = request.domain
-        query['ParentIdentifier'] = request.parent_identifier
+        if not UtilClient.is_unset(request.after_time):
+            query['AfterTime'] = request.after_time
+        if not UtilClient.is_unset(request.algorithm):
+            query['Algorithm'] = request.algorithm
+        if not UtilClient.is_unset(request.before_time):
+            query['BeforeTime'] = request.before_time
+        if not UtilClient.is_unset(request.common_name):
+            query['CommonName'] = request.common_name
+        if not UtilClient.is_unset(request.country):
+            query['Country'] = request.country
+        if not UtilClient.is_unset(request.csr):
+            query['Csr'] = request.csr
+        if not UtilClient.is_unset(request.csr_1):
+            query['Csr1'] = request.csr_1
+        if not UtilClient.is_unset(request.days):
+            query['Days'] = request.days
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.immediately):
+            query['Immediately'] = request.immediately
+        if not UtilClient.is_unset(request.locality):
+            query['Locality'] = request.locality
+        if not UtilClient.is_unset(request.months):
+            query['Months'] = request.months
+        if not UtilClient.is_unset(request.organization):
+            query['Organization'] = request.organization
+        if not UtilClient.is_unset(request.organization_unit):
+            query['OrganizationUnit'] = request.organization_unit
+        if not UtilClient.is_unset(request.parent_identifier):
+            query['ParentIdentifier'] = request.parent_identifier
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
+        if not UtilClient.is_unset(request.years):
+            query['Years'] = request.years
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -621,12 +729,40 @@ class Client(OpenApiClient):
     ) -> cas_20200630_models.CreateServerCertificateWithCsrResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['AfterTime'] = request.after_time
-        query['BeforeTime'] = request.before_time
-        query['Csr'] = request.csr
-        query['Days'] = request.days
-        query['Domain'] = request.domain
-        query['ParentIdentifier'] = request.parent_identifier
+        if not UtilClient.is_unset(request.after_time):
+            query['AfterTime'] = request.after_time
+        if not UtilClient.is_unset(request.algorithm):
+            query['Algorithm'] = request.algorithm
+        if not UtilClient.is_unset(request.before_time):
+            query['BeforeTime'] = request.before_time
+        if not UtilClient.is_unset(request.common_name):
+            query['CommonName'] = request.common_name
+        if not UtilClient.is_unset(request.country):
+            query['Country'] = request.country
+        if not UtilClient.is_unset(request.csr):
+            query['Csr'] = request.csr
+        if not UtilClient.is_unset(request.csr_1):
+            query['Csr1'] = request.csr_1
+        if not UtilClient.is_unset(request.days):
+            query['Days'] = request.days
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.immediately):
+            query['Immediately'] = request.immediately
+        if not UtilClient.is_unset(request.locality):
+            query['Locality'] = request.locality
+        if not UtilClient.is_unset(request.months):
+            query['Months'] = request.months
+        if not UtilClient.is_unset(request.organization):
+            query['Organization'] = request.organization
+        if not UtilClient.is_unset(request.organization_unit):
+            query['OrganizationUnit'] = request.organization_unit
+        if not UtilClient.is_unset(request.parent_identifier):
+            query['ParentIdentifier'] = request.parent_identifier
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
+        if not UtilClient.is_unset(request.years):
+            query['Years'] = request.years
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -667,15 +803,24 @@ class Client(OpenApiClient):
     ) -> cas_20200630_models.CreateSubCACertificateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Algorithm'] = request.algorithm
-        query['CommonName'] = request.common_name
-        query['CountryCode'] = request.country_code
-        query['Locality'] = request.locality
-        query['Organization'] = request.organization
-        query['OrganizationUnit'] = request.organization_unit
-        query['ParentIdentifier'] = request.parent_identifier
-        query['State'] = request.state
-        query['Years'] = request.years
+        if not UtilClient.is_unset(request.algorithm):
+            query['Algorithm'] = request.algorithm
+        if not UtilClient.is_unset(request.common_name):
+            query['CommonName'] = request.common_name
+        if not UtilClient.is_unset(request.country_code):
+            query['CountryCode'] = request.country_code
+        if not UtilClient.is_unset(request.locality):
+            query['Locality'] = request.locality
+        if not UtilClient.is_unset(request.organization):
+            query['Organization'] = request.organization
+        if not UtilClient.is_unset(request.organization_unit):
+            query['OrganizationUnit'] = request.organization_unit
+        if not UtilClient.is_unset(request.parent_identifier):
+            query['ParentIdentifier'] = request.parent_identifier
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
+        if not UtilClient.is_unset(request.years):
+            query['Years'] = request.years
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -702,15 +847,24 @@ class Client(OpenApiClient):
     ) -> cas_20200630_models.CreateSubCACertificateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Algorithm'] = request.algorithm
-        query['CommonName'] = request.common_name
-        query['CountryCode'] = request.country_code
-        query['Locality'] = request.locality
-        query['Organization'] = request.organization
-        query['OrganizationUnit'] = request.organization_unit
-        query['ParentIdentifier'] = request.parent_identifier
-        query['State'] = request.state
-        query['Years'] = request.years
+        if not UtilClient.is_unset(request.algorithm):
+            query['Algorithm'] = request.algorithm
+        if not UtilClient.is_unset(request.common_name):
+            query['CommonName'] = request.common_name
+        if not UtilClient.is_unset(request.country_code):
+            query['CountryCode'] = request.country_code
+        if not UtilClient.is_unset(request.locality):
+            query['Locality'] = request.locality
+        if not UtilClient.is_unset(request.organization):
+            query['Organization'] = request.organization
+        if not UtilClient.is_unset(request.organization_unit):
+            query['OrganizationUnit'] = request.organization_unit
+        if not UtilClient.is_unset(request.parent_identifier):
+            query['ParentIdentifier'] = request.parent_identifier
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
+        if not UtilClient.is_unset(request.years):
+            query['Years'] = request.years
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -751,7 +905,8 @@ class Client(OpenApiClient):
     ) -> cas_20200630_models.DeleteClientCertificateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Identifier'] = request.identifier
+        if not UtilClient.is_unset(request.identifier):
+            query['Identifier'] = request.identifier
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -778,7 +933,8 @@ class Client(OpenApiClient):
     ) -> cas_20200630_models.DeleteClientCertificateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Identifier'] = request.identifier
+        if not UtilClient.is_unset(request.identifier):
+            query['Identifier'] = request.identifier
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -819,7 +975,8 @@ class Client(OpenApiClient):
     ) -> cas_20200630_models.DescribeCACertificateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Identifier'] = request.identifier
+        if not UtilClient.is_unset(request.identifier):
+            query['Identifier'] = request.identifier
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -846,7 +1003,8 @@ class Client(OpenApiClient):
     ) -> cas_20200630_models.DescribeCACertificateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Identifier'] = request.identifier
+        if not UtilClient.is_unset(request.identifier):
+            query['Identifier'] = request.identifier
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -937,8 +1095,10 @@ class Client(OpenApiClient):
     ) -> cas_20200630_models.DescribeCACertificateListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CurrentPage'] = request.current_page
-        query['ShowSize'] = request.show_size
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.show_size):
+            query['ShowSize'] = request.show_size
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -965,8 +1125,10 @@ class Client(OpenApiClient):
     ) -> cas_20200630_models.DescribeCACertificateListResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CurrentPage'] = request.current_page
-        query['ShowSize'] = request.show_size
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.show_size):
+            query['ShowSize'] = request.show_size
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1007,8 +1169,10 @@ class Client(OpenApiClient):
     ) -> cas_20200630_models.DescribeCertificatePrivateKeyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EncryptedCode'] = request.encrypted_code
-        query['Identifier'] = request.identifier
+        if not UtilClient.is_unset(request.encrypted_code):
+            query['EncryptedCode'] = request.encrypted_code
+        if not UtilClient.is_unset(request.identifier):
+            query['Identifier'] = request.identifier
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1035,8 +1199,10 @@ class Client(OpenApiClient):
     ) -> cas_20200630_models.DescribeCertificatePrivateKeyResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['EncryptedCode'] = request.encrypted_code
-        query['Identifier'] = request.identifier
+        if not UtilClient.is_unset(request.encrypted_code):
+            query['EncryptedCode'] = request.encrypted_code
+        if not UtilClient.is_unset(request.identifier):
+            query['Identifier'] = request.identifier
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1077,7 +1243,8 @@ class Client(OpenApiClient):
     ) -> cas_20200630_models.DescribeClientCertificateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Identifier'] = request.identifier
+        if not UtilClient.is_unset(request.identifier):
+            query['Identifier'] = request.identifier
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1104,7 +1271,8 @@ class Client(OpenApiClient):
     ) -> cas_20200630_models.DescribeClientCertificateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Identifier'] = request.identifier
+        if not UtilClient.is_unset(request.identifier):
+            query['Identifier'] = request.identifier
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1138,74 +1306,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_client_certificate_with_options_async(request, runtime)
 
-    def describe_client_certificate_for_serial_number_with_options(
-        self,
-        request: cas_20200630_models.DescribeClientCertificateForSerialNumberRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.DescribeClientCertificateForSerialNumberResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['SerialNumber'] = request.serial_number
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeClientCertificateForSerialNumber',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cas_20200630_models.DescribeClientCertificateForSerialNumberResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_client_certificate_for_serial_number_with_options_async(
-        self,
-        request: cas_20200630_models.DescribeClientCertificateForSerialNumberRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.DescribeClientCertificateForSerialNumberResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['SerialNumber'] = request.serial_number
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeClientCertificateForSerialNumber',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cas_20200630_models.DescribeClientCertificateForSerialNumberResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_client_certificate_for_serial_number(
-        self,
-        request: cas_20200630_models.DescribeClientCertificateForSerialNumberRequest,
-    ) -> cas_20200630_models.DescribeClientCertificateForSerialNumberResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_client_certificate_for_serial_number_with_options(request, runtime)
-
-    async def describe_client_certificate_for_serial_number_async(
-        self,
-        request: cas_20200630_models.DescribeClientCertificateForSerialNumberRequest,
-    ) -> cas_20200630_models.DescribeClientCertificateForSerialNumberResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_client_certificate_for_serial_number_with_options_async(request, runtime)
-
     def describe_client_certificate_status_with_options(
         self,
         request: cas_20200630_models.DescribeClientCertificateStatusRequest,
@@ -1213,7 +1313,8 @@ class Client(OpenApiClient):
     ) -> cas_20200630_models.DescribeClientCertificateStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Identifier'] = request.identifier
+        if not UtilClient.is_unset(request.identifier):
+            query['Identifier'] = request.identifier
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1240,7 +1341,8 @@ class Client(OpenApiClient):
     ) -> cas_20200630_models.DescribeClientCertificateStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Identifier'] = request.identifier
+        if not UtilClient.is_unset(request.identifier):
+            query['Identifier'] = request.identifier
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1274,74 +1376,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_client_certificate_status_with_options_async(request, runtime)
 
-    def describe_client_certificate_status_for_serial_number_with_options(
-        self,
-        request: cas_20200630_models.DescribeClientCertificateStatusForSerialNumberRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.DescribeClientCertificateStatusForSerialNumberResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['SerialNumber'] = request.serial_number
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeClientCertificateStatusForSerialNumber',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cas_20200630_models.DescribeClientCertificateStatusForSerialNumberResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_client_certificate_status_for_serial_number_with_options_async(
-        self,
-        request: cas_20200630_models.DescribeClientCertificateStatusForSerialNumberRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.DescribeClientCertificateStatusForSerialNumberResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['SerialNumber'] = request.serial_number
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeClientCertificateStatusForSerialNumber',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cas_20200630_models.DescribeClientCertificateStatusForSerialNumberResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_client_certificate_status_for_serial_number(
-        self,
-        request: cas_20200630_models.DescribeClientCertificateStatusForSerialNumberRequest,
-    ) -> cas_20200630_models.DescribeClientCertificateStatusForSerialNumberResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_client_certificate_status_for_serial_number_with_options(request, runtime)
-
-    async def describe_client_certificate_status_for_serial_number_async(
-        self,
-        request: cas_20200630_models.DescribeClientCertificateStatusForSerialNumberRequest,
-    ) -> cas_20200630_models.DescribeClientCertificateStatusForSerialNumberResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_client_certificate_status_for_serial_number_with_options_async(request, runtime)
-
     def get_cainstance_status_with_options(
         self,
         request: cas_20200630_models.GetCAInstanceStatusRequest,
@@ -1349,7 +1383,8 @@ class Client(OpenApiClient):
     ) -> cas_20200630_models.GetCAInstanceStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1376,7 +1411,8 @@ class Client(OpenApiClient):
     ) -> cas_20200630_models.GetCAInstanceStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1410,74 +1446,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_cainstance_status_with_options_async(request, runtime)
 
-    def list_cacertificate_log_with_options(
-        self,
-        request: cas_20200630_models.ListCACertificateLogRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.ListCACertificateLogResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['Identifier'] = request.identifier
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListCACertificateLog',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cas_20200630_models.ListCACertificateLogResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def list_cacertificate_log_with_options_async(
-        self,
-        request: cas_20200630_models.ListCACertificateLogRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.ListCACertificateLogResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        query['Identifier'] = request.identifier
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListCACertificateLog',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cas_20200630_models.ListCACertificateLogResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def list_cacertificate_log(
-        self,
-        request: cas_20200630_models.ListCACertificateLogRequest,
-    ) -> cas_20200630_models.ListCACertificateLogResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.list_cacertificate_log_with_options(request, runtime)
-
-    async def list_cacertificate_log_async(
-        self,
-        request: cas_20200630_models.ListCACertificateLogRequest,
-    ) -> cas_20200630_models.ListCACertificateLogResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.list_cacertificate_log_with_options_async(request, runtime)
-
     def list_client_certificate_with_options(
         self,
         request: cas_20200630_models.ListClientCertificateRequest,
@@ -1485,8 +1453,10 @@ class Client(OpenApiClient):
     ) -> cas_20200630_models.ListClientCertificateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CurrentPage'] = request.current_page
-        query['ShowSize'] = request.show_size
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.show_size):
+            query['ShowSize'] = request.show_size
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1513,8 +1483,10 @@ class Client(OpenApiClient):
     ) -> cas_20200630_models.ListClientCertificateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CurrentPage'] = request.current_page
-        query['ShowSize'] = request.show_size
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.show_size):
+            query['ShowSize'] = request.show_size
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1555,8 +1527,10 @@ class Client(OpenApiClient):
     ) -> cas_20200630_models.ListRevokeCertificateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CurrentPage'] = request.current_page
-        query['ShowSize'] = request.show_size
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.show_size):
+            query['ShowSize'] = request.show_size
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1583,8 +1557,10 @@ class Client(OpenApiClient):
     ) -> cas_20200630_models.ListRevokeCertificateResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['CurrentPage'] = request.current_page
-        query['ShowSize'] = request.show_size
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.show_size):
+            query['ShowSize'] = request.show_size
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1625,8 +1601,10 @@ class Client(OpenApiClient):
     ) -> cas_20200630_models.UpdateCACertificateStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Identifier'] = request.identifier
-        query['Status'] = request.status
+        if not UtilClient.is_unset(request.identifier):
+            query['Identifier'] = request.identifier
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1653,8 +1631,10 @@ class Client(OpenApiClient):
     ) -> cas_20200630_models.UpdateCACertificateStatusResponse:
         UtilClient.validate_model(request)
         query = {}
-        query['Identifier'] = request.identifier
-        query['Status'] = request.status
+        if not UtilClient.is_unset(request.identifier):
+            query['Identifier'] = request.identifier
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

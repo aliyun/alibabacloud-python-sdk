@@ -1,3 +1,6 @@
+2022-11-29 Version: 1.0.13
+- Fix some bugs.
+
 2021-12-23 Version: 0.1.2
 - Return the CertificateChain.
 
