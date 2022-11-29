@@ -2605,14 +2605,49 @@ class SubmitTextTo3DAvatarVideoTaskRequestApp(TeaModel):
         return self
 
 
+class SubmitTextTo3DAvatarVideoTaskRequestAvatarInfo(TeaModel):
+    def __init__(
+        self,
+        angle: int = None,
+        locate: int = None,
+    ):
+        self.angle = angle
+        self.locate = locate
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.angle is not None:
+            result['Angle'] = self.angle
+        if self.locate is not None:
+            result['Locate'] = self.locate
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Angle') is not None:
+            self.angle = m.get('Angle')
+        if m.get('Locate') is not None:
+            self.locate = m.get('Locate')
+        return self
+
+
 class SubmitTextTo3DAvatarVideoTaskRequestVideoInfo(TeaModel):
     def __init__(
         self,
+        alpha_format: int = None,
         background_image_url: str = None,
         is_alpha: bool = None,
         is_subtitles: bool = None,
         resolution: int = None,
     ):
+        self.alpha_format = alpha_format
         self.background_image_url = background_image_url
         self.is_alpha = is_alpha
         self.is_subtitles = is_subtitles
@@ -2627,6 +2662,8 @@ class SubmitTextTo3DAvatarVideoTaskRequestVideoInfo(TeaModel):
             return _map
 
         result = dict()
+        if self.alpha_format is not None:
+            result['AlphaFormat'] = self.alpha_format
         if self.background_image_url is not None:
             result['BackgroundImageUrl'] = self.background_image_url
         if self.is_alpha is not None:
@@ -2639,6 +2676,8 @@ class SubmitTextTo3DAvatarVideoTaskRequestVideoInfo(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AlphaFormat') is not None:
+            self.alpha_format = m.get('AlphaFormat')
         if m.get('BackgroundImageUrl') is not None:
             self.background_image_url = m.get('BackgroundImageUrl')
         if m.get('IsAlpha') is not None:
@@ -2654,12 +2693,14 @@ class SubmitTextTo3DAvatarVideoTaskRequest(TeaModel):
     def __init__(
         self,
         app: SubmitTextTo3DAvatarVideoTaskRequestApp = None,
+        avatar_info: SubmitTextTo3DAvatarVideoTaskRequestAvatarInfo = None,
         tenant_id: int = None,
         text: str = None,
         title: str = None,
         video_info: SubmitTextTo3DAvatarVideoTaskRequestVideoInfo = None,
     ):
         self.app = app
+        self.avatar_info = avatar_info
         self.tenant_id = tenant_id
         self.text = text
         self.title = title
@@ -2668,6 +2709,8 @@ class SubmitTextTo3DAvatarVideoTaskRequest(TeaModel):
     def validate(self):
         if self.app:
             self.app.validate()
+        if self.avatar_info:
+            self.avatar_info.validate()
         if self.video_info:
             self.video_info.validate()
 
@@ -2679,6 +2722,8 @@ class SubmitTextTo3DAvatarVideoTaskRequest(TeaModel):
         result = dict()
         if self.app is not None:
             result['App'] = self.app.to_map()
+        if self.avatar_info is not None:
+            result['AvatarInfo'] = self.avatar_info.to_map()
         if self.tenant_id is not None:
             result['TenantId'] = self.tenant_id
         if self.text is not None:
@@ -2694,6 +2739,9 @@ class SubmitTextTo3DAvatarVideoTaskRequest(TeaModel):
         if m.get('App') is not None:
             temp_model = SubmitTextTo3DAvatarVideoTaskRequestApp()
             self.app = temp_model.from_map(m['App'])
+        if m.get('AvatarInfo') is not None:
+            temp_model = SubmitTextTo3DAvatarVideoTaskRequestAvatarInfo()
+            self.avatar_info = temp_model.from_map(m['AvatarInfo'])
         if m.get('TenantId') is not None:
             self.tenant_id = m.get('TenantId')
         if m.get('Text') is not None:
@@ -2710,12 +2758,14 @@ class SubmitTextTo3DAvatarVideoTaskShrinkRequest(TeaModel):
     def __init__(
         self,
         app_shrink: str = None,
+        avatar_info_shrink: str = None,
         tenant_id: int = None,
         text: str = None,
         title: str = None,
         video_info_shrink: str = None,
     ):
         self.app_shrink = app_shrink
+        self.avatar_info_shrink = avatar_info_shrink
         self.tenant_id = tenant_id
         self.text = text
         self.title = title
@@ -2732,6 +2782,8 @@ class SubmitTextTo3DAvatarVideoTaskShrinkRequest(TeaModel):
         result = dict()
         if self.app_shrink is not None:
             result['App'] = self.app_shrink
+        if self.avatar_info_shrink is not None:
+            result['AvatarInfo'] = self.avatar_info_shrink
         if self.tenant_id is not None:
             result['TenantId'] = self.tenant_id
         if self.text is not None:
@@ -2746,6 +2798,8 @@ class SubmitTextTo3DAvatarVideoTaskShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('App') is not None:
             self.app_shrink = m.get('App')
+        if m.get('AvatarInfo') is not None:
+            self.avatar_info_shrink = m.get('AvatarInfo')
         if m.get('TenantId') is not None:
             self.tenant_id = m.get('TenantId')
         if m.get('Text') is not None:
