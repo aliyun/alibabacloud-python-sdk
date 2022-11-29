@@ -739,6 +739,7 @@ class CreateAggregateCompliancePackRequest(TeaModel):
         compliance_pack_name: str = None,
         compliance_pack_template_id: str = None,
         config_rules: List[CreateAggregateCompliancePackRequestConfigRules] = None,
+        default_enable: bool = None,
         description: str = None,
         risk_level: int = None,
     ):
@@ -747,6 +748,7 @@ class CreateAggregateCompliancePackRequest(TeaModel):
         self.compliance_pack_name = compliance_pack_name
         self.compliance_pack_template_id = compliance_pack_template_id
         self.config_rules = config_rules
+        self.default_enable = default_enable
         self.description = description
         self.risk_level = risk_level
 
@@ -774,6 +776,8 @@ class CreateAggregateCompliancePackRequest(TeaModel):
         if self.config_rules is not None:
             for k in self.config_rules:
                 result['ConfigRules'].append(k.to_map() if k else None)
+        if self.default_enable is not None:
+            result['DefaultEnable'] = self.default_enable
         if self.description is not None:
             result['Description'] = self.description
         if self.risk_level is not None:
@@ -795,6 +799,8 @@ class CreateAggregateCompliancePackRequest(TeaModel):
             for k in m.get('ConfigRules'):
                 temp_model = CreateAggregateCompliancePackRequestConfigRules()
                 self.config_rules.append(temp_model.from_map(k))
+        if m.get('DefaultEnable') is not None:
+            self.default_enable = m.get('DefaultEnable')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('RiskLevel') is not None:
@@ -810,6 +816,7 @@ class CreateAggregateCompliancePackShrinkRequest(TeaModel):
         compliance_pack_name: str = None,
         compliance_pack_template_id: str = None,
         config_rules_shrink: str = None,
+        default_enable: bool = None,
         description: str = None,
         risk_level: int = None,
     ):
@@ -818,6 +825,7 @@ class CreateAggregateCompliancePackShrinkRequest(TeaModel):
         self.compliance_pack_name = compliance_pack_name
         self.compliance_pack_template_id = compliance_pack_template_id
         self.config_rules_shrink = config_rules_shrink
+        self.default_enable = default_enable
         self.description = description
         self.risk_level = risk_level
 
@@ -840,6 +848,8 @@ class CreateAggregateCompliancePackShrinkRequest(TeaModel):
             result['CompliancePackTemplateId'] = self.compliance_pack_template_id
         if self.config_rules_shrink is not None:
             result['ConfigRules'] = self.config_rules_shrink
+        if self.default_enable is not None:
+            result['DefaultEnable'] = self.default_enable
         if self.description is not None:
             result['Description'] = self.description
         if self.risk_level is not None:
@@ -858,6 +868,8 @@ class CreateAggregateCompliancePackShrinkRequest(TeaModel):
             self.compliance_pack_template_id = m.get('CompliancePackTemplateId')
         if m.get('ConfigRules') is not None:
             self.config_rules_shrink = m.get('ConfigRules')
+        if m.get('DefaultEnable') is not None:
+            self.default_enable = m.get('DefaultEnable')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('RiskLevel') is not None:
@@ -1948,6 +1960,7 @@ class CreateCompliancePackRequest(TeaModel):
         compliance_pack_name: str = None,
         compliance_pack_template_id: str = None,
         config_rules: List[CreateCompliancePackRequestConfigRules] = None,
+        default_enable: bool = None,
         description: str = None,
         risk_level: int = None,
     ):
@@ -1955,6 +1968,7 @@ class CreateCompliancePackRequest(TeaModel):
         self.compliance_pack_name = compliance_pack_name
         self.compliance_pack_template_id = compliance_pack_template_id
         self.config_rules = config_rules
+        self.default_enable = default_enable
         self.description = description
         self.risk_level = risk_level
 
@@ -1980,6 +1994,8 @@ class CreateCompliancePackRequest(TeaModel):
         if self.config_rules is not None:
             for k in self.config_rules:
                 result['ConfigRules'].append(k.to_map() if k else None)
+        if self.default_enable is not None:
+            result['DefaultEnable'] = self.default_enable
         if self.description is not None:
             result['Description'] = self.description
         if self.risk_level is not None:
@@ -1999,6 +2015,8 @@ class CreateCompliancePackRequest(TeaModel):
             for k in m.get('ConfigRules'):
                 temp_model = CreateCompliancePackRequestConfigRules()
                 self.config_rules.append(temp_model.from_map(k))
+        if m.get('DefaultEnable') is not None:
+            self.default_enable = m.get('DefaultEnable')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('RiskLevel') is not None:
@@ -2013,6 +2031,7 @@ class CreateCompliancePackShrinkRequest(TeaModel):
         compliance_pack_name: str = None,
         compliance_pack_template_id: str = None,
         config_rules_shrink: str = None,
+        default_enable: bool = None,
         description: str = None,
         risk_level: int = None,
     ):
@@ -2020,6 +2039,7 @@ class CreateCompliancePackShrinkRequest(TeaModel):
         self.compliance_pack_name = compliance_pack_name
         self.compliance_pack_template_id = compliance_pack_template_id
         self.config_rules_shrink = config_rules_shrink
+        self.default_enable = default_enable
         self.description = description
         self.risk_level = risk_level
 
@@ -2040,6 +2060,8 @@ class CreateCompliancePackShrinkRequest(TeaModel):
             result['CompliancePackTemplateId'] = self.compliance_pack_template_id
         if self.config_rules_shrink is not None:
             result['ConfigRules'] = self.config_rules_shrink
+        if self.default_enable is not None:
+            result['DefaultEnable'] = self.default_enable
         if self.description is not None:
             result['Description'] = self.description
         if self.risk_level is not None:
@@ -2056,6 +2078,8 @@ class CreateCompliancePackShrinkRequest(TeaModel):
             self.compliance_pack_template_id = m.get('CompliancePackTemplateId')
         if m.get('ConfigRules') is not None:
             self.config_rules_shrink = m.get('ConfigRules')
+        if m.get('DefaultEnable') is not None:
+            self.default_enable = m.get('DefaultEnable')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('RiskLevel') is not None:
@@ -8754,9 +8778,11 @@ class GetAggregateResourceCountsGroupByRegionRequest(TeaModel):
 class GetAggregateResourceCountsGroupByRegionResponseBodyDiscoveredResourceCountsSummary(TeaModel):
     def __init__(
         self,
+        group_name: str = None,
         region: str = None,
         resource_count: int = None,
     ):
+        self.group_name = group_name
         self.region = region
         self.resource_count = resource_count
 
@@ -8769,6 +8795,8 @@ class GetAggregateResourceCountsGroupByRegionResponseBodyDiscoveredResourceCount
             return _map
 
         result = dict()
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
         if self.region is not None:
             result['Region'] = self.region
         if self.resource_count is not None:
@@ -8777,6 +8805,8 @@ class GetAggregateResourceCountsGroupByRegionResponseBodyDiscoveredResourceCount
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
         if m.get('Region') is not None:
             self.region = m.get('Region')
         if m.get('ResourceCount') is not None:
@@ -8917,9 +8947,11 @@ class GetAggregateResourceCountsGroupByResourceTypeRequest(TeaModel):
 class GetAggregateResourceCountsGroupByResourceTypeResponseBodyDiscoveredResourceCountsSummary(TeaModel):
     def __init__(
         self,
+        group_name: str = None,
         resource_count: int = None,
         resource_type: str = None,
     ):
+        self.group_name = group_name
         self.resource_count = resource_count
         self.resource_type = resource_type
 
@@ -8932,6 +8964,8 @@ class GetAggregateResourceCountsGroupByResourceTypeResponseBodyDiscoveredResourc
             return _map
 
         result = dict()
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
         if self.resource_count is not None:
             result['ResourceCount'] = self.resource_count
         if self.resource_type is not None:
@@ -8940,6 +8974,8 @@ class GetAggregateResourceCountsGroupByResourceTypeResponseBodyDiscoveredResourc
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
         if m.get('ResourceCount') is not None:
             self.resource_count = m.get('ResourceCount')
         if m.get('ResourceType') is not None:
@@ -11269,9 +11305,11 @@ class GetDiscoveredResourceCountsGroupByRegionRequest(TeaModel):
 class GetDiscoveredResourceCountsGroupByRegionResponseBodyDiscoveredResourceCountsSummary(TeaModel):
     def __init__(
         self,
+        group_name: str = None,
         region: str = None,
         resource_count: int = None,
     ):
+        self.group_name = group_name
         self.region = region
         self.resource_count = resource_count
 
@@ -11284,6 +11322,8 @@ class GetDiscoveredResourceCountsGroupByRegionResponseBodyDiscoveredResourceCoun
             return _map
 
         result = dict()
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
         if self.region is not None:
             result['Region'] = self.region
         if self.resource_count is not None:
@@ -11292,6 +11332,8 @@ class GetDiscoveredResourceCountsGroupByRegionResponseBodyDiscoveredResourceCoun
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
         if m.get('Region') is not None:
             self.region = m.get('Region')
         if m.get('ResourceCount') is not None:
@@ -11414,9 +11456,11 @@ class GetDiscoveredResourceCountsGroupByResourceTypeRequest(TeaModel):
 class GetDiscoveredResourceCountsGroupByResourceTypeResponseBodyDiscoveredResourceCountsSummary(TeaModel):
     def __init__(
         self,
+        group_name: str = None,
         resource_count: int = None,
         resource_type: str = None,
     ):
+        self.group_name = group_name
         self.resource_count = resource_count
         self.resource_type = resource_type
 
@@ -11429,6 +11473,8 @@ class GetDiscoveredResourceCountsGroupByResourceTypeResponseBodyDiscoveredResour
             return _map
 
         result = dict()
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
         if self.resource_count is not None:
             result['ResourceCount'] = self.resource_count
         if self.resource_type is not None:
@@ -11437,6 +11483,8 @@ class GetDiscoveredResourceCountsGroupByResourceTypeResponseBodyDiscoveredResour
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
         if m.get('ResourceCount') is not None:
             self.resource_count = m.get('ResourceCount')
         if m.get('ResourceType') is not None:
@@ -16027,6 +16075,7 @@ class ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultCompli
         config_rule_parameters: List[ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultCompliancePackTemplatesConfigRulesConfigRuleParameters] = None,
         control_description: str = None,
         control_id: str = None,
+        default_enable: bool = None,
         description: str = None,
         managed_rule_identifier: str = None,
         managed_rule_name: str = None,
@@ -16035,6 +16084,7 @@ class ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultCompli
         self.config_rule_parameters = config_rule_parameters
         self.control_description = control_description
         self.control_id = control_id
+        self.default_enable = default_enable
         self.description = description
         self.managed_rule_identifier = managed_rule_identifier
         self.managed_rule_name = managed_rule_name
@@ -16060,6 +16110,8 @@ class ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultCompli
             result['ControlDescription'] = self.control_description
         if self.control_id is not None:
             result['ControlId'] = self.control_id
+        if self.default_enable is not None:
+            result['DefaultEnable'] = self.default_enable
         if self.description is not None:
             result['Description'] = self.description
         if self.managed_rule_identifier is not None:
@@ -16081,6 +16133,8 @@ class ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultCompli
             self.control_description = m.get('ControlDescription')
         if m.get('ControlId') is not None:
             self.control_id = m.get('ControlId')
+        if m.get('DefaultEnable') is not None:
+            self.default_enable = m.get('DefaultEnable')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('ManagedRuleIdentifier') is not None:
