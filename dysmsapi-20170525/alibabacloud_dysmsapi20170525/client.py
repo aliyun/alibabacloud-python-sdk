@@ -1443,6 +1443,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_card_sms_template_report_with_options_async(request, runtime)
 
+    def query_mobiles_card_support_with_options(
+        self,
+        tmp_req: dysmsapi_20170525_models.QueryMobilesCardSupportRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.QueryMobilesCardSupportResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dysmsapi_20170525_models.QueryMobilesCardSupportShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.mobiles):
+            request.mobiles_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.mobiles, 'Mobiles', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.mobiles_shrink):
+            query['Mobiles'] = request.mobiles_shrink
+        if not UtilClient.is_unset(request.template_code):
+            query['TemplateCode'] = request.template_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryMobilesCardSupport',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.QueryMobilesCardSupportResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_mobiles_card_support_with_options_async(
+        self,
+        tmp_req: dysmsapi_20170525_models.QueryMobilesCardSupportRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.QueryMobilesCardSupportResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dysmsapi_20170525_models.QueryMobilesCardSupportShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.mobiles):
+            request.mobiles_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.mobiles, 'Mobiles', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.mobiles_shrink):
+            query['Mobiles'] = request.mobiles_shrink
+        if not UtilClient.is_unset(request.template_code):
+            query['TemplateCode'] = request.template_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryMobilesCardSupport',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.QueryMobilesCardSupportResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_mobiles_card_support(
+        self,
+        request: dysmsapi_20170525_models.QueryMobilesCardSupportRequest,
+    ) -> dysmsapi_20170525_models.QueryMobilesCardSupportResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_mobiles_card_support_with_options(request, runtime)
+
+    async def query_mobiles_card_support_async(
+        self,
+        request: dysmsapi_20170525_models.QueryMobilesCardSupportRequest,
+    ) -> dysmsapi_20170525_models.QueryMobilesCardSupportResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_mobiles_card_support_with_options_async(request, runtime)
+
     def query_send_details_with_options(
         self,
         request: dysmsapi_20170525_models.QuerySendDetailsRequest,
