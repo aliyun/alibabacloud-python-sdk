@@ -1949,6 +1949,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_instance_with_options_async(request, runtime)
 
+    def create_instance_active_ops_task_with_options(
+        self,
+        tmp_req: ens_20171110_models.CreateInstanceActiveOpsTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.CreateInstanceActiveOpsTaskResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.CreateInstanceActiveOpsTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.instance_ids):
+            request.instance_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.instance_ids_shrink):
+            query['InstanceIds'] = request.instance_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateInstanceActiveOpsTask',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.CreateInstanceActiveOpsTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_instance_active_ops_task_with_options_async(
+        self,
+        tmp_req: ens_20171110_models.CreateInstanceActiveOpsTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.CreateInstanceActiveOpsTaskResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.CreateInstanceActiveOpsTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.instance_ids):
+            request.instance_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.instance_ids_shrink):
+            query['InstanceIds'] = request.instance_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateInstanceActiveOpsTask',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.CreateInstanceActiveOpsTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_instance_active_ops_task(
+        self,
+        request: ens_20171110_models.CreateInstanceActiveOpsTaskRequest,
+    ) -> ens_20171110_models.CreateInstanceActiveOpsTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_instance_active_ops_task_with_options(request, runtime)
+
+    async def create_instance_active_ops_task_async(
+        self,
+        request: ens_20171110_models.CreateInstanceActiveOpsTaskRequest,
+    ) -> ens_20171110_models.CreateInstanceActiveOpsTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_instance_active_ops_task_with_options_async(request, runtime)
+
     def create_key_pair_with_options(
         self,
         request: ens_20171110_models.CreateKeyPairRequest,
@@ -14162,7 +14240,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.data_disk):
             request.data_disk_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.data_disk, 'DataDisk', 'json')
         if not UtilClient.is_unset(tmp_req.system_disk):
-            request.system_disk_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.system_disk), 'SystemDisk', 'json')
+            request.system_disk_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.system_disk, 'SystemDisk', 'json')
         query = {}
         if not UtilClient.is_unset(request.amount):
             query['Amount'] = request.amount
@@ -14250,7 +14328,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.data_disk):
             request.data_disk_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.data_disk, 'DataDisk', 'json')
         if not UtilClient.is_unset(tmp_req.system_disk):
-            request.system_disk_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.system_disk), 'SystemDisk', 'json')
+            request.system_disk_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.system_disk, 'SystemDisk', 'json')
         query = {}
         if not UtilClient.is_unset(request.amount):
             query['Amount'] = request.amount
