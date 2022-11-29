@@ -1,3 +1,6 @@
+2022-11-29 Version: 1.0.27
+- Update DescribeDcdnDeletedDomains.
+
 2022-11-17 Version: 1.0.26
 - Update DescribeRDDomainConfig.
 

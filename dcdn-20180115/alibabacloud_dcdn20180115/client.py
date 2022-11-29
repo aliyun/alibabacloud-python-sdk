@@ -3026,8 +3026,6 @@ class Client(OpenApiClient):
             query['Interval'] = request.interval
         if not UtilClient.is_unset(request.isp):
             query['Isp'] = request.isp
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
@@ -3066,8 +3064,6 @@ class Client(OpenApiClient):
             query['Interval'] = request.interval
         if not UtilClient.is_unset(request.isp):
             query['Isp'] = request.isp
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
@@ -3116,8 +3112,6 @@ class Client(OpenApiClient):
             query['Interval'] = request.interval
         if not UtilClient.is_unset(request.isp):
             query['Isp'] = request.isp
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
@@ -3152,8 +3146,6 @@ class Client(OpenApiClient):
             query['Interval'] = request.interval
         if not UtilClient.is_unset(request.isp):
             query['Isp'] = request.isp
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
@@ -3418,8 +3410,6 @@ class Client(OpenApiClient):
     ) -> dcdn_20180115_models.DescribeDcdnDeletedDomainsResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -3450,8 +3440,6 @@ class Client(OpenApiClient):
     ) -> dcdn_20180115_models.DescribeDcdnDeletedDomainsResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -4630,8 +4618,6 @@ class Client(OpenApiClient):
             query['DomainName'] = request.domain_name
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.split_by):
             query['SplitBy'] = request.split_by
         if not UtilClient.is_unset(request.start_time):
@@ -4666,8 +4652,6 @@ class Client(OpenApiClient):
             query['DomainName'] = request.domain_name
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.split_by):
             query['SplitBy'] = request.split_by
         if not UtilClient.is_unset(request.start_time):
@@ -7226,8 +7210,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.routine_id):
             query['RoutineID'] = request.routine_id
         if not UtilClient.is_unset(request.spec):
@@ -7264,8 +7246,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.routine_id):
             query['RoutineID'] = request.routine_id
         if not UtilClient.is_unset(request.spec):
@@ -7894,8 +7874,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.business_type):
             query['BusinessType'] = request.business_type
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7924,8 +7902,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.business_type):
             query['BusinessType'] = request.business_type
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8839,16 +8815,9 @@ class Client(OpenApiClient):
 
     def describe_dcdn_sec_spec_info_with_options(
         self,
-        request: dcdn_20180115_models.DescribeDcdnSecSpecInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.DescribeDcdnSecSpecInfoResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
+        req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeDcdnSecSpecInfo',
             version='2018-01-15',
@@ -8867,16 +8836,9 @@ class Client(OpenApiClient):
 
     async def describe_dcdn_sec_spec_info_with_options_async(
         self,
-        request: dcdn_20180115_models.DescribeDcdnSecSpecInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.DescribeDcdnSecSpecInfoResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
+        req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeDcdnSecSpecInfo',
             version='2018-01-15',
@@ -8893,19 +8855,13 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_dcdn_sec_spec_info(
-        self,
-        request: dcdn_20180115_models.DescribeDcdnSecSpecInfoRequest,
-    ) -> dcdn_20180115_models.DescribeDcdnSecSpecInfoResponse:
+    def describe_dcdn_sec_spec_info(self) -> dcdn_20180115_models.DescribeDcdnSecSpecInfoResponse:
         runtime = util_models.RuntimeOptions()
-        return self.describe_dcdn_sec_spec_info_with_options(request, runtime)
+        return self.describe_dcdn_sec_spec_info_with_options(runtime)
 
-    async def describe_dcdn_sec_spec_info_async(
-        self,
-        request: dcdn_20180115_models.DescribeDcdnSecSpecInfoRequest,
-    ) -> dcdn_20180115_models.DescribeDcdnSecSpecInfoResponse:
+    async def describe_dcdn_sec_spec_info_async(self) -> dcdn_20180115_models.DescribeDcdnSecSpecInfoResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.describe_dcdn_sec_spec_info_with_options_async(request, runtime)
+        return await self.describe_dcdn_sec_spec_info_with_options_async(runtime)
 
     def describe_dcdn_service_with_options(
         self,
@@ -11068,8 +11024,6 @@ class Client(OpenApiClient):
     ) -> dcdn_20180115_models.DescribeDcdnWafRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.rule_id):
             query['RuleId'] = request.rule_id
         req = open_api_models.OpenApiRequest(
@@ -11098,8 +11052,6 @@ class Client(OpenApiClient):
     ) -> dcdn_20180115_models.DescribeDcdnWafRuleResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.rule_id):
             query['RuleId'] = request.rule_id
         req = open_api_models.OpenApiRequest(
@@ -11673,6 +11625,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_rddomain_config_with_options_async(request, runtime)
 
+    def describe_rddomains_with_options(
+        self,
+        request: dcdn_20180115_models.DescribeRDDomainsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeRDDomainsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRDDomains',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeRDDomainsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_rddomains_with_options_async(
+        self,
+        request: dcdn_20180115_models.DescribeRDDomainsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeRDDomainsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRDDomains',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeRDDomainsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_rddomains(
+        self,
+        request: dcdn_20180115_models.DescribeRDDomainsRequest,
+    ) -> dcdn_20180115_models.DescribeRDDomainsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_rddomains_with_options(request, runtime)
+
+    async def describe_rddomains_async(
+        self,
+        request: dcdn_20180115_models.DescribeRDDomainsRequest,
+    ) -> dcdn_20180115_models.DescribeRDDomainsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_rddomains_with_options_async(request, runtime)
+
     def describe_routine_with_options(
         self,
         request: dcdn_20180115_models.DescribeRoutineRequest,
@@ -12196,8 +12226,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.security_token):
-            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -12226,8 +12254,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.security_token):
-            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -13286,8 +13312,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.domain_name):
             query['DomainName'] = request.domain_name
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -13316,8 +13340,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.domain_name):
             query['DomainName'] = request.domain_name
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
