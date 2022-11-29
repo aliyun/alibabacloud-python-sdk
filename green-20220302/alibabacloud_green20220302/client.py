@@ -61,6 +61,80 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def image_moderation_with_options(
+        self,
+        request: green_20220302_models.ImageModerationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220302_models.ImageModerationResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.service):
+            body['Service'] = request.service
+        if not UtilClient.is_unset(request.service_parameters):
+            body['ServiceParameters'] = request.service_parameters
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ImageModeration',
+            version='2022-03-02',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            green_20220302_models.ImageModerationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def image_moderation_with_options_async(
+        self,
+        request: green_20220302_models.ImageModerationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220302_models.ImageModerationResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.service):
+            body['Service'] = request.service
+        if not UtilClient.is_unset(request.service_parameters):
+            body['ServiceParameters'] = request.service_parameters
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ImageModeration',
+            version='2022-03-02',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            green_20220302_models.ImageModerationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def image_moderation(
+        self,
+        request: green_20220302_models.ImageModerationRequest,
+    ) -> green_20220302_models.ImageModerationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.image_moderation_with_options(request, runtime)
+
+    async def image_moderation_async(
+        self,
+        request: green_20220302_models.ImageModerationRequest,
+    ) -> green_20220302_models.ImageModerationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.image_moderation_with_options_async(request, runtime)
+
     def text_moderation_with_options(
         self,
         request: green_20220302_models.TextModerationRequest,
