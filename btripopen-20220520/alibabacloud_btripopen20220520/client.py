@@ -313,6 +313,74 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
+    def all_base_city_info_query(self) -> btrip_open_20220520_models.AllBaseCityInfoQueryResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.AllBaseCityInfoQueryHeaders()
+        return self.all_base_city_info_query_with_options(headers, runtime)
+
+    async def all_base_city_info_query_async(self) -> btrip_open_20220520_models.AllBaseCityInfoQueryResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.AllBaseCityInfoQueryHeaders()
+        return await self.all_base_city_info_query_with_options_async(headers, runtime)
+
+    def all_base_city_info_query_with_options(
+        self,
+        headers: btrip_open_20220520_models.AllBaseCityInfoQueryHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.AllBaseCityInfoQueryResponse:
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_access_token):
+            real_headers['x-acs-btrip-access-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_access_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers
+        )
+        params = open_api_models.Params(
+            action='AllBaseCityInfoQuery',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/city/v1/code',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.AllBaseCityInfoQueryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def all_base_city_info_query_with_options_async(
+        self,
+        headers: btrip_open_20220520_models.AllBaseCityInfoQueryHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.AllBaseCityInfoQueryResponse:
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_access_token):
+            real_headers['x-acs-btrip-access-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_access_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers
+        )
+        params = open_api_models.Params(
+            action='AllBaseCityInfoQuery',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/city/v1/code',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.AllBaseCityInfoQueryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
     def apply_add(
         self,
         request: btrip_open_20220520_models.ApplyAddRequest,
