@@ -1,3 +1,6 @@
+2022-11-30 Version: 2.0.2
+- Add safety lock api.
+
 2022-11-02 Version: 2.0.1
 - Add new api for benchmark test.
 

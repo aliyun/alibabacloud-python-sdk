@@ -526,6 +526,7 @@ class Service(TeaModel):
         role: str = None,
         role_attrs: str = None,
         running_instance: int = None,
+        safety_lock: str = None,
         service_config: str = None,
         service_group: str = None,
         service_id: str = None,
@@ -561,6 +562,7 @@ class Service(TeaModel):
         self.role = role
         self.role_attrs = role_attrs
         self.running_instance = running_instance
+        self.safety_lock = safety_lock
         self.service_config = service_config
         self.service_group = service_group
         self.service_id = service_id
@@ -629,6 +631,8 @@ class Service(TeaModel):
             result['RoleAttrs'] = self.role_attrs
         if self.running_instance is not None:
             result['RunningInstance'] = self.running_instance
+        if self.safety_lock is not None:
+            result['SafetyLock'] = self.safety_lock
         if self.service_config is not None:
             result['ServiceConfig'] = self.service_config
         if self.service_group is not None:
@@ -701,6 +705,8 @@ class Service(TeaModel):
             self.role_attrs = m.get('RoleAttrs')
         if m.get('RunningInstance') is not None:
             self.running_instance = m.get('RunningInstance')
+        if m.get('SafetyLock') is not None:
+            self.safety_lock = m.get('SafetyLock')
         if m.get('ServiceConfig') is not None:
             self.service_config = m.get('ServiceConfig')
         if m.get('ServiceGroup') is not None:
@@ -4103,12 +4109,12 @@ class DescribeServiceMirrorResponse(TeaModel):
 class ListBenchmarkTaskRequest(TeaModel):
     def __init__(
         self,
-        fileter: str = None,
+        filter: str = None,
         page_number: str = None,
         page_size: str = None,
         service_name: str = None,
     ):
-        self.fileter = fileter
+        self.filter = filter
         self.page_number = page_number
         self.page_size = page_size
         self.service_name = service_name
@@ -4122,8 +4128,8 @@ class ListBenchmarkTaskRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.fileter is not None:
-            result['Fileter'] = self.fileter
+        if self.filter is not None:
+            result['Filter'] = self.filter
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -4134,8 +4140,8 @@ class ListBenchmarkTaskRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Fileter') is not None:
-            self.fileter = m.get('Fileter')
+        if m.get('Filter') is not None:
+            self.filter = m.get('Filter')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
@@ -4605,10 +4611,14 @@ class ListResourceInstancesRequest(TeaModel):
     def __init__(
         self,
         charge_type: str = None,
+        instance_id: str = None,
+        instance_name: str = None,
         page_number: int = None,
         page_size: int = None,
     ):
         self.charge_type = charge_type
+        self.instance_id = instance_id
+        self.instance_name = instance_name
         self.page_number = page_number
         self.page_size = page_size
 
@@ -4623,6 +4633,10 @@ class ListResourceInstancesRequest(TeaModel):
         result = dict()
         if self.charge_type is not None:
             result['ChargeType'] = self.charge_type
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -4633,6 +4647,10 @@ class ListResourceInstancesRequest(TeaModel):
         m = m or dict()
         if m.get('ChargeType') is not None:
             self.charge_type = m.get('ChargeType')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
@@ -4884,9 +4902,13 @@ class ListResourcesRequest(TeaModel):
         self,
         page_number: int = None,
         page_size: int = None,
+        resource_id: str = None,
+        resource_name: str = None,
     ):
         self.page_number = page_number
         self.page_size = page_size
+        self.resource_id = resource_id
+        self.resource_name = resource_name
 
     def validate(self):
         pass
@@ -4901,6 +4923,10 @@ class ListResourcesRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_name is not None:
+            result['ResourceName'] = self.resource_name
         return result
 
     def from_map(self, m: dict = None):
@@ -4909,6 +4935,10 @@ class ListResourcesRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceName') is not None:
+            self.resource_name = m.get('ResourceName')
         return self
 
 
@@ -6252,6 +6282,116 @@ class UpdateResourceDLinkResponse(TeaModel):
         return self
 
 
+class UpdateResourceInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        action: str = None,
+    ):
+        self.action = action
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action is not None:
+            result['Action'] = self.action
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Action') is not None:
+            self.action = m.get('Action')
+        return self
+
+
+class UpdateResourceInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        request_id: str = None,
+        resource_id: str = None,
+    ):
+        self.instance_id = instance_id
+        self.request_id = request_id
+        self.resource_id = resource_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        return self
+
+
+class UpdateResourceInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateResourceInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateResourceInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateServiceRequest(TeaModel):
     def __init__(
         self,
@@ -6782,6 +6922,110 @@ class UpdateServiceMirrorResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateServiceMirrorResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateServiceSafetyLockRequest(TeaModel):
+    def __init__(
+        self,
+        lock: str = None,
+    ):
+        self.lock = lock
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lock is not None:
+            result['Lock'] = self.lock
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Lock') is not None:
+            self.lock = m.get('Lock')
+        return self
+
+
+class UpdateServiceSafetyLockResponseBody(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateServiceSafetyLockResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateServiceSafetyLockResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateServiceSafetyLockResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
