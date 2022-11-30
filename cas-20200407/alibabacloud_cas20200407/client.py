@@ -1467,6 +1467,8 @@ class Client(OpenApiClient):
             query['Keyword'] = request.keyword
         if not UtilClient.is_unset(request.order_type):
             query['OrderType'] = request.order_type
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.show_size):
             query['ShowSize'] = request.show_size
         if not UtilClient.is_unset(request.status):
@@ -1503,6 +1505,8 @@ class Client(OpenApiClient):
             query['Keyword'] = request.keyword
         if not UtilClient.is_unset(request.order_type):
             query['OrderType'] = request.order_type
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.show_size):
             query['ShowSize'] = request.show_size
         if not UtilClient.is_unset(request.status):
@@ -1865,6 +1869,8 @@ class Client(OpenApiClient):
             query['Key'] = request.key
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.sign_cert):
             query['SignCert'] = request.sign_cert
         if not UtilClient.is_unset(request.sign_private_key):
@@ -1905,6 +1911,8 @@ class Client(OpenApiClient):
             query['Key'] = request.key
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.sign_cert):
             query['SignCert'] = request.sign_cert
         if not UtilClient.is_unset(request.sign_private_key):
