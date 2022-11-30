@@ -827,7 +827,7 @@ class GetVideoTaskInfoResponseBody(TeaModel):
         data: GetVideoTaskInfoResponseBodyData = None,
         message: str = None,
         request_id: str = None,
-        success: str = None,
+        success: bool = None,
     ):
         self.code = code
         self.data = data
@@ -2488,7 +2488,7 @@ class SubmitTextTo2DAvatarVideoTaskResponseBody(TeaModel):
         data: SubmitTextTo2DAvatarVideoTaskResponseBodyData = None,
         message: str = None,
         request_id: str = None,
-        success: str = None,
+        success: bool = None,
     ):
         self.code = code
         self.data = data
@@ -2845,7 +2845,7 @@ class SubmitTextTo3DAvatarVideoTaskResponseBody(TeaModel):
         data: SubmitTextTo3DAvatarVideoTaskResponseBodyData = None,
         message: str = None,
         request_id: str = None,
-        success: str = None,
+        success: bool = None,
     ):
         self.code = code
         self.data = data
