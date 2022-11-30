@@ -1,3 +1,6 @@
+2022-11-30 Version: 3.2.16
+- ContinueCreateStack returns DryRunResult when DryRun is set to true.
+
 2022-11-23 Version: 3.2.15
 - The reponse of ValidateTemplate supports Outputs Label.
 - Added ParametersOrder parameter to the GetTemplateParameterConstraints API.
