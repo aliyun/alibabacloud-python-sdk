@@ -21,6 +21,7 @@ class Client(OpenApiClient):
         config: open_api_models.Config,
     ):
         super().__init__(config)
+        self._signature_algorithm = 'v2'
         self._endpoint_rule = 'central'
         self.check_config(config)
         self._endpoint = self.get_endpoint('dypnsapi', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -50,8 +51,22 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.app_name):
             query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.auth_type):
+            query['AuthType'] = request.auth_type
         if not UtilClient.is_unset(request.bundle_id):
             query['BundleId'] = request.bundle_id
+        if not UtilClient.is_unset(request.cm_api_code):
+            query['CmApiCode'] = request.cm_api_code
+        if not UtilClient.is_unset(request.ct_api_code):
+            query['CtApiCode'] = request.ct_api_code
+        if not UtilClient.is_unset(request.cu_api_code):
+            query['CuApiCode'] = request.cu_api_code
+        if not UtilClient.is_unset(request.email):
+            query['Email'] = request.email
+        if not UtilClient.is_unset(request.ip_white_list):
+            query['IpWhiteList'] = request.ip_white_list
+        if not UtilClient.is_unset(request.origin):
+            query['Origin'] = request.origin
         if not UtilClient.is_unset(request.os_type):
             query['OsType'] = request.os_type
         if not UtilClient.is_unset(request.owner_id):
@@ -64,8 +79,14 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scene_type):
+            query['SceneType'] = request.scene_type
         if not UtilClient.is_unset(request.scheme_name):
             query['SchemeName'] = request.scheme_name
+        if not UtilClient.is_unset(request.sms_sign_name):
+            query['SmsSignName'] = request.sms_sign_name
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -94,8 +115,22 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.app_name):
             query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.auth_type):
+            query['AuthType'] = request.auth_type
         if not UtilClient.is_unset(request.bundle_id):
             query['BundleId'] = request.bundle_id
+        if not UtilClient.is_unset(request.cm_api_code):
+            query['CmApiCode'] = request.cm_api_code
+        if not UtilClient.is_unset(request.ct_api_code):
+            query['CtApiCode'] = request.ct_api_code
+        if not UtilClient.is_unset(request.cu_api_code):
+            query['CuApiCode'] = request.cu_api_code
+        if not UtilClient.is_unset(request.email):
+            query['Email'] = request.email
+        if not UtilClient.is_unset(request.ip_white_list):
+            query['IpWhiteList'] = request.ip_white_list
+        if not UtilClient.is_unset(request.origin):
+            query['Origin'] = request.origin
         if not UtilClient.is_unset(request.os_type):
             query['OsType'] = request.os_type
         if not UtilClient.is_unset(request.owner_id):
@@ -108,8 +143,14 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scene_type):
+            query['SceneType'] = request.scene_type
         if not UtilClient.is_unset(request.scheme_name):
             query['SchemeName'] = request.scheme_name
+        if not UtilClient.is_unset(request.sms_sign_name):
+            query['SmsSignName'] = request.sms_sign_name
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -658,6 +699,88 @@ class Client(OpenApiClient):
     ) -> dypnsapi_20170525_models.GetMobileResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_mobile_with_options_async(request, runtime)
+
+    def get_phone_with_token_with_options(
+        self,
+        request: dypnsapi_20170525_models.GetPhoneWithTokenRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dypnsapi_20170525_models.GetPhoneWithTokenResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sp_token):
+            query['SpToken'] = request.sp_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetPhoneWithToken',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dypnsapi_20170525_models.GetPhoneWithTokenResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_phone_with_token_with_options_async(
+        self,
+        request: dypnsapi_20170525_models.GetPhoneWithTokenRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dypnsapi_20170525_models.GetPhoneWithTokenResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sp_token):
+            query['SpToken'] = request.sp_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetPhoneWithToken',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dypnsapi_20170525_models.GetPhoneWithTokenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_phone_with_token(
+        self,
+        request: dypnsapi_20170525_models.GetPhoneWithTokenRequest,
+    ) -> dypnsapi_20170525_models.GetPhoneWithTokenResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_phone_with_token_with_options(request, runtime)
+
+    async def get_phone_with_token_async(
+        self,
+        request: dypnsapi_20170525_models.GetPhoneWithTokenRequest,
+    ) -> dypnsapi_20170525_models.GetPhoneWithTokenResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_phone_with_token_with_options_async(request, runtime)
 
     def get_sms_auth_tokens_with_options(
         self,
