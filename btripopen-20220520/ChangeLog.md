@@ -1,3 +1,6 @@
+2022-11-30 Version: 1.0.29
+- Estimated price access to pop platform.
+
 2022-11-28 Version: 1.0.28
 - Update Hotel and Car Order detail.
 

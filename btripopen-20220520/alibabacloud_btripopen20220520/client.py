@@ -2943,6 +2943,116 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
+    def estimated_price_query(
+        self,
+        request: btrip_open_20220520_models.EstimatedPriceQueryRequest,
+    ) -> btrip_open_20220520_models.EstimatedPriceQueryResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.EstimatedPriceQueryHeaders()
+        return self.estimated_price_query_with_options(request, headers, runtime)
+
+    async def estimated_price_query_async(
+        self,
+        request: btrip_open_20220520_models.EstimatedPriceQueryRequest,
+    ) -> btrip_open_20220520_models.EstimatedPriceQueryResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.EstimatedPriceQueryHeaders()
+        return await self.estimated_price_query_with_options_async(request, headers, runtime)
+
+    def estimated_price_query_with_options(
+        self,
+        request: btrip_open_20220520_models.EstimatedPriceQueryRequest,
+        headers: btrip_open_20220520_models.EstimatedPriceQueryHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.EstimatedPriceQueryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.arr_city):
+            query['arr_city'] = request.arr_city
+        if not UtilClient.is_unset(request.category):
+            query['category'] = request.category
+        if not UtilClient.is_unset(request.dep_city):
+            query['dep_city'] = request.dep_city
+        if not UtilClient.is_unset(request.end_time):
+            query['end_time'] = request.end_time
+        if not UtilClient.is_unset(request.itinerary_id):
+            query['itinerary_id'] = request.itinerary_id
+        if not UtilClient.is_unset(request.start_time):
+            query['start_time'] = request.start_time
+        if not UtilClient.is_unset(request.user_id):
+            query['user_id'] = request.user_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_so_corp_token):
+            real_headers['x-acs-btrip-so-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_so_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EstimatedPriceQuery',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/costcenter/v1/estimated-price',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.EstimatedPriceQueryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def estimated_price_query_with_options_async(
+        self,
+        request: btrip_open_20220520_models.EstimatedPriceQueryRequest,
+        headers: btrip_open_20220520_models.EstimatedPriceQueryHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.EstimatedPriceQueryResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.arr_city):
+            query['arr_city'] = request.arr_city
+        if not UtilClient.is_unset(request.category):
+            query['category'] = request.category
+        if not UtilClient.is_unset(request.dep_city):
+            query['dep_city'] = request.dep_city
+        if not UtilClient.is_unset(request.end_time):
+            query['end_time'] = request.end_time
+        if not UtilClient.is_unset(request.itinerary_id):
+            query['itinerary_id'] = request.itinerary_id
+        if not UtilClient.is_unset(request.start_time):
+            query['start_time'] = request.start_time
+        if not UtilClient.is_unset(request.user_id):
+            query['user_id'] = request.user_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_so_corp_token):
+            real_headers['x-acs-btrip-so-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_so_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EstimatedPriceQuery',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/costcenter/v1/estimated-price',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.EstimatedPriceQueryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
     def exceed_apply_sync(
         self,
         request: btrip_open_20220520_models.ExceedApplySyncRequest,
