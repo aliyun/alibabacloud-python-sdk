@@ -1,3 +1,6 @@
+2022-12-01 Version: 1.1.2
+- Build SDK for multiple languages.
+
 2022-09-19 Version: 1.1.1
 - Build SDK for multiple languages.
 

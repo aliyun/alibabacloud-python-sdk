@@ -426,10 +426,16 @@ class Client(OpenApiClient):
             query['ECSClassList'] = request.ecsclass_list_shrink
         if not UtilClient.is_unset(request.engine):
             query['Engine'] = request.engine
+        if not UtilClient.is_unset(request.image_id):
+            query['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.key_pair_name):
+            query['KeyPairName'] = request.key_pair_name
         if not UtilClient.is_unset(request.os_password):
             query['OsPassword'] = request.os_password
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.password_inherit):
+            query['PasswordInherit'] = request.password_inherit
         if not UtilClient.is_unset(request.pay_type):
             query['PayType'] = request.pay_type
         if not UtilClient.is_unset(request.period):
@@ -492,10 +498,16 @@ class Client(OpenApiClient):
             query['ECSClassList'] = request.ecsclass_list_shrink
         if not UtilClient.is_unset(request.engine):
             query['Engine'] = request.engine
+        if not UtilClient.is_unset(request.image_id):
+            query['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.key_pair_name):
+            query['KeyPairName'] = request.key_pair_name
         if not UtilClient.is_unset(request.os_password):
             query['OsPassword'] = request.os_password
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.password_inherit):
+            query['PasswordInherit'] = request.password_inherit
         if not UtilClient.is_unset(request.pay_type):
             query['PayType'] = request.pay_type
         if not UtilClient.is_unset(request.period):
@@ -1124,16 +1136,12 @@ class Client(OpenApiClient):
     ) -> cddc_20200320_models.DescribeHostEcsLevelInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.commodity_code):
-            query['CommodityCode'] = request.commodity_code
         if not UtilClient.is_unset(request.db_type):
             query['DbType'] = request.db_type
         if not UtilClient.is_unset(request.image_category):
             query['ImageCategory'] = request.image_category
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.pay_type):
-            query['PayType'] = request.pay_type
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -1170,16 +1178,12 @@ class Client(OpenApiClient):
     ) -> cddc_20200320_models.DescribeHostEcsLevelInfoResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.commodity_code):
-            query['CommodityCode'] = request.commodity_code
         if not UtilClient.is_unset(request.db_type):
             query['DbType'] = request.db_type
         if not UtilClient.is_unset(request.image_category):
             query['ImageCategory'] = request.image_category
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.pay_type):
-            query['PayType'] = request.pay_type
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -1222,92 +1226,6 @@ class Client(OpenApiClient):
     ) -> cddc_20200320_models.DescribeHostEcsLevelInfoResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_host_ecs_level_info_with_options_async(request, runtime)
-
-    def describe_host_security_group_attribute_with_options(
-        self,
-        request: cddc_20200320_models.DescribeHostSecurityGroupAttributeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cddc_20200320_models.DescribeHostSecurityGroupAttributeResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.dedicated_host_id):
-            query['DedicatedHostId'] = request.dedicated_host_id
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeHostSecurityGroupAttribute',
-            version='2020-03-20',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cddc_20200320_models.DescribeHostSecurityGroupAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_host_security_group_attribute_with_options_async(
-        self,
-        request: cddc_20200320_models.DescribeHostSecurityGroupAttributeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cddc_20200320_models.DescribeHostSecurityGroupAttributeResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.dedicated_host_id):
-            query['DedicatedHostId'] = request.dedicated_host_id
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeHostSecurityGroupAttribute',
-            version='2020-03-20',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cddc_20200320_models.DescribeHostSecurityGroupAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_host_security_group_attribute(
-        self,
-        request: cddc_20200320_models.DescribeHostSecurityGroupAttributeRequest,
-    ) -> cddc_20200320_models.DescribeHostSecurityGroupAttributeResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_host_security_group_attribute_with_options(request, runtime)
-
-    async def describe_host_security_group_attribute_async(
-        self,
-        request: cddc_20200320_models.DescribeHostSecurityGroupAttributeRequest,
-    ) -> cddc_20200320_models.DescribeHostSecurityGroupAttributeResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_host_security_group_attribute_with_options_async(request, runtime)
 
     def describe_host_web_shell_with_options(
         self,
@@ -1398,178 +1316,6 @@ class Client(OpenApiClient):
     ) -> cddc_20200320_models.DescribeHostWebShellResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_host_web_shell_with_options_async(request, runtime)
-
-    def describe_my_base_host_over_view_with_options(
-        self,
-        request: cddc_20200320_models.DescribeMyBaseHostOverViewRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cddc_20200320_models.DescribeMyBaseHostOverViewResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.region):
-            query['Region'] = request.region
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeMyBaseHostOverView',
-            version='2020-03-20',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cddc_20200320_models.DescribeMyBaseHostOverViewResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_my_base_host_over_view_with_options_async(
-        self,
-        request: cddc_20200320_models.DescribeMyBaseHostOverViewRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cddc_20200320_models.DescribeMyBaseHostOverViewResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.region):
-            query['Region'] = request.region
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeMyBaseHostOverView',
-            version='2020-03-20',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cddc_20200320_models.DescribeMyBaseHostOverViewResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_my_base_host_over_view(
-        self,
-        request: cddc_20200320_models.DescribeMyBaseHostOverViewRequest,
-    ) -> cddc_20200320_models.DescribeMyBaseHostOverViewResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_my_base_host_over_view_with_options(request, runtime)
-
-    async def describe_my_base_host_over_view_async(
-        self,
-        request: cddc_20200320_models.DescribeMyBaseHostOverViewRequest,
-    ) -> cddc_20200320_models.DescribeMyBaseHostOverViewResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_my_base_host_over_view_with_options_async(request, runtime)
-
-    def describe_my_base_instance_over_view_with_options(
-        self,
-        request: cddc_20200320_models.DescribeMyBaseInstanceOverViewRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cddc_20200320_models.DescribeMyBaseInstanceOverViewResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.region):
-            query['Region'] = request.region
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeMyBaseInstanceOverView',
-            version='2020-03-20',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cddc_20200320_models.DescribeMyBaseInstanceOverViewResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_my_base_instance_over_view_with_options_async(
-        self,
-        request: cddc_20200320_models.DescribeMyBaseInstanceOverViewRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cddc_20200320_models.DescribeMyBaseInstanceOverViewResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.region):
-            query['Region'] = request.region
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeMyBaseInstanceOverView',
-            version='2020-03-20',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cddc_20200320_models.DescribeMyBaseInstanceOverViewResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_my_base_instance_over_view(
-        self,
-        request: cddc_20200320_models.DescribeMyBaseInstanceOverViewRequest,
-    ) -> cddc_20200320_models.DescribeMyBaseInstanceOverViewResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_my_base_instance_over_view_with_options(request, runtime)
-
-    async def describe_my_base_instance_over_view_async(
-        self,
-        request: cddc_20200320_models.DescribeMyBaseInstanceOverViewRequest,
-    ) -> cddc_20200320_models.DescribeMyBaseInstanceOverViewResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_my_base_instance_over_view_with_options_async(request, runtime)
 
     def describe_regions_with_options(
         self,
@@ -2772,329 +2518,3 @@ class Client(OpenApiClient):
     ) -> cddc_20200320_models.UntagResourcesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.untag_resources_with_options_async(request, runtime)
-
-    def list_with_options(
-        self,
-        request: cddc_20200320_models.ListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cddc_20200320_models.ListResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.ali_uid):
-            query['AliUid'] = request.ali_uid
-        if not UtilClient.is_unset(request.bid):
-            query['Bid'] = request.bid
-        if not UtilClient.is_unset(request.keys):
-            query['Keys'] = request.keys
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_ids):
-            query['ResourceIds'] = request.resource_ids
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.resource_type):
-            query['ResourceType'] = request.resource_type
-        if not UtilClient.is_unset(request.values):
-            query['Values'] = request.values
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='list',
-            version='2020-03-20',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cddc_20200320_models.ListResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def list_with_options_async(
-        self,
-        request: cddc_20200320_models.ListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cddc_20200320_models.ListResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.ali_uid):
-            query['AliUid'] = request.ali_uid
-        if not UtilClient.is_unset(request.bid):
-            query['Bid'] = request.bid
-        if not UtilClient.is_unset(request.keys):
-            query['Keys'] = request.keys
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_ids):
-            query['ResourceIds'] = request.resource_ids
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.resource_type):
-            query['ResourceType'] = request.resource_type
-        if not UtilClient.is_unset(request.values):
-            query['Values'] = request.values
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='list',
-            version='2020-03-20',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cddc_20200320_models.ListResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def list(
-        self,
-        request: cddc_20200320_models.ListRequest,
-    ) -> cddc_20200320_models.ListResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.list_with_options(request, runtime)
-
-    async def list_async(
-        self,
-        request: cddc_20200320_models.ListRequest,
-    ) -> cddc_20200320_models.ListResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.list_with_options_async(request, runtime)
-
-    def tag_with_options(
-        self,
-        request: cddc_20200320_models.TagRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cddc_20200320_models.TagResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.ali_uid):
-            query['AliUid'] = request.ali_uid
-        if not UtilClient.is_unset(request.bid):
-            query['Bid'] = request.bid
-        if not UtilClient.is_unset(request.keys):
-            query['Keys'] = request.keys
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_ids):
-            query['ResourceIds'] = request.resource_ids
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.resource_type):
-            query['ResourceType'] = request.resource_type
-        if not UtilClient.is_unset(request.values):
-            query['Values'] = request.values
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='tag',
-            version='2020-03-20',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cddc_20200320_models.TagResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def tag_with_options_async(
-        self,
-        request: cddc_20200320_models.TagRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cddc_20200320_models.TagResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.ali_uid):
-            query['AliUid'] = request.ali_uid
-        if not UtilClient.is_unset(request.bid):
-            query['Bid'] = request.bid
-        if not UtilClient.is_unset(request.keys):
-            query['Keys'] = request.keys
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_ids):
-            query['ResourceIds'] = request.resource_ids
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.resource_type):
-            query['ResourceType'] = request.resource_type
-        if not UtilClient.is_unset(request.values):
-            query['Values'] = request.values
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='tag',
-            version='2020-03-20',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cddc_20200320_models.TagResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def tag(
-        self,
-        request: cddc_20200320_models.TagRequest,
-    ) -> cddc_20200320_models.TagResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.tag_with_options(request, runtime)
-
-    async def tag_async(
-        self,
-        request: cddc_20200320_models.TagRequest,
-    ) -> cddc_20200320_models.TagResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.tag_with_options_async(request, runtime)
-
-    def untag_with_options(
-        self,
-        request: cddc_20200320_models.UntagRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cddc_20200320_models.UntagResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.ali_uid):
-            query['AliUid'] = request.ali_uid
-        if not UtilClient.is_unset(request.all):
-            query['All'] = request.all
-        if not UtilClient.is_unset(request.bid):
-            query['Bid'] = request.bid
-        if not UtilClient.is_unset(request.keys):
-            query['Keys'] = request.keys
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.release):
-            query['Release'] = request.release
-        if not UtilClient.is_unset(request.resource_ids):
-            query['ResourceIds'] = request.resource_ids
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.resource_type):
-            query['ResourceType'] = request.resource_type
-        if not UtilClient.is_unset(request.values):
-            query['Values'] = request.values
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='untag',
-            version='2020-03-20',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cddc_20200320_models.UntagResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def untag_with_options_async(
-        self,
-        request: cddc_20200320_models.UntagRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cddc_20200320_models.UntagResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.ali_uid):
-            query['AliUid'] = request.ali_uid
-        if not UtilClient.is_unset(request.all):
-            query['All'] = request.all
-        if not UtilClient.is_unset(request.bid):
-            query['Bid'] = request.bid
-        if not UtilClient.is_unset(request.keys):
-            query['Keys'] = request.keys
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.release):
-            query['Release'] = request.release
-        if not UtilClient.is_unset(request.resource_ids):
-            query['ResourceIds'] = request.resource_ids
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.resource_type):
-            query['ResourceType'] = request.resource_type
-        if not UtilClient.is_unset(request.values):
-            query['Values'] = request.values
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='untag',
-            version='2020-03-20',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cddc_20200320_models.UntagResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def untag(
-        self,
-        request: cddc_20200320_models.UntagRequest,
-    ) -> cddc_20200320_models.UntagResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.untag_with_options(request, runtime)
-
-    async def untag_async(
-        self,
-        request: cddc_20200320_models.UntagRequest,
-    ) -> cddc_20200320_models.UntagResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.untag_with_options_async(request, runtime)
