@@ -3941,11 +3941,11 @@ class DescribeAppGroupResponseBodyResultQuota(TeaModel):
 class DescribeAppGroupResponseBodyResultTags(TeaModel):
     def __init__(
         self,
-        tag_key: str = None,
-        tag_value: str = None,
+        key: str = None,
+        value: str = None,
     ):
-        self.tag_key = tag_key
-        self.tag_value = tag_value
+        self.key = key
+        self.value = value
 
     def validate(self):
         pass
@@ -3956,18 +3956,18 @@ class DescribeAppGroupResponseBodyResultTags(TeaModel):
             return _map
 
         result = dict()
-        if self.tag_key is not None:
-            result['tagKey'] = self.tag_key
-        if self.tag_value is not None:
-            result['tagValue'] = self.tag_value
+        if self.key is not None:
+            result['key'] = self.key
+        if self.value is not None:
+            result['value'] = self.value
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('tagKey') is not None:
-            self.tag_key = m.get('tagKey')
-        if m.get('tagValue') is not None:
-            self.tag_value = m.get('tagValue')
+        if m.get('key') is not None:
+            self.key = m.get('key')
+        if m.get('value') is not None:
+            self.value = m.get('value')
         return self
 
 
@@ -8160,10 +8160,12 @@ class GetScriptFileNamesResponseBodyResult(TeaModel):
         create_time: str = None,
         file_name: str = None,
         modify_time: str = None,
+        path_name: str = None,
     ):
         self.create_time = create_time
         self.file_name = file_name
         self.modify_time = modify_time
+        self.path_name = path_name
 
     def validate(self):
         pass
@@ -8180,6 +8182,8 @@ class GetScriptFileNamesResponseBodyResult(TeaModel):
             result['fileName'] = self.file_name
         if self.modify_time is not None:
             result['modifyTime'] = self.modify_time
+        if self.path_name is not None:
+            result['pathName'] = self.path_name
         return result
 
     def from_map(self, m: dict = None):
@@ -8190,6 +8194,8 @@ class GetScriptFileNamesResponseBodyResult(TeaModel):
             self.file_name = m.get('fileName')
         if m.get('modifyTime') is not None:
             self.modify_time = m.get('modifyTime')
+        if m.get('pathName') is not None:
+            self.path_name = m.get('pathName')
         return self
 
 
@@ -9945,11 +9951,11 @@ class ListAppGroupsResponseBodyResultQuota(TeaModel):
 class ListAppGroupsResponseBodyResultTags(TeaModel):
     def __init__(
         self,
-        tag_key: str = None,
-        tag_value: str = None,
+        key: str = None,
+        value: str = None,
     ):
-        self.tag_key = tag_key
-        self.tag_value = tag_value
+        self.key = key
+        self.value = value
 
     def validate(self):
         pass
@@ -9960,18 +9966,18 @@ class ListAppGroupsResponseBodyResultTags(TeaModel):
             return _map
 
         result = dict()
-        if self.tag_key is not None:
-            result['tagKey'] = self.tag_key
-        if self.tag_value is not None:
-            result['tagValue'] = self.tag_value
+        if self.key is not None:
+            result['key'] = self.key
+        if self.value is not None:
+            result['value'] = self.value
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('tagKey') is not None:
-            self.tag_key = m.get('tagKey')
-        if m.get('tagValue') is not None:
-            self.tag_value = m.get('tagValue')
+        if m.get('key') is not None:
+            self.key = m.get('key')
+        if m.get('value') is not None:
+            self.value = m.get('value')
         return self
 
 
@@ -17956,8 +17962,10 @@ class RenewAppGroupResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
+        result: bool = None,
     ):
         self.request_id = request_id
+        self.result = result
 
     def validate(self):
         pass
@@ -17970,12 +17978,16 @@ class RenewAppGroupResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['requestId'] = self.request_id
+        if self.result is not None:
+            result['result'] = self.result
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
+        if m.get('result') is not None:
+            self.result = m.get('result')
         return self
 
 

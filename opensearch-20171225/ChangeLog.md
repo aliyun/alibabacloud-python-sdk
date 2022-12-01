@@ -1,3 +1,7 @@
+2022-12-01 Version: 1.1.3
+- Fixed bugs for GetScriptFileNames result.pathName
+- Fixed bugs for RenewAppGroup result
+
 2022-11-04 Version: 1.1.2
 - Add Tag API.
 
