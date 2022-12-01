@@ -1,3 +1,6 @@
+2022-12-01 Version: 1.22.2
+- Add updateJob.
+
 2022-12-01 Version: 1.22.1
 - Add updateJob.
 

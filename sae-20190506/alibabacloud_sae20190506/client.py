@@ -8416,6 +8416,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.web_container):
             query['WebContainer'] = request.web_container
         body = {}
+        if not UtilClient.is_unset(request.acr_instance_id):
+            body['AcrInstanceId'] = request.acr_instance_id
         if not UtilClient.is_unset(request.associate_eip):
             body['AssociateEip'] = request.associate_eip
         if not UtilClient.is_unset(request.config_map_mount_desc):
@@ -8426,8 +8428,14 @@ class Client(OpenApiClient):
             body['OssAkSecret'] = request.oss_ak_secret
         if not UtilClient.is_unset(request.oss_mount_descs):
             body['OssMountDescs'] = request.oss_mount_descs
+        if not UtilClient.is_unset(request.php):
+            body['Php'] = request.php
         if not UtilClient.is_unset(request.php_config):
             body['PhpConfig'] = request.php_config
+        if not UtilClient.is_unset(request.php_extensions):
+            body['PhpExtensions'] = request.php_extensions
+        if not UtilClient.is_unset(request.php_peclextensions):
+            body['PhpPECLExtensions'] = request.php_peclextensions
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),
@@ -8552,6 +8560,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.web_container):
             query['WebContainer'] = request.web_container
         body = {}
+        if not UtilClient.is_unset(request.acr_instance_id):
+            body['AcrInstanceId'] = request.acr_instance_id
         if not UtilClient.is_unset(request.associate_eip):
             body['AssociateEip'] = request.associate_eip
         if not UtilClient.is_unset(request.config_map_mount_desc):
@@ -8562,8 +8572,14 @@ class Client(OpenApiClient):
             body['OssAkSecret'] = request.oss_ak_secret
         if not UtilClient.is_unset(request.oss_mount_descs):
             body['OssMountDescs'] = request.oss_mount_descs
+        if not UtilClient.is_unset(request.php):
+            body['Php'] = request.php
         if not UtilClient.is_unset(request.php_config):
             body['PhpConfig'] = request.php_config
+        if not UtilClient.is_unset(request.php_extensions):
+            body['PhpExtensions'] = request.php_extensions
+        if not UtilClient.is_unset(request.php_peclextensions):
+            body['PhpPECLExtensions'] = request.php_peclextensions
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),

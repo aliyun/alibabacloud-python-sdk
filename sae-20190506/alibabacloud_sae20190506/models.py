@@ -23372,6 +23372,7 @@ class UpdateJobRequest(TeaModel):
     def __init__(
         self,
         acr_assume_role_arn: str = None,
+        acr_instance_id: str = None,
         app_id: str = None,
         associate_eip: bool = None,
         auto_enable_application_scaling_rule: bool = None,
@@ -23402,9 +23403,12 @@ class UpdateJobRequest(TeaModel):
         oss_mount_descs: str = None,
         package_url: str = None,
         package_version: str = None,
+        php: str = None,
         php_arms_config_location: str = None,
         php_config: str = None,
         php_config_location: str = None,
+        php_extensions: str = None,
+        php_peclextensions: str = None,
         post_start: str = None,
         pre_stop: str = None,
         programming_language: str = None,
@@ -23426,6 +23430,7 @@ class UpdateJobRequest(TeaModel):
         web_container: str = None,
     ):
         self.acr_assume_role_arn = acr_assume_role_arn
+        self.acr_instance_id = acr_instance_id
         self.app_id = app_id
         self.associate_eip = associate_eip
         self.auto_enable_application_scaling_rule = auto_enable_application_scaling_rule
@@ -23456,9 +23461,12 @@ class UpdateJobRequest(TeaModel):
         self.oss_mount_descs = oss_mount_descs
         self.package_url = package_url
         self.package_version = package_version
+        self.php = php
         self.php_arms_config_location = php_arms_config_location
         self.php_config = php_config
         self.php_config_location = php_config_location
+        self.php_extensions = php_extensions
+        self.php_peclextensions = php_peclextensions
         self.post_start = post_start
         self.pre_stop = pre_stop
         self.programming_language = programming_language
@@ -23490,6 +23498,8 @@ class UpdateJobRequest(TeaModel):
         result = dict()
         if self.acr_assume_role_arn is not None:
             result['AcrAssumeRoleArn'] = self.acr_assume_role_arn
+        if self.acr_instance_id is not None:
+            result['AcrInstanceId'] = self.acr_instance_id
         if self.app_id is not None:
             result['AppId'] = self.app_id
         if self.associate_eip is not None:
@@ -23550,12 +23560,18 @@ class UpdateJobRequest(TeaModel):
             result['PackageUrl'] = self.package_url
         if self.package_version is not None:
             result['PackageVersion'] = self.package_version
+        if self.php is not None:
+            result['Php'] = self.php
         if self.php_arms_config_location is not None:
             result['PhpArmsConfigLocation'] = self.php_arms_config_location
         if self.php_config is not None:
             result['PhpConfig'] = self.php_config
         if self.php_config_location is not None:
             result['PhpConfigLocation'] = self.php_config_location
+        if self.php_extensions is not None:
+            result['PhpExtensions'] = self.php_extensions
+        if self.php_peclextensions is not None:
+            result['PhpPECLExtensions'] = self.php_peclextensions
         if self.post_start is not None:
             result['PostStart'] = self.post_start
         if self.pre_stop is not None:
@@ -23600,6 +23616,8 @@ class UpdateJobRequest(TeaModel):
         m = m or dict()
         if m.get('AcrAssumeRoleArn') is not None:
             self.acr_assume_role_arn = m.get('AcrAssumeRoleArn')
+        if m.get('AcrInstanceId') is not None:
+            self.acr_instance_id = m.get('AcrInstanceId')
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
         if m.get('AssociateEip') is not None:
@@ -23660,12 +23678,18 @@ class UpdateJobRequest(TeaModel):
             self.package_url = m.get('PackageUrl')
         if m.get('PackageVersion') is not None:
             self.package_version = m.get('PackageVersion')
+        if m.get('Php') is not None:
+            self.php = m.get('Php')
         if m.get('PhpArmsConfigLocation') is not None:
             self.php_arms_config_location = m.get('PhpArmsConfigLocation')
         if m.get('PhpConfig') is not None:
             self.php_config = m.get('PhpConfig')
         if m.get('PhpConfigLocation') is not None:
             self.php_config_location = m.get('PhpConfigLocation')
+        if m.get('PhpExtensions') is not None:
+            self.php_extensions = m.get('PhpExtensions')
+        if m.get('PhpPECLExtensions') is not None:
+            self.php_peclextensions = m.get('PhpPECLExtensions')
         if m.get('PostStart') is not None:
             self.post_start = m.get('PostStart')
         if m.get('PreStop') is not None:
