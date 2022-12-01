@@ -2858,9 +2858,11 @@ class BatchGetDeviceBindStatusResponseBodyData(TeaModel):
     def __init__(
         self,
         bind_status: int = None,
+        instance_id: str = None,
         iot_id: str = None,
     ):
         self.bind_status = bind_status
+        self.instance_id = instance_id
         self.iot_id = iot_id
 
     def validate(self):
@@ -2874,6 +2876,8 @@ class BatchGetDeviceBindStatusResponseBodyData(TeaModel):
         result = dict()
         if self.bind_status is not None:
             result['BindStatus'] = self.bind_status
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
         if self.iot_id is not None:
             result['IotId'] = self.iot_id
         return result
@@ -2882,6 +2886,8 @@ class BatchGetDeviceBindStatusResponseBodyData(TeaModel):
         m = m or dict()
         if m.get('BindStatus') is not None:
             self.bind_status = m.get('BindStatus')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
         if m.get('IotId') is not None:
             self.iot_id = m.get('IotId')
         return self
@@ -51034,6 +51040,580 @@ class QueryDeviceTunnelResponse(TeaModel):
         return self
 
 
+class QueryDevicesHotStorageDataRequest(TeaModel):
+    def __init__(
+        self,
+        asc: int = None,
+        device_name: str = None,
+        end_time: int = None,
+        identifier: str = None,
+        iot_id: str = None,
+        iot_instance_id: str = None,
+        next_page_token: str = None,
+        page_size: int = None,
+        product_key: str = None,
+        start_time: int = None,
+        user_topic: str = None,
+    ):
+        self.asc = asc
+        self.device_name = device_name
+        self.end_time = end_time
+        self.identifier = identifier
+        self.iot_id = iot_id
+        self.iot_instance_id = iot_instance_id
+        self.next_page_token = next_page_token
+        self.page_size = page_size
+        self.product_key = product_key
+        self.start_time = start_time
+        self.user_topic = user_topic
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.asc is not None:
+            result['Asc'] = self.asc
+        if self.device_name is not None:
+            result['DeviceName'] = self.device_name
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.identifier is not None:
+            result['Identifier'] = self.identifier
+        if self.iot_id is not None:
+            result['IotId'] = self.iot_id
+        if self.iot_instance_id is not None:
+            result['IotInstanceId'] = self.iot_instance_id
+        if self.next_page_token is not None:
+            result['NextPageToken'] = self.next_page_token
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.product_key is not None:
+            result['ProductKey'] = self.product_key
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.user_topic is not None:
+            result['UserTopic'] = self.user_topic
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Asc') is not None:
+            self.asc = m.get('Asc')
+        if m.get('DeviceName') is not None:
+            self.device_name = m.get('DeviceName')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Identifier') is not None:
+            self.identifier = m.get('Identifier')
+        if m.get('IotId') is not None:
+            self.iot_id = m.get('IotId')
+        if m.get('IotInstanceId') is not None:
+            self.iot_instance_id = m.get('IotInstanceId')
+        if m.get('NextPageToken') is not None:
+            self.next_page_token = m.get('NextPageToken')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ProductKey') is not None:
+            self.product_key = m.get('ProductKey')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('UserTopic') is not None:
+            self.user_topic = m.get('UserTopic')
+        return self
+
+
+class QueryDevicesHotStorageDataResponseBodyDataListPropertyInfo(TeaModel):
+    def __init__(
+        self,
+        time: str = None,
+        value: str = None,
+    ):
+        self.time = time
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.time is not None:
+            result['Time'] = self.time
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Time') is not None:
+            self.time = m.get('Time')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class QueryDevicesHotStorageDataResponseBodyDataList(TeaModel):
+    def __init__(
+        self,
+        property_info: List[QueryDevicesHotStorageDataResponseBodyDataListPropertyInfo] = None,
+    ):
+        self.property_info = property_info
+
+    def validate(self):
+        if self.property_info:
+            for k in self.property_info:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['PropertyInfo'] = []
+        if self.property_info is not None:
+            for k in self.property_info:
+                result['PropertyInfo'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.property_info = []
+        if m.get('PropertyInfo') is not None:
+            for k in m.get('PropertyInfo'):
+                temp_model = QueryDevicesHotStorageDataResponseBodyDataListPropertyInfo()
+                self.property_info.append(temp_model.from_map(k))
+        return self
+
+
+class QueryDevicesHotStorageDataResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        list: QueryDevicesHotStorageDataResponseBodyDataList = None,
+        next_valid: bool = None,
+        next_page_token: str = None,
+    ):
+        self.list = list
+        self.next_valid = next_valid
+        self.next_page_token = next_page_token
+
+    def validate(self):
+        if self.list:
+            self.list.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.list is not None:
+            result['List'] = self.list.to_map()
+        if self.next_valid is not None:
+            result['NextValid'] = self.next_valid
+        if self.next_page_token is not None:
+            result['nextPageToken'] = self.next_page_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('List') is not None:
+            temp_model = QueryDevicesHotStorageDataResponseBodyDataList()
+            self.list = temp_model.from_map(m['List'])
+        if m.get('NextValid') is not None:
+            self.next_valid = m.get('NextValid')
+        if m.get('nextPageToken') is not None:
+            self.next_page_token = m.get('nextPageToken')
+        return self
+
+
+class QueryDevicesHotStorageDataResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: QueryDevicesHotStorageDataResponseBodyData = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.error_message = error_message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = QueryDevicesHotStorageDataResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class QueryDevicesHotStorageDataResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryDevicesHotStorageDataResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryDevicesHotStorageDataResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryDevicesHotStorageDataStatusRequest(TeaModel):
+    def __init__(
+        self,
+        asc: int = None,
+        device_name: str = None,
+        iot_id: str = None,
+        iot_instance_id: str = None,
+        next_page_token: str = None,
+        page_size: int = None,
+        product_key: str = None,
+        user_topic: str = None,
+    ):
+        self.asc = asc
+        self.device_name = device_name
+        self.iot_id = iot_id
+        self.iot_instance_id = iot_instance_id
+        self.next_page_token = next_page_token
+        self.page_size = page_size
+        self.product_key = product_key
+        self.user_topic = user_topic
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.asc is not None:
+            result['Asc'] = self.asc
+        if self.device_name is not None:
+            result['DeviceName'] = self.device_name
+        if self.iot_id is not None:
+            result['IotId'] = self.iot_id
+        if self.iot_instance_id is not None:
+            result['IotInstanceId'] = self.iot_instance_id
+        if self.next_page_token is not None:
+            result['NextPageToken'] = self.next_page_token
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.product_key is not None:
+            result['ProductKey'] = self.product_key
+        if self.user_topic is not None:
+            result['UserTopic'] = self.user_topic
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Asc') is not None:
+            self.asc = m.get('Asc')
+        if m.get('DeviceName') is not None:
+            self.device_name = m.get('DeviceName')
+        if m.get('IotId') is not None:
+            self.iot_id = m.get('IotId')
+        if m.get('IotInstanceId') is not None:
+            self.iot_instance_id = m.get('IotInstanceId')
+        if m.get('NextPageToken') is not None:
+            self.next_page_token = m.get('NextPageToken')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ProductKey') is not None:
+            self.product_key = m.get('ProductKey')
+        if m.get('UserTopic') is not None:
+            self.user_topic = m.get('UserTopic')
+        return self
+
+
+class QueryDevicesHotStorageDataStatusResponseBodyDataListPropertyStatusDataInfo(TeaModel):
+    def __init__(
+        self,
+        identifier: str = None,
+        time: int = None,
+        value: str = None,
+    ):
+        self.identifier = identifier
+        self.time = time
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.identifier is not None:
+            result['Identifier'] = self.identifier
+        if self.time is not None:
+            result['Time'] = self.time
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Identifier') is not None:
+            self.identifier = m.get('Identifier')
+        if m.get('Time') is not None:
+            self.time = m.get('Time')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class QueryDevicesHotStorageDataStatusResponseBodyDataList(TeaModel):
+    def __init__(
+        self,
+        property_status_data_info: List[QueryDevicesHotStorageDataStatusResponseBodyDataListPropertyStatusDataInfo] = None,
+    ):
+        self.property_status_data_info = property_status_data_info
+
+    def validate(self):
+        if self.property_status_data_info:
+            for k in self.property_status_data_info:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['PropertyStatusDataInfo'] = []
+        if self.property_status_data_info is not None:
+            for k in self.property_status_data_info:
+                result['PropertyStatusDataInfo'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.property_status_data_info = []
+        if m.get('PropertyStatusDataInfo') is not None:
+            for k in m.get('PropertyStatusDataInfo'):
+                temp_model = QueryDevicesHotStorageDataStatusResponseBodyDataListPropertyStatusDataInfo()
+                self.property_status_data_info.append(temp_model.from_map(k))
+        return self
+
+
+class QueryDevicesHotStorageDataStatusResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        list: QueryDevicesHotStorageDataStatusResponseBodyDataList = None,
+        next_page_token: str = None,
+        next_valid: bool = None,
+    ):
+        self.list = list
+        self.next_page_token = next_page_token
+        self.next_valid = next_valid
+
+    def validate(self):
+        if self.list:
+            self.list.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.list is not None:
+            result['List'] = self.list.to_map()
+        if self.next_page_token is not None:
+            result['NextPageToken'] = self.next_page_token
+        if self.next_valid is not None:
+            result['NextValid'] = self.next_valid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('List') is not None:
+            temp_model = QueryDevicesHotStorageDataStatusResponseBodyDataList()
+            self.list = temp_model.from_map(m['List'])
+        if m.get('NextPageToken') is not None:
+            self.next_page_token = m.get('NextPageToken')
+        if m.get('NextValid') is not None:
+            self.next_valid = m.get('NextValid')
+        return self
+
+
+class QueryDevicesHotStorageDataStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: QueryDevicesHotStorageDataStatusResponseBodyData = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.error_message = error_message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = QueryDevicesHotStorageDataStatusResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class QueryDevicesHotStorageDataStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryDevicesHotStorageDataStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryDevicesHotStorageDataStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class QueryDynamicGroupDevicesRequest(TeaModel):
     def __init__(
         self,
@@ -76717,6 +77297,152 @@ class UpdateThingScriptResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateThingScriptResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class WriteDevicesHotStorageDataRequest(TeaModel):
+    def __init__(
+        self,
+        device_name: str = None,
+        iot_id: str = None,
+        iot_instance_id: str = None,
+        items: str = None,
+        product_key: str = None,
+        user_topic: str = None,
+    ):
+        self.device_name = device_name
+        self.iot_id = iot_id
+        self.iot_instance_id = iot_instance_id
+        self.items = items
+        self.product_key = product_key
+        self.user_topic = user_topic
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.device_name is not None:
+            result['DeviceName'] = self.device_name
+        if self.iot_id is not None:
+            result['IotId'] = self.iot_id
+        if self.iot_instance_id is not None:
+            result['IotInstanceId'] = self.iot_instance_id
+        if self.items is not None:
+            result['Items'] = self.items
+        if self.product_key is not None:
+            result['ProductKey'] = self.product_key
+        if self.user_topic is not None:
+            result['UserTopic'] = self.user_topic
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeviceName') is not None:
+            self.device_name = m.get('DeviceName')
+        if m.get('IotId') is not None:
+            self.iot_id = m.get('IotId')
+        if m.get('IotInstanceId') is not None:
+            self.iot_instance_id = m.get('IotInstanceId')
+        if m.get('Items') is not None:
+            self.items = m.get('Items')
+        if m.get('ProductKey') is not None:
+            self.product_key = m.get('ProductKey')
+        if m.get('UserTopic') is not None:
+            self.user_topic = m.get('UserTopic')
+        return self
+
+
+class WriteDevicesHotStorageDataResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class WriteDevicesHotStorageDataResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: WriteDevicesHotStorageDataResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = WriteDevicesHotStorageDataResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

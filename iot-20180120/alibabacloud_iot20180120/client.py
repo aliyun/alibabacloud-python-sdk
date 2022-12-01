@@ -21830,6 +21830,214 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_device_tunnel_with_options_async(request, runtime)
 
+    def query_devices_hot_storage_data_with_options(
+        self,
+        request: iot_20180120_models.QueryDevicesHotStorageDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.QueryDevicesHotStorageDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.asc):
+            query['Asc'] = request.asc
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.identifier):
+            query['Identifier'] = request.identifier
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.next_page_token):
+            query['NextPageToken'] = request.next_page_token
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.user_topic):
+            query['UserTopic'] = request.user_topic
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDevicesHotStorageData',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.QueryDevicesHotStorageDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_devices_hot_storage_data_with_options_async(
+        self,
+        request: iot_20180120_models.QueryDevicesHotStorageDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.QueryDevicesHotStorageDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.asc):
+            query['Asc'] = request.asc
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.identifier):
+            query['Identifier'] = request.identifier
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.next_page_token):
+            query['NextPageToken'] = request.next_page_token
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.user_topic):
+            query['UserTopic'] = request.user_topic
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDevicesHotStorageData',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.QueryDevicesHotStorageDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_devices_hot_storage_data(
+        self,
+        request: iot_20180120_models.QueryDevicesHotStorageDataRequest,
+    ) -> iot_20180120_models.QueryDevicesHotStorageDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_devices_hot_storage_data_with_options(request, runtime)
+
+    async def query_devices_hot_storage_data_async(
+        self,
+        request: iot_20180120_models.QueryDevicesHotStorageDataRequest,
+    ) -> iot_20180120_models.QueryDevicesHotStorageDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_devices_hot_storage_data_with_options_async(request, runtime)
+
+    def query_devices_hot_storage_data_status_with_options(
+        self,
+        request: iot_20180120_models.QueryDevicesHotStorageDataStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.QueryDevicesHotStorageDataStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.asc):
+            query['Asc'] = request.asc
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.next_page_token):
+            query['NextPageToken'] = request.next_page_token
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.user_topic):
+            query['UserTopic'] = request.user_topic
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDevicesHotStorageDataStatus',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.QueryDevicesHotStorageDataStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_devices_hot_storage_data_status_with_options_async(
+        self,
+        request: iot_20180120_models.QueryDevicesHotStorageDataStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.QueryDevicesHotStorageDataStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.asc):
+            query['Asc'] = request.asc
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.next_page_token):
+            query['NextPageToken'] = request.next_page_token
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.user_topic):
+            query['UserTopic'] = request.user_topic
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDevicesHotStorageDataStatus',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.QueryDevicesHotStorageDataStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_devices_hot_storage_data_status(
+        self,
+        request: iot_20180120_models.QueryDevicesHotStorageDataStatusRequest,
+    ) -> iot_20180120_models.QueryDevicesHotStorageDataStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_devices_hot_storage_data_status_with_options(request, runtime)
+
+    async def query_devices_hot_storage_data_status_async(
+        self,
+        request: iot_20180120_models.QueryDevicesHotStorageDataStatusRequest,
+    ) -> iot_20180120_models.QueryDevicesHotStorageDataStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_devices_hot_storage_data_status_with_options_async(request, runtime)
+
     def query_dynamic_group_devices_with_options(
         self,
         request: iot_20180120_models.QueryDynamicGroupDevicesRequest,
@@ -32413,3 +32621,93 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.UpdateThingScriptResponse:
         runtime = util_models.RuntimeOptions()
         return await self.update_thing_script_with_options_async(request, runtime)
+
+    def write_devices_hot_storage_data_with_options(
+        self,
+        request: iot_20180120_models.WriteDevicesHotStorageDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.WriteDevicesHotStorageDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.items):
+            query['Items'] = request.items
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.user_topic):
+            query['UserTopic'] = request.user_topic
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='WriteDevicesHotStorageData',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.WriteDevicesHotStorageDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def write_devices_hot_storage_data_with_options_async(
+        self,
+        request: iot_20180120_models.WriteDevicesHotStorageDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> iot_20180120_models.WriteDevicesHotStorageDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.items):
+            query['Items'] = request.items
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.user_topic):
+            query['UserTopic'] = request.user_topic
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='WriteDevicesHotStorageData',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            iot_20180120_models.WriteDevicesHotStorageDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def write_devices_hot_storage_data(
+        self,
+        request: iot_20180120_models.WriteDevicesHotStorageDataRequest,
+    ) -> iot_20180120_models.WriteDevicesHotStorageDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.write_devices_hot_storage_data_with_options(request, runtime)
+
+    async def write_devices_hot_storage_data_async(
+        self,
+        request: iot_20180120_models.WriteDevicesHotStorageDataRequest,
+    ) -> iot_20180120_models.WriteDevicesHotStorageDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.write_devices_hot_storage_data_with_options_async(request, runtime)
