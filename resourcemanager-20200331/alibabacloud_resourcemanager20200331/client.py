@@ -584,6 +584,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.cancel_promote_resource_account_with_options_async(request, runtime)
 
+    def check_account_delete_with_options(
+        self,
+        request: resource_manager_20200331_models.CheckAccountDeleteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_manager_20200331_models.CheckAccountDeleteResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckAccountDelete',
+            version='2020-03-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.CheckAccountDeleteResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_account_delete_with_options_async(
+        self,
+        request: resource_manager_20200331_models.CheckAccountDeleteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_manager_20200331_models.CheckAccountDeleteResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckAccountDelete',
+            version='2020-03-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.CheckAccountDeleteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_account_delete(
+        self,
+        request: resource_manager_20200331_models.CheckAccountDeleteRequest,
+    ) -> resource_manager_20200331_models.CheckAccountDeleteResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.check_account_delete_with_options(request, runtime)
+
+    async def check_account_delete_async(
+        self,
+        request: resource_manager_20200331_models.CheckAccountDeleteRequest,
+    ) -> resource_manager_20200331_models.CheckAccountDeleteResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.check_account_delete_with_options_async(request, runtime)
+
     def create_cloud_account_with_options(
         self,
         request: resource_manager_20200331_models.CreateCloudAccountRequest,
@@ -1367,6 +1437,88 @@ class Client(OpenApiClient):
     ) -> resource_manager_20200331_models.DeclineHandshakeResponse:
         runtime = util_models.RuntimeOptions()
         return await self.decline_handshake_with_options_async(request, runtime)
+
+    def delete_account_with_options(
+        self,
+        tmp_req: resource_manager_20200331_models.DeleteAccountRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_manager_20200331_models.DeleteAccountResponse:
+        UtilClient.validate_model(tmp_req)
+        request = resource_manager_20200331_models.DeleteAccountShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.abandonable_check_id):
+            request.abandonable_check_id_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.abandonable_check_id, 'AbandonableCheckId', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.abandonable_check_id_shrink):
+            query['AbandonableCheckId'] = request.abandonable_check_id_shrink
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAccount',
+            version='2020-03-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.DeleteAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_account_with_options_async(
+        self,
+        tmp_req: resource_manager_20200331_models.DeleteAccountRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_manager_20200331_models.DeleteAccountResponse:
+        UtilClient.validate_model(tmp_req)
+        request = resource_manager_20200331_models.DeleteAccountShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.abandonable_check_id):
+            request.abandonable_check_id_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.abandonable_check_id, 'AbandonableCheckId', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.abandonable_check_id_shrink):
+            query['AbandonableCheckId'] = request.abandonable_check_id_shrink
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAccount',
+            version='2020-03-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.DeleteAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_account(
+        self,
+        request: resource_manager_20200331_models.DeleteAccountRequest,
+    ) -> resource_manager_20200331_models.DeleteAccountResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_account_with_options(request, runtime)
+
+    async def delete_account_async(
+        self,
+        request: resource_manager_20200331_models.DeleteAccountRequest,
+    ) -> resource_manager_20200331_models.DeleteAccountResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_account_with_options_async(request, runtime)
 
     def delete_control_policy_with_options(
         self,
@@ -2401,6 +2553,146 @@ class Client(OpenApiClient):
     ) -> resource_manager_20200331_models.GetAccountResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_account_with_options_async(request, runtime)
+
+    def get_account_deletion_check_result_with_options(
+        self,
+        request: resource_manager_20200331_models.GetAccountDeletionCheckResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_manager_20200331_models.GetAccountDeletionCheckResultResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAccountDeletionCheckResult',
+            version='2020-03-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.GetAccountDeletionCheckResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_account_deletion_check_result_with_options_async(
+        self,
+        request: resource_manager_20200331_models.GetAccountDeletionCheckResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_manager_20200331_models.GetAccountDeletionCheckResultResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAccountDeletionCheckResult',
+            version='2020-03-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.GetAccountDeletionCheckResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_account_deletion_check_result(
+        self,
+        request: resource_manager_20200331_models.GetAccountDeletionCheckResultRequest,
+    ) -> resource_manager_20200331_models.GetAccountDeletionCheckResultResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_account_deletion_check_result_with_options(request, runtime)
+
+    async def get_account_deletion_check_result_async(
+        self,
+        request: resource_manager_20200331_models.GetAccountDeletionCheckResultRequest,
+    ) -> resource_manager_20200331_models.GetAccountDeletionCheckResultResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_account_deletion_check_result_with_options_async(request, runtime)
+
+    def get_account_deletion_status_with_options(
+        self,
+        request: resource_manager_20200331_models.GetAccountDeletionStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_manager_20200331_models.GetAccountDeletionStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAccountDeletionStatus',
+            version='2020-03-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.GetAccountDeletionStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_account_deletion_status_with_options_async(
+        self,
+        request: resource_manager_20200331_models.GetAccountDeletionStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_manager_20200331_models.GetAccountDeletionStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAccountDeletionStatus',
+            version='2020-03-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.GetAccountDeletionStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_account_deletion_status(
+        self,
+        request: resource_manager_20200331_models.GetAccountDeletionStatusRequest,
+    ) -> resource_manager_20200331_models.GetAccountDeletionStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_account_deletion_status_with_options(request, runtime)
+
+    async def get_account_deletion_status_async(
+        self,
+        request: resource_manager_20200331_models.GetAccountDeletionStatusRequest,
+    ) -> resource_manager_20200331_models.GetAccountDeletionStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_account_deletion_status_with_options_async(request, runtime)
 
     def get_control_policy_with_options(
         self,

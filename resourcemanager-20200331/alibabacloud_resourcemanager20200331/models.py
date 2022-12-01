@@ -922,6 +922,104 @@ class CancelPromoteResourceAccountResponse(TeaModel):
         return self
 
 
+class CheckAccountDeleteRequest(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+    ):
+        self.account_id = account_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['AccountId'] = self.account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountId') is not None:
+            self.account_id = m.get('AccountId')
+        return self
+
+
+class CheckAccountDeleteResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CheckAccountDeleteResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CheckAccountDeleteResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CheckAccountDeleteResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateCloudAccountRequest(TeaModel):
     def __init__(
         self,
@@ -2873,6 +2971,149 @@ class DeclineHandshakeResponse(TeaModel):
         return self
 
 
+class DeleteAccountRequest(TeaModel):
+    def __init__(
+        self,
+        abandonable_check_id: List[str] = None,
+        account_id: str = None,
+    ):
+        self.abandonable_check_id = abandonable_check_id
+        self.account_id = account_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.abandonable_check_id is not None:
+            result['AbandonableCheckId'] = self.abandonable_check_id
+        if self.account_id is not None:
+            result['AccountId'] = self.account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AbandonableCheckId') is not None:
+            self.abandonable_check_id = m.get('AbandonableCheckId')
+        if m.get('AccountId') is not None:
+            self.account_id = m.get('AccountId')
+        return self
+
+
+class DeleteAccountShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        abandonable_check_id_shrink: str = None,
+        account_id: str = None,
+    ):
+        self.abandonable_check_id_shrink = abandonable_check_id_shrink
+        self.account_id = account_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.abandonable_check_id_shrink is not None:
+            result['AbandonableCheckId'] = self.abandonable_check_id_shrink
+        if self.account_id is not None:
+            result['AccountId'] = self.account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AbandonableCheckId') is not None:
+            self.abandonable_check_id_shrink = m.get('AbandonableCheckId')
+        if m.get('AccountId') is not None:
+            self.account_id = m.get('AccountId')
+        return self
+
+
+class DeleteAccountResponseBody(TeaModel):
+    def __init__(
+        self,
+        deletion_type: str = None,
+        request_id: str = None,
+    ):
+        self.deletion_type = deletion_type
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.deletion_type is not None:
+            result['DeletionType'] = self.deletion_type
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeletionType') is not None:
+            self.deletion_type = m.get('DeletionType')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteAccountResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteAccountResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteAccountResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteControlPolicyRequest(TeaModel):
     def __init__(
         self,
@@ -4696,6 +4937,456 @@ class GetAccountResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetAccountResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetAccountDeletionCheckResultRequest(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+    ):
+        self.account_id = account_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['AccountId'] = self.account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountId') is not None:
+            self.account_id = m.get('AccountId')
+        return self
+
+
+class GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfoAbandonableChecks(TeaModel):
+    def __init__(
+        self,
+        check_id: str = None,
+        check_name: str = None,
+        description: str = None,
+    ):
+        self.check_id = check_id
+        self.check_name = check_name
+        self.description = description
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.check_id is not None:
+            result['CheckId'] = self.check_id
+        if self.check_name is not None:
+            result['CheckName'] = self.check_name
+        if self.description is not None:
+            result['Description'] = self.description
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CheckId') is not None:
+            self.check_id = m.get('CheckId')
+        if m.get('CheckName') is not None:
+            self.check_name = m.get('CheckName')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        return self
+
+
+class GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfoNotAllowReason(TeaModel):
+    def __init__(
+        self,
+        check_id: str = None,
+        check_name: str = None,
+        description: str = None,
+    ):
+        self.check_id = check_id
+        self.check_name = check_name
+        self.description = description
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.check_id is not None:
+            result['CheckId'] = self.check_id
+        if self.check_name is not None:
+            result['CheckName'] = self.check_name
+        if self.description is not None:
+            result['Description'] = self.description
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CheckId') is not None:
+            self.check_id = m.get('CheckId')
+        if m.get('CheckName') is not None:
+            self.check_name = m.get('CheckName')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        return self
+
+
+class GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfo(TeaModel):
+    def __init__(
+        self,
+        abandonable_checks: List[GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfoAbandonableChecks] = None,
+        allow_delete: str = None,
+        not_allow_reason: List[GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfoNotAllowReason] = None,
+        status: str = None,
+    ):
+        self.abandonable_checks = abandonable_checks
+        self.allow_delete = allow_delete
+        self.not_allow_reason = not_allow_reason
+        self.status = status
+
+    def validate(self):
+        if self.abandonable_checks:
+            for k in self.abandonable_checks:
+                if k:
+                    k.validate()
+        if self.not_allow_reason:
+            for k in self.not_allow_reason:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AbandonableChecks'] = []
+        if self.abandonable_checks is not None:
+            for k in self.abandonable_checks:
+                result['AbandonableChecks'].append(k.to_map() if k else None)
+        if self.allow_delete is not None:
+            result['AllowDelete'] = self.allow_delete
+        result['NotAllowReason'] = []
+        if self.not_allow_reason is not None:
+            for k in self.not_allow_reason:
+                result['NotAllowReason'].append(k.to_map() if k else None)
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.abandonable_checks = []
+        if m.get('AbandonableChecks') is not None:
+            for k in m.get('AbandonableChecks'):
+                temp_model = GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfoAbandonableChecks()
+                self.abandonable_checks.append(temp_model.from_map(k))
+        if m.get('AllowDelete') is not None:
+            self.allow_delete = m.get('AllowDelete')
+        self.not_allow_reason = []
+        if m.get('NotAllowReason') is not None:
+            for k in m.get('NotAllowReason'):
+                temp_model = GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfoNotAllowReason()
+                self.not_allow_reason.append(temp_model.from_map(k))
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class GetAccountDeletionCheckResultResponseBody(TeaModel):
+    def __init__(
+        self,
+        account_deletion_check_result_info: GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfo = None,
+        request_id: str = None,
+    ):
+        self.account_deletion_check_result_info = account_deletion_check_result_info
+        self.request_id = request_id
+
+    def validate(self):
+        if self.account_deletion_check_result_info:
+            self.account_deletion_check_result_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_deletion_check_result_info is not None:
+            result['AccountDeletionCheckResultInfo'] = self.account_deletion_check_result_info.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountDeletionCheckResultInfo') is not None:
+            temp_model = GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfo()
+            self.account_deletion_check_result_info = temp_model.from_map(m['AccountDeletionCheckResultInfo'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetAccountDeletionCheckResultResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetAccountDeletionCheckResultResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetAccountDeletionCheckResultResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetAccountDeletionStatusRequest(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+    ):
+        self.account_id = account_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['AccountId'] = self.account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountId') is not None:
+            self.account_id = m.get('AccountId')
+        return self
+
+
+class GetAccountDeletionStatusResponseBodyRdAccountDeletionStatusFailReasonList(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        name: str = None,
+    ):
+        self.description = description
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class GetAccountDeletionStatusResponseBodyRdAccountDeletionStatus(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+        create_time: str = None,
+        deletion_time: str = None,
+        deletion_type: str = None,
+        fail_reason_list: List[GetAccountDeletionStatusResponseBodyRdAccountDeletionStatusFailReasonList] = None,
+        status: str = None,
+    ):
+        self.account_id = account_id
+        self.create_time = create_time
+        self.deletion_time = deletion_time
+        self.deletion_type = deletion_type
+        self.fail_reason_list = fail_reason_list
+        self.status = status
+
+    def validate(self):
+        if self.fail_reason_list:
+            for k in self.fail_reason_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['AccountId'] = self.account_id
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.deletion_time is not None:
+            result['DeletionTime'] = self.deletion_time
+        if self.deletion_type is not None:
+            result['DeletionType'] = self.deletion_type
+        result['FailReasonList'] = []
+        if self.fail_reason_list is not None:
+            for k in self.fail_reason_list:
+                result['FailReasonList'].append(k.to_map() if k else None)
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountId') is not None:
+            self.account_id = m.get('AccountId')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('DeletionTime') is not None:
+            self.deletion_time = m.get('DeletionTime')
+        if m.get('DeletionType') is not None:
+            self.deletion_type = m.get('DeletionType')
+        self.fail_reason_list = []
+        if m.get('FailReasonList') is not None:
+            for k in m.get('FailReasonList'):
+                temp_model = GetAccountDeletionStatusResponseBodyRdAccountDeletionStatusFailReasonList()
+                self.fail_reason_list.append(temp_model.from_map(k))
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class GetAccountDeletionStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        rd_account_deletion_status: GetAccountDeletionStatusResponseBodyRdAccountDeletionStatus = None,
+        request_id: str = None,
+    ):
+        self.rd_account_deletion_status = rd_account_deletion_status
+        self.request_id = request_id
+
+    def validate(self):
+        if self.rd_account_deletion_status:
+            self.rd_account_deletion_status.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.rd_account_deletion_status is not None:
+            result['RdAccountDeletionStatus'] = self.rd_account_deletion_status.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RdAccountDeletionStatus') is not None:
+            temp_model = GetAccountDeletionStatusResponseBodyRdAccountDeletionStatus()
+            self.rd_account_deletion_status = temp_model.from_map(m['RdAccountDeletionStatus'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetAccountDeletionStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetAccountDeletionStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetAccountDeletionStatusResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -8833,9 +9524,11 @@ class ListDelegatedServicesForAccountResponseBodyDelegatedServicesDelegatedServi
         self,
         delegation_enabled_time: str = None,
         service_principal: str = None,
+        status: str = None,
     ):
         self.delegation_enabled_time = delegation_enabled_time
         self.service_principal = service_principal
+        self.status = status
 
     def validate(self):
         pass
@@ -8850,6 +9543,8 @@ class ListDelegatedServicesForAccountResponseBodyDelegatedServicesDelegatedServi
             result['DelegationEnabledTime'] = self.delegation_enabled_time
         if self.service_principal is not None:
             result['ServicePrincipal'] = self.service_principal
+        if self.status is not None:
+            result['Status'] = self.status
         return result
 
     def from_map(self, m: dict = None):
@@ -8858,6 +9553,8 @@ class ListDelegatedServicesForAccountResponseBodyDelegatedServicesDelegatedServi
             self.delegation_enabled_time = m.get('DelegationEnabledTime')
         if m.get('ServicePrincipal') is not None:
             self.service_principal = m.get('ServicePrincipal')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         return self
 
 
