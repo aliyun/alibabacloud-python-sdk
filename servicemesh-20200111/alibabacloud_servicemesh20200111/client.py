@@ -6263,6 +6263,8 @@ class Client(OpenApiClient):
             body['IncludeOutboundPorts'] = request.include_outbound_ports
         if not UtilClient.is_unset(request.integrate_kiali):
             body['IntegrateKiali'] = request.integrate_kiali
+        if not UtilClient.is_unset(request.interception_mode):
+            body['InterceptionMode'] = request.interception_mode
         if not UtilClient.is_unset(request.kiali_enabled):
             body['KialiEnabled'] = request.kiali_enabled
         if not UtilClient.is_unset(request.lifecycle):
@@ -6475,6 +6477,8 @@ class Client(OpenApiClient):
             body['IncludeOutboundPorts'] = request.include_outbound_ports
         if not UtilClient.is_unset(request.integrate_kiali):
             body['IntegrateKiali'] = request.integrate_kiali
+        if not UtilClient.is_unset(request.interception_mode):
+            body['InterceptionMode'] = request.interception_mode
         if not UtilClient.is_unset(request.kiali_enabled):
             body['KialiEnabled'] = request.kiali_enabled
         if not UtilClient.is_unset(request.lifecycle):
@@ -6637,6 +6641,8 @@ class Client(OpenApiClient):
             body['IncludeInboundPorts'] = request.include_inbound_ports
         if not UtilClient.is_unset(request.include_outbound_ports):
             body['IncludeOutboundPorts'] = request.include_outbound_ports
+        if not UtilClient.is_unset(request.interception_mode):
+            body['InterceptionMode'] = request.interception_mode
         if not UtilClient.is_unset(request.istio_dnsproxy_enabled):
             body['IstioDNSProxyEnabled'] = request.istio_dnsproxy_enabled
         if not UtilClient.is_unset(request.lifecycle):
@@ -6715,6 +6721,8 @@ class Client(OpenApiClient):
             body['IncludeInboundPorts'] = request.include_inbound_ports
         if not UtilClient.is_unset(request.include_outbound_ports):
             body['IncludeOutboundPorts'] = request.include_outbound_ports
+        if not UtilClient.is_unset(request.interception_mode):
+            body['InterceptionMode'] = request.interception_mode
         if not UtilClient.is_unset(request.istio_dnsproxy_enabled):
             body['IstioDNSProxyEnabled'] = request.istio_dnsproxy_enabled
         if not UtilClient.is_unset(request.lifecycle):

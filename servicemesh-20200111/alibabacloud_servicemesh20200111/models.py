@@ -7503,6 +7503,7 @@ class DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatches(TeaModel):
         include_inbound_ports: str = None,
         include_outbound_ipranges: str = None,
         include_outbound_ports: str = None,
+        interception_mode: str = None,
         istio_dnsproxy_enabled: bool = None,
         lifecycle_str: str = None,
         log_level: str = None,
@@ -7522,6 +7523,7 @@ class DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatches(TeaModel):
         self.include_inbound_ports = include_inbound_ports
         self.include_outbound_ipranges = include_outbound_ipranges
         self.include_outbound_ports = include_outbound_ports
+        self.interception_mode = interception_mode
         self.istio_dnsproxy_enabled = istio_dnsproxy_enabled
         self.lifecycle_str = lifecycle_str
         self.log_level = log_level
@@ -7569,6 +7571,8 @@ class DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatches(TeaModel):
             result['IncludeOutboundIPRanges'] = self.include_outbound_ipranges
         if self.include_outbound_ports is not None:
             result['IncludeOutboundPorts'] = self.include_outbound_ports
+        if self.interception_mode is not None:
+            result['InterceptionMode'] = self.interception_mode
         if self.istio_dnsproxy_enabled is not None:
             result['IstioDNSProxyEnabled'] = self.istio_dnsproxy_enabled
         if self.lifecycle_str is not None:
@@ -7609,6 +7613,8 @@ class DescribeNamespaceScopeSidecarConfigResponseBodyConfigPatches(TeaModel):
             self.include_outbound_ipranges = m.get('IncludeOutboundIPRanges')
         if m.get('IncludeOutboundPorts') is not None:
             self.include_outbound_ports = m.get('IncludeOutboundPorts')
+        if m.get('InterceptionMode') is not None:
+            self.interception_mode = m.get('InterceptionMode')
         if m.get('IstioDNSProxyEnabled') is not None:
             self.istio_dnsproxy_enabled = m.get('IstioDNSProxyEnabled')
         if m.get('LifecycleStr') is not None:
@@ -17476,6 +17482,7 @@ class UpdateMeshFeatureRequest(TeaModel):
         include_inbound_ports: str = None,
         include_outbound_ports: str = None,
         integrate_kiali: bool = None,
+        interception_mode: str = None,
         kiali_enabled: bool = None,
         lifecycle: str = None,
         locality_lbconf: str = None,
@@ -17570,6 +17577,7 @@ class UpdateMeshFeatureRequest(TeaModel):
         self.include_inbound_ports = include_inbound_ports
         self.include_outbound_ports = include_outbound_ports
         self.integrate_kiali = integrate_kiali
+        self.interception_mode = interception_mode
         self.kiali_enabled = kiali_enabled
         self.lifecycle = lifecycle
         self.locality_lbconf = locality_lbconf
@@ -17713,6 +17721,8 @@ class UpdateMeshFeatureRequest(TeaModel):
             result['IncludeOutboundPorts'] = self.include_outbound_ports
         if self.integrate_kiali is not None:
             result['IntegrateKiali'] = self.integrate_kiali
+        if self.interception_mode is not None:
+            result['InterceptionMode'] = self.interception_mode
         if self.kiali_enabled is not None:
             result['KialiEnabled'] = self.kiali_enabled
         if self.lifecycle is not None:
@@ -17903,6 +17913,8 @@ class UpdateMeshFeatureRequest(TeaModel):
             self.include_outbound_ports = m.get('IncludeOutboundPorts')
         if m.get('IntegrateKiali') is not None:
             self.integrate_kiali = m.get('IntegrateKiali')
+        if m.get('InterceptionMode') is not None:
+            self.interception_mode = m.get('InterceptionMode')
         if m.get('KialiEnabled') is not None:
             self.kiali_enabled = m.get('KialiEnabled')
         if m.get('Lifecycle') is not None:
@@ -18094,6 +18106,7 @@ class UpdateNamespaceScopeSidecarConfigRequest(TeaModel):
         include_ipranges: str = None,
         include_inbound_ports: str = None,
         include_outbound_ports: str = None,
+        interception_mode: str = None,
         istio_dnsproxy_enabled: bool = None,
         lifecycle: str = None,
         log_level: str = None,
@@ -18121,6 +18134,7 @@ class UpdateNamespaceScopeSidecarConfigRequest(TeaModel):
         self.include_ipranges = include_ipranges
         self.include_inbound_ports = include_inbound_ports
         self.include_outbound_ports = include_outbound_ports
+        self.interception_mode = interception_mode
         self.istio_dnsproxy_enabled = istio_dnsproxy_enabled
         self.lifecycle = lifecycle
         self.log_level = log_level
@@ -18165,6 +18179,8 @@ class UpdateNamespaceScopeSidecarConfigRequest(TeaModel):
             result['IncludeInboundPorts'] = self.include_inbound_ports
         if self.include_outbound_ports is not None:
             result['IncludeOutboundPorts'] = self.include_outbound_ports
+        if self.interception_mode is not None:
+            result['InterceptionMode'] = self.interception_mode
         if self.istio_dnsproxy_enabled is not None:
             result['IstioDNSProxyEnabled'] = self.istio_dnsproxy_enabled
         if self.lifecycle is not None:
@@ -18221,6 +18237,8 @@ class UpdateNamespaceScopeSidecarConfigRequest(TeaModel):
             self.include_inbound_ports = m.get('IncludeInboundPorts')
         if m.get('IncludeOutboundPorts') is not None:
             self.include_outbound_ports = m.get('IncludeOutboundPorts')
+        if m.get('InterceptionMode') is not None:
+            self.interception_mode = m.get('InterceptionMode')
         if m.get('IstioDNSProxyEnabled') is not None:
             self.istio_dnsproxy_enabled = m.get('IstioDNSProxyEnabled')
         if m.get('Lifecycle') is not None:
