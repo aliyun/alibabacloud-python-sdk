@@ -1041,6 +1041,7 @@ class CreateApplicationRequest(TeaModel):
         deploy: bool = None,
         edas_container_version: str = None,
         envs: str = None,
+        image_pull_secrets: str = None,
         image_url: str = None,
         jar_start_args: str = None,
         jar_start_options: str = None,
@@ -1048,9 +1049,11 @@ class CreateApplicationRequest(TeaModel):
         kafka_configs: str = None,
         liveness: str = None,
         memory: int = None,
+        micro_registration: str = None,
         mount_desc: str = None,
         mount_host: str = None,
         namespace_id: str = None,
+        nas_configs: str = None,
         nas_id: str = None,
         oss_ak_id: str = None,
         oss_ak_secret: str = None,
@@ -1064,6 +1067,9 @@ class CreateApplicationRequest(TeaModel):
         post_start: str = None,
         pre_stop: str = None,
         programming_language: str = None,
+        pvtz_discovery_svc: str = None,
+        python: str = None,
+        python_modules: str = None,
         readiness: str = None,
         replicas: int = None,
         security_group_id: str = None,
@@ -1090,6 +1096,7 @@ class CreateApplicationRequest(TeaModel):
         self.deploy = deploy
         self.edas_container_version = edas_container_version
         self.envs = envs
+        self.image_pull_secrets = image_pull_secrets
         self.image_url = image_url
         self.jar_start_args = jar_start_args
         self.jar_start_options = jar_start_options
@@ -1097,9 +1104,11 @@ class CreateApplicationRequest(TeaModel):
         self.kafka_configs = kafka_configs
         self.liveness = liveness
         self.memory = memory
+        self.micro_registration = micro_registration
         self.mount_desc = mount_desc
         self.mount_host = mount_host
         self.namespace_id = namespace_id
+        self.nas_configs = nas_configs
         self.nas_id = nas_id
         self.oss_ak_id = oss_ak_id
         self.oss_ak_secret = oss_ak_secret
@@ -1113,6 +1122,9 @@ class CreateApplicationRequest(TeaModel):
         self.post_start = post_start
         self.pre_stop = pre_stop
         self.programming_language = programming_language
+        self.pvtz_discovery_svc = pvtz_discovery_svc
+        self.python = python
+        self.python_modules = python_modules
         self.readiness = readiness
         self.replicas = replicas
         self.security_group_id = security_group_id
@@ -1162,6 +1174,8 @@ class CreateApplicationRequest(TeaModel):
             result['EdasContainerVersion'] = self.edas_container_version
         if self.envs is not None:
             result['Envs'] = self.envs
+        if self.image_pull_secrets is not None:
+            result['ImagePullSecrets'] = self.image_pull_secrets
         if self.image_url is not None:
             result['ImageUrl'] = self.image_url
         if self.jar_start_args is not None:
@@ -1176,12 +1190,16 @@ class CreateApplicationRequest(TeaModel):
             result['Liveness'] = self.liveness
         if self.memory is not None:
             result['Memory'] = self.memory
+        if self.micro_registration is not None:
+            result['MicroRegistration'] = self.micro_registration
         if self.mount_desc is not None:
             result['MountDesc'] = self.mount_desc
         if self.mount_host is not None:
             result['MountHost'] = self.mount_host
         if self.namespace_id is not None:
             result['NamespaceId'] = self.namespace_id
+        if self.nas_configs is not None:
+            result['NasConfigs'] = self.nas_configs
         if self.nas_id is not None:
             result['NasId'] = self.nas_id
         if self.oss_ak_id is not None:
@@ -1208,6 +1226,12 @@ class CreateApplicationRequest(TeaModel):
             result['PreStop'] = self.pre_stop
         if self.programming_language is not None:
             result['ProgrammingLanguage'] = self.programming_language
+        if self.pvtz_discovery_svc is not None:
+            result['PvtzDiscoverySvc'] = self.pvtz_discovery_svc
+        if self.python is not None:
+            result['Python'] = self.python
+        if self.python_modules is not None:
+            result['PythonModules'] = self.python_modules
         if self.readiness is not None:
             result['Readiness'] = self.readiness
         if self.replicas is not None:
@@ -1262,6 +1286,8 @@ class CreateApplicationRequest(TeaModel):
             self.edas_container_version = m.get('EdasContainerVersion')
         if m.get('Envs') is not None:
             self.envs = m.get('Envs')
+        if m.get('ImagePullSecrets') is not None:
+            self.image_pull_secrets = m.get('ImagePullSecrets')
         if m.get('ImageUrl') is not None:
             self.image_url = m.get('ImageUrl')
         if m.get('JarStartArgs') is not None:
@@ -1276,12 +1302,16 @@ class CreateApplicationRequest(TeaModel):
             self.liveness = m.get('Liveness')
         if m.get('Memory') is not None:
             self.memory = m.get('Memory')
+        if m.get('MicroRegistration') is not None:
+            self.micro_registration = m.get('MicroRegistration')
         if m.get('MountDesc') is not None:
             self.mount_desc = m.get('MountDesc')
         if m.get('MountHost') is not None:
             self.mount_host = m.get('MountHost')
         if m.get('NamespaceId') is not None:
             self.namespace_id = m.get('NamespaceId')
+        if m.get('NasConfigs') is not None:
+            self.nas_configs = m.get('NasConfigs')
         if m.get('NasId') is not None:
             self.nas_id = m.get('NasId')
         if m.get('OssAkId') is not None:
@@ -1308,6 +1338,12 @@ class CreateApplicationRequest(TeaModel):
             self.pre_stop = m.get('PreStop')
         if m.get('ProgrammingLanguage') is not None:
             self.programming_language = m.get('ProgrammingLanguage')
+        if m.get('PvtzDiscoverySvc') is not None:
+            self.pvtz_discovery_svc = m.get('PvtzDiscoverySvc')
+        if m.get('Python') is not None:
+            self.python = m.get('Python')
+        if m.get('PythonModules') is not None:
+            self.python_modules = m.get('PythonModules')
         if m.get('Readiness') is not None:
             self.readiness = m.get('Readiness')
         if m.get('Replicas') is not None:
@@ -2059,12 +2095,14 @@ class CreateConfigMapResponse(TeaModel):
 class CreateGreyTagRouteRequest(TeaModel):
     def __init__(
         self,
+        alb_rules: str = None,
         app_id: str = None,
         description: str = None,
         dubbo_rules: str = None,
         name: str = None,
         sc_rules: str = None,
     ):
+        self.alb_rules = alb_rules
         self.app_id = app_id
         self.description = description
         self.dubbo_rules = dubbo_rules
@@ -2080,6 +2118,8 @@ class CreateGreyTagRouteRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.alb_rules is not None:
+            result['AlbRules'] = self.alb_rules
         if self.app_id is not None:
             result['AppId'] = self.app_id
         if self.description is not None:
@@ -2094,6 +2134,8 @@ class CreateGreyTagRouteRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AlbRules') is not None:
+            self.alb_rules = m.get('AlbRules')
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
         if m.get('Description') is not None:
@@ -2247,6 +2289,7 @@ class CreateIngressRequest(TeaModel):
     def __init__(
         self,
         cert_id: str = None,
+        cert_ids: str = None,
         default_rule: str = None,
         description: str = None,
         listener_port: int = None,
@@ -2257,6 +2300,7 @@ class CreateIngressRequest(TeaModel):
         slb_id: str = None,
     ):
         self.cert_id = cert_id
+        self.cert_ids = cert_ids
         self.default_rule = default_rule
         self.description = description
         self.listener_port = listener_port
@@ -2277,6 +2321,8 @@ class CreateIngressRequest(TeaModel):
         result = dict()
         if self.cert_id is not None:
             result['CertId'] = self.cert_id
+        if self.cert_ids is not None:
+            result['CertIds'] = self.cert_ids
         if self.default_rule is not None:
             result['DefaultRule'] = self.default_rule
         if self.description is not None:
@@ -2299,6 +2345,8 @@ class CreateIngressRequest(TeaModel):
         m = m or dict()
         if m.get('CertId') is not None:
             self.cert_id = m.get('CertId')
+        if m.get('CertIds') is not None:
+            self.cert_ids = m.get('CertIds')
         if m.get('DefaultRule') is not None:
             self.default_rule = m.get('DefaultRule')
         if m.get('Description') is not None:
@@ -2450,6 +2498,511 @@ class CreateIngressResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateIngressResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateJobRequest(TeaModel):
+    def __init__(
+        self,
+        acr_assume_role_arn: str = None,
+        app_description: str = None,
+        app_name: str = None,
+        associate_eip: bool = None,
+        auto_config: bool = None,
+        backoff_limit: int = None,
+        command: str = None,
+        command_args: str = None,
+        concurrency_policy: str = None,
+        config_map_mount_desc: str = None,
+        cpu: int = None,
+        custom_host_alias: str = None,
+        deploy: bool = None,
+        edas_container_version: str = None,
+        envs: str = None,
+        image_pull_secrets: str = None,
+        image_url: str = None,
+        jar_start_args: str = None,
+        jar_start_options: str = None,
+        jdk: str = None,
+        liveness: str = None,
+        memory: int = None,
+        mount_desc: str = None,
+        mount_host: str = None,
+        namespace_id: str = None,
+        nas_id: str = None,
+        oss_ak_id: str = None,
+        oss_ak_secret: str = None,
+        oss_mount_descs: str = None,
+        package_type: str = None,
+        package_url: str = None,
+        package_version: str = None,
+        php_arms_config_location: str = None,
+        php_config: str = None,
+        php_config_location: str = None,
+        post_start: str = None,
+        pre_stop: str = None,
+        programming_language: str = None,
+        python: str = None,
+        python_modules: str = None,
+        readiness: str = None,
+        ref_app_id: str = None,
+        replicas: int = None,
+        security_group_id: str = None,
+        slice: bool = None,
+        slice_envs: str = None,
+        sls_configs: str = None,
+        termination_grace_period_seconds: int = None,
+        timeout: int = None,
+        timezone: str = None,
+        tomcat_config: str = None,
+        trigger_config: str = None,
+        v_switch_id: str = None,
+        vpc_id: str = None,
+        war_start_options: str = None,
+        web_container: str = None,
+        workload: str = None,
+    ):
+        self.acr_assume_role_arn = acr_assume_role_arn
+        self.app_description = app_description
+        self.app_name = app_name
+        self.associate_eip = associate_eip
+        self.auto_config = auto_config
+        self.backoff_limit = backoff_limit
+        self.command = command
+        self.command_args = command_args
+        self.concurrency_policy = concurrency_policy
+        self.config_map_mount_desc = config_map_mount_desc
+        self.cpu = cpu
+        self.custom_host_alias = custom_host_alias
+        self.deploy = deploy
+        self.edas_container_version = edas_container_version
+        self.envs = envs
+        self.image_pull_secrets = image_pull_secrets
+        self.image_url = image_url
+        self.jar_start_args = jar_start_args
+        self.jar_start_options = jar_start_options
+        self.jdk = jdk
+        self.liveness = liveness
+        self.memory = memory
+        self.mount_desc = mount_desc
+        self.mount_host = mount_host
+        self.namespace_id = namespace_id
+        self.nas_id = nas_id
+        self.oss_ak_id = oss_ak_id
+        self.oss_ak_secret = oss_ak_secret
+        self.oss_mount_descs = oss_mount_descs
+        self.package_type = package_type
+        self.package_url = package_url
+        self.package_version = package_version
+        self.php_arms_config_location = php_arms_config_location
+        self.php_config = php_config
+        self.php_config_location = php_config_location
+        self.post_start = post_start
+        self.pre_stop = pre_stop
+        self.programming_language = programming_language
+        self.python = python
+        self.python_modules = python_modules
+        self.readiness = readiness
+        self.ref_app_id = ref_app_id
+        self.replicas = replicas
+        self.security_group_id = security_group_id
+        self.slice = slice
+        self.slice_envs = slice_envs
+        self.sls_configs = sls_configs
+        self.termination_grace_period_seconds = termination_grace_period_seconds
+        self.timeout = timeout
+        self.timezone = timezone
+        self.tomcat_config = tomcat_config
+        self.trigger_config = trigger_config
+        self.v_switch_id = v_switch_id
+        self.vpc_id = vpc_id
+        self.war_start_options = war_start_options
+        self.web_container = web_container
+        self.workload = workload
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.acr_assume_role_arn is not None:
+            result['AcrAssumeRoleArn'] = self.acr_assume_role_arn
+        if self.app_description is not None:
+            result['AppDescription'] = self.app_description
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.associate_eip is not None:
+            result['AssociateEip'] = self.associate_eip
+        if self.auto_config is not None:
+            result['AutoConfig'] = self.auto_config
+        if self.backoff_limit is not None:
+            result['BackoffLimit'] = self.backoff_limit
+        if self.command is not None:
+            result['Command'] = self.command
+        if self.command_args is not None:
+            result['CommandArgs'] = self.command_args
+        if self.concurrency_policy is not None:
+            result['ConcurrencyPolicy'] = self.concurrency_policy
+        if self.config_map_mount_desc is not None:
+            result['ConfigMapMountDesc'] = self.config_map_mount_desc
+        if self.cpu is not None:
+            result['Cpu'] = self.cpu
+        if self.custom_host_alias is not None:
+            result['CustomHostAlias'] = self.custom_host_alias
+        if self.deploy is not None:
+            result['Deploy'] = self.deploy
+        if self.edas_container_version is not None:
+            result['EdasContainerVersion'] = self.edas_container_version
+        if self.envs is not None:
+            result['Envs'] = self.envs
+        if self.image_pull_secrets is not None:
+            result['ImagePullSecrets'] = self.image_pull_secrets
+        if self.image_url is not None:
+            result['ImageUrl'] = self.image_url
+        if self.jar_start_args is not None:
+            result['JarStartArgs'] = self.jar_start_args
+        if self.jar_start_options is not None:
+            result['JarStartOptions'] = self.jar_start_options
+        if self.jdk is not None:
+            result['Jdk'] = self.jdk
+        if self.liveness is not None:
+            result['Liveness'] = self.liveness
+        if self.memory is not None:
+            result['Memory'] = self.memory
+        if self.mount_desc is not None:
+            result['MountDesc'] = self.mount_desc
+        if self.mount_host is not None:
+            result['MountHost'] = self.mount_host
+        if self.namespace_id is not None:
+            result['NamespaceId'] = self.namespace_id
+        if self.nas_id is not None:
+            result['NasId'] = self.nas_id
+        if self.oss_ak_id is not None:
+            result['OssAkId'] = self.oss_ak_id
+        if self.oss_ak_secret is not None:
+            result['OssAkSecret'] = self.oss_ak_secret
+        if self.oss_mount_descs is not None:
+            result['OssMountDescs'] = self.oss_mount_descs
+        if self.package_type is not None:
+            result['PackageType'] = self.package_type
+        if self.package_url is not None:
+            result['PackageUrl'] = self.package_url
+        if self.package_version is not None:
+            result['PackageVersion'] = self.package_version
+        if self.php_arms_config_location is not None:
+            result['PhpArmsConfigLocation'] = self.php_arms_config_location
+        if self.php_config is not None:
+            result['PhpConfig'] = self.php_config
+        if self.php_config_location is not None:
+            result['PhpConfigLocation'] = self.php_config_location
+        if self.post_start is not None:
+            result['PostStart'] = self.post_start
+        if self.pre_stop is not None:
+            result['PreStop'] = self.pre_stop
+        if self.programming_language is not None:
+            result['ProgrammingLanguage'] = self.programming_language
+        if self.python is not None:
+            result['Python'] = self.python
+        if self.python_modules is not None:
+            result['PythonModules'] = self.python_modules
+        if self.readiness is not None:
+            result['Readiness'] = self.readiness
+        if self.ref_app_id is not None:
+            result['RefAppId'] = self.ref_app_id
+        if self.replicas is not None:
+            result['Replicas'] = self.replicas
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+        if self.slice is not None:
+            result['Slice'] = self.slice
+        if self.slice_envs is not None:
+            result['SliceEnvs'] = self.slice_envs
+        if self.sls_configs is not None:
+            result['SlsConfigs'] = self.sls_configs
+        if self.termination_grace_period_seconds is not None:
+            result['TerminationGracePeriodSeconds'] = self.termination_grace_period_seconds
+        if self.timeout is not None:
+            result['Timeout'] = self.timeout
+        if self.timezone is not None:
+            result['Timezone'] = self.timezone
+        if self.tomcat_config is not None:
+            result['TomcatConfig'] = self.tomcat_config
+        if self.trigger_config is not None:
+            result['TriggerConfig'] = self.trigger_config
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        if self.war_start_options is not None:
+            result['WarStartOptions'] = self.war_start_options
+        if self.web_container is not None:
+            result['WebContainer'] = self.web_container
+        if self.workload is not None:
+            result['Workload'] = self.workload
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcrAssumeRoleArn') is not None:
+            self.acr_assume_role_arn = m.get('AcrAssumeRoleArn')
+        if m.get('AppDescription') is not None:
+            self.app_description = m.get('AppDescription')
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('AssociateEip') is not None:
+            self.associate_eip = m.get('AssociateEip')
+        if m.get('AutoConfig') is not None:
+            self.auto_config = m.get('AutoConfig')
+        if m.get('BackoffLimit') is not None:
+            self.backoff_limit = m.get('BackoffLimit')
+        if m.get('Command') is not None:
+            self.command = m.get('Command')
+        if m.get('CommandArgs') is not None:
+            self.command_args = m.get('CommandArgs')
+        if m.get('ConcurrencyPolicy') is not None:
+            self.concurrency_policy = m.get('ConcurrencyPolicy')
+        if m.get('ConfigMapMountDesc') is not None:
+            self.config_map_mount_desc = m.get('ConfigMapMountDesc')
+        if m.get('Cpu') is not None:
+            self.cpu = m.get('Cpu')
+        if m.get('CustomHostAlias') is not None:
+            self.custom_host_alias = m.get('CustomHostAlias')
+        if m.get('Deploy') is not None:
+            self.deploy = m.get('Deploy')
+        if m.get('EdasContainerVersion') is not None:
+            self.edas_container_version = m.get('EdasContainerVersion')
+        if m.get('Envs') is not None:
+            self.envs = m.get('Envs')
+        if m.get('ImagePullSecrets') is not None:
+            self.image_pull_secrets = m.get('ImagePullSecrets')
+        if m.get('ImageUrl') is not None:
+            self.image_url = m.get('ImageUrl')
+        if m.get('JarStartArgs') is not None:
+            self.jar_start_args = m.get('JarStartArgs')
+        if m.get('JarStartOptions') is not None:
+            self.jar_start_options = m.get('JarStartOptions')
+        if m.get('Jdk') is not None:
+            self.jdk = m.get('Jdk')
+        if m.get('Liveness') is not None:
+            self.liveness = m.get('Liveness')
+        if m.get('Memory') is not None:
+            self.memory = m.get('Memory')
+        if m.get('MountDesc') is not None:
+            self.mount_desc = m.get('MountDesc')
+        if m.get('MountHost') is not None:
+            self.mount_host = m.get('MountHost')
+        if m.get('NamespaceId') is not None:
+            self.namespace_id = m.get('NamespaceId')
+        if m.get('NasId') is not None:
+            self.nas_id = m.get('NasId')
+        if m.get('OssAkId') is not None:
+            self.oss_ak_id = m.get('OssAkId')
+        if m.get('OssAkSecret') is not None:
+            self.oss_ak_secret = m.get('OssAkSecret')
+        if m.get('OssMountDescs') is not None:
+            self.oss_mount_descs = m.get('OssMountDescs')
+        if m.get('PackageType') is not None:
+            self.package_type = m.get('PackageType')
+        if m.get('PackageUrl') is not None:
+            self.package_url = m.get('PackageUrl')
+        if m.get('PackageVersion') is not None:
+            self.package_version = m.get('PackageVersion')
+        if m.get('PhpArmsConfigLocation') is not None:
+            self.php_arms_config_location = m.get('PhpArmsConfigLocation')
+        if m.get('PhpConfig') is not None:
+            self.php_config = m.get('PhpConfig')
+        if m.get('PhpConfigLocation') is not None:
+            self.php_config_location = m.get('PhpConfigLocation')
+        if m.get('PostStart') is not None:
+            self.post_start = m.get('PostStart')
+        if m.get('PreStop') is not None:
+            self.pre_stop = m.get('PreStop')
+        if m.get('ProgrammingLanguage') is not None:
+            self.programming_language = m.get('ProgrammingLanguage')
+        if m.get('Python') is not None:
+            self.python = m.get('Python')
+        if m.get('PythonModules') is not None:
+            self.python_modules = m.get('PythonModules')
+        if m.get('Readiness') is not None:
+            self.readiness = m.get('Readiness')
+        if m.get('RefAppId') is not None:
+            self.ref_app_id = m.get('RefAppId')
+        if m.get('Replicas') is not None:
+            self.replicas = m.get('Replicas')
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
+        if m.get('Slice') is not None:
+            self.slice = m.get('Slice')
+        if m.get('SliceEnvs') is not None:
+            self.slice_envs = m.get('SliceEnvs')
+        if m.get('SlsConfigs') is not None:
+            self.sls_configs = m.get('SlsConfigs')
+        if m.get('TerminationGracePeriodSeconds') is not None:
+            self.termination_grace_period_seconds = m.get('TerminationGracePeriodSeconds')
+        if m.get('Timeout') is not None:
+            self.timeout = m.get('Timeout')
+        if m.get('Timezone') is not None:
+            self.timezone = m.get('Timezone')
+        if m.get('TomcatConfig') is not None:
+            self.tomcat_config = m.get('TomcatConfig')
+        if m.get('TriggerConfig') is not None:
+            self.trigger_config = m.get('TriggerConfig')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        if m.get('WarStartOptions') is not None:
+            self.war_start_options = m.get('WarStartOptions')
+        if m.get('WebContainer') is not None:
+            self.web_container = m.get('WebContainer')
+        if m.get('Workload') is not None:
+            self.workload = m.get('Workload')
+        return self
+
+
+class CreateJobResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        change_order_id: str = None,
+    ):
+        self.app_id = app_id
+        self.change_order_id = change_order_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.change_order_id is not None:
+            result['ChangeOrderId'] = self.change_order_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('ChangeOrderId') is not None:
+            self.change_order_id = m.get('ChangeOrderId')
+        return self
+
+
+class CreateJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: CreateJobResponseBodyData = None,
+        error_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        trace_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.error_code = error_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.trace_id = trace_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.trace_id is not None:
+            result['TraceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = CreateJobResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TraceId') is not None:
+            self.trace_id = m.get('TraceId')
+        return self
+
+
+class CreateJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateJobResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2643,6 +3196,187 @@ class CreateNamespaceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateNamespaceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateSecretRequest(TeaModel):
+    def __init__(
+        self,
+        namespace_id: str = None,
+        secret_data: str = None,
+        secret_name: str = None,
+        secret_type: str = None,
+    ):
+        self.namespace_id = namespace_id
+        self.secret_data = secret_data
+        self.secret_name = secret_name
+        self.secret_type = secret_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.namespace_id is not None:
+            result['NamespaceId'] = self.namespace_id
+        if self.secret_data is not None:
+            result['SecretData'] = self.secret_data
+        if self.secret_name is not None:
+            result['SecretName'] = self.secret_name
+        if self.secret_type is not None:
+            result['SecretType'] = self.secret_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NamespaceId') is not None:
+            self.namespace_id = m.get('NamespaceId')
+        if m.get('SecretData') is not None:
+            self.secret_data = m.get('SecretData')
+        if m.get('SecretName') is not None:
+            self.secret_name = m.get('SecretName')
+        if m.get('SecretType') is not None:
+            self.secret_type = m.get('SecretType')
+        return self
+
+
+class CreateSecretResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        secret_id: int = None,
+    ):
+        self.secret_id = secret_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.secret_id is not None:
+            result['SecretId'] = self.secret_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SecretId') is not None:
+            self.secret_id = m.get('SecretId')
+        return self
+
+
+class CreateSecretResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: CreateSecretResponseBodyData = None,
+        error_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        trace_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.error_code = error_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.trace_id = trace_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.trace_id is not None:
+            result['TraceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = CreateSecretResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TraceId') is not None:
+            self.trace_id = m.get('TraceId')
+        return self
+
+
+class CreateSecretResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateSecretResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateSecretResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3246,6 +3980,146 @@ class DeleteGreyTagRouteResponse(TeaModel):
         return self
 
 
+class DeleteHistoryJobRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        job_id: str = None,
+    ):
+        self.app_id = app_id
+        self.job_id = job_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        return self
+
+
+class DeleteHistoryJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: str = None,
+        error_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        trace_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.error_code = error_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.trace_id = trace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.trace_id is not None:
+            result['TraceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TraceId') is not None:
+            self.trace_id = m.get('TraceId')
+        return self
+
+
+class DeleteHistoryJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteHistoryJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteHistoryJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteIngressRequest(TeaModel):
     def __init__(
         self,
@@ -3409,6 +4283,140 @@ class DeleteIngressResponse(TeaModel):
         return self
 
 
+class DeleteJobRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+    ):
+        self.app_id = app_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        return self
+
+
+class DeleteJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: str = None,
+        error_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        trace_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.error_code = error_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.trace_id = trace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.trace_id is not None:
+            result['TraceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TraceId') is not None:
+            self.trace_id = m.get('TraceId')
+        return self
+
+
+class DeleteJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteNamespaceRequest(TeaModel):
     def __init__(
         self,
@@ -3537,6 +4545,175 @@ class DeleteNamespaceResponse(TeaModel):
         return self
 
 
+class DeleteSecretRequest(TeaModel):
+    def __init__(
+        self,
+        namespace_id: str = None,
+        secret_id: int = None,
+    ):
+        self.namespace_id = namespace_id
+        self.secret_id = secret_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.namespace_id is not None:
+            result['NamespaceId'] = self.namespace_id
+        if self.secret_id is not None:
+            result['SecretId'] = self.secret_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NamespaceId') is not None:
+            self.namespace_id = m.get('NamespaceId')
+        if m.get('SecretId') is not None:
+            self.secret_id = m.get('SecretId')
+        return self
+
+
+class DeleteSecretResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        secret_id: int = None,
+    ):
+        self.secret_id = secret_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.secret_id is not None:
+            result['SecretId'] = self.secret_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SecretId') is not None:
+            self.secret_id = m.get('SecretId')
+        return self
+
+
+class DeleteSecretResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: DeleteSecretResponseBodyData = None,
+        error_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        trace_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.error_code = error_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.trace_id = trace_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.trace_id is not None:
+            result['TraceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = DeleteSecretResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TraceId') is not None:
+            self.trace_id = m.get('TraceId')
+        return self
+
+
+class DeleteSecretResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteSecretResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteSecretResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeployApplicationRequest(TeaModel):
     def __init__(
         self,
@@ -3555,16 +4732,19 @@ class DeployApplicationRequest(TeaModel):
         enable_ahas: str = None,
         enable_grey_tag_route: bool = None,
         envs: str = None,
+        image_pull_secrets: str = None,
         image_url: str = None,
         jar_start_args: str = None,
         jar_start_options: str = None,
         jdk: str = None,
         kafka_configs: str = None,
         liveness: str = None,
+        micro_registration: str = None,
         min_ready_instance_ratio: int = None,
         min_ready_instances: int = None,
         mount_desc: str = None,
         mount_host: str = None,
+        nas_configs: str = None,
         nas_id: str = None,
         oss_ak_id: str = None,
         oss_ak_secret: str = None,
@@ -3576,6 +4756,9 @@ class DeployApplicationRequest(TeaModel):
         php_config_location: str = None,
         post_start: str = None,
         pre_stop: str = None,
+        pvtz_discovery_svc: str = None,
+        python: str = None,
+        python_modules: str = None,
         readiness: str = None,
         sls_configs: str = None,
         termination_grace_period_seconds: int = None,
@@ -3600,16 +4783,19 @@ class DeployApplicationRequest(TeaModel):
         self.enable_ahas = enable_ahas
         self.enable_grey_tag_route = enable_grey_tag_route
         self.envs = envs
+        self.image_pull_secrets = image_pull_secrets
         self.image_url = image_url
         self.jar_start_args = jar_start_args
         self.jar_start_options = jar_start_options
         self.jdk = jdk
         self.kafka_configs = kafka_configs
         self.liveness = liveness
+        self.micro_registration = micro_registration
         self.min_ready_instance_ratio = min_ready_instance_ratio
         self.min_ready_instances = min_ready_instances
         self.mount_desc = mount_desc
         self.mount_host = mount_host
+        self.nas_configs = nas_configs
         self.nas_id = nas_id
         self.oss_ak_id = oss_ak_id
         self.oss_ak_secret = oss_ak_secret
@@ -3621,6 +4807,9 @@ class DeployApplicationRequest(TeaModel):
         self.php_config_location = php_config_location
         self.post_start = post_start
         self.pre_stop = pre_stop
+        self.pvtz_discovery_svc = pvtz_discovery_svc
+        self.python = python
+        self.python_modules = python_modules
         self.readiness = readiness
         self.sls_configs = sls_configs
         self.termination_grace_period_seconds = termination_grace_period_seconds
@@ -3669,6 +4858,8 @@ class DeployApplicationRequest(TeaModel):
             result['EnableGreyTagRoute'] = self.enable_grey_tag_route
         if self.envs is not None:
             result['Envs'] = self.envs
+        if self.image_pull_secrets is not None:
+            result['ImagePullSecrets'] = self.image_pull_secrets
         if self.image_url is not None:
             result['ImageUrl'] = self.image_url
         if self.jar_start_args is not None:
@@ -3681,6 +4872,8 @@ class DeployApplicationRequest(TeaModel):
             result['KafkaConfigs'] = self.kafka_configs
         if self.liveness is not None:
             result['Liveness'] = self.liveness
+        if self.micro_registration is not None:
+            result['MicroRegistration'] = self.micro_registration
         if self.min_ready_instance_ratio is not None:
             result['MinReadyInstanceRatio'] = self.min_ready_instance_ratio
         if self.min_ready_instances is not None:
@@ -3689,6 +4882,8 @@ class DeployApplicationRequest(TeaModel):
             result['MountDesc'] = self.mount_desc
         if self.mount_host is not None:
             result['MountHost'] = self.mount_host
+        if self.nas_configs is not None:
+            result['NasConfigs'] = self.nas_configs
         if self.nas_id is not None:
             result['NasId'] = self.nas_id
         if self.oss_ak_id is not None:
@@ -3711,6 +4906,12 @@ class DeployApplicationRequest(TeaModel):
             result['PostStart'] = self.post_start
         if self.pre_stop is not None:
             result['PreStop'] = self.pre_stop
+        if self.pvtz_discovery_svc is not None:
+            result['PvtzDiscoverySvc'] = self.pvtz_discovery_svc
+        if self.python is not None:
+            result['Python'] = self.python
+        if self.python_modules is not None:
+            result['PythonModules'] = self.python_modules
         if self.readiness is not None:
             result['Readiness'] = self.readiness
         if self.sls_configs is not None:
@@ -3761,6 +4962,8 @@ class DeployApplicationRequest(TeaModel):
             self.enable_grey_tag_route = m.get('EnableGreyTagRoute')
         if m.get('Envs') is not None:
             self.envs = m.get('Envs')
+        if m.get('ImagePullSecrets') is not None:
+            self.image_pull_secrets = m.get('ImagePullSecrets')
         if m.get('ImageUrl') is not None:
             self.image_url = m.get('ImageUrl')
         if m.get('JarStartArgs') is not None:
@@ -3773,6 +4976,8 @@ class DeployApplicationRequest(TeaModel):
             self.kafka_configs = m.get('KafkaConfigs')
         if m.get('Liveness') is not None:
             self.liveness = m.get('Liveness')
+        if m.get('MicroRegistration') is not None:
+            self.micro_registration = m.get('MicroRegistration')
         if m.get('MinReadyInstanceRatio') is not None:
             self.min_ready_instance_ratio = m.get('MinReadyInstanceRatio')
         if m.get('MinReadyInstances') is not None:
@@ -3781,6 +4986,8 @@ class DeployApplicationRequest(TeaModel):
             self.mount_desc = m.get('MountDesc')
         if m.get('MountHost') is not None:
             self.mount_host = m.get('MountHost')
+        if m.get('NasConfigs') is not None:
+            self.nas_configs = m.get('NasConfigs')
         if m.get('NasId') is not None:
             self.nas_id = m.get('NasId')
         if m.get('OssAkId') is not None:
@@ -3803,6 +5010,12 @@ class DeployApplicationRequest(TeaModel):
             self.post_start = m.get('PostStart')
         if m.get('PreStop') is not None:
             self.pre_stop = m.get('PreStop')
+        if m.get('PvtzDiscoverySvc') is not None:
+            self.pvtz_discovery_svc = m.get('PvtzDiscoverySvc')
+        if m.get('Python') is not None:
+            self.python = m.get('Python')
+        if m.get('PythonModules') is not None:
+            self.python_modules = m.get('PythonModules')
         if m.get('Readiness') is not None:
             self.readiness = m.get('Readiness')
         if m.get('SlsConfigs') is not None:
@@ -4549,6 +5762,7 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         enable_ahas: str = None,
         enable_grey_tag_route: bool = None,
         envs: str = None,
+        image_pull_secrets: str = None,
         image_url: str = None,
         jar_start_args: str = None,
         jar_start_options: str = None,
@@ -4556,13 +5770,14 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         kafka_configs: str = None,
         liveness: str = None,
         memory: int = None,
+        micro_registration: str = None,
         min_ready_instance_ratio: int = None,
         min_ready_instances: int = None,
         mount_desc: List[DescribeApplicationConfigResponseBodyDataMountDesc] = None,
         mount_host: str = None,
         mse_application_id: str = None,
-        mse_feature_config: str = None,
         namespace_id: str = None,
+        nas_configs: str = None,
         nas_id: str = None,
         oss_ak_id: str = None,
         oss_ak_secret: str = None,
@@ -4576,6 +5791,9 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         post_start: str = None,
         pre_stop: str = None,
         programming_language: str = None,
+        pvtz_discovery: str = None,
+        python: str = None,
+        python_modules: str = None,
         readiness: str = None,
         region_id: str = None,
         replicas: int = None,
@@ -4607,6 +5825,7 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         self.enable_ahas = enable_ahas
         self.enable_grey_tag_route = enable_grey_tag_route
         self.envs = envs
+        self.image_pull_secrets = image_pull_secrets
         self.image_url = image_url
         self.jar_start_args = jar_start_args
         self.jar_start_options = jar_start_options
@@ -4614,13 +5833,14 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         self.kafka_configs = kafka_configs
         self.liveness = liveness
         self.memory = memory
+        self.micro_registration = micro_registration
         self.min_ready_instance_ratio = min_ready_instance_ratio
         self.min_ready_instances = min_ready_instances
         self.mount_desc = mount_desc
         self.mount_host = mount_host
         self.mse_application_id = mse_application_id
-        self.mse_feature_config = mse_feature_config
         self.namespace_id = namespace_id
+        self.nas_configs = nas_configs
         self.nas_id = nas_id
         self.oss_ak_id = oss_ak_id
         self.oss_ak_secret = oss_ak_secret
@@ -4634,6 +5854,9 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         self.post_start = post_start
         self.pre_stop = pre_stop
         self.programming_language = programming_language
+        self.pvtz_discovery = pvtz_discovery
+        self.python = python
+        self.python_modules = python_modules
         self.readiness = readiness
         self.region_id = region_id
         self.replicas = replicas
@@ -4707,6 +5930,8 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             result['EnableGreyTagRoute'] = self.enable_grey_tag_route
         if self.envs is not None:
             result['Envs'] = self.envs
+        if self.image_pull_secrets is not None:
+            result['ImagePullSecrets'] = self.image_pull_secrets
         if self.image_url is not None:
             result['ImageUrl'] = self.image_url
         if self.jar_start_args is not None:
@@ -4721,6 +5946,8 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             result['Liveness'] = self.liveness
         if self.memory is not None:
             result['Memory'] = self.memory
+        if self.micro_registration is not None:
+            result['MicroRegistration'] = self.micro_registration
         if self.min_ready_instance_ratio is not None:
             result['MinReadyInstanceRatio'] = self.min_ready_instance_ratio
         if self.min_ready_instances is not None:
@@ -4733,10 +5960,10 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             result['MountHost'] = self.mount_host
         if self.mse_application_id is not None:
             result['MseApplicationId'] = self.mse_application_id
-        if self.mse_feature_config is not None:
-            result['MseFeatureConfig'] = self.mse_feature_config
         if self.namespace_id is not None:
             result['NamespaceId'] = self.namespace_id
+        if self.nas_configs is not None:
+            result['NasConfigs'] = self.nas_configs
         if self.nas_id is not None:
             result['NasId'] = self.nas_id
         if self.oss_ak_id is not None:
@@ -4765,6 +5992,12 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             result['PreStop'] = self.pre_stop
         if self.programming_language is not None:
             result['ProgrammingLanguage'] = self.programming_language
+        if self.pvtz_discovery is not None:
+            result['PvtzDiscovery'] = self.pvtz_discovery
+        if self.python is not None:
+            result['Python'] = self.python
+        if self.python_modules is not None:
+            result['PythonModules'] = self.python_modules
         if self.readiness is not None:
             result['Readiness'] = self.readiness
         if self.region_id is not None:
@@ -4834,6 +6067,8 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             self.enable_grey_tag_route = m.get('EnableGreyTagRoute')
         if m.get('Envs') is not None:
             self.envs = m.get('Envs')
+        if m.get('ImagePullSecrets') is not None:
+            self.image_pull_secrets = m.get('ImagePullSecrets')
         if m.get('ImageUrl') is not None:
             self.image_url = m.get('ImageUrl')
         if m.get('JarStartArgs') is not None:
@@ -4848,6 +6083,8 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             self.liveness = m.get('Liveness')
         if m.get('Memory') is not None:
             self.memory = m.get('Memory')
+        if m.get('MicroRegistration') is not None:
+            self.micro_registration = m.get('MicroRegistration')
         if m.get('MinReadyInstanceRatio') is not None:
             self.min_ready_instance_ratio = m.get('MinReadyInstanceRatio')
         if m.get('MinReadyInstances') is not None:
@@ -4861,10 +6098,10 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             self.mount_host = m.get('MountHost')
         if m.get('MseApplicationId') is not None:
             self.mse_application_id = m.get('MseApplicationId')
-        if m.get('MseFeatureConfig') is not None:
-            self.mse_feature_config = m.get('MseFeatureConfig')
         if m.get('NamespaceId') is not None:
             self.namespace_id = m.get('NamespaceId')
+        if m.get('NasConfigs') is not None:
+            self.nas_configs = m.get('NasConfigs')
         if m.get('NasId') is not None:
             self.nas_id = m.get('NasId')
         if m.get('OssAkId') is not None:
@@ -4894,6 +6131,12 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             self.pre_stop = m.get('PreStop')
         if m.get('ProgrammingLanguage') is not None:
             self.programming_language = m.get('ProgrammingLanguage')
+        if m.get('PvtzDiscovery') is not None:
+            self.pvtz_discovery = m.get('PvtzDiscovery')
+        if m.get('Python') is not None:
+            self.python = m.get('Python')
+        if m.get('PythonModules') is not None:
+            self.python_modules = m.get('PythonModules')
         if m.get('Readiness') is not None:
             self.readiness = m.get('Readiness')
         if m.get('RegionId') is not None:
@@ -7242,16 +8485,20 @@ class DescribeApplicationSlbsResponseBodyData(TeaModel):
         self,
         internet: List[DescribeApplicationSlbsResponseBodyDataInternet] = None,
         internet_ip: str = None,
+        internet_slb_expired: bool = None,
         internet_slb_id: str = None,
         intranet: List[DescribeApplicationSlbsResponseBodyDataIntranet] = None,
         intranet_ip: str = None,
+        intranet_slb_expired: bool = None,
         intranet_slb_id: str = None,
     ):
         self.internet = internet
         self.internet_ip = internet_ip
+        self.internet_slb_expired = internet_slb_expired
         self.internet_slb_id = internet_slb_id
         self.intranet = intranet
         self.intranet_ip = intranet_ip
+        self.intranet_slb_expired = intranet_slb_expired
         self.intranet_slb_id = intranet_slb_id
 
     def validate(self):
@@ -7276,6 +8523,8 @@ class DescribeApplicationSlbsResponseBodyData(TeaModel):
                 result['Internet'].append(k.to_map() if k else None)
         if self.internet_ip is not None:
             result['InternetIp'] = self.internet_ip
+        if self.internet_slb_expired is not None:
+            result['InternetSlbExpired'] = self.internet_slb_expired
         if self.internet_slb_id is not None:
             result['InternetSlbId'] = self.internet_slb_id
         result['Intranet'] = []
@@ -7284,6 +8533,8 @@ class DescribeApplicationSlbsResponseBodyData(TeaModel):
                 result['Intranet'].append(k.to_map() if k else None)
         if self.intranet_ip is not None:
             result['IntranetIp'] = self.intranet_ip
+        if self.intranet_slb_expired is not None:
+            result['IntranetSlbExpired'] = self.intranet_slb_expired
         if self.intranet_slb_id is not None:
             result['IntranetSlbId'] = self.intranet_slb_id
         return result
@@ -7297,6 +8548,8 @@ class DescribeApplicationSlbsResponseBodyData(TeaModel):
                 self.internet.append(temp_model.from_map(k))
         if m.get('InternetIp') is not None:
             self.internet_ip = m.get('InternetIp')
+        if m.get('InternetSlbExpired') is not None:
+            self.internet_slb_expired = m.get('InternetSlbExpired')
         if m.get('InternetSlbId') is not None:
             self.internet_slb_id = m.get('InternetSlbId')
         self.intranet = []
@@ -7306,6 +8559,8 @@ class DescribeApplicationSlbsResponseBodyData(TeaModel):
                 self.intranet.append(temp_model.from_map(k))
         if m.get('IntranetIp') is not None:
             self.intranet_ip = m.get('IntranetIp')
+        if m.get('IntranetSlbExpired') is not None:
+            self.intranet_slb_expired = m.get('IntranetSlbExpired')
         if m.get('IntranetSlbId') is not None:
             self.intranet_slb_id = m.get('IntranetSlbId')
         return self
@@ -8911,6 +10166,122 @@ class DescribeGreyTagRouteRequest(TeaModel):
         return self
 
 
+class DescribeGreyTagRouteResponseBodyDataAlbRulesItems(TeaModel):
+    def __init__(
+        self,
+        cond: str = None,
+        expr: str = None,
+        index: int = None,
+        name: str = None,
+        operator: str = None,
+        type: str = None,
+        value: str = None,
+    ):
+        self.cond = cond
+        self.expr = expr
+        self.index = index
+        self.name = name
+        self.operator = operator
+        self.type = type
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cond is not None:
+            result['cond'] = self.cond
+        if self.expr is not None:
+            result['expr'] = self.expr
+        if self.index is not None:
+            result['index'] = self.index
+        if self.name is not None:
+            result['name'] = self.name
+        if self.operator is not None:
+            result['operator'] = self.operator
+        if self.type is not None:
+            result['type'] = self.type
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cond') is not None:
+            self.cond = m.get('cond')
+        if m.get('expr') is not None:
+            self.expr = m.get('expr')
+        if m.get('index') is not None:
+            self.index = m.get('index')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('operator') is not None:
+            self.operator = m.get('operator')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class DescribeGreyTagRouteResponseBodyDataAlbRules(TeaModel):
+    def __init__(
+        self,
+        condition: str = None,
+        ingress_id: str = None,
+        items: List[DescribeGreyTagRouteResponseBodyDataAlbRulesItems] = None,
+        service_id: str = None,
+    ):
+        self.condition = condition
+        self.ingress_id = ingress_id
+        self.items = items
+        self.service_id = service_id
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.condition is not None:
+            result['condition'] = self.condition
+        if self.ingress_id is not None:
+            result['ingressId'] = self.ingress_id
+        result['items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['items'].append(k.to_map() if k else None)
+        if self.service_id is not None:
+            result['serviceId'] = self.service_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('condition') is not None:
+            self.condition = m.get('condition')
+        if m.get('ingressId') is not None:
+            self.ingress_id = m.get('ingressId')
+        self.items = []
+        if m.get('items') is not None:
+            for k in m.get('items'):
+                temp_model = DescribeGreyTagRouteResponseBodyDataAlbRulesItems()
+                self.items.append(temp_model.from_map(k))
+        if m.get('serviceId') is not None:
+            self.service_id = m.get('serviceId')
+        return self
+
+
 class DescribeGreyTagRouteResponseBodyDataDubboRulesItems(TeaModel):
     def __init__(
         self,
@@ -9152,6 +10523,7 @@ class DescribeGreyTagRouteResponseBodyDataScRules(TeaModel):
 class DescribeGreyTagRouteResponseBodyData(TeaModel):
     def __init__(
         self,
+        alb_rules: List[DescribeGreyTagRouteResponseBodyDataAlbRules] = None,
         app_id: str = None,
         create_time: int = None,
         description: str = None,
@@ -9161,6 +10533,7 @@ class DescribeGreyTagRouteResponseBodyData(TeaModel):
         sc_rules: List[DescribeGreyTagRouteResponseBodyDataScRules] = None,
         update_time: int = None,
     ):
+        self.alb_rules = alb_rules
         self.app_id = app_id
         self.create_time = create_time
         self.description = description
@@ -9171,6 +10544,10 @@ class DescribeGreyTagRouteResponseBodyData(TeaModel):
         self.update_time = update_time
 
     def validate(self):
+        if self.alb_rules:
+            for k in self.alb_rules:
+                if k:
+                    k.validate()
         if self.dubbo_rules:
             for k in self.dubbo_rules:
                 if k:
@@ -9186,6 +10563,10 @@ class DescribeGreyTagRouteResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        result['AlbRules'] = []
+        if self.alb_rules is not None:
+            for k in self.alb_rules:
+                result['AlbRules'].append(k.to_map() if k else None)
         if self.app_id is not None:
             result['AppId'] = self.app_id
         if self.create_time is not None:
@@ -9210,6 +10591,11 @@ class DescribeGreyTagRouteResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.alb_rules = []
+        if m.get('AlbRules') is not None:
+            for k in m.get('AlbRules'):
+                temp_model = DescribeGreyTagRouteResponseBodyDataAlbRules()
+                self.alb_rules.append(temp_model.from_map(k))
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
         if m.get('CreateTime') is not None:
@@ -9477,6 +10863,7 @@ class DescribeIngressResponseBodyData(TeaModel):
     def __init__(
         self,
         cert_id: str = None,
+        cert_ids: str = None,
         default_rule: DescribeIngressResponseBodyDataDefaultRule = None,
         description: str = None,
         id: int = None,
@@ -9490,6 +10877,7 @@ class DescribeIngressResponseBodyData(TeaModel):
         slb_type: str = None,
     ):
         self.cert_id = cert_id
+        self.cert_ids = cert_ids
         self.default_rule = default_rule
         self.description = description
         self.id = id
@@ -9518,6 +10906,8 @@ class DescribeIngressResponseBodyData(TeaModel):
         result = dict()
         if self.cert_id is not None:
             result['CertId'] = self.cert_id
+        if self.cert_ids is not None:
+            result['CertIds'] = self.cert_ids
         if self.default_rule is not None:
             result['DefaultRule'] = self.default_rule.to_map()
         if self.description is not None:
@@ -9548,6 +10938,8 @@ class DescribeIngressResponseBodyData(TeaModel):
         m = m or dict()
         if m.get('CertId') is not None:
             self.cert_id = m.get('CertId')
+        if m.get('CertIds') is not None:
+            self.cert_ids = m.get('CertIds')
         if m.get('DefaultRule') is not None:
             temp_model = DescribeIngressResponseBodyDataDefaultRule()
             self.default_rule = temp_model.from_map(m['DefaultRule'])
@@ -9988,6 +11380,1044 @@ class DescribeInstanceSpecificationsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeInstanceSpecificationsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeJobRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        job_id: str = None,
+        version_id: str = None,
+    ):
+        self.app_id = app_id
+        self.job_id = job_id
+        self.version_id = version_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.version_id is not None:
+            result['VersionId'] = self.version_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('VersionId') is not None:
+            self.version_id = m.get('VersionId')
+        return self
+
+
+class DescribeJobResponseBodyDataConfigMapMountDesc(TeaModel):
+    def __init__(
+        self,
+        config_map_id: int = None,
+        config_map_name: str = None,
+        key: str = None,
+        mount_path: str = None,
+    ):
+        self.config_map_id = config_map_id
+        self.config_map_name = config_map_name
+        self.key = key
+        self.mount_path = mount_path
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_map_id is not None:
+            result['ConfigMapId'] = self.config_map_id
+        if self.config_map_name is not None:
+            result['ConfigMapName'] = self.config_map_name
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.mount_path is not None:
+            result['MountPath'] = self.mount_path
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigMapId') is not None:
+            self.config_map_id = m.get('ConfigMapId')
+        if m.get('ConfigMapName') is not None:
+            self.config_map_name = m.get('ConfigMapName')
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('MountPath') is not None:
+            self.mount_path = m.get('MountPath')
+        return self
+
+
+class DescribeJobResponseBodyDataMountDesc(TeaModel):
+    def __init__(
+        self,
+        mount_path: str = None,
+        nas_path: str = None,
+    ):
+        self.mount_path = mount_path
+        self.nas_path = nas_path
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.mount_path is not None:
+            result['MountPath'] = self.mount_path
+        if self.nas_path is not None:
+            result['NasPath'] = self.nas_path
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MountPath') is not None:
+            self.mount_path = m.get('MountPath')
+        if m.get('NasPath') is not None:
+            self.nas_path = m.get('NasPath')
+        return self
+
+
+class DescribeJobResponseBodyDataOssMountDescs(TeaModel):
+    def __init__(
+        self,
+        bucket_name: str = None,
+        bucket_path: str = None,
+        mount_path: str = None,
+        read_only: bool = None,
+    ):
+        self.bucket_name = bucket_name
+        self.bucket_path = bucket_path
+        self.mount_path = mount_path
+        self.read_only = read_only
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bucket_name is not None:
+            result['bucketName'] = self.bucket_name
+        if self.bucket_path is not None:
+            result['bucketPath'] = self.bucket_path
+        if self.mount_path is not None:
+            result['mountPath'] = self.mount_path
+        if self.read_only is not None:
+            result['readOnly'] = self.read_only
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('bucketName') is not None:
+            self.bucket_name = m.get('bucketName')
+        if m.get('bucketPath') is not None:
+            self.bucket_path = m.get('bucketPath')
+        if m.get('mountPath') is not None:
+            self.mount_path = m.get('mountPath')
+        if m.get('readOnly') is not None:
+            self.read_only = m.get('readOnly')
+        return self
+
+
+class DescribeJobResponseBodyDataTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class DescribeJobResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        acr_assume_role_arn: str = None,
+        app_description: str = None,
+        app_id: str = None,
+        app_name: str = None,
+        associate_eip: bool = None,
+        backoff_limit: int = None,
+        batch_wait_time: int = None,
+        command: str = None,
+        command_args: str = None,
+        concurrency_policy: str = None,
+        config_map_mount_desc: List[DescribeJobResponseBodyDataConfigMapMountDesc] = None,
+        cpu: int = None,
+        custom_host_alias: str = None,
+        edas_container_version: str = None,
+        enable_ahas: str = None,
+        enable_grey_tag_route: bool = None,
+        envs: str = None,
+        image_pull_secrets: str = None,
+        image_url: str = None,
+        jar_start_args: str = None,
+        jar_start_options: str = None,
+        jdk: str = None,
+        liveness: str = None,
+        memory: int = None,
+        min_ready_instances: int = None,
+        mount_desc: List[DescribeJobResponseBodyDataMountDesc] = None,
+        mount_host: str = None,
+        mse_application_id: str = None,
+        namespace_id: str = None,
+        nas_configs: str = None,
+        nas_id: str = None,
+        oss_ak_id: str = None,
+        oss_ak_secret: str = None,
+        oss_mount_descs: List[DescribeJobResponseBodyDataOssMountDescs] = None,
+        package_type: str = None,
+        package_url: str = None,
+        package_version: str = None,
+        php_arms_config_location: str = None,
+        php_config: str = None,
+        php_config_location: str = None,
+        post_start: str = None,
+        pre_stop: str = None,
+        programming_language: str = None,
+        public_web_hook_urls: List[str] = None,
+        python: str = None,
+        python_modules: str = None,
+        readiness: str = None,
+        ref_app_id: str = None,
+        refed_app_ids: List[str] = None,
+        region_id: str = None,
+        replicas: int = None,
+        security_group_id: str = None,
+        slice: bool = None,
+        slice_envs: str = None,
+        sls_configs: str = None,
+        suspend: bool = None,
+        tags: List[DescribeJobResponseBodyDataTags] = None,
+        termination_grace_period_seconds: int = None,
+        timeout: int = None,
+        timezone: str = None,
+        tomcat_config: str = None,
+        trigger_config: str = None,
+        v_switch_id: str = None,
+        vpc_id: str = None,
+        vpc_web_hook_urls: List[str] = None,
+        war_start_options: str = None,
+        web_container: str = None,
+    ):
+        self.acr_assume_role_arn = acr_assume_role_arn
+        self.app_description = app_description
+        self.app_id = app_id
+        self.app_name = app_name
+        self.associate_eip = associate_eip
+        self.backoff_limit = backoff_limit
+        self.batch_wait_time = batch_wait_time
+        self.command = command
+        self.command_args = command_args
+        self.concurrency_policy = concurrency_policy
+        self.config_map_mount_desc = config_map_mount_desc
+        self.cpu = cpu
+        self.custom_host_alias = custom_host_alias
+        self.edas_container_version = edas_container_version
+        self.enable_ahas = enable_ahas
+        self.enable_grey_tag_route = enable_grey_tag_route
+        self.envs = envs
+        self.image_pull_secrets = image_pull_secrets
+        self.image_url = image_url
+        self.jar_start_args = jar_start_args
+        self.jar_start_options = jar_start_options
+        self.jdk = jdk
+        self.liveness = liveness
+        self.memory = memory
+        self.min_ready_instances = min_ready_instances
+        self.mount_desc = mount_desc
+        self.mount_host = mount_host
+        self.mse_application_id = mse_application_id
+        self.namespace_id = namespace_id
+        self.nas_configs = nas_configs
+        self.nas_id = nas_id
+        self.oss_ak_id = oss_ak_id
+        self.oss_ak_secret = oss_ak_secret
+        self.oss_mount_descs = oss_mount_descs
+        self.package_type = package_type
+        self.package_url = package_url
+        self.package_version = package_version
+        self.php_arms_config_location = php_arms_config_location
+        self.php_config = php_config
+        self.php_config_location = php_config_location
+        self.post_start = post_start
+        self.pre_stop = pre_stop
+        self.programming_language = programming_language
+        self.public_web_hook_urls = public_web_hook_urls
+        self.python = python
+        self.python_modules = python_modules
+        self.readiness = readiness
+        self.ref_app_id = ref_app_id
+        self.refed_app_ids = refed_app_ids
+        self.region_id = region_id
+        self.replicas = replicas
+        self.security_group_id = security_group_id
+        self.slice = slice
+        self.slice_envs = slice_envs
+        self.sls_configs = sls_configs
+        self.suspend = suspend
+        self.tags = tags
+        self.termination_grace_period_seconds = termination_grace_period_seconds
+        self.timeout = timeout
+        self.timezone = timezone
+        self.tomcat_config = tomcat_config
+        self.trigger_config = trigger_config
+        self.v_switch_id = v_switch_id
+        self.vpc_id = vpc_id
+        self.vpc_web_hook_urls = vpc_web_hook_urls
+        self.war_start_options = war_start_options
+        self.web_container = web_container
+
+    def validate(self):
+        if self.config_map_mount_desc:
+            for k in self.config_map_mount_desc:
+                if k:
+                    k.validate()
+        if self.mount_desc:
+            for k in self.mount_desc:
+                if k:
+                    k.validate()
+        if self.oss_mount_descs:
+            for k in self.oss_mount_descs:
+                if k:
+                    k.validate()
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.acr_assume_role_arn is not None:
+            result['AcrAssumeRoleArn'] = self.acr_assume_role_arn
+        if self.app_description is not None:
+            result['AppDescription'] = self.app_description
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.associate_eip is not None:
+            result['AssociateEip'] = self.associate_eip
+        if self.backoff_limit is not None:
+            result['BackoffLimit'] = self.backoff_limit
+        if self.batch_wait_time is not None:
+            result['BatchWaitTime'] = self.batch_wait_time
+        if self.command is not None:
+            result['Command'] = self.command
+        if self.command_args is not None:
+            result['CommandArgs'] = self.command_args
+        if self.concurrency_policy is not None:
+            result['ConcurrencyPolicy'] = self.concurrency_policy
+        result['ConfigMapMountDesc'] = []
+        if self.config_map_mount_desc is not None:
+            for k in self.config_map_mount_desc:
+                result['ConfigMapMountDesc'].append(k.to_map() if k else None)
+        if self.cpu is not None:
+            result['Cpu'] = self.cpu
+        if self.custom_host_alias is not None:
+            result['CustomHostAlias'] = self.custom_host_alias
+        if self.edas_container_version is not None:
+            result['EdasContainerVersion'] = self.edas_container_version
+        if self.enable_ahas is not None:
+            result['EnableAhas'] = self.enable_ahas
+        if self.enable_grey_tag_route is not None:
+            result['EnableGreyTagRoute'] = self.enable_grey_tag_route
+        if self.envs is not None:
+            result['Envs'] = self.envs
+        if self.image_pull_secrets is not None:
+            result['ImagePullSecrets'] = self.image_pull_secrets
+        if self.image_url is not None:
+            result['ImageUrl'] = self.image_url
+        if self.jar_start_args is not None:
+            result['JarStartArgs'] = self.jar_start_args
+        if self.jar_start_options is not None:
+            result['JarStartOptions'] = self.jar_start_options
+        if self.jdk is not None:
+            result['Jdk'] = self.jdk
+        if self.liveness is not None:
+            result['Liveness'] = self.liveness
+        if self.memory is not None:
+            result['Memory'] = self.memory
+        if self.min_ready_instances is not None:
+            result['MinReadyInstances'] = self.min_ready_instances
+        result['MountDesc'] = []
+        if self.mount_desc is not None:
+            for k in self.mount_desc:
+                result['MountDesc'].append(k.to_map() if k else None)
+        if self.mount_host is not None:
+            result['MountHost'] = self.mount_host
+        if self.mse_application_id is not None:
+            result['MseApplicationId'] = self.mse_application_id
+        if self.namespace_id is not None:
+            result['NamespaceId'] = self.namespace_id
+        if self.nas_configs is not None:
+            result['NasConfigs'] = self.nas_configs
+        if self.nas_id is not None:
+            result['NasId'] = self.nas_id
+        if self.oss_ak_id is not None:
+            result['OssAkId'] = self.oss_ak_id
+        if self.oss_ak_secret is not None:
+            result['OssAkSecret'] = self.oss_ak_secret
+        result['OssMountDescs'] = []
+        if self.oss_mount_descs is not None:
+            for k in self.oss_mount_descs:
+                result['OssMountDescs'].append(k.to_map() if k else None)
+        if self.package_type is not None:
+            result['PackageType'] = self.package_type
+        if self.package_url is not None:
+            result['PackageUrl'] = self.package_url
+        if self.package_version is not None:
+            result['PackageVersion'] = self.package_version
+        if self.php_arms_config_location is not None:
+            result['PhpArmsConfigLocation'] = self.php_arms_config_location
+        if self.php_config is not None:
+            result['PhpConfig'] = self.php_config
+        if self.php_config_location is not None:
+            result['PhpConfigLocation'] = self.php_config_location
+        if self.post_start is not None:
+            result['PostStart'] = self.post_start
+        if self.pre_stop is not None:
+            result['PreStop'] = self.pre_stop
+        if self.programming_language is not None:
+            result['ProgrammingLanguage'] = self.programming_language
+        if self.public_web_hook_urls is not None:
+            result['PublicWebHookUrls'] = self.public_web_hook_urls
+        if self.python is not None:
+            result['Python'] = self.python
+        if self.python_modules is not None:
+            result['PythonModules'] = self.python_modules
+        if self.readiness is not None:
+            result['Readiness'] = self.readiness
+        if self.ref_app_id is not None:
+            result['RefAppId'] = self.ref_app_id
+        if self.refed_app_ids is not None:
+            result['RefedAppIds'] = self.refed_app_ids
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.replicas is not None:
+            result['Replicas'] = self.replicas
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+        if self.slice is not None:
+            result['Slice'] = self.slice
+        if self.slice_envs is not None:
+            result['SliceEnvs'] = self.slice_envs
+        if self.sls_configs is not None:
+            result['SlsConfigs'] = self.sls_configs
+        if self.suspend is not None:
+            result['Suspend'] = self.suspend
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
+        if self.termination_grace_period_seconds is not None:
+            result['TerminationGracePeriodSeconds'] = self.termination_grace_period_seconds
+        if self.timeout is not None:
+            result['Timeout'] = self.timeout
+        if self.timezone is not None:
+            result['Timezone'] = self.timezone
+        if self.tomcat_config is not None:
+            result['TomcatConfig'] = self.tomcat_config
+        if self.trigger_config is not None:
+            result['TriggerConfig'] = self.trigger_config
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        if self.vpc_web_hook_urls is not None:
+            result['VpcWebHookUrls'] = self.vpc_web_hook_urls
+        if self.war_start_options is not None:
+            result['WarStartOptions'] = self.war_start_options
+        if self.web_container is not None:
+            result['WebContainer'] = self.web_container
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcrAssumeRoleArn') is not None:
+            self.acr_assume_role_arn = m.get('AcrAssumeRoleArn')
+        if m.get('AppDescription') is not None:
+            self.app_description = m.get('AppDescription')
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('AssociateEip') is not None:
+            self.associate_eip = m.get('AssociateEip')
+        if m.get('BackoffLimit') is not None:
+            self.backoff_limit = m.get('BackoffLimit')
+        if m.get('BatchWaitTime') is not None:
+            self.batch_wait_time = m.get('BatchWaitTime')
+        if m.get('Command') is not None:
+            self.command = m.get('Command')
+        if m.get('CommandArgs') is not None:
+            self.command_args = m.get('CommandArgs')
+        if m.get('ConcurrencyPolicy') is not None:
+            self.concurrency_policy = m.get('ConcurrencyPolicy')
+        self.config_map_mount_desc = []
+        if m.get('ConfigMapMountDesc') is not None:
+            for k in m.get('ConfigMapMountDesc'):
+                temp_model = DescribeJobResponseBodyDataConfigMapMountDesc()
+                self.config_map_mount_desc.append(temp_model.from_map(k))
+        if m.get('Cpu') is not None:
+            self.cpu = m.get('Cpu')
+        if m.get('CustomHostAlias') is not None:
+            self.custom_host_alias = m.get('CustomHostAlias')
+        if m.get('EdasContainerVersion') is not None:
+            self.edas_container_version = m.get('EdasContainerVersion')
+        if m.get('EnableAhas') is not None:
+            self.enable_ahas = m.get('EnableAhas')
+        if m.get('EnableGreyTagRoute') is not None:
+            self.enable_grey_tag_route = m.get('EnableGreyTagRoute')
+        if m.get('Envs') is not None:
+            self.envs = m.get('Envs')
+        if m.get('ImagePullSecrets') is not None:
+            self.image_pull_secrets = m.get('ImagePullSecrets')
+        if m.get('ImageUrl') is not None:
+            self.image_url = m.get('ImageUrl')
+        if m.get('JarStartArgs') is not None:
+            self.jar_start_args = m.get('JarStartArgs')
+        if m.get('JarStartOptions') is not None:
+            self.jar_start_options = m.get('JarStartOptions')
+        if m.get('Jdk') is not None:
+            self.jdk = m.get('Jdk')
+        if m.get('Liveness') is not None:
+            self.liveness = m.get('Liveness')
+        if m.get('Memory') is not None:
+            self.memory = m.get('Memory')
+        if m.get('MinReadyInstances') is not None:
+            self.min_ready_instances = m.get('MinReadyInstances')
+        self.mount_desc = []
+        if m.get('MountDesc') is not None:
+            for k in m.get('MountDesc'):
+                temp_model = DescribeJobResponseBodyDataMountDesc()
+                self.mount_desc.append(temp_model.from_map(k))
+        if m.get('MountHost') is not None:
+            self.mount_host = m.get('MountHost')
+        if m.get('MseApplicationId') is not None:
+            self.mse_application_id = m.get('MseApplicationId')
+        if m.get('NamespaceId') is not None:
+            self.namespace_id = m.get('NamespaceId')
+        if m.get('NasConfigs') is not None:
+            self.nas_configs = m.get('NasConfigs')
+        if m.get('NasId') is not None:
+            self.nas_id = m.get('NasId')
+        if m.get('OssAkId') is not None:
+            self.oss_ak_id = m.get('OssAkId')
+        if m.get('OssAkSecret') is not None:
+            self.oss_ak_secret = m.get('OssAkSecret')
+        self.oss_mount_descs = []
+        if m.get('OssMountDescs') is not None:
+            for k in m.get('OssMountDescs'):
+                temp_model = DescribeJobResponseBodyDataOssMountDescs()
+                self.oss_mount_descs.append(temp_model.from_map(k))
+        if m.get('PackageType') is not None:
+            self.package_type = m.get('PackageType')
+        if m.get('PackageUrl') is not None:
+            self.package_url = m.get('PackageUrl')
+        if m.get('PackageVersion') is not None:
+            self.package_version = m.get('PackageVersion')
+        if m.get('PhpArmsConfigLocation') is not None:
+            self.php_arms_config_location = m.get('PhpArmsConfigLocation')
+        if m.get('PhpConfig') is not None:
+            self.php_config = m.get('PhpConfig')
+        if m.get('PhpConfigLocation') is not None:
+            self.php_config_location = m.get('PhpConfigLocation')
+        if m.get('PostStart') is not None:
+            self.post_start = m.get('PostStart')
+        if m.get('PreStop') is not None:
+            self.pre_stop = m.get('PreStop')
+        if m.get('ProgrammingLanguage') is not None:
+            self.programming_language = m.get('ProgrammingLanguage')
+        if m.get('PublicWebHookUrls') is not None:
+            self.public_web_hook_urls = m.get('PublicWebHookUrls')
+        if m.get('Python') is not None:
+            self.python = m.get('Python')
+        if m.get('PythonModules') is not None:
+            self.python_modules = m.get('PythonModules')
+        if m.get('Readiness') is not None:
+            self.readiness = m.get('Readiness')
+        if m.get('RefAppId') is not None:
+            self.ref_app_id = m.get('RefAppId')
+        if m.get('RefedAppIds') is not None:
+            self.refed_app_ids = m.get('RefedAppIds')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Replicas') is not None:
+            self.replicas = m.get('Replicas')
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
+        if m.get('Slice') is not None:
+            self.slice = m.get('Slice')
+        if m.get('SliceEnvs') is not None:
+            self.slice_envs = m.get('SliceEnvs')
+        if m.get('SlsConfigs') is not None:
+            self.sls_configs = m.get('SlsConfigs')
+        if m.get('Suspend') is not None:
+            self.suspend = m.get('Suspend')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = DescribeJobResponseBodyDataTags()
+                self.tags.append(temp_model.from_map(k))
+        if m.get('TerminationGracePeriodSeconds') is not None:
+            self.termination_grace_period_seconds = m.get('TerminationGracePeriodSeconds')
+        if m.get('Timeout') is not None:
+            self.timeout = m.get('Timeout')
+        if m.get('Timezone') is not None:
+            self.timezone = m.get('Timezone')
+        if m.get('TomcatConfig') is not None:
+            self.tomcat_config = m.get('TomcatConfig')
+        if m.get('TriggerConfig') is not None:
+            self.trigger_config = m.get('TriggerConfig')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        if m.get('VpcWebHookUrls') is not None:
+            self.vpc_web_hook_urls = m.get('VpcWebHookUrls')
+        if m.get('WarStartOptions') is not None:
+            self.war_start_options = m.get('WarStartOptions')
+        if m.get('WebContainer') is not None:
+            self.web_container = m.get('WebContainer')
+        return self
+
+
+class DescribeJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: DescribeJobResponseBodyData = None,
+        error_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        trace_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.error_code = error_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.trace_id = trace_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.trace_id is not None:
+            result['TraceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = DescribeJobResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TraceId') is not None:
+            self.trace_id = m.get('TraceId')
+        return self
+
+
+class DescribeJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeJobHistoryRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        current_page: int = None,
+        page_size: int = None,
+        state: str = None,
+    ):
+        self.app_id = app_id
+        self.current_page = current_page
+        self.page_size = page_size
+        self.state = state
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.state is not None:
+            result['State'] = self.state
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        return self
+
+
+class DescribeJobHistoryResponseBodyDataJobs(TeaModel):
+    def __init__(
+        self,
+        active: int = None,
+        completion_time: int = None,
+        failed: int = None,
+        job_id: str = None,
+        message: str = None,
+        start_time: int = None,
+        state: str = None,
+        succeeded: int = None,
+    ):
+        self.active = active
+        self.completion_time = completion_time
+        self.failed = failed
+        self.job_id = job_id
+        self.message = message
+        self.start_time = start_time
+        self.state = state
+        self.succeeded = succeeded
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.active is not None:
+            result['Active'] = self.active
+        if self.completion_time is not None:
+            result['CompletionTime'] = self.completion_time
+        if self.failed is not None:
+            result['Failed'] = self.failed
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.state is not None:
+            result['State'] = self.state
+        if self.succeeded is not None:
+            result['Succeeded'] = self.succeeded
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Active') is not None:
+            self.active = m.get('Active')
+        if m.get('CompletionTime') is not None:
+            self.completion_time = m.get('CompletionTime')
+        if m.get('Failed') is not None:
+            self.failed = m.get('Failed')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        if m.get('Succeeded') is not None:
+            self.succeeded = m.get('Succeeded')
+        return self
+
+
+class DescribeJobHistoryResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        jobs: List[DescribeJobHistoryResponseBodyDataJobs] = None,
+        page_size: int = None,
+        total_size: int = None,
+    ):
+        self.current_page = current_page
+        self.jobs = jobs
+        self.page_size = page_size
+        self.total_size = total_size
+
+    def validate(self):
+        if self.jobs:
+            for k in self.jobs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        result['Jobs'] = []
+        if self.jobs is not None:
+            for k in self.jobs:
+                result['Jobs'].append(k.to_map() if k else None)
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_size is not None:
+            result['TotalSize'] = self.total_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        self.jobs = []
+        if m.get('Jobs') is not None:
+            for k in m.get('Jobs'):
+                temp_model = DescribeJobHistoryResponseBodyDataJobs()
+                self.jobs.append(temp_model.from_map(k))
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalSize') is not None:
+            self.total_size = m.get('TotalSize')
+        return self
+
+
+class DescribeJobHistoryResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: DescribeJobHistoryResponseBodyData = None,
+        error_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        trace_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.error_code = error_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.trace_id = trace_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.trace_id is not None:
+            result['TraceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = DescribeJobHistoryResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TraceId') is not None:
+            self.trace_id = m.get('TraceId')
+        return self
+
+
+class DescribeJobHistoryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeJobHistoryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeJobHistoryResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -10915,6 +13345,7 @@ class DescribeNamespacesResponseBodyDataNamespaces(TeaModel):
     def __init__(
         self,
         access_key: str = None,
+        address_server_host: str = None,
         namespace_description: str = None,
         namespace_id: str = None,
         namespace_name: str = None,
@@ -10923,6 +13354,7 @@ class DescribeNamespacesResponseBodyDataNamespaces(TeaModel):
         tenant_id: str = None,
     ):
         self.access_key = access_key
+        self.address_server_host = address_server_host
         self.namespace_description = namespace_description
         self.namespace_id = namespace_id
         self.namespace_name = namespace_name
@@ -10941,6 +13373,8 @@ class DescribeNamespacesResponseBodyDataNamespaces(TeaModel):
         result = dict()
         if self.access_key is not None:
             result['AccessKey'] = self.access_key
+        if self.address_server_host is not None:
+            result['AddressServerHost'] = self.address_server_host
         if self.namespace_description is not None:
             result['NamespaceDescription'] = self.namespace_description
         if self.namespace_id is not None:
@@ -10959,6 +13393,8 @@ class DescribeNamespacesResponseBodyDataNamespaces(TeaModel):
         m = m or dict()
         if m.get('AccessKey') is not None:
             self.access_key = m.get('AccessKey')
+        if m.get('AddressServerHost') is not None:
+            self.address_server_host = m.get('AddressServerHost')
         if m.get('NamespaceDescription') is not None:
             self.namespace_description = m.get('NamespaceDescription')
         if m.get('NamespaceId') is not None:
@@ -11683,6 +14119,258 @@ class DescribeRegionsResponse(TeaModel):
         return self
 
 
+class DescribeSecretRequest(TeaModel):
+    def __init__(
+        self,
+        namespace_id: str = None,
+        secret_id: int = None,
+    ):
+        self.namespace_id = namespace_id
+        self.secret_id = secret_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.namespace_id is not None:
+            result['NamespaceId'] = self.namespace_id
+        if self.secret_id is not None:
+            result['SecretId'] = self.secret_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NamespaceId') is not None:
+            self.namespace_id = m.get('NamespaceId')
+        if m.get('SecretId') is not None:
+            self.secret_id = m.get('SecretId')
+        return self
+
+
+class DescribeSecretResponseBodyDataRelateApps(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        app_name: str = None,
+    ):
+        self.app_id = app_id
+        self.app_name = app_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        return self
+
+
+class DescribeSecretResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        create_time: int = None,
+        namespace_id: str = None,
+        relate_apps: List[DescribeSecretResponseBodyDataRelateApps] = None,
+        secret_data: Dict[str, str] = None,
+        secret_id: int = None,
+        secret_name: str = None,
+        secret_type: str = None,
+        update_time: int = None,
+    ):
+        self.create_time = create_time
+        self.namespace_id = namespace_id
+        self.relate_apps = relate_apps
+        self.secret_data = secret_data
+        self.secret_id = secret_id
+        self.secret_name = secret_name
+        self.secret_type = secret_type
+        self.update_time = update_time
+
+    def validate(self):
+        if self.relate_apps:
+            for k in self.relate_apps:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.namespace_id is not None:
+            result['NamespaceId'] = self.namespace_id
+        result['RelateApps'] = []
+        if self.relate_apps is not None:
+            for k in self.relate_apps:
+                result['RelateApps'].append(k.to_map() if k else None)
+        if self.secret_data is not None:
+            result['SecretData'] = self.secret_data
+        if self.secret_id is not None:
+            result['SecretId'] = self.secret_id
+        if self.secret_name is not None:
+            result['SecretName'] = self.secret_name
+        if self.secret_type is not None:
+            result['SecretType'] = self.secret_type
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('NamespaceId') is not None:
+            self.namespace_id = m.get('NamespaceId')
+        self.relate_apps = []
+        if m.get('RelateApps') is not None:
+            for k in m.get('RelateApps'):
+                temp_model = DescribeSecretResponseBodyDataRelateApps()
+                self.relate_apps.append(temp_model.from_map(k))
+        if m.get('SecretData') is not None:
+            self.secret_data = m.get('SecretData')
+        if m.get('SecretId') is not None:
+            self.secret_id = m.get('SecretId')
+        if m.get('SecretName') is not None:
+            self.secret_name = m.get('SecretName')
+        if m.get('SecretType') is not None:
+            self.secret_type = m.get('SecretType')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
+class DescribeSecretResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: DescribeSecretResponseBodyData = None,
+        error_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        trace_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.error_code = error_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.trace_id = trace_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.trace_id is not None:
+            result['TraceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = DescribeSecretResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TraceId') is not None:
+            self.trace_id = m.get('TraceId')
+        return self
+
+
+class DescribeSecretResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeSecretResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeSecretResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DisableApplicationScalingRuleRequest(TeaModel):
     def __init__(
         self,
@@ -11913,6 +14601,7 @@ class ExecJobRequest(TeaModel):
         event_id: str = None,
         jar_start_args: str = None,
         jar_start_options: str = None,
+        time: str = None,
         war_start_options: str = None,
     ):
         self.app_id = app_id
@@ -11922,6 +14611,7 @@ class ExecJobRequest(TeaModel):
         self.event_id = event_id
         self.jar_start_args = jar_start_args
         self.jar_start_options = jar_start_options
+        self.time = time
         self.war_start_options = war_start_options
 
     def validate(self):
@@ -11947,6 +14637,8 @@ class ExecJobRequest(TeaModel):
             result['JarStartArgs'] = self.jar_start_args
         if self.jar_start_options is not None:
             result['JarStartOptions'] = self.jar_start_options
+        if self.time is not None:
+            result['Time'] = self.time
         if self.war_start_options is not None:
             result['WarStartOptions'] = self.war_start_options
         return result
@@ -11967,6 +14659,8 @@ class ExecJobRequest(TeaModel):
             self.jar_start_args = m.get('JarStartArgs')
         if m.get('JarStartOptions') is not None:
             self.jar_start_options = m.get('JarStartOptions')
+        if m.get('Time') is not None:
+            self.time = m.get('Time')
         if m.get('WarStartOptions') is not None:
             self.war_start_options = m.get('WarStartOptions')
         return self
@@ -12122,6 +14816,270 @@ class ExecJobResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ExecJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetJobHistoryRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        current_page: int = None,
+        page_size: int = None,
+    ):
+        self.app_id = app_id
+        self.current_page = current_page
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class GetJobHistoryResponseBodyDataJobs(TeaModel):
+    def __init__(
+        self,
+        active: int = None,
+        completion_time: int = None,
+        failed: int = None,
+        job_id: str = None,
+        message: str = None,
+        start_time: int = None,
+        succeeded: int = None,
+    ):
+        self.active = active
+        self.completion_time = completion_time
+        self.failed = failed
+        self.job_id = job_id
+        self.message = message
+        self.start_time = start_time
+        self.succeeded = succeeded
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.active is not None:
+            result['Active'] = self.active
+        if self.completion_time is not None:
+            result['CompletionTime'] = self.completion_time
+        if self.failed is not None:
+            result['Failed'] = self.failed
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.succeeded is not None:
+            result['Succeeded'] = self.succeeded
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Active') is not None:
+            self.active = m.get('Active')
+        if m.get('CompletionTime') is not None:
+            self.completion_time = m.get('CompletionTime')
+        if m.get('Failed') is not None:
+            self.failed = m.get('Failed')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Succeeded') is not None:
+            self.succeeded = m.get('Succeeded')
+        return self
+
+
+class GetJobHistoryResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        jobs: List[GetJobHistoryResponseBodyDataJobs] = None,
+        page_size: int = None,
+        total_size: int = None,
+    ):
+        self.current_page = current_page
+        self.jobs = jobs
+        self.page_size = page_size
+        self.total_size = total_size
+
+    def validate(self):
+        if self.jobs:
+            for k in self.jobs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        result['Jobs'] = []
+        if self.jobs is not None:
+            for k in self.jobs:
+                result['Jobs'].append(k.to_map() if k else None)
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_size is not None:
+            result['TotalSize'] = self.total_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        self.jobs = []
+        if m.get('Jobs') is not None:
+            for k in m.get('Jobs'):
+                temp_model = GetJobHistoryResponseBodyDataJobs()
+                self.jobs.append(temp_model.from_map(k))
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalSize') is not None:
+            self.total_size = m.get('TotalSize')
+        return self
+
+
+class GetJobHistoryResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetJobHistoryResponseBodyData = None,
+        error_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        trace_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.error_code = error_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.trace_id = trace_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.trace_id is not None:
+            result['TraceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetJobHistoryResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TraceId') is not None:
+            self.trace_id = m.get('TraceId')
+        return self
+
+
+class GetJobHistoryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetJobHistoryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetJobHistoryResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -13798,6 +16756,122 @@ class ListGreyTagRouteRequest(TeaModel):
         return self
 
 
+class ListGreyTagRouteResponseBodyDataResultAlbRulesItems(TeaModel):
+    def __init__(
+        self,
+        cond: str = None,
+        expr: str = None,
+        index: int = None,
+        name: str = None,
+        operator: str = None,
+        type: str = None,
+        value: str = None,
+    ):
+        self.cond = cond
+        self.expr = expr
+        self.index = index
+        self.name = name
+        self.operator = operator
+        self.type = type
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cond is not None:
+            result['cond'] = self.cond
+        if self.expr is not None:
+            result['expr'] = self.expr
+        if self.index is not None:
+            result['index'] = self.index
+        if self.name is not None:
+            result['name'] = self.name
+        if self.operator is not None:
+            result['operator'] = self.operator
+        if self.type is not None:
+            result['type'] = self.type
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cond') is not None:
+            self.cond = m.get('cond')
+        if m.get('expr') is not None:
+            self.expr = m.get('expr')
+        if m.get('index') is not None:
+            self.index = m.get('index')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('operator') is not None:
+            self.operator = m.get('operator')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class ListGreyTagRouteResponseBodyDataResultAlbRules(TeaModel):
+    def __init__(
+        self,
+        condition: str = None,
+        ingress_id: str = None,
+        items: List[ListGreyTagRouteResponseBodyDataResultAlbRulesItems] = None,
+        service_id: str = None,
+    ):
+        self.condition = condition
+        self.ingress_id = ingress_id
+        self.items = items
+        self.service_id = service_id
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.condition is not None:
+            result['condition'] = self.condition
+        if self.ingress_id is not None:
+            result['ingressId'] = self.ingress_id
+        result['items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['items'].append(k.to_map() if k else None)
+        if self.service_id is not None:
+            result['serviceId'] = self.service_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('condition') is not None:
+            self.condition = m.get('condition')
+        if m.get('ingressId') is not None:
+            self.ingress_id = m.get('ingressId')
+        self.items = []
+        if m.get('items') is not None:
+            for k in m.get('items'):
+                temp_model = ListGreyTagRouteResponseBodyDataResultAlbRulesItems()
+                self.items.append(temp_model.from_map(k))
+        if m.get('serviceId') is not None:
+            self.service_id = m.get('serviceId')
+        return self
+
+
 class ListGreyTagRouteResponseBodyDataResultDubboRulesItems(TeaModel):
     def __init__(
         self,
@@ -14039,6 +17113,7 @@ class ListGreyTagRouteResponseBodyDataResultScRules(TeaModel):
 class ListGreyTagRouteResponseBodyDataResult(TeaModel):
     def __init__(
         self,
+        alb_rules: List[ListGreyTagRouteResponseBodyDataResultAlbRules] = None,
         create_time: int = None,
         description: str = None,
         dubbo_rules: List[ListGreyTagRouteResponseBodyDataResultDubboRules] = None,
@@ -14047,6 +17122,7 @@ class ListGreyTagRouteResponseBodyDataResult(TeaModel):
         sc_rules: List[ListGreyTagRouteResponseBodyDataResultScRules] = None,
         update_time: int = None,
     ):
+        self.alb_rules = alb_rules
         self.create_time = create_time
         self.description = description
         self.dubbo_rules = dubbo_rules
@@ -14056,6 +17132,10 @@ class ListGreyTagRouteResponseBodyDataResult(TeaModel):
         self.update_time = update_time
 
     def validate(self):
+        if self.alb_rules:
+            for k in self.alb_rules:
+                if k:
+                    k.validate()
         if self.dubbo_rules:
             for k in self.dubbo_rules:
                 if k:
@@ -14071,6 +17151,10 @@ class ListGreyTagRouteResponseBodyDataResult(TeaModel):
             return _map
 
         result = dict()
+        result['AlbRules'] = []
+        if self.alb_rules is not None:
+            for k in self.alb_rules:
+                result['AlbRules'].append(k.to_map() if k else None)
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
         if self.description is not None:
@@ -14093,6 +17177,11 @@ class ListGreyTagRouteResponseBodyDataResult(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.alb_rules = []
+        if m.get('AlbRules') is not None:
+            for k in m.get('AlbRules'):
+                temp_model = ListGreyTagRouteResponseBodyDataResultAlbRules()
+                self.alb_rules.append(temp_model.from_map(k))
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
         if m.get('Description') is not None:
@@ -14315,6 +17404,7 @@ class ListIngressesResponseBodyDataIngressList(TeaModel):
     def __init__(
         self,
         cert_id: str = None,
+        cert_ids: str = None,
         description: str = None,
         id: int = None,
         listener_port: str = None,
@@ -14326,6 +17416,7 @@ class ListIngressesResponseBodyDataIngressList(TeaModel):
         slb_type: str = None,
     ):
         self.cert_id = cert_id
+        self.cert_ids = cert_ids
         self.description = description
         self.id = id
         self.listener_port = listener_port
@@ -14347,6 +17438,8 @@ class ListIngressesResponseBodyDataIngressList(TeaModel):
         result = dict()
         if self.cert_id is not None:
             result['CertId'] = self.cert_id
+        if self.cert_ids is not None:
+            result['CertIds'] = self.cert_ids
         if self.description is not None:
             result['Description'] = self.description
         if self.id is not None:
@@ -14371,6 +17464,8 @@ class ListIngressesResponseBodyDataIngressList(TeaModel):
         m = m or dict()
         if m.get('CertId') is not None:
             self.cert_id = m.get('CertId')
+        if m.get('CertIds') is not None:
+            self.cert_ids = m.get('CertIds')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('Id') is not None:
@@ -14532,6 +17627,431 @@ class ListIngressesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListIngressesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListJobsRequest(TeaModel):
+    def __init__(
+        self,
+        app_name: str = None,
+        current_page: int = None,
+        field_type: str = None,
+        field_value: str = None,
+        namespace_id: str = None,
+        order_by: str = None,
+        page_size: int = None,
+        reverse: bool = None,
+        tags: str = None,
+        workload: str = None,
+    ):
+        self.app_name = app_name
+        self.current_page = current_page
+        self.field_type = field_type
+        self.field_value = field_value
+        self.namespace_id = namespace_id
+        self.order_by = order_by
+        self.page_size = page_size
+        self.reverse = reverse
+        self.tags = tags
+        self.workload = workload
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.field_type is not None:
+            result['FieldType'] = self.field_type
+        if self.field_value is not None:
+            result['FieldValue'] = self.field_value
+        if self.namespace_id is not None:
+            result['NamespaceId'] = self.namespace_id
+        if self.order_by is not None:
+            result['OrderBy'] = self.order_by
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.reverse is not None:
+            result['Reverse'] = self.reverse
+        if self.tags is not None:
+            result['Tags'] = self.tags
+        if self.workload is not None:
+            result['Workload'] = self.workload
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('FieldType') is not None:
+            self.field_type = m.get('FieldType')
+        if m.get('FieldValue') is not None:
+            self.field_value = m.get('FieldValue')
+        if m.get('NamespaceId') is not None:
+            self.namespace_id = m.get('NamespaceId')
+        if m.get('OrderBy') is not None:
+            self.order_by = m.get('OrderBy')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Reverse') is not None:
+            self.reverse = m.get('Reverse')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
+        if m.get('Workload') is not None:
+            self.workload = m.get('Workload')
+        return self
+
+
+class ListJobsResponseBodyDataApplicationsTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListJobsResponseBodyDataApplications(TeaModel):
+    def __init__(
+        self,
+        active: int = None,
+        app_deleting_status: bool = None,
+        app_description: str = None,
+        app_id: str = None,
+        app_name: str = None,
+        completion_time: int = None,
+        failed: int = None,
+        instances: int = None,
+        last_changeorder_state: str = None,
+        last_job_state: str = None,
+        last_start_time: int = None,
+        namespace_id: str = None,
+        region_id: str = None,
+        running_instances: int = None,
+        succeeded: int = None,
+        suspend: bool = None,
+        tags: List[ListJobsResponseBodyDataApplicationsTags] = None,
+        trigger_config: str = None,
+    ):
+        self.active = active
+        self.app_deleting_status = app_deleting_status
+        self.app_description = app_description
+        self.app_id = app_id
+        self.app_name = app_name
+        self.completion_time = completion_time
+        self.failed = failed
+        self.instances = instances
+        self.last_changeorder_state = last_changeorder_state
+        self.last_job_state = last_job_state
+        self.last_start_time = last_start_time
+        self.namespace_id = namespace_id
+        self.region_id = region_id
+        self.running_instances = running_instances
+        self.succeeded = succeeded
+        self.suspend = suspend
+        self.tags = tags
+        self.trigger_config = trigger_config
+
+    def validate(self):
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.active is not None:
+            result['Active'] = self.active
+        if self.app_deleting_status is not None:
+            result['AppDeletingStatus'] = self.app_deleting_status
+        if self.app_description is not None:
+            result['AppDescription'] = self.app_description
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.completion_time is not None:
+            result['CompletionTime'] = self.completion_time
+        if self.failed is not None:
+            result['Failed'] = self.failed
+        if self.instances is not None:
+            result['Instances'] = self.instances
+        if self.last_changeorder_state is not None:
+            result['LastChangeorderState'] = self.last_changeorder_state
+        if self.last_job_state is not None:
+            result['LastJobState'] = self.last_job_state
+        if self.last_start_time is not None:
+            result['LastStartTime'] = self.last_start_time
+        if self.namespace_id is not None:
+            result['NamespaceId'] = self.namespace_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.running_instances is not None:
+            result['RunningInstances'] = self.running_instances
+        if self.succeeded is not None:
+            result['Succeeded'] = self.succeeded
+        if self.suspend is not None:
+            result['Suspend'] = self.suspend
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
+        if self.trigger_config is not None:
+            result['TriggerConfig'] = self.trigger_config
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Active') is not None:
+            self.active = m.get('Active')
+        if m.get('AppDeletingStatus') is not None:
+            self.app_deleting_status = m.get('AppDeletingStatus')
+        if m.get('AppDescription') is not None:
+            self.app_description = m.get('AppDescription')
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('CompletionTime') is not None:
+            self.completion_time = m.get('CompletionTime')
+        if m.get('Failed') is not None:
+            self.failed = m.get('Failed')
+        if m.get('Instances') is not None:
+            self.instances = m.get('Instances')
+        if m.get('LastChangeorderState') is not None:
+            self.last_changeorder_state = m.get('LastChangeorderState')
+        if m.get('LastJobState') is not None:
+            self.last_job_state = m.get('LastJobState')
+        if m.get('LastStartTime') is not None:
+            self.last_start_time = m.get('LastStartTime')
+        if m.get('NamespaceId') is not None:
+            self.namespace_id = m.get('NamespaceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('RunningInstances') is not None:
+            self.running_instances = m.get('RunningInstances')
+        if m.get('Succeeded') is not None:
+            self.succeeded = m.get('Succeeded')
+        if m.get('Suspend') is not None:
+            self.suspend = m.get('Suspend')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListJobsResponseBodyDataApplicationsTags()
+                self.tags.append(temp_model.from_map(k))
+        if m.get('TriggerConfig') is not None:
+            self.trigger_config = m.get('TriggerConfig')
+        return self
+
+
+class ListJobsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        applications: List[ListJobsResponseBodyDataApplications] = None,
+        current_page: int = None,
+        page_size: int = None,
+        total_size: int = None,
+    ):
+        self.applications = applications
+        self.current_page = current_page
+        self.page_size = page_size
+        self.total_size = total_size
+
+    def validate(self):
+        if self.applications:
+            for k in self.applications:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Applications'] = []
+        if self.applications is not None:
+            for k in self.applications:
+                result['Applications'].append(k.to_map() if k else None)
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_size is not None:
+            result['TotalSize'] = self.total_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.applications = []
+        if m.get('Applications') is not None:
+            for k in m.get('Applications'):
+                temp_model = ListJobsResponseBodyDataApplications()
+                self.applications.append(temp_model.from_map(k))
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalSize') is not None:
+            self.total_size = m.get('TotalSize')
+        return self
+
+
+class ListJobsResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        current_page: int = None,
+        data: ListJobsResponseBodyData = None,
+        error_code: str = None,
+        message: str = None,
+        page_size: int = None,
+        request_id: str = None,
+        success: bool = None,
+        total_size: int = None,
+    ):
+        self.code = code
+        self.current_page = current_page
+        self.data = data
+        self.error_code = error_code
+        self.message = message
+        self.page_size = page_size
+        self.request_id = request_id
+        self.success = success
+        self.total_size = total_size
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total_size is not None:
+            result['TotalSize'] = self.total_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('Data') is not None:
+            temp_model = ListJobsResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TotalSize') is not None:
+            self.total_size = m.get('TotalSize')
+        return self
+
+
+class ListJobsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListJobsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListJobsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -15618,6 +19138,281 @@ class ListPublishedServicesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListPublishedServicesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListSecretsRequest(TeaModel):
+    def __init__(
+        self,
+        namespace_id: str = None,
+    ):
+        self.namespace_id = namespace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.namespace_id is not None:
+            result['NamespaceId'] = self.namespace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NamespaceId') is not None:
+            self.namespace_id = m.get('NamespaceId')
+        return self
+
+
+class ListSecretsResponseBodyDataSecretsRelateApps(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        app_name: str = None,
+    ):
+        self.app_id = app_id
+        self.app_name = app_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        return self
+
+
+class ListSecretsResponseBodyDataSecrets(TeaModel):
+    def __init__(
+        self,
+        create_time: int = None,
+        namespace_id: str = None,
+        relate_apps: List[ListSecretsResponseBodyDataSecretsRelateApps] = None,
+        secret_id: int = None,
+        secret_name: str = None,
+        secret_type: str = None,
+        update_time: int = None,
+    ):
+        self.create_time = create_time
+        self.namespace_id = namespace_id
+        self.relate_apps = relate_apps
+        self.secret_id = secret_id
+        self.secret_name = secret_name
+        self.secret_type = secret_type
+        self.update_time = update_time
+
+    def validate(self):
+        if self.relate_apps:
+            for k in self.relate_apps:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.namespace_id is not None:
+            result['NamespaceId'] = self.namespace_id
+        result['RelateApps'] = []
+        if self.relate_apps is not None:
+            for k in self.relate_apps:
+                result['RelateApps'].append(k.to_map() if k else None)
+        if self.secret_id is not None:
+            result['SecretId'] = self.secret_id
+        if self.secret_name is not None:
+            result['SecretName'] = self.secret_name
+        if self.secret_type is not None:
+            result['SecretType'] = self.secret_type
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('NamespaceId') is not None:
+            self.namespace_id = m.get('NamespaceId')
+        self.relate_apps = []
+        if m.get('RelateApps') is not None:
+            for k in m.get('RelateApps'):
+                temp_model = ListSecretsResponseBodyDataSecretsRelateApps()
+                self.relate_apps.append(temp_model.from_map(k))
+        if m.get('SecretId') is not None:
+            self.secret_id = m.get('SecretId')
+        if m.get('SecretName') is not None:
+            self.secret_name = m.get('SecretName')
+        if m.get('SecretType') is not None:
+            self.secret_type = m.get('SecretType')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
+class ListSecretsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        secrets: List[ListSecretsResponseBodyDataSecrets] = None,
+    ):
+        self.secrets = secrets
+
+    def validate(self):
+        if self.secrets:
+            for k in self.secrets:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Secrets'] = []
+        if self.secrets is not None:
+            for k in self.secrets:
+                result['Secrets'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.secrets = []
+        if m.get('Secrets') is not None:
+            for k in m.get('Secrets'):
+                temp_model = ListSecretsResponseBodyDataSecrets()
+                self.secrets.append(temp_model.from_map(k))
+        return self
+
+
+class ListSecretsResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: ListSecretsResponseBodyData = None,
+        error_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        trace_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.error_code = error_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.trace_id = trace_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.trace_id is not None:
+            result['TraceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = ListSecretsResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TraceId') is not None:
+            self.trace_id = m.get('TraceId')
+        return self
+
+
+class ListSecretsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListSecretsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListSecretsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -17585,6 +21380,146 @@ class StopApplicationResponse(TeaModel):
         return self
 
 
+class SuspendJobRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        suspend: bool = None,
+    ):
+        self.app_id = app_id
+        self.suspend = suspend
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.suspend is not None:
+            result['Suspend'] = self.suspend
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('Suspend') is not None:
+            self.suspend = m.get('Suspend')
+        return self
+
+
+class SuspendJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: str = None,
+        error_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        trace_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.error_code = error_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.trace_id = trace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.trace_id is not None:
+            result['TraceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TraceId') is not None:
+            self.trace_id = m.get('TraceId')
+        return self
+
+
+class SuspendJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SuspendJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SuspendJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class TagResourcesRequest(TeaModel):
     def __init__(
         self,
@@ -19038,11 +22973,13 @@ class UpdateConfigMapResponse(TeaModel):
 class UpdateGreyTagRouteRequest(TeaModel):
     def __init__(
         self,
+        alb_rules: str = None,
         description: str = None,
         dubbo_rules: str = None,
         grey_tag_route_id: int = None,
         sc_rules: str = None,
     ):
+        self.alb_rules = alb_rules
         self.description = description
         self.dubbo_rules = dubbo_rules
         self.grey_tag_route_id = grey_tag_route_id
@@ -19057,6 +22994,8 @@ class UpdateGreyTagRouteRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.alb_rules is not None:
+            result['AlbRules'] = self.alb_rules
         if self.description is not None:
             result['Description'] = self.description
         if self.dubbo_rules is not None:
@@ -19069,6 +23008,8 @@ class UpdateGreyTagRouteRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AlbRules') is not None:
+            self.alb_rules = m.get('AlbRules')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('DubboRules') is not None:
@@ -19220,6 +23161,7 @@ class UpdateIngressRequest(TeaModel):
     def __init__(
         self,
         cert_id: str = None,
+        cert_ids: str = None,
         default_rule: str = None,
         description: str = None,
         ingress_id: int = None,
@@ -19229,6 +23171,7 @@ class UpdateIngressRequest(TeaModel):
         rules: str = None,
     ):
         self.cert_id = cert_id
+        self.cert_ids = cert_ids
         self.default_rule = default_rule
         self.description = description
         self.ingress_id = ingress_id
@@ -19248,6 +23191,8 @@ class UpdateIngressRequest(TeaModel):
         result = dict()
         if self.cert_id is not None:
             result['CertId'] = self.cert_id
+        if self.cert_ids is not None:
+            result['CertIds'] = self.cert_ids
         if self.default_rule is not None:
             result['DefaultRule'] = self.default_rule
         if self.description is not None:
@@ -19268,6 +23213,8 @@ class UpdateIngressRequest(TeaModel):
         m = m or dict()
         if m.get('CertId') is not None:
             self.cert_id = m.get('CertId')
+        if m.get('CertIds') is not None:
+            self.cert_ids = m.get('CertIds')
         if m.get('DefaultRule') is not None:
             self.default_rule = m.get('DefaultRule')
         if m.get('Description') is not None:
@@ -19417,6 +23364,487 @@ class UpdateIngressResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateIngressResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateJobRequest(TeaModel):
+    def __init__(
+        self,
+        acr_assume_role_arn: str = None,
+        app_id: str = None,
+        associate_eip: bool = None,
+        auto_enable_application_scaling_rule: bool = None,
+        backoff_limit: int = None,
+        batch_wait_time: int = None,
+        change_order_desc: str = None,
+        command: str = None,
+        command_args: str = None,
+        concurrency_policy: str = None,
+        config_map_mount_desc: str = None,
+        custom_host_alias: str = None,
+        edas_container_version: str = None,
+        enable_ahas: str = None,
+        enable_grey_tag_route: bool = None,
+        envs: str = None,
+        image_pull_secrets: str = None,
+        image_url: str = None,
+        jar_start_args: str = None,
+        jar_start_options: str = None,
+        jdk: str = None,
+        liveness: str = None,
+        min_ready_instances: int = None,
+        mount_desc: str = None,
+        mount_host: str = None,
+        nas_id: str = None,
+        oss_ak_id: str = None,
+        oss_ak_secret: str = None,
+        oss_mount_descs: str = None,
+        package_url: str = None,
+        package_version: str = None,
+        php_arms_config_location: str = None,
+        php_config: str = None,
+        php_config_location: str = None,
+        post_start: str = None,
+        pre_stop: str = None,
+        programming_language: str = None,
+        python: str = None,
+        python_modules: str = None,
+        readiness: str = None,
+        ref_app_id: str = None,
+        replicas: str = None,
+        slice: bool = None,
+        slice_envs: str = None,
+        sls_configs: str = None,
+        termination_grace_period_seconds: int = None,
+        timeout: int = None,
+        timezone: str = None,
+        tomcat_config: str = None,
+        trigger_config: str = None,
+        update_strategy: str = None,
+        war_start_options: str = None,
+        web_container: str = None,
+    ):
+        self.acr_assume_role_arn = acr_assume_role_arn
+        self.app_id = app_id
+        self.associate_eip = associate_eip
+        self.auto_enable_application_scaling_rule = auto_enable_application_scaling_rule
+        self.backoff_limit = backoff_limit
+        self.batch_wait_time = batch_wait_time
+        self.change_order_desc = change_order_desc
+        self.command = command
+        self.command_args = command_args
+        self.concurrency_policy = concurrency_policy
+        self.config_map_mount_desc = config_map_mount_desc
+        self.custom_host_alias = custom_host_alias
+        self.edas_container_version = edas_container_version
+        self.enable_ahas = enable_ahas
+        self.enable_grey_tag_route = enable_grey_tag_route
+        self.envs = envs
+        self.image_pull_secrets = image_pull_secrets
+        self.image_url = image_url
+        self.jar_start_args = jar_start_args
+        self.jar_start_options = jar_start_options
+        self.jdk = jdk
+        self.liveness = liveness
+        self.min_ready_instances = min_ready_instances
+        self.mount_desc = mount_desc
+        self.mount_host = mount_host
+        self.nas_id = nas_id
+        self.oss_ak_id = oss_ak_id
+        self.oss_ak_secret = oss_ak_secret
+        self.oss_mount_descs = oss_mount_descs
+        self.package_url = package_url
+        self.package_version = package_version
+        self.php_arms_config_location = php_arms_config_location
+        self.php_config = php_config
+        self.php_config_location = php_config_location
+        self.post_start = post_start
+        self.pre_stop = pre_stop
+        self.programming_language = programming_language
+        self.python = python
+        self.python_modules = python_modules
+        self.readiness = readiness
+        self.ref_app_id = ref_app_id
+        self.replicas = replicas
+        self.slice = slice
+        self.slice_envs = slice_envs
+        self.sls_configs = sls_configs
+        self.termination_grace_period_seconds = termination_grace_period_seconds
+        self.timeout = timeout
+        self.timezone = timezone
+        self.tomcat_config = tomcat_config
+        self.trigger_config = trigger_config
+        self.update_strategy = update_strategy
+        self.war_start_options = war_start_options
+        self.web_container = web_container
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.acr_assume_role_arn is not None:
+            result['AcrAssumeRoleArn'] = self.acr_assume_role_arn
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.associate_eip is not None:
+            result['AssociateEip'] = self.associate_eip
+        if self.auto_enable_application_scaling_rule is not None:
+            result['AutoEnableApplicationScalingRule'] = self.auto_enable_application_scaling_rule
+        if self.backoff_limit is not None:
+            result['BackoffLimit'] = self.backoff_limit
+        if self.batch_wait_time is not None:
+            result['BatchWaitTime'] = self.batch_wait_time
+        if self.change_order_desc is not None:
+            result['ChangeOrderDesc'] = self.change_order_desc
+        if self.command is not None:
+            result['Command'] = self.command
+        if self.command_args is not None:
+            result['CommandArgs'] = self.command_args
+        if self.concurrency_policy is not None:
+            result['ConcurrencyPolicy'] = self.concurrency_policy
+        if self.config_map_mount_desc is not None:
+            result['ConfigMapMountDesc'] = self.config_map_mount_desc
+        if self.custom_host_alias is not None:
+            result['CustomHostAlias'] = self.custom_host_alias
+        if self.edas_container_version is not None:
+            result['EdasContainerVersion'] = self.edas_container_version
+        if self.enable_ahas is not None:
+            result['EnableAhas'] = self.enable_ahas
+        if self.enable_grey_tag_route is not None:
+            result['EnableGreyTagRoute'] = self.enable_grey_tag_route
+        if self.envs is not None:
+            result['Envs'] = self.envs
+        if self.image_pull_secrets is not None:
+            result['ImagePullSecrets'] = self.image_pull_secrets
+        if self.image_url is not None:
+            result['ImageUrl'] = self.image_url
+        if self.jar_start_args is not None:
+            result['JarStartArgs'] = self.jar_start_args
+        if self.jar_start_options is not None:
+            result['JarStartOptions'] = self.jar_start_options
+        if self.jdk is not None:
+            result['Jdk'] = self.jdk
+        if self.liveness is not None:
+            result['Liveness'] = self.liveness
+        if self.min_ready_instances is not None:
+            result['MinReadyInstances'] = self.min_ready_instances
+        if self.mount_desc is not None:
+            result['MountDesc'] = self.mount_desc
+        if self.mount_host is not None:
+            result['MountHost'] = self.mount_host
+        if self.nas_id is not None:
+            result['NasId'] = self.nas_id
+        if self.oss_ak_id is not None:
+            result['OssAkId'] = self.oss_ak_id
+        if self.oss_ak_secret is not None:
+            result['OssAkSecret'] = self.oss_ak_secret
+        if self.oss_mount_descs is not None:
+            result['OssMountDescs'] = self.oss_mount_descs
+        if self.package_url is not None:
+            result['PackageUrl'] = self.package_url
+        if self.package_version is not None:
+            result['PackageVersion'] = self.package_version
+        if self.php_arms_config_location is not None:
+            result['PhpArmsConfigLocation'] = self.php_arms_config_location
+        if self.php_config is not None:
+            result['PhpConfig'] = self.php_config
+        if self.php_config_location is not None:
+            result['PhpConfigLocation'] = self.php_config_location
+        if self.post_start is not None:
+            result['PostStart'] = self.post_start
+        if self.pre_stop is not None:
+            result['PreStop'] = self.pre_stop
+        if self.programming_language is not None:
+            result['ProgrammingLanguage'] = self.programming_language
+        if self.python is not None:
+            result['Python'] = self.python
+        if self.python_modules is not None:
+            result['PythonModules'] = self.python_modules
+        if self.readiness is not None:
+            result['Readiness'] = self.readiness
+        if self.ref_app_id is not None:
+            result['RefAppId'] = self.ref_app_id
+        if self.replicas is not None:
+            result['Replicas'] = self.replicas
+        if self.slice is not None:
+            result['Slice'] = self.slice
+        if self.slice_envs is not None:
+            result['SliceEnvs'] = self.slice_envs
+        if self.sls_configs is not None:
+            result['SlsConfigs'] = self.sls_configs
+        if self.termination_grace_period_seconds is not None:
+            result['TerminationGracePeriodSeconds'] = self.termination_grace_period_seconds
+        if self.timeout is not None:
+            result['Timeout'] = self.timeout
+        if self.timezone is not None:
+            result['Timezone'] = self.timezone
+        if self.tomcat_config is not None:
+            result['TomcatConfig'] = self.tomcat_config
+        if self.trigger_config is not None:
+            result['TriggerConfig'] = self.trigger_config
+        if self.update_strategy is not None:
+            result['UpdateStrategy'] = self.update_strategy
+        if self.war_start_options is not None:
+            result['WarStartOptions'] = self.war_start_options
+        if self.web_container is not None:
+            result['WebContainer'] = self.web_container
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcrAssumeRoleArn') is not None:
+            self.acr_assume_role_arn = m.get('AcrAssumeRoleArn')
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('AssociateEip') is not None:
+            self.associate_eip = m.get('AssociateEip')
+        if m.get('AutoEnableApplicationScalingRule') is not None:
+            self.auto_enable_application_scaling_rule = m.get('AutoEnableApplicationScalingRule')
+        if m.get('BackoffLimit') is not None:
+            self.backoff_limit = m.get('BackoffLimit')
+        if m.get('BatchWaitTime') is not None:
+            self.batch_wait_time = m.get('BatchWaitTime')
+        if m.get('ChangeOrderDesc') is not None:
+            self.change_order_desc = m.get('ChangeOrderDesc')
+        if m.get('Command') is not None:
+            self.command = m.get('Command')
+        if m.get('CommandArgs') is not None:
+            self.command_args = m.get('CommandArgs')
+        if m.get('ConcurrencyPolicy') is not None:
+            self.concurrency_policy = m.get('ConcurrencyPolicy')
+        if m.get('ConfigMapMountDesc') is not None:
+            self.config_map_mount_desc = m.get('ConfigMapMountDesc')
+        if m.get('CustomHostAlias') is not None:
+            self.custom_host_alias = m.get('CustomHostAlias')
+        if m.get('EdasContainerVersion') is not None:
+            self.edas_container_version = m.get('EdasContainerVersion')
+        if m.get('EnableAhas') is not None:
+            self.enable_ahas = m.get('EnableAhas')
+        if m.get('EnableGreyTagRoute') is not None:
+            self.enable_grey_tag_route = m.get('EnableGreyTagRoute')
+        if m.get('Envs') is not None:
+            self.envs = m.get('Envs')
+        if m.get('ImagePullSecrets') is not None:
+            self.image_pull_secrets = m.get('ImagePullSecrets')
+        if m.get('ImageUrl') is not None:
+            self.image_url = m.get('ImageUrl')
+        if m.get('JarStartArgs') is not None:
+            self.jar_start_args = m.get('JarStartArgs')
+        if m.get('JarStartOptions') is not None:
+            self.jar_start_options = m.get('JarStartOptions')
+        if m.get('Jdk') is not None:
+            self.jdk = m.get('Jdk')
+        if m.get('Liveness') is not None:
+            self.liveness = m.get('Liveness')
+        if m.get('MinReadyInstances') is not None:
+            self.min_ready_instances = m.get('MinReadyInstances')
+        if m.get('MountDesc') is not None:
+            self.mount_desc = m.get('MountDesc')
+        if m.get('MountHost') is not None:
+            self.mount_host = m.get('MountHost')
+        if m.get('NasId') is not None:
+            self.nas_id = m.get('NasId')
+        if m.get('OssAkId') is not None:
+            self.oss_ak_id = m.get('OssAkId')
+        if m.get('OssAkSecret') is not None:
+            self.oss_ak_secret = m.get('OssAkSecret')
+        if m.get('OssMountDescs') is not None:
+            self.oss_mount_descs = m.get('OssMountDescs')
+        if m.get('PackageUrl') is not None:
+            self.package_url = m.get('PackageUrl')
+        if m.get('PackageVersion') is not None:
+            self.package_version = m.get('PackageVersion')
+        if m.get('PhpArmsConfigLocation') is not None:
+            self.php_arms_config_location = m.get('PhpArmsConfigLocation')
+        if m.get('PhpConfig') is not None:
+            self.php_config = m.get('PhpConfig')
+        if m.get('PhpConfigLocation') is not None:
+            self.php_config_location = m.get('PhpConfigLocation')
+        if m.get('PostStart') is not None:
+            self.post_start = m.get('PostStart')
+        if m.get('PreStop') is not None:
+            self.pre_stop = m.get('PreStop')
+        if m.get('ProgrammingLanguage') is not None:
+            self.programming_language = m.get('ProgrammingLanguage')
+        if m.get('Python') is not None:
+            self.python = m.get('Python')
+        if m.get('PythonModules') is not None:
+            self.python_modules = m.get('PythonModules')
+        if m.get('Readiness') is not None:
+            self.readiness = m.get('Readiness')
+        if m.get('RefAppId') is not None:
+            self.ref_app_id = m.get('RefAppId')
+        if m.get('Replicas') is not None:
+            self.replicas = m.get('Replicas')
+        if m.get('Slice') is not None:
+            self.slice = m.get('Slice')
+        if m.get('SliceEnvs') is not None:
+            self.slice_envs = m.get('SliceEnvs')
+        if m.get('SlsConfigs') is not None:
+            self.sls_configs = m.get('SlsConfigs')
+        if m.get('TerminationGracePeriodSeconds') is not None:
+            self.termination_grace_period_seconds = m.get('TerminationGracePeriodSeconds')
+        if m.get('Timeout') is not None:
+            self.timeout = m.get('Timeout')
+        if m.get('Timezone') is not None:
+            self.timezone = m.get('Timezone')
+        if m.get('TomcatConfig') is not None:
+            self.tomcat_config = m.get('TomcatConfig')
+        if m.get('TriggerConfig') is not None:
+            self.trigger_config = m.get('TriggerConfig')
+        if m.get('UpdateStrategy') is not None:
+            self.update_strategy = m.get('UpdateStrategy')
+        if m.get('WarStartOptions') is not None:
+            self.war_start_options = m.get('WarStartOptions')
+        if m.get('WebContainer') is not None:
+            self.web_container = m.get('WebContainer')
+        return self
+
+
+class UpdateJobResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        change_order_id: str = None,
+    ):
+        self.app_id = app_id
+        self.change_order_id = change_order_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.change_order_id is not None:
+            result['ChangeOrderId'] = self.change_order_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('ChangeOrderId') is not None:
+            self.change_order_id = m.get('ChangeOrderId')
+        return self
+
+
+class UpdateJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: UpdateJobResponseBodyData = None,
+        error_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        trace_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.error_code = error_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.trace_id = trace_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.trace_id is not None:
+            result['TraceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = UpdateJobResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TraceId') is not None:
+            self.trace_id = m.get('TraceId')
+        return self
+
+
+class UpdateJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateJobResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -19744,6 +24172,181 @@ class UpdateNamespaceVpcResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateNamespaceVpcResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateSecretRequest(TeaModel):
+    def __init__(
+        self,
+        namespace_id: str = None,
+        secret_data: str = None,
+        secret_id: int = None,
+    ):
+        self.namespace_id = namespace_id
+        self.secret_data = secret_data
+        self.secret_id = secret_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.namespace_id is not None:
+            result['NamespaceId'] = self.namespace_id
+        if self.secret_data is not None:
+            result['SecretData'] = self.secret_data
+        if self.secret_id is not None:
+            result['SecretId'] = self.secret_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NamespaceId') is not None:
+            self.namespace_id = m.get('NamespaceId')
+        if m.get('SecretData') is not None:
+            self.secret_data = m.get('SecretData')
+        if m.get('SecretId') is not None:
+            self.secret_id = m.get('SecretId')
+        return self
+
+
+class UpdateSecretResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        secret_id: str = None,
+    ):
+        self.secret_id = secret_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.secret_id is not None:
+            result['SecretId'] = self.secret_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SecretId') is not None:
+            self.secret_id = m.get('SecretId')
+        return self
+
+
+class UpdateSecretResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: UpdateSecretResponseBodyData = None,
+        error_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        trace_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.error_code = error_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.trace_id = trace_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.trace_id is not None:
+            result['TraceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = UpdateSecretResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TraceId') is not None:
+            self.trace_id = m.get('TraceId')
+        return self
+
+
+class UpdateSecretResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateSecretResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateSecretResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
