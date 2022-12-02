@@ -613,6 +613,9 @@ class Client(OpenApiClient):
         request: emr_20210320_models.IncreaseNodesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.IncreaseNodesResponse:
+        """
+        扩容节点。
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.application_configs):
@@ -655,6 +658,9 @@ class Client(OpenApiClient):
         request: emr_20210320_models.IncreaseNodesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.IncreaseNodesResponse:
+        """
+        扩容节点。
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.application_configs):
@@ -711,6 +717,9 @@ class Client(OpenApiClient):
         request: emr_20210320_models.JoinResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.JoinResourceGroupResponse:
+        """
+        加入资源组。
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -745,6 +754,9 @@ class Client(OpenApiClient):
         request: emr_20210320_models.JoinResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.JoinResourceGroupResponse:
+        """
+        加入资源组。
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -787,6 +799,118 @@ class Client(OpenApiClient):
     ) -> emr_20210320_models.JoinResourceGroupResponse:
         runtime = util_models.RuntimeOptions()
         return await self.join_resource_group_with_options_async(request, runtime)
+
+    def list_clusters_with_options(
+        self,
+        request: emr_20210320_models.ListClustersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_20210320_models.ListClustersResponse:
+        """
+        查询集群。
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_ids):
+            query['ClusterIds'] = request.cluster_ids
+        if not UtilClient.is_unset(request.cluster_name):
+            query['ClusterName'] = request.cluster_name
+        if not UtilClient.is_unset(request.cluster_states):
+            query['ClusterStates'] = request.cluster_states
+        if not UtilClient.is_unset(request.cluster_types):
+            query['ClusterTypes'] = request.cluster_types
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.payment_types):
+            query['PaymentTypes'] = request.payment_types
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListClusters',
+            version='2021-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20210320_models.ListClustersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_clusters_with_options_async(
+        self,
+        request: emr_20210320_models.ListClustersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_20210320_models.ListClustersResponse:
+        """
+        查询集群。
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_ids):
+            query['ClusterIds'] = request.cluster_ids
+        if not UtilClient.is_unset(request.cluster_name):
+            query['ClusterName'] = request.cluster_name
+        if not UtilClient.is_unset(request.cluster_states):
+            query['ClusterStates'] = request.cluster_states
+        if not UtilClient.is_unset(request.cluster_types):
+            query['ClusterTypes'] = request.cluster_types
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.payment_types):
+            query['PaymentTypes'] = request.payment_types
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListClusters',
+            version='2021-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20210320_models.ListClustersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_clusters(
+        self,
+        request: emr_20210320_models.ListClustersRequest,
+    ) -> emr_20210320_models.ListClustersResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_clusters_with_options(request, runtime)
+
+    async def list_clusters_async(
+        self,
+        request: emr_20210320_models.ListClustersRequest,
+    ) -> emr_20210320_models.ListClustersResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_clusters_with_options_async(request, runtime)
 
     def list_node_groups_with_options(
         self,
@@ -1007,3 +1131,279 @@ class Client(OpenApiClient):
     ) -> emr_20210320_models.ListNodesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_nodes_with_options_async(request, runtime)
+
+    def list_tag_resources_with_options(
+        self,
+        request: emr_20210320_models.ListTagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_20210320_models.ListTagResourcesResponse:
+        """
+        查询标签资源。
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_ids):
+            query['ResourceIds'] = request.resource_ids
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTagResources',
+            version='2021-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20210320_models.ListTagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_tag_resources_with_options_async(
+        self,
+        request: emr_20210320_models.ListTagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_20210320_models.ListTagResourcesResponse:
+        """
+        查询标签资源。
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_ids):
+            query['ResourceIds'] = request.resource_ids
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTagResources',
+            version='2021-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20210320_models.ListTagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_tag_resources(
+        self,
+        request: emr_20210320_models.ListTagResourcesRequest,
+    ) -> emr_20210320_models.ListTagResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_tag_resources_with_options(request, runtime)
+
+    async def list_tag_resources_async(
+        self,
+        request: emr_20210320_models.ListTagResourcesRequest,
+    ) -> emr_20210320_models.ListTagResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_tag_resources_with_options_async(request, runtime)
+
+    def tag_resources_with_options(
+        self,
+        request: emr_20210320_models.TagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_20210320_models.TagResourcesResponse:
+        """
+        给资源打标签。
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_ids):
+            query['ResourceIds'] = request.resource_ids
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TagResources',
+            version='2021-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20210320_models.TagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def tag_resources_with_options_async(
+        self,
+        request: emr_20210320_models.TagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_20210320_models.TagResourcesResponse:
+        """
+        给资源打标签。
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_ids):
+            query['ResourceIds'] = request.resource_ids
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TagResources',
+            version='2021-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20210320_models.TagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def tag_resources(
+        self,
+        request: emr_20210320_models.TagResourcesRequest,
+    ) -> emr_20210320_models.TagResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.tag_resources_with_options(request, runtime)
+
+    async def tag_resources_async(
+        self,
+        request: emr_20210320_models.TagResourcesRequest,
+    ) -> emr_20210320_models.TagResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.tag_resources_with_options_async(request, runtime)
+
+    def untag_resources_with_options(
+        self,
+        request: emr_20210320_models.UntagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_20210320_models.UntagResourcesResponse:
+        """
+        删除指定资源标签。
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_ids):
+            query['ResourceIds'] = request.resource_ids
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_keys):
+            query['TagKeys'] = request.tag_keys
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UntagResources',
+            version='2021-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20210320_models.UntagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def untag_resources_with_options_async(
+        self,
+        request: emr_20210320_models.UntagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_20210320_models.UntagResourcesResponse:
+        """
+        删除指定资源标签。
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_ids):
+            query['ResourceIds'] = request.resource_ids
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_keys):
+            query['TagKeys'] = request.tag_keys
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UntagResources',
+            version='2021-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20210320_models.UntagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def untag_resources(
+        self,
+        request: emr_20210320_models.UntagResourcesRequest,
+    ) -> emr_20210320_models.UntagResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.untag_resources_with_options(request, runtime)
+
+    async def untag_resources_async(
+        self,
+        request: emr_20210320_models.UntagResourcesRequest,
+    ) -> emr_20210320_models.UntagResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.untag_resources_with_options_async(request, runtime)
