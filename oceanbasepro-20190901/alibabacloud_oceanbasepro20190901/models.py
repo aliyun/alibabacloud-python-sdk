@@ -5789,6 +5789,7 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
         instance_class: str = None,
         instance_id: str = None,
         instance_name: str = None,
+        instance_type: str = None,
         maintain_time: str = None,
         mem: int = None,
         pay_type: str = None,
@@ -5815,6 +5816,7 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
         self.instance_class = instance_class
         self.instance_id = instance_id
         self.instance_name = instance_name
+        self.instance_type = instance_type
         self.maintain_time = maintain_time
         self.mem = mem
         self.pay_type = pay_type
@@ -5865,6 +5867,8 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.instance_name is not None:
             result['InstanceName'] = self.instance_name
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
         if self.maintain_time is not None:
             result['MaintainTime'] = self.maintain_time
         if self.mem is not None:
@@ -5919,6 +5923,8 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('InstanceName') is not None:
             self.instance_name = m.get('InstanceName')
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
         if m.get('MaintainTime') is not None:
             self.maintain_time = m.get('MaintainTime')
         if m.get('Mem') is not None:
@@ -9941,14 +9947,14 @@ class DescribeSlowSQLHistoryListResponseBodySlowSQLHistoryListList(TeaModel):
         execute_time: float = None,
         executions: float = None,
         fail_times: float = None,
-        getplan_time: float = None,
+        get_plan_time: float = None,
         iowait_time: float = None,
         logical_read: float = None,
         max_cpu_time: float = None,
         max_elapsed_time: float = None,
         memstore_read_row_count: float = None,
         miss_plans: float = None,
-        netwait_time: float = None,
+        net_wait_time: float = None,
         node_ip: str = None,
         queue_time: float = None,
         rpccount: float = None,
@@ -9982,14 +9988,14 @@ class DescribeSlowSQLHistoryListResponseBodySlowSQLHistoryListList(TeaModel):
         self.execute_time = execute_time
         self.executions = executions
         self.fail_times = fail_times
-        self.getplan_time = getplan_time
+        self.get_plan_time = get_plan_time
         self.iowait_time = iowait_time
         self.logical_read = logical_read
         self.max_cpu_time = max_cpu_time
         self.max_elapsed_time = max_elapsed_time
         self.memstore_read_row_count = memstore_read_row_count
         self.miss_plans = miss_plans
-        self.netwait_time = netwait_time
+        self.net_wait_time = net_wait_time
         self.node_ip = node_ip
         self.queue_time = queue_time
         self.rpccount = rpccount
@@ -10050,8 +10056,8 @@ class DescribeSlowSQLHistoryListResponseBodySlowSQLHistoryListList(TeaModel):
             result['Executions'] = self.executions
         if self.fail_times is not None:
             result['FailTimes'] = self.fail_times
-        if self.getplan_time is not None:
-            result['GetplanTime'] = self.getplan_time
+        if self.get_plan_time is not None:
+            result['GetPlanTime'] = self.get_plan_time
         if self.iowait_time is not None:
             result['IOWaitTime'] = self.iowait_time
         if self.logical_read is not None:
@@ -10064,8 +10070,8 @@ class DescribeSlowSQLHistoryListResponseBodySlowSQLHistoryListList(TeaModel):
             result['MemstoreReadRowCount'] = self.memstore_read_row_count
         if self.miss_plans is not None:
             result['MissPlans'] = self.miss_plans
-        if self.netwait_time is not None:
-            result['NetwaitTime'] = self.netwait_time
+        if self.net_wait_time is not None:
+            result['NetWaitTime'] = self.net_wait_time
         if self.node_ip is not None:
             result['NodeIp'] = self.node_ip
         if self.queue_time is not None:
@@ -10134,8 +10140,8 @@ class DescribeSlowSQLHistoryListResponseBodySlowSQLHistoryListList(TeaModel):
             self.executions = m.get('Executions')
         if m.get('FailTimes') is not None:
             self.fail_times = m.get('FailTimes')
-        if m.get('GetplanTime') is not None:
-            self.getplan_time = m.get('GetplanTime')
+        if m.get('GetPlanTime') is not None:
+            self.get_plan_time = m.get('GetPlanTime')
         if m.get('IOWaitTime') is not None:
             self.iowait_time = m.get('IOWaitTime')
         if m.get('LogicalRead') is not None:
@@ -10148,8 +10154,8 @@ class DescribeSlowSQLHistoryListResponseBodySlowSQLHistoryListList(TeaModel):
             self.memstore_read_row_count = m.get('MemstoreReadRowCount')
         if m.get('MissPlans') is not None:
             self.miss_plans = m.get('MissPlans')
-        if m.get('NetwaitTime') is not None:
-            self.netwait_time = m.get('NetwaitTime')
+        if m.get('NetWaitTime') is not None:
+            self.net_wait_time = m.get('NetWaitTime')
         if m.get('NodeIp') is not None:
             self.node_ip = m.get('NodeIp')
         if m.get('QueueTime') is not None:
@@ -10911,6 +10917,7 @@ class DescribeTenantRequest(TeaModel):
 class DescribeTenantResponseBodyTenantTenantConnections(TeaModel):
     def __init__(
         self,
+        address_type: str = None,
         connection_role: str = None,
         connection_zones: List[str] = None,
         internet_address: str = None,
@@ -10921,9 +10928,11 @@ class DescribeTenantResponseBodyTenantTenantConnections(TeaModel):
         intranet_address_slave_zone_id: str = None,
         intranet_address_status: str = None,
         intranet_port: int = None,
+        transaction_split: bool = None,
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
+        self.address_type = address_type
         self.connection_role = connection_role
         self.connection_zones = connection_zones
         self.internet_address = internet_address
@@ -10934,6 +10943,7 @@ class DescribeTenantResponseBodyTenantTenantConnections(TeaModel):
         self.intranet_address_slave_zone_id = intranet_address_slave_zone_id
         self.intranet_address_status = intranet_address_status
         self.intranet_port = intranet_port
+        self.transaction_split = transaction_split
         self.v_switch_id = v_switch_id
         self.vpc_id = vpc_id
 
@@ -10946,6 +10956,8 @@ class DescribeTenantResponseBodyTenantTenantConnections(TeaModel):
             return _map
 
         result = dict()
+        if self.address_type is not None:
+            result['AddressType'] = self.address_type
         if self.connection_role is not None:
             result['ConnectionRole'] = self.connection_role
         if self.connection_zones is not None:
@@ -10966,6 +10978,8 @@ class DescribeTenantResponseBodyTenantTenantConnections(TeaModel):
             result['IntranetAddressStatus'] = self.intranet_address_status
         if self.intranet_port is not None:
             result['IntranetPort'] = self.intranet_port
+        if self.transaction_split is not None:
+            result['TransactionSplit'] = self.transaction_split
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
         if self.vpc_id is not None:
@@ -10974,6 +10988,8 @@ class DescribeTenantResponseBodyTenantTenantConnections(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AddressType') is not None:
+            self.address_type = m.get('AddressType')
         if m.get('ConnectionRole') is not None:
             self.connection_role = m.get('ConnectionRole')
         if m.get('ConnectionZones') is not None:
@@ -10994,6 +11010,8 @@ class DescribeTenantResponseBodyTenantTenantConnections(TeaModel):
             self.intranet_address_status = m.get('IntranetAddressStatus')
         if m.get('IntranetPort') is not None:
             self.intranet_port = m.get('IntranetPort')
+        if m.get('TransactionSplit') is not None:
+            self.transaction_split = m.get('TransactionSplit')
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
         if m.get('VpcId') is not None:
@@ -11201,6 +11219,7 @@ class DescribeTenantResponseBodyTenantTenantZones(TeaModel):
 class DescribeTenantResponseBodyTenant(TeaModel):
     def __init__(
         self,
+        available_zones: List[str] = None,
         charset: str = None,
         clog_service_status: str = None,
         collation: str = None,
@@ -11208,11 +11227,16 @@ class DescribeTenantResponseBodyTenant(TeaModel):
         deploy_mode: str = None,
         deploy_type: str = None,
         description: str = None,
+        disk_type: str = None,
         enable_clog_service: bool = None,
         enable_internet_address_service: bool = None,
+        enable_read_write_split: bool = None,
+        instance_type: str = None,
         master_intranet_address_zone: str = None,
+        pay_type: str = None,
         primary_zone: str = None,
         primary_zone_deploy_type: str = None,
+        series: str = None,
         status: str = None,
         tenant_connections: List[DescribeTenantResponseBodyTenantTenantConnections] = None,
         tenant_id: str = None,
@@ -11222,6 +11246,7 @@ class DescribeTenantResponseBodyTenant(TeaModel):
         tenant_zones: List[DescribeTenantResponseBodyTenantTenantZones] = None,
         vpc_id: str = None,
     ):
+        self.available_zones = available_zones
         self.charset = charset
         self.clog_service_status = clog_service_status
         self.collation = collation
@@ -11229,11 +11254,16 @@ class DescribeTenantResponseBodyTenant(TeaModel):
         self.deploy_mode = deploy_mode
         self.deploy_type = deploy_type
         self.description = description
+        self.disk_type = disk_type
         self.enable_clog_service = enable_clog_service
         self.enable_internet_address_service = enable_internet_address_service
+        self.enable_read_write_split = enable_read_write_split
+        self.instance_type = instance_type
         self.master_intranet_address_zone = master_intranet_address_zone
+        self.pay_type = pay_type
         self.primary_zone = primary_zone
         self.primary_zone_deploy_type = primary_zone_deploy_type
+        self.series = series
         self.status = status
         self.tenant_connections = tenant_connections
         self.tenant_id = tenant_id
@@ -11261,6 +11291,8 @@ class DescribeTenantResponseBodyTenant(TeaModel):
             return _map
 
         result = dict()
+        if self.available_zones is not None:
+            result['AvailableZones'] = self.available_zones
         if self.charset is not None:
             result['Charset'] = self.charset
         if self.clog_service_status is not None:
@@ -11275,16 +11307,26 @@ class DescribeTenantResponseBodyTenant(TeaModel):
             result['DeployType'] = self.deploy_type
         if self.description is not None:
             result['Description'] = self.description
+        if self.disk_type is not None:
+            result['DiskType'] = self.disk_type
         if self.enable_clog_service is not None:
             result['EnableClogService'] = self.enable_clog_service
         if self.enable_internet_address_service is not None:
             result['EnableInternetAddressService'] = self.enable_internet_address_service
+        if self.enable_read_write_split is not None:
+            result['EnableReadWriteSplit'] = self.enable_read_write_split
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
         if self.master_intranet_address_zone is not None:
             result['MasterIntranetAddressZone'] = self.master_intranet_address_zone
+        if self.pay_type is not None:
+            result['PayType'] = self.pay_type
         if self.primary_zone is not None:
             result['PrimaryZone'] = self.primary_zone
         if self.primary_zone_deploy_type is not None:
             result['PrimaryZoneDeployType'] = self.primary_zone_deploy_type
+        if self.series is not None:
+            result['Series'] = self.series
         if self.status is not None:
             result['Status'] = self.status
         result['TenantConnections'] = []
@@ -11309,6 +11351,8 @@ class DescribeTenantResponseBodyTenant(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AvailableZones') is not None:
+            self.available_zones = m.get('AvailableZones')
         if m.get('Charset') is not None:
             self.charset = m.get('Charset')
         if m.get('ClogServiceStatus') is not None:
@@ -11323,16 +11367,26 @@ class DescribeTenantResponseBodyTenant(TeaModel):
             self.deploy_type = m.get('DeployType')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('DiskType') is not None:
+            self.disk_type = m.get('DiskType')
         if m.get('EnableClogService') is not None:
             self.enable_clog_service = m.get('EnableClogService')
         if m.get('EnableInternetAddressService') is not None:
             self.enable_internet_address_service = m.get('EnableInternetAddressService')
+        if m.get('EnableReadWriteSplit') is not None:
+            self.enable_read_write_split = m.get('EnableReadWriteSplit')
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
         if m.get('MasterIntranetAddressZone') is not None:
             self.master_intranet_address_zone = m.get('MasterIntranetAddressZone')
+        if m.get('PayType') is not None:
+            self.pay_type = m.get('PayType')
         if m.get('PrimaryZone') is not None:
             self.primary_zone = m.get('PrimaryZone')
         if m.get('PrimaryZoneDeployType') is not None:
             self.primary_zone_deploy_type = m.get('PrimaryZoneDeployType')
+        if m.get('Series') is not None:
+            self.series = m.get('Series')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         self.tenant_connections = []
