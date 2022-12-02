@@ -384,15 +384,19 @@ class Client(OpenApiClient):
             body['BandwidthPackageId'] = request.bandwidth_package_id
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
+        body_flat = {}
+        if not UtilClient.is_unset(request.deletion_protection_config):
+            body_flat['DeletionProtectionConfig'] = request.deletion_protection_config
         if not UtilClient.is_unset(request.dry_run):
             body['DryRun'] = request.dry_run
-        body_flat = {}
         if not UtilClient.is_unset(request.load_balancer_billing_config):
             body_flat['LoadBalancerBillingConfig'] = request.load_balancer_billing_config
         if not UtilClient.is_unset(request.load_balancer_name):
             body['LoadBalancerName'] = request.load_balancer_name
         if not UtilClient.is_unset(request.load_balancer_type):
             body['LoadBalancerType'] = request.load_balancer_type
+        if not UtilClient.is_unset(request.modification_protection_config):
+            body_flat['ModificationProtectionConfig'] = request.modification_protection_config
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
@@ -437,15 +441,19 @@ class Client(OpenApiClient):
             body['BandwidthPackageId'] = request.bandwidth_package_id
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
+        body_flat = {}
+        if not UtilClient.is_unset(request.deletion_protection_config):
+            body_flat['DeletionProtectionConfig'] = request.deletion_protection_config
         if not UtilClient.is_unset(request.dry_run):
             body['DryRun'] = request.dry_run
-        body_flat = {}
         if not UtilClient.is_unset(request.load_balancer_billing_config):
             body_flat['LoadBalancerBillingConfig'] = request.load_balancer_billing_config
         if not UtilClient.is_unset(request.load_balancer_name):
             body['LoadBalancerName'] = request.load_balancer_name
         if not UtilClient.is_unset(request.load_balancer_type):
             body['LoadBalancerType'] = request.load_balancer_type
+        if not UtilClient.is_unset(request.modification_protection_config):
+            body_flat['ModificationProtectionConfig'] = request.modification_protection_config
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
@@ -3342,6 +3350,104 @@ class Client(OpenApiClient):
     ) -> nlb_20220430_models.UpdateLoadBalancerAttributeResponse:
         runtime = util_models.RuntimeOptions()
         return await self.update_load_balancer_attribute_with_options_async(request, runtime)
+
+    def update_load_balancer_protection_with_options(
+        self,
+        request: nlb_20220430_models.UpdateLoadBalancerProtectionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nlb_20220430_models.UpdateLoadBalancerProtectionResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.deletion_protection_enabled):
+            body['DeletionProtectionEnabled'] = request.deletion_protection_enabled
+        if not UtilClient.is_unset(request.deletion_protection_reason):
+            body['DeletionProtectionReason'] = request.deletion_protection_reason
+        if not UtilClient.is_unset(request.dry_run):
+            body['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.load_balancer_id):
+            body['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.modification_protection_reason):
+            body['ModificationProtectionReason'] = request.modification_protection_reason
+        if not UtilClient.is_unset(request.modification_protection_status):
+            body['ModificationProtectionStatus'] = request.modification_protection_status
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateLoadBalancerProtection',
+            version='2022-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nlb_20220430_models.UpdateLoadBalancerProtectionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_load_balancer_protection_with_options_async(
+        self,
+        request: nlb_20220430_models.UpdateLoadBalancerProtectionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nlb_20220430_models.UpdateLoadBalancerProtectionResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.deletion_protection_enabled):
+            body['DeletionProtectionEnabled'] = request.deletion_protection_enabled
+        if not UtilClient.is_unset(request.deletion_protection_reason):
+            body['DeletionProtectionReason'] = request.deletion_protection_reason
+        if not UtilClient.is_unset(request.dry_run):
+            body['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.load_balancer_id):
+            body['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.modification_protection_reason):
+            body['ModificationProtectionReason'] = request.modification_protection_reason
+        if not UtilClient.is_unset(request.modification_protection_status):
+            body['ModificationProtectionStatus'] = request.modification_protection_status
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateLoadBalancerProtection',
+            version='2022-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nlb_20220430_models.UpdateLoadBalancerProtectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_load_balancer_protection(
+        self,
+        request: nlb_20220430_models.UpdateLoadBalancerProtectionRequest,
+    ) -> nlb_20220430_models.UpdateLoadBalancerProtectionResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_load_balancer_protection_with_options(request, runtime)
+
+    async def update_load_balancer_protection_async(
+        self,
+        request: nlb_20220430_models.UpdateLoadBalancerProtectionRequest,
+    ) -> nlb_20220430_models.UpdateLoadBalancerProtectionResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_load_balancer_protection_with_options_async(request, runtime)
 
     def update_load_balancer_zones_with_options(
         self,

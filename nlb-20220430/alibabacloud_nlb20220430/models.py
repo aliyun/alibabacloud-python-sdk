@@ -561,6 +561,39 @@ class CreateListenerResponse(TeaModel):
         return self
 
 
+class CreateLoadBalancerRequestDeletionProtectionConfig(TeaModel):
+    def __init__(
+        self,
+        enabled: bool = None,
+        reason: str = None,
+    ):
+        self.enabled = enabled
+        self.reason = reason
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.reason is not None:
+            result['Reason'] = self.reason
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
+        return self
+
+
 class CreateLoadBalancerRequestLoadBalancerBillingConfig(TeaModel):
     def __init__(
         self,
@@ -585,6 +618,39 @@ class CreateLoadBalancerRequestLoadBalancerBillingConfig(TeaModel):
         m = m or dict()
         if m.get('PayType') is not None:
             self.pay_type = m.get('PayType')
+        return self
+
+
+class CreateLoadBalancerRequestModificationProtectionConfig(TeaModel):
+    def __init__(
+        self,
+        reason: str = None,
+        status: str = None,
+    ):
+        self.reason = reason
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.reason is not None:
+            result['Reason'] = self.reason
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         return self
 
 
@@ -640,10 +706,12 @@ class CreateLoadBalancerRequest(TeaModel):
         address_type: str = None,
         bandwidth_package_id: str = None,
         client_token: str = None,
+        deletion_protection_config: CreateLoadBalancerRequestDeletionProtectionConfig = None,
         dry_run: bool = None,
         load_balancer_billing_config: CreateLoadBalancerRequestLoadBalancerBillingConfig = None,
         load_balancer_name: str = None,
         load_balancer_type: str = None,
+        modification_protection_config: CreateLoadBalancerRequestModificationProtectionConfig = None,
         region_id: str = None,
         resource_group_id: str = None,
         vpc_id: str = None,
@@ -653,18 +721,24 @@ class CreateLoadBalancerRequest(TeaModel):
         self.address_type = address_type
         self.bandwidth_package_id = bandwidth_package_id
         self.client_token = client_token
+        self.deletion_protection_config = deletion_protection_config
         self.dry_run = dry_run
         self.load_balancer_billing_config = load_balancer_billing_config
         self.load_balancer_name = load_balancer_name
         self.load_balancer_type = load_balancer_type
+        self.modification_protection_config = modification_protection_config
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         self.vpc_id = vpc_id
         self.zone_mappings = zone_mappings
 
     def validate(self):
+        if self.deletion_protection_config:
+            self.deletion_protection_config.validate()
         if self.load_balancer_billing_config:
             self.load_balancer_billing_config.validate()
+        if self.modification_protection_config:
+            self.modification_protection_config.validate()
         if self.zone_mappings:
             for k in self.zone_mappings:
                 if k:
@@ -684,6 +758,8 @@ class CreateLoadBalancerRequest(TeaModel):
             result['BandwidthPackageId'] = self.bandwidth_package_id
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+        if self.deletion_protection_config is not None:
+            result['DeletionProtectionConfig'] = self.deletion_protection_config.to_map()
         if self.dry_run is not None:
             result['DryRun'] = self.dry_run
         if self.load_balancer_billing_config is not None:
@@ -692,6 +768,8 @@ class CreateLoadBalancerRequest(TeaModel):
             result['LoadBalancerName'] = self.load_balancer_name
         if self.load_balancer_type is not None:
             result['LoadBalancerType'] = self.load_balancer_type
+        if self.modification_protection_config is not None:
+            result['ModificationProtectionConfig'] = self.modification_protection_config.to_map()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
@@ -714,6 +792,9 @@ class CreateLoadBalancerRequest(TeaModel):
             self.bandwidth_package_id = m.get('BandwidthPackageId')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+        if m.get('DeletionProtectionConfig') is not None:
+            temp_model = CreateLoadBalancerRequestDeletionProtectionConfig()
+            self.deletion_protection_config = temp_model.from_map(m['DeletionProtectionConfig'])
         if m.get('DryRun') is not None:
             self.dry_run = m.get('DryRun')
         if m.get('LoadBalancerBillingConfig') is not None:
@@ -723,6 +804,9 @@ class CreateLoadBalancerRequest(TeaModel):
             self.load_balancer_name = m.get('LoadBalancerName')
         if m.get('LoadBalancerType') is not None:
             self.load_balancer_type = m.get('LoadBalancerType')
+        if m.get('ModificationProtectionConfig') is not None:
+            temp_model = CreateLoadBalancerRequestModificationProtectionConfig()
+            self.modification_protection_config = temp_model.from_map(m['ModificationProtectionConfig'])
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
@@ -3154,6 +3238,45 @@ class GetLoadBalancerAttributeRequest(TeaModel):
         return self
 
 
+class GetLoadBalancerAttributeResponseBodyDeletionProtectionConfig(TeaModel):
+    def __init__(
+        self,
+        enabled: bool = None,
+        enabled_time: str = None,
+        reason: str = None,
+    ):
+        self.enabled = enabled
+        self.enabled_time = enabled_time
+        self.reason = reason
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.enabled_time is not None:
+            result['EnabledTime'] = self.enabled_time
+        if self.reason is not None:
+            result['Reason'] = self.reason
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('EnabledTime') is not None:
+            self.enabled_time = m.get('EnabledTime')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
+        return self
+
+
 class GetLoadBalancerAttributeResponseBodyLoadBalancerBillingConfig(TeaModel):
     def __init__(
         self,
@@ -3178,6 +3301,45 @@ class GetLoadBalancerAttributeResponseBodyLoadBalancerBillingConfig(TeaModel):
         m = m or dict()
         if m.get('PayType') is not None:
             self.pay_type = m.get('PayType')
+        return self
+
+
+class GetLoadBalancerAttributeResponseBodyModificationProtectionConfig(TeaModel):
+    def __init__(
+        self,
+        enabled_time: str = None,
+        reason: str = None,
+        status: str = None,
+    ):
+        self.enabled_time = enabled_time
+        self.reason = reason
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enabled_time is not None:
+            result['EnabledTime'] = self.enabled_time
+        if self.reason is not None:
+            result['Reason'] = self.reason
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnabledTime') is not None:
+            self.enabled_time = m.get('EnabledTime')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         return self
 
 
@@ -3322,6 +3484,7 @@ class GetLoadBalancerAttributeResponseBody(TeaModel):
         create_time: str = None,
         cross_zone_enabled: bool = None,
         dnsname: str = None,
+        deletion_protection_config: GetLoadBalancerAttributeResponseBodyDeletionProtectionConfig = None,
         ipv_6address_type: str = None,
         load_balancer_billing_config: GetLoadBalancerAttributeResponseBodyLoadBalancerBillingConfig = None,
         load_balancer_business_status: str = None,
@@ -3329,6 +3492,7 @@ class GetLoadBalancerAttributeResponseBody(TeaModel):
         load_balancer_name: str = None,
         load_balancer_status: str = None,
         load_balancer_type: str = None,
+        modification_protection_config: GetLoadBalancerAttributeResponseBodyModificationProtectionConfig = None,
         operation_locks: List[GetLoadBalancerAttributeResponseBodyOperationLocks] = None,
         region_id: str = None,
         request_id: str = None,
@@ -3343,6 +3507,7 @@ class GetLoadBalancerAttributeResponseBody(TeaModel):
         self.create_time = create_time
         self.cross_zone_enabled = cross_zone_enabled
         self.dnsname = dnsname
+        self.deletion_protection_config = deletion_protection_config
         self.ipv_6address_type = ipv_6address_type
         self.load_balancer_billing_config = load_balancer_billing_config
         self.load_balancer_business_status = load_balancer_business_status
@@ -3350,6 +3515,7 @@ class GetLoadBalancerAttributeResponseBody(TeaModel):
         self.load_balancer_name = load_balancer_name
         self.load_balancer_status = load_balancer_status
         self.load_balancer_type = load_balancer_type
+        self.modification_protection_config = modification_protection_config
         self.operation_locks = operation_locks
         self.region_id = region_id
         self.request_id = request_id
@@ -3358,8 +3524,12 @@ class GetLoadBalancerAttributeResponseBody(TeaModel):
         self.zone_mappings = zone_mappings
 
     def validate(self):
+        if self.deletion_protection_config:
+            self.deletion_protection_config.validate()
         if self.load_balancer_billing_config:
             self.load_balancer_billing_config.validate()
+        if self.modification_protection_config:
+            self.modification_protection_config.validate()
         if self.operation_locks:
             for k in self.operation_locks:
                 if k:
@@ -3389,6 +3559,8 @@ class GetLoadBalancerAttributeResponseBody(TeaModel):
             result['CrossZoneEnabled'] = self.cross_zone_enabled
         if self.dnsname is not None:
             result['DNSName'] = self.dnsname
+        if self.deletion_protection_config is not None:
+            result['DeletionProtectionConfig'] = self.deletion_protection_config.to_map()
         if self.ipv_6address_type is not None:
             result['Ipv6AddressType'] = self.ipv_6address_type
         if self.load_balancer_billing_config is not None:
@@ -3403,6 +3575,8 @@ class GetLoadBalancerAttributeResponseBody(TeaModel):
             result['LoadBalancerStatus'] = self.load_balancer_status
         if self.load_balancer_type is not None:
             result['LoadBalancerType'] = self.load_balancer_type
+        if self.modification_protection_config is not None:
+            result['ModificationProtectionConfig'] = self.modification_protection_config.to_map()
         result['OperationLocks'] = []
         if self.operation_locks is not None:
             for k in self.operation_locks:
@@ -3437,6 +3611,9 @@ class GetLoadBalancerAttributeResponseBody(TeaModel):
             self.cross_zone_enabled = m.get('CrossZoneEnabled')
         if m.get('DNSName') is not None:
             self.dnsname = m.get('DNSName')
+        if m.get('DeletionProtectionConfig') is not None:
+            temp_model = GetLoadBalancerAttributeResponseBodyDeletionProtectionConfig()
+            self.deletion_protection_config = temp_model.from_map(m['DeletionProtectionConfig'])
         if m.get('Ipv6AddressType') is not None:
             self.ipv_6address_type = m.get('Ipv6AddressType')
         if m.get('LoadBalancerBillingConfig') is not None:
@@ -3452,6 +3629,9 @@ class GetLoadBalancerAttributeResponseBody(TeaModel):
             self.load_balancer_status = m.get('LoadBalancerStatus')
         if m.get('LoadBalancerType') is not None:
             self.load_balancer_type = m.get('LoadBalancerType')
+        if m.get('ModificationProtectionConfig') is not None:
+            temp_model = GetLoadBalancerAttributeResponseBodyModificationProtectionConfig()
+            self.modification_protection_config = temp_model.from_map(m['ModificationProtectionConfig'])
         self.operation_locks = []
         if m.get('OperationLocks') is not None:
             for k in m.get('OperationLocks'):
@@ -4134,6 +4314,45 @@ class ListLoadBalancersRequest(TeaModel):
         return self
 
 
+class ListLoadBalancersResponseBodyLoadBalancersDeletionProtectionConfig(TeaModel):
+    def __init__(
+        self,
+        enabled: bool = None,
+        enabled_time: str = None,
+        reason: str = None,
+    ):
+        self.enabled = enabled
+        self.enabled_time = enabled_time
+        self.reason = reason
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.enabled_time is not None:
+            result['EnabledTime'] = self.enabled_time
+        if self.reason is not None:
+            result['Reason'] = self.reason
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('EnabledTime') is not None:
+            self.enabled_time = m.get('EnabledTime')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
+        return self
+
+
 class ListLoadBalancersResponseBodyLoadBalancersLoadBalancerBillingConfig(TeaModel):
     def __init__(
         self,
@@ -4158,6 +4377,45 @@ class ListLoadBalancersResponseBodyLoadBalancersLoadBalancerBillingConfig(TeaMod
         m = m or dict()
         if m.get('PayType') is not None:
             self.pay_type = m.get('PayType')
+        return self
+
+
+class ListLoadBalancersResponseBodyLoadBalancersModificationProtectionConfig(TeaModel):
+    def __init__(
+        self,
+        enabled_time: str = None,
+        reason: str = None,
+        status: str = None,
+    ):
+        self.enabled_time = enabled_time
+        self.reason = reason
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enabled_time is not None:
+            result['EnabledTime'] = self.enabled_time
+        if self.reason is not None:
+            result['Reason'] = self.reason
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnabledTime') is not None:
+            self.enabled_time = m.get('EnabledTime')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         return self
 
 
@@ -4334,6 +4592,7 @@ class ListLoadBalancersResponseBodyLoadBalancers(TeaModel):
         create_time: str = None,
         cross_zone_enabled: bool = None,
         dnsname: str = None,
+        deletion_protection_config: ListLoadBalancersResponseBodyLoadBalancersDeletionProtectionConfig = None,
         ipv_6address_type: str = None,
         load_balancer_billing_config: ListLoadBalancersResponseBodyLoadBalancersLoadBalancerBillingConfig = None,
         load_balancer_business_status: str = None,
@@ -4341,6 +4600,7 @@ class ListLoadBalancersResponseBodyLoadBalancers(TeaModel):
         load_balancer_name: str = None,
         load_balancer_status: str = None,
         load_balancer_type: str = None,
+        modification_protection_config: ListLoadBalancersResponseBodyLoadBalancersModificationProtectionConfig = None,
         operation_locks: List[ListLoadBalancersResponseBodyLoadBalancersOperationLocks] = None,
         region_id: str = None,
         resource_group_id: str = None,
@@ -4355,6 +4615,7 @@ class ListLoadBalancersResponseBodyLoadBalancers(TeaModel):
         self.create_time = create_time
         self.cross_zone_enabled = cross_zone_enabled
         self.dnsname = dnsname
+        self.deletion_protection_config = deletion_protection_config
         self.ipv_6address_type = ipv_6address_type
         self.load_balancer_billing_config = load_balancer_billing_config
         self.load_balancer_business_status = load_balancer_business_status
@@ -4362,6 +4623,7 @@ class ListLoadBalancersResponseBodyLoadBalancers(TeaModel):
         self.load_balancer_name = load_balancer_name
         self.load_balancer_status = load_balancer_status
         self.load_balancer_type = load_balancer_type
+        self.modification_protection_config = modification_protection_config
         self.operation_locks = operation_locks
         self.region_id = region_id
         self.resource_group_id = resource_group_id
@@ -4371,8 +4633,12 @@ class ListLoadBalancersResponseBodyLoadBalancers(TeaModel):
         self.zone_mappings = zone_mappings
 
     def validate(self):
+        if self.deletion_protection_config:
+            self.deletion_protection_config.validate()
         if self.load_balancer_billing_config:
             self.load_balancer_billing_config.validate()
+        if self.modification_protection_config:
+            self.modification_protection_config.validate()
         if self.operation_locks:
             for k in self.operation_locks:
                 if k:
@@ -4404,6 +4670,8 @@ class ListLoadBalancersResponseBodyLoadBalancers(TeaModel):
             result['CrossZoneEnabled'] = self.cross_zone_enabled
         if self.dnsname is not None:
             result['DNSName'] = self.dnsname
+        if self.deletion_protection_config is not None:
+            result['DeletionProtectionConfig'] = self.deletion_protection_config.to_map()
         if self.ipv_6address_type is not None:
             result['Ipv6AddressType'] = self.ipv_6address_type
         if self.load_balancer_billing_config is not None:
@@ -4418,6 +4686,8 @@ class ListLoadBalancersResponseBodyLoadBalancers(TeaModel):
             result['LoadBalancerStatus'] = self.load_balancer_status
         if self.load_balancer_type is not None:
             result['LoadBalancerType'] = self.load_balancer_type
+        if self.modification_protection_config is not None:
+            result['ModificationProtectionConfig'] = self.modification_protection_config.to_map()
         result['OperationLocks'] = []
         if self.operation_locks is not None:
             for k in self.operation_locks:
@@ -4454,6 +4724,9 @@ class ListLoadBalancersResponseBodyLoadBalancers(TeaModel):
             self.cross_zone_enabled = m.get('CrossZoneEnabled')
         if m.get('DNSName') is not None:
             self.dnsname = m.get('DNSName')
+        if m.get('DeletionProtectionConfig') is not None:
+            temp_model = ListLoadBalancersResponseBodyLoadBalancersDeletionProtectionConfig()
+            self.deletion_protection_config = temp_model.from_map(m['DeletionProtectionConfig'])
         if m.get('Ipv6AddressType') is not None:
             self.ipv_6address_type = m.get('Ipv6AddressType')
         if m.get('LoadBalancerBillingConfig') is not None:
@@ -4469,6 +4742,9 @@ class ListLoadBalancersResponseBodyLoadBalancers(TeaModel):
             self.load_balancer_status = m.get('LoadBalancerStatus')
         if m.get('LoadBalancerType') is not None:
             self.load_balancer_type = m.get('LoadBalancerType')
+        if m.get('ModificationProtectionConfig') is not None:
+            temp_model = ListLoadBalancersResponseBodyLoadBalancersModificationProtectionConfig()
+            self.modification_protection_config = temp_model.from_map(m['ModificationProtectionConfig'])
         self.operation_locks = []
         if m.get('OperationLocks') is not None:
             for k in m.get('OperationLocks'):
@@ -7505,6 +7781,146 @@ class UpdateLoadBalancerAttributeResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateLoadBalancerAttributeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateLoadBalancerProtectionRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        deletion_protection_enabled: bool = None,
+        deletion_protection_reason: str = None,
+        dry_run: bool = None,
+        load_balancer_id: str = None,
+        modification_protection_reason: str = None,
+        modification_protection_status: str = None,
+        region_id: str = None,
+    ):
+        self.client_token = client_token
+        self.deletion_protection_enabled = deletion_protection_enabled
+        self.deletion_protection_reason = deletion_protection_reason
+        self.dry_run = dry_run
+        self.load_balancer_id = load_balancer_id
+        self.modification_protection_reason = modification_protection_reason
+        self.modification_protection_status = modification_protection_status
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.deletion_protection_enabled is not None:
+            result['DeletionProtectionEnabled'] = self.deletion_protection_enabled
+        if self.deletion_protection_reason is not None:
+            result['DeletionProtectionReason'] = self.deletion_protection_reason
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+        if self.load_balancer_id is not None:
+            result['LoadBalancerId'] = self.load_balancer_id
+        if self.modification_protection_reason is not None:
+            result['ModificationProtectionReason'] = self.modification_protection_reason
+        if self.modification_protection_status is not None:
+            result['ModificationProtectionStatus'] = self.modification_protection_status
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DeletionProtectionEnabled') is not None:
+            self.deletion_protection_enabled = m.get('DeletionProtectionEnabled')
+        if m.get('DeletionProtectionReason') is not None:
+            self.deletion_protection_reason = m.get('DeletionProtectionReason')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+        if m.get('LoadBalancerId') is not None:
+            self.load_balancer_id = m.get('LoadBalancerId')
+        if m.get('ModificationProtectionReason') is not None:
+            self.modification_protection_reason = m.get('ModificationProtectionReason')
+        if m.get('ModificationProtectionStatus') is not None:
+            self.modification_protection_status = m.get('ModificationProtectionStatus')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class UpdateLoadBalancerProtectionResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateLoadBalancerProtectionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateLoadBalancerProtectionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateLoadBalancerProtectionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

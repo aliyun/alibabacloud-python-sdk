@@ -1,3 +1,6 @@
+2022-12-02 Version: 1.0.8
+- Nlb bugfix.
+
 2022-09-26 Version: 1.0.7
 - Nlb bugfix.
 
