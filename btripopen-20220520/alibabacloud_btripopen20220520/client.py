@@ -5097,6 +5097,140 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
+    def sync_single_user(
+        self,
+        request: btrip_open_20220520_models.SyncSingleUserRequest,
+    ) -> btrip_open_20220520_models.SyncSingleUserResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.SyncSingleUserHeaders()
+        return self.sync_single_user_with_options(request, headers, runtime)
+
+    async def sync_single_user_async(
+        self,
+        request: btrip_open_20220520_models.SyncSingleUserRequest,
+    ) -> btrip_open_20220520_models.SyncSingleUserResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.SyncSingleUserHeaders()
+        return await self.sync_single_user_with_options_async(request, headers, runtime)
+
+    def sync_single_user_with_options(
+        self,
+        tmp_req: btrip_open_20220520_models.SyncSingleUserRequest,
+        headers: btrip_open_20220520_models.SyncSingleUserHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.SyncSingleUserResponse:
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.SyncSingleUserShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.third_depart_id_list):
+            request.third_depart_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.third_depart_id_list, 'third_depart_id_list', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.email):
+            body['email'] = request.email
+        if not UtilClient.is_unset(request.job_no):
+            body['job_no'] = request.job_no
+        if not UtilClient.is_unset(request.leave_status):
+            body['leave_status'] = request.leave_status
+        if not UtilClient.is_unset(request.manager_user_id):
+            body['manager_user_id'] = request.manager_user_id
+        if not UtilClient.is_unset(request.phone):
+            body['phone'] = request.phone
+        if not UtilClient.is_unset(request.position):
+            body['position'] = request.position
+        if not UtilClient.is_unset(request.position_level):
+            body['position_level'] = request.position_level
+        if not UtilClient.is_unset(request.real_name_en):
+            body['real_name_en'] = request.real_name_en
+        if not UtilClient.is_unset(request.third_depart_id_list_shrink):
+            body['third_depart_id_list'] = request.third_depart_id_list_shrink
+        if not UtilClient.is_unset(request.user_id):
+            body['user_id'] = request.user_id
+        if not UtilClient.is_unset(request.user_name):
+            body['user_name'] = request.user_name
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_so_corp_token):
+            real_headers['x-acs-btrip-so-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_so_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SyncSingleUser',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/user/v1/single-user/action/sync',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.SyncSingleUserResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def sync_single_user_with_options_async(
+        self,
+        tmp_req: btrip_open_20220520_models.SyncSingleUserRequest,
+        headers: btrip_open_20220520_models.SyncSingleUserHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.SyncSingleUserResponse:
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.SyncSingleUserShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.third_depart_id_list):
+            request.third_depart_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.third_depart_id_list, 'third_depart_id_list', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.email):
+            body['email'] = request.email
+        if not UtilClient.is_unset(request.job_no):
+            body['job_no'] = request.job_no
+        if not UtilClient.is_unset(request.leave_status):
+            body['leave_status'] = request.leave_status
+        if not UtilClient.is_unset(request.manager_user_id):
+            body['manager_user_id'] = request.manager_user_id
+        if not UtilClient.is_unset(request.phone):
+            body['phone'] = request.phone
+        if not UtilClient.is_unset(request.position):
+            body['position'] = request.position
+        if not UtilClient.is_unset(request.position_level):
+            body['position_level'] = request.position_level
+        if not UtilClient.is_unset(request.real_name_en):
+            body['real_name_en'] = request.real_name_en
+        if not UtilClient.is_unset(request.third_depart_id_list_shrink):
+            body['third_depart_id_list'] = request.third_depart_id_list_shrink
+        if not UtilClient.is_unset(request.user_id):
+            body['user_id'] = request.user_id
+        if not UtilClient.is_unset(request.user_name):
+            body['user_name'] = request.user_name
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_so_corp_token):
+            real_headers['x-acs-btrip-so-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_so_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SyncSingleUser',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/user/v1/single-user/action/sync',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.SyncSingleUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
     def train_bill_settlement_query(
         self,
         request: btrip_open_20220520_models.TrainBillSettlementQueryRequest,

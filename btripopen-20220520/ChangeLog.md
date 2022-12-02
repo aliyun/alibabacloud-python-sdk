@@ -1,3 +1,6 @@
+2022-12-02 Version: 1.0.31
+- TrainOrderQuery Add Field.
+
 2022-11-30 Version: 1.0.30
 - City info.
 
