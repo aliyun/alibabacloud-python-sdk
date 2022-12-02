@@ -1,3 +1,6 @@
+2022-12-02 Version: 1.0.12
+- Add Resource Api.
+
 2022-04-27 Version: 1.0.11
 - Add Resource Api.
 

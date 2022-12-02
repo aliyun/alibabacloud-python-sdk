@@ -543,8 +543,20 @@ class Client(OpenApiClient):
             body['DeviceId'] = request.device_id
         if not UtilClient.is_unset(request.device_port):
             body['DevicePort'] = request.device_port
+        if not UtilClient.is_unset(request.expiration_date):
+            body['ExpirationDate'] = request.expiration_date
+        if not UtilClient.is_unset(request.ext_attributes):
+            body['ExtAttributes'] = request.ext_attributes
         if not UtilClient.is_unset(request.isp):
             body['Isp'] = request.isp
+        if not UtilClient.is_unset(request.isp_form_id):
+            body['IspFormId'] = request.isp_form_id
+        if not UtilClient.is_unset(request.isp_id):
+            body['IspId'] = request.isp_id
+        if not UtilClient.is_unset(request.keyword):
+            body['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.online_date):
+            body['OnlineDate'] = request.online_date
         if not UtilClient.is_unset(request.phone):
             body['Phone'] = request.phone
         if not UtilClient.is_unset(request.physical_space_id):
@@ -597,8 +609,20 @@ class Client(OpenApiClient):
             body['DeviceId'] = request.device_id
         if not UtilClient.is_unset(request.device_port):
             body['DevicePort'] = request.device_port
+        if not UtilClient.is_unset(request.expiration_date):
+            body['ExpirationDate'] = request.expiration_date
+        if not UtilClient.is_unset(request.ext_attributes):
+            body['ExtAttributes'] = request.ext_attributes
         if not UtilClient.is_unset(request.isp):
             body['Isp'] = request.isp
+        if not UtilClient.is_unset(request.isp_form_id):
+            body['IspFormId'] = request.isp_form_id
+        if not UtilClient.is_unset(request.isp_id):
+            body['IspId'] = request.isp_id
+        if not UtilClient.is_unset(request.keyword):
+            body['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.online_date):
+            body['OnlineDate'] = request.online_date
         if not UtilClient.is_unset(request.phone):
             body['Phone'] = request.phone
         if not UtilClient.is_unset(request.physical_space_id):
@@ -1527,10 +1551,14 @@ class Client(OpenApiClient):
 
     def create_physical_space_with_options(
         self,
-        request: cmn_20200825_models.CreatePhysicalSpaceRequest,
+        tmp_req: cmn_20200825_models.CreatePhysicalSpaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cmn_20200825_models.CreatePhysicalSpaceResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = cmn_20200825_models.CreatePhysicalSpaceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.security_domain_list):
+            request.security_domain_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.security_domain_list, 'SecurityDomainList', 'json')
         query = {}
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
@@ -1553,6 +1581,8 @@ class Client(OpenApiClient):
             body['Province'] = request.province
         if not UtilClient.is_unset(request.remark):
             body['Remark'] = request.remark
+        if not UtilClient.is_unset(request.security_domain_list_shrink):
+            body['SecurityDomainList'] = request.security_domain_list_shrink
         if not UtilClient.is_unset(request.space_abbreviation):
             body['SpaceAbbreviation'] = request.space_abbreviation
         if not UtilClient.is_unset(request.space_type):
@@ -1579,10 +1609,14 @@ class Client(OpenApiClient):
 
     async def create_physical_space_with_options_async(
         self,
-        request: cmn_20200825_models.CreatePhysicalSpaceRequest,
+        tmp_req: cmn_20200825_models.CreatePhysicalSpaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cmn_20200825_models.CreatePhysicalSpaceResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = cmn_20200825_models.CreatePhysicalSpaceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.security_domain_list):
+            request.security_domain_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.security_domain_list, 'SecurityDomainList', 'json')
         query = {}
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
@@ -1605,6 +1639,8 @@ class Client(OpenApiClient):
             body['Province'] = request.province
         if not UtilClient.is_unset(request.remark):
             body['Remark'] = request.remark
+        if not UtilClient.is_unset(request.security_domain_list_shrink):
+            body['SecurityDomainList'] = request.security_domain_list_shrink
         if not UtilClient.is_unset(request.space_abbreviation):
             body['SpaceAbbreviation'] = request.space_abbreviation
         if not UtilClient.is_unset(request.space_type):
@@ -1655,8 +1691,12 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         body = {}
+        if not UtilClient.is_unset(request.check_duplicate_policy):
+            body['CheckDuplicatePolicy'] = request.check_duplicate_policy
         if not UtilClient.is_unset(request.device_id):
             body['DeviceId'] = request.device_id
+        if not UtilClient.is_unset(request.item_name):
+            body['ItemName'] = request.item_name
         if not UtilClient.is_unset(request.script):
             body['Script'] = request.script
         req = open_api_models.OpenApiRequest(
@@ -1691,8 +1731,12 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         body = {}
+        if not UtilClient.is_unset(request.check_duplicate_policy):
+            body['CheckDuplicatePolicy'] = request.check_duplicate_policy
         if not UtilClient.is_unset(request.device_id):
             body['DeviceId'] = request.device_id
+        if not UtilClient.is_unset(request.item_name):
+            body['ItemName'] = request.item_name
         if not UtilClient.is_unset(request.script):
             body['Script'] = request.script
         req = open_api_models.OpenApiRequest(
@@ -6700,6 +6744,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.vendor):
             request.vendor_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.vendor, 'Vendor', 'json')
         query = {}
+        if not UtilClient.is_unset(request.calculate_amount):
+            query['CalculateAmount'] = request.calculate_amount
         if not UtilClient.is_unset(request.device_form_id):
             query['DeviceFormId'] = request.device_form_id
         if not UtilClient.is_unset(request.device_form_name):
@@ -6784,6 +6830,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.vendor):
             request.vendor_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.vendor, 'Vendor', 'json')
         query = {}
+        if not UtilClient.is_unset(request.calculate_amount):
+            query['CalculateAmount'] = request.calculate_amount
         if not UtilClient.is_unset(request.device_form_id):
             query['DeviceFormId'] = request.device_form_id
         if not UtilClient.is_unset(request.device_form_name):
@@ -7251,10 +7299,14 @@ class Client(OpenApiClient):
 
     def list_ip_blocks_with_options(
         self,
-        request: cmn_20200825_models.ListIpBlocksRequest,
+        tmp_req: cmn_20200825_models.ListIpBlocksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cmn_20200825_models.ListIpBlocksResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = cmn_20200825_models.ListIpBlocksShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ip_list):
+            request.ip_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ip_list, 'IpList', 'json')
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
@@ -7277,10 +7329,14 @@ class Client(OpenApiClient):
 
     async def list_ip_blocks_with_options_async(
         self,
-        request: cmn_20200825_models.ListIpBlocksRequest,
+        tmp_req: cmn_20200825_models.ListIpBlocksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cmn_20200825_models.ListIpBlocksResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = cmn_20200825_models.ListIpBlocksShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ip_list):
+            request.ip_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ip_list, 'IpList', 'json')
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
@@ -8877,10 +8933,22 @@ class Client(OpenApiClient):
             body['DeviceId'] = request.device_id
         if not UtilClient.is_unset(request.device_port):
             body['DevicePort'] = request.device_port
+        if not UtilClient.is_unset(request.expiration_date):
+            body['ExpirationDate'] = request.expiration_date
+        if not UtilClient.is_unset(request.ext_attributes):
+            body['ExtAttributes'] = request.ext_attributes
         if not UtilClient.is_unset(request.isp):
             body['Isp'] = request.isp
+        if not UtilClient.is_unset(request.isp_id):
+            body['IspId'] = request.isp_id
+        if not UtilClient.is_unset(request.keyword):
+            body['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.online_date):
+            body['OnlineDate'] = request.online_date
         if not UtilClient.is_unset(request.phone):
             body['Phone'] = request.phone
+        if not UtilClient.is_unset(request.physical_space_id):
+            body['PhysicalSpaceId'] = request.physical_space_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
@@ -8929,10 +8997,22 @@ class Client(OpenApiClient):
             body['DeviceId'] = request.device_id
         if not UtilClient.is_unset(request.device_port):
             body['DevicePort'] = request.device_port
+        if not UtilClient.is_unset(request.expiration_date):
+            body['ExpirationDate'] = request.expiration_date
+        if not UtilClient.is_unset(request.ext_attributes):
+            body['ExtAttributes'] = request.ext_attributes
         if not UtilClient.is_unset(request.isp):
             body['Isp'] = request.isp
+        if not UtilClient.is_unset(request.isp_id):
+            body['IspId'] = request.isp_id
+        if not UtilClient.is_unset(request.keyword):
+            body['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.online_date):
+            body['OnlineDate'] = request.online_date
         if not UtilClient.is_unset(request.phone):
             body['Phone'] = request.phone
+        if not UtilClient.is_unset(request.physical_space_id):
+            body['PhysicalSpaceId'] = request.physical_space_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
@@ -9457,6 +9537,8 @@ class Client(OpenApiClient):
             body['DeviceIds'] = request.device_ids_shrink
         if not UtilClient.is_unset(request.enable_password):
             body['EnablePassword'] = request.enable_password
+        if not UtilClient.is_unset(request.ext_attributes):
+            body['ExtAttributes'] = request.ext_attributes
         if not UtilClient.is_unset(request.login_password):
             body['LoginPassword'] = request.login_password
         if not UtilClient.is_unset(request.login_type):
@@ -9469,6 +9551,8 @@ class Client(OpenApiClient):
             body['PhysicalSpaceId'] = request.physical_space_id
         if not UtilClient.is_unset(request.physical_space_name):
             body['PhysicalSpaceName'] = request.physical_space_name
+        if not UtilClient.is_unset(request.security_domain):
+            body['SecurityDomain'] = request.security_domain
         if not UtilClient.is_unset(request.service_status):
             body['ServiceStatus'] = request.service_status
         if not UtilClient.is_unset(request.snmp_account_type):
@@ -9529,6 +9613,8 @@ class Client(OpenApiClient):
             body['DeviceIds'] = request.device_ids_shrink
         if not UtilClient.is_unset(request.enable_password):
             body['EnablePassword'] = request.enable_password
+        if not UtilClient.is_unset(request.ext_attributes):
+            body['ExtAttributes'] = request.ext_attributes
         if not UtilClient.is_unset(request.login_password):
             body['LoginPassword'] = request.login_password
         if not UtilClient.is_unset(request.login_type):
@@ -9541,6 +9627,8 @@ class Client(OpenApiClient):
             body['PhysicalSpaceId'] = request.physical_space_id
         if not UtilClient.is_unset(request.physical_space_name):
             body['PhysicalSpaceName'] = request.physical_space_name
+        if not UtilClient.is_unset(request.security_domain):
+            body['SecurityDomain'] = request.security_domain
         if not UtilClient.is_unset(request.service_status):
             body['ServiceStatus'] = request.service_status
         if not UtilClient.is_unset(request.snmp_account_type):
@@ -9947,10 +10035,14 @@ class Client(OpenApiClient):
 
     def update_physical_space_with_options(
         self,
-        request: cmn_20200825_models.UpdatePhysicalSpaceRequest,
+        tmp_req: cmn_20200825_models.UpdatePhysicalSpaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cmn_20200825_models.UpdatePhysicalSpaceResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = cmn_20200825_models.UpdatePhysicalSpaceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.security_domain_list):
+            request.security_domain_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.security_domain_list, 'SecurityDomainList', 'json')
         query = {}
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
@@ -9961,6 +10053,8 @@ class Client(OpenApiClient):
             body['City'] = request.city
         if not UtilClient.is_unset(request.country):
             body['Country'] = request.country
+        if not UtilClient.is_unset(request.move_action):
+            body['MoveAction'] = request.move_action
         if not UtilClient.is_unset(request.owner):
             body['Owner'] = request.owner
         if not UtilClient.is_unset(request.parent_uid):
@@ -9973,10 +10067,14 @@ class Client(OpenApiClient):
             body['Province'] = request.province
         if not UtilClient.is_unset(request.remark):
             body['Remark'] = request.remark
+        if not UtilClient.is_unset(request.security_domain_list_shrink):
+            body['SecurityDomainList'] = request.security_domain_list_shrink
         if not UtilClient.is_unset(request.space_abbreviation):
             body['SpaceAbbreviation'] = request.space_abbreviation
         if not UtilClient.is_unset(request.space_type):
             body['SpaceType'] = request.space_type
+        if not UtilClient.is_unset(request.target_uid):
+            body['TargetUid'] = request.target_uid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
@@ -9999,10 +10097,14 @@ class Client(OpenApiClient):
 
     async def update_physical_space_with_options_async(
         self,
-        request: cmn_20200825_models.UpdatePhysicalSpaceRequest,
+        tmp_req: cmn_20200825_models.UpdatePhysicalSpaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cmn_20200825_models.UpdatePhysicalSpaceResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = cmn_20200825_models.UpdatePhysicalSpaceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.security_domain_list):
+            request.security_domain_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.security_domain_list, 'SecurityDomainList', 'json')
         query = {}
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
@@ -10013,6 +10115,8 @@ class Client(OpenApiClient):
             body['City'] = request.city
         if not UtilClient.is_unset(request.country):
             body['Country'] = request.country
+        if not UtilClient.is_unset(request.move_action):
+            body['MoveAction'] = request.move_action
         if not UtilClient.is_unset(request.owner):
             body['Owner'] = request.owner
         if not UtilClient.is_unset(request.parent_uid):
@@ -10025,10 +10129,14 @@ class Client(OpenApiClient):
             body['Province'] = request.province
         if not UtilClient.is_unset(request.remark):
             body['Remark'] = request.remark
+        if not UtilClient.is_unset(request.security_domain_list_shrink):
+            body['SecurityDomainList'] = request.security_domain_list_shrink
         if not UtilClient.is_unset(request.space_abbreviation):
             body['SpaceAbbreviation'] = request.space_abbreviation
         if not UtilClient.is_unset(request.space_type):
             body['SpaceType'] = request.space_type
+        if not UtilClient.is_unset(request.target_uid):
+            body['TargetUid'] = request.target_uid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
