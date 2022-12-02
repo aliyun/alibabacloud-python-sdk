@@ -106,6 +106,7 @@ class DatasetItemVO(TeaModel):
         async_task_list: List[AsyncTaskVO] = None,
         dataset_status: int = None,
         dataset_type: int = None,
+        digest: str = None,
         file_system: str = None,
         id: str = None,
         key_name: str = None,
@@ -121,6 +122,7 @@ class DatasetItemVO(TeaModel):
         self.async_task_list = async_task_list
         self.dataset_status = dataset_status
         self.dataset_type = dataset_type
+        self.digest = digest
         self.file_system = file_system
         self.id = id
         self.key_name = key_name
@@ -157,6 +159,8 @@ class DatasetItemVO(TeaModel):
             result['DatasetStatus'] = self.dataset_status
         if self.dataset_type is not None:
             result['DatasetType'] = self.dataset_type
+        if self.digest is not None:
+            result['Digest'] = self.digest
         if self.file_system is not None:
             result['FileSystem'] = self.file_system
         if self.id is not None:
@@ -194,6 +198,8 @@ class DatasetItemVO(TeaModel):
             self.dataset_status = m.get('DatasetStatus')
         if m.get('DatasetType') is not None:
             self.dataset_type = m.get('DatasetType')
+        if m.get('Digest') is not None:
+            self.digest = m.get('Digest')
         if m.get('FileSystem') is not None:
             self.file_system = m.get('FileSystem')
         if m.get('Id') is not None:
@@ -12704,6 +12710,33 @@ class GetLogicDatabaseRequest(TeaModel):
         return self
 
 
+class GetLogicDatabaseResponseBodyLogicDatabaseDatabaseIds(TeaModel):
+    def __init__(
+        self,
+        database_ids: List[int] = None,
+    ):
+        self.database_ids = database_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.database_ids is not None:
+            result['DatabaseIds'] = self.database_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DatabaseIds') is not None:
+            self.database_ids = m.get('DatabaseIds')
+        return self
+
+
 class GetLogicDatabaseResponseBodyLogicDatabaseOwnerIdList(TeaModel):
     def __init__(
         self,
@@ -12763,6 +12796,7 @@ class GetLogicDatabaseResponseBodyLogicDatabase(TeaModel):
         self,
         alias: str = None,
         database_id: str = None,
+        database_ids: GetLogicDatabaseResponseBodyLogicDatabaseDatabaseIds = None,
         db_type: str = None,
         env_type: str = None,
         logic: bool = None,
@@ -12773,6 +12807,7 @@ class GetLogicDatabaseResponseBodyLogicDatabase(TeaModel):
     ):
         self.alias = alias
         self.database_id = database_id
+        self.database_ids = database_ids
         self.db_type = db_type
         self.env_type = env_type
         self.logic = logic
@@ -12782,6 +12817,8 @@ class GetLogicDatabaseResponseBodyLogicDatabase(TeaModel):
         self.search_name = search_name
 
     def validate(self):
+        if self.database_ids:
+            self.database_ids.validate()
         if self.owner_id_list:
             self.owner_id_list.validate()
         if self.owner_name_list:
@@ -12797,6 +12834,8 @@ class GetLogicDatabaseResponseBodyLogicDatabase(TeaModel):
             result['Alias'] = self.alias
         if self.database_id is not None:
             result['DatabaseId'] = self.database_id
+        if self.database_ids is not None:
+            result['DatabaseIds'] = self.database_ids.to_map()
         if self.db_type is not None:
             result['DbType'] = self.db_type
         if self.env_type is not None:
@@ -12819,6 +12858,9 @@ class GetLogicDatabaseResponseBodyLogicDatabase(TeaModel):
             self.alias = m.get('Alias')
         if m.get('DatabaseId') is not None:
             self.database_id = m.get('DatabaseId')
+        if m.get('DatabaseIds') is not None:
+            temp_model = GetLogicDatabaseResponseBodyLogicDatabaseDatabaseIds()
+            self.database_ids = temp_model.from_map(m['DatabaseIds'])
         if m.get('DbType') is not None:
             self.db_type = m.get('DbType')
         if m.get('EnvType') is not None:
@@ -13472,6 +13514,235 @@ class GetMetaTableDetailInfoResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetMetaTableDetailInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetOnlineDDLProgressRequest(TeaModel):
+    def __init__(
+        self,
+        job_detail_id: int = None,
+        tid: int = None,
+    ):
+        self.job_detail_id = job_detail_id
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.job_detail_id is not None:
+            result['JobDetailId'] = self.job_detail_id
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JobDetailId') is not None:
+            self.job_detail_id = m.get('JobDetailId')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class GetOnlineDDLProgressResponseBodyOnlineDDLTaskDetail(TeaModel):
+    def __init__(
+        self,
+        clean_strategy: str = None,
+        copy_chunk_mode: str = None,
+        copy_chunk_size: int = None,
+        copy_count: int = None,
+        copy_total: int = None,
+        cutover_fail_retry_times: int = None,
+        cutover_lock_time_seconds: int = None,
+        cutover_window_end_time: str = None,
+        cutover_window_start_time: str = None,
+        delay_seconds: int = None,
+        job_status: str = None,
+        progress_ratio: str = None,
+        status_desc: str = None,
+    ):
+        self.clean_strategy = clean_strategy
+        self.copy_chunk_mode = copy_chunk_mode
+        self.copy_chunk_size = copy_chunk_size
+        self.copy_count = copy_count
+        self.copy_total = copy_total
+        self.cutover_fail_retry_times = cutover_fail_retry_times
+        self.cutover_lock_time_seconds = cutover_lock_time_seconds
+        self.cutover_window_end_time = cutover_window_end_time
+        self.cutover_window_start_time = cutover_window_start_time
+        self.delay_seconds = delay_seconds
+        self.job_status = job_status
+        self.progress_ratio = progress_ratio
+        self.status_desc = status_desc
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.clean_strategy is not None:
+            result['CleanStrategy'] = self.clean_strategy
+        if self.copy_chunk_mode is not None:
+            result['CopyChunkMode'] = self.copy_chunk_mode
+        if self.copy_chunk_size is not None:
+            result['CopyChunkSize'] = self.copy_chunk_size
+        if self.copy_count is not None:
+            result['CopyCount'] = self.copy_count
+        if self.copy_total is not None:
+            result['CopyTotal'] = self.copy_total
+        if self.cutover_fail_retry_times is not None:
+            result['CutoverFailRetryTimes'] = self.cutover_fail_retry_times
+        if self.cutover_lock_time_seconds is not None:
+            result['CutoverLockTimeSeconds'] = self.cutover_lock_time_seconds
+        if self.cutover_window_end_time is not None:
+            result['CutoverWindowEndTime'] = self.cutover_window_end_time
+        if self.cutover_window_start_time is not None:
+            result['CutoverWindowStartTime'] = self.cutover_window_start_time
+        if self.delay_seconds is not None:
+            result['DelaySeconds'] = self.delay_seconds
+        if self.job_status is not None:
+            result['JobStatus'] = self.job_status
+        if self.progress_ratio is not None:
+            result['ProgressRatio'] = self.progress_ratio
+        if self.status_desc is not None:
+            result['StatusDesc'] = self.status_desc
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CleanStrategy') is not None:
+            self.clean_strategy = m.get('CleanStrategy')
+        if m.get('CopyChunkMode') is not None:
+            self.copy_chunk_mode = m.get('CopyChunkMode')
+        if m.get('CopyChunkSize') is not None:
+            self.copy_chunk_size = m.get('CopyChunkSize')
+        if m.get('CopyCount') is not None:
+            self.copy_count = m.get('CopyCount')
+        if m.get('CopyTotal') is not None:
+            self.copy_total = m.get('CopyTotal')
+        if m.get('CutoverFailRetryTimes') is not None:
+            self.cutover_fail_retry_times = m.get('CutoverFailRetryTimes')
+        if m.get('CutoverLockTimeSeconds') is not None:
+            self.cutover_lock_time_seconds = m.get('CutoverLockTimeSeconds')
+        if m.get('CutoverWindowEndTime') is not None:
+            self.cutover_window_end_time = m.get('CutoverWindowEndTime')
+        if m.get('CutoverWindowStartTime') is not None:
+            self.cutover_window_start_time = m.get('CutoverWindowStartTime')
+        if m.get('DelaySeconds') is not None:
+            self.delay_seconds = m.get('DelaySeconds')
+        if m.get('JobStatus') is not None:
+            self.job_status = m.get('JobStatus')
+        if m.get('ProgressRatio') is not None:
+            self.progress_ratio = m.get('ProgressRatio')
+        if m.get('StatusDesc') is not None:
+            self.status_desc = m.get('StatusDesc')
+        return self
+
+
+class GetOnlineDDLProgressResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        online_ddltask_detail: GetOnlineDDLProgressResponseBodyOnlineDDLTaskDetail = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.online_ddltask_detail = online_ddltask_detail
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.online_ddltask_detail:
+            self.online_ddltask_detail.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.online_ddltask_detail is not None:
+            result['OnlineDDLTaskDetail'] = self.online_ddltask_detail.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('OnlineDDLTaskDetail') is not None:
+            temp_model = GetOnlineDDLProgressResponseBodyOnlineDDLTaskDetail()
+            self.online_ddltask_detail = temp_model.from_map(m['OnlineDDLTaskDetail'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetOnlineDDLProgressResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetOnlineDDLProgressResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetOnlineDDLProgressResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -25128,6 +25399,33 @@ class ListLogicDatabasesRequest(TeaModel):
         return self
 
 
+class ListLogicDatabasesResponseBodyLogicDatabaseListLogicDatabaseDatabaseIds(TeaModel):
+    def __init__(
+        self,
+        database_ids: List[int] = None,
+    ):
+        self.database_ids = database_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.database_ids is not None:
+            result['DatabaseIds'] = self.database_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DatabaseIds') is not None:
+            self.database_ids = m.get('DatabaseIds')
+        return self
+
+
 class ListLogicDatabasesResponseBodyLogicDatabaseListLogicDatabaseOwnerIdList(TeaModel):
     def __init__(
         self,
@@ -25187,6 +25485,7 @@ class ListLogicDatabasesResponseBodyLogicDatabaseListLogicDatabase(TeaModel):
         self,
         alias: str = None,
         database_id: str = None,
+        database_ids: ListLogicDatabasesResponseBodyLogicDatabaseListLogicDatabaseDatabaseIds = None,
         db_type: str = None,
         env_type: str = None,
         logic: bool = None,
@@ -25197,6 +25496,7 @@ class ListLogicDatabasesResponseBodyLogicDatabaseListLogicDatabase(TeaModel):
     ):
         self.alias = alias
         self.database_id = database_id
+        self.database_ids = database_ids
         self.db_type = db_type
         self.env_type = env_type
         self.logic = logic
@@ -25206,6 +25506,8 @@ class ListLogicDatabasesResponseBodyLogicDatabaseListLogicDatabase(TeaModel):
         self.search_name = search_name
 
     def validate(self):
+        if self.database_ids:
+            self.database_ids.validate()
         if self.owner_id_list:
             self.owner_id_list.validate()
         if self.owner_name_list:
@@ -25221,6 +25523,8 @@ class ListLogicDatabasesResponseBodyLogicDatabaseListLogicDatabase(TeaModel):
             result['Alias'] = self.alias
         if self.database_id is not None:
             result['DatabaseId'] = self.database_id
+        if self.database_ids is not None:
+            result['DatabaseIds'] = self.database_ids.to_map()
         if self.db_type is not None:
             result['DbType'] = self.db_type
         if self.env_type is not None:
@@ -25243,6 +25547,9 @@ class ListLogicDatabasesResponseBodyLogicDatabaseListLogicDatabase(TeaModel):
             self.alias = m.get('Alias')
         if m.get('DatabaseId') is not None:
             self.database_id = m.get('DatabaseId')
+        if m.get('DatabaseIds') is not None:
+            temp_model = ListLogicDatabasesResponseBodyLogicDatabaseListLogicDatabaseDatabaseIds()
+            self.database_ids = temp_model.from_map(m['DatabaseIds'])
         if m.get('DbType') is not None:
             self.db_type = m.get('DbType')
         if m.get('EnvType') is not None:

@@ -5511,6 +5511,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_meta_table_detail_info_with_options_async(request, runtime)
 
+    def get_online_ddlprogress_with_options(
+        self,
+        request: dms_enterprise_20181101_models.GetOnlineDDLProgressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetOnlineDDLProgressResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_detail_id):
+            query['JobDetailId'] = request.job_detail_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetOnlineDDLProgress',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetOnlineDDLProgressResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_online_ddlprogress_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.GetOnlineDDLProgressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetOnlineDDLProgressResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_detail_id):
+            query['JobDetailId'] = request.job_detail_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetOnlineDDLProgress',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetOnlineDDLProgressResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_online_ddlprogress(
+        self,
+        request: dms_enterprise_20181101_models.GetOnlineDDLProgressRequest,
+    ) -> dms_enterprise_20181101_models.GetOnlineDDLProgressResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_online_ddlprogress_with_options(request, runtime)
+
+    async def get_online_ddlprogress_async(
+        self,
+        request: dms_enterprise_20181101_models.GetOnlineDDLProgressRequest,
+    ) -> dms_enterprise_20181101_models.GetOnlineDDLProgressResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_online_ddlprogress_with_options_async(request, runtime)
+
     def get_op_log_with_options(
         self,
         request: dms_enterprise_20181101_models.GetOpLogRequest,
