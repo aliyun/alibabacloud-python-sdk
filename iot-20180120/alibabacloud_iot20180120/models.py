@@ -40625,20 +40625,24 @@ class PubRequestUserProp(TeaModel):
 class PubRequest(TeaModel):
     def __init__(
         self,
+        content_type: str = None,
         correlation_data: str = None,
         device_name: str = None,
         iot_instance_id: str = None,
         message_content: str = None,
+        payload_format_indicator: int = None,
         product_key: str = None,
         qos: int = None,
         response_topic: str = None,
         topic_full_name: str = None,
         user_prop: List[PubRequestUserProp] = None,
     ):
+        self.content_type = content_type
         self.correlation_data = correlation_data
         self.device_name = device_name
         self.iot_instance_id = iot_instance_id
         self.message_content = message_content
+        self.payload_format_indicator = payload_format_indicator
         self.product_key = product_key
         self.qos = qos
         self.response_topic = response_topic
@@ -40657,6 +40661,8 @@ class PubRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.content_type is not None:
+            result['ContentType'] = self.content_type
         if self.correlation_data is not None:
             result['CorrelationData'] = self.correlation_data
         if self.device_name is not None:
@@ -40665,6 +40671,8 @@ class PubRequest(TeaModel):
             result['IotInstanceId'] = self.iot_instance_id
         if self.message_content is not None:
             result['MessageContent'] = self.message_content
+        if self.payload_format_indicator is not None:
+            result['PayloadFormatIndicator'] = self.payload_format_indicator
         if self.product_key is not None:
             result['ProductKey'] = self.product_key
         if self.qos is not None:
@@ -40681,6 +40689,8 @@ class PubRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ContentType') is not None:
+            self.content_type = m.get('ContentType')
         if m.get('CorrelationData') is not None:
             self.correlation_data = m.get('CorrelationData')
         if m.get('DeviceName') is not None:
@@ -40689,6 +40699,8 @@ class PubRequest(TeaModel):
             self.iot_instance_id = m.get('IotInstanceId')
         if m.get('MessageContent') is not None:
             self.message_content = m.get('MessageContent')
+        if m.get('PayloadFormatIndicator') is not None:
+            self.payload_format_indicator = m.get('PayloadFormatIndicator')
         if m.get('ProductKey') is not None:
             self.product_key = m.get('ProductKey')
         if m.get('Qos') is not None:

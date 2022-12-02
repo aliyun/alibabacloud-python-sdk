@@ -17979,12 +17979,16 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.PubResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.content_type):
+            query['ContentType'] = request.content_type
         if not UtilClient.is_unset(request.correlation_data):
             query['CorrelationData'] = request.correlation_data
         if not UtilClient.is_unset(request.device_name):
             query['DeviceName'] = request.device_name
         if not UtilClient.is_unset(request.iot_instance_id):
             query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.payload_format_indicator):
+            query['PayloadFormatIndicator'] = request.payload_format_indicator
         if not UtilClient.is_unset(request.product_key):
             query['ProductKey'] = request.product_key
         if not UtilClient.is_unset(request.qos):
@@ -18025,12 +18029,16 @@ class Client(OpenApiClient):
     ) -> iot_20180120_models.PubResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.content_type):
+            query['ContentType'] = request.content_type
         if not UtilClient.is_unset(request.correlation_data):
             query['CorrelationData'] = request.correlation_data
         if not UtilClient.is_unset(request.device_name):
             query['DeviceName'] = request.device_name
         if not UtilClient.is_unset(request.iot_instance_id):
             query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.payload_format_indicator):
+            query['PayloadFormatIndicator'] = request.payload_format_indicator
         if not UtilClient.is_unset(request.product_key):
             query['ProductKey'] = request.product_key
         if not UtilClient.is_unset(request.qos):
