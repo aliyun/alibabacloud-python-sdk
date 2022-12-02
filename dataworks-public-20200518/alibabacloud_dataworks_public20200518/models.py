@@ -510,6 +510,134 @@ class ApprovePermissionApplyOrderResponse(TeaModel):
         return self
 
 
+class ChangeResourceManagerResourceGroupRequest(TeaModel):
+    def __init__(
+        self,
+        resource_id: str = None,
+        resource_manager_resource_group_id: str = None,
+        resource_type: str = None,
+    ):
+        self.resource_id = resource_id
+        self.resource_manager_resource_group_id = resource_manager_resource_group_id
+        self.resource_type = resource_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_manager_resource_group_id is not None:
+            result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceManagerResourceGroupId') is not None:
+            self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        return self
+
+
+class ChangeResourceManagerResourceGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: bool = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ChangeResourceManagerResourceGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ChangeResourceManagerResourceGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ChangeResourceManagerResourceGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CheckFileDeploymentRequest(TeaModel):
     def __init__(
         self,
@@ -30340,7 +30468,6 @@ class ListBaselinesRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
         priority: str = None,
-        project_env: str = None,
         project_id: int = None,
         search_text: str = None,
     ):
@@ -30350,7 +30477,6 @@ class ListBaselinesRequest(TeaModel):
         self.page_number = page_number
         self.page_size = page_size
         self.priority = priority
-        self.project_env = project_env
         self.project_id = project_id
         self.search_text = search_text
 
@@ -30375,8 +30501,6 @@ class ListBaselinesRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.priority is not None:
             result['Priority'] = self.priority
-        if self.project_env is not None:
-            result['ProjectEnv'] = self.project_env
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
         if self.search_text is not None:
@@ -30397,8 +30521,6 @@ class ListBaselinesRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('Priority') is not None:
             self.priority = m.get('Priority')
-        if m.get('ProjectEnv') is not None:
-            self.project_env = m.get('ProjectEnv')
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
         if m.get('SearchText') is not None:
@@ -44865,12 +44987,14 @@ class ListResourceGroupsRequest(TeaModel):
         resource_group_type: int = None,
         resource_manager_resource_group_id: str = None,
         tags: List[ListResourceGroupsRequestTags] = None,
+        type_names: str = None,
     ):
         self.biz_ext_key = biz_ext_key
         self.keyword = keyword
         self.resource_group_type = resource_group_type
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         self.tags = tags
+        self.type_names = type_names
 
     def validate(self):
         if self.tags:
@@ -44896,6 +45020,8 @@ class ListResourceGroupsRequest(TeaModel):
         if self.tags is not None:
             for k in self.tags:
                 result['Tags'].append(k.to_map() if k else None)
+        if self.type_names is not None:
+            result['TypeNames'] = self.type_names
         return result
 
     def from_map(self, m: dict = None):
@@ -44913,6 +45039,8 @@ class ListResourceGroupsRequest(TeaModel):
             for k in m.get('Tags'):
                 temp_model = ListResourceGroupsRequestTags()
                 self.tags.append(temp_model.from_map(k))
+        if m.get('TypeNames') is not None:
+            self.type_names = m.get('TypeNames')
         return self
 
 
@@ -44924,12 +45052,14 @@ class ListResourceGroupsShrinkRequest(TeaModel):
         resource_group_type: int = None,
         resource_manager_resource_group_id: str = None,
         tags_shrink: str = None,
+        type_names: str = None,
     ):
         self.biz_ext_key = biz_ext_key
         self.keyword = keyword
         self.resource_group_type = resource_group_type
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         self.tags_shrink = tags_shrink
+        self.type_names = type_names
 
     def validate(self):
         pass
@@ -44950,6 +45080,8 @@ class ListResourceGroupsShrinkRequest(TeaModel):
             result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
         if self.tags_shrink is not None:
             result['Tags'] = self.tags_shrink
+        if self.type_names is not None:
+            result['TypeNames'] = self.type_names
         return result
 
     def from_map(self, m: dict = None):
@@ -44964,6 +45096,8 @@ class ListResourceGroupsShrinkRequest(TeaModel):
             self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
         if m.get('Tags') is not None:
             self.tags_shrink = m.get('Tags')
+        if m.get('TypeNames') is not None:
+            self.type_names = m.get('TypeNames')
         return self
 
 
