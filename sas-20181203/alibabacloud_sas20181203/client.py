@@ -1580,6 +1580,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_vul_auto_repair_config_with_options_async(request, runtime)
 
+    def delete_anti_brute_force_rule_with_options(
+        self,
+        request: sas_20181203_models.DeleteAntiBruteForceRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DeleteAntiBruteForceRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ids):
+            query['Ids'] = request.ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAntiBruteForceRule',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DeleteAntiBruteForceRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_anti_brute_force_rule_with_options_async(
+        self,
+        request: sas_20181203_models.DeleteAntiBruteForceRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DeleteAntiBruteForceRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ids):
+            query['Ids'] = request.ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAntiBruteForceRule',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DeleteAntiBruteForceRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_anti_brute_force_rule(
+        self,
+        request: sas_20181203_models.DeleteAntiBruteForceRuleRequest,
+    ) -> sas_20181203_models.DeleteAntiBruteForceRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_anti_brute_force_rule_with_options(request, runtime)
+
+    async def delete_anti_brute_force_rule_async(
+        self,
+        request: sas_20181203_models.DeleteAntiBruteForceRuleRequest,
+    ) -> sas_20181203_models.DeleteAntiBruteForceRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_anti_brute_force_rule_with_options_async(request, runtime)
+
     def delete_backup_policy_with_options(
         self,
         request: sas_20181203_models.DeleteBackupPolicyRequest,
@@ -2109,6 +2179,80 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.DeleteVpcHoneyPotResponse:
         runtime = util_models.RuntimeOptions()
         return await self.delete_vpc_honey_pot_with_options_async(request, runtime)
+
+    def delete_vul_whitelist_with_options(
+        self,
+        request: sas_20181203_models.DeleteVulWhitelistRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DeleteVulWhitelistResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.whitelist):
+            query['Whitelist'] = request.whitelist
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteVulWhitelist',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DeleteVulWhitelistResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_vul_whitelist_with_options_async(
+        self,
+        request: sas_20181203_models.DeleteVulWhitelistRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DeleteVulWhitelistResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.whitelist):
+            query['Whitelist'] = request.whitelist
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteVulWhitelist',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DeleteVulWhitelistResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_vul_whitelist(
+        self,
+        request: sas_20181203_models.DeleteVulWhitelistRequest,
+    ) -> sas_20181203_models.DeleteVulWhitelistResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_vul_whitelist_with_options(request, runtime)
+
+    async def delete_vul_whitelist_async(
+        self,
+        request: sas_20181203_models.DeleteVulWhitelistRequest,
+    ) -> sas_20181203_models.DeleteVulWhitelistResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_vul_whitelist_with_options_async(request, runtime)
 
     def describe_access_key_leak_detail_with_options(
         self,
@@ -3519,6 +3663,76 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.DescribeBackupPoliciesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_backup_policies_with_options_async(request, runtime)
+
+    def describe_backup_policy_with_options(
+        self,
+        request: sas_20181203_models.DescribeBackupPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeBackupPolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeBackupPolicy',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeBackupPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_backup_policy_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeBackupPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeBackupPolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeBackupPolicy',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeBackupPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_backup_policy(
+        self,
+        request: sas_20181203_models.DescribeBackupPolicyRequest,
+    ) -> sas_20181203_models.DescribeBackupPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_backup_policy_with_options(request, runtime)
+
+    async def describe_backup_policy_async(
+        self,
+        request: sas_20181203_models.DescribeBackupPolicyRequest,
+    ) -> sas_20181203_models.DescribeBackupPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_backup_policy_with_options_async(request, runtime)
 
     def describe_backup_restore_count_with_options(
         self,
@@ -5751,6 +5965,8 @@ class Client(OpenApiClient):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.levels):
             query['Levels'] = request.levels
+        if not UtilClient.is_unset(request.malicious_md_5):
+            query['MaliciousMd5'] = request.malicious_md_5
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.repo_id):
@@ -5807,6 +6023,8 @@ class Client(OpenApiClient):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.levels):
             query['Levels'] = request.levels
+        if not UtilClient.is_unset(request.malicious_md_5):
+            query['MaliciousMd5'] = request.malicious_md_5
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.repo_id):
@@ -7949,6 +8167,104 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.DescribeNoticeConfigResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_notice_config_with_options_async(request, runtime)
+
+    def describe_nsas_susp_event_type_with_options(
+        self,
+        request: sas_20181203_models.DescribeNsasSuspEventTypeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeNsasSuspEventTypeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.container_field_name):
+            query['ContainerFieldName'] = request.container_field_name
+        if not UtilClient.is_unset(request.container_field_value):
+            query['ContainerFieldValue'] = request.container_field_value
+        if not UtilClient.is_unset(request.from_):
+            query['From'] = request.from_
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.uuids):
+            query['Uuids'] = request.uuids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeNsasSuspEventType',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeNsasSuspEventTypeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_nsas_susp_event_type_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeNsasSuspEventTypeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeNsasSuspEventTypeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.container_field_name):
+            query['ContainerFieldName'] = request.container_field_name
+        if not UtilClient.is_unset(request.container_field_value):
+            query['ContainerFieldValue'] = request.container_field_value
+        if not UtilClient.is_unset(request.from_):
+            query['From'] = request.from_
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.uuids):
+            query['Uuids'] = request.uuids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeNsasSuspEventType',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeNsasSuspEventTypeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_nsas_susp_event_type(
+        self,
+        request: sas_20181203_models.DescribeNsasSuspEventTypeRequest,
+    ) -> sas_20181203_models.DescribeNsasSuspEventTypeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_nsas_susp_event_type_with_options(request, runtime)
+
+    async def describe_nsas_susp_event_type_async(
+        self,
+        request: sas_20181203_models.DescribeNsasSuspEventTypeRequest,
+    ) -> sas_20181203_models.DescribeNsasSuspEventTypeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_nsas_susp_event_type_with_options_async(request, runtime)
 
     def describe_offline_machines_with_options(
         self,
@@ -13997,6 +14313,76 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.GetVulStatisticsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_vul_statistics_with_options_async(request, runtime)
+
+    def get_vul_whitelist_with_options(
+        self,
+        request: sas_20181203_models.GetVulWhitelistRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.GetVulWhitelistResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.vul_whitelist_id):
+            query['VulWhitelistId'] = request.vul_whitelist_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetVulWhitelist',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.GetVulWhitelistResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_vul_whitelist_with_options_async(
+        self,
+        request: sas_20181203_models.GetVulWhitelistRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.GetVulWhitelistResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.vul_whitelist_id):
+            query['VulWhitelistId'] = request.vul_whitelist_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetVulWhitelist',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.GetVulWhitelistResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_vul_whitelist(
+        self,
+        request: sas_20181203_models.GetVulWhitelistRequest,
+    ) -> sas_20181203_models.GetVulWhitelistResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_vul_whitelist_with_options(request, runtime)
+
+    async def get_vul_whitelist_async(
+        self,
+        request: sas_20181203_models.GetVulWhitelistRequest,
+    ) -> sas_20181203_models.GetVulWhitelistResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_vul_whitelist_with_options_async(request, runtime)
 
     def handle_security_events_with_options(
         self,
