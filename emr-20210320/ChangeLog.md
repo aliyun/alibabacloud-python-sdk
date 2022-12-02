@@ -1,3 +1,6 @@
+2022-12-02 Version: 1.0.3
+- Add OpenAPI as below, ListClusters, TagResources, UntagResources, ListTagResources.
+
 2022-12-02 Version: 1.0.2
 - Add OpenAPI as below, ListClusters, TagResources, UntagResources, ListTagResources.
 
