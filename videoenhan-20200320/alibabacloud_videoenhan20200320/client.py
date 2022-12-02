@@ -495,8 +495,6 @@ class Client(OpenApiClient):
     ) -> videoenhan_20200320_models.AddFaceVideoTemplateResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.user_id):
-            body['UserId'] = request.user_id
         if not UtilClient.is_unset(request.video_url):
             body['VideoURL'] = request.video_url
         req = open_api_models.OpenApiRequest(
@@ -525,8 +523,6 @@ class Client(OpenApiClient):
     ) -> videoenhan_20200320_models.AddFaceVideoTemplateResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.user_id):
-            body['UserId'] = request.user_id
         if not UtilClient.is_unset(request.video_url):
             body['VideoURL'] = request.video_url
         req = open_api_models.OpenApiRequest(
@@ -1409,8 +1405,6 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.template_id):
             body['TemplateId'] = request.template_id
-        if not UtilClient.is_unset(request.user_id):
-            body['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -1439,8 +1433,6 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.template_id):
             body['TemplateId'] = request.template_id
-        if not UtilClient.is_unset(request.user_id):
-            body['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -3033,8 +3025,6 @@ class Client(OpenApiClient):
             body['FaceImageURL'] = request.face_image_url
         if not UtilClient.is_unset(request.template_id):
             body['TemplateId'] = request.template_id
-        if not UtilClient.is_unset(request.user_id):
-            body['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -3065,8 +3055,6 @@ class Client(OpenApiClient):
             body['FaceImageURL'] = request.face_image_url
         if not UtilClient.is_unset(request.template_id):
             body['TemplateId'] = request.template_id
-        if not UtilClient.is_unset(request.user_id):
-            body['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -3251,8 +3239,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
-        if not UtilClient.is_unset(request.user_id):
-            query['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3281,8 +3267,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
-        if not UtilClient.is_unset(request.user_id):
-            query['UserId'] = request.user_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
