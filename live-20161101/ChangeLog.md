@@ -1,3 +1,6 @@
+2022-12-05 Version: 1.1.1
+- Live sdk update.
+
 2022-12-05 Version: 1.1.0
 - Live sdk update.
 
