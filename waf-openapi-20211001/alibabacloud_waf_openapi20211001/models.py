@@ -628,21 +628,33 @@ class CreateDomainRequestRedirect(TeaModel):
     def __init__(
         self,
         backends: List[str] = None,
+        cname_enabled: bool = None,
         connect_timeout: int = None,
         focus_http_backend: bool = None,
+        keepalive: bool = None,
+        keepalive_requests: int = None,
+        keepalive_timeout: int = None,
         loadbalance: str = None,
         read_timeout: int = None,
         request_headers: List[CreateDomainRequestRedirectRequestHeaders] = None,
+        retry: bool = None,
+        routing_rules: str = None,
         sni_enabled: bool = None,
         sni_host: str = None,
         write_timeout: int = None,
     ):
         self.backends = backends
+        self.cname_enabled = cname_enabled
         self.connect_timeout = connect_timeout
         self.focus_http_backend = focus_http_backend
+        self.keepalive = keepalive
+        self.keepalive_requests = keepalive_requests
+        self.keepalive_timeout = keepalive_timeout
         self.loadbalance = loadbalance
         self.read_timeout = read_timeout
         self.request_headers = request_headers
+        self.retry = retry
+        self.routing_rules = routing_rules
         self.sni_enabled = sni_enabled
         self.sni_host = sni_host
         self.write_timeout = write_timeout
@@ -661,10 +673,18 @@ class CreateDomainRequestRedirect(TeaModel):
         result = dict()
         if self.backends is not None:
             result['Backends'] = self.backends
+        if self.cname_enabled is not None:
+            result['CnameEnabled'] = self.cname_enabled
         if self.connect_timeout is not None:
             result['ConnectTimeout'] = self.connect_timeout
         if self.focus_http_backend is not None:
             result['FocusHttpBackend'] = self.focus_http_backend
+        if self.keepalive is not None:
+            result['Keepalive'] = self.keepalive
+        if self.keepalive_requests is not None:
+            result['KeepaliveRequests'] = self.keepalive_requests
+        if self.keepalive_timeout is not None:
+            result['KeepaliveTimeout'] = self.keepalive_timeout
         if self.loadbalance is not None:
             result['Loadbalance'] = self.loadbalance
         if self.read_timeout is not None:
@@ -673,6 +693,10 @@ class CreateDomainRequestRedirect(TeaModel):
         if self.request_headers is not None:
             for k in self.request_headers:
                 result['RequestHeaders'].append(k.to_map() if k else None)
+        if self.retry is not None:
+            result['Retry'] = self.retry
+        if self.routing_rules is not None:
+            result['RoutingRules'] = self.routing_rules
         if self.sni_enabled is not None:
             result['SniEnabled'] = self.sni_enabled
         if self.sni_host is not None:
@@ -685,10 +709,18 @@ class CreateDomainRequestRedirect(TeaModel):
         m = m or dict()
         if m.get('Backends') is not None:
             self.backends = m.get('Backends')
+        if m.get('CnameEnabled') is not None:
+            self.cname_enabled = m.get('CnameEnabled')
         if m.get('ConnectTimeout') is not None:
             self.connect_timeout = m.get('ConnectTimeout')
         if m.get('FocusHttpBackend') is not None:
             self.focus_http_backend = m.get('FocusHttpBackend')
+        if m.get('Keepalive') is not None:
+            self.keepalive = m.get('Keepalive')
+        if m.get('KeepaliveRequests') is not None:
+            self.keepalive_requests = m.get('KeepaliveRequests')
+        if m.get('KeepaliveTimeout') is not None:
+            self.keepalive_timeout = m.get('KeepaliveTimeout')
         if m.get('Loadbalance') is not None:
             self.loadbalance = m.get('Loadbalance')
         if m.get('ReadTimeout') is not None:
@@ -698,6 +730,10 @@ class CreateDomainRequestRedirect(TeaModel):
             for k in m.get('RequestHeaders'):
                 temp_model = CreateDomainRequestRedirectRequestHeaders()
                 self.request_headers.append(temp_model.from_map(k))
+        if m.get('Retry') is not None:
+            self.retry = m.get('Retry')
+        if m.get('RoutingRules') is not None:
+            self.routing_rules = m.get('RoutingRules')
         if m.get('SniEnabled') is not None:
             self.sni_enabled = m.get('SniEnabled')
         if m.get('SniHost') is not None:
@@ -1387,10 +1423,12 @@ class DeleteDefenseTemplateResponse(TeaModel):
 class DeleteDomainRequest(TeaModel):
     def __init__(
         self,
+        access_type: str = None,
         domain: str = None,
         instance_id: str = None,
         region_id: str = None,
     ):
+        self.access_type = access_type
         self.domain = domain
         self.instance_id = instance_id
         self.region_id = region_id
@@ -1404,6 +1442,8 @@ class DeleteDomainRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.access_type is not None:
+            result['AccessType'] = self.access_type
         if self.domain is not None:
             result['Domain'] = self.domain
         if self.instance_id is not None:
@@ -1414,6 +1454,8 @@ class DeleteDomainRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessType') is not None:
+            self.access_type = m.get('AccessType')
         if m.get('Domain') is not None:
             self.domain = m.get('Domain')
         if m.get('InstanceId') is not None:
@@ -2779,9 +2821,13 @@ class DescribeDomainDetailResponseBodyRedirect(TeaModel):
         backends: List[DescribeDomainDetailResponseBodyRedirectBackends] = None,
         connect_timeout: int = None,
         focus_http_backend: bool = None,
+        keepalive: bool = None,
+        keepalive_requests: int = None,
+        keepalive_timeout: int = None,
         loadbalance: str = None,
         read_timeout: int = None,
         request_headers: List[DescribeDomainDetailResponseBodyRedirectRequestHeaders] = None,
+        retry: bool = None,
         sni_enabled: bool = None,
         sni_host: str = None,
         write_timeout: int = None,
@@ -2789,9 +2835,13 @@ class DescribeDomainDetailResponseBodyRedirect(TeaModel):
         self.backends = backends
         self.connect_timeout = connect_timeout
         self.focus_http_backend = focus_http_backend
+        self.keepalive = keepalive
+        self.keepalive_requests = keepalive_requests
+        self.keepalive_timeout = keepalive_timeout
         self.loadbalance = loadbalance
         self.read_timeout = read_timeout
         self.request_headers = request_headers
+        self.retry = retry
         self.sni_enabled = sni_enabled
         self.sni_host = sni_host
         self.write_timeout = write_timeout
@@ -2820,6 +2870,12 @@ class DescribeDomainDetailResponseBodyRedirect(TeaModel):
             result['ConnectTimeout'] = self.connect_timeout
         if self.focus_http_backend is not None:
             result['FocusHttpBackend'] = self.focus_http_backend
+        if self.keepalive is not None:
+            result['Keepalive'] = self.keepalive
+        if self.keepalive_requests is not None:
+            result['KeepaliveRequests'] = self.keepalive_requests
+        if self.keepalive_timeout is not None:
+            result['KeepaliveTimeout'] = self.keepalive_timeout
         if self.loadbalance is not None:
             result['Loadbalance'] = self.loadbalance
         if self.read_timeout is not None:
@@ -2828,6 +2884,8 @@ class DescribeDomainDetailResponseBodyRedirect(TeaModel):
         if self.request_headers is not None:
             for k in self.request_headers:
                 result['RequestHeaders'].append(k.to_map() if k else None)
+        if self.retry is not None:
+            result['Retry'] = self.retry
         if self.sni_enabled is not None:
             result['SniEnabled'] = self.sni_enabled
         if self.sni_host is not None:
@@ -2847,6 +2905,12 @@ class DescribeDomainDetailResponseBodyRedirect(TeaModel):
             self.connect_timeout = m.get('ConnectTimeout')
         if m.get('FocusHttpBackend') is not None:
             self.focus_http_backend = m.get('FocusHttpBackend')
+        if m.get('Keepalive') is not None:
+            self.keepalive = m.get('Keepalive')
+        if m.get('KeepaliveRequests') is not None:
+            self.keepalive_requests = m.get('KeepaliveRequests')
+        if m.get('KeepaliveTimeout') is not None:
+            self.keepalive_timeout = m.get('KeepaliveTimeout')
         if m.get('Loadbalance') is not None:
             self.loadbalance = m.get('Loadbalance')
         if m.get('ReadTimeout') is not None:
@@ -2856,6 +2920,8 @@ class DescribeDomainDetailResponseBodyRedirect(TeaModel):
             for k in m.get('RequestHeaders'):
                 temp_model = DescribeDomainDetailResponseBodyRedirectRequestHeaders()
                 self.request_headers.append(temp_model.from_map(k))
+        if m.get('Retry') is not None:
+            self.retry = m.get('Retry')
         if m.get('SniEnabled') is not None:
             self.sni_enabled = m.get('SniEnabled')
         if m.get('SniHost') is not None:
@@ -7760,9 +7826,13 @@ class ModifyDomainRequestRedirect(TeaModel):
         backends: List[str] = None,
         connect_timeout: int = None,
         focus_http_backend: bool = None,
+        keepalive: bool = None,
+        keepalive_requests: int = None,
+        keepalive_timeout: int = None,
         loadbalance: str = None,
         read_timeout: int = None,
         request_headers: List[ModifyDomainRequestRedirectRequestHeaders] = None,
+        retry: bool = None,
         sni_enabled: bool = None,
         sni_host: str = None,
         write_timeout: int = None,
@@ -7770,9 +7840,13 @@ class ModifyDomainRequestRedirect(TeaModel):
         self.backends = backends
         self.connect_timeout = connect_timeout
         self.focus_http_backend = focus_http_backend
+        self.keepalive = keepalive
+        self.keepalive_requests = keepalive_requests
+        self.keepalive_timeout = keepalive_timeout
         self.loadbalance = loadbalance
         self.read_timeout = read_timeout
         self.request_headers = request_headers
+        self.retry = retry
         self.sni_enabled = sni_enabled
         self.sni_host = sni_host
         self.write_timeout = write_timeout
@@ -7795,6 +7869,12 @@ class ModifyDomainRequestRedirect(TeaModel):
             result['ConnectTimeout'] = self.connect_timeout
         if self.focus_http_backend is not None:
             result['FocusHttpBackend'] = self.focus_http_backend
+        if self.keepalive is not None:
+            result['Keepalive'] = self.keepalive
+        if self.keepalive_requests is not None:
+            result['KeepaliveRequests'] = self.keepalive_requests
+        if self.keepalive_timeout is not None:
+            result['KeepaliveTimeout'] = self.keepalive_timeout
         if self.loadbalance is not None:
             result['Loadbalance'] = self.loadbalance
         if self.read_timeout is not None:
@@ -7803,6 +7883,8 @@ class ModifyDomainRequestRedirect(TeaModel):
         if self.request_headers is not None:
             for k in self.request_headers:
                 result['RequestHeaders'].append(k.to_map() if k else None)
+        if self.retry is not None:
+            result['Retry'] = self.retry
         if self.sni_enabled is not None:
             result['SniEnabled'] = self.sni_enabled
         if self.sni_host is not None:
@@ -7819,6 +7901,12 @@ class ModifyDomainRequestRedirect(TeaModel):
             self.connect_timeout = m.get('ConnectTimeout')
         if m.get('FocusHttpBackend') is not None:
             self.focus_http_backend = m.get('FocusHttpBackend')
+        if m.get('Keepalive') is not None:
+            self.keepalive = m.get('Keepalive')
+        if m.get('KeepaliveRequests') is not None:
+            self.keepalive_requests = m.get('KeepaliveRequests')
+        if m.get('KeepaliveTimeout') is not None:
+            self.keepalive_timeout = m.get('KeepaliveTimeout')
         if m.get('Loadbalance') is not None:
             self.loadbalance = m.get('Loadbalance')
         if m.get('ReadTimeout') is not None:
@@ -7828,6 +7916,8 @@ class ModifyDomainRequestRedirect(TeaModel):
             for k in m.get('RequestHeaders'):
                 temp_model = ModifyDomainRequestRedirectRequestHeaders()
                 self.request_headers.append(temp_model.from_map(k))
+        if m.get('Retry') is not None:
+            self.retry = m.get('Retry')
         if m.get('SniEnabled') is not None:
             self.sni_enabled = m.get('SniEnabled')
         if m.get('SniHost') is not None:

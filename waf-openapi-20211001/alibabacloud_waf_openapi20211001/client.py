@@ -412,9 +412,9 @@ class Client(OpenApiClient):
         request = waf_openapi_20211001_models.CreateDomainShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.listen):
-            request.listen_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.listen), 'Listen', 'json')
+            request.listen_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.listen, 'Listen', 'json')
         if not UtilClient.is_unset(tmp_req.redirect):
-            request.redirect_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.redirect), 'Redirect', 'json')
+            request.redirect_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.redirect, 'Redirect', 'json')
         query = {}
         if not UtilClient.is_unset(request.access_type):
             query['AccessType'] = request.access_type
@@ -456,9 +456,9 @@ class Client(OpenApiClient):
         request = waf_openapi_20211001_models.CreateDomainShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.listen):
-            request.listen_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.listen), 'Listen', 'json')
+            request.listen_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.listen, 'Listen', 'json')
         if not UtilClient.is_unset(tmp_req.redirect):
-            request.redirect_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.redirect), 'Redirect', 'json')
+            request.redirect_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.redirect, 'Redirect', 'json')
         query = {}
         if not UtilClient.is_unset(request.access_type):
             query['AccessType'] = request.access_type
@@ -828,6 +828,8 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20211001_models.DeleteDomainResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.access_type):
+            query['AccessType'] = request.access_type
         if not UtilClient.is_unset(request.domain):
             query['Domain'] = request.domain
         if not UtilClient.is_unset(request.instance_id):
@@ -860,6 +862,8 @@ class Client(OpenApiClient):
     ) -> waf_openapi_20211001_models.DeleteDomainResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.access_type):
+            query['AccessType'] = request.access_type
         if not UtilClient.is_unset(request.domain):
             query['Domain'] = request.domain
         if not UtilClient.is_unset(request.instance_id):
@@ -3594,9 +3598,9 @@ class Client(OpenApiClient):
         request = waf_openapi_20211001_models.ModifyDomainShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.listen):
-            request.listen_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.listen), 'Listen', 'json')
+            request.listen_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.listen, 'Listen', 'json')
         if not UtilClient.is_unset(tmp_req.redirect):
-            request.redirect_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.redirect), 'Redirect', 'json')
+            request.redirect_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.redirect, 'Redirect', 'json')
         query = {}
         if not UtilClient.is_unset(request.access_type):
             query['AccessType'] = request.access_type
@@ -3638,9 +3642,9 @@ class Client(OpenApiClient):
         request = waf_openapi_20211001_models.ModifyDomainShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.listen):
-            request.listen_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.listen), 'Listen', 'json')
+            request.listen_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.listen, 'Listen', 'json')
         if not UtilClient.is_unset(tmp_req.redirect):
-            request.redirect_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.redirect), 'Redirect', 'json')
+            request.redirect_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.redirect, 'Redirect', 'json')
         query = {}
         if not UtilClient.is_unset(request.access_type):
             query['AccessType'] = request.access_type
