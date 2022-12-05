@@ -754,6 +754,8 @@ class Client(OpenApiClient):
     ) -> polardb_20170801_models.CreateDBClusterResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.allow_shut_down):
+            query['AllowShutDown'] = request.allow_shut_down
         if not UtilClient.is_unset(request.auto_renew):
             query['AutoRenew'] = request.auto_renew
         if not UtilClient.is_unset(request.backup_retention_policy_on_cluster_deletion):
@@ -802,10 +804,22 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scale_max):
+            query['ScaleMax'] = request.scale_max
+        if not UtilClient.is_unset(request.scale_min):
+            query['ScaleMin'] = request.scale_min
+        if not UtilClient.is_unset(request.scale_ro_num_max):
+            query['ScaleRoNumMax'] = request.scale_ro_num_max
+        if not UtilClient.is_unset(request.scale_ro_num_min):
+            query['ScaleRoNumMin'] = request.scale_ro_num_min
         if not UtilClient.is_unset(request.security_iplist):
             query['SecurityIPList'] = request.security_iplist
+        if not UtilClient.is_unset(request.serverless_type):
+            query['ServerlessType'] = request.serverless_type
         if not UtilClient.is_unset(request.source_resource_id):
             query['SourceResourceId'] = request.source_resource_id
+        if not UtilClient.is_unset(request.storage_type):
+            query['StorageType'] = request.storage_type
         if not UtilClient.is_unset(request.tdestatus):
             query['TDEStatus'] = request.tdestatus
         if not UtilClient.is_unset(request.tag):
@@ -844,6 +858,8 @@ class Client(OpenApiClient):
     ) -> polardb_20170801_models.CreateDBClusterResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.allow_shut_down):
+            query['AllowShutDown'] = request.allow_shut_down
         if not UtilClient.is_unset(request.auto_renew):
             query['AutoRenew'] = request.auto_renew
         if not UtilClient.is_unset(request.backup_retention_policy_on_cluster_deletion):
@@ -892,10 +908,22 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scale_max):
+            query['ScaleMax'] = request.scale_max
+        if not UtilClient.is_unset(request.scale_min):
+            query['ScaleMin'] = request.scale_min
+        if not UtilClient.is_unset(request.scale_ro_num_max):
+            query['ScaleRoNumMax'] = request.scale_ro_num_max
+        if not UtilClient.is_unset(request.scale_ro_num_min):
+            query['ScaleRoNumMin'] = request.scale_ro_num_min
         if not UtilClient.is_unset(request.security_iplist):
             query['SecurityIPList'] = request.security_iplist
+        if not UtilClient.is_unset(request.serverless_type):
+            query['ServerlessType'] = request.serverless_type
         if not UtilClient.is_unset(request.source_resource_id):
             query['SourceResourceId'] = request.source_resource_id
+        if not UtilClient.is_unset(request.storage_type):
+            query['StorageType'] = request.storage_type
         if not UtilClient.is_unset(request.tdestatus):
             query['TDEStatus'] = request.tdestatus
         if not UtilClient.is_unset(request.tag):
@@ -1612,6 +1640,108 @@ class Client(OpenApiClient):
     ) -> polardb_20170801_models.CreateGlobalDatabaseNetworkResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_global_database_network_with_options_async(request, runtime)
+
+    def create_global_security_ipgroup_with_options(
+        self,
+        request: polardb_20170801_models.CreateGlobalSecurityIPGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.CreateGlobalSecurityIPGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.gip_list):
+            query['GIpList'] = request.gip_list
+        if not UtilClient.is_unset(request.global_ig_name):
+            query['GlobalIgName'] = request.global_ig_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateGlobalSecurityIPGroup',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.CreateGlobalSecurityIPGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_global_security_ipgroup_with_options_async(
+        self,
+        request: polardb_20170801_models.CreateGlobalSecurityIPGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.CreateGlobalSecurityIPGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.gip_list):
+            query['GIpList'] = request.gip_list
+        if not UtilClient.is_unset(request.global_ig_name):
+            query['GlobalIgName'] = request.global_ig_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateGlobalSecurityIPGroup',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.CreateGlobalSecurityIPGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_global_security_ipgroup(
+        self,
+        request: polardb_20170801_models.CreateGlobalSecurityIPGroupRequest,
+    ) -> polardb_20170801_models.CreateGlobalSecurityIPGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_global_security_ipgroup_with_options(request, runtime)
+
+    async def create_global_security_ipgroup_async(
+        self,
+        request: polardb_20170801_models.CreateGlobalSecurityIPGroupRequest,
+    ) -> polardb_20170801_models.CreateGlobalSecurityIPGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_global_security_ipgroup_with_options_async(request, runtime)
 
     def create_parameter_group_with_options(
         self,
@@ -2646,6 +2776,108 @@ class Client(OpenApiClient):
     ) -> polardb_20170801_models.DeleteGlobalDatabaseNetworkResponse:
         runtime = util_models.RuntimeOptions()
         return await self.delete_global_database_network_with_options_async(request, runtime)
+
+    def delete_global_security_ipgroup_with_options(
+        self,
+        request: polardb_20170801_models.DeleteGlobalSecurityIPGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DeleteGlobalSecurityIPGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.global_ig_name):
+            query['GlobalIgName'] = request.global_ig_name
+        if not UtilClient.is_unset(request.global_security_group_id):
+            query['GlobalSecurityGroupId'] = request.global_security_group_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteGlobalSecurityIPGroup',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DeleteGlobalSecurityIPGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_global_security_ipgroup_with_options_async(
+        self,
+        request: polardb_20170801_models.DeleteGlobalSecurityIPGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DeleteGlobalSecurityIPGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.global_ig_name):
+            query['GlobalIgName'] = request.global_ig_name
+        if not UtilClient.is_unset(request.global_security_group_id):
+            query['GlobalSecurityGroupId'] = request.global_security_group_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteGlobalSecurityIPGroup',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DeleteGlobalSecurityIPGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_global_security_ipgroup(
+        self,
+        request: polardb_20170801_models.DeleteGlobalSecurityIPGroupRequest,
+    ) -> polardb_20170801_models.DeleteGlobalSecurityIPGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_global_security_ipgroup_with_options(request, runtime)
+
+    async def delete_global_security_ipgroup_async(
+        self,
+        request: polardb_20170801_models.DeleteGlobalSecurityIPGroupRequest,
+    ) -> polardb_20170801_models.DeleteGlobalSecurityIPGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_global_security_ipgroup_with_options_async(request, runtime)
 
     def delete_masking_rules_with_options(
         self,
@@ -4553,6 +4785,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbcluster_sslwith_options_async(request, runtime)
 
+    def describe_dbcluster_serverless_conf_with_options(
+        self,
+        request: polardb_20170801_models.DescribeDBClusterServerlessConfRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DescribeDBClusterServerlessConfResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBClusterServerlessConf',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeDBClusterServerlessConfResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dbcluster_serverless_conf_with_options_async(
+        self,
+        request: polardb_20170801_models.DescribeDBClusterServerlessConfRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DescribeDBClusterServerlessConfResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBClusterServerlessConf',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeDBClusterServerlessConfResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dbcluster_serverless_conf(
+        self,
+        request: polardb_20170801_models.DescribeDBClusterServerlessConfRequest,
+    ) -> polardb_20170801_models.DescribeDBClusterServerlessConfResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dbcluster_serverless_conf_with_options(request, runtime)
+
+    async def describe_dbcluster_serverless_conf_async(
+        self,
+        request: polardb_20170801_models.DescribeDBClusterServerlessConfRequest,
+    ) -> polardb_20170801_models.DescribeDBClusterServerlessConfResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dbcluster_serverless_conf_with_options_async(request, runtime)
+
     def describe_dbcluster_tdewith_options(
         self,
         request: polardb_20170801_models.DescribeDBClusterTDERequest,
@@ -4732,6 +5050,8 @@ class Client(OpenApiClient):
     ) -> polardb_20170801_models.DescribeDBClustersResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.connection_string):
+            query['ConnectionString'] = request.connection_string
         if not UtilClient.is_unset(request.dbcluster_description):
             query['DBClusterDescription'] = request.dbcluster_description
         if not UtilClient.is_unset(request.dbcluster_ids):
@@ -4742,6 +5062,8 @@ class Client(OpenApiClient):
             query['DBNodeIds'] = request.dbnode_ids
         if not UtilClient.is_unset(request.dbtype):
             query['DBType'] = request.dbtype
+        if not UtilClient.is_unset(request.dbversion):
+            query['DBVersion'] = request.dbversion
         if not UtilClient.is_unset(request.expired):
             query['Expired'] = request.expired
         if not UtilClient.is_unset(request.owner_account):
@@ -4794,6 +5116,8 @@ class Client(OpenApiClient):
     ) -> polardb_20170801_models.DescribeDBClustersResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.connection_string):
+            query['ConnectionString'] = request.connection_string
         if not UtilClient.is_unset(request.dbcluster_description):
             query['DBClusterDescription'] = request.dbcluster_description
         if not UtilClient.is_unset(request.dbcluster_ids):
@@ -4804,6 +5128,8 @@ class Client(OpenApiClient):
             query['DBNodeIds'] = request.dbnode_ids
         if not UtilClient.is_unset(request.dbtype):
             query['DBType'] = request.dbtype
+        if not UtilClient.is_unset(request.dbversion):
+            query['DBVersion'] = request.dbversion
         if not UtilClient.is_unset(request.expired):
             query['Expired'] = request.expired
         if not UtilClient.is_unset(request.owner_account):
@@ -5834,6 +6160,202 @@ class Client(OpenApiClient):
     ) -> polardb_20170801_models.DescribeGlobalDatabaseNetworksResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_global_database_networks_with_options_async(request, runtime)
+
+    def describe_global_security_ipgroup_with_options(
+        self,
+        request: polardb_20170801_models.DescribeGlobalSecurityIPGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DescribeGlobalSecurityIPGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.global_security_group_id):
+            query['GlobalSecurityGroupId'] = request.global_security_group_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeGlobalSecurityIPGroup',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeGlobalSecurityIPGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_global_security_ipgroup_with_options_async(
+        self,
+        request: polardb_20170801_models.DescribeGlobalSecurityIPGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DescribeGlobalSecurityIPGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.global_security_group_id):
+            query['GlobalSecurityGroupId'] = request.global_security_group_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeGlobalSecurityIPGroup',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeGlobalSecurityIPGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_global_security_ipgroup(
+        self,
+        request: polardb_20170801_models.DescribeGlobalSecurityIPGroupRequest,
+    ) -> polardb_20170801_models.DescribeGlobalSecurityIPGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_global_security_ipgroup_with_options(request, runtime)
+
+    async def describe_global_security_ipgroup_async(
+        self,
+        request: polardb_20170801_models.DescribeGlobalSecurityIPGroupRequest,
+    ) -> polardb_20170801_models.DescribeGlobalSecurityIPGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_global_security_ipgroup_with_options_async(request, runtime)
+
+    def describe_global_security_ipgroup_relation_with_options(
+        self,
+        request: polardb_20170801_models.DescribeGlobalSecurityIPGroupRelationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DescribeGlobalSecurityIPGroupRelationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeGlobalSecurityIPGroupRelation',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeGlobalSecurityIPGroupRelationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_global_security_ipgroup_relation_with_options_async(
+        self,
+        request: polardb_20170801_models.DescribeGlobalSecurityIPGroupRelationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DescribeGlobalSecurityIPGroupRelationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeGlobalSecurityIPGroupRelation',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeGlobalSecurityIPGroupRelationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_global_security_ipgroup_relation(
+        self,
+        request: polardb_20170801_models.DescribeGlobalSecurityIPGroupRelationRequest,
+    ) -> polardb_20170801_models.DescribeGlobalSecurityIPGroupRelationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_global_security_ipgroup_relation_with_options(request, runtime)
+
+    async def describe_global_security_ipgroup_relation_async(
+        self,
+        request: polardb_20170801_models.DescribeGlobalSecurityIPGroupRelationRequest,
+    ) -> polardb_20170801_models.DescribeGlobalSecurityIPGroupRelationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_global_security_ipgroup_relation_with_options_async(request, runtime)
 
     def describe_log_backup_policy_with_options(
         self,
@@ -9537,6 +10059,116 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_dbcluster_sslwith_options_async(request, runtime)
 
+    def modify_dbcluster_serverless_conf_with_options(
+        self,
+        request: polardb_20170801_models.ModifyDBClusterServerlessConfRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.ModifyDBClusterServerlessConfResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.allow_shut_down):
+            query['AllowShutDown'] = request.allow_shut_down
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scale_max):
+            query['ScaleMax'] = request.scale_max
+        if not UtilClient.is_unset(request.scale_min):
+            query['ScaleMin'] = request.scale_min
+        if not UtilClient.is_unset(request.scale_ro_num_max):
+            query['ScaleRoNumMax'] = request.scale_ro_num_max
+        if not UtilClient.is_unset(request.scale_ro_num_min):
+            query['ScaleRoNumMin'] = request.scale_ro_num_min
+        if not UtilClient.is_unset(request.seconds_until_auto_pause):
+            query['SecondsUntilAutoPause'] = request.seconds_until_auto_pause
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBClusterServerlessConf',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.ModifyDBClusterServerlessConfResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_dbcluster_serverless_conf_with_options_async(
+        self,
+        request: polardb_20170801_models.ModifyDBClusterServerlessConfRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.ModifyDBClusterServerlessConfResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.allow_shut_down):
+            query['AllowShutDown'] = request.allow_shut_down
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scale_max):
+            query['ScaleMax'] = request.scale_max
+        if not UtilClient.is_unset(request.scale_min):
+            query['ScaleMin'] = request.scale_min
+        if not UtilClient.is_unset(request.scale_ro_num_max):
+            query['ScaleRoNumMax'] = request.scale_ro_num_max
+        if not UtilClient.is_unset(request.scale_ro_num_min):
+            query['ScaleRoNumMin'] = request.scale_ro_num_min
+        if not UtilClient.is_unset(request.seconds_until_auto_pause):
+            query['SecondsUntilAutoPause'] = request.seconds_until_auto_pause
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBClusterServerlessConf',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.ModifyDBClusterServerlessConfResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_dbcluster_serverless_conf(
+        self,
+        request: polardb_20170801_models.ModifyDBClusterServerlessConfRequest,
+    ) -> polardb_20170801_models.ModifyDBClusterServerlessConfResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_dbcluster_serverless_conf_with_options(request, runtime)
+
+    async def modify_dbcluster_serverless_conf_async(
+        self,
+        request: polardb_20170801_models.ModifyDBClusterServerlessConfRequest,
+    ) -> polardb_20170801_models.ModifyDBClusterServerlessConfResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_dbcluster_serverless_conf_with_options_async(request, runtime)
+
     def modify_dbcluster_tdewith_options(
         self,
         request: polardb_20170801_models.ModifyDBClusterTDERequest,
@@ -10270,6 +10902,316 @@ class Client(OpenApiClient):
     ) -> polardb_20170801_models.ModifyGlobalDatabaseNetworkResponse:
         runtime = util_models.RuntimeOptions()
         return await self.modify_global_database_network_with_options_async(request, runtime)
+
+    def modify_global_security_ipgroup_with_options(
+        self,
+        request: polardb_20170801_models.ModifyGlobalSecurityIPGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.ModifyGlobalSecurityIPGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.gip_list):
+            query['GIpList'] = request.gip_list
+        if not UtilClient.is_unset(request.global_ig_name):
+            query['GlobalIgName'] = request.global_ig_name
+        if not UtilClient.is_unset(request.global_security_group_id):
+            query['GlobalSecurityGroupId'] = request.global_security_group_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyGlobalSecurityIPGroup',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.ModifyGlobalSecurityIPGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_global_security_ipgroup_with_options_async(
+        self,
+        request: polardb_20170801_models.ModifyGlobalSecurityIPGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.ModifyGlobalSecurityIPGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.gip_list):
+            query['GIpList'] = request.gip_list
+        if not UtilClient.is_unset(request.global_ig_name):
+            query['GlobalIgName'] = request.global_ig_name
+        if not UtilClient.is_unset(request.global_security_group_id):
+            query['GlobalSecurityGroupId'] = request.global_security_group_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyGlobalSecurityIPGroup',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.ModifyGlobalSecurityIPGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_global_security_ipgroup(
+        self,
+        request: polardb_20170801_models.ModifyGlobalSecurityIPGroupRequest,
+    ) -> polardb_20170801_models.ModifyGlobalSecurityIPGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_global_security_ipgroup_with_options(request, runtime)
+
+    async def modify_global_security_ipgroup_async(
+        self,
+        request: polardb_20170801_models.ModifyGlobalSecurityIPGroupRequest,
+    ) -> polardb_20170801_models.ModifyGlobalSecurityIPGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_global_security_ipgroup_with_options_async(request, runtime)
+
+    def modify_global_security_ipgroup_name_with_options(
+        self,
+        request: polardb_20170801_models.ModifyGlobalSecurityIPGroupNameRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.ModifyGlobalSecurityIPGroupNameResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.global_ig_name):
+            query['GlobalIgName'] = request.global_ig_name
+        if not UtilClient.is_unset(request.global_security_group_id):
+            query['GlobalSecurityGroupId'] = request.global_security_group_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyGlobalSecurityIPGroupName',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.ModifyGlobalSecurityIPGroupNameResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_global_security_ipgroup_name_with_options_async(
+        self,
+        request: polardb_20170801_models.ModifyGlobalSecurityIPGroupNameRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.ModifyGlobalSecurityIPGroupNameResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.global_ig_name):
+            query['GlobalIgName'] = request.global_ig_name
+        if not UtilClient.is_unset(request.global_security_group_id):
+            query['GlobalSecurityGroupId'] = request.global_security_group_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyGlobalSecurityIPGroupName',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.ModifyGlobalSecurityIPGroupNameResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_global_security_ipgroup_name(
+        self,
+        request: polardb_20170801_models.ModifyGlobalSecurityIPGroupNameRequest,
+    ) -> polardb_20170801_models.ModifyGlobalSecurityIPGroupNameResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_global_security_ipgroup_name_with_options(request, runtime)
+
+    async def modify_global_security_ipgroup_name_async(
+        self,
+        request: polardb_20170801_models.ModifyGlobalSecurityIPGroupNameRequest,
+    ) -> polardb_20170801_models.ModifyGlobalSecurityIPGroupNameResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_global_security_ipgroup_name_with_options_async(request, runtime)
+
+    def modify_global_security_ipgroup_relation_with_options(
+        self,
+        request: polardb_20170801_models.ModifyGlobalSecurityIPGroupRelationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.ModifyGlobalSecurityIPGroupRelationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.global_security_group_id):
+            query['GlobalSecurityGroupId'] = request.global_security_group_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyGlobalSecurityIPGroupRelation',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.ModifyGlobalSecurityIPGroupRelationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_global_security_ipgroup_relation_with_options_async(
+        self,
+        request: polardb_20170801_models.ModifyGlobalSecurityIPGroupRelationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.ModifyGlobalSecurityIPGroupRelationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.global_security_group_id):
+            query['GlobalSecurityGroupId'] = request.global_security_group_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyGlobalSecurityIPGroupRelation',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.ModifyGlobalSecurityIPGroupRelationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_global_security_ipgroup_relation(
+        self,
+        request: polardb_20170801_models.ModifyGlobalSecurityIPGroupRelationRequest,
+    ) -> polardb_20170801_models.ModifyGlobalSecurityIPGroupRelationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_global_security_ipgroup_relation_with_options(request, runtime)
+
+    async def modify_global_security_ipgroup_relation_async(
+        self,
+        request: polardb_20170801_models.ModifyGlobalSecurityIPGroupRelationRequest,
+    ) -> polardb_20170801_models.ModifyGlobalSecurityIPGroupRelationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_global_security_ipgroup_relation_with_options_async(request, runtime)
 
     def modify_log_backup_policy_with_options(
         self,
@@ -11224,6 +12166,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.forced):
+            query['Forced'] = request.forced
         if not UtilClient.is_unset(request.gdnid):
             query['GDNId'] = request.gdnid
         if not UtilClient.is_unset(request.owner_account):
@@ -11268,6 +12212,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.forced):
+            query['Forced'] = request.forced
         if not UtilClient.is_unset(request.gdnid):
             query['GDNId'] = request.gdnid
         if not UtilClient.is_unset(request.owner_account):
