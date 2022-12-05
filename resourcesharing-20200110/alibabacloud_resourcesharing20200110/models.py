@@ -209,10 +209,12 @@ class AssociateResourceShareRequestResources(TeaModel):
 class AssociateResourceShareRequest(TeaModel):
     def __init__(
         self,
+        permission_names: List[str] = None,
         resource_share_id: str = None,
         resources: List[AssociateResourceShareRequestResources] = None,
         targets: List[str] = None,
     ):
+        self.permission_names = permission_names
         self.resource_share_id = resource_share_id
         self.resources = resources
         self.targets = targets
@@ -229,6 +231,8 @@ class AssociateResourceShareRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.permission_names is not None:
+            result['PermissionNames'] = self.permission_names
         if self.resource_share_id is not None:
             result['ResourceShareId'] = self.resource_share_id
         result['Resources'] = []
@@ -241,6 +245,8 @@ class AssociateResourceShareRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('PermissionNames') is not None:
+            self.permission_names = m.get('PermissionNames')
         if m.get('ResourceShareId') is not None:
             self.resource_share_id = m.get('ResourceShareId')
         self.resources = []
@@ -413,6 +419,116 @@ class AssociateResourceShareResponse(TeaModel):
         return self
 
 
+class AssociateResourceSharePermissionRequest(TeaModel):
+    def __init__(
+        self,
+        permission_name: str = None,
+        replace: bool = None,
+        resource_share_id: str = None,
+    ):
+        self.permission_name = permission_name
+        self.replace = replace
+        self.resource_share_id = resource_share_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.permission_name is not None:
+            result['PermissionName'] = self.permission_name
+        if self.replace is not None:
+            result['Replace'] = self.replace
+        if self.resource_share_id is not None:
+            result['ResourceShareId'] = self.resource_share_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PermissionName') is not None:
+            self.permission_name = m.get('PermissionName')
+        if m.get('Replace') is not None:
+            self.replace = m.get('Replace')
+        if m.get('ResourceShareId') is not None:
+            self.resource_share_id = m.get('ResourceShareId')
+        return self
+
+
+class AssociateResourceSharePermissionResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class AssociateResourceSharePermissionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AssociateResourceSharePermissionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AssociateResourceSharePermissionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateResourceShareRequestResources(TeaModel):
     def __init__(
         self,
@@ -450,11 +566,13 @@ class CreateResourceShareRequest(TeaModel):
     def __init__(
         self,
         allow_external_targets: bool = None,
+        permission_names: List[str] = None,
         resource_share_name: str = None,
         resources: List[CreateResourceShareRequestResources] = None,
         targets: List[str] = None,
     ):
         self.allow_external_targets = allow_external_targets
+        self.permission_names = permission_names
         self.resource_share_name = resource_share_name
         self.resources = resources
         self.targets = targets
@@ -473,6 +591,8 @@ class CreateResourceShareRequest(TeaModel):
         result = dict()
         if self.allow_external_targets is not None:
             result['AllowExternalTargets'] = self.allow_external_targets
+        if self.permission_names is not None:
+            result['PermissionNames'] = self.permission_names
         if self.resource_share_name is not None:
             result['ResourceShareName'] = self.resource_share_name
         result['Resources'] = []
@@ -487,6 +607,8 @@ class CreateResourceShareRequest(TeaModel):
         m = m or dict()
         if m.get('AllowExternalTargets') is not None:
             self.allow_external_targets = m.get('AllowExternalTargets')
+        if m.get('PermissionNames') is not None:
+            self.permission_names = m.get('PermissionNames')
         if m.get('ResourceShareName') is not None:
             self.resource_share_name = m.get('ResourceShareName')
         self.resources = []
@@ -1136,6 +1258,110 @@ class DisassociateResourceShareResponse(TeaModel):
         return self
 
 
+class DisassociateResourceSharePermissionRequest(TeaModel):
+    def __init__(
+        self,
+        permission_name: str = None,
+        resource_share_id: str = None,
+    ):
+        self.permission_name = permission_name
+        self.resource_share_id = resource_share_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.permission_name is not None:
+            result['PermissionName'] = self.permission_name
+        if self.resource_share_id is not None:
+            result['ResourceShareId'] = self.resource_share_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PermissionName') is not None:
+            self.permission_name = m.get('PermissionName')
+        if m.get('ResourceShareId') is not None:
+            self.resource_share_id = m.get('ResourceShareId')
+        return self
+
+
+class DisassociateResourceSharePermissionResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DisassociateResourceSharePermissionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DisassociateResourceSharePermissionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DisassociateResourceSharePermissionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class EnableSharingWithResourceDirectoryResponseBody(TeaModel):
     def __init__(
         self,
@@ -1203,6 +1429,573 @@ class EnableSharingWithResourceDirectoryResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = EnableSharingWithResourceDirectoryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetPermissionRequest(TeaModel):
+    def __init__(
+        self,
+        permission_name: str = None,
+        permission_version: str = None,
+    ):
+        self.permission_name = permission_name
+        self.permission_version = permission_version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.permission_name is not None:
+            result['PermissionName'] = self.permission_name
+        if self.permission_version is not None:
+            result['PermissionVersion'] = self.permission_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PermissionName') is not None:
+            self.permission_name = m.get('PermissionName')
+        if m.get('PermissionVersion') is not None:
+            self.permission_version = m.get('PermissionVersion')
+        return self
+
+
+class GetPermissionResponseBodyPermission(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        default_permission: bool = None,
+        default_version: bool = None,
+        permission: str = None,
+        permission_name: str = None,
+        permission_version: str = None,
+        resource_type: str = None,
+        update_time: str = None,
+    ):
+        self.create_time = create_time
+        self.default_permission = default_permission
+        self.default_version = default_version
+        self.permission = permission
+        self.permission_name = permission_name
+        self.permission_version = permission_version
+        self.resource_type = resource_type
+        self.update_time = update_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.default_permission is not None:
+            result['DefaultPermission'] = self.default_permission
+        if self.default_version is not None:
+            result['DefaultVersion'] = self.default_version
+        if self.permission is not None:
+            result['Permission'] = self.permission
+        if self.permission_name is not None:
+            result['PermissionName'] = self.permission_name
+        if self.permission_version is not None:
+            result['PermissionVersion'] = self.permission_version
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('DefaultPermission') is not None:
+            self.default_permission = m.get('DefaultPermission')
+        if m.get('DefaultVersion') is not None:
+            self.default_version = m.get('DefaultVersion')
+        if m.get('Permission') is not None:
+            self.permission = m.get('Permission')
+        if m.get('PermissionName') is not None:
+            self.permission_name = m.get('PermissionName')
+        if m.get('PermissionVersion') is not None:
+            self.permission_version = m.get('PermissionVersion')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
+class GetPermissionResponseBody(TeaModel):
+    def __init__(
+        self,
+        permission: GetPermissionResponseBodyPermission = None,
+        request_id: str = None,
+    ):
+        self.permission = permission
+        self.request_id = request_id
+
+    def validate(self):
+        if self.permission:
+            self.permission.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.permission is not None:
+            result['Permission'] = self.permission.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Permission') is not None:
+            temp_model = GetPermissionResponseBodyPermission()
+            self.permission = temp_model.from_map(m['Permission'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetPermissionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetPermissionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetPermissionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListPermissionVersionsRequest(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        permission_name: str = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        self.permission_name = permission_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.permission_name is not None:
+            result['PermissionName'] = self.permission_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('PermissionName') is not None:
+            self.permission_name = m.get('PermissionName')
+        return self
+
+
+class ListPermissionVersionsResponseBodyPermissions(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        default_permission: bool = None,
+        default_version: bool = None,
+        permission_name: str = None,
+        permission_version: str = None,
+        resource_type: str = None,
+        update_time: str = None,
+    ):
+        self.create_time = create_time
+        self.default_permission = default_permission
+        self.default_version = default_version
+        self.permission_name = permission_name
+        self.permission_version = permission_version
+        self.resource_type = resource_type
+        self.update_time = update_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.default_permission is not None:
+            result['DefaultPermission'] = self.default_permission
+        if self.default_version is not None:
+            result['DefaultVersion'] = self.default_version
+        if self.permission_name is not None:
+            result['PermissionName'] = self.permission_name
+        if self.permission_version is not None:
+            result['PermissionVersion'] = self.permission_version
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('DefaultPermission') is not None:
+            self.default_permission = m.get('DefaultPermission')
+        if m.get('DefaultVersion') is not None:
+            self.default_version = m.get('DefaultVersion')
+        if m.get('PermissionName') is not None:
+            self.permission_name = m.get('PermissionName')
+        if m.get('PermissionVersion') is not None:
+            self.permission_version = m.get('PermissionVersion')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
+class ListPermissionVersionsResponseBody(TeaModel):
+    def __init__(
+        self,
+        next_token: str = None,
+        permissions: List[ListPermissionVersionsResponseBodyPermissions] = None,
+        request_id: str = None,
+    ):
+        self.next_token = next_token
+        self.permissions = permissions
+        self.request_id = request_id
+
+    def validate(self):
+        if self.permissions:
+            for k in self.permissions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        result['Permissions'] = []
+        if self.permissions is not None:
+            for k in self.permissions:
+                result['Permissions'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        self.permissions = []
+        if m.get('Permissions') is not None:
+            for k in m.get('Permissions'):
+                temp_model = ListPermissionVersionsResponseBodyPermissions()
+                self.permissions.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListPermissionVersionsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListPermissionVersionsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListPermissionVersionsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListPermissionsRequest(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        resource_type: str = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        self.resource_type = resource_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        return self
+
+
+class ListPermissionsResponseBodyPermissions(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        default_permission: bool = None,
+        default_version: bool = None,
+        permission_name: str = None,
+        permission_version: str = None,
+        resource_type: str = None,
+        update_time: str = None,
+    ):
+        self.create_time = create_time
+        self.default_permission = default_permission
+        self.default_version = default_version
+        self.permission_name = permission_name
+        self.permission_version = permission_version
+        self.resource_type = resource_type
+        self.update_time = update_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.default_permission is not None:
+            result['DefaultPermission'] = self.default_permission
+        if self.default_version is not None:
+            result['DefaultVersion'] = self.default_version
+        if self.permission_name is not None:
+            result['PermissionName'] = self.permission_name
+        if self.permission_version is not None:
+            result['PermissionVersion'] = self.permission_version
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('DefaultPermission') is not None:
+            self.default_permission = m.get('DefaultPermission')
+        if m.get('DefaultVersion') is not None:
+            self.default_version = m.get('DefaultVersion')
+        if m.get('PermissionName') is not None:
+            self.permission_name = m.get('PermissionName')
+        if m.get('PermissionVersion') is not None:
+            self.permission_version = m.get('PermissionVersion')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
+class ListPermissionsResponseBody(TeaModel):
+    def __init__(
+        self,
+        next_token: str = None,
+        permissions: List[ListPermissionsResponseBodyPermissions] = None,
+        request_id: str = None,
+    ):
+        self.next_token = next_token
+        self.permissions = permissions
+        self.request_id = request_id
+
+    def validate(self):
+        if self.permissions:
+            for k in self.permissions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        result['Permissions'] = []
+        if self.permissions is not None:
+            for k in self.permissions:
+                result['Permissions'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        self.permissions = []
+        if m.get('Permissions') is not None:
+            for k in m.get('Permissions'):
+                temp_model = ListPermissionsResponseBodyPermissions()
+                self.permissions.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListPermissionsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListPermissionsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListPermissionsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -1641,11 +2434,211 @@ class ListResourceShareInvitationsResponse(TeaModel):
         return self
 
 
+class ListResourceSharePermissionsRequest(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        resource_owner: str = None,
+        resource_share_id: str = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        self.resource_owner = resource_owner
+        self.resource_share_id = resource_share_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.resource_owner is not None:
+            result['ResourceOwner'] = self.resource_owner
+        if self.resource_share_id is not None:
+            result['ResourceShareId'] = self.resource_share_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('ResourceOwner') is not None:
+            self.resource_owner = m.get('ResourceOwner')
+        if m.get('ResourceShareId') is not None:
+            self.resource_share_id = m.get('ResourceShareId')
+        return self
+
+
+class ListResourceSharePermissionsResponseBodyPermissions(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        default_permission: bool = None,
+        default_version: bool = None,
+        permission_name: str = None,
+        permission_version: str = None,
+        resource_type: str = None,
+        update_time: str = None,
+    ):
+        self.create_time = create_time
+        self.default_permission = default_permission
+        self.default_version = default_version
+        self.permission_name = permission_name
+        self.permission_version = permission_version
+        self.resource_type = resource_type
+        self.update_time = update_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.default_permission is not None:
+            result['DefaultPermission'] = self.default_permission
+        if self.default_version is not None:
+            result['DefaultVersion'] = self.default_version
+        if self.permission_name is not None:
+            result['PermissionName'] = self.permission_name
+        if self.permission_version is not None:
+            result['PermissionVersion'] = self.permission_version
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('DefaultPermission') is not None:
+            self.default_permission = m.get('DefaultPermission')
+        if m.get('DefaultVersion') is not None:
+            self.default_version = m.get('DefaultVersion')
+        if m.get('PermissionName') is not None:
+            self.permission_name = m.get('PermissionName')
+        if m.get('PermissionVersion') is not None:
+            self.permission_version = m.get('PermissionVersion')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
+class ListResourceSharePermissionsResponseBody(TeaModel):
+    def __init__(
+        self,
+        next_token: str = None,
+        permissions: List[ListResourceSharePermissionsResponseBodyPermissions] = None,
+        request_id: str = None,
+    ):
+        self.next_token = next_token
+        self.permissions = permissions
+        self.request_id = request_id
+
+    def validate(self):
+        if self.permissions:
+            for k in self.permissions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        result['Permissions'] = []
+        if self.permissions is not None:
+            for k in self.permissions:
+                result['Permissions'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        self.permissions = []
+        if m.get('Permissions') is not None:
+            for k in m.get('Permissions'):
+                temp_model = ListResourceSharePermissionsResponseBodyPermissions()
+                self.permissions.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListResourceSharePermissionsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListResourceSharePermissionsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListResourceSharePermissionsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListResourceSharesRequest(TeaModel):
     def __init__(
         self,
         max_results: int = None,
         next_token: str = None,
+        permission_name: str = None,
         resource_owner: str = None,
         resource_share_ids: List[str] = None,
         resource_share_name: str = None,
@@ -1653,6 +2646,7 @@ class ListResourceSharesRequest(TeaModel):
     ):
         self.max_results = max_results
         self.next_token = next_token
+        self.permission_name = permission_name
         self.resource_owner = resource_owner
         self.resource_share_ids = resource_share_ids
         self.resource_share_name = resource_share_name
@@ -1671,6 +2665,8 @@ class ListResourceSharesRequest(TeaModel):
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
             result['NextToken'] = self.next_token
+        if self.permission_name is not None:
+            result['PermissionName'] = self.permission_name
         if self.resource_owner is not None:
             result['ResourceOwner'] = self.resource_owner
         if self.resource_share_ids is not None:
@@ -1687,6 +2683,8 @@ class ListResourceSharesRequest(TeaModel):
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
+        if m.get('PermissionName') is not None:
+            self.permission_name = m.get('PermissionName')
         if m.get('ResourceOwner') is not None:
             self.resource_owner = m.get('ResourceOwner')
         if m.get('ResourceShareIds') is not None:

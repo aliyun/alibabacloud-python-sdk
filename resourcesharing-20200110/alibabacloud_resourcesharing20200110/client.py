@@ -118,6 +118,8 @@ class Client(OpenApiClient):
     ) -> resource_sharing_20200110_models.AssociateResourceShareResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.permission_names):
+            query['PermissionNames'] = request.permission_names
         if not UtilClient.is_unset(request.resource_share_id):
             query['ResourceShareId'] = request.resource_share_id
         if not UtilClient.is_unset(request.resources):
@@ -150,6 +152,8 @@ class Client(OpenApiClient):
     ) -> resource_sharing_20200110_models.AssociateResourceShareResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.permission_names):
+            query['PermissionNames'] = request.permission_names
         if not UtilClient.is_unset(request.resource_share_id):
             query['ResourceShareId'] = request.resource_share_id
         if not UtilClient.is_unset(request.resources):
@@ -189,6 +193,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.associate_resource_share_with_options_async(request, runtime)
 
+    def associate_resource_share_permission_with_options(
+        self,
+        request: resource_sharing_20200110_models.AssociateResourceSharePermissionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_sharing_20200110_models.AssociateResourceSharePermissionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.permission_name):
+            query['PermissionName'] = request.permission_name
+        if not UtilClient.is_unset(request.replace):
+            query['Replace'] = request.replace
+        if not UtilClient.is_unset(request.resource_share_id):
+            query['ResourceShareId'] = request.resource_share_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AssociateResourceSharePermission',
+            version='2020-01-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_sharing_20200110_models.AssociateResourceSharePermissionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def associate_resource_share_permission_with_options_async(
+        self,
+        request: resource_sharing_20200110_models.AssociateResourceSharePermissionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_sharing_20200110_models.AssociateResourceSharePermissionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.permission_name):
+            query['PermissionName'] = request.permission_name
+        if not UtilClient.is_unset(request.replace):
+            query['Replace'] = request.replace
+        if not UtilClient.is_unset(request.resource_share_id):
+            query['ResourceShareId'] = request.resource_share_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AssociateResourceSharePermission',
+            version='2020-01-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_sharing_20200110_models.AssociateResourceSharePermissionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def associate_resource_share_permission(
+        self,
+        request: resource_sharing_20200110_models.AssociateResourceSharePermissionRequest,
+    ) -> resource_sharing_20200110_models.AssociateResourceSharePermissionResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.associate_resource_share_permission_with_options(request, runtime)
+
+    async def associate_resource_share_permission_async(
+        self,
+        request: resource_sharing_20200110_models.AssociateResourceSharePermissionRequest,
+    ) -> resource_sharing_20200110_models.AssociateResourceSharePermissionResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.associate_resource_share_permission_with_options_async(request, runtime)
+
     def create_resource_share_with_options(
         self,
         request: resource_sharing_20200110_models.CreateResourceShareRequest,
@@ -198,6 +280,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.allow_external_targets):
             query['AllowExternalTargets'] = request.allow_external_targets
+        if not UtilClient.is_unset(request.permission_names):
+            query['PermissionNames'] = request.permission_names
         if not UtilClient.is_unset(request.resource_share_name):
             query['ResourceShareName'] = request.resource_share_name
         if not UtilClient.is_unset(request.resources):
@@ -232,6 +316,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.allow_external_targets):
             query['AllowExternalTargets'] = request.allow_external_targets
+        if not UtilClient.is_unset(request.permission_names):
+            query['PermissionNames'] = request.permission_names
         if not UtilClient.is_unset(request.resource_share_name):
             query['ResourceShareName'] = request.resource_share_name
         if not UtilClient.is_unset(request.resources):
@@ -493,6 +579,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.disassociate_resource_share_with_options_async(request, runtime)
 
+    def disassociate_resource_share_permission_with_options(
+        self,
+        request: resource_sharing_20200110_models.DisassociateResourceSharePermissionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_sharing_20200110_models.DisassociateResourceSharePermissionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.permission_name):
+            query['PermissionName'] = request.permission_name
+        if not UtilClient.is_unset(request.resource_share_id):
+            query['ResourceShareId'] = request.resource_share_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisassociateResourceSharePermission',
+            version='2020-01-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_sharing_20200110_models.DisassociateResourceSharePermissionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def disassociate_resource_share_permission_with_options_async(
+        self,
+        request: resource_sharing_20200110_models.DisassociateResourceSharePermissionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_sharing_20200110_models.DisassociateResourceSharePermissionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.permission_name):
+            query['PermissionName'] = request.permission_name
+        if not UtilClient.is_unset(request.resource_share_id):
+            query['ResourceShareId'] = request.resource_share_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisassociateResourceSharePermission',
+            version='2020-01-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_sharing_20200110_models.DisassociateResourceSharePermissionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def disassociate_resource_share_permission(
+        self,
+        request: resource_sharing_20200110_models.DisassociateResourceSharePermissionRequest,
+    ) -> resource_sharing_20200110_models.DisassociateResourceSharePermissionResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.disassociate_resource_share_permission_with_options(request, runtime)
+
+    async def disassociate_resource_share_permission_async(
+        self,
+        request: resource_sharing_20200110_models.DisassociateResourceSharePermissionRequest,
+    ) -> resource_sharing_20200110_models.DisassociateResourceSharePermissionResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.disassociate_resource_share_permission_with_options_async(request, runtime)
+
     def enable_sharing_with_resource_directory_with_options(
         self,
         runtime: util_models.RuntimeOptions,
@@ -542,6 +702,236 @@ class Client(OpenApiClient):
     async def enable_sharing_with_resource_directory_async(self) -> resource_sharing_20200110_models.EnableSharingWithResourceDirectoryResponse:
         runtime = util_models.RuntimeOptions()
         return await self.enable_sharing_with_resource_directory_with_options_async(runtime)
+
+    def get_permission_with_options(
+        self,
+        request: resource_sharing_20200110_models.GetPermissionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_sharing_20200110_models.GetPermissionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.permission_name):
+            query['PermissionName'] = request.permission_name
+        if not UtilClient.is_unset(request.permission_version):
+            query['PermissionVersion'] = request.permission_version
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetPermission',
+            version='2020-01-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_sharing_20200110_models.GetPermissionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_permission_with_options_async(
+        self,
+        request: resource_sharing_20200110_models.GetPermissionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_sharing_20200110_models.GetPermissionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.permission_name):
+            query['PermissionName'] = request.permission_name
+        if not UtilClient.is_unset(request.permission_version):
+            query['PermissionVersion'] = request.permission_version
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetPermission',
+            version='2020-01-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_sharing_20200110_models.GetPermissionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_permission(
+        self,
+        request: resource_sharing_20200110_models.GetPermissionRequest,
+    ) -> resource_sharing_20200110_models.GetPermissionResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_permission_with_options(request, runtime)
+
+    async def get_permission_async(
+        self,
+        request: resource_sharing_20200110_models.GetPermissionRequest,
+    ) -> resource_sharing_20200110_models.GetPermissionResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_permission_with_options_async(request, runtime)
+
+    def list_permission_versions_with_options(
+        self,
+        request: resource_sharing_20200110_models.ListPermissionVersionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_sharing_20200110_models.ListPermissionVersionsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.permission_name):
+            query['PermissionName'] = request.permission_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPermissionVersions',
+            version='2020-01-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_sharing_20200110_models.ListPermissionVersionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_permission_versions_with_options_async(
+        self,
+        request: resource_sharing_20200110_models.ListPermissionVersionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_sharing_20200110_models.ListPermissionVersionsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.permission_name):
+            query['PermissionName'] = request.permission_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPermissionVersions',
+            version='2020-01-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_sharing_20200110_models.ListPermissionVersionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_permission_versions(
+        self,
+        request: resource_sharing_20200110_models.ListPermissionVersionsRequest,
+    ) -> resource_sharing_20200110_models.ListPermissionVersionsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_permission_versions_with_options(request, runtime)
+
+    async def list_permission_versions_async(
+        self,
+        request: resource_sharing_20200110_models.ListPermissionVersionsRequest,
+    ) -> resource_sharing_20200110_models.ListPermissionVersionsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_permission_versions_with_options_async(request, runtime)
+
+    def list_permissions_with_options(
+        self,
+        request: resource_sharing_20200110_models.ListPermissionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_sharing_20200110_models.ListPermissionsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPermissions',
+            version='2020-01-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_sharing_20200110_models.ListPermissionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_permissions_with_options_async(
+        self,
+        request: resource_sharing_20200110_models.ListPermissionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_sharing_20200110_models.ListPermissionsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPermissions',
+            version='2020-01-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_sharing_20200110_models.ListPermissionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_permissions(
+        self,
+        request: resource_sharing_20200110_models.ListPermissionsRequest,
+    ) -> resource_sharing_20200110_models.ListPermissionsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_permissions_with_options(request, runtime)
+
+    async def list_permissions_async(
+        self,
+        request: resource_sharing_20200110_models.ListPermissionsRequest,
+    ) -> resource_sharing_20200110_models.ListPermissionsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_permissions_with_options_async(request, runtime)
 
     def list_resource_share_associations_with_options(
         self,
@@ -719,6 +1109,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_resource_share_invitations_with_options_async(request, runtime)
 
+    def list_resource_share_permissions_with_options(
+        self,
+        request: resource_sharing_20200110_models.ListResourceSharePermissionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_sharing_20200110_models.ListResourceSharePermissionsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_owner):
+            query['ResourceOwner'] = request.resource_owner
+        if not UtilClient.is_unset(request.resource_share_id):
+            query['ResourceShareId'] = request.resource_share_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListResourceSharePermissions',
+            version='2020-01-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_sharing_20200110_models.ListResourceSharePermissionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_resource_share_permissions_with_options_async(
+        self,
+        request: resource_sharing_20200110_models.ListResourceSharePermissionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_sharing_20200110_models.ListResourceSharePermissionsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_owner):
+            query['ResourceOwner'] = request.resource_owner
+        if not UtilClient.is_unset(request.resource_share_id):
+            query['ResourceShareId'] = request.resource_share_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListResourceSharePermissions',
+            version='2020-01-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_sharing_20200110_models.ListResourceSharePermissionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_resource_share_permissions(
+        self,
+        request: resource_sharing_20200110_models.ListResourceSharePermissionsRequest,
+    ) -> resource_sharing_20200110_models.ListResourceSharePermissionsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_resource_share_permissions_with_options(request, runtime)
+
+    async def list_resource_share_permissions_async(
+        self,
+        request: resource_sharing_20200110_models.ListResourceSharePermissionsRequest,
+    ) -> resource_sharing_20200110_models.ListResourceSharePermissionsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_resource_share_permissions_with_options_async(request, runtime)
+
     def list_resource_shares_with_options(
         self,
         request: resource_sharing_20200110_models.ListResourceSharesRequest,
@@ -730,6 +1202,8 @@ class Client(OpenApiClient):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
             query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.permission_name):
+            query['PermissionName'] = request.permission_name
         if not UtilClient.is_unset(request.resource_owner):
             query['ResourceOwner'] = request.resource_owner
         if not UtilClient.is_unset(request.resource_share_ids):
@@ -768,6 +1242,8 @@ class Client(OpenApiClient):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
             query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.permission_name):
+            query['PermissionName'] = request.permission_name
         if not UtilClient.is_unset(request.resource_owner):
             query['ResourceOwner'] = request.resource_owner
         if not UtilClient.is_unset(request.resource_share_ids):
