@@ -32179,7 +32179,7 @@ class QueryRequestLogsResponseBodyRequestLogsRequestLog(TeaModel):
         self,
         api_id: str = None,
         api_name: str = None,
-        client_ip: int = None,
+        client_ip: str = None,
         client_nonce: str = None,
         consumer_app_id: str = None,
         consumer_app_key: str = None,
