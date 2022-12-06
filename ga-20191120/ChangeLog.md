@@ -1,3 +1,6 @@
+2022-12-06 Version: 1.0.16
+- Tags for endpoint groups.
+
 2022-11-15 Version: 1.0.15
 - Update ReplaceBandwidthPackage Api.
 
