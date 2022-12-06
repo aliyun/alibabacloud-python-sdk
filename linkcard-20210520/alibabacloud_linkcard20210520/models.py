@@ -4,6 +4,414 @@ from Tea.model import TeaModel
 from typing import List, Dict
 
 
+class AddCardToDirectionalGroupRequest(TeaModel):
+    def __init__(
+        self,
+        add_type: str = None,
+        api_product: str = None,
+        group_id: str = None,
+        iccid_list: List[str] = None,
+        msg_notify: bool = None,
+        serial_no: str = None,
+    ):
+        self.add_type = add_type
+        self.api_product = api_product
+        self.group_id = group_id
+        self.iccid_list = iccid_list
+        self.msg_notify = msg_notify
+        self.serial_no = serial_no
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.add_type is not None:
+            result['AddType'] = self.add_type
+        if self.api_product is not None:
+            result['ApiProduct'] = self.api_product
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.iccid_list is not None:
+            result['IccidList'] = self.iccid_list
+        if self.msg_notify is not None:
+            result['MsgNotify'] = self.msg_notify
+        if self.serial_no is not None:
+            result['SerialNo'] = self.serial_no
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AddType') is not None:
+            self.add_type = m.get('AddType')
+        if m.get('ApiProduct') is not None:
+            self.api_product = m.get('ApiProduct')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('IccidList') is not None:
+            self.iccid_list = m.get('IccidList')
+        if m.get('MsgNotify') is not None:
+            self.msg_notify = m.get('MsgNotify')
+        if m.get('SerialNo') is not None:
+            self.serial_no = m.get('SerialNo')
+        return self
+
+
+class AddCardToDirectionalGroupShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        add_type: str = None,
+        api_product: str = None,
+        group_id: str = None,
+        iccid_list_shrink: str = None,
+        msg_notify: bool = None,
+        serial_no: str = None,
+    ):
+        self.add_type = add_type
+        self.api_product = api_product
+        self.group_id = group_id
+        self.iccid_list_shrink = iccid_list_shrink
+        self.msg_notify = msg_notify
+        self.serial_no = serial_no
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.add_type is not None:
+            result['AddType'] = self.add_type
+        if self.api_product is not None:
+            result['ApiProduct'] = self.api_product
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.iccid_list_shrink is not None:
+            result['IccidList'] = self.iccid_list_shrink
+        if self.msg_notify is not None:
+            result['MsgNotify'] = self.msg_notify
+        if self.serial_no is not None:
+            result['SerialNo'] = self.serial_no
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AddType') is not None:
+            self.add_type = m.get('AddType')
+        if m.get('ApiProduct') is not None:
+            self.api_product = m.get('ApiProduct')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('IccidList') is not None:
+            self.iccid_list_shrink = m.get('IccidList')
+        if m.get('MsgNotify') is not None:
+            self.msg_notify = m.get('MsgNotify')
+        if m.get('SerialNo') is not None:
+            self.serial_no = m.get('SerialNo')
+        return self
+
+
+class AddCardToDirectionalGroupResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        result: bool = None,
+        serial_no: str = None,
+    ):
+        self.result = result
+        self.serial_no = serial_no
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.result is not None:
+            result['Result'] = self.result
+        if self.serial_no is not None:
+            result['SerialNo'] = self.serial_no
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        if m.get('SerialNo') is not None:
+            self.serial_no = m.get('SerialNo')
+        return self
+
+
+class AddCardToDirectionalGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: AddCardToDirectionalGroupResponseBodyData = None,
+        error_message: str = None,
+        localized_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.error_message = error_message
+        self.localized_message = localized_message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.localized_message is not None:
+            result['LocalizedMessage'] = self.localized_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = AddCardToDirectionalGroupResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('LocalizedMessage') is not None:
+            self.localized_message = m.get('LocalizedMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class AddCardToDirectionalGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AddCardToDirectionalGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AddCardToDirectionalGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class AddDirectionalAddressRequest(TeaModel):
+    def __init__(
+        self,
+        address: str = None,
+        address_type: str = None,
+        group_id: str = None,
+        msg_notify: bool = None,
+        serial_no: str = None,
+        source: str = None,
+    ):
+        self.address = address
+        self.address_type = address_type
+        self.group_id = group_id
+        self.msg_notify = msg_notify
+        self.serial_no = serial_no
+        self.source = source
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address is not None:
+            result['Address'] = self.address
+        if self.address_type is not None:
+            result['AddressType'] = self.address_type
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.msg_notify is not None:
+            result['MsgNotify'] = self.msg_notify
+        if self.serial_no is not None:
+            result['SerialNo'] = self.serial_no
+        if self.source is not None:
+            result['Source'] = self.source
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Address') is not None:
+            self.address = m.get('Address')
+        if m.get('AddressType') is not None:
+            self.address_type = m.get('AddressType')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('MsgNotify') is not None:
+            self.msg_notify = m.get('MsgNotify')
+        if m.get('SerialNo') is not None:
+            self.serial_no = m.get('SerialNo')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        return self
+
+
+class AddDirectionalAddressResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: bool = None,
+        error_message: str = None,
+        localized_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.error_message = error_message
+        self.localized_message = localized_message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.localized_message is not None:
+            result['LocalizedMessage'] = self.localized_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('LocalizedMessage') is not None:
+            self.localized_message = m.get('LocalizedMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class AddDirectionalAddressResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AddDirectionalAddressResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AddDirectionalAddressResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class AddDirectionalCardRequest(TeaModel):
     def __init__(
         self,
@@ -501,6 +909,280 @@ class BatchAddDirectionalAddressResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = BatchAddDirectionalAddressResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteDirectionalAddressRequest(TeaModel):
+    def __init__(
+        self,
+        address: str = None,
+        group_id: str = None,
+        msg_notify: bool = None,
+        serial_no: str = None,
+    ):
+        self.address = address
+        self.group_id = group_id
+        self.msg_notify = msg_notify
+        self.serial_no = serial_no
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address is not None:
+            result['Address'] = self.address
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.msg_notify is not None:
+            result['MsgNotify'] = self.msg_notify
+        if self.serial_no is not None:
+            result['SerialNo'] = self.serial_no
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Address') is not None:
+            self.address = m.get('Address')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('MsgNotify') is not None:
+            self.msg_notify = m.get('MsgNotify')
+        if m.get('SerialNo') is not None:
+            self.serial_no = m.get('SerialNo')
+        return self
+
+
+class DeleteDirectionalAddressResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: bool = None,
+        error_message: str = None,
+        localized_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.error_message = error_message
+        self.localized_message = localized_message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.localized_message is not None:
+            result['LocalizedMessage'] = self.localized_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('LocalizedMessage') is not None:
+            self.localized_message = m.get('LocalizedMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteDirectionalAddressResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteDirectionalAddressResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteDirectionalAddressResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteDirectionalGroupRequest(TeaModel):
+    def __init__(
+        self,
+        group_id: str = None,
+    ):
+        self.group_id = group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        return self
+
+
+class DeleteDirectionalGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: bool = None,
+        error_message: str = None,
+        localized_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.error_message = error_message
+        self.localized_message = localized_message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.localized_message is not None:
+            result['LocalizedMessage'] = self.localized_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('LocalizedMessage') is not None:
+            self.localized_message = m.get('LocalizedMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteDirectionalGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteDirectionalGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteDirectionalGroupResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
