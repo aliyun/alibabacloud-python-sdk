@@ -1,3 +1,6 @@
+2022-12-07 Version: 2.0.10
+- Update Endpoint .
+
 2022-11-18 Version: 2.0.9
 - Add GetQuotaTip api.
 
