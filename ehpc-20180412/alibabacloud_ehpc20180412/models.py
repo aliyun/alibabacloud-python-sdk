@@ -3571,12 +3571,14 @@ class CreateHybridClusterResponse(TeaModel):
 class CreateJobFileRequest(TeaModel):
     def __init__(
         self,
+        async_: bool = None,
         cluster_id: str = None,
         content: str = None,
         runas_user: str = None,
         runas_user_password: str = None,
         target_file: str = None,
     ):
+        self.async_ = async_
         self.cluster_id = cluster_id
         self.content = content
         self.runas_user = runas_user
@@ -3592,6 +3594,8 @@ class CreateJobFileRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.async_ is not None:
+            result['Async'] = self.async_
         if self.cluster_id is not None:
             result['ClusterId'] = self.cluster_id
         if self.content is not None:
@@ -3606,6 +3610,8 @@ class CreateJobFileRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Async') is not None:
+            self.async_ = m.get('Async')
         if m.get('ClusterId') is not None:
             self.cluster_id = m.get('ClusterId')
         if m.get('Content') is not None:
@@ -4564,9 +4570,11 @@ class DeleteJobTemplatesResponse(TeaModel):
 class DeleteJobsRequest(TeaModel):
     def __init__(
         self,
+        async_: bool = None,
         cluster_id: str = None,
         jobs: str = None,
     ):
+        self.async_ = async_
         self.cluster_id = cluster_id
         self.jobs = jobs
 
@@ -4579,6 +4587,8 @@ class DeleteJobsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.async_ is not None:
+            result['Async'] = self.async_
         if self.cluster_id is not None:
             result['ClusterId'] = self.cluster_id
         if self.jobs is not None:
@@ -4587,6 +4597,8 @@ class DeleteJobsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Async') is not None:
+            self.async_ = m.get('Async')
         if m.get('ClusterId') is not None:
             self.cluster_id = m.get('ClusterId')
         if m.get('Jobs') is not None:
@@ -23353,9 +23365,11 @@ class RecoverClusterResponse(TeaModel):
 class RerunJobsRequest(TeaModel):
     def __init__(
         self,
+        async_: bool = None,
         cluster_id: str = None,
         jobs: str = None,
     ):
+        self.async_ = async_
         self.cluster_id = cluster_id
         self.jobs = jobs
 
@@ -23368,6 +23382,8 @@ class RerunJobsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.async_ is not None:
+            result['Async'] = self.async_
         if self.cluster_id is not None:
             result['ClusterId'] = self.cluster_id
         if self.jobs is not None:
@@ -23376,6 +23392,8 @@ class RerunJobsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Async') is not None:
+            self.async_ = m.get('Async')
         if m.get('ClusterId') is not None:
             self.cluster_id = m.get('ClusterId')
         if m.get('Jobs') is not None:
@@ -25867,9 +25885,11 @@ class StopGWSInstanceResponse(TeaModel):
 class StopJobsRequest(TeaModel):
     def __init__(
         self,
+        async_: bool = None,
         cluster_id: str = None,
         jobs: str = None,
     ):
+        self.async_ = async_
         self.cluster_id = cluster_id
         self.jobs = jobs
 
@@ -25882,6 +25902,8 @@ class StopJobsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.async_ is not None:
+            result['Async'] = self.async_
         if self.cluster_id is not None:
             result['ClusterId'] = self.cluster_id
         if self.jobs is not None:
@@ -25890,6 +25912,8 @@ class StopJobsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Async') is not None:
+            self.async_ = m.get('Async')
         if m.get('ClusterId') is not None:
             self.cluster_id = m.get('ClusterId')
         if m.get('Jobs') is not None:
@@ -26239,10 +26263,12 @@ class SubmitJobRequest(TeaModel):
     def __init__(
         self,
         array_request: str = None,
+        async_: bool = None,
         clock_time: str = None,
         cluster_id: str = None,
         command_line: str = None,
         container_id: str = None,
+        cpu: int = None,
         gpu: int = None,
         input_file_url: str = None,
         job_queue: str = None,
@@ -26263,10 +26289,12 @@ class SubmitJobRequest(TeaModel):
         variables: str = None,
     ):
         self.array_request = array_request
+        self.async_ = async_
         self.clock_time = clock_time
         self.cluster_id = cluster_id
         self.command_line = command_line
         self.container_id = container_id
+        self.cpu = cpu
         self.gpu = gpu
         self.input_file_url = input_file_url
         self.job_queue = job_queue
@@ -26297,6 +26325,8 @@ class SubmitJobRequest(TeaModel):
         result = dict()
         if self.array_request is not None:
             result['ArrayRequest'] = self.array_request
+        if self.async_ is not None:
+            result['Async'] = self.async_
         if self.clock_time is not None:
             result['ClockTime'] = self.clock_time
         if self.cluster_id is not None:
@@ -26305,6 +26335,8 @@ class SubmitJobRequest(TeaModel):
             result['CommandLine'] = self.command_line
         if self.container_id is not None:
             result['ContainerId'] = self.container_id
+        if self.cpu is not None:
+            result['Cpu'] = self.cpu
         if self.gpu is not None:
             result['Gpu'] = self.gpu
         if self.input_file_url is not None:
@@ -26347,6 +26379,8 @@ class SubmitJobRequest(TeaModel):
         m = m or dict()
         if m.get('ArrayRequest') is not None:
             self.array_request = m.get('ArrayRequest')
+        if m.get('Async') is not None:
+            self.async_ = m.get('Async')
         if m.get('ClockTime') is not None:
             self.clock_time = m.get('ClockTime')
         if m.get('ClusterId') is not None:
@@ -26355,6 +26389,8 @@ class SubmitJobRequest(TeaModel):
             self.command_line = m.get('CommandLine')
         if m.get('ContainerId') is not None:
             self.container_id = m.get('ContainerId')
+        if m.get('Cpu') is not None:
+            self.cpu = m.get('Cpu')
         if m.get('Gpu') is not None:
             self.gpu = m.get('Gpu')
         if m.get('InputFileUrl') is not None:

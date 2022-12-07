@@ -1,3 +1,6 @@
+2022-12-07 Version: 1.14.20
+- Support async parameter in Job APIs.
+
 2022-11-21 Version: 1.14.19
 - RunasUserPassword is not required in CreateJobFile.
 - RunasUserPassword not required in SubmitJob.
