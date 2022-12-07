@@ -1,3 +1,6 @@
+2022-12-07 Version: 1.0.32
+- estimated price filed mod
+
 2022-12-02 Version: 1.0.31
 - TrainOrderQuery Add Field.
 
