@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Any, Dict, List, BinaryIO
+from typing import Dict, Any, List, BinaryIO
 
 
 class GetDocStructureResultRequest(TeaModel):
@@ -36,7 +36,7 @@ class GetDocStructureResultResponseBody(TeaModel):
         self,
         code: str = None,
         completed: bool = None,
-        data: Any = None,
+        data: Dict[str, Any] = None,
         message: str = None,
         request_id: str = None,
         status: str = None,
@@ -473,7 +473,7 @@ class GetDocumentExtractResultResponseBody(TeaModel):
         self,
         code: str = None,
         completed: bool = None,
-        data: Any = None,
+        data: Dict[str, Any] = None,
         message: str = None,
         request_id: str = None,
         status: str = None,
@@ -601,7 +601,7 @@ class GetTableUnderstandingResultResponseBody(TeaModel):
         self,
         code: str = None,
         completed: bool = None,
-        data: Any = None,
+        data: Dict[str, Any] = None,
         message: str = None,
         request_id: str = None,
         status: str = None,
