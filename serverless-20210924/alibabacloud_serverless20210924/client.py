@@ -41,6 +41,72 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def cancel_task(
+        self,
+        name: str,
+    ) -> serverless_20210924_models.CancelTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.cancel_task_with_options(name, headers, runtime)
+
+    async def cancel_task_async(
+        self,
+        name: str,
+    ) -> serverless_20210924_models.CancelTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.cancel_task_with_options_async(name, headers, runtime)
+
+    def cancel_task_with_options(
+        self,
+        name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> serverless_20210924_models.CancelTaskResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='CancelTask',
+            version='2021-09-24',
+            protocol='HTTPS',
+            pathname=f'/apis/serverlessdeployment/v1/tasks/{OpenApiUtilClient.get_encode_param(name)}/cancel',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            serverless_20210924_models.CancelTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cancel_task_with_options_async(
+        self,
+        name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> serverless_20210924_models.CancelTaskResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='CancelTask',
+            version='2021-09-24',
+            protocol='HTTPS',
+            pathname=f'/apis/serverlessdeployment/v1/tasks/{OpenApiUtilClient.get_encode_param(name)}/cancel',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            serverless_20210924_models.CancelTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
     def create_application(
         self,
         request: serverless_20210924_models.CreateApplicationRequest,
