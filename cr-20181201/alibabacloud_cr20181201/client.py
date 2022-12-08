@@ -193,6 +193,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.cancel_repo_build_record_with_options_async(request, runtime)
 
+    def change_resource_group_with_options(
+        self,
+        request: cr_20181201_models.ChangeResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20181201_models.ChangeResourceGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_region_id):
+            query['ResourceRegionId'] = request.resource_region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ChangeResourceGroup',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cr_20181201_models.ChangeResourceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def change_resource_group_with_options_async(
+        self,
+        request: cr_20181201_models.ChangeResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cr_20181201_models.ChangeResourceGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_region_id):
+            query['ResourceRegionId'] = request.resource_region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ChangeResourceGroup',
+            version='2018-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cr_20181201_models.ChangeResourceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def change_resource_group(
+        self,
+        request: cr_20181201_models.ChangeResourceGroupRequest,
+    ) -> cr_20181201_models.ChangeResourceGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.change_resource_group_with_options(request, runtime)
+
+    async def change_resource_group_async(
+        self,
+        request: cr_20181201_models.ChangeResourceGroupRequest,
+    ) -> cr_20181201_models.ChangeResourceGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.change_resource_group_with_options_async(request, runtime)
+
     def create_build_record_by_rule_with_options(
         self,
         request: cr_20181201_models.CreateBuildRecordByRuleRequest,
@@ -290,6 +368,8 @@ class Client(OpenApiClient):
             query['RepoName'] = request.repo_name
         if not UtilClient.is_unset(request.repo_namespace_name):
             query['RepoNamespaceName'] = request.repo_namespace_name
+        if not UtilClient.is_unset(request.scope_exclude):
+            query['ScopeExclude'] = request.scope_exclude
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -328,6 +408,8 @@ class Client(OpenApiClient):
             query['RepoName'] = request.repo_name
         if not UtilClient.is_unset(request.repo_namespace_name):
             query['RepoNamespaceName'] = request.repo_namespace_name
+        if not UtilClient.is_unset(request.scope_exclude):
+            query['ScopeExclude'] = request.scope_exclude
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -376,8 +458,6 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.namespace_name):
             query['NamespaceName'] = request.namespace_name
-        if not UtilClient.is_unset(request.resource_group_id):
-            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -412,8 +492,6 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.namespace_name):
             query['NamespaceName'] = request.namespace_name
-        if not UtilClient.is_unset(request.resource_group_id):
-            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -720,8 +798,6 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.namespace_name):
             query['NamespaceName'] = request.namespace_name
-        if not UtilClient.is_unset(request.resource_group_id):
-            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -756,8 +832,6 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.namespace_name):
             query['NamespaceName'] = request.namespace_name
-        if not UtilClient.is_unset(request.resource_group_id):
-            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1572,8 +1646,6 @@ class Client(OpenApiClient):
             query['RepoNamespaceName'] = request.repo_namespace_name
         if not UtilClient.is_unset(request.repo_type):
             query['RepoType'] = request.repo_type
-        if not UtilClient.is_unset(request.resource_group_id):
-            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.summary):
             query['Summary'] = request.summary
         if not UtilClient.is_unset(request.tag_immutability):
@@ -1614,8 +1686,6 @@ class Client(OpenApiClient):
             query['RepoNamespaceName'] = request.repo_namespace_name
         if not UtilClient.is_unset(request.repo_type):
             query['RepoType'] = request.repo_type
-        if not UtilClient.is_unset(request.resource_group_id):
-            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.summary):
             query['Summary'] = request.summary
         if not UtilClient.is_unset(request.tag_immutability):
@@ -2596,6 +2666,10 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.repo_id):
             query['RepoId'] = request.repo_id
+        if not UtilClient.is_unset(request.repo_name):
+            query['RepoName'] = request.repo_name
+        if not UtilClient.is_unset(request.repo_namespace_name):
+            query['RepoNamespaceName'] = request.repo_namespace_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2626,6 +2700,10 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.repo_id):
             query['RepoId'] = request.repo_id
+        if not UtilClient.is_unset(request.repo_name):
+            query['RepoName'] = request.repo_name
+        if not UtilClient.is_unset(request.repo_namespace_name):
+            query['RepoNamespaceName'] = request.repo_namespace_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4463,92 +4541,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_chain_instance_with_options_async(request, runtime)
 
-    def list_chart_with_options(
-        self,
-        request: cr_20181201_models.ListChartRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cr_20181201_models.ListChartResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.instance_id):
-            query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.page_no):
-            query['PageNo'] = request.page_no
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.repo_name):
-            query['RepoName'] = request.repo_name
-        if not UtilClient.is_unset(request.repo_namespace_name):
-            query['RepoNamespaceName'] = request.repo_namespace_name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListChart',
-            version='2018-12-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cr_20181201_models.ListChartResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def list_chart_with_options_async(
-        self,
-        request: cr_20181201_models.ListChartRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cr_20181201_models.ListChartResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.instance_id):
-            query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.page_no):
-            query['PageNo'] = request.page_no
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.repo_name):
-            query['RepoName'] = request.repo_name
-        if not UtilClient.is_unset(request.repo_namespace_name):
-            query['RepoNamespaceName'] = request.repo_namespace_name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListChart',
-            version='2018-12-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cr_20181201_models.ListChartResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def list_chart(
-        self,
-        request: cr_20181201_models.ListChartRequest,
-    ) -> cr_20181201_models.ListChartResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.list_chart_with_options(request, runtime)
-
-    async def list_chart_async(
-        self,
-        request: cr_20181201_models.ListChartRequest,
-    ) -> cr_20181201_models.ListChartResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.list_chart_with_options_async(request, runtime)
-
     def list_chart_namespace_with_options(
         self,
         request: cr_20181201_models.ListChartNamespaceRequest,
@@ -5194,10 +5186,6 @@ class Client(OpenApiClient):
             query['PageNo'] = request.page_no
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.resource_group_id):
-            query['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.tag):
-            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5234,10 +5222,6 @@ class Client(OpenApiClient):
             query['PageNo'] = request.page_no
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.resource_group_id):
-            query['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.tag):
-            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5990,8 +5974,6 @@ class Client(OpenApiClient):
             query['RepoNamespaceName'] = request.repo_namespace_name
         if not UtilClient.is_unset(request.repo_status):
             query['RepoStatus'] = request.repo_status
-        if not UtilClient.is_unset(request.resource_group_id):
-            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6030,8 +6012,6 @@ class Client(OpenApiClient):
             query['RepoNamespaceName'] = request.repo_namespace_name
         if not UtilClient.is_unset(request.repo_status):
             query['RepoStatus'] = request.repo_status
-        if not UtilClient.is_unset(request.resource_group_id):
-            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6156,6 +6136,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
+        if not UtilClient.is_unset(request.scope_exclude):
+            query['ScopeExclude'] = request.scope_exclude
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6192,6 +6174,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
+        if not UtilClient.is_unset(request.scope_exclude):
+            query['ScopeExclude'] = request.scope_exclude
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6990,6 +6974,10 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.repo_id):
             query['RepoId'] = request.repo_id
+        if not UtilClient.is_unset(request.repo_name):
+            query['RepoName'] = request.repo_name
+        if not UtilClient.is_unset(request.repo_namespace_name):
+            query['RepoNamespaceName'] = request.repo_namespace_name
         if not UtilClient.is_unset(request.repo_type):
             query['RepoType'] = request.repo_type
         if not UtilClient.is_unset(request.summary):
@@ -7028,6 +7016,10 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.repo_id):
             query['RepoId'] = request.repo_id
+        if not UtilClient.is_unset(request.repo_name):
+            query['RepoName'] = request.repo_name
+        if not UtilClient.is_unset(request.repo_namespace_name):
+            query['RepoNamespaceName'] = request.repo_namespace_name
         if not UtilClient.is_unset(request.repo_type):
             query['RepoType'] = request.repo_type
         if not UtilClient.is_unset(request.summary):
