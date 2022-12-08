@@ -2328,8 +2328,8 @@ class BodyPostureResponse(TeaModel):
 class CompareFaceRequest(TeaModel):
     def __init__(
         self,
-        image_data_a: bytes = None,
-        image_data_b: bytes = None,
+        image_data_a: str = None,
+        image_data_b: str = None,
         image_urla: str = None,
         image_urlb: str = None,
         quality_score_threshold: float = None,
@@ -2379,8 +2379,8 @@ class CompareFaceRequest(TeaModel):
 class CompareFaceAdvanceRequest(TeaModel):
     def __init__(
         self,
-        image_data_a: bytes = None,
-        image_data_b: bytes = None,
+        image_data_a: str = None,
+        image_data_b: str = None,
         image_urlaobject: BinaryIO = None,
         image_urlbobject: BinaryIO = None,
         quality_score_threshold: float = None,
@@ -4425,7 +4425,7 @@ class DetectIPCPedestrianResponse(TeaModel):
 class DetectLivingFaceRequestTasks(TeaModel):
     def __init__(
         self,
-        image_data: bytes = None,
+        image_data: str = None,
         image_url: str = None,
     ):
         self.image_data = image_data
@@ -4493,7 +4493,7 @@ class DetectLivingFaceRequest(TeaModel):
 class DetectLivingFaceAdvanceRequestTasks(TeaModel):
     def __init__(
         self,
-        image_data: bytes = None,
+        image_data: str = None,
         image_urlobject: BinaryIO = None,
     ):
         self.image_data = image_data
@@ -6073,7 +6073,7 @@ class EnhanceFaceResponse(TeaModel):
 class ExtractFingerPrintRequest(TeaModel):
     def __init__(
         self,
-        image_data: bytes = None,
+        image_data: str = None,
         image_url: str = None,
     ):
         self.image_data = image_data
@@ -6106,7 +6106,7 @@ class ExtractFingerPrintRequest(TeaModel):
 class ExtractFingerPrintAdvanceRequest(TeaModel):
     def __init__(
         self,
-        image_data: bytes = None,
+        image_data: str = None,
         image_urlobject: BinaryIO = None,
     ):
         self.image_data = image_data
@@ -10701,7 +10701,7 @@ class RecognizeActionRequestURLList(TeaModel):
     def __init__(
         self,
         url: str = None,
-        image_data: bytes = None,
+        image_data: str = None,
     ):
         self.url = url
         self.image_data = image_data
@@ -10735,7 +10735,7 @@ class RecognizeActionRequest(TeaModel):
         self,
         type: int = None,
         urllist: List[RecognizeActionRequestURLList] = None,
-        video_data: bytes = None,
+        video_data: str = None,
         video_url: str = None,
     ):
         self.type = type
@@ -10787,7 +10787,7 @@ class RecognizeActionAdvanceRequestURLList(TeaModel):
     def __init__(
         self,
         urlobject: BinaryIO = None,
-        image_data: bytes = None,
+        image_data: str = None,
     ):
         self.urlobject = urlobject
         self.image_data = image_data
@@ -10821,7 +10821,7 @@ class RecognizeActionAdvanceRequest(TeaModel):
         self,
         type: int = None,
         urllist: List[RecognizeActionAdvanceRequestURLList] = None,
-        video_data: bytes = None,
+        video_data: str = None,
         video_url: str = None,
     ):
         self.type = type
@@ -11969,7 +11969,7 @@ class RecognizeHandGestureResponse(TeaModel):
 class RecognizePublicFaceRequestTask(TeaModel):
     def __init__(
         self,
-        image_data: bytes = None,
+        image_data: str = None,
         image_url: str = None,
     ):
         self.image_data = image_data
@@ -12037,7 +12037,7 @@ class RecognizePublicFaceRequest(TeaModel):
 class RecognizePublicFaceAdvanceRequestTask(TeaModel):
     def __init__(
         self,
-        image_data: bytes = None,
+        image_data: str = None,
         image_urlobject: BinaryIO = None,
     ):
         self.image_data = image_data
