@@ -1758,6 +1758,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.application_name):
             query['ApplicationName'] = request.application_name
+        if not UtilClient.is_unset(request.category_id):
+            query['CategoryId'] = request.category_id
         if not UtilClient.is_unset(request.current_page):
             query['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.dst_ip):
@@ -1780,6 +1782,8 @@ class Client(OpenApiClient):
             query['Sort'] = request.sort
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.tag_id_new):
+            query['TagIdNew'] = request.tag_id_new
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1808,6 +1812,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.application_name):
             query['ApplicationName'] = request.application_name
+        if not UtilClient.is_unset(request.category_id):
+            query['CategoryId'] = request.category_id
         if not UtilClient.is_unset(request.current_page):
             query['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.dst_ip):
@@ -1830,6 +1836,8 @@ class Client(OpenApiClient):
             query['Sort'] = request.sort
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.tag_id_new):
+            query['TagIdNew'] = request.tag_id_new
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1870,6 +1878,8 @@ class Client(OpenApiClient):
     ) -> cloudfw_20171207_models.DescribeOutgoingDomainResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.category_id):
+            query['CategoryId'] = request.category_id
         if not UtilClient.is_unset(request.current_page):
             query['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.domain):
@@ -1888,6 +1898,8 @@ class Client(OpenApiClient):
             query['Sort'] = request.sort
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.tag_id_new):
+            query['TagIdNew'] = request.tag_id_new
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1914,6 +1926,8 @@ class Client(OpenApiClient):
     ) -> cloudfw_20171207_models.DescribeOutgoingDomainResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.category_id):
+            query['CategoryId'] = request.category_id
         if not UtilClient.is_unset(request.current_page):
             query['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.domain):
@@ -1932,6 +1946,8 @@ class Client(OpenApiClient):
             query['Sort'] = request.sort
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.tag_id_new):
+            query['TagIdNew'] = request.tag_id_new
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3096,6 +3112,140 @@ class Client(OpenApiClient):
     ) -> cloudfw_20171207_models.DescribeVpcFirewallPolicyPriorUsedResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_vpc_firewall_policy_prior_used_with_options_async(request, runtime)
+
+    def describe_vulnerability_protected_list_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeVulnerabilityProtectedListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeVulnerabilityProtectedListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.attack_type):
+            query['AttackType'] = request.attack_type
+        if not UtilClient.is_unset(request.buy_version):
+            query['BuyVersion'] = request.buy_version
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.sort_key):
+            query['SortKey'] = request.sort_key
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.user_type):
+            query['UserType'] = request.user_type
+        if not UtilClient.is_unset(request.vuln_cve_name):
+            query['VulnCveName'] = request.vuln_cve_name
+        if not UtilClient.is_unset(request.vuln_level):
+            query['VulnLevel'] = request.vuln_level
+        if not UtilClient.is_unset(request.vuln_resource):
+            query['VulnResource'] = request.vuln_resource
+        if not UtilClient.is_unset(request.vuln_status):
+            query['VulnStatus'] = request.vuln_status
+        if not UtilClient.is_unset(request.vuln_type):
+            query['VulnType'] = request.vuln_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVulnerabilityProtectedList',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeVulnerabilityProtectedListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_vulnerability_protected_list_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeVulnerabilityProtectedListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeVulnerabilityProtectedListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.attack_type):
+            query['AttackType'] = request.attack_type
+        if not UtilClient.is_unset(request.buy_version):
+            query['BuyVersion'] = request.buy_version
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.sort_key):
+            query['SortKey'] = request.sort_key
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.user_type):
+            query['UserType'] = request.user_type
+        if not UtilClient.is_unset(request.vuln_cve_name):
+            query['VulnCveName'] = request.vuln_cve_name
+        if not UtilClient.is_unset(request.vuln_level):
+            query['VulnLevel'] = request.vuln_level
+        if not UtilClient.is_unset(request.vuln_resource):
+            query['VulnResource'] = request.vuln_resource
+        if not UtilClient.is_unset(request.vuln_status):
+            query['VulnStatus'] = request.vuln_status
+        if not UtilClient.is_unset(request.vuln_type):
+            query['VulnType'] = request.vuln_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVulnerabilityProtectedList',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeVulnerabilityProtectedListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_vulnerability_protected_list(
+        self,
+        request: cloudfw_20171207_models.DescribeVulnerabilityProtectedListRequest,
+    ) -> cloudfw_20171207_models.DescribeVulnerabilityProtectedListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_vulnerability_protected_list_with_options(request, runtime)
+
+    async def describe_vulnerability_protected_list_async(
+        self,
+        request: cloudfw_20171207_models.DescribeVulnerabilityProtectedListRequest,
+    ) -> cloudfw_20171207_models.DescribeVulnerabilityProtectedListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_vulnerability_protected_list_with_options_async(request, runtime)
 
     def modify_address_book_with_options(
         self,

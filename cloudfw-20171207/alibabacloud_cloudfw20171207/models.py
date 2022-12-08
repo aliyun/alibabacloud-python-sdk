@@ -3431,6 +3431,7 @@ class DescribeOutgoingDestinationIPRequest(TeaModel):
     def __init__(
         self,
         application_name: str = None,
+        category_id: str = None,
         current_page: str = None,
         dst_ip: str = None,
         end_time: str = None,
@@ -3442,8 +3443,10 @@ class DescribeOutgoingDestinationIPRequest(TeaModel):
         public_ip: str = None,
         sort: str = None,
         start_time: str = None,
+        tag_id_new: str = None,
     ):
         self.application_name = application_name
+        self.category_id = category_id
         self.current_page = current_page
         self.dst_ip = dst_ip
         self.end_time = end_time
@@ -3455,6 +3458,7 @@ class DescribeOutgoingDestinationIPRequest(TeaModel):
         self.public_ip = public_ip
         self.sort = sort
         self.start_time = start_time
+        self.tag_id_new = tag_id_new
 
     def validate(self):
         pass
@@ -3467,6 +3471,8 @@ class DescribeOutgoingDestinationIPRequest(TeaModel):
         result = dict()
         if self.application_name is not None:
             result['ApplicationName'] = self.application_name
+        if self.category_id is not None:
+            result['CategoryId'] = self.category_id
         if self.current_page is not None:
             result['CurrentPage'] = self.current_page
         if self.dst_ip is not None:
@@ -3489,12 +3495,16 @@ class DescribeOutgoingDestinationIPRequest(TeaModel):
             result['Sort'] = self.sort
         if self.start_time is not None:
             result['StartTime'] = self.start_time
+        if self.tag_id_new is not None:
+            result['TagIdNew'] = self.tag_id_new
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('ApplicationName') is not None:
             self.application_name = m.get('ApplicationName')
+        if m.get('CategoryId') is not None:
+            self.category_id = m.get('CategoryId')
         if m.get('CurrentPage') is not None:
             self.current_page = m.get('CurrentPage')
         if m.get('DstIP') is not None:
@@ -3517,6 +3527,8 @@ class DescribeOutgoingDestinationIPRequest(TeaModel):
             self.sort = m.get('Sort')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
+        if m.get('TagIdNew') is not None:
+            self.tag_id_new = m.get('TagIdNew')
         return self
 
 
@@ -3910,6 +3922,7 @@ class DescribeOutgoingDestinationIPResponse(TeaModel):
 class DescribeOutgoingDomainRequest(TeaModel):
     def __init__(
         self,
+        category_id: str = None,
         current_page: str = None,
         domain: str = None,
         end_time: str = None,
@@ -3919,7 +3932,9 @@ class DescribeOutgoingDomainRequest(TeaModel):
         public_ip: str = None,
         sort: str = None,
         start_time: str = None,
+        tag_id_new: str = None,
     ):
+        self.category_id = category_id
         self.current_page = current_page
         self.domain = domain
         self.end_time = end_time
@@ -3929,6 +3944,7 @@ class DescribeOutgoingDomainRequest(TeaModel):
         self.public_ip = public_ip
         self.sort = sort
         self.start_time = start_time
+        self.tag_id_new = tag_id_new
 
     def validate(self):
         pass
@@ -3939,6 +3955,8 @@ class DescribeOutgoingDomainRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.category_id is not None:
+            result['CategoryId'] = self.category_id
         if self.current_page is not None:
             result['CurrentPage'] = self.current_page
         if self.domain is not None:
@@ -3957,10 +3975,14 @@ class DescribeOutgoingDomainRequest(TeaModel):
             result['Sort'] = self.sort
         if self.start_time is not None:
             result['StartTime'] = self.start_time
+        if self.tag_id_new is not None:
+            result['TagIdNew'] = self.tag_id_new
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CategoryId') is not None:
+            self.category_id = m.get('CategoryId')
         if m.get('CurrentPage') is not None:
             self.current_page = m.get('CurrentPage')
         if m.get('Domain') is not None:
@@ -3979,6 +4001,8 @@ class DescribeOutgoingDomainRequest(TeaModel):
             self.sort = m.get('Sort')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
+        if m.get('TagIdNew') is not None:
+            self.tag_id_new = m.get('TagIdNew')
         return self
 
 
@@ -8003,6 +8027,444 @@ class DescribeVpcFirewallPolicyPriorUsedResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeVpcFirewallPolicyPriorUsedResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeVulnerabilityProtectedListRequest(TeaModel):
+    def __init__(
+        self,
+        attack_type: str = None,
+        buy_version: int = None,
+        current_page: str = None,
+        end_time: str = None,
+        lang: str = None,
+        order: str = None,
+        page_size: str = None,
+        sort_key: str = None,
+        source_ip: str = None,
+        start_time: str = None,
+        user_type: str = None,
+        vuln_cve_name: str = None,
+        vuln_level: str = None,
+        vuln_resource: str = None,
+        vuln_status: str = None,
+        vuln_type: str = None,
+    ):
+        self.attack_type = attack_type
+        self.buy_version = buy_version
+        self.current_page = current_page
+        self.end_time = end_time
+        self.lang = lang
+        self.order = order
+        self.page_size = page_size
+        self.sort_key = sort_key
+        self.source_ip = source_ip
+        self.start_time = start_time
+        self.user_type = user_type
+        self.vuln_cve_name = vuln_cve_name
+        self.vuln_level = vuln_level
+        self.vuln_resource = vuln_resource
+        self.vuln_status = vuln_status
+        self.vuln_type = vuln_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.attack_type is not None:
+            result['AttackType'] = self.attack_type
+        if self.buy_version is not None:
+            result['BuyVersion'] = self.buy_version
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.order is not None:
+            result['Order'] = self.order
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.sort_key is not None:
+            result['SortKey'] = self.sort_key
+        if self.source_ip is not None:
+            result['SourceIp'] = self.source_ip
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.user_type is not None:
+            result['UserType'] = self.user_type
+        if self.vuln_cve_name is not None:
+            result['VulnCveName'] = self.vuln_cve_name
+        if self.vuln_level is not None:
+            result['VulnLevel'] = self.vuln_level
+        if self.vuln_resource is not None:
+            result['VulnResource'] = self.vuln_resource
+        if self.vuln_status is not None:
+            result['VulnStatus'] = self.vuln_status
+        if self.vuln_type is not None:
+            result['VulnType'] = self.vuln_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AttackType') is not None:
+            self.attack_type = m.get('AttackType')
+        if m.get('BuyVersion') is not None:
+            self.buy_version = m.get('BuyVersion')
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SortKey') is not None:
+            self.sort_key = m.get('SortKey')
+        if m.get('SourceIp') is not None:
+            self.source_ip = m.get('SourceIp')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('UserType') is not None:
+            self.user_type = m.get('UserType')
+        if m.get('VulnCveName') is not None:
+            self.vuln_cve_name = m.get('VulnCveName')
+        if m.get('VulnLevel') is not None:
+            self.vuln_level = m.get('VulnLevel')
+        if m.get('VulnResource') is not None:
+            self.vuln_resource = m.get('VulnResource')
+        if m.get('VulnStatus') is not None:
+            self.vuln_status = m.get('VulnStatus')
+        if m.get('VulnType') is not None:
+            self.vuln_type = m.get('VulnType')
+        return self
+
+
+class DescribeVulnerabilityProtectedListResponseBodyVulnListResourceList(TeaModel):
+    def __init__(
+        self,
+        eip: str = None,
+        internet_ip: str = None,
+        intranet_ip: str = None,
+        region_id: str = None,
+        resource_id: str = None,
+        resource_name: str = None,
+        resource_type: str = None,
+        vuln_status: str = None,
+    ):
+        self.eip = eip
+        self.internet_ip = internet_ip
+        self.intranet_ip = intranet_ip
+        self.region_id = region_id
+        self.resource_id = resource_id
+        self.resource_name = resource_name
+        self.resource_type = resource_type
+        self.vuln_status = vuln_status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.eip is not None:
+            result['Eip'] = self.eip
+        if self.internet_ip is not None:
+            result['InternetIp'] = self.internet_ip
+        if self.intranet_ip is not None:
+            result['IntranetIp'] = self.intranet_ip
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_name is not None:
+            result['ResourceName'] = self.resource_name
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.vuln_status is not None:
+            result['VulnStatus'] = self.vuln_status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Eip') is not None:
+            self.eip = m.get('Eip')
+        if m.get('InternetIp') is not None:
+            self.internet_ip = m.get('InternetIp')
+        if m.get('IntranetIp') is not None:
+            self.intranet_ip = m.get('IntranetIp')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceName') is not None:
+            self.resource_name = m.get('ResourceName')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('VulnStatus') is not None:
+            self.vuln_status = m.get('VulnStatus')
+        return self
+
+
+class DescribeVulnerabilityProtectedListResponseBodyVulnList(TeaModel):
+    def __init__(
+        self,
+        attack_cnt: int = None,
+        attack_type: int = None,
+        basic_rule_ids: str = None,
+        cve_id: str = None,
+        first_time: int = None,
+        highlight_tag: int = None,
+        last_time: int = None,
+        need_open_basic_rule: bool = None,
+        need_open_basic_rule_uuids: str = None,
+        need_open_run_mode: bool = None,
+        need_open_virtual_patche: bool = None,
+        need_open_virtual_patche_uuids: str = None,
+        need_rule_class: int = None,
+        resource_cnt: int = None,
+        resource_list: List[DescribeVulnerabilityProtectedListResponseBodyVulnListResourceList] = None,
+        virtual_patche_ids: str = None,
+        vuln_key: str = None,
+        vuln_level: str = None,
+        vuln_name: str = None,
+        vuln_status: str = None,
+        vuln_type: str = None,
+    ):
+        self.attack_cnt = attack_cnt
+        self.attack_type = attack_type
+        self.basic_rule_ids = basic_rule_ids
+        self.cve_id = cve_id
+        self.first_time = first_time
+        self.highlight_tag = highlight_tag
+        self.last_time = last_time
+        self.need_open_basic_rule = need_open_basic_rule
+        self.need_open_basic_rule_uuids = need_open_basic_rule_uuids
+        self.need_open_run_mode = need_open_run_mode
+        self.need_open_virtual_patche = need_open_virtual_patche
+        self.need_open_virtual_patche_uuids = need_open_virtual_patche_uuids
+        self.need_rule_class = need_rule_class
+        self.resource_cnt = resource_cnt
+        self.resource_list = resource_list
+        self.virtual_patche_ids = virtual_patche_ids
+        self.vuln_key = vuln_key
+        self.vuln_level = vuln_level
+        self.vuln_name = vuln_name
+        self.vuln_status = vuln_status
+        self.vuln_type = vuln_type
+
+    def validate(self):
+        if self.resource_list:
+            for k in self.resource_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.attack_cnt is not None:
+            result['AttackCnt'] = self.attack_cnt
+        if self.attack_type is not None:
+            result['AttackType'] = self.attack_type
+        if self.basic_rule_ids is not None:
+            result['BasicRuleIds'] = self.basic_rule_ids
+        if self.cve_id is not None:
+            result['CveId'] = self.cve_id
+        if self.first_time is not None:
+            result['FirstTime'] = self.first_time
+        if self.highlight_tag is not None:
+            result['HighlightTag'] = self.highlight_tag
+        if self.last_time is not None:
+            result['LastTime'] = self.last_time
+        if self.need_open_basic_rule is not None:
+            result['NeedOpenBasicRule'] = self.need_open_basic_rule
+        if self.need_open_basic_rule_uuids is not None:
+            result['NeedOpenBasicRuleUuids'] = self.need_open_basic_rule_uuids
+        if self.need_open_run_mode is not None:
+            result['NeedOpenRunMode'] = self.need_open_run_mode
+        if self.need_open_virtual_patche is not None:
+            result['NeedOpenVirtualPatche'] = self.need_open_virtual_patche
+        if self.need_open_virtual_patche_uuids is not None:
+            result['NeedOpenVirtualPatcheUuids'] = self.need_open_virtual_patche_uuids
+        if self.need_rule_class is not None:
+            result['NeedRuleClass'] = self.need_rule_class
+        if self.resource_cnt is not None:
+            result['ResourceCnt'] = self.resource_cnt
+        result['ResourceList'] = []
+        if self.resource_list is not None:
+            for k in self.resource_list:
+                result['ResourceList'].append(k.to_map() if k else None)
+        if self.virtual_patche_ids is not None:
+            result['VirtualPatcheIds'] = self.virtual_patche_ids
+        if self.vuln_key is not None:
+            result['VulnKey'] = self.vuln_key
+        if self.vuln_level is not None:
+            result['VulnLevel'] = self.vuln_level
+        if self.vuln_name is not None:
+            result['VulnName'] = self.vuln_name
+        if self.vuln_status is not None:
+            result['VulnStatus'] = self.vuln_status
+        if self.vuln_type is not None:
+            result['VulnType'] = self.vuln_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AttackCnt') is not None:
+            self.attack_cnt = m.get('AttackCnt')
+        if m.get('AttackType') is not None:
+            self.attack_type = m.get('AttackType')
+        if m.get('BasicRuleIds') is not None:
+            self.basic_rule_ids = m.get('BasicRuleIds')
+        if m.get('CveId') is not None:
+            self.cve_id = m.get('CveId')
+        if m.get('FirstTime') is not None:
+            self.first_time = m.get('FirstTime')
+        if m.get('HighlightTag') is not None:
+            self.highlight_tag = m.get('HighlightTag')
+        if m.get('LastTime') is not None:
+            self.last_time = m.get('LastTime')
+        if m.get('NeedOpenBasicRule') is not None:
+            self.need_open_basic_rule = m.get('NeedOpenBasicRule')
+        if m.get('NeedOpenBasicRuleUuids') is not None:
+            self.need_open_basic_rule_uuids = m.get('NeedOpenBasicRuleUuids')
+        if m.get('NeedOpenRunMode') is not None:
+            self.need_open_run_mode = m.get('NeedOpenRunMode')
+        if m.get('NeedOpenVirtualPatche') is not None:
+            self.need_open_virtual_patche = m.get('NeedOpenVirtualPatche')
+        if m.get('NeedOpenVirtualPatcheUuids') is not None:
+            self.need_open_virtual_patche_uuids = m.get('NeedOpenVirtualPatcheUuids')
+        if m.get('NeedRuleClass') is not None:
+            self.need_rule_class = m.get('NeedRuleClass')
+        if m.get('ResourceCnt') is not None:
+            self.resource_cnt = m.get('ResourceCnt')
+        self.resource_list = []
+        if m.get('ResourceList') is not None:
+            for k in m.get('ResourceList'):
+                temp_model = DescribeVulnerabilityProtectedListResponseBodyVulnListResourceList()
+                self.resource_list.append(temp_model.from_map(k))
+        if m.get('VirtualPatcheIds') is not None:
+            self.virtual_patche_ids = m.get('VirtualPatcheIds')
+        if m.get('VulnKey') is not None:
+            self.vuln_key = m.get('VulnKey')
+        if m.get('VulnLevel') is not None:
+            self.vuln_level = m.get('VulnLevel')
+        if m.get('VulnName') is not None:
+            self.vuln_name = m.get('VulnName')
+        if m.get('VulnStatus') is not None:
+            self.vuln_status = m.get('VulnStatus')
+        if m.get('VulnType') is not None:
+            self.vuln_type = m.get('VulnType')
+        return self
+
+
+class DescribeVulnerabilityProtectedListResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        total_count: int = None,
+        vuln_list: List[DescribeVulnerabilityProtectedListResponseBodyVulnList] = None,
+        zero_resource_count: int = None,
+    ):
+        self.request_id = request_id
+        self.total_count = total_count
+        self.vuln_list = vuln_list
+        self.zero_resource_count = zero_resource_count
+
+    def validate(self):
+        if self.vuln_list:
+            for k in self.vuln_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        result['VulnList'] = []
+        if self.vuln_list is not None:
+            for k in self.vuln_list:
+                result['VulnList'].append(k.to_map() if k else None)
+        if self.zero_resource_count is not None:
+            result['ZeroResourceCount'] = self.zero_resource_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        self.vuln_list = []
+        if m.get('VulnList') is not None:
+            for k in m.get('VulnList'):
+                temp_model = DescribeVulnerabilityProtectedListResponseBodyVulnList()
+                self.vuln_list.append(temp_model.from_map(k))
+        if m.get('ZeroResourceCount') is not None:
+            self.zero_resource_count = m.get('ZeroResourceCount')
+        return self
+
+
+class DescribeVulnerabilityProtectedListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeVulnerabilityProtectedListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeVulnerabilityProtectedListResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

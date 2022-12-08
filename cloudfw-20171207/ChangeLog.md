@@ -1,3 +1,7 @@
+2022-12-08 Version: 1.2.1
+- DescribeOutgoingDestinationIP support catagoryId and tagIdNew field.
+- DescribeOutgoingDomain support catagoryId and tagIdNew field.
+
 2022-12-08 Version: 1.2.0
 - Record return log.
 - Support vpc peer.
