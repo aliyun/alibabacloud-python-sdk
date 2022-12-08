@@ -1,3 +1,6 @@
+2022-12-08 Version: 3.2.17
+- GenerateTemplatePolicy adds parameter OperationTypes.
+
 2022-11-30 Version: 3.2.16
 - ContinueCreateStack returns DryRunResult when DryRun is set to true.
 

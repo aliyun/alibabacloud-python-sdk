@@ -4289,11 +4289,13 @@ class GenerateTemplateByScratchResponse(TeaModel):
 class GenerateTemplatePolicyRequest(TeaModel):
     def __init__(
         self,
+        operation_types: List[str] = None,
         template_body: str = None,
         template_id: str = None,
         template_url: str = None,
         template_version: str = None,
     ):
+        self.operation_types = operation_types
         self.template_body = template_body
         self.template_id = template_id
         self.template_url = template_url
@@ -4308,6 +4310,8 @@ class GenerateTemplatePolicyRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.operation_types is not None:
+            result['OperationTypes'] = self.operation_types
         if self.template_body is not None:
             result['TemplateBody'] = self.template_body
         if self.template_id is not None:
@@ -4320,6 +4324,8 @@ class GenerateTemplatePolicyRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('OperationTypes') is not None:
+            self.operation_types = m.get('OperationTypes')
         if m.get('TemplateBody') is not None:
             self.template_body = m.get('TemplateBody')
         if m.get('TemplateId') is not None:
