@@ -1,3 +1,7 @@
+2022-12-08 Version: 1.1.18
+- Support describe cluster support features.
+
+
 2022-11-02 Version: 1.1.16
 - Support serverless v2
 

@@ -2234,6 +2234,7 @@ class DescribeAvailableResourcesResponseBodyResourcesSupportedEnginesSupportedIn
 class DescribeAvailableResourcesResponseBodyResourcesSupportedEnginesSupportedInstanceClasses(TeaModel):
     def __init__(
         self,
+        category: str = None,
         description: str = None,
         display_class: str = None,
         instance_class: str = None,
@@ -2241,6 +2242,7 @@ class DescribeAvailableResourcesResponseBodyResourcesSupportedEnginesSupportedIn
         storage_size: DescribeAvailableResourcesResponseBodyResourcesSupportedEnginesSupportedInstanceClassesStorageSize = None,
         storage_type: str = None,
     ):
+        self.category = category
         self.description = description
         self.display_class = display_class
         self.instance_class = instance_class
@@ -2260,6 +2262,8 @@ class DescribeAvailableResourcesResponseBodyResourcesSupportedEnginesSupportedIn
             return _map
 
         result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
         if self.description is not None:
             result['Description'] = self.description
         if self.display_class is not None:
@@ -2276,6 +2280,8 @@ class DescribeAvailableResourcesResponseBodyResourcesSupportedEnginesSupportedIn
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('DisplayClass') is not None:
