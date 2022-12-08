@@ -531,112 +531,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_vpc_firewall_cen_configure_with_options_async(request, runtime)
 
-    def create_vpc_firewall_configure_with_options(
-        self,
-        request: cloudfw_20171207_models.CreateVpcFirewallConfigureRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudfw_20171207_models.CreateVpcFirewallConfigureResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.firewall_switch):
-            query['FirewallSwitch'] = request.firewall_switch
-        if not UtilClient.is_unset(request.lang):
-            query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.local_vpc_cidr_table_list):
-            query['LocalVpcCidrTableList'] = request.local_vpc_cidr_table_list
-        if not UtilClient.is_unset(request.local_vpc_id):
-            query['LocalVpcId'] = request.local_vpc_id
-        if not UtilClient.is_unset(request.local_vpc_region):
-            query['LocalVpcRegion'] = request.local_vpc_region
-        if not UtilClient.is_unset(request.member_uid):
-            query['MemberUid'] = request.member_uid
-        if not UtilClient.is_unset(request.peer_vpc_cidr_table_list):
-            query['PeerVpcCidrTableList'] = request.peer_vpc_cidr_table_list
-        if not UtilClient.is_unset(request.peer_vpc_id):
-            query['PeerVpcId'] = request.peer_vpc_id
-        if not UtilClient.is_unset(request.peer_vpc_region):
-            query['PeerVpcRegion'] = request.peer_vpc_region
-        if not UtilClient.is_unset(request.vpc_firewall_name):
-            query['VpcFirewallName'] = request.vpc_firewall_name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CreateVpcFirewallConfigure',
-            version='2017-12-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cloudfw_20171207_models.CreateVpcFirewallConfigureResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def create_vpc_firewall_configure_with_options_async(
-        self,
-        request: cloudfw_20171207_models.CreateVpcFirewallConfigureRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudfw_20171207_models.CreateVpcFirewallConfigureResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.firewall_switch):
-            query['FirewallSwitch'] = request.firewall_switch
-        if not UtilClient.is_unset(request.lang):
-            query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.local_vpc_cidr_table_list):
-            query['LocalVpcCidrTableList'] = request.local_vpc_cidr_table_list
-        if not UtilClient.is_unset(request.local_vpc_id):
-            query['LocalVpcId'] = request.local_vpc_id
-        if not UtilClient.is_unset(request.local_vpc_region):
-            query['LocalVpcRegion'] = request.local_vpc_region
-        if not UtilClient.is_unset(request.member_uid):
-            query['MemberUid'] = request.member_uid
-        if not UtilClient.is_unset(request.peer_vpc_cidr_table_list):
-            query['PeerVpcCidrTableList'] = request.peer_vpc_cidr_table_list
-        if not UtilClient.is_unset(request.peer_vpc_id):
-            query['PeerVpcId'] = request.peer_vpc_id
-        if not UtilClient.is_unset(request.peer_vpc_region):
-            query['PeerVpcRegion'] = request.peer_vpc_region
-        if not UtilClient.is_unset(request.vpc_firewall_name):
-            query['VpcFirewallName'] = request.vpc_firewall_name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CreateVpcFirewallConfigure',
-            version='2017-12-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cloudfw_20171207_models.CreateVpcFirewallConfigureResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def create_vpc_firewall_configure(
-        self,
-        request: cloudfw_20171207_models.CreateVpcFirewallConfigureRequest,
-    ) -> cloudfw_20171207_models.CreateVpcFirewallConfigureResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.create_vpc_firewall_configure_with_options(request, runtime)
-
-    async def create_vpc_firewall_configure_async(
-        self,
-        request: cloudfw_20171207_models.CreateVpcFirewallConfigureRequest,
-    ) -> cloudfw_20171207_models.CreateVpcFirewallConfigureResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.create_vpc_firewall_configure_with_options_async(request, runtime)
-
     def create_vpc_firewall_control_policy_with_options(
         self,
         request: cloudfw_20171207_models.CreateVpcFirewallControlPolicyRequest,
@@ -3022,6 +2916,8 @@ class Client(OpenApiClient):
     ) -> cloudfw_20171207_models.DescribeVpcFirewallListResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.connect_sub_type):
+            query['ConnectSubType'] = request.connect_sub_type
         if not UtilClient.is_unset(request.current_page):
             query['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.firewall_switch_status):
@@ -3034,6 +2930,8 @@ class Client(OpenApiClient):
             query['MemberUid'] = request.member_uid
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.peer_uid):
+            query['PeerUid'] = request.peer_uid
         if not UtilClient.is_unset(request.region_no):
             query['RegionNo'] = request.region_no
         if not UtilClient.is_unset(request.vpc_firewall_id):
@@ -3068,6 +2966,8 @@ class Client(OpenApiClient):
     ) -> cloudfw_20171207_models.DescribeVpcFirewallListResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.connect_sub_type):
+            query['ConnectSubType'] = request.connect_sub_type
         if not UtilClient.is_unset(request.current_page):
             query['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.firewall_switch_status):
@@ -3080,6 +2980,8 @@ class Client(OpenApiClient):
             query['MemberUid'] = request.member_uid
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.peer_uid):
+            query['PeerUid'] = request.peer_uid
         if not UtilClient.is_unset(request.region_no):
             query['RegionNo'] = request.region_no
         if not UtilClient.is_unset(request.vpc_firewall_id):

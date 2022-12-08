@@ -1,3 +1,14 @@
+2022-12-08 Version: 1.2.0
+- Record return log.
+- Support vpc peer.
+- DescribeRiskEventGroup add SrcIPTag field.
+- Support vpc acl use domain addr book.
+- Add a pulibc API.
+- Resource change.
+- Add DescribeVulnerabilityProtectedList API.
+- Add info for CreateVpcFirewallConfigure.
+- Add MemberUid for DescribeVpcFirewallDetail.
+
 2022-11-02 Version: 1.1.9
 - Automatically generate sdk tasks.
 

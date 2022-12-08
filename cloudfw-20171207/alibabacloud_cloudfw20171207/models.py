@@ -798,164 +798,6 @@ class CreateVpcFirewallCenConfigureResponse(TeaModel):
         return self
 
 
-class CreateVpcFirewallConfigureRequest(TeaModel):
-    def __init__(
-        self,
-        firewall_switch: str = None,
-        lang: str = None,
-        local_vpc_cidr_table_list: str = None,
-        local_vpc_id: str = None,
-        local_vpc_region: str = None,
-        member_uid: str = None,
-        peer_vpc_cidr_table_list: str = None,
-        peer_vpc_id: str = None,
-        peer_vpc_region: str = None,
-        vpc_firewall_name: str = None,
-    ):
-        self.firewall_switch = firewall_switch
-        self.lang = lang
-        self.local_vpc_cidr_table_list = local_vpc_cidr_table_list
-        self.local_vpc_id = local_vpc_id
-        self.local_vpc_region = local_vpc_region
-        self.member_uid = member_uid
-        self.peer_vpc_cidr_table_list = peer_vpc_cidr_table_list
-        self.peer_vpc_id = peer_vpc_id
-        self.peer_vpc_region = peer_vpc_region
-        self.vpc_firewall_name = vpc_firewall_name
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.firewall_switch is not None:
-            result['FirewallSwitch'] = self.firewall_switch
-        if self.lang is not None:
-            result['Lang'] = self.lang
-        if self.local_vpc_cidr_table_list is not None:
-            result['LocalVpcCidrTableList'] = self.local_vpc_cidr_table_list
-        if self.local_vpc_id is not None:
-            result['LocalVpcId'] = self.local_vpc_id
-        if self.local_vpc_region is not None:
-            result['LocalVpcRegion'] = self.local_vpc_region
-        if self.member_uid is not None:
-            result['MemberUid'] = self.member_uid
-        if self.peer_vpc_cidr_table_list is not None:
-            result['PeerVpcCidrTableList'] = self.peer_vpc_cidr_table_list
-        if self.peer_vpc_id is not None:
-            result['PeerVpcId'] = self.peer_vpc_id
-        if self.peer_vpc_region is not None:
-            result['PeerVpcRegion'] = self.peer_vpc_region
-        if self.vpc_firewall_name is not None:
-            result['VpcFirewallName'] = self.vpc_firewall_name
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('FirewallSwitch') is not None:
-            self.firewall_switch = m.get('FirewallSwitch')
-        if m.get('Lang') is not None:
-            self.lang = m.get('Lang')
-        if m.get('LocalVpcCidrTableList') is not None:
-            self.local_vpc_cidr_table_list = m.get('LocalVpcCidrTableList')
-        if m.get('LocalVpcId') is not None:
-            self.local_vpc_id = m.get('LocalVpcId')
-        if m.get('LocalVpcRegion') is not None:
-            self.local_vpc_region = m.get('LocalVpcRegion')
-        if m.get('MemberUid') is not None:
-            self.member_uid = m.get('MemberUid')
-        if m.get('PeerVpcCidrTableList') is not None:
-            self.peer_vpc_cidr_table_list = m.get('PeerVpcCidrTableList')
-        if m.get('PeerVpcId') is not None:
-            self.peer_vpc_id = m.get('PeerVpcId')
-        if m.get('PeerVpcRegion') is not None:
-            self.peer_vpc_region = m.get('PeerVpcRegion')
-        if m.get('VpcFirewallName') is not None:
-            self.vpc_firewall_name = m.get('VpcFirewallName')
-        return self
-
-
-class CreateVpcFirewallConfigureResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        vpc_firewall_id: str = None,
-    ):
-        self.request_id = request_id
-        self.vpc_firewall_id = vpc_firewall_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.vpc_firewall_id is not None:
-            result['VpcFirewallId'] = self.vpc_firewall_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('VpcFirewallId') is not None:
-            self.vpc_firewall_id = m.get('VpcFirewallId')
-        return self
-
-
-class CreateVpcFirewallConfigureResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: CreateVpcFirewallConfigureResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = CreateVpcFirewallConfigureResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class CreateVpcFirewallControlPolicyRequest(TeaModel):
     def __init__(
         self,
@@ -5052,6 +4894,7 @@ class DescribeRiskEventGroupResponseBodyDataList(TeaModel):
         rule_result: int = None,
         rule_source: int = None,
         src_ip: str = None,
+        src_iptag: str = None,
         src_private_iplist: List[str] = None,
         tag: str = None,
         vpc_dst_info: DescribeRiskEventGroupResponseBodyDataListVpcDstInfo = None,
@@ -5075,6 +4918,7 @@ class DescribeRiskEventGroupResponseBodyDataList(TeaModel):
         self.rule_result = rule_result
         self.rule_source = rule_source
         self.src_ip = src_ip
+        self.src_iptag = src_iptag
         self.src_private_iplist = src_private_iplist
         self.tag = tag
         self.vpc_dst_info = vpc_dst_info
@@ -5135,6 +4979,8 @@ class DescribeRiskEventGroupResponseBodyDataList(TeaModel):
             result['RuleSource'] = self.rule_source
         if self.src_ip is not None:
             result['SrcIP'] = self.src_ip
+        if self.src_iptag is not None:
+            result['SrcIPTag'] = self.src_iptag
         if self.src_private_iplist is not None:
             result['SrcPrivateIPList'] = self.src_private_iplist
         if self.tag is not None:
@@ -5187,6 +5033,8 @@ class DescribeRiskEventGroupResponseBodyDataList(TeaModel):
             self.rule_source = m.get('RuleSource')
         if m.get('SrcIP') is not None:
             self.src_ip = m.get('SrcIP')
+        if m.get('SrcIPTag') is not None:
+            self.src_iptag = m.get('SrcIPTag')
         if m.get('SrcPrivateIPList') is not None:
             self.src_private_iplist = m.get('SrcPrivateIPList')
         if m.get('Tag') is not None:
@@ -6636,6 +6484,7 @@ class DescribeVpcFirewallControlPolicyResponseBodyPolicys(TeaModel):
         dest_port_type: str = None,
         destination: str = None,
         destination_group_cidrs: List[str] = None,
+        destination_group_type: str = None,
         destination_type: str = None,
         hit_times: int = None,
         member_uid: str = None,
@@ -6644,6 +6493,7 @@ class DescribeVpcFirewallControlPolicyResponseBodyPolicys(TeaModel):
         release: str = None,
         source: str = None,
         source_group_cidrs: List[str] = None,
+        source_group_type: str = None,
         source_type: str = None,
     ):
         self.acl_action = acl_action
@@ -6657,6 +6507,7 @@ class DescribeVpcFirewallControlPolicyResponseBodyPolicys(TeaModel):
         self.dest_port_type = dest_port_type
         self.destination = destination
         self.destination_group_cidrs = destination_group_cidrs
+        self.destination_group_type = destination_group_type
         self.destination_type = destination_type
         self.hit_times = hit_times
         self.member_uid = member_uid
@@ -6665,6 +6516,7 @@ class DescribeVpcFirewallControlPolicyResponseBodyPolicys(TeaModel):
         self.release = release
         self.source = source
         self.source_group_cidrs = source_group_cidrs
+        self.source_group_type = source_group_type
         self.source_type = source_type
 
     def validate(self):
@@ -6698,6 +6550,8 @@ class DescribeVpcFirewallControlPolicyResponseBodyPolicys(TeaModel):
             result['Destination'] = self.destination
         if self.destination_group_cidrs is not None:
             result['DestinationGroupCidrs'] = self.destination_group_cidrs
+        if self.destination_group_type is not None:
+            result['DestinationGroupType'] = self.destination_group_type
         if self.destination_type is not None:
             result['DestinationType'] = self.destination_type
         if self.hit_times is not None:
@@ -6714,6 +6568,8 @@ class DescribeVpcFirewallControlPolicyResponseBodyPolicys(TeaModel):
             result['Source'] = self.source
         if self.source_group_cidrs is not None:
             result['SourceGroupCidrs'] = self.source_group_cidrs
+        if self.source_group_type is not None:
+            result['SourceGroupType'] = self.source_group_type
         if self.source_type is not None:
             result['SourceType'] = self.source_type
         return result
@@ -6742,6 +6598,8 @@ class DescribeVpcFirewallControlPolicyResponseBodyPolicys(TeaModel):
             self.destination = m.get('Destination')
         if m.get('DestinationGroupCidrs') is not None:
             self.destination_group_cidrs = m.get('DestinationGroupCidrs')
+        if m.get('DestinationGroupType') is not None:
+            self.destination_group_type = m.get('DestinationGroupType')
         if m.get('DestinationType') is not None:
             self.destination_type = m.get('DestinationType')
         if m.get('HitTimes') is not None:
@@ -6758,6 +6616,8 @@ class DescribeVpcFirewallControlPolicyResponseBodyPolicys(TeaModel):
             self.source = m.get('Source')
         if m.get('SourceGroupCidrs') is not None:
             self.source_group_cidrs = m.get('SourceGroupCidrs')
+        if m.get('SourceGroupType') is not None:
+            self.source_group_type = m.get('SourceGroupType')
         if m.get('SourceType') is not None:
             self.source_type = m.get('SourceType')
         return self
@@ -7318,6 +7178,7 @@ class DescribeVpcFirewallDetailResponseBody(TeaModel):
         connect_type: str = None,
         firewall_switch_status: str = None,
         local_vpc: DescribeVpcFirewallDetailResponseBodyLocalVpc = None,
+        member_uid: str = None,
         peer_vpc: DescribeVpcFirewallDetailResponseBodyPeerVpc = None,
         request_id: str = None,
         vpc_firewall_id: str = None,
@@ -7327,6 +7188,7 @@ class DescribeVpcFirewallDetailResponseBody(TeaModel):
         self.connect_type = connect_type
         self.firewall_switch_status = firewall_switch_status
         self.local_vpc = local_vpc
+        self.member_uid = member_uid
         self.peer_vpc = peer_vpc
         self.request_id = request_id
         self.vpc_firewall_id = vpc_firewall_id
@@ -7352,6 +7214,8 @@ class DescribeVpcFirewallDetailResponseBody(TeaModel):
             result['FirewallSwitchStatus'] = self.firewall_switch_status
         if self.local_vpc is not None:
             result['LocalVpc'] = self.local_vpc.to_map()
+        if self.member_uid is not None:
+            result['MemberUid'] = self.member_uid
         if self.peer_vpc is not None:
             result['PeerVpc'] = self.peer_vpc.to_map()
         if self.request_id is not None:
@@ -7373,6 +7237,8 @@ class DescribeVpcFirewallDetailResponseBody(TeaModel):
         if m.get('LocalVpc') is not None:
             temp_model = DescribeVpcFirewallDetailResponseBodyLocalVpc()
             self.local_vpc = temp_model.from_map(m['LocalVpc'])
+        if m.get('MemberUid') is not None:
+            self.member_uid = m.get('MemberUid')
         if m.get('PeerVpc') is not None:
             temp_model = DescribeVpcFirewallDetailResponseBodyPeerVpc()
             self.peer_vpc = temp_model.from_map(m['PeerVpc'])
@@ -7432,21 +7298,25 @@ class DescribeVpcFirewallDetailResponse(TeaModel):
 class DescribeVpcFirewallListRequest(TeaModel):
     def __init__(
         self,
+        connect_sub_type: str = None,
         current_page: str = None,
         firewall_switch_status: str = None,
         lang: str = None,
         member_uid: str = None,
         page_size: str = None,
+        peer_uid: str = None,
         region_no: str = None,
         vpc_firewall_id: str = None,
         vpc_firewall_name: str = None,
         vpc_id: str = None,
     ):
+        self.connect_sub_type = connect_sub_type
         self.current_page = current_page
         self.firewall_switch_status = firewall_switch_status
         self.lang = lang
         self.member_uid = member_uid
         self.page_size = page_size
+        self.peer_uid = peer_uid
         self.region_no = region_no
         self.vpc_firewall_id = vpc_firewall_id
         self.vpc_firewall_name = vpc_firewall_name
@@ -7461,6 +7331,8 @@ class DescribeVpcFirewallListRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.connect_sub_type is not None:
+            result['ConnectSubType'] = self.connect_sub_type
         if self.current_page is not None:
             result['CurrentPage'] = self.current_page
         if self.firewall_switch_status is not None:
@@ -7471,6 +7343,8 @@ class DescribeVpcFirewallListRequest(TeaModel):
             result['MemberUid'] = self.member_uid
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.peer_uid is not None:
+            result['PeerUid'] = self.peer_uid
         if self.region_no is not None:
             result['RegionNo'] = self.region_no
         if self.vpc_firewall_id is not None:
@@ -7483,6 +7357,8 @@ class DescribeVpcFirewallListRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ConnectSubType') is not None:
+            self.connect_sub_type = m.get('ConnectSubType')
         if m.get('CurrentPage') is not None:
             self.current_page = m.get('CurrentPage')
         if m.get('FirewallSwitchStatus') is not None:
@@ -7493,6 +7369,8 @@ class DescribeVpcFirewallListRequest(TeaModel):
             self.member_uid = m.get('MemberUid')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('PeerUid') is not None:
+            self.peer_uid = m.get('PeerUid')
         if m.get('RegionNo') is not None:
             self.region_no = m.get('RegionNo')
         if m.get('VpcFirewallId') is not None:
@@ -7825,6 +7703,7 @@ class DescribeVpcFirewallListResponseBodyVpcFirewalls(TeaModel):
     def __init__(
         self,
         bandwidth: int = None,
+        connect_sub_type: str = None,
         connect_type: str = None,
         firewall_switch_status: str = None,
         ips_config: DescribeVpcFirewallListResponseBodyVpcFirewallsIpsConfig = None,
@@ -7832,10 +7711,12 @@ class DescribeVpcFirewallListResponseBodyVpcFirewalls(TeaModel):
         member_uid: str = None,
         peer_vpc: DescribeVpcFirewallListResponseBodyVpcFirewallsPeerVpc = None,
         region_status: str = None,
+        result_code: str = None,
         vpc_firewall_id: str = None,
         vpc_firewall_name: str = None,
     ):
         self.bandwidth = bandwidth
+        self.connect_sub_type = connect_sub_type
         self.connect_type = connect_type
         self.firewall_switch_status = firewall_switch_status
         self.ips_config = ips_config
@@ -7843,6 +7724,7 @@ class DescribeVpcFirewallListResponseBodyVpcFirewalls(TeaModel):
         self.member_uid = member_uid
         self.peer_vpc = peer_vpc
         self.region_status = region_status
+        self.result_code = result_code
         self.vpc_firewall_id = vpc_firewall_id
         self.vpc_firewall_name = vpc_firewall_name
 
@@ -7862,6 +7744,8 @@ class DescribeVpcFirewallListResponseBodyVpcFirewalls(TeaModel):
         result = dict()
         if self.bandwidth is not None:
             result['Bandwidth'] = self.bandwidth
+        if self.connect_sub_type is not None:
+            result['ConnectSubType'] = self.connect_sub_type
         if self.connect_type is not None:
             result['ConnectType'] = self.connect_type
         if self.firewall_switch_status is not None:
@@ -7876,6 +7760,8 @@ class DescribeVpcFirewallListResponseBodyVpcFirewalls(TeaModel):
             result['PeerVpc'] = self.peer_vpc.to_map()
         if self.region_status is not None:
             result['RegionStatus'] = self.region_status
+        if self.result_code is not None:
+            result['ResultCode'] = self.result_code
         if self.vpc_firewall_id is not None:
             result['VpcFirewallId'] = self.vpc_firewall_id
         if self.vpc_firewall_name is not None:
@@ -7886,6 +7772,8 @@ class DescribeVpcFirewallListResponseBodyVpcFirewalls(TeaModel):
         m = m or dict()
         if m.get('Bandwidth') is not None:
             self.bandwidth = m.get('Bandwidth')
+        if m.get('ConnectSubType') is not None:
+            self.connect_sub_type = m.get('ConnectSubType')
         if m.get('ConnectType') is not None:
             self.connect_type = m.get('ConnectType')
         if m.get('FirewallSwitchStatus') is not None:
@@ -7903,6 +7791,8 @@ class DescribeVpcFirewallListResponseBodyVpcFirewalls(TeaModel):
             self.peer_vpc = temp_model.from_map(m['PeerVpc'])
         if m.get('RegionStatus') is not None:
             self.region_status = m.get('RegionStatus')
+        if m.get('ResultCode') is not None:
+            self.result_code = m.get('ResultCode')
         if m.get('VpcFirewallId') is not None:
             self.vpc_firewall_id = m.get('VpcFirewallId')
         if m.get('VpcFirewallName') is not None:
