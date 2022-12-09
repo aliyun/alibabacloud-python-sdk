@@ -1102,10 +1102,10 @@ class ErasePersonAdvanceRequest(TeaModel):
     def __init__(
         self,
         image_urlobject: BinaryIO = None,
-        user_mask: str = None,
+        user_mask_object: BinaryIO = None,
     ):
         self.image_urlobject = image_urlobject
-        self.user_mask = user_mask
+        self.user_mask_object = user_mask_object
 
     def validate(self):
         pass
@@ -1118,8 +1118,8 @@ class ErasePersonAdvanceRequest(TeaModel):
         result = dict()
         if self.image_urlobject is not None:
             result['ImageURL'] = self.image_urlobject
-        if self.user_mask is not None:
-            result['UserMask'] = self.user_mask
+        if self.user_mask_object is not None:
+            result['UserMask'] = self.user_mask_object
         return result
 
     def from_map(self, m: dict = None):
@@ -1127,7 +1127,7 @@ class ErasePersonAdvanceRequest(TeaModel):
         if m.get('ImageURL') is not None:
             self.image_urlobject = m.get('ImageURL')
         if m.get('UserMask') is not None:
-            self.user_mask = m.get('UserMask')
+            self.user_mask_object = m.get('UserMask')
         return self
 
 
