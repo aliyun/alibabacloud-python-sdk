@@ -2375,12 +2375,10 @@ class DeleteCdnDomainRequest(TeaModel):
         domain_name: str = None,
         owner_account: str = None,
         owner_id: int = None,
-        security_token: str = None,
     ):
         self.domain_name = domain_name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        self.security_token = security_token
 
     def validate(self):
         pass
@@ -2397,8 +2395,6 @@ class DeleteCdnDomainRequest(TeaModel):
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         return result
 
     def from_map(self, m: dict = None):
@@ -2409,8 +2405,6 @@ class DeleteCdnDomainRequest(TeaModel):
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         return self
 
 
@@ -3361,170 +3355,6 @@ class DeleteUserUsageDataExportTaskResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteUserUsageDataExportTaskResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class DescribeActiveVersionOfConfigGroupRequest(TeaModel):
-    def __init__(
-        self,
-        config_group_id: str = None,
-        env: str = None,
-        owner_id: int = None,
-    ):
-        self.config_group_id = config_group_id
-        self.env = env
-        self.owner_id = owner_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.config_group_id is not None:
-            result['ConfigGroupId'] = self.config_group_id
-        if self.env is not None:
-            result['Env'] = self.env
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ConfigGroupId') is not None:
-            self.config_group_id = m.get('ConfigGroupId')
-        if m.get('Env') is not None:
-            self.env = m.get('Env')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        return self
-
-
-class DescribeActiveVersionOfConfigGroupResponseBody(TeaModel):
-    def __init__(
-        self,
-        base_version_id: str = None,
-        config_group_id: str = None,
-        create_time: str = None,
-        description: str = None,
-        operator: str = None,
-        request_id: str = None,
-        seq_id: int = None,
-        status: str = None,
-        update_time: str = None,
-        version_id: str = None,
-    ):
-        self.base_version_id = base_version_id
-        self.config_group_id = config_group_id
-        self.create_time = create_time
-        self.description = description
-        self.operator = operator
-        self.request_id = request_id
-        self.seq_id = seq_id
-        self.status = status
-        self.update_time = update_time
-        self.version_id = version_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.base_version_id is not None:
-            result['BaseVersionId'] = self.base_version_id
-        if self.config_group_id is not None:
-            result['ConfigGroupId'] = self.config_group_id
-        if self.create_time is not None:
-            result['CreateTime'] = self.create_time
-        if self.description is not None:
-            result['Description'] = self.description
-        if self.operator is not None:
-            result['Operator'] = self.operator
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.seq_id is not None:
-            result['SeqId'] = self.seq_id
-        if self.status is not None:
-            result['Status'] = self.status
-        if self.update_time is not None:
-            result['UpdateTime'] = self.update_time
-        if self.version_id is not None:
-            result['VersionId'] = self.version_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('BaseVersionId') is not None:
-            self.base_version_id = m.get('BaseVersionId')
-        if m.get('ConfigGroupId') is not None:
-            self.config_group_id = m.get('ConfigGroupId')
-        if m.get('CreateTime') is not None:
-            self.create_time = m.get('CreateTime')
-        if m.get('Description') is not None:
-            self.description = m.get('Description')
-        if m.get('Operator') is not None:
-            self.operator = m.get('Operator')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('SeqId') is not None:
-            self.seq_id = m.get('SeqId')
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        if m.get('UpdateTime') is not None:
-            self.update_time = m.get('UpdateTime')
-        if m.get('VersionId') is not None:
-            self.version_id = m.get('VersionId')
-        return self
-
-
-class DescribeActiveVersionOfConfigGroupResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: DescribeActiveVersionOfConfigGroupResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = DescribeActiveVersionOfConfigGroupResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -9367,438 +9197,6 @@ class DescribeCertificateInfoByIDResponse(TeaModel):
         return self
 
 
-class DescribeConfigGroupDetailRequest(TeaModel):
-    def __init__(
-        self,
-        config_group_id: str = None,
-        config_group_name: str = None,
-        owner_id: int = None,
-    ):
-        self.config_group_id = config_group_id
-        self.config_group_name = config_group_name
-        self.owner_id = owner_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.config_group_id is not None:
-            result['ConfigGroupId'] = self.config_group_id
-        if self.config_group_name is not None:
-            result['ConfigGroupName'] = self.config_group_name
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ConfigGroupId') is not None:
-            self.config_group_id = m.get('ConfigGroupId')
-        if m.get('ConfigGroupName') is not None:
-            self.config_group_name = m.get('ConfigGroupName')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        return self
-
-
-class DescribeConfigGroupDetailResponseBody(TeaModel):
-    def __init__(
-        self,
-        biz_name: str = None,
-        config_group_id: str = None,
-        config_group_name: str = None,
-        create_time: str = None,
-        description: str = None,
-        request_id: str = None,
-        update_time: str = None,
-    ):
-        self.biz_name = biz_name
-        self.config_group_id = config_group_id
-        self.config_group_name = config_group_name
-        self.create_time = create_time
-        self.description = description
-        self.request_id = request_id
-        self.update_time = update_time
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.biz_name is not None:
-            result['BizName'] = self.biz_name
-        if self.config_group_id is not None:
-            result['ConfigGroupId'] = self.config_group_id
-        if self.config_group_name is not None:
-            result['ConfigGroupName'] = self.config_group_name
-        if self.create_time is not None:
-            result['CreateTime'] = self.create_time
-        if self.description is not None:
-            result['Description'] = self.description
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.update_time is not None:
-            result['UpdateTime'] = self.update_time
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('BizName') is not None:
-            self.biz_name = m.get('BizName')
-        if m.get('ConfigGroupId') is not None:
-            self.config_group_id = m.get('ConfigGroupId')
-        if m.get('ConfigGroupName') is not None:
-            self.config_group_name = m.get('ConfigGroupName')
-        if m.get('CreateTime') is not None:
-            self.create_time = m.get('CreateTime')
-        if m.get('Description') is not None:
-            self.description = m.get('Description')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('UpdateTime') is not None:
-            self.update_time = m.get('UpdateTime')
-        return self
-
-
-class DescribeConfigGroupDetailResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: DescribeConfigGroupDetailResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = DescribeConfigGroupDetailResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class DescribeConfigOfVersionRequest(TeaModel):
-    def __init__(
-        self,
-        function_id: int = None,
-        function_name: str = None,
-        group_id: int = None,
-        owner_id: int = None,
-        security_token: str = None,
-        version_id: str = None,
-    ):
-        self.function_id = function_id
-        self.function_name = function_name
-        self.group_id = group_id
-        self.owner_id = owner_id
-        self.security_token = security_token
-        self.version_id = version_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.function_id is not None:
-            result['FunctionId'] = self.function_id
-        if self.function_name is not None:
-            result['FunctionName'] = self.function_name
-        if self.group_id is not None:
-            result['GroupId'] = self.group_id
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
-        if self.version_id is not None:
-            result['VersionId'] = self.version_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('FunctionId') is not None:
-            self.function_id = m.get('FunctionId')
-        if m.get('FunctionName') is not None:
-            self.function_name = m.get('FunctionName')
-        if m.get('GroupId') is not None:
-            self.group_id = m.get('GroupId')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
-        if m.get('VersionId') is not None:
-            self.version_id = m.get('VersionId')
-        return self
-
-
-class DescribeConfigOfVersionResponseBodyVersionConfigsVersionConfigFunctionArgsFunctionArg(TeaModel):
-    def __init__(
-        self,
-        arg_name: str = None,
-        arg_value: str = None,
-    ):
-        self.arg_name = arg_name
-        self.arg_value = arg_value
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.arg_name is not None:
-            result['ArgName'] = self.arg_name
-        if self.arg_value is not None:
-            result['ArgValue'] = self.arg_value
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ArgName') is not None:
-            self.arg_name = m.get('ArgName')
-        if m.get('ArgValue') is not None:
-            self.arg_value = m.get('ArgValue')
-        return self
-
-
-class DescribeConfigOfVersionResponseBodyVersionConfigsVersionConfigFunctionArgs(TeaModel):
-    def __init__(
-        self,
-        function_arg: List[DescribeConfigOfVersionResponseBodyVersionConfigsVersionConfigFunctionArgsFunctionArg] = None,
-    ):
-        self.function_arg = function_arg
-
-    def validate(self):
-        if self.function_arg:
-            for k in self.function_arg:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['FunctionArg'] = []
-        if self.function_arg is not None:
-            for k in self.function_arg:
-                result['FunctionArg'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.function_arg = []
-        if m.get('FunctionArg') is not None:
-            for k in m.get('FunctionArg'):
-                temp_model = DescribeConfigOfVersionResponseBodyVersionConfigsVersionConfigFunctionArgsFunctionArg()
-                self.function_arg.append(temp_model.from_map(k))
-        return self
-
-
-class DescribeConfigOfVersionResponseBodyVersionConfigsVersionConfig(TeaModel):
-    def __init__(
-        self,
-        config_id: str = None,
-        function_args: DescribeConfigOfVersionResponseBodyVersionConfigsVersionConfigFunctionArgs = None,
-        function_name: str = None,
-        status: str = None,
-    ):
-        self.config_id = config_id
-        self.function_args = function_args
-        self.function_name = function_name
-        self.status = status
-
-    def validate(self):
-        if self.function_args:
-            self.function_args.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.config_id is not None:
-            result['ConfigId'] = self.config_id
-        if self.function_args is not None:
-            result['FunctionArgs'] = self.function_args.to_map()
-        if self.function_name is not None:
-            result['FunctionName'] = self.function_name
-        if self.status is not None:
-            result['Status'] = self.status
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ConfigId') is not None:
-            self.config_id = m.get('ConfigId')
-        if m.get('FunctionArgs') is not None:
-            temp_model = DescribeConfigOfVersionResponseBodyVersionConfigsVersionConfigFunctionArgs()
-            self.function_args = temp_model.from_map(m['FunctionArgs'])
-        if m.get('FunctionName') is not None:
-            self.function_name = m.get('FunctionName')
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        return self
-
-
-class DescribeConfigOfVersionResponseBodyVersionConfigs(TeaModel):
-    def __init__(
-        self,
-        version_config: List[DescribeConfigOfVersionResponseBodyVersionConfigsVersionConfig] = None,
-    ):
-        self.version_config = version_config
-
-    def validate(self):
-        if self.version_config:
-            for k in self.version_config:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['VersionConfig'] = []
-        if self.version_config is not None:
-            for k in self.version_config:
-                result['VersionConfig'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.version_config = []
-        if m.get('VersionConfig') is not None:
-            for k in m.get('VersionConfig'):
-                temp_model = DescribeConfigOfVersionResponseBodyVersionConfigsVersionConfig()
-                self.version_config.append(temp_model.from_map(k))
-        return self
-
-
-class DescribeConfigOfVersionResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        version_configs: DescribeConfigOfVersionResponseBodyVersionConfigs = None,
-    ):
-        self.request_id = request_id
-        self.version_configs = version_configs
-
-    def validate(self):
-        if self.version_configs:
-            self.version_configs.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.version_configs is not None:
-            result['VersionConfigs'] = self.version_configs.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('VersionConfigs') is not None:
-            temp_model = DescribeConfigOfVersionResponseBodyVersionConfigs()
-            self.version_configs = temp_model.from_map(m['VersionConfigs'])
-        return self
-
-
-class DescribeConfigOfVersionResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: DescribeConfigOfVersionResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = DescribeConfigOfVersionResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class DescribeCustomLogConfigRequest(TeaModel):
     def __init__(
         self,
@@ -13571,175 +12969,6 @@ class DescribeDomainMultiUsageDataResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeDomainMultiUsageDataResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class DescribeDomainNamesOfVersionRequest(TeaModel):
-    def __init__(
-        self,
-        owner_id: int = None,
-        page_index: int = None,
-        page_size: str = None,
-        version_id: str = None,
-    ):
-        self.owner_id = owner_id
-        self.page_index = page_index
-        self.page_size = page_size
-        self.version_id = version_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        if self.page_index is not None:
-            result['PageIndex'] = self.page_index
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        if self.version_id is not None:
-            result['VersionId'] = self.version_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        if m.get('PageIndex') is not None:
-            self.page_index = m.get('PageIndex')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        if m.get('VersionId') is not None:
-            self.version_id = m.get('VersionId')
-        return self
-
-
-class DescribeDomainNamesOfVersionResponseBodyContents(TeaModel):
-    def __init__(
-        self,
-        domain_id: str = None,
-        domain_name: str = None,
-    ):
-        self.domain_id = domain_id
-        self.domain_name = domain_name
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.domain_id is not None:
-            result['DomainId'] = self.domain_id
-        if self.domain_name is not None:
-            result['DomainName'] = self.domain_name
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DomainId') is not None:
-            self.domain_id = m.get('DomainId')
-        if m.get('DomainName') is not None:
-            self.domain_name = m.get('DomainName')
-        return self
-
-
-class DescribeDomainNamesOfVersionResponseBody(TeaModel):
-    def __init__(
-        self,
-        contents: List[DescribeDomainNamesOfVersionResponseBodyContents] = None,
-        request_id: str = None,
-        total_count: int = None,
-    ):
-        self.contents = contents
-        self.request_id = request_id
-        self.total_count = total_count
-
-    def validate(self):
-        if self.contents:
-            for k in self.contents:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['Contents'] = []
-        if self.contents is not None:
-            for k in self.contents:
-                result['Contents'].append(k.to_map() if k else None)
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.contents = []
-        if m.get('Contents') is not None:
-            for k in m.get('Contents'):
-                temp_model = DescribeDomainNamesOfVersionResponseBodyContents()
-                self.contents.append(temp_model.from_map(k))
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
-        return self
-
-
-class DescribeDomainNamesOfVersionResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: DescribeDomainNamesOfVersionResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = DescribeDomainNamesOfVersionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -22292,12 +21521,8 @@ class DescribeIpInfoRequest(TeaModel):
     def __init__(
         self,
         ip: str = None,
-        owner_id: int = None,
-        security_token: str = None,
     ):
         self.ip = ip
-        self.owner_id = owner_id
-        self.security_token = security_token
 
     def validate(self):
         pass
@@ -22310,20 +21535,12 @@ class DescribeIpInfoRequest(TeaModel):
         result = dict()
         if self.ip is not None:
             result['IP'] = self.ip
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('IP') is not None:
             self.ip = m.get('IP')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         return self
 
 
@@ -23070,110 +22287,6 @@ class DescribeRealtimeDeliveryAccResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeRealtimeDeliveryAccResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class DescribeRealtimeLogAuthorizedRequest(TeaModel):
-    def __init__(
-        self,
-        owner_id: int = None,
-    ):
-        self.owner_id = owner_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        return self
-
-
-class DescribeRealtimeLogAuthorizedResponseBody(TeaModel):
-    def __init__(
-        self,
-        authorized_status: str = None,
-        request_id: str = None,
-    ):
-        self.authorized_status = authorized_status
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.authorized_status is not None:
-            result['AuthorizedStatus'] = self.authorized_status
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AuthorizedStatus') is not None:
-            self.authorized_status = m.get('AuthorizedStatus')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class DescribeRealtimeLogAuthorizedResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: DescribeRealtimeLogAuthorizedResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = DescribeRealtimeLogAuthorizedResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -27651,6 +26764,116 @@ class ModifyRealtimeLogDeliveryResponse(TeaModel):
         return self
 
 
+class OpenCdnServiceRequest(TeaModel):
+    def __init__(
+        self,
+        internet_charge_type: str = None,
+        owner_id: int = None,
+        security_token: str = None,
+    ):
+        self.internet_charge_type = internet_charge_type
+        self.owner_id = owner_id
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.internet_charge_type is not None:
+            result['InternetChargeType'] = self.internet_charge_type
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InternetChargeType') is not None:
+            self.internet_charge_type = m.get('InternetChargeType')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class OpenCdnServiceResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class OpenCdnServiceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: OpenCdnServiceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = OpenCdnServiceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class PublishStagingConfigToProductionRequest(TeaModel):
     def __init__(
         self,
@@ -28500,146 +27723,6 @@ class SetCdnDomainStagingConfigResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SetCdnDomainStagingConfigResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class SetConfigOfVersionRequest(TeaModel):
-    def __init__(
-        self,
-        config_id: str = None,
-        function_args: str = None,
-        function_id: int = None,
-        function_name: str = None,
-        owner_account: str = None,
-        owner_id: int = None,
-        security_token: str = None,
-        version_id: str = None,
-    ):
-        self.config_id = config_id
-        self.function_args = function_args
-        self.function_id = function_id
-        self.function_name = function_name
-        self.owner_account = owner_account
-        self.owner_id = owner_id
-        self.security_token = security_token
-        self.version_id = version_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.config_id is not None:
-            result['ConfigId'] = self.config_id
-        if self.function_args is not None:
-            result['FunctionArgs'] = self.function_args
-        if self.function_id is not None:
-            result['FunctionId'] = self.function_id
-        if self.function_name is not None:
-            result['FunctionName'] = self.function_name
-        if self.owner_account is not None:
-            result['OwnerAccount'] = self.owner_account
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
-        if self.version_id is not None:
-            result['VersionId'] = self.version_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ConfigId') is not None:
-            self.config_id = m.get('ConfigId')
-        if m.get('FunctionArgs') is not None:
-            self.function_args = m.get('FunctionArgs')
-        if m.get('FunctionId') is not None:
-            self.function_id = m.get('FunctionId')
-        if m.get('FunctionName') is not None:
-            self.function_name = m.get('FunctionName')
-        if m.get('OwnerAccount') is not None:
-            self.owner_account = m.get('OwnerAccount')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
-        if m.get('VersionId') is not None:
-            self.version_id = m.get('VersionId')
-        return self
-
-
-class SetConfigOfVersionResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-    ):
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class SetConfigOfVersionResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: SetConfigOfVersionResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = SetConfigOfVersionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

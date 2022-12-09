@@ -1589,8 +1589,6 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.security_token):
-            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1623,8 +1621,6 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.security_token):
-            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2245,84 +2241,6 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DeleteUserUsageDataExportTaskResponse:
         runtime = util_models.RuntimeOptions()
         return await self.delete_user_usage_data_export_task_with_options_async(request, runtime)
-
-    def describe_active_version_of_config_group_with_options(
-        self,
-        request: cdn_20180510_models.DescribeActiveVersionOfConfigGroupRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cdn_20180510_models.DescribeActiveVersionOfConfigGroupResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.config_group_id):
-            query['ConfigGroupId'] = request.config_group_id
-        if not UtilClient.is_unset(request.env):
-            query['Env'] = request.env
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeActiveVersionOfConfigGroup',
-            version='2018-05-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cdn_20180510_models.DescribeActiveVersionOfConfigGroupResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_active_version_of_config_group_with_options_async(
-        self,
-        request: cdn_20180510_models.DescribeActiveVersionOfConfigGroupRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cdn_20180510_models.DescribeActiveVersionOfConfigGroupResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.config_group_id):
-            query['ConfigGroupId'] = request.config_group_id
-        if not UtilClient.is_unset(request.env):
-            query['Env'] = request.env
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeActiveVersionOfConfigGroup',
-            version='2018-05-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cdn_20180510_models.DescribeActiveVersionOfConfigGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_active_version_of_config_group(
-        self,
-        request: cdn_20180510_models.DescribeActiveVersionOfConfigGroupRequest,
-    ) -> cdn_20180510_models.DescribeActiveVersionOfConfigGroupResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_active_version_of_config_group_with_options(request, runtime)
-
-    async def describe_active_version_of_config_group_async(
-        self,
-        request: cdn_20180510_models.DescribeActiveVersionOfConfigGroupRequest,
-    ) -> cdn_20180510_models.DescribeActiveVersionOfConfigGroupResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_active_version_of_config_group_with_options_async(request, runtime)
 
     def describe_blocked_regions_with_options(
         self,
@@ -4516,174 +4434,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_certificate_info_by_idwith_options_async(request, runtime)
 
-    def describe_config_group_detail_with_options(
-        self,
-        request: cdn_20180510_models.DescribeConfigGroupDetailRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cdn_20180510_models.DescribeConfigGroupDetailResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.config_group_id):
-            query['ConfigGroupId'] = request.config_group_id
-        if not UtilClient.is_unset(request.config_group_name):
-            query['ConfigGroupName'] = request.config_group_name
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeConfigGroupDetail',
-            version='2018-05-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cdn_20180510_models.DescribeConfigGroupDetailResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_config_group_detail_with_options_async(
-        self,
-        request: cdn_20180510_models.DescribeConfigGroupDetailRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cdn_20180510_models.DescribeConfigGroupDetailResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.config_group_id):
-            query['ConfigGroupId'] = request.config_group_id
-        if not UtilClient.is_unset(request.config_group_name):
-            query['ConfigGroupName'] = request.config_group_name
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeConfigGroupDetail',
-            version='2018-05-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cdn_20180510_models.DescribeConfigGroupDetailResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_config_group_detail(
-        self,
-        request: cdn_20180510_models.DescribeConfigGroupDetailRequest,
-    ) -> cdn_20180510_models.DescribeConfigGroupDetailResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_config_group_detail_with_options(request, runtime)
-
-    async def describe_config_group_detail_async(
-        self,
-        request: cdn_20180510_models.DescribeConfigGroupDetailRequest,
-    ) -> cdn_20180510_models.DescribeConfigGroupDetailResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_config_group_detail_with_options_async(request, runtime)
-
-    def describe_config_of_version_with_options(
-        self,
-        request: cdn_20180510_models.DescribeConfigOfVersionRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cdn_20180510_models.DescribeConfigOfVersionResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.function_id):
-            query['FunctionId'] = request.function_id
-        if not UtilClient.is_unset(request.function_name):
-            query['FunctionName'] = request.function_name
-        if not UtilClient.is_unset(request.group_id):
-            query['GroupId'] = request.group_id
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.security_token):
-            query['SecurityToken'] = request.security_token
-        if not UtilClient.is_unset(request.version_id):
-            query['VersionId'] = request.version_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeConfigOfVersion',
-            version='2018-05-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cdn_20180510_models.DescribeConfigOfVersionResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_config_of_version_with_options_async(
-        self,
-        request: cdn_20180510_models.DescribeConfigOfVersionRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cdn_20180510_models.DescribeConfigOfVersionResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.function_id):
-            query['FunctionId'] = request.function_id
-        if not UtilClient.is_unset(request.function_name):
-            query['FunctionName'] = request.function_name
-        if not UtilClient.is_unset(request.group_id):
-            query['GroupId'] = request.group_id
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.security_token):
-            query['SecurityToken'] = request.security_token
-        if not UtilClient.is_unset(request.version_id):
-            query['VersionId'] = request.version_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeConfigOfVersion',
-            version='2018-05-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cdn_20180510_models.DescribeConfigOfVersionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_config_of_version(
-        self,
-        request: cdn_20180510_models.DescribeConfigOfVersionRequest,
-    ) -> cdn_20180510_models.DescribeConfigOfVersionResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_config_of_version_with_options(request, runtime)
-
-    async def describe_config_of_version_async(
-        self,
-        request: cdn_20180510_models.DescribeConfigOfVersionRequest,
-    ) -> cdn_20180510_models.DescribeConfigOfVersionResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_config_of_version_with_options_async(request, runtime)
-
     def describe_custom_log_config_with_options(
         self,
         request: cdn_20180510_models.DescribeCustomLogConfigRequest,
@@ -6047,88 +5797,6 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeDomainMultiUsageDataResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_domain_multi_usage_data_with_options_async(request, runtime)
-
-    def describe_domain_names_of_version_with_options(
-        self,
-        request: cdn_20180510_models.DescribeDomainNamesOfVersionRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cdn_20180510_models.DescribeDomainNamesOfVersionResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.page_index):
-            query['PageIndex'] = request.page_index
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.version_id):
-            query['VersionId'] = request.version_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeDomainNamesOfVersion',
-            version='2018-05-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cdn_20180510_models.DescribeDomainNamesOfVersionResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_domain_names_of_version_with_options_async(
-        self,
-        request: cdn_20180510_models.DescribeDomainNamesOfVersionRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cdn_20180510_models.DescribeDomainNamesOfVersionResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.page_index):
-            query['PageIndex'] = request.page_index
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.version_id):
-            query['VersionId'] = request.version_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeDomainNamesOfVersion',
-            version='2018-05-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cdn_20180510_models.DescribeDomainNamesOfVersionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_domain_names_of_version(
-        self,
-        request: cdn_20180510_models.DescribeDomainNamesOfVersionRequest,
-    ) -> cdn_20180510_models.DescribeDomainNamesOfVersionResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_domain_names_of_version_with_options(request, runtime)
-
-    async def describe_domain_names_of_version_async(
-        self,
-        request: cdn_20180510_models.DescribeDomainNamesOfVersionRequest,
-    ) -> cdn_20180510_models.DescribeDomainNamesOfVersionResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_domain_names_of_version_with_options_async(request, runtime)
 
     def describe_domain_path_data_with_options(
         self,
@@ -8915,10 +8583,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.ip):
             query['IP'] = request.ip
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.security_token):
-            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8947,10 +8611,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.ip):
             query['IP'] = request.ip
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.security_token):
-            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9307,72 +8967,6 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeRealtimeDeliveryAccResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_realtime_delivery_acc_with_options_async(request, runtime)
-
-    def describe_realtime_log_authorized_with_options(
-        self,
-        request: cdn_20180510_models.DescribeRealtimeLogAuthorizedRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cdn_20180510_models.DescribeRealtimeLogAuthorizedResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeRealtimeLogAuthorized',
-            version='2018-05-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cdn_20180510_models.DescribeRealtimeLogAuthorizedResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_realtime_log_authorized_with_options_async(
-        self,
-        request: cdn_20180510_models.DescribeRealtimeLogAuthorizedRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cdn_20180510_models.DescribeRealtimeLogAuthorizedResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeRealtimeLogAuthorized',
-            version='2018-05-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cdn_20180510_models.DescribeRealtimeLogAuthorizedResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_realtime_log_authorized(
-        self,
-        request: cdn_20180510_models.DescribeRealtimeLogAuthorizedRequest,
-    ) -> cdn_20180510_models.DescribeRealtimeLogAuthorizedResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_realtime_log_authorized_with_options(request, runtime)
-
-    async def describe_realtime_log_authorized_async(
-        self,
-        request: cdn_20180510_models.DescribeRealtimeLogAuthorizedRequest,
-    ) -> cdn_20180510_models.DescribeRealtimeLogAuthorizedResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_realtime_log_authorized_with_options_async(request, runtime)
 
     def describe_refresh_quota_with_options(
         self,
@@ -11206,6 +10800,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_realtime_log_delivery_with_options_async(request, runtime)
 
+    def open_cdn_service_with_options(
+        self,
+        request: cdn_20180510_models.OpenCdnServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.OpenCdnServiceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.internet_charge_type):
+            query['InternetChargeType'] = request.internet_charge_type
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='OpenCdnService',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.OpenCdnServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def open_cdn_service_with_options_async(
+        self,
+        request: cdn_20180510_models.OpenCdnServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.OpenCdnServiceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.internet_charge_type):
+            query['InternetChargeType'] = request.internet_charge_type
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='OpenCdnService',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.OpenCdnServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def open_cdn_service(
+        self,
+        request: cdn_20180510_models.OpenCdnServiceRequest,
+    ) -> cdn_20180510_models.OpenCdnServiceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.open_cdn_service_with_options(request, runtime)
+
+    async def open_cdn_service_async(
+        self,
+        request: cdn_20180510_models.OpenCdnServiceRequest,
+    ) -> cdn_20180510_models.OpenCdnServiceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.open_cdn_service_with_options_async(request, runtime)
+
     def publish_staging_config_to_production_with_options(
         self,
         request: cdn_20180510_models.PublishStagingConfigToProductionRequest,
@@ -11763,104 +11435,6 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.SetCdnDomainStagingConfigResponse:
         runtime = util_models.RuntimeOptions()
         return await self.set_cdn_domain_staging_config_with_options_async(request, runtime)
-
-    def set_config_of_version_with_options(
-        self,
-        request: cdn_20180510_models.SetConfigOfVersionRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cdn_20180510_models.SetConfigOfVersionResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.config_id):
-            query['ConfigId'] = request.config_id
-        if not UtilClient.is_unset(request.function_args):
-            query['FunctionArgs'] = request.function_args
-        if not UtilClient.is_unset(request.function_id):
-            query['FunctionId'] = request.function_id
-        if not UtilClient.is_unset(request.function_name):
-            query['FunctionName'] = request.function_name
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.security_token):
-            query['SecurityToken'] = request.security_token
-        if not UtilClient.is_unset(request.version_id):
-            query['VersionId'] = request.version_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='SetConfigOfVersion',
-            version='2018-05-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cdn_20180510_models.SetConfigOfVersionResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def set_config_of_version_with_options_async(
-        self,
-        request: cdn_20180510_models.SetConfigOfVersionRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cdn_20180510_models.SetConfigOfVersionResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.config_id):
-            query['ConfigId'] = request.config_id
-        if not UtilClient.is_unset(request.function_args):
-            query['FunctionArgs'] = request.function_args
-        if not UtilClient.is_unset(request.function_id):
-            query['FunctionId'] = request.function_id
-        if not UtilClient.is_unset(request.function_name):
-            query['FunctionName'] = request.function_name
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.security_token):
-            query['SecurityToken'] = request.security_token
-        if not UtilClient.is_unset(request.version_id):
-            query['VersionId'] = request.version_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='SetConfigOfVersion',
-            version='2018-05-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cdn_20180510_models.SetConfigOfVersionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def set_config_of_version(
-        self,
-        request: cdn_20180510_models.SetConfigOfVersionRequest,
-    ) -> cdn_20180510_models.SetConfigOfVersionResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.set_config_of_version_with_options(request, runtime)
-
-    async def set_config_of_version_async(
-        self,
-        request: cdn_20180510_models.SetConfigOfVersionRequest,
-    ) -> cdn_20180510_models.SetConfigOfVersionResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.set_config_of_version_with_options_async(request, runtime)
 
     def set_domain_server_certificate_with_options(
         self,

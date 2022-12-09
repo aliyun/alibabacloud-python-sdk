@@ -1,3 +1,6 @@
+2022-12-09 Version: 1.1.8
+- Delete DescribeLiveStreamRecordContent.
+
 2022-11-17 Version: 1.1.7
 - Update BatchDescribeCdnIpInfo.
 
