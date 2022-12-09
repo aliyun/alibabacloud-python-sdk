@@ -6424,6 +6424,8 @@ class Client(OpenApiClient):
             query['RedundantPhysicalConnectionId'] = request.redundant_physical_connection_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -6484,6 +6486,8 @@ class Client(OpenApiClient):
             query['RedundantPhysicalConnectionId'] = request.redundant_physical_connection_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -7194,6 +7198,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.fast_link_mode):
+            query['FastLinkMode'] = request.fast_link_mode
         if not UtilClient.is_unset(request.health_check_source_ip):
             query['HealthCheckSourceIp'] = request.health_check_source_ip
         if not UtilClient.is_unset(request.health_check_target_ip):
@@ -7272,6 +7278,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.fast_link_mode):
+            query['FastLinkMode'] = request.fast_link_mode
         if not UtilClient.is_unset(request.health_check_source_ip):
             query['HealthCheckSourceIp'] = request.health_check_source_ip
         if not UtilClient.is_unset(request.health_check_target_ip):
@@ -8550,6 +8558,8 @@ class Client(OpenApiClient):
             query['PhysicalConnectionId'] = request.physical_connection_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.spec):
             query['Spec'] = request.spec
         if not UtilClient.is_unset(request.token):
@@ -8558,6 +8568,8 @@ class Client(OpenApiClient):
             query['VlanId'] = request.vlan_id
         if not UtilClient.is_unset(request.vpconn_ali_uid):
             query['VpconnAliUid'] = request.vpconn_ali_uid
+        if not UtilClient.is_unset(request.vpconn_uid_resource_group_id):
+            query['VpconnUidResourceGroupId'] = request.vpconn_uid_resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8596,6 +8608,8 @@ class Client(OpenApiClient):
             query['PhysicalConnectionId'] = request.physical_connection_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.spec):
             query['Spec'] = request.spec
         if not UtilClient.is_unset(request.token):
@@ -8604,6 +8618,8 @@ class Client(OpenApiClient):
             query['VlanId'] = request.vlan_id
         if not UtilClient.is_unset(request.vpconn_ali_uid):
             query['VpconnAliUid'] = request.vpconn_ali_uid
+        if not UtilClient.is_unset(request.vpconn_uid_resource_group_id):
+            query['VpconnUidResourceGroupId'] = request.vpconn_uid_resource_group_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -18000,6 +18016,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -18048,6 +18066,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -23463,6 +23483,104 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.grant_instance_to_cen_with_options_async(request, runtime)
 
+    def grant_instance_to_vbr_with_options(
+        self,
+        tmp_req: vpc_20160428_models.GrantInstanceToVbrRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.GrantInstanceToVbrResponse:
+        UtilClient.validate_model(tmp_req)
+        request = vpc_20160428_models.GrantInstanceToVbrShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.vbr_instance_ids):
+            request.vbr_instance_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.vbr_instance_ids, 'VbrInstanceIds', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.grant_type):
+            query['GrantType'] = request.grant_type
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.vbr_instance_ids_shrink):
+            query['VbrInstanceIds'] = request.vbr_instance_ids_shrink
+        if not UtilClient.is_unset(request.vbr_owner_uid):
+            query['VbrOwnerUid'] = request.vbr_owner_uid
+        if not UtilClient.is_unset(request.vbr_region_no):
+            query['VbrRegionNo'] = request.vbr_region_no
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GrantInstanceToVbr',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.GrantInstanceToVbrResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def grant_instance_to_vbr_with_options_async(
+        self,
+        tmp_req: vpc_20160428_models.GrantInstanceToVbrRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.GrantInstanceToVbrResponse:
+        UtilClient.validate_model(tmp_req)
+        request = vpc_20160428_models.GrantInstanceToVbrShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.vbr_instance_ids):
+            request.vbr_instance_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.vbr_instance_ids, 'VbrInstanceIds', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.grant_type):
+            query['GrantType'] = request.grant_type
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.vbr_instance_ids_shrink):
+            query['VbrInstanceIds'] = request.vbr_instance_ids_shrink
+        if not UtilClient.is_unset(request.vbr_owner_uid):
+            query['VbrOwnerUid'] = request.vbr_owner_uid
+        if not UtilClient.is_unset(request.vbr_region_no):
+            query['VbrRegionNo'] = request.vbr_region_no
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GrantInstanceToVbr',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.GrantInstanceToVbrResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def grant_instance_to_vbr(
+        self,
+        request: vpc_20160428_models.GrantInstanceToVbrRequest,
+    ) -> vpc_20160428_models.GrantInstanceToVbrResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.grant_instance_to_vbr_with_options(request, runtime)
+
+    async def grant_instance_to_vbr_async(
+        self,
+        request: vpc_20160428_models.GrantInstanceToVbrRequest,
+    ) -> vpc_20160428_models.GrantInstanceToVbrResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.grant_instance_to_vbr_with_options_async(request, runtime)
+
     def list_dhcp_options_sets_with_options(
         self,
         request: vpc_20160428_models.ListDhcpOptionsSetsRequest,
@@ -25122,6 +25240,8 @@ class Client(OpenApiClient):
             query['PhysicalConnectionId'] = request.physical_connection_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.tags):
             query['Tags'] = request.tags
         if not UtilClient.is_unset(request.virtual_physical_connection_ali_uids):
@@ -25170,6 +25290,8 @@ class Client(OpenApiClient):
             query['PhysicalConnectionId'] = request.physical_connection_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.tags):
             query['Tags'] = request.tags
         if not UtilClient.is_unset(request.virtual_physical_connection_ali_uids):
@@ -30184,6 +30306,8 @@ class Client(OpenApiClient):
             query['BgpConfig'] = request.bgp_config
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.customer_gateway_id):
+            query['CustomerGatewayId'] = request.customer_gateway_id
         if not UtilClient.is_unset(request.effect_immediately):
             query['EffectImmediately'] = request.effect_immediately
         if not UtilClient.is_unset(request.enable_dpd):
@@ -30248,6 +30372,8 @@ class Client(OpenApiClient):
             query['BgpConfig'] = request.bgp_config
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.customer_gateway_id):
+            query['CustomerGatewayId'] = request.customer_gateway_id
         if not UtilClient.is_unset(request.effect_immediately):
             query['EffectImmediately'] = request.effect_immediately
         if not UtilClient.is_unset(request.enable_dpd):
@@ -32560,6 +32686,104 @@ class Client(OpenApiClient):
     ) -> vpc_20160428_models.RevokeInstanceFromCenResponse:
         runtime = util_models.RuntimeOptions()
         return await self.revoke_instance_from_cen_with_options_async(request, runtime)
+
+    def revoke_instance_from_vbr_with_options(
+        self,
+        tmp_req: vpc_20160428_models.RevokeInstanceFromVbrRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.RevokeInstanceFromVbrResponse:
+        UtilClient.validate_model(tmp_req)
+        request = vpc_20160428_models.RevokeInstanceFromVbrShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.vbr_instance_ids):
+            request.vbr_instance_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.vbr_instance_ids, 'VbrInstanceIds', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.grant_type):
+            query['GrantType'] = request.grant_type
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.vbr_instance_ids_shrink):
+            query['VbrInstanceIds'] = request.vbr_instance_ids_shrink
+        if not UtilClient.is_unset(request.vbr_owner_uid):
+            query['VbrOwnerUid'] = request.vbr_owner_uid
+        if not UtilClient.is_unset(request.vbr_region_no):
+            query['VbrRegionNo'] = request.vbr_region_no
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RevokeInstanceFromVbr',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.RevokeInstanceFromVbrResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def revoke_instance_from_vbr_with_options_async(
+        self,
+        tmp_req: vpc_20160428_models.RevokeInstanceFromVbrRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.RevokeInstanceFromVbrResponse:
+        UtilClient.validate_model(tmp_req)
+        request = vpc_20160428_models.RevokeInstanceFromVbrShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.vbr_instance_ids):
+            request.vbr_instance_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.vbr_instance_ids, 'VbrInstanceIds', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.grant_type):
+            query['GrantType'] = request.grant_type
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.vbr_instance_ids_shrink):
+            query['VbrInstanceIds'] = request.vbr_instance_ids_shrink
+        if not UtilClient.is_unset(request.vbr_owner_uid):
+            query['VbrOwnerUid'] = request.vbr_owner_uid
+        if not UtilClient.is_unset(request.vbr_region_no):
+            query['VbrRegionNo'] = request.vbr_region_no
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RevokeInstanceFromVbr',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.RevokeInstanceFromVbrResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def revoke_instance_from_vbr(
+        self,
+        request: vpc_20160428_models.RevokeInstanceFromVbrRequest,
+    ) -> vpc_20160428_models.RevokeInstanceFromVbrResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.revoke_instance_from_vbr_with_options(request, runtime)
+
+    async def revoke_instance_from_vbr_async(
+        self,
+        request: vpc_20160428_models.RevokeInstanceFromVbrRequest,
+    ) -> vpc_20160428_models.RevokeInstanceFromVbrResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.revoke_instance_from_vbr_with_options_async(request, runtime)
 
     def tag_resources_with_options(
         self,
