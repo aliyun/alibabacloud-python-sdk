@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from typing import Dict
+from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
@@ -46,11 +47,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.CreateBindingResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.argument):
+            body['Argument'] = request.argument
+        if not UtilClient.is_unset(request.binding_key):
+            body['BindingKey'] = request.binding_key
+        if not UtilClient.is_unset(request.binding_type):
+            body['BindingType'] = request.binding_type
+        if not UtilClient.is_unset(request.destination_name):
+            body['DestinationName'] = request.destination_name
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.source_exchange):
+            body['SourceExchange'] = request.source_exchange
+        if not UtilClient.is_unset(request.virtual_host):
+            body['VirtualHost'] = request.virtual_host
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return amqp_open_20191212_models.CreateBindingResponse().from_map(
-            self.do_rpcrequest('CreateBinding', '2019-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateBinding',
+            version='2019-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            amqp_open_20191212_models.CreateBindingResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_binding_with_options_async(
@@ -59,11 +87,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.CreateBindingResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.argument):
+            body['Argument'] = request.argument
+        if not UtilClient.is_unset(request.binding_key):
+            body['BindingKey'] = request.binding_key
+        if not UtilClient.is_unset(request.binding_type):
+            body['BindingType'] = request.binding_type
+        if not UtilClient.is_unset(request.destination_name):
+            body['DestinationName'] = request.destination_name
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.source_exchange):
+            body['SourceExchange'] = request.source_exchange
+        if not UtilClient.is_unset(request.virtual_host):
+            body['VirtualHost'] = request.virtual_host
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return amqp_open_20191212_models.CreateBindingResponse().from_map(
-            await self.do_rpcrequest_async('CreateBinding', '2019-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateBinding',
+            version='2019-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            amqp_open_20191212_models.CreateBindingResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_binding(
@@ -86,11 +141,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.CreateExchangeResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.alternate_exchange):
+            body['AlternateExchange'] = request.alternate_exchange
+        if not UtilClient.is_unset(request.auto_delete_state):
+            body['AutoDeleteState'] = request.auto_delete_state
+        if not UtilClient.is_unset(request.exchange_name):
+            body['ExchangeName'] = request.exchange_name
+        if not UtilClient.is_unset(request.exchange_type):
+            body['ExchangeType'] = request.exchange_type
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.internal):
+            body['Internal'] = request.internal
+        if not UtilClient.is_unset(request.virtual_host):
+            body['VirtualHost'] = request.virtual_host
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return amqp_open_20191212_models.CreateExchangeResponse().from_map(
-            self.do_rpcrequest('CreateExchange', '2019-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateExchange',
+            version='2019-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            amqp_open_20191212_models.CreateExchangeResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_exchange_with_options_async(
@@ -99,11 +181,38 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.CreateExchangeResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.alternate_exchange):
+            body['AlternateExchange'] = request.alternate_exchange
+        if not UtilClient.is_unset(request.auto_delete_state):
+            body['AutoDeleteState'] = request.auto_delete_state
+        if not UtilClient.is_unset(request.exchange_name):
+            body['ExchangeName'] = request.exchange_name
+        if not UtilClient.is_unset(request.exchange_type):
+            body['ExchangeType'] = request.exchange_type
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.internal):
+            body['Internal'] = request.internal
+        if not UtilClient.is_unset(request.virtual_host):
+            body['VirtualHost'] = request.virtual_host
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return amqp_open_20191212_models.CreateExchangeResponse().from_map(
-            await self.do_rpcrequest_async('CreateExchange', '2019-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateExchange',
+            version='2019-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            amqp_open_20191212_models.CreateExchangeResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_exchange(
@@ -126,11 +235,46 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.CreateQueueResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.auto_delete_state):
+            body['AutoDeleteState'] = request.auto_delete_state
+        if not UtilClient.is_unset(request.auto_expire_state):
+            body['AutoExpireState'] = request.auto_expire_state
+        if not UtilClient.is_unset(request.dead_letter_exchange):
+            body['DeadLetterExchange'] = request.dead_letter_exchange
+        if not UtilClient.is_unset(request.dead_letter_routing_key):
+            body['DeadLetterRoutingKey'] = request.dead_letter_routing_key
+        if not UtilClient.is_unset(request.exclusive_state):
+            body['ExclusiveState'] = request.exclusive_state
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.max_length):
+            body['MaxLength'] = request.max_length
+        if not UtilClient.is_unset(request.maximum_priority):
+            body['MaximumPriority'] = request.maximum_priority
+        if not UtilClient.is_unset(request.message_ttl):
+            body['MessageTTL'] = request.message_ttl
+        if not UtilClient.is_unset(request.queue_name):
+            body['QueueName'] = request.queue_name
+        if not UtilClient.is_unset(request.virtual_host):
+            body['VirtualHost'] = request.virtual_host
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return amqp_open_20191212_models.CreateQueueResponse().from_map(
-            self.do_rpcrequest('CreateQueue', '2019-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateQueue',
+            version='2019-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            amqp_open_20191212_models.CreateQueueResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_queue_with_options_async(
@@ -139,11 +283,46 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.CreateQueueResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.auto_delete_state):
+            body['AutoDeleteState'] = request.auto_delete_state
+        if not UtilClient.is_unset(request.auto_expire_state):
+            body['AutoExpireState'] = request.auto_expire_state
+        if not UtilClient.is_unset(request.dead_letter_exchange):
+            body['DeadLetterExchange'] = request.dead_letter_exchange
+        if not UtilClient.is_unset(request.dead_letter_routing_key):
+            body['DeadLetterRoutingKey'] = request.dead_letter_routing_key
+        if not UtilClient.is_unset(request.exclusive_state):
+            body['ExclusiveState'] = request.exclusive_state
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.max_length):
+            body['MaxLength'] = request.max_length
+        if not UtilClient.is_unset(request.maximum_priority):
+            body['MaximumPriority'] = request.maximum_priority
+        if not UtilClient.is_unset(request.message_ttl):
+            body['MessageTTL'] = request.message_ttl
+        if not UtilClient.is_unset(request.queue_name):
+            body['QueueName'] = request.queue_name
+        if not UtilClient.is_unset(request.virtual_host):
+            body['VirtualHost'] = request.virtual_host
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return amqp_open_20191212_models.CreateQueueResponse().from_map(
-            await self.do_rpcrequest_async('CreateQueue', '2019-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateQueue',
+            version='2019-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            amqp_open_20191212_models.CreateQueueResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_queue(
@@ -166,11 +345,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.CreateVirtualHostResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.virtual_host):
+            body['VirtualHost'] = request.virtual_host
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return amqp_open_20191212_models.CreateVirtualHostResponse().from_map(
-            self.do_rpcrequest('CreateVirtualHost', '2019-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateVirtualHost',
+            version='2019-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            amqp_open_20191212_models.CreateVirtualHostResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def create_virtual_host_with_options_async(
@@ -179,11 +375,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.CreateVirtualHostResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.virtual_host):
+            body['VirtualHost'] = request.virtual_host
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return amqp_open_20191212_models.CreateVirtualHostResponse().from_map(
-            await self.do_rpcrequest_async('CreateVirtualHost', '2019-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='CreateVirtualHost',
+            version='2019-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            amqp_open_20191212_models.CreateVirtualHostResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def create_virtual_host(
@@ -206,11 +419,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.DeleteBindingResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.binding_key):
+            body['BindingKey'] = request.binding_key
+        if not UtilClient.is_unset(request.binding_type):
+            body['BindingType'] = request.binding_type
+        if not UtilClient.is_unset(request.destination_name):
+            body['DestinationName'] = request.destination_name
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.source_exchange):
+            body['SourceExchange'] = request.source_exchange
+        if not UtilClient.is_unset(request.virtual_host):
+            body['VirtualHost'] = request.virtual_host
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return amqp_open_20191212_models.DeleteBindingResponse().from_map(
-            self.do_rpcrequest('DeleteBinding', '2019-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteBinding',
+            version='2019-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            amqp_open_20191212_models.DeleteBindingResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_binding_with_options_async(
@@ -219,11 +457,36 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.DeleteBindingResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.binding_key):
+            body['BindingKey'] = request.binding_key
+        if not UtilClient.is_unset(request.binding_type):
+            body['BindingType'] = request.binding_type
+        if not UtilClient.is_unset(request.destination_name):
+            body['DestinationName'] = request.destination_name
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.source_exchange):
+            body['SourceExchange'] = request.source_exchange
+        if not UtilClient.is_unset(request.virtual_host):
+            body['VirtualHost'] = request.virtual_host
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return amqp_open_20191212_models.DeleteBindingResponse().from_map(
-            await self.do_rpcrequest_async('DeleteBinding', '2019-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteBinding',
+            version='2019-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            amqp_open_20191212_models.DeleteBindingResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_binding(
@@ -246,11 +509,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.DeleteExchangeResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.exchange_name):
+            body['ExchangeName'] = request.exchange_name
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.virtual_host):
+            body['VirtualHost'] = request.virtual_host
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return amqp_open_20191212_models.DeleteExchangeResponse().from_map(
-            self.do_rpcrequest('DeleteExchange', '2019-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteExchange',
+            version='2019-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            amqp_open_20191212_models.DeleteExchangeResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_exchange_with_options_async(
@@ -259,11 +541,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.DeleteExchangeResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.exchange_name):
+            body['ExchangeName'] = request.exchange_name
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.virtual_host):
+            body['VirtualHost'] = request.virtual_host
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return amqp_open_20191212_models.DeleteExchangeResponse().from_map(
-            await self.do_rpcrequest_async('DeleteExchange', '2019-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteExchange',
+            version='2019-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            amqp_open_20191212_models.DeleteExchangeResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_exchange(
@@ -286,11 +587,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.DeleteQueueResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.queue_name):
+            body['QueueName'] = request.queue_name
+        if not UtilClient.is_unset(request.virtual_host):
+            body['VirtualHost'] = request.virtual_host
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return amqp_open_20191212_models.DeleteQueueResponse().from_map(
-            self.do_rpcrequest('DeleteQueue', '2019-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteQueue',
+            version='2019-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            amqp_open_20191212_models.DeleteQueueResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_queue_with_options_async(
@@ -299,11 +619,30 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.DeleteQueueResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.queue_name):
+            body['QueueName'] = request.queue_name
+        if not UtilClient.is_unset(request.virtual_host):
+            body['VirtualHost'] = request.virtual_host
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return amqp_open_20191212_models.DeleteQueueResponse().from_map(
-            await self.do_rpcrequest_async('DeleteQueue', '2019-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteQueue',
+            version='2019-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            amqp_open_20191212_models.DeleteQueueResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_queue(
@@ -326,11 +665,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.DeleteVirtualHostResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.virtual_host):
+            body['VirtualHost'] = request.virtual_host
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return amqp_open_20191212_models.DeleteVirtualHostResponse().from_map(
-            self.do_rpcrequest('DeleteVirtualHost', '2019-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteVirtualHost',
+            version='2019-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            amqp_open_20191212_models.DeleteVirtualHostResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def delete_virtual_host_with_options_async(
@@ -339,11 +695,28 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.DeleteVirtualHostResponse:
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.virtual_host):
+            body['VirtualHost'] = request.virtual_host
         req = open_api_models.OpenApiRequest(
-            body=UtilClient.to_map(request)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
-        return amqp_open_20191212_models.DeleteVirtualHostResponse().from_map(
-            await self.do_rpcrequest_async('DeleteVirtualHost', '2019-12-12', 'HTTPS', 'POST', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='DeleteVirtualHost',
+            version='2019-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            amqp_open_20191212_models.DeleteVirtualHostResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def delete_virtual_host(
@@ -368,10 +741,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return amqp_open_20191212_models.GetMetadataAmountResponse().from_map(
-            self.do_rpcrequest('GetMetadataAmount', '2019-12-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetMetadataAmount',
+            version='2019-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            amqp_open_20191212_models.GetMetadataAmountResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def get_metadata_amount_with_options_async(
@@ -382,10 +767,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return amqp_open_20191212_models.GetMetadataAmountResponse().from_map(
-            await self.do_rpcrequest_async('GetMetadataAmount', '2019-12-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='GetMetadataAmount',
+            version='2019-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            amqp_open_20191212_models.GetMetadataAmountResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_metadata_amount(
@@ -410,10 +807,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return amqp_open_20191212_models.ListBindingsResponse().from_map(
-            self.do_rpcrequest('ListBindings', '2019-12-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListBindings',
+            version='2019-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            amqp_open_20191212_models.ListBindingsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_bindings_with_options_async(
@@ -424,10 +833,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return amqp_open_20191212_models.ListBindingsResponse().from_map(
-            await self.do_rpcrequest_async('ListBindings', '2019-12-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListBindings',
+            version='2019-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            amqp_open_20191212_models.ListBindingsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_bindings(
@@ -452,10 +873,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return amqp_open_20191212_models.ListDownStreamBindingsResponse().from_map(
-            self.do_rpcrequest('ListDownStreamBindings', '2019-12-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListDownStreamBindings',
+            version='2019-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            amqp_open_20191212_models.ListDownStreamBindingsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_down_stream_bindings_with_options_async(
@@ -466,10 +899,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return amqp_open_20191212_models.ListDownStreamBindingsResponse().from_map(
-            await self.do_rpcrequest_async('ListDownStreamBindings', '2019-12-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListDownStreamBindings',
+            version='2019-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            amqp_open_20191212_models.ListDownStreamBindingsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_down_stream_bindings(
@@ -486,48 +931,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_down_stream_bindings_with_options_async(request, runtime)
 
-    def list_exchanges_with_options(
-        self,
-        request: amqp_open_20191212_models.ListExchangesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> amqp_open_20191212_models.ListExchangesResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=query
-        )
-        return amqp_open_20191212_models.ListExchangesResponse().from_map(
-            self.do_rpcrequest('ListExchanges', '2019-12-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
-        )
-
-    async def list_exchanges_with_options_async(
-        self,
-        request: amqp_open_20191212_models.ListExchangesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> amqp_open_20191212_models.ListExchangesResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=query
-        )
-        return amqp_open_20191212_models.ListExchangesResponse().from_map(
-            await self.do_rpcrequest_async('ListExchanges', '2019-12-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
-        )
-
-    def list_exchanges(
-        self,
-        request: amqp_open_20191212_models.ListExchangesRequest,
-    ) -> amqp_open_20191212_models.ListExchangesResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.list_exchanges_with_options(request, runtime)
-
-    async def list_exchanges_async(
-        self,
-        request: amqp_open_20191212_models.ListExchangesRequest,
-    ) -> amqp_open_20191212_models.ListExchangesResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.list_exchanges_with_options_async(request, runtime)
-
     def list_exchange_up_stream_bindings_with_options(
         self,
         request: amqp_open_20191212_models.ListExchangeUpStreamBindingsRequest,
@@ -536,10 +939,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return amqp_open_20191212_models.ListExchangeUpStreamBindingsResponse().from_map(
-            self.do_rpcrequest('ListExchangeUpStreamBindings', '2019-12-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListExchangeUpStreamBindings',
+            version='2019-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            amqp_open_20191212_models.ListExchangeUpStreamBindingsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_exchange_up_stream_bindings_with_options_async(
@@ -550,10 +965,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return amqp_open_20191212_models.ListExchangeUpStreamBindingsResponse().from_map(
-            await self.do_rpcrequest_async('ListExchangeUpStreamBindings', '2019-12-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListExchangeUpStreamBindings',
+            version='2019-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            amqp_open_20191212_models.ListExchangeUpStreamBindingsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_exchange_up_stream_bindings(
@@ -570,6 +997,72 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_exchange_up_stream_bindings_with_options_async(request, runtime)
 
+    def list_exchanges_with_options(
+        self,
+        request: amqp_open_20191212_models.ListExchangesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> amqp_open_20191212_models.ListExchangesResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListExchanges',
+            version='2019-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            amqp_open_20191212_models.ListExchangesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_exchanges_with_options_async(
+        self,
+        request: amqp_open_20191212_models.ListExchangesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> amqp_open_20191212_models.ListExchangesResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListExchanges',
+            version='2019-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            amqp_open_20191212_models.ListExchangesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_exchanges(
+        self,
+        request: amqp_open_20191212_models.ListExchangesRequest,
+    ) -> amqp_open_20191212_models.ListExchangesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_exchanges_with_options(request, runtime)
+
+    async def list_exchanges_async(
+        self,
+        request: amqp_open_20191212_models.ListExchangesRequest,
+    ) -> amqp_open_20191212_models.ListExchangesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_exchanges_with_options_async(request, runtime)
+
     def list_instances_with_options(
         self,
         request: amqp_open_20191212_models.ListInstancesRequest,
@@ -578,10 +1071,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return amqp_open_20191212_models.ListInstancesResponse().from_map(
-            self.do_rpcrequest('ListInstances', '2019-12-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListInstances',
+            version='2019-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            amqp_open_20191212_models.ListInstancesResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_instances_with_options_async(
@@ -592,10 +1097,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return amqp_open_20191212_models.ListInstancesResponse().from_map(
-            await self.do_rpcrequest_async('ListInstances', '2019-12-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListInstances',
+            version='2019-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            amqp_open_20191212_models.ListInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_instances(
@@ -620,10 +1137,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return amqp_open_20191212_models.ListQueueConsumersResponse().from_map(
-            self.do_rpcrequest('ListQueueConsumers', '2019-12-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListQueueConsumers',
+            version='2019-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            amqp_open_20191212_models.ListQueueConsumersResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_queue_consumers_with_options_async(
@@ -634,10 +1163,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return amqp_open_20191212_models.ListQueueConsumersResponse().from_map(
-            await self.do_rpcrequest_async('ListQueueConsumers', '2019-12-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListQueueConsumers',
+            version='2019-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            amqp_open_20191212_models.ListQueueConsumersResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_queue_consumers(
@@ -654,48 +1195,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_queue_consumers_with_options_async(request, runtime)
 
-    def list_queues_with_options(
-        self,
-        request: amqp_open_20191212_models.ListQueuesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> amqp_open_20191212_models.ListQueuesResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=query
-        )
-        return amqp_open_20191212_models.ListQueuesResponse().from_map(
-            self.do_rpcrequest('ListQueues', '2019-12-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
-        )
-
-    async def list_queues_with_options_async(
-        self,
-        request: amqp_open_20191212_models.ListQueuesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> amqp_open_20191212_models.ListQueuesResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=query
-        )
-        return amqp_open_20191212_models.ListQueuesResponse().from_map(
-            await self.do_rpcrequest_async('ListQueues', '2019-12-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
-        )
-
-    def list_queues(
-        self,
-        request: amqp_open_20191212_models.ListQueuesRequest,
-    ) -> amqp_open_20191212_models.ListQueuesResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.list_queues_with_options(request, runtime)
-
-    async def list_queues_async(
-        self,
-        request: amqp_open_20191212_models.ListQueuesRequest,
-    ) -> amqp_open_20191212_models.ListQueuesResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.list_queues_with_options_async(request, runtime)
-
     def list_queue_up_stream_bindings_with_options(
         self,
         request: amqp_open_20191212_models.ListQueueUpStreamBindingsRequest,
@@ -704,10 +1203,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return amqp_open_20191212_models.ListQueueUpStreamBindingsResponse().from_map(
-            self.do_rpcrequest('ListQueueUpStreamBindings', '2019-12-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListQueueUpStreamBindings',
+            version='2019-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            amqp_open_20191212_models.ListQueueUpStreamBindingsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_queue_up_stream_bindings_with_options_async(
@@ -718,10 +1229,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return amqp_open_20191212_models.ListQueueUpStreamBindingsResponse().from_map(
-            await self.do_rpcrequest_async('ListQueueUpStreamBindings', '2019-12-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListQueueUpStreamBindings',
+            version='2019-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            amqp_open_20191212_models.ListQueueUpStreamBindingsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_queue_up_stream_bindings(
@@ -738,6 +1261,72 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_queue_up_stream_bindings_with_options_async(request, runtime)
 
+    def list_queues_with_options(
+        self,
+        request: amqp_open_20191212_models.ListQueuesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> amqp_open_20191212_models.ListQueuesResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListQueues',
+            version='2019-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            amqp_open_20191212_models.ListQueuesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_queues_with_options_async(
+        self,
+        request: amqp_open_20191212_models.ListQueuesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> amqp_open_20191212_models.ListQueuesResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListQueues',
+            version='2019-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            amqp_open_20191212_models.ListQueuesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_queues(
+        self,
+        request: amqp_open_20191212_models.ListQueuesRequest,
+    ) -> amqp_open_20191212_models.ListQueuesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_queues_with_options(request, runtime)
+
+    async def list_queues_async(
+        self,
+        request: amqp_open_20191212_models.ListQueuesRequest,
+    ) -> amqp_open_20191212_models.ListQueuesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_queues_with_options_async(request, runtime)
+
     def list_virtual_hosts_with_options(
         self,
         request: amqp_open_20191212_models.ListVirtualHostsRequest,
@@ -746,10 +1335,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return amqp_open_20191212_models.ListVirtualHostsResponse().from_map(
-            self.do_rpcrequest('ListVirtualHosts', '2019-12-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListVirtualHosts',
+            version='2019-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            amqp_open_20191212_models.ListVirtualHostsResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def list_virtual_hosts_with_options_async(
@@ -760,10 +1361,22 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
-            query=query
+            query=OpenApiUtilClient.query(query)
         )
-        return amqp_open_20191212_models.ListVirtualHostsResponse().from_map(
-            await self.do_rpcrequest_async('ListVirtualHosts', '2019-12-12', 'HTTPS', 'GET', 'AK', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ListVirtualHosts',
+            version='2019-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            amqp_open_20191212_models.ListVirtualHostsResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_virtual_hosts(
@@ -779,3 +1392,77 @@ class Client(OpenApiClient):
     ) -> amqp_open_20191212_models.ListVirtualHostsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_virtual_hosts_with_options_async(request, runtime)
+
+    def update_instance_name_with_options(
+        self,
+        request: amqp_open_20191212_models.UpdateInstanceNameRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> amqp_open_20191212_models.UpdateInstanceNameResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateInstanceName',
+            version='2019-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            amqp_open_20191212_models.UpdateInstanceNameResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_instance_name_with_options_async(
+        self,
+        request: amqp_open_20191212_models.UpdateInstanceNameRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> amqp_open_20191212_models.UpdateInstanceNameResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateInstanceName',
+            version='2019-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            amqp_open_20191212_models.UpdateInstanceNameResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_instance_name(
+        self,
+        request: amqp_open_20191212_models.UpdateInstanceNameRequest,
+    ) -> amqp_open_20191212_models.UpdateInstanceNameResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_instance_name_with_options(request, runtime)
+
+    async def update_instance_name_async(
+        self,
+        request: amqp_open_20191212_models.UpdateInstanceNameRequest,
+    ) -> amqp_open_20191212_models.UpdateInstanceNameResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_instance_name_with_options_async(request, runtime)
