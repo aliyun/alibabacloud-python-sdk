@@ -50,7 +50,7 @@ class Client(OpenApiClient):
         request = cgcs20211111_models.BatchCheckSessionShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.records):
-            request.records_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.records), 'Records', 'json')
+            request.records_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.records, 'Records', 'json')
         query = {}
         if not UtilClient.is_unset(request.records_shrink):
             query['Records'] = request.records_shrink
@@ -82,7 +82,7 @@ class Client(OpenApiClient):
         request = cgcs20211111_models.BatchCheckSessionShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.records):
-            request.records_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.records), 'Records', 'json')
+            request.records_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.records, 'Records', 'json')
         query = {}
         if not UtilClient.is_unset(request.records_shrink):
             query['Records'] = request.records_shrink
@@ -202,7 +202,7 @@ class Client(OpenApiClient):
         request = cgcs20211111_models.CreateAdaptationShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.adapt_target):
-            request.adapt_target_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.adapt_target), 'AdaptTarget', 'json')
+            request.adapt_target_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.adapt_target, 'AdaptTarget', 'json')
         body = {}
         if not UtilClient.is_unset(request.adapt_target_shrink):
             body['AdaptTarget'] = request.adapt_target_shrink
@@ -236,7 +236,7 @@ class Client(OpenApiClient):
         request = cgcs20211111_models.CreateAdaptationShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.adapt_target):
-            request.adapt_target_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.adapt_target), 'AdaptTarget', 'json')
+            request.adapt_target_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.adapt_target, 'AdaptTarget', 'json')
         body = {}
         if not UtilClient.is_unset(request.adapt_target_shrink):
             body['AdaptTarget'] = request.adapt_target_shrink
@@ -356,6 +356,8 @@ class Client(OpenApiClient):
     ) -> cgcs20211111_models.CreateAppSessionResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.adapter_file_id):
+            query['AdapterFileId'] = request.adapter_file_id
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
         if not UtilClient.is_unset(request.app_version):
@@ -402,6 +404,8 @@ class Client(OpenApiClient):
     ) -> cgcs20211111_models.CreateAppSessionResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.adapter_file_id):
+            query['AdapterFileId'] = request.adapter_file_id
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
         if not UtilClient.is_unset(request.app_version):
@@ -959,88 +963,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_app_version_with_options_async(request, runtime)
 
-    def download_dumpfile_with_options(
-        self,
-        request: cgcs20211111_models.DownloadDumpfileRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cgcs20211111_models.DownloadDumpfileResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.app_version_id):
-            body['AppVersionId'] = request.app_version_id
-        if not UtilClient.is_unset(request.dump_file_id):
-            body['DumpFileId'] = request.dump_file_id
-        if not UtilClient.is_unset(request.operator_id):
-            body['OperatorId'] = request.operator_id
-        if not UtilClient.is_unset(request.operator_type):
-            body['OperatorType'] = request.operator_type
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DownloadDumpfile',
-            version='2021-11-11',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cgcs20211111_models.DownloadDumpfileResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def download_dumpfile_with_options_async(
-        self,
-        request: cgcs20211111_models.DownloadDumpfileRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cgcs20211111_models.DownloadDumpfileResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.app_version_id):
-            body['AppVersionId'] = request.app_version_id
-        if not UtilClient.is_unset(request.dump_file_id):
-            body['DumpFileId'] = request.dump_file_id
-        if not UtilClient.is_unset(request.operator_id):
-            body['OperatorId'] = request.operator_id
-        if not UtilClient.is_unset(request.operator_type):
-            body['OperatorType'] = request.operator_type
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DownloadDumpfile',
-            version='2021-11-11',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cgcs20211111_models.DownloadDumpfileResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def download_dumpfile(
-        self,
-        request: cgcs20211111_models.DownloadDumpfileRequest,
-    ) -> cgcs20211111_models.DownloadDumpfileResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.download_dumpfile_with_options(request, runtime)
-
-    async def download_dumpfile_async(
-        self,
-        request: cgcs20211111_models.DownloadDumpfileRequest,
-    ) -> cgcs20211111_models.DownloadDumpfileResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.download_dumpfile_with_options_async(request, runtime)
-
     def get_adaptation_with_options(
         self,
         request: cgcs20211111_models.GetAdaptationRequest,
@@ -1394,6 +1316,76 @@ class Client(OpenApiClient):
     ) -> cgcs20211111_models.GetAppVersionResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_app_version_with_options_async(request, runtime)
+
+    def get_auto_pick_pic_with_options(
+        self,
+        request: cgcs20211111_models.GetAutoPickPicRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cgcs20211111_models.GetAutoPickPicResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAutoPickPic',
+            version='2021-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cgcs20211111_models.GetAutoPickPicResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_auto_pick_pic_with_options_async(
+        self,
+        request: cgcs20211111_models.GetAutoPickPicRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cgcs20211111_models.GetAutoPickPicResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAutoPickPic',
+            version='2021-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cgcs20211111_models.GetAutoPickPicResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_auto_pick_pic(
+        self,
+        request: cgcs20211111_models.GetAutoPickPicRequest,
+    ) -> cgcs20211111_models.GetAutoPickPicResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_auto_pick_pic_with_options(request, runtime)
+
+    async def get_auto_pick_pic_async(
+        self,
+        request: cgcs20211111_models.GetAutoPickPicRequest,
+    ) -> cgcs20211111_models.GetAutoPickPicResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_auto_pick_pic_with_options_async(request, runtime)
 
     def get_capacity_with_options(
         self,
@@ -2022,174 +2014,6 @@ class Client(OpenApiClient):
     ) -> cgcs20211111_models.ModifyAppVersionResponse:
         runtime = util_models.RuntimeOptions()
         return await self.modify_app_version_with_options_async(request, runtime)
-
-    def query_dump_files_with_options(
-        self,
-        request: cgcs20211111_models.QueryDumpFilesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cgcs20211111_models.QueryDumpFilesResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.app_version_id):
-            body['AppVersionId'] = request.app_version_id
-        if not UtilClient.is_unset(request.operator_id):
-            body['OperatorId'] = request.operator_id
-        if not UtilClient.is_unset(request.operator_type):
-            body['OperatorType'] = request.operator_type
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='QueryDumpFiles',
-            version='2021-11-11',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cgcs20211111_models.QueryDumpFilesResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def query_dump_files_with_options_async(
-        self,
-        request: cgcs20211111_models.QueryDumpFilesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cgcs20211111_models.QueryDumpFilesResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.app_version_id):
-            body['AppVersionId'] = request.app_version_id
-        if not UtilClient.is_unset(request.operator_id):
-            body['OperatorId'] = request.operator_id
-        if not UtilClient.is_unset(request.operator_type):
-            body['OperatorType'] = request.operator_type
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='QueryDumpFiles',
-            version='2021-11-11',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cgcs20211111_models.QueryDumpFilesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def query_dump_files(
-        self,
-        request: cgcs20211111_models.QueryDumpFilesRequest,
-    ) -> cgcs20211111_models.QueryDumpFilesResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.query_dump_files_with_options(request, runtime)
-
-    async def query_dump_files_async(
-        self,
-        request: cgcs20211111_models.QueryDumpFilesRequest,
-    ) -> cgcs20211111_models.QueryDumpFilesResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.query_dump_files_with_options_async(request, runtime)
-
-    def query_ops_chart_with_options(
-        self,
-        request: cgcs20211111_models.QueryOpsChartRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cgcs20211111_models.QueryOpsChartResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.chart_type):
-            body['ChartType'] = request.chart_type
-        if not UtilClient.is_unset(request.operator_id):
-            body['OperatorId'] = request.operator_id
-        if not UtilClient.is_unset(request.operator_type):
-            body['OperatorType'] = request.operator_type
-        if not UtilClient.is_unset(request.platform_session_id):
-            body['PlatformSessionId'] = request.platform_session_id
-        if not UtilClient.is_unset(request.query_end_date):
-            body['QueryEndDate'] = request.query_end_date
-        if not UtilClient.is_unset(request.query_start_date):
-            body['QueryStartDate'] = request.query_start_date
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='QueryOpsChart',
-            version='2021-11-11',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cgcs20211111_models.QueryOpsChartResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def query_ops_chart_with_options_async(
-        self,
-        request: cgcs20211111_models.QueryOpsChartRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cgcs20211111_models.QueryOpsChartResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.chart_type):
-            body['ChartType'] = request.chart_type
-        if not UtilClient.is_unset(request.operator_id):
-            body['OperatorId'] = request.operator_id
-        if not UtilClient.is_unset(request.operator_type):
-            body['OperatorType'] = request.operator_type
-        if not UtilClient.is_unset(request.platform_session_id):
-            body['PlatformSessionId'] = request.platform_session_id
-        if not UtilClient.is_unset(request.query_end_date):
-            body['QueryEndDate'] = request.query_end_date
-        if not UtilClient.is_unset(request.query_start_date):
-            body['QueryStartDate'] = request.query_start_date
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='QueryOpsChart',
-            version='2021-11-11',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cgcs20211111_models.QueryOpsChartResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def query_ops_chart(
-        self,
-        request: cgcs20211111_models.QueryOpsChartRequest,
-    ) -> cgcs20211111_models.QueryOpsChartResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.query_ops_chart_with_options(request, runtime)
-
-    async def query_ops_chart_async(
-        self,
-        request: cgcs20211111_models.QueryOpsChartRequest,
-    ) -> cgcs20211111_models.QueryOpsChartResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.query_ops_chart_with_options_async(request, runtime)
 
     def release_capacity_with_options(
         self,

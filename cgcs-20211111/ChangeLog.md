@@ -1,3 +1,7 @@
+2022-12-09 Version: 2.5.0
+- Update BatchCheckSession Api.
+
+
 2022-09-20 Version: 2.3.4
 - Add BatchCheckSession api.
 
