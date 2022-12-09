@@ -4745,6 +4745,163 @@ class DescribeInstanceCreatableZoneResponse(TeaModel):
         return self
 
 
+class DescribeInstanceTagsRequest(TeaModel):
+    def __init__(
+        self,
+        instance_ids: str = None,
+        tags: str = None,
+    ):
+        self.instance_ids = instance_ids
+        self.tags = tags
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids
+        if self.tags is not None:
+            result['Tags'] = self.tags
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceIds') is not None:
+            self.instance_ids = m.get('InstanceIds')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
+        return self
+
+
+class DescribeInstanceTagsResponseBodyTagResources(TeaModel):
+    def __init__(
+        self,
+        resource_id: str = None,
+        resource_type: str = None,
+        tag: str = None,
+    ):
+        self.resource_id = resource_id
+        self.resource_type = resource_type
+        self.tag = tag
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.tag is not None:
+            result['Tag'] = self.tag
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('Tag') is not None:
+            self.tag = m.get('Tag')
+        return self
+
+
+class DescribeInstanceTagsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        tag_resources: List[DescribeInstanceTagsResponseBodyTagResources] = None,
+    ):
+        self.request_id = request_id
+        self.tag_resources = tag_resources
+
+    def validate(self):
+        if self.tag_resources:
+            for k in self.tag_resources:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['TagResources'] = []
+        if self.tag_resources is not None:
+            for k in self.tag_resources:
+                result['TagResources'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.tag_resources = []
+        if m.get('TagResources') is not None:
+            for k in m.get('TagResources'):
+                temp_model = DescribeInstanceTagsResponseBodyTagResources()
+                self.tag_resources.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeInstanceTagsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeInstanceTagsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeInstanceTagsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeInstanceTenantModesRequest(TeaModel):
     def __init__(
         self,
@@ -11650,6 +11807,169 @@ class DescribeTenantMetricsResponse(TeaModel):
         return self
 
 
+class DescribeTenantTagsRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        tags: str = None,
+        tenant_ids: str = None,
+    ):
+        self.instance_id = instance_id
+        self.tags = tags
+        self.tenant_ids = tenant_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.tags is not None:
+            result['Tags'] = self.tags
+        if self.tenant_ids is not None:
+            result['TenantIds'] = self.tenant_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
+        if m.get('TenantIds') is not None:
+            self.tenant_ids = m.get('TenantIds')
+        return self
+
+
+class DescribeTenantTagsResponseBodyTagResources(TeaModel):
+    def __init__(
+        self,
+        resource_id: str = None,
+        resource_type: str = None,
+        tag: str = None,
+    ):
+        self.resource_id = resource_id
+        self.resource_type = resource_type
+        self.tag = tag
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.tag is not None:
+            result['Tag'] = self.tag
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('Tag') is not None:
+            self.tag = m.get('Tag')
+        return self
+
+
+class DescribeTenantTagsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        tag_resources: List[DescribeTenantTagsResponseBodyTagResources] = None,
+    ):
+        self.request_id = request_id
+        self.tag_resources = tag_resources
+
+    def validate(self):
+        if self.tag_resources:
+            for k in self.tag_resources:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['TagResources'] = []
+        if self.tag_resources is not None:
+            for k in self.tag_resources:
+                result['TagResources'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.tag_resources = []
+        if m.get('TagResources') is not None:
+            for k in m.get('TagResources'):
+                temp_model = DescribeTenantTagsResponseBodyTagResources()
+                self.tag_resources.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeTenantTagsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeTenantTagsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeTenantTagsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeTenantUserRolesResponseBody(TeaModel):
     def __init__(
         self,
@@ -13733,6 +14053,116 @@ class ModifyInstanceNameResponse(TeaModel):
         return self
 
 
+class ModifyInstanceTagsRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        tags: str = None,
+    ):
+        self.instance_id = instance_id
+        self.tags = tags
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.tags is not None:
+            result['Tags'] = self.tags
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
+        return self
+
+
+class ModifyInstanceTagsResponseBody(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyInstanceTagsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyInstanceTagsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyInstanceTagsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyParametersRequest(TeaModel):
     def __init__(
         self,
@@ -14299,6 +14729,122 @@ class ModifyTenantResourceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyTenantResourceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyTenantTagsRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        tags: str = None,
+        tenant_id: str = None,
+    ):
+        self.instance_id = instance_id
+        self.tags = tags
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.tags is not None:
+            result['Tags'] = self.tags
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
+        return self
+
+
+class ModifyTenantTagsResponseBody(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyTenantTagsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyTenantTagsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyTenantTagsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

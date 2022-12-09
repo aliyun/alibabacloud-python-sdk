@@ -1923,6 +1923,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_instance_creatable_zone_with_options_async(request, runtime)
 
+    def describe_instance_tags_with_options(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeInstanceTagsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.DescribeInstanceTagsResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_ids):
+            body['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.tags):
+            body['Tags'] = request.tags
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeInstanceTags',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeInstanceTagsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_instance_tags_with_options_async(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeInstanceTagsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.DescribeInstanceTagsResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_ids):
+            body['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.tags):
+            body['Tags'] = request.tags
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeInstanceTags',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeInstanceTagsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_instance_tags(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeInstanceTagsRequest,
+    ) -> ocean_base_pro_20190901_models.DescribeInstanceTagsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_instance_tags_with_options(request, runtime)
+
+    async def describe_instance_tags_async(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeInstanceTagsRequest,
+    ) -> ocean_base_pro_20190901_models.DescribeInstanceTagsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_instance_tags_with_options_async(request, runtime)
+
     def describe_instance_tenant_modes_with_options(
         self,
         request: ocean_base_pro_20190901_models.DescribeInstanceTenantModesRequest,
@@ -3467,6 +3541,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_tenant_metrics_with_options_async(request, runtime)
 
+    def describe_tenant_tags_with_options(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeTenantTagsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.DescribeTenantTagsResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.tags):
+            body['Tags'] = request.tags
+        if not UtilClient.is_unset(request.tenant_ids):
+            body['TenantIds'] = request.tenant_ids
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeTenantTags',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeTenantTagsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_tenant_tags_with_options_async(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeTenantTagsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.DescribeTenantTagsResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.tags):
+            body['Tags'] = request.tags
+        if not UtilClient.is_unset(request.tenant_ids):
+            body['TenantIds'] = request.tenant_ids
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeTenantTags',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeTenantTagsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_tenant_tags(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeTenantTagsRequest,
+    ) -> ocean_base_pro_20190901_models.DescribeTenantTagsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_tenant_tags_with_options(request, runtime)
+
+    async def describe_tenant_tags_async(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeTenantTagsRequest,
+    ) -> ocean_base_pro_20190901_models.DescribeTenantTagsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_tenant_tags_with_options_async(request, runtime)
+
     def describe_tenant_user_roles_with_options(
         self,
         runtime: util_models.RuntimeOptions,
@@ -4263,6 +4415,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_instance_name_with_options_async(request, runtime)
 
+    def modify_instance_tags_with_options(
+        self,
+        request: ocean_base_pro_20190901_models.ModifyInstanceTagsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.ModifyInstanceTagsResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.tags):
+            body['Tags'] = request.tags
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyInstanceTags',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ModifyInstanceTagsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_instance_tags_with_options_async(
+        self,
+        request: ocean_base_pro_20190901_models.ModifyInstanceTagsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.ModifyInstanceTagsResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.tags):
+            body['Tags'] = request.tags
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyInstanceTags',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ModifyInstanceTagsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_instance_tags(
+        self,
+        request: ocean_base_pro_20190901_models.ModifyInstanceTagsRequest,
+    ) -> ocean_base_pro_20190901_models.ModifyInstanceTagsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_instance_tags_with_options(request, runtime)
+
+    async def modify_instance_tags_async(
+        self,
+        request: ocean_base_pro_20190901_models.ModifyInstanceTagsRequest,
+    ) -> ocean_base_pro_20190901_models.ModifyInstanceTagsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_instance_tags_with_options_async(request, runtime)
+
     def modify_parameters_with_options(
         self,
         request: ocean_base_pro_20190901_models.ModifyParametersRequest,
@@ -4598,6 +4824,84 @@ class Client(OpenApiClient):
     ) -> ocean_base_pro_20190901_models.ModifyTenantResourceResponse:
         runtime = util_models.RuntimeOptions()
         return await self.modify_tenant_resource_with_options_async(request, runtime)
+
+    def modify_tenant_tags_with_options(
+        self,
+        request: ocean_base_pro_20190901_models.ModifyTenantTagsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.ModifyTenantTagsResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.tags):
+            body['Tags'] = request.tags
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyTenantTags',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ModifyTenantTagsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_tenant_tags_with_options_async(
+        self,
+        request: ocean_base_pro_20190901_models.ModifyTenantTagsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.ModifyTenantTagsResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.tags):
+            body['Tags'] = request.tags
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyTenantTags',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ModifyTenantTagsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_tenant_tags(
+        self,
+        request: ocean_base_pro_20190901_models.ModifyTenantTagsRequest,
+    ) -> ocean_base_pro_20190901_models.ModifyTenantTagsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_tenant_tags_with_options(request, runtime)
+
+    async def modify_tenant_tags_async(
+        self,
+        request: ocean_base_pro_20190901_models.ModifyTenantTagsRequest,
+    ) -> ocean_base_pro_20190901_models.ModifyTenantTagsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_tenant_tags_with_options_async(request, runtime)
 
     def modify_tenant_user_description_with_options(
         self,
