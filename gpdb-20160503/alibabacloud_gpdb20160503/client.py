@@ -61,6 +61,14 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.AddBuDBInstanceRelationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.AddBuDBInstanceRelationResponse:
+        """
+        @deprecated
+        
+        @param request: AddBuDBInstanceRelationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddBuDBInstanceRelationResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.business_unit):
@@ -93,6 +101,14 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.AddBuDBInstanceRelationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.AddBuDBInstanceRelationResponse:
+        """
+        @deprecated
+        
+        @param request: AddBuDBInstanceRelationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddBuDBInstanceRelationResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.business_unit):
@@ -124,6 +140,13 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.AddBuDBInstanceRelationRequest,
     ) -> gpdb_20160503_models.AddBuDBInstanceRelationResponse:
+        """
+        @deprecated
+        
+        @param request: AddBuDBInstanceRelationRequest
+        @return: AddBuDBInstanceRelationResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_bu_dbinstance_relation_with_options(request, runtime)
 
@@ -131,6 +154,13 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.AddBuDBInstanceRelationRequest,
     ) -> gpdb_20160503_models.AddBuDBInstanceRelationResponse:
+        """
+        @deprecated
+        
+        @param request: AddBuDBInstanceRelationRequest
+        @return: AddBuDBInstanceRelationResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_bu_dbinstance_relation_with_options_async(request, runtime)
 
@@ -1171,6 +1201,14 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DeleteDatabaseRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DeleteDatabaseResponse:
+        """
+        @deprecated
+        
+        @param request: DeleteDatabaseRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDatabaseResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -1203,6 +1241,14 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DeleteDatabaseRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DeleteDatabaseResponse:
+        """
+        @deprecated
+        
+        @param request: DeleteDatabaseRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDatabaseResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -1234,6 +1280,13 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.DeleteDatabaseRequest,
     ) -> gpdb_20160503_models.DeleteDatabaseResponse:
+        """
+        @deprecated
+        
+        @param request: DeleteDatabaseRequest
+        @return: DeleteDatabaseResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_database_with_options(request, runtime)
 
@@ -1241,6 +1294,13 @@ class Client(OpenApiClient):
         self,
         request: gpdb_20160503_models.DeleteDatabaseRequest,
     ) -> gpdb_20160503_models.DeleteDatabaseResponse:
+        """
+        @deprecated
+        
+        @param request: DeleteDatabaseRequest
+        @return: DeleteDatabaseResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_database_with_options_async(request, runtime)
 
@@ -5357,6 +5417,80 @@ class Client(OpenApiClient):
     ) -> gpdb_20160503_models.DescribeSpecificationResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_specification_with_options_async(request, runtime)
+
+    def describe_support_features_with_options(
+        self,
+        request: gpdb_20160503_models.DescribeSupportFeaturesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeSupportFeaturesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSupportFeatures',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeSupportFeaturesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_support_features_with_options_async(
+        self,
+        request: gpdb_20160503_models.DescribeSupportFeaturesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeSupportFeaturesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSupportFeatures',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeSupportFeaturesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_support_features(
+        self,
+        request: gpdb_20160503_models.DescribeSupportFeaturesRequest,
+    ) -> gpdb_20160503_models.DescribeSupportFeaturesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_support_features_with_options(request, runtime)
+
+    async def describe_support_features_async(
+        self,
+        request: gpdb_20160503_models.DescribeSupportFeaturesRequest,
+    ) -> gpdb_20160503_models.DescribeSupportFeaturesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_support_features_with_options_async(request, runtime)
 
     def describe_tags_with_options(
         self,
