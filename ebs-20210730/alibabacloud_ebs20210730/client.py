@@ -123,6 +123,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_disk_replica_pair_with_options_async(request, runtime)
 
+    def apply_lens_service_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> ebs_20210730_models.ApplyLensServiceResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='ApplyLensService',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ebs_20210730_models.ApplyLensServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def apply_lens_service_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> ebs_20210730_models.ApplyLensServiceResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='ApplyLensService',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ebs_20210730_models.ApplyLensServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def apply_lens_service(self) -> ebs_20210730_models.ApplyLensServiceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.apply_lens_service_with_options(runtime)
+
+    async def apply_lens_service_async(self) -> ebs_20210730_models.ApplyLensServiceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.apply_lens_service_with_options_async(runtime)
+
+    def cancel_lens_service_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> ebs_20210730_models.CancelLensServiceResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='CancelLensService',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ebs_20210730_models.CancelLensServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cancel_lens_service_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> ebs_20210730_models.CancelLensServiceResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='CancelLensService',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ebs_20210730_models.CancelLensServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cancel_lens_service(self) -> ebs_20210730_models.CancelLensServiceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.cancel_lens_service_with_options(runtime)
+
+    async def cancel_lens_service_async(self) -> ebs_20210730_models.CancelLensServiceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.cancel_lens_service_with_options_async(runtime)
+
     def create_dedicated_block_storage_cluster_with_options(
         self,
         request: ebs_20210730_models.CreateDedicatedBlockStorageClusterRequest,
@@ -140,6 +240,8 @@ class Client(OpenApiClient):
             query['DbscName'] = request.dbsc_name
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.type):
             query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
@@ -178,6 +280,8 @@ class Client(OpenApiClient):
             query['DbscName'] = request.dbsc_name
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.type):
             query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
@@ -681,6 +785,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ebs_20210730_models.DescribeDedicatedBlockStorageClustersResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         body = {}
         if not UtilClient.is_unset(request.azone_id):
             body['AzoneId'] = request.azone_id
@@ -699,6 +812,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.status):
             body['Status'] = request.status
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -723,6 +837,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ebs_20210730_models.DescribeDedicatedBlockStorageClustersResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         body = {}
         if not UtilClient.is_unset(request.azone_id):
             body['AzoneId'] = request.azone_id
@@ -741,6 +864,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.status):
             body['Status'] = request.status
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -772,6 +896,288 @@ class Client(OpenApiClient):
     ) -> ebs_20210730_models.DescribeDedicatedBlockStorageClustersResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_dedicated_block_storage_clusters_with_options_async(request, runtime)
+
+    def describe_disk_events_with_options(
+        self,
+        request: ebs_20210730_models.DescribeDiskEventsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ebs_20210730_models.DescribeDiskEventsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.disk_category):
+            query['DiskCategory'] = request.disk_category
+        if not UtilClient.is_unset(request.disk_id):
+            query['DiskId'] = request.disk_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDiskEvents',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ebs_20210730_models.DescribeDiskEventsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_disk_events_with_options_async(
+        self,
+        request: ebs_20210730_models.DescribeDiskEventsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ebs_20210730_models.DescribeDiskEventsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.disk_category):
+            query['DiskCategory'] = request.disk_category
+        if not UtilClient.is_unset(request.disk_id):
+            query['DiskId'] = request.disk_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDiskEvents',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ebs_20210730_models.DescribeDiskEventsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_disk_events(
+        self,
+        request: ebs_20210730_models.DescribeDiskEventsRequest,
+    ) -> ebs_20210730_models.DescribeDiskEventsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_disk_events_with_options(request, runtime)
+
+    async def describe_disk_events_async(
+        self,
+        request: ebs_20210730_models.DescribeDiskEventsRequest,
+    ) -> ebs_20210730_models.DescribeDiskEventsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_disk_events_with_options_async(request, runtime)
+
+    def describe_disk_monitor_data_with_options(
+        self,
+        request: ebs_20210730_models.DescribeDiskMonitorDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ebs_20210730_models.DescribeDiskMonitorDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.disk_id):
+            query['DiskId'] = request.disk_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDiskMonitorData',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ebs_20210730_models.DescribeDiskMonitorDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_disk_monitor_data_with_options_async(
+        self,
+        request: ebs_20210730_models.DescribeDiskMonitorDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ebs_20210730_models.DescribeDiskMonitorDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.disk_id):
+            query['DiskId'] = request.disk_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDiskMonitorData',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ebs_20210730_models.DescribeDiskMonitorDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_disk_monitor_data(
+        self,
+        request: ebs_20210730_models.DescribeDiskMonitorDataRequest,
+    ) -> ebs_20210730_models.DescribeDiskMonitorDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_disk_monitor_data_with_options(request, runtime)
+
+    async def describe_disk_monitor_data_async(
+        self,
+        request: ebs_20210730_models.DescribeDiskMonitorDataRequest,
+    ) -> ebs_20210730_models.DescribeDiskMonitorDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_disk_monitor_data_with_options_async(request, runtime)
+
+    def describe_disk_monitor_data_list_with_options(
+        self,
+        request: ebs_20210730_models.DescribeDiskMonitorDataListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ebs_20210730_models.DescribeDiskMonitorDataListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.disk_ids):
+            query['DiskIds'] = request.disk_ids
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDiskMonitorDataList',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ebs_20210730_models.DescribeDiskMonitorDataListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_disk_monitor_data_list_with_options_async(
+        self,
+        request: ebs_20210730_models.DescribeDiskMonitorDataListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ebs_20210730_models.DescribeDiskMonitorDataListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.disk_ids):
+            query['DiskIds'] = request.disk_ids
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDiskMonitorDataList',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ebs_20210730_models.DescribeDiskMonitorDataListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_disk_monitor_data_list(
+        self,
+        request: ebs_20210730_models.DescribeDiskMonitorDataListRequest,
+    ) -> ebs_20210730_models.DescribeDiskMonitorDataListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_disk_monitor_data_list_with_options(request, runtime)
+
+    async def describe_disk_monitor_data_list_async(
+        self,
+        request: ebs_20210730_models.DescribeDiskMonitorDataListRequest,
+    ) -> ebs_20210730_models.DescribeDiskMonitorDataListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_disk_monitor_data_list_with_options_async(request, runtime)
 
     def describe_disk_replica_groups_with_options(
         self,
@@ -1038,6 +1444,56 @@ class Client(OpenApiClient):
     ) -> ebs_20210730_models.DescribeDiskReplicaPairsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_disk_replica_pairs_with_options_async(request, runtime)
+
+    def describe_lens_service_status_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> ebs_20210730_models.DescribeLensServiceStatusResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribeLensServiceStatus',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ebs_20210730_models.DescribeLensServiceStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_lens_service_status_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> ebs_20210730_models.DescribeLensServiceStatusResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribeLensServiceStatus',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ebs_20210730_models.DescribeLensServiceStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_lens_service_status(self) -> ebs_20210730_models.DescribeLensServiceStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_lens_service_status_with_options(runtime)
+
+    async def describe_lens_service_status_async(self) -> ebs_20210730_models.DescribeLensServiceStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_lens_service_status_with_options_async(runtime)
 
     def describe_regions_with_options(
         self,
@@ -1875,6 +2331,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.reprotect_disk_replica_pair_with_options_async(request, runtime)
 
+    def start_disk_monitor_with_options(
+        self,
+        tmp_req: ebs_20210730_models.StartDiskMonitorRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ebs_20210730_models.StartDiskMonitorResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ebs_20210730_models.StartDiskMonitorShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.disk_ids):
+            request.disk_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.disk_ids, 'DiskIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.disk_ids_shrink):
+            query['DiskIds'] = request.disk_ids_shrink
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartDiskMonitor',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ebs_20210730_models.StartDiskMonitorResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def start_disk_monitor_with_options_async(
+        self,
+        tmp_req: ebs_20210730_models.StartDiskMonitorRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ebs_20210730_models.StartDiskMonitorResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ebs_20210730_models.StartDiskMonitorShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.disk_ids):
+            request.disk_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.disk_ids, 'DiskIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.disk_ids_shrink):
+            query['DiskIds'] = request.disk_ids_shrink
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartDiskMonitor',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ebs_20210730_models.StartDiskMonitorResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def start_disk_monitor(
+        self,
+        request: ebs_20210730_models.StartDiskMonitorRequest,
+    ) -> ebs_20210730_models.StartDiskMonitorResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.start_disk_monitor_with_options(request, runtime)
+
+    async def start_disk_monitor_async(
+        self,
+        request: ebs_20210730_models.StartDiskMonitorRequest,
+    ) -> ebs_20210730_models.StartDiskMonitorResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.start_disk_monitor_with_options_async(request, runtime)
+
     def start_disk_replica_group_with_options(
         self,
         request: ebs_20210730_models.StartDiskReplicaGroupRequest,
@@ -2038,6 +2576,88 @@ class Client(OpenApiClient):
     ) -> ebs_20210730_models.StartDiskReplicaPairResponse:
         runtime = util_models.RuntimeOptions()
         return await self.start_disk_replica_pair_with_options_async(request, runtime)
+
+    def stop_disk_monitor_with_options(
+        self,
+        tmp_req: ebs_20210730_models.StopDiskMonitorRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ebs_20210730_models.StopDiskMonitorResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ebs_20210730_models.StopDiskMonitorShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.disk_ids):
+            request.disk_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.disk_ids, 'DiskIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.disk_ids_shrink):
+            query['DiskIds'] = request.disk_ids_shrink
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StopDiskMonitor',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ebs_20210730_models.StopDiskMonitorResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def stop_disk_monitor_with_options_async(
+        self,
+        tmp_req: ebs_20210730_models.StopDiskMonitorRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ebs_20210730_models.StopDiskMonitorResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ebs_20210730_models.StopDiskMonitorShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.disk_ids):
+            request.disk_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.disk_ids, 'DiskIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.disk_ids_shrink):
+            query['DiskIds'] = request.disk_ids_shrink
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StopDiskMonitor',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ebs_20210730_models.StopDiskMonitorResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def stop_disk_monitor(
+        self,
+        request: ebs_20210730_models.StopDiskMonitorRequest,
+    ) -> ebs_20210730_models.StopDiskMonitorResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.stop_disk_monitor_with_options(request, runtime)
+
+    async def stop_disk_monitor_async(
+        self,
+        request: ebs_20210730_models.StopDiskMonitorRequest,
+    ) -> ebs_20210730_models.StopDiskMonitorResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.stop_disk_monitor_with_options_async(request, runtime)
 
     def stop_disk_replica_group_with_options(
         self,

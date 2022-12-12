@@ -120,6 +120,148 @@ class AddDiskReplicaPairResponse(TeaModel):
         return self
 
 
+class ApplyLensServiceResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ApplyLensServiceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ApplyLensServiceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ApplyLensServiceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CancelLensServiceResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CancelLensServiceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CancelLensServiceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CancelLensServiceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateDedicatedBlockStorageClusterRequest(TeaModel):
     def __init__(
         self,
@@ -128,6 +270,7 @@ class CreateDedicatedBlockStorageClusterRequest(TeaModel):
         dbsc_id: str = None,
         dbsc_name: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         type: str = None,
     ):
         self.azone = azone
@@ -135,6 +278,7 @@ class CreateDedicatedBlockStorageClusterRequest(TeaModel):
         self.dbsc_id = dbsc_id
         self.dbsc_name = dbsc_name
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         self.type = type
 
     def validate(self):
@@ -156,6 +300,8 @@ class CreateDedicatedBlockStorageClusterRequest(TeaModel):
             result['DbscName'] = self.dbsc_name
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.type is not None:
             result['Type'] = self.type
         return result
@@ -172,6 +318,8 @@ class CreateDedicatedBlockStorageClusterRequest(TeaModel):
             self.dbsc_name = m.get('DbscName')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Type') is not None:
             self.type = m.get('Type')
         return self
@@ -1233,6 +1381,39 @@ class DescribeDedicatedBlockStorageClusterDisksResponse(TeaModel):
         return self
 
 
+class DescribeDedicatedBlockStorageClustersRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class DescribeDedicatedBlockStorageClustersRequest(TeaModel):
     def __init__(
         self,
@@ -1242,8 +1423,12 @@ class DescribeDedicatedBlockStorageClustersRequest(TeaModel):
         dedicated_block_storage_cluster_id: List[str] = None,
         max_results: int = None,
         next_token: str = None,
+        page_number: int = None,
+        page_size: int = None,
         region_id: str = None,
+        resource_group_id: str = None,
         status: List[str] = None,
+        tag: List[DescribeDedicatedBlockStorageClustersRequestTag] = None,
     ):
         self.azone_id = azone_id
         self.category = category
@@ -1251,11 +1436,18 @@ class DescribeDedicatedBlockStorageClustersRequest(TeaModel):
         self.dedicated_block_storage_cluster_id = dedicated_block_storage_cluster_id
         self.max_results = max_results
         self.next_token = next_token
+        self.page_number = page_number
+        self.page_size = page_size
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         self.status = status
+        self.tag = tag
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1275,10 +1467,20 @@ class DescribeDedicatedBlockStorageClustersRequest(TeaModel):
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
             result['NextToken'] = self.next_token
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.status is not None:
             result['Status'] = self.status
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -1295,10 +1497,21 @@ class DescribeDedicatedBlockStorageClustersRequest(TeaModel):
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = DescribeDedicatedBlockStorageClustersRequestTag()
+                self.tag.append(temp_model.from_map(k))
         return self
 
 
@@ -1347,6 +1560,39 @@ class DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClus
         return self
 
 
+class DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClustersTags(TeaModel):
+    def __init__(
+        self,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
+        return self
+
+
 class DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClusters(TeaModel):
     def __init__(
         self,
@@ -1359,8 +1605,10 @@ class DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClus
         expired_time: str = None,
         performance_level: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         status: str = None,
         supported_category: str = None,
+        tags: List[DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClustersTags] = None,
         type: str = None,
         zone_id: str = None,
     ):
@@ -1373,14 +1621,20 @@ class DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClus
         self.expired_time = expired_time
         self.performance_level = performance_level
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         self.status = status
         self.supported_category = supported_category
+        self.tags = tags
         self.type = type
         self.zone_id = zone_id
 
     def validate(self):
         if self.dedicated_block_storage_cluster_capacity:
             self.dedicated_block_storage_cluster_capacity.validate()
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1406,10 +1660,16 @@ class DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClus
             result['PerformanceLevel'] = self.performance_level
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.status is not None:
             result['Status'] = self.status
         if self.supported_category is not None:
             result['SupportedCategory'] = self.supported_category
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.type is not None:
             result['Type'] = self.type
         if self.zone_id is not None:
@@ -1437,10 +1697,17 @@ class DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClus
             self.performance_level = m.get('PerformanceLevel')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('SupportedCategory') is not None:
             self.supported_category = m.get('SupportedCategory')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClustersTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('Type') is not None:
             self.type = m.get('Type')
         if m.get('ZoneId') is not None:
@@ -1453,11 +1720,17 @@ class DescribeDedicatedBlockStorageClustersResponseBody(TeaModel):
         self,
         dedicated_block_storage_clusters: List[DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClusters] = None,
         next_token: str = None,
+        page_number: int = None,
+        page_size: int = None,
         request_id: str = None,
+        total_count: int = None,
     ):
         self.dedicated_block_storage_clusters = dedicated_block_storage_clusters
         self.next_token = next_token
+        self.page_number = page_number
+        self.page_size = page_size
         self.request_id = request_id
+        self.total_count = total_count
 
     def validate(self):
         if self.dedicated_block_storage_clusters:
@@ -1477,8 +1750,14 @@ class DescribeDedicatedBlockStorageClustersResponseBody(TeaModel):
                 result['DedicatedBlockStorageClusters'].append(k.to_map() if k else None)
         if self.next_token is not None:
             result['NextToken'] = self.next_token
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
@@ -1490,8 +1769,14 @@ class DescribeDedicatedBlockStorageClustersResponseBody(TeaModel):
                 self.dedicated_block_storage_clusters.append(temp_model.from_map(k))
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         return self
 
 
@@ -1535,6 +1820,657 @@ class DescribeDedicatedBlockStorageClustersResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeDedicatedBlockStorageClustersResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeDiskEventsRequest(TeaModel):
+    def __init__(
+        self,
+        disk_category: str = None,
+        disk_id: str = None,
+        end_time: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        region_id: str = None,
+        start_time: str = None,
+        type: str = None,
+    ):
+        self.disk_category = disk_category
+        self.disk_id = disk_id
+        self.end_time = end_time
+        self.max_results = max_results
+        self.next_token = next_token
+        self.region_id = region_id
+        self.start_time = start_time
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.disk_category is not None:
+            result['DiskCategory'] = self.disk_category
+        if self.disk_id is not None:
+            result['DiskId'] = self.disk_id
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DiskCategory') is not None:
+            self.disk_category = m.get('DiskCategory')
+        if m.get('DiskId') is not None:
+            self.disk_id = m.get('DiskId')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DescribeDiskEventsResponseBodyDiskEvents(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        disk_id: str = None,
+        recommend_action: str = None,
+        region_id: str = None,
+        status: str = None,
+        timestamp: str = None,
+        type: str = None,
+    ):
+        self.description = description
+        self.disk_id = disk_id
+        self.recommend_action = recommend_action
+        self.region_id = region_id
+        self.status = status
+        self.timestamp = timestamp
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.disk_id is not None:
+            result['DiskId'] = self.disk_id
+        if self.recommend_action is not None:
+            result['RecommendAction'] = self.recommend_action
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.timestamp is not None:
+            result['Timestamp'] = self.timestamp
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('DiskId') is not None:
+            self.disk_id = m.get('DiskId')
+        if m.get('RecommendAction') is not None:
+            self.recommend_action = m.get('RecommendAction')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Timestamp') is not None:
+            self.timestamp = m.get('Timestamp')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DescribeDiskEventsResponseBody(TeaModel):
+    def __init__(
+        self,
+        disk_events: List[DescribeDiskEventsResponseBodyDiskEvents] = None,
+        next_token: str = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.disk_events = disk_events
+        self.next_token = next_token
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.disk_events:
+            for k in self.disk_events:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DiskEvents'] = []
+        if self.disk_events is not None:
+            for k in self.disk_events:
+                result['DiskEvents'].append(k.to_map() if k else None)
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.disk_events = []
+        if m.get('DiskEvents') is not None:
+            for k in m.get('DiskEvents'):
+                temp_model = DescribeDiskEventsResponseBodyDiskEvents()
+                self.disk_events.append(temp_model.from_map(k))
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeDiskEventsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeDiskEventsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeDiskEventsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeDiskMonitorDataRequest(TeaModel):
+    def __init__(
+        self,
+        disk_id: str = None,
+        end_time: str = None,
+        period: int = None,
+        region_id: str = None,
+        start_time: str = None,
+        type: str = None,
+    ):
+        self.disk_id = disk_id
+        self.end_time = end_time
+        self.period = period
+        self.region_id = region_id
+        self.start_time = start_time
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.disk_id is not None:
+            result['DiskId'] = self.disk_id
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.period is not None:
+            result['Period'] = self.period
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DiskId') is not None:
+            self.disk_id = m.get('DiskId')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Period') is not None:
+            self.period = m.get('Period')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DescribeDiskMonitorDataResponseBodyMonitorData(TeaModel):
+    def __init__(
+        self,
+        bpspercent: int = None,
+        burst_iocount: int = None,
+        disk_id: str = None,
+        iopspercent: int = None,
+        read_bps: int = None,
+        read_iops: int = None,
+        timestamp: str = None,
+        write_bps: int = None,
+        write_iops: int = None,
+    ):
+        self.bpspercent = bpspercent
+        self.burst_iocount = burst_iocount
+        self.disk_id = disk_id
+        self.iopspercent = iopspercent
+        self.read_bps = read_bps
+        self.read_iops = read_iops
+        self.timestamp = timestamp
+        self.write_bps = write_bps
+        self.write_iops = write_iops
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bpspercent is not None:
+            result['BPSPercent'] = self.bpspercent
+        if self.burst_iocount is not None:
+            result['BurstIOCount'] = self.burst_iocount
+        if self.disk_id is not None:
+            result['DiskId'] = self.disk_id
+        if self.iopspercent is not None:
+            result['IOPSPercent'] = self.iopspercent
+        if self.read_bps is not None:
+            result['ReadBPS'] = self.read_bps
+        if self.read_iops is not None:
+            result['ReadIOPS'] = self.read_iops
+        if self.timestamp is not None:
+            result['Timestamp'] = self.timestamp
+        if self.write_bps is not None:
+            result['WriteBPS'] = self.write_bps
+        if self.write_iops is not None:
+            result['WriteIOPS'] = self.write_iops
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BPSPercent') is not None:
+            self.bpspercent = m.get('BPSPercent')
+        if m.get('BurstIOCount') is not None:
+            self.burst_iocount = m.get('BurstIOCount')
+        if m.get('DiskId') is not None:
+            self.disk_id = m.get('DiskId')
+        if m.get('IOPSPercent') is not None:
+            self.iopspercent = m.get('IOPSPercent')
+        if m.get('ReadBPS') is not None:
+            self.read_bps = m.get('ReadBPS')
+        if m.get('ReadIOPS') is not None:
+            self.read_iops = m.get('ReadIOPS')
+        if m.get('Timestamp') is not None:
+            self.timestamp = m.get('Timestamp')
+        if m.get('WriteBPS') is not None:
+            self.write_bps = m.get('WriteBPS')
+        if m.get('WriteIOPS') is not None:
+            self.write_iops = m.get('WriteIOPS')
+        return self
+
+
+class DescribeDiskMonitorDataResponseBody(TeaModel):
+    def __init__(
+        self,
+        monitor_data: List[DescribeDiskMonitorDataResponseBodyMonitorData] = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.monitor_data = monitor_data
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.monitor_data:
+            for k in self.monitor_data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['MonitorData'] = []
+        if self.monitor_data is not None:
+            for k in self.monitor_data:
+                result['MonitorData'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.monitor_data = []
+        if m.get('MonitorData') is not None:
+            for k in m.get('MonitorData'):
+                temp_model = DescribeDiskMonitorDataResponseBodyMonitorData()
+                self.monitor_data.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeDiskMonitorDataResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeDiskMonitorDataResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeDiskMonitorDataResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeDiskMonitorDataListRequest(TeaModel):
+    def __init__(
+        self,
+        disk_ids: str = None,
+        end_time: str = None,
+        max_results: str = None,
+        next_token: str = None,
+        region_id: str = None,
+        start_time: str = None,
+        type: str = None,
+    ):
+        self.disk_ids = disk_ids
+        self.end_time = end_time
+        self.max_results = max_results
+        self.next_token = next_token
+        self.region_id = region_id
+        self.start_time = start_time
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.disk_ids is not None:
+            result['DiskIds'] = self.disk_ids
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DiskIds') is not None:
+            self.disk_ids = m.get('DiskIds')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DescribeDiskMonitorDataListResponseBodyMonitorData(TeaModel):
+    def __init__(
+        self,
+        burst_iocount: int = None,
+        disk_id: str = None,
+        timestamp: str = None,
+    ):
+        self.burst_iocount = burst_iocount
+        self.disk_id = disk_id
+        self.timestamp = timestamp
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.burst_iocount is not None:
+            result['BurstIOCount'] = self.burst_iocount
+        if self.disk_id is not None:
+            result['DiskId'] = self.disk_id
+        if self.timestamp is not None:
+            result['Timestamp'] = self.timestamp
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BurstIOCount') is not None:
+            self.burst_iocount = m.get('BurstIOCount')
+        if m.get('DiskId') is not None:
+            self.disk_id = m.get('DiskId')
+        if m.get('Timestamp') is not None:
+            self.timestamp = m.get('Timestamp')
+        return self
+
+
+class DescribeDiskMonitorDataListResponseBody(TeaModel):
+    def __init__(
+        self,
+        monitor_data: List[DescribeDiskMonitorDataListResponseBodyMonitorData] = None,
+        next_token: str = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.monitor_data = monitor_data
+        self.next_token = next_token
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.monitor_data:
+            for k in self.monitor_data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['MonitorData'] = []
+        if self.monitor_data is not None:
+            for k in self.monitor_data:
+                result['MonitorData'].append(k.to_map() if k else None)
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.monitor_data = []
+        if m.get('MonitorData') is not None:
+            for k in m.get('MonitorData'):
+                temp_model = DescribeDiskMonitorDataListResponseBodyMonitorData()
+                self.monitor_data.append(temp_model.from_map(k))
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeDiskMonitorDataListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeDiskMonitorDataListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeDiskMonitorDataListResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2299,6 +3235,83 @@ class DescribeDiskReplicaPairsResponse(TeaModel):
         return self
 
 
+class DescribeLensServiceStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        status: str = None,
+    ):
+        self.request_id = request_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DescribeLensServiceStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeLensServiceStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeLensServiceStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeRegionsRequest(TeaModel):
     def __init__(
         self,
@@ -2342,9 +3355,11 @@ class DescribeRegionsResponseBodyRegionsZones(TeaModel):
     def __init__(
         self,
         local_name: str = None,
+        resource_types: List[str] = None,
         zone_id: str = None,
     ):
         self.local_name = local_name
+        self.resource_types = resource_types
         self.zone_id = zone_id
 
     def validate(self):
@@ -2358,6 +3373,8 @@ class DescribeRegionsResponseBodyRegionsZones(TeaModel):
         result = dict()
         if self.local_name is not None:
             result['LocalName'] = self.local_name
+        if self.resource_types is not None:
+            result['ResourceTypes'] = self.resource_types
         if self.zone_id is not None:
             result['ZoneId'] = self.zone_id
         return result
@@ -2366,6 +3383,8 @@ class DescribeRegionsResponseBodyRegionsZones(TeaModel):
         m = m or dict()
         if m.get('LocalName') is not None:
             self.local_name = m.get('LocalName')
+        if m.get('ResourceTypes') is not None:
+            self.resource_types = m.get('ResourceTypes')
         if m.get('ZoneId') is not None:
             self.zone_id = m.get('ZoneId')
         return self
@@ -3689,6 +4708,143 @@ class ReprotectDiskReplicaPairResponse(TeaModel):
         return self
 
 
+class StartDiskMonitorRequest(TeaModel):
+    def __init__(
+        self,
+        disk_ids: List[str] = None,
+        region_id: str = None,
+    ):
+        self.disk_ids = disk_ids
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.disk_ids is not None:
+            result['DiskIds'] = self.disk_ids
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DiskIds') is not None:
+            self.disk_ids = m.get('DiskIds')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class StartDiskMonitorShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        disk_ids_shrink: str = None,
+        region_id: str = None,
+    ):
+        self.disk_ids_shrink = disk_ids_shrink
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.disk_ids_shrink is not None:
+            result['DiskIds'] = self.disk_ids_shrink
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DiskIds') is not None:
+            self.disk_ids_shrink = m.get('DiskIds')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class StartDiskMonitorResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class StartDiskMonitorResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StartDiskMonitorResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StartDiskMonitorResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class StartDiskReplicaGroupRequest(TeaModel):
     def __init__(
         self,
@@ -3917,6 +5073,143 @@ class StartDiskReplicaPairResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = StartDiskReplicaPairResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class StopDiskMonitorRequest(TeaModel):
+    def __init__(
+        self,
+        disk_ids: List[str] = None,
+        region_id: str = None,
+    ):
+        self.disk_ids = disk_ids
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.disk_ids is not None:
+            result['DiskIds'] = self.disk_ids
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DiskIds') is not None:
+            self.disk_ids = m.get('DiskIds')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class StopDiskMonitorShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        disk_ids_shrink: str = None,
+        region_id: str = None,
+    ):
+        self.disk_ids_shrink = disk_ids_shrink
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.disk_ids_shrink is not None:
+            result['DiskIds'] = self.disk_ids_shrink
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DiskIds') is not None:
+            self.disk_ids_shrink = m.get('DiskIds')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class StopDiskMonitorResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class StopDiskMonitorResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StopDiskMonitorResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StopDiskMonitorResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
