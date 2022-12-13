@@ -1551,3 +1551,220 @@ class DetachEaiResponse(TeaModel):
         return self
 
 
+class GetInstanceMetricsRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        instance_id: str = None,
+        metric_type: str = None,
+        start_time: str = None,
+        time_step: str = None,
+    ):
+        self.end_time = end_time
+        self.instance_id = instance_id
+        self.metric_type = metric_type
+        self.start_time = start_time
+        self.time_step = time_step
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.metric_type is not None:
+            result['MetricType'] = self.metric_type
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.time_step is not None:
+            result['TimeStep'] = self.time_step
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('MetricType') is not None:
+            self.metric_type = m.get('MetricType')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('TimeStep') is not None:
+            self.time_step = m.get('TimeStep')
+        return self
+
+
+class GetInstanceMetricsResponseBodyPodMetricsMetrics(TeaModel):
+    def __init__(
+        self,
+        time: str = None,
+        value: str = None,
+    ):
+        self.time = time
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.time is not None:
+            result['Time'] = self.time
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Time') is not None:
+            self.time = m.get('Time')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class GetInstanceMetricsResponseBodyPodMetrics(TeaModel):
+    def __init__(
+        self,
+        metrics: List[GetInstanceMetricsResponseBodyPodMetricsMetrics] = None,
+        pod_id: str = None,
+    ):
+        self.metrics = metrics
+        # Pod ID。
+        self.pod_id = pod_id
+
+    def validate(self):
+        if self.metrics:
+            for k in self.metrics:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Metrics'] = []
+        if self.metrics is not None:
+            for k in self.metrics:
+                result['Metrics'].append(k.to_map() if k else None)
+        if self.pod_id is not None:
+            result['PodId'] = self.pod_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.metrics = []
+        if m.get('Metrics') is not None:
+            for k in m.get('Metrics'):
+                temp_model = GetInstanceMetricsResponseBodyPodMetricsMetrics()
+                self.metrics.append(temp_model.from_map(k))
+        if m.get('PodId') is not None:
+            self.pod_id = m.get('PodId')
+        return self
+
+
+class GetInstanceMetricsResponseBody(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        pod_metrics: List[GetInstanceMetricsResponseBodyPodMetrics] = None,
+        request_id: str = None,
+    ):
+        self.instance_id = instance_id
+        self.pod_metrics = pod_metrics
+        self.request_id = request_id
+
+    def validate(self):
+        if self.pod_metrics:
+            for k in self.pod_metrics:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        result['PodMetrics'] = []
+        if self.pod_metrics is not None:
+            for k in self.pod_metrics:
+                result['PodMetrics'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        self.pod_metrics = []
+        if m.get('PodMetrics') is not None:
+            for k in m.get('PodMetrics'):
+                temp_model = GetInstanceMetricsResponseBodyPodMetrics()
+                self.pod_metrics.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetInstanceMetricsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetInstanceMetricsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetInstanceMetricsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+

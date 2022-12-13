@@ -859,3 +859,89 @@ class Client(OpenApiClient):
     ) -> eais_20190624_models.DetachEaiResponse:
         runtime = util_models.RuntimeOptions()
         return await self.detach_eai_with_options_async(request, runtime)
+
+    def get_instance_metrics_with_options(
+        self,
+        request: eais_20190624_models.GetInstanceMetricsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eais_20190624_models.GetInstanceMetricsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.metric_type):
+            query['MetricType'] = request.metric_type
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.time_step):
+            query['TimeStep'] = request.time_step
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetInstanceMetrics',
+            version='2019-06-24',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eais_20190624_models.GetInstanceMetricsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_instance_metrics_with_options_async(
+        self,
+        request: eais_20190624_models.GetInstanceMetricsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eais_20190624_models.GetInstanceMetricsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.metric_type):
+            query['MetricType'] = request.metric_type
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.time_step):
+            query['TimeStep'] = request.time_step
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetInstanceMetrics',
+            version='2019-06-24',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eais_20190624_models.GetInstanceMetricsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_instance_metrics(
+        self,
+        request: eais_20190624_models.GetInstanceMetricsRequest,
+    ) -> eais_20190624_models.GetInstanceMetricsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_instance_metrics_with_options(request, runtime)
+
+    async def get_instance_metrics_async(
+        self,
+        request: eais_20190624_models.GetInstanceMetricsRequest,
+    ) -> eais_20190624_models.GetInstanceMetricsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_instance_metrics_with_options_async(request, runtime)
