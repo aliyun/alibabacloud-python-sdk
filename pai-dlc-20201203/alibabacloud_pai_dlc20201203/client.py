@@ -93,22 +93,6 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
-    def create_job(
-        self,
-        request: pai_dlc_20201203_models.CreateJobRequest,
-    ) -> pai_dlc_20201203_models.CreateJobResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.create_job_with_options(request, headers, runtime)
-
-    async def create_job_async(
-        self,
-        request: pai_dlc_20201203_models.CreateJobRequest,
-    ) -> pai_dlc_20201203_models.CreateJobResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.create_job_with_options_async(request, headers, runtime)
-
     def create_job_with_options(
         self,
         request: pai_dlc_20201203_models.CreateJobRequest,
@@ -143,6 +127,8 @@ class Client(OpenApiClient):
             body['ResourceId'] = request.resource_id
         if not UtilClient.is_unset(request.settings):
             body['Settings'] = request.settings
+        if not UtilClient.is_unset(request.success_policy):
+            body['SuccessPolicy'] = request.success_policy
         if not UtilClient.is_unset(request.thirdparty_lib_dir):
             body['ThirdpartyLibDir'] = request.thirdparty_lib_dir
         if not UtilClient.is_unset(request.thirdparty_libs):
@@ -207,6 +193,8 @@ class Client(OpenApiClient):
             body['ResourceId'] = request.resource_id
         if not UtilClient.is_unset(request.settings):
             body['Settings'] = request.settings
+        if not UtilClient.is_unset(request.success_policy):
+            body['SuccessPolicy'] = request.success_policy
         if not UtilClient.is_unset(request.thirdparty_lib_dir):
             body['ThirdpartyLibDir'] = request.thirdparty_lib_dir
         if not UtilClient.is_unset(request.thirdparty_libs):
@@ -237,21 +225,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_tensorboard(
+    def create_job(
         self,
-        request: pai_dlc_20201203_models.CreateTensorboardRequest,
-    ) -> pai_dlc_20201203_models.CreateTensorboardResponse:
+        request: pai_dlc_20201203_models.CreateJobRequest,
+    ) -> pai_dlc_20201203_models.CreateJobResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_tensorboard_with_options(request, headers, runtime)
+        return self.create_job_with_options(request, headers, runtime)
 
-    async def create_tensorboard_async(
+    async def create_job_async(
         self,
-        request: pai_dlc_20201203_models.CreateTensorboardRequest,
-    ) -> pai_dlc_20201203_models.CreateTensorboardResponse:
+        request: pai_dlc_20201203_models.CreateJobRequest,
+    ) -> pai_dlc_20201203_models.CreateJobResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_tensorboard_with_options_async(request, headers, runtime)
+        return await self.create_job_with_options_async(request, headers, runtime)
 
     def create_tensorboard_with_options(
         self,
@@ -361,21 +349,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_job(
+    def create_tensorboard(
         self,
-        job_id: str,
-    ) -> pai_dlc_20201203_models.DeleteJobResponse:
+        request: pai_dlc_20201203_models.CreateTensorboardRequest,
+    ) -> pai_dlc_20201203_models.CreateTensorboardResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_job_with_options(job_id, headers, runtime)
+        return self.create_tensorboard_with_options(request, headers, runtime)
 
-    async def delete_job_async(
+    async def create_tensorboard_async(
         self,
-        job_id: str,
-    ) -> pai_dlc_20201203_models.DeleteJobResponse:
+        request: pai_dlc_20201203_models.CreateTensorboardRequest,
+    ) -> pai_dlc_20201203_models.CreateTensorboardResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_job_with_options_async(job_id, headers, runtime)
+        return await self.create_tensorboard_with_options_async(request, headers, runtime)
 
     def delete_job_with_options(
         self,
@@ -383,7 +371,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.DeleteJobResponse:
-        job_id = OpenApiUtilClient.get_encode_param(job_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -391,7 +378,7 @@ class Client(OpenApiClient):
             action='DeleteJob',
             version='2020-12-03',
             protocol='HTTPS',
-            pathname=f'/api/v1/jobs/{job_id}',
+            pathname=f'/api/v1/jobs/{OpenApiUtilClient.get_encode_param(job_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -409,7 +396,6 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.DeleteJobResponse:
-        job_id = OpenApiUtilClient.get_encode_param(job_id)
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -417,7 +403,7 @@ class Client(OpenApiClient):
             action='DeleteJob',
             version='2020-12-03',
             protocol='HTTPS',
-            pathname=f'/api/v1/jobs/{job_id}',
+            pathname=f'/api/v1/jobs/{OpenApiUtilClient.get_encode_param(job_id)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -426,6 +412,84 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             pai_dlc_20201203_models.DeleteJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_job(
+        self,
+        job_id: str,
+    ) -> pai_dlc_20201203_models.DeleteJobResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_job_with_options(job_id, headers, runtime)
+
+    async def delete_job_async(
+        self,
+        job_id: str,
+    ) -> pai_dlc_20201203_models.DeleteJobResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_job_with_options_async(job_id, headers, runtime)
+
+    def delete_tensorboard_with_options(
+        self,
+        tensorboard_id: str,
+        request: pai_dlc_20201203_models.DeleteTensorboardRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_dlc_20201203_models.DeleteTensorboardResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteTensorboard',
+            version='2020-12-03',
+            protocol='HTTPS',
+            pathname=f'/api/v1/tensorboards/{OpenApiUtilClient.get_encode_param(tensorboard_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_dlc_20201203_models.DeleteTensorboardResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_tensorboard_with_options_async(
+        self,
+        tensorboard_id: str,
+        request: pai_dlc_20201203_models.DeleteTensorboardRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_dlc_20201203_models.DeleteTensorboardResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteTensorboard',
+            version='2020-12-03',
+            protocol='HTTPS',
+            pathname=f'/api/v1/tensorboards/{OpenApiUtilClient.get_encode_param(tensorboard_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_dlc_20201203_models.DeleteTensorboardResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
@@ -447,67 +511,53 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_tensorboard_with_options_async(tensorboard_id, request, headers, runtime)
 
-    def delete_tensorboard_with_options(
+    def get_job_with_options(
         self,
-        tensorboard_id: str,
-        request: pai_dlc_20201203_models.DeleteTensorboardRequest,
+        job_id: str,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> pai_dlc_20201203_models.DeleteTensorboardResponse:
-        UtilClient.validate_model(request)
-        tensorboard_id = OpenApiUtilClient.get_encode_param(tensorboard_id)
-        query = {}
-        if not UtilClient.is_unset(request.workspace_id):
-            query['WorkspaceId'] = request.workspace_id
+    ) -> pai_dlc_20201203_models.GetJobResponse:
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+            headers=headers
         )
         params = open_api_models.Params(
-            action='DeleteTensorboard',
+            action='GetJob',
             version='2020-12-03',
             protocol='HTTPS',
-            pathname=f'/api/v1/tensorboards/{tensorboard_id}',
-            method='DELETE',
+            pathname=f'/api/v1/jobs/{OpenApiUtilClient.get_encode_param(job_id)}',
+            method='GET',
             auth_type='AK',
             style='ROA',
             req_body_type='json',
             body_type='json'
         )
         return TeaCore.from_map(
-            pai_dlc_20201203_models.DeleteTensorboardResponse(),
+            pai_dlc_20201203_models.GetJobResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def delete_tensorboard_with_options_async(
+    async def get_job_with_options_async(
         self,
-        tensorboard_id: str,
-        request: pai_dlc_20201203_models.DeleteTensorboardRequest,
+        job_id: str,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> pai_dlc_20201203_models.DeleteTensorboardResponse:
-        UtilClient.validate_model(request)
-        tensorboard_id = OpenApiUtilClient.get_encode_param(tensorboard_id)
-        query = {}
-        if not UtilClient.is_unset(request.workspace_id):
-            query['WorkspaceId'] = request.workspace_id
+    ) -> pai_dlc_20201203_models.GetJobResponse:
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+            headers=headers
         )
         params = open_api_models.Params(
-            action='DeleteTensorboard',
+            action='GetJob',
             version='2020-12-03',
             protocol='HTTPS',
-            pathname=f'/api/v1/tensorboards/{tensorboard_id}',
-            method='DELETE',
+            pathname=f'/api/v1/jobs/{OpenApiUtilClient.get_encode_param(job_id)}',
+            method='GET',
             auth_type='AK',
             style='ROA',
             req_body_type='json',
             body_type='json'
         )
         return TeaCore.from_map(
-            pai_dlc_20201203_models.DeleteTensorboardResponse(),
+            pai_dlc_20201203_models.GetJobResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
@@ -527,21 +577,30 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_job_with_options_async(job_id, headers, runtime)
 
-    def get_job_with_options(
+    def get_job_events_with_options(
         self,
         job_id: str,
+        request: pai_dlc_20201203_models.GetJobEventsRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> pai_dlc_20201203_models.GetJobResponse:
-        job_id = OpenApiUtilClient.get_encode_param(job_id)
+    ) -> pai_dlc_20201203_models.GetJobEventsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.max_events_num):
+            query['MaxEventsNum'] = request.max_events_num
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='GetJob',
+            action='GetJobEvents',
             version='2020-12-03',
             protocol='HTTPS',
-            pathname=f'/api/v1/jobs/{job_id}',
+            pathname=f'/api/v1/jobs/{OpenApiUtilClient.get_encode_param(job_id)}/events',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -549,25 +608,34 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            pai_dlc_20201203_models.GetJobResponse(),
+            pai_dlc_20201203_models.GetJobEventsResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def get_job_with_options_async(
+    async def get_job_events_with_options_async(
         self,
         job_id: str,
+        request: pai_dlc_20201203_models.GetJobEventsRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> pai_dlc_20201203_models.GetJobResponse:
-        job_id = OpenApiUtilClient.get_encode_param(job_id)
+    ) -> pai_dlc_20201203_models.GetJobEventsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.max_events_num):
+            query['MaxEventsNum'] = request.max_events_num
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='GetJob',
+            action='GetJobEvents',
             version='2020-12-03',
             protocol='HTTPS',
-            pathname=f'/api/v1/jobs/{job_id}',
+            pathname=f'/api/v1/jobs/{OpenApiUtilClient.get_encode_param(job_id)}/events',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -575,7 +643,7 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            pai_dlc_20201203_models.GetJobResponse(),
+            pai_dlc_20201203_models.GetJobEventsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
@@ -597,31 +665,34 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_job_events_with_options_async(job_id, request, headers, runtime)
 
-    def get_job_events_with_options(
+    def get_job_metrics_with_options(
         self,
         job_id: str,
-        request: pai_dlc_20201203_models.GetJobEventsRequest,
+        request: pai_dlc_20201203_models.GetJobMetricsRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> pai_dlc_20201203_models.GetJobEventsResponse:
+    ) -> pai_dlc_20201203_models.GetJobMetricsResponse:
         UtilClient.validate_model(request)
-        job_id = OpenApiUtilClient.get_encode_param(job_id)
         query = {}
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.max_events_num):
-            query['MaxEventsNum'] = request.max_events_num
+        if not UtilClient.is_unset(request.metric_type):
+            query['MetricType'] = request.metric_type
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.time_step):
+            query['TimeStep'] = request.time_step
+        if not UtilClient.is_unset(request.token):
+            query['Token'] = request.token
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='GetJobEvents',
+            action='GetJobMetrics',
             version='2020-12-03',
             protocol='HTTPS',
-            pathname=f'/api/v1/jobs/{job_id}/events',
+            pathname=f'/api/v1/jobs/{OpenApiUtilClient.get_encode_param(job_id)}/metrics',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -629,35 +700,38 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            pai_dlc_20201203_models.GetJobEventsResponse(),
+            pai_dlc_20201203_models.GetJobMetricsResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def get_job_events_with_options_async(
+    async def get_job_metrics_with_options_async(
         self,
         job_id: str,
-        request: pai_dlc_20201203_models.GetJobEventsRequest,
+        request: pai_dlc_20201203_models.GetJobMetricsRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> pai_dlc_20201203_models.GetJobEventsResponse:
+    ) -> pai_dlc_20201203_models.GetJobMetricsResponse:
         UtilClient.validate_model(request)
-        job_id = OpenApiUtilClient.get_encode_param(job_id)
         query = {}
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.max_events_num):
-            query['MaxEventsNum'] = request.max_events_num
+        if not UtilClient.is_unset(request.metric_type):
+            query['MetricType'] = request.metric_type
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.time_step):
+            query['TimeStep'] = request.time_step
+        if not UtilClient.is_unset(request.token):
+            query['Token'] = request.token
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='GetJobEvents',
+            action='GetJobMetrics',
             version='2020-12-03',
             protocol='HTTPS',
-            pathname=f'/api/v1/jobs/{job_id}/events',
+            pathname=f'/api/v1/jobs/{OpenApiUtilClient.get_encode_param(job_id)}/metrics',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -665,7 +739,7 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            pai_dlc_20201203_models.GetJobEventsResponse(),
+            pai_dlc_20201203_models.GetJobMetricsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
@@ -687,35 +761,33 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_job_metrics_with_options_async(job_id, request, headers, runtime)
 
-    def get_job_metrics_with_options(
+    def get_pod_events_with_options(
         self,
         job_id: str,
-        request: pai_dlc_20201203_models.GetJobMetricsRequest,
+        pod_id: str,
+        request: pai_dlc_20201203_models.GetPodEventsRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> pai_dlc_20201203_models.GetJobMetricsResponse:
+    ) -> pai_dlc_20201203_models.GetPodEventsResponse:
         UtilClient.validate_model(request)
-        job_id = OpenApiUtilClient.get_encode_param(job_id)
         query = {}
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.metric_type):
-            query['MetricType'] = request.metric_type
+        if not UtilClient.is_unset(request.max_events_num):
+            query['MaxEventsNum'] = request.max_events_num
+        if not UtilClient.is_unset(request.pod_uid):
+            query['PodUid'] = request.pod_uid
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
-        if not UtilClient.is_unset(request.time_step):
-            query['TimeStep'] = request.time_step
-        if not UtilClient.is_unset(request.token):
-            query['Token'] = request.token
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='GetJobMetrics',
+            action='GetPodEvents',
             version='2020-12-03',
             protocol='HTTPS',
-            pathname=f'/api/v1/jobs/{job_id}/metrics',
+            pathname=f'/api/v1/jobs/{OpenApiUtilClient.get_encode_param(job_id)}/pods/{OpenApiUtilClient.get_encode_param(pod_id)}/events',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -723,39 +795,37 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            pai_dlc_20201203_models.GetJobMetricsResponse(),
+            pai_dlc_20201203_models.GetPodEventsResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def get_job_metrics_with_options_async(
+    async def get_pod_events_with_options_async(
         self,
         job_id: str,
-        request: pai_dlc_20201203_models.GetJobMetricsRequest,
+        pod_id: str,
+        request: pai_dlc_20201203_models.GetPodEventsRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> pai_dlc_20201203_models.GetJobMetricsResponse:
+    ) -> pai_dlc_20201203_models.GetPodEventsResponse:
         UtilClient.validate_model(request)
-        job_id = OpenApiUtilClient.get_encode_param(job_id)
         query = {}
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.metric_type):
-            query['MetricType'] = request.metric_type
+        if not UtilClient.is_unset(request.max_events_num):
+            query['MaxEventsNum'] = request.max_events_num
+        if not UtilClient.is_unset(request.pod_uid):
+            query['PodUid'] = request.pod_uid
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
-        if not UtilClient.is_unset(request.time_step):
-            query['TimeStep'] = request.time_step
-        if not UtilClient.is_unset(request.token):
-            query['Token'] = request.token
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='GetJobMetrics',
+            action='GetPodEvents',
             version='2020-12-03',
             protocol='HTTPS',
-            pathname=f'/api/v1/jobs/{job_id}/metrics',
+            pathname=f'/api/v1/jobs/{OpenApiUtilClient.get_encode_param(job_id)}/pods/{OpenApiUtilClient.get_encode_param(pod_id)}/events',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -763,7 +833,7 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            pai_dlc_20201203_models.GetJobMetricsResponse(),
+            pai_dlc_20201203_models.GetPodEventsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
@@ -787,22 +857,22 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_pod_events_with_options_async(job_id, pod_id, request, headers, runtime)
 
-    def get_pod_events_with_options(
+    def get_pod_logs_with_options(
         self,
         job_id: str,
         pod_id: str,
-        request: pai_dlc_20201203_models.GetPodEventsRequest,
+        request: pai_dlc_20201203_models.GetPodLogsRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> pai_dlc_20201203_models.GetPodEventsResponse:
+    ) -> pai_dlc_20201203_models.GetPodLogsResponse:
         UtilClient.validate_model(request)
-        job_id = OpenApiUtilClient.get_encode_param(job_id)
-        pod_id = OpenApiUtilClient.get_encode_param(pod_id)
         query = {}
+        if not UtilClient.is_unset(request.download_to_file):
+            query['DownloadToFile'] = request.download_to_file
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.max_events_num):
-            query['MaxEventsNum'] = request.max_events_num
+        if not UtilClient.is_unset(request.max_lines):
+            query['MaxLines'] = request.max_lines
         if not UtilClient.is_unset(request.pod_uid):
             query['PodUid'] = request.pod_uid
         if not UtilClient.is_unset(request.start_time):
@@ -812,10 +882,10 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='GetPodEvents',
+            action='GetPodLogs',
             version='2020-12-03',
             protocol='HTTPS',
-            pathname=f'/api/v1/jobs/{job_id}/pods/{pod_id}/events',
+            pathname=f'/api/v1/jobs/{OpenApiUtilClient.get_encode_param(job_id)}/pods/{OpenApiUtilClient.get_encode_param(pod_id)}/logs',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -823,26 +893,26 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            pai_dlc_20201203_models.GetPodEventsResponse(),
+            pai_dlc_20201203_models.GetPodLogsResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def get_pod_events_with_options_async(
+    async def get_pod_logs_with_options_async(
         self,
         job_id: str,
         pod_id: str,
-        request: pai_dlc_20201203_models.GetPodEventsRequest,
+        request: pai_dlc_20201203_models.GetPodLogsRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> pai_dlc_20201203_models.GetPodEventsResponse:
+    ) -> pai_dlc_20201203_models.GetPodLogsResponse:
         UtilClient.validate_model(request)
-        job_id = OpenApiUtilClient.get_encode_param(job_id)
-        pod_id = OpenApiUtilClient.get_encode_param(pod_id)
         query = {}
+        if not UtilClient.is_unset(request.download_to_file):
+            query['DownloadToFile'] = request.download_to_file
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.max_events_num):
-            query['MaxEventsNum'] = request.max_events_num
+        if not UtilClient.is_unset(request.max_lines):
+            query['MaxLines'] = request.max_lines
         if not UtilClient.is_unset(request.pod_uid):
             query['PodUid'] = request.pod_uid
         if not UtilClient.is_unset(request.start_time):
@@ -852,10 +922,10 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='GetPodEvents',
+            action='GetPodLogs',
             version='2020-12-03',
             protocol='HTTPS',
-            pathname=f'/api/v1/jobs/{job_id}/pods/{pod_id}/events',
+            pathname=f'/api/v1/jobs/{OpenApiUtilClient.get_encode_param(job_id)}/pods/{OpenApiUtilClient.get_encode_param(pod_id)}/logs',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -863,7 +933,7 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            pai_dlc_20201203_models.GetPodEventsResponse(),
+            pai_dlc_20201203_models.GetPodLogsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
@@ -887,37 +957,28 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_pod_logs_with_options_async(job_id, pod_id, request, headers, runtime)
 
-    def get_pod_logs_with_options(
+    def get_tensorboard_with_options(
         self,
-        job_id: str,
-        pod_id: str,
-        request: pai_dlc_20201203_models.GetPodLogsRequest,
+        tensorboard_id: str,
+        request: pai_dlc_20201203_models.GetTensorboardRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> pai_dlc_20201203_models.GetPodLogsResponse:
+    ) -> pai_dlc_20201203_models.GetTensorboardResponse:
         UtilClient.validate_model(request)
-        job_id = OpenApiUtilClient.get_encode_param(job_id)
-        pod_id = OpenApiUtilClient.get_encode_param(pod_id)
         query = {}
-        if not UtilClient.is_unset(request.download_to_file):
-            query['DownloadToFile'] = request.download_to_file
-        if not UtilClient.is_unset(request.end_time):
-            query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.max_lines):
-            query['MaxLines'] = request.max_lines
-        if not UtilClient.is_unset(request.pod_uid):
-            query['PodUid'] = request.pod_uid
-        if not UtilClient.is_unset(request.start_time):
-            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.jod_id):
+            query['JodId'] = request.jod_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='GetPodLogs',
+            action='GetTensorboard',
             version='2020-12-03',
             protocol='HTTPS',
-            pathname=f'/api/v1/jobs/{job_id}/pods/{pod_id}/logs',
+            pathname=f'/api/v1/tensorboards/{OpenApiUtilClient.get_encode_param(tensorboard_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -925,41 +986,32 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            pai_dlc_20201203_models.GetPodLogsResponse(),
+            pai_dlc_20201203_models.GetTensorboardResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def get_pod_logs_with_options_async(
+    async def get_tensorboard_with_options_async(
         self,
-        job_id: str,
-        pod_id: str,
-        request: pai_dlc_20201203_models.GetPodLogsRequest,
+        tensorboard_id: str,
+        request: pai_dlc_20201203_models.GetTensorboardRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> pai_dlc_20201203_models.GetPodLogsResponse:
+    ) -> pai_dlc_20201203_models.GetTensorboardResponse:
         UtilClient.validate_model(request)
-        job_id = OpenApiUtilClient.get_encode_param(job_id)
-        pod_id = OpenApiUtilClient.get_encode_param(pod_id)
         query = {}
-        if not UtilClient.is_unset(request.download_to_file):
-            query['DownloadToFile'] = request.download_to_file
-        if not UtilClient.is_unset(request.end_time):
-            query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.max_lines):
-            query['MaxLines'] = request.max_lines
-        if not UtilClient.is_unset(request.pod_uid):
-            query['PodUid'] = request.pod_uid
-        if not UtilClient.is_unset(request.start_time):
-            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.jod_id):
+            query['JodId'] = request.jod_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='GetPodLogs',
+            action='GetTensorboard',
             version='2020-12-03',
             protocol='HTTPS',
-            pathname=f'/api/v1/jobs/{job_id}/pods/{pod_id}/logs',
+            pathname=f'/api/v1/tensorboards/{OpenApiUtilClient.get_encode_param(tensorboard_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -967,7 +1019,7 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            pai_dlc_20201203_models.GetPodLogsResponse(),
+            pai_dlc_20201203_models.GetTensorboardResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
@@ -988,90 +1040,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_tensorboard_with_options_async(tensorboard_id, request, headers, runtime)
-
-    def get_tensorboard_with_options(
-        self,
-        tensorboard_id: str,
-        request: pai_dlc_20201203_models.GetTensorboardRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> pai_dlc_20201203_models.GetTensorboardResponse:
-        UtilClient.validate_model(request)
-        tensorboard_id = OpenApiUtilClient.get_encode_param(tensorboard_id)
-        query = {}
-        if not UtilClient.is_unset(request.jod_id):
-            query['JodId'] = request.jod_id
-        if not UtilClient.is_unset(request.workspace_id):
-            query['WorkspaceId'] = request.workspace_id
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetTensorboard',
-            version='2020-12-03',
-            protocol='HTTPS',
-            pathname=f'/api/v1/tensorboards/{tensorboard_id}',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            pai_dlc_20201203_models.GetTensorboardResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_tensorboard_with_options_async(
-        self,
-        tensorboard_id: str,
-        request: pai_dlc_20201203_models.GetTensorboardRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> pai_dlc_20201203_models.GetTensorboardResponse:
-        UtilClient.validate_model(request)
-        tensorboard_id = OpenApiUtilClient.get_encode_param(tensorboard_id)
-        query = {}
-        if not UtilClient.is_unset(request.jod_id):
-            query['JodId'] = request.jod_id
-        if not UtilClient.is_unset(request.workspace_id):
-            query['WorkspaceId'] = request.workspace_id
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetTensorboard',
-            version='2020-12-03',
-            protocol='HTTPS',
-            pathname=f'/api/v1/tensorboards/{tensorboard_id}',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            pai_dlc_20201203_models.GetTensorboardResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def list_ecs_specs(
-        self,
-        request: pai_dlc_20201203_models.ListEcsSpecsRequest,
-    ) -> pai_dlc_20201203_models.ListEcsSpecsResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.list_ecs_specs_with_options(request, headers, runtime)
-
-    async def list_ecs_specs_async(
-        self,
-        request: pai_dlc_20201203_models.ListEcsSpecsRequest,
-    ) -> pai_dlc_20201203_models.ListEcsSpecsResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.list_ecs_specs_with_options_async(request, headers, runtime)
 
     def list_ecs_specs_with_options(
         self,
@@ -1149,21 +1117,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_jobs(
+    def list_ecs_specs(
         self,
-        request: pai_dlc_20201203_models.ListJobsRequest,
-    ) -> pai_dlc_20201203_models.ListJobsResponse:
+        request: pai_dlc_20201203_models.ListEcsSpecsRequest,
+    ) -> pai_dlc_20201203_models.ListEcsSpecsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_jobs_with_options(request, headers, runtime)
+        return self.list_ecs_specs_with_options(request, headers, runtime)
 
-    async def list_jobs_async(
+    async def list_ecs_specs_async(
         self,
-        request: pai_dlc_20201203_models.ListJobsRequest,
-    ) -> pai_dlc_20201203_models.ListJobsResponse:
+        request: pai_dlc_20201203_models.ListEcsSpecsRequest,
+    ) -> pai_dlc_20201203_models.ListEcsSpecsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_jobs_with_options_async(request, headers, runtime)
+        return await self.list_ecs_specs_with_options_async(request, headers, runtime)
 
     def list_jobs_with_options(
         self,
@@ -1187,6 +1155,8 @@ class Client(OpenApiClient):
             query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.from_all_workspaces):
             query['FromAllWorkspaces'] = request.from_all_workspaces
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
         if not UtilClient.is_unset(request.job_type):
             query['JobType'] = request.job_type
         if not UtilClient.is_unset(request.order):
@@ -1253,6 +1223,8 @@ class Client(OpenApiClient):
             query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.from_all_workspaces):
             query['FromAllWorkspaces'] = request.from_all_workspaces
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
         if not UtilClient.is_unset(request.job_type):
             query['JobType'] = request.job_type
         if not UtilClient.is_unset(request.order):
@@ -1297,21 +1269,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_tensorboards(
+    def list_jobs(
         self,
-        request: pai_dlc_20201203_models.ListTensorboardsRequest,
-    ) -> pai_dlc_20201203_models.ListTensorboardsResponse:
+        request: pai_dlc_20201203_models.ListJobsRequest,
+    ) -> pai_dlc_20201203_models.ListJobsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_tensorboards_with_options(request, headers, runtime)
+        return self.list_jobs_with_options(request, headers, runtime)
 
-    async def list_tensorboards_async(
+    async def list_jobs_async(
         self,
-        request: pai_dlc_20201203_models.ListTensorboardsRequest,
-    ) -> pai_dlc_20201203_models.ListTensorboardsResponse:
+        request: pai_dlc_20201203_models.ListJobsRequest,
+    ) -> pai_dlc_20201203_models.ListJobsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_tensorboards_with_options_async(request, headers, runtime)
+        return await self.list_jobs_with_options_async(request, headers, runtime)
 
     def list_tensorboards_with_options(
         self,
@@ -1425,23 +1397,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def start_tensorboard(
+    def list_tensorboards(
         self,
-        tensorboard_id: str,
-        request: pai_dlc_20201203_models.StartTensorboardRequest,
-    ) -> pai_dlc_20201203_models.StartTensorboardResponse:
+        request: pai_dlc_20201203_models.ListTensorboardsRequest,
+    ) -> pai_dlc_20201203_models.ListTensorboardsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.start_tensorboard_with_options(tensorboard_id, request, headers, runtime)
+        return self.list_tensorboards_with_options(request, headers, runtime)
 
-    async def start_tensorboard_async(
+    async def list_tensorboards_async(
         self,
-        tensorboard_id: str,
-        request: pai_dlc_20201203_models.StartTensorboardRequest,
-    ) -> pai_dlc_20201203_models.StartTensorboardResponse:
+        request: pai_dlc_20201203_models.ListTensorboardsRequest,
+    ) -> pai_dlc_20201203_models.ListTensorboardsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.start_tensorboard_with_options_async(tensorboard_id, request, headers, runtime)
+        return await self.list_tensorboards_with_options_async(request, headers, runtime)
 
     def start_tensorboard_with_options(
         self,
@@ -1451,7 +1421,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.StartTensorboardResponse:
         UtilClient.validate_model(request)
-        tensorboard_id = OpenApiUtilClient.get_encode_param(tensorboard_id)
         query = {}
         if not UtilClient.is_unset(request.workspace_id):
             query['WorkspaceId'] = request.workspace_id
@@ -1463,7 +1432,7 @@ class Client(OpenApiClient):
             action='StartTensorboard',
             version='2020-12-03',
             protocol='HTTPS',
-            pathname=f'/api/v1/tensorboards/{tensorboard_id}/start',
+            pathname=f'/api/v1/tensorboards/{OpenApiUtilClient.get_encode_param(tensorboard_id)}/start',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -1483,7 +1452,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> pai_dlc_20201203_models.StartTensorboardResponse:
         UtilClient.validate_model(request)
-        tensorboard_id = OpenApiUtilClient.get_encode_param(tensorboard_id)
         query = {}
         if not UtilClient.is_unset(request.workspace_id):
             query['WorkspaceId'] = request.workspace_id
@@ -1495,7 +1463,7 @@ class Client(OpenApiClient):
             action='StartTensorboard',
             version='2020-12-03',
             protocol='HTTPS',
-            pathname=f'/api/v1/tensorboards/{tensorboard_id}/start',
+            pathname=f'/api/v1/tensorboards/{OpenApiUtilClient.get_encode_param(tensorboard_id)}/start',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -1504,6 +1472,74 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             pai_dlc_20201203_models.StartTensorboardResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def start_tensorboard(
+        self,
+        tensorboard_id: str,
+        request: pai_dlc_20201203_models.StartTensorboardRequest,
+    ) -> pai_dlc_20201203_models.StartTensorboardResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.start_tensorboard_with_options(tensorboard_id, request, headers, runtime)
+
+    async def start_tensorboard_async(
+        self,
+        tensorboard_id: str,
+        request: pai_dlc_20201203_models.StartTensorboardRequest,
+    ) -> pai_dlc_20201203_models.StartTensorboardResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.start_tensorboard_with_options_async(tensorboard_id, request, headers, runtime)
+
+    def stop_job_with_options(
+        self,
+        job_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_dlc_20201203_models.StopJobResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='StopJob',
+            version='2020-12-03',
+            protocol='HTTPS',
+            pathname=f'/api/v1/jobs/{OpenApiUtilClient.get_encode_param(job_id)}/stop',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_dlc_20201203_models.StopJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def stop_job_with_options_async(
+        self,
+        job_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_dlc_20201203_models.StopJobResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='StopJob',
+            version='2020-12-03',
+            protocol='HTTPS',
+            pathname=f'/api/v1/jobs/{OpenApiUtilClient.get_encode_param(job_id)}/stop',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_dlc_20201203_models.StopJobResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
@@ -1523,55 +1559,65 @@ class Client(OpenApiClient):
         headers = {}
         return await self.stop_job_with_options_async(job_id, headers, runtime)
 
-    def stop_job_with_options(
+    def stop_tensorboard_with_options(
         self,
-        job_id: str,
+        tensorboard_id: str,
+        request: pai_dlc_20201203_models.StopTensorboardRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> pai_dlc_20201203_models.StopJobResponse:
-        job_id = OpenApiUtilClient.get_encode_param(job_id)
+    ) -> pai_dlc_20201203_models.StopTensorboardResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='StopJob',
+            action='StopTensorboard',
             version='2020-12-03',
             protocol='HTTPS',
-            pathname=f'/api/v1/jobs/{job_id}/stop',
-            method='POST',
+            pathname=f'/api/v1/tensorboards/{OpenApiUtilClient.get_encode_param(tensorboard_id)}/stop',
+            method='PUT',
             auth_type='AK',
             style='ROA',
             req_body_type='json',
             body_type='json'
         )
         return TeaCore.from_map(
-            pai_dlc_20201203_models.StopJobResponse(),
+            pai_dlc_20201203_models.StopTensorboardResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def stop_job_with_options_async(
+    async def stop_tensorboard_with_options_async(
         self,
-        job_id: str,
+        tensorboard_id: str,
+        request: pai_dlc_20201203_models.StopTensorboardRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> pai_dlc_20201203_models.StopJobResponse:
-        job_id = OpenApiUtilClient.get_encode_param(job_id)
+    ) -> pai_dlc_20201203_models.StopTensorboardResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='StopJob',
+            action='StopTensorboard',
             version='2020-12-03',
             protocol='HTTPS',
-            pathname=f'/api/v1/jobs/{job_id}/stop',
-            method='POST',
+            pathname=f'/api/v1/tensorboards/{OpenApiUtilClient.get_encode_param(tensorboard_id)}/stop',
+            method='PUT',
             auth_type='AK',
             style='ROA',
             req_body_type='json',
             body_type='json'
         )
         return TeaCore.from_map(
-            pai_dlc_20201203_models.StopJobResponse(),
+            pai_dlc_20201203_models.StopTensorboardResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
@@ -1593,27 +1639,26 @@ class Client(OpenApiClient):
         headers = {}
         return await self.stop_tensorboard_with_options_async(tensorboard_id, request, headers, runtime)
 
-    def stop_tensorboard_with_options(
+    def update_job_with_options(
         self,
-        tensorboard_id: str,
-        request: pai_dlc_20201203_models.StopTensorboardRequest,
+        job_id: str,
+        request: pai_dlc_20201203_models.UpdateJobRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> pai_dlc_20201203_models.StopTensorboardResponse:
+    ) -> pai_dlc_20201203_models.UpdateJobResponse:
         UtilClient.validate_model(request)
-        tensorboard_id = OpenApiUtilClient.get_encode_param(tensorboard_id)
-        query = {}
-        if not UtilClient.is_unset(request.workspace_id):
-            query['WorkspaceId'] = request.workspace_id
+        body = {}
+        if not UtilClient.is_unset(request.priority):
+            body['Priority'] = request.priority
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
-            action='StopTensorboard',
+            action='UpdateJob',
             version='2020-12-03',
             protocol='HTTPS',
-            pathname=f'/api/v1/tensorboards/{tensorboard_id}/stop',
+            pathname=f'/api/v1/jobs/{OpenApiUtilClient.get_encode_param(job_id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -1621,31 +1666,30 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            pai_dlc_20201203_models.StopTensorboardResponse(),
+            pai_dlc_20201203_models.UpdateJobResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def stop_tensorboard_with_options_async(
+    async def update_job_with_options_async(
         self,
-        tensorboard_id: str,
-        request: pai_dlc_20201203_models.StopTensorboardRequest,
+        job_id: str,
+        request: pai_dlc_20201203_models.UpdateJobRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> pai_dlc_20201203_models.StopTensorboardResponse:
+    ) -> pai_dlc_20201203_models.UpdateJobResponse:
         UtilClient.validate_model(request)
-        tensorboard_id = OpenApiUtilClient.get_encode_param(tensorboard_id)
-        query = {}
-        if not UtilClient.is_unset(request.workspace_id):
-            query['WorkspaceId'] = request.workspace_id
+        body = {}
+        if not UtilClient.is_unset(request.priority):
+            body['Priority'] = request.priority
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
-            action='StopTensorboard',
+            action='UpdateJob',
             version='2020-12-03',
             protocol='HTTPS',
-            pathname=f'/api/v1/tensorboards/{tensorboard_id}/stop',
+            pathname=f'/api/v1/jobs/{OpenApiUtilClient.get_encode_param(job_id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -1653,7 +1697,7 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            pai_dlc_20201203_models.StopTensorboardResponse(),
+            pai_dlc_20201203_models.UpdateJobResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
@@ -1675,27 +1719,28 @@ class Client(OpenApiClient):
         headers = {}
         return await self.update_job_with_options_async(job_id, request, headers, runtime)
 
-    def update_job_with_options(
+    def update_tensorboard_with_options(
         self,
-        job_id: str,
-        request: pai_dlc_20201203_models.UpdateJobRequest,
+        tensorboard_id: str,
+        request: pai_dlc_20201203_models.UpdateTensorboardRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> pai_dlc_20201203_models.UpdateJobResponse:
+    ) -> pai_dlc_20201203_models.UpdateTensorboardResponse:
         UtilClient.validate_model(request)
-        job_id = OpenApiUtilClient.get_encode_param(job_id)
-        body = {}
-        if not UtilClient.is_unset(request.priority):
-            body['Priority'] = request.priority
+        query = {}
+        if not UtilClient.is_unset(request.max_running_time_minutes):
+            query['MaxRunningTimeMinutes'] = request.max_running_time_minutes
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='UpdateJob',
+            action='UpdateTensorboard',
             version='2020-12-03',
             protocol='HTTPS',
-            pathname=f'/api/v1/jobs/{job_id}',
+            pathname=f'/api/v1/tensorboards/{OpenApiUtilClient.get_encode_param(tensorboard_id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -1703,31 +1748,32 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            pai_dlc_20201203_models.UpdateJobResponse(),
+            pai_dlc_20201203_models.UpdateTensorboardResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def update_job_with_options_async(
+    async def update_tensorboard_with_options_async(
         self,
-        job_id: str,
-        request: pai_dlc_20201203_models.UpdateJobRequest,
+        tensorboard_id: str,
+        request: pai_dlc_20201203_models.UpdateTensorboardRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> pai_dlc_20201203_models.UpdateJobResponse:
+    ) -> pai_dlc_20201203_models.UpdateTensorboardResponse:
         UtilClient.validate_model(request)
-        job_id = OpenApiUtilClient.get_encode_param(job_id)
-        body = {}
-        if not UtilClient.is_unset(request.priority):
-            body['Priority'] = request.priority
+        query = {}
+        if not UtilClient.is_unset(request.max_running_time_minutes):
+            query['MaxRunningTimeMinutes'] = request.max_running_time_minutes
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='UpdateJob',
+            action='UpdateTensorboard',
             version='2020-12-03',
             protocol='HTTPS',
-            pathname=f'/api/v1/jobs/{job_id}',
+            pathname=f'/api/v1/tensorboards/{OpenApiUtilClient.get_encode_param(tensorboard_id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -1735,7 +1781,7 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            pai_dlc_20201203_models.UpdateJobResponse(),
+            pai_dlc_20201203_models.UpdateTensorboardResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
@@ -1756,71 +1802,3 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_tensorboard_with_options_async(tensorboard_id, request, headers, runtime)
-
-    def update_tensorboard_with_options(
-        self,
-        tensorboard_id: str,
-        request: pai_dlc_20201203_models.UpdateTensorboardRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> pai_dlc_20201203_models.UpdateTensorboardResponse:
-        UtilClient.validate_model(request)
-        tensorboard_id = OpenApiUtilClient.get_encode_param(tensorboard_id)
-        query = {}
-        if not UtilClient.is_unset(request.max_running_time_minutes):
-            query['MaxRunningTimeMinutes'] = request.max_running_time_minutes
-        if not UtilClient.is_unset(request.workspace_id):
-            query['WorkspaceId'] = request.workspace_id
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='UpdateTensorboard',
-            version='2020-12-03',
-            protocol='HTTPS',
-            pathname=f'/api/v1/tensorboards/{tensorboard_id}',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            pai_dlc_20201203_models.UpdateTensorboardResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def update_tensorboard_with_options_async(
-        self,
-        tensorboard_id: str,
-        request: pai_dlc_20201203_models.UpdateTensorboardRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> pai_dlc_20201203_models.UpdateTensorboardResponse:
-        UtilClient.validate_model(request)
-        tensorboard_id = OpenApiUtilClient.get_encode_param(tensorboard_id)
-        query = {}
-        if not UtilClient.is_unset(request.max_running_time_minutes):
-            query['MaxRunningTimeMinutes'] = request.max_running_time_minutes
-        if not UtilClient.is_unset(request.workspace_id):
-            query['WorkspaceId'] = request.workspace_id
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='UpdateTensorboard',
-            version='2020-12-03',
-            protocol='HTTPS',
-            pathname=f'/api/v1/tensorboards/{tensorboard_id}',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            pai_dlc_20201203_models.UpdateTensorboardResponse(),
-            await self.call_api_async(params, req, runtime)
-        )

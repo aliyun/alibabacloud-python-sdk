@@ -1183,6 +1183,7 @@ class JobSettings(TeaModel):
         business_user_id: str = None,
         caller: str = None,
         enable_error_monitoring_in_aimaster: bool = None,
+        enable_oss_append: bool = None,
         enable_rdma: bool = None,
         enable_tide_resource: bool = None,
         error_monitoring_args: str = None,
@@ -1192,6 +1193,7 @@ class JobSettings(TeaModel):
         self.business_user_id = business_user_id
         self.caller = caller
         self.enable_error_monitoring_in_aimaster = enable_error_monitoring_in_aimaster
+        self.enable_oss_append = enable_oss_append
         self.enable_rdma = enable_rdma
         self.enable_tide_resource = enable_tide_resource
         self.error_monitoring_args = error_monitoring_args
@@ -1213,6 +1215,8 @@ class JobSettings(TeaModel):
             result['Caller'] = self.caller
         if self.enable_error_monitoring_in_aimaster is not None:
             result['EnableErrorMonitoringInAIMaster'] = self.enable_error_monitoring_in_aimaster
+        if self.enable_oss_append is not None:
+            result['EnableOssAppend'] = self.enable_oss_append
         if self.enable_rdma is not None:
             result['EnableRDMA'] = self.enable_rdma
         if self.enable_tide_resource is not None:
@@ -1233,6 +1237,8 @@ class JobSettings(TeaModel):
             self.caller = m.get('Caller')
         if m.get('EnableErrorMonitoringInAIMaster') is not None:
             self.enable_error_monitoring_in_aimaster = m.get('EnableErrorMonitoringInAIMaster')
+        if m.get('EnableOssAppend') is not None:
+            self.enable_oss_append = m.get('EnableOssAppend')
         if m.get('EnableRDMA') is not None:
             self.enable_rdma = m.get('EnableRDMA')
         if m.get('EnableTideResource') is not None:
@@ -1618,6 +1624,57 @@ class PodMetric(TeaModel):
         return self
 
 
+class QuotaConfig(TeaModel):
+    def __init__(
+        self,
+        allowed_max_priority: int = None,
+        enable_dlc: bool = None,
+        enable_dsw: bool = None,
+        enable_tide_resource: bool = None,
+        resource_level: str = None,
+    ):
+        self.allowed_max_priority = allowed_max_priority
+        self.enable_dlc = enable_dlc
+        self.enable_dsw = enable_dsw
+        self.enable_tide_resource = enable_tide_resource
+        self.resource_level = resource_level
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.allowed_max_priority is not None:
+            result['AllowedMaxPriority'] = self.allowed_max_priority
+        if self.enable_dlc is not None:
+            result['EnableDLC'] = self.enable_dlc
+        if self.enable_dsw is not None:
+            result['EnableDSW'] = self.enable_dsw
+        if self.enable_tide_resource is not None:
+            result['EnableTideResource'] = self.enable_tide_resource
+        if self.resource_level is not None:
+            result['ResourceLevel'] = self.resource_level
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllowedMaxPriority') is not None:
+            self.allowed_max_priority = m.get('AllowedMaxPriority')
+        if m.get('EnableDLC') is not None:
+            self.enable_dlc = m.get('EnableDLC')
+        if m.get('EnableDSW') is not None:
+            self.enable_dsw = m.get('EnableDSW')
+        if m.get('EnableTideResource') is not None:
+            self.enable_tide_resource = m.get('EnableTideResource')
+        if m.get('ResourceLevel') is not None:
+            self.resource_level = m.get('ResourceLevel')
+        return self
+
+
 class QuotaDetail(TeaModel):
     def __init__(
         self,
@@ -1688,12 +1745,10 @@ class Quota(TeaModel):
         self,
         cluster_id: str = None,
         cluster_name: str = None,
-        enable_tide_resource: bool = None,
-        is_exclusive_quota: bool = None,
+        quota_config: QuotaConfig = None,
         quota_id: str = None,
         quota_name: str = None,
         quota_type: str = None,
-        resource_level: str = None,
         total_quota: QuotaDetail = None,
         total_tide_quota: QuotaDetail = None,
         used_quota: QuotaDetail = None,
@@ -1701,18 +1756,18 @@ class Quota(TeaModel):
     ):
         self.cluster_id = cluster_id
         self.cluster_name = cluster_name
-        self.enable_tide_resource = enable_tide_resource
-        self.is_exclusive_quota = is_exclusive_quota
+        self.quota_config = quota_config
         self.quota_id = quota_id
         self.quota_name = quota_name
         self.quota_type = quota_type
-        self.resource_level = resource_level
         self.total_quota = total_quota
         self.total_tide_quota = total_tide_quota
         self.used_quota = used_quota
         self.used_tide_quota = used_tide_quota
 
     def validate(self):
+        if self.quota_config:
+            self.quota_config.validate()
         if self.total_quota:
             self.total_quota.validate()
         if self.total_tide_quota:
@@ -1732,18 +1787,14 @@ class Quota(TeaModel):
             result['ClusterId'] = self.cluster_id
         if self.cluster_name is not None:
             result['ClusterName'] = self.cluster_name
-        if self.enable_tide_resource is not None:
-            result['EnableTideResource'] = self.enable_tide_resource
-        if self.is_exclusive_quota is not None:
-            result['IsExclusiveQuota'] = self.is_exclusive_quota
+        if self.quota_config is not None:
+            result['QuotaConfig'] = self.quota_config.to_map()
         if self.quota_id is not None:
             result['QuotaId'] = self.quota_id
         if self.quota_name is not None:
             result['QuotaName'] = self.quota_name
         if self.quota_type is not None:
             result['QuotaType'] = self.quota_type
-        if self.resource_level is not None:
-            result['ResourceLevel'] = self.resource_level
         if self.total_quota is not None:
             result['TotalQuota'] = self.total_quota.to_map()
         if self.total_tide_quota is not None:
@@ -1760,18 +1811,15 @@ class Quota(TeaModel):
             self.cluster_id = m.get('ClusterId')
         if m.get('ClusterName') is not None:
             self.cluster_name = m.get('ClusterName')
-        if m.get('EnableTideResource') is not None:
-            self.enable_tide_resource = m.get('EnableTideResource')
-        if m.get('IsExclusiveQuota') is not None:
-            self.is_exclusive_quota = m.get('IsExclusiveQuota')
+        if m.get('QuotaConfig') is not None:
+            temp_model = QuotaConfig()
+            self.quota_config = temp_model.from_map(m['QuotaConfig'])
         if m.get('QuotaId') is not None:
             self.quota_id = m.get('QuotaId')
         if m.get('QuotaName') is not None:
             self.quota_name = m.get('QuotaName')
         if m.get('QuotaType') is not None:
             self.quota_type = m.get('QuotaType')
-        if m.get('ResourceLevel') is not None:
-            self.resource_level = m.get('ResourceLevel')
         if m.get('TotalQuota') is not None:
             temp_model = QuotaDetail()
             self.total_quota = temp_model.from_map(m['TotalQuota'])
@@ -2291,6 +2339,7 @@ class CreateJobRequest(TeaModel):
         priority: int = None,
         resource_id: str = None,
         settings: JobSettings = None,
+        success_policy: str = None,
         thirdparty_lib_dir: str = None,
         thirdparty_libs: List[str] = None,
         user_command: str = None,
@@ -2310,6 +2359,7 @@ class CreateJobRequest(TeaModel):
         self.priority = priority
         self.resource_id = resource_id
         self.settings = settings
+        self.success_policy = success_policy
         self.thirdparty_lib_dir = thirdparty_lib_dir
         self.thirdparty_libs = thirdparty_libs
         self.user_command = user_command
@@ -2370,6 +2420,8 @@ class CreateJobRequest(TeaModel):
             result['ResourceId'] = self.resource_id
         if self.settings is not None:
             result['Settings'] = self.settings.to_map()
+        if self.success_policy is not None:
+            result['SuccessPolicy'] = self.success_policy
         if self.thirdparty_lib_dir is not None:
             result['ThirdpartyLibDir'] = self.thirdparty_lib_dir
         if self.thirdparty_libs is not None:
@@ -2419,6 +2471,8 @@ class CreateJobRequest(TeaModel):
         if m.get('Settings') is not None:
             temp_model = JobSettings()
             self.settings = temp_model.from_map(m['Settings'])
+        if m.get('SuccessPolicy') is not None:
+            self.success_policy = m.get('SuccessPolicy')
         if m.get('ThirdpartyLibDir') is not None:
             self.thirdparty_lib_dir = m.get('ThirdpartyLibDir')
         if m.get('ThirdpartyLibs') is not None:
@@ -2625,9 +2679,11 @@ class CreateTensorboardResponseBody(TeaModel):
         request_id: str = None,
         tensorboard_id: str = None,
     ):
+        # DataSourceId
         self.data_source_id = data_source_id
         self.job_id = job_id
         self.request_id = request_id
+        # Tensorboard id
         self.tensorboard_id = tensorboard_id
 
     def validate(self):
@@ -2817,6 +2873,7 @@ class DeleteTensorboardResponseBody(TeaModel):
         tensorboard_id: str = None,
     ):
         self.request_id = request_id
+        # Tensorboad Id
         self.tensorboard_id = tensorboard_id
 
     def validate(self):
@@ -2980,8 +3037,11 @@ class GetJobResponseBodyPodsHistoryPods(TeaModel):
         self.gmt_create_time = gmt_create_time
         self.gmt_finish_time = gmt_finish_time
         self.gmt_start_time = gmt_start_time
+        # Pod Ip
         self.ip = ip
+        # Pod Id
         self.pod_id = pod_id
+        # Pod UId
         self.pod_uid = pod_uid
         self.status = status
         self.type = type
@@ -3053,6 +3113,7 @@ class GetJobResponseBodyPods(TeaModel):
         self.history_pods = history_pods
         self.ip = ip
         self.pod_id = pod_id
+        # Pod UId
         self.pod_uid = pod_uid
         self.status = status
         self.type = type
@@ -3971,6 +4032,7 @@ class GetTensorboardRequest(TeaModel):
         jod_id: str = None,
         workspace_id: str = None,
     ):
+        # JodId
         self.jod_id = jod_id
         self.workspace_id = workspace_id
 
@@ -4192,6 +4254,7 @@ class ListJobsRequest(TeaModel):
         display_name: str = None,
         end_time: str = None,
         from_all_workspaces: bool = None,
+        job_id: str = None,
         job_type: str = None,
         order: str = None,
         page_number: int = None,
@@ -4210,6 +4273,7 @@ class ListJobsRequest(TeaModel):
         self.display_name = display_name
         self.end_time = end_time
         self.from_all_workspaces = from_all_workspaces
+        self.job_id = job_id
         self.job_type = job_type
         self.order = order
         self.page_number = page_number
@@ -4242,6 +4306,8 @@ class ListJobsRequest(TeaModel):
             result['EndTime'] = self.end_time
         if self.from_all_workspaces is not None:
             result['FromAllWorkspaces'] = self.from_all_workspaces
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
         if self.job_type is not None:
             result['JobType'] = self.job_type
         if self.order is not None:
@@ -4280,6 +4346,8 @@ class ListJobsRequest(TeaModel):
             self.end_time = m.get('EndTime')
         if m.get('FromAllWorkspaces') is not None:
             self.from_all_workspaces = m.get('FromAllWorkspaces')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
         if m.get('JobType') is not None:
             self.job_type = m.get('JobType')
         if m.get('Order') is not None:
@@ -4315,6 +4383,7 @@ class ListJobsShrinkRequest(TeaModel):
         display_name: str = None,
         end_time: str = None,
         from_all_workspaces: bool = None,
+        job_id: str = None,
         job_type: str = None,
         order: str = None,
         page_number: int = None,
@@ -4333,6 +4402,7 @@ class ListJobsShrinkRequest(TeaModel):
         self.display_name = display_name
         self.end_time = end_time
         self.from_all_workspaces = from_all_workspaces
+        self.job_id = job_id
         self.job_type = job_type
         self.order = order
         self.page_number = page_number
@@ -4365,6 +4435,8 @@ class ListJobsShrinkRequest(TeaModel):
             result['EndTime'] = self.end_time
         if self.from_all_workspaces is not None:
             result['FromAllWorkspaces'] = self.from_all_workspaces
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
         if self.job_type is not None:
             result['JobType'] = self.job_type
         if self.order is not None:
@@ -4403,6 +4475,8 @@ class ListJobsShrinkRequest(TeaModel):
             self.end_time = m.get('EndTime')
         if m.get('FromAllWorkspaces') is not None:
             self.from_all_workspaces = m.get('FromAllWorkspaces')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
         if m.get('JobType') is not None:
             self.job_type = m.get('JobType')
         if m.get('Order') is not None:
@@ -4541,6 +4615,7 @@ class ListTensorboardsRequest(TeaModel):
     ):
         self.display_name = display_name
         self.end_time = end_time
+        # JobId
         self.job_id = job_id
         self.order = order
         self.page_number = page_number
@@ -4550,6 +4625,7 @@ class ListTensorboardsRequest(TeaModel):
         self.source_type = source_type
         self.start_time = start_time
         self.status = status
+        # TensorboardId
         self.tensorboard_id = tensorboard_id
         self.verbose = verbose
         self.workspace_id = workspace_id
@@ -4751,6 +4827,7 @@ class StartTensorboardResponseBody(TeaModel):
         tensorboard_id: str = None,
     ):
         self.request_id = request_id
+        # Tensorboad Id
         self.tensorboard_id = tensorboard_id
 
     def validate(self):
@@ -4932,6 +5009,7 @@ class StopTensorboardResponseBody(TeaModel):
         tensorboard_id: str = None,
     ):
         self.request_id = request_id
+        # Tensorboad Id
         self.tensorboard_id = tensorboard_id
 
     def validate(self):
@@ -5146,6 +5224,7 @@ class UpdateTensorboardResponseBody(TeaModel):
         tensorboard_id: str = None,
     ):
         self.request_id = request_id
+        # Tensorboad Id
         self.tensorboard_id = tensorboard_id
 
     def validate(self):

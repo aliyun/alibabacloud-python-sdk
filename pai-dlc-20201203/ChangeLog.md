@@ -1,3 +1,6 @@
+2022-12-13 Version: 1.2.3
+- CreateJob supports params SuccessPolicy.
+
 2022-07-26 Version: 1.2.1
 - Support to automatically fill in endpoint according to region.
 
