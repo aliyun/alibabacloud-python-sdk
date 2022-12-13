@@ -1201,6 +1201,14 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.CreateDetectVideoLabelsTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.CreateDetectVideoLabelsTaskResponse:
+        """
+        @deprecated
+        
+        @param tmp_req: CreateDetectVideoLabelsTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDetectVideoLabelsTaskResponse
+        Deprecated
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.CreateDetectVideoLabelsTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1245,6 +1253,14 @@ class Client(OpenApiClient):
         tmp_req: imm_20200930_models.CreateDetectVideoLabelsTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.CreateDetectVideoLabelsTaskResponse:
+        """
+        @deprecated
+        
+        @param tmp_req: CreateDetectVideoLabelsTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDetectVideoLabelsTaskResponse
+        Deprecated
+        """
         UtilClient.validate_model(tmp_req)
         request = imm_20200930_models.CreateDetectVideoLabelsTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1288,6 +1304,13 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.CreateDetectVideoLabelsTaskRequest,
     ) -> imm_20200930_models.CreateDetectVideoLabelsTaskResponse:
+        """
+        @deprecated
+        
+        @param request: CreateDetectVideoLabelsTaskRequest
+        @return: CreateDetectVideoLabelsTaskResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_detect_video_labels_task_with_options(request, runtime)
 
@@ -1295,6 +1318,13 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.CreateDetectVideoLabelsTaskRequest,
     ) -> imm_20200930_models.CreateDetectVideoLabelsTaskResponse:
+        """
+        @deprecated
+        
+        @param request: CreateDetectVideoLabelsTaskRequest
+        @return: CreateDetectVideoLabelsTaskResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_detect_video_labels_task_with_options_async(request, runtime)
 
@@ -4163,10 +4193,14 @@ class Client(OpenApiClient):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
             query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
         if not UtilClient.is_unset(request.project_name):
             query['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.query):
             query['Query'] = request.query
+        if not UtilClient.is_unset(request.sort):
+            query['Sort'] = request.sort
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4199,10 +4233,14 @@ class Client(OpenApiClient):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
             query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
         if not UtilClient.is_unset(request.project_name):
             query['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.query):
             query['Query'] = request.query
+        if not UtilClient.is_unset(request.sort):
+            query['Sort'] = request.sort
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4397,6 +4435,14 @@ class Client(OpenApiClient):
         request: imm_20200930_models.GetDetectVideoLabelsResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.GetDetectVideoLabelsResultResponse:
+        """
+        @deprecated
+        
+        @param request: GetDetectVideoLabelsResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDetectVideoLabelsResultResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.project_name):
@@ -4429,6 +4475,14 @@ class Client(OpenApiClient):
         request: imm_20200930_models.GetDetectVideoLabelsResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.GetDetectVideoLabelsResultResponse:
+        """
+        @deprecated
+        
+        @param request: GetDetectVideoLabelsResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDetectVideoLabelsResultResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.project_name):
@@ -4460,6 +4514,13 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.GetDetectVideoLabelsResultRequest,
     ) -> imm_20200930_models.GetDetectVideoLabelsResultResponse:
+        """
+        @deprecated
+        
+        @param request: GetDetectVideoLabelsResultRequest
+        @return: GetDetectVideoLabelsResultResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_detect_video_labels_result_with_options(request, runtime)
 
@@ -4467,6 +4528,13 @@ class Client(OpenApiClient):
         self,
         request: imm_20200930_models.GetDetectVideoLabelsResultRequest,
     ) -> imm_20200930_models.GetDetectVideoLabelsResultResponse:
+        """
+        @deprecated
+        
+        @param request: GetDetectVideoLabelsResultRequest
+        @return: GetDetectVideoLabelsResultResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_detect_video_labels_result_with_options_async(request, runtime)
 

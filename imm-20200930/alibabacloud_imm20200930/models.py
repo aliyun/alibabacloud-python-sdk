@@ -12742,14 +12742,18 @@ class FuzzyQueryRequest(TeaModel):
         dataset_name: str = None,
         max_results: int = None,
         next_token: str = None,
+        order: str = None,
         project_name: str = None,
         query: str = None,
+        sort: str = None,
     ):
         self.dataset_name = dataset_name
         self.max_results = max_results
         self.next_token = next_token
+        self.order = order
         self.project_name = project_name
         self.query = query
+        self.sort = sort
 
     def validate(self):
         pass
@@ -12766,10 +12770,14 @@ class FuzzyQueryRequest(TeaModel):
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
             result['NextToken'] = self.next_token
+        if self.order is not None:
+            result['Order'] = self.order
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
         if self.query is not None:
             result['Query'] = self.query
+        if self.sort is not None:
+            result['Sort'] = self.sort
         return result
 
     def from_map(self, m: dict = None):
@@ -12780,10 +12788,14 @@ class FuzzyQueryRequest(TeaModel):
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
         if m.get('Query') is not None:
             self.query = m.get('Query')
+        if m.get('Sort') is not None:
+            self.sort = m.get('Sort')
         return self
 
 
@@ -18599,110 +18611,18 @@ class SemanticQueryRequest(TeaModel):
         return self
 
 
-class SemanticQueryResponseBodyAggregationsGroups(TeaModel):
-    def __init__(
-        self,
-        count: int = None,
-        value: str = None,
-    ):
-        self.count = count
-        self.value = value
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.count is not None:
-            result['Count'] = self.count
-        if self.value is not None:
-            result['Value'] = self.value
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Count') is not None:
-            self.count = m.get('Count')
-        if m.get('Value') is not None:
-            self.value = m.get('Value')
-        return self
-
-
-class SemanticQueryResponseBodyAggregations(TeaModel):
-    def __init__(
-        self,
-        field: str = None,
-        groups: List[SemanticQueryResponseBodyAggregationsGroups] = None,
-        operation: str = None,
-        value: float = None,
-    ):
-        self.field = field
-        self.groups = groups
-        self.operation = operation
-        self.value = value
-
-    def validate(self):
-        if self.groups:
-            for k in self.groups:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.field is not None:
-            result['Field'] = self.field
-        result['Groups'] = []
-        if self.groups is not None:
-            for k in self.groups:
-                result['Groups'].append(k.to_map() if k else None)
-        if self.operation is not None:
-            result['Operation'] = self.operation
-        if self.value is not None:
-            result['Value'] = self.value
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Field') is not None:
-            self.field = m.get('Field')
-        self.groups = []
-        if m.get('Groups') is not None:
-            for k in m.get('Groups'):
-                temp_model = SemanticQueryResponseBodyAggregationsGroups()
-                self.groups.append(temp_model.from_map(k))
-        if m.get('Operation') is not None:
-            self.operation = m.get('Operation')
-        if m.get('Value') is not None:
-            self.value = m.get('Value')
-        return self
-
-
 class SemanticQueryResponseBody(TeaModel):
     def __init__(
         self,
-        aggregations: List[SemanticQueryResponseBodyAggregations] = None,
         files: List[File] = None,
         next_token: str = None,
         request_id: str = None,
     ):
-        self.aggregations = aggregations
         self.files = files
         self.next_token = next_token
         self.request_id = request_id
 
     def validate(self):
-        if self.aggregations:
-            for k in self.aggregations:
-                if k:
-                    k.validate()
         if self.files:
             for k in self.files:
                 if k:
@@ -18714,10 +18634,6 @@ class SemanticQueryResponseBody(TeaModel):
             return _map
 
         result = dict()
-        result['Aggregations'] = []
-        if self.aggregations is not None:
-            for k in self.aggregations:
-                result['Aggregations'].append(k.to_map() if k else None)
         result['Files'] = []
         if self.files is not None:
             for k in self.files:
@@ -18730,11 +18646,6 @@ class SemanticQueryResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        self.aggregations = []
-        if m.get('Aggregations') is not None:
-            for k in m.get('Aggregations'):
-                temp_model = SemanticQueryResponseBodyAggregations()
-                self.aggregations.append(temp_model.from_map(k))
         self.files = []
         if m.get('Files') is not None:
             for k in m.get('Files'):
