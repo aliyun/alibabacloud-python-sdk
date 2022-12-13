@@ -41,24 +41,6 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
-    def create_idle_instance_culler(
-        self,
-        instance_id: str,
-        request: pai_dsw_20220101_models.CreateIdleInstanceCullerRequest,
-    ) -> pai_dsw_20220101_models.CreateIdleInstanceCullerResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.create_idle_instance_culler_with_options(instance_id, request, headers, runtime)
-
-    async def create_idle_instance_culler_async(
-        self,
-        instance_id: str,
-        request: pai_dsw_20220101_models.CreateIdleInstanceCullerRequest,
-    ) -> pai_dsw_20220101_models.CreateIdleInstanceCullerResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.create_idle_instance_culler_with_options_async(instance_id, request, headers, runtime)
-
     def create_idle_instance_culler_with_options(
         self,
         instance_id: str,
@@ -129,21 +111,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_instance(
+    def create_idle_instance_culler(
         self,
-        request: pai_dsw_20220101_models.CreateInstanceRequest,
-    ) -> pai_dsw_20220101_models.CreateInstanceResponse:
+        instance_id: str,
+        request: pai_dsw_20220101_models.CreateIdleInstanceCullerRequest,
+    ) -> pai_dsw_20220101_models.CreateIdleInstanceCullerResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_instance_with_options(request, headers, runtime)
+        return self.create_idle_instance_culler_with_options(instance_id, request, headers, runtime)
 
-    async def create_instance_async(
+    async def create_idle_instance_culler_async(
         self,
-        request: pai_dsw_20220101_models.CreateInstanceRequest,
-    ) -> pai_dsw_20220101_models.CreateInstanceResponse:
+        instance_id: str,
+        request: pai_dsw_20220101_models.CreateIdleInstanceCullerRequest,
+    ) -> pai_dsw_20220101_models.CreateIdleInstanceCullerResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_instance_with_options_async(request, headers, runtime)
+        return await self.create_idle_instance_culler_with_options_async(instance_id, request, headers, runtime)
 
     def create_instance_with_options(
         self,
@@ -253,23 +237,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_instance_shutdown_timer(
+    def create_instance(
         self,
-        instance_id: str,
-        request: pai_dsw_20220101_models.CreateInstanceShutdownTimerRequest,
-    ) -> pai_dsw_20220101_models.CreateInstanceShutdownTimerResponse:
+        request: pai_dsw_20220101_models.CreateInstanceRequest,
+    ) -> pai_dsw_20220101_models.CreateInstanceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_instance_shutdown_timer_with_options(instance_id, request, headers, runtime)
+        return self.create_instance_with_options(request, headers, runtime)
 
-    async def create_instance_shutdown_timer_async(
+    async def create_instance_async(
         self,
-        instance_id: str,
-        request: pai_dsw_20220101_models.CreateInstanceShutdownTimerRequest,
-    ) -> pai_dsw_20220101_models.CreateInstanceShutdownTimerResponse:
+        request: pai_dsw_20220101_models.CreateInstanceRequest,
+    ) -> pai_dsw_20220101_models.CreateInstanceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_instance_shutdown_timer_with_options_async(instance_id, request, headers, runtime)
+        return await self.create_instance_with_options_async(request, headers, runtime)
 
     def create_instance_shutdown_timer_with_options(
         self,
@@ -337,23 +319,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_instance_snapshot(
+    def create_instance_shutdown_timer(
         self,
         instance_id: str,
-        request: pai_dsw_20220101_models.CreateInstanceSnapshotRequest,
-    ) -> pai_dsw_20220101_models.CreateInstanceSnapshotResponse:
+        request: pai_dsw_20220101_models.CreateInstanceShutdownTimerRequest,
+    ) -> pai_dsw_20220101_models.CreateInstanceShutdownTimerResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_instance_snapshot_with_options(instance_id, request, headers, runtime)
+        return self.create_instance_shutdown_timer_with_options(instance_id, request, headers, runtime)
 
-    async def create_instance_snapshot_async(
+    async def create_instance_shutdown_timer_async(
         self,
         instance_id: str,
-        request: pai_dsw_20220101_models.CreateInstanceSnapshotRequest,
-    ) -> pai_dsw_20220101_models.CreateInstanceSnapshotResponse:
+        request: pai_dsw_20220101_models.CreateInstanceShutdownTimerRequest,
+    ) -> pai_dsw_20220101_models.CreateInstanceShutdownTimerResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_instance_snapshot_with_options_async(instance_id, request, headers, runtime)
+        return await self.create_instance_shutdown_timer_with_options_async(instance_id, request, headers, runtime)
 
     def create_instance_snapshot_with_options(
         self,
@@ -366,6 +348,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.image_url):
             body['ImageUrl'] = request.image_url
+        if not UtilClient.is_unset(request.labels):
+            body['Labels'] = request.labels
         if not UtilClient.is_unset(request.snapshot_description):
             body['SnapshotDescription'] = request.snapshot_description
         if not UtilClient.is_unset(request.snapshot_name):
@@ -401,6 +385,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.image_url):
             body['ImageUrl'] = request.image_url
+        if not UtilClient.is_unset(request.labels):
+            body['Labels'] = request.labels
         if not UtilClient.is_unset(request.snapshot_description):
             body['SnapshotDescription'] = request.snapshot_description
         if not UtilClient.is_unset(request.snapshot_name):
@@ -425,21 +411,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_idle_instance_culler(
+    def create_instance_snapshot(
         self,
         instance_id: str,
-    ) -> pai_dsw_20220101_models.DeleteIdleInstanceCullerResponse:
+        request: pai_dsw_20220101_models.CreateInstanceSnapshotRequest,
+    ) -> pai_dsw_20220101_models.CreateInstanceSnapshotResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_idle_instance_culler_with_options(instance_id, headers, runtime)
+        return self.create_instance_snapshot_with_options(instance_id, request, headers, runtime)
 
-    async def delete_idle_instance_culler_async(
+    async def create_instance_snapshot_async(
         self,
         instance_id: str,
-    ) -> pai_dsw_20220101_models.DeleteIdleInstanceCullerResponse:
+        request: pai_dsw_20220101_models.CreateInstanceSnapshotRequest,
+    ) -> pai_dsw_20220101_models.CreateInstanceSnapshotResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_idle_instance_culler_with_options_async(instance_id, headers, runtime)
+        return await self.create_instance_snapshot_with_options_async(instance_id, request, headers, runtime)
 
     def delete_idle_instance_culler_with_options(
         self,
@@ -491,21 +479,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_instance(
+    def delete_idle_instance_culler(
         self,
         instance_id: str,
-    ) -> pai_dsw_20220101_models.DeleteInstanceResponse:
+    ) -> pai_dsw_20220101_models.DeleteIdleInstanceCullerResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_instance_with_options(instance_id, headers, runtime)
+        return self.delete_idle_instance_culler_with_options(instance_id, headers, runtime)
 
-    async def delete_instance_async(
+    async def delete_idle_instance_culler_async(
         self,
         instance_id: str,
-    ) -> pai_dsw_20220101_models.DeleteInstanceResponse:
+    ) -> pai_dsw_20220101_models.DeleteIdleInstanceCullerResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_instance_with_options_async(instance_id, headers, runtime)
+        return await self.delete_idle_instance_culler_with_options_async(instance_id, headers, runtime)
 
     def delete_instance_with_options(
         self,
@@ -557,21 +545,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_instance_shutdown_timer(
+    def delete_instance(
         self,
         instance_id: str,
-    ) -> pai_dsw_20220101_models.DeleteInstanceShutdownTimerResponse:
+    ) -> pai_dsw_20220101_models.DeleteInstanceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_instance_shutdown_timer_with_options(instance_id, headers, runtime)
+        return self.delete_instance_with_options(instance_id, headers, runtime)
 
-    async def delete_instance_shutdown_timer_async(
+    async def delete_instance_async(
         self,
         instance_id: str,
-    ) -> pai_dsw_20220101_models.DeleteInstanceShutdownTimerResponse:
+    ) -> pai_dsw_20220101_models.DeleteInstanceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_instance_shutdown_timer_with_options_async(instance_id, headers, runtime)
+        return await self.delete_instance_with_options_async(instance_id, headers, runtime)
 
     def delete_instance_shutdown_timer_with_options(
         self,
@@ -623,23 +611,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_instance_snapshot(
+    def delete_instance_shutdown_timer(
         self,
         instance_id: str,
-        snapshot_id: str,
-    ) -> pai_dsw_20220101_models.DeleteInstanceSnapshotResponse:
+    ) -> pai_dsw_20220101_models.DeleteInstanceShutdownTimerResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_instance_snapshot_with_options(instance_id, snapshot_id, headers, runtime)
+        return self.delete_instance_shutdown_timer_with_options(instance_id, headers, runtime)
 
-    async def delete_instance_snapshot_async(
+    async def delete_instance_shutdown_timer_async(
         self,
         instance_id: str,
-        snapshot_id: str,
-    ) -> pai_dsw_20220101_models.DeleteInstanceSnapshotResponse:
+    ) -> pai_dsw_20220101_models.DeleteInstanceShutdownTimerResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_instance_snapshot_with_options_async(instance_id, snapshot_id, headers, runtime)
+        return await self.delete_instance_shutdown_timer_with_options_async(instance_id, headers, runtime)
 
     def delete_instance_snapshot_with_options(
         self,
@@ -693,21 +679,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_idle_instance_culler(
+    def delete_instance_snapshot(
         self,
         instance_id: str,
-    ) -> pai_dsw_20220101_models.GetIdleInstanceCullerResponse:
+        snapshot_id: str,
+    ) -> pai_dsw_20220101_models.DeleteInstanceSnapshotResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_idle_instance_culler_with_options(instance_id, headers, runtime)
+        return self.delete_instance_snapshot_with_options(instance_id, snapshot_id, headers, runtime)
 
-    async def get_idle_instance_culler_async(
+    async def delete_instance_snapshot_async(
         self,
         instance_id: str,
-    ) -> pai_dsw_20220101_models.GetIdleInstanceCullerResponse:
+        snapshot_id: str,
+    ) -> pai_dsw_20220101_models.DeleteInstanceSnapshotResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_idle_instance_culler_with_options_async(instance_id, headers, runtime)
+        return await self.delete_instance_snapshot_with_options_async(instance_id, snapshot_id, headers, runtime)
 
     def get_idle_instance_culler_with_options(
         self,
@@ -759,21 +747,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_instance(
+    def get_idle_instance_culler(
         self,
         instance_id: str,
-    ) -> pai_dsw_20220101_models.GetInstanceResponse:
+    ) -> pai_dsw_20220101_models.GetIdleInstanceCullerResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_instance_with_options(instance_id, headers, runtime)
+        return self.get_idle_instance_culler_with_options(instance_id, headers, runtime)
 
-    async def get_instance_async(
+    async def get_idle_instance_culler_async(
         self,
         instance_id: str,
-    ) -> pai_dsw_20220101_models.GetInstanceResponse:
+    ) -> pai_dsw_20220101_models.GetIdleInstanceCullerResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_instance_with_options_async(instance_id, headers, runtime)
+        return await self.get_idle_instance_culler_with_options_async(instance_id, headers, runtime)
 
     def get_instance_with_options(
         self,
@@ -825,23 +813,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_instance_metrics(
+    def get_instance(
         self,
         instance_id: str,
-        request: pai_dsw_20220101_models.GetInstanceMetricsRequest,
-    ) -> pai_dsw_20220101_models.GetInstanceMetricsResponse:
+    ) -> pai_dsw_20220101_models.GetInstanceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_instance_metrics_with_options(instance_id, request, headers, runtime)
+        return self.get_instance_with_options(instance_id, headers, runtime)
 
-    async def get_instance_metrics_async(
+    async def get_instance_async(
         self,
         instance_id: str,
-        request: pai_dsw_20220101_models.GetInstanceMetricsRequest,
-    ) -> pai_dsw_20220101_models.GetInstanceMetricsResponse:
+    ) -> pai_dsw_20220101_models.GetInstanceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_instance_metrics_with_options_async(instance_id, request, headers, runtime)
+        return await self.get_instance_with_options_async(instance_id, headers, runtime)
 
     def get_instance_metrics_with_options(
         self,
@@ -917,21 +903,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_instance_shutdown_timer(
+    def get_instance_metrics(
         self,
         instance_id: str,
-    ) -> pai_dsw_20220101_models.GetInstanceShutdownTimerResponse:
+        request: pai_dsw_20220101_models.GetInstanceMetricsRequest,
+    ) -> pai_dsw_20220101_models.GetInstanceMetricsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_instance_shutdown_timer_with_options(instance_id, headers, runtime)
+        return self.get_instance_metrics_with_options(instance_id, request, headers, runtime)
 
-    async def get_instance_shutdown_timer_async(
+    async def get_instance_metrics_async(
         self,
         instance_id: str,
-    ) -> pai_dsw_20220101_models.GetInstanceShutdownTimerResponse:
+        request: pai_dsw_20220101_models.GetInstanceMetricsRequest,
+    ) -> pai_dsw_20220101_models.GetInstanceMetricsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_instance_shutdown_timer_with_options_async(instance_id, headers, runtime)
+        return await self.get_instance_metrics_with_options_async(instance_id, request, headers, runtime)
 
     def get_instance_shutdown_timer_with_options(
         self,
@@ -983,23 +971,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_instance_snapshot(
+    def get_instance_shutdown_timer(
         self,
         instance_id: str,
-        snapshot_id: str,
-    ) -> pai_dsw_20220101_models.GetInstanceSnapshotResponse:
+    ) -> pai_dsw_20220101_models.GetInstanceShutdownTimerResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_instance_snapshot_with_options(instance_id, snapshot_id, headers, runtime)
+        return self.get_instance_shutdown_timer_with_options(instance_id, headers, runtime)
 
-    async def get_instance_snapshot_async(
+    async def get_instance_shutdown_timer_async(
         self,
         instance_id: str,
-        snapshot_id: str,
-    ) -> pai_dsw_20220101_models.GetInstanceSnapshotResponse:
+    ) -> pai_dsw_20220101_models.GetInstanceShutdownTimerResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_instance_snapshot_with_options_async(instance_id, snapshot_id, headers, runtime)
+        return await self.get_instance_shutdown_timer_with_options_async(instance_id, headers, runtime)
 
     def get_instance_snapshot_with_options(
         self,
@@ -1053,23 +1039,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_lifecycle(
+    def get_instance_snapshot(
         self,
         instance_id: str,
-        request: pai_dsw_20220101_models.GetLifecycleRequest,
-    ) -> pai_dsw_20220101_models.GetLifecycleResponse:
+        snapshot_id: str,
+    ) -> pai_dsw_20220101_models.GetInstanceSnapshotResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_lifecycle_with_options(instance_id, request, headers, runtime)
+        return self.get_instance_snapshot_with_options(instance_id, snapshot_id, headers, runtime)
 
-    async def get_lifecycle_async(
+    async def get_instance_snapshot_async(
         self,
         instance_id: str,
-        request: pai_dsw_20220101_models.GetLifecycleRequest,
-    ) -> pai_dsw_20220101_models.GetLifecycleResponse:
+        snapshot_id: str,
+    ) -> pai_dsw_20220101_models.GetInstanceSnapshotResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_lifecycle_with_options_async(instance_id, request, headers, runtime)
+        return await self.get_instance_snapshot_with_options_async(instance_id, snapshot_id, headers, runtime)
 
     def get_lifecycle_with_options(
         self,
@@ -1149,21 +1135,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_token(
+    def get_lifecycle(
         self,
-        request: pai_dsw_20220101_models.GetTokenRequest,
-    ) -> pai_dsw_20220101_models.GetTokenResponse:
+        instance_id: str,
+        request: pai_dsw_20220101_models.GetLifecycleRequest,
+    ) -> pai_dsw_20220101_models.GetLifecycleResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_token_with_options(request, headers, runtime)
+        return self.get_lifecycle_with_options(instance_id, request, headers, runtime)
 
-    async def get_token_async(
+    async def get_lifecycle_async(
         self,
-        request: pai_dsw_20220101_models.GetTokenRequest,
-    ) -> pai_dsw_20220101_models.GetTokenResponse:
+        instance_id: str,
+        request: pai_dsw_20220101_models.GetLifecycleRequest,
+    ) -> pai_dsw_20220101_models.GetLifecycleResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_token_with_options_async(request, headers, runtime)
+        return await self.get_lifecycle_with_options_async(instance_id, request, headers, runtime)
 
     def get_token_with_options(
         self,
@@ -1229,15 +1217,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_user_config(self) -> pai_dsw_20220101_models.GetUserConfigResponse:
+    def get_token(
+        self,
+        request: pai_dsw_20220101_models.GetTokenRequest,
+    ) -> pai_dsw_20220101_models.GetTokenResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_user_config_with_options(headers, runtime)
+        return self.get_token_with_options(request, headers, runtime)
 
-    async def get_user_config_async(self) -> pai_dsw_20220101_models.GetUserConfigResponse:
+    async def get_token_async(
+        self,
+        request: pai_dsw_20220101_models.GetTokenRequest,
+    ) -> pai_dsw_20220101_models.GetTokenResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_user_config_with_options_async(headers, runtime)
+        return await self.get_token_with_options_async(request, headers, runtime)
 
     def get_user_config_with_options(
         self,
@@ -1287,15 +1281,15 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_demo_categories(self) -> pai_dsw_20220101_models.ListDemoCategoriesResponse:
+    def get_user_config(self) -> pai_dsw_20220101_models.GetUserConfigResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_demo_categories_with_options(headers, runtime)
+        return self.get_user_config_with_options(headers, runtime)
 
-    async def list_demo_categories_async(self) -> pai_dsw_20220101_models.ListDemoCategoriesResponse:
+    async def get_user_config_async(self) -> pai_dsw_20220101_models.GetUserConfigResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_demo_categories_with_options_async(headers, runtime)
+        return await self.get_user_config_with_options_async(headers, runtime)
 
     def list_demo_categories_with_options(
         self,
@@ -1345,21 +1339,15 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_demos(
-        self,
-        request: pai_dsw_20220101_models.ListDemosRequest,
-    ) -> pai_dsw_20220101_models.ListDemosResponse:
+    def list_demo_categories(self) -> pai_dsw_20220101_models.ListDemoCategoriesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_demos_with_options(request, headers, runtime)
+        return self.list_demo_categories_with_options(headers, runtime)
 
-    async def list_demos_async(
-        self,
-        request: pai_dsw_20220101_models.ListDemosRequest,
-    ) -> pai_dsw_20220101_models.ListDemosResponse:
+    async def list_demo_categories_async(self) -> pai_dsw_20220101_models.ListDemoCategoriesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_demos_with_options_async(request, headers, runtime)
+        return await self.list_demo_categories_with_options_async(headers, runtime)
 
     def list_demos_with_options(
         self,
@@ -1433,21 +1421,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_ecs_specs(
+    def list_demos(
         self,
-        request: pai_dsw_20220101_models.ListEcsSpecsRequest,
-    ) -> pai_dsw_20220101_models.ListEcsSpecsResponse:
+        request: pai_dsw_20220101_models.ListDemosRequest,
+    ) -> pai_dsw_20220101_models.ListDemosResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_ecs_specs_with_options(request, headers, runtime)
+        return self.list_demos_with_options(request, headers, runtime)
 
-    async def list_ecs_specs_async(
+    async def list_demos_async(
         self,
-        request: pai_dsw_20220101_models.ListEcsSpecsRequest,
-    ) -> pai_dsw_20220101_models.ListEcsSpecsResponse:
+        request: pai_dsw_20220101_models.ListDemosRequest,
+    ) -> pai_dsw_20220101_models.ListDemosResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_ecs_specs_with_options_async(request, headers, runtime)
+        return await self.list_demos_with_options_async(request, headers, runtime)
 
     def list_ecs_specs_with_options(
         self,
@@ -1525,23 +1513,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_instance_snapshot(
+    def list_ecs_specs(
         self,
-        instance_id: str,
-        request: pai_dsw_20220101_models.ListInstanceSnapshotRequest,
-    ) -> pai_dsw_20220101_models.ListInstanceSnapshotResponse:
+        request: pai_dsw_20220101_models.ListEcsSpecsRequest,
+    ) -> pai_dsw_20220101_models.ListEcsSpecsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_instance_snapshot_with_options(instance_id, request, headers, runtime)
+        return self.list_ecs_specs_with_options(request, headers, runtime)
 
-    async def list_instance_snapshot_async(
+    async def list_ecs_specs_async(
         self,
-        instance_id: str,
-        request: pai_dsw_20220101_models.ListInstanceSnapshotRequest,
-    ) -> pai_dsw_20220101_models.ListInstanceSnapshotResponse:
+        request: pai_dsw_20220101_models.ListEcsSpecsRequest,
+    ) -> pai_dsw_20220101_models.ListEcsSpecsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_instance_snapshot_with_options_async(instance_id, request, headers, runtime)
+        return await self.list_ecs_specs_with_options_async(request, headers, runtime)
 
     def list_instance_snapshot_with_options(
         self,
@@ -1617,21 +1603,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_instance_statistics(
+    def list_instance_snapshot(
         self,
-        request: pai_dsw_20220101_models.ListInstanceStatisticsRequest,
-    ) -> pai_dsw_20220101_models.ListInstanceStatisticsResponse:
+        instance_id: str,
+        request: pai_dsw_20220101_models.ListInstanceSnapshotRequest,
+    ) -> pai_dsw_20220101_models.ListInstanceSnapshotResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_instance_statistics_with_options(request, headers, runtime)
+        return self.list_instance_snapshot_with_options(instance_id, request, headers, runtime)
 
-    async def list_instance_statistics_async(
+    async def list_instance_snapshot_async(
         self,
-        request: pai_dsw_20220101_models.ListInstanceStatisticsRequest,
-    ) -> pai_dsw_20220101_models.ListInstanceStatisticsResponse:
+        instance_id: str,
+        request: pai_dsw_20220101_models.ListInstanceSnapshotRequest,
+    ) -> pai_dsw_20220101_models.ListInstanceSnapshotResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_instance_statistics_with_options_async(request, headers, runtime)
+        return await self.list_instance_snapshot_with_options_async(instance_id, request, headers, runtime)
 
     def list_instance_statistics_with_options(
         self,
@@ -1693,21 +1681,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_instances(
+    def list_instance_statistics(
         self,
-        request: pai_dsw_20220101_models.ListInstancesRequest,
-    ) -> pai_dsw_20220101_models.ListInstancesResponse:
+        request: pai_dsw_20220101_models.ListInstanceStatisticsRequest,
+    ) -> pai_dsw_20220101_models.ListInstanceStatisticsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_instances_with_options(request, headers, runtime)
+        return self.list_instance_statistics_with_options(request, headers, runtime)
 
-    async def list_instances_async(
+    async def list_instance_statistics_async(
         self,
-        request: pai_dsw_20220101_models.ListInstancesRequest,
-    ) -> pai_dsw_20220101_models.ListInstancesResponse:
+        request: pai_dsw_20220101_models.ListInstanceStatisticsRequest,
+    ) -> pai_dsw_20220101_models.ListInstanceStatisticsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_instances_with_options_async(request, headers, runtime)
+        return await self.list_instance_statistics_with_options_async(request, headers, runtime)
 
     def list_instances_with_options(
         self,
@@ -1809,21 +1797,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def start_instance(
+    def list_instances(
         self,
-        instance_id: str,
-    ) -> pai_dsw_20220101_models.StartInstanceResponse:
+        request: pai_dsw_20220101_models.ListInstancesRequest,
+    ) -> pai_dsw_20220101_models.ListInstancesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.start_instance_with_options(instance_id, headers, runtime)
+        return self.list_instances_with_options(request, headers, runtime)
 
-    async def start_instance_async(
+    async def list_instances_async(
         self,
-        instance_id: str,
-    ) -> pai_dsw_20220101_models.StartInstanceResponse:
+        request: pai_dsw_20220101_models.ListInstancesRequest,
+    ) -> pai_dsw_20220101_models.ListInstancesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.start_instance_with_options_async(instance_id, headers, runtime)
+        return await self.list_instances_with_options_async(request, headers, runtime)
 
     def start_instance_with_options(
         self,
@@ -1875,23 +1863,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def stop_instance(
+    def start_instance(
         self,
         instance_id: str,
-        request: pai_dsw_20220101_models.StopInstanceRequest,
-    ) -> pai_dsw_20220101_models.StopInstanceResponse:
+    ) -> pai_dsw_20220101_models.StartInstanceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.stop_instance_with_options(instance_id, request, headers, runtime)
+        return self.start_instance_with_options(instance_id, headers, runtime)
 
-    async def stop_instance_async(
+    async def start_instance_async(
         self,
         instance_id: str,
-        request: pai_dsw_20220101_models.StopInstanceRequest,
-    ) -> pai_dsw_20220101_models.StopInstanceResponse:
+    ) -> pai_dsw_20220101_models.StartInstanceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.stop_instance_with_options_async(instance_id, request, headers, runtime)
+        return await self.start_instance_with_options_async(instance_id, headers, runtime)
 
     def stop_instance_with_options(
         self,
@@ -1955,23 +1941,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_instance(
+    def stop_instance(
         self,
         instance_id: str,
-        request: pai_dsw_20220101_models.UpdateInstanceRequest,
-    ) -> pai_dsw_20220101_models.UpdateInstanceResponse:
+        request: pai_dsw_20220101_models.StopInstanceRequest,
+    ) -> pai_dsw_20220101_models.StopInstanceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_instance_with_options(instance_id, request, headers, runtime)
+        return self.stop_instance_with_options(instance_id, request, headers, runtime)
 
-    async def update_instance_async(
+    async def stop_instance_async(
         self,
         instance_id: str,
-        request: pai_dsw_20220101_models.UpdateInstanceRequest,
-    ) -> pai_dsw_20220101_models.UpdateInstanceResponse:
+        request: pai_dsw_20220101_models.StopInstanceRequest,
+    ) -> pai_dsw_20220101_models.StopInstanceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_instance_with_options_async(instance_id, request, headers, runtime)
+        return await self.stop_instance_with_options_async(instance_id, request, headers, runtime)
 
     def update_instance_with_options(
         self,
@@ -2070,3 +2056,21 @@ class Client(OpenApiClient):
             pai_dsw_20220101_models.UpdateInstanceResponse(),
             await self.call_api_async(params, req, runtime)
         )
+
+    def update_instance(
+        self,
+        instance_id: str,
+        request: pai_dsw_20220101_models.UpdateInstanceRequest,
+    ) -> pai_dsw_20220101_models.UpdateInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_instance_with_options(instance_id, request, headers, runtime)
+
+    async def update_instance_async(
+        self,
+        instance_id: str,
+        request: pai_dsw_20220101_models.UpdateInstanceRequest,
+    ) -> pai_dsw_20220101_models.UpdateInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_instance_with_options_async(instance_id, request, headers, runtime)
