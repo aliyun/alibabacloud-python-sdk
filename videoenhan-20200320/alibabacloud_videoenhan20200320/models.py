@@ -2130,6 +2130,7 @@ class GenerateVideoRequest(TeaModel):
     ):
         self.duration = duration
         self.duration_adaption = duration_adaption
+        # 1
         self.file_list = file_list
         self.height = height
         self.mute = mute
@@ -2264,6 +2265,7 @@ class GenerateVideoAdvanceRequest(TeaModel):
     ):
         self.duration = duration
         self.duration_adaption = duration_adaption
+        # 1
         self.file_list = file_list
         self.height = height
         self.mute = mute

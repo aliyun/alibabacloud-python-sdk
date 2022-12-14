@@ -2301,7 +2301,7 @@ class Client(OpenApiClient):
         generate_video_req = videoenhan_20200320_models.GenerateVideoRequest()
         OpenApiUtilClient.convert(request, generate_video_req)
         if not UtilClient.is_unset(request.file_list):
-            i = 0
+            i_0 = 0
             for item_0 in request.file_list:
                 if not UtilClient.is_unset(item_0.file_url_object):
                     auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
@@ -2326,9 +2326,9 @@ class Client(OpenApiClient):
                         header=oss_header
                     )
                     oss_client.post_object(upload_request, oss_runtime)
-                    tmp = generate_video_req.file_list[i]
+                    tmp = generate_video_req.file_list[i0]
                     tmp.file_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
-                    i = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i), NumberClient.itol(1)))
+                    i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
         generate_video_resp = self.generate_video_with_options(generate_video_req, runtime)
         return generate_video_resp
 
@@ -2377,7 +2377,7 @@ class Client(OpenApiClient):
         generate_video_req = videoenhan_20200320_models.GenerateVideoRequest()
         OpenApiUtilClient.convert(request, generate_video_req)
         if not UtilClient.is_unset(request.file_list):
-            i = 0
+            i_0 = 0
             for item_0 in request.file_list:
                 if not UtilClient.is_unset(item_0.file_url_object):
                     auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
@@ -2402,9 +2402,9 @@ class Client(OpenApiClient):
                         header=oss_header
                     )
                     await oss_client.post_object_async(upload_request, oss_runtime)
-                    tmp = generate_video_req.file_list[i]
+                    tmp = generate_video_req.file_list[i0]
                     tmp.file_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
-                    i = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i), NumberClient.itol(1)))
+                    i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
         generate_video_resp = await self.generate_video_with_options_async(generate_video_req, runtime)
         return generate_video_resp
 
