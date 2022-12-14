@@ -2233,10 +2233,10 @@ class ImitatePhotoStyleAdvanceRequest(TeaModel):
     def __init__(
         self,
         image_urlobject: BinaryIO = None,
-        style_url: str = None,
+        style_url_object: BinaryIO = None,
     ):
         self.image_urlobject = image_urlobject
-        self.style_url = style_url
+        self.style_url_object = style_url_object
 
     def validate(self):
         pass
@@ -2249,8 +2249,8 @@ class ImitatePhotoStyleAdvanceRequest(TeaModel):
         result = dict()
         if self.image_urlobject is not None:
             result['ImageURL'] = self.image_urlobject
-        if self.style_url is not None:
-            result['StyleUrl'] = self.style_url
+        if self.style_url_object is not None:
+            result['StyleUrl'] = self.style_url_object
         return result
 
     def from_map(self, m: dict = None):
@@ -2258,7 +2258,7 @@ class ImitatePhotoStyleAdvanceRequest(TeaModel):
         if m.get('ImageURL') is not None:
             self.image_urlobject = m.get('ImageURL')
         if m.get('StyleUrl') is not None:
-            self.style_url = m.get('StyleUrl')
+            self.style_url_object = m.get('StyleUrl')
         return self
 
 
@@ -2845,6 +2845,7 @@ class RecolorHDImageRequest(TeaModel):
         url: str = None,
     ):
         self.color_count = color_count
+        # 1
         self.color_template = color_template
         self.degree = degree
         self.mode = mode
@@ -2937,6 +2938,7 @@ class RecolorHDImageAdvanceRequest(TeaModel):
         url_object: BinaryIO = None,
     ):
         self.color_count = color_count
+        # 1
         self.color_template = color_template
         self.degree = degree
         self.mode = mode
@@ -2996,6 +2998,7 @@ class RecolorHDImageResponseBodyData(TeaModel):
         self,
         image_list: List[str] = None,
     ):
+        # 1
         self.image_list = image_list
 
     def validate(self):
@@ -3140,6 +3143,7 @@ class RecolorImageRequest(TeaModel):
         url: str = None,
     ):
         self.color_count = color_count
+        # 1
         self.color_template = color_template
         self.mode = mode
         self.ref_url = ref_url
@@ -3226,6 +3230,7 @@ class RecolorImageAdvanceRequest(TeaModel):
         url_object: BinaryIO = None,
     ):
         self.color_count = color_count
+        # 1
         self.color_template = color_template
         self.mode = mode
         self.ref_url_object = ref_url_object
@@ -3280,6 +3285,7 @@ class RecolorImageResponseBodyData(TeaModel):
         self,
         image_list: List[str] = None,
     ):
+        # 1
         self.image_list = image_list
 
     def validate(self):
