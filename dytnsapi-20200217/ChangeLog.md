@@ -1,3 +1,13 @@
+2022-12-14 Version: 1.0.21
+- Add error code InputParamIllegal.
+- Add field AuditRemark.
+- Change new api.
+- Add date transform.
+- Fixed Bugs.
+- Fix Bug.
+- Fix STS Bug.
+- Fixed sts bug.
+
 2022-10-20 Version: 1.0.20
 - Support Service of number analysis.
 
