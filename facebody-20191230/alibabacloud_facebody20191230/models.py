@@ -1732,6 +1732,7 @@ class BeautifyBodyResponseBody(TeaModel):
         data: BeautifyBodyResponseBodyData = None,
         request_id: str = None,
     ):
+        # Id of the request
         self.data = data
         self.request_id = request_id
 
@@ -2442,8 +2443,11 @@ class CompareFaceResponseBodyData(TeaModel):
         self.message_tips = message_tips
         self.quality_score_a = quality_score_a
         self.quality_score_b = quality_score_b
+        # 1
         self.rect_alist = rect_alist
+        # 1
         self.rect_blist = rect_blist
+        # 1
         self.thresholds = thresholds
 
     def validate(self):
@@ -3469,6 +3473,7 @@ class DetectCelebrityResponseBodyDataFaceRecognizeResults(TeaModel):
         face_boxes: List[float] = None,
         name: str = None,
     ):
+        # 1
         self.face_boxes = face_boxes
         self.name = name
 
@@ -3943,13 +3948,21 @@ class DetectFaceResponseBodyDataQualities(TeaModel):
         pose_list: List[float] = None,
         score_list: List[float] = None,
     ):
+        # 1
         self.blur_list = blur_list
+        # 1
         self.fnf_list = fnf_list
+        # 1
         self.glass_list = glass_list
+        # 1
         self.illu_list = illu_list
+        # 1
         self.mask_list = mask_list
+        # 1
         self.noise_list = noise_list
+        # 1
         self.pose_list = pose_list
+        # 1
         self.score_list = score_list
 
     def validate(self):
@@ -4013,11 +4026,16 @@ class DetectFaceResponseBodyData(TeaModel):
         qualities: DetectFaceResponseBodyDataQualities = None,
     ):
         self.face_count = face_count
+        # 1
         self.face_probability_list = face_probability_list
+        # 1
         self.face_rectangles = face_rectangles
         self.landmark_count = landmark_count
+        # 1
         self.landmarks = landmarks
+        # 1
         self.pose_list = pose_list
+        # 1
         self.pupils = pupils
         self.qualities = qualities
 
@@ -4350,6 +4368,7 @@ class DetectIPCPedestrianResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.data = data
+        # requestId
         self.request_id = request_id
 
     def validate(self):
@@ -4932,6 +4951,7 @@ class DetectPedestrianResponseBodyDataElements(TeaModel):
         score: float = None,
         type: str = None,
     ):
+        # 1
         self.boxes = boxes
         self.score = score
         self.type = type
@@ -10822,12 +10842,12 @@ class RecognizeActionAdvanceRequest(TeaModel):
         type: int = None,
         urllist: List[RecognizeActionAdvanceRequestURLList] = None,
         video_data: str = None,
-        video_url: str = None,
+        video_url_object: BinaryIO = None,
     ):
         self.type = type
         self.urllist = urllist
         self.video_data = video_data
-        self.video_url = video_url
+        self.video_url_object = video_url_object
 
     def validate(self):
         if self.urllist:
@@ -10849,8 +10869,8 @@ class RecognizeActionAdvanceRequest(TeaModel):
                 result['URLList'].append(k.to_map() if k else None)
         if self.video_data is not None:
             result['VideoData'] = self.video_data
-        if self.video_url is not None:
-            result['VideoUrl'] = self.video_url
+        if self.video_url_object is not None:
+            result['VideoUrl'] = self.video_url_object
         return result
 
     def from_map(self, m: dict = None):
@@ -10865,7 +10885,7 @@ class RecognizeActionAdvanceRequest(TeaModel):
         if m.get('VideoData') is not None:
             self.video_data = m.get('VideoData')
         if m.get('VideoUrl') is not None:
-            self.video_url = m.get('VideoUrl')
+            self.video_url_object = m.get('VideoUrl')
         return self
 
 
@@ -11491,13 +11511,21 @@ class RecognizeFaceResponseBodyDataQualities(TeaModel):
         pose_list: List[float] = None,
         score_list: List[float] = None,
     ):
+        # 1
         self.blur_list = blur_list
+        # 1
         self.fnf_list = fnf_list
+        # 1
         self.glass_list = glass_list
+        # 1
         self.illu_list = illu_list
+        # 1
         self.mask_list = mask_list
+        # 1
         self.noise_list = noise_list
+        # 1
         self.pose_list = pose_list
+        # 1
         self.score_list = score_list
 
     def validate(self):
@@ -11569,21 +11597,34 @@ class RecognizeFaceResponseBodyData(TeaModel):
         pupils: List[float] = None,
         qualities: RecognizeFaceResponseBodyDataQualities = None,
     ):
+        # 1
         self.age_list = age_list
+        # 1
         self.beauty_list = beauty_list
         self.dense_feature_length = dense_feature_length
+        # 1
         self.dense_features = dense_features
+        # 1
         self.expressions = expressions
         self.face_count = face_count
+        # 1
         self.face_probability_list = face_probability_list
+        # 1
         self.face_rectangles = face_rectangles
+        # 1
         self.gender_list = gender_list
+        # 1
         self.glasses = glasses
+        # 1
         self.hat_list = hat_list
         self.landmark_count = landmark_count
+        # 1
         self.landmarks = landmarks
+        # 1
         self.masks = masks
+        # 1
         self.pose_list = pose_list
+        # 1
         self.pupils = pupils
         self.qualities = qualities
 
@@ -12004,6 +12045,7 @@ class RecognizePublicFaceRequest(TeaModel):
         self,
         task: List[RecognizePublicFaceRequestTask] = None,
     ):
+        # 1
         self.task = task
 
     def validate(self):
@@ -12072,6 +12114,7 @@ class RecognizePublicFaceAdvanceRequest(TeaModel):
         self,
         task: List[RecognizePublicFaceAdvanceRequestTask] = None,
     ):
+        # 1
         self.task = task
 
     def validate(self):
