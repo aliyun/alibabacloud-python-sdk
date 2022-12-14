@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from typing import Dict
+from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
@@ -40,12 +41,99 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def detect_ipcpedestrian_optimized_with_options(
+        self,
+        request: facebody_20200910_models.DetectIPCPedestrianOptimizedRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> facebody_20200910_models.DetectIPCPedestrianOptimizedResponse:
+        """
+        行人检测快速版
+        
+        @param request: DetectIPCPedestrianOptimizedRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetectIPCPedestrianOptimizedResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.height):
+            body['height'] = request.height
+        if not UtilClient.is_unset(request.image_data):
+            body['imageData'] = request.image_data
+        if not UtilClient.is_unset(request.width):
+            body['width'] = request.width
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DetectIPCPedestrianOptimized',
+            version='2020-09-10',
+            protocol='HTTPS',
+            pathname=f'/viapi/k8s/facebody/detect-ipc-pedestrian-optimized',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            facebody_20200910_models.DetectIPCPedestrianOptimizedResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def detect_ipcpedestrian_optimized_with_options_async(
+        self,
+        request: facebody_20200910_models.DetectIPCPedestrianOptimizedRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> facebody_20200910_models.DetectIPCPedestrianOptimizedResponse:
+        """
+        行人检测快速版
+        
+        @param request: DetectIPCPedestrianOptimizedRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetectIPCPedestrianOptimizedResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.height):
+            body['height'] = request.height
+        if not UtilClient.is_unset(request.image_data):
+            body['imageData'] = request.image_data
+        if not UtilClient.is_unset(request.width):
+            body['width'] = request.width
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DetectIPCPedestrianOptimized',
+            version='2020-09-10',
+            protocol='HTTPS',
+            pathname=f'/viapi/k8s/facebody/detect-ipc-pedestrian-optimized',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            facebody_20200910_models.DetectIPCPedestrianOptimizedResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
     def detect_ipcpedestrian_optimized(
         self,
         request: facebody_20200910_models.DetectIPCPedestrianOptimizedRequest,
     ) -> facebody_20200910_models.DetectIPCPedestrianOptimizedResponse:
         """
         行人检测快速版
+        
+        @param request: DetectIPCPedestrianOptimizedRequest
+        @return: DetectIPCPedestrianOptimizedResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -57,70 +145,13 @@ class Client(OpenApiClient):
     ) -> facebody_20200910_models.DetectIPCPedestrianOptimizedResponse:
         """
         行人检测快速版
+        
+        @param request: DetectIPCPedestrianOptimizedRequest
+        @return: DetectIPCPedestrianOptimizedResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.detect_ipcpedestrian_optimized_with_options_async(request, headers, runtime)
-
-    def detect_ipcpedestrian_optimized_with_options(
-        self,
-        request: facebody_20200910_models.DetectIPCPedestrianOptimizedRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> facebody_20200910_models.DetectIPCPedestrianOptimizedResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.image_data):
-            body['imageData'] = request.image_data
-        if not UtilClient.is_unset(request.width):
-            body['width'] = request.width
-        if not UtilClient.is_unset(request.height):
-            body['height'] = request.height
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        return facebody_20200910_models.DetectIPCPedestrianOptimizedResponse().from_map(
-            self.do_roarequest_with_form('DetectIPCPedestrianOptimized', '2020-09-10', 'HTTPS', 'POST', 'AK', f'/viapi/k8s/facebody/detect-ipc-pedestrian-optimized', 'json', req, runtime)
-        )
-
-    async def detect_ipcpedestrian_optimized_with_options_async(
-        self,
-        request: facebody_20200910_models.DetectIPCPedestrianOptimizedRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> facebody_20200910_models.DetectIPCPedestrianOptimizedResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.image_data):
-            body['imageData'] = request.image_data
-        if not UtilClient.is_unset(request.width):
-            body['width'] = request.width
-        if not UtilClient.is_unset(request.height):
-            body['height'] = request.height
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        return facebody_20200910_models.DetectIPCPedestrianOptimizedResponse().from_map(
-            await self.do_roarequest_with_form_async('DetectIPCPedestrianOptimized', '2020-09-10', 'HTTPS', 'POST', 'AK', f'/viapi/k8s/facebody/detect-ipc-pedestrian-optimized', 'json', req, runtime)
-        )
-
-    def execute_server_side_verification(
-        self,
-        request: facebody_20200910_models.ExecuteServerSideVerificationRequest,
-    ) -> facebody_20200910_models.ExecuteServerSideVerificationResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.execute_server_side_verification_with_options(request, headers, runtime)
-
-    async def execute_server_side_verification_async(
-        self,
-        request: facebody_20200910_models.ExecuteServerSideVerificationRequest,
-    ) -> facebody_20200910_models.ExecuteServerSideVerificationResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.execute_server_side_verification_with_options_async(request, headers, runtime)
 
     def execute_server_side_verification_with_options(
         self,
@@ -144,8 +175,20 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
-        return facebody_20200910_models.ExecuteServerSideVerificationResponse().from_map(
-            self.do_roarequest_with_form('ExecuteServerSideVerification', '2020-09-10', 'HTTPS', 'POST', 'AK', f'/viapi/thirdparty/realperson/execServerSideVerification', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ExecuteServerSideVerification',
+            version='2020-09-10',
+            protocol='HTTPS',
+            pathname=f'/viapi/thirdparty/realperson/execServerSideVerification',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            facebody_20200910_models.ExecuteServerSideVerificationResponse(),
+            self.call_api(params, req, runtime)
         )
 
     async def execute_server_side_verification_with_options_async(
@@ -170,6 +213,34 @@ class Client(OpenApiClient):
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
-        return facebody_20200910_models.ExecuteServerSideVerificationResponse().from_map(
-            await self.do_roarequest_with_form_async('ExecuteServerSideVerification', '2020-09-10', 'HTTPS', 'POST', 'AK', f'/viapi/thirdparty/realperson/execServerSideVerification', 'json', req, runtime)
+        params = open_api_models.Params(
+            action='ExecuteServerSideVerification',
+            version='2020-09-10',
+            protocol='HTTPS',
+            pathname=f'/viapi/thirdparty/realperson/execServerSideVerification',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
         )
+        return TeaCore.from_map(
+            facebody_20200910_models.ExecuteServerSideVerificationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def execute_server_side_verification(
+        self,
+        request: facebody_20200910_models.ExecuteServerSideVerificationRequest,
+    ) -> facebody_20200910_models.ExecuteServerSideVerificationResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.execute_server_side_verification_with_options(request, headers, runtime)
+
+    async def execute_server_side_verification_async(
+        self,
+        request: facebody_20200910_models.ExecuteServerSideVerificationRequest,
+    ) -> facebody_20200910_models.ExecuteServerSideVerificationResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.execute_server_side_verification_with_options_async(request, headers, runtime)

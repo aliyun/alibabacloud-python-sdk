@@ -7,38 +7,39 @@ from typing import List, Dict
 class DetectIPCPedestrianOptimizedRequest(TeaModel):
     def __init__(
         self,
+        height: int = None,
         image_data: bytes = None,
         width: int = None,
-        height: int = None,
     ):
-        # image data
-        self.image_data = image_data
-        # image width
-        self.width = width
-        # image height
         self.height = height
+        self.image_data = image_data
+        self.width = width
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
+        if self.height is not None:
+            result['height'] = self.height
         if self.image_data is not None:
             result['imageData'] = self.image_data
         if self.width is not None:
             result['width'] = self.width
-        if self.height is not None:
-            result['height'] = self.height
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('height') is not None:
+            self.height = m.get('height')
         if m.get('imageData') is not None:
             self.image_data = m.get('imageData')
         if m.get('width') is not None:
             self.width = m.get('width')
-        if m.get('height') is not None:
-            self.height = m.get('height')
         return self
 
 
@@ -48,15 +49,17 @@ class DetectIPCPedestrianOptimizedResponseBodyDataImageInfoListElements(TeaModel
         boxes: List[int] = None,
         score: float = None,
     ):
-        # box array
         self.boxes = boxes
-        # score
         self.score = score
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.boxes is not None:
             result['Boxes'] = self.boxes
@@ -78,7 +81,6 @@ class DetectIPCPedestrianOptimizedResponseBodyDataImageInfoList(TeaModel):
         self,
         elements: List[DetectIPCPedestrianOptimizedResponseBodyDataImageInfoListElements] = None,
     ):
-        # Elements
         self.elements = elements
 
     def validate(self):
@@ -88,6 +90,10 @@ class DetectIPCPedestrianOptimizedResponseBodyDataImageInfoList(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['Elements'] = []
         if self.elements is not None:
@@ -110,7 +116,6 @@ class DetectIPCPedestrianOptimizedResponseBodyData(TeaModel):
         self,
         image_info_list: List[DetectIPCPedestrianOptimizedResponseBodyDataImageInfoList] = None,
     ):
-        # imageInfoList
         self.image_info_list = image_info_list
 
     def validate(self):
@@ -120,6 +125,10 @@ class DetectIPCPedestrianOptimizedResponseBodyData(TeaModel):
                     k.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         result['ImageInfoList'] = []
         if self.image_info_list is not None:
@@ -143,9 +152,7 @@ class DetectIPCPedestrianOptimizedResponseBody(TeaModel):
         data: DetectIPCPedestrianOptimizedResponseBodyData = None,
         request_id: str = None,
     ):
-        # data
         self.data = data
-        # requestId
         self.request_id = request_id
 
     def validate(self):
@@ -153,6 +160,10 @@ class DetectIPCPedestrianOptimizedResponseBody(TeaModel):
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.data is not None:
             result['Data'] = self.data.to_map()
@@ -174,21 +185,30 @@ class DetectIPCPedestrianOptimizedResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DetectIPCPedestrianOptimizedResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -197,6 +217,8 @@ class DetectIPCPedestrianOptimizedResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DetectIPCPedestrianOptimizedResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -208,7 +230,7 @@ class ExecuteServerSideVerificationRequest(TeaModel):
         self,
         certificate_name: str = None,
         certificate_number: str = None,
-        facial_picture_data: bytes = None,
+        facial_picture_data: str = None,
         facial_picture_url: str = None,
         scene_type: str = None,
     ):
@@ -222,6 +244,10 @@ class ExecuteServerSideVerificationRequest(TeaModel):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.certificate_name is not None:
             result['certificateName'] = self.certificate_name
@@ -254,78 +280,73 @@ class ExecuteServerSideVerificationResponseBodyData(TeaModel):
     def __init__(
         self,
         pass_: bool = None,
-        verification_token: str = None,
         reason: str = None,
+        verification_token: str = None,
     ):
         self.pass_ = pass_
-        self.verification_token = verification_token
         self.reason = reason
+        self.verification_token = verification_token
 
     def validate(self):
         pass
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.pass_ is not None:
             result['Pass'] = self.pass_
-        if self.verification_token is not None:
-            result['VerificationToken'] = self.verification_token
         if self.reason is not None:
             result['Reason'] = self.reason
+        if self.verification_token is not None:
+            result['VerificationToken'] = self.verification_token
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Pass') is not None:
             self.pass_ = m.get('Pass')
-        if m.get('VerificationToken') is not None:
-            self.verification_token = m.get('VerificationToken')
         if m.get('Reason') is not None:
             self.reason = m.get('Reason')
+        if m.get('VerificationToken') is not None:
+            self.verification_token = m.get('VerificationToken')
         return self
 
 
 class ExecuteServerSideVerificationResponseBody(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
         data: ExecuteServerSideVerificationResponseBodyData = None,
-        code: str = None,
-        message: str = None,
+        request_id: str = None,
     ):
-        # Id of the request
-        self.request_id = request_id
         self.data = data
-        self.code = code
-        self.message = message
+        self.request_id = request_id
 
     def validate(self):
         if self.data:
             self.data.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.data is not None:
             result['Data'] = self.data.to_map()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.message is not None:
-            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('Data') is not None:
             temp_model = ExecuteServerSideVerificationResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
         return self
 
 
@@ -333,21 +354,30 @@ class ExecuteServerSideVerificationResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ExecuteServerSideVerificationResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
     def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -356,6 +386,8 @@ class ExecuteServerSideVerificationResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ExecuteServerSideVerificationResponseBody()
             self.body = temp_model.from_map(m['body'])
