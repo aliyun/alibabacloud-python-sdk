@@ -1,3 +1,8 @@
+2022-12-14 Version: 2.0.8
+- Add similar image cluster.
+- Rename GetWebofficeURL to GenerateWebofficeToken.
+
+
 2022-12-13 Version: 1.29.0
 - Support Face Searching Api.
 - Support Face Comparasion Api.
