@@ -387,6 +387,39 @@ class EstimateStereoImageDepthRequest(TeaModel):
         return self
 
 
+class EstimateStereoImageDepthAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        left_image_urlobject: BinaryIO = None,
+        right_image_urlobject: BinaryIO = None,
+    ):
+        self.left_image_urlobject = left_image_urlobject
+        self.right_image_urlobject = right_image_urlobject
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.left_image_urlobject is not None:
+            result['LeftImageURL'] = self.left_image_urlobject
+        if self.right_image_urlobject is not None:
+            result['RightImageURL'] = self.right_image_urlobject
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LeftImageURL') is not None:
+            self.left_image_urlobject = m.get('LeftImageURL')
+        if m.get('RightImageURL') is not None:
+            self.right_image_urlobject = m.get('RightImageURL')
+        return self
+
+
 class EstimateStereoImageDepthResponseBodyData(TeaModel):
     def __init__(
         self,
