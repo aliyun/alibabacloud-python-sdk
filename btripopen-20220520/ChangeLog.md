@@ -1,3 +1,6 @@
+2022-12-15 Version: 1.0.33
+- ApplyAdd and ApplyModify.
+
 2022-12-07 Version: 1.0.32
 - estimated price filed mod
 

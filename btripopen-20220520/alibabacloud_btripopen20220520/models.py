@@ -124,6 +124,7 @@ class AccessTokenResponseBody(TeaModel):
         self.message = message
         self.module = module
         self.request_id = request_id
+        # traceId
         self.trace_id = trace_id
 
     def validate(self):
@@ -593,6 +594,7 @@ class AirportSearchResponseBody(TeaModel):
     ):
         self.code = code
         self.message = message
+        # module。
         self.module = module
         self.request_id = request_id
         self.success = success
@@ -830,6 +832,7 @@ class AllBaseCityInfoQueryResponseBody(TeaModel):
         self.module = module
         self.request_id = request_id
         self.success = success
+        # traceId
         self.trace_id = trace_id
 
     def validate(self):
@@ -1025,6 +1028,7 @@ class ApplyAddRequestExternalTravelerStandard(TeaModel):
         first_discount: int = None,
         flight_cabins: str = None,
         hotel_citys: List[ApplyAddRequestExternalTravelerStandardHotelCitys] = None,
+        premium_economy_discount: int = None,
         reserve_type: int = None,
         train_seats: str = None,
     ):
@@ -1033,6 +1037,7 @@ class ApplyAddRequestExternalTravelerStandard(TeaModel):
         self.first_discount = first_discount
         self.flight_cabins = flight_cabins
         self.hotel_citys = hotel_citys
+        self.premium_economy_discount = premium_economy_discount
         self.reserve_type = reserve_type
         self.train_seats = train_seats
 
@@ -1060,6 +1065,8 @@ class ApplyAddRequestExternalTravelerStandard(TeaModel):
         if self.hotel_citys is not None:
             for k in self.hotel_citys:
                 result['hotel_citys'].append(k.to_map() if k else None)
+        if self.premium_economy_discount is not None:
+            result['premium_economy_discount'] = self.premium_economy_discount
         if self.reserve_type is not None:
             result['reserve_type'] = self.reserve_type
         if self.train_seats is not None:
@@ -1081,6 +1088,8 @@ class ApplyAddRequestExternalTravelerStandard(TeaModel):
             for k in m.get('hotel_citys'):
                 temp_model = ApplyAddRequestExternalTravelerStandardHotelCitys()
                 self.hotel_citys.append(temp_model.from_map(k))
+        if m.get('premium_economy_discount') is not None:
+            self.premium_economy_discount = m.get('premium_economy_discount')
         if m.get('reserve_type') is not None:
             self.reserve_type = m.get('reserve_type')
         if m.get('train_seats') is not None:
@@ -1417,6 +1426,7 @@ class ApplyAddRequestTravelerStandard(TeaModel):
         first_discount: int = None,
         flight_cabins: str = None,
         hotel_citys: List[ApplyAddRequestTravelerStandardHotelCitys] = None,
+        premium_economy_discount: int = None,
         reserve_type: int = None,
         train_seats: str = None,
         user_id: str = None,
@@ -1426,6 +1436,7 @@ class ApplyAddRequestTravelerStandard(TeaModel):
         self.first_discount = first_discount
         self.flight_cabins = flight_cabins
         self.hotel_citys = hotel_citys
+        self.premium_economy_discount = premium_economy_discount
         self.reserve_type = reserve_type
         self.train_seats = train_seats
         self.user_id = user_id
@@ -1454,6 +1465,8 @@ class ApplyAddRequestTravelerStandard(TeaModel):
         if self.hotel_citys is not None:
             for k in self.hotel_citys:
                 result['hotel_citys'].append(k.to_map() if k else None)
+        if self.premium_economy_discount is not None:
+            result['premium_economy_discount'] = self.premium_economy_discount
         if self.reserve_type is not None:
             result['reserve_type'] = self.reserve_type
         if self.train_seats is not None:
@@ -1477,6 +1490,8 @@ class ApplyAddRequestTravelerStandard(TeaModel):
             for k in m.get('hotel_citys'):
                 temp_model = ApplyAddRequestTravelerStandardHotelCitys()
                 self.hotel_citys.append(temp_model.from_map(k))
+        if m.get('premium_economy_discount') is not None:
+            self.premium_economy_discount = m.get('premium_economy_discount')
         if m.get('reserve_type') is not None:
             self.reserve_type = m.get('reserve_type')
         if m.get('train_seats') is not None:
@@ -2001,6 +2016,7 @@ class ApplyAddResponseBody(TeaModel):
     ):
         self.code = code
         self.message = message
+        # module。
         self.module = module
         self.request_id = request_id
         self.success = success
@@ -2194,6 +2210,7 @@ class ApplyApproveResponseBody(TeaModel):
     ):
         self.code = code
         self.message = message
+        # module。
         self.module = module
         self.request_id = request_id
         self.success = success
@@ -3131,6 +3148,7 @@ class ApplyModifyRequestExternalTravelerStandard(TeaModel):
         first_discount: int = None,
         flight_cabins: str = None,
         hotel_citys: List[ApplyModifyRequestExternalTravelerStandardHotelCitys] = None,
+        premium_economy_discount: int = None,
         reserve_type: int = None,
         train_seats: str = None,
     ):
@@ -3139,6 +3157,7 @@ class ApplyModifyRequestExternalTravelerStandard(TeaModel):
         self.first_discount = first_discount
         self.flight_cabins = flight_cabins
         self.hotel_citys = hotel_citys
+        self.premium_economy_discount = premium_economy_discount
         self.reserve_type = reserve_type
         self.train_seats = train_seats
 
@@ -3166,6 +3185,8 @@ class ApplyModifyRequestExternalTravelerStandard(TeaModel):
         if self.hotel_citys is not None:
             for k in self.hotel_citys:
                 result['hotel_citys'].append(k.to_map() if k else None)
+        if self.premium_economy_discount is not None:
+            result['premium_economy_discount'] = self.premium_economy_discount
         if self.reserve_type is not None:
             result['reserve_type'] = self.reserve_type
         if self.train_seats is not None:
@@ -3187,6 +3208,8 @@ class ApplyModifyRequestExternalTravelerStandard(TeaModel):
             for k in m.get('hotel_citys'):
                 temp_model = ApplyModifyRequestExternalTravelerStandardHotelCitys()
                 self.hotel_citys.append(temp_model.from_map(k))
+        if m.get('premium_economy_discount') is not None:
+            self.premium_economy_discount = m.get('premium_economy_discount')
         if m.get('reserve_type') is not None:
             self.reserve_type = m.get('reserve_type')
         if m.get('train_seats') is not None:
@@ -3523,6 +3546,7 @@ class ApplyModifyRequestTravelerStandard(TeaModel):
         first_discount: int = None,
         flight_cabins: str = None,
         hotel_citys: List[ApplyModifyRequestTravelerStandardHotelCitys] = None,
+        premium_economy_discount: int = None,
         reserve_type: int = None,
         train_seats: str = None,
         user_id: str = None,
@@ -3532,6 +3556,7 @@ class ApplyModifyRequestTravelerStandard(TeaModel):
         self.first_discount = first_discount
         self.flight_cabins = flight_cabins
         self.hotel_citys = hotel_citys
+        self.premium_economy_discount = premium_economy_discount
         self.reserve_type = reserve_type
         self.train_seats = train_seats
         self.user_id = user_id
@@ -3560,6 +3585,8 @@ class ApplyModifyRequestTravelerStandard(TeaModel):
         if self.hotel_citys is not None:
             for k in self.hotel_citys:
                 result['hotel_citys'].append(k.to_map() if k else None)
+        if self.premium_economy_discount is not None:
+            result['premium_economy_discount'] = self.premium_economy_discount
         if self.reserve_type is not None:
             result['reserve_type'] = self.reserve_type
         if self.train_seats is not None:
@@ -3583,6 +3610,8 @@ class ApplyModifyRequestTravelerStandard(TeaModel):
             for k in m.get('hotel_citys'):
                 temp_model = ApplyModifyRequestTravelerStandardHotelCitys()
                 self.hotel_citys.append(temp_model.from_map(k))
+        if m.get('premium_economy_discount') is not None:
+            self.premium_economy_discount = m.get('premium_economy_discount')
         if m.get('reserve_type') is not None:
             self.reserve_type = m.get('reserve_type')
         if m.get('train_seats') is not None:
@@ -4083,6 +4112,7 @@ class ApplyModifyResponseBody(TeaModel):
     ):
         self.code = code
         self.message = message
+        # module。
         self.module = module
         self.request_id = request_id
         self.success = success
@@ -4362,6 +4392,7 @@ class ApplyQueryResponseBodyModuleExternalTravelerList(TeaModel):
         first_discount: int = None,
         flight_cabins: str = None,
         hotel_citys: List[ApplyQueryResponseBodyModuleExternalTravelerListHotelCitys] = None,
+        premium_economy_discount: int = None,
         reserve_type: int = None,
         train_seats: str = None,
         user_name: str = None,
@@ -4371,6 +4402,7 @@ class ApplyQueryResponseBodyModuleExternalTravelerList(TeaModel):
         self.first_discount = first_discount
         self.flight_cabins = flight_cabins
         self.hotel_citys = hotel_citys
+        self.premium_economy_discount = premium_economy_discount
         self.reserve_type = reserve_type
         self.train_seats = train_seats
         self.user_name = user_name
@@ -4399,6 +4431,8 @@ class ApplyQueryResponseBodyModuleExternalTravelerList(TeaModel):
         if self.hotel_citys is not None:
             for k in self.hotel_citys:
                 result['hotel_citys'].append(k.to_map() if k else None)
+        if self.premium_economy_discount is not None:
+            result['premium_economy_discount'] = self.premium_economy_discount
         if self.reserve_type is not None:
             result['reserve_type'] = self.reserve_type
         if self.train_seats is not None:
@@ -4422,6 +4456,8 @@ class ApplyQueryResponseBodyModuleExternalTravelerList(TeaModel):
             for k in m.get('hotel_citys'):
                 temp_model = ApplyQueryResponseBodyModuleExternalTravelerListHotelCitys()
                 self.hotel_citys.append(temp_model.from_map(k))
+        if m.get('premium_economy_discount') is not None:
+            self.premium_economy_discount = m.get('premium_economy_discount')
         if m.get('reserve_type') is not None:
             self.reserve_type = m.get('reserve_type')
         if m.get('train_seats') is not None:
@@ -4691,6 +4727,7 @@ class ApplyQueryResponseBodyModuleTravelerList(TeaModel):
         first_discount: int = None,
         flight_cabins: str = None,
         hotel_citys: List[ApplyQueryResponseBodyModuleTravelerListHotelCitys] = None,
+        premium_economy_discount: int = None,
         reserve_type: int = None,
         train_seats: str = None,
         user_id: str = None,
@@ -4701,6 +4738,7 @@ class ApplyQueryResponseBodyModuleTravelerList(TeaModel):
         self.first_discount = first_discount
         self.flight_cabins = flight_cabins
         self.hotel_citys = hotel_citys
+        self.premium_economy_discount = premium_economy_discount
         self.reserve_type = reserve_type
         self.train_seats = train_seats
         self.user_id = user_id
@@ -4730,6 +4768,8 @@ class ApplyQueryResponseBodyModuleTravelerList(TeaModel):
         if self.hotel_citys is not None:
             for k in self.hotel_citys:
                 result['hotel_citys'].append(k.to_map() if k else None)
+        if self.premium_economy_discount is not None:
+            result['premium_economy_discount'] = self.premium_economy_discount
         if self.reserve_type is not None:
             result['reserve_type'] = self.reserve_type
         if self.train_seats is not None:
@@ -4755,6 +4795,8 @@ class ApplyQueryResponseBodyModuleTravelerList(TeaModel):
             for k in m.get('hotel_citys'):
                 temp_model = ApplyQueryResponseBodyModuleTravelerListHotelCitys()
                 self.hotel_citys.append(temp_model.from_map(k))
+        if m.get('premium_economy_discount') is not None:
+            self.premium_economy_discount = m.get('premium_economy_discount')
         if m.get('reserve_type') is not None:
             self.reserve_type = m.get('reserve_type')
         if m.get('train_seats') is not None:
@@ -5482,6 +5524,7 @@ class CarApplyModifyResponseBody(TeaModel):
     ):
         self.code = code
         self.message = message
+        # module。
         self.module = module
         self.request_id = request_id
         self.success = success
@@ -7291,6 +7334,7 @@ class CarOrderListQueryResponseBody(TeaModel):
         self.page_info = page_info
         self.request_id = request_id
         self.success = success
+        # traceId
         self.trace_id = trace_id
 
     def validate(self):
@@ -8013,8 +8057,10 @@ class CarOrderQueryResponseBody(TeaModel):
         self.code = code
         self.message = message
         self.module = module
+        # requestId
         self.request_id = request_id
         self.success = success
+        # traceId
         self.trace_id = trace_id
 
     def validate(self):
@@ -8249,6 +8295,7 @@ class CitySearchResponseBody(TeaModel):
     ):
         self.code = code
         self.message = message
+        # module
         self.module = module
         self.request_id = request_id
         self.success = success
@@ -8704,6 +8751,7 @@ class CommonApplySyncResponseBody(TeaModel):
     ):
         self.code = code
         self.message = message
+        # module。
         self.module = module
         self.request_id = request_id
         self.success = success
@@ -8952,6 +9000,7 @@ class CorpTokenResponseBody(TeaModel):
         self.message = message
         self.module = module
         self.request_id = request_id
+        # traceId
         self.trace_id = trace_id
 
     def validate(self):
@@ -9116,6 +9165,7 @@ class CostCenterDeleteResponseBody(TeaModel):
         self.message = message
         self.request_id = request_id
         self.success = success
+        # traceId
         self.trace_id = trace_id
 
     def validate(self):
@@ -9524,6 +9574,7 @@ class CostCenterQueryResponseBodyModule(TeaModel):
         self.entity_dos = entity_dos
         self.id = id
         self.number = number
+        # rule code
         self.rule_code = rule_code
         self.scope = scope
         self.thirdpart_id = thirdpart_id
@@ -9606,6 +9657,7 @@ class CostCenterQueryResponseBody(TeaModel):
         self.more_page = more_page
         self.request_id = request_id
         self.success = success
+        # traceId
         self.trace_id = trace_id
 
     def validate(self):
@@ -9830,6 +9882,7 @@ class CostCenterSaveResponseBody(TeaModel):
         self.module = module
         self.request_id = request_id
         self.success = success
+        # traceId
         self.trace_id = trace_id
 
     def validate(self):
@@ -10091,6 +10144,7 @@ class DepartmentSaveResponseBody(TeaModel):
         self.module = module
         self.request_id = request_id
         self.success = success
+        # traceId
         self.trace_id = trace_id
 
     def validate(self):
@@ -10365,6 +10419,7 @@ class EntityAddResponseBody(TeaModel):
         self.module = module
         self.request_id = request_id
         self.success = success
+        # traceId
         self.trace_id = trace_id
 
     def validate(self):
@@ -10655,6 +10710,7 @@ class EntityDeleteResponseBody(TeaModel):
         self.more_page = more_page
         self.request_id = request_id
         self.success = success
+        # traceId
         self.trace_id = trace_id
 
     def validate(self):
@@ -10943,6 +10999,7 @@ class EntitySetResponseBody(TeaModel):
         self.more_page = more_page
         self.request_id = request_id
         self.success = success
+        # traceId
         self.trace_id = trace_id
 
     def validate(self):
@@ -11299,6 +11356,7 @@ class EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes(TeaModel):
     ):
         self.arr_city = arr_city
         self.arr_date = arr_date
+        # cheapest
         self.cheapest = cheapest
         self.dep_city = dep_city
         self.dep_date = dep_date
@@ -11482,6 +11540,7 @@ class EstimatedPriceQueryResponseBody(TeaModel):
         self.module = module
         self.request_id = request_id
         self.success = success
+        # traceId
         self.trace_id = trace_id
 
     def validate(self):
@@ -11672,6 +11731,7 @@ class ExceedApplySyncResponseBody(TeaModel):
     ):
         self.code = code
         self.message = message
+        # module。
         self.module = module
         self.request_id = request_id
         self.success = success
@@ -16794,9 +16854,12 @@ class HotelOrderQueryResponseBody(TeaModel):
     ):
         self.code = code
         self.message = message
+        # module。
         self.module = module
+        # requestId
         self.request_id = request_id
         self.success = success
+        # traceId
         self.trace_id = trace_id
 
     def validate(self):
@@ -17705,6 +17768,7 @@ class InvoiceAddResponseBody(TeaModel):
         self.message = message
         self.request_id = request_id
         self.success = success
+        # traceId
         self.trace_id = trace_id
 
     def validate(self):
@@ -17860,6 +17924,7 @@ class InvoiceDeleteResponseBody(TeaModel):
         self.message = message
         self.request_id = request_id
         self.success = success
+        # traceId
         self.trace_id = trace_id
 
     def validate(self):
@@ -18057,6 +18122,7 @@ class InvoiceModifyResponseBody(TeaModel):
         self.message = message
         self.request_id = request_id
         self.success = success
+        # traceId
         self.trace_id = trace_id
 
     def validate(self):
@@ -18506,6 +18572,7 @@ class InvoiceSearchResponseBodyModule(TeaModel):
         third_part_invoice_id: str = None,
         title: str = None,
     ):
+        # ID
         self.id = id
         self.third_part_invoice_id = third_part_invoice_id
         self.title = title
@@ -18553,6 +18620,7 @@ class InvoiceSearchResponseBody(TeaModel):
         self.module = module
         self.request_id = request_id
         self.success = success
+        # traceId
         self.trace_id = trace_id
 
     def validate(self):
@@ -18856,6 +18924,7 @@ class IsvUserSaveResponseBody(TeaModel):
         self.module = module
         self.request_id = request_id
         self.success = success
+        # traceId
         self.trace_id = trace_id
 
     def validate(self):
@@ -22787,6 +22856,7 @@ class TrainStationSearchResponseBody(TeaModel):
     ):
         self.code = code
         self.message = message
+        # module
         self.module = module
         self.request_id = request_id
         self.success = success
@@ -23063,6 +23133,7 @@ class UserQueryResponseBody(TeaModel):
         self.module = module
         self.request_id = request_id
         self.success = success
+        # traceId
         self.trace_id = trace_id
 
     def validate(self):
