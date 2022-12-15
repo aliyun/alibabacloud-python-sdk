@@ -41,22 +41,6 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
-    def cancel_by_msg_id(
-        self,
-        request: umeng_push_20220225_models.CancelByMsgIdRequest,
-    ) -> umeng_push_20220225_models.CancelByMsgIdResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.cancel_by_msg_id_with_options(request, headers, runtime)
-
-    async def cancel_by_msg_id_async(
-        self,
-        request: umeng_push_20220225_models.CancelByMsgIdRequest,
-    ) -> umeng_push_20220225_models.CancelByMsgIdResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.cancel_by_msg_id_with_options_async(request, headers, runtime)
-
     def cancel_by_msg_id_with_options(
         self,
         request: umeng_push_20220225_models.CancelByMsgIdRequest,
@@ -117,21 +101,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def query_msg_stat(
+    def cancel_by_msg_id(
         self,
-        request: umeng_push_20220225_models.QueryMsgStatRequest,
-    ) -> umeng_push_20220225_models.QueryMsgStatResponse:
+        request: umeng_push_20220225_models.CancelByMsgIdRequest,
+    ) -> umeng_push_20220225_models.CancelByMsgIdResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.query_msg_stat_with_options(request, headers, runtime)
+        return self.cancel_by_msg_id_with_options(request, headers, runtime)
 
-    async def query_msg_stat_async(
+    async def cancel_by_msg_id_async(
         self,
-        request: umeng_push_20220225_models.QueryMsgStatRequest,
-    ) -> umeng_push_20220225_models.QueryMsgStatResponse:
+        request: umeng_push_20220225_models.CancelByMsgIdRequest,
+    ) -> umeng_push_20220225_models.CancelByMsgIdResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.query_msg_stat_with_options_async(request, headers, runtime)
+        return await self.cancel_by_msg_id_with_options_async(request, headers, runtime)
 
     def query_msg_stat_with_options(
         self,
@@ -193,21 +177,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def send_by_alias(
+    def query_msg_stat(
         self,
-        request: umeng_push_20220225_models.SendByAliasRequest,
-    ) -> umeng_push_20220225_models.SendByAliasResponse:
+        request: umeng_push_20220225_models.QueryMsgStatRequest,
+    ) -> umeng_push_20220225_models.QueryMsgStatResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.send_by_alias_with_options(request, headers, runtime)
+        return self.query_msg_stat_with_options(request, headers, runtime)
 
-    async def send_by_alias_async(
+    async def query_msg_stat_async(
         self,
-        request: umeng_push_20220225_models.SendByAliasRequest,
-    ) -> umeng_push_20220225_models.SendByAliasResponse:
+        request: umeng_push_20220225_models.QueryMsgStatRequest,
+    ) -> umeng_push_20220225_models.QueryMsgStatResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.send_by_alias_with_options_async(request, headers, runtime)
+        return await self.query_msg_stat_with_options_async(request, headers, runtime)
 
     def send_by_alias_with_options(
         self,
@@ -325,21 +309,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def send_by_alias_file_id(
+    def send_by_alias(
         self,
-        request: umeng_push_20220225_models.SendByAliasFileIdRequest,
-    ) -> umeng_push_20220225_models.SendByAliasFileIdResponse:
+        request: umeng_push_20220225_models.SendByAliasRequest,
+    ) -> umeng_push_20220225_models.SendByAliasResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.send_by_alias_file_id_with_options(request, headers, runtime)
+        return self.send_by_alias_with_options(request, headers, runtime)
 
-    async def send_by_alias_file_id_async(
+    async def send_by_alias_async(
         self,
-        request: umeng_push_20220225_models.SendByAliasFileIdRequest,
-    ) -> umeng_push_20220225_models.SendByAliasFileIdResponse:
+        request: umeng_push_20220225_models.SendByAliasRequest,
+    ) -> umeng_push_20220225_models.SendByAliasResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.send_by_alias_file_id_with_options_async(request, headers, runtime)
+        return await self.send_by_alias_with_options_async(request, headers, runtime)
 
     def send_by_alias_file_id_with_options(
         self,
@@ -457,21 +441,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def send_by_app(
+    def send_by_alias_file_id(
         self,
-        request: umeng_push_20220225_models.SendByAppRequest,
-    ) -> umeng_push_20220225_models.SendByAppResponse:
+        request: umeng_push_20220225_models.SendByAliasFileIdRequest,
+    ) -> umeng_push_20220225_models.SendByAliasFileIdResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.send_by_app_with_options(request, headers, runtime)
+        return self.send_by_alias_file_id_with_options(request, headers, runtime)
 
-    async def send_by_app_async(
+    async def send_by_alias_file_id_async(
         self,
-        request: umeng_push_20220225_models.SendByAppRequest,
-    ) -> umeng_push_20220225_models.SendByAppResponse:
+        request: umeng_push_20220225_models.SendByAliasFileIdRequest,
+    ) -> umeng_push_20220225_models.SendByAliasFileIdResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.send_by_app_with_options_async(request, headers, runtime)
+        return await self.send_by_alias_file_id_with_options_async(request, headers, runtime)
 
     def send_by_app_with_options(
         self,
@@ -581,21 +565,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def send_by_device(
+    def send_by_app(
         self,
-        request: umeng_push_20220225_models.SendByDeviceRequest,
-    ) -> umeng_push_20220225_models.SendByDeviceResponse:
+        request: umeng_push_20220225_models.SendByAppRequest,
+    ) -> umeng_push_20220225_models.SendByAppResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.send_by_device_with_options(request, headers, runtime)
+        return self.send_by_app_with_options(request, headers, runtime)
 
-    async def send_by_device_async(
+    async def send_by_app_async(
         self,
-        request: umeng_push_20220225_models.SendByDeviceRequest,
-    ) -> umeng_push_20220225_models.SendByDeviceResponse:
+        request: umeng_push_20220225_models.SendByAppRequest,
+    ) -> umeng_push_20220225_models.SendByAppResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.send_by_device_with_options_async(request, headers, runtime)
+        return await self.send_by_app_with_options_async(request, headers, runtime)
 
     def send_by_device_with_options(
         self,
@@ -709,21 +693,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def send_by_device_file_id(
+    def send_by_device(
         self,
-        request: umeng_push_20220225_models.SendByDeviceFileIdRequest,
-    ) -> umeng_push_20220225_models.SendByDeviceFileIdResponse:
+        request: umeng_push_20220225_models.SendByDeviceRequest,
+    ) -> umeng_push_20220225_models.SendByDeviceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.send_by_device_file_id_with_options(request, headers, runtime)
+        return self.send_by_device_with_options(request, headers, runtime)
 
-    async def send_by_device_file_id_async(
+    async def send_by_device_async(
         self,
-        request: umeng_push_20220225_models.SendByDeviceFileIdRequest,
-    ) -> umeng_push_20220225_models.SendByDeviceFileIdResponse:
+        request: umeng_push_20220225_models.SendByDeviceRequest,
+    ) -> umeng_push_20220225_models.SendByDeviceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.send_by_device_file_id_with_options_async(request, headers, runtime)
+        return await self.send_by_device_with_options_async(request, headers, runtime)
 
     def send_by_device_file_id_with_options(
         self,
@@ -837,21 +821,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def send_by_filter(
+    def send_by_device_file_id(
         self,
-        request: umeng_push_20220225_models.SendByFilterRequest,
-    ) -> umeng_push_20220225_models.SendByFilterResponse:
+        request: umeng_push_20220225_models.SendByDeviceFileIdRequest,
+    ) -> umeng_push_20220225_models.SendByDeviceFileIdResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.send_by_filter_with_options(request, headers, runtime)
+        return self.send_by_device_file_id_with_options(request, headers, runtime)
 
-    async def send_by_filter_async(
+    async def send_by_device_file_id_async(
         self,
-        request: umeng_push_20220225_models.SendByFilterRequest,
-    ) -> umeng_push_20220225_models.SendByFilterResponse:
+        request: umeng_push_20220225_models.SendByDeviceFileIdRequest,
+    ) -> umeng_push_20220225_models.SendByDeviceFileIdResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.send_by_filter_with_options_async(request, headers, runtime)
+        return await self.send_by_device_file_id_with_options_async(request, headers, runtime)
 
     def send_by_filter_with_options(
         self,
@@ -965,21 +949,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def upload_device(
+    def send_by_filter(
         self,
-        request: umeng_push_20220225_models.UploadDeviceRequest,
-    ) -> umeng_push_20220225_models.UploadDeviceResponse:
+        request: umeng_push_20220225_models.SendByFilterRequest,
+    ) -> umeng_push_20220225_models.SendByFilterResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.upload_device_with_options(request, headers, runtime)
+        return self.send_by_filter_with_options(request, headers, runtime)
 
-    async def upload_device_async(
+    async def send_by_filter_async(
         self,
-        request: umeng_push_20220225_models.UploadDeviceRequest,
-    ) -> umeng_push_20220225_models.UploadDeviceResponse:
+        request: umeng_push_20220225_models.SendByFilterRequest,
+    ) -> umeng_push_20220225_models.SendByFilterResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.upload_device_with_options_async(request, headers, runtime)
+        return await self.send_by_filter_with_options_async(request, headers, runtime)
 
     def upload_device_with_options(
         self,
@@ -1040,3 +1024,19 @@ class Client(OpenApiClient):
             umeng_push_20220225_models.UploadDeviceResponse(),
             await self.call_api_async(params, req, runtime)
         )
+
+    def upload_device(
+        self,
+        request: umeng_push_20220225_models.UploadDeviceRequest,
+    ) -> umeng_push_20220225_models.UploadDeviceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.upload_device_with_options(request, headers, runtime)
+
+    async def upload_device_async(
+        self,
+        request: umeng_push_20220225_models.UploadDeviceRequest,
+    ) -> umeng_push_20220225_models.UploadDeviceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.upload_device_with_options_async(request, headers, runtime)
