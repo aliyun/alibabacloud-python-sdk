@@ -139,7 +139,7 @@ class EntVerifyResponseBodyResultRiskVerifyResultModelResults(TeaModel):
 class EntVerifyResponseBodyResultRiskVerifyResult(TeaModel):
     def __init__(
         self,
-        found: str = None,
+        found: bool = None,
         model_results: List[EntVerifyResponseBodyResultRiskVerifyResultModelResults] = None,
     ):
         self.found = found
