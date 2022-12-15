@@ -3149,6 +3149,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.cancel_physical_connection_with_options_async(request, runtime)
 
+    def change_resource_group_with_options(
+        self,
+        request: vpc_20160428_models.ChangeResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.ChangeResourceGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.new_resource_group_id):
+            query['NewResourceGroupId'] = request.new_resource_group_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ChangeResourceGroup',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.ChangeResourceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def change_resource_group_with_options_async(
+        self,
+        request: vpc_20160428_models.ChangeResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.ChangeResourceGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.new_resource_group_id):
+            query['NewResourceGroupId'] = request.new_resource_group_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ChangeResourceGroup',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.ChangeResourceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def change_resource_group(
+        self,
+        request: vpc_20160428_models.ChangeResourceGroupRequest,
+    ) -> vpc_20160428_models.ChangeResourceGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.change_resource_group_with_options(request, runtime)
+
+    async def change_resource_group_async(
+        self,
+        request: vpc_20160428_models.ChangeResourceGroupRequest,
+    ) -> vpc_20160428_models.ChangeResourceGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.change_resource_group_with_options_async(request, runtime)
+
     def check_can_allocate_vpc_private_ip_address_with_options(
         self,
         request: vpc_20160428_models.CheckCanAllocateVpcPrivateIpAddressRequest,
@@ -19371,6 +19453,112 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_ssl_vpn_servers_with_options_async(request, runtime)
 
+    def describe_tag_keys_for_express_connect_with_options(
+        self,
+        request: vpc_20160428_models.DescribeTagKeysForExpressConnectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.DescribeTagKeysForExpressConnectResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.max_result):
+            query['MaxResult'] = request.max_result
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeTagKeysForExpressConnect',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.DescribeTagKeysForExpressConnectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_tag_keys_for_express_connect_with_options_async(
+        self,
+        request: vpc_20160428_models.DescribeTagKeysForExpressConnectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.DescribeTagKeysForExpressConnectResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.max_result):
+            query['MaxResult'] = request.max_result
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeTagKeysForExpressConnect',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.DescribeTagKeysForExpressConnectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_tag_keys_for_express_connect(
+        self,
+        request: vpc_20160428_models.DescribeTagKeysForExpressConnectRequest,
+    ) -> vpc_20160428_models.DescribeTagKeysForExpressConnectResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_tag_keys_for_express_connect_with_options(request, runtime)
+
+    async def describe_tag_keys_for_express_connect_async(
+        self,
+        request: vpc_20160428_models.DescribeTagKeysForExpressConnectRequest,
+    ) -> vpc_20160428_models.DescribeTagKeysForExpressConnectResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_tag_keys_for_express_connect_with_options_async(request, runtime)
+
     def describe_vrouters_with_options(
         self,
         request: vpc_20160428_models.DescribeVRoutersRequest,
@@ -23581,6 +23769,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.grant_instance_to_vbr_with_options_async(request, runtime)
 
+    def list_business_access_points_with_options(
+        self,
+        request: vpc_20160428_models.ListBusinessAccessPointsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.ListBusinessAccessPointsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListBusinessAccessPoints',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.ListBusinessAccessPointsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_business_access_points_with_options_async(
+        self,
+        request: vpc_20160428_models.ListBusinessAccessPointsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.ListBusinessAccessPointsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListBusinessAccessPoints',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.ListBusinessAccessPointsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_business_access_points(
+        self,
+        request: vpc_20160428_models.ListBusinessAccessPointsRequest,
+    ) -> vpc_20160428_models.ListBusinessAccessPointsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_business_access_points_with_options(request, runtime)
+
+    async def list_business_access_points_async(
+        self,
+        request: vpc_20160428_models.ListBusinessAccessPointsRequest,
+    ) -> vpc_20160428_models.ListBusinessAccessPointsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_business_access_points_with_options_async(request, runtime)
+
     def list_dhcp_options_sets_with_options(
         self,
         request: vpc_20160428_models.ListDhcpOptionsSetsRequest,
@@ -24008,6 +24270,56 @@ class Client(OpenApiClient):
     ) -> vpc_20160428_models.ListGatewayRouteTableEntriesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_gateway_route_table_entries_with_options_async(request, runtime)
+
+    def list_geographic_sub_regions_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.ListGeographicSubRegionsResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='ListGeographicSubRegions',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.ListGeographicSubRegionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_geographic_sub_regions_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.ListGeographicSubRegionsResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='ListGeographicSubRegions',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.ListGeographicSubRegionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_geographic_sub_regions(self) -> vpc_20160428_models.ListGeographicSubRegionsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_geographic_sub_regions_with_options(runtime)
+
+    async def list_geographic_sub_regions_async(self) -> vpc_20160428_models.ListGeographicSubRegionsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_geographic_sub_regions_with_options_async(runtime)
 
     def list_ipsec_servers_with_options(
         self,
@@ -24466,6 +24778,13 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ListPrefixListsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ListPrefixListsResponse:
+        """
+        *\
+        
+        @param request: ListPrefixListsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPrefixListsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -24510,6 +24829,13 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ListPrefixListsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ListPrefixListsResponse:
+        """
+        *\
+        
+        @param request: ListPrefixListsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPrefixListsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -24553,6 +24879,12 @@ class Client(OpenApiClient):
         self,
         request: vpc_20160428_models.ListPrefixListsRequest,
     ) -> vpc_20160428_models.ListPrefixListsResponse:
+        """
+        *\
+        
+        @param request: ListPrefixListsRequest
+        @return: ListPrefixListsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_prefix_lists_with_options(request, runtime)
 
@@ -24560,6 +24892,12 @@ class Client(OpenApiClient):
         self,
         request: vpc_20160428_models.ListPrefixListsRequest,
     ) -> vpc_20160428_models.ListPrefixListsResponse:
+        """
+        *\
+        
+        @param request: ListPrefixListsRequest
+        @return: ListPrefixListsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_prefix_lists_with_options_async(request, runtime)
 
