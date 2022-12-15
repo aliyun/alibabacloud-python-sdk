@@ -773,6 +773,7 @@ class Dataset(TeaModel):
         description: str = None,
         file_count: int = None,
         project_name: str = None,
+        template_id: str = None,
         total_file_size: int = None,
         update_time: str = None,
     ):
@@ -787,6 +788,7 @@ class Dataset(TeaModel):
         self.description = description
         self.file_count = file_count
         self.project_name = project_name
+        self.template_id = template_id
         self.total_file_size = total_file_size
         self.update_time = update_time
 
@@ -821,6 +823,8 @@ class Dataset(TeaModel):
             result['FileCount'] = self.file_count
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
         if self.total_file_size is not None:
             result['TotalFileSize'] = self.total_file_size
         if self.update_time is not None:
@@ -851,6 +855,8 @@ class Dataset(TeaModel):
             self.file_count = m.get('FileCount')
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
         if m.get('TotalFileSize') is not None:
             self.total_file_size = m.get('TotalFileSize')
         if m.get('UpdateTime') is not None:
@@ -2777,6 +2783,7 @@ class Project(TeaModel):
         project_name: str = None,
         project_queries_per_second: int = None,
         service_role: str = None,
+        template_id: str = None,
         total_file_size: int = None,
         update_time: str = None,
     ):
@@ -2794,6 +2801,7 @@ class Project(TeaModel):
         self.project_name = project_name
         self.project_queries_per_second = project_queries_per_second
         self.service_role = service_role
+        self.template_id = template_id
         self.total_file_size = total_file_size
         self.update_time = update_time
 
@@ -2834,6 +2842,8 @@ class Project(TeaModel):
             result['ProjectQueriesPerSecond'] = self.project_queries_per_second
         if self.service_role is not None:
             result['ServiceRole'] = self.service_role
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
         if self.total_file_size is not None:
             result['TotalFileSize'] = self.total_file_size
         if self.update_time is not None:
@@ -2870,6 +2880,8 @@ class Project(TeaModel):
             self.project_queries_per_second = m.get('ProjectQueriesPerSecond')
         if m.get('ServiceRole') is not None:
             self.service_role = m.get('ServiceRole')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
         if m.get('TotalFileSize') is not None:
             self.total_file_size = m.get('TotalFileSize')
         if m.get('UpdateTime') is not None:
