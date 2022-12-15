@@ -139,8 +139,10 @@ class EntVerifyResponseBodyResultRiskVerifyResultModelResults(TeaModel):
 class EntVerifyResponseBodyResultRiskVerifyResult(TeaModel):
     def __init__(
         self,
+        found: str = None,
         model_results: List[EntVerifyResponseBodyResultRiskVerifyResultModelResults] = None,
     ):
+        self.found = found
         self.model_results = model_results
 
     def validate(self):
@@ -155,6 +157,8 @@ class EntVerifyResponseBodyResultRiskVerifyResult(TeaModel):
             return _map
 
         result = dict()
+        if self.found is not None:
+            result['Found'] = self.found
         result['ModelResults'] = []
         if self.model_results is not None:
             for k in self.model_results:
@@ -163,6 +167,8 @@ class EntVerifyResponseBodyResultRiskVerifyResult(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Found') is not None:
+            self.found = m.get('Found')
         self.model_results = []
         if m.get('ModelResults') is not None:
             for k in m.get('ModelResults'):
@@ -210,6 +216,7 @@ class EntVerifyResponseBody(TeaModel):
     ):
         self.code = code
         self.message = message
+        # Id of the request
         self.request_id = request_id
         self.result = result
 
