@@ -1,3 +1,8 @@
+2022-12-15 Version: 3.1.9
+- Supported delete snapshots.
+- Supported auto snapshot.
+- Fix docx.
+
 2022-08-23 Version: 3.1.8
 - Bugfix.
 

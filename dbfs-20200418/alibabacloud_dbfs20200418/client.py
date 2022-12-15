@@ -252,6 +252,190 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.attach_dbfs_with_options_async(request, runtime)
 
+    def cancel_auto_snapshot_policy_with_options(
+        self,
+        tmp_req: dbfs20200418_models.CancelAutoSnapshotPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dbfs20200418_models.CancelAutoSnapshotPolicyResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dbfs20200418_models.CancelAutoSnapshotPolicyShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.dbfs_ids):
+            request.dbfs_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dbfs_ids, 'DbfsIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.dbfs_ids_shrink):
+            query['DbfsIds'] = request.dbfs_ids_shrink
+        if not UtilClient.is_unset(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CancelAutoSnapshotPolicy',
+            version='2020-04-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dbfs20200418_models.CancelAutoSnapshotPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cancel_auto_snapshot_policy_with_options_async(
+        self,
+        tmp_req: dbfs20200418_models.CancelAutoSnapshotPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dbfs20200418_models.CancelAutoSnapshotPolicyResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dbfs20200418_models.CancelAutoSnapshotPolicyShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.dbfs_ids):
+            request.dbfs_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dbfs_ids, 'DbfsIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.dbfs_ids_shrink):
+            query['DbfsIds'] = request.dbfs_ids_shrink
+        if not UtilClient.is_unset(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CancelAutoSnapshotPolicy',
+            version='2020-04-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dbfs20200418_models.CancelAutoSnapshotPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cancel_auto_snapshot_policy(
+        self,
+        request: dbfs20200418_models.CancelAutoSnapshotPolicyRequest,
+    ) -> dbfs20200418_models.CancelAutoSnapshotPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.cancel_auto_snapshot_policy_with_options(request, runtime)
+
+    async def cancel_auto_snapshot_policy_async(
+        self,
+        request: dbfs20200418_models.CancelAutoSnapshotPolicyRequest,
+    ) -> dbfs20200418_models.CancelAutoSnapshotPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.cancel_auto_snapshot_policy_with_options_async(request, runtime)
+
+    def create_auto_snapshot_policy_with_options(
+        self,
+        tmp_req: dbfs20200418_models.CreateAutoSnapshotPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dbfs20200418_models.CreateAutoSnapshotPolicyResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dbfs20200418_models.CreateAutoSnapshotPolicyShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.repeat_weekdays):
+            request.repeat_weekdays_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.repeat_weekdays, 'RepeatWeekdays', 'json')
+        if not UtilClient.is_unset(tmp_req.time_points):
+            request.time_points_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.time_points, 'TimePoints', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.policy_name):
+            query['PolicyName'] = request.policy_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.repeat_weekdays_shrink):
+            query['RepeatWeekdays'] = request.repeat_weekdays_shrink
+        if not UtilClient.is_unset(request.retention_days):
+            query['RetentionDays'] = request.retention_days
+        if not UtilClient.is_unset(request.time_points_shrink):
+            query['TimePoints'] = request.time_points_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAutoSnapshotPolicy',
+            version='2020-04-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dbfs20200418_models.CreateAutoSnapshotPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_auto_snapshot_policy_with_options_async(
+        self,
+        tmp_req: dbfs20200418_models.CreateAutoSnapshotPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dbfs20200418_models.CreateAutoSnapshotPolicyResponse:
+        UtilClient.validate_model(tmp_req)
+        request = dbfs20200418_models.CreateAutoSnapshotPolicyShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.repeat_weekdays):
+            request.repeat_weekdays_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.repeat_weekdays, 'RepeatWeekdays', 'json')
+        if not UtilClient.is_unset(tmp_req.time_points):
+            request.time_points_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.time_points, 'TimePoints', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.policy_name):
+            query['PolicyName'] = request.policy_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.repeat_weekdays_shrink):
+            query['RepeatWeekdays'] = request.repeat_weekdays_shrink
+        if not UtilClient.is_unset(request.retention_days):
+            query['RetentionDays'] = request.retention_days
+        if not UtilClient.is_unset(request.time_points_shrink):
+            query['TimePoints'] = request.time_points_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAutoSnapshotPolicy',
+            version='2020-04-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dbfs20200418_models.CreateAutoSnapshotPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_auto_snapshot_policy(
+        self,
+        request: dbfs20200418_models.CreateAutoSnapshotPolicyRequest,
+    ) -> dbfs20200418_models.CreateAutoSnapshotPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_auto_snapshot_policy_with_options(request, runtime)
+
+    async def create_auto_snapshot_policy_async(
+        self,
+        request: dbfs20200418_models.CreateAutoSnapshotPolicyRequest,
+    ) -> dbfs20200418_models.CreateAutoSnapshotPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_auto_snapshot_policy_with_options_async(request, runtime)
+
     def create_dbfs_with_options(
         self,
         request: dbfs20200418_models.CreateDbfsRequest,

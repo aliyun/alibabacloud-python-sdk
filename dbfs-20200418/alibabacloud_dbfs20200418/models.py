@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, Any, List
+from typing import Dict, List, Any
 
 
 class AddTagsBatchRequest(TeaModel):
@@ -244,6 +244,334 @@ class AttachDbfsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = AttachDbfsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CancelAutoSnapshotPolicyRequest(TeaModel):
+    def __init__(
+        self,
+        dbfs_ids: List[str] = None,
+        policy_id: str = None,
+        region_id: str = None,
+    ):
+        self.dbfs_ids = dbfs_ids
+        self.policy_id = policy_id
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbfs_ids is not None:
+            result['DbfsIds'] = self.dbfs_ids
+        if self.policy_id is not None:
+            result['PolicyId'] = self.policy_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DbfsIds') is not None:
+            self.dbfs_ids = m.get('DbfsIds')
+        if m.get('PolicyId') is not None:
+            self.policy_id = m.get('PolicyId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class CancelAutoSnapshotPolicyShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        dbfs_ids_shrink: str = None,
+        policy_id: str = None,
+        region_id: str = None,
+    ):
+        self.dbfs_ids_shrink = dbfs_ids_shrink
+        self.policy_id = policy_id
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbfs_ids_shrink is not None:
+            result['DbfsIds'] = self.dbfs_ids_shrink
+        if self.policy_id is not None:
+            result['PolicyId'] = self.policy_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DbfsIds') is not None:
+            self.dbfs_ids_shrink = m.get('DbfsIds')
+        if m.get('PolicyId') is not None:
+            self.policy_id = m.get('PolicyId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class CancelAutoSnapshotPolicyResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CancelAutoSnapshotPolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CancelAutoSnapshotPolicyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CancelAutoSnapshotPolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateAutoSnapshotPolicyRequest(TeaModel):
+    def __init__(
+        self,
+        policy_name: str = None,
+        region_id: str = None,
+        repeat_weekdays: List[str] = None,
+        retention_days: int = None,
+        time_points: List[str] = None,
+    ):
+        self.policy_name = policy_name
+        self.region_id = region_id
+        self.repeat_weekdays = repeat_weekdays
+        self.retention_days = retention_days
+        self.time_points = time_points
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.policy_name is not None:
+            result['PolicyName'] = self.policy_name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.repeat_weekdays is not None:
+            result['RepeatWeekdays'] = self.repeat_weekdays
+        if self.retention_days is not None:
+            result['RetentionDays'] = self.retention_days
+        if self.time_points is not None:
+            result['TimePoints'] = self.time_points
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PolicyName') is not None:
+            self.policy_name = m.get('PolicyName')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('RepeatWeekdays') is not None:
+            self.repeat_weekdays = m.get('RepeatWeekdays')
+        if m.get('RetentionDays') is not None:
+            self.retention_days = m.get('RetentionDays')
+        if m.get('TimePoints') is not None:
+            self.time_points = m.get('TimePoints')
+        return self
+
+
+class CreateAutoSnapshotPolicyShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        policy_name: str = None,
+        region_id: str = None,
+        repeat_weekdays_shrink: str = None,
+        retention_days: int = None,
+        time_points_shrink: str = None,
+    ):
+        self.policy_name = policy_name
+        self.region_id = region_id
+        self.repeat_weekdays_shrink = repeat_weekdays_shrink
+        self.retention_days = retention_days
+        self.time_points_shrink = time_points_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.policy_name is not None:
+            result['PolicyName'] = self.policy_name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.repeat_weekdays_shrink is not None:
+            result['RepeatWeekdays'] = self.repeat_weekdays_shrink
+        if self.retention_days is not None:
+            result['RetentionDays'] = self.retention_days
+        if self.time_points_shrink is not None:
+            result['TimePoints'] = self.time_points_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PolicyName') is not None:
+            self.policy_name = m.get('PolicyName')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('RepeatWeekdays') is not None:
+            self.repeat_weekdays_shrink = m.get('RepeatWeekdays')
+        if m.get('RetentionDays') is not None:
+            self.retention_days = m.get('RetentionDays')
+        if m.get('TimePoints') is not None:
+            self.time_points_shrink = m.get('TimePoints')
+        return self
+
+
+class CreateAutoSnapshotPolicyResponseBody(TeaModel):
+    def __init__(
+        self,
+        policy_id: str = None,
+        request_id: str = None,
+    ):
+        self.policy_id = policy_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.policy_id is not None:
+            result['PolicyId'] = self.policy_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PolicyId') is not None:
+            self.policy_id = m.get('PolicyId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateAutoSnapshotPolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateAutoSnapshotPolicyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateAutoSnapshotPolicyResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
