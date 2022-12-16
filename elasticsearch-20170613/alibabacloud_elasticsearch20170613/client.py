@@ -42,24 +42,6 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
-    def activate_zones(
-        self,
-        instance_id: str,
-        request: elasticsearch_20170613_models.ActivateZonesRequest,
-    ) -> elasticsearch_20170613_models.ActivateZonesResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.activate_zones_with_options(instance_id, request, headers, runtime)
-
-    async def activate_zones_async(
-        self,
-        instance_id: str,
-        request: elasticsearch_20170613_models.ActivateZonesRequest,
-    ) -> elasticsearch_20170613_models.ActivateZonesResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.activate_zones_with_options_async(instance_id, request, headers, runtime)
-
     def activate_zones_with_options(
         self,
         instance_id: str,
@@ -124,23 +106,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def add_connectable_cluster(
+    def activate_zones(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.AddConnectableClusterRequest,
-    ) -> elasticsearch_20170613_models.AddConnectableClusterResponse:
+        request: elasticsearch_20170613_models.ActivateZonesRequest,
+    ) -> elasticsearch_20170613_models.ActivateZonesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.add_connectable_cluster_with_options(instance_id, request, headers, runtime)
+        return self.activate_zones_with_options(instance_id, request, headers, runtime)
 
-    async def add_connectable_cluster_async(
+    async def activate_zones_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.AddConnectableClusterRequest,
-    ) -> elasticsearch_20170613_models.AddConnectableClusterResponse:
+        request: elasticsearch_20170613_models.ActivateZonesRequest,
+    ) -> elasticsearch_20170613_models.ActivateZonesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.add_connectable_cluster_with_options_async(instance_id, request, headers, runtime)
+        return await self.activate_zones_with_options_async(instance_id, request, headers, runtime)
 
     def add_connectable_cluster_with_options(
         self,
@@ -206,23 +188,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def add_snapshot_repo(
+    def add_connectable_cluster(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.AddSnapshotRepoRequest,
-    ) -> elasticsearch_20170613_models.AddSnapshotRepoResponse:
+        request: elasticsearch_20170613_models.AddConnectableClusterRequest,
+    ) -> elasticsearch_20170613_models.AddConnectableClusterResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.add_snapshot_repo_with_options(instance_id, request, headers, runtime)
+        return self.add_connectable_cluster_with_options(instance_id, request, headers, runtime)
 
-    async def add_snapshot_repo_async(
+    async def add_connectable_cluster_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.AddSnapshotRepoRequest,
-    ) -> elasticsearch_20170613_models.AddSnapshotRepoResponse:
+        request: elasticsearch_20170613_models.AddConnectableClusterRequest,
+    ) -> elasticsearch_20170613_models.AddConnectableClusterResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.add_snapshot_repo_with_options_async(instance_id, request, headers, runtime)
+        return await self.add_connectable_cluster_with_options_async(instance_id, request, headers, runtime)
 
     def add_snapshot_repo_with_options(
         self,
@@ -280,23 +262,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def cancel_deletion(
+    def add_snapshot_repo(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.CancelDeletionRequest,
-    ) -> elasticsearch_20170613_models.CancelDeletionResponse:
+        request: elasticsearch_20170613_models.AddSnapshotRepoRequest,
+    ) -> elasticsearch_20170613_models.AddSnapshotRepoResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.cancel_deletion_with_options(instance_id, request, headers, runtime)
+        return self.add_snapshot_repo_with_options(instance_id, request, headers, runtime)
 
-    async def cancel_deletion_async(
+    async def add_snapshot_repo_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.CancelDeletionRequest,
-    ) -> elasticsearch_20170613_models.CancelDeletionResponse:
+        request: elasticsearch_20170613_models.AddSnapshotRepoRequest,
+    ) -> elasticsearch_20170613_models.AddSnapshotRepoResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.cancel_deletion_with_options_async(instance_id, request, headers, runtime)
+        return await self.add_snapshot_repo_with_options_async(instance_id, request, headers, runtime)
 
     def cancel_deletion_with_options(
         self,
@@ -360,23 +342,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def cancel_logstash_deletion(
+    def cancel_deletion(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.CancelLogstashDeletionRequest,
-    ) -> elasticsearch_20170613_models.CancelLogstashDeletionResponse:
+        request: elasticsearch_20170613_models.CancelDeletionRequest,
+    ) -> elasticsearch_20170613_models.CancelDeletionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.cancel_logstash_deletion_with_options(instance_id, request, headers, runtime)
+        return self.cancel_deletion_with_options(instance_id, request, headers, runtime)
 
-    async def cancel_logstash_deletion_async(
+    async def cancel_deletion_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.CancelLogstashDeletionRequest,
-    ) -> elasticsearch_20170613_models.CancelLogstashDeletionResponse:
+        request: elasticsearch_20170613_models.CancelDeletionRequest,
+    ) -> elasticsearch_20170613_models.CancelDeletionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.cancel_logstash_deletion_with_options_async(instance_id, request, headers, runtime)
+        return await self.cancel_deletion_with_options_async(instance_id, request, headers, runtime)
 
     def cancel_logstash_deletion_with_options(
         self,
@@ -440,23 +422,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def cancel_task(
+    def cancel_logstash_deletion(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.CancelTaskRequest,
-    ) -> elasticsearch_20170613_models.CancelTaskResponse:
+        request: elasticsearch_20170613_models.CancelLogstashDeletionRequest,
+    ) -> elasticsearch_20170613_models.CancelLogstashDeletionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.cancel_task_with_options(instance_id, request, headers, runtime)
+        return self.cancel_logstash_deletion_with_options(instance_id, request, headers, runtime)
 
-    async def cancel_task_async(
+    async def cancel_logstash_deletion_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.CancelTaskRequest,
-    ) -> elasticsearch_20170613_models.CancelTaskResponse:
+        request: elasticsearch_20170613_models.CancelLogstashDeletionRequest,
+    ) -> elasticsearch_20170613_models.CancelLogstashDeletionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.cancel_task_with_options_async(instance_id, request, headers, runtime)
+        return await self.cancel_logstash_deletion_with_options_async(instance_id, request, headers, runtime)
 
     def cancel_task_with_options(
         self,
@@ -524,21 +506,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def capacity_plan(
+    def cancel_task(
         self,
-        request: elasticsearch_20170613_models.CapacityPlanRequest,
-    ) -> elasticsearch_20170613_models.CapacityPlanResponse:
+        instance_id: str,
+        request: elasticsearch_20170613_models.CancelTaskRequest,
+    ) -> elasticsearch_20170613_models.CancelTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.capacity_plan_with_options(request, headers, runtime)
+        return self.cancel_task_with_options(instance_id, request, headers, runtime)
 
-    async def capacity_plan_async(
+    async def cancel_task_async(
         self,
-        request: elasticsearch_20170613_models.CapacityPlanRequest,
-    ) -> elasticsearch_20170613_models.CapacityPlanResponse:
+        instance_id: str,
+        request: elasticsearch_20170613_models.CancelTaskRequest,
+    ) -> elasticsearch_20170613_models.CancelTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.capacity_plan_with_options_async(request, headers, runtime)
+        return await self.cancel_task_with_options_async(instance_id, request, headers, runtime)
 
     def capacity_plan_with_options(
         self,
@@ -612,23 +596,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def close_diagnosis(
+    def capacity_plan(
         self,
-        instance_id: str,
-        request: elasticsearch_20170613_models.CloseDiagnosisRequest,
-    ) -> elasticsearch_20170613_models.CloseDiagnosisResponse:
+        request: elasticsearch_20170613_models.CapacityPlanRequest,
+    ) -> elasticsearch_20170613_models.CapacityPlanResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.close_diagnosis_with_options(instance_id, request, headers, runtime)
+        return self.capacity_plan_with_options(request, headers, runtime)
 
-    async def close_diagnosis_async(
+    async def capacity_plan_async(
         self,
-        instance_id: str,
-        request: elasticsearch_20170613_models.CloseDiagnosisRequest,
-    ) -> elasticsearch_20170613_models.CloseDiagnosisResponse:
+        request: elasticsearch_20170613_models.CapacityPlanRequest,
+    ) -> elasticsearch_20170613_models.CapacityPlanResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.close_diagnosis_with_options_async(instance_id, request, headers, runtime)
+        return await self.capacity_plan_with_options_async(request, headers, runtime)
 
     def close_diagnosis_with_options(
         self,
@@ -696,23 +678,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def close_https(
+    def close_diagnosis(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.CloseHttpsRequest,
-    ) -> elasticsearch_20170613_models.CloseHttpsResponse:
+        request: elasticsearch_20170613_models.CloseDiagnosisRequest,
+    ) -> elasticsearch_20170613_models.CloseDiagnosisResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.close_https_with_options(instance_id, request, headers, runtime)
+        return self.close_diagnosis_with_options(instance_id, request, headers, runtime)
 
-    async def close_https_async(
+    async def close_diagnosis_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.CloseHttpsRequest,
-    ) -> elasticsearch_20170613_models.CloseHttpsResponse:
+        request: elasticsearch_20170613_models.CloseDiagnosisRequest,
+    ) -> elasticsearch_20170613_models.CloseDiagnosisResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.close_https_with_options_async(instance_id, request, headers, runtime)
+        return await self.close_diagnosis_with_options_async(instance_id, request, headers, runtime)
 
     def close_https_with_options(
         self,
@@ -776,25 +758,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def close_managed_index(
+    def close_https(
         self,
         instance_id: str,
-        index: str,
-        request: elasticsearch_20170613_models.CloseManagedIndexRequest,
-    ) -> elasticsearch_20170613_models.CloseManagedIndexResponse:
+        request: elasticsearch_20170613_models.CloseHttpsRequest,
+    ) -> elasticsearch_20170613_models.CloseHttpsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.close_managed_index_with_options(instance_id, index, request, headers, runtime)
+        return self.close_https_with_options(instance_id, request, headers, runtime)
 
-    async def close_managed_index_async(
+    async def close_https_async(
         self,
         instance_id: str,
-        index: str,
-        request: elasticsearch_20170613_models.CloseManagedIndexRequest,
-    ) -> elasticsearch_20170613_models.CloseManagedIndexResponse:
+        request: elasticsearch_20170613_models.CloseHttpsRequest,
+    ) -> elasticsearch_20170613_models.CloseHttpsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.close_managed_index_with_options_async(instance_id, index, request, headers, runtime)
+        return await self.close_https_with_options_async(instance_id, request, headers, runtime)
 
     def close_managed_index_with_options(
         self,
@@ -860,21 +840,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_collector(
+    def close_managed_index(
         self,
-        request: elasticsearch_20170613_models.CreateCollectorRequest,
-    ) -> elasticsearch_20170613_models.CreateCollectorResponse:
+        instance_id: str,
+        index: str,
+        request: elasticsearch_20170613_models.CloseManagedIndexRequest,
+    ) -> elasticsearch_20170613_models.CloseManagedIndexResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_collector_with_options(request, headers, runtime)
+        return self.close_managed_index_with_options(instance_id, index, request, headers, runtime)
 
-    async def create_collector_async(
+    async def close_managed_index_async(
         self,
-        request: elasticsearch_20170613_models.CreateCollectorRequest,
-    ) -> elasticsearch_20170613_models.CreateCollectorResponse:
+        instance_id: str,
+        index: str,
+        request: elasticsearch_20170613_models.CloseManagedIndexRequest,
+    ) -> elasticsearch_20170613_models.CloseManagedIndexResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_collector_with_options_async(request, headers, runtime)
+        return await self.close_managed_index_with_options_async(instance_id, index, request, headers, runtime)
 
     def create_collector_with_options(
         self,
@@ -938,25 +922,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_component_index(
+    def create_collector(
         self,
-        instance_id: str,
-        name: str,
-        request: elasticsearch_20170613_models.CreateComponentIndexRequest,
-    ) -> elasticsearch_20170613_models.CreateComponentIndexResponse:
+        request: elasticsearch_20170613_models.CreateCollectorRequest,
+    ) -> elasticsearch_20170613_models.CreateCollectorResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_component_index_with_options(instance_id, name, request, headers, runtime)
+        return self.create_collector_with_options(request, headers, runtime)
 
-    async def create_component_index_async(
+    async def create_collector_async(
         self,
-        instance_id: str,
-        name: str,
-        request: elasticsearch_20170613_models.CreateComponentIndexRequest,
-    ) -> elasticsearch_20170613_models.CreateComponentIndexResponse:
+        request: elasticsearch_20170613_models.CreateCollectorRequest,
+    ) -> elasticsearch_20170613_models.CreateCollectorResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_component_index_with_options_async(instance_id, name, request, headers, runtime)
+        return await self.create_collector_with_options_async(request, headers, runtime)
 
     def create_component_index_with_options(
         self,
@@ -1026,23 +1006,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_data_stream(
+    def create_component_index(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.CreateDataStreamRequest,
-    ) -> elasticsearch_20170613_models.CreateDataStreamResponse:
+        name: str,
+        request: elasticsearch_20170613_models.CreateComponentIndexRequest,
+    ) -> elasticsearch_20170613_models.CreateComponentIndexResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_data_stream_with_options(instance_id, request, headers, runtime)
+        return self.create_component_index_with_options(instance_id, name, request, headers, runtime)
 
-    async def create_data_stream_async(
+    async def create_component_index_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.CreateDataStreamRequest,
-    ) -> elasticsearch_20170613_models.CreateDataStreamResponse:
+        name: str,
+        request: elasticsearch_20170613_models.CreateComponentIndexRequest,
+    ) -> elasticsearch_20170613_models.CreateComponentIndexResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_data_stream_with_options_async(instance_id, request, headers, runtime)
+        return await self.create_component_index_with_options_async(instance_id, name, request, headers, runtime)
 
     def create_data_stream_with_options(
         self,
@@ -1108,23 +1090,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_data_tasks(
+    def create_data_stream(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.CreateDataTasksRequest,
-    ) -> elasticsearch_20170613_models.CreateDataTasksResponse:
+        request: elasticsearch_20170613_models.CreateDataStreamRequest,
+    ) -> elasticsearch_20170613_models.CreateDataStreamResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_data_tasks_with_options(instance_id, request, headers, runtime)
+        return self.create_data_stream_with_options(instance_id, request, headers, runtime)
 
-    async def create_data_tasks_async(
+    async def create_data_stream_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.CreateDataTasksRequest,
-    ) -> elasticsearch_20170613_models.CreateDataTasksResponse:
+        request: elasticsearch_20170613_models.CreateDataStreamRequest,
+    ) -> elasticsearch_20170613_models.CreateDataStreamResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_data_tasks_with_options_async(instance_id, request, headers, runtime)
+        return await self.create_data_stream_with_options_async(instance_id, request, headers, runtime)
 
     def create_data_tasks_with_options(
         self,
@@ -1140,7 +1122,7 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),
-            body=request.body
+            body=UtilClient.to_array(request.body)
         )
         params = open_api_models.Params(
             action='CreateDataTasks',
@@ -1172,7 +1154,7 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),
-            body=request.body
+            body=UtilClient.to_array(request.body)
         )
         params = open_api_models.Params(
             action='CreateDataTasks',
@@ -1190,23 +1172,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_ilmpolicy(
+    def create_data_tasks(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.CreateILMPolicyRequest,
-    ) -> elasticsearch_20170613_models.CreateILMPolicyResponse:
+        request: elasticsearch_20170613_models.CreateDataTasksRequest,
+    ) -> elasticsearch_20170613_models.CreateDataTasksResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_ilmpolicy_with_options(instance_id, request, headers, runtime)
+        return self.create_data_tasks_with_options(instance_id, request, headers, runtime)
 
-    async def create_ilmpolicy_async(
+    async def create_data_tasks_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.CreateILMPolicyRequest,
-    ) -> elasticsearch_20170613_models.CreateILMPolicyResponse:
+        request: elasticsearch_20170613_models.CreateDataTasksRequest,
+    ) -> elasticsearch_20170613_models.CreateDataTasksResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_ilmpolicy_with_options_async(instance_id, request, headers, runtime)
+        return await self.create_data_tasks_with_options_async(instance_id, request, headers, runtime)
 
     def create_ilmpolicy_with_options(
         self,
@@ -1272,23 +1254,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_index_template(
+    def create_ilmpolicy(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.CreateIndexTemplateRequest,
-    ) -> elasticsearch_20170613_models.CreateIndexTemplateResponse:
+        request: elasticsearch_20170613_models.CreateILMPolicyRequest,
+    ) -> elasticsearch_20170613_models.CreateILMPolicyResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_index_template_with_options(instance_id, request, headers, runtime)
+        return self.create_ilmpolicy_with_options(instance_id, request, headers, runtime)
 
-    async def create_index_template_async(
+    async def create_ilmpolicy_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.CreateIndexTemplateRequest,
-    ) -> elasticsearch_20170613_models.CreateIndexTemplateResponse:
+        request: elasticsearch_20170613_models.CreateILMPolicyRequest,
+    ) -> elasticsearch_20170613_models.CreateILMPolicyResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_index_template_with_options_async(instance_id, request, headers, runtime)
+        return await self.create_ilmpolicy_with_options_async(instance_id, request, headers, runtime)
 
     def create_index_template_with_options(
         self,
@@ -1354,21 +1336,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_logstash(
+    def create_index_template(
         self,
-        request: elasticsearch_20170613_models.CreateLogstashRequest,
-    ) -> elasticsearch_20170613_models.CreateLogstashResponse:
+        instance_id: str,
+        request: elasticsearch_20170613_models.CreateIndexTemplateRequest,
+    ) -> elasticsearch_20170613_models.CreateIndexTemplateResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_logstash_with_options(request, headers, runtime)
+        return self.create_index_template_with_options(instance_id, request, headers, runtime)
 
-    async def create_logstash_async(
+    async def create_index_template_async(
         self,
-        request: elasticsearch_20170613_models.CreateLogstashRequest,
-    ) -> elasticsearch_20170613_models.CreateLogstashResponse:
+        instance_id: str,
+        request: elasticsearch_20170613_models.CreateIndexTemplateRequest,
+    ) -> elasticsearch_20170613_models.CreateIndexTemplateResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_logstash_with_options_async(request, headers, runtime)
+        return await self.create_index_template_with_options_async(instance_id, request, headers, runtime)
 
     def create_logstash_with_options(
         self,
@@ -1462,23 +1446,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_pipelines(
+    def create_logstash(
         self,
-        instance_id: str,
-        request: elasticsearch_20170613_models.CreatePipelinesRequest,
-    ) -> elasticsearch_20170613_models.CreatePipelinesResponse:
+        request: elasticsearch_20170613_models.CreateLogstashRequest,
+    ) -> elasticsearch_20170613_models.CreateLogstashResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_pipelines_with_options(instance_id, request, headers, runtime)
+        return self.create_logstash_with_options(request, headers, runtime)
 
-    async def create_pipelines_async(
+    async def create_logstash_async(
         self,
-        instance_id: str,
-        request: elasticsearch_20170613_models.CreatePipelinesRequest,
-    ) -> elasticsearch_20170613_models.CreatePipelinesResponse:
+        request: elasticsearch_20170613_models.CreateLogstashRequest,
+    ) -> elasticsearch_20170613_models.CreateLogstashResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_pipelines_with_options_async(instance_id, request, headers, runtime)
+        return await self.create_logstash_with_options_async(request, headers, runtime)
 
     def create_pipelines_with_options(
         self,
@@ -1548,23 +1530,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_snapshot(
+    def create_pipelines(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.CreateSnapshotRequest,
-    ) -> elasticsearch_20170613_models.CreateSnapshotResponse:
+        request: elasticsearch_20170613_models.CreatePipelinesRequest,
+    ) -> elasticsearch_20170613_models.CreatePipelinesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_snapshot_with_options(instance_id, request, headers, runtime)
+        return self.create_pipelines_with_options(instance_id, request, headers, runtime)
 
-    async def create_snapshot_async(
+    async def create_pipelines_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.CreateSnapshotRequest,
-    ) -> elasticsearch_20170613_models.CreateSnapshotResponse:
+        request: elasticsearch_20170613_models.CreatePipelinesRequest,
+    ) -> elasticsearch_20170613_models.CreatePipelinesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_snapshot_with_options_async(instance_id, request, headers, runtime)
+        return await self.create_pipelines_with_options_async(instance_id, request, headers, runtime)
 
     def create_snapshot_with_options(
         self,
@@ -1630,23 +1612,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_vpc_endpoint(
+    def create_snapshot(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.CreateVpcEndpointRequest,
-    ) -> elasticsearch_20170613_models.CreateVpcEndpointResponse:
+        request: elasticsearch_20170613_models.CreateSnapshotRequest,
+    ) -> elasticsearch_20170613_models.CreateSnapshotResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_vpc_endpoint_with_options(instance_id, request, headers, runtime)
+        return self.create_snapshot_with_options(instance_id, request, headers, runtime)
 
-    async def create_vpc_endpoint_async(
+    async def create_snapshot_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.CreateVpcEndpointRequest,
-    ) -> elasticsearch_20170613_models.CreateVpcEndpointResponse:
+        request: elasticsearch_20170613_models.CreateSnapshotRequest,
+    ) -> elasticsearch_20170613_models.CreateSnapshotResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_vpc_endpoint_with_options_async(instance_id, request, headers, runtime)
+        return await self.create_snapshot_with_options_async(instance_id, request, headers, runtime)
 
     def create_vpc_endpoint_with_options(
         self,
@@ -1726,23 +1708,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def deactivate_zones(
+    def create_vpc_endpoint(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.DeactivateZonesRequest,
-    ) -> elasticsearch_20170613_models.DeactivateZonesResponse:
+        request: elasticsearch_20170613_models.CreateVpcEndpointRequest,
+    ) -> elasticsearch_20170613_models.CreateVpcEndpointResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.deactivate_zones_with_options(instance_id, request, headers, runtime)
+        return self.create_vpc_endpoint_with_options(instance_id, request, headers, runtime)
 
-    async def deactivate_zones_async(
+    async def create_vpc_endpoint_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.DeactivateZonesRequest,
-    ) -> elasticsearch_20170613_models.DeactivateZonesResponse:
+        request: elasticsearch_20170613_models.CreateVpcEndpointRequest,
+    ) -> elasticsearch_20170613_models.CreateVpcEndpointResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.deactivate_zones_with_options_async(instance_id, request, headers, runtime)
+        return await self.create_vpc_endpoint_with_options_async(instance_id, request, headers, runtime)
 
     def deactivate_zones_with_options(
         self,
@@ -1808,23 +1790,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_collector(
+    def deactivate_zones(
         self,
-        res_id: str,
-        request: elasticsearch_20170613_models.DeleteCollectorRequest,
-    ) -> elasticsearch_20170613_models.DeleteCollectorResponse:
+        instance_id: str,
+        request: elasticsearch_20170613_models.DeactivateZonesRequest,
+    ) -> elasticsearch_20170613_models.DeactivateZonesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_collector_with_options(res_id, request, headers, runtime)
+        return self.deactivate_zones_with_options(instance_id, request, headers, runtime)
 
-    async def delete_collector_async(
+    async def deactivate_zones_async(
         self,
-        res_id: str,
-        request: elasticsearch_20170613_models.DeleteCollectorRequest,
-    ) -> elasticsearch_20170613_models.DeleteCollectorResponse:
+        instance_id: str,
+        request: elasticsearch_20170613_models.DeactivateZonesRequest,
+    ) -> elasticsearch_20170613_models.DeactivateZonesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_collector_with_options_async(res_id, request, headers, runtime)
+        return await self.deactivate_zones_with_options_async(instance_id, request, headers, runtime)
 
     def delete_collector_with_options(
         self,
@@ -1888,23 +1870,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_component_index(
+    def delete_collector(
         self,
-        instance_id: str,
-        name: str,
-    ) -> elasticsearch_20170613_models.DeleteComponentIndexResponse:
+        res_id: str,
+        request: elasticsearch_20170613_models.DeleteCollectorRequest,
+    ) -> elasticsearch_20170613_models.DeleteCollectorResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_component_index_with_options(instance_id, name, headers, runtime)
+        return self.delete_collector_with_options(res_id, request, headers, runtime)
 
-    async def delete_component_index_async(
+    async def delete_collector_async(
         self,
-        instance_id: str,
-        name: str,
-    ) -> elasticsearch_20170613_models.DeleteComponentIndexResponse:
+        res_id: str,
+        request: elasticsearch_20170613_models.DeleteCollectorRequest,
+    ) -> elasticsearch_20170613_models.DeleteCollectorResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_component_index_with_options_async(instance_id, name, headers, runtime)
+        return await self.delete_collector_with_options_async(res_id, request, headers, runtime)
 
     def delete_component_index_with_options(
         self,
@@ -1958,23 +1940,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_connected_cluster(
+    def delete_component_index(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.DeleteConnectedClusterRequest,
-    ) -> elasticsearch_20170613_models.DeleteConnectedClusterResponse:
+        name: str,
+    ) -> elasticsearch_20170613_models.DeleteComponentIndexResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_connected_cluster_with_options(instance_id, request, headers, runtime)
+        return self.delete_component_index_with_options(instance_id, name, headers, runtime)
 
-    async def delete_connected_cluster_async(
+    async def delete_component_index_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.DeleteConnectedClusterRequest,
-    ) -> elasticsearch_20170613_models.DeleteConnectedClusterResponse:
+        name: str,
+    ) -> elasticsearch_20170613_models.DeleteComponentIndexResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_connected_cluster_with_options_async(instance_id, request, headers, runtime)
+        return await self.delete_component_index_with_options_async(instance_id, name, headers, runtime)
 
     def delete_connected_cluster_with_options(
         self,
@@ -2042,25 +2024,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_data_stream(
+    def delete_connected_cluster(
         self,
         instance_id: str,
-        data_stream: str,
-        request: elasticsearch_20170613_models.DeleteDataStreamRequest,
-    ) -> elasticsearch_20170613_models.DeleteDataStreamResponse:
+        request: elasticsearch_20170613_models.DeleteConnectedClusterRequest,
+    ) -> elasticsearch_20170613_models.DeleteConnectedClusterResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_data_stream_with_options(instance_id, data_stream, request, headers, runtime)
+        return self.delete_connected_cluster_with_options(instance_id, request, headers, runtime)
 
-    async def delete_data_stream_async(
+    async def delete_connected_cluster_async(
         self,
         instance_id: str,
-        data_stream: str,
-        request: elasticsearch_20170613_models.DeleteDataStreamRequest,
-    ) -> elasticsearch_20170613_models.DeleteDataStreamResponse:
+        request: elasticsearch_20170613_models.DeleteConnectedClusterRequest,
+    ) -> elasticsearch_20170613_models.DeleteConnectedClusterResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_data_stream_with_options_async(instance_id, data_stream, request, headers, runtime)
+        return await self.delete_connected_cluster_with_options_async(instance_id, request, headers, runtime)
 
     def delete_data_stream_with_options(
         self,
@@ -2126,23 +2106,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_data_task(
+    def delete_data_stream(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.DeleteDataTaskRequest,
-    ) -> elasticsearch_20170613_models.DeleteDataTaskResponse:
+        data_stream: str,
+        request: elasticsearch_20170613_models.DeleteDataStreamRequest,
+    ) -> elasticsearch_20170613_models.DeleteDataStreamResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_data_task_with_options(instance_id, request, headers, runtime)
+        return self.delete_data_stream_with_options(instance_id, data_stream, request, headers, runtime)
 
-    async def delete_data_task_async(
+    async def delete_data_stream_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.DeleteDataTaskRequest,
-    ) -> elasticsearch_20170613_models.DeleteDataTaskResponse:
+        data_stream: str,
+        request: elasticsearch_20170613_models.DeleteDataStreamRequest,
+    ) -> elasticsearch_20170613_models.DeleteDataStreamResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_data_task_with_options_async(instance_id, request, headers, runtime)
+        return await self.delete_data_stream_with_options_async(instance_id, data_stream, request, headers, runtime)
 
     def delete_data_task_with_options(
         self,
@@ -2210,23 +2192,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_deprecated_template(
+    def delete_data_task(
         self,
         instance_id: str,
-        name: str,
-    ) -> elasticsearch_20170613_models.DeleteDeprecatedTemplateResponse:
+        request: elasticsearch_20170613_models.DeleteDataTaskRequest,
+    ) -> elasticsearch_20170613_models.DeleteDataTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_deprecated_template_with_options(instance_id, name, headers, runtime)
+        return self.delete_data_task_with_options(instance_id, request, headers, runtime)
 
-    async def delete_deprecated_template_async(
+    async def delete_data_task_async(
         self,
         instance_id: str,
-        name: str,
-    ) -> elasticsearch_20170613_models.DeleteDeprecatedTemplateResponse:
+        request: elasticsearch_20170613_models.DeleteDataTaskRequest,
+    ) -> elasticsearch_20170613_models.DeleteDataTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_deprecated_template_with_options_async(instance_id, name, headers, runtime)
+        return await self.delete_data_task_with_options_async(instance_id, request, headers, runtime)
 
     def delete_deprecated_template_with_options(
         self,
@@ -2280,23 +2262,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_ilmpolicy(
+    def delete_deprecated_template(
         self,
         instance_id: str,
-        policy_name: str,
-    ) -> elasticsearch_20170613_models.DeleteILMPolicyResponse:
+        name: str,
+    ) -> elasticsearch_20170613_models.DeleteDeprecatedTemplateResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_ilmpolicy_with_options(instance_id, policy_name, headers, runtime)
+        return self.delete_deprecated_template_with_options(instance_id, name, headers, runtime)
 
-    async def delete_ilmpolicy_async(
+    async def delete_deprecated_template_async(
         self,
         instance_id: str,
-        policy_name: str,
-    ) -> elasticsearch_20170613_models.DeleteILMPolicyResponse:
+        name: str,
+    ) -> elasticsearch_20170613_models.DeleteDeprecatedTemplateResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_ilmpolicy_with_options_async(instance_id, policy_name, headers, runtime)
+        return await self.delete_deprecated_template_with_options_async(instance_id, name, headers, runtime)
 
     def delete_ilmpolicy_with_options(
         self,
@@ -2350,23 +2332,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_index_template(
+    def delete_ilmpolicy(
         self,
         instance_id: str,
-        index_template: str,
-    ) -> elasticsearch_20170613_models.DeleteIndexTemplateResponse:
+        policy_name: str,
+    ) -> elasticsearch_20170613_models.DeleteILMPolicyResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_index_template_with_options(instance_id, index_template, headers, runtime)
+        return self.delete_ilmpolicy_with_options(instance_id, policy_name, headers, runtime)
 
-    async def delete_index_template_async(
+    async def delete_ilmpolicy_async(
         self,
         instance_id: str,
-        index_template: str,
-    ) -> elasticsearch_20170613_models.DeleteIndexTemplateResponse:
+        policy_name: str,
+    ) -> elasticsearch_20170613_models.DeleteILMPolicyResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_index_template_with_options_async(instance_id, index_template, headers, runtime)
+        return await self.delete_ilmpolicy_with_options_async(instance_id, policy_name, headers, runtime)
 
     def delete_index_template_with_options(
         self,
@@ -2420,23 +2402,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_instance(
+    def delete_index_template(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.DeleteInstanceRequest,
-    ) -> elasticsearch_20170613_models.DeleteInstanceResponse:
+        index_template: str,
+    ) -> elasticsearch_20170613_models.DeleteIndexTemplateResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_instance_with_options(instance_id, request, headers, runtime)
+        return self.delete_index_template_with_options(instance_id, index_template, headers, runtime)
 
-    async def delete_instance_async(
+    async def delete_index_template_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.DeleteInstanceRequest,
-    ) -> elasticsearch_20170613_models.DeleteInstanceResponse:
+        index_template: str,
+    ) -> elasticsearch_20170613_models.DeleteIndexTemplateResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_instance_with_options_async(instance_id, request, headers, runtime)
+        return await self.delete_index_template_with_options_async(instance_id, index_template, headers, runtime)
 
     def delete_instance_with_options(
         self,
@@ -2504,23 +2486,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_logstash(
+    def delete_instance(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.DeleteLogstashRequest,
-    ) -> elasticsearch_20170613_models.DeleteLogstashResponse:
+        request: elasticsearch_20170613_models.DeleteInstanceRequest,
+    ) -> elasticsearch_20170613_models.DeleteInstanceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_logstash_with_options(instance_id, request, headers, runtime)
+        return self.delete_instance_with_options(instance_id, request, headers, runtime)
 
-    async def delete_logstash_async(
+    async def delete_instance_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.DeleteLogstashRequest,
-    ) -> elasticsearch_20170613_models.DeleteLogstashResponse:
+        request: elasticsearch_20170613_models.DeleteInstanceRequest,
+    ) -> elasticsearch_20170613_models.DeleteInstanceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_logstash_with_options_async(instance_id, request, headers, runtime)
+        return await self.delete_instance_with_options_async(instance_id, request, headers, runtime)
 
     def delete_logstash_with_options(
         self,
@@ -2588,23 +2570,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_pipelines(
+    def delete_logstash(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.DeletePipelinesRequest,
-    ) -> elasticsearch_20170613_models.DeletePipelinesResponse:
+        request: elasticsearch_20170613_models.DeleteLogstashRequest,
+    ) -> elasticsearch_20170613_models.DeleteLogstashResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_pipelines_with_options(instance_id, request, headers, runtime)
+        return self.delete_logstash_with_options(instance_id, request, headers, runtime)
 
-    async def delete_pipelines_async(
+    async def delete_logstash_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.DeletePipelinesRequest,
-    ) -> elasticsearch_20170613_models.DeletePipelinesResponse:
+        request: elasticsearch_20170613_models.DeleteLogstashRequest,
+    ) -> elasticsearch_20170613_models.DeleteLogstashResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_pipelines_with_options_async(instance_id, request, headers, runtime)
+        return await self.delete_logstash_with_options_async(instance_id, request, headers, runtime)
 
     def delete_pipelines_with_options(
         self,
@@ -2672,23 +2654,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_snapshot_repo(
+    def delete_pipelines(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.DeleteSnapshotRepoRequest,
-    ) -> elasticsearch_20170613_models.DeleteSnapshotRepoResponse:
+        request: elasticsearch_20170613_models.DeletePipelinesRequest,
+    ) -> elasticsearch_20170613_models.DeletePipelinesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_snapshot_repo_with_options(instance_id, request, headers, runtime)
+        return self.delete_pipelines_with_options(instance_id, request, headers, runtime)
 
-    async def delete_snapshot_repo_async(
+    async def delete_pipelines_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.DeleteSnapshotRepoRequest,
-    ) -> elasticsearch_20170613_models.DeleteSnapshotRepoResponse:
+        request: elasticsearch_20170613_models.DeletePipelinesRequest,
+    ) -> elasticsearch_20170613_models.DeletePipelinesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_snapshot_repo_with_options_async(instance_id, request, headers, runtime)
+        return await self.delete_pipelines_with_options_async(instance_id, request, headers, runtime)
 
     def delete_snapshot_repo_with_options(
         self,
@@ -2756,25 +2738,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_vpc_endpoint(
+    def delete_snapshot_repo(
         self,
         instance_id: str,
-        endpoint_id: str,
-        request: elasticsearch_20170613_models.DeleteVpcEndpointRequest,
-    ) -> elasticsearch_20170613_models.DeleteVpcEndpointResponse:
+        request: elasticsearch_20170613_models.DeleteSnapshotRepoRequest,
+    ) -> elasticsearch_20170613_models.DeleteSnapshotRepoResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_vpc_endpoint_with_options(instance_id, endpoint_id, request, headers, runtime)
+        return self.delete_snapshot_repo_with_options(instance_id, request, headers, runtime)
 
-    async def delete_vpc_endpoint_async(
+    async def delete_snapshot_repo_async(
         self,
         instance_id: str,
-        endpoint_id: str,
-        request: elasticsearch_20170613_models.DeleteVpcEndpointRequest,
-    ) -> elasticsearch_20170613_models.DeleteVpcEndpointResponse:
+        request: elasticsearch_20170613_models.DeleteSnapshotRepoRequest,
+    ) -> elasticsearch_20170613_models.DeleteSnapshotRepoResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_vpc_endpoint_with_options_async(instance_id, endpoint_id, request, headers, runtime)
+        return await self.delete_snapshot_repo_with_options_async(instance_id, request, headers, runtime)
 
     def delete_vpc_endpoint_with_options(
         self,
@@ -2840,21 +2820,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_ack_operator(
+    def delete_vpc_endpoint(
         self,
-        cluster_id: str,
-    ) -> elasticsearch_20170613_models.DescribeAckOperatorResponse:
+        instance_id: str,
+        endpoint_id: str,
+        request: elasticsearch_20170613_models.DeleteVpcEndpointRequest,
+    ) -> elasticsearch_20170613_models.DeleteVpcEndpointResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_ack_operator_with_options(cluster_id, headers, runtime)
+        return self.delete_vpc_endpoint_with_options(instance_id, endpoint_id, request, headers, runtime)
 
-    async def describe_ack_operator_async(
+    async def delete_vpc_endpoint_async(
         self,
-        cluster_id: str,
-    ) -> elasticsearch_20170613_models.DescribeAckOperatorResponse:
+        instance_id: str,
+        endpoint_id: str,
+        request: elasticsearch_20170613_models.DeleteVpcEndpointRequest,
+    ) -> elasticsearch_20170613_models.DeleteVpcEndpointResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_ack_operator_with_options_async(cluster_id, headers, runtime)
+        return await self.delete_vpc_endpoint_with_options_async(instance_id, endpoint_id, request, headers, runtime)
 
     def describe_ack_operator_with_options(
         self,
@@ -2906,21 +2890,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_apm(
+    def describe_ack_operator(
         self,
-        instance_id: str,
-    ) -> elasticsearch_20170613_models.DescribeApmResponse:
+        cluster_id: str,
+    ) -> elasticsearch_20170613_models.DescribeAckOperatorResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_apm_with_options(instance_id, headers, runtime)
+        return self.describe_ack_operator_with_options(cluster_id, headers, runtime)
 
-    async def describe_apm_async(
+    async def describe_ack_operator_async(
         self,
-        instance_id: str,
-    ) -> elasticsearch_20170613_models.DescribeApmResponse:
+        cluster_id: str,
+    ) -> elasticsearch_20170613_models.DescribeAckOperatorResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_apm_with_options_async(instance_id, headers, runtime)
+        return await self.describe_ack_operator_with_options_async(cluster_id, headers, runtime)
 
     def describe_apm_with_options(
         self,
@@ -2972,21 +2956,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_collector(
+    def describe_apm(
         self,
-        res_id: str,
-    ) -> elasticsearch_20170613_models.DescribeCollectorResponse:
+        instance_id: str,
+    ) -> elasticsearch_20170613_models.DescribeApmResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_collector_with_options(res_id, headers, runtime)
+        return self.describe_apm_with_options(instance_id, headers, runtime)
 
-    async def describe_collector_async(
+    async def describe_apm_async(
         self,
-        res_id: str,
-    ) -> elasticsearch_20170613_models.DescribeCollectorResponse:
+        instance_id: str,
+    ) -> elasticsearch_20170613_models.DescribeApmResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_collector_with_options_async(res_id, headers, runtime)
+        return await self.describe_apm_with_options_async(instance_id, headers, runtime)
 
     def describe_collector_with_options(
         self,
@@ -3038,23 +3022,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_component_index(
+    def describe_collector(
         self,
-        instance_id: str,
-        name: str,
-    ) -> elasticsearch_20170613_models.DescribeComponentIndexResponse:
+        res_id: str,
+    ) -> elasticsearch_20170613_models.DescribeCollectorResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_component_index_with_options(instance_id, name, headers, runtime)
+        return self.describe_collector_with_options(res_id, headers, runtime)
 
-    async def describe_component_index_async(
+    async def describe_collector_async(
         self,
-        instance_id: str,
-        name: str,
-    ) -> elasticsearch_20170613_models.DescribeComponentIndexResponse:
+        res_id: str,
+    ) -> elasticsearch_20170613_models.DescribeCollectorResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_component_index_with_options_async(instance_id, name, headers, runtime)
+        return await self.describe_collector_with_options_async(res_id, headers, runtime)
 
     def describe_component_index_with_options(
         self,
@@ -3108,23 +3090,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_connectable_clusters(
+    def describe_component_index(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.DescribeConnectableClustersRequest,
-    ) -> elasticsearch_20170613_models.DescribeConnectableClustersResponse:
+        name: str,
+    ) -> elasticsearch_20170613_models.DescribeComponentIndexResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_connectable_clusters_with_options(instance_id, request, headers, runtime)
+        return self.describe_component_index_with_options(instance_id, name, headers, runtime)
 
-    async def describe_connectable_clusters_async(
+    async def describe_component_index_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.DescribeConnectableClustersRequest,
-    ) -> elasticsearch_20170613_models.DescribeConnectableClustersResponse:
+        name: str,
+    ) -> elasticsearch_20170613_models.DescribeComponentIndexResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_connectable_clusters_with_options_async(instance_id, request, headers, runtime)
+        return await self.describe_component_index_with_options_async(instance_id, name, headers, runtime)
 
     def describe_connectable_clusters_with_options(
         self,
@@ -3188,23 +3170,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_deprecated_template(
+    def describe_connectable_clusters(
         self,
         instance_id: str,
-        name: str,
-    ) -> elasticsearch_20170613_models.DescribeDeprecatedTemplateResponse:
+        request: elasticsearch_20170613_models.DescribeConnectableClustersRequest,
+    ) -> elasticsearch_20170613_models.DescribeConnectableClustersResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_deprecated_template_with_options(instance_id, name, headers, runtime)
+        return self.describe_connectable_clusters_with_options(instance_id, request, headers, runtime)
 
-    async def describe_deprecated_template_async(
+    async def describe_connectable_clusters_async(
         self,
         instance_id: str,
-        name: str,
-    ) -> elasticsearch_20170613_models.DescribeDeprecatedTemplateResponse:
+        request: elasticsearch_20170613_models.DescribeConnectableClustersRequest,
+    ) -> elasticsearch_20170613_models.DescribeConnectableClustersResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_deprecated_template_with_options_async(instance_id, name, headers, runtime)
+        return await self.describe_connectable_clusters_with_options_async(instance_id, request, headers, runtime)
 
     def describe_deprecated_template_with_options(
         self,
@@ -3258,25 +3240,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_diagnose_report(
+    def describe_deprecated_template(
         self,
         instance_id: str,
-        report_id: str,
-        request: elasticsearch_20170613_models.DescribeDiagnoseReportRequest,
-    ) -> elasticsearch_20170613_models.DescribeDiagnoseReportResponse:
+        name: str,
+    ) -> elasticsearch_20170613_models.DescribeDeprecatedTemplateResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_diagnose_report_with_options(instance_id, report_id, request, headers, runtime)
+        return self.describe_deprecated_template_with_options(instance_id, name, headers, runtime)
 
-    async def describe_diagnose_report_async(
+    async def describe_deprecated_template_async(
         self,
         instance_id: str,
-        report_id: str,
-        request: elasticsearch_20170613_models.DescribeDiagnoseReportRequest,
-    ) -> elasticsearch_20170613_models.DescribeDiagnoseReportResponse:
+        name: str,
+    ) -> elasticsearch_20170613_models.DescribeDeprecatedTemplateResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_diagnose_report_with_options_async(instance_id, report_id, request, headers, runtime)
+        return await self.describe_deprecated_template_with_options_async(instance_id, name, headers, runtime)
 
     def describe_diagnose_report_with_options(
         self,
@@ -3342,23 +3322,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_diagnosis_settings(
+    def describe_diagnose_report(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.DescribeDiagnosisSettingsRequest,
-    ) -> elasticsearch_20170613_models.DescribeDiagnosisSettingsResponse:
+        report_id: str,
+        request: elasticsearch_20170613_models.DescribeDiagnoseReportRequest,
+    ) -> elasticsearch_20170613_models.DescribeDiagnoseReportResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_diagnosis_settings_with_options(instance_id, request, headers, runtime)
+        return self.describe_diagnose_report_with_options(instance_id, report_id, request, headers, runtime)
 
-    async def describe_diagnosis_settings_async(
+    async def describe_diagnose_report_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.DescribeDiagnosisSettingsRequest,
-    ) -> elasticsearch_20170613_models.DescribeDiagnosisSettingsResponse:
+        report_id: str,
+        request: elasticsearch_20170613_models.DescribeDiagnoseReportRequest,
+    ) -> elasticsearch_20170613_models.DescribeDiagnoseReportResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_diagnosis_settings_with_options_async(instance_id, request, headers, runtime)
+        return await self.describe_diagnose_report_with_options_async(instance_id, report_id, request, headers, runtime)
 
     def describe_diagnosis_settings_with_options(
         self,
@@ -3422,21 +3404,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_dynamic_settings(
+    def describe_diagnosis_settings(
         self,
         instance_id: str,
-    ) -> elasticsearch_20170613_models.DescribeDynamicSettingsResponse:
+        request: elasticsearch_20170613_models.DescribeDiagnosisSettingsRequest,
+    ) -> elasticsearch_20170613_models.DescribeDiagnosisSettingsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_dynamic_settings_with_options(instance_id, headers, runtime)
+        return self.describe_diagnosis_settings_with_options(instance_id, request, headers, runtime)
 
-    async def describe_dynamic_settings_async(
+    async def describe_diagnosis_settings_async(
         self,
         instance_id: str,
-    ) -> elasticsearch_20170613_models.DescribeDynamicSettingsResponse:
+        request: elasticsearch_20170613_models.DescribeDiagnosisSettingsRequest,
+    ) -> elasticsearch_20170613_models.DescribeDiagnosisSettingsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_dynamic_settings_with_options_async(instance_id, headers, runtime)
+        return await self.describe_diagnosis_settings_with_options_async(instance_id, request, headers, runtime)
 
     def describe_dynamic_settings_with_options(
         self,
@@ -3488,21 +3472,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_elasticsearch_health(
+    def describe_dynamic_settings(
         self,
         instance_id: str,
-    ) -> elasticsearch_20170613_models.DescribeElasticsearchHealthResponse:
+    ) -> elasticsearch_20170613_models.DescribeDynamicSettingsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_elasticsearch_health_with_options(instance_id, headers, runtime)
+        return self.describe_dynamic_settings_with_options(instance_id, headers, runtime)
 
-    async def describe_elasticsearch_health_async(
+    async def describe_dynamic_settings_async(
         self,
         instance_id: str,
-    ) -> elasticsearch_20170613_models.DescribeElasticsearchHealthResponse:
+    ) -> elasticsearch_20170613_models.DescribeDynamicSettingsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_elasticsearch_health_with_options_async(instance_id, headers, runtime)
+        return await self.describe_dynamic_settings_with_options_async(instance_id, headers, runtime)
 
     def describe_elasticsearch_health_with_options(
         self,
@@ -3554,23 +3538,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_ilmpolicy(
+    def describe_elasticsearch_health(
         self,
         instance_id: str,
-        policy_name: str,
-    ) -> elasticsearch_20170613_models.DescribeILMPolicyResponse:
+    ) -> elasticsearch_20170613_models.DescribeElasticsearchHealthResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_ilmpolicy_with_options(instance_id, policy_name, headers, runtime)
+        return self.describe_elasticsearch_health_with_options(instance_id, headers, runtime)
 
-    async def describe_ilmpolicy_async(
+    async def describe_elasticsearch_health_async(
         self,
         instance_id: str,
-        policy_name: str,
-    ) -> elasticsearch_20170613_models.DescribeILMPolicyResponse:
+    ) -> elasticsearch_20170613_models.DescribeElasticsearchHealthResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_ilmpolicy_with_options_async(instance_id, policy_name, headers, runtime)
+        return await self.describe_elasticsearch_health_with_options_async(instance_id, headers, runtime)
 
     def describe_ilmpolicy_with_options(
         self,
@@ -3624,23 +3606,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_index_template(
+    def describe_ilmpolicy(
         self,
         instance_id: str,
-        index_template: str,
-    ) -> elasticsearch_20170613_models.DescribeIndexTemplateResponse:
+        policy_name: str,
+    ) -> elasticsearch_20170613_models.DescribeILMPolicyResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_index_template_with_options(instance_id, index_template, headers, runtime)
+        return self.describe_ilmpolicy_with_options(instance_id, policy_name, headers, runtime)
 
-    async def describe_index_template_async(
+    async def describe_ilmpolicy_async(
         self,
         instance_id: str,
-        index_template: str,
-    ) -> elasticsearch_20170613_models.DescribeIndexTemplateResponse:
+        policy_name: str,
+    ) -> elasticsearch_20170613_models.DescribeILMPolicyResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_index_template_with_options_async(instance_id, index_template, headers, runtime)
+        return await self.describe_ilmpolicy_with_options_async(instance_id, policy_name, headers, runtime)
 
     def describe_index_template_with_options(
         self,
@@ -3694,21 +3676,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_instance(
+    def describe_index_template(
         self,
         instance_id: str,
-    ) -> elasticsearch_20170613_models.DescribeInstanceResponse:
+        index_template: str,
+    ) -> elasticsearch_20170613_models.DescribeIndexTemplateResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_instance_with_options(instance_id, headers, runtime)
+        return self.describe_index_template_with_options(instance_id, index_template, headers, runtime)
 
-    async def describe_instance_async(
+    async def describe_index_template_async(
         self,
         instance_id: str,
-    ) -> elasticsearch_20170613_models.DescribeInstanceResponse:
+        index_template: str,
+    ) -> elasticsearch_20170613_models.DescribeIndexTemplateResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_instance_with_options_async(instance_id, headers, runtime)
+        return await self.describe_index_template_with_options_async(instance_id, index_template, headers, runtime)
 
     def describe_instance_with_options(
         self,
@@ -3760,21 +3744,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_kibana_settings(
+    def describe_instance(
         self,
         instance_id: str,
-    ) -> elasticsearch_20170613_models.DescribeKibanaSettingsResponse:
+    ) -> elasticsearch_20170613_models.DescribeInstanceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_kibana_settings_with_options(instance_id, headers, runtime)
+        return self.describe_instance_with_options(instance_id, headers, runtime)
 
-    async def describe_kibana_settings_async(
+    async def describe_instance_async(
         self,
         instance_id: str,
-    ) -> elasticsearch_20170613_models.DescribeKibanaSettingsResponse:
+    ) -> elasticsearch_20170613_models.DescribeInstanceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_kibana_settings_with_options_async(instance_id, headers, runtime)
+        return await self.describe_instance_with_options_async(instance_id, headers, runtime)
 
     def describe_kibana_settings_with_options(
         self,
@@ -3826,21 +3810,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_logstash(
+    def describe_kibana_settings(
         self,
         instance_id: str,
-    ) -> elasticsearch_20170613_models.DescribeLogstashResponse:
+    ) -> elasticsearch_20170613_models.DescribeKibanaSettingsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_logstash_with_options(instance_id, headers, runtime)
+        return self.describe_kibana_settings_with_options(instance_id, headers, runtime)
 
-    async def describe_logstash_async(
+    async def describe_kibana_settings_async(
         self,
         instance_id: str,
-    ) -> elasticsearch_20170613_models.DescribeLogstashResponse:
+    ) -> elasticsearch_20170613_models.DescribeKibanaSettingsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_logstash_with_options_async(instance_id, headers, runtime)
+        return await self.describe_kibana_settings_with_options_async(instance_id, headers, runtime)
 
     def describe_logstash_with_options(
         self,
@@ -3892,23 +3876,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_pipeline(
+    def describe_logstash(
         self,
         instance_id: str,
-        pipeline_id: str,
-    ) -> elasticsearch_20170613_models.DescribePipelineResponse:
+    ) -> elasticsearch_20170613_models.DescribeLogstashResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_pipeline_with_options(instance_id, pipeline_id, headers, runtime)
+        return self.describe_logstash_with_options(instance_id, headers, runtime)
 
-    async def describe_pipeline_async(
+    async def describe_logstash_async(
         self,
         instance_id: str,
-        pipeline_id: str,
-    ) -> elasticsearch_20170613_models.DescribePipelineResponse:
+    ) -> elasticsearch_20170613_models.DescribeLogstashResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_pipeline_with_options_async(instance_id, pipeline_id, headers, runtime)
+        return await self.describe_logstash_with_options_async(instance_id, headers, runtime)
 
     def describe_pipeline_with_options(
         self,
@@ -3962,23 +3944,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_pipeline_management_config(
+    def describe_pipeline(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.DescribePipelineManagementConfigRequest,
-    ) -> elasticsearch_20170613_models.DescribePipelineManagementConfigResponse:
+        pipeline_id: str,
+    ) -> elasticsearch_20170613_models.DescribePipelineResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_pipeline_management_config_with_options(instance_id, request, headers, runtime)
+        return self.describe_pipeline_with_options(instance_id, pipeline_id, headers, runtime)
 
-    async def describe_pipeline_management_config_async(
+    async def describe_pipeline_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.DescribePipelineManagementConfigRequest,
-    ) -> elasticsearch_20170613_models.DescribePipelineManagementConfigResponse:
+        pipeline_id: str,
+    ) -> elasticsearch_20170613_models.DescribePipelineResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_pipeline_management_config_with_options_async(instance_id, request, headers, runtime)
+        return await self.describe_pipeline_with_options_async(instance_id, pipeline_id, headers, runtime)
 
     def describe_pipeline_management_config_with_options(
         self,
@@ -4042,15 +4024,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_regions(self) -> elasticsearch_20170613_models.DescribeRegionsResponse:
+    def describe_pipeline_management_config(
+        self,
+        instance_id: str,
+        request: elasticsearch_20170613_models.DescribePipelineManagementConfigRequest,
+    ) -> elasticsearch_20170613_models.DescribePipelineManagementConfigResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_regions_with_options(headers, runtime)
+        return self.describe_pipeline_management_config_with_options(instance_id, request, headers, runtime)
 
-    async def describe_regions_async(self) -> elasticsearch_20170613_models.DescribeRegionsResponse:
+    async def describe_pipeline_management_config_async(
+        self,
+        instance_id: str,
+        request: elasticsearch_20170613_models.DescribePipelineManagementConfigRequest,
+    ) -> elasticsearch_20170613_models.DescribePipelineManagementConfigResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_regions_with_options_async(headers, runtime)
+        return await self.describe_pipeline_management_config_with_options_async(instance_id, request, headers, runtime)
 
     def describe_regions_with_options(
         self,
@@ -4100,21 +4090,15 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_snapshot_setting(
-        self,
-        instance_id: str,
-    ) -> elasticsearch_20170613_models.DescribeSnapshotSettingResponse:
+    def describe_regions(self) -> elasticsearch_20170613_models.DescribeRegionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_snapshot_setting_with_options(instance_id, headers, runtime)
+        return self.describe_regions_with_options(headers, runtime)
 
-    async def describe_snapshot_setting_async(
-        self,
-        instance_id: str,
-    ) -> elasticsearch_20170613_models.DescribeSnapshotSettingResponse:
+    async def describe_regions_async(self) -> elasticsearch_20170613_models.DescribeRegionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_snapshot_setting_with_options_async(instance_id, headers, runtime)
+        return await self.describe_regions_with_options_async(headers, runtime)
 
     def describe_snapshot_setting_with_options(
         self,
@@ -4166,21 +4150,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_templates(
+    def describe_snapshot_setting(
         self,
         instance_id: str,
-    ) -> elasticsearch_20170613_models.DescribeTemplatesResponse:
+    ) -> elasticsearch_20170613_models.DescribeSnapshotSettingResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_templates_with_options(instance_id, headers, runtime)
+        return self.describe_snapshot_setting_with_options(instance_id, headers, runtime)
 
-    async def describe_templates_async(
+    async def describe_snapshot_setting_async(
         self,
         instance_id: str,
-    ) -> elasticsearch_20170613_models.DescribeTemplatesResponse:
+    ) -> elasticsearch_20170613_models.DescribeSnapshotSettingResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_templates_with_options_async(instance_id, headers, runtime)
+        return await self.describe_snapshot_setting_with_options_async(instance_id, headers, runtime)
 
     def describe_templates_with_options(
         self,
@@ -4232,21 +4216,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_xpack_monitor_config(
+    def describe_templates(
         self,
         instance_id: str,
-    ) -> elasticsearch_20170613_models.DescribeXpackMonitorConfigResponse:
+    ) -> elasticsearch_20170613_models.DescribeTemplatesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_xpack_monitor_config_with_options(instance_id, headers, runtime)
+        return self.describe_templates_with_options(instance_id, headers, runtime)
 
-    async def describe_xpack_monitor_config_async(
+    async def describe_templates_async(
         self,
         instance_id: str,
-    ) -> elasticsearch_20170613_models.DescribeXpackMonitorConfigResponse:
+    ) -> elasticsearch_20170613_models.DescribeTemplatesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_xpack_monitor_config_with_options_async(instance_id, headers, runtime)
+        return await self.describe_templates_with_options_async(instance_id, headers, runtime)
 
     def describe_xpack_monitor_config_with_options(
         self,
@@ -4298,23 +4282,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def diagnose_instance(
+    def describe_xpack_monitor_config(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.DiagnoseInstanceRequest,
-    ) -> elasticsearch_20170613_models.DiagnoseInstanceResponse:
+    ) -> elasticsearch_20170613_models.DescribeXpackMonitorConfigResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.diagnose_instance_with_options(instance_id, request, headers, runtime)
+        return self.describe_xpack_monitor_config_with_options(instance_id, headers, runtime)
 
-    async def diagnose_instance_async(
+    async def describe_xpack_monitor_config_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.DiagnoseInstanceRequest,
-    ) -> elasticsearch_20170613_models.DiagnoseInstanceResponse:
+    ) -> elasticsearch_20170613_models.DescribeXpackMonitorConfigResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.diagnose_instance_with_options_async(instance_id, request, headers, runtime)
+        return await self.describe_xpack_monitor_config_with_options_async(instance_id, headers, runtime)
 
     def diagnose_instance_with_options(
         self,
@@ -4398,23 +4380,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def estimated_logstash_restart_time(
+    def diagnose_instance(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.EstimatedLogstashRestartTimeRequest,
-    ) -> elasticsearch_20170613_models.EstimatedLogstashRestartTimeResponse:
+        request: elasticsearch_20170613_models.DiagnoseInstanceRequest,
+    ) -> elasticsearch_20170613_models.DiagnoseInstanceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.estimated_logstash_restart_time_with_options(instance_id, request, headers, runtime)
+        return self.diagnose_instance_with_options(instance_id, request, headers, runtime)
 
-    async def estimated_logstash_restart_time_async(
+    async def diagnose_instance_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.EstimatedLogstashRestartTimeRequest,
-    ) -> elasticsearch_20170613_models.EstimatedLogstashRestartTimeResponse:
+        request: elasticsearch_20170613_models.DiagnoseInstanceRequest,
+    ) -> elasticsearch_20170613_models.DiagnoseInstanceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.estimated_logstash_restart_time_with_options_async(instance_id, request, headers, runtime)
+        return await self.diagnose_instance_with_options_async(instance_id, request, headers, runtime)
 
     def estimated_logstash_restart_time_with_options(
         self,
@@ -4480,23 +4462,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def estimated_restart_time(
+    def estimated_logstash_restart_time(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.EstimatedRestartTimeRequest,
-    ) -> elasticsearch_20170613_models.EstimatedRestartTimeResponse:
+        request: elasticsearch_20170613_models.EstimatedLogstashRestartTimeRequest,
+    ) -> elasticsearch_20170613_models.EstimatedLogstashRestartTimeResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.estimated_restart_time_with_options(instance_id, request, headers, runtime)
+        return self.estimated_logstash_restart_time_with_options(instance_id, request, headers, runtime)
 
-    async def estimated_restart_time_async(
+    async def estimated_logstash_restart_time_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.EstimatedRestartTimeRequest,
-    ) -> elasticsearch_20170613_models.EstimatedRestartTimeResponse:
+        request: elasticsearch_20170613_models.EstimatedLogstashRestartTimeRequest,
+    ) -> elasticsearch_20170613_models.EstimatedLogstashRestartTimeResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.estimated_restart_time_with_options_async(instance_id, request, headers, runtime)
+        return await self.estimated_logstash_restart_time_with_options_async(instance_id, request, headers, runtime)
 
     def estimated_restart_time_with_options(
         self,
@@ -4562,21 +4544,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_cluster_data_information(
+    def estimated_restart_time(
         self,
-        request: elasticsearch_20170613_models.GetClusterDataInformationRequest,
-    ) -> elasticsearch_20170613_models.GetClusterDataInformationResponse:
+        instance_id: str,
+        request: elasticsearch_20170613_models.EstimatedRestartTimeRequest,
+    ) -> elasticsearch_20170613_models.EstimatedRestartTimeResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_cluster_data_information_with_options(request, headers, runtime)
+        return self.estimated_restart_time_with_options(instance_id, request, headers, runtime)
 
-    async def get_cluster_data_information_async(
+    async def estimated_restart_time_async(
         self,
-        request: elasticsearch_20170613_models.GetClusterDataInformationRequest,
-    ) -> elasticsearch_20170613_models.GetClusterDataInformationResponse:
+        instance_id: str,
+        request: elasticsearch_20170613_models.EstimatedRestartTimeRequest,
+    ) -> elasticsearch_20170613_models.EstimatedRestartTimeResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_cluster_data_information_with_options_async(request, headers, runtime)
+        return await self.estimated_restart_time_with_options_async(instance_id, request, headers, runtime)
 
     def get_cluster_data_information_with_options(
         self,
@@ -4632,21 +4616,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_elastictask(
+    def get_cluster_data_information(
         self,
-        instance_id: str,
-    ) -> elasticsearch_20170613_models.GetElastictaskResponse:
+        request: elasticsearch_20170613_models.GetClusterDataInformationRequest,
+    ) -> elasticsearch_20170613_models.GetClusterDataInformationResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_elastictask_with_options(instance_id, headers, runtime)
+        return self.get_cluster_data_information_with_options(request, headers, runtime)
 
-    async def get_elastictask_async(
+    async def get_cluster_data_information_async(
         self,
-        instance_id: str,
-    ) -> elasticsearch_20170613_models.GetElastictaskResponse:
+        request: elasticsearch_20170613_models.GetClusterDataInformationRequest,
+    ) -> elasticsearch_20170613_models.GetClusterDataInformationResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_elastictask_with_options_async(instance_id, headers, runtime)
+        return await self.get_cluster_data_information_with_options_async(request, headers, runtime)
 
     def get_elastictask_with_options(
         self,
@@ -4698,23 +4682,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_emon_grafana_alerts(
+    def get_elastictask(
         self,
-        project_id: str,
-        request: elasticsearch_20170613_models.GetEmonGrafanaAlertsRequest,
-    ) -> elasticsearch_20170613_models.GetEmonGrafanaAlertsResponse:
+        instance_id: str,
+    ) -> elasticsearch_20170613_models.GetElastictaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_emon_grafana_alerts_with_options(project_id, request, headers, runtime)
+        return self.get_elastictask_with_options(instance_id, headers, runtime)
 
-    async def get_emon_grafana_alerts_async(
+    async def get_elastictask_async(
         self,
-        project_id: str,
-        request: elasticsearch_20170613_models.GetEmonGrafanaAlertsRequest,
-    ) -> elasticsearch_20170613_models.GetEmonGrafanaAlertsResponse:
+        instance_id: str,
+    ) -> elasticsearch_20170613_models.GetElastictaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_emon_grafana_alerts_with_options_async(project_id, request, headers, runtime)
+        return await self.get_elastictask_with_options_async(instance_id, headers, runtime)
 
     def get_emon_grafana_alerts_with_options(
         self,
@@ -4772,23 +4754,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_emon_grafana_dashboards(
+    def get_emon_grafana_alerts(
         self,
         project_id: str,
-        request: elasticsearch_20170613_models.GetEmonGrafanaDashboardsRequest,
-    ) -> elasticsearch_20170613_models.GetEmonGrafanaDashboardsResponse:
+        request: elasticsearch_20170613_models.GetEmonGrafanaAlertsRequest,
+    ) -> elasticsearch_20170613_models.GetEmonGrafanaAlertsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_emon_grafana_dashboards_with_options(project_id, request, headers, runtime)
+        return self.get_emon_grafana_alerts_with_options(project_id, request, headers, runtime)
 
-    async def get_emon_grafana_dashboards_async(
+    async def get_emon_grafana_alerts_async(
         self,
         project_id: str,
-        request: elasticsearch_20170613_models.GetEmonGrafanaDashboardsRequest,
-    ) -> elasticsearch_20170613_models.GetEmonGrafanaDashboardsResponse:
+        request: elasticsearch_20170613_models.GetEmonGrafanaAlertsRequest,
+    ) -> elasticsearch_20170613_models.GetEmonGrafanaAlertsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_emon_grafana_dashboards_with_options_async(project_id, request, headers, runtime)
+        return await self.get_emon_grafana_alerts_with_options_async(project_id, request, headers, runtime)
 
     def get_emon_grafana_dashboards_with_options(
         self,
@@ -4846,23 +4828,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_emon_monitor_data(
+    def get_emon_grafana_dashboards(
         self,
         project_id: str,
-        request: elasticsearch_20170613_models.GetEmonMonitorDataRequest,
-    ) -> elasticsearch_20170613_models.GetEmonMonitorDataResponse:
+        request: elasticsearch_20170613_models.GetEmonGrafanaDashboardsRequest,
+    ) -> elasticsearch_20170613_models.GetEmonGrafanaDashboardsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_emon_monitor_data_with_options(project_id, request, headers, runtime)
+        return self.get_emon_grafana_dashboards_with_options(project_id, request, headers, runtime)
 
-    async def get_emon_monitor_data_async(
+    async def get_emon_grafana_dashboards_async(
         self,
         project_id: str,
-        request: elasticsearch_20170613_models.GetEmonMonitorDataRequest,
-    ) -> elasticsearch_20170613_models.GetEmonMonitorDataResponse:
+        request: elasticsearch_20170613_models.GetEmonGrafanaDashboardsRequest,
+    ) -> elasticsearch_20170613_models.GetEmonGrafanaDashboardsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_emon_monitor_data_with_options_async(project_id, request, headers, runtime)
+        return await self.get_emon_grafana_dashboards_with_options_async(project_id, request, headers, runtime)
 
     def get_emon_monitor_data_with_options(
         self,
@@ -4920,21 +4902,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_open_store_usage(
+    def get_emon_monitor_data(
         self,
-        instance_id: str,
-    ) -> elasticsearch_20170613_models.GetOpenStoreUsageResponse:
+        project_id: str,
+        request: elasticsearch_20170613_models.GetEmonMonitorDataRequest,
+    ) -> elasticsearch_20170613_models.GetEmonMonitorDataResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_open_store_usage_with_options(instance_id, headers, runtime)
+        return self.get_emon_monitor_data_with_options(project_id, request, headers, runtime)
 
-    async def get_open_store_usage_async(
+    async def get_emon_monitor_data_async(
         self,
-        instance_id: str,
-    ) -> elasticsearch_20170613_models.GetOpenStoreUsageResponse:
+        project_id: str,
+        request: elasticsearch_20170613_models.GetEmonMonitorDataRequest,
+    ) -> elasticsearch_20170613_models.GetEmonMonitorDataResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_open_store_usage_with_options_async(instance_id, headers, runtime)
+        return await self.get_emon_monitor_data_with_options_async(project_id, request, headers, runtime)
 
     def get_open_store_usage_with_options(
         self,
@@ -4986,21 +4970,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_region_configuration(
+    def get_open_store_usage(
         self,
-        request: elasticsearch_20170613_models.GetRegionConfigurationRequest,
-    ) -> elasticsearch_20170613_models.GetRegionConfigurationResponse:
+        instance_id: str,
+    ) -> elasticsearch_20170613_models.GetOpenStoreUsageResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_region_configuration_with_options(request, headers, runtime)
+        return self.get_open_store_usage_with_options(instance_id, headers, runtime)
 
-    async def get_region_configuration_async(
+    async def get_open_store_usage_async(
         self,
-        request: elasticsearch_20170613_models.GetRegionConfigurationRequest,
-    ) -> elasticsearch_20170613_models.GetRegionConfigurationResponse:
+        instance_id: str,
+    ) -> elasticsearch_20170613_models.GetOpenStoreUsageResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_region_configuration_with_options_async(request, headers, runtime)
+        return await self.get_open_store_usage_with_options_async(instance_id, headers, runtime)
 
     def get_region_configuration_with_options(
         self,
@@ -5062,23 +5046,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_suggest_shrinkable_nodes(
+    def get_region_configuration(
         self,
-        instance_id: str,
-        request: elasticsearch_20170613_models.GetSuggestShrinkableNodesRequest,
-    ) -> elasticsearch_20170613_models.GetSuggestShrinkableNodesResponse:
+        request: elasticsearch_20170613_models.GetRegionConfigurationRequest,
+    ) -> elasticsearch_20170613_models.GetRegionConfigurationResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_suggest_shrinkable_nodes_with_options(instance_id, request, headers, runtime)
+        return self.get_region_configuration_with_options(request, headers, runtime)
 
-    async def get_suggest_shrinkable_nodes_async(
+    async def get_region_configuration_async(
         self,
-        instance_id: str,
-        request: elasticsearch_20170613_models.GetSuggestShrinkableNodesRequest,
-    ) -> elasticsearch_20170613_models.GetSuggestShrinkableNodesResponse:
+        request: elasticsearch_20170613_models.GetRegionConfigurationRequest,
+    ) -> elasticsearch_20170613_models.GetRegionConfigurationResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_suggest_shrinkable_nodes_with_options_async(instance_id, request, headers, runtime)
+        return await self.get_region_configuration_with_options_async(request, headers, runtime)
 
     def get_suggest_shrinkable_nodes_with_options(
         self,
@@ -5150,23 +5132,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_transferable_nodes(
+    def get_suggest_shrinkable_nodes(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.GetTransferableNodesRequest,
-    ) -> elasticsearch_20170613_models.GetTransferableNodesResponse:
+        request: elasticsearch_20170613_models.GetSuggestShrinkableNodesRequest,
+    ) -> elasticsearch_20170613_models.GetSuggestShrinkableNodesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_transferable_nodes_with_options(instance_id, request, headers, runtime)
+        return self.get_suggest_shrinkable_nodes_with_options(instance_id, request, headers, runtime)
 
-    async def get_transferable_nodes_async(
+    async def get_suggest_shrinkable_nodes_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.GetTransferableNodesRequest,
-    ) -> elasticsearch_20170613_models.GetTransferableNodesResponse:
+        request: elasticsearch_20170613_models.GetSuggestShrinkableNodesRequest,
+    ) -> elasticsearch_20170613_models.GetSuggestShrinkableNodesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_transferable_nodes_with_options_async(instance_id, request, headers, runtime)
+        return await self.get_suggest_shrinkable_nodes_with_options_async(instance_id, request, headers, runtime)
 
     def get_transferable_nodes_with_options(
         self,
@@ -5234,21 +5216,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def initialize_operation_role(
+    def get_transferable_nodes(
         self,
-        request: elasticsearch_20170613_models.InitializeOperationRoleRequest,
-    ) -> elasticsearch_20170613_models.InitializeOperationRoleResponse:
+        instance_id: str,
+        request: elasticsearch_20170613_models.GetTransferableNodesRequest,
+    ) -> elasticsearch_20170613_models.GetTransferableNodesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.initialize_operation_role_with_options(request, headers, runtime)
+        return self.get_transferable_nodes_with_options(instance_id, request, headers, runtime)
 
-    async def initialize_operation_role_async(
+    async def get_transferable_nodes_async(
         self,
-        request: elasticsearch_20170613_models.InitializeOperationRoleRequest,
-    ) -> elasticsearch_20170613_models.InitializeOperationRoleResponse:
+        instance_id: str,
+        request: elasticsearch_20170613_models.GetTransferableNodesRequest,
+    ) -> elasticsearch_20170613_models.GetTransferableNodesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.initialize_operation_role_with_options_async(request, headers, runtime)
+        return await self.get_transferable_nodes_with_options_async(instance_id, request, headers, runtime)
 
     def initialize_operation_role_with_options(
         self,
@@ -5312,23 +5296,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def install_ack_operator(
+    def initialize_operation_role(
         self,
-        cluster_id: str,
-        request: elasticsearch_20170613_models.InstallAckOperatorRequest,
-    ) -> elasticsearch_20170613_models.InstallAckOperatorResponse:
+        request: elasticsearch_20170613_models.InitializeOperationRoleRequest,
+    ) -> elasticsearch_20170613_models.InitializeOperationRoleResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.install_ack_operator_with_options(cluster_id, request, headers, runtime)
+        return self.initialize_operation_role_with_options(request, headers, runtime)
 
-    async def install_ack_operator_async(
+    async def initialize_operation_role_async(
         self,
-        cluster_id: str,
-        request: elasticsearch_20170613_models.InstallAckOperatorRequest,
-    ) -> elasticsearch_20170613_models.InstallAckOperatorResponse:
+        request: elasticsearch_20170613_models.InitializeOperationRoleRequest,
+    ) -> elasticsearch_20170613_models.InitializeOperationRoleResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.install_ack_operator_with_options_async(cluster_id, request, headers, runtime)
+        return await self.initialize_operation_role_with_options_async(request, headers, runtime)
 
     def install_ack_operator_with_options(
         self,
@@ -5394,23 +5376,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def install_kibana_system_plugin(
+    def install_ack_operator(
         self,
-        instance_id: str,
-        request: elasticsearch_20170613_models.InstallKibanaSystemPluginRequest,
-    ) -> elasticsearch_20170613_models.InstallKibanaSystemPluginResponse:
+        cluster_id: str,
+        request: elasticsearch_20170613_models.InstallAckOperatorRequest,
+    ) -> elasticsearch_20170613_models.InstallAckOperatorResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.install_kibana_system_plugin_with_options(instance_id, request, headers, runtime)
+        return self.install_ack_operator_with_options(cluster_id, request, headers, runtime)
 
-    async def install_kibana_system_plugin_async(
+    async def install_ack_operator_async(
         self,
-        instance_id: str,
-        request: elasticsearch_20170613_models.InstallKibanaSystemPluginRequest,
-    ) -> elasticsearch_20170613_models.InstallKibanaSystemPluginResponse:
+        cluster_id: str,
+        request: elasticsearch_20170613_models.InstallAckOperatorRequest,
+    ) -> elasticsearch_20170613_models.InstallAckOperatorResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.install_kibana_system_plugin_with_options_async(instance_id, request, headers, runtime)
+        return await self.install_ack_operator_with_options_async(cluster_id, request, headers, runtime)
 
     def install_kibana_system_plugin_with_options(
         self,
@@ -5476,23 +5458,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def install_logstash_system_plugin(
+    def install_kibana_system_plugin(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.InstallLogstashSystemPluginRequest,
-    ) -> elasticsearch_20170613_models.InstallLogstashSystemPluginResponse:
+        request: elasticsearch_20170613_models.InstallKibanaSystemPluginRequest,
+    ) -> elasticsearch_20170613_models.InstallKibanaSystemPluginResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.install_logstash_system_plugin_with_options(instance_id, request, headers, runtime)
+        return self.install_kibana_system_plugin_with_options(instance_id, request, headers, runtime)
 
-    async def install_logstash_system_plugin_async(
+    async def install_kibana_system_plugin_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.InstallLogstashSystemPluginRequest,
-    ) -> elasticsearch_20170613_models.InstallLogstashSystemPluginResponse:
+        request: elasticsearch_20170613_models.InstallKibanaSystemPluginRequest,
+    ) -> elasticsearch_20170613_models.InstallKibanaSystemPluginResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.install_logstash_system_plugin_with_options_async(instance_id, request, headers, runtime)
+        return await self.install_kibana_system_plugin_with_options_async(instance_id, request, headers, runtime)
 
     def install_logstash_system_plugin_with_options(
         self,
@@ -5558,23 +5540,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def install_system_plugin(
+    def install_logstash_system_plugin(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.InstallSystemPluginRequest,
-    ) -> elasticsearch_20170613_models.InstallSystemPluginResponse:
+        request: elasticsearch_20170613_models.InstallLogstashSystemPluginRequest,
+    ) -> elasticsearch_20170613_models.InstallLogstashSystemPluginResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.install_system_plugin_with_options(instance_id, request, headers, runtime)
+        return self.install_logstash_system_plugin_with_options(instance_id, request, headers, runtime)
 
-    async def install_system_plugin_async(
+    async def install_logstash_system_plugin_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.InstallSystemPluginRequest,
-    ) -> elasticsearch_20170613_models.InstallSystemPluginResponse:
+        request: elasticsearch_20170613_models.InstallLogstashSystemPluginRequest,
+    ) -> elasticsearch_20170613_models.InstallLogstashSystemPluginResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.install_system_plugin_with_options_async(instance_id, request, headers, runtime)
+        return await self.install_logstash_system_plugin_with_options_async(instance_id, request, headers, runtime)
 
     def install_system_plugin_with_options(
         self,
@@ -5640,23 +5622,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def install_user_plugins(
+    def install_system_plugin(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.InstallUserPluginsRequest,
-    ) -> elasticsearch_20170613_models.InstallUserPluginsResponse:
+        request: elasticsearch_20170613_models.InstallSystemPluginRequest,
+    ) -> elasticsearch_20170613_models.InstallSystemPluginResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.install_user_plugins_with_options(instance_id, request, headers, runtime)
+        return self.install_system_plugin_with_options(instance_id, request, headers, runtime)
 
-    async def install_user_plugins_async(
+    async def install_system_plugin_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.InstallUserPluginsRequest,
-    ) -> elasticsearch_20170613_models.InstallUserPluginsResponse:
+        request: elasticsearch_20170613_models.InstallSystemPluginRequest,
+    ) -> elasticsearch_20170613_models.InstallSystemPluginResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.install_user_plugins_with_options_async(instance_id, request, headers, runtime)
+        return await self.install_system_plugin_with_options_async(instance_id, request, headers, runtime)
 
     def install_user_plugins_with_options(
         self,
@@ -5714,23 +5696,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def interrupt_elasticsearch_task(
+    def install_user_plugins(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.InterruptElasticsearchTaskRequest,
-    ) -> elasticsearch_20170613_models.InterruptElasticsearchTaskResponse:
+        request: elasticsearch_20170613_models.InstallUserPluginsRequest,
+    ) -> elasticsearch_20170613_models.InstallUserPluginsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.interrupt_elasticsearch_task_with_options(instance_id, request, headers, runtime)
+        return self.install_user_plugins_with_options(instance_id, request, headers, runtime)
 
-    async def interrupt_elasticsearch_task_async(
+    async def install_user_plugins_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.InterruptElasticsearchTaskRequest,
-    ) -> elasticsearch_20170613_models.InterruptElasticsearchTaskResponse:
+        request: elasticsearch_20170613_models.InstallUserPluginsRequest,
+    ) -> elasticsearch_20170613_models.InstallUserPluginsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.interrupt_elasticsearch_task_with_options_async(instance_id, request, headers, runtime)
+        return await self.install_user_plugins_with_options_async(instance_id, request, headers, runtime)
 
     def interrupt_elasticsearch_task_with_options(
         self,
@@ -5794,23 +5776,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def interrupt_logstash_task(
+    def interrupt_elasticsearch_task(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.InterruptLogstashTaskRequest,
-    ) -> elasticsearch_20170613_models.InterruptLogstashTaskResponse:
+        request: elasticsearch_20170613_models.InterruptElasticsearchTaskRequest,
+    ) -> elasticsearch_20170613_models.InterruptElasticsearchTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.interrupt_logstash_task_with_options(instance_id, request, headers, runtime)
+        return self.interrupt_elasticsearch_task_with_options(instance_id, request, headers, runtime)
 
-    async def interrupt_logstash_task_async(
+    async def interrupt_elasticsearch_task_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.InterruptLogstashTaskRequest,
-    ) -> elasticsearch_20170613_models.InterruptLogstashTaskResponse:
+        request: elasticsearch_20170613_models.InterruptElasticsearchTaskRequest,
+    ) -> elasticsearch_20170613_models.InterruptElasticsearchTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.interrupt_logstash_task_with_options_async(instance_id, request, headers, runtime)
+        return await self.interrupt_elasticsearch_task_with_options_async(instance_id, request, headers, runtime)
 
     def interrupt_logstash_task_with_options(
         self,
@@ -5874,21 +5856,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_ack_clusters(
+    def interrupt_logstash_task(
         self,
-        request: elasticsearch_20170613_models.ListAckClustersRequest,
-    ) -> elasticsearch_20170613_models.ListAckClustersResponse:
+        instance_id: str,
+        request: elasticsearch_20170613_models.InterruptLogstashTaskRequest,
+    ) -> elasticsearch_20170613_models.InterruptLogstashTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_ack_clusters_with_options(request, headers, runtime)
+        return self.interrupt_logstash_task_with_options(instance_id, request, headers, runtime)
 
-    async def list_ack_clusters_async(
+    async def interrupt_logstash_task_async(
         self,
-        request: elasticsearch_20170613_models.ListAckClustersRequest,
-    ) -> elasticsearch_20170613_models.ListAckClustersResponse:
+        instance_id: str,
+        request: elasticsearch_20170613_models.InterruptLogstashTaskRequest,
+    ) -> elasticsearch_20170613_models.InterruptLogstashTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_ack_clusters_with_options_async(request, headers, runtime)
+        return await self.interrupt_logstash_task_with_options_async(instance_id, request, headers, runtime)
 
     def list_ack_clusters_with_options(
         self,
@@ -5958,23 +5942,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_ack_namespaces(
+    def list_ack_clusters(
         self,
-        cluster_id: str,
-        request: elasticsearch_20170613_models.ListAckNamespacesRequest,
-    ) -> elasticsearch_20170613_models.ListAckNamespacesResponse:
+        request: elasticsearch_20170613_models.ListAckClustersRequest,
+    ) -> elasticsearch_20170613_models.ListAckClustersResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_ack_namespaces_with_options(cluster_id, request, headers, runtime)
+        return self.list_ack_clusters_with_options(request, headers, runtime)
 
-    async def list_ack_namespaces_async(
+    async def list_ack_clusters_async(
         self,
-        cluster_id: str,
-        request: elasticsearch_20170613_models.ListAckNamespacesRequest,
-    ) -> elasticsearch_20170613_models.ListAckNamespacesResponse:
+        request: elasticsearch_20170613_models.ListAckClustersRequest,
+    ) -> elasticsearch_20170613_models.ListAckClustersResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_ack_namespaces_with_options_async(cluster_id, request, headers, runtime)
+        return await self.list_ack_clusters_with_options_async(request, headers, runtime)
 
     def list_ack_namespaces_with_options(
         self,
@@ -6042,23 +6024,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_action_records(
+    def list_ack_namespaces(
         self,
-        instance_id: str,
-        request: elasticsearch_20170613_models.ListActionRecordsRequest,
-    ) -> elasticsearch_20170613_models.ListActionRecordsResponse:
+        cluster_id: str,
+        request: elasticsearch_20170613_models.ListAckNamespacesRequest,
+    ) -> elasticsearch_20170613_models.ListAckNamespacesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_action_records_with_options(instance_id, request, headers, runtime)
+        return self.list_ack_namespaces_with_options(cluster_id, request, headers, runtime)
 
-    async def list_action_records_async(
+    async def list_ack_namespaces_async(
         self,
-        instance_id: str,
-        request: elasticsearch_20170613_models.ListActionRecordsRequest,
-    ) -> elasticsearch_20170613_models.ListActionRecordsResponse:
+        cluster_id: str,
+        request: elasticsearch_20170613_models.ListAckNamespacesRequest,
+    ) -> elasticsearch_20170613_models.ListAckNamespacesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_action_records_with_options_async(instance_id, request, headers, runtime)
+        return await self.list_ack_namespaces_with_options_async(cluster_id, request, headers, runtime)
 
     def list_action_records_with_options(
         self,
@@ -6150,23 +6132,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_all_node(
+    def list_action_records(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.ListAllNodeRequest,
-    ) -> elasticsearch_20170613_models.ListAllNodeResponse:
+        request: elasticsearch_20170613_models.ListActionRecordsRequest,
+    ) -> elasticsearch_20170613_models.ListActionRecordsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_all_node_with_options(instance_id, request, headers, runtime)
+        return self.list_action_records_with_options(instance_id, request, headers, runtime)
 
-    async def list_all_node_async(
+    async def list_action_records_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.ListAllNodeRequest,
-    ) -> elasticsearch_20170613_models.ListAllNodeResponse:
+        request: elasticsearch_20170613_models.ListActionRecordsRequest,
+    ) -> elasticsearch_20170613_models.ListActionRecordsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_all_node_with_options_async(instance_id, request, headers, runtime)
+        return await self.list_action_records_with_options_async(instance_id, request, headers, runtime)
 
     def list_all_node_with_options(
         self,
@@ -6230,23 +6212,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_alternative_snapshot_repos(
+    def list_all_node(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.ListAlternativeSnapshotReposRequest,
-    ) -> elasticsearch_20170613_models.ListAlternativeSnapshotReposResponse:
+        request: elasticsearch_20170613_models.ListAllNodeRequest,
+    ) -> elasticsearch_20170613_models.ListAllNodeResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_alternative_snapshot_repos_with_options(instance_id, request, headers, runtime)
+        return self.list_all_node_with_options(instance_id, request, headers, runtime)
 
-    async def list_alternative_snapshot_repos_async(
+    async def list_all_node_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.ListAlternativeSnapshotReposRequest,
-    ) -> elasticsearch_20170613_models.ListAlternativeSnapshotReposResponse:
+        request: elasticsearch_20170613_models.ListAllNodeRequest,
+    ) -> elasticsearch_20170613_models.ListAllNodeResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_alternative_snapshot_repos_with_options_async(instance_id, request, headers, runtime)
+        return await self.list_all_node_with_options_async(instance_id, request, headers, runtime)
 
     def list_alternative_snapshot_repos_with_options(
         self,
@@ -6310,21 +6292,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_apm(
+    def list_alternative_snapshot_repos(
         self,
-        request: elasticsearch_20170613_models.ListApmRequest,
-    ) -> elasticsearch_20170613_models.ListApmResponse:
+        instance_id: str,
+        request: elasticsearch_20170613_models.ListAlternativeSnapshotReposRequest,
+    ) -> elasticsearch_20170613_models.ListAlternativeSnapshotReposResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_apm_with_options(request, headers, runtime)
+        return self.list_alternative_snapshot_repos_with_options(instance_id, request, headers, runtime)
 
-    async def list_apm_async(
+    async def list_alternative_snapshot_repos_async(
         self,
-        request: elasticsearch_20170613_models.ListApmRequest,
-    ) -> elasticsearch_20170613_models.ListApmResponse:
+        instance_id: str,
+        request: elasticsearch_20170613_models.ListAlternativeSnapshotReposRequest,
+    ) -> elasticsearch_20170613_models.ListAlternativeSnapshotReposResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_apm_with_options_async(request, headers, runtime)
+        return await self.list_alternative_snapshot_repos_with_options_async(instance_id, request, headers, runtime)
 
     def list_apm_with_options(
         self,
@@ -6402,21 +6386,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_available_es_instance_ids(
+    def list_apm(
         self,
-        instance_id: str,
-    ) -> elasticsearch_20170613_models.ListAvailableEsInstanceIdsResponse:
+        request: elasticsearch_20170613_models.ListApmRequest,
+    ) -> elasticsearch_20170613_models.ListApmResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_available_es_instance_ids_with_options(instance_id, headers, runtime)
+        return self.list_apm_with_options(request, headers, runtime)
 
-    async def list_available_es_instance_ids_async(
+    async def list_apm_async(
         self,
-        instance_id: str,
-    ) -> elasticsearch_20170613_models.ListAvailableEsInstanceIdsResponse:
+        request: elasticsearch_20170613_models.ListApmRequest,
+    ) -> elasticsearch_20170613_models.ListApmResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_available_es_instance_ids_with_options_async(instance_id, headers, runtime)
+        return await self.list_apm_with_options_async(request, headers, runtime)
 
     def list_available_es_instance_ids_with_options(
         self,
@@ -6468,21 +6452,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_collectors(
+    def list_available_es_instance_ids(
         self,
-        request: elasticsearch_20170613_models.ListCollectorsRequest,
-    ) -> elasticsearch_20170613_models.ListCollectorsResponse:
+        instance_id: str,
+    ) -> elasticsearch_20170613_models.ListAvailableEsInstanceIdsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_collectors_with_options(request, headers, runtime)
+        return self.list_available_es_instance_ids_with_options(instance_id, headers, runtime)
 
-    async def list_collectors_async(
+    async def list_available_es_instance_ids_async(
         self,
-        request: elasticsearch_20170613_models.ListCollectorsRequest,
-    ) -> elasticsearch_20170613_models.ListCollectorsResponse:
+        instance_id: str,
+    ) -> elasticsearch_20170613_models.ListAvailableEsInstanceIdsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_collectors_with_options_async(request, headers, runtime)
+        return await self.list_available_es_instance_ids_with_options_async(instance_id, headers, runtime)
 
     def list_collectors_with_options(
         self,
@@ -6564,23 +6548,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_component_indices(
+    def list_collectors(
         self,
-        instance_id: str,
-        request: elasticsearch_20170613_models.ListComponentIndicesRequest,
-    ) -> elasticsearch_20170613_models.ListComponentIndicesResponse:
+        request: elasticsearch_20170613_models.ListCollectorsRequest,
+    ) -> elasticsearch_20170613_models.ListCollectorsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_component_indices_with_options(instance_id, request, headers, runtime)
+        return self.list_collectors_with_options(request, headers, runtime)
 
-    async def list_component_indices_async(
+    async def list_collectors_async(
         self,
-        instance_id: str,
-        request: elasticsearch_20170613_models.ListComponentIndicesRequest,
-    ) -> elasticsearch_20170613_models.ListComponentIndicesResponse:
+        request: elasticsearch_20170613_models.ListCollectorsRequest,
+    ) -> elasticsearch_20170613_models.ListCollectorsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_component_indices_with_options_async(instance_id, request, headers, runtime)
+        return await self.list_collectors_with_options_async(request, headers, runtime)
 
     def list_component_indices_with_options(
         self,
@@ -6652,21 +6634,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_connected_clusters(
+    def list_component_indices(
         self,
         instance_id: str,
-    ) -> elasticsearch_20170613_models.ListConnectedClustersResponse:
+        request: elasticsearch_20170613_models.ListComponentIndicesRequest,
+    ) -> elasticsearch_20170613_models.ListComponentIndicesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_connected_clusters_with_options(instance_id, headers, runtime)
+        return self.list_component_indices_with_options(instance_id, request, headers, runtime)
 
-    async def list_connected_clusters_async(
+    async def list_component_indices_async(
         self,
         instance_id: str,
-    ) -> elasticsearch_20170613_models.ListConnectedClustersResponse:
+        request: elasticsearch_20170613_models.ListComponentIndicesRequest,
+    ) -> elasticsearch_20170613_models.ListComponentIndicesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_connected_clusters_with_options_async(instance_id, headers, runtime)
+        return await self.list_component_indices_with_options_async(instance_id, request, headers, runtime)
 
     def list_connected_clusters_with_options(
         self,
@@ -6718,23 +6702,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_data_streams(
+    def list_connected_clusters(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.ListDataStreamsRequest,
-    ) -> elasticsearch_20170613_models.ListDataStreamsResponse:
+    ) -> elasticsearch_20170613_models.ListConnectedClustersResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_data_streams_with_options(instance_id, request, headers, runtime)
+        return self.list_connected_clusters_with_options(instance_id, headers, runtime)
 
-    async def list_data_streams_async(
+    async def list_connected_clusters_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.ListDataStreamsRequest,
-    ) -> elasticsearch_20170613_models.ListDataStreamsResponse:
+    ) -> elasticsearch_20170613_models.ListConnectedClustersResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_data_streams_with_options_async(instance_id, request, headers, runtime)
+        return await self.list_connected_clusters_with_options_async(instance_id, headers, runtime)
 
     def list_data_streams_with_options(
         self,
@@ -6802,21 +6784,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_data_tasks(
+    def list_data_streams(
         self,
         instance_id: str,
-    ) -> elasticsearch_20170613_models.ListDataTasksResponse:
+        request: elasticsearch_20170613_models.ListDataStreamsRequest,
+    ) -> elasticsearch_20170613_models.ListDataStreamsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_data_tasks_with_options(instance_id, headers, runtime)
+        return self.list_data_streams_with_options(instance_id, request, headers, runtime)
 
-    async def list_data_tasks_async(
+    async def list_data_streams_async(
         self,
         instance_id: str,
-    ) -> elasticsearch_20170613_models.ListDataTasksResponse:
+        request: elasticsearch_20170613_models.ListDataStreamsRequest,
+    ) -> elasticsearch_20170613_models.ListDataStreamsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_data_tasks_with_options_async(instance_id, headers, runtime)
+        return await self.list_data_streams_with_options_async(instance_id, request, headers, runtime)
 
     def list_data_tasks_with_options(
         self,
@@ -6868,21 +6852,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_default_collector_configurations(
+    def list_data_tasks(
         self,
-        request: elasticsearch_20170613_models.ListDefaultCollectorConfigurationsRequest,
-    ) -> elasticsearch_20170613_models.ListDefaultCollectorConfigurationsResponse:
+        instance_id: str,
+    ) -> elasticsearch_20170613_models.ListDataTasksResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_default_collector_configurations_with_options(request, headers, runtime)
+        return self.list_data_tasks_with_options(instance_id, headers, runtime)
 
-    async def list_default_collector_configurations_async(
+    async def list_data_tasks_async(
         self,
-        request: elasticsearch_20170613_models.ListDefaultCollectorConfigurationsRequest,
-    ) -> elasticsearch_20170613_models.ListDefaultCollectorConfigurationsResponse:
+        instance_id: str,
+    ) -> elasticsearch_20170613_models.ListDataTasksResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_default_collector_configurations_with_options_async(request, headers, runtime)
+        return await self.list_data_tasks_with_options_async(instance_id, headers, runtime)
 
     def list_default_collector_configurations_with_options(
         self,
@@ -6952,23 +6936,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_deprecated_templates(
+    def list_default_collector_configurations(
         self,
-        instance_id: str,
-        request: elasticsearch_20170613_models.ListDeprecatedTemplatesRequest,
-    ) -> elasticsearch_20170613_models.ListDeprecatedTemplatesResponse:
+        request: elasticsearch_20170613_models.ListDefaultCollectorConfigurationsRequest,
+    ) -> elasticsearch_20170613_models.ListDefaultCollectorConfigurationsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_deprecated_templates_with_options(instance_id, request, headers, runtime)
+        return self.list_default_collector_configurations_with_options(request, headers, runtime)
 
-    async def list_deprecated_templates_async(
+    async def list_default_collector_configurations_async(
         self,
-        instance_id: str,
-        request: elasticsearch_20170613_models.ListDeprecatedTemplatesRequest,
-    ) -> elasticsearch_20170613_models.ListDeprecatedTemplatesResponse:
+        request: elasticsearch_20170613_models.ListDefaultCollectorConfigurationsRequest,
+    ) -> elasticsearch_20170613_models.ListDefaultCollectorConfigurationsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_deprecated_templates_with_options_async(instance_id, request, headers, runtime)
+        return await self.list_default_collector_configurations_with_options_async(request, headers, runtime)
 
     def list_deprecated_templates_with_options(
         self,
@@ -7040,23 +7022,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_diagnose_indices(
+    def list_deprecated_templates(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.ListDiagnoseIndicesRequest,
-    ) -> elasticsearch_20170613_models.ListDiagnoseIndicesResponse:
+        request: elasticsearch_20170613_models.ListDeprecatedTemplatesRequest,
+    ) -> elasticsearch_20170613_models.ListDeprecatedTemplatesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_diagnose_indices_with_options(instance_id, request, headers, runtime)
+        return self.list_deprecated_templates_with_options(instance_id, request, headers, runtime)
 
-    async def list_diagnose_indices_async(
+    async def list_deprecated_templates_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.ListDiagnoseIndicesRequest,
-    ) -> elasticsearch_20170613_models.ListDiagnoseIndicesResponse:
+        request: elasticsearch_20170613_models.ListDeprecatedTemplatesRequest,
+    ) -> elasticsearch_20170613_models.ListDeprecatedTemplatesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_diagnose_indices_with_options_async(instance_id, request, headers, runtime)
+        return await self.list_deprecated_templates_with_options_async(instance_id, request, headers, runtime)
 
     def list_diagnose_indices_with_options(
         self,
@@ -7120,23 +7102,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_diagnose_report(
+    def list_diagnose_indices(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.ListDiagnoseReportRequest,
-    ) -> elasticsearch_20170613_models.ListDiagnoseReportResponse:
+        request: elasticsearch_20170613_models.ListDiagnoseIndicesRequest,
+    ) -> elasticsearch_20170613_models.ListDiagnoseIndicesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_diagnose_report_with_options(instance_id, request, headers, runtime)
+        return self.list_diagnose_indices_with_options(instance_id, request, headers, runtime)
 
-    async def list_diagnose_report_async(
+    async def list_diagnose_indices_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.ListDiagnoseReportRequest,
-    ) -> elasticsearch_20170613_models.ListDiagnoseReportResponse:
+        request: elasticsearch_20170613_models.ListDiagnoseIndicesRequest,
+    ) -> elasticsearch_20170613_models.ListDiagnoseIndicesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_diagnose_report_with_options_async(instance_id, request, headers, runtime)
+        return await self.list_diagnose_indices_with_options_async(instance_id, request, headers, runtime)
 
     def list_diagnose_report_with_options(
         self,
@@ -7224,23 +7206,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_diagnose_report_ids(
+    def list_diagnose_report(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.ListDiagnoseReportIdsRequest,
-    ) -> elasticsearch_20170613_models.ListDiagnoseReportIdsResponse:
+        request: elasticsearch_20170613_models.ListDiagnoseReportRequest,
+    ) -> elasticsearch_20170613_models.ListDiagnoseReportResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_diagnose_report_ids_with_options(instance_id, request, headers, runtime)
+        return self.list_diagnose_report_with_options(instance_id, request, headers, runtime)
 
-    async def list_diagnose_report_ids_async(
+    async def list_diagnose_report_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.ListDiagnoseReportIdsRequest,
-    ) -> elasticsearch_20170613_models.ListDiagnoseReportIdsResponse:
+        request: elasticsearch_20170613_models.ListDiagnoseReportRequest,
+    ) -> elasticsearch_20170613_models.ListDiagnoseReportResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_diagnose_report_ids_with_options_async(instance_id, request, headers, runtime)
+        return await self.list_diagnose_report_with_options_async(instance_id, request, headers, runtime)
 
     def list_diagnose_report_ids_with_options(
         self,
@@ -7324,23 +7306,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_dict_information(
+    def list_diagnose_report_ids(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.ListDictInformationRequest,
-    ) -> elasticsearch_20170613_models.ListDictInformationResponse:
+        request: elasticsearch_20170613_models.ListDiagnoseReportIdsRequest,
+    ) -> elasticsearch_20170613_models.ListDiagnoseReportIdsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_dict_information_with_options(instance_id, request, headers, runtime)
+        return self.list_diagnose_report_ids_with_options(instance_id, request, headers, runtime)
 
-    async def list_dict_information_async(
+    async def list_diagnose_report_ids_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.ListDictInformationRequest,
-    ) -> elasticsearch_20170613_models.ListDictInformationResponse:
+        request: elasticsearch_20170613_models.ListDiagnoseReportIdsRequest,
+    ) -> elasticsearch_20170613_models.ListDiagnoseReportIdsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_dict_information_with_options_async(instance_id, request, headers, runtime)
+        return await self.list_diagnose_report_ids_with_options_async(instance_id, request, headers, runtime)
 
     def list_dict_information_with_options(
         self,
@@ -7412,23 +7394,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_dicts(
+    def list_dict_information(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.ListDictsRequest,
-    ) -> elasticsearch_20170613_models.ListDictsResponse:
+        request: elasticsearch_20170613_models.ListDictInformationRequest,
+    ) -> elasticsearch_20170613_models.ListDictInformationResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_dicts_with_options(instance_id, request, headers, runtime)
+        return self.list_dict_information_with_options(instance_id, request, headers, runtime)
 
-    async def list_dicts_async(
+    async def list_dict_information_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.ListDictsRequest,
-    ) -> elasticsearch_20170613_models.ListDictsResponse:
+        request: elasticsearch_20170613_models.ListDictInformationRequest,
+    ) -> elasticsearch_20170613_models.ListDictInformationResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_dicts_with_options_async(instance_id, request, headers, runtime)
+        return await self.list_dict_information_with_options_async(instance_id, request, headers, runtime)
 
     def list_dicts_with_options(
         self,
@@ -7496,21 +7478,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_ecs_instances(
+    def list_dicts(
         self,
-        request: elasticsearch_20170613_models.ListEcsInstancesRequest,
-    ) -> elasticsearch_20170613_models.ListEcsInstancesResponse:
+        instance_id: str,
+        request: elasticsearch_20170613_models.ListDictsRequest,
+    ) -> elasticsearch_20170613_models.ListDictsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_ecs_instances_with_options(request, headers, runtime)
+        return self.list_dicts_with_options(instance_id, request, headers, runtime)
 
-    async def list_ecs_instances_async(
+    async def list_dicts_async(
         self,
-        request: elasticsearch_20170613_models.ListEcsInstancesRequest,
-    ) -> elasticsearch_20170613_models.ListEcsInstancesResponse:
+        instance_id: str,
+        request: elasticsearch_20170613_models.ListDictsRequest,
+    ) -> elasticsearch_20170613_models.ListDictsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_ecs_instances_with_options_async(request, headers, runtime)
+        return await self.list_dicts_with_options_async(instance_id, request, headers, runtime)
 
     def list_ecs_instances_with_options(
         self,
@@ -7592,21 +7576,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_extendfiles(
+    def list_ecs_instances(
         self,
-        instance_id: str,
-    ) -> elasticsearch_20170613_models.ListExtendfilesResponse:
+        request: elasticsearch_20170613_models.ListEcsInstancesRequest,
+    ) -> elasticsearch_20170613_models.ListEcsInstancesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_extendfiles_with_options(instance_id, headers, runtime)
+        return self.list_ecs_instances_with_options(request, headers, runtime)
 
-    async def list_extendfiles_async(
+    async def list_ecs_instances_async(
         self,
-        instance_id: str,
-    ) -> elasticsearch_20170613_models.ListExtendfilesResponse:
+        request: elasticsearch_20170613_models.ListEcsInstancesRequest,
+    ) -> elasticsearch_20170613_models.ListEcsInstancesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_extendfiles_with_options_async(instance_id, headers, runtime)
+        return await self.list_ecs_instances_with_options_async(request, headers, runtime)
 
     def list_extendfiles_with_options(
         self,
@@ -7658,23 +7642,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_ilmpolicies(
+    def list_extendfiles(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.ListILMPoliciesRequest,
-    ) -> elasticsearch_20170613_models.ListILMPoliciesResponse:
+    ) -> elasticsearch_20170613_models.ListExtendfilesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_ilmpolicies_with_options(instance_id, request, headers, runtime)
+        return self.list_extendfiles_with_options(instance_id, headers, runtime)
 
-    async def list_ilmpolicies_async(
+    async def list_extendfiles_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.ListILMPoliciesRequest,
-    ) -> elasticsearch_20170613_models.ListILMPoliciesResponse:
+    ) -> elasticsearch_20170613_models.ListExtendfilesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_ilmpolicies_with_options_async(instance_id, request, headers, runtime)
+        return await self.list_extendfiles_with_options_async(instance_id, headers, runtime)
 
     def list_ilmpolicies_with_options(
         self,
@@ -7738,23 +7720,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_index_templates(
+    def list_ilmpolicies(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.ListIndexTemplatesRequest,
-    ) -> elasticsearch_20170613_models.ListIndexTemplatesResponse:
+        request: elasticsearch_20170613_models.ListILMPoliciesRequest,
+    ) -> elasticsearch_20170613_models.ListILMPoliciesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_index_templates_with_options(instance_id, request, headers, runtime)
+        return self.list_ilmpolicies_with_options(instance_id, request, headers, runtime)
 
-    async def list_index_templates_async(
+    async def list_ilmpolicies_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.ListIndexTemplatesRequest,
-    ) -> elasticsearch_20170613_models.ListIndexTemplatesResponse:
+        request: elasticsearch_20170613_models.ListILMPoliciesRequest,
+    ) -> elasticsearch_20170613_models.ListILMPoliciesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_index_templates_with_options_async(instance_id, request, headers, runtime)
+        return await self.list_ilmpolicies_with_options_async(instance_id, request, headers, runtime)
 
     def list_index_templates_with_options(
         self,
@@ -7826,21 +7808,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_instance(
+    def list_index_templates(
         self,
-        request: elasticsearch_20170613_models.ListInstanceRequest,
-    ) -> elasticsearch_20170613_models.ListInstanceResponse:
+        instance_id: str,
+        request: elasticsearch_20170613_models.ListIndexTemplatesRequest,
+    ) -> elasticsearch_20170613_models.ListIndexTemplatesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_instance_with_options(request, headers, runtime)
+        return self.list_index_templates_with_options(instance_id, request, headers, runtime)
 
-    async def list_instance_async(
+    async def list_index_templates_async(
         self,
-        request: elasticsearch_20170613_models.ListInstanceRequest,
-    ) -> elasticsearch_20170613_models.ListInstanceResponse:
+        instance_id: str,
+        request: elasticsearch_20170613_models.ListIndexTemplatesRequest,
+    ) -> elasticsearch_20170613_models.ListIndexTemplatesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_instance_with_options_async(request, headers, runtime)
+        return await self.list_index_templates_with_options_async(instance_id, request, headers, runtime)
 
     def list_instance_with_options(
         self,
@@ -7942,21 +7926,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_instance_history_events(
+    def list_instance(
         self,
-        request: elasticsearch_20170613_models.ListInstanceHistoryEventsRequest,
-    ) -> elasticsearch_20170613_models.ListInstanceHistoryEventsResponse:
+        request: elasticsearch_20170613_models.ListInstanceRequest,
+    ) -> elasticsearch_20170613_models.ListInstanceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_instance_history_events_with_options(request, headers, runtime)
+        return self.list_instance_with_options(request, headers, runtime)
 
-    async def list_instance_history_events_async(
+    async def list_instance_async(
         self,
-        request: elasticsearch_20170613_models.ListInstanceHistoryEventsRequest,
-    ) -> elasticsearch_20170613_models.ListInstanceHistoryEventsResponse:
+        request: elasticsearch_20170613_models.ListInstanceRequest,
+    ) -> elasticsearch_20170613_models.ListInstanceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_instance_history_events_with_options_async(request, headers, runtime)
+        return await self.list_instance_with_options_async(request, headers, runtime)
 
     def list_instance_history_events_with_options(
         self,
@@ -8002,7 +7986,8 @@ class Client(OpenApiClient):
             query['size'] = request.size
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_array(request.body)
         )
         params = open_api_models.Params(
             action='ListInstanceHistoryEvents',
@@ -8064,7 +8049,8 @@ class Client(OpenApiClient):
             query['size'] = request.size
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=UtilClient.to_array(request.body)
         )
         params = open_api_models.Params(
             action='ListInstanceHistoryEvents',
@@ -8082,23 +8068,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_instance_indices(
+    def list_instance_history_events(
         self,
-        instance_id: str,
-        request: elasticsearch_20170613_models.ListInstanceIndicesRequest,
-    ) -> elasticsearch_20170613_models.ListInstanceIndicesResponse:
+        request: elasticsearch_20170613_models.ListInstanceHistoryEventsRequest,
+    ) -> elasticsearch_20170613_models.ListInstanceHistoryEventsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_instance_indices_with_options(instance_id, request, headers, runtime)
+        return self.list_instance_history_events_with_options(request, headers, runtime)
 
-    async def list_instance_indices_async(
+    async def list_instance_history_events_async(
         self,
-        instance_id: str,
-        request: elasticsearch_20170613_models.ListInstanceIndicesRequest,
-    ) -> elasticsearch_20170613_models.ListInstanceIndicesResponse:
+        request: elasticsearch_20170613_models.ListInstanceHistoryEventsRequest,
+    ) -> elasticsearch_20170613_models.ListInstanceHistoryEventsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_instance_indices_with_options_async(instance_id, request, headers, runtime)
+        return await self.list_instance_history_events_with_options_async(request, headers, runtime)
 
     def list_instance_indices_with_options(
         self,
@@ -8182,23 +8166,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_kibana_plugins(
+    def list_instance_indices(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.ListKibanaPluginsRequest,
-    ) -> elasticsearch_20170613_models.ListKibanaPluginsResponse:
+        request: elasticsearch_20170613_models.ListInstanceIndicesRequest,
+    ) -> elasticsearch_20170613_models.ListInstanceIndicesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_kibana_plugins_with_options(instance_id, request, headers, runtime)
+        return self.list_instance_indices_with_options(instance_id, request, headers, runtime)
 
-    async def list_kibana_plugins_async(
+    async def list_instance_indices_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.ListKibanaPluginsRequest,
-    ) -> elasticsearch_20170613_models.ListKibanaPluginsResponse:
+        request: elasticsearch_20170613_models.ListInstanceIndicesRequest,
+    ) -> elasticsearch_20170613_models.ListInstanceIndicesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_kibana_plugins_with_options_async(instance_id, request, headers, runtime)
+        return await self.list_instance_indices_with_options_async(instance_id, request, headers, runtime)
 
     def list_kibana_plugins_with_options(
         self,
@@ -8266,21 +8250,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_logstash(
+    def list_kibana_plugins(
         self,
-        request: elasticsearch_20170613_models.ListLogstashRequest,
-    ) -> elasticsearch_20170613_models.ListLogstashResponse:
+        instance_id: str,
+        request: elasticsearch_20170613_models.ListKibanaPluginsRequest,
+    ) -> elasticsearch_20170613_models.ListKibanaPluginsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_logstash_with_options(request, headers, runtime)
+        return self.list_kibana_plugins_with_options(instance_id, request, headers, runtime)
 
-    async def list_logstash_async(
+    async def list_kibana_plugins_async(
         self,
-        request: elasticsearch_20170613_models.ListLogstashRequest,
-    ) -> elasticsearch_20170613_models.ListLogstashResponse:
+        instance_id: str,
+        request: elasticsearch_20170613_models.ListKibanaPluginsRequest,
+    ) -> elasticsearch_20170613_models.ListKibanaPluginsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_logstash_with_options_async(request, headers, runtime)
+        return await self.list_kibana_plugins_with_options_async(instance_id, request, headers, runtime)
 
     def list_logstash_with_options(
         self,
@@ -8294,8 +8280,6 @@ class Client(OpenApiClient):
             query['description'] = request.description
         if not UtilClient.is_unset(request.instance_id):
             query['instanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.owner_id):
-            query['ownerId'] = request.owner_id
         if not UtilClient.is_unset(request.page):
             query['page'] = request.page
         if not UtilClient.is_unset(request.resource_group_id):
@@ -8338,8 +8322,6 @@ class Client(OpenApiClient):
             query['description'] = request.description
         if not UtilClient.is_unset(request.instance_id):
             query['instanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.owner_id):
-            query['ownerId'] = request.owner_id
         if not UtilClient.is_unset(request.page):
             query['page'] = request.page
         if not UtilClient.is_unset(request.resource_group_id):
@@ -8370,23 +8352,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_logstash_log(
+    def list_logstash(
         self,
-        instance_id: str,
-        request: elasticsearch_20170613_models.ListLogstashLogRequest,
-    ) -> elasticsearch_20170613_models.ListLogstashLogResponse:
+        request: elasticsearch_20170613_models.ListLogstashRequest,
+    ) -> elasticsearch_20170613_models.ListLogstashResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_logstash_log_with_options(instance_id, request, headers, runtime)
+        return self.list_logstash_with_options(request, headers, runtime)
 
-    async def list_logstash_log_async(
+    async def list_logstash_async(
         self,
-        instance_id: str,
-        request: elasticsearch_20170613_models.ListLogstashLogRequest,
-    ) -> elasticsearch_20170613_models.ListLogstashLogResponse:
+        request: elasticsearch_20170613_models.ListLogstashRequest,
+    ) -> elasticsearch_20170613_models.ListLogstashResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_logstash_log_with_options_async(instance_id, request, headers, runtime)
+        return await self.list_logstash_with_options_async(request, headers, runtime)
 
     def list_logstash_log_with_options(
         self,
@@ -8470,23 +8450,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_logstash_plugins(
+    def list_logstash_log(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.ListLogstashPluginsRequest,
-    ) -> elasticsearch_20170613_models.ListLogstashPluginsResponse:
+        request: elasticsearch_20170613_models.ListLogstashLogRequest,
+    ) -> elasticsearch_20170613_models.ListLogstashLogResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_logstash_plugins_with_options(instance_id, request, headers, runtime)
+        return self.list_logstash_log_with_options(instance_id, request, headers, runtime)
 
-    async def list_logstash_plugins_async(
+    async def list_logstash_log_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.ListLogstashPluginsRequest,
-    ) -> elasticsearch_20170613_models.ListLogstashPluginsResponse:
+        request: elasticsearch_20170613_models.ListLogstashLogRequest,
+    ) -> elasticsearch_20170613_models.ListLogstashLogResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_logstash_plugins_with_options_async(instance_id, request, headers, runtime)
+        return await self.list_logstash_log_with_options_async(instance_id, request, headers, runtime)
 
     def list_logstash_plugins_with_options(
         self,
@@ -8562,23 +8542,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_nodes(
+    def list_logstash_plugins(
         self,
-        res_id: str,
-        request: elasticsearch_20170613_models.ListNodesRequest,
-    ) -> elasticsearch_20170613_models.ListNodesResponse:
+        instance_id: str,
+        request: elasticsearch_20170613_models.ListLogstashPluginsRequest,
+    ) -> elasticsearch_20170613_models.ListLogstashPluginsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_nodes_with_options(res_id, request, headers, runtime)
+        return self.list_logstash_plugins_with_options(instance_id, request, headers, runtime)
 
-    async def list_nodes_async(
+    async def list_logstash_plugins_async(
         self,
-        res_id: str,
-        request: elasticsearch_20170613_models.ListNodesRequest,
-    ) -> elasticsearch_20170613_models.ListNodesResponse:
+        instance_id: str,
+        request: elasticsearch_20170613_models.ListLogstashPluginsRequest,
+    ) -> elasticsearch_20170613_models.ListLogstashPluginsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_nodes_with_options_async(res_id, request, headers, runtime)
+        return await self.list_logstash_plugins_with_options_async(instance_id, request, headers, runtime)
 
     def list_nodes_with_options(
         self,
@@ -8658,23 +8638,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_pipeline(
+    def list_nodes(
         self,
-        instance_id: str,
-        request: elasticsearch_20170613_models.ListPipelineRequest,
-    ) -> elasticsearch_20170613_models.ListPipelineResponse:
+        res_id: str,
+        request: elasticsearch_20170613_models.ListNodesRequest,
+    ) -> elasticsearch_20170613_models.ListNodesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_pipeline_with_options(instance_id, request, headers, runtime)
+        return self.list_nodes_with_options(res_id, request, headers, runtime)
 
-    async def list_pipeline_async(
+    async def list_nodes_async(
         self,
-        instance_id: str,
-        request: elasticsearch_20170613_models.ListPipelineRequest,
-    ) -> elasticsearch_20170613_models.ListPipelineResponse:
+        res_id: str,
+        request: elasticsearch_20170613_models.ListNodesRequest,
+    ) -> elasticsearch_20170613_models.ListNodesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_pipeline_with_options_async(instance_id, request, headers, runtime)
+        return await self.list_nodes_with_options_async(res_id, request, headers, runtime)
 
     def list_pipeline_with_options(
         self,
@@ -8746,23 +8726,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_pipeline_ids(
+    def list_pipeline(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.ListPipelineIdsRequest,
-    ) -> elasticsearch_20170613_models.ListPipelineIdsResponse:
+        request: elasticsearch_20170613_models.ListPipelineRequest,
+    ) -> elasticsearch_20170613_models.ListPipelineResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_pipeline_ids_with_options(instance_id, request, headers, runtime)
+        return self.list_pipeline_with_options(instance_id, request, headers, runtime)
 
-    async def list_pipeline_ids_async(
+    async def list_pipeline_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.ListPipelineIdsRequest,
-    ) -> elasticsearch_20170613_models.ListPipelineIdsResponse:
+        request: elasticsearch_20170613_models.ListPipelineRequest,
+    ) -> elasticsearch_20170613_models.ListPipelineResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_pipeline_ids_with_options_async(instance_id, request, headers, runtime)
+        return await self.list_pipeline_with_options_async(instance_id, request, headers, runtime)
 
     def list_pipeline_ids_with_options(
         self,
@@ -8820,23 +8800,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_plugins(
+    def list_pipeline_ids(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.ListPluginsRequest,
-    ) -> elasticsearch_20170613_models.ListPluginsResponse:
+        request: elasticsearch_20170613_models.ListPipelineIdsRequest,
+    ) -> elasticsearch_20170613_models.ListPipelineIdsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_plugins_with_options(instance_id, request, headers, runtime)
+        return self.list_pipeline_ids_with_options(instance_id, request, headers, runtime)
 
-    async def list_plugins_async(
+    async def list_pipeline_ids_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.ListPluginsRequest,
-    ) -> elasticsearch_20170613_models.ListPluginsResponse:
+        request: elasticsearch_20170613_models.ListPipelineIdsRequest,
+    ) -> elasticsearch_20170613_models.ListPipelineIdsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_plugins_with_options_async(instance_id, request, headers, runtime)
+        return await self.list_pipeline_ids_with_options_async(instance_id, request, headers, runtime)
 
     def list_plugins_with_options(
         self,
@@ -8912,23 +8892,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_search_log(
+    def list_plugins(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.ListSearchLogRequest,
-    ) -> elasticsearch_20170613_models.ListSearchLogResponse:
+        request: elasticsearch_20170613_models.ListPluginsRequest,
+    ) -> elasticsearch_20170613_models.ListPluginsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_search_log_with_options(instance_id, request, headers, runtime)
+        return self.list_plugins_with_options(instance_id, request, headers, runtime)
 
-    async def list_search_log_async(
+    async def list_plugins_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.ListSearchLogRequest,
-    ) -> elasticsearch_20170613_models.ListSearchLogResponse:
+        request: elasticsearch_20170613_models.ListPluginsRequest,
+    ) -> elasticsearch_20170613_models.ListPluginsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_search_log_with_options_async(instance_id, request, headers, runtime)
+        return await self.list_plugins_with_options_async(instance_id, request, headers, runtime)
 
     def list_search_log_with_options(
         self,
@@ -9012,23 +8992,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_shard_recoveries(
+    def list_search_log(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.ListShardRecoveriesRequest,
-    ) -> elasticsearch_20170613_models.ListShardRecoveriesResponse:
+        request: elasticsearch_20170613_models.ListSearchLogRequest,
+    ) -> elasticsearch_20170613_models.ListSearchLogResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_shard_recoveries_with_options(instance_id, request, headers, runtime)
+        return self.list_search_log_with_options(instance_id, request, headers, runtime)
 
-    async def list_shard_recoveries_async(
+    async def list_search_log_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.ListShardRecoveriesRequest,
-    ) -> elasticsearch_20170613_models.ListShardRecoveriesResponse:
+        request: elasticsearch_20170613_models.ListSearchLogRequest,
+    ) -> elasticsearch_20170613_models.ListSearchLogResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_shard_recoveries_with_options_async(instance_id, request, headers, runtime)
+        return await self.list_search_log_with_options_async(instance_id, request, headers, runtime)
 
     def list_shard_recoveries_with_options(
         self,
@@ -9092,21 +9072,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_snapshot_repos_by_instance_id(
+    def list_shard_recoveries(
         self,
         instance_id: str,
-    ) -> elasticsearch_20170613_models.ListSnapshotReposByInstanceIdResponse:
+        request: elasticsearch_20170613_models.ListShardRecoveriesRequest,
+    ) -> elasticsearch_20170613_models.ListShardRecoveriesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_snapshot_repos_by_instance_id_with_options(instance_id, headers, runtime)
+        return self.list_shard_recoveries_with_options(instance_id, request, headers, runtime)
 
-    async def list_snapshot_repos_by_instance_id_async(
+    async def list_shard_recoveries_async(
         self,
         instance_id: str,
-    ) -> elasticsearch_20170613_models.ListSnapshotReposByInstanceIdResponse:
+        request: elasticsearch_20170613_models.ListShardRecoveriesRequest,
+    ) -> elasticsearch_20170613_models.ListShardRecoveriesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_snapshot_repos_by_instance_id_with_options_async(instance_id, headers, runtime)
+        return await self.list_shard_recoveries_with_options_async(instance_id, request, headers, runtime)
 
     def list_snapshot_repos_by_instance_id_with_options(
         self,
@@ -9158,21 +9140,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_tag_resources(
+    def list_snapshot_repos_by_instance_id(
         self,
-        request: elasticsearch_20170613_models.ListTagResourcesRequest,
-    ) -> elasticsearch_20170613_models.ListTagResourcesResponse:
+        instance_id: str,
+    ) -> elasticsearch_20170613_models.ListSnapshotReposByInstanceIdResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_tag_resources_with_options(request, headers, runtime)
+        return self.list_snapshot_repos_by_instance_id_with_options(instance_id, headers, runtime)
 
-    async def list_tag_resources_async(
+    async def list_snapshot_repos_by_instance_id_async(
         self,
-        request: elasticsearch_20170613_models.ListTagResourcesRequest,
-    ) -> elasticsearch_20170613_models.ListTagResourcesResponse:
+        instance_id: str,
+    ) -> elasticsearch_20170613_models.ListSnapshotReposByInstanceIdResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_tag_resources_with_options_async(request, headers, runtime)
+        return await self.list_snapshot_repos_by_instance_id_with_options_async(instance_id, headers, runtime)
 
     def list_tag_resources_with_options(
         self,
@@ -9254,21 +9236,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_tags(
+    def list_tag_resources(
         self,
-        request: elasticsearch_20170613_models.ListTagsRequest,
-    ) -> elasticsearch_20170613_models.ListTagsResponse:
+        request: elasticsearch_20170613_models.ListTagResourcesRequest,
+    ) -> elasticsearch_20170613_models.ListTagResourcesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_tags_with_options(request, headers, runtime)
+        return self.list_tag_resources_with_options(request, headers, runtime)
 
-    async def list_tags_async(
+    async def list_tag_resources_async(
         self,
-        request: elasticsearch_20170613_models.ListTagsRequest,
-    ) -> elasticsearch_20170613_models.ListTagsResponse:
+        request: elasticsearch_20170613_models.ListTagResourcesRequest,
+    ) -> elasticsearch_20170613_models.ListTagResourcesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_tags_with_options_async(request, headers, runtime)
+        return await self.list_tag_resources_with_options_async(request, headers, runtime)
 
     def list_tags_with_options(
         self,
@@ -9334,23 +9316,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_vpc_endpoints(
+    def list_tags(
         self,
-        instance_id: str,
-        request: elasticsearch_20170613_models.ListVpcEndpointsRequest,
-    ) -> elasticsearch_20170613_models.ListVpcEndpointsResponse:
+        request: elasticsearch_20170613_models.ListTagsRequest,
+    ) -> elasticsearch_20170613_models.ListTagsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_vpc_endpoints_with_options(instance_id, request, headers, runtime)
+        return self.list_tags_with_options(request, headers, runtime)
 
-    async def list_vpc_endpoints_async(
+    async def list_tags_async(
         self,
-        instance_id: str,
-        request: elasticsearch_20170613_models.ListVpcEndpointsRequest,
-    ) -> elasticsearch_20170613_models.ListVpcEndpointsResponse:
+        request: elasticsearch_20170613_models.ListTagsRequest,
+    ) -> elasticsearch_20170613_models.ListTagsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_vpc_endpoints_with_options_async(instance_id, request, headers, runtime)
+        return await self.list_tags_with_options_async(request, headers, runtime)
 
     def list_vpc_endpoints_with_options(
         self,
@@ -9418,23 +9398,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def migrate_to_other_zone(
+    def list_vpc_endpoints(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.MigrateToOtherZoneRequest,
-    ) -> elasticsearch_20170613_models.MigrateToOtherZoneResponse:
+        request: elasticsearch_20170613_models.ListVpcEndpointsRequest,
+    ) -> elasticsearch_20170613_models.ListVpcEndpointsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.migrate_to_other_zone_with_options(instance_id, request, headers, runtime)
+        return self.list_vpc_endpoints_with_options(instance_id, request, headers, runtime)
 
-    async def migrate_to_other_zone_async(
+    async def list_vpc_endpoints_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.MigrateToOtherZoneRequest,
-    ) -> elasticsearch_20170613_models.MigrateToOtherZoneResponse:
+        request: elasticsearch_20170613_models.ListVpcEndpointsRequest,
+    ) -> elasticsearch_20170613_models.ListVpcEndpointsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.migrate_to_other_zone_with_options_async(instance_id, request, headers, runtime)
+        return await self.list_vpc_endpoints_with_options_async(instance_id, request, headers, runtime)
 
     def migrate_to_other_zone_with_options(
         self,
@@ -9500,23 +9480,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def modify_deploy_machine(
+    def migrate_to_other_zone(
         self,
-        res_id: str,
-        request: elasticsearch_20170613_models.ModifyDeployMachineRequest,
-    ) -> elasticsearch_20170613_models.ModifyDeployMachineResponse:
+        instance_id: str,
+        request: elasticsearch_20170613_models.MigrateToOtherZoneRequest,
+    ) -> elasticsearch_20170613_models.MigrateToOtherZoneResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.modify_deploy_machine_with_options(res_id, request, headers, runtime)
+        return self.migrate_to_other_zone_with_options(instance_id, request, headers, runtime)
 
-    async def modify_deploy_machine_async(
+    async def migrate_to_other_zone_async(
         self,
-        res_id: str,
-        request: elasticsearch_20170613_models.ModifyDeployMachineRequest,
-    ) -> elasticsearch_20170613_models.ModifyDeployMachineResponse:
+        instance_id: str,
+        request: elasticsearch_20170613_models.MigrateToOtherZoneRequest,
+    ) -> elasticsearch_20170613_models.MigrateToOtherZoneResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.modify_deploy_machine_with_options_async(res_id, request, headers, runtime)
+        return await self.migrate_to_other_zone_with_options_async(instance_id, request, headers, runtime)
 
     def modify_deploy_machine_with_options(
         self,
@@ -9582,23 +9562,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def modify_elastictask(
+    def modify_deploy_machine(
         self,
-        instance_id: str,
-        request: elasticsearch_20170613_models.ModifyElastictaskRequest,
-    ) -> elasticsearch_20170613_models.ModifyElastictaskResponse:
+        res_id: str,
+        request: elasticsearch_20170613_models.ModifyDeployMachineRequest,
+    ) -> elasticsearch_20170613_models.ModifyDeployMachineResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.modify_elastictask_with_options(instance_id, request, headers, runtime)
+        return self.modify_deploy_machine_with_options(res_id, request, headers, runtime)
 
-    async def modify_elastictask_async(
+    async def modify_deploy_machine_async(
         self,
-        instance_id: str,
-        request: elasticsearch_20170613_models.ModifyElastictaskRequest,
-    ) -> elasticsearch_20170613_models.ModifyElastictaskResponse:
+        res_id: str,
+        request: elasticsearch_20170613_models.ModifyDeployMachineRequest,
+    ) -> elasticsearch_20170613_models.ModifyDeployMachineResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.modify_elastictask_with_options_async(instance_id, request, headers, runtime)
+        return await self.modify_deploy_machine_with_options_async(res_id, request, headers, runtime)
 
     def modify_elastictask_with_options(
         self,
@@ -9656,23 +9636,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def modify_instance_maintain_time(
+    def modify_elastictask(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.ModifyInstanceMaintainTimeRequest,
-    ) -> elasticsearch_20170613_models.ModifyInstanceMaintainTimeResponse:
+        request: elasticsearch_20170613_models.ModifyElastictaskRequest,
+    ) -> elasticsearch_20170613_models.ModifyElastictaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.modify_instance_maintain_time_with_options(instance_id, request, headers, runtime)
+        return self.modify_elastictask_with_options(instance_id, request, headers, runtime)
 
-    async def modify_instance_maintain_time_async(
+    async def modify_elastictask_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.ModifyInstanceMaintainTimeRequest,
-    ) -> elasticsearch_20170613_models.ModifyInstanceMaintainTimeResponse:
+        request: elasticsearch_20170613_models.ModifyElastictaskRequest,
+    ) -> elasticsearch_20170613_models.ModifyElastictaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.modify_instance_maintain_time_with_options_async(instance_id, request, headers, runtime)
+        return await self.modify_elastictask_with_options_async(instance_id, request, headers, runtime)
 
     def modify_instance_maintain_time_with_options(
         self,
@@ -9738,23 +9718,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def modify_white_ips(
+    def modify_instance_maintain_time(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.ModifyWhiteIpsRequest,
-    ) -> elasticsearch_20170613_models.ModifyWhiteIpsResponse:
+        request: elasticsearch_20170613_models.ModifyInstanceMaintainTimeRequest,
+    ) -> elasticsearch_20170613_models.ModifyInstanceMaintainTimeResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.modify_white_ips_with_options(instance_id, request, headers, runtime)
+        return self.modify_instance_maintain_time_with_options(instance_id, request, headers, runtime)
 
-    async def modify_white_ips_async(
+    async def modify_instance_maintain_time_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.ModifyWhiteIpsRequest,
-    ) -> elasticsearch_20170613_models.ModifyWhiteIpsResponse:
+        request: elasticsearch_20170613_models.ModifyInstanceMaintainTimeRequest,
+    ) -> elasticsearch_20170613_models.ModifyInstanceMaintainTimeResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.modify_white_ips_with_options_async(instance_id, request, headers, runtime)
+        return await self.modify_instance_maintain_time_with_options_async(instance_id, request, headers, runtime)
 
     def modify_white_ips_with_options(
         self,
@@ -9842,23 +9822,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def move_resource_group(
+    def modify_white_ips(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.MoveResourceGroupRequest,
-    ) -> elasticsearch_20170613_models.MoveResourceGroupResponse:
+        request: elasticsearch_20170613_models.ModifyWhiteIpsRequest,
+    ) -> elasticsearch_20170613_models.ModifyWhiteIpsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.move_resource_group_with_options(instance_id, request, headers, runtime)
+        return self.modify_white_ips_with_options(instance_id, request, headers, runtime)
 
-    async def move_resource_group_async(
+    async def modify_white_ips_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.MoveResourceGroupRequest,
-    ) -> elasticsearch_20170613_models.MoveResourceGroupResponse:
+        request: elasticsearch_20170613_models.ModifyWhiteIpsRequest,
+    ) -> elasticsearch_20170613_models.ModifyWhiteIpsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.move_resource_group_with_options_async(instance_id, request, headers, runtime)
+        return await self.modify_white_ips_with_options_async(instance_id, request, headers, runtime)
 
     def move_resource_group_with_options(
         self,
@@ -9924,23 +9904,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def open_diagnosis(
+    def move_resource_group(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.OpenDiagnosisRequest,
-    ) -> elasticsearch_20170613_models.OpenDiagnosisResponse:
+        request: elasticsearch_20170613_models.MoveResourceGroupRequest,
+    ) -> elasticsearch_20170613_models.MoveResourceGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.open_diagnosis_with_options(instance_id, request, headers, runtime)
+        return self.move_resource_group_with_options(instance_id, request, headers, runtime)
 
-    async def open_diagnosis_async(
+    async def move_resource_group_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.OpenDiagnosisRequest,
-    ) -> elasticsearch_20170613_models.OpenDiagnosisResponse:
+        request: elasticsearch_20170613_models.MoveResourceGroupRequest,
+    ) -> elasticsearch_20170613_models.MoveResourceGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.open_diagnosis_with_options_async(instance_id, request, headers, runtime)
+        return await self.move_resource_group_with_options_async(instance_id, request, headers, runtime)
 
     def open_diagnosis_with_options(
         self,
@@ -10008,23 +9988,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def open_https(
+    def open_diagnosis(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.OpenHttpsRequest,
-    ) -> elasticsearch_20170613_models.OpenHttpsResponse:
+        request: elasticsearch_20170613_models.OpenDiagnosisRequest,
+    ) -> elasticsearch_20170613_models.OpenDiagnosisResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.open_https_with_options(instance_id, request, headers, runtime)
+        return self.open_diagnosis_with_options(instance_id, request, headers, runtime)
 
-    async def open_https_async(
+    async def open_diagnosis_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.OpenHttpsRequest,
-    ) -> elasticsearch_20170613_models.OpenHttpsResponse:
+        request: elasticsearch_20170613_models.OpenDiagnosisRequest,
+    ) -> elasticsearch_20170613_models.OpenDiagnosisResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.open_https_with_options_async(instance_id, request, headers, runtime)
+        return await self.open_diagnosis_with_options_async(instance_id, request, headers, runtime)
 
     def open_https_with_options(
         self,
@@ -10088,25 +10068,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def post_emon_try_alarm_rule(
+    def open_https(
         self,
-        project_id: str,
-        alarm_group_id: str,
-        request: elasticsearch_20170613_models.PostEmonTryAlarmRuleRequest,
-    ) -> elasticsearch_20170613_models.PostEmonTryAlarmRuleResponse:
+        instance_id: str,
+        request: elasticsearch_20170613_models.OpenHttpsRequest,
+    ) -> elasticsearch_20170613_models.OpenHttpsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.post_emon_try_alarm_rule_with_options(project_id, alarm_group_id, request, headers, runtime)
+        return self.open_https_with_options(instance_id, request, headers, runtime)
 
-    async def post_emon_try_alarm_rule_async(
+    async def open_https_async(
         self,
-        project_id: str,
-        alarm_group_id: str,
-        request: elasticsearch_20170613_models.PostEmonTryAlarmRuleRequest,
-    ) -> elasticsearch_20170613_models.PostEmonTryAlarmRuleResponse:
+        instance_id: str,
+        request: elasticsearch_20170613_models.OpenHttpsRequest,
+    ) -> elasticsearch_20170613_models.OpenHttpsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.post_emon_try_alarm_rule_with_options_async(project_id, alarm_group_id, request, headers, runtime)
+        return await self.open_https_with_options_async(instance_id, request, headers, runtime)
 
     def post_emon_try_alarm_rule_with_options(
         self,
@@ -10166,23 +10144,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def recommend_templates(
+    def post_emon_try_alarm_rule(
         self,
-        instance_id: str,
-        request: elasticsearch_20170613_models.RecommendTemplatesRequest,
-    ) -> elasticsearch_20170613_models.RecommendTemplatesResponse:
+        project_id: str,
+        alarm_group_id: str,
+        request: elasticsearch_20170613_models.PostEmonTryAlarmRuleRequest,
+    ) -> elasticsearch_20170613_models.PostEmonTryAlarmRuleResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.recommend_templates_with_options(instance_id, request, headers, runtime)
+        return self.post_emon_try_alarm_rule_with_options(project_id, alarm_group_id, request, headers, runtime)
 
-    async def recommend_templates_async(
+    async def post_emon_try_alarm_rule_async(
         self,
-        instance_id: str,
-        request: elasticsearch_20170613_models.RecommendTemplatesRequest,
-    ) -> elasticsearch_20170613_models.RecommendTemplatesResponse:
+        project_id: str,
+        alarm_group_id: str,
+        request: elasticsearch_20170613_models.PostEmonTryAlarmRuleRequest,
+    ) -> elasticsearch_20170613_models.PostEmonTryAlarmRuleResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.recommend_templates_with_options_async(instance_id, request, headers, runtime)
+        return await self.post_emon_try_alarm_rule_with_options_async(project_id, alarm_group_id, request, headers, runtime)
 
     def recommend_templates_with_options(
         self,
@@ -10246,23 +10226,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def reinstall_collector(
+    def recommend_templates(
         self,
-        res_id: str,
-        request: elasticsearch_20170613_models.ReinstallCollectorRequest,
-    ) -> elasticsearch_20170613_models.ReinstallCollectorResponse:
+        instance_id: str,
+        request: elasticsearch_20170613_models.RecommendTemplatesRequest,
+    ) -> elasticsearch_20170613_models.RecommendTemplatesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.reinstall_collector_with_options(res_id, request, headers, runtime)
+        return self.recommend_templates_with_options(instance_id, request, headers, runtime)
 
-    async def reinstall_collector_async(
+    async def recommend_templates_async(
         self,
-        res_id: str,
-        request: elasticsearch_20170613_models.ReinstallCollectorRequest,
-    ) -> elasticsearch_20170613_models.ReinstallCollectorResponse:
+        instance_id: str,
+        request: elasticsearch_20170613_models.RecommendTemplatesRequest,
+    ) -> elasticsearch_20170613_models.RecommendTemplatesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.reinstall_collector_with_options_async(res_id, request, headers, runtime)
+        return await self.recommend_templates_with_options_async(instance_id, request, headers, runtime)
 
     def reinstall_collector_with_options(
         self,
@@ -10328,21 +10308,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def remove_apm(
+    def reinstall_collector(
         self,
-        instance_id: str,
-    ) -> elasticsearch_20170613_models.RemoveApmResponse:
+        res_id: str,
+        request: elasticsearch_20170613_models.ReinstallCollectorRequest,
+    ) -> elasticsearch_20170613_models.ReinstallCollectorResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.remove_apm_with_options(instance_id, headers, runtime)
+        return self.reinstall_collector_with_options(res_id, request, headers, runtime)
 
-    async def remove_apm_async(
+    async def reinstall_collector_async(
         self,
-        instance_id: str,
-    ) -> elasticsearch_20170613_models.RemoveApmResponse:
+        res_id: str,
+        request: elasticsearch_20170613_models.ReinstallCollectorRequest,
+    ) -> elasticsearch_20170613_models.ReinstallCollectorResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.remove_apm_with_options_async(instance_id, headers, runtime)
+        return await self.reinstall_collector_with_options_async(res_id, request, headers, runtime)
 
     def remove_apm_with_options(
         self,
@@ -10394,23 +10376,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def renew_instance(
+    def remove_apm(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.RenewInstanceRequest,
-    ) -> elasticsearch_20170613_models.RenewInstanceResponse:
+    ) -> elasticsearch_20170613_models.RemoveApmResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.renew_instance_with_options(instance_id, request, headers, runtime)
+        return self.remove_apm_with_options(instance_id, headers, runtime)
 
-    async def renew_instance_async(
+    async def remove_apm_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.RenewInstanceRequest,
-    ) -> elasticsearch_20170613_models.RenewInstanceResponse:
+    ) -> elasticsearch_20170613_models.RemoveApmResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.renew_instance_with_options_async(instance_id, request, headers, runtime)
+        return await self.remove_apm_with_options_async(instance_id, headers, runtime)
 
     def renew_instance_with_options(
         self,
@@ -10476,23 +10456,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def renew_logstash(
+    def renew_instance(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.RenewLogstashRequest,
-    ) -> elasticsearch_20170613_models.RenewLogstashResponse:
+        request: elasticsearch_20170613_models.RenewInstanceRequest,
+    ) -> elasticsearch_20170613_models.RenewInstanceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.renew_logstash_with_options(instance_id, request, headers, runtime)
+        return self.renew_instance_with_options(instance_id, request, headers, runtime)
 
-    async def renew_logstash_async(
+    async def renew_instance_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.RenewLogstashRequest,
-    ) -> elasticsearch_20170613_models.RenewLogstashResponse:
+        request: elasticsearch_20170613_models.RenewInstanceRequest,
+    ) -> elasticsearch_20170613_models.RenewInstanceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.renew_logstash_with_options_async(instance_id, request, headers, runtime)
+        return await self.renew_instance_with_options_async(instance_id, request, headers, runtime)
 
     def renew_logstash_with_options(
         self,
@@ -10558,23 +10538,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def restart_collector(
+    def renew_logstash(
         self,
-        res_id: str,
-        request: elasticsearch_20170613_models.RestartCollectorRequest,
-    ) -> elasticsearch_20170613_models.RestartCollectorResponse:
+        instance_id: str,
+        request: elasticsearch_20170613_models.RenewLogstashRequest,
+    ) -> elasticsearch_20170613_models.RenewLogstashResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.restart_collector_with_options(res_id, request, headers, runtime)
+        return self.renew_logstash_with_options(instance_id, request, headers, runtime)
 
-    async def restart_collector_async(
+    async def renew_logstash_async(
         self,
-        res_id: str,
-        request: elasticsearch_20170613_models.RestartCollectorRequest,
-    ) -> elasticsearch_20170613_models.RestartCollectorResponse:
+        instance_id: str,
+        request: elasticsearch_20170613_models.RenewLogstashRequest,
+    ) -> elasticsearch_20170613_models.RenewLogstashResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.restart_collector_with_options_async(res_id, request, headers, runtime)
+        return await self.renew_logstash_with_options_async(instance_id, request, headers, runtime)
 
     def restart_collector_with_options(
         self,
@@ -10638,23 +10618,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def restart_instance(
+    def restart_collector(
         self,
-        instance_id: str,
-        request: elasticsearch_20170613_models.RestartInstanceRequest,
-    ) -> elasticsearch_20170613_models.RestartInstanceResponse:
+        res_id: str,
+        request: elasticsearch_20170613_models.RestartCollectorRequest,
+    ) -> elasticsearch_20170613_models.RestartCollectorResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.restart_instance_with_options(instance_id, request, headers, runtime)
+        return self.restart_collector_with_options(res_id, request, headers, runtime)
 
-    async def restart_instance_async(
+    async def restart_collector_async(
         self,
-        instance_id: str,
-        request: elasticsearch_20170613_models.RestartInstanceRequest,
-    ) -> elasticsearch_20170613_models.RestartInstanceResponse:
+        res_id: str,
+        request: elasticsearch_20170613_models.RestartCollectorRequest,
+    ) -> elasticsearch_20170613_models.RestartCollectorResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.restart_instance_with_options_async(instance_id, request, headers, runtime)
+        return await self.restart_collector_with_options_async(res_id, request, headers, runtime)
 
     def restart_instance_with_options(
         self,
@@ -10724,23 +10704,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def restart_logstash(
+    def restart_instance(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.RestartLogstashRequest,
-    ) -> elasticsearch_20170613_models.RestartLogstashResponse:
+        request: elasticsearch_20170613_models.RestartInstanceRequest,
+    ) -> elasticsearch_20170613_models.RestartInstanceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.restart_logstash_with_options(instance_id, request, headers, runtime)
+        return self.restart_instance_with_options(instance_id, request, headers, runtime)
 
-    async def restart_logstash_async(
+    async def restart_instance_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.RestartLogstashRequest,
-    ) -> elasticsearch_20170613_models.RestartLogstashResponse:
+        request: elasticsearch_20170613_models.RestartInstanceRequest,
+    ) -> elasticsearch_20170613_models.RestartInstanceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.restart_logstash_with_options_async(instance_id, request, headers, runtime)
+        return await self.restart_instance_with_options_async(instance_id, request, headers, runtime)
 
     def restart_logstash_with_options(
         self,
@@ -10832,23 +10812,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def resume_elasticsearch_task(
+    def restart_logstash(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.ResumeElasticsearchTaskRequest,
-    ) -> elasticsearch_20170613_models.ResumeElasticsearchTaskResponse:
+        request: elasticsearch_20170613_models.RestartLogstashRequest,
+    ) -> elasticsearch_20170613_models.RestartLogstashResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.resume_elasticsearch_task_with_options(instance_id, request, headers, runtime)
+        return self.restart_logstash_with_options(instance_id, request, headers, runtime)
 
-    async def resume_elasticsearch_task_async(
+    async def restart_logstash_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.ResumeElasticsearchTaskRequest,
-    ) -> elasticsearch_20170613_models.ResumeElasticsearchTaskResponse:
+        request: elasticsearch_20170613_models.RestartLogstashRequest,
+    ) -> elasticsearch_20170613_models.RestartLogstashResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.resume_elasticsearch_task_with_options_async(instance_id, request, headers, runtime)
+        return await self.restart_logstash_with_options_async(instance_id, request, headers, runtime)
 
     def resume_elasticsearch_task_with_options(
         self,
@@ -10912,23 +10892,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def resume_logstash_task(
+    def resume_elasticsearch_task(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.ResumeLogstashTaskRequest,
-    ) -> elasticsearch_20170613_models.ResumeLogstashTaskResponse:
+        request: elasticsearch_20170613_models.ResumeElasticsearchTaskRequest,
+    ) -> elasticsearch_20170613_models.ResumeElasticsearchTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.resume_logstash_task_with_options(instance_id, request, headers, runtime)
+        return self.resume_elasticsearch_task_with_options(instance_id, request, headers, runtime)
 
-    async def resume_logstash_task_async(
+    async def resume_elasticsearch_task_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.ResumeLogstashTaskRequest,
-    ) -> elasticsearch_20170613_models.ResumeLogstashTaskResponse:
+        request: elasticsearch_20170613_models.ResumeElasticsearchTaskRequest,
+    ) -> elasticsearch_20170613_models.ResumeElasticsearchTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.resume_logstash_task_with_options_async(instance_id, request, headers, runtime)
+        return await self.resume_elasticsearch_task_with_options_async(instance_id, request, headers, runtime)
 
     def resume_logstash_task_with_options(
         self,
@@ -10992,25 +10972,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def rollover_data_stream(
+    def resume_logstash_task(
         self,
         instance_id: str,
-        data_stream: str,
-        request: elasticsearch_20170613_models.RolloverDataStreamRequest,
-    ) -> elasticsearch_20170613_models.RolloverDataStreamResponse:
+        request: elasticsearch_20170613_models.ResumeLogstashTaskRequest,
+    ) -> elasticsearch_20170613_models.ResumeLogstashTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.rollover_data_stream_with_options(instance_id, data_stream, request, headers, runtime)
+        return self.resume_logstash_task_with_options(instance_id, request, headers, runtime)
 
-    async def rollover_data_stream_async(
+    async def resume_logstash_task_async(
         self,
         instance_id: str,
-        data_stream: str,
-        request: elasticsearch_20170613_models.RolloverDataStreamRequest,
-    ) -> elasticsearch_20170613_models.RolloverDataStreamResponse:
+        request: elasticsearch_20170613_models.ResumeLogstashTaskRequest,
+    ) -> elasticsearch_20170613_models.ResumeLogstashTaskResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.rollover_data_stream_with_options_async(instance_id, data_stream, request, headers, runtime)
+        return await self.resume_logstash_task_with_options_async(instance_id, request, headers, runtime)
 
     def rollover_data_stream_with_options(
         self,
@@ -11076,23 +11054,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def run_pipelines(
+    def rollover_data_stream(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.RunPipelinesRequest,
-    ) -> elasticsearch_20170613_models.RunPipelinesResponse:
+        data_stream: str,
+        request: elasticsearch_20170613_models.RolloverDataStreamRequest,
+    ) -> elasticsearch_20170613_models.RolloverDataStreamResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.run_pipelines_with_options(instance_id, request, headers, runtime)
+        return self.rollover_data_stream_with_options(instance_id, data_stream, request, headers, runtime)
 
-    async def run_pipelines_async(
+    async def rollover_data_stream_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.RunPipelinesRequest,
-    ) -> elasticsearch_20170613_models.RunPipelinesResponse:
+        data_stream: str,
+        request: elasticsearch_20170613_models.RolloverDataStreamRequest,
+    ) -> elasticsearch_20170613_models.RolloverDataStreamResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.run_pipelines_with_options_async(instance_id, request, headers, runtime)
+        return await self.rollover_data_stream_with_options_async(instance_id, data_stream, request, headers, runtime)
 
     def run_pipelines_with_options(
         self,
@@ -11158,23 +11138,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def shrink_node(
+    def run_pipelines(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.ShrinkNodeRequest,
-    ) -> elasticsearch_20170613_models.ShrinkNodeResponse:
+        request: elasticsearch_20170613_models.RunPipelinesRequest,
+    ) -> elasticsearch_20170613_models.RunPipelinesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.shrink_node_with_options(instance_id, request, headers, runtime)
+        return self.run_pipelines_with_options(instance_id, request, headers, runtime)
 
-    async def shrink_node_async(
+    async def run_pipelines_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.ShrinkNodeRequest,
-    ) -> elasticsearch_20170613_models.ShrinkNodeResponse:
+        request: elasticsearch_20170613_models.RunPipelinesRequest,
+    ) -> elasticsearch_20170613_models.RunPipelinesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.shrink_node_with_options_async(instance_id, request, headers, runtime)
+        return await self.run_pipelines_with_options_async(instance_id, request, headers, runtime)
 
     def shrink_node_with_options(
         self,
@@ -11252,21 +11232,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def start_apm(
+    def shrink_node(
         self,
         instance_id: str,
-    ) -> elasticsearch_20170613_models.StartApmResponse:
+        request: elasticsearch_20170613_models.ShrinkNodeRequest,
+    ) -> elasticsearch_20170613_models.ShrinkNodeResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.start_apm_with_options(instance_id, headers, runtime)
+        return self.shrink_node_with_options(instance_id, request, headers, runtime)
 
-    async def start_apm_async(
+    async def shrink_node_async(
         self,
         instance_id: str,
-    ) -> elasticsearch_20170613_models.StartApmResponse:
+        request: elasticsearch_20170613_models.ShrinkNodeRequest,
+    ) -> elasticsearch_20170613_models.ShrinkNodeResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.start_apm_with_options_async(instance_id, headers, runtime)
+        return await self.shrink_node_with_options_async(instance_id, request, headers, runtime)
 
     def start_apm_with_options(
         self,
@@ -11318,23 +11300,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def start_collector(
+    def start_apm(
         self,
-        res_id: str,
-        request: elasticsearch_20170613_models.StartCollectorRequest,
-    ) -> elasticsearch_20170613_models.StartCollectorResponse:
+        instance_id: str,
+    ) -> elasticsearch_20170613_models.StartApmResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.start_collector_with_options(res_id, request, headers, runtime)
+        return self.start_apm_with_options(instance_id, headers, runtime)
 
-    async def start_collector_async(
+    async def start_apm_async(
         self,
-        res_id: str,
-        request: elasticsearch_20170613_models.StartCollectorRequest,
-    ) -> elasticsearch_20170613_models.StartCollectorResponse:
+        instance_id: str,
+    ) -> elasticsearch_20170613_models.StartApmResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.start_collector_with_options_async(res_id, request, headers, runtime)
+        return await self.start_apm_with_options_async(instance_id, headers, runtime)
 
     def start_collector_with_options(
         self,
@@ -11398,21 +11378,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def stop_apm(
+    def start_collector(
         self,
-        instance_id: str,
-    ) -> elasticsearch_20170613_models.StopApmResponse:
+        res_id: str,
+        request: elasticsearch_20170613_models.StartCollectorRequest,
+    ) -> elasticsearch_20170613_models.StartCollectorResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.stop_apm_with_options(instance_id, headers, runtime)
+        return self.start_collector_with_options(res_id, request, headers, runtime)
 
-    async def stop_apm_async(
+    async def start_collector_async(
         self,
-        instance_id: str,
-    ) -> elasticsearch_20170613_models.StopApmResponse:
+        res_id: str,
+        request: elasticsearch_20170613_models.StartCollectorRequest,
+    ) -> elasticsearch_20170613_models.StartCollectorResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.stop_apm_with_options_async(instance_id, headers, runtime)
+        return await self.start_collector_with_options_async(res_id, request, headers, runtime)
 
     def stop_apm_with_options(
         self,
@@ -11464,23 +11446,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def stop_collector(
+    def stop_apm(
         self,
-        res_id: str,
-        request: elasticsearch_20170613_models.StopCollectorRequest,
-    ) -> elasticsearch_20170613_models.StopCollectorResponse:
+        instance_id: str,
+    ) -> elasticsearch_20170613_models.StopApmResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.stop_collector_with_options(res_id, request, headers, runtime)
+        return self.stop_apm_with_options(instance_id, headers, runtime)
 
-    async def stop_collector_async(
+    async def stop_apm_async(
         self,
-        res_id: str,
-        request: elasticsearch_20170613_models.StopCollectorRequest,
-    ) -> elasticsearch_20170613_models.StopCollectorResponse:
+        instance_id: str,
+    ) -> elasticsearch_20170613_models.StopApmResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.stop_collector_with_options_async(res_id, request, headers, runtime)
+        return await self.stop_apm_with_options_async(instance_id, headers, runtime)
 
     def stop_collector_with_options(
         self,
@@ -11544,23 +11524,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def stop_pipelines(
+    def stop_collector(
         self,
-        instance_id: str,
-        request: elasticsearch_20170613_models.StopPipelinesRequest,
-    ) -> elasticsearch_20170613_models.StopPipelinesResponse:
+        res_id: str,
+        request: elasticsearch_20170613_models.StopCollectorRequest,
+    ) -> elasticsearch_20170613_models.StopCollectorResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.stop_pipelines_with_options(instance_id, request, headers, runtime)
+        return self.stop_collector_with_options(res_id, request, headers, runtime)
 
-    async def stop_pipelines_async(
+    async def stop_collector_async(
         self,
-        instance_id: str,
-        request: elasticsearch_20170613_models.StopPipelinesRequest,
-    ) -> elasticsearch_20170613_models.StopPipelinesResponse:
+        res_id: str,
+        request: elasticsearch_20170613_models.StopCollectorRequest,
+    ) -> elasticsearch_20170613_models.StopCollectorResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.stop_pipelines_with_options_async(instance_id, request, headers, runtime)
+        return await self.stop_collector_with_options_async(res_id, request, headers, runtime)
 
     def stop_pipelines_with_options(
         self,
@@ -11626,21 +11606,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def tag_resources(
+    def stop_pipelines(
         self,
-        request: elasticsearch_20170613_models.TagResourcesRequest,
-    ) -> elasticsearch_20170613_models.TagResourcesResponse:
+        instance_id: str,
+        request: elasticsearch_20170613_models.StopPipelinesRequest,
+    ) -> elasticsearch_20170613_models.StopPipelinesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.tag_resources_with_options(request, headers, runtime)
+        return self.stop_pipelines_with_options(instance_id, request, headers, runtime)
 
-    async def tag_resources_async(
+    async def stop_pipelines_async(
         self,
-        request: elasticsearch_20170613_models.TagResourcesRequest,
-    ) -> elasticsearch_20170613_models.TagResourcesResponse:
+        instance_id: str,
+        request: elasticsearch_20170613_models.StopPipelinesRequest,
+    ) -> elasticsearch_20170613_models.StopPipelinesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.tag_resources_with_options_async(request, headers, runtime)
+        return await self.stop_pipelines_with_options_async(instance_id, request, headers, runtime)
 
     def tag_resources_with_options(
         self,
@@ -11710,23 +11692,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def transfer_node(
+    def tag_resources(
         self,
-        instance_id: str,
-        request: elasticsearch_20170613_models.TransferNodeRequest,
-    ) -> elasticsearch_20170613_models.TransferNodeResponse:
+        request: elasticsearch_20170613_models.TagResourcesRequest,
+    ) -> elasticsearch_20170613_models.TagResourcesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.transfer_node_with_options(instance_id, request, headers, runtime)
+        return self.tag_resources_with_options(request, headers, runtime)
 
-    async def transfer_node_async(
+    async def tag_resources_async(
         self,
-        instance_id: str,
-        request: elasticsearch_20170613_models.TransferNodeRequest,
-    ) -> elasticsearch_20170613_models.TransferNodeResponse:
+        request: elasticsearch_20170613_models.TagResourcesRequest,
+    ) -> elasticsearch_20170613_models.TagResourcesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.transfer_node_with_options_async(instance_id, request, headers, runtime)
+        return await self.tag_resources_with_options_async(request, headers, runtime)
 
     def transfer_node_with_options(
         self,
@@ -11796,23 +11776,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def trigger_network(
+    def transfer_node(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.TriggerNetworkRequest,
-    ) -> elasticsearch_20170613_models.TriggerNetworkResponse:
+        request: elasticsearch_20170613_models.TransferNodeRequest,
+    ) -> elasticsearch_20170613_models.TransferNodeResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.trigger_network_with_options(instance_id, request, headers, runtime)
+        return self.transfer_node_with_options(instance_id, request, headers, runtime)
 
-    async def trigger_network_async(
+    async def transfer_node_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.TriggerNetworkRequest,
-    ) -> elasticsearch_20170613_models.TriggerNetworkResponse:
+        request: elasticsearch_20170613_models.TransferNodeRequest,
+    ) -> elasticsearch_20170613_models.TransferNodeResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.trigger_network_with_options_async(instance_id, request, headers, runtime)
+        return await self.transfer_node_with_options_async(instance_id, request, headers, runtime)
 
     def trigger_network_with_options(
         self,
@@ -11892,23 +11872,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def uninstall_kibana_plugin(
+    def trigger_network(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.UninstallKibanaPluginRequest,
-    ) -> elasticsearch_20170613_models.UninstallKibanaPluginResponse:
+        request: elasticsearch_20170613_models.TriggerNetworkRequest,
+    ) -> elasticsearch_20170613_models.TriggerNetworkResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.uninstall_kibana_plugin_with_options(instance_id, request, headers, runtime)
+        return self.trigger_network_with_options(instance_id, request, headers, runtime)
 
-    async def uninstall_kibana_plugin_async(
+    async def trigger_network_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.UninstallKibanaPluginRequest,
-    ) -> elasticsearch_20170613_models.UninstallKibanaPluginResponse:
+        request: elasticsearch_20170613_models.TriggerNetworkRequest,
+    ) -> elasticsearch_20170613_models.TriggerNetworkResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.uninstall_kibana_plugin_with_options_async(instance_id, request, headers, runtime)
+        return await self.trigger_network_with_options_async(instance_id, request, headers, runtime)
 
     def uninstall_kibana_plugin_with_options(
         self,
@@ -11974,23 +11954,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def uninstall_logstash_plugin(
+    def uninstall_kibana_plugin(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.UninstallLogstashPluginRequest,
-    ) -> elasticsearch_20170613_models.UninstallLogstashPluginResponse:
+        request: elasticsearch_20170613_models.UninstallKibanaPluginRequest,
+    ) -> elasticsearch_20170613_models.UninstallKibanaPluginResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.uninstall_logstash_plugin_with_options(instance_id, request, headers, runtime)
+        return self.uninstall_kibana_plugin_with_options(instance_id, request, headers, runtime)
 
-    async def uninstall_logstash_plugin_async(
+    async def uninstall_kibana_plugin_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.UninstallLogstashPluginRequest,
-    ) -> elasticsearch_20170613_models.UninstallLogstashPluginResponse:
+        request: elasticsearch_20170613_models.UninstallKibanaPluginRequest,
+    ) -> elasticsearch_20170613_models.UninstallKibanaPluginResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.uninstall_logstash_plugin_with_options_async(instance_id, request, headers, runtime)
+        return await self.uninstall_kibana_plugin_with_options_async(instance_id, request, headers, runtime)
 
     def uninstall_logstash_plugin_with_options(
         self,
@@ -12056,23 +12036,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def uninstall_plugin(
+    def uninstall_logstash_plugin(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.UninstallPluginRequest,
-    ) -> elasticsearch_20170613_models.UninstallPluginResponse:
+        request: elasticsearch_20170613_models.UninstallLogstashPluginRequest,
+    ) -> elasticsearch_20170613_models.UninstallLogstashPluginResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.uninstall_plugin_with_options(instance_id, request, headers, runtime)
+        return self.uninstall_logstash_plugin_with_options(instance_id, request, headers, runtime)
 
-    async def uninstall_plugin_async(
+    async def uninstall_logstash_plugin_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.UninstallPluginRequest,
-    ) -> elasticsearch_20170613_models.UninstallPluginResponse:
+        request: elasticsearch_20170613_models.UninstallLogstashPluginRequest,
+    ) -> elasticsearch_20170613_models.UninstallLogstashPluginResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.uninstall_plugin_with_options_async(instance_id, request, headers, runtime)
+        return await self.uninstall_logstash_plugin_with_options_async(instance_id, request, headers, runtime)
 
     def uninstall_plugin_with_options(
         self,
@@ -12138,21 +12118,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def untag_resources(
+    def uninstall_plugin(
         self,
-        request: elasticsearch_20170613_models.UntagResourcesRequest,
-    ) -> elasticsearch_20170613_models.UntagResourcesResponse:
+        instance_id: str,
+        request: elasticsearch_20170613_models.UninstallPluginRequest,
+    ) -> elasticsearch_20170613_models.UninstallPluginResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.untag_resources_with_options(request, headers, runtime)
+        return self.uninstall_plugin_with_options(instance_id, request, headers, runtime)
 
-    async def untag_resources_async(
+    async def uninstall_plugin_async(
         self,
-        request: elasticsearch_20170613_models.UntagResourcesRequest,
-    ) -> elasticsearch_20170613_models.UntagResourcesResponse:
+        instance_id: str,
+        request: elasticsearch_20170613_models.UninstallPluginRequest,
+    ) -> elasticsearch_20170613_models.UninstallPluginResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.untag_resources_with_options_async(request, headers, runtime)
+        return await self.uninstall_plugin_with_options_async(instance_id, request, headers, runtime)
 
     def untag_resources_with_options(
         self,
@@ -12228,23 +12210,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_admin_password(
+    def untag_resources(
         self,
-        instance_id: str,
-        request: elasticsearch_20170613_models.UpdateAdminPasswordRequest,
-    ) -> elasticsearch_20170613_models.UpdateAdminPasswordResponse:
+        request: elasticsearch_20170613_models.UntagResourcesRequest,
+    ) -> elasticsearch_20170613_models.UntagResourcesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_admin_password_with_options(instance_id, request, headers, runtime)
+        return self.untag_resources_with_options(request, headers, runtime)
 
-    async def update_admin_password_async(
+    async def untag_resources_async(
         self,
-        instance_id: str,
-        request: elasticsearch_20170613_models.UpdateAdminPasswordRequest,
-    ) -> elasticsearch_20170613_models.UpdateAdminPasswordResponse:
+        request: elasticsearch_20170613_models.UntagResourcesRequest,
+    ) -> elasticsearch_20170613_models.UntagResourcesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_admin_password_with_options_async(instance_id, request, headers, runtime)
+        return await self.untag_resources_with_options_async(request, headers, runtime)
 
     def update_admin_password_with_options(
         self,
@@ -12316,23 +12296,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_advanced_setting(
+    def update_admin_password(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.UpdateAdvancedSettingRequest,
-    ) -> elasticsearch_20170613_models.UpdateAdvancedSettingResponse:
+        request: elasticsearch_20170613_models.UpdateAdminPasswordRequest,
+    ) -> elasticsearch_20170613_models.UpdateAdminPasswordResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_advanced_setting_with_options(instance_id, request, headers, runtime)
+        return self.update_admin_password_with_options(instance_id, request, headers, runtime)
 
-    async def update_advanced_setting_async(
+    async def update_admin_password_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.UpdateAdvancedSettingRequest,
-    ) -> elasticsearch_20170613_models.UpdateAdvancedSettingResponse:
+        request: elasticsearch_20170613_models.UpdateAdminPasswordRequest,
+    ) -> elasticsearch_20170613_models.UpdateAdminPasswordResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_advanced_setting_with_options_async(instance_id, request, headers, runtime)
+        return await self.update_admin_password_with_options_async(instance_id, request, headers, runtime)
 
     def update_advanced_setting_with_options(
         self,
@@ -12398,23 +12378,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_aliws_dict(
+    def update_advanced_setting(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.UpdateAliwsDictRequest,
-    ) -> elasticsearch_20170613_models.UpdateAliwsDictResponse:
+        request: elasticsearch_20170613_models.UpdateAdvancedSettingRequest,
+    ) -> elasticsearch_20170613_models.UpdateAdvancedSettingResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_aliws_dict_with_options(instance_id, request, headers, runtime)
+        return self.update_advanced_setting_with_options(instance_id, request, headers, runtime)
 
-    async def update_aliws_dict_async(
+    async def update_advanced_setting_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.UpdateAliwsDictRequest,
-    ) -> elasticsearch_20170613_models.UpdateAliwsDictResponse:
+        request: elasticsearch_20170613_models.UpdateAdvancedSettingRequest,
+    ) -> elasticsearch_20170613_models.UpdateAdvancedSettingResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_aliws_dict_with_options_async(instance_id, request, headers, runtime)
+        return await self.update_advanced_setting_with_options_async(instance_id, request, headers, runtime)
 
     def update_aliws_dict_with_options(
         self,
@@ -12480,23 +12460,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_apm(
+    def update_aliws_dict(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.UpdateApmRequest,
-    ) -> elasticsearch_20170613_models.UpdateApmResponse:
+        request: elasticsearch_20170613_models.UpdateAliwsDictRequest,
+    ) -> elasticsearch_20170613_models.UpdateAliwsDictResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_apm_with_options(instance_id, request, headers, runtime)
+        return self.update_aliws_dict_with_options(instance_id, request, headers, runtime)
 
-    async def update_apm_async(
+    async def update_aliws_dict_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.UpdateApmRequest,
-    ) -> elasticsearch_20170613_models.UpdateApmResponse:
+        request: elasticsearch_20170613_models.UpdateAliwsDictRequest,
+    ) -> elasticsearch_20170613_models.UpdateAliwsDictResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_apm_with_options_async(instance_id, request, headers, runtime)
+        return await self.update_aliws_dict_with_options_async(instance_id, request, headers, runtime)
 
     def update_apm_with_options(
         self,
@@ -12576,23 +12556,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_black_ips(
+    def update_apm(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.UpdateBlackIpsRequest,
-    ) -> elasticsearch_20170613_models.UpdateBlackIpsResponse:
+        request: elasticsearch_20170613_models.UpdateApmRequest,
+    ) -> elasticsearch_20170613_models.UpdateApmResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_black_ips_with_options(instance_id, request, headers, runtime)
+        return self.update_apm_with_options(instance_id, request, headers, runtime)
 
-    async def update_black_ips_async(
+    async def update_apm_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.UpdateBlackIpsRequest,
-    ) -> elasticsearch_20170613_models.UpdateBlackIpsResponse:
+        request: elasticsearch_20170613_models.UpdateApmRequest,
+    ) -> elasticsearch_20170613_models.UpdateApmResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_black_ips_with_options_async(instance_id, request, headers, runtime)
+        return await self.update_apm_with_options_async(instance_id, request, headers, runtime)
 
     def update_black_ips_with_options(
         self,
@@ -12601,6 +12581,15 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateBlackIpsResponse:
+        """
+        @deprecated
+        
+        @param request: UpdateBlackIpsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateBlackIpsResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -12632,6 +12621,15 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateBlackIpsResponse:
+        """
+        @deprecated
+        
+        @param request: UpdateBlackIpsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateBlackIpsResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -12656,23 +12654,37 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_collector(
+    def update_black_ips(
         self,
-        res_id: str,
-        request: elasticsearch_20170613_models.UpdateCollectorRequest,
-    ) -> elasticsearch_20170613_models.UpdateCollectorResponse:
+        instance_id: str,
+        request: elasticsearch_20170613_models.UpdateBlackIpsRequest,
+    ) -> elasticsearch_20170613_models.UpdateBlackIpsResponse:
+        """
+        @deprecated
+        
+        @param request: UpdateBlackIpsRequest
+        @return: UpdateBlackIpsResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_collector_with_options(res_id, request, headers, runtime)
+        return self.update_black_ips_with_options(instance_id, request, headers, runtime)
 
-    async def update_collector_async(
+    async def update_black_ips_async(
         self,
-        res_id: str,
-        request: elasticsearch_20170613_models.UpdateCollectorRequest,
-    ) -> elasticsearch_20170613_models.UpdateCollectorResponse:
+        instance_id: str,
+        request: elasticsearch_20170613_models.UpdateBlackIpsRequest,
+    ) -> elasticsearch_20170613_models.UpdateBlackIpsResponse:
+        """
+        @deprecated
+        
+        @param request: UpdateBlackIpsRequest
+        @return: UpdateBlackIpsResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_collector_with_options_async(res_id, request, headers, runtime)
+        return await self.update_black_ips_with_options_async(instance_id, request, headers, runtime)
 
     def update_collector_with_options(
         self,
@@ -12738,23 +12750,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_collector_name(
+    def update_collector(
         self,
         res_id: str,
-        request: elasticsearch_20170613_models.UpdateCollectorNameRequest,
-    ) -> elasticsearch_20170613_models.UpdateCollectorNameResponse:
+        request: elasticsearch_20170613_models.UpdateCollectorRequest,
+    ) -> elasticsearch_20170613_models.UpdateCollectorResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_collector_name_with_options(res_id, request, headers, runtime)
+        return self.update_collector_with_options(res_id, request, headers, runtime)
 
-    async def update_collector_name_async(
+    async def update_collector_async(
         self,
         res_id: str,
-        request: elasticsearch_20170613_models.UpdateCollectorNameRequest,
-    ) -> elasticsearch_20170613_models.UpdateCollectorNameResponse:
+        request: elasticsearch_20170613_models.UpdateCollectorRequest,
+    ) -> elasticsearch_20170613_models.UpdateCollectorResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_collector_name_with_options_async(res_id, request, headers, runtime)
+        return await self.update_collector_with_options_async(res_id, request, headers, runtime)
 
     def update_collector_name_with_options(
         self,
@@ -12820,25 +12832,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_component_index(
+    def update_collector_name(
         self,
-        instance_id: str,
-        name: str,
-        request: elasticsearch_20170613_models.UpdateComponentIndexRequest,
-    ) -> elasticsearch_20170613_models.UpdateComponentIndexResponse:
+        res_id: str,
+        request: elasticsearch_20170613_models.UpdateCollectorNameRequest,
+    ) -> elasticsearch_20170613_models.UpdateCollectorNameResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_component_index_with_options(instance_id, name, request, headers, runtime)
+        return self.update_collector_name_with_options(res_id, request, headers, runtime)
 
-    async def update_component_index_async(
+    async def update_collector_name_async(
         self,
-        instance_id: str,
-        name: str,
-        request: elasticsearch_20170613_models.UpdateComponentIndexRequest,
-    ) -> elasticsearch_20170613_models.UpdateComponentIndexResponse:
+        res_id: str,
+        request: elasticsearch_20170613_models.UpdateCollectorNameRequest,
+    ) -> elasticsearch_20170613_models.UpdateCollectorNameResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_component_index_with_options_async(instance_id, name, request, headers, runtime)
+        return await self.update_collector_name_with_options_async(res_id, request, headers, runtime)
 
     def update_component_index_with_options(
         self,
@@ -12908,23 +12918,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_description(
+    def update_component_index(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.UpdateDescriptionRequest,
-    ) -> elasticsearch_20170613_models.UpdateDescriptionResponse:
+        name: str,
+        request: elasticsearch_20170613_models.UpdateComponentIndexRequest,
+    ) -> elasticsearch_20170613_models.UpdateComponentIndexResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_description_with_options(instance_id, request, headers, runtime)
+        return self.update_component_index_with_options(instance_id, name, request, headers, runtime)
 
-    async def update_description_async(
+    async def update_component_index_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.UpdateDescriptionRequest,
-    ) -> elasticsearch_20170613_models.UpdateDescriptionResponse:
+        name: str,
+        request: elasticsearch_20170613_models.UpdateComponentIndexRequest,
+    ) -> elasticsearch_20170613_models.UpdateComponentIndexResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_description_with_options_async(instance_id, request, headers, runtime)
+        return await self.update_component_index_with_options_async(instance_id, name, request, headers, runtime)
 
     def update_description_with_options(
         self,
@@ -12996,23 +13008,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_diagnosis_settings(
+    def update_description(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.UpdateDiagnosisSettingsRequest,
-    ) -> elasticsearch_20170613_models.UpdateDiagnosisSettingsResponse:
+        request: elasticsearch_20170613_models.UpdateDescriptionRequest,
+    ) -> elasticsearch_20170613_models.UpdateDescriptionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_diagnosis_settings_with_options(instance_id, request, headers, runtime)
+        return self.update_description_with_options(instance_id, request, headers, runtime)
 
-    async def update_diagnosis_settings_async(
+    async def update_description_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.UpdateDiagnosisSettingsRequest,
-    ) -> elasticsearch_20170613_models.UpdateDiagnosisSettingsResponse:
+        request: elasticsearch_20170613_models.UpdateDescriptionRequest,
+    ) -> elasticsearch_20170613_models.UpdateDescriptionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_diagnosis_settings_with_options_async(instance_id, request, headers, runtime)
+        return await self.update_description_with_options_async(instance_id, request, headers, runtime)
 
     def update_diagnosis_settings_with_options(
         self,
@@ -13082,23 +13094,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_dict(
+    def update_diagnosis_settings(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.UpdateDictRequest,
-    ) -> elasticsearch_20170613_models.UpdateDictResponse:
+        request: elasticsearch_20170613_models.UpdateDiagnosisSettingsRequest,
+    ) -> elasticsearch_20170613_models.UpdateDiagnosisSettingsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_dict_with_options(instance_id, request, headers, runtime)
+        return self.update_diagnosis_settings_with_options(instance_id, request, headers, runtime)
 
-    async def update_dict_async(
+    async def update_diagnosis_settings_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.UpdateDictRequest,
-    ) -> elasticsearch_20170613_models.UpdateDictResponse:
+        request: elasticsearch_20170613_models.UpdateDiagnosisSettingsRequest,
+    ) -> elasticsearch_20170613_models.UpdateDiagnosisSettingsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_dict_with_options_async(instance_id, request, headers, runtime)
+        return await self.update_diagnosis_settings_with_options_async(instance_id, request, headers, runtime)
 
     def update_dict_with_options(
         self,
@@ -13164,23 +13176,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_dynamic_settings(
+    def update_dict(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.UpdateDynamicSettingsRequest,
-    ) -> elasticsearch_20170613_models.UpdateDynamicSettingsResponse:
+        request: elasticsearch_20170613_models.UpdateDictRequest,
+    ) -> elasticsearch_20170613_models.UpdateDictResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_dynamic_settings_with_options(instance_id, request, headers, runtime)
+        return self.update_dict_with_options(instance_id, request, headers, runtime)
 
-    async def update_dynamic_settings_async(
+    async def update_dict_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.UpdateDynamicSettingsRequest,
-    ) -> elasticsearch_20170613_models.UpdateDynamicSettingsResponse:
+        request: elasticsearch_20170613_models.UpdateDictRequest,
+    ) -> elasticsearch_20170613_models.UpdateDictResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_dynamic_settings_with_options_async(instance_id, request, headers, runtime)
+        return await self.update_dict_with_options_async(instance_id, request, headers, runtime)
 
     def update_dynamic_settings_with_options(
         self,
@@ -13254,23 +13266,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_extend_config(
+    def update_dynamic_settings(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.UpdateExtendConfigRequest,
-    ) -> elasticsearch_20170613_models.UpdateExtendConfigResponse:
+        request: elasticsearch_20170613_models.UpdateDynamicSettingsRequest,
+    ) -> elasticsearch_20170613_models.UpdateDynamicSettingsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_extend_config_with_options(instance_id, request, headers, runtime)
+        return self.update_dynamic_settings_with_options(instance_id, request, headers, runtime)
 
-    async def update_extend_config_async(
+    async def update_dynamic_settings_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.UpdateExtendConfigRequest,
-    ) -> elasticsearch_20170613_models.UpdateExtendConfigResponse:
+        request: elasticsearch_20170613_models.UpdateDynamicSettingsRequest,
+    ) -> elasticsearch_20170613_models.UpdateDynamicSettingsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_extend_config_with_options_async(instance_id, request, headers, runtime)
+        return await self.update_dynamic_settings_with_options_async(instance_id, request, headers, runtime)
 
     def update_extend_config_with_options(
         self,
@@ -13336,23 +13348,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_extendfiles(
+    def update_extend_config(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.UpdateExtendfilesRequest,
-    ) -> elasticsearch_20170613_models.UpdateExtendfilesResponse:
+        request: elasticsearch_20170613_models.UpdateExtendConfigRequest,
+    ) -> elasticsearch_20170613_models.UpdateExtendConfigResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_extendfiles_with_options(instance_id, request, headers, runtime)
+        return self.update_extend_config_with_options(instance_id, request, headers, runtime)
 
-    async def update_extendfiles_async(
+    async def update_extend_config_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.UpdateExtendfilesRequest,
-    ) -> elasticsearch_20170613_models.UpdateExtendfilesResponse:
+        request: elasticsearch_20170613_models.UpdateExtendConfigRequest,
+    ) -> elasticsearch_20170613_models.UpdateExtendConfigResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_extendfiles_with_options_async(instance_id, request, headers, runtime)
+        return await self.update_extend_config_with_options_async(instance_id, request, headers, runtime)
 
     def update_extendfiles_with_options(
         self,
@@ -13418,23 +13430,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_hot_ik_dicts(
+    def update_extendfiles(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.UpdateHotIkDictsRequest,
-    ) -> elasticsearch_20170613_models.UpdateHotIkDictsResponse:
+        request: elasticsearch_20170613_models.UpdateExtendfilesRequest,
+    ) -> elasticsearch_20170613_models.UpdateExtendfilesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_hot_ik_dicts_with_options(instance_id, request, headers, runtime)
+        return self.update_extendfiles_with_options(instance_id, request, headers, runtime)
 
-    async def update_hot_ik_dicts_async(
+    async def update_extendfiles_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.UpdateHotIkDictsRequest,
-    ) -> elasticsearch_20170613_models.UpdateHotIkDictsResponse:
+        request: elasticsearch_20170613_models.UpdateExtendfilesRequest,
+    ) -> elasticsearch_20170613_models.UpdateExtendfilesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_hot_ik_dicts_with_options_async(instance_id, request, headers, runtime)
+        return await self.update_extendfiles_with_options_async(instance_id, request, headers, runtime)
 
     def update_hot_ik_dicts_with_options(
         self,
@@ -13500,25 +13512,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_ilmpolicy(
+    def update_hot_ik_dicts(
         self,
         instance_id: str,
-        policy_name: str,
-        request: elasticsearch_20170613_models.UpdateILMPolicyRequest,
-    ) -> elasticsearch_20170613_models.UpdateILMPolicyResponse:
+        request: elasticsearch_20170613_models.UpdateHotIkDictsRequest,
+    ) -> elasticsearch_20170613_models.UpdateHotIkDictsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_ilmpolicy_with_options(instance_id, policy_name, request, headers, runtime)
+        return self.update_hot_ik_dicts_with_options(instance_id, request, headers, runtime)
 
-    async def update_ilmpolicy_async(
+    async def update_hot_ik_dicts_async(
         self,
         instance_id: str,
-        policy_name: str,
-        request: elasticsearch_20170613_models.UpdateILMPolicyRequest,
-    ) -> elasticsearch_20170613_models.UpdateILMPolicyResponse:
+        request: elasticsearch_20170613_models.UpdateHotIkDictsRequest,
+    ) -> elasticsearch_20170613_models.UpdateHotIkDictsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_ilmpolicy_with_options_async(instance_id, policy_name, request, headers, runtime)
+        return await self.update_hot_ik_dicts_with_options_async(instance_id, request, headers, runtime)
 
     def update_ilmpolicy_with_options(
         self,
@@ -13586,25 +13596,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_index_template(
+    def update_ilmpolicy(
         self,
         instance_id: str,
-        index_template: str,
-        request: elasticsearch_20170613_models.UpdateIndexTemplateRequest,
-    ) -> elasticsearch_20170613_models.UpdateIndexTemplateResponse:
+        policy_name: str,
+        request: elasticsearch_20170613_models.UpdateILMPolicyRequest,
+    ) -> elasticsearch_20170613_models.UpdateILMPolicyResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_index_template_with_options(instance_id, index_template, request, headers, runtime)
+        return self.update_ilmpolicy_with_options(instance_id, policy_name, request, headers, runtime)
 
-    async def update_index_template_async(
+    async def update_ilmpolicy_async(
         self,
         instance_id: str,
-        index_template: str,
-        request: elasticsearch_20170613_models.UpdateIndexTemplateRequest,
-    ) -> elasticsearch_20170613_models.UpdateIndexTemplateResponse:
+        policy_name: str,
+        request: elasticsearch_20170613_models.UpdateILMPolicyRequest,
+    ) -> elasticsearch_20170613_models.UpdateILMPolicyResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_index_template_with_options_async(instance_id, index_template, request, headers, runtime)
+        return await self.update_ilmpolicy_with_options_async(instance_id, policy_name, request, headers, runtime)
 
     def update_index_template_with_options(
         self,
@@ -13672,23 +13682,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_instance(
+    def update_index_template(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.UpdateInstanceRequest,
-    ) -> elasticsearch_20170613_models.UpdateInstanceResponse:
+        index_template: str,
+        request: elasticsearch_20170613_models.UpdateIndexTemplateRequest,
+    ) -> elasticsearch_20170613_models.UpdateIndexTemplateResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_instance_with_options(instance_id, request, headers, runtime)
+        return self.update_index_template_with_options(instance_id, index_template, request, headers, runtime)
 
-    async def update_instance_async(
+    async def update_index_template_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.UpdateInstanceRequest,
-    ) -> elasticsearch_20170613_models.UpdateInstanceResponse:
+        index_template: str,
+        request: elasticsearch_20170613_models.UpdateIndexTemplateRequest,
+    ) -> elasticsearch_20170613_models.UpdateIndexTemplateResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_instance_with_options_async(instance_id, request, headers, runtime)
+        return await self.update_index_template_with_options_async(instance_id, index_template, request, headers, runtime)
 
     def update_instance_with_options(
         self,
@@ -13796,23 +13808,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_instance_charge_type(
+    def update_instance(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.UpdateInstanceChargeTypeRequest,
-    ) -> elasticsearch_20170613_models.UpdateInstanceChargeTypeResponse:
+        request: elasticsearch_20170613_models.UpdateInstanceRequest,
+    ) -> elasticsearch_20170613_models.UpdateInstanceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_instance_charge_type_with_options(instance_id, request, headers, runtime)
+        return self.update_instance_with_options(instance_id, request, headers, runtime)
 
-    async def update_instance_charge_type_async(
+    async def update_instance_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.UpdateInstanceChargeTypeRequest,
-    ) -> elasticsearch_20170613_models.UpdateInstanceChargeTypeResponse:
+        request: elasticsearch_20170613_models.UpdateInstanceRequest,
+    ) -> elasticsearch_20170613_models.UpdateInstanceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_instance_charge_type_with_options_async(instance_id, request, headers, runtime)
+        return await self.update_instance_with_options_async(instance_id, request, headers, runtime)
 
     def update_instance_charge_type_with_options(
         self,
@@ -13878,23 +13890,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_instance_settings(
+    def update_instance_charge_type(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.UpdateInstanceSettingsRequest,
-    ) -> elasticsearch_20170613_models.UpdateInstanceSettingsResponse:
+        request: elasticsearch_20170613_models.UpdateInstanceChargeTypeRequest,
+    ) -> elasticsearch_20170613_models.UpdateInstanceChargeTypeResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_instance_settings_with_options(instance_id, request, headers, runtime)
+        return self.update_instance_charge_type_with_options(instance_id, request, headers, runtime)
 
-    async def update_instance_settings_async(
+    async def update_instance_charge_type_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.UpdateInstanceSettingsRequest,
-    ) -> elasticsearch_20170613_models.UpdateInstanceSettingsResponse:
+        request: elasticsearch_20170613_models.UpdateInstanceChargeTypeRequest,
+    ) -> elasticsearch_20170613_models.UpdateInstanceChargeTypeResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_instance_settings_with_options_async(instance_id, request, headers, runtime)
+        return await self.update_instance_charge_type_with_options_async(instance_id, request, headers, runtime)
 
     def update_instance_settings_with_options(
         self,
@@ -13960,23 +13972,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_kibana_settings(
+    def update_instance_settings(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.UpdateKibanaSettingsRequest,
-    ) -> elasticsearch_20170613_models.UpdateKibanaSettingsResponse:
+        request: elasticsearch_20170613_models.UpdateInstanceSettingsRequest,
+    ) -> elasticsearch_20170613_models.UpdateInstanceSettingsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_kibana_settings_with_options(instance_id, request, headers, runtime)
+        return self.update_instance_settings_with_options(instance_id, request, headers, runtime)
 
-    async def update_kibana_settings_async(
+    async def update_instance_settings_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.UpdateKibanaSettingsRequest,
-    ) -> elasticsearch_20170613_models.UpdateKibanaSettingsResponse:
+        request: elasticsearch_20170613_models.UpdateInstanceSettingsRequest,
+    ) -> elasticsearch_20170613_models.UpdateInstanceSettingsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_kibana_settings_with_options_async(instance_id, request, headers, runtime)
+        return await self.update_instance_settings_with_options_async(instance_id, request, headers, runtime)
 
     def update_kibana_settings_with_options(
         self,
@@ -14042,23 +14054,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_kibana_white_ips(
+    def update_kibana_settings(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.UpdateKibanaWhiteIpsRequest,
-    ) -> elasticsearch_20170613_models.UpdateKibanaWhiteIpsResponse:
+        request: elasticsearch_20170613_models.UpdateKibanaSettingsRequest,
+    ) -> elasticsearch_20170613_models.UpdateKibanaSettingsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_kibana_white_ips_with_options(instance_id, request, headers, runtime)
+        return self.update_kibana_settings_with_options(instance_id, request, headers, runtime)
 
-    async def update_kibana_white_ips_async(
+    async def update_kibana_settings_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.UpdateKibanaWhiteIpsRequest,
-    ) -> elasticsearch_20170613_models.UpdateKibanaWhiteIpsResponse:
+        request: elasticsearch_20170613_models.UpdateKibanaSettingsRequest,
+    ) -> elasticsearch_20170613_models.UpdateKibanaSettingsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_kibana_white_ips_with_options_async(instance_id, request, headers, runtime)
+        return await self.update_kibana_settings_with_options_async(instance_id, request, headers, runtime)
 
     def update_kibana_white_ips_with_options(
         self,
@@ -14138,23 +14150,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_logstash(
+    def update_kibana_white_ips(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.UpdateLogstashRequest,
-    ) -> elasticsearch_20170613_models.UpdateLogstashResponse:
+        request: elasticsearch_20170613_models.UpdateKibanaWhiteIpsRequest,
+    ) -> elasticsearch_20170613_models.UpdateKibanaWhiteIpsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_logstash_with_options(instance_id, request, headers, runtime)
+        return self.update_kibana_white_ips_with_options(instance_id, request, headers, runtime)
 
-    async def update_logstash_async(
+    async def update_kibana_white_ips_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.UpdateLogstashRequest,
-    ) -> elasticsearch_20170613_models.UpdateLogstashResponse:
+        request: elasticsearch_20170613_models.UpdateKibanaWhiteIpsRequest,
+    ) -> elasticsearch_20170613_models.UpdateKibanaWhiteIpsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_logstash_with_options_async(instance_id, request, headers, runtime)
+        return await self.update_kibana_white_ips_with_options_async(instance_id, request, headers, runtime)
 
     def update_logstash_with_options(
         self,
@@ -14230,23 +14242,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_logstash_charge_type(
+    def update_logstash(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.UpdateLogstashChargeTypeRequest,
-    ) -> elasticsearch_20170613_models.UpdateLogstashChargeTypeResponse:
+        request: elasticsearch_20170613_models.UpdateLogstashRequest,
+    ) -> elasticsearch_20170613_models.UpdateLogstashResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_logstash_charge_type_with_options(instance_id, request, headers, runtime)
+        return self.update_logstash_with_options(instance_id, request, headers, runtime)
 
-    async def update_logstash_charge_type_async(
+    async def update_logstash_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.UpdateLogstashChargeTypeRequest,
-    ) -> elasticsearch_20170613_models.UpdateLogstashChargeTypeResponse:
+        request: elasticsearch_20170613_models.UpdateLogstashRequest,
+    ) -> elasticsearch_20170613_models.UpdateLogstashResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_logstash_charge_type_with_options_async(instance_id, request, headers, runtime)
+        return await self.update_logstash_with_options_async(instance_id, request, headers, runtime)
 
     def update_logstash_charge_type_with_options(
         self,
@@ -14312,23 +14324,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_logstash_description(
+    def update_logstash_charge_type(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.UpdateLogstashDescriptionRequest,
-    ) -> elasticsearch_20170613_models.UpdateLogstashDescriptionResponse:
+        request: elasticsearch_20170613_models.UpdateLogstashChargeTypeRequest,
+    ) -> elasticsearch_20170613_models.UpdateLogstashChargeTypeResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_logstash_description_with_options(instance_id, request, headers, runtime)
+        return self.update_logstash_charge_type_with_options(instance_id, request, headers, runtime)
 
-    async def update_logstash_description_async(
+    async def update_logstash_charge_type_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.UpdateLogstashDescriptionRequest,
-    ) -> elasticsearch_20170613_models.UpdateLogstashDescriptionResponse:
+        request: elasticsearch_20170613_models.UpdateLogstashChargeTypeRequest,
+    ) -> elasticsearch_20170613_models.UpdateLogstashChargeTypeResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_logstash_description_with_options_async(instance_id, request, headers, runtime)
+        return await self.update_logstash_charge_type_with_options_async(instance_id, request, headers, runtime)
 
     def update_logstash_description_with_options(
         self,
@@ -14394,23 +14406,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_logstash_settings(
+    def update_logstash_description(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.UpdateLogstashSettingsRequest,
-    ) -> elasticsearch_20170613_models.UpdateLogstashSettingsResponse:
+        request: elasticsearch_20170613_models.UpdateLogstashDescriptionRequest,
+    ) -> elasticsearch_20170613_models.UpdateLogstashDescriptionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_logstash_settings_with_options(instance_id, request, headers, runtime)
+        return self.update_logstash_description_with_options(instance_id, request, headers, runtime)
 
-    async def update_logstash_settings_async(
+    async def update_logstash_description_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.UpdateLogstashSettingsRequest,
-    ) -> elasticsearch_20170613_models.UpdateLogstashSettingsResponse:
+        request: elasticsearch_20170613_models.UpdateLogstashDescriptionRequest,
+    ) -> elasticsearch_20170613_models.UpdateLogstashDescriptionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_logstash_settings_with_options_async(instance_id, request, headers, runtime)
+        return await self.update_logstash_description_with_options_async(instance_id, request, headers, runtime)
 
     def update_logstash_settings_with_options(
         self,
@@ -14476,23 +14488,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_pipeline_management_config(
+    def update_logstash_settings(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.UpdatePipelineManagementConfigRequest,
-    ) -> elasticsearch_20170613_models.UpdatePipelineManagementConfigResponse:
+        request: elasticsearch_20170613_models.UpdateLogstashSettingsRequest,
+    ) -> elasticsearch_20170613_models.UpdateLogstashSettingsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_pipeline_management_config_with_options(instance_id, request, headers, runtime)
+        return self.update_logstash_settings_with_options(instance_id, request, headers, runtime)
 
-    async def update_pipeline_management_config_async(
+    async def update_logstash_settings_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.UpdatePipelineManagementConfigRequest,
-    ) -> elasticsearch_20170613_models.UpdatePipelineManagementConfigResponse:
+        request: elasticsearch_20170613_models.UpdateLogstashSettingsRequest,
+    ) -> elasticsearch_20170613_models.UpdateLogstashSettingsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_pipeline_management_config_with_options_async(instance_id, request, headers, runtime)
+        return await self.update_logstash_settings_with_options_async(instance_id, request, headers, runtime)
 
     def update_pipeline_management_config_with_options(
         self,
@@ -14580,23 +14592,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_pipelines(
+    def update_pipeline_management_config(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.UpdatePipelinesRequest,
-    ) -> elasticsearch_20170613_models.UpdatePipelinesResponse:
+        request: elasticsearch_20170613_models.UpdatePipelineManagementConfigRequest,
+    ) -> elasticsearch_20170613_models.UpdatePipelineManagementConfigResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_pipelines_with_options(instance_id, request, headers, runtime)
+        return self.update_pipeline_management_config_with_options(instance_id, request, headers, runtime)
 
-    async def update_pipelines_async(
+    async def update_pipeline_management_config_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.UpdatePipelinesRequest,
-    ) -> elasticsearch_20170613_models.UpdatePipelinesResponse:
+        request: elasticsearch_20170613_models.UpdatePipelineManagementConfigRequest,
+    ) -> elasticsearch_20170613_models.UpdatePipelineManagementConfigResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_pipelines_with_options_async(instance_id, request, headers, runtime)
+        return await self.update_pipeline_management_config_with_options_async(instance_id, request, headers, runtime)
 
     def update_pipelines_with_options(
         self,
@@ -14666,23 +14678,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_private_network_white_ips(
+    def update_pipelines(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.UpdatePrivateNetworkWhiteIpsRequest,
-    ) -> elasticsearch_20170613_models.UpdatePrivateNetworkWhiteIpsResponse:
+        request: elasticsearch_20170613_models.UpdatePipelinesRequest,
+    ) -> elasticsearch_20170613_models.UpdatePipelinesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_private_network_white_ips_with_options(instance_id, request, headers, runtime)
+        return self.update_pipelines_with_options(instance_id, request, headers, runtime)
 
-    async def update_private_network_white_ips_async(
+    async def update_pipelines_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.UpdatePrivateNetworkWhiteIpsRequest,
-    ) -> elasticsearch_20170613_models.UpdatePrivateNetworkWhiteIpsResponse:
+        request: elasticsearch_20170613_models.UpdatePipelinesRequest,
+    ) -> elasticsearch_20170613_models.UpdatePipelinesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_private_network_white_ips_with_options_async(instance_id, request, headers, runtime)
+        return await self.update_pipelines_with_options_async(instance_id, request, headers, runtime)
 
     def update_private_network_white_ips_with_options(
         self,
@@ -14752,23 +14764,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_public_network(
+    def update_private_network_white_ips(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.UpdatePublicNetworkRequest,
-    ) -> elasticsearch_20170613_models.UpdatePublicNetworkResponse:
+        request: elasticsearch_20170613_models.UpdatePrivateNetworkWhiteIpsRequest,
+    ) -> elasticsearch_20170613_models.UpdatePrivateNetworkWhiteIpsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_public_network_with_options(instance_id, request, headers, runtime)
+        return self.update_private_network_white_ips_with_options(instance_id, request, headers, runtime)
 
-    async def update_public_network_async(
+    async def update_private_network_white_ips_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.UpdatePublicNetworkRequest,
-    ) -> elasticsearch_20170613_models.UpdatePublicNetworkResponse:
+        request: elasticsearch_20170613_models.UpdatePrivateNetworkWhiteIpsRequest,
+    ) -> elasticsearch_20170613_models.UpdatePrivateNetworkWhiteIpsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_public_network_with_options_async(instance_id, request, headers, runtime)
+        return await self.update_private_network_white_ips_with_options_async(instance_id, request, headers, runtime)
 
     def update_public_network_with_options(
         self,
@@ -14834,23 +14846,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_public_white_ips(
+    def update_public_network(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.UpdatePublicWhiteIpsRequest,
-    ) -> elasticsearch_20170613_models.UpdatePublicWhiteIpsResponse:
+        request: elasticsearch_20170613_models.UpdatePublicNetworkRequest,
+    ) -> elasticsearch_20170613_models.UpdatePublicNetworkResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_public_white_ips_with_options(instance_id, request, headers, runtime)
+        return self.update_public_network_with_options(instance_id, request, headers, runtime)
 
-    async def update_public_white_ips_async(
+    async def update_public_network_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.UpdatePublicWhiteIpsRequest,
-    ) -> elasticsearch_20170613_models.UpdatePublicWhiteIpsResponse:
+        request: elasticsearch_20170613_models.UpdatePublicNetworkRequest,
+    ) -> elasticsearch_20170613_models.UpdatePublicNetworkResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_public_white_ips_with_options_async(instance_id, request, headers, runtime)
+        return await self.update_public_network_with_options_async(instance_id, request, headers, runtime)
 
     def update_public_white_ips_with_options(
         self,
@@ -14920,23 +14932,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_read_write_policy(
+    def update_public_white_ips(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.UpdateReadWritePolicyRequest,
-    ) -> elasticsearch_20170613_models.UpdateReadWritePolicyResponse:
+        request: elasticsearch_20170613_models.UpdatePublicWhiteIpsRequest,
+    ) -> elasticsearch_20170613_models.UpdatePublicWhiteIpsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_read_write_policy_with_options(instance_id, request, headers, runtime)
+        return self.update_public_white_ips_with_options(instance_id, request, headers, runtime)
 
-    async def update_read_write_policy_async(
+    async def update_public_white_ips_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.UpdateReadWritePolicyRequest,
-    ) -> elasticsearch_20170613_models.UpdateReadWritePolicyResponse:
+        request: elasticsearch_20170613_models.UpdatePublicWhiteIpsRequest,
+    ) -> elasticsearch_20170613_models.UpdatePublicWhiteIpsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_read_write_policy_with_options_async(instance_id, request, headers, runtime)
+        return await self.update_public_white_ips_with_options_async(instance_id, request, headers, runtime)
 
     def update_read_write_policy_with_options(
         self,
@@ -15002,23 +15014,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_snapshot_setting(
+    def update_read_write_policy(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.UpdateSnapshotSettingRequest,
-    ) -> elasticsearch_20170613_models.UpdateSnapshotSettingResponse:
+        request: elasticsearch_20170613_models.UpdateReadWritePolicyRequest,
+    ) -> elasticsearch_20170613_models.UpdateReadWritePolicyResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_snapshot_setting_with_options(instance_id, request, headers, runtime)
+        return self.update_read_write_policy_with_options(instance_id, request, headers, runtime)
 
-    async def update_snapshot_setting_async(
+    async def update_read_write_policy_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.UpdateSnapshotSettingRequest,
-    ) -> elasticsearch_20170613_models.UpdateSnapshotSettingResponse:
+        request: elasticsearch_20170613_models.UpdateReadWritePolicyRequest,
+    ) -> elasticsearch_20170613_models.UpdateReadWritePolicyResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_snapshot_setting_with_options_async(instance_id, request, headers, runtime)
+        return await self.update_read_write_policy_with_options_async(instance_id, request, headers, runtime)
 
     def update_snapshot_setting_with_options(
         self,
@@ -15076,23 +15088,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_synonyms_dicts(
+    def update_snapshot_setting(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.UpdateSynonymsDictsRequest,
-    ) -> elasticsearch_20170613_models.UpdateSynonymsDictsResponse:
+        request: elasticsearch_20170613_models.UpdateSnapshotSettingRequest,
+    ) -> elasticsearch_20170613_models.UpdateSnapshotSettingResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_synonyms_dicts_with_options(instance_id, request, headers, runtime)
+        return self.update_snapshot_setting_with_options(instance_id, request, headers, runtime)
 
-    async def update_synonyms_dicts_async(
+    async def update_snapshot_setting_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.UpdateSynonymsDictsRequest,
-    ) -> elasticsearch_20170613_models.UpdateSynonymsDictsResponse:
+        request: elasticsearch_20170613_models.UpdateSnapshotSettingRequest,
+    ) -> elasticsearch_20170613_models.UpdateSnapshotSettingResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_synonyms_dicts_with_options_async(instance_id, request, headers, runtime)
+        return await self.update_snapshot_setting_with_options_async(instance_id, request, headers, runtime)
 
     def update_synonyms_dicts_with_options(
         self,
@@ -15158,25 +15170,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_template(
+    def update_synonyms_dicts(
         self,
         instance_id: str,
-        template_name: str,
-        request: elasticsearch_20170613_models.UpdateTemplateRequest,
-    ) -> elasticsearch_20170613_models.UpdateTemplateResponse:
+        request: elasticsearch_20170613_models.UpdateSynonymsDictsRequest,
+    ) -> elasticsearch_20170613_models.UpdateSynonymsDictsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_template_with_options(instance_id, template_name, request, headers, runtime)
+        return self.update_synonyms_dicts_with_options(instance_id, request, headers, runtime)
 
-    async def update_template_async(
+    async def update_synonyms_dicts_async(
         self,
         instance_id: str,
-        template_name: str,
-        request: elasticsearch_20170613_models.UpdateTemplateRequest,
-    ) -> elasticsearch_20170613_models.UpdateTemplateResponse:
+        request: elasticsearch_20170613_models.UpdateSynonymsDictsRequest,
+    ) -> elasticsearch_20170613_models.UpdateSynonymsDictsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_template_with_options_async(instance_id, template_name, request, headers, runtime)
+        return await self.update_synonyms_dicts_with_options_async(instance_id, request, headers, runtime)
 
     def update_template_with_options(
         self,
@@ -15244,23 +15254,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_white_ips(
+    def update_template(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.UpdateWhiteIpsRequest,
-    ) -> elasticsearch_20170613_models.UpdateWhiteIpsResponse:
+        template_name: str,
+        request: elasticsearch_20170613_models.UpdateTemplateRequest,
+    ) -> elasticsearch_20170613_models.UpdateTemplateResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_white_ips_with_options(instance_id, request, headers, runtime)
+        return self.update_template_with_options(instance_id, template_name, request, headers, runtime)
 
-    async def update_white_ips_async(
+    async def update_template_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.UpdateWhiteIpsRequest,
-    ) -> elasticsearch_20170613_models.UpdateWhiteIpsResponse:
+        template_name: str,
+        request: elasticsearch_20170613_models.UpdateTemplateRequest,
+    ) -> elasticsearch_20170613_models.UpdateTemplateResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_white_ips_with_options_async(instance_id, request, headers, runtime)
+        return await self.update_template_with_options_async(instance_id, template_name, request, headers, runtime)
 
     def update_white_ips_with_options(
         self,
@@ -15340,23 +15352,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_xpack_monitor_config(
+    def update_white_ips(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.UpdateXpackMonitorConfigRequest,
-    ) -> elasticsearch_20170613_models.UpdateXpackMonitorConfigResponse:
+        request: elasticsearch_20170613_models.UpdateWhiteIpsRequest,
+    ) -> elasticsearch_20170613_models.UpdateWhiteIpsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_xpack_monitor_config_with_options(instance_id, request, headers, runtime)
+        return self.update_white_ips_with_options(instance_id, request, headers, runtime)
 
-    async def update_xpack_monitor_config_async(
+    async def update_white_ips_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.UpdateXpackMonitorConfigRequest,
-    ) -> elasticsearch_20170613_models.UpdateXpackMonitorConfigResponse:
+        request: elasticsearch_20170613_models.UpdateWhiteIpsRequest,
+    ) -> elasticsearch_20170613_models.UpdateWhiteIpsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_xpack_monitor_config_with_options_async(instance_id, request, headers, runtime)
+        return await self.update_white_ips_with_options_async(instance_id, request, headers, runtime)
 
     def update_xpack_monitor_config_with_options(
         self,
@@ -15440,23 +15452,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def upgrade_engine_version(
+    def update_xpack_monitor_config(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.UpgradeEngineVersionRequest,
-    ) -> elasticsearch_20170613_models.UpgradeEngineVersionResponse:
+        request: elasticsearch_20170613_models.UpdateXpackMonitorConfigRequest,
+    ) -> elasticsearch_20170613_models.UpdateXpackMonitorConfigResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.upgrade_engine_version_with_options(instance_id, request, headers, runtime)
+        return self.update_xpack_monitor_config_with_options(instance_id, request, headers, runtime)
 
-    async def upgrade_engine_version_async(
+    async def update_xpack_monitor_config_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.UpgradeEngineVersionRequest,
-    ) -> elasticsearch_20170613_models.UpgradeEngineVersionResponse:
+        request: elasticsearch_20170613_models.UpdateXpackMonitorConfigRequest,
+    ) -> elasticsearch_20170613_models.UpdateXpackMonitorConfigResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.upgrade_engine_version_with_options_async(instance_id, request, headers, runtime)
+        return await self.update_xpack_monitor_config_with_options_async(instance_id, request, headers, runtime)
 
     def upgrade_engine_version_with_options(
         self,
@@ -15536,23 +15548,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def validate_connection(
+    def upgrade_engine_version(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.ValidateConnectionRequest,
-    ) -> elasticsearch_20170613_models.ValidateConnectionResponse:
+        request: elasticsearch_20170613_models.UpgradeEngineVersionRequest,
+    ) -> elasticsearch_20170613_models.UpgradeEngineVersionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.validate_connection_with_options(instance_id, request, headers, runtime)
+        return self.upgrade_engine_version_with_options(instance_id, request, headers, runtime)
 
-    async def validate_connection_async(
+    async def upgrade_engine_version_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.ValidateConnectionRequest,
-    ) -> elasticsearch_20170613_models.ValidateConnectionResponse:
+        request: elasticsearch_20170613_models.UpgradeEngineVersionRequest,
+    ) -> elasticsearch_20170613_models.UpgradeEngineVersionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.validate_connection_with_options_async(instance_id, request, headers, runtime)
+        return await self.upgrade_engine_version_with_options_async(instance_id, request, headers, runtime)
 
     def validate_connection_with_options(
         self,
@@ -15618,23 +15630,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def validate_shrink_nodes(
+    def validate_connection(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.ValidateShrinkNodesRequest,
-    ) -> elasticsearch_20170613_models.ValidateShrinkNodesResponse:
+        request: elasticsearch_20170613_models.ValidateConnectionRequest,
+    ) -> elasticsearch_20170613_models.ValidateConnectionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.validate_shrink_nodes_with_options(instance_id, request, headers, runtime)
+        return self.validate_connection_with_options(instance_id, request, headers, runtime)
 
-    async def validate_shrink_nodes_async(
+    async def validate_connection_async(
         self,
         instance_id: str,
-        request: elasticsearch_20170613_models.ValidateShrinkNodesRequest,
-    ) -> elasticsearch_20170613_models.ValidateShrinkNodesResponse:
+        request: elasticsearch_20170613_models.ValidateConnectionRequest,
+    ) -> elasticsearch_20170613_models.ValidateConnectionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.validate_shrink_nodes_with_options_async(instance_id, request, headers, runtime)
+        return await self.validate_connection_with_options_async(instance_id, request, headers, runtime)
 
     def validate_shrink_nodes_with_options(
         self,
@@ -15708,21 +15720,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def validate_slr_permission(
+    def validate_shrink_nodes(
         self,
-        request: elasticsearch_20170613_models.ValidateSlrPermissionRequest,
-    ) -> elasticsearch_20170613_models.ValidateSlrPermissionResponse:
+        instance_id: str,
+        request: elasticsearch_20170613_models.ValidateShrinkNodesRequest,
+    ) -> elasticsearch_20170613_models.ValidateShrinkNodesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.validate_slr_permission_with_options(request, headers, runtime)
+        return self.validate_shrink_nodes_with_options(instance_id, request, headers, runtime)
 
-    async def validate_slr_permission_async(
+    async def validate_shrink_nodes_async(
         self,
-        request: elasticsearch_20170613_models.ValidateSlrPermissionRequest,
-    ) -> elasticsearch_20170613_models.ValidateSlrPermissionResponse:
+        instance_id: str,
+        request: elasticsearch_20170613_models.ValidateShrinkNodesRequest,
+    ) -> elasticsearch_20170613_models.ValidateShrinkNodesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.validate_slr_permission_with_options_async(request, headers, runtime)
+        return await self.validate_shrink_nodes_with_options_async(instance_id, request, headers, runtime)
 
     def validate_slr_permission_with_options(
         self,
@@ -15788,23 +15802,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def validate_transferable_nodes(
+    def validate_slr_permission(
         self,
-        instance_id: str,
-        request: elasticsearch_20170613_models.ValidateTransferableNodesRequest,
-    ) -> elasticsearch_20170613_models.ValidateTransferableNodesResponse:
+        request: elasticsearch_20170613_models.ValidateSlrPermissionRequest,
+    ) -> elasticsearch_20170613_models.ValidateSlrPermissionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.validate_transferable_nodes_with_options(instance_id, request, headers, runtime)
+        return self.validate_slr_permission_with_options(request, headers, runtime)
 
-    async def validate_transferable_nodes_async(
+    async def validate_slr_permission_async(
         self,
-        instance_id: str,
-        request: elasticsearch_20170613_models.ValidateTransferableNodesRequest,
-    ) -> elasticsearch_20170613_models.ValidateTransferableNodesResponse:
+        request: elasticsearch_20170613_models.ValidateSlrPermissionRequest,
+    ) -> elasticsearch_20170613_models.ValidateSlrPermissionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.validate_transferable_nodes_with_options_async(instance_id, request, headers, runtime)
+        return await self.validate_slr_permission_with_options_async(request, headers, runtime)
 
     def validate_transferable_nodes_with_options(
         self,
@@ -15870,21 +15882,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_instance(
+    def validate_transferable_nodes(
         self,
-        request: elasticsearch_20170613_models.CreateInstanceRequest,
-    ) -> elasticsearch_20170613_models.CreateInstanceResponse:
+        instance_id: str,
+        request: elasticsearch_20170613_models.ValidateTransferableNodesRequest,
+    ) -> elasticsearch_20170613_models.ValidateTransferableNodesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_instance_with_options(request, headers, runtime)
+        return self.validate_transferable_nodes_with_options(instance_id, request, headers, runtime)
 
-    async def create_instance_async(
+    async def validate_transferable_nodes_async(
         self,
-        request: elasticsearch_20170613_models.CreateInstanceRequest,
-    ) -> elasticsearch_20170613_models.CreateInstanceResponse:
+        instance_id: str,
+        request: elasticsearch_20170613_models.ValidateTransferableNodesRequest,
+    ) -> elasticsearch_20170613_models.ValidateTransferableNodesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_instance_with_options_async(request, headers, runtime)
+        return await self.validate_transferable_nodes_with_options_async(instance_id, request, headers, runtime)
 
     def create_instance_with_options(
         self,
@@ -16005,3 +16019,19 @@ class Client(OpenApiClient):
             elasticsearch_20170613_models.CreateInstanceResponse(),
             await self.call_api_async(params, req, runtime)
         )
+
+    def create_instance(
+        self,
+        request: elasticsearch_20170613_models.CreateInstanceRequest,
+    ) -> elasticsearch_20170613_models.CreateInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_instance_with_options(request, headers, runtime)
+
+    async def create_instance_async(
+        self,
+        request: elasticsearch_20170613_models.CreateInstanceRequest,
+    ) -> elasticsearch_20170613_models.CreateInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_instance_with_options_async(request, headers, runtime)
