@@ -12,22 +12,26 @@ class AddImageRequest(TeaModel):
         custom_content: str = None,
         instance_name: str = None,
         int_attr: int = None,
+        int_attr_2: int = None,
         pic_content: str = None,
         pic_name: str = None,
         product_id: str = None,
         region: str = None,
         str_attr: str = None,
+        str_attr_2: str = None,
     ):
         self.category_id = category_id
         self.crop = crop
         self.custom_content = custom_content
         self.instance_name = instance_name
         self.int_attr = int_attr
+        self.int_attr_2 = int_attr_2
         self.pic_content = pic_content
         self.pic_name = pic_name
         self.product_id = product_id
         self.region = region
         self.str_attr = str_attr
+        self.str_attr_2 = str_attr_2
 
     def validate(self):
         pass
@@ -48,6 +52,8 @@ class AddImageRequest(TeaModel):
             result['InstanceName'] = self.instance_name
         if self.int_attr is not None:
             result['IntAttr'] = self.int_attr
+        if self.int_attr_2 is not None:
+            result['IntAttr2'] = self.int_attr_2
         if self.pic_content is not None:
             result['PicContent'] = self.pic_content
         if self.pic_name is not None:
@@ -58,6 +64,8 @@ class AddImageRequest(TeaModel):
             result['Region'] = self.region
         if self.str_attr is not None:
             result['StrAttr'] = self.str_attr
+        if self.str_attr_2 is not None:
+            result['StrAttr2'] = self.str_attr_2
         return result
 
     def from_map(self, m: dict = None):
@@ -72,6 +80,8 @@ class AddImageRequest(TeaModel):
             self.instance_name = m.get('InstanceName')
         if m.get('IntAttr') is not None:
             self.int_attr = m.get('IntAttr')
+        if m.get('IntAttr2') is not None:
+            self.int_attr_2 = m.get('IntAttr2')
         if m.get('PicContent') is not None:
             self.pic_content = m.get('PicContent')
         if m.get('PicName') is not None:
@@ -82,6 +92,8 @@ class AddImageRequest(TeaModel):
             self.region = m.get('Region')
         if m.get('StrAttr') is not None:
             self.str_attr = m.get('StrAttr')
+        if m.get('StrAttr2') is not None:
+            self.str_attr_2 = m.get('StrAttr2')
         return self
 
 
@@ -93,22 +105,26 @@ class AddImageAdvanceRequest(TeaModel):
         custom_content: str = None,
         instance_name: str = None,
         int_attr: int = None,
+        int_attr_2: int = None,
         pic_content_object: BinaryIO = None,
         pic_name: str = None,
         product_id: str = None,
         region: str = None,
         str_attr: str = None,
+        str_attr_2: str = None,
     ):
         self.category_id = category_id
         self.crop = crop
         self.custom_content = custom_content
         self.instance_name = instance_name
         self.int_attr = int_attr
+        self.int_attr_2 = int_attr_2
         self.pic_content_object = pic_content_object
         self.pic_name = pic_name
         self.product_id = product_id
         self.region = region
         self.str_attr = str_attr
+        self.str_attr_2 = str_attr_2
 
     def validate(self):
         pass
@@ -129,6 +145,8 @@ class AddImageAdvanceRequest(TeaModel):
             result['InstanceName'] = self.instance_name
         if self.int_attr is not None:
             result['IntAttr'] = self.int_attr
+        if self.int_attr_2 is not None:
+            result['IntAttr2'] = self.int_attr_2
         if self.pic_content_object is not None:
             result['PicContent'] = self.pic_content_object
         if self.pic_name is not None:
@@ -139,6 +157,8 @@ class AddImageAdvanceRequest(TeaModel):
             result['Region'] = self.region
         if self.str_attr is not None:
             result['StrAttr'] = self.str_attr
+        if self.str_attr_2 is not None:
+            result['StrAttr2'] = self.str_attr_2
         return result
 
     def from_map(self, m: dict = None):
@@ -153,6 +173,8 @@ class AddImageAdvanceRequest(TeaModel):
             self.instance_name = m.get('InstanceName')
         if m.get('IntAttr') is not None:
             self.int_attr = m.get('IntAttr')
+        if m.get('IntAttr2') is not None:
+            self.int_attr_2 = m.get('IntAttr2')
         if m.get('PicContent') is not None:
             self.pic_content_object = m.get('PicContent')
         if m.get('PicName') is not None:
@@ -163,6 +185,8 @@ class AddImageAdvanceRequest(TeaModel):
             self.region = m.get('Region')
         if m.get('StrAttr') is not None:
             self.str_attr = m.get('StrAttr')
+        if m.get('StrAttr2') is not None:
+            self.str_attr_2 = m.get('StrAttr2')
         return self
 
 
@@ -1556,20 +1580,24 @@ class SearchImageByNameResponseBodyAuctions(TeaModel):
         category_id: int = None,
         custom_content: str = None,
         int_attr: int = None,
+        int_attr_2: int = None,
         pic_name: str = None,
         product_id: str = None,
         score: float = None,
         sort_expr_values: str = None,
         str_attr: str = None,
+        str_attr_2: str = None,
     ):
         self.category_id = category_id
         self.custom_content = custom_content
         self.int_attr = int_attr
+        self.int_attr_2 = int_attr_2
         self.pic_name = pic_name
         self.product_id = product_id
         self.score = score
         self.sort_expr_values = sort_expr_values
         self.str_attr = str_attr
+        self.str_attr_2 = str_attr_2
 
     def validate(self):
         pass
@@ -1586,6 +1614,8 @@ class SearchImageByNameResponseBodyAuctions(TeaModel):
             result['CustomContent'] = self.custom_content
         if self.int_attr is not None:
             result['IntAttr'] = self.int_attr
+        if self.int_attr_2 is not None:
+            result['IntAttr2'] = self.int_attr_2
         if self.pic_name is not None:
             result['PicName'] = self.pic_name
         if self.product_id is not None:
@@ -1596,6 +1626,8 @@ class SearchImageByNameResponseBodyAuctions(TeaModel):
             result['SortExprValues'] = self.sort_expr_values
         if self.str_attr is not None:
             result['StrAttr'] = self.str_attr
+        if self.str_attr_2 is not None:
+            result['StrAttr2'] = self.str_attr_2
         return result
 
     def from_map(self, m: dict = None):
@@ -1606,6 +1638,8 @@ class SearchImageByNameResponseBodyAuctions(TeaModel):
             self.custom_content = m.get('CustomContent')
         if m.get('IntAttr') is not None:
             self.int_attr = m.get('IntAttr')
+        if m.get('IntAttr2') is not None:
+            self.int_attr_2 = m.get('IntAttr2')
         if m.get('PicName') is not None:
             self.pic_name = m.get('PicName')
         if m.get('ProductId') is not None:
@@ -1616,6 +1650,8 @@ class SearchImageByNameResponseBodyAuctions(TeaModel):
             self.sort_expr_values = m.get('SortExprValues')
         if m.get('StrAttr') is not None:
             self.str_attr = m.get('StrAttr')
+        if m.get('StrAttr2') is not None:
+            self.str_attr_2 = m.get('StrAttr2')
         return self
 
 
@@ -2045,20 +2081,24 @@ class SearchImageByPicResponseBodyAuctions(TeaModel):
         category_id: int = None,
         custom_content: str = None,
         int_attr: int = None,
+        int_attr_2: int = None,
         pic_name: str = None,
         product_id: str = None,
         score: float = None,
         sort_expr_values: str = None,
         str_attr: str = None,
+        str_attr_2: str = None,
     ):
         self.category_id = category_id
         self.custom_content = custom_content
         self.int_attr = int_attr
+        self.int_attr_2 = int_attr_2
         self.pic_name = pic_name
         self.product_id = product_id
         self.score = score
         self.sort_expr_values = sort_expr_values
         self.str_attr = str_attr
+        self.str_attr_2 = str_attr_2
 
     def validate(self):
         pass
@@ -2075,6 +2115,8 @@ class SearchImageByPicResponseBodyAuctions(TeaModel):
             result['CustomContent'] = self.custom_content
         if self.int_attr is not None:
             result['IntAttr'] = self.int_attr
+        if self.int_attr_2 is not None:
+            result['IntAttr2'] = self.int_attr_2
         if self.pic_name is not None:
             result['PicName'] = self.pic_name
         if self.product_id is not None:
@@ -2085,6 +2127,8 @@ class SearchImageByPicResponseBodyAuctions(TeaModel):
             result['SortExprValues'] = self.sort_expr_values
         if self.str_attr is not None:
             result['StrAttr'] = self.str_attr
+        if self.str_attr_2 is not None:
+            result['StrAttr2'] = self.str_attr_2
         return result
 
     def from_map(self, m: dict = None):
@@ -2095,6 +2139,8 @@ class SearchImageByPicResponseBodyAuctions(TeaModel):
             self.custom_content = m.get('CustomContent')
         if m.get('IntAttr') is not None:
             self.int_attr = m.get('IntAttr')
+        if m.get('IntAttr2') is not None:
+            self.int_attr_2 = m.get('IntAttr2')
         if m.get('PicName') is not None:
             self.pic_name = m.get('PicName')
         if m.get('ProductId') is not None:
@@ -2105,6 +2151,8 @@ class SearchImageByPicResponseBodyAuctions(TeaModel):
             self.sort_expr_values = m.get('SortExprValues')
         if m.get('StrAttr') is not None:
             self.str_attr = m.get('StrAttr')
+        if m.get('StrAttr2') is not None:
+            self.str_attr_2 = m.get('StrAttr2')
         return self
 
 
@@ -2396,16 +2444,20 @@ class UpdateImageRequest(TeaModel):
         custom_content: str = None,
         instance_name: str = None,
         int_attr: int = None,
+        int_attr_2: int = None,
         pic_name: str = None,
         product_id: str = None,
         str_attr: str = None,
+        str_attr_2: str = None,
     ):
         self.custom_content = custom_content
         self.instance_name = instance_name
         self.int_attr = int_attr
+        self.int_attr_2 = int_attr_2
         self.pic_name = pic_name
         self.product_id = product_id
         self.str_attr = str_attr
+        self.str_attr_2 = str_attr_2
 
     def validate(self):
         pass
@@ -2422,12 +2474,16 @@ class UpdateImageRequest(TeaModel):
             result['InstanceName'] = self.instance_name
         if self.int_attr is not None:
             result['IntAttr'] = self.int_attr
+        if self.int_attr_2 is not None:
+            result['IntAttr2'] = self.int_attr_2
         if self.pic_name is not None:
             result['PicName'] = self.pic_name
         if self.product_id is not None:
             result['ProductId'] = self.product_id
         if self.str_attr is not None:
             result['StrAttr'] = self.str_attr
+        if self.str_attr_2 is not None:
+            result['StrAttr2'] = self.str_attr_2
         return result
 
     def from_map(self, m: dict = None):
@@ -2438,12 +2494,16 @@ class UpdateImageRequest(TeaModel):
             self.instance_name = m.get('InstanceName')
         if m.get('IntAttr') is not None:
             self.int_attr = m.get('IntAttr')
+        if m.get('IntAttr2') is not None:
+            self.int_attr_2 = m.get('IntAttr2')
         if m.get('PicName') is not None:
             self.pic_name = m.get('PicName')
         if m.get('ProductId') is not None:
             self.product_id = m.get('ProductId')
         if m.get('StrAttr') is not None:
             self.str_attr = m.get('StrAttr')
+        if m.get('StrAttr2') is not None:
+            self.str_attr_2 = m.get('StrAttr2')
         return self
 
 

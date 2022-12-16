@@ -64,6 +64,8 @@ class Client(OpenApiClient):
             body['InstanceName'] = request.instance_name
         if not UtilClient.is_unset(request.int_attr):
             body['IntAttr'] = request.int_attr
+        if not UtilClient.is_unset(request.int_attr_2):
+            body['IntAttr2'] = request.int_attr_2
         if not UtilClient.is_unset(request.pic_content):
             body['PicContent'] = request.pic_content
         if not UtilClient.is_unset(request.pic_name):
@@ -74,6 +76,8 @@ class Client(OpenApiClient):
             body['Region'] = request.region
         if not UtilClient.is_unset(request.str_attr):
             body['StrAttr'] = request.str_attr
+        if not UtilClient.is_unset(request.str_attr_2):
+            body['StrAttr2'] = request.str_attr_2
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -110,6 +114,8 @@ class Client(OpenApiClient):
             body['InstanceName'] = request.instance_name
         if not UtilClient.is_unset(request.int_attr):
             body['IntAttr'] = request.int_attr
+        if not UtilClient.is_unset(request.int_attr_2):
+            body['IntAttr2'] = request.int_attr_2
         if not UtilClient.is_unset(request.pic_content):
             body['PicContent'] = request.pic_content
         if not UtilClient.is_unset(request.pic_name):
@@ -120,6 +126,8 @@ class Client(OpenApiClient):
             body['Region'] = request.region
         if not UtilClient.is_unset(request.str_attr):
             body['StrAttr'] = request.str_attr
+        if not UtilClient.is_unset(request.str_attr_2):
+            body['StrAttr2'] = request.str_attr_2
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -1114,12 +1122,16 @@ class Client(OpenApiClient):
             body['InstanceName'] = request.instance_name
         if not UtilClient.is_unset(request.int_attr):
             body['IntAttr'] = request.int_attr
+        if not UtilClient.is_unset(request.int_attr_2):
+            body['IntAttr2'] = request.int_attr_2
         if not UtilClient.is_unset(request.pic_name):
             body['PicName'] = request.pic_name
         if not UtilClient.is_unset(request.product_id):
             body['ProductId'] = request.product_id
         if not UtilClient.is_unset(request.str_attr):
             body['StrAttr'] = request.str_attr
+        if not UtilClient.is_unset(request.str_attr_2):
+            body['StrAttr2'] = request.str_attr_2
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -1152,12 +1164,16 @@ class Client(OpenApiClient):
             body['InstanceName'] = request.instance_name
         if not UtilClient.is_unset(request.int_attr):
             body['IntAttr'] = request.int_attr
+        if not UtilClient.is_unset(request.int_attr_2):
+            body['IntAttr2'] = request.int_attr_2
         if not UtilClient.is_unset(request.pic_name):
             body['PicName'] = request.pic_name
         if not UtilClient.is_unset(request.product_id):
             body['ProductId'] = request.product_id
         if not UtilClient.is_unset(request.str_attr):
             body['StrAttr'] = request.str_attr
+        if not UtilClient.is_unset(request.str_attr_2):
+            body['StrAttr2'] = request.str_attr_2
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
