@@ -9481,6 +9481,10 @@ class Client(OpenApiClient):
             query['Enable'] = request.enable
         if not UtilClient.is_unset(request.func_type):
             query['FuncType'] = request.func_type
+        if not UtilClient.is_unset(request.loss_less_detail):
+            query['LossLessDetail'] = request.loss_less_detail
+        if not UtilClient.is_unset(request.notice):
+            query['Notice'] = request.notice
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.related):
@@ -9531,6 +9535,10 @@ class Client(OpenApiClient):
             query['Enable'] = request.enable
         if not UtilClient.is_unset(request.func_type):
             query['FuncType'] = request.func_type
+        if not UtilClient.is_unset(request.loss_less_detail):
+            query['LossLessDetail'] = request.loss_less_detail
+        if not UtilClient.is_unset(request.notice):
+            query['Notice'] = request.notice
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.related):
