@@ -1,3 +1,6 @@
+2022-12-16 Version: 1.0.34
+- Add result param leave_status.
+
 2022-12-15 Version: 1.0.33
 - ApplyAdd and ApplyModify.
 
