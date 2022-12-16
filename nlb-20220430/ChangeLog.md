@@ -1,3 +1,6 @@
+2022-12-16 Version: 1.0.9
+- Nlb security group
+
 2022-12-02 Version: 1.0.8
 - Nlb bugfix.
 

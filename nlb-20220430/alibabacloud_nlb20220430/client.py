@@ -2587,6 +2587,178 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_tag_resources_with_options_async(request, runtime)
 
+    def load_balancer_join_security_group_with_options(
+        self,
+        request: nlb_20220430_models.LoadBalancerJoinSecurityGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nlb_20220430_models.LoadBalancerJoinSecurityGroupResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            body['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.load_balancer_id):
+            body['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.security_group_ids):
+            body['SecurityGroupIds'] = request.security_group_ids
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='LoadBalancerJoinSecurityGroup',
+            version='2022-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nlb_20220430_models.LoadBalancerJoinSecurityGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def load_balancer_join_security_group_with_options_async(
+        self,
+        request: nlb_20220430_models.LoadBalancerJoinSecurityGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nlb_20220430_models.LoadBalancerJoinSecurityGroupResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            body['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.load_balancer_id):
+            body['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.security_group_ids):
+            body['SecurityGroupIds'] = request.security_group_ids
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='LoadBalancerJoinSecurityGroup',
+            version='2022-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nlb_20220430_models.LoadBalancerJoinSecurityGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def load_balancer_join_security_group(
+        self,
+        request: nlb_20220430_models.LoadBalancerJoinSecurityGroupRequest,
+    ) -> nlb_20220430_models.LoadBalancerJoinSecurityGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.load_balancer_join_security_group_with_options(request, runtime)
+
+    async def load_balancer_join_security_group_async(
+        self,
+        request: nlb_20220430_models.LoadBalancerJoinSecurityGroupRequest,
+    ) -> nlb_20220430_models.LoadBalancerJoinSecurityGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.load_balancer_join_security_group_with_options_async(request, runtime)
+
+    def load_balancer_leave_security_group_with_options(
+        self,
+        request: nlb_20220430_models.LoadBalancerLeaveSecurityGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nlb_20220430_models.LoadBalancerLeaveSecurityGroupResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            body['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.load_balancer_id):
+            body['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.security_group_ids):
+            body['SecurityGroupIds'] = request.security_group_ids
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='LoadBalancerLeaveSecurityGroup',
+            version='2022-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nlb_20220430_models.LoadBalancerLeaveSecurityGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def load_balancer_leave_security_group_with_options_async(
+        self,
+        request: nlb_20220430_models.LoadBalancerLeaveSecurityGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nlb_20220430_models.LoadBalancerLeaveSecurityGroupResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            body['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.load_balancer_id):
+            body['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.security_group_ids):
+            body['SecurityGroupIds'] = request.security_group_ids
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='LoadBalancerLeaveSecurityGroup',
+            version='2022-04-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nlb_20220430_models.LoadBalancerLeaveSecurityGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def load_balancer_leave_security_group(
+        self,
+        request: nlb_20220430_models.LoadBalancerLeaveSecurityGroupRequest,
+    ) -> nlb_20220430_models.LoadBalancerLeaveSecurityGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.load_balancer_leave_security_group_with_options(request, runtime)
+
+    async def load_balancer_leave_security_group_async(
+        self,
+        request: nlb_20220430_models.LoadBalancerLeaveSecurityGroupRequest,
+    ) -> nlb_20220430_models.LoadBalancerLeaveSecurityGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.load_balancer_leave_security_group_with_options_async(request, runtime)
+
     def remove_servers_from_server_group_with_options(
         self,
         request: nlb_20220430_models.RemoveServersFromServerGroupRequest,
