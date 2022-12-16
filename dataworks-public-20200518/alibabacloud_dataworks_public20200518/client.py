@@ -910,6 +910,14 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateConnectionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateConnectionResponse:
+        """
+        @deprecated
+        
+        @param request: CreateConnectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateConnectionResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.connection_type):
@@ -950,6 +958,14 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateConnectionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateConnectionResponse:
+        """
+        @deprecated
+        
+        @param request: CreateConnectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateConnectionResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.connection_type):
@@ -989,6 +1005,13 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.CreateConnectionRequest,
     ) -> dataworks_public_20200518_models.CreateConnectionResponse:
+        """
+        @deprecated
+        
+        @param request: CreateConnectionRequest
+        @return: CreateConnectionResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_connection_with_options(request, runtime)
 
@@ -996,6 +1019,13 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.CreateConnectionRequest,
     ) -> dataworks_public_20200518_models.CreateConnectionResponse:
+        """
+        @deprecated
+        
+        @param request: CreateConnectionRequest
+        @return: CreateConnectionResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_connection_with_options_async(request, runtime)
 
@@ -1094,6 +1124,14 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateDagComplementRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateDagComplementResponse:
+        """
+        @deprecated
+        
+        @param request: CreateDagComplementRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDagComplementResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.biz_begin_time):
@@ -1142,6 +1180,14 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateDagComplementRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateDagComplementResponse:
+        """
+        @deprecated
+        
+        @param request: CreateDagComplementRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDagComplementResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.biz_begin_time):
@@ -1189,6 +1235,13 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.CreateDagComplementRequest,
     ) -> dataworks_public_20200518_models.CreateDagComplementResponse:
+        """
+        @deprecated
+        
+        @param request: CreateDagComplementRequest
+        @return: CreateDagComplementResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_dag_complement_with_options(request, runtime)
 
@@ -1196,6 +1249,13 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.CreateDagComplementRequest,
     ) -> dataworks_public_20200518_models.CreateDagComplementResponse:
+        """
+        @deprecated
+        
+        @param request: CreateDagComplementRequest
+        @return: CreateDagComplementResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_dag_complement_with_options_async(request, runtime)
 
@@ -1204,6 +1264,14 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateDagTestRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateDagTestResponse:
+        """
+        @deprecated
+        
+        @param request: CreateDagTestRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDagTestResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.bizdate):
@@ -1240,6 +1308,14 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateDagTestRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateDagTestResponse:
+        """
+        @deprecated
+        
+        @param request: CreateDagTestRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDagTestResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.bizdate):
@@ -1275,6 +1351,13 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.CreateDagTestRequest,
     ) -> dataworks_public_20200518_models.CreateDagTestResponse:
+        """
+        @deprecated
+        
+        @param request: CreateDagTestRequest
+        @return: CreateDagTestResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_dag_test_with_options(request, runtime)
 
@@ -1282,6 +1365,13 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.CreateDagTestRequest,
     ) -> dataworks_public_20200518_models.CreateDagTestResponse:
+        """
+        @deprecated
+        
+        @param request: CreateDagTestRequest
+        @return: CreateDagTestResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_dag_test_with_options_async(request, runtime)
 
@@ -2366,6 +2456,14 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateManualDagRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateManualDagResponse:
+        """
+        @deprecated
+        
+        @param request: CreateManualDagRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateManualDagResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.biz_date):
@@ -2408,6 +2506,14 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateManualDagRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateManualDagResponse:
+        """
+        @deprecated
+        
+        @param request: CreateManualDagRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateManualDagResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.biz_date):
@@ -2449,6 +2555,13 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.CreateManualDagRequest,
     ) -> dataworks_public_20200518_models.CreateManualDagResponse:
+        """
+        @deprecated
+        
+        @param request: CreateManualDagRequest
+        @return: CreateManualDagResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_manual_dag_with_options(request, runtime)
 
@@ -2456,6 +2569,13 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.CreateManualDagRequest,
     ) -> dataworks_public_20200518_models.CreateManualDagResponse:
+        """
+        @deprecated
+        
+        @param request: CreateManualDagRequest
+        @return: CreateManualDagResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_manual_dag_with_options_async(request, runtime)
 
@@ -3836,6 +3956,14 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteConnectionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteConnectionResponse:
+        """
+        @deprecated
+        
+        @param request: DeleteConnectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteConnectionResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.connection_id):
@@ -3864,6 +3992,14 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteConnectionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteConnectionResponse:
+        """
+        @deprecated
+        
+        @param request: DeleteConnectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteConnectionResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.connection_id):
@@ -3891,6 +4027,13 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.DeleteConnectionRequest,
     ) -> dataworks_public_20200518_models.DeleteConnectionResponse:
+        """
+        @deprecated
+        
+        @param request: DeleteConnectionRequest
+        @return: DeleteConnectionResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_connection_with_options(request, runtime)
 
@@ -3898,6 +4041,13 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.DeleteConnectionRequest,
     ) -> dataworks_public_20200518_models.DeleteConnectionResponse:
+        """
+        @deprecated
+        
+        @param request: DeleteConnectionRequest
+        @return: DeleteConnectionResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_connection_with_options_async(request, runtime)
 
@@ -7594,6 +7744,14 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetInstanceConsumeTimeRankRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetInstanceConsumeTimeRankResponse:
+        """
+        @deprecated
+        
+        @param request: GetInstanceConsumeTimeRankRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInstanceConsumeTimeRankResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.bizdate):
@@ -7624,6 +7782,14 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetInstanceConsumeTimeRankRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetInstanceConsumeTimeRankResponse:
+        """
+        @deprecated
+        
+        @param request: GetInstanceConsumeTimeRankRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInstanceConsumeTimeRankResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.bizdate):
@@ -7653,6 +7819,13 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetInstanceConsumeTimeRankRequest,
     ) -> dataworks_public_20200518_models.GetInstanceConsumeTimeRankResponse:
+        """
+        @deprecated
+        
+        @param request: GetInstanceConsumeTimeRankRequest
+        @return: GetInstanceConsumeTimeRankResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_instance_consume_time_rank_with_options(request, runtime)
 
@@ -7660,6 +7833,13 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetInstanceConsumeTimeRankRequest,
     ) -> dataworks_public_20200518_models.GetInstanceConsumeTimeRankResponse:
+        """
+        @deprecated
+        
+        @param request: GetInstanceConsumeTimeRankRequest
+        @return: GetInstanceConsumeTimeRankResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_instance_consume_time_rank_with_options_async(request, runtime)
 
@@ -7668,6 +7848,14 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetInstanceCountTrendRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetInstanceCountTrendResponse:
+        """
+        @deprecated
+        
+        @param request: GetInstanceCountTrendRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInstanceCountTrendResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.begin_date):
@@ -7700,6 +7888,14 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetInstanceCountTrendRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetInstanceCountTrendResponse:
+        """
+        @deprecated
+        
+        @param request: GetInstanceCountTrendRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInstanceCountTrendResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.begin_date):
@@ -7731,6 +7927,13 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetInstanceCountTrendRequest,
     ) -> dataworks_public_20200518_models.GetInstanceCountTrendResponse:
+        """
+        @deprecated
+        
+        @param request: GetInstanceCountTrendRequest
+        @return: GetInstanceCountTrendResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_instance_count_trend_with_options(request, runtime)
 
@@ -7738,6 +7941,13 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetInstanceCountTrendRequest,
     ) -> dataworks_public_20200518_models.GetInstanceCountTrendResponse:
+        """
+        @deprecated
+        
+        @param request: GetInstanceCountTrendRequest
+        @return: GetInstanceCountTrendResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_instance_count_trend_with_options_async(request, runtime)
 
@@ -7746,6 +7956,14 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetInstanceErrorRankRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetInstanceErrorRankResponse:
+        """
+        @deprecated
+        
+        @param request: GetInstanceErrorRankRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInstanceErrorRankResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.project_id):
@@ -7774,6 +7992,14 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetInstanceErrorRankRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetInstanceErrorRankResponse:
+        """
+        @deprecated
+        
+        @param request: GetInstanceErrorRankRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInstanceErrorRankResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.project_id):
@@ -7801,6 +8027,13 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetInstanceErrorRankRequest,
     ) -> dataworks_public_20200518_models.GetInstanceErrorRankResponse:
+        """
+        @deprecated
+        
+        @param request: GetInstanceErrorRankRequest
+        @return: GetInstanceErrorRankResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_instance_error_rank_with_options(request, runtime)
 
@@ -7808,6 +8041,13 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetInstanceErrorRankRequest,
     ) -> dataworks_public_20200518_models.GetInstanceErrorRankResponse:
+        """
+        @deprecated
+        
+        @param request: GetInstanceErrorRankRequest
+        @return: GetInstanceErrorRankResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_instance_error_rank_with_options_async(request, runtime)
 
@@ -7894,6 +8134,14 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetInstanceStatusCountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetInstanceStatusCountResponse:
+        """
+        @deprecated
+        
+        @param request: GetInstanceStatusCountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInstanceStatusCountResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.biz_date):
@@ -7926,6 +8174,14 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetInstanceStatusCountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetInstanceStatusCountResponse:
+        """
+        @deprecated
+        
+        @param request: GetInstanceStatusCountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInstanceStatusCountResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.biz_date):
@@ -7957,6 +8213,13 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetInstanceStatusCountRequest,
     ) -> dataworks_public_20200518_models.GetInstanceStatusCountResponse:
+        """
+        @deprecated
+        
+        @param request: GetInstanceStatusCountRequest
+        @return: GetInstanceStatusCountResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_instance_status_count_with_options(request, runtime)
 
@@ -7964,6 +8227,13 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetInstanceStatusCountRequest,
     ) -> dataworks_public_20200518_models.GetInstanceStatusCountResponse:
+        """
+        @deprecated
+        
+        @param request: GetInstanceStatusCountRequest
+        @return: GetInstanceStatusCountResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_instance_status_count_with_options_async(request, runtime)
 
@@ -8058,6 +8328,14 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetManualDagInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetManualDagInstancesResponse:
+        """
+        @deprecated
+        
+        @param request: GetManualDagInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetManualDagInstancesResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.dag_id):
@@ -8090,6 +8368,14 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetManualDagInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetManualDagInstancesResponse:
+        """
+        @deprecated
+        
+        @param request: GetManualDagInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetManualDagInstancesResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.dag_id):
@@ -8121,6 +8407,13 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetManualDagInstancesRequest,
     ) -> dataworks_public_20200518_models.GetManualDagInstancesResponse:
+        """
+        @deprecated
+        
+        @param request: GetManualDagInstancesRequest
+        @return: GetManualDagInstancesResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_manual_dag_instances_with_options(request, runtime)
 
@@ -8128,6 +8421,13 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetManualDagInstancesRequest,
     ) -> dataworks_public_20200518_models.GetManualDagInstancesResponse:
+        """
+        @deprecated
+        
+        @param request: GetManualDagInstancesRequest
+        @return: GetManualDagInstancesResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_manual_dag_instances_with_options_async(request, runtime)
 
@@ -8472,6 +8772,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetMetaTableBasicInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetMetaTableBasicInfoResponse:
+        """
+        ***\
+        
+        @param request: GetMetaTableBasicInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMetaTableBasicInfoResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -8498,6 +8805,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetMetaTableBasicInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetMetaTableBasicInfoResponse:
+        """
+        ***\
+        
+        @param request: GetMetaTableBasicInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMetaTableBasicInfoResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -8523,6 +8837,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetMetaTableBasicInfoRequest,
     ) -> dataworks_public_20200518_models.GetMetaTableBasicInfoResponse:
+        """
+        ***\
+        
+        @param request: GetMetaTableBasicInfoRequest
+        @return: GetMetaTableBasicInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_meta_table_basic_info_with_options(request, runtime)
 
@@ -8530,6 +8850,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetMetaTableBasicInfoRequest,
     ) -> dataworks_public_20200518_models.GetMetaTableBasicInfoResponse:
+        """
+        ***\
+        
+        @param request: GetMetaTableBasicInfoRequest
+        @return: GetMetaTableBasicInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_meta_table_basic_info_with_options_async(request, runtime)
 
@@ -9014,6 +9340,8 @@ class Client(OpenApiClient):
             query['StartDate'] = request.start_date
         if not UtilClient.is_unset(request.table_guid):
             query['TableGuid'] = request.table_guid
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9050,6 +9378,8 @@ class Client(OpenApiClient):
             query['StartDate'] = request.start_date
         if not UtilClient.is_unset(request.table_guid):
             query['TableGuid'] = request.table_guid
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9630,6 +9960,14 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetNodeOnBaselineRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetNodeOnBaselineResponse:
+        """
+        @deprecated
+        
+        @param request: GetNodeOnBaselineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetNodeOnBaselineResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.baseline_id):
@@ -9658,6 +9996,14 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetNodeOnBaselineRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetNodeOnBaselineResponse:
+        """
+        @deprecated
+        
+        @param request: GetNodeOnBaselineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetNodeOnBaselineResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.baseline_id):
@@ -9685,6 +10031,13 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetNodeOnBaselineRequest,
     ) -> dataworks_public_20200518_models.GetNodeOnBaselineResponse:
+        """
+        @deprecated
+        
+        @param request: GetNodeOnBaselineRequest
+        @return: GetNodeOnBaselineResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_node_on_baseline_with_options(request, runtime)
 
@@ -9692,6 +10045,13 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetNodeOnBaselineRequest,
     ) -> dataworks_public_20200518_models.GetNodeOnBaselineResponse:
+        """
+        @deprecated
+        
+        @param request: GetNodeOnBaselineRequest
+        @return: GetNodeOnBaselineResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_node_on_baseline_with_options_async(request, runtime)
 
@@ -9774,6 +10134,14 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetNodeTypeListInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetNodeTypeListInfoResponse:
+        """
+        @deprecated
+        
+        @param request: GetNodeTypeListInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetNodeTypeListInfoResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.keyword):
@@ -9812,6 +10180,14 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetNodeTypeListInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetNodeTypeListInfoResponse:
+        """
+        @deprecated
+        
+        @param request: GetNodeTypeListInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetNodeTypeListInfoResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.keyword):
@@ -9849,6 +10225,13 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetNodeTypeListInfoRequest,
     ) -> dataworks_public_20200518_models.GetNodeTypeListInfoResponse:
+        """
+        @deprecated
+        
+        @param request: GetNodeTypeListInfoRequest
+        @return: GetNodeTypeListInfoResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_node_type_list_info_with_options(request, runtime)
 
@@ -9856,6 +10239,13 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetNodeTypeListInfoRequest,
     ) -> dataworks_public_20200518_models.GetNodeTypeListInfoResponse:
+        """
+        @deprecated
+        
+        @param request: GetNodeTypeListInfoRequest
+        @return: GetNodeTypeListInfoResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_node_type_list_info_with_options_async(request, runtime)
 
@@ -10210,6 +10600,14 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetProjectDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetProjectDetailResponse:
+        """
+        @deprecated
+        
+        @param request: GetProjectDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetProjectDetailResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.project_id):
@@ -10238,6 +10636,14 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetProjectDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetProjectDetailResponse:
+        """
+        @deprecated
+        
+        @param request: GetProjectDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetProjectDetailResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.project_id):
@@ -10265,6 +10671,13 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetProjectDetailRequest,
     ) -> dataworks_public_20200518_models.GetProjectDetailResponse:
+        """
+        @deprecated
+        
+        @param request: GetProjectDetailRequest
+        @return: GetProjectDetailResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_project_detail_with_options(request, runtime)
 
@@ -10272,6 +10685,13 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetProjectDetailRequest,
     ) -> dataworks_public_20200518_models.GetProjectDetailResponse:
+        """
+        @deprecated
+        
+        @param request: GetProjectDetailRequest
+        @return: GetProjectDetailResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_project_detail_with_options_async(request, runtime)
 
@@ -10646,6 +11066,14 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetSuccessInstanceTrendRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetSuccessInstanceTrendResponse:
+        """
+        @deprecated
+        
+        @param request: GetSuccessInstanceTrendRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSuccessInstanceTrendResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.project_id):
@@ -10674,6 +11102,14 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetSuccessInstanceTrendRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetSuccessInstanceTrendResponse:
+        """
+        @deprecated
+        
+        @param request: GetSuccessInstanceTrendRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSuccessInstanceTrendResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.project_id):
@@ -10701,6 +11137,13 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetSuccessInstanceTrendRequest,
     ) -> dataworks_public_20200518_models.GetSuccessInstanceTrendResponse:
+        """
+        @deprecated
+        
+        @param request: GetSuccessInstanceTrendRequest
+        @return: GetSuccessInstanceTrendResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_success_instance_trend_with_options(request, runtime)
 
@@ -10708,6 +11151,13 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetSuccessInstanceTrendRequest,
     ) -> dataworks_public_20200518_models.GetSuccessInstanceTrendResponse:
+        """
+        @deprecated
+        
+        @param request: GetSuccessInstanceTrendRequest
+        @return: GetSuccessInstanceTrendResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_success_instance_trend_with_options_async(request, runtime)
 
@@ -10716,6 +11166,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetTopicRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetTopicResponse:
+        """
+        ***\
+        
+        @param request: GetTopicRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTopicResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.topic_id):
@@ -10744,6 +11201,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetTopicRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetTopicResponse:
+        """
+        ***\
+        
+        @param request: GetTopicRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTopicResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.topic_id):
@@ -10771,6 +11235,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetTopicRequest,
     ) -> dataworks_public_20200518_models.GetTopicResponse:
+        """
+        ***\
+        
+        @param request: GetTopicRequest
+        @return: GetTopicResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_topic_with_options(request, runtime)
 
@@ -10778,6 +11248,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.GetTopicRequest,
     ) -> dataworks_public_20200518_models.GetTopicResponse:
+        """
+        ***\
+        
+        @param request: GetTopicRequest
+        @return: GetTopicResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_topic_with_options_async(request, runtime)
 
@@ -11510,6 +11986,14 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListConnectionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListConnectionsResponse:
+        """
+        @deprecated
+        
+        @param request: ListConnectionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListConnectionsResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -11536,6 +12020,14 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListConnectionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListConnectionsResponse:
+        """
+        @deprecated
+        
+        @param request: ListConnectionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListConnectionsResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -11561,6 +12053,13 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListConnectionsRequest,
     ) -> dataworks_public_20200518_models.ListConnectionsResponse:
+        """
+        @deprecated
+        
+        @param request: ListConnectionsRequest
+        @return: ListConnectionsResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_connections_with_options(request, runtime)
 
@@ -11568,6 +12067,13 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListConnectionsRequest,
     ) -> dataworks_public_20200518_models.ListConnectionsResponse:
+        """
+        @deprecated
+        
+        @param request: ListConnectionsRequest
+        @return: ListConnectionsResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_connections_with_options_async(request, runtime)
 
@@ -13710,6 +14216,14 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListNodeIORequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListNodeIOResponse:
+        """
+        @deprecated
+        
+        @param request: ListNodeIORequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListNodeIOResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.io_type):
@@ -13742,6 +14256,14 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListNodeIORequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListNodeIOResponse:
+        """
+        @deprecated
+        
+        @param request: ListNodeIORequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListNodeIOResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.io_type):
@@ -13773,6 +14295,13 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListNodeIORequest,
     ) -> dataworks_public_20200518_models.ListNodeIOResponse:
+        """
+        @deprecated
+        
+        @param request: ListNodeIORequest
+        @return: ListNodeIOResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_node_iowith_options(request, runtime)
 
@@ -13780,6 +14309,13 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListNodeIORequest,
     ) -> dataworks_public_20200518_models.ListNodeIOResponse:
+        """
+        @deprecated
+        
+        @param request: ListNodeIORequest
+        @return: ListNodeIOResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_node_iowith_options_async(request, runtime)
 
@@ -14218,6 +14754,14 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListProgramTypeCountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListProgramTypeCountResponse:
+        """
+        @deprecated
+        
+        @param request: ListProgramTypeCountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProgramTypeCountResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.project_env):
@@ -14248,6 +14792,14 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListProgramTypeCountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListProgramTypeCountResponse:
+        """
+        @deprecated
+        
+        @param request: ListProgramTypeCountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProgramTypeCountResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.project_env):
@@ -14277,6 +14829,13 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListProgramTypeCountRequest,
     ) -> dataworks_public_20200518_models.ListProgramTypeCountResponse:
+        """
+        @deprecated
+        
+        @param request: ListProgramTypeCountRequest
+        @return: ListProgramTypeCountResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_program_type_count_with_options(request, runtime)
 
@@ -14284,6 +14843,13 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListProgramTypeCountRequest,
     ) -> dataworks_public_20200518_models.ListProgramTypeCountResponse:
+        """
+        @deprecated
+        
+        @param request: ListProgramTypeCountRequest
+        @return: ListProgramTypeCountResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_program_type_count_with_options_async(request, runtime)
 
@@ -14600,6 +15166,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListQualityResultsByEntityRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListQualityResultsByEntityResponse:
+        """
+        ***\
+        
+        @param request: ListQualityResultsByEntityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListQualityResultsByEntityResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.end_date):
@@ -14638,6 +15211,13 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListQualityResultsByEntityRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListQualityResultsByEntityResponse:
+        """
+        ***\
+        
+        @param request: ListQualityResultsByEntityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListQualityResultsByEntityResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.end_date):
@@ -14675,6 +15255,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListQualityResultsByEntityRequest,
     ) -> dataworks_public_20200518_models.ListQualityResultsByEntityResponse:
+        """
+        ***\
+        
+        @param request: ListQualityResultsByEntityRequest
+        @return: ListQualityResultsByEntityResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_quality_results_by_entity_with_options(request, runtime)
 
@@ -14682,6 +15268,12 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.ListQualityResultsByEntityRequest,
     ) -> dataworks_public_20200518_models.ListQualityResultsByEntityResponse:
+        """
+        ***\
+        
+        @param request: ListQualityResultsByEntityRequest
+        @return: ListQualityResultsByEntityResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_quality_results_by_entity_with_options_async(request, runtime)
 
@@ -15062,8 +15654,6 @@ class Client(OpenApiClient):
             query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
         if not UtilClient.is_unset(request.tags_shrink):
             query['Tags'] = request.tags_shrink
-        if not UtilClient.is_unset(request.type_names):
-            query['TypeNames'] = request.type_names
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -15104,8 +15694,6 @@ class Client(OpenApiClient):
             query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
         if not UtilClient.is_unset(request.tags_shrink):
             query['Tags'] = request.tags_shrink
-        if not UtilClient.is_unset(request.type_names):
-            query['TypeNames'] = request.type_names
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -16874,6 +17462,14 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.SearchNodesByOutputRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.SearchNodesByOutputResponse:
+        """
+        @deprecated
+        
+        @param request: SearchNodesByOutputRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchNodesByOutputResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.outputs):
@@ -16904,6 +17500,14 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.SearchNodesByOutputRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.SearchNodesByOutputResponse:
+        """
+        @deprecated
+        
+        @param request: SearchNodesByOutputRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchNodesByOutputResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.outputs):
@@ -16933,6 +17537,13 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.SearchNodesByOutputRequest,
     ) -> dataworks_public_20200518_models.SearchNodesByOutputResponse:
+        """
+        @deprecated
+        
+        @param request: SearchNodesByOutputRequest
+        @return: SearchNodesByOutputResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.search_nodes_by_output_with_options(request, runtime)
 
@@ -16940,6 +17551,13 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.SearchNodesByOutputRequest,
     ) -> dataworks_public_20200518_models.SearchNodesByOutputResponse:
+        """
+        @deprecated
+        
+        @param request: SearchNodesByOutputRequest
+        @return: SearchNodesByOutputResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.search_nodes_by_output_with_options_async(request, runtime)
 
@@ -16948,6 +17566,14 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.SetDataSourceShareRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.SetDataSourceShareResponse:
+        """
+        @deprecated
+        
+        @param request: SetDataSourceShareRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetDataSourceShareResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.datasource_name):
@@ -16984,6 +17610,14 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.SetDataSourceShareRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.SetDataSourceShareResponse:
+        """
+        @deprecated
+        
+        @param request: SetDataSourceShareRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetDataSourceShareResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.datasource_name):
@@ -17019,6 +17653,13 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.SetDataSourceShareRequest,
     ) -> dataworks_public_20200518_models.SetDataSourceShareResponse:
+        """
+        @deprecated
+        
+        @param request: SetDataSourceShareRequest
+        @return: SetDataSourceShareResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_data_source_share_with_options(request, runtime)
 
@@ -17026,6 +17667,13 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.SetDataSourceShareRequest,
     ) -> dataworks_public_20200518_models.SetDataSourceShareResponse:
+        """
+        @deprecated
+        
+        @param request: SetDataSourceShareRequest
+        @return: SetDataSourceShareResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_data_source_share_with_options_async(request, runtime)
 
@@ -18190,6 +18838,14 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateConnectionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateConnectionResponse:
+        """
+        @deprecated
+        
+        @param request: UpdateConnectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateConnectionResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.connection_id):
@@ -18226,6 +18882,14 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateConnectionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateConnectionResponse:
+        """
+        @deprecated
+        
+        @param request: UpdateConnectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateConnectionResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.connection_id):
@@ -18261,6 +18925,13 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.UpdateConnectionRequest,
     ) -> dataworks_public_20200518_models.UpdateConnectionResponse:
+        """
+        @deprecated
+        
+        @param request: UpdateConnectionRequest
+        @return: UpdateConnectionResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_connection_with_options(request, runtime)
 
@@ -18268,6 +18939,13 @@ class Client(OpenApiClient):
         self,
         request: dataworks_public_20200518_models.UpdateConnectionRequest,
     ) -> dataworks_public_20200518_models.UpdateConnectionResponse:
+        """
+        @deprecated
+        
+        @param request: UpdateConnectionRequest
+        @return: UpdateConnectionResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_connection_with_options_async(request, runtime)
 
