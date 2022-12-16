@@ -2812,11 +2812,9 @@ class InterpolateVideoFrameResponse(TeaModel):
 class MergeVideoFaceRequest(TeaModel):
     def __init__(
         self,
-        post_url: str = None,
         reference_url: str = None,
         video_url: str = None,
     ):
-        self.post_url = post_url
         self.reference_url = reference_url
         self.video_url = video_url
 
@@ -2829,8 +2827,6 @@ class MergeVideoFaceRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.post_url is not None:
-            result['PostURL'] = self.post_url
         if self.reference_url is not None:
             result['ReferenceURL'] = self.reference_url
         if self.video_url is not None:
@@ -2839,8 +2835,6 @@ class MergeVideoFaceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('PostURL') is not None:
-            self.post_url = m.get('PostURL')
         if m.get('ReferenceURL') is not None:
             self.reference_url = m.get('ReferenceURL')
         if m.get('VideoURL') is not None:
@@ -2851,11 +2845,9 @@ class MergeVideoFaceRequest(TeaModel):
 class MergeVideoFaceAdvanceRequest(TeaModel):
     def __init__(
         self,
-        post_urlobject: BinaryIO = None,
         reference_urlobject: BinaryIO = None,
         video_urlobject: BinaryIO = None,
     ):
-        self.post_urlobject = post_urlobject
         self.reference_urlobject = reference_urlobject
         self.video_urlobject = video_urlobject
 
@@ -2868,8 +2860,6 @@ class MergeVideoFaceAdvanceRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.post_urlobject is not None:
-            result['PostURL'] = self.post_urlobject
         if self.reference_urlobject is not None:
             result['ReferenceURL'] = self.reference_urlobject
         if self.video_urlobject is not None:
@@ -2878,8 +2868,6 @@ class MergeVideoFaceAdvanceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('PostURL') is not None:
-            self.post_urlobject = m.get('PostURL')
         if m.get('ReferenceURL') is not None:
             self.reference_urlobject = m.get('ReferenceURL')
         if m.get('VideoURL') is not None:
