@@ -1385,6 +1385,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.CloneNacosConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.CloneNacosConfigResponse:
+        """
+        > The current API operation is not provided in Nacos SDK. For information about Nacos SDK, see the [official Nacos documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: CloneNacosConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CloneNacosConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -1423,6 +1430,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.CloneNacosConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.CloneNacosConfigResponse:
+        """
+        > The current API operation is not provided in Nacos SDK. For information about Nacos SDK, see the [official Nacos documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: CloneNacosConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CloneNacosConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -1460,6 +1474,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.CloneNacosConfigRequest,
     ) -> mse_20190531_models.CloneNacosConfigResponse:
+        """
+        > The current API operation is not provided in Nacos SDK. For information about Nacos SDK, see the [official Nacos documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: CloneNacosConfigRequest
+        @return: CloneNacosConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.clone_nacos_config_with_options(request, runtime)
 
@@ -1467,6 +1487,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.CloneNacosConfigRequest,
     ) -> mse_20190531_models.CloneNacosConfigResponse:
+        """
+        > The current API operation is not provided in Nacos SDK. For information about Nacos SDK, see the [official Nacos documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: CloneNacosConfigRequest
+        @return: CloneNacosConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.clone_nacos_config_with_options_async(request, runtime)
 
@@ -1573,6 +1599,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.CreateClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.CreateClusterResponse:
+        """
+        Before you call this API operation, you must make sure that you fully understand the billing method and pricing of MSE.
+        
+        @param request: CreateClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateClusterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -1637,6 +1670,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.CreateClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.CreateClusterResponse:
+        """
+        Before you call this API operation, you must make sure that you fully understand the billing method and pricing of MSE.
+        
+        @param request: CreateClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateClusterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -1700,6 +1740,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.CreateClusterRequest,
     ) -> mse_20190531_models.CreateClusterResponse:
+        """
+        Before you call this API operation, you must make sure that you fully understand the billing method and pricing of MSE.
+        
+        @param request: CreateClusterRequest
+        @return: CreateClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_cluster_with_options(request, runtime)
 
@@ -1707,6 +1753,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.CreateClusterRequest,
     ) -> mse_20190531_models.CreateClusterResponse:
+        """
+        Before you call this API operation, you must make sure that you fully understand the billing method and pricing of MSE.
+        
+        @param request: CreateClusterRequest
+        @return: CreateClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_cluster_with_options_async(request, runtime)
 
@@ -1911,6 +1963,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.CreateNacosConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.CreateNacosConfigResponse:
+        """
+        > The current API operation is not provided in Nacos SDK. For information about Nacos SDK, see the [official Nacos documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: CreateNacosConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateNacosConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -1959,6 +2018,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.CreateNacosConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.CreateNacosConfigResponse:
+        """
+        > The current API operation is not provided in Nacos SDK. For information about Nacos SDK, see the [official Nacos documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: CreateNacosConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateNacosConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -2006,6 +2072,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.CreateNacosConfigRequest,
     ) -> mse_20190531_models.CreateNacosConfigResponse:
+        """
+        > The current API operation is not provided in Nacos SDK. For information about Nacos SDK, see the [official Nacos documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: CreateNacosConfigRequest
+        @return: CreateNacosConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_nacos_config_with_options(request, runtime)
 
@@ -2013,6 +2085,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.CreateNacosConfigRequest,
     ) -> mse_20190531_models.CreateNacosConfigResponse:
+        """
+        > The current API operation is not provided in Nacos SDK. For information about Nacos SDK, see the [official Nacos documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: CreateNacosConfigRequest
+        @return: CreateNacosConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_nacos_config_with_options_async(request, runtime)
 
@@ -2021,6 +2099,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.CreateNacosInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.CreateNacosInstanceResponse:
+        """
+        Programming language
+        
+        @param request: CreateNacosInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateNacosInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -2073,6 +2158,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.CreateNacosInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.CreateNacosInstanceResponse:
+        """
+        Programming language
+        
+        @param request: CreateNacosInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateNacosInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -2124,6 +2216,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.CreateNacosInstanceRequest,
     ) -> mse_20190531_models.CreateNacosInstanceResponse:
+        """
+        Programming language
+        
+        @param request: CreateNacosInstanceRequest
+        @return: CreateNacosInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_nacos_instance_with_options(request, runtime)
 
@@ -2131,6 +2229,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.CreateNacosInstanceRequest,
     ) -> mse_20190531_models.CreateNacosInstanceResponse:
+        """
+        Programming language
+        
+        @param request: CreateNacosInstanceRequest
+        @return: CreateNacosInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_nacos_instance_with_options_async(request, runtime)
 
@@ -2139,6 +2243,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.CreateNacosServiceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.CreateNacosServiceResponse:
+        """
+        > The operation is not provided in Nacos SDKs. For more information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: CreateNacosServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateNacosServiceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -2181,6 +2292,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.CreateNacosServiceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.CreateNacosServiceResponse:
+        """
+        > The operation is not provided in Nacos SDKs. For more information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: CreateNacosServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateNacosServiceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -2222,6 +2340,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.CreateNacosServiceRequest,
     ) -> mse_20190531_models.CreateNacosServiceResponse:
+        """
+        > The operation is not provided in Nacos SDKs. For more information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: CreateNacosServiceRequest
+        @return: CreateNacosServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_nacos_service_with_options(request, runtime)
 
@@ -2229,6 +2353,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.CreateNacosServiceRequest,
     ) -> mse_20190531_models.CreateNacosServiceResponse:
+        """
+        > The operation is not provided in Nacos SDKs. For more information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: CreateNacosServiceRequest
+        @return: CreateNacosServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_nacos_service_with_options_async(request, runtime)
 
@@ -3293,6 +3423,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.DeleteNacosConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteNacosConfigResponse:
+        """
+        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: DeleteNacosConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteNacosConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -3331,6 +3468,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.DeleteNacosConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteNacosConfigResponse:
+        """
+        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: DeleteNacosConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteNacosConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -3368,6 +3512,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.DeleteNacosConfigRequest,
     ) -> mse_20190531_models.DeleteNacosConfigResponse:
+        """
+        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: DeleteNacosConfigRequest
+        @return: DeleteNacosConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_nacos_config_with_options(request, runtime)
 
@@ -3375,6 +3525,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.DeleteNacosConfigRequest,
     ) -> mse_20190531_models.DeleteNacosConfigResponse:
+        """
+        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: DeleteNacosConfigRequest
+        @return: DeleteNacosConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_nacos_config_with_options_async(request, runtime)
 
@@ -3383,6 +3539,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.DeleteNacosConfigsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteNacosConfigsResponse:
+        """
+        > The current API operation is not provided in Nacos SDK. For information about Nacos SDK, see the [official Nacos documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: DeleteNacosConfigsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteNacosConfigsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -3417,6 +3580,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.DeleteNacosConfigsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteNacosConfigsResponse:
+        """
+        > The current API operation is not provided in Nacos SDK. For information about Nacos SDK, see the [official Nacos documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: DeleteNacosConfigsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteNacosConfigsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -3450,6 +3620,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.DeleteNacosConfigsRequest,
     ) -> mse_20190531_models.DeleteNacosConfigsResponse:
+        """
+        > The current API operation is not provided in Nacos SDK. For information about Nacos SDK, see the [official Nacos documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: DeleteNacosConfigsRequest
+        @return: DeleteNacosConfigsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_nacos_configs_with_options(request, runtime)
 
@@ -3457,6 +3633,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.DeleteNacosConfigsRequest,
     ) -> mse_20190531_models.DeleteNacosConfigsResponse:
+        """
+        > The current API operation is not provided in Nacos SDK. For information about Nacos SDK, see the [official Nacos documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: DeleteNacosConfigsRequest
+        @return: DeleteNacosConfigsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_nacos_configs_with_options_async(request, runtime)
 
@@ -3465,6 +3647,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.DeleteNacosInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteNacosInstanceResponse:
+        """
+        > The operation is not provided in Nacos SDKs. For more information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: DeleteNacosInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteNacosInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -3509,6 +3698,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.DeleteNacosInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteNacosInstanceResponse:
+        """
+        > The operation is not provided in Nacos SDKs. For more information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: DeleteNacosInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteNacosInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -3552,6 +3748,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.DeleteNacosInstanceRequest,
     ) -> mse_20190531_models.DeleteNacosInstanceResponse:
+        """
+        > The operation is not provided in Nacos SDKs. For more information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: DeleteNacosInstanceRequest
+        @return: DeleteNacosInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_nacos_instance_with_options(request, runtime)
 
@@ -3559,6 +3761,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.DeleteNacosInstanceRequest,
     ) -> mse_20190531_models.DeleteNacosInstanceResponse:
+        """
+        > The operation is not provided in Nacos SDKs. For more information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: DeleteNacosInstanceRequest
+        @return: DeleteNacosInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_nacos_instance_with_options_async(request, runtime)
 
@@ -3567,6 +3775,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.DeleteNacosServiceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteNacosServiceResponse:
+        """
+        > The operation is not provided in Nacos SDKs. For more information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: DeleteNacosServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteNacosServiceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -3603,6 +3818,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.DeleteNacosServiceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteNacosServiceResponse:
+        """
+        > The operation is not provided in Nacos SDKs. For more information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: DeleteNacosServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteNacosServiceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -3638,6 +3860,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.DeleteNacosServiceRequest,
     ) -> mse_20190531_models.DeleteNacosServiceResponse:
+        """
+        > The operation is not provided in Nacos SDKs. For more information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: DeleteNacosServiceRequest
+        @return: DeleteNacosServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_nacos_service_with_options(request, runtime)
 
@@ -3645,6 +3873,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.DeleteNacosServiceRequest,
     ) -> mse_20190531_models.DeleteNacosServiceResponse:
+        """
+        > The operation is not provided in Nacos SDKs. For more information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: DeleteNacosServiceRequest
+        @return: DeleteNacosServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_nacos_service_with_options_async(request, runtime)
 
@@ -4039,6 +4273,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ExportNacosConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ExportNacosConfigResponse:
+        """
+        > The current API operation is not provided in Nacos SDK. For information about Nacos SDK, see the [official Nacos documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: ExportNacosConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportNacosConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -4079,6 +4320,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ExportNacosConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ExportNacosConfigResponse:
+        """
+        > The current API operation is not provided in Nacos SDK. For information about Nacos SDK, see the [official Nacos documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: ExportNacosConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportNacosConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -4118,6 +4366,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ExportNacosConfigRequest,
     ) -> mse_20190531_models.ExportNacosConfigResponse:
+        """
+        > The current API operation is not provided in Nacos SDK. For information about Nacos SDK, see the [official Nacos documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: ExportNacosConfigRequest
+        @return: ExportNacosConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.export_nacos_config_with_options(request, runtime)
 
@@ -4125,6 +4379,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ExportNacosConfigRequest,
     ) -> mse_20190531_models.ExportNacosConfigResponse:
+        """
+        > The current API operation is not provided in Nacos SDK. For information about Nacos SDK, see the [official Nacos documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: ExportNacosConfigRequest
+        @return: ExportNacosConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.export_nacos_config_with_options_async(request, runtime)
 
@@ -5117,6 +5377,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.GetImportFileUrlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetImportFileUrlResponse:
+        """
+        > The current API operation is not provided in Nacos SDK. For information about Nacos SDK, see the [official Nacos documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: GetImportFileUrlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetImportFileUrlResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -5151,6 +5418,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.GetImportFileUrlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetImportFileUrlResponse:
+        """
+        > The current API operation is not provided in Nacos SDK. For information about Nacos SDK, see the [official Nacos documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: GetImportFileUrlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetImportFileUrlResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -5184,6 +5458,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.GetImportFileUrlRequest,
     ) -> mse_20190531_models.GetImportFileUrlResponse:
+        """
+        > The current API operation is not provided in Nacos SDK. For information about Nacos SDK, see the [official Nacos documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: GetImportFileUrlRequest
+        @return: GetImportFileUrlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_import_file_url_with_options(request, runtime)
 
@@ -5191,6 +5471,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.GetImportFileUrlRequest,
     ) -> mse_20190531_models.GetImportFileUrlResponse:
+        """
+        > The current API operation is not provided in Nacos SDK. For information about Nacos SDK, see the [official Nacos documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: GetImportFileUrlRequest
+        @return: GetImportFileUrlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_import_file_url_with_options_async(request, runtime)
 
@@ -5425,6 +5711,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.GetNacosConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetNacosConfigResponse:
+        """
+        > The current API operation is not provided in Nacos SDK. For information about Nacos SDK, see the [official Nacos documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: GetNacosConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetNacosConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -5463,6 +5756,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.GetNacosConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetNacosConfigResponse:
+        """
+        > The current API operation is not provided in Nacos SDK. For information about Nacos SDK, see the [official Nacos documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: GetNacosConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetNacosConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -5500,6 +5800,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.GetNacosConfigRequest,
     ) -> mse_20190531_models.GetNacosConfigResponse:
+        """
+        > The current API operation is not provided in Nacos SDK. For information about Nacos SDK, see the [official Nacos documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: GetNacosConfigRequest
+        @return: GetNacosConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_nacos_config_with_options(request, runtime)
 
@@ -5507,6 +5813,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.GetNacosConfigRequest,
     ) -> mse_20190531_models.GetNacosConfigResponse:
+        """
+        > The current API operation is not provided in Nacos SDK. For information about Nacos SDK, see the [official Nacos documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: GetNacosConfigRequest
+        @return: GetNacosConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_nacos_config_with_options_async(request, runtime)
 
@@ -5515,6 +5827,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.GetNacosHistoryConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetNacosHistoryConfigResponse:
+        """
+        > The current API operation is not provided in Nacos SDK. For information about Nacos SDK, see the [official Nacos documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: GetNacosHistoryConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetNacosHistoryConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -5553,6 +5872,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.GetNacosHistoryConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetNacosHistoryConfigResponse:
+        """
+        > The current API operation is not provided in Nacos SDK. For information about Nacos SDK, see the [official Nacos documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: GetNacosHistoryConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetNacosHistoryConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -5590,6 +5916,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.GetNacosHistoryConfigRequest,
     ) -> mse_20190531_models.GetNacosHistoryConfigResponse:
+        """
+        > The current API operation is not provided in Nacos SDK. For information about Nacos SDK, see the [official Nacos documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: GetNacosHistoryConfigRequest
+        @return: GetNacosHistoryConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_nacos_history_config_with_options(request, runtime)
 
@@ -5597,6 +5929,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.GetNacosHistoryConfigRequest,
     ) -> mse_20190531_models.GetNacosHistoryConfigResponse:
+        """
+        > The current API operation is not provided in Nacos SDK. For information about Nacos SDK, see the [official Nacos documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: GetNacosHistoryConfigRequest
+        @return: GetNacosHistoryConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_nacos_history_config_with_options_async(request, runtime)
 
@@ -6120,11 +6458,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_tags_by_swimming_lane_group_id_with_options_async(request, runtime)
 
+    def get_zookeeper_data_import_url_with_options(
+        self,
+        request: mse_20190531_models.GetZookeeperDataImportUrlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.GetZookeeperDataImportUrlResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.content_type):
+            query['ContentType'] = request.content_type
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetZookeeperDataImportUrl',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.GetZookeeperDataImportUrlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_zookeeper_data_import_url_with_options_async(
+        self,
+        request: mse_20190531_models.GetZookeeperDataImportUrlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.GetZookeeperDataImportUrlResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.content_type):
+            query['ContentType'] = request.content_type
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetZookeeperDataImportUrl',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.GetZookeeperDataImportUrlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_zookeeper_data_import_url(
+        self,
+        request: mse_20190531_models.GetZookeeperDataImportUrlRequest,
+    ) -> mse_20190531_models.GetZookeeperDataImportUrlResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_zookeeper_data_import_url_with_options(request, runtime)
+
+    async def get_zookeeper_data_import_url_async(
+        self,
+        request: mse_20190531_models.GetZookeeperDataImportUrlRequest,
+    ) -> mse_20190531_models.GetZookeeperDataImportUrlResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_zookeeper_data_import_url_with_options_async(request, runtime)
+
     def import_nacos_config_with_options(
         self,
         request: mse_20190531_models.ImportNacosConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ImportNacosConfigResponse:
+        """
+        > The current API operation is not provided in Nacos SDK. For information about Nacos SDK, see the [official Nacos documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: ImportNacosConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImportNacosConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -6161,6 +6584,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ImportNacosConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ImportNacosConfigResponse:
+        """
+        > The current API operation is not provided in Nacos SDK. For information about Nacos SDK, see the [official Nacos documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: ImportNacosConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImportNacosConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -6196,6 +6626,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ImportNacosConfigRequest,
     ) -> mse_20190531_models.ImportNacosConfigResponse:
+        """
+        > The current API operation is not provided in Nacos SDK. For information about Nacos SDK, see the [official Nacos documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: ImportNacosConfigRequest
+        @return: ImportNacosConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.import_nacos_config_with_options(request, runtime)
 
@@ -6203,6 +6639,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ImportNacosConfigRequest,
     ) -> mse_20190531_models.ImportNacosConfigResponse:
+        """
+        > The current API operation is not provided in Nacos SDK. For information about Nacos SDK, see the [official Nacos documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: ImportNacosConfigRequest
+        @return: ImportNacosConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.import_nacos_config_with_options_async(request, runtime)
 
@@ -6300,11 +6742,108 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.import_services_with_options_async(request, runtime)
 
+    def import_zookeeper_data_with_options(
+        self,
+        request: mse_20190531_models.ImportZookeeperDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.ImportZookeeperDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.file_name):
+            query['FileName'] = request.file_name
+        if not UtilClient.is_unset(request.file_url):
+            query['FileUrl'] = request.file_url
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.request_pars):
+            query['RequestPars'] = request.request_pars
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ImportZookeeperData',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.ImportZookeeperDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def import_zookeeper_data_with_options_async(
+        self,
+        request: mse_20190531_models.ImportZookeeperDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.ImportZookeeperDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.file_name):
+            query['FileName'] = request.file_name
+        if not UtilClient.is_unset(request.file_url):
+            query['FileUrl'] = request.file_url
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.request_pars):
+            query['RequestPars'] = request.request_pars
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ImportZookeeperData',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.ImportZookeeperDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def import_zookeeper_data(
+        self,
+        request: mse_20190531_models.ImportZookeeperDataRequest,
+    ) -> mse_20190531_models.ImportZookeeperDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.import_zookeeper_data_with_options(request, runtime)
+
+    async def import_zookeeper_data_async(
+        self,
+        request: mse_20190531_models.ImportZookeeperDataRequest,
+    ) -> mse_20190531_models.ImportZookeeperDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.import_zookeeper_data_with_options_async(request, runtime)
+
     def list_ans_instances_with_options(
         self,
         request: mse_20190531_models.ListAnsInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListAnsInstancesResponse:
+        """
+        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: ListAnsInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAnsInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -6331,6 +6870,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListAnsInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListAnsInstancesResponse:
+        """
+        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: ListAnsInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAnsInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -6356,6 +6902,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListAnsInstancesRequest,
     ) -> mse_20190531_models.ListAnsInstancesResponse:
+        """
+        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: ListAnsInstancesRequest
+        @return: ListAnsInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_ans_instances_with_options(request, runtime)
 
@@ -6363,6 +6915,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListAnsInstancesRequest,
     ) -> mse_20190531_models.ListAnsInstancesResponse:
+        """
+        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: ListAnsInstancesRequest
+        @return: ListAnsInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_ans_instances_with_options_async(request, runtime)
 
@@ -6371,6 +6929,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListAnsServiceClustersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListAnsServiceClustersResponse:
+        """
+        > The current API operation is not provided in Nacos SDK. For information about Nacos SDK, see the [official Nacos documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: ListAnsServiceClustersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAnsServiceClustersResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -6397,6 +6962,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListAnsServiceClustersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListAnsServiceClustersResponse:
+        """
+        > The current API operation is not provided in Nacos SDK. For information about Nacos SDK, see the [official Nacos documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: ListAnsServiceClustersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAnsServiceClustersResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -6422,6 +6994,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListAnsServiceClustersRequest,
     ) -> mse_20190531_models.ListAnsServiceClustersResponse:
+        """
+        > The current API operation is not provided in Nacos SDK. For information about Nacos SDK, see the [official Nacos documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: ListAnsServiceClustersRequest
+        @return: ListAnsServiceClustersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_ans_service_clusters_with_options(request, runtime)
 
@@ -6429,6 +7007,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListAnsServiceClustersRequest,
     ) -> mse_20190531_models.ListAnsServiceClustersResponse:
+        """
+        > The current API operation is not provided in Nacos SDK. For information about Nacos SDK, see the [official Nacos documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: ListAnsServiceClustersRequest
+        @return: ListAnsServiceClustersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_ans_service_clusters_with_options_async(request, runtime)
 
@@ -6437,6 +7021,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListAnsServicesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListAnsServicesResponse:
+        """
+        > The operation is not provided in Nacos SDKs. For more information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: ListAnsServicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAnsServicesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -6463,6 +7054,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListAnsServicesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListAnsServicesResponse:
+        """
+        > The operation is not provided in Nacos SDKs. For more information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: ListAnsServicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAnsServicesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -6488,6 +7086,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListAnsServicesRequest,
     ) -> mse_20190531_models.ListAnsServicesResponse:
+        """
+        > The operation is not provided in Nacos SDKs. For more information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: ListAnsServicesRequest
+        @return: ListAnsServicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_ans_services_with_options(request, runtime)
 
@@ -6495,6 +7099,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListAnsServicesRequest,
     ) -> mse_20190531_models.ListAnsServicesResponse:
+        """
+        > The operation is not provided in Nacos SDKs. For more information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: ListAnsServicesRequest
+        @return: ListAnsServicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_ans_services_with_options_async(request, runtime)
 
@@ -6711,6 +7321,96 @@ class Client(OpenApiClient):
     ) -> mse_20190531_models.ListClusterConnectionTypesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_cluster_connection_types_with_options_async(request, runtime)
+
+    def list_cluster_health_check_task_with_options(
+        self,
+        request: mse_20190531_models.ListClusterHealthCheckTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.ListClusterHealthCheckTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_num):
+            query['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.request_pars):
+            query['RequestPars'] = request.request_pars
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListClusterHealthCheckTask',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.ListClusterHealthCheckTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_cluster_health_check_task_with_options_async(
+        self,
+        request: mse_20190531_models.ListClusterHealthCheckTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.ListClusterHealthCheckTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_num):
+            query['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.request_pars):
+            query['RequestPars'] = request.request_pars
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListClusterHealthCheckTask',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.ListClusterHealthCheckTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_cluster_health_check_task(
+        self,
+        request: mse_20190531_models.ListClusterHealthCheckTaskRequest,
+    ) -> mse_20190531_models.ListClusterHealthCheckTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_cluster_health_check_task_with_options(request, runtime)
+
+    async def list_cluster_health_check_task_async(
+        self,
+        request: mse_20190531_models.ListClusterHealthCheckTaskRequest,
+    ) -> mse_20190531_models.ListClusterHealthCheckTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_cluster_health_check_task_with_options_async(request, runtime)
 
     def list_cluster_types_with_options(
         self,
@@ -7673,6 +8373,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListListenersByConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListListenersByConfigResponse:
+        """
+        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: ListListenersByConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListListenersByConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -7711,6 +8418,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListListenersByConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListListenersByConfigResponse:
+        """
+        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: ListListenersByConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListListenersByConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -7748,6 +8462,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListListenersByConfigRequest,
     ) -> mse_20190531_models.ListListenersByConfigResponse:
+        """
+        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: ListListenersByConfigRequest
+        @return: ListListenersByConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_listeners_by_config_with_options(request, runtime)
 
@@ -7755,6 +8475,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListListenersByConfigRequest,
     ) -> mse_20190531_models.ListListenersByConfigResponse:
+        """
+        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: ListListenersByConfigRequest
+        @return: ListListenersByConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_listeners_by_config_with_options_async(request, runtime)
 
@@ -7763,6 +8489,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListListenersByIpRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListListenersByIpResponse:
+        """
+        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: ListListenersByIpRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListListenersByIpResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -7799,6 +8532,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListListenersByIpRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListListenersByIpResponse:
+        """
+        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: ListListenersByIpRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListListenersByIpResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -7834,6 +8574,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListListenersByIpRequest,
     ) -> mse_20190531_models.ListListenersByIpResponse:
+        """
+        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: ListListenersByIpRequest
+        @return: ListListenersByIpResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_listeners_by_ip_with_options(request, runtime)
 
@@ -7841,6 +8587,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListListenersByIpRequest,
     ) -> mse_20190531_models.ListListenersByIpResponse:
+        """
+        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: ListListenersByIpRequest
+        @return: ListListenersByIpResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_listeners_by_ip_with_options_async(request, runtime)
 
@@ -7849,6 +8601,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListNacosConfigsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListNacosConfigsResponse:
+        """
+        > The current API operation is not provided in Nacos SDK. For information about Nacos SDK, see the [official Nacos documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: ListNacosConfigsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListNacosConfigsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -7897,6 +8656,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListNacosConfigsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListNacosConfigsResponse:
+        """
+        > The current API operation is not provided in Nacos SDK. For information about Nacos SDK, see the [official Nacos documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: ListNacosConfigsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListNacosConfigsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -7944,6 +8710,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListNacosConfigsRequest,
     ) -> mse_20190531_models.ListNacosConfigsResponse:
+        """
+        > The current API operation is not provided in Nacos SDK. For information about Nacos SDK, see the [official Nacos documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: ListNacosConfigsRequest
+        @return: ListNacosConfigsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_nacos_configs_with_options(request, runtime)
 
@@ -7951,6 +8723,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListNacosConfigsRequest,
     ) -> mse_20190531_models.ListNacosConfigsResponse:
+        """
+        > The current API operation is not provided in Nacos SDK. For information about Nacos SDK, see the [official Nacos documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: ListNacosConfigsRequest
+        @return: ListNacosConfigsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_nacos_configs_with_options_async(request, runtime)
 
@@ -7959,6 +8737,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListNacosHistoryConfigsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListNacosHistoryConfigsResponse:
+        """
+        > The current API operation is not provided in Nacos SDK. For information about Nacos SDK, see the [official Nacos documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: ListNacosHistoryConfigsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListNacosHistoryConfigsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -8003,6 +8788,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListNacosHistoryConfigsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListNacosHistoryConfigsResponse:
+        """
+        > The current API operation is not provided in Nacos SDK. For information about Nacos SDK, see the [official Nacos documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: ListNacosHistoryConfigsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListNacosHistoryConfigsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -8046,6 +8838,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListNacosHistoryConfigsRequest,
     ) -> mse_20190531_models.ListNacosHistoryConfigsResponse:
+        """
+        > The current API operation is not provided in Nacos SDK. For information about Nacos SDK, see the [official Nacos documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: ListNacosHistoryConfigsRequest
+        @return: ListNacosHistoryConfigsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_nacos_history_configs_with_options(request, runtime)
 
@@ -8053,6 +8851,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListNacosHistoryConfigsRequest,
     ) -> mse_20190531_models.ListNacosHistoryConfigsResponse:
+        """
+        > The current API operation is not provided in Nacos SDK. For information about Nacos SDK, see the [official Nacos documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: ListNacosHistoryConfigsRequest
+        @return: ListNacosHistoryConfigsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_nacos_history_configs_with_options_async(request, runtime)
 
@@ -10615,6 +11419,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateClusterSpecRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateClusterSpecResponse:
+        """
+        You can call this API operation to update the number of nodes or specifications of a pay-as-you-go MSE instance. You are charged for node addition or specifications upgrades of the instance. For more information about billing, see [Billing overview](~~139842~~)
+        
+        @param request: UpdateClusterSpecRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateClusterSpecResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -10651,6 +11462,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateClusterSpecRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateClusterSpecResponse:
+        """
+        You can call this API operation to update the number of nodes or specifications of a pay-as-you-go MSE instance. You are charged for node addition or specifications upgrades of the instance. For more information about billing, see [Billing overview](~~139842~~)
+        
+        @param request: UpdateClusterSpecRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateClusterSpecResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -10686,6 +11504,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateClusterSpecRequest,
     ) -> mse_20190531_models.UpdateClusterSpecResponse:
+        """
+        You can call this API operation to update the number of nodes or specifications of a pay-as-you-go MSE instance. You are charged for node addition or specifications upgrades of the instance. For more information about billing, see [Billing overview](~~139842~~)
+        
+        @param request: UpdateClusterSpecRequest
+        @return: UpdateClusterSpecResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_cluster_spec_with_options(request, runtime)
 
@@ -10693,6 +11517,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateClusterSpecRequest,
     ) -> mse_20190531_models.UpdateClusterSpecResponse:
+        """
+        You can call this API operation to update the number of nodes or specifications of a pay-as-you-go MSE instance. You are charged for node addition or specifications upgrades of the instance. For more information about billing, see [Billing overview](~~139842~~)
+        
+        @param request: UpdateClusterSpecRequest
+        @return: UpdateClusterSpecResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_cluster_spec_with_options_async(request, runtime)
 
@@ -12085,6 +12915,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateGatewaySpecRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateGatewaySpecResponse:
+        """
+        You can call this operation to update the number or specifications of nodes in a pay-as-you-go cloud-native gateway. You are charged when you add nodes or upgrade node specifications. For more information, see \\[Pricing] (`~~250950~~`).
+        
+        @param request: UpdateGatewaySpecRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGatewaySpecResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -12119,6 +12956,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateGatewaySpecRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateGatewaySpecResponse:
+        """
+        You can call this operation to update the number or specifications of nodes in a pay-as-you-go cloud-native gateway. You are charged when you add nodes or upgrade node specifications. For more information, see \\[Pricing] (`~~250950~~`).
+        
+        @param request: UpdateGatewaySpecRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGatewaySpecResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -12152,6 +12996,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateGatewaySpecRequest,
     ) -> mse_20190531_models.UpdateGatewaySpecResponse:
+        """
+        You can call this operation to update the number or specifications of nodes in a pay-as-you-go cloud-native gateway. You are charged when you add nodes or upgrade node specifications. For more information, see \\[Pricing] (`~~250950~~`).
+        
+        @param request: UpdateGatewaySpecRequest
+        @return: UpdateGatewaySpecResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_gateway_spec_with_options(request, runtime)
 
@@ -12159,6 +13009,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateGatewaySpecRequest,
     ) -> mse_20190531_models.UpdateGatewaySpecResponse:
+        """
+        You can call this operation to update the number or specifications of nodes in a pay-as-you-go cloud-native gateway. You are charged when you add nodes or upgrade node specifications. For more information, see \\[Pricing] (`~~250950~~`).
+        
+        @param request: UpdateGatewaySpecRequest
+        @return: UpdateGatewaySpecResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_gateway_spec_with_options_async(request, runtime)
 
@@ -12445,6 +13301,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateNacosConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateNacosConfigResponse:
+        """
+        > The current API operation is not provided in Nacos SDK. For information about Nacos SDK, see the [official Nacos documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: UpdateNacosConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateNacosConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -12497,6 +13360,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateNacosConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateNacosConfigResponse:
+        """
+        > The current API operation is not provided in Nacos SDK. For information about Nacos SDK, see the [official Nacos documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: UpdateNacosConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateNacosConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -12548,6 +13418,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateNacosConfigRequest,
     ) -> mse_20190531_models.UpdateNacosConfigResponse:
+        """
+        > The current API operation is not provided in Nacos SDK. For information about Nacos SDK, see the [official Nacos documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: UpdateNacosConfigRequest
+        @return: UpdateNacosConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_nacos_config_with_options(request, runtime)
 
@@ -12555,6 +13431,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateNacosConfigRequest,
     ) -> mse_20190531_models.UpdateNacosConfigResponse:
+        """
+        > The current API operation is not provided in Nacos SDK. For information about Nacos SDK, see the [official Nacos documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: UpdateNacosConfigRequest
+        @return: UpdateNacosConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_nacos_config_with_options_async(request, runtime)
 
@@ -12563,6 +13445,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateNacosInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateNacosInstanceResponse:
+        """
+        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: UpdateNacosInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateNacosInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -12615,6 +13504,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateNacosInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateNacosInstanceResponse:
+        """
+        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: UpdateNacosInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateNacosInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -12666,6 +13562,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateNacosInstanceRequest,
     ) -> mse_20190531_models.UpdateNacosInstanceResponse:
+        """
+        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: UpdateNacosInstanceRequest
+        @return: UpdateNacosInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_nacos_instance_with_options(request, runtime)
 
@@ -12673,6 +13575,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateNacosInstanceRequest,
     ) -> mse_20190531_models.UpdateNacosInstanceResponse:
+        """
+        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: UpdateNacosInstanceRequest
+        @return: UpdateNacosInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_nacos_instance_with_options_async(request, runtime)
 
@@ -12681,6 +13589,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateNacosServiceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateNacosServiceResponse:
+        """
+        > The operation is not provided in Nacos SDKs. For more information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: UpdateNacosServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateNacosServiceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -12721,6 +13636,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateNacosServiceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateNacosServiceResponse:
+        """
+        > The operation is not provided in Nacos SDKs. For more information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: UpdateNacosServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateNacosServiceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -12760,6 +13682,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateNacosServiceRequest,
     ) -> mse_20190531_models.UpdateNacosServiceResponse:
+        """
+        > The operation is not provided in Nacos SDKs. For more information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: UpdateNacosServiceRequest
+        @return: UpdateNacosServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_nacos_service_with_options(request, runtime)
 
@@ -12767,6 +13695,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateNacosServiceRequest,
     ) -> mse_20190531_models.UpdateNacosServiceResponse:
+        """
+        > The operation is not provided in Nacos SDKs. For more information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        
+        @param request: UpdateNacosServiceRequest
+        @return: UpdateNacosServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_nacos_service_with_options_async(request, runtime)
 

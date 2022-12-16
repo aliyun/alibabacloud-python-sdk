@@ -1,3 +1,16 @@
+2022-12-16 Version: 3.0.50
+- Supported For Plugin Market v2.
+- Support For Plugin Log.
+- Suport taishan.
+- Support zk export data.
+- Support app_ip.
+- Support un login.
+- Support no login.
+- Suport no login.
+- Supported For Sls Config.
+- Fix CreateNacosInstance userRateLimit.
+- Fix Cluster relation.
+
 2022-12-06 Version: 3.0.49
 - Adjust timeout.
 - Support running env.
