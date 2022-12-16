@@ -41,26 +41,6 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
-    def create_consumer_group(
-        self,
-        instance_id: str,
-        consumer_group_id: str,
-        request: rocket_mq20220801_models.CreateConsumerGroupRequest,
-    ) -> rocket_mq20220801_models.CreateConsumerGroupResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.create_consumer_group_with_options(instance_id, consumer_group_id, request, headers, runtime)
-
-    async def create_consumer_group_async(
-        self,
-        instance_id: str,
-        consumer_group_id: str,
-        request: rocket_mq20220801_models.CreateConsumerGroupRequest,
-    ) -> rocket_mq20220801_models.CreateConsumerGroupResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.create_consumer_group_with_options_async(instance_id, consumer_group_id, request, headers, runtime)
-
     def create_consumer_group_with_options(
         self,
         instance_id: str,
@@ -133,25 +113,157 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_topic(
+    def create_consumer_group(
         self,
         instance_id: str,
-        topic_name: str,
-        request: rocket_mq20220801_models.CreateTopicRequest,
-    ) -> rocket_mq20220801_models.CreateTopicResponse:
+        consumer_group_id: str,
+        request: rocket_mq20220801_models.CreateConsumerGroupRequest,
+    ) -> rocket_mq20220801_models.CreateConsumerGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_topic_with_options(instance_id, topic_name, request, headers, runtime)
+        return self.create_consumer_group_with_options(instance_id, consumer_group_id, request, headers, runtime)
 
-    async def create_topic_async(
+    async def create_consumer_group_async(
         self,
         instance_id: str,
-        topic_name: str,
-        request: rocket_mq20220801_models.CreateTopicRequest,
-    ) -> rocket_mq20220801_models.CreateTopicResponse:
+        consumer_group_id: str,
+        request: rocket_mq20220801_models.CreateConsumerGroupRequest,
+    ) -> rocket_mq20220801_models.CreateConsumerGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_topic_with_options_async(instance_id, topic_name, request, headers, runtime)
+        return await self.create_consumer_group_with_options_async(instance_id, consumer_group_id, request, headers, runtime)
+
+    def create_instance_with_options(
+        self,
+        request: rocket_mq20220801_models.CreateInstanceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.CreateInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['clientToken'] = request.client_token
+        body = {}
+        if not UtilClient.is_unset(request.auto_renew):
+            body['autoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.auto_renew_period):
+            body['autoRenewPeriod'] = request.auto_renew_period
+        if not UtilClient.is_unset(request.instance_name):
+            body['instanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.network_info):
+            body['networkInfo'] = request.network_info
+        if not UtilClient.is_unset(request.payment_type):
+            body['paymentType'] = request.payment_type
+        if not UtilClient.is_unset(request.period):
+            body['period'] = request.period
+        if not UtilClient.is_unset(request.period_unit):
+            body['periodUnit'] = request.period_unit
+        if not UtilClient.is_unset(request.product_info):
+            body['productInfo'] = request.product_info
+        if not UtilClient.is_unset(request.remark):
+            body['remark'] = request.remark
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['resourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.series_code):
+            body['seriesCode'] = request.series_code
+        if not UtilClient.is_unset(request.service_code):
+            body['serviceCode'] = request.service_code
+        if not UtilClient.is_unset(request.sub_series_code):
+            body['subSeriesCode'] = request.sub_series_code
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateInstance',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/instances',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.CreateInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_instance_with_options_async(
+        self,
+        request: rocket_mq20220801_models.CreateInstanceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.CreateInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['clientToken'] = request.client_token
+        body = {}
+        if not UtilClient.is_unset(request.auto_renew):
+            body['autoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.auto_renew_period):
+            body['autoRenewPeriod'] = request.auto_renew_period
+        if not UtilClient.is_unset(request.instance_name):
+            body['instanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.network_info):
+            body['networkInfo'] = request.network_info
+        if not UtilClient.is_unset(request.payment_type):
+            body['paymentType'] = request.payment_type
+        if not UtilClient.is_unset(request.period):
+            body['period'] = request.period
+        if not UtilClient.is_unset(request.period_unit):
+            body['periodUnit'] = request.period_unit
+        if not UtilClient.is_unset(request.product_info):
+            body['productInfo'] = request.product_info
+        if not UtilClient.is_unset(request.remark):
+            body['remark'] = request.remark
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['resourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.series_code):
+            body['seriesCode'] = request.series_code
+        if not UtilClient.is_unset(request.service_code):
+            body['serviceCode'] = request.service_code
+        if not UtilClient.is_unset(request.sub_series_code):
+            body['subSeriesCode'] = request.sub_series_code
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateInstance',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/instances',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.CreateInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_instance(
+        self,
+        request: rocket_mq20220801_models.CreateInstanceRequest,
+    ) -> rocket_mq20220801_models.CreateInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_instance_with_options(request, headers, runtime)
+
+    async def create_instance_async(
+        self,
+        request: rocket_mq20220801_models.CreateInstanceRequest,
+    ) -> rocket_mq20220801_models.CreateInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_instance_with_options_async(request, headers, runtime)
 
     def create_topic_with_options(
         self,
@@ -221,23 +333,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_consumer_group(
+    def create_topic(
         self,
         instance_id: str,
-        consumer_group_id: str,
-    ) -> rocket_mq20220801_models.DeleteConsumerGroupResponse:
+        topic_name: str,
+        request: rocket_mq20220801_models.CreateTopicRequest,
+    ) -> rocket_mq20220801_models.CreateTopicResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_consumer_group_with_options(instance_id, consumer_group_id, headers, runtime)
+        return self.create_topic_with_options(instance_id, topic_name, request, headers, runtime)
 
-    async def delete_consumer_group_async(
+    async def create_topic_async(
         self,
         instance_id: str,
-        consumer_group_id: str,
-    ) -> rocket_mq20220801_models.DeleteConsumerGroupResponse:
+        topic_name: str,
+        request: rocket_mq20220801_models.CreateTopicRequest,
+    ) -> rocket_mq20220801_models.CreateTopicResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_consumer_group_with_options_async(instance_id, consumer_group_id, headers, runtime)
+        return await self.create_topic_with_options_async(instance_id, topic_name, request, headers, runtime)
 
     def delete_consumer_group_with_options(
         self,
@@ -291,21 +405,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_instance(
+    def delete_consumer_group(
         self,
         instance_id: str,
-    ) -> rocket_mq20220801_models.DeleteInstanceResponse:
+        consumer_group_id: str,
+    ) -> rocket_mq20220801_models.DeleteConsumerGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_instance_with_options(instance_id, headers, runtime)
+        return self.delete_consumer_group_with_options(instance_id, consumer_group_id, headers, runtime)
 
-    async def delete_instance_async(
+    async def delete_consumer_group_async(
         self,
         instance_id: str,
-    ) -> rocket_mq20220801_models.DeleteInstanceResponse:
+        consumer_group_id: str,
+    ) -> rocket_mq20220801_models.DeleteConsumerGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_instance_with_options_async(instance_id, headers, runtime)
+        return await self.delete_consumer_group_with_options_async(instance_id, consumer_group_id, headers, runtime)
 
     def delete_instance_with_options(
         self,
@@ -357,23 +473,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_topic(
+    def delete_instance(
         self,
         instance_id: str,
-        topic_name: str,
-    ) -> rocket_mq20220801_models.DeleteTopicResponse:
+    ) -> rocket_mq20220801_models.DeleteInstanceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_topic_with_options(instance_id, topic_name, headers, runtime)
+        return self.delete_instance_with_options(instance_id, headers, runtime)
 
-    async def delete_topic_async(
+    async def delete_instance_async(
         self,
         instance_id: str,
-        topic_name: str,
-    ) -> rocket_mq20220801_models.DeleteTopicResponse:
+    ) -> rocket_mq20220801_models.DeleteInstanceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_topic_with_options_async(instance_id, topic_name, headers, runtime)
+        return await self.delete_instance_with_options_async(instance_id, headers, runtime)
 
     def delete_topic_with_options(
         self,
@@ -427,23 +541,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_consumer_group(
+    def delete_topic(
         self,
         instance_id: str,
-        consumer_group_id: str,
-    ) -> rocket_mq20220801_models.GetConsumerGroupResponse:
+        topic_name: str,
+    ) -> rocket_mq20220801_models.DeleteTopicResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_consumer_group_with_options(instance_id, consumer_group_id, headers, runtime)
+        return self.delete_topic_with_options(instance_id, topic_name, headers, runtime)
 
-    async def get_consumer_group_async(
+    async def delete_topic_async(
         self,
         instance_id: str,
-        consumer_group_id: str,
-    ) -> rocket_mq20220801_models.GetConsumerGroupResponse:
+        topic_name: str,
+    ) -> rocket_mq20220801_models.DeleteTopicResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_consumer_group_with_options_async(instance_id, consumer_group_id, headers, runtime)
+        return await self.delete_topic_with_options_async(instance_id, topic_name, headers, runtime)
 
     def get_consumer_group_with_options(
         self,
@@ -497,21 +611,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_instance(
+    def get_consumer_group(
         self,
         instance_id: str,
-    ) -> rocket_mq20220801_models.GetInstanceResponse:
+        consumer_group_id: str,
+    ) -> rocket_mq20220801_models.GetConsumerGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_instance_with_options(instance_id, headers, runtime)
+        return self.get_consumer_group_with_options(instance_id, consumer_group_id, headers, runtime)
 
-    async def get_instance_async(
+    async def get_consumer_group_async(
         self,
         instance_id: str,
-    ) -> rocket_mq20220801_models.GetInstanceResponse:
+        consumer_group_id: str,
+    ) -> rocket_mq20220801_models.GetConsumerGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_instance_with_options_async(instance_id, headers, runtime)
+        return await self.get_consumer_group_with_options_async(instance_id, consumer_group_id, headers, runtime)
 
     def get_instance_with_options(
         self,
@@ -563,23 +679,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_topic(
+    def get_instance(
         self,
         instance_id: str,
-        topic_name: str,
-    ) -> rocket_mq20220801_models.GetTopicResponse:
+    ) -> rocket_mq20220801_models.GetInstanceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_topic_with_options(instance_id, topic_name, headers, runtime)
+        return self.get_instance_with_options(instance_id, headers, runtime)
 
-    async def get_topic_async(
+    async def get_instance_async(
         self,
         instance_id: str,
-        topic_name: str,
-    ) -> rocket_mq20220801_models.GetTopicResponse:
+    ) -> rocket_mq20220801_models.GetInstanceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_topic_with_options_async(instance_id, topic_name, headers, runtime)
+        return await self.get_instance_with_options_async(instance_id, headers, runtime)
 
     def get_topic_with_options(
         self,
@@ -633,23 +747,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_consumer_groups(
+    def get_topic(
         self,
         instance_id: str,
-        request: rocket_mq20220801_models.ListConsumerGroupsRequest,
-    ) -> rocket_mq20220801_models.ListConsumerGroupsResponse:
+        topic_name: str,
+    ) -> rocket_mq20220801_models.GetTopicResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_consumer_groups_with_options(instance_id, request, headers, runtime)
+        return self.get_topic_with_options(instance_id, topic_name, headers, runtime)
 
-    async def list_consumer_groups_async(
+    async def get_topic_async(
         self,
         instance_id: str,
-        request: rocket_mq20220801_models.ListConsumerGroupsRequest,
-    ) -> rocket_mq20220801_models.ListConsumerGroupsResponse:
+        topic_name: str,
+    ) -> rocket_mq20220801_models.GetTopicResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_consumer_groups_with_options_async(instance_id, request, headers, runtime)
+        return await self.get_topic_with_options_async(instance_id, topic_name, headers, runtime)
 
     def list_consumer_groups_with_options(
         self,
@@ -721,21 +835,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_instances(
+    def list_consumer_groups(
         self,
-        request: rocket_mq20220801_models.ListInstancesRequest,
-    ) -> rocket_mq20220801_models.ListInstancesResponse:
+        instance_id: str,
+        request: rocket_mq20220801_models.ListConsumerGroupsRequest,
+    ) -> rocket_mq20220801_models.ListConsumerGroupsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_instances_with_options(request, headers, runtime)
+        return self.list_consumer_groups_with_options(instance_id, request, headers, runtime)
 
-    async def list_instances_async(
+    async def list_consumer_groups_async(
         self,
-        request: rocket_mq20220801_models.ListInstancesRequest,
-    ) -> rocket_mq20220801_models.ListInstancesResponse:
+        instance_id: str,
+        request: rocket_mq20220801_models.ListConsumerGroupsRequest,
+    ) -> rocket_mq20220801_models.ListConsumerGroupsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_instances_with_options_async(request, headers, runtime)
+        return await self.list_consumer_groups_with_options_async(instance_id, request, headers, runtime)
 
     def list_instances_with_options(
         self,
@@ -805,23 +921,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_topics(
+    def list_instances(
         self,
-        instance_id: str,
-        request: rocket_mq20220801_models.ListTopicsRequest,
-    ) -> rocket_mq20220801_models.ListTopicsResponse:
+        request: rocket_mq20220801_models.ListInstancesRequest,
+    ) -> rocket_mq20220801_models.ListInstancesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_topics_with_options(instance_id, request, headers, runtime)
+        return self.list_instances_with_options(request, headers, runtime)
 
-    async def list_topics_async(
+    async def list_instances_async(
         self,
-        instance_id: str,
-        request: rocket_mq20220801_models.ListTopicsRequest,
-    ) -> rocket_mq20220801_models.ListTopicsResponse:
+        request: rocket_mq20220801_models.ListInstancesRequest,
+    ) -> rocket_mq20220801_models.ListInstancesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_topics_with_options_async(instance_id, request, headers, runtime)
+        return await self.list_instances_with_options_async(request, headers, runtime)
 
     def list_topics_with_options(
         self,
@@ -893,25 +1007,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_consumer_group(
+    def list_topics(
         self,
         instance_id: str,
-        consumer_group_id: str,
-        request: rocket_mq20220801_models.UpdateConsumerGroupRequest,
-    ) -> rocket_mq20220801_models.UpdateConsumerGroupResponse:
+        request: rocket_mq20220801_models.ListTopicsRequest,
+    ) -> rocket_mq20220801_models.ListTopicsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_consumer_group_with_options(instance_id, consumer_group_id, request, headers, runtime)
+        return self.list_topics_with_options(instance_id, request, headers, runtime)
 
-    async def update_consumer_group_async(
+    async def list_topics_async(
         self,
         instance_id: str,
-        consumer_group_id: str,
-        request: rocket_mq20220801_models.UpdateConsumerGroupRequest,
-    ) -> rocket_mq20220801_models.UpdateConsumerGroupResponse:
+        request: rocket_mq20220801_models.ListTopicsRequest,
+    ) -> rocket_mq20220801_models.ListTopicsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_consumer_group_with_options_async(instance_id, consumer_group_id, request, headers, runtime)
+        return await self.list_topics_with_options_async(instance_id, request, headers, runtime)
 
     def update_consumer_group_with_options(
         self,
@@ -985,23 +1097,25 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_instance(
+    def update_consumer_group(
         self,
         instance_id: str,
-        request: rocket_mq20220801_models.UpdateInstanceRequest,
-    ) -> rocket_mq20220801_models.UpdateInstanceResponse:
+        consumer_group_id: str,
+        request: rocket_mq20220801_models.UpdateConsumerGroupRequest,
+    ) -> rocket_mq20220801_models.UpdateConsumerGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_instance_with_options(instance_id, request, headers, runtime)
+        return self.update_consumer_group_with_options(instance_id, consumer_group_id, request, headers, runtime)
 
-    async def update_instance_async(
+    async def update_consumer_group_async(
         self,
         instance_id: str,
-        request: rocket_mq20220801_models.UpdateInstanceRequest,
-    ) -> rocket_mq20220801_models.UpdateInstanceResponse:
+        consumer_group_id: str,
+        request: rocket_mq20220801_models.UpdateConsumerGroupRequest,
+    ) -> rocket_mq20220801_models.UpdateConsumerGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_instance_with_options_async(instance_id, request, headers, runtime)
+        return await self.update_consumer_group_with_options_async(instance_id, consumer_group_id, request, headers, runtime)
 
     def update_instance_with_options(
         self,
@@ -1012,12 +1126,12 @@ class Client(OpenApiClient):
     ) -> rocket_mq20220801_models.UpdateInstanceResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.ext_config):
-            body['extConfig'] = request.ext_config
         if not UtilClient.is_unset(request.instance_name):
             body['instanceName'] = request.instance_name
         if not UtilClient.is_unset(request.network_info):
             body['networkInfo'] = request.network_info
+        if not UtilClient.is_unset(request.product_info):
+            body['productInfo'] = request.product_info
         if not UtilClient.is_unset(request.remark):
             body['remark'] = request.remark
         req = open_api_models.OpenApiRequest(
@@ -1049,12 +1163,12 @@ class Client(OpenApiClient):
     ) -> rocket_mq20220801_models.UpdateInstanceResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.ext_config):
-            body['extConfig'] = request.ext_config
         if not UtilClient.is_unset(request.instance_name):
             body['instanceName'] = request.instance_name
         if not UtilClient.is_unset(request.network_info):
             body['networkInfo'] = request.network_info
+        if not UtilClient.is_unset(request.product_info):
+            body['productInfo'] = request.product_info
         if not UtilClient.is_unset(request.remark):
             body['remark'] = request.remark
         req = open_api_models.OpenApiRequest(
@@ -1077,25 +1191,23 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_topic(
+    def update_instance(
         self,
         instance_id: str,
-        topic_name: str,
-        request: rocket_mq20220801_models.UpdateTopicRequest,
-    ) -> rocket_mq20220801_models.UpdateTopicResponse:
+        request: rocket_mq20220801_models.UpdateInstanceRequest,
+    ) -> rocket_mq20220801_models.UpdateInstanceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_topic_with_options(instance_id, topic_name, request, headers, runtime)
+        return self.update_instance_with_options(instance_id, request, headers, runtime)
 
-    async def update_topic_async(
+    async def update_instance_async(
         self,
         instance_id: str,
-        topic_name: str,
-        request: rocket_mq20220801_models.UpdateTopicRequest,
-    ) -> rocket_mq20220801_models.UpdateTopicResponse:
+        request: rocket_mq20220801_models.UpdateInstanceRequest,
+    ) -> rocket_mq20220801_models.UpdateInstanceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_topic_with_options_async(instance_id, topic_name, request, headers, runtime)
+        return await self.update_instance_with_options_async(instance_id, request, headers, runtime)
 
     def update_topic_with_options(
         self,
@@ -1160,3 +1272,23 @@ class Client(OpenApiClient):
             rocket_mq20220801_models.UpdateTopicResponse(),
             await self.call_api_async(params, req, runtime)
         )
+
+    def update_topic(
+        self,
+        instance_id: str,
+        topic_name: str,
+        request: rocket_mq20220801_models.UpdateTopicRequest,
+    ) -> rocket_mq20220801_models.UpdateTopicResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_topic_with_options(instance_id, topic_name, request, headers, runtime)
+
+    async def update_topic_async(
+        self,
+        instance_id: str,
+        topic_name: str,
+        request: rocket_mq20220801_models.UpdateTopicRequest,
+    ) -> rocket_mq20220801_models.UpdateTopicResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_topic_with_options_async(instance_id, topic_name, request, headers, runtime)
