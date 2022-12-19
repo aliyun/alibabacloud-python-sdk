@@ -1,3 +1,7 @@
+2022-12-19 Version: 2.1.0
+- Add similar image cluster.
+- Rename GetWebofficeURL to GenerateWebofficeToken.
+
 2022-12-15 Version: 2.0.9
 - Expose TemplateId in Project and Dataset.
 

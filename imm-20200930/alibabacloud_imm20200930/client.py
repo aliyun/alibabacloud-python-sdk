@@ -662,6 +662,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.batch_update_file_meta_with_options_async(request, runtime)
 
+    def compare_image_faces_with_options(
+        self,
+        tmp_req: imm_20200930_models.CompareImageFacesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.CompareImageFacesResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.CompareImageFacesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.credential_config):
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.source):
+            request.source_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source, 'Source', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.credential_config_shrink):
+            query['CredentialConfig'] = request.credential_config_shrink
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.source_shrink):
+            query['Source'] = request.source_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CompareImageFaces',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.CompareImageFacesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def compare_image_faces_with_options_async(
+        self,
+        tmp_req: imm_20200930_models.CompareImageFacesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.CompareImageFacesResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.CompareImageFacesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.credential_config):
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.source):
+            request.source_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source, 'Source', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.credential_config_shrink):
+            query['CredentialConfig'] = request.credential_config_shrink
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.source_shrink):
+            query['Source'] = request.source_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CompareImageFaces',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.CompareImageFacesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def compare_image_faces(
+        self,
+        request: imm_20200930_models.CompareImageFacesRequest,
+    ) -> imm_20200930_models.CompareImageFacesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.compare_image_faces_with_options(request, runtime)
+
+    async def compare_image_faces_async(
+        self,
+        request: imm_20200930_models.CompareImageFacesRequest,
+    ) -> imm_20200930_models.CompareImageFacesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.compare_image_faces_with_options_async(request, runtime)
+
     def create_archive_file_inspection_task_with_options(
         self,
         tmp_req: imm_20200930_models.CreateArchiveFileInspectionTaskRequest,
@@ -1327,6 +1417,108 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_detect_video_labels_task_with_options_async(request, runtime)
+
+    def create_faces_searching_task_with_options(
+        self,
+        tmp_req: imm_20200930_models.CreateFacesSearchingTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.CreateFacesSearchingTaskResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.CreateFacesSearchingTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.sources):
+            request.sources_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sources, 'Sources', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.max_result):
+            query['MaxResult'] = request.max_result
+        if not UtilClient.is_unset(request.notify_topic_name):
+            query['NotifyTopicName'] = request.notify_topic_name
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.sources_shrink):
+            query['Sources'] = request.sources_shrink
+        if not UtilClient.is_unset(request.top_k):
+            query['TopK'] = request.top_k
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateFacesSearchingTask',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.CreateFacesSearchingTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_faces_searching_task_with_options_async(
+        self,
+        tmp_req: imm_20200930_models.CreateFacesSearchingTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.CreateFacesSearchingTaskResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.CreateFacesSearchingTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.sources):
+            request.sources_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sources, 'Sources', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.max_result):
+            query['MaxResult'] = request.max_result
+        if not UtilClient.is_unset(request.notify_topic_name):
+            query['NotifyTopicName'] = request.notify_topic_name
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.sources_shrink):
+            query['Sources'] = request.sources_shrink
+        if not UtilClient.is_unset(request.top_k):
+            query['TopK'] = request.top_k
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateFacesSearchingTask',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.CreateFacesSearchingTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_faces_searching_task(
+        self,
+        request: imm_20200930_models.CreateFacesSearchingTaskRequest,
+    ) -> imm_20200930_models.CreateFacesSearchingTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_faces_searching_task_with_options(request, runtime)
+
+    async def create_faces_searching_task_async(
+        self,
+        request: imm_20200930_models.CreateFacesSearchingTaskRequest,
+    ) -> imm_20200930_models.CreateFacesSearchingTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_faces_searching_task_with_options_async(request, runtime)
 
     def create_figure_clustering_task_with_options(
         self,
@@ -2669,6 +2861,100 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.CreateProjectResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_project_with_options_async(request, runtime)
+
+    def create_similar_image_clustering_task_with_options(
+        self,
+        tmp_req: imm_20200930_models.CreateSimilarImageClusteringTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.CreateSimilarImageClusteringTaskResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.CreateSimilarImageClusteringTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.notify_topic_name):
+            query['NotifyTopicName'] = request.notify_topic_name
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateSimilarImageClusteringTask',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.CreateSimilarImageClusteringTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_similar_image_clustering_task_with_options_async(
+        self,
+        tmp_req: imm_20200930_models.CreateSimilarImageClusteringTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.CreateSimilarImageClusteringTaskResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.CreateSimilarImageClusteringTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.notify_topic_name):
+            query['NotifyTopicName'] = request.notify_topic_name
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateSimilarImageClusteringTask',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.CreateSimilarImageClusteringTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_similar_image_clustering_task(
+        self,
+        request: imm_20200930_models.CreateSimilarImageClusteringTaskRequest,
+    ) -> imm_20200930_models.CreateSimilarImageClusteringTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_similar_image_clustering_task_with_options(request, runtime)
+
+    async def create_similar_image_clustering_task_async(
+        self,
+        request: imm_20200930_models.CreateSimilarImageClusteringTaskRequest,
+    ) -> imm_20200930_models.CreateSimilarImageClusteringTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_similar_image_clustering_task_with_options_async(request, runtime)
 
     def create_story_with_options(
         self,
@@ -4568,6 +4854,152 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.generate_video_playlist_with_options_async(request, runtime)
 
+    def generate_weboffice_token_with_options(
+        self,
+        tmp_req: imm_20200930_models.GenerateWebofficeTokenRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.GenerateWebofficeTokenResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.GenerateWebofficeTokenShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.credential_config):
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.permission):
+            request.permission_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.permission, 'Permission', 'json')
+        if not UtilClient.is_unset(tmp_req.user):
+            request.user_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user, 'User', 'json')
+        if not UtilClient.is_unset(tmp_req.watermark):
+            request.watermark_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.watermark, 'Watermark', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.cache_preview):
+            query['CachePreview'] = request.cache_preview
+        if not UtilClient.is_unset(request.credential_config_shrink):
+            query['CredentialConfig'] = request.credential_config_shrink
+        if not UtilClient.is_unset(request.external_uploaded):
+            query['ExternalUploaded'] = request.external_uploaded
+        if not UtilClient.is_unset(request.filename):
+            query['Filename'] = request.filename
+        if not UtilClient.is_unset(request.hidecmb):
+            query['Hidecmb'] = request.hidecmb
+        if not UtilClient.is_unset(request.notify_topic_name):
+            query['NotifyTopicName'] = request.notify_topic_name
+        if not UtilClient.is_unset(request.password):
+            query['Password'] = request.password
+        if not UtilClient.is_unset(request.permission_shrink):
+            query['Permission'] = request.permission_shrink
+        if not UtilClient.is_unset(request.preview_pages):
+            query['PreviewPages'] = request.preview_pages
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.referer):
+            query['Referer'] = request.referer
+        if not UtilClient.is_unset(request.source_uri):
+            query['SourceURI'] = request.source_uri
+        if not UtilClient.is_unset(request.user_shrink):
+            query['User'] = request.user_shrink
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.watermark_shrink):
+            query['Watermark'] = request.watermark_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GenerateWebofficeToken',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.GenerateWebofficeTokenResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def generate_weboffice_token_with_options_async(
+        self,
+        tmp_req: imm_20200930_models.GenerateWebofficeTokenRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.GenerateWebofficeTokenResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.GenerateWebofficeTokenShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.credential_config):
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.permission):
+            request.permission_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.permission, 'Permission', 'json')
+        if not UtilClient.is_unset(tmp_req.user):
+            request.user_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user, 'User', 'json')
+        if not UtilClient.is_unset(tmp_req.watermark):
+            request.watermark_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.watermark, 'Watermark', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.cache_preview):
+            query['CachePreview'] = request.cache_preview
+        if not UtilClient.is_unset(request.credential_config_shrink):
+            query['CredentialConfig'] = request.credential_config_shrink
+        if not UtilClient.is_unset(request.external_uploaded):
+            query['ExternalUploaded'] = request.external_uploaded
+        if not UtilClient.is_unset(request.filename):
+            query['Filename'] = request.filename
+        if not UtilClient.is_unset(request.hidecmb):
+            query['Hidecmb'] = request.hidecmb
+        if not UtilClient.is_unset(request.notify_topic_name):
+            query['NotifyTopicName'] = request.notify_topic_name
+        if not UtilClient.is_unset(request.password):
+            query['Password'] = request.password
+        if not UtilClient.is_unset(request.permission_shrink):
+            query['Permission'] = request.permission_shrink
+        if not UtilClient.is_unset(request.preview_pages):
+            query['PreviewPages'] = request.preview_pages
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.referer):
+            query['Referer'] = request.referer
+        if not UtilClient.is_unset(request.source_uri):
+            query['SourceURI'] = request.source_uri
+        if not UtilClient.is_unset(request.user_shrink):
+            query['User'] = request.user_shrink
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.watermark_shrink):
+            query['Watermark'] = request.watermark_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GenerateWebofficeToken',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.GenerateWebofficeTokenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def generate_weboffice_token(
+        self,
+        request: imm_20200930_models.GenerateWebofficeTokenRequest,
+    ) -> imm_20200930_models.GenerateWebofficeTokenResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.generate_weboffice_token_with_options(request, runtime)
+
+    async def generate_weboffice_token_async(
+        self,
+        request: imm_20200930_models.GenerateWebofficeTokenRequest,
+    ) -> imm_20200930_models.GenerateWebofficeTokenResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.generate_weboffice_token_with_options_async(request, runtime)
+
     def get_binding_with_options(
         self,
         request: imm_20200930_models.GetBindingRequest,
@@ -6346,6 +6778,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_location_date_clusters_with_options_async(request, runtime)
 
+    def query_similar_image_clusters_with_options(
+        self,
+        request: imm_20200930_models.QuerySimilarImageClustersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.QuerySimilarImageClustersResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.custom_labels):
+            query['CustomLabels'] = request.custom_labels
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.sort):
+            query['Sort'] = request.sort
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QuerySimilarImageClusters',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.QuerySimilarImageClustersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_similar_image_clusters_with_options_async(
+        self,
+        request: imm_20200930_models.QuerySimilarImageClustersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.QuerySimilarImageClustersResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.custom_labels):
+            query['CustomLabels'] = request.custom_labels
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.sort):
+            query['Sort'] = request.sort
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QuerySimilarImageClusters',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.QuerySimilarImageClustersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_similar_image_clusters(
+        self,
+        request: imm_20200930_models.QuerySimilarImageClustersRequest,
+    ) -> imm_20200930_models.QuerySimilarImageClustersResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_similar_image_clusters_with_options(request, runtime)
+
+    async def query_similar_image_clusters_async(
+        self,
+        request: imm_20200930_models.QuerySimilarImageClustersRequest,
+    ) -> imm_20200930_models.QuerySimilarImageClustersResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_similar_image_clusters_with_options_async(request, runtime)
+
     def query_stories_with_options(
         self,
         tmp_req: imm_20200930_models.QueryStoriesRequest,
@@ -6753,6 +7275,96 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.ResumeBindingResponse:
         runtime = util_models.RuntimeOptions()
         return await self.resume_binding_with_options_async(request, runtime)
+
+    def search_image_figure_cluster_with_options(
+        self,
+        tmp_req: imm_20200930_models.SearchImageFigureClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.SearchImageFigureClusterResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.SearchImageFigureClusterShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.credential_config):
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.credential_config_shrink):
+            query['CredentialConfig'] = request.credential_config_shrink
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.source_uri):
+            query['SourceURI'] = request.source_uri
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SearchImageFigureCluster',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.SearchImageFigureClusterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def search_image_figure_cluster_with_options_async(
+        self,
+        tmp_req: imm_20200930_models.SearchImageFigureClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> imm_20200930_models.SearchImageFigureClusterResponse:
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.SearchImageFigureClusterShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.credential_config):
+            request.credential_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.credential_config_shrink):
+            query['CredentialConfig'] = request.credential_config_shrink
+        if not UtilClient.is_unset(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not UtilClient.is_unset(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not UtilClient.is_unset(request.source_uri):
+            query['SourceURI'] = request.source_uri
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SearchImageFigureCluster',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            imm_20200930_models.SearchImageFigureClusterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def search_image_figure_cluster(
+        self,
+        request: imm_20200930_models.SearchImageFigureClusterRequest,
+    ) -> imm_20200930_models.SearchImageFigureClusterResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.search_image_figure_cluster_with_options(request, runtime)
+
+    async def search_image_figure_cluster_async(
+        self,
+        request: imm_20200930_models.SearchImageFigureClusterRequest,
+    ) -> imm_20200930_models.SearchImageFigureClusterResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.search_image_figure_cluster_with_options_async(request, runtime)
 
     def semantic_query_with_options(
         self,
