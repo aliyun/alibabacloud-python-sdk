@@ -1829,12 +1829,20 @@ class CreateApplicationScalingRuleResponseBodyData(TeaModel):
 class CreateApplicationScalingRuleResponseBody(TeaModel):
     def __init__(
         self,
+        code: str = None,
         data: CreateApplicationScalingRuleResponseBodyData = None,
+        error_code: str = None,
+        message: str = None,
         request_id: str = None,
+        success: bool = None,
         trace_id: str = None,
     ):
+        self.code = code
         self.data = data
+        self.error_code = error_code
+        self.message = message
         self.request_id = request_id
+        self.success = success
         self.trace_id = trace_id
 
     def validate(self):
@@ -1847,21 +1855,37 @@ class CreateApplicationScalingRuleResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
         if self.data is not None:
             result['Data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.message is not None:
+            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
         if self.trace_id is not None:
             result['TraceId'] = self.trace_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
         if m.get('Data') is not None:
             temp_model = CreateApplicationScalingRuleResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         if m.get('TraceId') is not None:
             self.trace_id = m.get('TraceId')
         return self
@@ -2095,14 +2119,12 @@ class CreateConfigMapResponse(TeaModel):
 class CreateGreyTagRouteRequest(TeaModel):
     def __init__(
         self,
-        alb_rules: str = None,
         app_id: str = None,
         description: str = None,
         dubbo_rules: str = None,
         name: str = None,
         sc_rules: str = None,
     ):
-        self.alb_rules = alb_rules
         self.app_id = app_id
         self.description = description
         self.dubbo_rules = dubbo_rules
@@ -2118,8 +2140,6 @@ class CreateGreyTagRouteRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.alb_rules is not None:
-            result['AlbRules'] = self.alb_rules
         if self.app_id is not None:
             result['AppId'] = self.app_id
         if self.description is not None:
@@ -2134,8 +2154,6 @@ class CreateGreyTagRouteRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AlbRules') is not None:
-            self.alb_rules = m.get('AlbRules')
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
         if m.get('Description') is not None:
@@ -2506,9 +2524,9 @@ class CreateJobRequest(TeaModel):
     def __init__(
         self,
         acr_assume_role_arn: str = None,
+        acr_instance_id: str = None,
         app_description: str = None,
         app_name: str = None,
-        associate_eip: bool = None,
         auto_config: bool = None,
         backoff_limit: int = None,
         command: str = None,
@@ -2517,7 +2535,6 @@ class CreateJobRequest(TeaModel):
         config_map_mount_desc: str = None,
         cpu: int = None,
         custom_host_alias: str = None,
-        deploy: bool = None,
         edas_container_version: str = None,
         envs: str = None,
         image_pull_secrets: str = None,
@@ -2525,7 +2542,6 @@ class CreateJobRequest(TeaModel):
         jar_start_args: str = None,
         jar_start_options: str = None,
         jdk: str = None,
-        liveness: str = None,
         memory: int = None,
         mount_desc: str = None,
         mount_host: str = None,
@@ -2537,7 +2553,6 @@ class CreateJobRequest(TeaModel):
         package_type: str = None,
         package_url: str = None,
         package_version: str = None,
-        php_arms_config_location: str = None,
         php_config: str = None,
         php_config_location: str = None,
         post_start: str = None,
@@ -2545,7 +2560,6 @@ class CreateJobRequest(TeaModel):
         programming_language: str = None,
         python: str = None,
         python_modules: str = None,
-        readiness: str = None,
         ref_app_id: str = None,
         replicas: int = None,
         security_group_id: str = None,
@@ -2564,9 +2578,9 @@ class CreateJobRequest(TeaModel):
         workload: str = None,
     ):
         self.acr_assume_role_arn = acr_assume_role_arn
+        self.acr_instance_id = acr_instance_id
         self.app_description = app_description
         self.app_name = app_name
-        self.associate_eip = associate_eip
         self.auto_config = auto_config
         self.backoff_limit = backoff_limit
         self.command = command
@@ -2575,7 +2589,6 @@ class CreateJobRequest(TeaModel):
         self.config_map_mount_desc = config_map_mount_desc
         self.cpu = cpu
         self.custom_host_alias = custom_host_alias
-        self.deploy = deploy
         self.edas_container_version = edas_container_version
         self.envs = envs
         self.image_pull_secrets = image_pull_secrets
@@ -2583,7 +2596,6 @@ class CreateJobRequest(TeaModel):
         self.jar_start_args = jar_start_args
         self.jar_start_options = jar_start_options
         self.jdk = jdk
-        self.liveness = liveness
         self.memory = memory
         self.mount_desc = mount_desc
         self.mount_host = mount_host
@@ -2595,7 +2607,6 @@ class CreateJobRequest(TeaModel):
         self.package_type = package_type
         self.package_url = package_url
         self.package_version = package_version
-        self.php_arms_config_location = php_arms_config_location
         self.php_config = php_config
         self.php_config_location = php_config_location
         self.post_start = post_start
@@ -2603,7 +2614,6 @@ class CreateJobRequest(TeaModel):
         self.programming_language = programming_language
         self.python = python
         self.python_modules = python_modules
-        self.readiness = readiness
         self.ref_app_id = ref_app_id
         self.replicas = replicas
         self.security_group_id = security_group_id
@@ -2632,12 +2642,12 @@ class CreateJobRequest(TeaModel):
         result = dict()
         if self.acr_assume_role_arn is not None:
             result['AcrAssumeRoleArn'] = self.acr_assume_role_arn
+        if self.acr_instance_id is not None:
+            result['AcrInstanceId'] = self.acr_instance_id
         if self.app_description is not None:
             result['AppDescription'] = self.app_description
         if self.app_name is not None:
             result['AppName'] = self.app_name
-        if self.associate_eip is not None:
-            result['AssociateEip'] = self.associate_eip
         if self.auto_config is not None:
             result['AutoConfig'] = self.auto_config
         if self.backoff_limit is not None:
@@ -2654,8 +2664,6 @@ class CreateJobRequest(TeaModel):
             result['Cpu'] = self.cpu
         if self.custom_host_alias is not None:
             result['CustomHostAlias'] = self.custom_host_alias
-        if self.deploy is not None:
-            result['Deploy'] = self.deploy
         if self.edas_container_version is not None:
             result['EdasContainerVersion'] = self.edas_container_version
         if self.envs is not None:
@@ -2670,8 +2678,6 @@ class CreateJobRequest(TeaModel):
             result['JarStartOptions'] = self.jar_start_options
         if self.jdk is not None:
             result['Jdk'] = self.jdk
-        if self.liveness is not None:
-            result['Liveness'] = self.liveness
         if self.memory is not None:
             result['Memory'] = self.memory
         if self.mount_desc is not None:
@@ -2694,8 +2700,6 @@ class CreateJobRequest(TeaModel):
             result['PackageUrl'] = self.package_url
         if self.package_version is not None:
             result['PackageVersion'] = self.package_version
-        if self.php_arms_config_location is not None:
-            result['PhpArmsConfigLocation'] = self.php_arms_config_location
         if self.php_config is not None:
             result['PhpConfig'] = self.php_config
         if self.php_config_location is not None:
@@ -2710,8 +2714,6 @@ class CreateJobRequest(TeaModel):
             result['Python'] = self.python
         if self.python_modules is not None:
             result['PythonModules'] = self.python_modules
-        if self.readiness is not None:
-            result['Readiness'] = self.readiness
         if self.ref_app_id is not None:
             result['RefAppId'] = self.ref_app_id
         if self.replicas is not None:
@@ -2750,12 +2752,12 @@ class CreateJobRequest(TeaModel):
         m = m or dict()
         if m.get('AcrAssumeRoleArn') is not None:
             self.acr_assume_role_arn = m.get('AcrAssumeRoleArn')
+        if m.get('AcrInstanceId') is not None:
+            self.acr_instance_id = m.get('AcrInstanceId')
         if m.get('AppDescription') is not None:
             self.app_description = m.get('AppDescription')
         if m.get('AppName') is not None:
             self.app_name = m.get('AppName')
-        if m.get('AssociateEip') is not None:
-            self.associate_eip = m.get('AssociateEip')
         if m.get('AutoConfig') is not None:
             self.auto_config = m.get('AutoConfig')
         if m.get('BackoffLimit') is not None:
@@ -2772,8 +2774,6 @@ class CreateJobRequest(TeaModel):
             self.cpu = m.get('Cpu')
         if m.get('CustomHostAlias') is not None:
             self.custom_host_alias = m.get('CustomHostAlias')
-        if m.get('Deploy') is not None:
-            self.deploy = m.get('Deploy')
         if m.get('EdasContainerVersion') is not None:
             self.edas_container_version = m.get('EdasContainerVersion')
         if m.get('Envs') is not None:
@@ -2788,8 +2788,6 @@ class CreateJobRequest(TeaModel):
             self.jar_start_options = m.get('JarStartOptions')
         if m.get('Jdk') is not None:
             self.jdk = m.get('Jdk')
-        if m.get('Liveness') is not None:
-            self.liveness = m.get('Liveness')
         if m.get('Memory') is not None:
             self.memory = m.get('Memory')
         if m.get('MountDesc') is not None:
@@ -2812,8 +2810,6 @@ class CreateJobRequest(TeaModel):
             self.package_url = m.get('PackageUrl')
         if m.get('PackageVersion') is not None:
             self.package_version = m.get('PackageVersion')
-        if m.get('PhpArmsConfigLocation') is not None:
-            self.php_arms_config_location = m.get('PhpArmsConfigLocation')
         if m.get('PhpConfig') is not None:
             self.php_config = m.get('PhpConfig')
         if m.get('PhpConfigLocation') is not None:
@@ -2828,8 +2824,6 @@ class CreateJobRequest(TeaModel):
             self.python = m.get('Python')
         if m.get('PythonModules') is not None:
             self.python_modules = m.get('PythonModules')
-        if m.get('Readiness') is not None:
-            self.readiness = m.get('Readiness')
         if m.get('RefAppId') is not None:
             self.ref_app_id = m.get('RefAppId')
         if m.get('Replicas') is not None:
@@ -3580,10 +3574,18 @@ class DeleteApplicationScalingRuleRequest(TeaModel):
 class DeleteApplicationScalingRuleResponseBody(TeaModel):
     def __init__(
         self,
+        code: str = None,
+        error_code: str = None,
+        message: str = None,
         request_id: str = None,
+        success: bool = None,
         trace_id: str = None,
     ):
+        self.code = code
+        self.error_code = error_code
+        self.message = message
         self.request_id = request_id
+        self.success = success
         self.trace_id = trace_id
 
     def validate(self):
@@ -3595,16 +3597,32 @@ class DeleteApplicationScalingRuleResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.message is not None:
+            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
         if self.trace_id is not None:
             result['TraceId'] = self.trace_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         if m.get('TraceId') is not None:
             self.trace_id = m.get('TraceId')
         return self
@@ -4728,6 +4746,7 @@ class DeployApplicationRequest(TeaModel):
         command_args: str = None,
         config_map_mount_desc: str = None,
         custom_host_alias: str = None,
+        deploy: str = None,
         edas_container_version: str = None,
         enable_ahas: str = None,
         enable_grey_tag_route: bool = None,
@@ -4779,6 +4798,7 @@ class DeployApplicationRequest(TeaModel):
         self.command_args = command_args
         self.config_map_mount_desc = config_map_mount_desc
         self.custom_host_alias = custom_host_alias
+        self.deploy = deploy
         self.edas_container_version = edas_container_version
         self.enable_ahas = enable_ahas
         self.enable_grey_tag_route = enable_grey_tag_route
@@ -4850,6 +4870,8 @@ class DeployApplicationRequest(TeaModel):
             result['ConfigMapMountDesc'] = self.config_map_mount_desc
         if self.custom_host_alias is not None:
             result['CustomHostAlias'] = self.custom_host_alias
+        if self.deploy is not None:
+            result['Deploy'] = self.deploy
         if self.edas_container_version is not None:
             result['EdasContainerVersion'] = self.edas_container_version
         if self.enable_ahas is not None:
@@ -4954,6 +4976,8 @@ class DeployApplicationRequest(TeaModel):
             self.config_map_mount_desc = m.get('ConfigMapMountDesc')
         if m.get('CustomHostAlias') is not None:
             self.custom_host_alias = m.get('CustomHostAlias')
+        if m.get('Deploy') is not None:
+            self.deploy = m.get('Deploy')
         if m.get('EdasContainerVersion') is not None:
             self.edas_container_version = m.get('EdasContainerVersion')
         if m.get('EnableAhas') is not None:
@@ -5595,6 +5619,7 @@ class DescribeApplicationConfigResponseBodyDataConfigMapMountDesc(TeaModel):
         key: str = None,
         mount_path: str = None,
     ):
+        # ConfigMap ID。
         self.config_map_id = config_map_id
         self.config_map_name = config_map_name
         self.key = key
@@ -5841,6 +5866,7 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         self.mse_application_id = mse_application_id
         self.namespace_id = namespace_id
         self.nas_configs = nas_configs
+        # NAS ID。
         self.nas_id = nas_id
         self.oss_ak_id = oss_ak_id
         self.oss_ak_secret = oss_ak_secret
@@ -5867,7 +5893,9 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         self.timezone = timezone
         self.tomcat_config = tomcat_config
         self.update_strategy = update_strategy
+        # vSwitch ID。
         self.v_switch_id = v_switch_id
+        # VPC ID。
         self.vpc_id = vpc_id
         self.war_start_options = war_start_options
         self.web_container = web_container
@@ -7589,12 +7617,20 @@ class DescribeApplicationScalingRuleResponseBodyData(TeaModel):
 class DescribeApplicationScalingRuleResponseBody(TeaModel):
     def __init__(
         self,
+        code: str = None,
         data: DescribeApplicationScalingRuleResponseBodyData = None,
+        error_code: str = None,
+        message: str = None,
         request_id: str = None,
+        success: bool = None,
         trace_id: str = None,
     ):
+        self.code = code
         self.data = data
+        self.error_code = error_code
+        self.message = message
         self.request_id = request_id
+        self.success = success
         self.trace_id = trace_id
 
     def validate(self):
@@ -7607,21 +7643,37 @@ class DescribeApplicationScalingRuleResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
         if self.data is not None:
             result['Data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.message is not None:
+            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
         if self.trace_id is not None:
             result['TraceId'] = self.trace_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
         if m.get('Data') is not None:
             temp_model = DescribeApplicationScalingRuleResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         if m.get('TraceId') is not None:
             self.trace_id = m.get('TraceId')
         return self
@@ -8281,12 +8333,20 @@ class DescribeApplicationScalingRulesResponseBodyData(TeaModel):
 class DescribeApplicationScalingRulesResponseBody(TeaModel):
     def __init__(
         self,
+        code: str = None,
         data: DescribeApplicationScalingRulesResponseBodyData = None,
+        error_code: str = None,
+        message: str = None,
         request_id: str = None,
+        success: bool = None,
         trace_id: str = None,
     ):
+        self.code = code
         self.data = data
+        self.error_code = error_code
+        self.message = message
         self.request_id = request_id
+        self.success = success
         self.trace_id = trace_id
 
     def validate(self):
@@ -8299,21 +8359,37 @@ class DescribeApplicationScalingRulesResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
         if self.data is not None:
             result['Data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.message is not None:
+            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
         if self.trace_id is not None:
             result['TraceId'] = self.trace_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
         if m.get('Data') is not None:
             temp_model = DescribeApplicationScalingRulesResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         if m.get('TraceId') is not None:
             self.trace_id = m.get('TraceId')
         return self
@@ -10166,122 +10242,6 @@ class DescribeGreyTagRouteRequest(TeaModel):
         return self
 
 
-class DescribeGreyTagRouteResponseBodyDataAlbRulesItems(TeaModel):
-    def __init__(
-        self,
-        cond: str = None,
-        expr: str = None,
-        index: int = None,
-        name: str = None,
-        operator: str = None,
-        type: str = None,
-        value: str = None,
-    ):
-        self.cond = cond
-        self.expr = expr
-        self.index = index
-        self.name = name
-        self.operator = operator
-        self.type = type
-        self.value = value
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.cond is not None:
-            result['cond'] = self.cond
-        if self.expr is not None:
-            result['expr'] = self.expr
-        if self.index is not None:
-            result['index'] = self.index
-        if self.name is not None:
-            result['name'] = self.name
-        if self.operator is not None:
-            result['operator'] = self.operator
-        if self.type is not None:
-            result['type'] = self.type
-        if self.value is not None:
-            result['value'] = self.value
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('cond') is not None:
-            self.cond = m.get('cond')
-        if m.get('expr') is not None:
-            self.expr = m.get('expr')
-        if m.get('index') is not None:
-            self.index = m.get('index')
-        if m.get('name') is not None:
-            self.name = m.get('name')
-        if m.get('operator') is not None:
-            self.operator = m.get('operator')
-        if m.get('type') is not None:
-            self.type = m.get('type')
-        if m.get('value') is not None:
-            self.value = m.get('value')
-        return self
-
-
-class DescribeGreyTagRouteResponseBodyDataAlbRules(TeaModel):
-    def __init__(
-        self,
-        condition: str = None,
-        ingress_id: str = None,
-        items: List[DescribeGreyTagRouteResponseBodyDataAlbRulesItems] = None,
-        service_id: str = None,
-    ):
-        self.condition = condition
-        self.ingress_id = ingress_id
-        self.items = items
-        self.service_id = service_id
-
-    def validate(self):
-        if self.items:
-            for k in self.items:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.condition is not None:
-            result['condition'] = self.condition
-        if self.ingress_id is not None:
-            result['ingressId'] = self.ingress_id
-        result['items'] = []
-        if self.items is not None:
-            for k in self.items:
-                result['items'].append(k.to_map() if k else None)
-        if self.service_id is not None:
-            result['serviceId'] = self.service_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('condition') is not None:
-            self.condition = m.get('condition')
-        if m.get('ingressId') is not None:
-            self.ingress_id = m.get('ingressId')
-        self.items = []
-        if m.get('items') is not None:
-            for k in m.get('items'):
-                temp_model = DescribeGreyTagRouteResponseBodyDataAlbRulesItems()
-                self.items.append(temp_model.from_map(k))
-        if m.get('serviceId') is not None:
-            self.service_id = m.get('serviceId')
-        return self
-
-
 class DescribeGreyTagRouteResponseBodyDataDubboRulesItems(TeaModel):
     def __init__(
         self,
@@ -10523,7 +10483,6 @@ class DescribeGreyTagRouteResponseBodyDataScRules(TeaModel):
 class DescribeGreyTagRouteResponseBodyData(TeaModel):
     def __init__(
         self,
-        alb_rules: List[DescribeGreyTagRouteResponseBodyDataAlbRules] = None,
         app_id: str = None,
         create_time: int = None,
         description: str = None,
@@ -10533,7 +10492,6 @@ class DescribeGreyTagRouteResponseBodyData(TeaModel):
         sc_rules: List[DescribeGreyTagRouteResponseBodyDataScRules] = None,
         update_time: int = None,
     ):
-        self.alb_rules = alb_rules
         self.app_id = app_id
         self.create_time = create_time
         self.description = description
@@ -10544,10 +10502,6 @@ class DescribeGreyTagRouteResponseBodyData(TeaModel):
         self.update_time = update_time
 
     def validate(self):
-        if self.alb_rules:
-            for k in self.alb_rules:
-                if k:
-                    k.validate()
         if self.dubbo_rules:
             for k in self.dubbo_rules:
                 if k:
@@ -10563,10 +10517,6 @@ class DescribeGreyTagRouteResponseBodyData(TeaModel):
             return _map
 
         result = dict()
-        result['AlbRules'] = []
-        if self.alb_rules is not None:
-            for k in self.alb_rules:
-                result['AlbRules'].append(k.to_map() if k else None)
         if self.app_id is not None:
             result['AppId'] = self.app_id
         if self.create_time is not None:
@@ -10591,11 +10541,6 @@ class DescribeGreyTagRouteResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        self.alb_rules = []
-        if m.get('AlbRules') is not None:
-            for k in m.get('AlbRules'):
-                temp_model = DescribeGreyTagRouteResponseBodyDataAlbRules()
-                self.alb_rules.append(temp_model.from_map(k))
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
         if m.get('CreateTime') is not None:
@@ -10887,6 +10832,7 @@ class DescribeIngressResponseBodyData(TeaModel):
         self.name = name
         self.namespace_id = namespace_id
         self.rules = rules
+        # SLB ID。
         self.slb_id = slb_id
         self.slb_type = slb_type
 
@@ -11389,11 +11335,9 @@ class DescribeJobRequest(TeaModel):
         self,
         app_id: str = None,
         job_id: str = None,
-        version_id: str = None,
     ):
         self.app_id = app_id
         self.job_id = job_id
-        self.version_id = version_id
 
     def validate(self):
         pass
@@ -11408,8 +11352,6 @@ class DescribeJobRequest(TeaModel):
             result['AppId'] = self.app_id
         if self.job_id is not None:
             result['JobId'] = self.job_id
-        if self.version_id is not None:
-            result['VersionId'] = self.version_id
         return result
 
     def from_map(self, m: dict = None):
@@ -11418,8 +11360,6 @@ class DescribeJobRequest(TeaModel):
             self.app_id = m.get('AppId')
         if m.get('JobId') is not None:
             self.job_id = m.get('JobId')
-        if m.get('VersionId') is not None:
-            self.version_id = m.get('VersionId')
         return self
 
 
@@ -11431,6 +11371,7 @@ class DescribeJobResponseBodyDataConfigMapMountDesc(TeaModel):
         key: str = None,
         mount_path: str = None,
     ):
+        # ConfigMap ID。
         self.config_map_id = config_map_id
         self.config_map_name = config_map_name
         self.key = key
@@ -11583,12 +11524,11 @@ class DescribeJobResponseBodyData(TeaModel):
     def __init__(
         self,
         acr_assume_role_arn: str = None,
+        acr_instance_id: str = None,
         app_description: str = None,
         app_id: str = None,
         app_name: str = None,
-        associate_eip: bool = None,
         backoff_limit: int = None,
-        batch_wait_time: int = None,
         command: str = None,
         command_args: str = None,
         concurrency_policy: str = None,
@@ -11596,20 +11536,15 @@ class DescribeJobResponseBodyData(TeaModel):
         cpu: int = None,
         custom_host_alias: str = None,
         edas_container_version: str = None,
-        enable_ahas: str = None,
-        enable_grey_tag_route: bool = None,
         envs: str = None,
         image_pull_secrets: str = None,
         image_url: str = None,
         jar_start_args: str = None,
         jar_start_options: str = None,
         jdk: str = None,
-        liveness: str = None,
         memory: int = None,
-        min_ready_instances: int = None,
         mount_desc: List[DescribeJobResponseBodyDataMountDesc] = None,
         mount_host: str = None,
-        mse_application_id: str = None,
         namespace_id: str = None,
         nas_configs: str = None,
         nas_id: str = None,
@@ -11619,7 +11554,6 @@ class DescribeJobResponseBodyData(TeaModel):
         package_type: str = None,
         package_url: str = None,
         package_version: str = None,
-        php_arms_config_location: str = None,
         php_config: str = None,
         php_config_location: str = None,
         post_start: str = None,
@@ -11628,7 +11562,6 @@ class DescribeJobResponseBodyData(TeaModel):
         public_web_hook_urls: List[str] = None,
         python: str = None,
         python_modules: str = None,
-        readiness: str = None,
         ref_app_id: str = None,
         refed_app_ids: List[str] = None,
         region_id: str = None,
@@ -11651,12 +11584,11 @@ class DescribeJobResponseBodyData(TeaModel):
         web_container: str = None,
     ):
         self.acr_assume_role_arn = acr_assume_role_arn
+        self.acr_instance_id = acr_instance_id
         self.app_description = app_description
         self.app_id = app_id
         self.app_name = app_name
-        self.associate_eip = associate_eip
         self.backoff_limit = backoff_limit
-        self.batch_wait_time = batch_wait_time
         self.command = command
         self.command_args = command_args
         self.concurrency_policy = concurrency_policy
@@ -11664,22 +11596,18 @@ class DescribeJobResponseBodyData(TeaModel):
         self.cpu = cpu
         self.custom_host_alias = custom_host_alias
         self.edas_container_version = edas_container_version
-        self.enable_ahas = enable_ahas
-        self.enable_grey_tag_route = enable_grey_tag_route
         self.envs = envs
         self.image_pull_secrets = image_pull_secrets
         self.image_url = image_url
         self.jar_start_args = jar_start_args
         self.jar_start_options = jar_start_options
         self.jdk = jdk
-        self.liveness = liveness
         self.memory = memory
-        self.min_ready_instances = min_ready_instances
         self.mount_desc = mount_desc
         self.mount_host = mount_host
-        self.mse_application_id = mse_application_id
         self.namespace_id = namespace_id
         self.nas_configs = nas_configs
+        # NAS ID。
         self.nas_id = nas_id
         self.oss_ak_id = oss_ak_id
         self.oss_ak_secret = oss_ak_secret
@@ -11687,7 +11615,6 @@ class DescribeJobResponseBodyData(TeaModel):
         self.package_type = package_type
         self.package_url = package_url
         self.package_version = package_version
-        self.php_arms_config_location = php_arms_config_location
         self.php_config = php_config
         self.php_config_location = php_config_location
         self.post_start = post_start
@@ -11696,7 +11623,6 @@ class DescribeJobResponseBodyData(TeaModel):
         self.public_web_hook_urls = public_web_hook_urls
         self.python = python
         self.python_modules = python_modules
-        self.readiness = readiness
         self.ref_app_id = ref_app_id
         self.refed_app_ids = refed_app_ids
         self.region_id = region_id
@@ -11712,7 +11638,9 @@ class DescribeJobResponseBodyData(TeaModel):
         self.timezone = timezone
         self.tomcat_config = tomcat_config
         self.trigger_config = trigger_config
+        # vSwitch ID。
         self.v_switch_id = v_switch_id
+        # VPC ID。
         self.vpc_id = vpc_id
         self.vpc_web_hook_urls = vpc_web_hook_urls
         self.war_start_options = war_start_options
@@ -11744,18 +11672,16 @@ class DescribeJobResponseBodyData(TeaModel):
         result = dict()
         if self.acr_assume_role_arn is not None:
             result['AcrAssumeRoleArn'] = self.acr_assume_role_arn
+        if self.acr_instance_id is not None:
+            result['AcrInstanceId'] = self.acr_instance_id
         if self.app_description is not None:
             result['AppDescription'] = self.app_description
         if self.app_id is not None:
             result['AppId'] = self.app_id
         if self.app_name is not None:
             result['AppName'] = self.app_name
-        if self.associate_eip is not None:
-            result['AssociateEip'] = self.associate_eip
         if self.backoff_limit is not None:
             result['BackoffLimit'] = self.backoff_limit
-        if self.batch_wait_time is not None:
-            result['BatchWaitTime'] = self.batch_wait_time
         if self.command is not None:
             result['Command'] = self.command
         if self.command_args is not None:
@@ -11772,10 +11698,6 @@ class DescribeJobResponseBodyData(TeaModel):
             result['CustomHostAlias'] = self.custom_host_alias
         if self.edas_container_version is not None:
             result['EdasContainerVersion'] = self.edas_container_version
-        if self.enable_ahas is not None:
-            result['EnableAhas'] = self.enable_ahas
-        if self.enable_grey_tag_route is not None:
-            result['EnableGreyTagRoute'] = self.enable_grey_tag_route
         if self.envs is not None:
             result['Envs'] = self.envs
         if self.image_pull_secrets is not None:
@@ -11788,20 +11710,14 @@ class DescribeJobResponseBodyData(TeaModel):
             result['JarStartOptions'] = self.jar_start_options
         if self.jdk is not None:
             result['Jdk'] = self.jdk
-        if self.liveness is not None:
-            result['Liveness'] = self.liveness
         if self.memory is not None:
             result['Memory'] = self.memory
-        if self.min_ready_instances is not None:
-            result['MinReadyInstances'] = self.min_ready_instances
         result['MountDesc'] = []
         if self.mount_desc is not None:
             for k in self.mount_desc:
                 result['MountDesc'].append(k.to_map() if k else None)
         if self.mount_host is not None:
             result['MountHost'] = self.mount_host
-        if self.mse_application_id is not None:
-            result['MseApplicationId'] = self.mse_application_id
         if self.namespace_id is not None:
             result['NamespaceId'] = self.namespace_id
         if self.nas_configs is not None:
@@ -11822,8 +11738,6 @@ class DescribeJobResponseBodyData(TeaModel):
             result['PackageUrl'] = self.package_url
         if self.package_version is not None:
             result['PackageVersion'] = self.package_version
-        if self.php_arms_config_location is not None:
-            result['PhpArmsConfigLocation'] = self.php_arms_config_location
         if self.php_config is not None:
             result['PhpConfig'] = self.php_config
         if self.php_config_location is not None:
@@ -11840,8 +11754,6 @@ class DescribeJobResponseBodyData(TeaModel):
             result['Python'] = self.python
         if self.python_modules is not None:
             result['PythonModules'] = self.python_modules
-        if self.readiness is not None:
-            result['Readiness'] = self.readiness
         if self.ref_app_id is not None:
             result['RefAppId'] = self.ref_app_id
         if self.refed_app_ids is not None:
@@ -11890,18 +11802,16 @@ class DescribeJobResponseBodyData(TeaModel):
         m = m or dict()
         if m.get('AcrAssumeRoleArn') is not None:
             self.acr_assume_role_arn = m.get('AcrAssumeRoleArn')
+        if m.get('AcrInstanceId') is not None:
+            self.acr_instance_id = m.get('AcrInstanceId')
         if m.get('AppDescription') is not None:
             self.app_description = m.get('AppDescription')
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
         if m.get('AppName') is not None:
             self.app_name = m.get('AppName')
-        if m.get('AssociateEip') is not None:
-            self.associate_eip = m.get('AssociateEip')
         if m.get('BackoffLimit') is not None:
             self.backoff_limit = m.get('BackoffLimit')
-        if m.get('BatchWaitTime') is not None:
-            self.batch_wait_time = m.get('BatchWaitTime')
         if m.get('Command') is not None:
             self.command = m.get('Command')
         if m.get('CommandArgs') is not None:
@@ -11919,10 +11829,6 @@ class DescribeJobResponseBodyData(TeaModel):
             self.custom_host_alias = m.get('CustomHostAlias')
         if m.get('EdasContainerVersion') is not None:
             self.edas_container_version = m.get('EdasContainerVersion')
-        if m.get('EnableAhas') is not None:
-            self.enable_ahas = m.get('EnableAhas')
-        if m.get('EnableGreyTagRoute') is not None:
-            self.enable_grey_tag_route = m.get('EnableGreyTagRoute')
         if m.get('Envs') is not None:
             self.envs = m.get('Envs')
         if m.get('ImagePullSecrets') is not None:
@@ -11935,12 +11841,8 @@ class DescribeJobResponseBodyData(TeaModel):
             self.jar_start_options = m.get('JarStartOptions')
         if m.get('Jdk') is not None:
             self.jdk = m.get('Jdk')
-        if m.get('Liveness') is not None:
-            self.liveness = m.get('Liveness')
         if m.get('Memory') is not None:
             self.memory = m.get('Memory')
-        if m.get('MinReadyInstances') is not None:
-            self.min_ready_instances = m.get('MinReadyInstances')
         self.mount_desc = []
         if m.get('MountDesc') is not None:
             for k in m.get('MountDesc'):
@@ -11948,8 +11850,6 @@ class DescribeJobResponseBodyData(TeaModel):
                 self.mount_desc.append(temp_model.from_map(k))
         if m.get('MountHost') is not None:
             self.mount_host = m.get('MountHost')
-        if m.get('MseApplicationId') is not None:
-            self.mse_application_id = m.get('MseApplicationId')
         if m.get('NamespaceId') is not None:
             self.namespace_id = m.get('NamespaceId')
         if m.get('NasConfigs') is not None:
@@ -11971,8 +11871,6 @@ class DescribeJobResponseBodyData(TeaModel):
             self.package_url = m.get('PackageUrl')
         if m.get('PackageVersion') is not None:
             self.package_version = m.get('PackageVersion')
-        if m.get('PhpArmsConfigLocation') is not None:
-            self.php_arms_config_location = m.get('PhpArmsConfigLocation')
         if m.get('PhpConfig') is not None:
             self.php_config = m.get('PhpConfig')
         if m.get('PhpConfigLocation') is not None:
@@ -11989,8 +11887,6 @@ class DescribeJobResponseBodyData(TeaModel):
             self.python = m.get('Python')
         if m.get('PythonModules') is not None:
             self.python_modules = m.get('PythonModules')
-        if m.get('Readiness') is not None:
-            self.readiness = m.get('Readiness')
         if m.get('RefAppId') is not None:
             self.ref_app_id = m.get('RefAppId')
         if m.get('RefedAppIds') is not None:
@@ -12869,7 +12765,9 @@ class DescribeNamespaceListResponseBodyData(TeaModel):
         self.namespace_name = namespace_name
         self.region_id = region_id
         self.security_group_id = security_group_id
+        # vSwitch ID。
         self.v_switch_id = v_switch_id
+        # VPC ID。
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -13106,8 +13004,10 @@ class DescribeNamespaceResourcesResponseBodyData(TeaModel):
         self.security_group_id = security_group_id
         self.tenant_id = tenant_id
         self.user_id = user_id
+        # vSwitch ID。
         self.v_switch_id = v_switch_id
         self.v_switch_name = v_switch_name
+        # VPC ID。
         self.vpc_id = vpc_id
         self.vpc_name = vpc_name
 
@@ -14407,10 +14307,18 @@ class DisableApplicationScalingRuleRequest(TeaModel):
 class DisableApplicationScalingRuleResponseBody(TeaModel):
     def __init__(
         self,
+        code: str = None,
+        error_code: str = None,
+        message: str = None,
         request_id: str = None,
+        success: bool = None,
         trace_id: str = None,
     ):
+        self.code = code
+        self.error_code = error_code
+        self.message = message
         self.request_id = request_id
+        self.success = success
         self.trace_id = trace_id
 
     def validate(self):
@@ -14422,16 +14330,32 @@ class DisableApplicationScalingRuleResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.message is not None:
+            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
         if self.trace_id is not None:
             result['TraceId'] = self.trace_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         if m.get('TraceId') is not None:
             self.trace_id = m.get('TraceId')
         return self
@@ -14517,10 +14441,18 @@ class EnableApplicationScalingRuleRequest(TeaModel):
 class EnableApplicationScalingRuleResponseBody(TeaModel):
     def __init__(
         self,
+        code: str = None,
+        error_code: str = None,
+        message: str = None,
         request_id: str = None,
+        success: bool = None,
         trace_id: str = None,
     ):
+        self.code = code
+        self.error_code = error_code
+        self.message = message
         self.request_id = request_id
+        self.success = success
         self.trace_id = trace_id
 
     def validate(self):
@@ -14532,16 +14464,32 @@ class EnableApplicationScalingRuleResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.message is not None:
+            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
         if self.trace_id is not None:
             result['TraceId'] = self.trace_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         if m.get('TraceId') is not None:
             self.trace_id = m.get('TraceId')
         return self
@@ -14816,270 +14764,6 @@ class ExecJobResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ExecJobResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class GetJobHistoryRequest(TeaModel):
-    def __init__(
-        self,
-        app_id: str = None,
-        current_page: int = None,
-        page_size: int = None,
-    ):
-        self.app_id = app_id
-        self.current_page = current_page
-        self.page_size = page_size
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app_id is not None:
-            result['AppId'] = self.app_id
-        if self.current_page is not None:
-            result['CurrentPage'] = self.current_page
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AppId') is not None:
-            self.app_id = m.get('AppId')
-        if m.get('CurrentPage') is not None:
-            self.current_page = m.get('CurrentPage')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        return self
-
-
-class GetJobHistoryResponseBodyDataJobs(TeaModel):
-    def __init__(
-        self,
-        active: int = None,
-        completion_time: int = None,
-        failed: int = None,
-        job_id: str = None,
-        message: str = None,
-        start_time: int = None,
-        succeeded: int = None,
-    ):
-        self.active = active
-        self.completion_time = completion_time
-        self.failed = failed
-        self.job_id = job_id
-        self.message = message
-        self.start_time = start_time
-        self.succeeded = succeeded
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.active is not None:
-            result['Active'] = self.active
-        if self.completion_time is not None:
-            result['CompletionTime'] = self.completion_time
-        if self.failed is not None:
-            result['Failed'] = self.failed
-        if self.job_id is not None:
-            result['JobId'] = self.job_id
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.start_time is not None:
-            result['StartTime'] = self.start_time
-        if self.succeeded is not None:
-            result['Succeeded'] = self.succeeded
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Active') is not None:
-            self.active = m.get('Active')
-        if m.get('CompletionTime') is not None:
-            self.completion_time = m.get('CompletionTime')
-        if m.get('Failed') is not None:
-            self.failed = m.get('Failed')
-        if m.get('JobId') is not None:
-            self.job_id = m.get('JobId')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('StartTime') is not None:
-            self.start_time = m.get('StartTime')
-        if m.get('Succeeded') is not None:
-            self.succeeded = m.get('Succeeded')
-        return self
-
-
-class GetJobHistoryResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        current_page: int = None,
-        jobs: List[GetJobHistoryResponseBodyDataJobs] = None,
-        page_size: int = None,
-        total_size: int = None,
-    ):
-        self.current_page = current_page
-        self.jobs = jobs
-        self.page_size = page_size
-        self.total_size = total_size
-
-    def validate(self):
-        if self.jobs:
-            for k in self.jobs:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.current_page is not None:
-            result['CurrentPage'] = self.current_page
-        result['Jobs'] = []
-        if self.jobs is not None:
-            for k in self.jobs:
-                result['Jobs'].append(k.to_map() if k else None)
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        if self.total_size is not None:
-            result['TotalSize'] = self.total_size
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('CurrentPage') is not None:
-            self.current_page = m.get('CurrentPage')
-        self.jobs = []
-        if m.get('Jobs') is not None:
-            for k in m.get('Jobs'):
-                temp_model = GetJobHistoryResponseBodyDataJobs()
-                self.jobs.append(temp_model.from_map(k))
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        if m.get('TotalSize') is not None:
-            self.total_size = m.get('TotalSize')
-        return self
-
-
-class GetJobHistoryResponseBody(TeaModel):
-    def __init__(
-        self,
-        code: str = None,
-        data: GetJobHistoryResponseBodyData = None,
-        error_code: str = None,
-        message: str = None,
-        request_id: str = None,
-        success: bool = None,
-        trace_id: str = None,
-    ):
-        self.code = code
-        self.data = data
-        self.error_code = error_code
-        self.message = message
-        self.request_id = request_id
-        self.success = success
-        self.trace_id = trace_id
-
-    def validate(self):
-        if self.data:
-            self.data.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
-        if self.trace_id is not None:
-            result['TraceId'] = self.trace_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Data') is not None:
-            temp_model = GetJobHistoryResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        if m.get('TraceId') is not None:
-            self.trace_id = m.get('TraceId')
-        return self
-
-
-class GetJobHistoryResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: GetJobHistoryResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = GetJobHistoryResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -16756,122 +16440,6 @@ class ListGreyTagRouteRequest(TeaModel):
         return self
 
 
-class ListGreyTagRouteResponseBodyDataResultAlbRulesItems(TeaModel):
-    def __init__(
-        self,
-        cond: str = None,
-        expr: str = None,
-        index: int = None,
-        name: str = None,
-        operator: str = None,
-        type: str = None,
-        value: str = None,
-    ):
-        self.cond = cond
-        self.expr = expr
-        self.index = index
-        self.name = name
-        self.operator = operator
-        self.type = type
-        self.value = value
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.cond is not None:
-            result['cond'] = self.cond
-        if self.expr is not None:
-            result['expr'] = self.expr
-        if self.index is not None:
-            result['index'] = self.index
-        if self.name is not None:
-            result['name'] = self.name
-        if self.operator is not None:
-            result['operator'] = self.operator
-        if self.type is not None:
-            result['type'] = self.type
-        if self.value is not None:
-            result['value'] = self.value
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('cond') is not None:
-            self.cond = m.get('cond')
-        if m.get('expr') is not None:
-            self.expr = m.get('expr')
-        if m.get('index') is not None:
-            self.index = m.get('index')
-        if m.get('name') is not None:
-            self.name = m.get('name')
-        if m.get('operator') is not None:
-            self.operator = m.get('operator')
-        if m.get('type') is not None:
-            self.type = m.get('type')
-        if m.get('value') is not None:
-            self.value = m.get('value')
-        return self
-
-
-class ListGreyTagRouteResponseBodyDataResultAlbRules(TeaModel):
-    def __init__(
-        self,
-        condition: str = None,
-        ingress_id: str = None,
-        items: List[ListGreyTagRouteResponseBodyDataResultAlbRulesItems] = None,
-        service_id: str = None,
-    ):
-        self.condition = condition
-        self.ingress_id = ingress_id
-        self.items = items
-        self.service_id = service_id
-
-    def validate(self):
-        if self.items:
-            for k in self.items:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.condition is not None:
-            result['condition'] = self.condition
-        if self.ingress_id is not None:
-            result['ingressId'] = self.ingress_id
-        result['items'] = []
-        if self.items is not None:
-            for k in self.items:
-                result['items'].append(k.to_map() if k else None)
-        if self.service_id is not None:
-            result['serviceId'] = self.service_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('condition') is not None:
-            self.condition = m.get('condition')
-        if m.get('ingressId') is not None:
-            self.ingress_id = m.get('ingressId')
-        self.items = []
-        if m.get('items') is not None:
-            for k in m.get('items'):
-                temp_model = ListGreyTagRouteResponseBodyDataResultAlbRulesItems()
-                self.items.append(temp_model.from_map(k))
-        if m.get('serviceId') is not None:
-            self.service_id = m.get('serviceId')
-        return self
-
-
 class ListGreyTagRouteResponseBodyDataResultDubboRulesItems(TeaModel):
     def __init__(
         self,
@@ -17113,7 +16681,6 @@ class ListGreyTagRouteResponseBodyDataResultScRules(TeaModel):
 class ListGreyTagRouteResponseBodyDataResult(TeaModel):
     def __init__(
         self,
-        alb_rules: List[ListGreyTagRouteResponseBodyDataResultAlbRules] = None,
         create_time: int = None,
         description: str = None,
         dubbo_rules: List[ListGreyTagRouteResponseBodyDataResultDubboRules] = None,
@@ -17122,7 +16689,6 @@ class ListGreyTagRouteResponseBodyDataResult(TeaModel):
         sc_rules: List[ListGreyTagRouteResponseBodyDataResultScRules] = None,
         update_time: int = None,
     ):
-        self.alb_rules = alb_rules
         self.create_time = create_time
         self.description = description
         self.dubbo_rules = dubbo_rules
@@ -17132,10 +16698,6 @@ class ListGreyTagRouteResponseBodyDataResult(TeaModel):
         self.update_time = update_time
 
     def validate(self):
-        if self.alb_rules:
-            for k in self.alb_rules:
-                if k:
-                    k.validate()
         if self.dubbo_rules:
             for k in self.dubbo_rules:
                 if k:
@@ -17151,10 +16713,6 @@ class ListGreyTagRouteResponseBodyDataResult(TeaModel):
             return _map
 
         result = dict()
-        result['AlbRules'] = []
-        if self.alb_rules is not None:
-            for k in self.alb_rules:
-                result['AlbRules'].append(k.to_map() if k else None)
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
         if self.description is not None:
@@ -17177,11 +16735,6 @@ class ListGreyTagRouteResponseBodyDataResult(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        self.alb_rules = []
-        if m.get('AlbRules') is not None:
-            for k in m.get('AlbRules'):
-                temp_model = ListGreyTagRouteResponseBodyDataResultAlbRules()
-                self.alb_rules.append(temp_model.from_map(k))
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
         if m.get('Description') is not None:
@@ -17424,6 +16977,7 @@ class ListIngressesResponseBodyDataIngressList(TeaModel):
         self.load_balance_type = load_balance_type
         self.name = name
         self.namespace_id = namespace_id
+        # SLB ID。
         self.slb_id = slb_id
         self.slb_type = slb_type
 
@@ -17749,38 +17303,32 @@ class ListJobsResponseBodyDataApplications(TeaModel):
     def __init__(
         self,
         active: int = None,
-        app_deleting_status: bool = None,
         app_description: str = None,
         app_id: str = None,
         app_name: str = None,
         completion_time: int = None,
         failed: int = None,
-        instances: int = None,
         last_changeorder_state: str = None,
         last_job_state: str = None,
         last_start_time: int = None,
         namespace_id: str = None,
         region_id: str = None,
-        running_instances: int = None,
         succeeded: int = None,
         suspend: bool = None,
         tags: List[ListJobsResponseBodyDataApplicationsTags] = None,
         trigger_config: str = None,
     ):
         self.active = active
-        self.app_deleting_status = app_deleting_status
         self.app_description = app_description
         self.app_id = app_id
         self.app_name = app_name
         self.completion_time = completion_time
         self.failed = failed
-        self.instances = instances
         self.last_changeorder_state = last_changeorder_state
         self.last_job_state = last_job_state
         self.last_start_time = last_start_time
         self.namespace_id = namespace_id
         self.region_id = region_id
-        self.running_instances = running_instances
         self.succeeded = succeeded
         self.suspend = suspend
         self.tags = tags
@@ -17800,8 +17348,6 @@ class ListJobsResponseBodyDataApplications(TeaModel):
         result = dict()
         if self.active is not None:
             result['Active'] = self.active
-        if self.app_deleting_status is not None:
-            result['AppDeletingStatus'] = self.app_deleting_status
         if self.app_description is not None:
             result['AppDescription'] = self.app_description
         if self.app_id is not None:
@@ -17812,8 +17358,6 @@ class ListJobsResponseBodyDataApplications(TeaModel):
             result['CompletionTime'] = self.completion_time
         if self.failed is not None:
             result['Failed'] = self.failed
-        if self.instances is not None:
-            result['Instances'] = self.instances
         if self.last_changeorder_state is not None:
             result['LastChangeorderState'] = self.last_changeorder_state
         if self.last_job_state is not None:
@@ -17824,8 +17368,6 @@ class ListJobsResponseBodyDataApplications(TeaModel):
             result['NamespaceId'] = self.namespace_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
-        if self.running_instances is not None:
-            result['RunningInstances'] = self.running_instances
         if self.succeeded is not None:
             result['Succeeded'] = self.succeeded
         if self.suspend is not None:
@@ -17842,8 +17384,6 @@ class ListJobsResponseBodyDataApplications(TeaModel):
         m = m or dict()
         if m.get('Active') is not None:
             self.active = m.get('Active')
-        if m.get('AppDeletingStatus') is not None:
-            self.app_deleting_status = m.get('AppDeletingStatus')
         if m.get('AppDescription') is not None:
             self.app_description = m.get('AppDescription')
         if m.get('AppId') is not None:
@@ -17854,8 +17394,6 @@ class ListJobsResponseBodyDataApplications(TeaModel):
             self.completion_time = m.get('CompletionTime')
         if m.get('Failed') is not None:
             self.failed = m.get('Failed')
-        if m.get('Instances') is not None:
-            self.instances = m.get('Instances')
         if m.get('LastChangeorderState') is not None:
             self.last_changeorder_state = m.get('LastChangeorderState')
         if m.get('LastJobState') is not None:
@@ -17866,8 +17404,6 @@ class ListJobsResponseBodyDataApplications(TeaModel):
             self.namespace_id = m.get('NamespaceId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
-        if m.get('RunningInstances') is not None:
-            self.running_instances = m.get('RunningInstances')
         if m.get('Succeeded') is not None:
             self.succeeded = m.get('Succeeded')
         if m.get('Suspend') is not None:
@@ -22579,12 +22115,20 @@ class UpdateApplicationScalingRuleResponseBodyData(TeaModel):
 class UpdateApplicationScalingRuleResponseBody(TeaModel):
     def __init__(
         self,
+        code: str = None,
         data: UpdateApplicationScalingRuleResponseBodyData = None,
+        error_code: str = None,
+        message: str = None,
         request_id: str = None,
+        success: bool = None,
         trace_id: str = None,
     ):
+        self.code = code
         self.data = data
+        self.error_code = error_code
+        self.message = message
         self.request_id = request_id
+        self.success = success
         self.trace_id = trace_id
 
     def validate(self):
@@ -22597,21 +22141,37 @@ class UpdateApplicationScalingRuleResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
         if self.data is not None:
             result['Data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.message is not None:
+            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
         if self.trace_id is not None:
             result['TraceId'] = self.trace_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
         if m.get('Data') is not None:
             temp_model = UpdateApplicationScalingRuleResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         if m.get('TraceId') is not None:
             self.trace_id = m.get('TraceId')
         return self
@@ -22973,13 +22533,11 @@ class UpdateConfigMapResponse(TeaModel):
 class UpdateGreyTagRouteRequest(TeaModel):
     def __init__(
         self,
-        alb_rules: str = None,
         description: str = None,
         dubbo_rules: str = None,
         grey_tag_route_id: int = None,
         sc_rules: str = None,
     ):
-        self.alb_rules = alb_rules
         self.description = description
         self.dubbo_rules = dubbo_rules
         self.grey_tag_route_id = grey_tag_route_id
@@ -22994,8 +22552,6 @@ class UpdateGreyTagRouteRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.alb_rules is not None:
-            result['AlbRules'] = self.alb_rules
         if self.description is not None:
             result['Description'] = self.description
         if self.dubbo_rules is not None:
@@ -23008,8 +22564,6 @@ class UpdateGreyTagRouteRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AlbRules') is not None:
-            self.alb_rules = m.get('AlbRules')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('DubboRules') is not None:
@@ -23374,27 +22928,19 @@ class UpdateJobRequest(TeaModel):
         acr_assume_role_arn: str = None,
         acr_instance_id: str = None,
         app_id: str = None,
-        associate_eip: bool = None,
-        auto_enable_application_scaling_rule: bool = None,
         backoff_limit: int = None,
-        batch_wait_time: int = None,
-        change_order_desc: str = None,
         command: str = None,
         command_args: str = None,
         concurrency_policy: str = None,
         config_map_mount_desc: str = None,
         custom_host_alias: str = None,
         edas_container_version: str = None,
-        enable_ahas: str = None,
-        enable_grey_tag_route: bool = None,
         envs: str = None,
         image_pull_secrets: str = None,
         image_url: str = None,
         jar_start_args: str = None,
         jar_start_options: str = None,
         jdk: str = None,
-        liveness: str = None,
-        min_ready_instances: int = None,
         mount_desc: str = None,
         mount_host: str = None,
         nas_id: str = None,
@@ -23404,17 +22950,13 @@ class UpdateJobRequest(TeaModel):
         package_url: str = None,
         package_version: str = None,
         php: str = None,
-        php_arms_config_location: str = None,
         php_config: str = None,
         php_config_location: str = None,
-        php_extensions: str = None,
-        php_peclextensions: str = None,
         post_start: str = None,
         pre_stop: str = None,
         programming_language: str = None,
         python: str = None,
         python_modules: str = None,
-        readiness: str = None,
         ref_app_id: str = None,
         replicas: str = None,
         slice: bool = None,
@@ -23425,34 +22967,25 @@ class UpdateJobRequest(TeaModel):
         timezone: str = None,
         tomcat_config: str = None,
         trigger_config: str = None,
-        update_strategy: str = None,
         war_start_options: str = None,
         web_container: str = None,
     ):
         self.acr_assume_role_arn = acr_assume_role_arn
         self.acr_instance_id = acr_instance_id
         self.app_id = app_id
-        self.associate_eip = associate_eip
-        self.auto_enable_application_scaling_rule = auto_enable_application_scaling_rule
         self.backoff_limit = backoff_limit
-        self.batch_wait_time = batch_wait_time
-        self.change_order_desc = change_order_desc
         self.command = command
         self.command_args = command_args
         self.concurrency_policy = concurrency_policy
         self.config_map_mount_desc = config_map_mount_desc
         self.custom_host_alias = custom_host_alias
         self.edas_container_version = edas_container_version
-        self.enable_ahas = enable_ahas
-        self.enable_grey_tag_route = enable_grey_tag_route
         self.envs = envs
         self.image_pull_secrets = image_pull_secrets
         self.image_url = image_url
         self.jar_start_args = jar_start_args
         self.jar_start_options = jar_start_options
         self.jdk = jdk
-        self.liveness = liveness
-        self.min_ready_instances = min_ready_instances
         self.mount_desc = mount_desc
         self.mount_host = mount_host
         self.nas_id = nas_id
@@ -23462,17 +22995,13 @@ class UpdateJobRequest(TeaModel):
         self.package_url = package_url
         self.package_version = package_version
         self.php = php
-        self.php_arms_config_location = php_arms_config_location
         self.php_config = php_config
         self.php_config_location = php_config_location
-        self.php_extensions = php_extensions
-        self.php_peclextensions = php_peclextensions
         self.post_start = post_start
         self.pre_stop = pre_stop
         self.programming_language = programming_language
         self.python = python
         self.python_modules = python_modules
-        self.readiness = readiness
         self.ref_app_id = ref_app_id
         self.replicas = replicas
         self.slice = slice
@@ -23483,7 +23012,6 @@ class UpdateJobRequest(TeaModel):
         self.timezone = timezone
         self.tomcat_config = tomcat_config
         self.trigger_config = trigger_config
-        self.update_strategy = update_strategy
         self.war_start_options = war_start_options
         self.web_container = web_container
 
@@ -23502,16 +23030,8 @@ class UpdateJobRequest(TeaModel):
             result['AcrInstanceId'] = self.acr_instance_id
         if self.app_id is not None:
             result['AppId'] = self.app_id
-        if self.associate_eip is not None:
-            result['AssociateEip'] = self.associate_eip
-        if self.auto_enable_application_scaling_rule is not None:
-            result['AutoEnableApplicationScalingRule'] = self.auto_enable_application_scaling_rule
         if self.backoff_limit is not None:
             result['BackoffLimit'] = self.backoff_limit
-        if self.batch_wait_time is not None:
-            result['BatchWaitTime'] = self.batch_wait_time
-        if self.change_order_desc is not None:
-            result['ChangeOrderDesc'] = self.change_order_desc
         if self.command is not None:
             result['Command'] = self.command
         if self.command_args is not None:
@@ -23524,10 +23044,6 @@ class UpdateJobRequest(TeaModel):
             result['CustomHostAlias'] = self.custom_host_alias
         if self.edas_container_version is not None:
             result['EdasContainerVersion'] = self.edas_container_version
-        if self.enable_ahas is not None:
-            result['EnableAhas'] = self.enable_ahas
-        if self.enable_grey_tag_route is not None:
-            result['EnableGreyTagRoute'] = self.enable_grey_tag_route
         if self.envs is not None:
             result['Envs'] = self.envs
         if self.image_pull_secrets is not None:
@@ -23540,10 +23056,6 @@ class UpdateJobRequest(TeaModel):
             result['JarStartOptions'] = self.jar_start_options
         if self.jdk is not None:
             result['Jdk'] = self.jdk
-        if self.liveness is not None:
-            result['Liveness'] = self.liveness
-        if self.min_ready_instances is not None:
-            result['MinReadyInstances'] = self.min_ready_instances
         if self.mount_desc is not None:
             result['MountDesc'] = self.mount_desc
         if self.mount_host is not None:
@@ -23562,16 +23074,10 @@ class UpdateJobRequest(TeaModel):
             result['PackageVersion'] = self.package_version
         if self.php is not None:
             result['Php'] = self.php
-        if self.php_arms_config_location is not None:
-            result['PhpArmsConfigLocation'] = self.php_arms_config_location
         if self.php_config is not None:
             result['PhpConfig'] = self.php_config
         if self.php_config_location is not None:
             result['PhpConfigLocation'] = self.php_config_location
-        if self.php_extensions is not None:
-            result['PhpExtensions'] = self.php_extensions
-        if self.php_peclextensions is not None:
-            result['PhpPECLExtensions'] = self.php_peclextensions
         if self.post_start is not None:
             result['PostStart'] = self.post_start
         if self.pre_stop is not None:
@@ -23582,8 +23088,6 @@ class UpdateJobRequest(TeaModel):
             result['Python'] = self.python
         if self.python_modules is not None:
             result['PythonModules'] = self.python_modules
-        if self.readiness is not None:
-            result['Readiness'] = self.readiness
         if self.ref_app_id is not None:
             result['RefAppId'] = self.ref_app_id
         if self.replicas is not None:
@@ -23604,8 +23108,6 @@ class UpdateJobRequest(TeaModel):
             result['TomcatConfig'] = self.tomcat_config
         if self.trigger_config is not None:
             result['TriggerConfig'] = self.trigger_config
-        if self.update_strategy is not None:
-            result['UpdateStrategy'] = self.update_strategy
         if self.war_start_options is not None:
             result['WarStartOptions'] = self.war_start_options
         if self.web_container is not None:
@@ -23620,16 +23122,8 @@ class UpdateJobRequest(TeaModel):
             self.acr_instance_id = m.get('AcrInstanceId')
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
-        if m.get('AssociateEip') is not None:
-            self.associate_eip = m.get('AssociateEip')
-        if m.get('AutoEnableApplicationScalingRule') is not None:
-            self.auto_enable_application_scaling_rule = m.get('AutoEnableApplicationScalingRule')
         if m.get('BackoffLimit') is not None:
             self.backoff_limit = m.get('BackoffLimit')
-        if m.get('BatchWaitTime') is not None:
-            self.batch_wait_time = m.get('BatchWaitTime')
-        if m.get('ChangeOrderDesc') is not None:
-            self.change_order_desc = m.get('ChangeOrderDesc')
         if m.get('Command') is not None:
             self.command = m.get('Command')
         if m.get('CommandArgs') is not None:
@@ -23642,10 +23136,6 @@ class UpdateJobRequest(TeaModel):
             self.custom_host_alias = m.get('CustomHostAlias')
         if m.get('EdasContainerVersion') is not None:
             self.edas_container_version = m.get('EdasContainerVersion')
-        if m.get('EnableAhas') is not None:
-            self.enable_ahas = m.get('EnableAhas')
-        if m.get('EnableGreyTagRoute') is not None:
-            self.enable_grey_tag_route = m.get('EnableGreyTagRoute')
         if m.get('Envs') is not None:
             self.envs = m.get('Envs')
         if m.get('ImagePullSecrets') is not None:
@@ -23658,10 +23148,6 @@ class UpdateJobRequest(TeaModel):
             self.jar_start_options = m.get('JarStartOptions')
         if m.get('Jdk') is not None:
             self.jdk = m.get('Jdk')
-        if m.get('Liveness') is not None:
-            self.liveness = m.get('Liveness')
-        if m.get('MinReadyInstances') is not None:
-            self.min_ready_instances = m.get('MinReadyInstances')
         if m.get('MountDesc') is not None:
             self.mount_desc = m.get('MountDesc')
         if m.get('MountHost') is not None:
@@ -23680,16 +23166,10 @@ class UpdateJobRequest(TeaModel):
             self.package_version = m.get('PackageVersion')
         if m.get('Php') is not None:
             self.php = m.get('Php')
-        if m.get('PhpArmsConfigLocation') is not None:
-            self.php_arms_config_location = m.get('PhpArmsConfigLocation')
         if m.get('PhpConfig') is not None:
             self.php_config = m.get('PhpConfig')
         if m.get('PhpConfigLocation') is not None:
             self.php_config_location = m.get('PhpConfigLocation')
-        if m.get('PhpExtensions') is not None:
-            self.php_extensions = m.get('PhpExtensions')
-        if m.get('PhpPECLExtensions') is not None:
-            self.php_peclextensions = m.get('PhpPECLExtensions')
         if m.get('PostStart') is not None:
             self.post_start = m.get('PostStart')
         if m.get('PreStop') is not None:
@@ -23700,8 +23180,6 @@ class UpdateJobRequest(TeaModel):
             self.python = m.get('Python')
         if m.get('PythonModules') is not None:
             self.python_modules = m.get('PythonModules')
-        if m.get('Readiness') is not None:
-            self.readiness = m.get('Readiness')
         if m.get('RefAppId') is not None:
             self.ref_app_id = m.get('RefAppId')
         if m.get('Replicas') is not None:
@@ -23722,8 +23200,6 @@ class UpdateJobRequest(TeaModel):
             self.tomcat_config = m.get('TomcatConfig')
         if m.get('TriggerConfig') is not None:
             self.trigger_config = m.get('TriggerConfig')
-        if m.get('UpdateStrategy') is not None:
-            self.update_strategy = m.get('UpdateStrategy')
         if m.get('WarStartOptions') is not None:
             self.war_start_options = m.get('WarStartOptions')
         if m.get('WebContainer') is not None:
@@ -24242,7 +23718,7 @@ class UpdateSecretRequest(TeaModel):
 class UpdateSecretResponseBodyData(TeaModel):
     def __init__(
         self,
-        secret_id: str = None,
+        secret_id: int = None,
     ):
         self.secret_id = secret_id
 

@@ -1,3 +1,6 @@
+2022-12-19 Version: 1.22.6
+- Fixed ApplicationScalingRule related api response struct.
+
 2022-12-01 Version: 1.22.2
 - Add updateJob.
 

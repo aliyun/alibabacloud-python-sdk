@@ -41,22 +41,6 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
-    def abort_and_rollback_change_order(
-        self,
-        request: sae_20190506_models.AbortAndRollbackChangeOrderRequest,
-    ) -> sae_20190506_models.AbortAndRollbackChangeOrderResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.abort_and_rollback_change_order_with_options(request, headers, runtime)
-
-    async def abort_and_rollback_change_order_async(
-        self,
-        request: sae_20190506_models.AbortAndRollbackChangeOrderRequest,
-    ) -> sae_20190506_models.AbortAndRollbackChangeOrderResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.abort_and_rollback_change_order_with_options_async(request, headers, runtime)
-
     def abort_and_rollback_change_order_with_options(
         self,
         request: sae_20190506_models.AbortAndRollbackChangeOrderRequest,
@@ -117,21 +101,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def abort_change_order(
+    def abort_and_rollback_change_order(
         self,
-        request: sae_20190506_models.AbortChangeOrderRequest,
-    ) -> sae_20190506_models.AbortChangeOrderResponse:
+        request: sae_20190506_models.AbortAndRollbackChangeOrderRequest,
+    ) -> sae_20190506_models.AbortAndRollbackChangeOrderResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.abort_change_order_with_options(request, headers, runtime)
+        return self.abort_and_rollback_change_order_with_options(request, headers, runtime)
 
-    async def abort_change_order_async(
+    async def abort_and_rollback_change_order_async(
         self,
-        request: sae_20190506_models.AbortChangeOrderRequest,
-    ) -> sae_20190506_models.AbortChangeOrderResponse:
+        request: sae_20190506_models.AbortAndRollbackChangeOrderRequest,
+    ) -> sae_20190506_models.AbortAndRollbackChangeOrderResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.abort_change_order_with_options_async(request, headers, runtime)
+        return await self.abort_and_rollback_change_order_with_options_async(request, headers, runtime)
 
     def abort_change_order_with_options(
         self,
@@ -193,21 +177,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def batch_start_applications(
+    def abort_change_order(
         self,
-        request: sae_20190506_models.BatchStartApplicationsRequest,
-    ) -> sae_20190506_models.BatchStartApplicationsResponse:
+        request: sae_20190506_models.AbortChangeOrderRequest,
+    ) -> sae_20190506_models.AbortChangeOrderResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.batch_start_applications_with_options(request, headers, runtime)
+        return self.abort_change_order_with_options(request, headers, runtime)
 
-    async def batch_start_applications_async(
+    async def abort_change_order_async(
         self,
-        request: sae_20190506_models.BatchStartApplicationsRequest,
-    ) -> sae_20190506_models.BatchStartApplicationsResponse:
+        request: sae_20190506_models.AbortChangeOrderRequest,
+    ) -> sae_20190506_models.AbortChangeOrderResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.batch_start_applications_with_options_async(request, headers, runtime)
+        return await self.abort_change_order_with_options_async(request, headers, runtime)
 
     def batch_start_applications_with_options(
         self,
@@ -273,21 +257,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def batch_stop_applications(
+    def batch_start_applications(
         self,
-        request: sae_20190506_models.BatchStopApplicationsRequest,
-    ) -> sae_20190506_models.BatchStopApplicationsResponse:
+        request: sae_20190506_models.BatchStartApplicationsRequest,
+    ) -> sae_20190506_models.BatchStartApplicationsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.batch_stop_applications_with_options(request, headers, runtime)
+        return self.batch_start_applications_with_options(request, headers, runtime)
 
-    async def batch_stop_applications_async(
+    async def batch_start_applications_async(
         self,
-        request: sae_20190506_models.BatchStopApplicationsRequest,
-    ) -> sae_20190506_models.BatchStopApplicationsResponse:
+        request: sae_20190506_models.BatchStartApplicationsRequest,
+    ) -> sae_20190506_models.BatchStartApplicationsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.batch_stop_applications_with_options_async(request, headers, runtime)
+        return await self.batch_start_applications_with_options_async(request, headers, runtime)
 
     def batch_stop_applications_with_options(
         self,
@@ -353,21 +337,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def bind_slb(
+    def batch_stop_applications(
         self,
-        request: sae_20190506_models.BindSlbRequest,
-    ) -> sae_20190506_models.BindSlbResponse:
+        request: sae_20190506_models.BatchStopApplicationsRequest,
+    ) -> sae_20190506_models.BatchStopApplicationsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.bind_slb_with_options(request, headers, runtime)
+        return self.batch_stop_applications_with_options(request, headers, runtime)
 
-    async def bind_slb_async(
+    async def batch_stop_applications_async(
         self,
-        request: sae_20190506_models.BindSlbRequest,
-    ) -> sae_20190506_models.BindSlbResponse:
+        request: sae_20190506_models.BatchStopApplicationsRequest,
+    ) -> sae_20190506_models.BatchStopApplicationsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.bind_slb_with_options_async(request, headers, runtime)
+        return await self.batch_stop_applications_with_options_async(request, headers, runtime)
 
     def bind_slb_with_options(
         self,
@@ -445,21 +429,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def confirm_pipeline_batch(
+    def bind_slb(
         self,
-        request: sae_20190506_models.ConfirmPipelineBatchRequest,
-    ) -> sae_20190506_models.ConfirmPipelineBatchResponse:
+        request: sae_20190506_models.BindSlbRequest,
+    ) -> sae_20190506_models.BindSlbResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.confirm_pipeline_batch_with_options(request, headers, runtime)
+        return self.bind_slb_with_options(request, headers, runtime)
 
-    async def confirm_pipeline_batch_async(
+    async def bind_slb_async(
         self,
-        request: sae_20190506_models.ConfirmPipelineBatchRequest,
-    ) -> sae_20190506_models.ConfirmPipelineBatchResponse:
+        request: sae_20190506_models.BindSlbRequest,
+    ) -> sae_20190506_models.BindSlbResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.confirm_pipeline_batch_with_options_async(request, headers, runtime)
+        return await self.bind_slb_with_options_async(request, headers, runtime)
 
     def confirm_pipeline_batch_with_options(
         self,
@@ -525,21 +509,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_application(
+    def confirm_pipeline_batch(
         self,
-        request: sae_20190506_models.CreateApplicationRequest,
-    ) -> sae_20190506_models.CreateApplicationResponse:
+        request: sae_20190506_models.ConfirmPipelineBatchRequest,
+    ) -> sae_20190506_models.ConfirmPipelineBatchResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_application_with_options(request, headers, runtime)
+        return self.confirm_pipeline_batch_with_options(request, headers, runtime)
 
-    async def create_application_async(
+    async def confirm_pipeline_batch_async(
         self,
-        request: sae_20190506_models.CreateApplicationRequest,
-    ) -> sae_20190506_models.CreateApplicationResponse:
+        request: sae_20190506_models.ConfirmPipelineBatchRequest,
+    ) -> sae_20190506_models.ConfirmPipelineBatchResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_application_with_options_async(request, headers, runtime)
+        return await self.confirm_pipeline_batch_with_options_async(request, headers, runtime)
 
     def create_application_with_options(
         self,
@@ -817,21 +801,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_application_scaling_rule(
+    def create_application(
         self,
-        request: sae_20190506_models.CreateApplicationScalingRuleRequest,
-    ) -> sae_20190506_models.CreateApplicationScalingRuleResponse:
+        request: sae_20190506_models.CreateApplicationRequest,
+    ) -> sae_20190506_models.CreateApplicationResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_application_scaling_rule_with_options(request, headers, runtime)
+        return self.create_application_with_options(request, headers, runtime)
 
-    async def create_application_scaling_rule_async(
+    async def create_application_async(
         self,
-        request: sae_20190506_models.CreateApplicationScalingRuleRequest,
-    ) -> sae_20190506_models.CreateApplicationScalingRuleResponse:
+        request: sae_20190506_models.CreateApplicationRequest,
+    ) -> sae_20190506_models.CreateApplicationResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_application_scaling_rule_with_options_async(request, headers, runtime)
+        return await self.create_application_with_options_async(request, headers, runtime)
 
     def create_application_scaling_rule_with_options(
         self,
@@ -921,21 +905,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_config_map(
+    def create_application_scaling_rule(
         self,
-        request: sae_20190506_models.CreateConfigMapRequest,
-    ) -> sae_20190506_models.CreateConfigMapResponse:
+        request: sae_20190506_models.CreateApplicationScalingRuleRequest,
+    ) -> sae_20190506_models.CreateApplicationScalingRuleResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_config_map_with_options(request, headers, runtime)
+        return self.create_application_scaling_rule_with_options(request, headers, runtime)
 
-    async def create_config_map_async(
+    async def create_application_scaling_rule_async(
         self,
-        request: sae_20190506_models.CreateConfigMapRequest,
-    ) -> sae_20190506_models.CreateConfigMapResponse:
+        request: sae_20190506_models.CreateApplicationScalingRuleRequest,
+    ) -> sae_20190506_models.CreateApplicationScalingRuleResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_config_map_with_options_async(request, headers, runtime)
+        return await self.create_application_scaling_rule_with_options_async(request, headers, runtime)
 
     def create_config_map_with_options(
         self,
@@ -1013,21 +997,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_grey_tag_route(
+    def create_config_map(
         self,
-        request: sae_20190506_models.CreateGreyTagRouteRequest,
-    ) -> sae_20190506_models.CreateGreyTagRouteResponse:
+        request: sae_20190506_models.CreateConfigMapRequest,
+    ) -> sae_20190506_models.CreateConfigMapResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_grey_tag_route_with_options(request, headers, runtime)
+        return self.create_config_map_with_options(request, headers, runtime)
 
-    async def create_grey_tag_route_async(
+    async def create_config_map_async(
         self,
-        request: sae_20190506_models.CreateGreyTagRouteRequest,
-    ) -> sae_20190506_models.CreateGreyTagRouteResponse:
+        request: sae_20190506_models.CreateConfigMapRequest,
+    ) -> sae_20190506_models.CreateConfigMapResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_grey_tag_route_with_options_async(request, headers, runtime)
+        return await self.create_config_map_with_options_async(request, headers, runtime)
 
     def create_grey_tag_route_with_options(
         self,
@@ -1037,8 +1021,6 @@ class Client(OpenApiClient):
     ) -> sae_20190506_models.CreateGreyTagRouteResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.alb_rules):
-            query['AlbRules'] = request.alb_rules
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
         if not UtilClient.is_unset(request.description):
@@ -1077,8 +1059,6 @@ class Client(OpenApiClient):
     ) -> sae_20190506_models.CreateGreyTagRouteResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.alb_rules):
-            query['AlbRules'] = request.alb_rules
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
         if not UtilClient.is_unset(request.description):
@@ -1109,21 +1089,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_ingress(
+    def create_grey_tag_route(
         self,
-        request: sae_20190506_models.CreateIngressRequest,
-    ) -> sae_20190506_models.CreateIngressResponse:
+        request: sae_20190506_models.CreateGreyTagRouteRequest,
+    ) -> sae_20190506_models.CreateGreyTagRouteResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_ingress_with_options(request, headers, runtime)
+        return self.create_grey_tag_route_with_options(request, headers, runtime)
 
-    async def create_ingress_async(
+    async def create_grey_tag_route_async(
         self,
-        request: sae_20190506_models.CreateIngressRequest,
-    ) -> sae_20190506_models.CreateIngressResponse:
+        request: sae_20190506_models.CreateGreyTagRouteRequest,
+    ) -> sae_20190506_models.CreateGreyTagRouteResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_ingress_with_options_async(request, headers, runtime)
+        return await self.create_grey_tag_route_with_options_async(request, headers, runtime)
 
     def create_ingress_with_options(
         self,
@@ -1225,21 +1205,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_job(
+    def create_ingress(
         self,
-        request: sae_20190506_models.CreateJobRequest,
-    ) -> sae_20190506_models.CreateJobResponse:
+        request: sae_20190506_models.CreateIngressRequest,
+    ) -> sae_20190506_models.CreateIngressResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_job_with_options(request, headers, runtime)
+        return self.create_ingress_with_options(request, headers, runtime)
 
-    async def create_job_async(
+    async def create_ingress_async(
         self,
-        request: sae_20190506_models.CreateJobRequest,
-    ) -> sae_20190506_models.CreateJobResponse:
+        request: sae_20190506_models.CreateIngressRequest,
+    ) -> sae_20190506_models.CreateIngressResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_job_with_options_async(request, headers, runtime)
+        return await self.create_ingress_with_options_async(request, headers, runtime)
 
     def create_job_with_options(
         self,
@@ -1269,8 +1249,6 @@ class Client(OpenApiClient):
             query['Cpu'] = request.cpu
         if not UtilClient.is_unset(request.custom_host_alias):
             query['CustomHostAlias'] = request.custom_host_alias
-        if not UtilClient.is_unset(request.deploy):
-            query['Deploy'] = request.deploy
         if not UtilClient.is_unset(request.edas_container_version):
             query['EdasContainerVersion'] = request.edas_container_version
         if not UtilClient.is_unset(request.envs):
@@ -1285,8 +1263,6 @@ class Client(OpenApiClient):
             query['JarStartOptions'] = request.jar_start_options
         if not UtilClient.is_unset(request.jdk):
             query['Jdk'] = request.jdk
-        if not UtilClient.is_unset(request.liveness):
-            query['Liveness'] = request.liveness
         if not UtilClient.is_unset(request.memory):
             query['Memory'] = request.memory
         if not UtilClient.is_unset(request.mount_desc):
@@ -1303,8 +1279,6 @@ class Client(OpenApiClient):
             query['PackageUrl'] = request.package_url
         if not UtilClient.is_unset(request.package_version):
             query['PackageVersion'] = request.package_version
-        if not UtilClient.is_unset(request.php_arms_config_location):
-            query['PhpArmsConfigLocation'] = request.php_arms_config_location
         if not UtilClient.is_unset(request.php_config_location):
             query['PhpConfigLocation'] = request.php_config_location
         if not UtilClient.is_unset(request.post_start):
@@ -1317,8 +1291,6 @@ class Client(OpenApiClient):
             query['Python'] = request.python
         if not UtilClient.is_unset(request.python_modules):
             query['PythonModules'] = request.python_modules
-        if not UtilClient.is_unset(request.readiness):
-            query['Readiness'] = request.readiness
         if not UtilClient.is_unset(request.ref_app_id):
             query['RefAppId'] = request.ref_app_id
         if not UtilClient.is_unset(request.replicas):
@@ -1352,8 +1324,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.workload):
             query['Workload'] = request.workload
         body = {}
-        if not UtilClient.is_unset(request.associate_eip):
-            body['AssociateEip'] = request.associate_eip
+        if not UtilClient.is_unset(request.acr_instance_id):
+            body['AcrInstanceId'] = request.acr_instance_id
         if not UtilClient.is_unset(request.config_map_mount_desc):
             body['ConfigMapMountDesc'] = request.config_map_mount_desc
         if not UtilClient.is_unset(request.oss_ak_id):
@@ -1413,8 +1385,6 @@ class Client(OpenApiClient):
             query['Cpu'] = request.cpu
         if not UtilClient.is_unset(request.custom_host_alias):
             query['CustomHostAlias'] = request.custom_host_alias
-        if not UtilClient.is_unset(request.deploy):
-            query['Deploy'] = request.deploy
         if not UtilClient.is_unset(request.edas_container_version):
             query['EdasContainerVersion'] = request.edas_container_version
         if not UtilClient.is_unset(request.envs):
@@ -1429,8 +1399,6 @@ class Client(OpenApiClient):
             query['JarStartOptions'] = request.jar_start_options
         if not UtilClient.is_unset(request.jdk):
             query['Jdk'] = request.jdk
-        if not UtilClient.is_unset(request.liveness):
-            query['Liveness'] = request.liveness
         if not UtilClient.is_unset(request.memory):
             query['Memory'] = request.memory
         if not UtilClient.is_unset(request.mount_desc):
@@ -1447,8 +1415,6 @@ class Client(OpenApiClient):
             query['PackageUrl'] = request.package_url
         if not UtilClient.is_unset(request.package_version):
             query['PackageVersion'] = request.package_version
-        if not UtilClient.is_unset(request.php_arms_config_location):
-            query['PhpArmsConfigLocation'] = request.php_arms_config_location
         if not UtilClient.is_unset(request.php_config_location):
             query['PhpConfigLocation'] = request.php_config_location
         if not UtilClient.is_unset(request.post_start):
@@ -1461,8 +1427,6 @@ class Client(OpenApiClient):
             query['Python'] = request.python
         if not UtilClient.is_unset(request.python_modules):
             query['PythonModules'] = request.python_modules
-        if not UtilClient.is_unset(request.readiness):
-            query['Readiness'] = request.readiness
         if not UtilClient.is_unset(request.ref_app_id):
             query['RefAppId'] = request.ref_app_id
         if not UtilClient.is_unset(request.replicas):
@@ -1496,8 +1460,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.workload):
             query['Workload'] = request.workload
         body = {}
-        if not UtilClient.is_unset(request.associate_eip):
-            body['AssociateEip'] = request.associate_eip
+        if not UtilClient.is_unset(request.acr_instance_id):
+            body['AcrInstanceId'] = request.acr_instance_id
         if not UtilClient.is_unset(request.config_map_mount_desc):
             body['ConfigMapMountDesc'] = request.config_map_mount_desc
         if not UtilClient.is_unset(request.oss_ak_id):
@@ -1529,21 +1493,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_namespace(
+    def create_job(
         self,
-        request: sae_20190506_models.CreateNamespaceRequest,
-    ) -> sae_20190506_models.CreateNamespaceResponse:
+        request: sae_20190506_models.CreateJobRequest,
+    ) -> sae_20190506_models.CreateJobResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_namespace_with_options(request, headers, runtime)
+        return self.create_job_with_options(request, headers, runtime)
 
-    async def create_namespace_async(
+    async def create_job_async(
         self,
-        request: sae_20190506_models.CreateNamespaceRequest,
-    ) -> sae_20190506_models.CreateNamespaceResponse:
+        request: sae_20190506_models.CreateJobRequest,
+    ) -> sae_20190506_models.CreateJobResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_namespace_with_options_async(request, headers, runtime)
+        return await self.create_job_with_options_async(request, headers, runtime)
 
     def create_namespace_with_options(
         self,
@@ -1613,21 +1577,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_secret(
+    def create_namespace(
         self,
-        request: sae_20190506_models.CreateSecretRequest,
-    ) -> sae_20190506_models.CreateSecretResponse:
+        request: sae_20190506_models.CreateNamespaceRequest,
+    ) -> sae_20190506_models.CreateNamespaceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_secret_with_options(request, headers, runtime)
+        return self.create_namespace_with_options(request, headers, runtime)
 
-    async def create_secret_async(
+    async def create_namespace_async(
         self,
-        request: sae_20190506_models.CreateSecretRequest,
-    ) -> sae_20190506_models.CreateSecretResponse:
+        request: sae_20190506_models.CreateNamespaceRequest,
+    ) -> sae_20190506_models.CreateNamespaceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_secret_with_options_async(request, headers, runtime)
+        return await self.create_namespace_with_options_async(request, headers, runtime)
 
     def create_secret_with_options(
         self,
@@ -1705,21 +1669,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_application(
+    def create_secret(
         self,
-        request: sae_20190506_models.DeleteApplicationRequest,
-    ) -> sae_20190506_models.DeleteApplicationResponse:
+        request: sae_20190506_models.CreateSecretRequest,
+    ) -> sae_20190506_models.CreateSecretResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_application_with_options(request, headers, runtime)
+        return self.create_secret_with_options(request, headers, runtime)
 
-    async def delete_application_async(
+    async def create_secret_async(
         self,
-        request: sae_20190506_models.DeleteApplicationRequest,
-    ) -> sae_20190506_models.DeleteApplicationResponse:
+        request: sae_20190506_models.CreateSecretRequest,
+    ) -> sae_20190506_models.CreateSecretResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_application_with_options_async(request, headers, runtime)
+        return await self.create_secret_with_options_async(request, headers, runtime)
 
     def delete_application_with_options(
         self,
@@ -1781,21 +1745,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_application_scaling_rule(
+    def delete_application(
         self,
-        request: sae_20190506_models.DeleteApplicationScalingRuleRequest,
-    ) -> sae_20190506_models.DeleteApplicationScalingRuleResponse:
+        request: sae_20190506_models.DeleteApplicationRequest,
+    ) -> sae_20190506_models.DeleteApplicationResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_application_scaling_rule_with_options(request, headers, runtime)
+        return self.delete_application_with_options(request, headers, runtime)
 
-    async def delete_application_scaling_rule_async(
+    async def delete_application_async(
         self,
-        request: sae_20190506_models.DeleteApplicationScalingRuleRequest,
-    ) -> sae_20190506_models.DeleteApplicationScalingRuleResponse:
+        request: sae_20190506_models.DeleteApplicationRequest,
+    ) -> sae_20190506_models.DeleteApplicationResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_application_scaling_rule_with_options_async(request, headers, runtime)
+        return await self.delete_application_with_options_async(request, headers, runtime)
 
     def delete_application_scaling_rule_with_options(
         self,
@@ -1861,21 +1825,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_config_map(
+    def delete_application_scaling_rule(
         self,
-        request: sae_20190506_models.DeleteConfigMapRequest,
-    ) -> sae_20190506_models.DeleteConfigMapResponse:
+        request: sae_20190506_models.DeleteApplicationScalingRuleRequest,
+    ) -> sae_20190506_models.DeleteApplicationScalingRuleResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_config_map_with_options(request, headers, runtime)
+        return self.delete_application_scaling_rule_with_options(request, headers, runtime)
 
-    async def delete_config_map_async(
+    async def delete_application_scaling_rule_async(
         self,
-        request: sae_20190506_models.DeleteConfigMapRequest,
-    ) -> sae_20190506_models.DeleteConfigMapResponse:
+        request: sae_20190506_models.DeleteApplicationScalingRuleRequest,
+    ) -> sae_20190506_models.DeleteApplicationScalingRuleResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_config_map_with_options_async(request, headers, runtime)
+        return await self.delete_application_scaling_rule_with_options_async(request, headers, runtime)
 
     def delete_config_map_with_options(
         self,
@@ -1937,21 +1901,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_grey_tag_route(
+    def delete_config_map(
         self,
-        request: sae_20190506_models.DeleteGreyTagRouteRequest,
-    ) -> sae_20190506_models.DeleteGreyTagRouteResponse:
+        request: sae_20190506_models.DeleteConfigMapRequest,
+    ) -> sae_20190506_models.DeleteConfigMapResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_grey_tag_route_with_options(request, headers, runtime)
+        return self.delete_config_map_with_options(request, headers, runtime)
 
-    async def delete_grey_tag_route_async(
+    async def delete_config_map_async(
         self,
-        request: sae_20190506_models.DeleteGreyTagRouteRequest,
-    ) -> sae_20190506_models.DeleteGreyTagRouteResponse:
+        request: sae_20190506_models.DeleteConfigMapRequest,
+    ) -> sae_20190506_models.DeleteConfigMapResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_grey_tag_route_with_options_async(request, headers, runtime)
+        return await self.delete_config_map_with_options_async(request, headers, runtime)
 
     def delete_grey_tag_route_with_options(
         self,
@@ -2013,21 +1977,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_history_job(
+    def delete_grey_tag_route(
         self,
-        request: sae_20190506_models.DeleteHistoryJobRequest,
-    ) -> sae_20190506_models.DeleteHistoryJobResponse:
+        request: sae_20190506_models.DeleteGreyTagRouteRequest,
+    ) -> sae_20190506_models.DeleteGreyTagRouteResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_history_job_with_options(request, headers, runtime)
+        return self.delete_grey_tag_route_with_options(request, headers, runtime)
 
-    async def delete_history_job_async(
+    async def delete_grey_tag_route_async(
         self,
-        request: sae_20190506_models.DeleteHistoryJobRequest,
-    ) -> sae_20190506_models.DeleteHistoryJobResponse:
+        request: sae_20190506_models.DeleteGreyTagRouteRequest,
+    ) -> sae_20190506_models.DeleteGreyTagRouteResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_history_job_with_options_async(request, headers, runtime)
+        return await self.delete_grey_tag_route_with_options_async(request, headers, runtime)
 
     def delete_history_job_with_options(
         self,
@@ -2093,21 +2057,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_ingress(
+    def delete_history_job(
         self,
-        request: sae_20190506_models.DeleteIngressRequest,
-    ) -> sae_20190506_models.DeleteIngressResponse:
+        request: sae_20190506_models.DeleteHistoryJobRequest,
+    ) -> sae_20190506_models.DeleteHistoryJobResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_ingress_with_options(request, headers, runtime)
+        return self.delete_history_job_with_options(request, headers, runtime)
 
-    async def delete_ingress_async(
+    async def delete_history_job_async(
         self,
-        request: sae_20190506_models.DeleteIngressRequest,
-    ) -> sae_20190506_models.DeleteIngressResponse:
+        request: sae_20190506_models.DeleteHistoryJobRequest,
+    ) -> sae_20190506_models.DeleteHistoryJobResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_ingress_with_options_async(request, headers, runtime)
+        return await self.delete_history_job_with_options_async(request, headers, runtime)
 
     def delete_ingress_with_options(
         self,
@@ -2169,21 +2133,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_job(
+    def delete_ingress(
         self,
-        request: sae_20190506_models.DeleteJobRequest,
-    ) -> sae_20190506_models.DeleteJobResponse:
+        request: sae_20190506_models.DeleteIngressRequest,
+    ) -> sae_20190506_models.DeleteIngressResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_job_with_options(request, headers, runtime)
+        return self.delete_ingress_with_options(request, headers, runtime)
 
-    async def delete_job_async(
+    async def delete_ingress_async(
         self,
-        request: sae_20190506_models.DeleteJobRequest,
-    ) -> sae_20190506_models.DeleteJobResponse:
+        request: sae_20190506_models.DeleteIngressRequest,
+    ) -> sae_20190506_models.DeleteIngressResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_job_with_options_async(request, headers, runtime)
+        return await self.delete_ingress_with_options_async(request, headers, runtime)
 
     def delete_job_with_options(
         self,
@@ -2245,21 +2209,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_namespace(
+    def delete_job(
         self,
-        request: sae_20190506_models.DeleteNamespaceRequest,
-    ) -> sae_20190506_models.DeleteNamespaceResponse:
+        request: sae_20190506_models.DeleteJobRequest,
+    ) -> sae_20190506_models.DeleteJobResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_namespace_with_options(request, headers, runtime)
+        return self.delete_job_with_options(request, headers, runtime)
 
-    async def delete_namespace_async(
+    async def delete_job_async(
         self,
-        request: sae_20190506_models.DeleteNamespaceRequest,
-    ) -> sae_20190506_models.DeleteNamespaceResponse:
+        request: sae_20190506_models.DeleteJobRequest,
+    ) -> sae_20190506_models.DeleteJobResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_namespace_with_options_async(request, headers, runtime)
+        return await self.delete_job_with_options_async(request, headers, runtime)
 
     def delete_namespace_with_options(
         self,
@@ -2321,21 +2285,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_secret(
+    def delete_namespace(
         self,
-        request: sae_20190506_models.DeleteSecretRequest,
-    ) -> sae_20190506_models.DeleteSecretResponse:
+        request: sae_20190506_models.DeleteNamespaceRequest,
+    ) -> sae_20190506_models.DeleteNamespaceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_secret_with_options(request, headers, runtime)
+        return self.delete_namespace_with_options(request, headers, runtime)
 
-    async def delete_secret_async(
+    async def delete_namespace_async(
         self,
-        request: sae_20190506_models.DeleteSecretRequest,
-    ) -> sae_20190506_models.DeleteSecretResponse:
+        request: sae_20190506_models.DeleteNamespaceRequest,
+    ) -> sae_20190506_models.DeleteNamespaceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_secret_with_options_async(request, headers, runtime)
+        return await self.delete_namespace_with_options_async(request, headers, runtime)
 
     def delete_secret_with_options(
         self,
@@ -2401,21 +2365,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def deploy_application(
+    def delete_secret(
         self,
-        request: sae_20190506_models.DeployApplicationRequest,
-    ) -> sae_20190506_models.DeployApplicationResponse:
+        request: sae_20190506_models.DeleteSecretRequest,
+    ) -> sae_20190506_models.DeleteSecretResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.deploy_application_with_options(request, headers, runtime)
+        return self.delete_secret_with_options(request, headers, runtime)
 
-    async def deploy_application_async(
+    async def delete_secret_async(
         self,
-        request: sae_20190506_models.DeployApplicationRequest,
-    ) -> sae_20190506_models.DeployApplicationResponse:
+        request: sae_20190506_models.DeleteSecretRequest,
+    ) -> sae_20190506_models.DeleteSecretResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.deploy_application_with_options_async(request, headers, runtime)
+        return await self.delete_secret_with_options_async(request, headers, runtime)
 
     def deploy_application_with_options(
         self,
@@ -2441,6 +2405,8 @@ class Client(OpenApiClient):
             query['CommandArgs'] = request.command_args
         if not UtilClient.is_unset(request.custom_host_alias):
             query['CustomHostAlias'] = request.custom_host_alias
+        if not UtilClient.is_unset(request.deploy):
+            query['Deploy'] = request.deploy
         if not UtilClient.is_unset(request.edas_container_version):
             query['EdasContainerVersion'] = request.edas_container_version
         if not UtilClient.is_unset(request.enable_ahas):
@@ -2571,6 +2537,8 @@ class Client(OpenApiClient):
             query['CommandArgs'] = request.command_args
         if not UtilClient.is_unset(request.custom_host_alias):
             query['CustomHostAlias'] = request.custom_host_alias
+        if not UtilClient.is_unset(request.deploy):
+            query['Deploy'] = request.deploy
         if not UtilClient.is_unset(request.edas_container_version):
             query['EdasContainerVersion'] = request.edas_container_version
         if not UtilClient.is_unset(request.enable_ahas):
@@ -2677,21 +2645,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_app_service_detail(
+    def deploy_application(
         self,
-        request: sae_20190506_models.DescribeAppServiceDetailRequest,
-    ) -> sae_20190506_models.DescribeAppServiceDetailResponse:
+        request: sae_20190506_models.DeployApplicationRequest,
+    ) -> sae_20190506_models.DeployApplicationResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_app_service_detail_with_options(request, headers, runtime)
+        return self.deploy_application_with_options(request, headers, runtime)
 
-    async def describe_app_service_detail_async(
+    async def deploy_application_async(
         self,
-        request: sae_20190506_models.DescribeAppServiceDetailRequest,
-    ) -> sae_20190506_models.DescribeAppServiceDetailResponse:
+        request: sae_20190506_models.DeployApplicationRequest,
+    ) -> sae_20190506_models.DeployApplicationResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_app_service_detail_with_options_async(request, headers, runtime)
+        return await self.deploy_application_with_options_async(request, headers, runtime)
 
     def describe_app_service_detail_with_options(
         self,
@@ -2769,21 +2737,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_application_config(
+    def describe_app_service_detail(
         self,
-        request: sae_20190506_models.DescribeApplicationConfigRequest,
-    ) -> sae_20190506_models.DescribeApplicationConfigResponse:
+        request: sae_20190506_models.DescribeAppServiceDetailRequest,
+    ) -> sae_20190506_models.DescribeAppServiceDetailResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_application_config_with_options(request, headers, runtime)
+        return self.describe_app_service_detail_with_options(request, headers, runtime)
 
-    async def describe_application_config_async(
+    async def describe_app_service_detail_async(
         self,
-        request: sae_20190506_models.DescribeApplicationConfigRequest,
-    ) -> sae_20190506_models.DescribeApplicationConfigResponse:
+        request: sae_20190506_models.DescribeAppServiceDetailRequest,
+    ) -> sae_20190506_models.DescribeAppServiceDetailResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_application_config_with_options_async(request, headers, runtime)
+        return await self.describe_app_service_detail_with_options_async(request, headers, runtime)
 
     def describe_application_config_with_options(
         self,
@@ -2849,21 +2817,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_application_groups(
+    def describe_application_config(
         self,
-        request: sae_20190506_models.DescribeApplicationGroupsRequest,
-    ) -> sae_20190506_models.DescribeApplicationGroupsResponse:
+        request: sae_20190506_models.DescribeApplicationConfigRequest,
+    ) -> sae_20190506_models.DescribeApplicationConfigResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_application_groups_with_options(request, headers, runtime)
+        return self.describe_application_config_with_options(request, headers, runtime)
 
-    async def describe_application_groups_async(
+    async def describe_application_config_async(
         self,
-        request: sae_20190506_models.DescribeApplicationGroupsRequest,
-    ) -> sae_20190506_models.DescribeApplicationGroupsResponse:
+        request: sae_20190506_models.DescribeApplicationConfigRequest,
+    ) -> sae_20190506_models.DescribeApplicationConfigResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_application_groups_with_options_async(request, headers, runtime)
+        return await self.describe_application_config_with_options_async(request, headers, runtime)
 
     def describe_application_groups_with_options(
         self,
@@ -2933,21 +2901,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_application_image(
+    def describe_application_groups(
         self,
-        request: sae_20190506_models.DescribeApplicationImageRequest,
-    ) -> sae_20190506_models.DescribeApplicationImageResponse:
+        request: sae_20190506_models.DescribeApplicationGroupsRequest,
+    ) -> sae_20190506_models.DescribeApplicationGroupsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_application_image_with_options(request, headers, runtime)
+        return self.describe_application_groups_with_options(request, headers, runtime)
 
-    async def describe_application_image_async(
+    async def describe_application_groups_async(
         self,
-        request: sae_20190506_models.DescribeApplicationImageRequest,
-    ) -> sae_20190506_models.DescribeApplicationImageResponse:
+        request: sae_20190506_models.DescribeApplicationGroupsRequest,
+    ) -> sae_20190506_models.DescribeApplicationGroupsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_application_image_with_options_async(request, headers, runtime)
+        return await self.describe_application_groups_with_options_async(request, headers, runtime)
 
     def describe_application_image_with_options(
         self,
@@ -3013,21 +2981,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_application_instances(
+    def describe_application_image(
         self,
-        request: sae_20190506_models.DescribeApplicationInstancesRequest,
-    ) -> sae_20190506_models.DescribeApplicationInstancesResponse:
+        request: sae_20190506_models.DescribeApplicationImageRequest,
+    ) -> sae_20190506_models.DescribeApplicationImageResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_application_instances_with_options(request, headers, runtime)
+        return self.describe_application_image_with_options(request, headers, runtime)
 
-    async def describe_application_instances_async(
+    async def describe_application_image_async(
         self,
-        request: sae_20190506_models.DescribeApplicationInstancesRequest,
-    ) -> sae_20190506_models.DescribeApplicationInstancesResponse:
+        request: sae_20190506_models.DescribeApplicationImageRequest,
+    ) -> sae_20190506_models.DescribeApplicationImageResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_application_instances_with_options_async(request, headers, runtime)
+        return await self.describe_application_image_with_options_async(request, headers, runtime)
 
     def describe_application_instances_with_options(
         self,
@@ -3105,21 +3073,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_application_scaling_rule(
+    def describe_application_instances(
         self,
-        request: sae_20190506_models.DescribeApplicationScalingRuleRequest,
-    ) -> sae_20190506_models.DescribeApplicationScalingRuleResponse:
+        request: sae_20190506_models.DescribeApplicationInstancesRequest,
+    ) -> sae_20190506_models.DescribeApplicationInstancesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_application_scaling_rule_with_options(request, headers, runtime)
+        return self.describe_application_instances_with_options(request, headers, runtime)
 
-    async def describe_application_scaling_rule_async(
+    async def describe_application_instances_async(
         self,
-        request: sae_20190506_models.DescribeApplicationScalingRuleRequest,
-    ) -> sae_20190506_models.DescribeApplicationScalingRuleResponse:
+        request: sae_20190506_models.DescribeApplicationInstancesRequest,
+    ) -> sae_20190506_models.DescribeApplicationInstancesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_application_scaling_rule_with_options_async(request, headers, runtime)
+        return await self.describe_application_instances_with_options_async(request, headers, runtime)
 
     def describe_application_scaling_rule_with_options(
         self,
@@ -3185,21 +3153,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_application_scaling_rules(
+    def describe_application_scaling_rule(
         self,
-        request: sae_20190506_models.DescribeApplicationScalingRulesRequest,
-    ) -> sae_20190506_models.DescribeApplicationScalingRulesResponse:
+        request: sae_20190506_models.DescribeApplicationScalingRuleRequest,
+    ) -> sae_20190506_models.DescribeApplicationScalingRuleResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_application_scaling_rules_with_options(request, headers, runtime)
+        return self.describe_application_scaling_rule_with_options(request, headers, runtime)
 
-    async def describe_application_scaling_rules_async(
+    async def describe_application_scaling_rule_async(
         self,
-        request: sae_20190506_models.DescribeApplicationScalingRulesRequest,
-    ) -> sae_20190506_models.DescribeApplicationScalingRulesResponse:
+        request: sae_20190506_models.DescribeApplicationScalingRuleRequest,
+    ) -> sae_20190506_models.DescribeApplicationScalingRuleResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_application_scaling_rules_with_options_async(request, headers, runtime)
+        return await self.describe_application_scaling_rule_with_options_async(request, headers, runtime)
 
     def describe_application_scaling_rules_with_options(
         self,
@@ -3261,21 +3229,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_application_slbs(
+    def describe_application_scaling_rules(
         self,
-        request: sae_20190506_models.DescribeApplicationSlbsRequest,
-    ) -> sae_20190506_models.DescribeApplicationSlbsResponse:
+        request: sae_20190506_models.DescribeApplicationScalingRulesRequest,
+    ) -> sae_20190506_models.DescribeApplicationScalingRulesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_application_slbs_with_options(request, headers, runtime)
+        return self.describe_application_scaling_rules_with_options(request, headers, runtime)
 
-    async def describe_application_slbs_async(
+    async def describe_application_scaling_rules_async(
         self,
-        request: sae_20190506_models.DescribeApplicationSlbsRequest,
-    ) -> sae_20190506_models.DescribeApplicationSlbsResponse:
+        request: sae_20190506_models.DescribeApplicationScalingRulesRequest,
+    ) -> sae_20190506_models.DescribeApplicationScalingRulesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_application_slbs_with_options_async(request, headers, runtime)
+        return await self.describe_application_scaling_rules_with_options_async(request, headers, runtime)
 
     def describe_application_slbs_with_options(
         self,
@@ -3337,21 +3305,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_application_status(
+    def describe_application_slbs(
         self,
-        request: sae_20190506_models.DescribeApplicationStatusRequest,
-    ) -> sae_20190506_models.DescribeApplicationStatusResponse:
+        request: sae_20190506_models.DescribeApplicationSlbsRequest,
+    ) -> sae_20190506_models.DescribeApplicationSlbsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_application_status_with_options(request, headers, runtime)
+        return self.describe_application_slbs_with_options(request, headers, runtime)
 
-    async def describe_application_status_async(
+    async def describe_application_slbs_async(
         self,
-        request: sae_20190506_models.DescribeApplicationStatusRequest,
-    ) -> sae_20190506_models.DescribeApplicationStatusResponse:
+        request: sae_20190506_models.DescribeApplicationSlbsRequest,
+    ) -> sae_20190506_models.DescribeApplicationSlbsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_application_status_with_options_async(request, headers, runtime)
+        return await self.describe_application_slbs_with_options_async(request, headers, runtime)
 
     def describe_application_status_with_options(
         self,
@@ -3413,21 +3381,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_change_order(
+    def describe_application_status(
         self,
-        request: sae_20190506_models.DescribeChangeOrderRequest,
-    ) -> sae_20190506_models.DescribeChangeOrderResponse:
+        request: sae_20190506_models.DescribeApplicationStatusRequest,
+    ) -> sae_20190506_models.DescribeApplicationStatusResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_change_order_with_options(request, headers, runtime)
+        return self.describe_application_status_with_options(request, headers, runtime)
 
-    async def describe_change_order_async(
+    async def describe_application_status_async(
         self,
-        request: sae_20190506_models.DescribeChangeOrderRequest,
-    ) -> sae_20190506_models.DescribeChangeOrderResponse:
+        request: sae_20190506_models.DescribeApplicationStatusRequest,
+    ) -> sae_20190506_models.DescribeApplicationStatusResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_change_order_with_options_async(request, headers, runtime)
+        return await self.describe_application_status_with_options_async(request, headers, runtime)
 
     def describe_change_order_with_options(
         self,
@@ -3489,21 +3457,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_components(
+    def describe_change_order(
         self,
-        request: sae_20190506_models.DescribeComponentsRequest,
-    ) -> sae_20190506_models.DescribeComponentsResponse:
+        request: sae_20190506_models.DescribeChangeOrderRequest,
+    ) -> sae_20190506_models.DescribeChangeOrderResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_components_with_options(request, headers, runtime)
+        return self.describe_change_order_with_options(request, headers, runtime)
 
-    async def describe_components_async(
+    async def describe_change_order_async(
         self,
-        request: sae_20190506_models.DescribeComponentsRequest,
-    ) -> sae_20190506_models.DescribeComponentsResponse:
+        request: sae_20190506_models.DescribeChangeOrderRequest,
+    ) -> sae_20190506_models.DescribeChangeOrderResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_components_with_options_async(request, headers, runtime)
+        return await self.describe_change_order_with_options_async(request, headers, runtime)
 
     def describe_components_with_options(
         self,
@@ -3569,21 +3537,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_config_map(
+    def describe_components(
         self,
-        request: sae_20190506_models.DescribeConfigMapRequest,
-    ) -> sae_20190506_models.DescribeConfigMapResponse:
+        request: sae_20190506_models.DescribeComponentsRequest,
+    ) -> sae_20190506_models.DescribeComponentsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_config_map_with_options(request, headers, runtime)
+        return self.describe_components_with_options(request, headers, runtime)
 
-    async def describe_config_map_async(
+    async def describe_components_async(
         self,
-        request: sae_20190506_models.DescribeConfigMapRequest,
-    ) -> sae_20190506_models.DescribeConfigMapResponse:
+        request: sae_20190506_models.DescribeComponentsRequest,
+    ) -> sae_20190506_models.DescribeComponentsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_config_map_with_options_async(request, headers, runtime)
+        return await self.describe_components_with_options_async(request, headers, runtime)
 
     def describe_config_map_with_options(
         self,
@@ -3645,21 +3613,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_configuration_price(
+    def describe_config_map(
         self,
-        request: sae_20190506_models.DescribeConfigurationPriceRequest,
-    ) -> sae_20190506_models.DescribeConfigurationPriceResponse:
+        request: sae_20190506_models.DescribeConfigMapRequest,
+    ) -> sae_20190506_models.DescribeConfigMapResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_configuration_price_with_options(request, headers, runtime)
+        return self.describe_config_map_with_options(request, headers, runtime)
 
-    async def describe_configuration_price_async(
+    async def describe_config_map_async(
         self,
-        request: sae_20190506_models.DescribeConfigurationPriceRequest,
-    ) -> sae_20190506_models.DescribeConfigurationPriceResponse:
+        request: sae_20190506_models.DescribeConfigMapRequest,
+    ) -> sae_20190506_models.DescribeConfigMapResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_configuration_price_with_options_async(request, headers, runtime)
+        return await self.describe_config_map_with_options_async(request, headers, runtime)
 
     def describe_configuration_price_with_options(
         self,
@@ -3729,15 +3697,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_edas_containers(self) -> sae_20190506_models.DescribeEdasContainersResponse:
+    def describe_configuration_price(
+        self,
+        request: sae_20190506_models.DescribeConfigurationPriceRequest,
+    ) -> sae_20190506_models.DescribeConfigurationPriceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_edas_containers_with_options(headers, runtime)
+        return self.describe_configuration_price_with_options(request, headers, runtime)
 
-    async def describe_edas_containers_async(self) -> sae_20190506_models.DescribeEdasContainersResponse:
+    async def describe_configuration_price_async(
+        self,
+        request: sae_20190506_models.DescribeConfigurationPriceRequest,
+    ) -> sae_20190506_models.DescribeConfigurationPriceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_edas_containers_with_options_async(headers, runtime)
+        return await self.describe_configuration_price_with_options_async(request, headers, runtime)
 
     def describe_edas_containers_with_options(
         self,
@@ -3787,21 +3761,15 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_grey_tag_route(
-        self,
-        request: sae_20190506_models.DescribeGreyTagRouteRequest,
-    ) -> sae_20190506_models.DescribeGreyTagRouteResponse:
+    def describe_edas_containers(self) -> sae_20190506_models.DescribeEdasContainersResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_grey_tag_route_with_options(request, headers, runtime)
+        return self.describe_edas_containers_with_options(headers, runtime)
 
-    async def describe_grey_tag_route_async(
-        self,
-        request: sae_20190506_models.DescribeGreyTagRouteRequest,
-    ) -> sae_20190506_models.DescribeGreyTagRouteResponse:
+    async def describe_edas_containers_async(self) -> sae_20190506_models.DescribeEdasContainersResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_grey_tag_route_with_options_async(request, headers, runtime)
+        return await self.describe_edas_containers_with_options_async(headers, runtime)
 
     def describe_grey_tag_route_with_options(
         self,
@@ -3863,21 +3831,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_ingress(
+    def describe_grey_tag_route(
         self,
-        request: sae_20190506_models.DescribeIngressRequest,
-    ) -> sae_20190506_models.DescribeIngressResponse:
+        request: sae_20190506_models.DescribeGreyTagRouteRequest,
+    ) -> sae_20190506_models.DescribeGreyTagRouteResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_ingress_with_options(request, headers, runtime)
+        return self.describe_grey_tag_route_with_options(request, headers, runtime)
 
-    async def describe_ingress_async(
+    async def describe_grey_tag_route_async(
         self,
-        request: sae_20190506_models.DescribeIngressRequest,
-    ) -> sae_20190506_models.DescribeIngressResponse:
+        request: sae_20190506_models.DescribeGreyTagRouteRequest,
+    ) -> sae_20190506_models.DescribeGreyTagRouteResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_ingress_with_options_async(request, headers, runtime)
+        return await self.describe_grey_tag_route_with_options_async(request, headers, runtime)
 
     def describe_ingress_with_options(
         self,
@@ -3939,21 +3907,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_instance_log(
+    def describe_ingress(
         self,
-        request: sae_20190506_models.DescribeInstanceLogRequest,
-    ) -> sae_20190506_models.DescribeInstanceLogResponse:
+        request: sae_20190506_models.DescribeIngressRequest,
+    ) -> sae_20190506_models.DescribeIngressResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_instance_log_with_options(request, headers, runtime)
+        return self.describe_ingress_with_options(request, headers, runtime)
 
-    async def describe_instance_log_async(
+    async def describe_ingress_async(
         self,
-        request: sae_20190506_models.DescribeInstanceLogRequest,
-    ) -> sae_20190506_models.DescribeInstanceLogResponse:
+        request: sae_20190506_models.DescribeIngressRequest,
+    ) -> sae_20190506_models.DescribeIngressResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_instance_log_with_options_async(request, headers, runtime)
+        return await self.describe_ingress_with_options_async(request, headers, runtime)
 
     def describe_instance_log_with_options(
         self,
@@ -4015,15 +3983,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_instance_specifications(self) -> sae_20190506_models.DescribeInstanceSpecificationsResponse:
+    def describe_instance_log(
+        self,
+        request: sae_20190506_models.DescribeInstanceLogRequest,
+    ) -> sae_20190506_models.DescribeInstanceLogResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_instance_specifications_with_options(headers, runtime)
+        return self.describe_instance_log_with_options(request, headers, runtime)
 
-    async def describe_instance_specifications_async(self) -> sae_20190506_models.DescribeInstanceSpecificationsResponse:
+    async def describe_instance_log_async(
+        self,
+        request: sae_20190506_models.DescribeInstanceLogRequest,
+    ) -> sae_20190506_models.DescribeInstanceLogResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_instance_specifications_with_options_async(headers, runtime)
+        return await self.describe_instance_log_with_options_async(request, headers, runtime)
 
     def describe_instance_specifications_with_options(
         self,
@@ -4073,21 +4047,15 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_job(
-        self,
-        request: sae_20190506_models.DescribeJobRequest,
-    ) -> sae_20190506_models.DescribeJobResponse:
+    def describe_instance_specifications(self) -> sae_20190506_models.DescribeInstanceSpecificationsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_job_with_options(request, headers, runtime)
+        return self.describe_instance_specifications_with_options(headers, runtime)
 
-    async def describe_job_async(
-        self,
-        request: sae_20190506_models.DescribeJobRequest,
-    ) -> sae_20190506_models.DescribeJobResponse:
+    async def describe_instance_specifications_async(self) -> sae_20190506_models.DescribeInstanceSpecificationsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_job_with_options_async(request, headers, runtime)
+        return await self.describe_instance_specifications_with_options_async(headers, runtime)
 
     def describe_job_with_options(
         self,
@@ -4101,8 +4069,6 @@ class Client(OpenApiClient):
             query['AppId'] = request.app_id
         if not UtilClient.is_unset(request.job_id):
             query['JobId'] = request.job_id
-        if not UtilClient.is_unset(request.version_id):
-            query['VersionId'] = request.version_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -4135,8 +4101,6 @@ class Client(OpenApiClient):
             query['AppId'] = request.app_id
         if not UtilClient.is_unset(request.job_id):
             query['JobId'] = request.job_id
-        if not UtilClient.is_unset(request.version_id):
-            query['VersionId'] = request.version_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -4157,21 +4121,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_job_history(
+    def describe_job(
         self,
-        request: sae_20190506_models.DescribeJobHistoryRequest,
-    ) -> sae_20190506_models.DescribeJobHistoryResponse:
+        request: sae_20190506_models.DescribeJobRequest,
+    ) -> sae_20190506_models.DescribeJobResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_job_history_with_options(request, headers, runtime)
+        return self.describe_job_with_options(request, headers, runtime)
 
-    async def describe_job_history_async(
+    async def describe_job_async(
         self,
-        request: sae_20190506_models.DescribeJobHistoryRequest,
-    ) -> sae_20190506_models.DescribeJobHistoryResponse:
+        request: sae_20190506_models.DescribeJobRequest,
+    ) -> sae_20190506_models.DescribeJobResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_job_history_with_options_async(request, headers, runtime)
+        return await self.describe_job_with_options_async(request, headers, runtime)
 
     def describe_job_history_with_options(
         self,
@@ -4245,21 +4209,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_job_status(
+    def describe_job_history(
         self,
-        request: sae_20190506_models.DescribeJobStatusRequest,
-    ) -> sae_20190506_models.DescribeJobStatusResponse:
+        request: sae_20190506_models.DescribeJobHistoryRequest,
+    ) -> sae_20190506_models.DescribeJobHistoryResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_job_status_with_options(request, headers, runtime)
+        return self.describe_job_history_with_options(request, headers, runtime)
 
-    async def describe_job_status_async(
+    async def describe_job_history_async(
         self,
-        request: sae_20190506_models.DescribeJobStatusRequest,
-    ) -> sae_20190506_models.DescribeJobStatusResponse:
+        request: sae_20190506_models.DescribeJobHistoryRequest,
+    ) -> sae_20190506_models.DescribeJobHistoryResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_job_status_with_options_async(request, headers, runtime)
+        return await self.describe_job_history_with_options_async(request, headers, runtime)
 
     def describe_job_status_with_options(
         self,
@@ -4325,21 +4289,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_namespace(
+    def describe_job_status(
         self,
-        request: sae_20190506_models.DescribeNamespaceRequest,
-    ) -> sae_20190506_models.DescribeNamespaceResponse:
+        request: sae_20190506_models.DescribeJobStatusRequest,
+    ) -> sae_20190506_models.DescribeJobStatusResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_namespace_with_options(request, headers, runtime)
+        return self.describe_job_status_with_options(request, headers, runtime)
 
-    async def describe_namespace_async(
+    async def describe_job_status_async(
         self,
-        request: sae_20190506_models.DescribeNamespaceRequest,
-    ) -> sae_20190506_models.DescribeNamespaceResponse:
+        request: sae_20190506_models.DescribeJobStatusRequest,
+    ) -> sae_20190506_models.DescribeJobStatusResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_namespace_with_options_async(request, headers, runtime)
+        return await self.describe_job_status_with_options_async(request, headers, runtime)
 
     def describe_namespace_with_options(
         self,
@@ -4401,21 +4365,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_namespace_list(
+    def describe_namespace(
         self,
-        request: sae_20190506_models.DescribeNamespaceListRequest,
-    ) -> sae_20190506_models.DescribeNamespaceListResponse:
+        request: sae_20190506_models.DescribeNamespaceRequest,
+    ) -> sae_20190506_models.DescribeNamespaceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_namespace_list_with_options(request, headers, runtime)
+        return self.describe_namespace_with_options(request, headers, runtime)
 
-    async def describe_namespace_list_async(
+    async def describe_namespace_async(
         self,
-        request: sae_20190506_models.DescribeNamespaceListRequest,
-    ) -> sae_20190506_models.DescribeNamespaceListResponse:
+        request: sae_20190506_models.DescribeNamespaceRequest,
+    ) -> sae_20190506_models.DescribeNamespaceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_namespace_list_with_options_async(request, headers, runtime)
+        return await self.describe_namespace_with_options_async(request, headers, runtime)
 
     def describe_namespace_list_with_options(
         self,
@@ -4481,21 +4445,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_namespace_resources(
+    def describe_namespace_list(
         self,
-        request: sae_20190506_models.DescribeNamespaceResourcesRequest,
-    ) -> sae_20190506_models.DescribeNamespaceResourcesResponse:
+        request: sae_20190506_models.DescribeNamespaceListRequest,
+    ) -> sae_20190506_models.DescribeNamespaceListResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_namespace_resources_with_options(request, headers, runtime)
+        return self.describe_namespace_list_with_options(request, headers, runtime)
 
-    async def describe_namespace_resources_async(
+    async def describe_namespace_list_async(
         self,
-        request: sae_20190506_models.DescribeNamespaceResourcesRequest,
-    ) -> sae_20190506_models.DescribeNamespaceResourcesResponse:
+        request: sae_20190506_models.DescribeNamespaceListRequest,
+    ) -> sae_20190506_models.DescribeNamespaceListResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_namespace_resources_with_options_async(request, headers, runtime)
+        return await self.describe_namespace_list_with_options_async(request, headers, runtime)
 
     def describe_namespace_resources_with_options(
         self,
@@ -4557,21 +4521,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_namespaces(
+    def describe_namespace_resources(
         self,
-        request: sae_20190506_models.DescribeNamespacesRequest,
-    ) -> sae_20190506_models.DescribeNamespacesResponse:
+        request: sae_20190506_models.DescribeNamespaceResourcesRequest,
+    ) -> sae_20190506_models.DescribeNamespaceResourcesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_namespaces_with_options(request, headers, runtime)
+        return self.describe_namespace_resources_with_options(request, headers, runtime)
 
-    async def describe_namespaces_async(
+    async def describe_namespace_resources_async(
         self,
-        request: sae_20190506_models.DescribeNamespacesRequest,
-    ) -> sae_20190506_models.DescribeNamespacesResponse:
+        request: sae_20190506_models.DescribeNamespaceResourcesRequest,
+    ) -> sae_20190506_models.DescribeNamespaceResourcesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_namespaces_with_options_async(request, headers, runtime)
+        return await self.describe_namespace_resources_with_options_async(request, headers, runtime)
 
     def describe_namespaces_with_options(
         self,
@@ -4637,21 +4601,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_pipeline(
+    def describe_namespaces(
         self,
-        request: sae_20190506_models.DescribePipelineRequest,
-    ) -> sae_20190506_models.DescribePipelineResponse:
+        request: sae_20190506_models.DescribeNamespacesRequest,
+    ) -> sae_20190506_models.DescribeNamespacesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_pipeline_with_options(request, headers, runtime)
+        return self.describe_namespaces_with_options(request, headers, runtime)
 
-    async def describe_pipeline_async(
+    async def describe_namespaces_async(
         self,
-        request: sae_20190506_models.DescribePipelineRequest,
-    ) -> sae_20190506_models.DescribePipelineResponse:
+        request: sae_20190506_models.DescribeNamespacesRequest,
+    ) -> sae_20190506_models.DescribeNamespacesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_pipeline_with_options_async(request, headers, runtime)
+        return await self.describe_namespaces_with_options_async(request, headers, runtime)
 
     def describe_pipeline_with_options(
         self,
@@ -4713,15 +4677,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_regions(self) -> sae_20190506_models.DescribeRegionsResponse:
+    def describe_pipeline(
+        self,
+        request: sae_20190506_models.DescribePipelineRequest,
+    ) -> sae_20190506_models.DescribePipelineResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_regions_with_options(headers, runtime)
+        return self.describe_pipeline_with_options(request, headers, runtime)
 
-    async def describe_regions_async(self) -> sae_20190506_models.DescribeRegionsResponse:
+    async def describe_pipeline_async(
+        self,
+        request: sae_20190506_models.DescribePipelineRequest,
+    ) -> sae_20190506_models.DescribePipelineResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_regions_with_options_async(headers, runtime)
+        return await self.describe_pipeline_with_options_async(request, headers, runtime)
 
     def describe_regions_with_options(
         self,
@@ -4771,21 +4741,15 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_secret(
-        self,
-        request: sae_20190506_models.DescribeSecretRequest,
-    ) -> sae_20190506_models.DescribeSecretResponse:
+    def describe_regions(self) -> sae_20190506_models.DescribeRegionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_secret_with_options(request, headers, runtime)
+        return self.describe_regions_with_options(headers, runtime)
 
-    async def describe_secret_async(
-        self,
-        request: sae_20190506_models.DescribeSecretRequest,
-    ) -> sae_20190506_models.DescribeSecretResponse:
+    async def describe_regions_async(self) -> sae_20190506_models.DescribeRegionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_secret_with_options_async(request, headers, runtime)
+        return await self.describe_regions_with_options_async(headers, runtime)
 
     def describe_secret_with_options(
         self,
@@ -4851,21 +4815,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def disable_application_scaling_rule(
+    def describe_secret(
         self,
-        request: sae_20190506_models.DisableApplicationScalingRuleRequest,
-    ) -> sae_20190506_models.DisableApplicationScalingRuleResponse:
+        request: sae_20190506_models.DescribeSecretRequest,
+    ) -> sae_20190506_models.DescribeSecretResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.disable_application_scaling_rule_with_options(request, headers, runtime)
+        return self.describe_secret_with_options(request, headers, runtime)
 
-    async def disable_application_scaling_rule_async(
+    async def describe_secret_async(
         self,
-        request: sae_20190506_models.DisableApplicationScalingRuleRequest,
-    ) -> sae_20190506_models.DisableApplicationScalingRuleResponse:
+        request: sae_20190506_models.DescribeSecretRequest,
+    ) -> sae_20190506_models.DescribeSecretResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.disable_application_scaling_rule_with_options_async(request, headers, runtime)
+        return await self.describe_secret_with_options_async(request, headers, runtime)
 
     def disable_application_scaling_rule_with_options(
         self,
@@ -4931,21 +4895,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def enable_application_scaling_rule(
+    def disable_application_scaling_rule(
         self,
-        request: sae_20190506_models.EnableApplicationScalingRuleRequest,
-    ) -> sae_20190506_models.EnableApplicationScalingRuleResponse:
+        request: sae_20190506_models.DisableApplicationScalingRuleRequest,
+    ) -> sae_20190506_models.DisableApplicationScalingRuleResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.enable_application_scaling_rule_with_options(request, headers, runtime)
+        return self.disable_application_scaling_rule_with_options(request, headers, runtime)
 
-    async def enable_application_scaling_rule_async(
+    async def disable_application_scaling_rule_async(
         self,
-        request: sae_20190506_models.EnableApplicationScalingRuleRequest,
-    ) -> sae_20190506_models.EnableApplicationScalingRuleResponse:
+        request: sae_20190506_models.DisableApplicationScalingRuleRequest,
+    ) -> sae_20190506_models.DisableApplicationScalingRuleResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.enable_application_scaling_rule_with_options_async(request, headers, runtime)
+        return await self.disable_application_scaling_rule_with_options_async(request, headers, runtime)
 
     def enable_application_scaling_rule_with_options(
         self,
@@ -5011,21 +4975,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def exec_job(
+    def enable_application_scaling_rule(
         self,
-        request: sae_20190506_models.ExecJobRequest,
-    ) -> sae_20190506_models.ExecJobResponse:
+        request: sae_20190506_models.EnableApplicationScalingRuleRequest,
+    ) -> sae_20190506_models.EnableApplicationScalingRuleResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.exec_job_with_options(request, headers, runtime)
+        return self.enable_application_scaling_rule_with_options(request, headers, runtime)
 
-    async def exec_job_async(
+    async def enable_application_scaling_rule_async(
         self,
-        request: sae_20190506_models.ExecJobRequest,
-    ) -> sae_20190506_models.ExecJobResponse:
+        request: sae_20190506_models.EnableApplicationScalingRuleRequest,
+    ) -> sae_20190506_models.EnableApplicationScalingRuleResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.exec_job_with_options_async(request, headers, runtime)
+        return await self.enable_application_scaling_rule_with_options_async(request, headers, runtime)
 
     def exec_job_with_options(
         self,
@@ -5119,105 +5083,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_job_history(
+    def exec_job(
         self,
-        request: sae_20190506_models.GetJobHistoryRequest,
-    ) -> sae_20190506_models.GetJobHistoryResponse:
+        request: sae_20190506_models.ExecJobRequest,
+    ) -> sae_20190506_models.ExecJobResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_job_history_with_options(request, headers, runtime)
+        return self.exec_job_with_options(request, headers, runtime)
 
-    async def get_job_history_async(
+    async def exec_job_async(
         self,
-        request: sae_20190506_models.GetJobHistoryRequest,
-    ) -> sae_20190506_models.GetJobHistoryResponse:
+        request: sae_20190506_models.ExecJobRequest,
+    ) -> sae_20190506_models.ExecJobResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_job_history_with_options_async(request, headers, runtime)
-
-    def get_job_history_with_options(
-        self,
-        request: sae_20190506_models.GetJobHistoryRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sae_20190506_models.GetJobHistoryResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.app_id):
-            query['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.current_page):
-            query['CurrentPage'] = request.current_page
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetJobHistory',
-            version='2019-05-06',
-            protocol='HTTPS',
-            pathname=f'/pop/v1/sam/job/getJobHistory',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            sae_20190506_models.GetJobHistoryResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_job_history_with_options_async(
-        self,
-        request: sae_20190506_models.GetJobHistoryRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sae_20190506_models.GetJobHistoryResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.app_id):
-            query['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.current_page):
-            query['CurrentPage'] = request.current_page
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetJobHistory',
-            version='2019-05-06',
-            protocol='HTTPS',
-            pathname=f'/pop/v1/sam/job/getJobHistory',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            sae_20190506_models.GetJobHistoryResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def list_app_events(
-        self,
-        request: sae_20190506_models.ListAppEventsRequest,
-    ) -> sae_20190506_models.ListAppEventsResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.list_app_events_with_options(request, headers, runtime)
-
-    async def list_app_events_async(
-        self,
-        request: sae_20190506_models.ListAppEventsRequest,
-    ) -> sae_20190506_models.ListAppEventsResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.list_app_events_with_options_async(request, headers, runtime)
+        return await self.exec_job_with_options_async(request, headers, runtime)
 
     def list_app_events_with_options(
         self,
@@ -5307,21 +5187,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_app_services_page(
+    def list_app_events(
         self,
-        request: sae_20190506_models.ListAppServicesPageRequest,
-    ) -> sae_20190506_models.ListAppServicesPageResponse:
+        request: sae_20190506_models.ListAppEventsRequest,
+    ) -> sae_20190506_models.ListAppEventsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_app_services_page_with_options(request, headers, runtime)
+        return self.list_app_events_with_options(request, headers, runtime)
 
-    async def list_app_services_page_async(
+    async def list_app_events_async(
         self,
-        request: sae_20190506_models.ListAppServicesPageRequest,
-    ) -> sae_20190506_models.ListAppServicesPageResponse:
+        request: sae_20190506_models.ListAppEventsRequest,
+    ) -> sae_20190506_models.ListAppEventsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_app_services_page_with_options_async(request, headers, runtime)
+        return await self.list_app_events_with_options_async(request, headers, runtime)
 
     def list_app_services_page_with_options(
         self,
@@ -5395,21 +5275,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_app_versions(
+    def list_app_services_page(
         self,
-        request: sae_20190506_models.ListAppVersionsRequest,
-    ) -> sae_20190506_models.ListAppVersionsResponse:
+        request: sae_20190506_models.ListAppServicesPageRequest,
+    ) -> sae_20190506_models.ListAppServicesPageResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_app_versions_with_options(request, headers, runtime)
+        return self.list_app_services_page_with_options(request, headers, runtime)
 
-    async def list_app_versions_async(
+    async def list_app_services_page_async(
         self,
-        request: sae_20190506_models.ListAppVersionsRequest,
-    ) -> sae_20190506_models.ListAppVersionsResponse:
+        request: sae_20190506_models.ListAppServicesPageRequest,
+    ) -> sae_20190506_models.ListAppServicesPageResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_app_versions_with_options_async(request, headers, runtime)
+        return await self.list_app_services_page_with_options_async(request, headers, runtime)
 
     def list_app_versions_with_options(
         self,
@@ -5471,21 +5351,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_applications(
+    def list_app_versions(
         self,
-        request: sae_20190506_models.ListApplicationsRequest,
-    ) -> sae_20190506_models.ListApplicationsResponse:
+        request: sae_20190506_models.ListAppVersionsRequest,
+    ) -> sae_20190506_models.ListAppVersionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_applications_with_options(request, headers, runtime)
+        return self.list_app_versions_with_options(request, headers, runtime)
 
-    async def list_applications_async(
+    async def list_app_versions_async(
         self,
-        request: sae_20190506_models.ListApplicationsRequest,
-    ) -> sae_20190506_models.ListApplicationsResponse:
+        request: sae_20190506_models.ListAppVersionsRequest,
+    ) -> sae_20190506_models.ListAppVersionsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_applications_with_options_async(request, headers, runtime)
+        return await self.list_app_versions_with_options_async(request, headers, runtime)
 
     def list_applications_with_options(
         self,
@@ -5579,21 +5459,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_change_orders(
+    def list_applications(
         self,
-        request: sae_20190506_models.ListChangeOrdersRequest,
-    ) -> sae_20190506_models.ListChangeOrdersResponse:
+        request: sae_20190506_models.ListApplicationsRequest,
+    ) -> sae_20190506_models.ListApplicationsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_change_orders_with_options(request, headers, runtime)
+        return self.list_applications_with_options(request, headers, runtime)
 
-    async def list_change_orders_async(
+    async def list_applications_async(
         self,
-        request: sae_20190506_models.ListChangeOrdersRequest,
-    ) -> sae_20190506_models.ListChangeOrdersResponse:
+        request: sae_20190506_models.ListApplicationsRequest,
+    ) -> sae_20190506_models.ListApplicationsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_change_orders_with_options_async(request, headers, runtime)
+        return await self.list_applications_with_options_async(request, headers, runtime)
 
     def list_change_orders_with_options(
         self,
@@ -5675,21 +5555,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_consumed_services(
+    def list_change_orders(
         self,
-        request: sae_20190506_models.ListConsumedServicesRequest,
-    ) -> sae_20190506_models.ListConsumedServicesResponse:
+        request: sae_20190506_models.ListChangeOrdersRequest,
+    ) -> sae_20190506_models.ListChangeOrdersResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_consumed_services_with_options(request, headers, runtime)
+        return self.list_change_orders_with_options(request, headers, runtime)
 
-    async def list_consumed_services_async(
+    async def list_change_orders_async(
         self,
-        request: sae_20190506_models.ListConsumedServicesRequest,
-    ) -> sae_20190506_models.ListConsumedServicesResponse:
+        request: sae_20190506_models.ListChangeOrdersRequest,
+    ) -> sae_20190506_models.ListChangeOrdersResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_consumed_services_with_options_async(request, headers, runtime)
+        return await self.list_change_orders_with_options_async(request, headers, runtime)
 
     def list_consumed_services_with_options(
         self,
@@ -5751,21 +5631,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_grey_tag_route(
+    def list_consumed_services(
         self,
-        request: sae_20190506_models.ListGreyTagRouteRequest,
-    ) -> sae_20190506_models.ListGreyTagRouteResponse:
+        request: sae_20190506_models.ListConsumedServicesRequest,
+    ) -> sae_20190506_models.ListConsumedServicesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_grey_tag_route_with_options(request, headers, runtime)
+        return self.list_consumed_services_with_options(request, headers, runtime)
 
-    async def list_grey_tag_route_async(
+    async def list_consumed_services_async(
         self,
-        request: sae_20190506_models.ListGreyTagRouteRequest,
-    ) -> sae_20190506_models.ListGreyTagRouteResponse:
+        request: sae_20190506_models.ListConsumedServicesRequest,
+    ) -> sae_20190506_models.ListConsumedServicesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_grey_tag_route_with_options_async(request, headers, runtime)
+        return await self.list_consumed_services_with_options_async(request, headers, runtime)
 
     def list_grey_tag_route_with_options(
         self,
@@ -5827,21 +5707,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_ingresses(
+    def list_grey_tag_route(
         self,
-        request: sae_20190506_models.ListIngressesRequest,
-    ) -> sae_20190506_models.ListIngressesResponse:
+        request: sae_20190506_models.ListGreyTagRouteRequest,
+    ) -> sae_20190506_models.ListGreyTagRouteResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_ingresses_with_options(request, headers, runtime)
+        return self.list_grey_tag_route_with_options(request, headers, runtime)
 
-    async def list_ingresses_async(
+    async def list_grey_tag_route_async(
         self,
-        request: sae_20190506_models.ListIngressesRequest,
-    ) -> sae_20190506_models.ListIngressesResponse:
+        request: sae_20190506_models.ListGreyTagRouteRequest,
+    ) -> sae_20190506_models.ListGreyTagRouteResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_ingresses_with_options_async(request, headers, runtime)
+        return await self.list_grey_tag_route_with_options_async(request, headers, runtime)
 
     def list_ingresses_with_options(
         self,
@@ -5907,21 +5787,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_jobs(
+    def list_ingresses(
         self,
-        request: sae_20190506_models.ListJobsRequest,
-    ) -> sae_20190506_models.ListJobsResponse:
+        request: sae_20190506_models.ListIngressesRequest,
+    ) -> sae_20190506_models.ListIngressesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_jobs_with_options(request, headers, runtime)
+        return self.list_ingresses_with_options(request, headers, runtime)
 
-    async def list_jobs_async(
+    async def list_ingresses_async(
         self,
-        request: sae_20190506_models.ListJobsRequest,
-    ) -> sae_20190506_models.ListJobsResponse:
+        request: sae_20190506_models.ListIngressesRequest,
+    ) -> sae_20190506_models.ListIngressesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_jobs_with_options_async(request, headers, runtime)
+        return await self.list_ingresses_with_options_async(request, headers, runtime)
 
     def list_jobs_with_options(
         self,
@@ -6019,21 +5899,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_log_configs(
+    def list_jobs(
         self,
-        request: sae_20190506_models.ListLogConfigsRequest,
-    ) -> sae_20190506_models.ListLogConfigsResponse:
+        request: sae_20190506_models.ListJobsRequest,
+    ) -> sae_20190506_models.ListJobsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_log_configs_with_options(request, headers, runtime)
+        return self.list_jobs_with_options(request, headers, runtime)
 
-    async def list_log_configs_async(
+    async def list_jobs_async(
         self,
-        request: sae_20190506_models.ListLogConfigsRequest,
-    ) -> sae_20190506_models.ListLogConfigsResponse:
+        request: sae_20190506_models.ListJobsRequest,
+    ) -> sae_20190506_models.ListJobsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_log_configs_with_options_async(request, headers, runtime)
+        return await self.list_jobs_with_options_async(request, headers, runtime)
 
     def list_log_configs_with_options(
         self,
@@ -6103,21 +5983,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_namespace_change_orders(
+    def list_log_configs(
         self,
-        request: sae_20190506_models.ListNamespaceChangeOrdersRequest,
-    ) -> sae_20190506_models.ListNamespaceChangeOrdersResponse:
+        request: sae_20190506_models.ListLogConfigsRequest,
+    ) -> sae_20190506_models.ListLogConfigsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_namespace_change_orders_with_options(request, headers, runtime)
+        return self.list_log_configs_with_options(request, headers, runtime)
 
-    async def list_namespace_change_orders_async(
+    async def list_log_configs_async(
         self,
-        request: sae_20190506_models.ListNamespaceChangeOrdersRequest,
-    ) -> sae_20190506_models.ListNamespaceChangeOrdersResponse:
+        request: sae_20190506_models.ListLogConfigsRequest,
+    ) -> sae_20190506_models.ListLogConfigsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_namespace_change_orders_with_options_async(request, headers, runtime)
+        return await self.list_log_configs_with_options_async(request, headers, runtime)
 
     def list_namespace_change_orders_with_options(
         self,
@@ -6199,21 +6079,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_namespaced_config_maps(
+    def list_namespace_change_orders(
         self,
-        request: sae_20190506_models.ListNamespacedConfigMapsRequest,
-    ) -> sae_20190506_models.ListNamespacedConfigMapsResponse:
+        request: sae_20190506_models.ListNamespaceChangeOrdersRequest,
+    ) -> sae_20190506_models.ListNamespaceChangeOrdersResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_namespaced_config_maps_with_options(request, headers, runtime)
+        return self.list_namespace_change_orders_with_options(request, headers, runtime)
 
-    async def list_namespaced_config_maps_async(
+    async def list_namespace_change_orders_async(
         self,
-        request: sae_20190506_models.ListNamespacedConfigMapsRequest,
-    ) -> sae_20190506_models.ListNamespacedConfigMapsResponse:
+        request: sae_20190506_models.ListNamespaceChangeOrdersRequest,
+    ) -> sae_20190506_models.ListNamespaceChangeOrdersResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_namespaced_config_maps_with_options_async(request, headers, runtime)
+        return await self.list_namespace_change_orders_with_options_async(request, headers, runtime)
 
     def list_namespaced_config_maps_with_options(
         self,
@@ -6275,21 +6155,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_published_services(
+    def list_namespaced_config_maps(
         self,
-        request: sae_20190506_models.ListPublishedServicesRequest,
-    ) -> sae_20190506_models.ListPublishedServicesResponse:
+        request: sae_20190506_models.ListNamespacedConfigMapsRequest,
+    ) -> sae_20190506_models.ListNamespacedConfigMapsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_published_services_with_options(request, headers, runtime)
+        return self.list_namespaced_config_maps_with_options(request, headers, runtime)
 
-    async def list_published_services_async(
+    async def list_namespaced_config_maps_async(
         self,
-        request: sae_20190506_models.ListPublishedServicesRequest,
-    ) -> sae_20190506_models.ListPublishedServicesResponse:
+        request: sae_20190506_models.ListNamespacedConfigMapsRequest,
+    ) -> sae_20190506_models.ListNamespacedConfigMapsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_published_services_with_options_async(request, headers, runtime)
+        return await self.list_namespaced_config_maps_with_options_async(request, headers, runtime)
 
     def list_published_services_with_options(
         self,
@@ -6351,21 +6231,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_secrets(
+    def list_published_services(
         self,
-        request: sae_20190506_models.ListSecretsRequest,
-    ) -> sae_20190506_models.ListSecretsResponse:
+        request: sae_20190506_models.ListPublishedServicesRequest,
+    ) -> sae_20190506_models.ListPublishedServicesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_secrets_with_options(request, headers, runtime)
+        return self.list_published_services_with_options(request, headers, runtime)
 
-    async def list_secrets_async(
+    async def list_published_services_async(
         self,
-        request: sae_20190506_models.ListSecretsRequest,
-    ) -> sae_20190506_models.ListSecretsResponse:
+        request: sae_20190506_models.ListPublishedServicesRequest,
+    ) -> sae_20190506_models.ListPublishedServicesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_secrets_with_options_async(request, headers, runtime)
+        return await self.list_published_services_with_options_async(request, headers, runtime)
 
     def list_secrets_with_options(
         self,
@@ -6427,21 +6307,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_tag_resources(
+    def list_secrets(
         self,
-        request: sae_20190506_models.ListTagResourcesRequest,
-    ) -> sae_20190506_models.ListTagResourcesResponse:
+        request: sae_20190506_models.ListSecretsRequest,
+    ) -> sae_20190506_models.ListSecretsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_tag_resources_with_options(request, headers, runtime)
+        return self.list_secrets_with_options(request, headers, runtime)
 
-    async def list_tag_resources_async(
+    async def list_secrets_async(
         self,
-        request: sae_20190506_models.ListTagResourcesRequest,
-    ) -> sae_20190506_models.ListTagResourcesResponse:
+        request: sae_20190506_models.ListSecretsRequest,
+    ) -> sae_20190506_models.ListSecretsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_tag_resources_with_options_async(request, headers, runtime)
+        return await self.list_secrets_with_options_async(request, headers, runtime)
 
     def list_tag_resources_with_options(
         self,
@@ -6519,15 +6399,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def open_sae_service(self) -> sae_20190506_models.OpenSaeServiceResponse:
+    def list_tag_resources(
+        self,
+        request: sae_20190506_models.ListTagResourcesRequest,
+    ) -> sae_20190506_models.ListTagResourcesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.open_sae_service_with_options(headers, runtime)
+        return self.list_tag_resources_with_options(request, headers, runtime)
 
-    async def open_sae_service_async(self) -> sae_20190506_models.OpenSaeServiceResponse:
+    async def list_tag_resources_async(
+        self,
+        request: sae_20190506_models.ListTagResourcesRequest,
+    ) -> sae_20190506_models.ListTagResourcesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.open_sae_service_with_options_async(headers, runtime)
+        return await self.list_tag_resources_with_options_async(request, headers, runtime)
 
     def open_sae_service_with_options(
         self,
@@ -6577,21 +6463,15 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def query_resource_statics(
-        self,
-        request: sae_20190506_models.QueryResourceStaticsRequest,
-    ) -> sae_20190506_models.QueryResourceStaticsResponse:
+    def open_sae_service(self) -> sae_20190506_models.OpenSaeServiceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.query_resource_statics_with_options(request, headers, runtime)
+        return self.open_sae_service_with_options(headers, runtime)
 
-    async def query_resource_statics_async(
-        self,
-        request: sae_20190506_models.QueryResourceStaticsRequest,
-    ) -> sae_20190506_models.QueryResourceStaticsResponse:
+    async def open_sae_service_async(self) -> sae_20190506_models.OpenSaeServiceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.query_resource_statics_with_options_async(request, headers, runtime)
+        return await self.open_sae_service_with_options_async(headers, runtime)
 
     def query_resource_statics_with_options(
         self,
@@ -6653,21 +6533,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def reduce_application_capacity_by_instance_ids(
+    def query_resource_statics(
         self,
-        request: sae_20190506_models.ReduceApplicationCapacityByInstanceIdsRequest,
-    ) -> sae_20190506_models.ReduceApplicationCapacityByInstanceIdsResponse:
+        request: sae_20190506_models.QueryResourceStaticsRequest,
+    ) -> sae_20190506_models.QueryResourceStaticsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.reduce_application_capacity_by_instance_ids_with_options(request, headers, runtime)
+        return self.query_resource_statics_with_options(request, headers, runtime)
 
-    async def reduce_application_capacity_by_instance_ids_async(
+    async def query_resource_statics_async(
         self,
-        request: sae_20190506_models.ReduceApplicationCapacityByInstanceIdsRequest,
-    ) -> sae_20190506_models.ReduceApplicationCapacityByInstanceIdsResponse:
+        request: sae_20190506_models.QueryResourceStaticsRequest,
+    ) -> sae_20190506_models.QueryResourceStaticsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.reduce_application_capacity_by_instance_ids_with_options_async(request, headers, runtime)
+        return await self.query_resource_statics_with_options_async(request, headers, runtime)
 
     def reduce_application_capacity_by_instance_ids_with_options(
         self,
@@ -6733,21 +6613,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def rescale_application(
+    def reduce_application_capacity_by_instance_ids(
         self,
-        request: sae_20190506_models.RescaleApplicationRequest,
-    ) -> sae_20190506_models.RescaleApplicationResponse:
+        request: sae_20190506_models.ReduceApplicationCapacityByInstanceIdsRequest,
+    ) -> sae_20190506_models.ReduceApplicationCapacityByInstanceIdsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.rescale_application_with_options(request, headers, runtime)
+        return self.reduce_application_capacity_by_instance_ids_with_options(request, headers, runtime)
 
-    async def rescale_application_async(
+    async def reduce_application_capacity_by_instance_ids_async(
         self,
-        request: sae_20190506_models.RescaleApplicationRequest,
-    ) -> sae_20190506_models.RescaleApplicationResponse:
+        request: sae_20190506_models.ReduceApplicationCapacityByInstanceIdsRequest,
+    ) -> sae_20190506_models.ReduceApplicationCapacityByInstanceIdsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.rescale_application_with_options_async(request, headers, runtime)
+        return await self.reduce_application_capacity_by_instance_ids_with_options_async(request, headers, runtime)
 
     def rescale_application_with_options(
         self,
@@ -6825,21 +6705,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def rescale_application_vertically(
+    def rescale_application(
         self,
-        request: sae_20190506_models.RescaleApplicationVerticallyRequest,
-    ) -> sae_20190506_models.RescaleApplicationVerticallyResponse:
+        request: sae_20190506_models.RescaleApplicationRequest,
+    ) -> sae_20190506_models.RescaleApplicationResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.rescale_application_vertically_with_options(request, headers, runtime)
+        return self.rescale_application_with_options(request, headers, runtime)
 
-    async def rescale_application_vertically_async(
+    async def rescale_application_async(
         self,
-        request: sae_20190506_models.RescaleApplicationVerticallyRequest,
-    ) -> sae_20190506_models.RescaleApplicationVerticallyResponse:
+        request: sae_20190506_models.RescaleApplicationRequest,
+    ) -> sae_20190506_models.RescaleApplicationResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.rescale_application_vertically_with_options_async(request, headers, runtime)
+        return await self.rescale_application_with_options_async(request, headers, runtime)
 
     def rescale_application_vertically_with_options(
         self,
@@ -6909,21 +6789,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def restart_application(
+    def rescale_application_vertically(
         self,
-        request: sae_20190506_models.RestartApplicationRequest,
-    ) -> sae_20190506_models.RestartApplicationResponse:
+        request: sae_20190506_models.RescaleApplicationVerticallyRequest,
+    ) -> sae_20190506_models.RescaleApplicationVerticallyResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.restart_application_with_options(request, headers, runtime)
+        return self.rescale_application_vertically_with_options(request, headers, runtime)
 
-    async def restart_application_async(
+    async def rescale_application_vertically_async(
         self,
-        request: sae_20190506_models.RestartApplicationRequest,
-    ) -> sae_20190506_models.RestartApplicationResponse:
+        request: sae_20190506_models.RescaleApplicationVerticallyRequest,
+    ) -> sae_20190506_models.RescaleApplicationVerticallyResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.restart_application_with_options_async(request, headers, runtime)
+        return await self.rescale_application_vertically_with_options_async(request, headers, runtime)
 
     def restart_application_with_options(
         self,
@@ -6993,21 +6873,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def restart_instances(
+    def restart_application(
         self,
-        request: sae_20190506_models.RestartInstancesRequest,
-    ) -> sae_20190506_models.RestartInstancesResponse:
+        request: sae_20190506_models.RestartApplicationRequest,
+    ) -> sae_20190506_models.RestartApplicationResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.restart_instances_with_options(request, headers, runtime)
+        return self.restart_application_with_options(request, headers, runtime)
 
-    async def restart_instances_async(
+    async def restart_application_async(
         self,
-        request: sae_20190506_models.RestartInstancesRequest,
-    ) -> sae_20190506_models.RestartInstancesResponse:
+        request: sae_20190506_models.RestartApplicationRequest,
+    ) -> sae_20190506_models.RestartApplicationResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.restart_instances_with_options_async(request, headers, runtime)
+        return await self.restart_application_with_options_async(request, headers, runtime)
 
     def restart_instances_with_options(
         self,
@@ -7073,21 +6953,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def rollback_application(
+    def restart_instances(
         self,
-        request: sae_20190506_models.RollbackApplicationRequest,
-    ) -> sae_20190506_models.RollbackApplicationResponse:
+        request: sae_20190506_models.RestartInstancesRequest,
+    ) -> sae_20190506_models.RestartInstancesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.rollback_application_with_options(request, headers, runtime)
+        return self.restart_instances_with_options(request, headers, runtime)
 
-    async def rollback_application_async(
+    async def restart_instances_async(
         self,
-        request: sae_20190506_models.RollbackApplicationRequest,
-    ) -> sae_20190506_models.RollbackApplicationResponse:
+        request: sae_20190506_models.RestartInstancesRequest,
+    ) -> sae_20190506_models.RestartInstancesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.rollback_application_with_options_async(request, headers, runtime)
+        return await self.restart_instances_with_options_async(request, headers, runtime)
 
     def rollback_application_with_options(
         self,
@@ -7173,21 +7053,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def start_application(
+    def rollback_application(
         self,
-        request: sae_20190506_models.StartApplicationRequest,
-    ) -> sae_20190506_models.StartApplicationResponse:
+        request: sae_20190506_models.RollbackApplicationRequest,
+    ) -> sae_20190506_models.RollbackApplicationResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.start_application_with_options(request, headers, runtime)
+        return self.rollback_application_with_options(request, headers, runtime)
 
-    async def start_application_async(
+    async def rollback_application_async(
         self,
-        request: sae_20190506_models.StartApplicationRequest,
-    ) -> sae_20190506_models.StartApplicationResponse:
+        request: sae_20190506_models.RollbackApplicationRequest,
+    ) -> sae_20190506_models.RollbackApplicationResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.start_application_with_options_async(request, headers, runtime)
+        return await self.rollback_application_with_options_async(request, headers, runtime)
 
     def start_application_with_options(
         self,
@@ -7249,21 +7129,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def stop_application(
+    def start_application(
         self,
-        request: sae_20190506_models.StopApplicationRequest,
-    ) -> sae_20190506_models.StopApplicationResponse:
+        request: sae_20190506_models.StartApplicationRequest,
+    ) -> sae_20190506_models.StartApplicationResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.stop_application_with_options(request, headers, runtime)
+        return self.start_application_with_options(request, headers, runtime)
 
-    async def stop_application_async(
+    async def start_application_async(
         self,
-        request: sae_20190506_models.StopApplicationRequest,
-    ) -> sae_20190506_models.StopApplicationResponse:
+        request: sae_20190506_models.StartApplicationRequest,
+    ) -> sae_20190506_models.StartApplicationResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.stop_application_with_options_async(request, headers, runtime)
+        return await self.start_application_with_options_async(request, headers, runtime)
 
     def stop_application_with_options(
         self,
@@ -7325,21 +7205,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def suspend_job(
+    def stop_application(
         self,
-        request: sae_20190506_models.SuspendJobRequest,
-    ) -> sae_20190506_models.SuspendJobResponse:
+        request: sae_20190506_models.StopApplicationRequest,
+    ) -> sae_20190506_models.StopApplicationResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.suspend_job_with_options(request, headers, runtime)
+        return self.stop_application_with_options(request, headers, runtime)
 
-    async def suspend_job_async(
+    async def stop_application_async(
         self,
-        request: sae_20190506_models.SuspendJobRequest,
-    ) -> sae_20190506_models.SuspendJobResponse:
+        request: sae_20190506_models.StopApplicationRequest,
+    ) -> sae_20190506_models.StopApplicationResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.suspend_job_with_options_async(request, headers, runtime)
+        return await self.stop_application_with_options_async(request, headers, runtime)
 
     def suspend_job_with_options(
         self,
@@ -7405,21 +7285,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def tag_resources(
+    def suspend_job(
         self,
-        request: sae_20190506_models.TagResourcesRequest,
-    ) -> sae_20190506_models.TagResourcesResponse:
+        request: sae_20190506_models.SuspendJobRequest,
+    ) -> sae_20190506_models.SuspendJobResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.tag_resources_with_options(request, headers, runtime)
+        return self.suspend_job_with_options(request, headers, runtime)
 
-    async def tag_resources_async(
+    async def suspend_job_async(
         self,
-        request: sae_20190506_models.TagResourcesRequest,
-    ) -> sae_20190506_models.TagResourcesResponse:
+        request: sae_20190506_models.SuspendJobRequest,
+    ) -> sae_20190506_models.SuspendJobResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.tag_resources_with_options_async(request, headers, runtime)
+        return await self.suspend_job_with_options_async(request, headers, runtime)
 
     def tag_resources_with_options(
         self,
@@ -7493,21 +7373,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def unbind_slb(
+    def tag_resources(
         self,
-        request: sae_20190506_models.UnbindSlbRequest,
-    ) -> sae_20190506_models.UnbindSlbResponse:
+        request: sae_20190506_models.TagResourcesRequest,
+    ) -> sae_20190506_models.TagResourcesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.unbind_slb_with_options(request, headers, runtime)
+        return self.tag_resources_with_options(request, headers, runtime)
 
-    async def unbind_slb_async(
+    async def tag_resources_async(
         self,
-        request: sae_20190506_models.UnbindSlbRequest,
-    ) -> sae_20190506_models.UnbindSlbResponse:
+        request: sae_20190506_models.TagResourcesRequest,
+    ) -> sae_20190506_models.TagResourcesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.unbind_slb_with_options_async(request, headers, runtime)
+        return await self.tag_resources_with_options_async(request, headers, runtime)
 
     def unbind_slb_with_options(
         self,
@@ -7577,21 +7457,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def untag_resources(
+    def unbind_slb(
         self,
-        request: sae_20190506_models.UntagResourcesRequest,
-    ) -> sae_20190506_models.UntagResourcesResponse:
+        request: sae_20190506_models.UnbindSlbRequest,
+    ) -> sae_20190506_models.UnbindSlbResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.untag_resources_with_options(request, headers, runtime)
+        return self.unbind_slb_with_options(request, headers, runtime)
 
-    async def untag_resources_async(
+    async def unbind_slb_async(
         self,
-        request: sae_20190506_models.UntagResourcesRequest,
-    ) -> sae_20190506_models.UntagResourcesResponse:
+        request: sae_20190506_models.UnbindSlbRequest,
+    ) -> sae_20190506_models.UnbindSlbResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.untag_resources_with_options_async(request, headers, runtime)
+        return await self.unbind_slb_with_options_async(request, headers, runtime)
 
     def untag_resources_with_options(
         self,
@@ -7669,21 +7549,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_app_security_group(
+    def untag_resources(
         self,
-        request: sae_20190506_models.UpdateAppSecurityGroupRequest,
-    ) -> sae_20190506_models.UpdateAppSecurityGroupResponse:
+        request: sae_20190506_models.UntagResourcesRequest,
+    ) -> sae_20190506_models.UntagResourcesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_app_security_group_with_options(request, headers, runtime)
+        return self.untag_resources_with_options(request, headers, runtime)
 
-    async def update_app_security_group_async(
+    async def untag_resources_async(
         self,
-        request: sae_20190506_models.UpdateAppSecurityGroupRequest,
-    ) -> sae_20190506_models.UpdateAppSecurityGroupResponse:
+        request: sae_20190506_models.UntagResourcesRequest,
+    ) -> sae_20190506_models.UntagResourcesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_app_security_group_with_options_async(request, headers, runtime)
+        return await self.untag_resources_with_options_async(request, headers, runtime)
 
     def update_app_security_group_with_options(
         self,
@@ -7749,21 +7629,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_application_description(
+    def update_app_security_group(
         self,
-        request: sae_20190506_models.UpdateApplicationDescriptionRequest,
-    ) -> sae_20190506_models.UpdateApplicationDescriptionResponse:
+        request: sae_20190506_models.UpdateAppSecurityGroupRequest,
+    ) -> sae_20190506_models.UpdateAppSecurityGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_application_description_with_options(request, headers, runtime)
+        return self.update_app_security_group_with_options(request, headers, runtime)
 
-    async def update_application_description_async(
+    async def update_app_security_group_async(
         self,
-        request: sae_20190506_models.UpdateApplicationDescriptionRequest,
-    ) -> sae_20190506_models.UpdateApplicationDescriptionResponse:
+        request: sae_20190506_models.UpdateAppSecurityGroupRequest,
+    ) -> sae_20190506_models.UpdateAppSecurityGroupResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_application_description_with_options_async(request, headers, runtime)
+        return await self.update_app_security_group_with_options_async(request, headers, runtime)
 
     def update_application_description_with_options(
         self,
@@ -7829,21 +7709,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_application_scaling_rule(
+    def update_application_description(
         self,
-        request: sae_20190506_models.UpdateApplicationScalingRuleRequest,
-    ) -> sae_20190506_models.UpdateApplicationScalingRuleResponse:
+        request: sae_20190506_models.UpdateApplicationDescriptionRequest,
+    ) -> sae_20190506_models.UpdateApplicationDescriptionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_application_scaling_rule_with_options(request, headers, runtime)
+        return self.update_application_description_with_options(request, headers, runtime)
 
-    async def update_application_scaling_rule_async(
+    async def update_application_description_async(
         self,
-        request: sae_20190506_models.UpdateApplicationScalingRuleRequest,
-    ) -> sae_20190506_models.UpdateApplicationScalingRuleResponse:
+        request: sae_20190506_models.UpdateApplicationDescriptionRequest,
+    ) -> sae_20190506_models.UpdateApplicationDescriptionResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_application_scaling_rule_with_options_async(request, headers, runtime)
+        return await self.update_application_description_with_options_async(request, headers, runtime)
 
     def update_application_scaling_rule_with_options(
         self,
@@ -7925,21 +7805,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_application_vswitches(
+    def update_application_scaling_rule(
         self,
-        request: sae_20190506_models.UpdateApplicationVswitchesRequest,
-    ) -> sae_20190506_models.UpdateApplicationVswitchesResponse:
+        request: sae_20190506_models.UpdateApplicationScalingRuleRequest,
+    ) -> sae_20190506_models.UpdateApplicationScalingRuleResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_application_vswitches_with_options(request, headers, runtime)
+        return self.update_application_scaling_rule_with_options(request, headers, runtime)
 
-    async def update_application_vswitches_async(
+    async def update_application_scaling_rule_async(
         self,
-        request: sae_20190506_models.UpdateApplicationVswitchesRequest,
-    ) -> sae_20190506_models.UpdateApplicationVswitchesResponse:
+        request: sae_20190506_models.UpdateApplicationScalingRuleRequest,
+    ) -> sae_20190506_models.UpdateApplicationScalingRuleResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_application_vswitches_with_options_async(request, headers, runtime)
+        return await self.update_application_scaling_rule_with_options_async(request, headers, runtime)
 
     def update_application_vswitches_with_options(
         self,
@@ -8005,21 +7885,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_config_map(
+    def update_application_vswitches(
         self,
-        request: sae_20190506_models.UpdateConfigMapRequest,
-    ) -> sae_20190506_models.UpdateConfigMapResponse:
+        request: sae_20190506_models.UpdateApplicationVswitchesRequest,
+    ) -> sae_20190506_models.UpdateApplicationVswitchesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_config_map_with_options(request, headers, runtime)
+        return self.update_application_vswitches_with_options(request, headers, runtime)
 
-    async def update_config_map_async(
+    async def update_application_vswitches_async(
         self,
-        request: sae_20190506_models.UpdateConfigMapRequest,
-    ) -> sae_20190506_models.UpdateConfigMapResponse:
+        request: sae_20190506_models.UpdateApplicationVswitchesRequest,
+    ) -> sae_20190506_models.UpdateApplicationVswitchesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_config_map_with_options_async(request, headers, runtime)
+        return await self.update_application_vswitches_with_options_async(request, headers, runtime)
 
     def update_config_map_with_options(
         self,
@@ -8093,21 +7973,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_grey_tag_route(
+    def update_config_map(
         self,
-        request: sae_20190506_models.UpdateGreyTagRouteRequest,
-    ) -> sae_20190506_models.UpdateGreyTagRouteResponse:
+        request: sae_20190506_models.UpdateConfigMapRequest,
+    ) -> sae_20190506_models.UpdateConfigMapResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_grey_tag_route_with_options(request, headers, runtime)
+        return self.update_config_map_with_options(request, headers, runtime)
 
-    async def update_grey_tag_route_async(
+    async def update_config_map_async(
         self,
-        request: sae_20190506_models.UpdateGreyTagRouteRequest,
-    ) -> sae_20190506_models.UpdateGreyTagRouteResponse:
+        request: sae_20190506_models.UpdateConfigMapRequest,
+    ) -> sae_20190506_models.UpdateConfigMapResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_grey_tag_route_with_options_async(request, headers, runtime)
+        return await self.update_config_map_with_options_async(request, headers, runtime)
 
     def update_grey_tag_route_with_options(
         self,
@@ -8117,8 +7997,6 @@ class Client(OpenApiClient):
     ) -> sae_20190506_models.UpdateGreyTagRouteResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.alb_rules):
-            query['AlbRules'] = request.alb_rules
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.dubbo_rules):
@@ -8155,8 +8033,6 @@ class Client(OpenApiClient):
     ) -> sae_20190506_models.UpdateGreyTagRouteResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.alb_rules):
-            query['AlbRules'] = request.alb_rules
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.dubbo_rules):
@@ -8185,21 +8061,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_ingress(
+    def update_grey_tag_route(
         self,
-        request: sae_20190506_models.UpdateIngressRequest,
-    ) -> sae_20190506_models.UpdateIngressResponse:
+        request: sae_20190506_models.UpdateGreyTagRouteRequest,
+    ) -> sae_20190506_models.UpdateGreyTagRouteResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_ingress_with_options(request, headers, runtime)
+        return self.update_grey_tag_route_with_options(request, headers, runtime)
 
-    async def update_ingress_async(
+    async def update_grey_tag_route_async(
         self,
-        request: sae_20190506_models.UpdateIngressRequest,
-    ) -> sae_20190506_models.UpdateIngressResponse:
+        request: sae_20190506_models.UpdateGreyTagRouteRequest,
+    ) -> sae_20190506_models.UpdateGreyTagRouteResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_ingress_with_options_async(request, headers, runtime)
+        return await self.update_grey_tag_route_with_options_async(request, headers, runtime)
 
     def update_ingress_with_options(
         self,
@@ -8297,21 +8173,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_job(
+    def update_ingress(
         self,
-        request: sae_20190506_models.UpdateJobRequest,
-    ) -> sae_20190506_models.UpdateJobResponse:
+        request: sae_20190506_models.UpdateIngressRequest,
+    ) -> sae_20190506_models.UpdateIngressResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_job_with_options(request, headers, runtime)
+        return self.update_ingress_with_options(request, headers, runtime)
 
-    async def update_job_async(
+    async def update_ingress_async(
         self,
-        request: sae_20190506_models.UpdateJobRequest,
-    ) -> sae_20190506_models.UpdateJobResponse:
+        request: sae_20190506_models.UpdateIngressRequest,
+    ) -> sae_20190506_models.UpdateIngressResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_job_with_options_async(request, headers, runtime)
+        return await self.update_ingress_with_options_async(request, headers, runtime)
 
     def update_job_with_options(
         self,
@@ -8325,14 +8201,8 @@ class Client(OpenApiClient):
             query['AcrAssumeRoleArn'] = request.acr_assume_role_arn
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.auto_enable_application_scaling_rule):
-            query['AutoEnableApplicationScalingRule'] = request.auto_enable_application_scaling_rule
         if not UtilClient.is_unset(request.backoff_limit):
             query['BackoffLimit'] = request.backoff_limit
-        if not UtilClient.is_unset(request.batch_wait_time):
-            query['BatchWaitTime'] = request.batch_wait_time
-        if not UtilClient.is_unset(request.change_order_desc):
-            query['ChangeOrderDesc'] = request.change_order_desc
         if not UtilClient.is_unset(request.command):
             query['Command'] = request.command
         if not UtilClient.is_unset(request.command_args):
@@ -8343,10 +8213,6 @@ class Client(OpenApiClient):
             query['CustomHostAlias'] = request.custom_host_alias
         if not UtilClient.is_unset(request.edas_container_version):
             query['EdasContainerVersion'] = request.edas_container_version
-        if not UtilClient.is_unset(request.enable_ahas):
-            query['EnableAhas'] = request.enable_ahas
-        if not UtilClient.is_unset(request.enable_grey_tag_route):
-            query['EnableGreyTagRoute'] = request.enable_grey_tag_route
         if not UtilClient.is_unset(request.envs):
             query['Envs'] = request.envs
         if not UtilClient.is_unset(request.image_pull_secrets):
@@ -8359,10 +8225,6 @@ class Client(OpenApiClient):
             query['JarStartOptions'] = request.jar_start_options
         if not UtilClient.is_unset(request.jdk):
             query['Jdk'] = request.jdk
-        if not UtilClient.is_unset(request.liveness):
-            query['Liveness'] = request.liveness
-        if not UtilClient.is_unset(request.min_ready_instances):
-            query['MinReadyInstances'] = request.min_ready_instances
         if not UtilClient.is_unset(request.mount_desc):
             query['MountDesc'] = request.mount_desc
         if not UtilClient.is_unset(request.mount_host):
@@ -8373,8 +8235,6 @@ class Client(OpenApiClient):
             query['PackageUrl'] = request.package_url
         if not UtilClient.is_unset(request.package_version):
             query['PackageVersion'] = request.package_version
-        if not UtilClient.is_unset(request.php_arms_config_location):
-            query['PhpArmsConfigLocation'] = request.php_arms_config_location
         if not UtilClient.is_unset(request.php_config_location):
             query['PhpConfigLocation'] = request.php_config_location
         if not UtilClient.is_unset(request.post_start):
@@ -8387,8 +8247,6 @@ class Client(OpenApiClient):
             query['Python'] = request.python
         if not UtilClient.is_unset(request.python_modules):
             query['PythonModules'] = request.python_modules
-        if not UtilClient.is_unset(request.readiness):
-            query['Readiness'] = request.readiness
         if not UtilClient.is_unset(request.ref_app_id):
             query['RefAppId'] = request.ref_app_id
         if not UtilClient.is_unset(request.replicas):
@@ -8409,8 +8267,6 @@ class Client(OpenApiClient):
             query['TomcatConfig'] = request.tomcat_config
         if not UtilClient.is_unset(request.trigger_config):
             query['TriggerConfig'] = request.trigger_config
-        if not UtilClient.is_unset(request.update_strategy):
-            query['UpdateStrategy'] = request.update_strategy
         if not UtilClient.is_unset(request.war_start_options):
             query['WarStartOptions'] = request.war_start_options
         if not UtilClient.is_unset(request.web_container):
@@ -8418,8 +8274,6 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.acr_instance_id):
             body['AcrInstanceId'] = request.acr_instance_id
-        if not UtilClient.is_unset(request.associate_eip):
-            body['AssociateEip'] = request.associate_eip
         if not UtilClient.is_unset(request.config_map_mount_desc):
             body['ConfigMapMountDesc'] = request.config_map_mount_desc
         if not UtilClient.is_unset(request.oss_ak_id):
@@ -8432,10 +8286,6 @@ class Client(OpenApiClient):
             body['Php'] = request.php
         if not UtilClient.is_unset(request.php_config):
             body['PhpConfig'] = request.php_config
-        if not UtilClient.is_unset(request.php_extensions):
-            body['PhpExtensions'] = request.php_extensions
-        if not UtilClient.is_unset(request.php_peclextensions):
-            body['PhpPECLExtensions'] = request.php_peclextensions
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),
@@ -8469,14 +8319,8 @@ class Client(OpenApiClient):
             query['AcrAssumeRoleArn'] = request.acr_assume_role_arn
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.auto_enable_application_scaling_rule):
-            query['AutoEnableApplicationScalingRule'] = request.auto_enable_application_scaling_rule
         if not UtilClient.is_unset(request.backoff_limit):
             query['BackoffLimit'] = request.backoff_limit
-        if not UtilClient.is_unset(request.batch_wait_time):
-            query['BatchWaitTime'] = request.batch_wait_time
-        if not UtilClient.is_unset(request.change_order_desc):
-            query['ChangeOrderDesc'] = request.change_order_desc
         if not UtilClient.is_unset(request.command):
             query['Command'] = request.command
         if not UtilClient.is_unset(request.command_args):
@@ -8487,10 +8331,6 @@ class Client(OpenApiClient):
             query['CustomHostAlias'] = request.custom_host_alias
         if not UtilClient.is_unset(request.edas_container_version):
             query['EdasContainerVersion'] = request.edas_container_version
-        if not UtilClient.is_unset(request.enable_ahas):
-            query['EnableAhas'] = request.enable_ahas
-        if not UtilClient.is_unset(request.enable_grey_tag_route):
-            query['EnableGreyTagRoute'] = request.enable_grey_tag_route
         if not UtilClient.is_unset(request.envs):
             query['Envs'] = request.envs
         if not UtilClient.is_unset(request.image_pull_secrets):
@@ -8503,10 +8343,6 @@ class Client(OpenApiClient):
             query['JarStartOptions'] = request.jar_start_options
         if not UtilClient.is_unset(request.jdk):
             query['Jdk'] = request.jdk
-        if not UtilClient.is_unset(request.liveness):
-            query['Liveness'] = request.liveness
-        if not UtilClient.is_unset(request.min_ready_instances):
-            query['MinReadyInstances'] = request.min_ready_instances
         if not UtilClient.is_unset(request.mount_desc):
             query['MountDesc'] = request.mount_desc
         if not UtilClient.is_unset(request.mount_host):
@@ -8517,8 +8353,6 @@ class Client(OpenApiClient):
             query['PackageUrl'] = request.package_url
         if not UtilClient.is_unset(request.package_version):
             query['PackageVersion'] = request.package_version
-        if not UtilClient.is_unset(request.php_arms_config_location):
-            query['PhpArmsConfigLocation'] = request.php_arms_config_location
         if not UtilClient.is_unset(request.php_config_location):
             query['PhpConfigLocation'] = request.php_config_location
         if not UtilClient.is_unset(request.post_start):
@@ -8531,8 +8365,6 @@ class Client(OpenApiClient):
             query['Python'] = request.python
         if not UtilClient.is_unset(request.python_modules):
             query['PythonModules'] = request.python_modules
-        if not UtilClient.is_unset(request.readiness):
-            query['Readiness'] = request.readiness
         if not UtilClient.is_unset(request.ref_app_id):
             query['RefAppId'] = request.ref_app_id
         if not UtilClient.is_unset(request.replicas):
@@ -8553,8 +8385,6 @@ class Client(OpenApiClient):
             query['TomcatConfig'] = request.tomcat_config
         if not UtilClient.is_unset(request.trigger_config):
             query['TriggerConfig'] = request.trigger_config
-        if not UtilClient.is_unset(request.update_strategy):
-            query['UpdateStrategy'] = request.update_strategy
         if not UtilClient.is_unset(request.war_start_options):
             query['WarStartOptions'] = request.war_start_options
         if not UtilClient.is_unset(request.web_container):
@@ -8562,8 +8392,6 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.acr_instance_id):
             body['AcrInstanceId'] = request.acr_instance_id
-        if not UtilClient.is_unset(request.associate_eip):
-            body['AssociateEip'] = request.associate_eip
         if not UtilClient.is_unset(request.config_map_mount_desc):
             body['ConfigMapMountDesc'] = request.config_map_mount_desc
         if not UtilClient.is_unset(request.oss_ak_id):
@@ -8576,10 +8404,6 @@ class Client(OpenApiClient):
             body['Php'] = request.php
         if not UtilClient.is_unset(request.php_config):
             body['PhpConfig'] = request.php_config
-        if not UtilClient.is_unset(request.php_extensions):
-            body['PhpExtensions'] = request.php_extensions
-        if not UtilClient.is_unset(request.php_peclextensions):
-            body['PhpPECLExtensions'] = request.php_peclextensions
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),
@@ -8601,21 +8425,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_namespace(
+    def update_job(
         self,
-        request: sae_20190506_models.UpdateNamespaceRequest,
-    ) -> sae_20190506_models.UpdateNamespaceResponse:
+        request: sae_20190506_models.UpdateJobRequest,
+    ) -> sae_20190506_models.UpdateJobResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_namespace_with_options(request, headers, runtime)
+        return self.update_job_with_options(request, headers, runtime)
 
-    async def update_namespace_async(
+    async def update_job_async(
         self,
-        request: sae_20190506_models.UpdateNamespaceRequest,
-    ) -> sae_20190506_models.UpdateNamespaceResponse:
+        request: sae_20190506_models.UpdateJobRequest,
+    ) -> sae_20190506_models.UpdateJobResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_namespace_with_options_async(request, headers, runtime)
+        return await self.update_job_with_options_async(request, headers, runtime)
 
     def update_namespace_with_options(
         self,
@@ -8685,21 +8509,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_namespace_vpc(
+    def update_namespace(
         self,
-        request: sae_20190506_models.UpdateNamespaceVpcRequest,
-    ) -> sae_20190506_models.UpdateNamespaceVpcResponse:
+        request: sae_20190506_models.UpdateNamespaceRequest,
+    ) -> sae_20190506_models.UpdateNamespaceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_namespace_vpc_with_options(request, headers, runtime)
+        return self.update_namespace_with_options(request, headers, runtime)
 
-    async def update_namespace_vpc_async(
+    async def update_namespace_async(
         self,
-        request: sae_20190506_models.UpdateNamespaceVpcRequest,
-    ) -> sae_20190506_models.UpdateNamespaceVpcResponse:
+        request: sae_20190506_models.UpdateNamespaceRequest,
+    ) -> sae_20190506_models.UpdateNamespaceResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_namespace_vpc_with_options_async(request, headers, runtime)
+        return await self.update_namespace_with_options_async(request, headers, runtime)
 
     def update_namespace_vpc_with_options(
         self,
@@ -8765,21 +8589,21 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_secret(
+    def update_namespace_vpc(
         self,
-        request: sae_20190506_models.UpdateSecretRequest,
-    ) -> sae_20190506_models.UpdateSecretResponse:
+        request: sae_20190506_models.UpdateNamespaceVpcRequest,
+    ) -> sae_20190506_models.UpdateNamespaceVpcResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_secret_with_options(request, headers, runtime)
+        return self.update_namespace_vpc_with_options(request, headers, runtime)
 
-    async def update_secret_async(
+    async def update_namespace_vpc_async(
         self,
-        request: sae_20190506_models.UpdateSecretRequest,
-    ) -> sae_20190506_models.UpdateSecretResponse:
+        request: sae_20190506_models.UpdateNamespaceVpcRequest,
+    ) -> sae_20190506_models.UpdateNamespaceVpcResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_secret_with_options_async(request, headers, runtime)
+        return await self.update_namespace_vpc_with_options_async(request, headers, runtime)
 
     def update_secret_with_options(
         self,
@@ -8852,3 +8676,19 @@ class Client(OpenApiClient):
             sae_20190506_models.UpdateSecretResponse(),
             await self.call_api_async(params, req, runtime)
         )
+
+    def update_secret(
+        self,
+        request: sae_20190506_models.UpdateSecretRequest,
+    ) -> sae_20190506_models.UpdateSecretResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_secret_with_options(request, headers, runtime)
+
+    async def update_secret_async(
+        self,
+        request: sae_20190506_models.UpdateSecretRequest,
+    ) -> sae_20190506_models.UpdateSecretResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_secret_with_options_async(request, headers, runtime)
